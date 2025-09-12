@@ -14,7 +14,7 @@
     "hasHierarchicalParents": false,
     "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
     "http://purl.obolibrary.org/obo/IAO_0000115": "An entity that exists in full at any time in which it exists at all, persists through time while maintaining its identity and has no temporal parts.",
-    "http://purl.obolibrary.org/obo/IAO_0000116": "BFO 2 Reference: Continuant entities are entities which can be sliced to yield parts only along the spatial dimension, yielding for example the parts of your table which we call its legs, its top, its nails. ‘My desk stretches from the window to the door. It has spatial parts, and can be sliced (in space) in two. With respect to time, however, a thing is a continuant.’ [60, p. 240",
+    "http://purl.obolibrary.org/obo/IAO_0000116": "BFO 2 Reference: Continuant entities are entities which can be sliced to yield parts only along the spatial dimension, yielding for example the parts of your table which we call its legs, its top, its nails. \u2018My desk stretches from the window to the door. It has spatial parts, and can be sliced (in space) in two. With respect to time, however, a thing is a continuant.\u2019 [60, p. 240",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "continuant",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
@@ -32,7 +32,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/BFO_0000002",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -138,7 +137,7 @@
     "ontologyPreferredPrefix": "gitIssue502",
     "searchableAnnotationValues": [
       "An entity that exists in full at any time in which it exists at all, persists through time while maintaining its identity and has no temporal parts.",
-      "BFO 2 Reference: Continuant entities are entities which can be sliced to yield parts only along the spatial dimension, yielding for example the parts of your table which we call its legs, its top, its nails. ‘My desk stretches from the window to the door. It has spatial parts, and can be sliced (in space) in two. With respect to time, however, a thing is a continuant.’ [60, p. 240",
+      "BFO 2 Reference: Continuant entities are entities which can be sliced to yield parts only along the spatial dimension, yielding for example the parts of your table which we call its legs, its top, its nails. \u2018My desk stretches from the window to the door. It has spatial parts, and can be sliced (in space) in two. With respect to time, however, a thing is a continuant.\u2019 [60, p. 240",
       false
     ],
     "shortForm": "BFO_0000002",
@@ -180,7 +179,6 @@
       "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/BFO_0000002",
       "isObsolete": false
     },
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/BFO_0000003",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -330,7 +328,6 @@
       }
     ],
     "http://www.w3.org/2002/07/owl#disjointWith": "http://purl.obolibrary.org/obo/BFO_0000020",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/BFO_0000004",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -448,11 +445,10 @@
       "http://purl.obolibrary.org/obo/BFO_0000003"
     ],
     "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-    "http://purl.obolibrary.org/obo/IAO_0000116": "BFO 2 Reference: The realm of occurrents is less pervasively marked by the presence of natural units than is the case in the realm of independent continuants. Thus there is here no counterpart of ‘object’. In BFO 1.0 ‘process’ served as such a counterpart. In BFO 2.0 ‘process’ is, rather, the occurrent counterpart of ‘material entity’. Those natural – as contrasted with engineered, which here means: deliberately executed – units which do exist in the realm of occurrents are typically either parasitic on the existence of natural units on the continuant side, or they are fiat in nature. Thus we can count lives; we can count football games; we can count chemical reactions performed in experiments or in chemical manufacturing. We cannot count the processes taking place, for instance, in an episode of insect mating behavior.Even where natural units are identifiable, for example cycles in a cyclical process such as the beating of a heart or an organism’s sleep/wake cycle, the processes in question form a sequence with no discontinuities (temporal gaps) of the sort that we find for instance where billiard balls or zebrafish or planets are separated by clear spatial gaps. Lives of organisms are process units, but they too unfold in a continuous series from other, prior processes such as fertilization, and they unfold in turn in continuous series of post-life processes such as post-mortem decay. Clear examples of boundaries of processes are almost always of the fiat sort (midnight, a time of death as declared in an operating theater or on a death certificate, the initiation of a state of war)",
+    "http://purl.obolibrary.org/obo/IAO_0000116": "BFO 2 Reference: The realm of occurrents is less pervasively marked by the presence of natural units than is the case in the realm of independent continuants. Thus there is here no counterpart of \u2018object\u2019. In BFO 1.0 \u2018process\u2019 served as such a counterpart. In BFO 2.0 \u2018process\u2019 is, rather, the occurrent counterpart of \u2018material entity\u2019. Those natural \u2013 as contrasted with engineered, which here means: deliberately executed \u2013 units which do exist in the realm of occurrents are typically either parasitic on the existence of natural units on the continuant side, or they are fiat in nature. Thus we can count lives; we can count football games; we can count chemical reactions performed in experiments or in chemical manufacturing. We cannot count the processes taking place, for instance, in an episode of insect mating behavior.Even where natural units are identifiable, for example cycles in a cyclical process such as the beating of a heart or an organism\u2019s sleep/wake cycle, the processes in question form a sequence with no discontinuities (temporal gaps) of the sort that we find for instance where billiard balls or zebrafish or planets are separated by clear spatial gaps. Lives of organisms are process units, but they too unfold in a continuous series from other, prior processes such as fertilization, and they unfold in turn in continuous series of post-life processes such as post-mortem decay. Clear examples of boundaries of processes are almost always of the fiat sort (midnight, a time of death as declared in an operating theater or on a death certificate, the initiation of a state of war)",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "process",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/BFO_0000003",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/BFO_0000015",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -529,7 +525,7 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
     "ontologyPreferredPrefix": "gitIssue502",
     "searchableAnnotationValues": [
-      "BFO 2 Reference: The realm of occurrents is less pervasively marked by the presence of natural units than is the case in the realm of independent continuants. Thus there is here no counterpart of ‘object’. In BFO 1.0 ‘process’ served as such a counterpart. In BFO 2.0 ‘process’ is, rather, the occurrent counterpart of ‘material entity’. Those natural – as contrasted with engineered, which here means: deliberately executed – units which do exist in the realm of occurrents are typically either parasitic on the existence of natural units on the continuant side, or they are fiat in nature. Thus we can count lives; we can count football games; we can count chemical reactions performed in experiments or in chemical manufacturing. We cannot count the processes taking place, for instance, in an episode of insect mating behavior.Even where natural units are identifiable, for example cycles in a cyclical process such as the beating of a heart or an organism’s sleep/wake cycle, the processes in question form a sequence with no discontinuities (temporal gaps) of the sort that we find for instance where billiard balls or zebrafish or planets are separated by clear spatial gaps. Lives of organisms are process units, but they too unfold in a continuous series from other, prior processes such as fertilization, and they unfold in turn in continuous series of post-life processes such as post-mortem decay. Clear examples of boundaries of processes are almost always of the fiat sort (midnight, a time of death as declared in an operating theater or on a death certificate, the initiation of a state of war)",
+      "BFO 2 Reference: The realm of occurrents is less pervasively marked by the presence of natural units than is the case in the realm of independent continuants. Thus there is here no counterpart of \u2018object\u2019. In BFO 1.0 \u2018process\u2019 served as such a counterpart. In BFO 2.0 \u2018process\u2019 is, rather, the occurrent counterpart of \u2018material entity\u2019. Those natural \u2013 as contrasted with engineered, which here means: deliberately executed \u2013 units which do exist in the realm of occurrents are typically either parasitic on the existence of natural units on the continuant side, or they are fiat in nature. Thus we can count lives; we can count football games; we can count chemical reactions performed in experiments or in chemical manufacturing. We cannot count the processes taking place, for instance, in an episode of insect mating behavior.Even where natural units are identifiable, for example cycles in a cyclical process such as the beating of a heart or an organism\u2019s sleep/wake cycle, the processes in question form a sequence with no discontinuities (temporal gaps) of the sort that we find for instance where billiard balls or zebrafish or planets are separated by clear spatial gaps. Lives of organisms are process units, but they too unfold in a continuous series from other, prior processes such as fertilization, and they unfold in turn in continuous series of post-life processes such as post-mortem decay. Clear examples of boundaries of processes are almost always of the fiat sort (midnight, a time of death as declared in an operating theater or on a death certificate, the initiation of a state of war)",
       false
     ],
     "shortForm": "BFO_0000015",
@@ -569,7 +565,6 @@
     "http://www.w3.org/2000/01/rdf-schema#label": "disposition",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/BFO_0000017",
     "http://www.w3.org/2002/07/owl#disjointWith": "http://purl.obolibrary.org/obo/BFO_0000023",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/BFO_0000016",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -735,7 +730,6 @@
       }
     ],
     "http://www.w3.org/2002/07/owl#disjointWith": "http://purl.obolibrary.org/obo/BFO_0000019",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/BFO_0000017",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -896,7 +890,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/BFO_0000019",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -1025,7 +1018,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/BFO_0000020",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -1139,11 +1131,10 @@
     ],
     "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
     "http://purl.obolibrary.org/obo/IAO_0000115": "A realizable entity  the manifestation of which brings about some result or end that is not essential to a continuant  in virtue of the kind of thing that it is but that can be served or participated in by that kind of continuant  in some kinds of natural, social or institutional contexts.",
-    "http://purl.obolibrary.org/obo/IAO_0000116": "BFO 2 Reference: One major family of examples of non-rigid universals involves roles, and ontologies developed for corresponding administrative purposes may consist entirely of representatives of entities of this sort. Thus ‘professor’, defined as follows,b instance_of professor at t =Def. there is some c, c instance_of professor role & c inheres_in b at t.denotes a non-rigid universal and so also do ‘nurse’, ‘student’, ‘colonel’, ‘taxpayer’, and so forth. (These terms are all, in the jargon of philosophy, phase sortals.) By using role terms in definitions, we can create a BFO conformant treatment of such entities drawing on the fact that, while an instance of professor may be simultaneously an instance of trade union member, no instance of the type professor role is also (at any time) an instance of the type trade union member role (any more than any instance of the type color is at any time an instance of the type length).If an ontology of employment positions should be defined in terms of roles following the above pattern, this enables the ontology to do justice to the fact that individuals instantiate the corresponding universals –  professor, sergeant, nurse – only during certain phases in their lives.",
+    "http://purl.obolibrary.org/obo/IAO_0000116": "BFO 2 Reference: One major family of examples of non-rigid universals involves roles, and ontologies developed for corresponding administrative purposes may consist entirely of representatives of entities of this sort. Thus \u2018professor\u2019, defined as follows,b instance_of professor at t =Def. there is some c, c instance_of professor role & c inheres_in b at t.denotes a non-rigid universal and so also do \u2018nurse\u2019, \u2018student\u2019, \u2018colonel\u2019, \u2018taxpayer\u2019, and so forth. (These terms are all, in the jargon of philosophy, phase sortals.) By using role terms in definitions, we can create a BFO conformant treatment of such entities drawing on the fact that, while an instance of professor may be simultaneously an instance of trade union member, no instance of the type professor role is also (at any time) an instance of the type trade union member role (any more than any instance of the type color is at any time an instance of the type length).If an ontology of employment positions should be defined in terms of roles following the above pattern, this enables the ontology to do justice to the fact that individuals instantiate the corresponding universals \u2013  professor, sergeant, nurse \u2013 only during certain phases in their lives.",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "role",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/BFO_0000017",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/BFO_0000023",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -1261,7 +1252,7 @@
     "ontologyPreferredPrefix": "gitIssue502",
     "searchableAnnotationValues": [
       "A realizable entity  the manifestation of which brings about some result or end that is not essential to a continuant  in virtue of the kind of thing that it is but that can be served or participated in by that kind of continuant  in some kinds of natural, social or institutional contexts.",
-      "BFO 2 Reference: One major family of examples of non-rigid universals involves roles, and ontologies developed for corresponding administrative purposes may consist entirely of representatives of entities of this sort. Thus ‘professor’, defined as follows,b instance_of professor at t =Def. there is some c, c instance_of professor role & c inheres_in b at t.denotes a non-rigid universal and so also do ‘nurse’, ‘student’, ‘colonel’, ‘taxpayer’, and so forth. (These terms are all, in the jargon of philosophy, phase sortals.) By using role terms in definitions, we can create a BFO conformant treatment of such entities drawing on the fact that, while an instance of professor may be simultaneously an instance of trade union member, no instance of the type professor role is also (at any time) an instance of the type trade union member role (any more than any instance of the type color is at any time an instance of the type length).If an ontology of employment positions should be defined in terms of roles following the above pattern, this enables the ontology to do justice to the fact that individuals instantiate the corresponding universals –  professor, sergeant, nurse – only during certain phases in their lives.",
+      "BFO 2 Reference: One major family of examples of non-rigid universals involves roles, and ontologies developed for corresponding administrative purposes may consist entirely of representatives of entities of this sort. Thus \u2018professor\u2019, defined as follows,b instance_of professor at t =Def. there is some c, c instance_of professor role & c inheres_in b at t.denotes a non-rigid universal and so also do \u2018nurse\u2019, \u2018student\u2019, \u2018colonel\u2019, \u2018taxpayer\u2019, and so forth. (These terms are all, in the jargon of philosophy, phase sortals.) By using role terms in definitions, we can create a BFO conformant treatment of such entities drawing on the fact that, while an instance of professor may be simultaneously an instance of trade union member, no instance of the type professor role is also (at any time) an instance of the type trade union member role (any more than any instance of the type color is at any time an instance of the type length).If an ontology of employment positions should be defined in terms of roles following the above pattern, this enables the ontology to do justice to the fact that individuals instantiate the corresponding universals \u2013  professor, sergeant, nurse \u2013 only during certain phases in their lives.",
       false
     ],
     "shortForm": "BFO_0000023",
@@ -1298,11 +1289,10 @@
       "http://purl.obolibrary.org/obo/BFO_0000016"
     ],
     "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-    "http://purl.obolibrary.org/obo/IAO_0000116": "BFO 2 Reference: In the past, we have distinguished two varieties of function, artifactual function and biological function. These are not asserted subtypes of BFO:function however, since the same function – for example: to pump, to transport – can exist both in artifacts and in biological entities. The asserted subtypes of function that would be needed in order to yield a separate monoheirarchy are not artifactual function, biological function, etc., but rather transporting function, pumping function, etc.",
+    "http://purl.obolibrary.org/obo/IAO_0000116": "BFO 2 Reference: In the past, we have distinguished two varieties of function, artifactual function and biological function. These are not asserted subtypes of BFO:function however, since the same function \u2013 for example: to pump, to transport \u2013 can exist both in artifacts and in biological entities. The asserted subtypes of function that would be needed in order to yield a separate monoheirarchy are not artifactual function, biological function, etc., but rather transporting function, pumping function, etc.",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "function",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/BFO_0000016",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/BFO_0000034",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -1423,7 +1413,7 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
     "ontologyPreferredPrefix": "gitIssue502",
     "searchableAnnotationValues": [
-      "BFO 2 Reference: In the past, we have distinguished two varieties of function, artifactual function and biological function. These are not asserted subtypes of BFO:function however, since the same function – for example: to pump, to transport – can exist both in artifacts and in biological entities. The asserted subtypes of function that would be needed in order to yield a separate monoheirarchy are not artifactual function, biological function, etc., but rather transporting function, pumping function, etc.",
+      "BFO 2 Reference: In the past, we have distinguished two varieties of function, artifactual function and biological function. These are not asserted subtypes of BFO:function however, since the same function \u2013 for example: to pump, to transport \u2013 can exist both in artifacts and in biological entities. The asserted subtypes of function that would be needed in order to yield a separate monoheirarchy are not artifactual function, biological function, etc., but rather transporting function, pumping function, etc.",
       false
     ],
     "shortForm": "BFO_0000034",
@@ -1464,7 +1454,7 @@
     "http://purl.obolibrary.org/obo/IAO_0000116": [
       "BFO 2 Reference: Material entities (continuants) can preserve their identity even while gaining and losing material parts. Continuants are contrasted with occurrents, which unfold themselves in successive temporal parts or phases [60",
       "BFO 2 Reference: Object, Fiat Object Part and Object Aggregate are not intended to be exhaustive of Material Entity. Users are invited to propose new subcategories of Material Entity.",
-      "BFO 2 Reference: ‘Matter’ is intended to encompass both mass and energy (we will address the ontological treatment of portions of energy in a later version of BFO). A portion of matter is anything that includes elementary particles among its proper or improper parts: quarks and leptons, including electrons, as the smallest particles thus far discovered; baryons (including protons and neutrons) at a higher level of granularity; atoms and molecules at still higher levels, forming the cells, organs, organisms and other material entities studied by biologists, the portions of rock studied by geologists, the fossils studied by paleontologists, and so on.Material entities are three-dimensional entities (entities extended in three spatial dimensions), as contrasted with the processes in which they participate, which are four-dimensional entities (entities extended also along the dimension of time).According to the FMA, material entities may have immaterial entities as parts – including the entities identified below as sites; for example the interior (or ‘lumen’) of your small intestine is a part of your body. BFO 2.0 embodies a decision to follow the FMA here."
+      "BFO 2 Reference: \u2018Matter\u2019 is intended to encompass both mass and energy (we will address the ontological treatment of portions of energy in a later version of BFO). A portion of matter is anything that includes elementary particles among its proper or improper parts: quarks and leptons, including electrons, as the smallest particles thus far discovered; baryons (including protons and neutrons) at a higher level of granularity; atoms and molecules at still higher levels, forming the cells, organs, organisms and other material entities studied by biologists, the portions of rock studied by geologists, the fossils studied by paleontologists, and so on.Material entities are three-dimensional entities (entities extended in three spatial dimensions), as contrasted with the processes in which they participate, which are four-dimensional entities (entities extended also along the dimension of time).According to the FMA, material entities may have immaterial entities as parts \u2013 including the entities identified below as sites; for example the interior (or \u2018lumen\u2019) of your small intestine is a part of your body. BFO 2.0 embodies a decision to follow the FMA here."
     ],
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "material entity",
@@ -1478,7 +1468,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/BFO_0000040",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -1612,7 +1601,7 @@
       "An independent continuant that is spatially extended whose identity is independent of that of other entities and can be maintained through time.",
       "BFO 2 Reference: Material entities (continuants) can preserve their identity even while gaining and losing material parts. Continuants are contrasted with occurrents, which unfold themselves in successive temporal parts or phases [60",
       "BFO 2 Reference: Object, Fiat Object Part and Object Aggregate are not intended to be exhaustive of Material Entity. Users are invited to propose new subcategories of Material Entity.",
-      "BFO 2 Reference: ‘Matter’ is intended to encompass both mass and energy (we will address the ontological treatment of portions of energy in a later version of BFO). A portion of matter is anything that includes elementary particles among its proper or improper parts: quarks and leptons, including electrons, as the smallest particles thus far discovered; baryons (including protons and neutrons) at a higher level of granularity; atoms and molecules at still higher levels, forming the cells, organs, organisms and other material entities studied by biologists, the portions of rock studied by geologists, the fossils studied by paleontologists, and so on.Material entities are three-dimensional entities (entities extended in three spatial dimensions), as contrasted with the processes in which they participate, which are four-dimensional entities (entities extended also along the dimension of time).According to the FMA, material entities may have immaterial entities as parts – including the entities identified below as sites; for example the interior (or ‘lumen’) of your small intestine is a part of your body. BFO 2.0 embodies a decision to follow the FMA here.",
+      "BFO 2 Reference: \u2018Matter\u2019 is intended to encompass both mass and energy (we will address the ontological treatment of portions of energy in a later version of BFO). A portion of matter is anything that includes elementary particles among its proper or improper parts: quarks and leptons, including electrons, as the smallest particles thus far discovered; baryons (including protons and neutrons) at a higher level of granularity; atoms and molecules at still higher levels, forming the cells, organs, organisms and other material entities studied by biologists, the portions of rock studied by geologists, the fossils studied by paleontologists, and so on.Material entities are three-dimensional entities (entities extended in three spatial dimensions), as contrasted with the processes in which they participate, which are four-dimensional entities (entities extended also along the dimension of time).According to the FMA, material entities may have immaterial entities as parts \u2013 including the entities identified below as sites; for example the interior (or \u2018lumen\u2019) of your small intestine is a part of your body. BFO 2.0 embodies a decision to follow the FMA here.",
       false
     ],
     "shortForm": "BFO_0000040",
@@ -1655,7 +1644,6 @@
       "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/BFO_0000040",
       "isObsolete": false
     },
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/BFO_0000141",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -1824,7 +1812,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/CL_0000000",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -2075,7 +2062,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "native cell",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/CL_0000000",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/CL_0000003",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -2270,7 +2256,6 @@
       }
     ],
     "http://www.w3.org/2002/07/owl#disjointWith": "http://purl.obolibrary.org/obo/CL_0002371",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/CL_0000039",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -2522,7 +2507,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "electrically active cell",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/CL_0000003",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/CL_0000211",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -2729,7 +2713,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/CL_0000255",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -2970,7 +2953,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "electrically responsive cell",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/CL_0000211",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/CL_0000393",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -3184,7 +3166,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "electrically signaling cell",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/CL_0000211",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/CL_0000404",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -3429,7 +3410,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/CL_0000540",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -3880,7 +3860,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/CL_0000548",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -4158,7 +4137,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/CL_0000586",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -4480,7 +4458,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/CL_0002319",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -4842,7 +4819,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "somatic cell",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/CL_0000548",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/CL_0002371",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -5053,7 +5029,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "reproduction",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0008150",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0000003",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -5255,7 +5230,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "action potential",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0042391",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0001508",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -5459,7 +5433,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0001704",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -5746,7 +5719,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0001705",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -6085,7 +6057,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0001706",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -6426,7 +6397,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0001707",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -6798,7 +6768,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0001838",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -7216,7 +7185,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0001841",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -7732,7 +7700,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0002009",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -7947,7 +7914,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "system process",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0032501",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0003008",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -8054,7 +8020,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "signaling receptor binding",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0005515",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0005102",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -8170,7 +8135,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "hormone activity",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0048018",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0005179",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -8496,7 +8460,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "gonadotropin hormone-releasing hormone activity",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0005179",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0005183",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -8838,7 +8801,6 @@
     "hasHierarchicalParents": false,
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "protein binding",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0005515",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -8947,7 +8909,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "transport",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0051234",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0006810",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -9073,7 +9034,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "monoatomic ion transport",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0006810",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0006811",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -9208,7 +9168,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "cell communication",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0009987",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0007154",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -9450,7 +9409,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0007165",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -9752,7 +9710,6 @@
       "http://purl.obolibrary.org/obo/GO_0007154",
       "http://purl.obolibrary.org/obo/GO_0023052"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0007267",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -9969,7 +9926,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "chemical synaptic transmission",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0098916",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0007268",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -10231,7 +10187,6 @@
       "http://purl.obolibrary.org/obo/GO_0032501",
       "http://purl.obolibrary.org/obo/GO_0048856"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0007275",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -10480,7 +10435,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0007276",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -10763,7 +10717,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0007369",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -11120,7 +11073,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "ectoderm development",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0009888",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0007398",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -11301,7 +11253,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "nervous system development",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0048731",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0007399",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -11506,7 +11457,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "endoderm development",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0009888",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0007492",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -11685,7 +11635,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "mesoderm development",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0009888",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0007498",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -11844,7 +11793,6 @@
     "hasHierarchicalParents": false,
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "biological_process",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0008150",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -12011,7 +11959,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0009566",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -12248,7 +12195,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0009653",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -12443,7 +12389,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "embryo development",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0007275",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0009790",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -12716,7 +12661,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0009791",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -12953,7 +12897,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "embryo development ending in birth or egg hatching",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0009790",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0009792",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -13116,7 +13059,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "tissue development",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0048856",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0009888",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -13293,7 +13235,6 @@
       "http://purl.obolibrary.org/obo/GO_0006810",
       "http://purl.obolibrary.org/obo/GO_0010817"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0009914",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -13465,7 +13406,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "cellular process",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0008150",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0009987",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -13603,7 +13543,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "regulation of hormone levels",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0065008",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0010817",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -13709,7 +13648,6 @@
     "hasHierarchicalParents": false,
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "kinase activity",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0016301",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -13795,7 +13733,6 @@
       "http://purl.obolibrary.org/obo/GO_0002009",
       "http://purl.obolibrary.org/obo/GO_0048598"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0016331",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -14112,7 +14049,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0019226",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -14402,7 +14338,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "sexual reproduction",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0000003",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0019953",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -14631,7 +14566,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0021915",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -14980,7 +14914,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0022414",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -15172,7 +15105,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "signaling",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0050789",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0023052",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -15371,7 +15303,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0023061",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -15662,7 +15593,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "signaling receptor regulator activity",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0098772",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0030545",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -15765,7 +15695,6 @@
       "http://purl.obolibrary.org/obo/GO_0030545",
       "http://purl.obolibrary.org/obo/GO_0140677"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0030546",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -15885,7 +15814,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "multicellular organismal process",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0008150",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0032501",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -15979,7 +15907,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "developmental process",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0008150",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0032502",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -16161,7 +16088,6 @@
       "http://purl.obolibrary.org/obo/GO_0000003",
       "http://purl.obolibrary.org/obo/GO_0032501"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0032504",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -16338,7 +16264,6 @@
       "http://purl.obolibrary.org/obo/GO_0046903",
       "http://purl.obolibrary.org/obo/GO_0140352"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0032940",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -16527,7 +16452,6 @@
       "http://purl.obolibrary.org/obo/GO_0006811",
       "http://purl.obolibrary.org/obo/GO_0055085"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0034220",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -16769,7 +16693,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0035148",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -17036,7 +16959,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0035239",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -17301,7 +17223,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0035295",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -17500,7 +17421,6 @@
     "hasHierarchicalParents": false,
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "signaling receptor activity",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0038023",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -17634,7 +17554,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0040016",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -17912,7 +17831,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0042391",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -18084,7 +18002,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "chordate embryonic development",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0009792",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0043009",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -18282,7 +18199,6 @@
     "hasHierarchicalParents": false,
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "synapse",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0045202",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -18420,7 +18336,6 @@
       "http://purl.obolibrary.org/obo/GO_0009914",
       "http://purl.obolibrary.org/obo/GO_0023061"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0046879",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -18768,7 +18683,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "secretion",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0006810",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0046903",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -18990,7 +18904,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0048018",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -19387,7 +19300,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0048332",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -19630,7 +19542,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "animal organ development",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0048856",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0048513",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -19818,7 +19729,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0048598",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -20097,7 +20007,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0048609",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -20308,7 +20217,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0048646",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -20508,7 +20416,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0048729",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -20721,7 +20628,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0048731",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -20910,7 +20816,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "anatomical structure development",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0032502",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0048856",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -21067,7 +20972,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0050789",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -21213,7 +21117,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0050794",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -21377,7 +21280,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "nervous system process",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0003008",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0050877",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -21537,7 +21439,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "response to stimulus",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0008150",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0050896",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -21631,7 +21532,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "localization",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0008150",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0051179",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -21727,7 +21627,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "establishment of localization",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0051179",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0051234",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -21836,7 +21735,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "cell division",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0009987",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0051301",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -21952,7 +21850,6 @@
       "http://purl.obolibrary.org/obo/GO_0009987",
       "http://purl.obolibrary.org/obo/GO_0050896"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0051716",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -22125,7 +22022,6 @@
       "http://purl.obolibrary.org/obo/GO_0006810",
       "http://purl.obolibrary.org/obo/GO_0009987"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0055085",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -22277,7 +22173,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "epithelium development",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0009888",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0060429",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -22471,7 +22366,6 @@
       "http://purl.obolibrary.org/obo/GO_0002009",
       "http://purl.obolibrary.org/obo/GO_0035239"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0060562",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -22748,7 +22642,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "biological regulation",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0008150",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0065007",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -22844,7 +22737,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "regulation of biological quality",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0065007",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0065008",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -22988,7 +22880,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0072175",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -23298,7 +23189,6 @@
       "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0005515",
       "isObsolete": false
     },
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0098772",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -23435,7 +23325,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "anterograde trans-synaptic signaling",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0099537",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0098916",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -23653,7 +23542,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0099536",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -23879,7 +23767,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "trans-synaptic signaling",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0099536",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0099537",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -24077,7 +23964,6 @@
       "http://purl.obolibrary.org/obo/GO_0006810",
       "http://purl.obolibrary.org/obo/GO_0009987"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0140352",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -24223,7 +24109,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "molecular function activator activity",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0098772",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/GO_0140677",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -24308,7 +24193,6 @@
     "http://purl.obolibrary.org/obo/IAO_0000115": "Accumulation of substantial excess body fat.",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Obesity",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/HP_0001513",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -24693,7 +24577,6 @@
       "http://purl.obolibrary.org/obo/NCIT_C2991",
       "http://www.orpha.net/ORDO/Orphanet_377788"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0000001",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -25285,7 +25168,6 @@
       "http://purl.obolibrary.org/obo/DOID_1924",
       "http://purl.obolibrary.org/obo/NCIT_C9227"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0002146",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -25899,7 +25781,6 @@
       "http://purl.obolibrary.org/obo/DOID_225",
       "http://purl.obolibrary.org/obo/NCIT_C28193"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0002254",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -26621,7 +26502,6 @@
       "http://purl.obolibrary.org/obo/DOID_2277",
       "http://purl.obolibrary.org/obo/NCIT_C26786"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0002259",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -27359,7 +27239,6 @@
       "http://purl.obolibrary.org/obo/DOID_229",
       "http://purl.obolibrary.org/obo/NCIT_C27020"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0002263",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -28017,7 +27896,6 @@
       "http://purl.obolibrary.org/obo/DOID_2490",
       "http://purl.obolibrary.org/obo/NCIT_C97172"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0002320",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -28733,7 +28611,6 @@
       "http://purl.obolibrary.org/obo/DOID_630",
       "http://purl.obolibrary.org/obo/NCIT_C3101"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0003847",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -29445,7 +29322,6 @@
       "http://linkedlifedata.com/resource/umls/id/C1257763",
       "http://purl.obolibrary.org/obo/DOID_654"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0003916",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -29971,7 +29847,6 @@
       "http://purl.obolibrary.org/obo/DOID_15",
       "http://purl.obolibrary.org/obo/NCIT_C4875"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0005039",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -30790,7 +30665,6 @@
       "http://purl.obolibrary.org/obo/DOID_863",
       "http://purl.obolibrary.org/obo/NCIT_C26835"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0005071",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -31554,7 +31428,6 @@
       "http://purl.obolibrary.org/obo/DOID_374",
       "http://purl.obolibrary.org/obo/NCIT_C26836"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0005137",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -32263,7 +32136,6 @@
       "http://purl.obolibrary.org/obo/DOID_28",
       "http://purl.obolibrary.org/obo/NCIT_C3009"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0005151",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -33368,7 +33240,6 @@
       "http://www.orpha.net/ORDO/Orphanet_739",
       "https://omim.org/entry/176270"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0008300",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -34590,7 +34461,6 @@
       "http://purl.obolibrary.org/obo/DOID_9970",
       "http://purl.obolibrary.org/obo/NCIT_C3283"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0011122",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -35152,7 +35022,6 @@
       "value": "http://purl.obolibrary.org/obo/MONDO_0005151"
     },
     "http://www.w3.org/2004/02/skos/core#exactMatch": "http://www.orpha.net/ORDO/Orphanet_101957",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0015127",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -35584,7 +35453,6 @@
       ],
       "value": "http://purl.obolibrary.org/obo/MONDO_0019042"
     },
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0015160",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -36031,7 +35899,6 @@
       "http://linkedlifedata.com/resource/umls/id/CN199360",
       "http://www.orpha.net/ORDO/Orphanet_139024"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0015330",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -36530,7 +36397,6 @@
       "http://linkedlifedata.com/resource/umls/id/CN237424",
       "http://www.orpha.net/ORDO/Orphanet_156643"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0015514",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -37166,7 +37032,6 @@
       "http://purl.obolibrary.org/obo/NCIT_C120162",
       "http://www.orpha.net/ORDO/Orphanet_174590"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0015770",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -37716,7 +37581,6 @@
       "value": "http://purl.obolibrary.org/obo/MONDO_0002263"
     },
     "http://www.w3.org/2004/02/skos/core#exactMatch": "http://www.orpha.net/ORDO/Orphanet_180208",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0015860",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -38207,7 +38071,6 @@
       ]
     },
     "http://www.w3.org/2004/02/skos/core#exactMatch": "http://www.orpha.net/ORDO/Orphanet_202940",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0016072",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -38885,7 +38748,6 @@
       "http://linkedlifedata.com/resource/umls/id/CN226963",
       "http://www.orpha.net/ORDO/Orphanet_240371"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0016565",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -39817,7 +39679,6 @@
       "http://www.orpha.net/ORDO/Orphanet_432",
       "https://omim.org/phenotypicSeries/PS147950"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0018555",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -40862,7 +40723,6 @@
       "http://purl.obolibrary.org/obo/NCIT_C34470",
       "http://www.orpha.net/ORDO/Orphanet_68335"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0019040",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -41604,7 +41464,6 @@
       }
     ],
     "http://www.w3.org/2004/02/skos/core#exactMatch": "http://www.orpha.net/ORDO/Orphanet_68341",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0019042",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -42339,7 +42198,6 @@
       "http://www.orpha.net/ORDO/Orphanet_77828",
       "https://omim.org/entry/601665"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0019182",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -43139,7 +42997,6 @@
       "http://purl.obolibrary.org/obo/NCIT_C99267",
       "http://www.orpha.net/ORDO/Orphanet_93890"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0019755",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -43701,7 +43558,6 @@
       }
     ],
     "http://www.w3.org/2004/02/skos/core#exactMatch": "http://www.orpha.net/ORDO/Orphanet_95488",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0019824",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -44080,7 +43936,6 @@
     "http://www.w3.org/2000/01/rdf-schema#label": "disease characteristic",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/PATO_0000001",
     "http://www.w3.org/2004/02/skos/core#exactMatch": "http://purl.obolibrary.org/obo/NCIT_C41009",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0021125",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -44368,7 +44223,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "syndromic or isolated",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/MONDO_0021125",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0021126",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -44587,7 +44441,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "has a syndromic presentation",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/MONDO_0021126",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0021127",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -44833,7 +44686,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "rare or common",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/MONDO_0021125",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0021135",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -45043,7 +44895,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "rare",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/MONDO_0021135",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0021136",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -45381,7 +45232,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "congenital or acquired",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/MONDO_0021125",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0021139",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -45597,7 +45447,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0021140",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -46006,7 +45855,6 @@
       ]
     },
     "http://www.w3.org/2004/02/skos/core#exactMatch": "http://purl.bioontology.org/ontology/ICD10CM/Q00-Q99",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0021147",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -46355,7 +46203,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "hereditary vs non-hereditary etiology",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/MONDO_0021125",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0021149",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -46561,7 +46408,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "inherited",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/MONDO_0021149",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0021152",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -46938,7 +46784,6 @@
       ],
       "value": "http://purl.obolibrary.org/obo/MONDO_0700092"
     },
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0100038",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -47406,7 +47251,6 @@
         }
       ]
     },
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0100500",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -47895,7 +47739,6 @@
       "http://purl.obolibrary.org/obo/NCIT_C1535926",
       "http://purl.obolibrary.org/obo/NCIT_C89338"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0700092",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -48317,7 +48160,6 @@
         }
       ]
     },
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/MONDO_0700096",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -48672,7 +48514,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Xenoturbellida",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_1312402",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_110814",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -48860,7 +48701,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Xenoturbella",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_1547233",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_110815",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -49078,7 +48918,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Teleostomi",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_7776",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_117570",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -49324,7 +49163,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Euteleostomi",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_117570",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_117571",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -49571,7 +49409,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Xenacoelomorpha",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_33213",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_1312402",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -49716,7 +49553,6 @@
     "hasHierarchicalParents": false,
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "cellular organisms",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_131567",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -49847,7 +49683,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Dipnotetrapodomorpha",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_8287",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_1338369",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -50148,7 +49983,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Boreoeutheria",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_9347",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_1437010",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -50503,7 +50337,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Xenoturbellidae",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_110814",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_1547233",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -50742,7 +50575,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Homininae",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_9604",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_207598",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -51187,7 +51019,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Eukaryota",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_131567",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_2759",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -51361,7 +51192,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Euarchontoglires",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_1437010",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_314146",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -51761,7 +51591,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Simiiformes",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_376913",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_314293",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -52204,7 +52033,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Hominoidea",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_9526",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_314295",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -52651,7 +52479,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Tetrapoda",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_1338369",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_32523",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -52957,7 +52784,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Amniota",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_32523",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_32524",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -53280,7 +53106,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Theria <mammals>",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_40674",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_32525",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -53597,7 +53422,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Opisthokonta",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_2759",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_33154",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -53708,7 +53532,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Metazoa",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_33154",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_33208",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -53876,7 +53699,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Bilateria",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_6072",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_33213",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -54032,7 +53854,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Deuterostomia",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_33213",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_33511",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -54235,7 +54056,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Haplorrhini",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_9443",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_376913",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -54647,7 +54467,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Mammalia",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_32524",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_40674",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -54955,7 +54774,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Porifera",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_33208",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_6040",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -55094,7 +54912,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Eumetazoa",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_33208",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_6072",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -55399,7 +55216,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Chordata",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_33511",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_7711",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -55587,7 +55403,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Vertebrata <vertebrates>",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_89593",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_7742",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -55803,7 +55618,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Gnathostomata <vertebrates>",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_7742",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_7776",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -56038,7 +55852,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Sarcopterygii",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_117571",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_8287",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -56302,7 +56115,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Craniata <chordates>",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_7711",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_89593",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -56523,7 +56335,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Eutheria",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_32525",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_9347",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -56893,7 +56704,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Primates",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_314146",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_9443",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -57308,7 +57118,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Catarrhini",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_314293",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_9526",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -57766,7 +57575,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Hominidae",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_314295",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_9604",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -58254,7 +58062,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Homo",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_207598",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_9605",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -58770,7 +58577,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "Homo sapiens",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_9605",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/NCBITaxon_9606",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -59292,7 +59098,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "disease",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/BFO_0000016",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/OGMS_0000031",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -59444,7 +59249,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "quality",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/BFO_0000020",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/PATO_0000001",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -59557,7 +59361,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "morphology",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/PATO_0001241",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/PATO_0000051",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -59698,7 +59501,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "structure",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/PATO_0000051",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/PATO_0000141",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -59850,7 +59652,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "physical quality",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/PATO_0001241",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/PATO_0001018",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -59987,7 +59788,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "physical object quality",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/PATO_0000001",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/PATO_0001241",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -60115,7 +59915,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "cellularity",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/PATO_0001995",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/PATO_0001992",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -60271,7 +60070,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "multicellular",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/PATO_0001992",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/PATO_0001993",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -60476,7 +60274,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "organismal quality",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/PATO_0001241",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/PATO_0001995",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -60617,7 +60414,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "quality of a substance",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/PATO_0001018",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/PATO_0002198",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -60813,7 +60609,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "disconnected",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/PATO_0000141",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/PATO_0010001",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -61018,7 +60813,6 @@
     "http://www.w3.org/2000/01/rdf-schema#label": "processual entity",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/BFO_0000003",
     "http://www.w3.org/2002/07/owl#disjointWith": "http://purl.obolibrary.org/obo/UBERON_0001062",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000000",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -61183,7 +60977,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000061",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -61550,7 +61343,6 @@
       "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/NCBITaxon_110815",
       "isObsolete": false
     },
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000062",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -61980,7 +61772,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000066",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -62399,7 +62190,6 @@
       }
     ],
     "http://www.w3.org/2002/07/owl#disjointWith": "http://purl.obolibrary.org/obo/UBERON_0000092",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000068",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -62943,7 +62733,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000071",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -63319,7 +63108,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000092",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -63641,7 +63429,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000104",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -64041,7 +63828,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000105",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -64300,7 +64086,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000106",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -64590,7 +64375,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000107",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -64926,7 +64710,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000108",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -65237,7 +65020,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000109",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -65608,7 +65390,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000110",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -65947,7 +65728,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000111",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -66330,7 +66110,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000463",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -66688,7 +66467,6 @@
       "http://purl.obolibrary.org/obo/UBERON_0001062"
     ],
     "http://www.w3.org/2002/07/owl#disjointWith": "http://purl.obolibrary.org/obo/UBERON_0000466",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000465",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -66887,7 +66665,6 @@
       "http://purl.obolibrary.org/obo/BFO_0000141",
       "http://purl.obolibrary.org/obo/UBERON_0001062"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000466",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -67100,7 +66877,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000467",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -67418,7 +67194,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "multicellular organism",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/UBERON_0010000",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000468",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -67768,7 +67543,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000474",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -68101,7 +67875,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000922",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -68477,7 +68250,6 @@
       "http://purl.obolibrary.org/obo/UBERON_0000990",
       "http://purl.obolibrary.org/obo/UBERON_0001016"
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000949",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -68905,7 +68677,6 @@
       }
     ],
     "http://www.w3.org/2002/07/owl#disjointWith": "http://purl.obolibrary.org/obo/UBERON_0001016",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000990",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -69444,7 +69215,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0000991",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -69984,7 +69754,6 @@
       "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/NCBITaxon_6040",
       "isObsolete": false
     },
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0001016",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -70587,7 +70356,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0001048",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -70833,7 +70601,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "anatomical entity",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/BFO_0000004",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0001062",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -71011,7 +70778,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0002050",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -71311,7 +71077,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0002368",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -71729,7 +71494,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0002530",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -72110,7 +71874,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "female organism",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/UBERON_0000468",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0003100",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -72383,7 +72146,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0003133",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -72734,7 +72496,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0005156",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -73007,7 +72768,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0005423",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -73273,7 +73033,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0005564",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -73659,7 +73418,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0006598",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -73975,7 +73733,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "anatomical surface",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/UBERON_0010199",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0006984",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -74203,7 +73960,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0010000",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -74485,7 +74241,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "bona-fide anatomical boundary",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/UBERON_0000466",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0010199",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -74641,7 +74396,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2000/01/rdf-schema#label": "non-connected functional system",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/UBERON_0034923",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0015203",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -74820,7 +74574,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0015204",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -75082,7 +74835,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0016880",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -75522,7 +75274,6 @@
         "isObsolete": false
       }
     ],
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/UBERON_0034923",
     "isDefiningOntology": false,
     "isObsolete": false,

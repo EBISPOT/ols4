@@ -11,7 +11,6 @@
       "directAncestor": [],
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/object-property-assertion.owl",
-      "imported": false,
       "isObsolete": false,
       "language": [
         {
@@ -112,7 +111,6 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
           "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Woman",
-          "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
@@ -171,7 +169,6 @@
           "hasIndividuals": true,
           "hierarchicalAncestor": [],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-          "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
@@ -246,7 +243,6 @@
           },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
-          "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
@@ -306,7 +302,6 @@
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-          "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
@@ -374,7 +369,6 @@
             "http://www.w3.org/2002/07/owl#NamedIndividual",
             "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person"
           ],
-          "imported": false,
           "isObsolete": false,
           "label": [
             {
@@ -438,7 +432,6 @@
             "http://www.w3.org/2002/07/owl#NamedIndividual",
             "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person"
           ],
-          "imported": false,
           "isObsolete": false,
           "label": [
             {

@@ -13,7 +13,6 @@
       "directAncestor": [],
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/object-property-domain-range-restriction.owl",
-      "imported": false,
       "isObsolete": false,
       "language": [
         {
@@ -114,7 +113,6 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
           "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Woman",
-          "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
@@ -226,7 +224,6 @@
           "hasHierarchicalParents": false,
           "hierarchicalAncestor": [],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-          "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
@@ -307,7 +304,6 @@
           },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Person",
-          "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
@@ -400,7 +396,6 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Man",
           "http://www.w3.org/2000/01/rdf-schema#range": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-domain-range-restriction#Woman",
-          "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [

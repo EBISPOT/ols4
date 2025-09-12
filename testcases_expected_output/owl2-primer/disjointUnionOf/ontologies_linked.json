@@ -13,7 +13,6 @@
       "directAncestor": [],
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/disjointUnionOf.owl",
-      "imported": false,
       "isObsolete": false,
       "language": [
         {
@@ -102,7 +101,6 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
           "http://www.w3.org/2002/07/owl#disjointWith": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother",
-          "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
@@ -231,7 +229,6 @@
           },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
-          "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
@@ -324,7 +321,6 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father",
             "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother"
           ],
-          "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [

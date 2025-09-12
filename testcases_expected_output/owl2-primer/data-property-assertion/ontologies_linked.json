@@ -13,7 +13,6 @@
       "directAncestor": [],
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/data-property-assertion.owl",
-      "imported": false,
       "isObsolete": false,
       "language": [
         {
@@ -84,7 +83,6 @@
           "hasHierarchicalParents": false,
           "hierarchicalAncestor": [],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-          "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
@@ -152,7 +150,6 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
           "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#Person",
           "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#integer",
-          "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
@@ -243,7 +240,6 @@
           "hasHierarchicalParents": false,
           "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#hasAge": 51,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
-          "imported": false,
           "isObsolete": false,
           "label": [
             {

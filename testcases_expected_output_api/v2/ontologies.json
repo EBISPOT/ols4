@@ -29,7 +29,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
     "http://www.w3.org/2002/07/owl#imports": "http://purl.obolibrary.org/obo/iao.owl",
     "http://www.w3.org/2002/07/owl#versionIRI": "http://purl.obolibrary.org/obo/duo/releases/2021-02-23/duo.owl",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/duo.owl",
     "isObsolete": false,
     "jobs": [
@@ -180,7 +179,6 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
     "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/baseUri/releases/v3.63.0/BaseUri.owl",
     "http://www.w3.org/2002/07/owl#versionInfo": "3.63.0",
-    "imported": false,
     "iri": "http://www.ebi.ac.uk/baseUri/BaseUri.owl",
     "isObsolete": false,
     "language": [
@@ -223,7 +221,6 @@
       "\n          This is an OWL translation of an ontology whose native representational form is .obo. The translation was performed using the oboInOwl xslt library. For details, see http://www.berkeleybop.org/obo-conv.cgi\n        "
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": "",
-    "imported": false,
     "iri": "http://www.geneontology.org/formats/oboInOwl",
     "isObsolete": false,
     "label": [
@@ -294,7 +291,6 @@
     "http://purl.org/dc/elements/1.1/title": "The RDF Schema vocabulary (RDFS)",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
     "http://www.w3.org/2000/01/rdf-schema#seeAlso": "http://www.w3.org/2000/01/rdf-schema-more",
-    "imported": false,
     "iri": "http://www.w3.org/2000/01/rdf-schema#",
     "isObsolete": false,
     "label": [
@@ -361,7 +357,6 @@
     "http://www.w3.org/2002/07/owl#versionIRI": "http://www.w3.org/2002/07/owl",
     "http://www.w3.org/2002/07/owl#versionInfo": "$Date: 2009/11/15 10:54:12 $",
     "http://www.w3.org/2003/g/data-view#namespaceTransformation": "http://dev.w3.org/cvsweb/2009/owl-grddl/owx2rdf.xsl",
-    "imported": false,
     "importsFrom": [
       "rdfs"
     ],
@@ -490,7 +485,6 @@
     "http://purl.org/dc/terms/title": "SKOS Vocabulary",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
     "http://www.w3.org/2000/01/rdf-schema#seeAlso": "http://www.w3.org/TR/skos-reference/",
-    "imported": false,
     "iri": "http://www.w3.org/2004/02/skos/core",
     "isObsolete": false,
     "label": [
@@ -554,7 +548,6 @@
     "http://purl.obolibrary.org/obo/IAO_0000700": "http://www.ebi.ac.uk/testcases/defined-fields/PreferredRoot.owl#PreferredRoot_0001",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
     "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/defined-fields/v.0.0.1/PreferredRoot.owl",
-    "imported": false,
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/class.owl",
     "isObsolete": false,
     "language": [
@@ -604,7 +597,6 @@
   {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
     "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/annotation-properties/v.0.0.1/simple.owl",
-    "imported": false,
     "iri": "http://www.ebi.ac.uk/testcases/annotation-properties/simple.owl",
     "isObsolete": false,
     "language": [
@@ -630,7 +622,6 @@
   {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
     "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/defined-fields/v.0.0.1/DefinitionMultiple.owl",
-    "imported": false,
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/class.owl",
     "isObsolete": false,
     "language": [
@@ -656,7 +647,6 @@
   {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
     "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/defined-fields/v0.0.1/isObsolete.rdf",
-    "imported": false,
     "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf",
     "isObsolete": false,
     "language": [
@@ -682,7 +672,6 @@
   {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
     "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatype-enumeration.owl",
-    "imported": false,
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl",
     "isObsolete": false,
     "language": [
@@ -708,7 +697,6 @@
   {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
     "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatype-exclusion.owl",
-    "imported": false,
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl",
     "isObsolete": false,
     "language": [
@@ -734,7 +722,6 @@
   {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
     "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatype-minmax.owl",
-    "imported": false,
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl",
     "isObsolete": false,
     "language": [
@@ -760,7 +747,6 @@
   {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
     "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/user-defined-data-type.rdf",
-    "imported": false,
     "iri": "http://www.ebi.ac.uk/testcases/owl2primer/user-defined-data-type.rdf",
     "isObsolete": false,
     "language": [
@@ -785,7 +771,6 @@
   },
   {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "imported": false,
     "importsFrom": [
       "oio",
       "rdfs",
@@ -815,7 +800,6 @@
   },
   {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/genepio.owl",
     "isObsolete": false,
     "language": [
@@ -840,7 +824,6 @@
   },
   {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "imported": false,
     "iri": "http://purl.obolibrary.org/obo/mondo.owl",
     "isObsolete": false,
     "language": [
@@ -865,7 +848,6 @@
   },
   {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "imported": false,
     "iri": "http://www.ebi.ac.uk/testcases/class-expression-issues/maxCardinality.owl",
     "isObsolete": false,
     "language": [
@@ -890,7 +872,6 @@
   },
   {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "imported": false,
     "iri": "http://www.ebi.ac.uk/testcases/class-expression-issues/maxCardinality.owl",
     "isObsolete": false,
     "language": [

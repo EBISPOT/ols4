@@ -11,7 +11,6 @@
       "directAncestor": [],
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/key-constraint-on-data-property.owl",
-      "imported": false,
       "isObsolete": false,
       "language": [
         {
@@ -91,7 +90,6 @@
           "http://www.w3.org/2002/07/owl#hasKey": [
             "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property#hasSSN"
           ],
-          "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
@@ -153,7 +151,6 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
           "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property.owl#Person",
           "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#string",
-          "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
@@ -218,7 +215,6 @@
             "value": "1234"
           },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
-          "imported": false,
           "isObsolete": false,
           "label": [
             {
@@ -288,7 +284,6 @@
             "value": "1234"
           },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
-          "imported": false,
           "isObsolete": false,
           "label": [
             {

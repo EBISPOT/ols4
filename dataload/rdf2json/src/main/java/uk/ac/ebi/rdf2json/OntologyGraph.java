@@ -209,31 +209,12 @@ public class OntologyGraph implements StreamRDF {
         logger.debug("load ontology from: {}", url);
         parseRDF(url);
 
-        // Before we evaluate imports, mark all the nodes so far as not imported
-        for(String id : nodes.keySet()) {
-            OntologyNode c = nodes.get(id);
-            if(c.uri != null) {
-                c.properties.addProperty(IMPORTED.getText(), PropertyValueLiteral.fromBoolean("false"));
-            }
-        }
-
-
         while(importUrls.size() > 0) {
             String importUrl = importUrls.get(0);
             importUrls.remove(0);
 
             logger.debug("import: {}", importUrl);
             parseRDF(importUrl);
-        }
-
-        // Now the imports are done, mark everything else as imported
-        for(String id : nodes.keySet()) {
-            OntologyNode c = nodes.get(id);
-            if(c.uri != null) {
-                if(!c.properties.hasProperty(IMPORTED.getText())) {
-                    c.properties.addProperty(IMPORTED.getText(), PropertyValueLiteral.fromBoolean("true"));
-                }
-            }
         }
 
         if(this.ontologyNode == null) {

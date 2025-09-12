@@ -13,7 +13,6 @@
       "directAncestor": [],
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/defined-fields/v0.0.1/isObsolete.rdf",
-      "imported": false,
       "isObsolete": false,
       "language": [
         {
@@ -113,7 +112,6 @@
           },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
-          "imported": false,
           "isObsolete": true,
           "isPreferredRoot": false,
           "label": [
@@ -203,7 +201,6 @@
           "hierarchicalAncestor": [],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2002/07/owl#deprecated": true,
-          "imported": false,
           "isObsolete": true,
           "isPreferredRoot": false,
           "label": [
@@ -275,7 +272,6 @@
             "value": "TRUE",
             "lang": "en"
           },
-          "imported": false,
           "isObsolete": true,
           "isPreferredRoot": false,
           "label": [
@@ -340,7 +336,6 @@
           "hierarchicalAncestor": [],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2002/07/owl#deprecated": true,
-          "imported": false,
           "isObsolete": true,
           "isPreferredRoot": false,
           "label": [
@@ -404,7 +399,6 @@
           "hasHierarchicalParents": false,
           "hierarchicalAncestor": [],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-          "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
@@ -468,7 +462,6 @@
           "hasHierarchicalParents": false,
           "hierarchicalAncestor": [],
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-          "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
@@ -535,7 +528,6 @@
           "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
           "http://www.w3.org/2002/07/owl#deprecated": true,
-          "imported": false,
           "isObsolete": true,
           "isPreferredRoot": false,
           "label": [
@@ -600,7 +592,6 @@
           "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
           "http://www.w3.org/2002/07/owl#deprecated": true,
-          "imported": false,
           "isObsolete": true,
           "isPreferredRoot": false,
           "label": [
@@ -664,7 +655,6 @@
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
-          "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
@@ -728,7 +718,6 @@
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-          "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
@@ -794,7 +783,6 @@
           "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
           "http://www.w3.org/2002/07/owl#deprecated": true,
-          "imported": false,
           "isObsolete": true,
           "label": [
             {
@@ -856,7 +844,6 @@
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
-          "imported": false,
           "isObsolete": false,
           "label": [
             {

@@ -25,8 +25,6 @@ public enum DefinedFields {
             "subclass relationships and hierarchical properties such as part_of(BFO:0000050) relations.", "array"),
     HIERARCHICAL_PARENT("hierarchicalParent","" ,"The list of parents of this entity via " +
             "subclass relationships and hierarchical properties such as part_of(BFO:0000050) relations.", "array"),
-    IMPORTED("imported", "",
-            "Whether this entity is imported or not.", "boolean"),
     IMPORTS_FROM("importsFrom", "",
             "Lists the prefixes of the ontologies the current ontology imports from.", "array"),
     IS_DEFINING_ONTOLOGY("isDefiningOntology",
