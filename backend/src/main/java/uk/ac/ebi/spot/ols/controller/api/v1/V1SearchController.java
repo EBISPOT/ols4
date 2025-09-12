@@ -183,7 +183,7 @@ public class V1SearchController {
         }
 
         if (isLocal) {
-            solrQuery.addFilterQuery(IMPORTED.getText() + ":false");
+            solrQuery.addFilterQuery(IS_DEFINING_ONTOLOGY.getText() + ":true");
         }
 
         if (isLeaf) {
