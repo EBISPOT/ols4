@@ -15,6 +15,7 @@ export default function MCP() {
     "ols": {
       "command": "npx",
       "args": ["@modelcontextprotocol/server-fetch"],
+      "type": "sse",
       "env": {
         "FETCH_BASE_URL": "${process.env.REACT_APP_APIURL}api/mcp/sse"
       }
@@ -27,6 +28,7 @@ export default function MCP() {
     "ols": {
       "command": "npx",
       "args": ["@modelcontextprotocol/server-fetch"],
+      "type": "sse",
       "env": {
         "FETCH_BASE_URL": "${process.env.REACT_APP_APIURL}api/mcp/sse"
       }
@@ -39,6 +41,7 @@ export default function MCP() {
     "ols": {
       "command": "npx",
       "args": ["@modelcontextprotocol/server-fetch"],
+      "type": "sse",
       "env": {
         "FETCH_BASE_URL": "${process.env.REACT_APP_APIURL}api/mcp/sse"
       }
