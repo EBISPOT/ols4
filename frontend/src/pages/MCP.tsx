@@ -2,11 +2,50 @@ import { Source } from "@mui/icons-material";
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
+import ConfigSnippet from "../components/ConfigSnippet";
 
 export default function MCP() {
   document.title = "Ontology Lookup Service (OLS)";
   let mcpUrl = process.env.REACT_APP_APIURL+'api/mcp/sse'
   mcpUrl = mcpUrl.split('www.ebi.ac.uk').join('wwwdev.ebi.ac.uk')
+  
+  // Configuration examples for different tools
+  const cursorConfig = `{
+  "mcpServers": {
+    "ols": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-fetch"],
+      "env": {
+        "FETCH_BASE_URL": "${process.env.REACT_APP_APIURL}api/mcp/sse"
+      }
+    }
+  }
+}`;
+
+  const claudeDesktopConfig = `{
+  "mcpServers": {
+    "ols": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-fetch"],
+      "env": {
+        "FETCH_BASE_URL": "${process.env.REACT_APP_APIURL}api/mcp/sse"
+      }
+    }
+  }
+}`;
+
+  const vscodeConfig = `{
+  "mcp.servers": {
+    "ols": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-fetch"],
+      "env": {
+        "FETCH_BASE_URL": "${process.env.REACT_APP_APIURL}api/mcp/sse"
+      }
+    }
+  }
+}`;
+
   return (
     <Fragment>
       <Header section="mcp" />
@@ -36,6 +75,31 @@ export default function MCP() {
 
                 </li>
             </ul>
+            
+            <div className="mt-8">
+              <h2 className="text-xl font-bold mb-4">Configuration Examples</h2>
+              <p className="mb-6 text-gray-600">
+                Below are configuration examples for setting up the OLS MCP server with different tools:
+              </p>
+              
+              <ConfigSnippet
+                title="Cursor"
+                description="Add this configuration to your Cursor settings (Settings > General > MCP Servers)"
+                config={cursorConfig}
+              />
+              
+              <ConfigSnippet
+                title="Claude Desktop"
+                description="Add this to your Claude Desktop configuration file"
+                config={claudeDesktopConfig}
+              />
+              
+              <ConfigSnippet
+                title="VS Code"
+                description="Add this to your VS Code settings.json file"
+                config={vscodeConfig}
+              />
+            </div>
       </main>
     </Fragment>
   );
