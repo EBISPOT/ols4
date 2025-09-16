@@ -1,0 +1,28 @@
+{
+  "ontologies": [
+    {
+      "id": "lifestylefactors",
+      "preferredPrefix": "LIFESTYLEFACTORS",
+      "title": "Lifestyle Factors Ontology",
+      "creator": [
+        "Esmaeil Nourani",
+        "Mikaela Koutrouli",
+        "Yijia Xie",
+        "Danai Vagiaki",
+        "Sampo Pyysalo",
+        "Katerina Nastou",
+        "Søren Brunak",
+        "Lars Juhl Jensen"
+      ],
+      "uri": "https://bioportal.bioontology.org/ontologies/LSFO",
+      "description": "In this ontology, we defined nine distinct categories that encompass various aspects of lifestyle factors (LSFs), creating a unified Lifestyle Factors Ontology (LSFO) across these categories. Within the context of lifestyle, we have identified nine categories that can collectively describe all LSFs, namely: 1-Nutrition, a category that covers different branches such as dietary habits, food groups, food processing and preparation, macronutrients, and micronutrients, among others. 2-Socioeconomic factors, which includes social and economic conditions such as income, wealth, education and socioeconomic status. 3-Environmental exposures, includes exposure to various environmental factors, such as air pollution, water quality, and workplace hazards, that can impact an individual’s health. 4-Substance use, covers concepts such as smoking, as well as illicit drug use. 5-Physical activities, includes regular exercise and physically demanding activities like leisure time, occupational, and household physical activities. 6-Non-physical leisure time activities, describes any activity an individual might engage in during their free time that is not a physical activity. 7-Personal care products and cosmetic procedures, covers activities related to hygiene, use of cosmetic and cleaning products as well as invasive procedures that people undergo to improve their appearance, such as cosmetic surgery. 8-Sleep, covers sleep quality, stages, and habits. 9-Mental health practices, includes the behaviors and habits related to maintaining good mental health and emotional well-being such as meditation, and psychotherapy.",
+      "homepage": "https://bioportal.bioontology.org/ontologies/LSFO",
+      "mailing_list": "esmaeil.nourani@gmail.com, esmaeil.nourani@cpr.ku.dk, lars.juhl.jensen@cpr.ku.dk, katerina.nastou@cpr.ku.dk",
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"
+      ],
+      "ontology_purl": "https://raw.githubusercontent.com/EsmaeilNourani/Lifestyle-factors-ontology/main/LSFO/owl/LSFO.owl"
+    }
+  ]
+}

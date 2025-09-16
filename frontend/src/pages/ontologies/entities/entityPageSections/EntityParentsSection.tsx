@@ -2,6 +2,7 @@
 import { Fragment } from "react";
 import { randomString } from "../../../../app/util";
 import ClassExpression from "../../../../components/ClassExpression";
+import PropertyValuesList from "../../../../components/PropertyValuesList";
 import Entity from "../../../../model/Entity";
 import Class from "../../../../model/Class";
 import LinkedEntities from "../../../../model/LinkedEntities";
@@ -27,47 +28,30 @@ export default function EntityParentsSection({
   }
 
   return (
-    <div>
-      <div className="font-bold">
-        Sub{entity.getType().toString().toLowerCase()} of
-      </div>
-      {parents.length === 1 ? (
-        <p>
+    <PropertyValuesList
+      values={parents}
+      title={`Sub${entity.getType().toString().toLowerCase()} of`}
+      renderValue={(parent: Reified<any>) => (
+        <span>
           <ClassExpression
             ontologyId={entity.getOntologyId()}
-	    currentEntity={entity}
-            expr={parents[0].value}
+            currentEntity={entity}
+            expr={parent.value}
             linkedEntities={linkedEntities}
           />
-          {parents[0].hasMetadata() && (
+          {parent.hasMetadata() && (
             <MetadataTooltip
-              metadata={parents[0].getMetadata()}
+              metadata={parent.getMetadata()}
               linkedEntities={linkedEntities}
             />
           )}
-        </p>
-      ) : (
-        <ul className="list-disc list-inside">
-          {parents.map((parent: Reified<any>) => {
-            return (
-              <li key={randomString()}>
-                <ClassExpression
-                  ontologyId={entity.getOntologyId()}
-		  currentEntity={entity}
-                  expr={parent.value}
-                  linkedEntities={linkedEntities}
-                />
-                {parent.hasMetadata() && (
-                  <MetadataTooltip
-                    metadata={parent.getMetadata()}
-                    linkedEntities={linkedEntities}
-                  />
-                )}
-              </li>
-            );
-          })}
-        </ul>
+        </span>
       )}
-    </div>
+      searchFilter={(parent: Reified<any>, searchQuery) => {
+        // Search in the expression
+        const exprStr = JSON.stringify(parent.value).toLowerCase();
+        return exprStr.includes(searchQuery);
+      }}
+    />
   );
 }

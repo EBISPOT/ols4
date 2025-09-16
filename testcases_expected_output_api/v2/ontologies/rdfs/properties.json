@@ -9,7 +9,9 @@
     "definedBy": [
       "rdfs"
     ],
-    "definition": "A human-readable name for the subject.",
+    "definition": [
+      "A human-readable name for the subject."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -26,7 +28,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "label",
+    "label": [
+      "label"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Literal": {
         "curie": "RDFS:Literal",
@@ -34,7 +38,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Literal",
+        "label": [
+          "Literal"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -47,7 +53,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Resource",
+        "label": [
+          "Resource"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -60,7 +68,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -73,7 +83,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -86,7 +98,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -99,7 +113,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -107,6 +123,14 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#Literal",
+      "http://www.w3.org/2000/01/rdf-schema#Resource",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#domain",
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "http://www.w3.org/2000/01/rdf-schema#range"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "rdfs",
@@ -127,7 +151,9 @@
     "definedBy": [
       "rdfs"
     ],
-    "definition": "A description of the subject resource.",
+    "definition": [
+      "A description of the subject resource."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -144,7 +170,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "comment",
+    "label": [
+      "comment"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Literal": {
         "curie": "RDFS:Literal",
@@ -152,7 +180,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Literal",
+        "label": [
+          "Literal"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -165,7 +195,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Resource",
+        "label": [
+          "Resource"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -178,7 +210,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -191,7 +225,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -204,7 +240,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -217,7 +255,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -225,6 +265,14 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#Literal",
+      "http://www.w3.org/2000/01/rdf-schema#Resource",
+      "http://www.w3.org/2000/01/rdf-schema#domain",
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#range"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "rdfs",
@@ -245,7 +293,9 @@
     "definedBy": [
       "rdfs"
     ],
-    "definition": "A domain of the subject property.",
+    "definition": [
+      "A domain of the subject property."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -262,7 +312,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "domain",
+    "label": [
+      "domain"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
         "curie": "RDFS:Class",
@@ -270,7 +322,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Class",
+        "label": [
+          "Class"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -283,7 +337,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -296,7 +352,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -309,7 +367,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -322,7 +382,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -330,6 +392,13 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#Class",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#range"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "rdfs",
@@ -350,16 +419,22 @@
     "definedBy": [
       "rdfs"
     ],
-    "definition": "The defininition of the subject resource.",
+    "definition": [
+      "The definition of the subject resource."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
-    "directAncestor": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
-    "directParent": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+    "directAncestor": [
+      "http://www.w3.org/2000/01/rdf-schema#seeAlso"
+    ],
+    "directParent": [
+      "http://www.w3.org/2000/01/rdf-schema#seeAlso"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": false,
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
-    "http://www.w3.org/2000/01/rdf-schema#comment": "The defininition of the subject resource.",
+    "http://www.w3.org/2000/01/rdf-schema#comment": "The definition of the subject resource.",
     "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.w3.org/2000/01/rdf-schema#Resource",
     "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2000/01/rdf-schema#",
     "http://www.w3.org/2000/01/rdf-schema#label": "isDefinedBy",
@@ -370,7 +445,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "isDefinedBy",
+    "label": [
+      "isDefinedBy"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
         "curie": "RDFS:Resource",
@@ -378,7 +455,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Resource",
+        "label": [
+          "Resource"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -391,7 +470,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -404,7 +485,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -417,7 +500,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -430,7 +515,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -443,7 +530,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "seeAlso",
+        "label": [
+          "seeAlso"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -456,7 +545,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "subPropertyOf",
+        "label": [
+          "subPropertyOf"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -464,6 +555,15 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#Resource",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#domain",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#range",
+      "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "rdfs",
@@ -484,7 +584,9 @@
     "definedBy": [
       "rdfs"
     ],
-    "definition": "A member of the subject resource.",
+    "definition": [
+      "A member of the subject resource."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -501,7 +603,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "member",
+    "label": [
+      "member"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
         "curie": "RDFS:Resource",
@@ -509,7 +613,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Resource",
+        "label": [
+          "Resource"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -522,7 +628,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -535,7 +643,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -548,7 +658,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -561,7 +673,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -574,7 +688,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -582,6 +698,14 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#Resource",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#domain",
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#range"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "rdfs",
@@ -602,7 +726,9 @@
     "definedBy": [
       "rdfs"
     ],
-    "definition": "A range of the subject property.",
+    "definition": [
+      "A range of the subject property."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -619,7 +745,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "range",
+    "label": [
+      "range"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
         "curie": "RDFS:Class",
@@ -627,7 +755,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Class",
+        "label": [
+          "Class"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -640,7 +770,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -653,7 +785,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -666,7 +800,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -679,7 +815,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -687,6 +825,13 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#Class",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#domain",
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "rdfs",
@@ -707,7 +852,9 @@
     "definedBy": [
       "rdfs"
     ],
-    "definition": "Further information about the subject resource.",
+    "definition": [
+      "Further information about the subject resource."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": true,
     "hasDirectParents": false,
@@ -724,7 +871,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "seeAlso",
+    "label": [
+      "seeAlso"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Resource": {
         "curie": "RDFS:Resource",
@@ -732,7 +881,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Resource",
+        "label": [
+          "Resource"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -745,7 +896,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -758,7 +911,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -771,7 +926,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -784,7 +941,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -797,7 +956,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -805,6 +966,14 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#Resource",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#domain",
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#range"
+    ],
     "numDescendants": 1.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "rdfs",
@@ -825,7 +994,9 @@
     "definedBy": [
       "rdfs"
     ],
-    "definition": "The subject is a subclass of a class.",
+    "definition": [
+      "The subject is a subclass of a class."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -842,7 +1013,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "subClassOf",
+    "label": [
+      "subClassOf"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#Class": {
         "curie": "RDFS:Class",
@@ -850,7 +1023,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "Class",
+        "label": [
+          "Class"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "class",
@@ -863,7 +1038,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -876,7 +1053,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -889,7 +1068,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -902,7 +1083,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -915,7 +1098,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -923,6 +1108,14 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#Class",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#domain",
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#range"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "rdfs",
@@ -943,7 +1136,9 @@
     "definedBy": [
       "rdfs"
     ],
-    "definition": "The subject is a subproperty of a property.",
+    "definition": [
+      "The subject is a subproperty of a property."
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -960,7 +1155,9 @@
     "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "subPropertyOf",
+    "label": [
+      "subPropertyOf"
+    ],
     "linkedEntities": {
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS:comment",
@@ -968,7 +1165,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "comment",
+        "label": [
+          "comment"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -981,7 +1180,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "domain",
+        "label": [
+          "domain"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -994,7 +1195,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "isDefinedBy",
+        "label": [
+          "isDefinedBy"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1007,7 +1210,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "label",
+        "label": [
+          "label"
+        ],
         "numAppearsIn": 3.0,
         "type": [
           "entity",
@@ -1020,7 +1225,9 @@
           "rdfs"
         ],
         "hasLocalDefinition": true,
-        "label": "range",
+        "label": [
+          "range"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -1028,6 +1235,13 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#domain",
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#range"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "rdfs",

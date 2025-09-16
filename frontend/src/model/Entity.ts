@@ -1,4 +1,5 @@
 import { asArray } from "../app/util";
+import { LinkedEntity } from "./LinkedEntities";
 import Reified from "./Reified";
 import Thing from "./Thing";
 
@@ -68,6 +69,26 @@ export default abstract class Entity extends Thing {
     return Reified.fromJson<any>(this.properties["synonym"]);
   }
 
+  getExactSynonyms(): Reified<any>[] {
+    const exactSynonymTypes = [
+      "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+      "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+    ];
+    return Reified.fromJson<any>(this.extractSynonyms(exactSynonymTypes)) || [];
+  }
+
+  getRelatedSynonyms(): Reified<any>[] {
+    return Reified.fromJson<any>(this.extractSynonyms("http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym")) || [];
+  }
+
+  getBroadSynonyms(): Reified<any>[] {
+    return Reified.fromJson<any>(this.extractSynonyms("http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym")) || [];
+  }
+
+  getNarrowSynonyms(): Reified<any>[] {
+    return Reified.fromJson<any>(this.extractSynonyms("http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym")) || [];
+  }
+
   getAppearsIn(): string[] {
     return (this.properties["appearsIn"] || []) as string[];
   }
@@ -96,9 +117,6 @@ export default abstract class Entity extends Thing {
   getAnnotationPredicates(): string[] {
     let definitionProperties = asArray(this.properties["definitionProperty"]);
     let synonymProperties = asArray(this.properties["synonymProperty"]);
-    let hierarchicalProperties = asArray(
-      this.properties["hierarchicalProperty"]
-    );
     let annotationPredicates = new Set();
 
     for (let predicate of Object.keys(this.properties)) {
@@ -120,12 +138,11 @@ export default abstract class Entity extends Thing {
         if (linkedEntity != undefined && linkedEntity.type && linkedEntity.type.indexOf("dataProperty") !== -1) continue;
       }
 
-      // If the value was already interpreted as definition/synonym/hierarchical, do
+      // If the value was already interpreted as definition/synonym, do
       // not include it as an annotation
       if (
         definitionProperties.indexOf(predicate) !== -1 ||
-        synonymProperties.indexOf(predicate) !== -1 ||
-        hierarchicalProperties.indexOf(predicate) !== -1
+        synonymProperties.indexOf(predicate) !== -1
       ) {
         continue;
       }
@@ -188,5 +205,84 @@ export default abstract class Entity extends Thing {
         return p.getMetadata();
       }
     }
+  }
+
+  extractSynonyms(synonymTypes: string | string[]): string[] {
+    const result : string[] = [];
+    // Check if 'synonymProperty' exists in 'this.properties'
+    if (!this.properties || !this.properties.hasOwnProperty("synonymProperty")) {
+      return result; // Return empty array if 'synonymProperty' doesn't exist
+    }
+    const synonymProperties = this.properties["synonymProperty"];
+    const synonymPropsArray = Array.isArray(synonymProperties)
+        ? synonymProperties
+        : [synonymProperties];
+
+    const synonymTypesArray = Array.isArray(synonymTypes)
+        ? synonymTypes
+        : [synonymTypes];
+
+    synonymPropsArray.forEach((synonymProperty: string) => {
+      if (synonymTypesArray.includes(synonymProperty)) {
+        if (this.properties.hasOwnProperty(synonymProperty)) {
+          const synonyms = this.properties[synonymProperty];
+          if (synonyms) {
+            result.push(...(Array.isArray(synonyms) ? synonyms : [synonyms]));
+          }
+        }
+      }
+    });
+
+    return result;
+  }
+
+  getDescriptionsFromProperties(): { property: string; descriptions: Reified<any>[] }[] {
+    const result: { property: string; descriptions: Reified<any>[] }[] = [];
+    // Check if 'definitionProperty' exists in 'this.properties'
+    if (!this.properties || !this.properties.hasOwnProperty("definitionProperty")) {
+      return result; // Return empty array if 'definitionProperty' doesn't exist
+    }
+
+    const definitionProperties = this.properties["definitionProperty"];
+    const definitionPropsArray = Array.isArray(definitionProperties)
+        ? definitionProperties
+        : [definitionProperties];
+
+    definitionPropsArray.forEach((definitionProperty: string) => {
+      if (this.properties.hasOwnProperty(definitionProperty)) {
+        const descriptions = this.properties[definitionProperty];
+        if (descriptions) {
+          const reifiedDescriptions = Reified.fromJson(
+              Array.isArray(descriptions) ? descriptions : [descriptions]
+          );
+
+          if (reifiedDescriptions.length > 0) {
+            // Get property short name for display
+            const propertyName = this.getPropertyShortName(definitionProperty);
+            result.push({
+              property: propertyName,
+              descriptions: reifiedDescriptions
+            });
+          }
+        }
+      }
+    });
+
+    return result;
+  }
+
+  private getPropertyShortName(propertyIri: string): string {
+    // Special case for IAO_0000115
+    if (propertyIri === "http://purl.obolibrary.org/obo/IAO_0000115") {
+      return "Definition";
+    }
+
+    // Extract the last part of the IRI for display
+    const parts = propertyIri.split(/[/#]/);
+    const lastPart = parts[parts.length - 1];
+
+    return lastPart
+        .replace(/^./, str => str.toUpperCase()) // Capitalize first letter
+        .trim();
   }
 }

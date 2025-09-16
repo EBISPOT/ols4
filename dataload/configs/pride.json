@@ -1,0 +1,27 @@
+{
+  "ontologies": [
+    {
+      "id": "pride",
+      "preferredPrefix": "PRIDE",
+      "title": "PRIDE Controlled Vocabulary",
+      "uri": "http://purl.obolibrary.org/obo/pride_cv.obo",
+      "description": "The PRIDE PRoteomics IDEntifications (PRIDE) database is a centralized, standards compliant, public data repository for proteomics data, including protein and peptide identifications, post-translational modifications and supporting spectral evidence.",
+      "homepage": "https://github.com/PRIDE-Utilities/pride-ontology",
+      "mailing_list": "https://github.com/PRIDE-Utilities/pride-ontology/issues",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/def"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOWL#hasExactSynonym"
+      ],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/PRIDE_"
+      ],
+      "preferred_root_term": [
+        "http://purl.obolibrary.org/obo/PRIDE_0000674"
+      ],
+      "oboSlims": false,
+      "ontology_purl": "https://raw.githubusercontent.com/PRIDE-Utilities/pride-ontology/master/pride_cv.owl"
+    }
+  ]
+}

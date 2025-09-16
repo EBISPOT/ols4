@@ -15,12 +15,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasChild",
+    "label": [
+      "hasChild"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasParent": {
         "curie": "hasParent",
         "hasLocalDefinition": true,
-        "label": "hasParent",
+        "label": [
+          "hasParent"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -29,6 +33,9 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasParent"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-objectproperty-inverse",
@@ -58,12 +65,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasParent",
+    "label": [
+      "hasParent"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasChild": {
         "curie": "hasChild",
         "hasLocalDefinition": true,
-        "label": "hasChild",
+        "label": [
+          "hasChild"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -72,6 +83,9 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasChild"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-objectproperty-inverse",

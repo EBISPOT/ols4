@@ -2,6 +2,7 @@
 import { Fragment } from "react";
 import { randomString } from "../../../../app/util";
 import ClassExpression from "../../../../components/ClassExpression";
+import PropertyValuesList from "../../../../components/PropertyValuesList";
 import Entity from "../../../../model/Entity";
 import Class from "../../../../model/Class";
 import LinkedEntities from "../../../../model/LinkedEntities";
@@ -27,29 +28,30 @@ export default function EntityEquivalentsSection({
   }
 
   return (
-    <div>
-      <div className="font-bold">Equivalent to</div>
-      <ul className="list-disc list-inside">
-        {equivalents.map((eqClass: Reified<any>) => {
-          const hasMetadata = eqClass.hasMetadata();
-          return (
-            <li key={randomString()}>
-              <ClassExpression
-                ontologyId={entity.getOntologyId()}
-		currentEntity={entity} 
-                expr={eqClass.value}
-                linkedEntities={linkedEntities}
-              />
-              {hasMetadata && (
-                <MetadataTooltip
-                  metadata={eqClass.getMetadata()}
-                  linkedEntities={linkedEntities}
-                />
-              )}
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <PropertyValuesList
+      values={equivalents}
+      title="Equivalent to"
+      renderValue={(eqClass: Reified<any>) => (
+        <span>
+          <ClassExpression
+            ontologyId={entity.getOntologyId()}
+            currentEntity={entity} 
+            expr={eqClass.value}
+            linkedEntities={linkedEntities}
+          />
+          {eqClass.hasMetadata() && (
+            <MetadataTooltip
+              metadata={eqClass.getMetadata()}
+              linkedEntities={linkedEntities}
+            />
+          )}
+        </span>
+      )}
+      searchFilter={(eqClass: Reified<any>, searchQuery) => {
+        // Search in the expression
+        const exprStr = JSON.stringify(eqClass.value).toLowerCase();
+        return exprStr.includes(searchQuery);
+      }}
+    />
   );
 }

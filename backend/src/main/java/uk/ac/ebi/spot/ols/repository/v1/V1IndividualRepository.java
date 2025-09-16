@@ -40,7 +40,7 @@ public class V1IndividualRepository {
     public Page<V1Term> getDirectTypes(String ontologyId, String iri, String lang, Pageable pageable) {
 
 	return this.neo4jClient.traverseOutgoingEdges("OntologyIndividual", ontologyId + "+individual+" + iri,
-			Arrays.asList("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"), Map.of(), pageable)
+			Arrays.asList("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"), Map.of(), Map.of(), pageable)
 				.map(node -> V1TermMapper.mapTerm(node, lang));
     }
 
@@ -49,7 +49,7 @@ public class V1IndividualRepository {
     public Page<V1Term> getAllTypes(String ontologyId, String iri, String lang, Pageable pageable) { 
 
 	return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyIndividual", ontologyId + "+individual+" + iri,
-			Arrays.asList("http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "http://www.w3.org/2000/01/rdf-schema#subClassOf"), Map.of(), pageable)
+			Arrays.asList("http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "http://www.w3.org/2000/01/rdf-schema#subClassOf"), Map.of(), Map.of(), pageable)
 				.map(node -> V1TermMapper.mapTerm(node, lang));
     }
 

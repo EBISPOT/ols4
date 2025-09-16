@@ -6,6 +6,9 @@ import org.apache.commons.cli.*;
 import java.io.*;
 import java.util.*;
 
+
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
 public class JSON2Solr {
 
     static Gson gson = new Gson();
@@ -94,10 +97,11 @@ public class JSON2Solr {
                                 String ontologyId = (String) ontology.get("ontologyId");
                                 String entityId = ontologyId + "+class+" + (String) _class.get("iri");
 
-                                flattenedClass.put("_json", gson.toJson(_class));
                                 flattenedClass.put("id", entityId);
 
                                 flattenProperties(_class, flattenedClass);
+                                _class.remove("embeddings"); // remains in flattenedClass
+                                flattenedClass.put("_json", gson.toJson(_class));
 
                                 classesWriter.println(gson.toJson(flattenedClass));
 
@@ -118,10 +122,12 @@ public class JSON2Solr {
 
                                 String ontologyId = (String) ontology.get("ontologyId");
                                 String entityId = ontologyId + "+property+" + (String) property.get("iri");
-                                flattenedProperty.put("_json", gson.toJson(property));
+
                                 flattenedProperty.put("id", entityId);
 
                                 flattenProperties(property, flattenedProperty);
+                                property.remove("embeddings");
+                                flattenedProperty.put("_json", gson.toJson(property));
 
                                 propertiesWriter.println(gson.toJson(flattenedProperty));
 
@@ -142,10 +148,11 @@ public class JSON2Solr {
 
                                 String ontologyId = (String) ontology.get("ontologyId");
                                 String entityId = ontologyId + "+individual+" + (String) individual.get("iri");
-                                flattenedIndividual.put("_json", gson.toJson(individual));
                                 flattenedIndividual.put("id", entityId);
 
                                 flattenProperties(individual, flattenedIndividual);
+                                individual.remove("embeddings");
+                                flattenedIndividual.put("_json", gson.toJson(individual));
 
                                 individualsWriter.println(gson.toJson(flattenedIndividual));
 
@@ -301,17 +308,17 @@ public class JSON2Solr {
 
    static void writeAutocompleteEntries(String ontologyId, String entityId, Map<String,Object> flattenedEntity, PrintStream autocompleteWriter) {
 
-	Object labels = flattenedEntity.get("label");
+	Object labels = flattenedEntity.get(LABEL.getText());
 
-	if(labels instanceof List) {
-		for(Object label : (List<Object>) labels) {
-			autocompleteWriter.println( gson.toJson(makeAutocompleteEntry(ontologyId, entityId, (String)label), Map.class) );
-		}
-	} else if(labels instanceof String) {
-			autocompleteWriter.println( gson.toJson(makeAutocompleteEntry(ontologyId, entityId, (String)labels), Map.class) );
-	}
+    if (labels instanceof String) {
+        labels = (new ArrayList<>()).add(labels);
+    }
 
-	Object synonyms = flattenedEntity.get("synonym");
+    for(Object label : (List<Object>) labels) {
+        autocompleteWriter.println( gson.toJson(makeAutocompleteEntry(ontologyId, entityId, (String)label), Map.class) );
+    }
+
+	Object synonyms = flattenedEntity.get(SYNONYM.getText());
 
 	if(synonyms instanceof List) {
 		for(Object label : (List<Object>) synonyms) {

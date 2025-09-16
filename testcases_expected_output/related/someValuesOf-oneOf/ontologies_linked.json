@@ -6,7 +6,7 @@
       "exportsTo": [],
       "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl",
       "preferredPrefix": "related-someValuesOf-oneOf",
-      "ontology_purl": "./testcases/related/someValuesOf-oneOf.owl",
+      "ontologyPurl": "./testcases/related/someValuesOf-oneOf.owl",
       "type": [
         "ontology"
       ],
@@ -15,12 +15,14 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-oneOf.xml",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -49,12 +51,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -116,12 +112,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "A"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "A"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -198,12 +196,14 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "r"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "r"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -219,12 +219,14 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "b3"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "b3"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -239,12 +241,14 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "b2"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "b2"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -259,12 +263,14 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "b1"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "b1"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -276,7 +282,13 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1"
+          ]
         }
       ],
       "properties": [
@@ -302,12 +314,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "r"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "r"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -339,7 +353,8 @@
           "appearsIn": [
             "related-somevaluesof-oneof"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [
@@ -363,12 +378,14 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
           "imported": false,
           "isObsolete": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "b1"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "b1"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -389,19 +406,21 @@
             ],
             "value": "related-someValuesOf-oneOf"
           },
-          "relatedFrom": {
-            "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r",
-            "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#first": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1",
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest": [
-              "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2",
-              "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3"
-            ],
-            "isObsolete": false
-          },
+          "relatedFrom": [
+            {
+              "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r",
+              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#first": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1",
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest": [
+                "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2",
+                "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3"
+              ],
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -417,12 +436,14 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "r"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "r"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -438,12 +459,14 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "b3"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "b3"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -458,12 +481,14 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "b2"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "b2"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -478,12 +503,14 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "A"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "A"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -495,7 +522,13 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2",
@@ -517,12 +550,14 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
           "imported": false,
           "isObsolete": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "b2"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "b2"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -543,19 +578,21 @@
             ],
             "value": "related-someValuesOf-oneOf"
           },
-          "relatedFrom": {
-            "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r",
-            "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#first": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1",
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest": [
-              "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2",
-              "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3"
-            ],
-            "isObsolete": false
-          },
+          "relatedFrom": [
+            {
+              "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r",
+              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#first": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1",
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest": [
+                "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2",
+                "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3"
+              ],
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -571,12 +608,14 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "r"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "r"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -592,12 +631,14 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "b3"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "b3"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -612,12 +653,14 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "b1"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "b1"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -632,12 +675,14 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "A"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "A"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -649,7 +694,13 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3",
@@ -671,12 +722,14 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
           "imported": false,
           "isObsolete": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "b3"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "b3"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -697,19 +750,21 @@
             ],
             "value": "related-someValuesOf-oneOf"
           },
-          "relatedFrom": {
-            "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r",
-            "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A",
-            "type": [
-              "related"
-            ],
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#first": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1",
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest": [
-              "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2",
-              "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3"
-            ],
-            "isObsolete": false
-          },
+          "relatedFrom": [
+            {
+              "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r",
+              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A",
+              "type": [
+                "related"
+              ],
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#first": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1",
+              "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest": [
+                "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2",
+                "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3"
+              ],
+              "isObsolete": false
+            }
+          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -725,12 +780,14 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "r"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "r"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -746,12 +803,14 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "b2"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "b2"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -766,12 +825,14 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "b1"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "b1"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -786,12 +847,14 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "A"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "A"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -803,10 +866,17 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2",
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1"
+          ]
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

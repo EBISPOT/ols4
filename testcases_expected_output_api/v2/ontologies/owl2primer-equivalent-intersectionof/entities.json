@@ -42,12 +42,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Mother",
+    "label": [
+      "Mother"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent": {
         "curie": "Parent",
         "hasLocalDefinition": true,
-        "label": "Parent",
+        "label": [
+          "Parent"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -57,7 +61,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman": {
         "curie": "Woman",
         "hasLocalDefinition": true,
-        "label": "Woman",
+        "label": [
+          "Woman"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -65,6 +71,10 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Parent",
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf.owl#Woman"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-equivalent-intersectionof",
@@ -92,7 +102,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Parent",
+    "label": [
+      "Parent"
+    ],
     "linkedEntities": {},
     "numDescendants": 1.0,
     "numHierarchicalDescendants": 1.0,
@@ -121,7 +133,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Woman",
+    "label": [
+      "Woman"
+    ],
     "linkedEntities": {},
     "numDescendants": 1.0,
     "numHierarchicalDescendants": 1.0,

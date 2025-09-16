@@ -10,6 +10,7 @@ public class EntityDefinition {
     boolean isDefiningOntology;
     JsonElement label;
     JsonElement curie;
+    boolean isObsolete;
 
     @Override
     public boolean equals(Object other) {

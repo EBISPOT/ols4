@@ -1,39 +1,44 @@
-version: '3'
 services:
     ols4-dataload:
       environment:
         - JAVA_OPTS=${JAVA_OPTS}
+        - OPENAI_API_KEY=${OPENAI_API_KEY} # Used for embeddings if set
       build:
         context: .
         dockerfile: ./dataload/Dockerfile
       volumes:
         - ols4-solr-data:/opt/solr/server/solr:rw
         - ols4-neo4j-data:/opt/neo4j/data:rw
-        - ./${OLS4_CONFIG:?OLS4 dataload requires a config file}:/mnt/config.json:ro
+        - ols4-embeddings:/mnt/embeddings:rw
+        - ./${OLS4_CONFIG:?OLS4 dataload requires a config file}:/mnt/config/${OLS4_CONFIG}:ro
         - ./testcases:/opt/ols/dataload/testcases:ro
           #- ./docker_out:/tmp/out:rw
       command: ./dataload.dockersh ${OLS4_DATALOAD_ARGS:-}
     ols4-solr:
-      image: solr:9.0.0
+      image: solr:9.8.1
       environment:
         - SOLR_HOME=/mnt/ols4-solr-data
+        - JAVA_OPTS=--add-modules jdk.incubator.vector
       ports:
         - 8983:8983
       volumes:
         - ols4-solr-data:/mnt/ols4-solr-data
+        # - /data/ols_from_codon/solr/solr:/mnt/ols4-solr-data
       command: ["-f"]
       depends_on:
         ols4-dataload:
           condition: service_completed_successfully
     ols4-neo4j:
-      image: neo4j:4.4.9-community
+      image: neo4j:2025.03.0-community
       ports:
         - 7474:7474
         - 7687:7687
       volumes:
         - ols4-neo4j-data:/var/lib/neo4j/data
+        # - /data/ols_from_codon/neo4j/neo4j/data:/var/lib/neo4j/data
       environment:
         - NEO4J_AUTH=none
+        - JAVA_OPTS=--add-modules jdk.incubator.vector
       depends_on:
         ols4-dataload:
           condition: service_completed_successfully
@@ -76,3 +81,4 @@ services:
 volumes:
     ols4-neo4j-data:
     ols4-solr-data:
+    ols4-embeddings:

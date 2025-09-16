@@ -14,7 +14,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Quantity",
+    "label": [
+      "Quantity"
+    ],
     "linkedEntities": {},
     "numDescendants": 2.0,
     "numHierarchicalDescendants": 1.0,
@@ -44,12 +46,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "commonlyHasUnit",
+    "label": [
+      "commonlyHasUnit"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity": {
         "curie": "Quantity",
         "hasLocalDefinition": true,
-        "label": "Quantity",
+        "label": [
+          "Quantity"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -57,6 +63,9 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "punning-class-individual",
@@ -84,7 +93,9 @@
     "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "terakelvin",
+    "label": [
+      "terakelvin"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -107,7 +118,9 @@
       "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
       "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature"
     ],
-    "directParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
+    "directParent": [
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature"
+    ],
     "hasDirectChildren": false,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
@@ -120,12 +133,16 @@
     "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#thermodynamicTemperatureOfTheTriplePointOfWater",
     "isDefiningOntology": false,
     "isObsolete": false,
-    "label": "thermodynamicTemperatureOfTheTriplePointOfWater",
+    "label": [
+      "thermodynamicTemperatureOfTheTriplePointOfWater"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity": {
         "curie": "Quantity",
         "hasLocalDefinition": true,
-        "label": "Quantity",
+        "label": [
+          "Quantity"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -135,7 +152,9 @@
       "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature": {
         "curie": "ThermodynamicTemperature",
         "hasLocalDefinition": true,
-        "label": "ThermodynamicTemperature",
+        "label": [
+          "ThermodynamicTemperature"
+        ],
         "numAppearsIn": 2.0,
         "type": [
           "entity",
@@ -143,6 +162,10 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "punning-class-individual",
@@ -161,15 +184,23 @@
       "punning-class-individual"
     ],
     "curie": "ThermodynamicTemperature",
-    "directAncestor": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
-    "directParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+    "directAncestor": [
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+    ],
+    "directParent": [
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+    ],
     "hasDirectChildren": true,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": true,
     "hasIndividuals": true,
-    "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
-    "hierarchicalParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+    "hierarchicalAncestor": [
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+    ],
+    "hierarchicalParent": [
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+    ],
     "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
     "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
@@ -182,12 +213,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "ThermodynamicTemperature",
+    "label": [
+      "ThermodynamicTemperature"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity": {
         "curie": "Quantity",
         "hasLocalDefinition": true,
-        "label": "Quantity",
+        "label": [
+          "Quantity"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -197,7 +232,9 @@
       "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit": {
         "curie": "commonlyHasUnit",
         "hasLocalDefinition": true,
-        "label": "commonlyHasUnit",
+        "label": [
+          "commonlyHasUnit"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -208,7 +245,9 @@
       "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin": {
         "curie": "terakelvin",
         "hasLocalDefinition": true,
-        "label": "terakelvin",
+        "label": [
+          "terakelvin"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -216,6 +255,11 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit",
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin"
+    ],
     "numDescendants": 1.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "punning-class-individual",
@@ -234,15 +278,23 @@
       "punning-class-individual"
     ],
     "curie": "ThermodynamicTemperature",
-    "directAncestor": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
-    "directParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+    "directAncestor": [
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+    ],
+    "directParent": [
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+    ],
     "hasDirectChildren": true,
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": true,
     "hasIndividuals": true,
-    "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
-    "hierarchicalParent": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+    "hierarchicalAncestor": [
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+    ],
+    "hierarchicalParent": [
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+    ],
     "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
     "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
@@ -255,12 +307,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "ThermodynamicTemperature",
+    "label": [
+      "ThermodynamicTemperature"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity": {
         "curie": "Quantity",
         "hasLocalDefinition": true,
-        "label": "Quantity",
+        "label": [
+          "Quantity"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
@@ -270,7 +326,9 @@
       "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit": {
         "curie": "commonlyHasUnit",
         "hasLocalDefinition": true,
-        "label": "commonlyHasUnit",
+        "label": [
+          "commonlyHasUnit"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -281,7 +339,9 @@
       "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin": {
         "curie": "terakelvin",
         "hasLocalDefinition": true,
-        "label": "terakelvin",
+        "label": [
+          "terakelvin"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -289,6 +349,11 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit",
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin"
+    ],
     "numDescendants": 1.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "punning-class-individual",

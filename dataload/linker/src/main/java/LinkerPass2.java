@@ -11,8 +11,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
-import static uk.ac.ebi.ols.shared.DefinedFields.HAS_LOCAL_DEFINITION;
-import static uk.ac.ebi.ols.shared.DefinedFields.IS_DEFINING_ONTOLOGY;
+import static com.google.common.base.Strings.isNullOrEmpty;
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 public class LinkerPass2 {
 
@@ -21,7 +21,7 @@ public class LinkerPass2 {
     public static final OboDatabaseUrlService dbUrls = new OboDatabaseUrlService();
     public static final Bioregistry bioregistry = new Bioregistry();
 
-    public static void run(String inputJsonFilename, String outputJsonFilename, LevelDB leveldb, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+    public static void run(String inputJsonFilename, String outputJsonFilename, LevelDB leveldb, Embeddings embeddings, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
 
         JsonReader jsonReader = new JsonReader(new InputStreamReader(new FileInputStream(inputJsonFilename)));
         JsonWriter jsonWriter = new JsonWriter(new OutputStreamWriter(new FileOutputStream(outputJsonFilename)));
@@ -63,7 +63,7 @@ public class LinkerPass2 {
 
 
 
-                    jsonWriter.name("importsFrom");
+                    jsonWriter.name(IMPORTS_FROM.getText());
                     jsonWriter.beginArray();
                     var imports = pass1Result.ontologyIdToImportedOntologyIds.get(ontologyId);
                     if(imports != null) {
@@ -74,7 +74,7 @@ public class LinkerPass2 {
                     jsonWriter.endArray();
 
 
-                    jsonWriter.name("exportsTo");
+                    jsonWriter.name(EXPORTS_TO.getText());
                     jsonWriter.beginArray();
                     var importedBy = pass1Result.ontologyIdToImportingOntologyIds.get(ontologyId);
                     if(importedBy != null) {
@@ -92,13 +92,13 @@ public class LinkerPass2 {
                         jsonWriter.name(key);
 
                         if(key.equals("classes")) {
-                            writeEntityArray(jsonReader, jsonWriter, "class", ontologyId, leveldb, pass1Result);
+                            writeEntityArray(jsonReader, jsonWriter, "class", ontologyId, leveldb, embeddings, pass1Result);
                             continue;
                         } else if(key.equals("properties")) {
-                            writeEntityArray(jsonReader, jsonWriter, "property", ontologyId, leveldb, pass1Result);
+                            writeEntityArray(jsonReader, jsonWriter, "property", ontologyId, leveldb, embeddings, pass1Result);
                             continue;
                         } else if(key.equals("individuals")) {
-                            writeEntityArray(jsonReader, jsonWriter, "individual", ontologyId, leveldb, pass1Result);
+                            writeEntityArray(jsonReader, jsonWriter, "individual", ontologyId, leveldb, embeddings, pass1Result);
                             continue;
                         } else {
                             ontologyGatheredStrings.add(ExtractIriFromPropertyName.extract(key));
@@ -107,7 +107,15 @@ public class LinkerPass2 {
                     }
 
                     jsonWriter.name("linkedEntities");
-                    writeLinkedEntitiesFromGatheredStrings(jsonWriter, ontologyGatheredStrings, ontologyId, null, leveldb, pass1Result);
+                    var linksToIris = writeLinkedEntitiesFromGatheredStrings(jsonWriter, ontologyGatheredStrings, ontologyId, null, leveldb, pass1Result);
+
+                    jsonWriter.name("linksTo");
+                    jsonWriter.beginArray();
+                    for(String linkToIri : linksToIris) {
+                        jsonWriter.value(linkToIri);
+                    }
+                    jsonWriter.endArray();
+
 
                     jsonReader.endObject(); // ontology
                     jsonWriter.endObject();
@@ -131,7 +139,7 @@ public class LinkerPass2 {
         System.out.println("--- Linker Pass 2 complete");
     }
 
-    private static void writeEntityArray(JsonReader jsonReader, JsonWriter jsonWriter, String entityType, String ontologyId, LevelDB leveldb, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+    private static void writeEntityArray(JsonReader jsonReader, JsonWriter jsonWriter, String entityType, String ontologyId, LevelDB leveldb, Embeddings embeddings, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
 
         jsonReader.beginArray();
         jsonWriter.beginArray();
@@ -191,7 +199,7 @@ public class LinkerPass2 {
                 jsonWriter.value(defOfThisEntity.definingOntologyIds.contains(ontologyId));
 
                 if (defOfThisEntity.definingDefinitions.size() > 0) {
-                    jsonWriter.name("definedBy");
+                    jsonWriter.name(DEFINED_BY.getText());
                     jsonWriter.beginArray();
                     for (var def : defOfThisEntity.definingDefinitions) {
                         jsonWriter.value(def.ontologyId);
@@ -200,7 +208,7 @@ public class LinkerPass2 {
                 }
 
                 if (defOfThisEntity.definitions.size() > 0) {
-                    jsonWriter.name("appearsIn");
+                    jsonWriter.name(APPEARS_IN.getText());
                     jsonWriter.beginArray();
                     for (var def : defOfThisEntity.definitions) {
                         jsonWriter.value(def.ontologyId);
@@ -210,7 +218,42 @@ public class LinkerPass2 {
             }
 
             jsonWriter.name("linkedEntities");
-            writeLinkedEntitiesFromGatheredStrings(jsonWriter, stringsInEntity, ontologyId, entityIri, leveldb, pass1Result);
+            var linksToIris = writeLinkedEntitiesFromGatheredStrings(jsonWriter, stringsInEntity, ontologyId, entityIri, leveldb, pass1Result);
+
+            jsonWriter.name("linksTo");
+            jsonWriter.beginArray();
+            for(String linkToIri : linksToIris) {
+                jsonWriter.value(linkToIri);
+            }
+            jsonWriter.endArray();
+
+
+            // Obsolete terms do not get embeddings
+            boolean isObsolete = defOfThisEntity.definingDefinitions
+                    .stream()
+                    .anyMatch(def -> def.isObsolete);
+            if(!isObsolete) {
+
+                // Only the defining instance of the term gets embeddings attached.
+                // Otherwise all of the most similar classes would just be the same class imported 
+                // into other ontologies.
+                //
+                if(defOfThisEntity.definingOntologyIds.contains(ontologyId)) {
+                    var entityEmbeddings = embeddings.getEmbeddings(ontologyId, entityType, entityIri);
+
+                    if(entityEmbeddings != null) {
+                        jsonWriter.name("embeddings");
+                        jsonWriter.beginArray();
+                        jsonWriter.setIndent("");
+                        for(double d : entityEmbeddings) {
+                            jsonWriter.value(d);
+                        }
+                        jsonWriter.endArray();
+                        jsonWriter.setIndent("  ");
+                    }
+                }
+            }
+
 
             jsonWriter.endObject();
             jsonReader.endObject();
@@ -222,7 +265,9 @@ public class LinkerPass2 {
     }
 
 
-    private static void writeLinkedEntitiesFromGatheredStrings(JsonWriter jsonWriter, Set<String> strings, String ontologyId, String entityIri, LevelDB leveldb, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+    private static Set<String> writeLinkedEntitiesFromGatheredStrings(JsonWriter jsonWriter, Set<String> strings, String ontologyId, String entityIri, LevelDB leveldb, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+
+        Set<String> linksToIris = new HashSet<>();
 
         jsonWriter.beginObject();
 
@@ -246,6 +291,9 @@ public class LinkerPass2 {
             EntityDefinitionSet iriMapping = pass1Result.iriToDefinitions.get(str);
 
             if(iriMapping != null) {
+
+                linksToIris.add(str);
+
                 jsonWriter.name(str);
                 jsonWriter.beginObject();
                 writeIriMapping(jsonWriter, iriMapping, ontologyId);
@@ -290,6 +338,9 @@ public class LinkerPass2 {
                                     jsonWriter.value(iri);
                                     writeIriMapping(jsonWriter, curieIriMapping,
                                             ontologyId);
+
+                                    linksToIris.add(iri);
+
                                     break;
                                 }
                             }
@@ -342,6 +393,8 @@ public class LinkerPass2 {
         }
 
         jsonWriter.endObject(); // linkedEntities
+
+        return linksToIris;
     }
 
     private static void writeIriMapping(JsonWriter jsonWriter, EntityDefinitionSet definitions, String ontologyId) throws IOException {
@@ -350,7 +403,7 @@ public class LinkerPass2 {
 
 	    // There are ontologies which canonically define this term
 
-            jsonWriter.name("definedBy");
+            jsonWriter.name(DEFINED_BY.getText());
             jsonWriter.beginArray();
             for(var def : definitions.definingDefinitions) {
                 jsonWriter.value(def.ontologyId);
@@ -364,7 +417,7 @@ public class LinkerPass2 {
 		if(definitions.definingOntologyIds.size() == 1) {
 
 			// ...and is only defined in ONE ontology. Therefore that ontology is the canonical defining ontology as far as OLS is concerned
-			jsonWriter.name("definedBy");
+			jsonWriter.name(DEFINED_BY.getText());
 			jsonWriter.beginArray();
 			jsonWriter.value(definitions.definingOntologyIds.iterator().next());
 			jsonWriter.endArray();

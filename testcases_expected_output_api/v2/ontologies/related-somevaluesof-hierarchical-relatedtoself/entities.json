@@ -21,12 +21,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "A",
+    "label": [
+      "A"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical-relatedToSelf.owl#r": {
         "curie": "r",
         "hasLocalDefinition": true,
-        "label": "r",
+        "label": [
+          "r"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -35,6 +39,9 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical-relatedToSelf.owl#r"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "related-somevaluesof-hierarchical-relatedtoself",
@@ -62,7 +69,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "r",
+    "label": [
+      "r"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.ebi.ac.uk/baseUri/BaseUri.owl#"
+     xml:base="http://www.ebi.ac.uk/uk/baseUri/BaseUri.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:efo="http://www.ebi.ac.uk/uk/baseUri/BaseUri.owl#">
+    <owl:Ontology rdf:about="http://www.ebi.ac.uk/baseUri/BaseUri.owl">
+        <owl:versionIRI rdf:resource="http://www.ebi.ac.uk/baseUri/releases/v3.63.0/BaseUri.owl"/>
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3.63.0</owl:versionInfo>
+    </owl:Ontology>
+</rdf:RDF>

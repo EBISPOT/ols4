@@ -22,7 +22,7 @@ import org.springframework.web.util.UriUtils;
 import uk.ac.ebi.spot.ols.model.v1.V1Term;
 import uk.ac.ebi.spot.ols.repository.v1.V1TermRepository;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * @author Simon Jupp
@@ -63,8 +63,8 @@ public class V1TermController implements
     private HttpEntity<PagedModel<V1Term>> getTerms(
             @RequestParam(value = "iri", required = false)
             @Parameter(name = "iri",
-                    description = "The IRI of the term, this value must be double URL encoded",
-                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String iri,
+                    description = "The IRI of the term.",
+                    example = "http://purl.obolibrary.org/obo/DUO_0000017") String iri,
             @RequestParam(value = "short_form", required = false)
             @Parameter(name = "short_form",
                     description = "This refers to the short form of the term.",
@@ -124,8 +124,8 @@ public class V1TermController implements
     private HttpEntity<PagedModel<V1Term>> getTermsByIdAndIsDefiningOntology(
             @RequestParam(value = "iri", required = false)
             @Parameter(name = "iri",
-                    description = "The IRI of the term, this value must be double URL encoded",
-                    example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FDUO_0000017") String iri,
+                    description = "The IRI of the term",
+                    example = "http://purl.obolibrary.org/obo/DUO_0000017") String iri,
             @RequestParam(value = "short_form", required = false)
             @Parameter(name = "short_form",
                     description = "This refers to the short form of the term.",

@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import { asArray, randomString, sortByKeys } from "../../../../app/util";
 import ClassExpression from "../../../../components/ClassExpression";
 import EntityLink from "../../../../components/EntityLink";
+import PropertyValuesList from "../../../../components/PropertyValuesList";
 import Entity from "../../../../model/Entity";
 import LinkedEntities from "../../../../model/LinkedEntities";
 
@@ -22,15 +23,17 @@ export default function IndividualPropertyAssertionsSection({
   );
 
   let objectProperties = propertyIris.filter(
-    (k) =>
-        linkedEntities.get(k) &&
-        linkedEntities.get(k)!.type.indexOf("objectProperty") !== -1
+      (k) => {
+        const linkedEntity = linkedEntities.get(k);
+        return linkedEntity && Array.isArray(linkedEntity.type) && linkedEntity.type.indexOf("objectProperty") !== -1;
+      }
   );
 
   let dataProperties = propertyIris.filter(
-    (k) =>
-        linkedEntities.get(k) &&
-        linkedEntities.get(k)!.type.indexOf("dataProperty") !== -1
+      (k) => {
+        const linkedEntity = linkedEntities.get(k);
+        return linkedEntity && Array.isArray(linkedEntity.type) && linkedEntity.type.indexOf("dataProperty") !== -1;
+      }
   );
 
   let propertyAssertions: JSX.Element[] = [];
@@ -94,8 +97,8 @@ export default function IndividualPropertyAssertionsSection({
               linkedEntities={linkedEntities}
           />
             &thinsp;
-            {
-              <span>
+            {typeof v === "string" && v.includes("http") ? (
+                    <span>
               <span className="pr-1 text-sm" style={{ color: "gray" }}>
                 &#9656;
               </span>
@@ -107,7 +110,21 @@ export default function IndividualPropertyAssertionsSection({
                   linkedEntities={linkedEntities}
               />
             </span>
-            }
+                ) : (
+                    <Tooltip
+                        title={
+                          typeof v === "string"
+                              ? v
+                              : typeof v === "object" && !Array.isArray(v) && v.value
+                                  ? JSON.stringify(v.value)
+                                  : JSON.stringify(v)
+                        }
+                        placement="top"
+                        arrow
+                    >
+                      <i className="icon icon-common icon-info text-neutral-default text-sm ml-1" />
+                    </Tooltip>
+                )}
         </span>
       );
     }
@@ -183,19 +200,15 @@ export default function IndividualPropertyAssertionsSection({
   }
 
   return (
-    <div>
-      <div className="font-bold">Property assertions</div>
-      {propertyAssertions.length === 1 ? (
-        <p>{propertyAssertions[0]}</p>
-      ) : (
-        <ul className="list-disc list-inside">
-          {propertyAssertions
-            .map((pa) => {
-              return <li key={randomString()}>{pa}</li>;
-            })
-            .sort((a, b) => sortByKeys(a, b))}
-        </ul>
-      )}
-    </div>
+    <PropertyValuesList
+      values={propertyAssertions}
+      title="Property assertions"
+      renderValue={(propertyAssertion: JSX.Element) => propertyAssertion}
+      searchFilter={(propertyAssertion: JSX.Element, searchQuery: string) => {
+        // Convert JSX to string for search - this is a simplified approach
+        const text = JSON.stringify(propertyAssertion.props).toLowerCase();
+        return text.includes(searchQuery);
+      }}
+    />
   );
 }

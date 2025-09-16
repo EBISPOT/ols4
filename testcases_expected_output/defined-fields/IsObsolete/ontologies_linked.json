@@ -6,7 +6,7 @@
       "exportsTo": [],
       "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf",
       "preferredPrefix": "IsObsolete",
-      "ontology_purl": "./testcases/defined-fields/IsObsolete.rdf",
+      "ontologyPurl": "./testcases/defined-fields/IsObsolete.rdf",
       "type": [
         "ontology"
       ],
@@ -15,12 +15,14 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/defined-fields/v0.0.1/isObsolete.rdf",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -49,12 +51,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -93,14 +89,22 @@
             ],
             "value": "AnGODefinedObsoleteClass"
           },
-          "directAncestor": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
-          "directParent": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
+          "directAncestor": [
+            "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"
+          ],
+          "directParent": [
+            "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": true,
-          "hierarchicalAncestor": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
-          "hierarchicalParent": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
+          "hierarchicalAncestor": [
+            "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"
+          ],
+          "hierarchicalParent": [
+            "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -112,12 +116,14 @@
           "imported": false,
           "isObsolete": true,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "AnGODefinedObsoleteClass"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "AnGODefinedObsoleteClass"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -153,12 +159,14 @@
             "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "ObsoleteClass"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "ObsoleteClass"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -170,7 +178,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValue1",
@@ -195,12 +206,14 @@
           "imported": false,
           "isObsolete": true,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "DeprecatedClassWithValue1"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "DeprecatedClassWithValue1"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -232,7 +245,8 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTRUE",
@@ -264,12 +278,14 @@
           "imported": false,
           "isObsolete": true,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "DeprecatedClassWithValueTRUE"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "DeprecatedClassWithValueTRUE"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -301,7 +317,8 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTrue",
@@ -326,12 +343,14 @@
           "imported": false,
           "isObsolete": true,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "DeprecatedClassWithValueTrue"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "DeprecatedClassWithValueTrue"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -363,7 +382,8 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedClass",
@@ -387,12 +407,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "NonDeprecatedClass"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "NonDeprecatedClass"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -424,7 +446,8 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
@@ -448,12 +471,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "ObsoleteClass"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "ObsoleteClass"
+            }
+          ],
           "numDescendants": 1,
           "numHierarchicalDescendants": 1,
           "ontologyId": {
@@ -485,7 +510,8 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "properties": [
@@ -512,12 +538,14 @@
           "imported": false,
           "isObsolete": true,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "DeprecatedDataProperty"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "DeprecatedDataProperty"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -549,7 +577,8 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedObjectProperty",
@@ -574,12 +603,14 @@
           "imported": false,
           "isObsolete": true,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "DeprecatedObjectProperty"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "DeprecatedObjectProperty"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -611,7 +642,8 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedDataProperty",
@@ -635,12 +667,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "NonDeprecatedDataProperty"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "NonDeprecatedDataProperty"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -672,7 +706,8 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedObjectProperty",
@@ -696,12 +731,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "NonDeprecatedObjectProperty"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "NonDeprecatedObjectProperty"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -733,7 +770,8 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [
@@ -758,12 +796,14 @@
           "http://www.w3.org/2002/07/owl#deprecated": true,
           "imported": false,
           "isObsolete": true,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "DeprecatedIndividual"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "DeprecatedIndividual"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -795,7 +835,8 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedIndividual",
@@ -817,12 +858,14 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
           "imported": false,
           "isObsolete": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "NonDeprecatedIndividual"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "NonDeprecatedIndividual"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -854,10 +897,12 @@
           "appearsIn": [
             "isobsolete"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

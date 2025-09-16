@@ -1,0 +1,38 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/PRIDE_0000674",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "human gut",
+  "ontology_name": "partof",
+  "ontology_prefix": "partof",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "PRIDE_0000674",
+  "obo_id": "PRIDE:0000674",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPRIDE_0000674?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPRIDE_0000674/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPRIDE_0000674/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPRIDE_0000674/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPRIDE_0000674/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPRIDE_0000674/graph"
+    }
+  }
+}

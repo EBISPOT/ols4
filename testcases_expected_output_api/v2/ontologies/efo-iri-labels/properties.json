@@ -44,7 +44,9 @@
       "efo-iri-labels"
     ],
     "curie": "BFO:0000054",
-    "definition": "Paraphrase of elucidation: a relation between a realizable entity and a process, where there is some material entity that is bearer of the realizable entity and participates in the process, and the realizable entity comes to be realized in the course of the process",
+    "definition": [
+      "Paraphrase of elucidation: a relation between a realizable entity and a process, where there is some material entity that is bearer of the realizable entity and participates in the process, and the realizable entity comes to be realized in the course of the process"
+    ],
     "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -59,7 +61,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "realized in",
+    "label": [
+      "realized in"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

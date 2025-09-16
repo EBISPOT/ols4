@@ -10,6 +10,8 @@ import java.io.InputStreamReader;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.BASE_URI;
+
 public class LinkerPass1 {
 
     private static final Gson gson = new Gson();
@@ -91,7 +93,7 @@ public class LinkerPass1 {
 							ids.add(ontologyId);
 						}
 
-					} else if(key.equals("base_uri")) {
+					} else if(key.equals(BASE_URI.getText())) {
 
 						JsonArray baseUris = jsonParser.parse(jsonReader).getAsJsonArray();
 						for(JsonElement baseUri : baseUris) {
@@ -234,6 +236,7 @@ public class LinkerPass1 {
 		JsonElement curie = null;
 		Set<String> definedBy = new HashSet<>();
 		Set<String> types = null;
+		boolean isObsolete = false;
 
         while(jsonReader.peek() != JsonToken.END_OBJECT) {
             String key = jsonReader.nextName();
@@ -246,6 +249,8 @@ public class LinkerPass1 {
 				curie = jsonParser.parse(jsonReader);
 			} else if(key.equals("type")) {
                 types = gson.fromJson(jsonReader, Set.class);
+			} else if(key.equals("isObsolete")) {
+				isObsolete = jsonReader.nextBoolean();
 			} else if(key.equals("http://www.w3.org/2000/01/rdf-schema#isDefinedBy")) {
 				JsonElement jsonDefinedBy = jsonParser.parse(jsonReader);
 				if(jsonDefinedBy.isJsonArray()) {
@@ -290,6 +295,7 @@ public class LinkerPass1 {
         entityDefinition.entityTypes = types;
         entityDefinition.label = label;
 		entityDefinition.curie = curie;
+		entityDefinition.isObsolete = isObsolete;
 
         EntityDefinitionSet definitionSet = result.iriToDefinitions.get(iri);
 

@@ -5,7 +5,9 @@ if [ $# == 0 ]; then
     exit 1
 fi
 
-$1/bin/neo4j start
+export NEO4J_AUTH=none
+
+$1/bin/neo4j start --verbose
 sleep 20
 
 echo Creating neo4j indexes...

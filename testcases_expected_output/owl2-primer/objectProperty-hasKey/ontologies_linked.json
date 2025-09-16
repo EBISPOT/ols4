@@ -6,7 +6,7 @@
       "exportsTo": [],
       "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#",
       "preferredPrefix": "owl2primer-objectProperty-hasKey",
-      "ontology_purl": "./testcases/owl2-primer/objectProperty-hasKey.owl",
+      "ontologyPurl": "./testcases/owl2-primer/objectProperty-hasKey.owl",
       "type": [
         "ontology"
       ],
@@ -15,12 +15,14 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/objectProperty-hasKey.owl",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -49,12 +51,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -97,12 +93,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Address"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Address"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -134,7 +132,8 @@
           "appearsIn": [
             "owl2primer-objectproperty-haskey"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#Business",
@@ -161,12 +160,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Business"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Business"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -202,12 +203,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "businessAddress"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "businessAddress"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -220,7 +223,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress"
+          ]
         }
       ],
       "properties": [
@@ -248,12 +254,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "businessAddress"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "businessAddress"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -289,12 +297,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#Business": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Business"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Business"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -309,12 +319,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#Address": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Address"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Address"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -326,7 +338,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#Address",
+            "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#Business"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#hasSSN",
@@ -350,12 +366,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "hasSSN"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasSSN"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -387,7 +405,8 @@
           "appearsIn": [
             "owl2primer-objectproperty-haskey"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [
@@ -411,12 +430,14 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
           "imported": false,
           "isObsolete": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "a"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "a"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -448,7 +469,8 @@
           "appearsIn": [
             "owl2primer-objectproperty-haskey"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#b1",
@@ -471,12 +493,14 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
           "imported": false,
           "isObsolete": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "b1"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "b1"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -512,12 +536,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "businessAddress"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "businessAddress"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -533,12 +559,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#a": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "a"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "a"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -550,7 +578,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#a",
+            "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#b2",
@@ -573,12 +605,14 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
           "imported": false,
           "isObsolete": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "b2"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "b2"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -614,12 +648,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "businessAddress"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "businessAddress"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -635,12 +671,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#a": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "a"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "a"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -652,10 +690,15 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#a",
+            "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress"
+          ]
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

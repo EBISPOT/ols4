@@ -1,12 +1,131 @@
 {
   "ontologies": [
     {
-      "id": "upheno",
-      "ontology_purl": "https://github.com/obophenotype/upheno-dev/releases/latest/download/upheno.owl"
+      "id": "gold",
+      "ontology_purl": "https://raw.githubusercontent.com/cmungall/gold-ontology/refs/heads/main/gold.owl"
+    },
+    {
+      "id": "mondo",
+      "ontology_purl": "https://purl.obolibrary.org/obo/mondo/mondo-international.owl"
+    },
+    {
+      "id": "evorao",
+      "definition_property": [
+        "http://www.w3.org/2004/02/skos/core#definition"
+      ],
+      "ontology_purl": "https://raw.githubusercontent.com/EVORA-project/evora-ontology/refs/heads/main/models/owl/evora_ontology.owl.ttl",
+      "base_uri": ["https://w3id.org/evorao/"]
+    },
+    {
+      "id": "ictv",
+      "ontology_purl": "https://github.com/EVORA-project/ictv-ontology/releases/latest/download/ictv_all_versions.owl.ttl.gz",
+      "preferred_root_term": [
+        "http://purl.obolibrary.org/obo/NCBITaxon_10239"
+      ]
     },
     {
       "id": "uniprotrdfs",
       "ontology_purl": "https://ftp.uniprot.org/pub/databases/uniprot/current_release/rdf/core.owl"
+    },
+    {
+      "id": "dmba",
+      "creator": ["David Osumi-Sutherland", "Huseyin Kir"],
+      "is_foundary": false,
+      "preferredPrefix": "DMBA",
+      "title": "Developing Mouse Brain Atlas Ontology",
+      "uri": "https://purl.brain-bican.org/ontology/dmbao/dmbao.owl",
+      "description": "An application ontology built by combining ontologised versions of the Allen Institute Developing Mouse Brain Atlas (DMBA) StructureGraph mapped to Uberon.",
+      "homepage": "https://purl.brain-bican.org/ontology/dmbao",
+      "mailing_list": "cellsemantics@gmail.com",
+      "label_property": [
+        "rdfs:label",
+        "IAO:0000589",
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ],
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": "https://purl.brain-bican.org/ontology/dmbao/DMBA_",
+      "reasoner": "OWL2",
+      "oboSlims": false,
+      "ontology_purl": "https://purl.brain-bican.org/ontology/dmbao/dmbao.owl"
+    },
+    {
+      "id": "mba",
+      "creator": ["David Osumi-Sutherland", "Huseyin Kir"],
+      "is_foundary": false,
+      "preferredPrefix": "MBA",
+      "title": "Mouse Brain Atlas Ontology",
+      "uri": "https://purl.brain-bican.org/ontology/mbao/mbao.owl",
+      "description": "An application ontology built by combining ontologised versions of the Allen Institute Mouse Brain Atlas (MBA) StructureGraph mapped to Uberon.",
+      "homepage": "https://purl.brain-bican.org/ontology/mbao",
+      "mailing_list": "cellsemantics@gmail.com",
+      "label_property": [
+        "rdfs:label",
+        "IAO:0000589",
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ],
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": "https://purl.brain-bican.org/ontology/mbao/MBA_",
+      "reasoner": "OWL2",
+      "oboSlims": false,
+      "ontology_purl": "https://purl.brain-bican.org/ontology/mbao/mbao.owl"
+    },
+    {
+      "id": "emi",
+      "creator": [
+        "Tarcisio Mendes de Farias",
+        "Luca Cappelletti",
+        "Marco Pagni",
+        "Arnaud Gaudry",
+        "Florence Mehl",
+        "Ana Claudia Sima",
+        "Pierre-Marie Allard",
+        "Disha Tandon",
+        "The Earth Metabolome Initiative Consortium"
+      ],
+      "is_foundary": false,
+      "preferredPrefix": "EMI",
+      "title": "The Earth Metabolome Initiative (EMI) ontology",
+      "uri": "https://w3id.org/emi",
+      "description": "The Earth Metabolome Initiative (EMI) ontology is designed to capture and structure the metabolic content of all currently known species on our planet.",
+      "homepage": "https://w3id.org/emi",
+      "mailing_list": "kru@sib.swiss",
+      "label_property": [
+        "rdfs:label",
+        "http://www.w3.org/2004/02/skos/core#altLabel",
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ],
+      "definition_property": [
+        "rdfs:comment",
+        "http://www.w3.org/2004/02/skos/core#definition"
+      ],
+      "synonym_property": [
+        "http://www.w3.org/2004/02/skos/core#closeMatch"
+      ],
+      "hierarchical_property": [
+        "rdfs:subClassOf",
+        "rdfs:subPropertyOf"
+      ],
+      "hidden_property": "List of properties to that are ignored when rendering the ontology.",
+      "base_uri": "https://w3id.org/emi#",
+      "reasoner": "Hermit",
+      "oboSlims": false,
+      "ontology_purl": "https://w3id.org/emi/ols.ttl"
     },
     {
       "id": "hra",
@@ -29,7 +148,7 @@
     },
     {
       "id": "biolink",
-      "ontology_purl": "https://github.com/biolink/biolink-model/raw/master/project/owl/biolink_model.owl.ttl",
+      "ontology_purl": "https://w3id.org/biolink/biolink-model.owl.ttl",
       "homepage": "https://biolink.github.io/biolink-model/"
     },
     {
@@ -132,7 +251,7 @@
       "id": "slm",
       "title": "SwissLipids",
       "description": "SwissLipids is a curated resource that provides information about known lipids, including lipid structure, metabolism, interactions, and subcellular and tissue localization. Information is curated from peer-reviewed literature and referenced using established ontologies, and provided with full provenance and evidence codes for curated assertions.",
-      "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/prod/local_ontologies/swisslipids.ttl",
+      "ontology_purl": "file:///mnt/nfs/local_ontologies/swisslipids.ttl",
       "preferredPrefix": "SLM",
       "base_uri": [
         "https://swisslipids.org/rdf/SLM_"
@@ -239,7 +358,7 @@
       "base_uri": [
         "http://purl.obolibrary.org/obo/PHI_"
       ],
-      "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/prod/local_ontologies/phi.owl"
+      "ontology_purl": "file:///mnt/nfs/local_ontologies/phi.owl"
     },
     {
       "id": "msio",
@@ -394,7 +513,7 @@
         "http://identifiers.org/teddy/TEDDY_"
       ],
       "oboSlims": false,
-      "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/prod/local_ontologies/teddy-inferred-fixed.owl"
+      "ontology_purl": "file:///mnt/nfs/local_ontologies/teddy-inferred-fixed.owl"
     },
     {
       "id": "edam",
@@ -628,7 +747,7 @@
         "http://www.probonto.org/core"
       ],
       "oboSlims": false,
-      "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/prod/local_ontologies/probonto.ttl"
+      "ontology_purl": "file:///mnt/nfs/local_ontologies/probonto.ttl"
     },
     {
       "id": "pride",
@@ -647,9 +766,6 @@
       "base_uri": [
         "http://purl.obolibrary.org/obo/PRIDE_"
       ],
-      "hierarchical_property": [
-        "http://purl.obolibrary.org/obo/pride_cv.obo#part_of"
-      ],
       "oboSlims": false,
       "ontology_purl": "https://raw.githubusercontent.com/PRIDE-Utilities/pride-ontology/master/pride_cv.owl"
     },
@@ -660,7 +776,7 @@
       "uri": "http://www.bioassayontology.org/bao/bao_complete.owl",
       "description": "The BioAssay Ontology (BAO) describes biological screening assays and their results including high-throughput screening (HTS) data for the purpose of categorizing assays and data analysis. BAO is an extensible, knowledge-based, highly expressive (currently SHOIQ(D)) description of biological assays making use of descriptive logic based features of the Web Ontology Language (OWL). BAO currently has over 700 classes and also makes use of several other ontologies. It describes several concepts related to biological screening, including Perturbagen, Format, Meta Target, Design, Detection Technology, and Endpoint. Perturbagens are perturbing agents that are screened in an assay; they are mostly small molecules. Assay Meta Target describes what is known about the biological system and / or its components interrogated in the assay (and influenced by the Perturbagen). Meta target can be directly described as a molecular entity (e.g. a purified protein or a protein complex), or indirectly by a biological process or event (e.g. phosphorylation). Format describes the biological or chemical features common to each test condition in the assay and includes biochemical, cell-based, organism-based, and variations thereof. The assay Design describes the assay methodology and implementation of how the perturbation of the biological system is translated into a detectable signal. Detection Technology relates to the physical method and technical details to detect and record a signal. Endpoints are the final HTS results as they are usually published (such as IC50, percent inhibition, etc). BAO has been designed to accommodate multiplexed assays. All main BAO components include multiple levels of sub-categories and specification classes, which are linked via object property relationships forming an expressive knowledge-based representation.",
       "homepage": "http://bioassayontology.org",
-      "mailing_list": "http://bioassayontology.org/wp/contact-us/",
+      "mailing_list": "bao@miamiedu.onmicrosoft.com",
       "definition_property": [
         "http://purl.obolibrary.org/obo/IAO_0000115",
         "http://www.ebi.ac.uk/efo/definition"
@@ -1132,7 +1248,7 @@
       ],
       "reasoner": "EL",
       "oboSlims": false,
-      "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/prod/local_ontologies/snomed-inferred.owl",
+      "ontology_purl": "file:///mnt/nfs/local_ontologies/snomed-inferred.owl",
       "allowDownload": false
     },
     {
@@ -1325,6 +1441,200 @@
         "http://purl.obolibrary.org/obo/ms#part_of",
         "http://purl.obolibrary.org/obo/BFO_0000050"
       ]
+    },
+    {
+      "id": "lifestylefactors",
+      "preferredPrefix": "LIFESTYLEFACTORS",
+      "title": "Lifestyle Factors Ontology",
+      "creator": [
+        "Esmaeil Nourani",
+        "Mikaela Koutrouli",
+        "Yijia Xie",
+        "Danai Vagiaki",
+        "Sampo Pyysalo",
+        "Katerina Nastou",
+        "Søren Brunak",
+        "Lars Juhl Jensen"
+      ],
+      "uri": "https://bioportal.bioontology.org/ontologies/LSFO",
+      "description": "In this ontology, we defined nine distinct categories that encompass various aspects of lifestyle factors (LSFs), creating a unified Lifestyle Factors Ontology (LSFO) across these categories. Within the context of lifestyle, we have identified nine categories that can collectively describe all LSFs, namely: 1-Nutrition, a category that covers different branches such as dietary habits, food groups, food processing and preparation, macronutrients, and micronutrients, among others. 2-Socioeconomic factors, which includes social and economic conditions such as income, wealth, education and socioeconomic status. 3-Environmental exposures, includes exposure to various environmental factors, such as air pollution, water quality, and workplace hazards, that can impact an individual’s health. 4-Substance use, covers concepts such as smoking, as well as illicit drug use. 5-Physical activities, includes regular exercise and physically demanding activities like leisure time, occupational, and household physical activities. 6-Non-physical leisure time activities, describes any activity an individual might engage in during their free time that is not a physical activity. 7-Personal care products and cosmetic procedures, covers activities related to hygiene, use of cosmetic and cleaning products as well as invasive procedures that people undergo to improve their appearance, such as cosmetic surgery. 8-Sleep, covers sleep quality, stages, and habits. 9-Mental health practices, includes the behaviors and habits related to maintaining good mental health and emotional well-being such as meditation, and psychotherapy.",
+      "homepage": "https://bioportal.bioontology.org/ontologies/LSFO",
+      "mailing_list": "esmaeil.nourani@gmail.com, esmaeil.nourani@cpr.ku.dk, lars.juhl.jensen@cpr.ku.dk, katerina.nastou@cpr.ku.dk",
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"
+      ],
+      "ontology_purl": "https://raw.githubusercontent.com/EsmaeilNourani/Lifestyle-factors-ontology/main/LSFO/owl/LSFO.owl"
+    },
+    {
+      "id": "credit",
+      "creator": [
+        "Liz Allen"
+      ],
+      "is_foundary": false,
+      "preferredPrefix": "credit",
+      "title": "Contributor Roles Taxonomy",
+      "uri": "https://w3id.org/biopragmatics/resources/credit/credit.owl",
+      "description": "CRediT (Contributor Roles Taxonomy) is high-level taxonomy, including 14 roles, that can be used to represent the roles typically played by contributors to scientific scholarly output. The roles describe each contributor’s specific contribution to the scholarly output.",
+      "homepage": "https://credit.niso.org/",
+      "mailing_list": null,
+      "label_property": "https://www.w3.org/2000/01/rdf-schema#label",
+      "definition_property": [
+        "http://purl.org/dc/terms/description"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasCloseSynonym"
+      ],
+      "hierarchical_property": [
+        "https://www.w3.org/2000/01/rdf-schema#subclassOf"
+      ],
+      "hidden_property": [],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/",
+        "https://credit.niso.org/contributor-roles/"
+      ],
+      "reasoner": "none",
+      "oboSlims": false,
+      "ontology_purl": "https://w3id.org/biopragmatics/resources/credit/credit.owl"
+    },
+    {
+      "id": "mesh",
+      "creator": [
+        "National Library of Medicine"
+      ],
+      "is_foundary": false,
+      "preferredPrefix": "mesh",
+      "title": "Medical Subject Headings",
+      "uri": "https://w3id.org/biopragmatics/resources/mesh/mesh.owl.gz",
+      "description": "MeSH (Medical Subject Headings) is the National Library of Medicine's controlled vocabulary thesaurus. It consists of sets of terms naming descriptors in a hierarchical structure that permits searching at various levels of specificity. This thesaurus is used by NLM for indexing articles from biomedical journals, cataloguing of books, documents, etc.",
+      "homepage": "https://www.nlm.nih.gov/",
+      "mailing_list": "custserv@nlm.nih.gov",
+      "label_property": "https://www.w3.org/2000/01/rdf-schema#label",
+      "definition_property": [
+        "http://purl.org/dc/terms/description"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasCloseSynonym"
+      ],
+      "hierarchical_property": [
+        "https://www.w3.org/2000/01/rdf-schema#subclassOf"
+      ],
+      "hidden_property": [],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/",
+        "http://id.nlm.nih.gov/mesh/"
+      ],
+      "reasoner": "none",
+      "oboSlims": false,
+      "ontology_purl": "https://w3id.org/biopragmatics/resources/mesh/mesh.owl.gz"
+    },
+    {
+      "id": "hgnc",
+      "creator": [
+        "Elspeth Bruford"
+      ],
+      "is_foundary": false,
+      "preferredPrefix": "hgnc",
+      "title": "HUGO Gene Nomenclature Committee",
+      "uri": "https://w3id.org/biopragmatics/resources/hgnc/hgnc.owl.gz",
+      "description": "The HGNC (HUGO Gene Nomenclature Committee) provides an approved gene name and symbol (short-form abbreviation) for each known human gene.  All approved symbols are stored in the HGNC database, and each symbol is unique. HGNC identifiers refer to records in the HGNC symbol database.",
+      "homepage": "http://www.genenames.org",
+      "mailing_list": "hgnc@genenames.org",
+      "label_property": "https://www.w3.org/2000/01/rdf-schema#label",
+      "definition_property": [
+        "http://purl.org/dc/terms/description"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasCloseSynonym"
+      ],
+      "hierarchical_property": [
+        "https://www.w3.org/2000/01/rdf-schema#subclassOf"
+      ],
+      "hidden_property": [],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/",
+        "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/"
+      ],
+      "reasoner": "none",
+      "oboSlims": false,
+      "ontology_purl": "https://w3id.org/biopragmatics/resources/hgnc/hgnc.owl.gz"
+    },
+    {
+      "id": "wikipathways",
+      "creator": [
+        "Egon Willighagen"
+      ],
+      "is_foundary": false,
+      "preferredPrefix": "wikipathways",
+      "title": "WikiPathways",
+      "uri": "https://w3id.org/biopragmatics/resources/wikipathways/wikipathways.owl",
+      "description": "WikiPathways is a database of biological pathways maintained by and for the scientific community.",
+      "homepage": "http://www.wikipathways.org/",
+      "mailing_list": "egon.willighagen@gmail.com",
+      "label_property": "https://www.w3.org/2000/01/rdf-schema#label",
+      "definition_property": [
+        "http://purl.org/dc/terms/description"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasCloseSynonym"
+      ],
+      "hierarchical_property": [
+        "https://www.w3.org/2000/01/rdf-schema#subclassOf"
+      ],
+      "hidden_property": [],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/",
+        "http://identifiers.org/wikipathways/"
+      ],
+      "reasoner": "none",
+      "oboSlims": false,
+      "ontology_purl": "https://w3id.org/biopragmatics/resources/wikipathways/wikipathways.owl"
+    },
+    {
+      "id": "ror",
+      "creator": [
+        "Maria Gould"
+      ],
+      "is_foundary": false,
+      "preferredPrefix": "ror",
+      "title": "Research Organization Registry",
+      "uri": "https://w3id.org/biopragmatics/resources/ror/ror.owl.gz",
+      "description": "ROR (Research Organization Registry) is a global, community-led registry\nof open persistent identifiers for research organizations. ROR is jointly\noperated by California Digital Library, Crossref, and Datacite.",
+      "homepage": "https://ror.org",
+      "mailing_list": "info@ror.org",
+      "label_property": "https://www.w3.org/2000/01/rdf-schema#label",
+      "definition_property": [
+        "http://purl.org/dc/terms/description"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasCloseSynonym"
+      ],
+      "hierarchical_property": [
+        "https://www.w3.org/2000/01/rdf-schema#subclassOf"
+      ],
+      "hidden_property": [],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/",
+        "https://ror.org/"
+      ],
+      "reasoner": "none",
+      "oboSlims": false,
+      "ontology_purl": "https://w3id.org/biopragmatics/resources/ror/ror.owl.gz"
     }
   ]
 }

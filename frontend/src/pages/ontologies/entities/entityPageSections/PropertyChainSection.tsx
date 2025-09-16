@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { asArray, randomString } from "../../../../app/util";
 import ClassExpression from "../../../../components/ClassExpression";
+import PropertyValuesList from "../../../../components/PropertyValuesList";
 import Entity from "../../../../model/Entity";
 import LinkedEntities from "../../../../model/LinkedEntities";
 import Property from "../../../../model/Property";
@@ -27,34 +28,22 @@ export default function PropertyChainSection({
     propertyChains.filter((chain) => Array.isArray(chain)).length > 0;
 
   return (
-    <div>
-      <div className="font-bold">
-        {hasMultipleChains ? "Property chains" : "Property chain"}
-      </div>
-      {!hasMultipleChains ? (
-        <p>
-          <PropertyChain
-            propertyChain={propertyChains}
-            entity={entity}
-            linkedEntities={linkedEntities}
-          />
-        </p>
-      ) : (
-        <ul className="list-disc list-inside">
-          {propertyChains.map((propertyChain) => {
-            return (
-              <li key={randomString()}>
-                <PropertyChain
-                  propertyChain={propertyChain}
-                  entity={entity}
-                  linkedEntities={linkedEntities}
-                />
-              </li>
-            );
-          })}
-        </ul>
+    <PropertyValuesList
+      values={propertyChains}
+      title={hasMultipleChains ? "Property chains" : "Property chain"}
+      renderValue={(propertyChain) => (
+        <PropertyChain
+          propertyChain={propertyChain}
+          entity={entity}
+          linkedEntities={linkedEntities}
+        />
       )}
-    </div>
+      searchFilter={(propertyChain, searchQuery) => {
+        // Convert property chain to searchable string
+        const chainStr = JSON.stringify(propertyChain).toLowerCase();
+        return chainStr.includes(searchQuery);
+      }}
+    />
   );
 }
 

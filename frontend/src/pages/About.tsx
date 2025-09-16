@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import Header from "../components/Header";
+import urlJoin from "url-join";
 
 export default function About() {
   document.title = "Ontology Lookup Service (OLS)";
@@ -100,7 +101,7 @@ export default function About() {
             agreeing to this as outlined in our&thinsp;
             <a
               className="link-default"
-              href="https://www.ebi.ac.uk/data-protection/privacy-notice/embl-ebi-public-website"
+              href={urlJoin(process.env.PUBLIC_URL!, "/Privacy_notice_for_EMBL-EBI_Public_Website.pdf")}
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -120,7 +121,7 @@ export default function About() {
           <p className="my-2">
             <a
               className="link-default"
-              href="https://www.ebi.ac.uk/data-protection/privacy-notice/ols"
+              href={urlJoin(process.env.PUBLIC_URL!, "/Privacy_notice_for_OLS_submission_service_email_based.pdf")}
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -133,7 +134,7 @@ export default function About() {
           <p className="my-2">
             <a
               className="link-default"
-              href="https://www.ebi.ac.uk/data-protection/privacy-notice/ols-mailing-list"
+              href={urlJoin(process.env.PUBLIC_URL!, "/Privacy_notice_for_OLS_mailing_list.pdf")}
               rel="noopener noreferrer"
               target="_blank"
             >

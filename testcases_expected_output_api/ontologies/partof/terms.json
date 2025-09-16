@@ -46,6 +46,50 @@
   {
     "_links": {
       "ancestors": {
+        "href": "<base>/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPRIDE_0000675/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPRIDE_0000675/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPRIDE_0000675/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPRIDE_0000675/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPRIDE_0000675/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPRIDE_0000675/parents"
+      },
+      "part_of": {
+        "href": "<base>/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPRIDE_0000675/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252Fpride%2523part_of"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPRIDE_0000675?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/PRIDE_0000675",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "sample name",
+    "lang": "en",
+    "obo_id": "PRIDE:0000675",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
+    "ontology_name": "partof",
+    "ontology_prefix": "partof",
+    "short_form": "PRIDE_0000675",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
         "href": "<base>/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003684/ancestors"
       },
       "graph": {
@@ -62,9 +106,6 @@
       },
       "parents": {
         "href": "<base>/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003684/parents"
-      },
-      "part_of": {
-        "href": "<base>/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003684/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000050"
       },
       "self": {
         "href": "<base>/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003684?lang=en"
@@ -123,6 +164,44 @@
     "ontology_name": "partof",
     "ontology_prefix": "partof",
     "short_form": "MS_1000353",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPRIDE_0000674/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPRIDE_0000674/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPRIDE_0000674/graph"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPRIDE_0000674/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPRIDE_0000674/hierarchicalDescendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/partof/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FPRIDE_0000674?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/PRIDE_0000674",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "human gut",
+    "lang": "en",
+    "obo_id": "PRIDE:0000674",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
+    "ontology_name": "partof",
+    "ontology_prefix": "partof",
+    "short_form": "PRIDE_0000674",
     "synonyms": []
   },
   {

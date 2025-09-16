@@ -1,20 +1,17 @@
 <a href="https://github.com/EBISPOT/ols4/actions/workflows/test.yml"><img src="https://github.com/EBISPOT/ols4/actions/workflows/test.yml/badge.svg"/></a>
 
-OLS4 is available at <b>[https://www.ebi.ac.uk/ols4/](https://www.ebi.ac.uk/ols4/)</b>. Please report any issues to the
-tracker in this repository.
+The Ontology Lookup Service (OLS) is a repository for biomedical ontologies that aims to provide a single point of access to the latest ontology versions. It provides a [website](https://www.ebi.ac.uk/ols4/), [REST API](https://www.ebi.ac.uk/ols4/api-docs), and [MCP server](https://www.ebi.ac.uk/ols4/mcp).
+
+See also:
+
+* The public OLS instance at EMBL-EBI: <b>[https://www.ebi.ac.uk/ols4/](https://www.ebi.ac.uk/ols4/)</a></b>
+* [<i>OLS4: a new Ontology Lookup Service for a growing interdisciplinary knowledge ecosystem</i>](https://academic.oup.com/bioinformatics/article/41/5/btaf279/8125017)
+* [REST API docs](https://www.ebi.ac.uk/ols4/api-docs)
+* MCP endpoint: `https://wwwdev.ebi.ac.uk/ols4/api/mcp/sse`
+
+If you use OLS in your work, please cite [our recent publication in <i>Bioinformatics</i>](https://academic.oup.com/bioinformatics/article/41/5/btaf279/8125017).
 
 ---
-
-Version 4 of the EMBL-EBI Ontology Lookup Service (OLS), featuring:
-
-* Much faster dataload (loads the OBO foundry in hours instead of days)
-* Modular dataload pipeline with decoupled, individually testable stages
-* Automated CI testing of the dataload with minimal testcase ontologies
-* A lossless data representation: everything in the ontology is preserved in the databases
-* Coverage of the whole OWL2 spec, and also loads vocabularies defined purely in RDFS
-* Uses updated versions of Solr and Neo4j (no embedded databases, no MongoDB)
-* React frontend using Redux and Tailwind
-* Backwards compatibility with the OLS3 API
 
 This repository contains three projects:
 
@@ -241,12 +238,11 @@ First, make sure the configuration files (that determine which ontologies to loa
 
 Run Neo4j `import` command:
 
-    ./neo4j-admin import \
+    ./neo4j-admin database import full \
     --ignore-empty-strings=true \
     --legacy-style-quoting=false \
     --array-delimiter="|" \
     --multiline-fields=true \
-    --database=neo4j \
     --read-buffer-size=134217728 \
     $(<LOCAL_DIR>/make_csv_import_cmd.sh)
 
@@ -407,7 +403,7 @@ new expected output:
 
         git add -A testcases_expected_output
  
-8. Commit the updates to testcases to a branch with suffix `-testcases`.
+8. Commit the updates to testcases to a branch with suffix `-testcases` and message "TESTCASES updated".
 9. Now continue with API testing.
 
 ### Testing API
@@ -440,7 +436,7 @@ the old `testcases_expected_output_api` and replace with new expected output:
 
         git add -A testcases_expected_output_api
 
-16. Commit the API tests to a branch with suffix `-api-tests`.
+16. Commit the API tests to a branch with suffix `-api-tests` and message "API-TESTS updated".
 
 17. You can stop the OLS4 backend with "Ctrl-C", and Solr and Neo4J with:
 

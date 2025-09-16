@@ -6,7 +6,7 @@
       "exportsTo": [],
       "iri": "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals.owl",
       "preferredPrefix": "owl2primer-different-individuals",
-      "ontology_purl": "./testcases/owl2-primer/different-individuals.owl",
+      "ontologyPurl": "./testcases/owl2-primer/different-individuals.owl",
       "type": [
         "ontology"
       ],
@@ -15,12 +15,14 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/different-individuals.owl",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -49,12 +51,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -92,12 +88,14 @@
           "http://www.w3.org/2002/07/owl#differentFrom": "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals#John",
           "imported": false,
           "isObsolete": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Bill"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Bill"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -133,12 +131,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals#John": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "John"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "John"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -150,7 +150,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals#John"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals#John",
@@ -173,12 +176,14 @@
           "http://www.w3.org/2002/07/owl#differentFrom": "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals#Bill",
           "imported": false,
           "isObsolete": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "John"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "John"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -214,12 +219,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals#Bill": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Bill"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Bill"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -231,10 +238,14 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals#Bill"
+          ]
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

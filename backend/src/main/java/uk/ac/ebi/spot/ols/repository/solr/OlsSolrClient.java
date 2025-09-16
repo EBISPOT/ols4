@@ -17,6 +17,7 @@ import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
@@ -33,14 +34,16 @@ public class OlsSolrClient {
 
 
     @NotNull
-    @org.springframework.beans.factory.annotation.Value("${ols.solr.host:http://localhost:8999}")
-    public String host = "http://localhost:8999";
+    @org.springframework.beans.factory.annotation.Value("${ols.solr.host:http://localhost:8983}")
+    public String host = "http://localhost:8983";
 
 
     private Gson gson = new Gson();
 
     private static final Logger logger = LoggerFactory.getLogger(OlsSolrClient.class);
-    public static final int MAX_ROWS = 1000;
+
+    @Value("${ols.solr.max-rows:1000}")
+    private int maxRows;
 
     public Map<String,Object> getCoreStatus() throws IOException {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
@@ -113,7 +116,7 @@ public class OlsSolrClient {
 
         if(pageable != null) {
             query.setStart((int)pageable.getOffset());
-            query.setRows(pageable.getPageSize() > MAX_ROWS ? MAX_ROWS : pageable.getPageSize());
+            query.setRows(pageable.getPageSize() > maxRows ? maxRows : pageable.getPageSize());
         }
 
         logger.debug("solr rows: {} ", query.getRows());
@@ -143,7 +146,7 @@ public class OlsSolrClient {
 
     public QueryResponse dispatchSearch(SolrQuery query, String core) throws IOException, SolrServerException {
         org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/" + core).build();
-        final int rows = query.getRows().intValue() > MAX_ROWS ? MAX_ROWS : query.getRows().intValue();
+        final int rows = query.getRows().intValue() > maxRows ? maxRows : query.getRows().intValue();
         query.setRows(rows);
         QueryResponse qr = mySolrClient.query(query);
         mySolrClient.close();

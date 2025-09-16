@@ -4,9 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.*;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
@@ -32,6 +32,11 @@ public class CrossOriginResourceSharingFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
+        // Alwasy add CORS headers. add CORS "pre-flight" request headers
+        httpResponse.addHeader("Access-Control-Allow-Origin", "*");
+        httpResponse.addHeader("Access-Control-Allow-Headers", "*");
+        httpResponse.addHeader("Access-Control-Allow-Methods", "GET");
+        httpResponse.addHeader("Access-Control-Max-Age", "3600");
 
         // is this a CORS request?
         if (httpRequest.getHeader("Origin") != null) {
@@ -39,12 +44,6 @@ public class CrossOriginResourceSharingFilter implements Filter {
             String requestURI = httpRequest.getRequestURI();
             getLog().trace("Possible cross-origin request received from '" + origin + "' to IRI: " +
                                    "'" + requestURI + "'.  Enabling CORS.");
-
-            // add CORS "pre-flight" request headers
-            httpResponse.addHeader("Access-Control-Allow-Origin", "*");
-            httpResponse.addHeader("Access-Control-Allow-Headers", "*");
-            httpResponse.addHeader("Access-Control-Allow-Methods", "GET");
-            httpResponse.addHeader("Access-Control-Allow-Credentials", "true");
         }
 
         chain.doFilter(request, response);

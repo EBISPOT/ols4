@@ -6,7 +6,7 @@
       "exportsTo": [],
       "iri": "http://www.ebi.ac.uk/testcases/owl2primer/complex-class-assertions-with-negation.rdf",
       "preferredPrefix": "owl2primer-complex-class-assertions-with-negation",
-      "ontology_purl": "./testcases/owl2-primer/complex-class-assertions-with-negation.rdf",
+      "ontologyPurl": "./testcases/owl2-primer/complex-class-assertions-with-negation.rdf",
       "type": [
         "ontology"
       ],
@@ -15,12 +15,14 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/complex-class-assertions-with-negation.rdf",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -49,12 +51,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -103,12 +99,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Parent"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Parent"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -140,7 +138,8 @@
           "appearsIn": [
             "owl2primer-complex-class-assertions-with-negation"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/complex-class-assertions-with-negation.rdf#Person",
@@ -164,12 +163,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Person"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Person"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -201,7 +202,8 @@
           "appearsIn": [
             "owl2primer-complex-class-assertions-with-negation"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "properties": [],
@@ -238,12 +240,14 @@
           ],
           "imported": false,
           "isObsolete": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Jack"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Jack"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -279,12 +283,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/complex-class-assertions-with-negation.rdf#Person": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Person"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Person"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -299,12 +305,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/complex-class-assertions-with-negation.rdf#Parent": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Parent"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Parent"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -316,10 +324,15 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/complex-class-assertions-with-negation.rdf#Person",
+            "http://www.ebi.ac.uk/testcases/owl2primer/complex-class-assertions-with-negation.rdf#Parent"
+          ]
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

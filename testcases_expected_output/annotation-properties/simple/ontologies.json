@@ -4,7 +4,7 @@
       "ontologyId": "annotation-properties-simple",
       "iri": "http://www.ebi.ac.uk/testcases/annotation-properties/simple.owl",
       "preferredPrefix": "annotation-properties-simple",
-      "ontology_purl": "./testcases/annotation-properties/simple.owl",
+      "ontologyPurl": "./testcases/annotation-properties/simple.owl",
       "type": [
         "ontology"
       ],
@@ -13,12 +13,14 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/annotation-properties/v.0.0.1/simple.owl",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -51,12 +53,6 @@
           "type": [
             "literal"
           ],
-          "value": "en"
-        },
-        {
-          "type": [
-            "literal"
-          ],
           "value": "0"
         },
         {
@@ -81,12 +77,14 @@
             ],
             "value": "MyAnnotationProperty"
           },
-          "definition": {
-            "type": [
-              "literal"
-            ],
-            "value": "For our own special use case."
-          },
+          "definition": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "For our own special use case."
+            }
+          ],
           "definitionProperty": {
             "type": [
               "literal"
@@ -114,12 +112,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "special annotation property"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "special annotation property"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {

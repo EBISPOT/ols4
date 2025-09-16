@@ -9,7 +9,7 @@ spec:
   accessModes:
   - ReadWriteOnce
   capacity:
-    storage: 250Gi
+    storage: 500Gi
   local:
     path: /var/local-disk
   nodeAffinity:

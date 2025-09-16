@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { Page } from "../../../../app/api";
 import { randomString } from "../../../../app/util";
 import EntityLink from "../../../../components/EntityLink";
+import PropertyValuesList from "../../../../components/PropertyValuesList";
 import Entity from "../../../../model/Entity";
 import LinkedEntities from "../../../../model/LinkedEntities";
 
@@ -20,24 +21,23 @@ export default function ClassInstancesSection({
     return <Fragment />;
 
   return (
-    <div>
-      <div className="font-bold">Instances</div>
-      <ul className="list-disc list-inside">
-        {classInstances &&
-          classInstances.elements.map((instance: Entity) => {
-            return (
-              <li key={randomString()}>
-                <EntityLink
-                  ontologyId={entity.getOntologyId()}
-                  currentEntity={entity}
-                  entityType="individuals"
-                  iri={instance.getIri()}
-                  linkedEntities={linkedEntities}
-                />
-              </li>
-            );
-          })}
-      </ul>
-    </div>
+    <PropertyValuesList
+      values={classInstances.elements}
+      title="Instances"
+      renderValue={(instance: Entity) => (
+        <EntityLink
+          ontologyId={entity.getOntologyId()}
+          currentEntity={entity}
+          entityType="individuals"
+          iri={instance.getIri()}
+          linkedEntities={linkedEntities}
+        />
+      )}
+      searchFilter={(instance: Entity, searchQuery: string) => {
+        const name = instance.getName()?.toLowerCase() || '';
+        const iri = instance.getIri().toLowerCase();
+        return name.includes(searchQuery) || iri.includes(searchQuery);
+      }}
+    />
   );
 }

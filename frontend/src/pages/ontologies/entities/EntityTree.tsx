@@ -33,7 +33,9 @@ import {
   showSiblings,
   setSpecificRootIri,
   getEntity,
+  getDirectChildrenCount,
 } from "../ontologiesSlice";
+import EntityList from "./EntityList";
 
 export default function EntityTree({
   ontology,
@@ -72,10 +74,12 @@ export default function EntityTree({
   const manuallyExpandedNodes = useAppSelector(
     (state) => state.ontologies.manuallyExpandedNodes
   );
+  const directChildrenCounts = useAppSelector(
+    (state) => state.ontologies.directChildrenCounts
+  );
 
-  const showObsoleteEnabled = selectedEntity
-    ? selectedEntity.isDeprecated()
-    : useAppSelector((state) => state.ontologies.displayObsolete);
+  const showObsoleteEnabled = (selectedEntity && selectedEntity.isDeprecated()) ? true : useAppSelector((state) => state.ontologies.displayObsolete);
+
   const showSiblingsEnabled = useAppSelector(
     (state) => state.ontologies.displaySiblings
   );
@@ -92,6 +96,19 @@ export default function EntityTree({
       if (isExpanded) {
         dispatch(closeNode(node));
       } else {
+        // Before expanding, check if this node has many direct children
+        if (directChildrenCounts[node.iri] === undefined) {
+          dispatch(
+            getDirectChildrenCount({
+              ontologyId: ontology.getOntologyId(),
+              entityIri: node.iri,
+              entityType: entityType === "entities" ? "classes" : entityType,
+              lang,
+              showObsoleteEnabled,
+              apiUrl,
+            })
+          );
+        }
         dispatch(openNode(node));
       }
     },
@@ -99,6 +116,12 @@ export default function EntityTree({
       dispatch,
       JSON.stringify(automaticallyExpandedNodes),
       JSON.stringify(manuallyExpandedNodes),
+      directChildrenCounts,
+      ontology,
+      entityType,
+      lang,
+      showObsoleteEnabled,
+      apiUrl,
     ]
   );
 
@@ -238,7 +261,7 @@ export default function EntityTree({
             entityIri: absId.split(";").pop(),
             absoluteIdentity: absId,
             lang,
-            showObsoleteEnabled,
+            includeObsoleteEntities: showObsoleteEnabled,
             apiUrl,
           })
         )
@@ -354,14 +377,40 @@ export default function EntityTree({
                 showCountsEnabled &&
                 childNode.numDescendants > 0 && (
                   <span style={{ color: "gray" }}>
-                    {" (" + childNode.numDescendants.toLocaleString() + ")"}
+                    {" (" + (getNumDescendants(childNode.numHierarchicalDescendants, childNode.numDescendants)).toLocaleString() + ")"}
                   </span>
                 )}
-              {isExpanded &&
-                renderNodeChildren(
-                  nodeChildren[childNode.absoluteIdentity] || [],
-                  debugNumIterations + 1
-                )}
+              {isExpanded && (() => {
+                const directChildCount = directChildrenCounts[childNode.iri];
+                if (directChildCount !== undefined && directChildCount > 1000) {
+                  // Show EntityList for nodes with >1000 direct children
+                  return (
+                    <div className="ml-4">
+                      <EntityList
+                        ontologyId={ontology.getOntologyId()}
+                        entityType={entityType === "entities" ? "classes" : entityType}
+                        parentEntityIri={childNode.iri}
+                        lang={lang}
+                        showObsoleteEnabled={showObsoleteEnabled}
+                        onNavigateToEntity={(ontologyId, entity) => {
+                          if (entity.getOntologyId() === ontologyId) {
+                            onNavigateToEntity(ontology, entity);
+                          } else {
+                            onNavigateToOntology(entity.getOntologyId(), entity);
+                          }
+                        }}
+                        title="Direct Children"
+                      />
+                    </div>
+                  );
+                } else {
+                  // Show regular tree for nodes with ≤1000 direct children
+                  return renderNodeChildren(
+                    nodeChildren[childNode.absoluteIdentity] || [],
+                    debugNumIterations + 1
+                  );
+                }
+              })()}
             </Node>
           );
         })}
@@ -443,6 +492,16 @@ export default function EntityTree({
       </div>
     </ThemeProvider>
   );
+}
+
+function getNumDescendants(hierarchicalDescendents: number, descendents: number): number {
+    if (descendents === hierarchicalDescendents) {
+        return descendents;
+    } else if (descendents > hierarchicalDescendents) {
+        return descendents;
+    } else {
+        return hierarchicalDescendents;
+    }
 }
 
 function TreeLink({

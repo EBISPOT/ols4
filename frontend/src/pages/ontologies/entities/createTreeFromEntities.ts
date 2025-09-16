@@ -61,8 +61,8 @@ export default function createTreeFromEntities(
       title: node.getName(),
       expandable: node.hasChildren(),
       entity: node,
-      numDescendants:
-        node.getNumHierarchicalDescendants() || node.getNumDescendants(),
+      numDescendants: node.getNumDescendants(),
+      numHierarchicalDescendants: node.getNumHierarchicalDescendants(),
       parentRelationToChild,
       childRelationToParent
     };

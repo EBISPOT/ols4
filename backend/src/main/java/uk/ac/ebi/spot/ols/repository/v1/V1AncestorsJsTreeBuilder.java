@@ -5,6 +5,8 @@ import com.google.common.collect.Multimap;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import uk.ac.ebi.spot.ols.JsonHelper;
+
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -80,7 +82,7 @@ public class V1AncestorsJsTreeBuilder {
         }
 
         jstreeEntry.put("iri", entityIri);
-        jstreeEntry.put("text", JsonHelper.getString(entity, "label"));
+        jstreeEntry.put("text", JsonHelper.getString(entity, LABEL.getText()));
 
         Collection<String> childIris = entityIriToChildIris.get(entityIri);
 

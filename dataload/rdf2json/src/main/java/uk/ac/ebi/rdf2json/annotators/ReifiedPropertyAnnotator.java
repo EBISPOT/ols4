@@ -9,6 +9,7 @@ import uk.ac.ebi.rdf2json.properties.PropertyValue;
 import uk.ac.ebi.rdf2json.properties.PropertyValueURI;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ReifiedPropertyAnnotator {
 
@@ -17,8 +18,19 @@ public class ReifiedPropertyAnnotator {
 	public static void annotateReifiedProperties(OntologyGraph graph) {
 
 		long startTime3 = System.nanoTime();
-		for(String id : graph.nodes.keySet()) {
-		    OntologyNode c = graph.nodes.get(id);
+
+		var nodes = graph.nodes.keySet().stream()
+			.map((String id) -> { return graph.nodes.get(id); })
+			.filter(c -> c.types.contains(OntologyNode.NodeType.AXIOM))
+			.collect(Collectors.toList());
+
+		logger.info("ReifiedPropertyAnnotator: processing {} axiom nodes", nodes.size());
+		int n = 0;
+		for(OntologyNode c : nodes) {
+			++ n;
+			if(n % 1000 == 0) {
+				logger.info("ReifiedPropertyAnnotator: processed {} of {} axiom nodes", n, nodes.size());
+			}
 			if (c.types.contains(OntologyNode.NodeType.AXIOM)) {
 
 				PropertyValue source = c.properties.getPropertyValue("http://www.w3.org/2002/07/owl#annotatedSource");

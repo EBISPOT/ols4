@@ -34,23 +34,6 @@
     -->
     <title>Ontology Lookup Service (OLS)</title>
 
-    	<!-- for graph view -->
-        <link rel="stylesheet" href="%PUBLIC_URL%/legacy/OLS-graphview.css" />
-        <link rel="stylesheet" href="%PUBLIC_URL%/legacy/vis.min.css" />
-	<script src="%PUBLIC_URL%/legacy/jquery.min.js"></script>
-	<script src="%PUBLIC_URL%/legacy/ols-graphview.js"></script>
-	<script type="text/javascript">
-		function initLegacyGraphView(endpointPrefix, termiri) {
-			var tmpnetworkOptions={ webservice : {URL: endpointPrefix, OLSschema:true}}
-			var term = termiri
-
-			var app = require("ols-graphview");
-			var instance = new app();
-
-			instance.visstart("ontology_vis", term, tmpnetworkOptions, {})
-		}
-	</script>
-
 	<!-- for 3d images -->
 	<script type="module" src="%PUBLIC_URL%/model-viewer.min.js"></script>
 

@@ -6,7 +6,7 @@
       "exportsTo": [],
       "iri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf.owl",
       "preferredPrefix": "owl2primer-intersectionOf",
-      "ontology_purl": "./testcases/owl2-primer/intersectionOf.owl",
+      "ontologyPurl": "./testcases/owl2-primer/intersectionOf.owl",
       "type": [
         "ontology"
       ],
@@ -15,12 +15,14 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/intersectionOf.owl",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -49,12 +51,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -98,12 +94,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Mother"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Mother"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -139,12 +137,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Parent"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Parent"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -159,12 +159,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Woman"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Woman"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -176,7 +178,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent",
+            "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent",
@@ -200,12 +206,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Parent"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Parent"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -237,7 +245,8 @@
           "appearsIn": [
             "owl2primer-intersectionof"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman",
@@ -261,12 +270,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Woman"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Woman"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -298,12 +309,14 @@
           "appearsIn": [
             "owl2primer-intersectionof"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "properties": [],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

@@ -1,0 +1,12 @@
+[project]
+name = "ols_top_k"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "chromadb>=1.0.15",
+    "ijson>=3.4.0",
+    "protobuf==3.19.0",
+    "setuptools>=80.9.0",
+]

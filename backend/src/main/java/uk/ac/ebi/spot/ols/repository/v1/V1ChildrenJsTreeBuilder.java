@@ -2,6 +2,8 @@ package uk.ac.ebi.spot.ols.repository.v1;
 
 import com.google.gson.JsonElement;
 
+import uk.ac.ebi.spot.ols.JsonHelper;
+
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import static uk.ac.ebi.ols.shared.DefinedFields.*;
@@ -32,11 +34,11 @@ public class V1ChildrenJsTreeBuilder {
             jstreeEntry.put("id", base64Encode(thisEntityJsTreeIdDecoded + ";" + child.getAsJsonObject().get("iri").getAsString()));
             jstreeEntry.put("parent", base64Encode(thisEntityJsTreeIdDecoded));
             jstreeEntry.put("iri", JsonHelper.getString(child.getAsJsonObject(), "iri"));
-            jstreeEntry.put("text", JsonHelper.getString(child.getAsJsonObject(), "label"));
+            jstreeEntry.put("text", JsonHelper.getString(child.getAsJsonObject(), LABEL.getText()));
             jstreeEntry.put("state", Map.of("opened", false));
             jstreeEntry.put("children",
 	    	JsonHelper.getString(child.getAsJsonObject(), HAS_DIRECT_CHILDREN.getText()).equals("true")
-		|| JsonHelper.getString(child.getAsJsonObject(), "hasHierarchicalChildren").equals("true")
+		|| JsonHelper.getString(child.getAsJsonObject(), HAS_HIERARCHICAL_CHILDREN.getText()).equals("true")
 	    );
 
             Map<String,Object> attrObj = new LinkedHashMap<>();

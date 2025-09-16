@@ -14,7 +14,9 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "Dummy",
+    "label": [
+      "Dummy"
+    ],
     "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -47,12 +49,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "propA",
+    "label": [
+      "propA"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propB": {
         "curie": "propB",
         "hasLocalDefinition": true,
-        "label": "propB",
+        "label": [
+          "propB"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "dataProperty",
@@ -63,7 +69,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propC": {
         "curie": "propC",
         "hasLocalDefinition": true,
-        "label": "propC",
+        "label": [
+          "propC"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "dataProperty",
@@ -72,6 +80,10 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propB",
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propC"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-alldisjointdataproperties",
@@ -104,12 +116,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "propB",
+    "label": [
+      "propB"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propA": {
         "curie": "propA",
         "hasLocalDefinition": true,
-        "label": "propA",
+        "label": [
+          "propA"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "dataProperty",
@@ -120,7 +136,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propC": {
         "curie": "propC",
         "hasLocalDefinition": true,
-        "label": "propC",
+        "label": [
+          "propC"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "dataProperty",
@@ -129,6 +147,10 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propA",
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propC"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-alldisjointdataproperties",
@@ -161,12 +183,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "propC",
+    "label": [
+      "propC"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propA": {
         "curie": "propA",
         "hasLocalDefinition": true,
-        "label": "propA",
+        "label": [
+          "propA"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "dataProperty",
@@ -177,7 +203,9 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propB": {
         "curie": "propB",
         "hasLocalDefinition": true,
-        "label": "propB",
+        "label": [
+          "propB"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "dataProperty",
@@ -186,6 +214,10 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propA",
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propB"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-alldisjointdataproperties",

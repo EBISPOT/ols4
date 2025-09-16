@@ -1,5 +1,6 @@
 package uk.ac.ebi.spot.ols.controller.api.v2;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.response.FacetField;
 import org.apache.solr.client.solrj.response.QueryResponse;
@@ -13,14 +14,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import uk.ac.ebi.spot.ols.model.v2.V2Statistics;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-@Controller
+@Tag(name = "V2 Stats Controller", description = "This endpoint provides statistics about the current state of the ontology index. It includes the number of ontologies, classes, individuals and properties indexed, and the last time the index was modified.")
+@RestController
 @RequestMapping("/api/v2/stats")
 public class V2StatisticsController {
 

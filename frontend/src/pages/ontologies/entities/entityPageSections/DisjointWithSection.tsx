@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { randomString } from "../../../../app/util";
 import ClassExpression from "../../../../components/ClassExpression";
 import EntityLink from "../../../../components/EntityLink";
+import PropertyValuesList from "../../../../components/PropertyValuesList";
 import Entity from "../../../../model/Entity";
 import Class from "../../../../model/Class";
 import LinkedEntities from "../../../../model/LinkedEntities";
@@ -25,59 +26,39 @@ export default function DisjointWithSection({
   }
 
   return (
-    <div>
-      <div className="font-bold">Disjoint with</div>
-      {disjointWiths.length === 1 ? (
-        <p>
-          {typeof disjointWiths[0] === "object" &&
-          !Array.isArray(disjointWiths[0]) ? (
-            <ClassExpression
-              ontologyId={entity.getOntologyId()}
-              currentEntity={entity}
-              expr={disjointWiths[0]}
-              linkedEntities={linkedEntities}
-            />
-          ) : (
-            <EntityLink
-              ontologyId={entity.getOntologyId()}
-	          currentEntity={entity}
-              entityType={
-                entity.getType() === "property" ? "properties" : "classes"
-              }
-              iri={disjointWiths[0]}
-              linkedEntities={linkedEntities}
-            />
-          )}
-        </p>
-      ) : (
-        <ul className="list-disc list-inside">
-          {disjointWiths.map((disjointWith) => {
-            return (
-              <li key={randomString()}>
-                {typeof disjointWith === "object" &&
-                !Array.isArray(disjointWith) ? (
-                  <ClassExpression
-                    ontologyId={entity.getOntologyId()}
-                currentEntity={entity}
-                    expr={disjointWith}
-                    linkedEntities={linkedEntities}
-                  />
-                ) : (
-                  <EntityLink
-                    ontologyId={entity.getOntologyId()}
-		    currentEntity={entity}
-                    entityType={
-                      entity.getType() === "property" ? "properties" : "classes"
-                    }
-                    iri={disjointWith}
-                    linkedEntities={linkedEntities}
-                  />
-                )}
-              </li>
-            );
-          })}
-        </ul>
+    <PropertyValuesList
+      values={disjointWiths}
+      title="Disjoint with"
+      renderValue={(disjointWith) => (
+        typeof disjointWith === "object" && !Array.isArray(disjointWith) ? (
+          <ClassExpression
+            ontologyId={entity.getOntologyId()}
+            currentEntity={entity}
+            expr={disjointWith}
+            linkedEntities={linkedEntities}
+          />
+        ) : (
+          <EntityLink
+            ontologyId={entity.getOntologyId()}
+            currentEntity={entity}
+            entityType={
+              entity.getType() === "property" ? "properties" : "classes"
+            }
+            iri={disjointWith}
+            linkedEntities={linkedEntities}
+          />
+        )
       )}
-    </div>
+      searchFilter={(disjointWith, searchQuery) => {
+        if (typeof disjointWith === "string") {
+          const iri = disjointWith.toLowerCase();
+          const label = linkedEntities.getLabelForIri(disjointWith)?.toLowerCase() || '';
+          return iri.includes(searchQuery) || label.includes(searchQuery);
+        }
+        // For complex expressions, convert to string
+        const exprStr = JSON.stringify(disjointWith).toLowerCase();
+        return exprStr.includes(searchQuery);
+      }}
+    />
   );
 }

@@ -27,14 +27,19 @@ spec:
         - name: {{ .Release.Name }}-neo4j-storage
           persistentVolumeClaim:
             claimName: {{ .Release.Name }}-neo4j-pvc
+        - name: {{ .Release.Name }}-import
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-import-pvc
       containers:
         - name: neo4j
-          image: ghcr.io/ebispot/ols4-neo4j:4.4.9-community
+          image: ghcr.io/ebispot/ols4-neo4j:2025.03.0-community
           volumeMounts:
             - mountPath: "/data"
               name: {{ .Release.Name }}-neo4j-storage
+            - mountPath: "/data_import"
+              name: {{ .Release.Name }}-import
           command: ["/bin/bash", "-c"]
-          args: ["rm -rf /data/* && wget -qO- $NEO4J_TARBALL_URL | tar -xz -C /data/ && tini -g -- /startup/docker-entrypoint.sh neo4j"]
+          args: ["rm -rf /data/* && cat /data_import/neo4j.tgz | tar -xz -C /data/ && tini -g -- /startup/docker-entrypoint.sh neo4j"]
           resources:
             requests:
               memory: 15Gi
@@ -43,14 +48,14 @@ spec:
               memory: 15Gi
               cpu: 2
           env:
-            - name: NEO4J_HEAP_MEMORY
-              value: 10g
-            - name: NEO4J_dbms_memory_heap_maxSize
-              value: 8g
-            - name: NEO4J_TARBALL_URL
-              value: {{.Values.neo4jTarballUrl}}
+            # - name: NEO4J_HEAP_MEMORY
+            #   value: 10g
+            # - name: NEO4J_dbms_memory_heap_maxSize
+            #   value: 8g
             - name: NEO4J_AUTH
               value: none
+            - name: JAVA_OPTS
+              value: --add-modules jdk.incubator.vector
           ports:
             - containerPort: 7474
             - containerPort: 7687

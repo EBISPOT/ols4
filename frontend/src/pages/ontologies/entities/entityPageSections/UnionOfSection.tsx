@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { randomString } from "../../../../app/util";
 import ClassExpression from "../../../../components/ClassExpression";
 import EntityLink from "../../../../components/EntityLink";
+import PropertyValuesList from "../../../../components/PropertyValuesList";
 import Entity from "../../../../model/Entity";
 import Class from "../../../../model/Class";
 import LinkedEntities from "../../../../model/LinkedEntities";
@@ -25,59 +26,39 @@ export default function UnionOfSection({
   }
 
   return (
-    <div>
-      <div className="font-bold">Union of</div>
-      {unionOfs.length === 1 ? (
-        <p>
-          {typeof unionOfs[0] === "object" &&
-          !Array.isArray(unionOfs[0]) ? (
-            <ClassExpression
-              ontologyId={entity.getOntologyId()}
-              currentEntity={entity}
-              expr={unionOfs[0]}
-              linkedEntities={linkedEntities}
-            />
-          ) : (
-            <EntityLink
-              ontologyId={entity.getOntologyId()}
-	          currentEntity={entity}
-              entityType={
-                entity.getType() === "property" ? "properties" : "classes"
-              }
-              iri={unionOfs[0]}
-              linkedEntities={linkedEntities}
-            />
-          )}
-        </p>
-      ) : (
-        <ul className="list-disc list-inside">
-          {unionOfs.map((disjointWith) => {
-            return (
-              <li key={randomString()}>
-                {typeof disjointWith === "object" &&
-                !Array.isArray(disjointWith) ? (
-                  <ClassExpression
-                    ontologyId={entity.getOntologyId()}
-                currentEntity={entity}
-                    expr={disjointWith}
-                    linkedEntities={linkedEntities}
-                  />
-                ) : (
-                  <EntityLink
-                    ontologyId={entity.getOntologyId()}
-		    currentEntity={entity}
-                    entityType={
-                      entity.getType() === "property" ? "properties" : "classes"
-                    }
-                    iri={disjointWith}
-                    linkedEntities={linkedEntities}
-                  />
-                )}
-              </li>
-            );
-          })}
-        </ul>
+    <PropertyValuesList
+      values={unionOfs}
+      title="Union of"
+      renderValue={(unionOf) => (
+        typeof unionOf === "object" && !Array.isArray(unionOf) ? (
+          <ClassExpression
+            ontologyId={entity.getOntologyId()}
+            currentEntity={entity}
+            expr={unionOf}
+            linkedEntities={linkedEntities}
+          />
+        ) : (
+          <EntityLink
+            ontologyId={entity.getOntologyId()}
+            currentEntity={entity}
+            entityType={
+              entity.getType() === "property" ? "properties" : "classes"
+            }
+            iri={unionOf}
+            linkedEntities={linkedEntities}
+          />
+        )
       )}
-    </div>
+      searchFilter={(unionOf, searchQuery) => {
+        if (typeof unionOf === "string") {
+          const iri = unionOf.toLowerCase();
+          const label = linkedEntities.getLabelForIri(unionOf)?.toLowerCase() || '';
+          return iri.includes(searchQuery) || label.includes(searchQuery);
+        }
+        // For complex expressions, convert to string
+        const exprStr = JSON.stringify(unionOf).toLowerCase();
+        return exprStr.includes(searchQuery);
+      }}
+    />
   );
 }

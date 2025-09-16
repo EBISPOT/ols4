@@ -6,7 +6,7 @@
       "exportsTo": [],
       "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
       "preferredPrefix": "owl2primer-equivalentObjectProperty",
-      "ontology_purl": "./testcases/owl2-primer/equivalentObjectProperty.owl",
+      "ontologyPurl": "./testcases/owl2-primer/equivalentObjectProperty.owl",
       "type": [
         "ontology"
       ],
@@ -15,12 +15,14 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/equivalentObjectProperty.owl",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -49,12 +51,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -99,12 +95,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "hasLifePartner"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasLifePartner"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -140,12 +138,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "hasSpouse"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "hasSpouse"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -158,7 +158,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse",
@@ -183,12 +186,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "hasSpouse"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasSpouse"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -224,12 +229,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "hasLifePartner"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "hasLifePartner"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -242,7 +249,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner"
+          ]
         }
       ],
       "individuals": [
@@ -266,12 +276,14 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
           "imported": false,
           "isObsolete": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "John"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "John"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -303,7 +315,8 @@
           "appearsIn": [
             "owl2primer-equivalentobjectproperty"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#Mary",
@@ -326,12 +339,14 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
           "imported": false,
           "isObsolete": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Mary"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Mary"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -367,12 +382,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#John": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "John"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "John"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -387,12 +404,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "hasLifePartner"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "hasLifePartner"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -405,10 +424,15 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner",
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#John"
+          ]
         }
       ],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { randomString } from "../../../../app/util";
 import EntityLink from "../../../../components/EntityLink";
+import PropertyValuesList from "../../../../components/PropertyValuesList";
 import Class from "../../../../model/Class";
 import Entity from "../../../../model/Entity";
 import LinkedEntities from "../../../../model/LinkedEntities";
@@ -32,30 +33,34 @@ export default function EntityRelatedFromSection({
       <div className="font-bold">Related from</div>
       {predicates.map((p) => {
         let label = linkedEntities.getLabelForIri(p);
+        let predicateRelatedFroms = relatedFroms.filter((relatedFrom) => relatedFrom.value.property === p);
+        
         return (
           <div key={p.toString() + randomString()}>
-            <div>
+            <div className="mb-2">
               <i>{label || p}</i>
             </div>
-            <ul className="list-disc list-inside">
-              {relatedFroms
-                .filter((relatedFrom) => relatedFrom.value.property === p)
-                .map((relatedFrom) => {
-                  let relatedIri = relatedFrom.value.value;
-                  // let label = linkedEntities.getLabelForIri(relatedIri);
-                  return (
-                    <li key={relatedIri.toString() + randomString()}>
-                      <EntityLink
-                        ontologyId={entity.getOntologyId()}
-                        currentEntity={entity}
-                        entityType={"classes"}
-                        iri={relatedIri}
-                        linkedEntities={linkedEntities}
-                      />
-                    </li>
-                  );
-                })}
-            </ul>
+            <PropertyValuesList
+              values={predicateRelatedFroms}
+              renderValue={(relatedFrom) => {
+                let relatedIri = relatedFrom.value.value;
+                return (
+                  <EntityLink
+                    ontologyId={entity.getOntologyId()}
+                    currentEntity={entity}
+                    entityType={"classes"}
+                    iri={relatedIri}
+                    linkedEntities={linkedEntities}
+                  />
+                );
+              }}
+              searchFilter={(relatedFrom, searchQuery) => {
+                let relatedIri = relatedFrom.value.value;
+                let entityLabel = linkedEntities.getLabelForIri(relatedIri)?.toLowerCase() || '';
+                let iriText = relatedIri.toLowerCase();
+                return entityLabel.includes(searchQuery) || iriText.includes(searchQuery);
+              }}
+            />
           </div>
         );
       })}

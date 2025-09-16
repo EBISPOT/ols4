@@ -37,13 +37,13 @@ export default class Ontology extends Thing {
     return this.properties["depicted_by"] || undefined;
   }
   getOntologyPurl(): string {
-    return this.properties["ontology_purl"];
+    return this.properties["ontologyPurl"];
   }
   getHomepage(): string {
     return this.properties["homepage"];
   }
   getMailingList(): string {
-    return this.properties["mailing_list"];
+    return this.properties["mailingList"];
   }
   getTracker(): string {
     return this.properties["tracker"];
@@ -100,7 +100,7 @@ export default class Ontology extends Thing {
     return Array.from(annotationPredicates) as string[];
   }
   getPreferredRoots(): string[] {
-    return asArray(this.properties["hasPreferredRoot"]);
+    return asArray(this.properties["preferredRoot"]);
   }
   getLanguages(): string[] {
     return asArray(this.properties["language"]);
@@ -113,5 +113,8 @@ export default class Ontology extends Thing {
   }
   getAllowDownload(): string {
     return this.properties["allowDownload"];
+  }
+  isFallback(): boolean {
+    return this.properties["is_fallback"] === true;
   }
 }

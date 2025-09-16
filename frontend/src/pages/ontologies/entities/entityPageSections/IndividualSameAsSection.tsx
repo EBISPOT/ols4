@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { randomString } from "../../../../app/util";
 import ClassExpression from "../../../../components/ClassExpression";
 import EntityLink from "../../../../components/EntityLink";
+import PropertyValuesList from "../../../../components/PropertyValuesList";
 import Entity from "../../../../model/Entity";
 import Individual from "../../../../model/Individual";
 import LinkedEntities from "../../../../model/LinkedEntities";
@@ -24,53 +25,37 @@ export default function IndividualSameAsSection({
   }
 
   return (
-    <div>
-      <div className="font-bold">Same as</div>
-      {sameAses.length === 1 ? (
-        <p>
-          {typeof sameAses[0] === "object" && !Array.isArray(sameAses[0]) ? (
-            <ClassExpression
-              ontologyId={entity.getOntologyId()}
-              currentEntity={entity}
-              expr={sameAses[0]}
-              linkedEntities={linkedEntities}
-            />
-          ) : (
-            <EntityLink
-              ontologyId={entity.getOntologyId()}
-	      currentEntity={entity}
-              entityType={"individuals"}
-              iri={sameAses[0]}
-              linkedEntities={linkedEntities}
-            />
-          )}
-        </p>
-      ) : (
-        <ul className="list-disc list-inside">
-          {sameAses.map((sameAs) => {
-            return (
-              <li key={randomString()}>
-                {typeof sameAs === "object" && !Array.isArray(sameAs) ? (
-                  <ClassExpression
-                    ontologyId={entity.getOntologyId()}
-                    currentEntity={entity}
-                    expr={sameAs}
-                    linkedEntities={linkedEntities}
-                  />
-                ) : (
-                  <EntityLink
-                    ontologyId={entity.getOntologyId()}
-		    currentEntity={entity}
-                    entityType={"individuals"}
-                    iri={sameAs}
-                    linkedEntities={linkedEntities}
-                  />
-                )}
-              </li>
-            );
-          })}
-        </ul>
+    <PropertyValuesList
+      values={sameAses}
+      title="Same as"
+      renderValue={(sameAs) => (
+        typeof sameAs === "object" && !Array.isArray(sameAs) ? (
+          <ClassExpression
+            ontologyId={entity.getOntologyId()}
+            currentEntity={entity}
+            expr={sameAs}
+            linkedEntities={linkedEntities}
+          />
+        ) : (
+          <EntityLink
+            ontologyId={entity.getOntologyId()}
+            currentEntity={entity}
+            entityType={"individuals"}
+            iri={sameAs}
+            linkedEntities={linkedEntities}
+          />
+        )
       )}
-    </div>
+      searchFilter={(sameAs, searchQuery) => {
+        if (typeof sameAs === "string") {
+          const iri = sameAs.toLowerCase();
+          const label = linkedEntities.getLabelForIri(sameAs)?.toLowerCase() || '';
+          return iri.includes(searchQuery) || label.includes(searchQuery);
+        }
+        // For complex expressions, convert to string
+        const exprStr = JSON.stringify(sameAs).toLowerCase();
+        return exprStr.includes(searchQuery);
+      }}
+    />
   );
 }

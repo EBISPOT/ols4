@@ -6,7 +6,7 @@
       "exportsTo": [],
       "iri": "http://www.ebi.ac.uk/ols4/testcase/label",
       "preferredPrefix": "label",
-      "ontology_purl": "./testcases/localized-labels/label.rdf",
+      "ontologyPurl": "./testcases/localized-labels/label.rdf",
       "type": [
         "ontology"
       ],
@@ -57,18 +57,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "de"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -166,7 +154,8 @@
           "appearsIn": [
             "label"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/ols4/testcase/label#enLabelClass",
@@ -198,14 +187,16 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-            "value": "en label class",
-            "lang": "en"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "en label class",
+              "lang": "en"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -237,7 +228,8 @@
           "appearsIn": [
             "label"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/ols4/testcase/label#noLabelClass",
@@ -261,12 +253,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "noLabelClass"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "noLabelClass"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -298,7 +292,8 @@
           "appearsIn": [
             "label"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/ols4/testcase/label#noLangClass",
@@ -312,12 +307,14 @@
             ],
             "value": "noLangClass"
           },
-          "definition": {
-            "type": [
-              "literal"
-            ],
-            "value": ""
-          },
+          "definition": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": ""
+            }
+          ],
           "definitionProperty": {
             "type": [
               "literal"
@@ -346,12 +343,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "no lang label class"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "no lang label class"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -383,7 +382,8 @@
           "appearsIn": [
             "label"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "properties": [
@@ -464,7 +464,8 @@
           "appearsIn": [
             "label"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/ols4/testcase/label#enProperty",
@@ -496,14 +497,16 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-            "value": "en label",
-            "lang": "en"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "en label",
+              "lang": "en"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -535,7 +538,8 @@
           "appearsIn": [
             "label"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/ols4/testcase/label#noLabelProperty",
@@ -559,12 +563,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "noLabelProperty"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "noLabelProperty"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -596,7 +602,8 @@
           "appearsIn": [
             "label"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/ols4/testcase/label#property",
@@ -626,12 +633,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "noLangProperty"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "noLangProperty"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -663,11 +672,13 @@
           "appearsIn": [
             "label"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

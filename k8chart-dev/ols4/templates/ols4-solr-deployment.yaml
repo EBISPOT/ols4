@@ -14,6 +14,10 @@ spec:
       labels:
         app: {{ .Release.Name }}-solr
     spec:
+      tolerations:
+      - key: "node.kubernetes.io/disk-pressure"
+        operator: "Exists"
+        effect: "NoSchedule"
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -27,16 +31,21 @@ spec:
         - name: {{ .Release.Name }}-solr-storage
           persistentVolumeClaim:
             claimName: {{ .Release.Name }}-solr-pvc
+        - name: {{ .Release.Name }}-import
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-import-pvc
       securityContext:
         fsGroup: 8983
       containers:
         - name: solr
-          image: ghcr.io/ebispot/ols4-solr:9.0.0
+          image: ghcr.io/ebispot/ols4-solr:9.8.1
           volumeMounts:
             - mountPath: "/data"
               name: {{ .Release.Name }}-solr-storage
+            - mountPath: "/data_import"
+              name: {{ .Release.Name }}-import
           command: ["/bin/bash", "-c"]
-          args: ["echo Downloading data && rm -rf /data/solr && mkdir /data/solr && wget -qO- $SOLR_TARBALL_URL | tar -xz -C /data/ && echo Starting solr && solr-foreground -a -XX:CompileCommand=exclude,com.github.benmanes.caffeine.cache.BoundedLocalCache::put"]
+          args: ["echo Downloading data && rm -rf /data/solr && mkdir /data/solr && cat /data_import/solr.tgz | tar -xz --skip-old-files -C /data/ && echo Starting solr && solr-foreground -a -XX:CompileCommand=exclude,com.github.benmanes.caffeine.cache.BoundedLocalCache::put"]
           resources:
             requests:
               memory: 8Gi
@@ -45,12 +54,12 @@ spec:
               memory: 8Gi
               cpu: 2
           env:
-            - name: SOLR_TARBALL_URL
-              value: {{.Values.solrTarballUrl}}
             - name: SOLR_HOME
               value: /data
             - name: SOLR_JAVA_MEM
               value: -Xms2g -Xmx4g
+            - name: JAVA_OPTS
+              value: --add-modules jdk.incubator.vector
           ports:
             - containerPort: 8983
 

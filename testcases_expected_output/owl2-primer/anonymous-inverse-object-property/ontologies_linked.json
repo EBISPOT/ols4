@@ -6,7 +6,7 @@
       "exportsTo": [],
       "iri": "http://www.ebi.ac.uk/testcases/owl2primer/anonymous-inverse-object-property.rdf",
       "preferredPrefix": "owl2primer-anonymous-inverse-object-property",
-      "ontology_purl": "./testcases/owl2-primer/anonymous-inverse-object-property.rdf",
+      "ontologyPurl": "./testcases/owl2-primer/anonymous-inverse-object-property.rdf",
       "type": [
         "ontology"
       ],
@@ -15,12 +15,14 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/anonymous-inverse-object-property.rdf",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -49,12 +51,6 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        },
         {
           "type": [
             "literal"
@@ -103,12 +99,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Dead"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Dead"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -140,7 +138,8 @@
           "appearsIn": [
             "owl2primer-anonymous-inverse-object-property"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/anonymous-inverse-object-property.rdf#Orphan",
@@ -173,12 +172,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Orphan"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Orphan"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -214,12 +215,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/anonymous-inverse-object-property.rdf#Dead": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Dead"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Dead"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -234,12 +237,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/anonymous-inverse-object-property.rdf#hasChild": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "hasChild"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "hasChild"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -252,7 +257,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/anonymous-inverse-object-property.rdf#Dead",
+            "http://www.ebi.ac.uk/testcases/owl2primer/anonymous-inverse-object-property.rdf#hasChild"
+          ]
         }
       ],
       "properties": [
@@ -278,12 +287,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "hasChild"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasChild"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -315,11 +326,13 @@
           "appearsIn": [
             "owl2primer-anonymous-inverse-object-property"
           ],
-          "linkedEntities": {}
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }

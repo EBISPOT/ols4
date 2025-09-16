@@ -5,11 +5,13 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
+
+import uk.ac.ebi.spot.ols.JsonHelper;
 
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 public class AnnotationExtractor {
 
@@ -95,7 +97,7 @@ public class AnnotationExtractor {
 
 	    if(linkedEntityObj != null) {
 
-		String definedLabel = JsonHelper.getString(linkedEntityObj.getAsJsonObject(), "label");
+		String definedLabel = JsonHelper.getString(linkedEntityObj.getAsJsonObject(), LABEL.getText());
 
 		if(definedLabel != null) {
 			label = definedLabel;

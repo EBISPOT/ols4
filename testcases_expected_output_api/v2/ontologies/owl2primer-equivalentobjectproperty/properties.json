@@ -15,12 +15,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasLifePartner",
+    "label": [
+      "hasLifePartner"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse": {
         "curie": "hasSpouse",
         "hasLocalDefinition": true,
-        "label": "hasSpouse",
+        "label": [
+          "hasSpouse"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -29,6 +33,9 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-equivalentobjectproperty",
@@ -58,12 +65,16 @@
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
-    "label": "hasSpouse",
+    "label": [
+      "hasSpouse"
+    ],
     "linkedEntities": {
       "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner": {
         "curie": "hasLifePartner",
         "hasLocalDefinition": true,
-        "label": "hasLifePartner",
+        "label": [
+          "hasLifePartner"
+        ],
         "numAppearsIn": 1.0,
         "type": [
           "entity",
@@ -72,6 +83,9 @@
         ]
       }
     },
+    "linksTo": [
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-equivalentobjectproperty",

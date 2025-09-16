@@ -2,9 +2,10 @@ package uk.ac.ebi.spot.ols.repository.v1.mappers;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import uk.ac.ebi.spot.ols.JsonHelper;
 import uk.ac.ebi.spot.ols.model.v1.V1Property;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
-import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
 
 import java.util.Objects;
 
@@ -27,9 +28,9 @@ public class V1PropertyMapper {
         property.ontologyPrefix = JsonHelper.getString(localizedJson, "ontologyPreferredPrefix");
         property.ontologyIri = JsonHelper.getString(localizedJson, "ontologyIri");
 
-        property.label = JsonHelper.getString(localizedJson, "label");
-        property.description = JsonHelper.getStrings(localizedJson, "definition").toArray(new String[0]);
-        property.synonyms = JsonHelper.getStrings(localizedJson, "synonym").toArray(new String[0]);
+        property.label = JsonHelper.getString(localizedJson, LABEL.getText());
+        property.description = JsonHelper.getStrings(localizedJson, DEFINITION.getText()).toArray(new String[0]);
+        property.synonyms = JsonHelper.getStrings(localizedJson, SYNONYM.getText()).toArray(new String[0]);
         property.annotation = AnnotationExtractor.extractAnnotations(localizedJson);
         //property.inSubsets = AnnotationExtractor.extractSubsets(localizedJson);
 

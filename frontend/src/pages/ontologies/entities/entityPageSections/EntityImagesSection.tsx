@@ -38,7 +38,7 @@ export default function EntityImagesSection({
                       src={img.value}
                       alt={img.value.substring(img.value.lastIndexOf("/") + 1)}
                       className="rounded-lg mx-auto object-contain"
-                      style={{ maxWidth: "300px" }}
+                      style={{ maxWidth: "300px", minWidth: "300px" }}
                     />
                   </a>
                 )}

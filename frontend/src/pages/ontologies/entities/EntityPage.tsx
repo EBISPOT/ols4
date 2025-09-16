@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { copyToClipboard } from "../../../app/util";
 import ApiLinks from "../../../components/ApiLinks";
 import { Banner } from "../../../components/Banner";
+import FallbackWarning from "../../../components/FallbackWarning";
 import Header from "../../../components/Header";
 import LanguagePicker from "../../../components/LanguagePicker";
 import LoadingOverlay from "../../../components/LoadingOverlay";
@@ -22,6 +23,7 @@ import {
   getOntology,
 } from "../ontologiesSlice";
 import EntityGraph from "./EntityGraph";
+import EntityGraphContainer from "./EntityGraphContainer";
 import EntityTree from "./EntityTree";
 import ClassInstancesSection from "./entityPageSections/ClassInstancesSection";
 import DefiningOntologiesSection from "./entityPageSections/DefiningOntologiesSection";
@@ -47,6 +49,8 @@ import PropertyInverseOfSection from "./entityPageSections/PropertyInverseOfSect
 import RangeSection from "./entityPageSections/RangeSection";
 import addLinksToText from "./entityPageSections/addLinksToText";
 import { Helmet } from 'react-helmet'
+import { Typography } from "@mui/material";
+import SimilarEntitiesSection from "./entityPageSections/SimilarEntitiesSection";
 
 export default function EntityPage({
   entityType,
@@ -157,6 +161,7 @@ export default function EntityPage({
           {pageDesc && <meta name="description" content={pageDesc}/>}
         </Helmet>
       <main className="container mx-auto px-4">
+        <FallbackWarning ontology={ontology} />
         {ontology && entity ? (
           <div className="my-8">
             <div className="flex flex-wrap justify-between items-center gap-y-2 px-1 mb-4">
@@ -371,17 +376,17 @@ export default function EntityPage({
                   </button>
                 </div>
                 {viewMode === "graph" ? (
-                  <EntityGraph
-                    ontologyId={ontologyId}
-                    entityType={
-                      {
-                        class: "classes",
-                        property: "properties",
-                        individual: "individuals",
-                      }[entity.getType()]
-                    }
-                    selectedEntity={entity}
-                  />
+                    <EntityGraphContainer
+                        ontologyId={ontologyId}
+                        selectedEntity={entity}
+                        entityType={
+                          {
+                            class: "classes",
+                            property: "properties",
+                            individual: "individuals",
+                          }[entity.getType()]
+                        }
+                    />
                 ) : (
                   <EntityTree
                     ontology={ontology}
@@ -494,6 +499,16 @@ export default function EntityPage({
                       classInstances={classInstances}
                       linkedEntities={linkedEntities}
                     />
+                  </div>
+                </details>
+                <details open className="p-2">
+                  <summary className="p-2 mb-2 border-b-2 border-grey-default text-lg link-orange">
+                    <span className="capitalize">
+                      Similar {entity.getTypePlural()}
+                    </span>
+                  </summary>
+                  <div className="py-2 break-words space-y-4">
+                    <SimilarEntitiesSection entity={entity} />
                   </div>
                 </details>
               </div>

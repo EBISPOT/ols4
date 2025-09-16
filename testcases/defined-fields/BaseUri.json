@@ -1,0 +1,15 @@
+{
+  "ontologies": [
+    {
+      "id": "BASE_URI",
+      "preferredPrefix": "BASE_URI",
+      "title": "Experimental Factor Ontology",
+      "base_uri": [
+        "http://www.ebi.ac.uk/baseUri/BASE_URI_"
+      ],
+      "reasoner": "OWL2",
+      "oboSlims": false,
+      "ontology_purl": "./testcases/defined-fields/BaseUri.owl"
+    }
+  ]
+}

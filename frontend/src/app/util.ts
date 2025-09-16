@@ -7,7 +7,7 @@ import Property from "../model/Property";
 export function asArray<T>(obj: T | T[]): T[] {
   if (Array.isArray(obj)) {
     return obj;
-  } else if (obj) {
+  } else if (obj !== undefined && obj !== null) {
     return [obj];
   }
   return [];

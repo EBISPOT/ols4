@@ -8,9 +8,13 @@ import org.neo4j.driver.types.Node;
 import org.neo4j.driver.types.Relationship;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import uk.ac.ebi.spot.ols.JsonHelper;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.repository.transforms.RemoveLiteralDatatypesTransform;
 import uk.ac.ebi.spot.ols.service.Neo4jClient;
+
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -76,13 +80,13 @@ public class V1GraphRepository {
                 for(String referencedIri : linkedEntities.keySet()) {
                     JsonObject reference = linkedEntities.getAsJsonObject(referencedIri);
                     if(!iriToLabel.containsKey(referencedIri))
-                        iriToLabel.put(referencedIri, JsonHelper.getString(reference, "label"));
+                        iriToLabel.put(referencedIri, JsonHelper.getString(reference, LABEL.getText()));
                 }
             }
 
             Map<String, Object> nodeRes = new LinkedHashMap<>();
             nodeRes.put("iri", JsonHelper.getString(ontologyNodeObject, "iri"));
-            nodeRes.put("label", JsonHelper.getString(ontologyNodeObject, "label"));
+            nodeRes.put(LABEL.getText(), JsonHelper.getString(ontologyNodeObject, LABEL.getText()));
             return nodeRes;
 
         }).collect(Collectors.toList());
@@ -107,7 +111,7 @@ public class V1GraphRepository {
             if(propertyLabel == null)
                 propertyLabel = "is a";
 
-            edgeRes.put("label", propertyLabel);
+            edgeRes.put(LABEL.getText(), propertyLabel);
             edgeRes.put("uri", uri);
 
             return edgeRes;
@@ -131,7 +135,7 @@ public class V1GraphRepository {
                         + "edges: collect(distinct { source: startNode(r1).iri, target: endNode(r1).iri, relationship: r1 })\n"
                         + "} AS result";
 
-        List<Map<String,Object>> results = neo4jClient.rawQuery(query);
+        List<Map<String,Object>> results = neo4jClient.rawQuery(query, Map.of());
         return (Map<String,Object>) results.get(0).get("result");
     }
 
@@ -144,7 +148,7 @@ public class V1GraphRepository {
                         + "edges: collect({ source: startNode(r).iri, target: endNode(r).iri, relationship: r })\n"
                         + "} AS result";
 
-        List<Map<String,Object>> results = neo4jClient.rawQuery(query);
+        List<Map<String,Object>> results = neo4jClient.rawQuery(query, Map.of());
         return (Map<String,Object>) results.get(0).get("result");
     }
 

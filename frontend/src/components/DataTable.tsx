@@ -45,9 +45,9 @@ export default function DataTable({
         onRowsPerPageChange !== undefined ? (
           <div className="justify-self-start px-2 mb-2">
             <div className="flex group relative text-md">
-              <label className="self-center px-3">Show</label>
+              <label className="self-center px-3 text-neutral-black">Show</label>
               <select
-                className="input-default appearance-none pr-7 z-20 bg-transparent"
+                className="input-default appearance-none pr-7 z-20 bg-transparent text-neutral-black"
                 onChange={(e) => {
                   onRowsPerPageChange(parseInt(e.target.value));
                 }}
@@ -67,7 +67,7 @@ export default function DataTable({
             <input
               type="text"
               placeholder={placeholder ? placeholder : "Search table..."}
-              className="input-default text-md pl-10"
+              className="input-default text-md pl-10 text-neutral-black"
               onChange={(e) => {
                 onFilter(e.target.value);
               }}
@@ -81,10 +81,10 @@ export default function DataTable({
       <div className="mx-2 overflow-x-auto">
         <table className="table-auto border-collapse border-spacing-1 w-full mb-2">
           <thead>
-            <tr key={randomString()} className="border-b-2 border-grey-default">
+            <tr key="header-row" className="border-b-2 border-grey-default">
               {columns.map((column) => (
                 <td
-                  className="text-lg text-left font-bold py-2 px-4"
+                  className="text-lg text-left font-bold py-2 px-4 text-neutral-black"
                   key={column.name}
                 >
                   {column.name}
@@ -93,23 +93,23 @@ export default function DataTable({
             </tr>
           </thead>
           <tbody>
-            {data.map((row: Thing) => {
+            {data.map((row: Thing, index: number) => {
               return (
                 <tr
                   tabIndex={-1}
-                  key={randomString()}
+                  key={row.properties?.iri || `row-${index}`}
                   onClick={() => {
                     if (onSelectRow) onSelectRow(row);
                   }}
-                  className={`even:bg-grey-50 ${
+                  className={`even:bg-grey-50 text-neutral-black ${
                     onSelectRow ? "cursor-pointer" : ""
                   }`}
                 >
-                  {columns.map((column: any) => {
+                  {columns.map((column: any, colIndex: number) => {
                     return (
                       <td
                         className="text-md align-top py-2 px-4"
-                        key={randomString()}
+                        key={`${row.properties?.iri || index}-${colIndex}`}
                       >
                         {column.selector(row)
                           ? column.selector(row)

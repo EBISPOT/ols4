@@ -3,8 +3,10 @@ package uk.ac.ebi.spot.ols.repository.transforms;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import uk.ac.ebi.spot.ols.JsonHelper;
+import uk.ac.ebi.spot.ols.repository.Validation;
 import uk.ac.ebi.spot.ols.repository.transforms.helpers.JsonCollectionHelper;
-import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
 
 import java.util.List;
 

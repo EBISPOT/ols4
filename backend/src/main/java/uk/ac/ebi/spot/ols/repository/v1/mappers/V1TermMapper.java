@@ -2,9 +2,11 @@ package uk.ac.ebi.spot.ols.repository.v1.mappers;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import uk.ac.ebi.spot.ols.JsonHelper;
 import uk.ac.ebi.spot.ols.model.v1.*;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
-import uk.ac.ebi.spot.ols.repository.v1.JsonHelper;
+
 import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 import java.util.*;
@@ -34,9 +36,9 @@ public class V1TermMapper {
             term.oboId = term.shortForm;
         }
 
-        term.label = JsonHelper.getString(localizedJson, "label");
-        term.description = JsonHelper.getStrings(localizedJson, "definition").toArray(new String[0]);
-        term.synonyms = JsonHelper.getStrings(localizedJson, "synonym").toArray(new String[0]);
+        term.label = JsonHelper.getString(localizedJson, LABEL.getText());
+        term.description = JsonHelper.getStrings(localizedJson, DEFINITION.getText()).toArray(new String[0]);
+        term.synonyms = JsonHelper.getStrings(localizedJson, SYNONYM.getText()).toArray(new String[0]);
         term.annotation = AnnotationExtractor.extractAnnotations(localizedJson);
         term.inSubsets = AnnotationExtractor.extractSubsets(localizedJson);
 
@@ -80,13 +82,13 @@ public class V1TermMapper {
 
         term.related = new ArrayList<>();
 
-        for(JsonObject relatedTo : JsonHelper.getObjects(localizedJson, "relatedTo")) {
+        for(JsonObject relatedTo : JsonHelper.getObjects(localizedJson, RELATED_TO.getText())) {
 
             String predicate = relatedTo.getAsJsonPrimitive("property").getAsString();
 
 	    JsonElement linkedEntity = linkedEntities.getAsJsonObject().get(predicate);
             String label = linkedEntity != null ?
-	    	JsonHelper.getString(linkedEntity.getAsJsonObject(), "label") : ShortFormExtractor.extractShortForm(predicate);
+	    	JsonHelper.getString(linkedEntity.getAsJsonObject(), LABEL.getText()) : ShortFormExtractor.extractShortForm(predicate);
 
             V1Related relatedObj = new V1Related();
             relatedObj.iri = predicate;

@@ -6,7 +6,7 @@
       "exportsTo": [],
       "iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf.owl",
       "preferredPrefix": "owl2primer-disjointUnionOf",
-      "ontology_purl": "./testcases/owl2-primer/disjointUnionOf.owl",
+      "ontologyPurl": "./testcases/owl2-primer/disjointUnionOf.owl",
       "type": [
         "ontology"
       ],
@@ -15,12 +15,14 @@
       "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/disjointUnionOf.owl",
       "imported": false,
       "isObsolete": false,
-      "language": {
-        "type": [
-          "literal"
-        ],
-        "value": "en"
-      },
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
       "numberOfClasses": {
@@ -53,12 +55,6 @@
           "type": [
             "literal"
           ],
-          "value": "en"
-        },
-        {
-          "type": [
-            "literal"
-          ],
           "value": "3"
         },
         {
@@ -81,14 +77,22 @@
             ],
             "value": "Father"
           },
-          "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
-          "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
+          "directAncestor": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent"
+          ],
+          "directParent": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": true,
-          "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
-          "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
+          "hierarchicalAncestor": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent"
+          ],
+          "hierarchicalParent": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent"
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -101,12 +105,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Father"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Father"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -142,12 +148,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Mother"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Mother"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -162,12 +170,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Parent"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Parent"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -179,7 +189,11 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother",
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother",
@@ -193,14 +207,22 @@
             ],
             "value": "Mother"
           },
-          "directAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
-          "directParent": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
+          "directAncestor": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent"
+          ],
+          "directParent": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent"
+          ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": true,
-          "hierarchicalAncestor": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
-          "hierarchicalParent": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
+          "hierarchicalAncestor": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent"
+          ],
+          "hierarchicalParent": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent"
+          ],
           "hierarchicalProperty": {
             "type": [
               "literal"
@@ -212,12 +234,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Mother"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Mother"
+            }
+          ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
           "ontologyId": {
@@ -253,12 +277,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Parent"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Parent"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -270,7 +296,10 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent"
+          ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Parent",
@@ -298,12 +327,14 @@
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
-          "label": {
-            "type": [
-              "literal"
-            ],
-            "value": "Parent"
-          },
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Parent"
+            }
+          ],
           "numDescendants": 2,
           "numHierarchicalDescendants": 2,
           "ontologyId": {
@@ -339,12 +370,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Mother"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Mother"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -359,12 +392,14 @@
             "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
-              "label": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Father"
-              },
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Father"
+                }
+              ],
               "curie": {
                 "type": [
                   "literal"
@@ -376,12 +411,17 @@
                 "entity"
               ]
             }
-          }
+          },
+          "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father",
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother"
+          ]
         }
       ],
       "properties": [],
       "individuals": [],
-      "linkedEntities": {}
+      "linkedEntities": {},
+      "linksTo": []
     }
   ]
 }
