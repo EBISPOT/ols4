@@ -3,15 +3,23 @@ package uk.ac.ebi.rdf2json.annotators;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+
 import uk.ac.ebi.rdf2json.OntologyNode;
 import uk.ac.ebi.rdf2json.OntologyGraph;
 import uk.ac.ebi.rdf2json.annotators.helpers.OntologyBaseUris;
+import uk.ac.ebi.rdf2json.properties.PropertyValueJson;
 import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
 
 public class CurieAnnotator {
 	private static final Logger logger = LoggerFactory.getLogger(CurieAnnotator.class);
+
+	static Gson gson = new Gson();
 
 	public static void annotateCuries(OntologyGraph graph) {
 
@@ -37,7 +45,7 @@ public class CurieAnnotator {
 			}
 
 			String curie = extractCurie(graph, ontologyBaseUris, preferredPrefix, c.uri);
-			c.properties.addProperty("curie", PropertyValueLiteral.fromString(curie));
+			c.properties.addProperty("curie", new PropertyValueJson(gson.toJsonTree(curie)));
 		}
 	}
 		long endTime3 = System.nanoTime();

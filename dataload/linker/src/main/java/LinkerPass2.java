@@ -155,11 +155,17 @@ public class LinkerPass2 {
             EntityDefinitionSet defOfThisEntity = pass1Result.iriToDefinitions.get(entityIri);
 
             String curie = null;
-            if(defOfThisEntity.definingDefinitions.size() > 0) {
+            if(defOfThisEntity != null && defOfThisEntity.definingDefinitions.size() > 0) {
                 // always use the defining ontology's curie, as the defining
                 // ontology knows the base URI and we might not
                 //
-                curie = defOfThisEntity.definingDefinitions.iterator().next().curie.getAsString();
+                var curieFromDefinition = defOfThisEntity.definingDefinitions.iterator().next().curie.getAsString();
+                if(curieFromDefinition == null) {
+                    throw new RuntimeException("Term " + entityIri + " is defined by ontology " +
+                            defOfThisEntity.definingDefinitions.iterator().next().ontologyId +
+                            " but that definition does not have a CURIE");
+                }
+                curie = curieFromDefinition;
             }
 
             while(jsonReader.peek() != JsonToken.END_OBJECT) {
@@ -182,12 +188,19 @@ public class LinkerPass2 {
                     } else {
                         // fallthrough to using the curie from rdf2json
                         curie = jsonReader.nextString();
+                        if(curie == null) {
+                            throw new RuntimeException("(1) Term " + entityIri + " in ontology " + ontologyId + " does not have a CURIE");
+                        }
                         jsonWriter.value(curie);
                     }
                     continue;
                 }
 
                 CopyJsonGatheringStrings.copyJsonGatheringStrings(jsonReader, jsonWriter, stringsInEntity);
+            }
+
+            if(curie == null) {
+                throw new RuntimeException("(2) Term " + entityIri + " in ontology " + ontologyId + " does not have a CURIE");
             }
 
             jsonWriter.name("shortForm");

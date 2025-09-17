@@ -162,36 +162,34 @@ public class LinkerPass1 {
 
         System.out.println("--- Linker Pass 1: Finished scan. Establishing defining ontologies...");
 
+
+
+		// Each IRI can have multiple definitions (across multiple ontologies)
+		// Ideally only one of these is the "defining" ontology 
+		// e.g. a MONDO term can be imported into EFO but MONDO is the defining ontology
+		//
+		// Here we consolidate on the defining definition, if possible.
+		//
 		for(var entry : result.iriToDefinitions.entrySet()) {
 
 			EntityDefinitionSet definitions = entry.getValue();
-			// definingOntologyIris -> definingOntologyIds
+
+			for(EntityDefinition def : definitions.definitions) {
+				if(definitions.definingOntologyIds.contains(def.ontologyId)) {
+					def.isDefiningOntology = true;
+				}
+			}
+
+			// An ontology (A) can assert that another ontology (B) is the defining ontology
+			// of a term using the ontology IRI of (B).
+			//
+			// Here we map these IRIs to ontology IDs:   definingOntologyIris -> definingOntologyIds
+			//
 			for(String ontologyIri : definitions.definingOntologyIris) {
 				if (result.ontologyIriToOntologyIds.containsKey(ontologyIri)) {
 					for(String ontologyId : result.ontologyIriToOntologyIds.get(ontologyIri)) {
 						definitions.definingOntologyIds.add(ontologyId);
 					}
-				}
-			}
-
-			for(EntityDefinition def : definitions.definitions) {
-				if(def.curie != null && entry.getValue().definingOntologyIds.iterator().hasNext()) {
-					JsonObject curieObject = def.curie.getAsJsonObject();
-					if(curieObject.has("value")) {
-						String curieValue = curieObject.get("value").getAsString();
-						if(!curieValue.contains(":")) {
-							var definingOntologyId = entry.getValue().definingOntologyIds.iterator().next();
-							EntityDefinition definingEntity = entry.getValue().ontologyIdToDefinitions.get(definingOntologyId);
-							if (definingEntity != null && definingEntity.curie != null) {
-								curieValue = definingEntity.curie.getAsJsonObject().get("value").getAsString();
-								curieObject.addProperty("value", curieValue);
-								result.iriToDefinitions.put(entry.getKey(), definitions);
-							}
-						}
-					}
-				}
-				if(definitions.definingOntologyIds.contains(def.ontologyId)) {
-					def.isDefiningOntology = true;
 				}
 			}
 

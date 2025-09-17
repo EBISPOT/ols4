@@ -595,6 +595,9 @@ public class OntologyGraph implements StreamRDF {
                     break;
                 case ID:
                     break;
+                case JSON:
+                    writer.jsonValue(((PropertyValueJson) value).value.toString());
+                    break;
                 case LITERAL:
                     PropertyValueLiteral literal = (PropertyValueLiteral) value;
                     if (literal.getDatatype() != null) {
