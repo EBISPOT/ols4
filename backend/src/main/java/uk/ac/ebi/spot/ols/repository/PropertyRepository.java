@@ -138,14 +138,6 @@ public class PropertyRepository {
                 ;
     }
 
-    public Page<JsonElement> getSimilarByFilters(Pageable pageable, String iri, Map<String, Collection<String>> properties, String lang, JsonTransformOptions outputOpts) {
-        Validation.validateLang(lang);
-
-        Page<JsonElement> similarResults = this.neo4jClient.getSimilar("OntologyProperty", iri, pageable);
-        
-        return this.filterResults(similarResults, properties, lang, outputOpts);
-    }
-
     public Page<JsonElement> getSimilarByOntologyIdAndFilters(String ontologyId, Pageable pageable, String iri, Map<String, Collection<String>> properties, String lang, JsonTransformOptions outputOpts) {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
