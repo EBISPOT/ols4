@@ -79,8 +79,10 @@ public class V2LLMController {
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
             @RequestParam
             @Parameter(name="searchProperties",
-                    description = "Specify any other search field here which are not specified by searchFields or boostFields.",
-                    example = "{}") MultiValueMap<String,String> searchProperties,
+                    description = "Filter by any entity property. For example, to filter by ontology ID use 'ontologyId=efo'. " +
+                                  "Multiple values can be provided. Properties include: ontologyId, type, is_obsolete, " +
+                                  "iri, shortForm, and any other entity fields.",
+                    example = "ontologyId=efo&type=class") MultiValueMap<String,String> searchProperties,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
@@ -111,8 +113,10 @@ public class V2LLMController {
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
             @RequestParam
             @Parameter(name="searchProperties",
-                    description = "Specify any other search field here which are not specified by searchFields or boostFields.",
-                    example = "{}") MultiValueMap<String,String> searchProperties,
+                    description = "Filter by any entity property. For example, to filter by ontology ID use 'ontologyId=efo'. " +
+                                  "Multiple values can be provided. Properties include: ontologyId, type, is_obsolete, " +
+                                  "iri, shortForm, and any other entity fields.",
+                    example = "ontologyId=efo&type=property") MultiValueMap<String,String> searchProperties,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
@@ -150,8 +154,10 @@ public class V2LLMController {
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
             @RequestParam
             @Parameter(name="searchProperties",
-                    description = "Specify any other search field here which are not specified by searchFields or boostFields.",
-                    example = "{}") MultiValueMap<String,String> searchProperties,
+                    description = "Filter by any entity property. For example, to filter by another ontology ID use 'ontologyId=go'. " +
+                                  "Multiple values can be provided. Properties include: ontologyId, type, is_obsolete, " +
+                                  "iri, shortForm, and any other entity fields.",
+                    example = "ontologyId=go&type=class") MultiValueMap<String,String> searchProperties,
         @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
         JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
@@ -243,8 +249,10 @@ public class V2LLMController {
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
             @RequestParam
             @Parameter(name="searchProperties",
-                    description = "Specify any other search field here which are not specified by searchFields or boostFields.",
-                    example = "{}") MultiValueMap<String,String> searchProperties,
+                    description = "Filter by any entity property. For example, to filter by another ontology ID use 'ontologyId=go'. " +
+                                  "Multiple values can be provided. Properties include: ontologyId, type, is_obsolete, " +
+                                  "iri, shortForm, and any other entity fields.",
+                    example = "ontologyId=go&type=property") MultiValueMap<String,String> searchProperties,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
