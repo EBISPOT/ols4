@@ -67,6 +67,70 @@ public class V2LLMController {
                 );
         }
 
+    @RequestMapping(path = "/classes/llm_similar", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.POST)
+    public HttpEntity<V2PagedResponse<V2Entity>> getSimilarClassesByIri(
+            @RequestBody String iri,
+            @PageableDefault(size = 20, page = 0)
+            @Parameter(name = "pageable",
+                    description = "Specify the size of the result you want to get in the output",
+                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
+            @Parameter(name = "includeObsoleteEntities",
+                    description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
+            @RequestParam
+            @Parameter(name="searchProperties",
+                    description = "Specify any other search field here which are not specified by searchFields or boostFields.",
+                    example = "{}") MultiValueMap<String,String> searchProperties,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            JsonTransformOptions outputOpts
+    ) throws ResourceNotFoundException, IOException {
+
+        Map<String,Collection<String>> properties = new HashMap<>();
+        if(!includeObsoleteEntities)
+            properties.put(IS_OBSOLETE.getText(), List.of("false"));
+        properties.putAll(searchProperties);
+
+        return new ResponseEntity<>(
+                new V2PagedResponse<V2Entity>(
+                        classRepository.getSimilarByFilters(pageable, iri, DynamicQueryHelper.filterProperties(properties), lang, outputOpts)
+                        .map(V2Entity::new)
+                ),
+                HttpStatus.OK
+        );
+    }
+
+    @RequestMapping(path = "/properties/llm_similar", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.POST)
+    public HttpEntity<V2PagedResponse<V2Entity>> getSimilarPropertiesByIri(
+            @RequestBody String iri,
+            @PageableDefault(size = 20, page = 0)
+            @Parameter(name = "pageable",
+                    description = "Specify the size of the result you want to get in the output",
+                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
+            @Parameter(name = "includeObsoleteEntities",
+                    description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
+            @RequestParam
+            @Parameter(name="searchProperties",
+                    description = "Specify any other search field here which are not specified by searchFields or boostFields.",
+                    example = "{}") MultiValueMap<String,String> searchProperties,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            JsonTransformOptions outputOpts
+    ) throws ResourceNotFoundException, IOException {
+
+        Map<String,Collection<String>> properties = new HashMap<>();
+        if(!includeObsoleteEntities)
+            properties.put(IS_OBSOLETE.getText(), List.of("false"));
+        properties.putAll(searchProperties);
+
+        return new ResponseEntity<>(
+                new V2PagedResponse<V2Entity>(
+                        propertyRepository.getSimilarByFilters(pageable, iri, DynamicQueryHelper.filterProperties(properties), lang, outputOpts)
+                        .map(V2Entity::new)
+                ),
+                HttpStatus.OK
+        );
+    }
+
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}/llm_similar", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<V2PagedResponse<V2Entity>> getSimilarByOntology(
             @PageableDefault(size = 20, page = 0)
@@ -81,15 +145,27 @@ public class V2LLMController {
             @Parameter(name = "class",
                     description = "The IRI of the class, this value must be double URL encoded",
                     example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_1000967") String iri,
+            @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
+            @Parameter(name = "includeObsoleteEntities",
+                    description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
+            @RequestParam
+            @Parameter(name="searchProperties",
+                    description = "Specify any other search field here which are not specified by searchFields or boostFields.",
+                    example = "{}") MultiValueMap<String,String> searchProperties,
         @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
         JsonTransformOptions outputOpts
-    ) throws ResourceNotFoundException {
+    ) throws ResourceNotFoundException, IOException {
 
         iri = UriUtils.decode(iri, "UTF-8");
 
+        Map<String,Collection<String>> properties = new HashMap<>();
+        if(!includeObsoleteEntities)
+            properties.put(IS_OBSOLETE.getText(), List.of("false"));
+        properties.putAll(searchProperties);
+
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                        classRepository.getSimilarByOntologyId(ontologyId, pageable, iri, false, lang, outputOpts).map(V2Entity::new)
+                        classRepository.getSimilarByOntologyIdAndFilters(ontologyId, pageable, iri, DynamicQueryHelper.filterProperties(properties), lang, outputOpts).map(V2Entity::new)
                 ),
                 HttpStatus.OK
         );
@@ -162,15 +238,27 @@ public class V2LLMController {
             @Parameter(name = "property",
                     description = "The IRI of the property, this value must be double URL encoded",
                     example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_0000742") String iri,
+            @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
+            @Parameter(name = "includeObsoleteEntities",
+                    description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
+            @RequestParam
+            @Parameter(name="searchProperties",
+                    description = "Specify any other search field here which are not specified by searchFields or boostFields.",
+                    example = "{}") MultiValueMap<String,String> searchProperties,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             JsonTransformOptions outputOpts
-    ) throws ResourceNotFoundException {
+    ) throws ResourceNotFoundException, IOException {
 
         iri = UriUtils.decode(iri, "UTF-8");
 
+        Map<String,Collection<String>> properties = new HashMap<>();
+        if(!includeObsoleteEntities)
+            properties.put(IS_OBSOLETE.getText(), List.of("false"));
+        properties.putAll(searchProperties);
+
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                        propertyRepository.getSimilarByOntologyId(ontologyId, pageable, iri, lang, outputOpts)
+                        propertyRepository.getSimilarByOntologyIdAndFilters(ontologyId, pageable, iri, DynamicQueryHelper.filterProperties(properties), lang, outputOpts)
                         .map(V2Entity::new)
                 ),
                 HttpStatus.OK

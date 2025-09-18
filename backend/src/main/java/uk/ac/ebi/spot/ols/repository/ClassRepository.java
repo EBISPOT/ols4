@@ -2,6 +2,7 @@
 package uk.ac.ebi.spot.ols.repository;
 
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -246,5 +247,110 @@ public class ClassRepository {
         return this.neo4jClient.searchByVector("OntologyClass", vector, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
+    }
+
+    public Page<JsonElement> getSimilarByFilters(Pageable pageable, String iri, Map<String, Collection<String>> properties, String lang, JsonTransformOptions outputOpts) {
+        Validation.validateLang(lang);
+
+        Page<JsonElement> similarResults = this.neo4jClient.getSimilar("OntologyClass", iri, pageable);
+        
+        return this.filterResults(similarResults, properties, lang, outputOpts);
+    }
+
+    public Page<JsonElement> getSimilarByOntologyIdAndFilters(String ontologyId, Pageable pageable, String iri, Map<String, Collection<String>> properties, String lang, JsonTransformOptions outputOpts) {
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+
+        Page<JsonElement> similarResults = this.neo4jClient.getSimilar("OntologyClass", iri, pageable);
+        
+        return this.filterResults(similarResults, properties, lang, outputOpts);
+    }
+
+    private Page<JsonElement> filterResults(Page<JsonElement> results, Map<String, Collection<String>> properties, String lang, JsonTransformOptions outputOpts) {
+        // Transform the results first
+        Page<JsonElement> transformedResults = results.map(e -> JsonTransformer.transformJson(e, lang, outputOpts));
+        
+        if (properties == null || properties.isEmpty()) {
+            return transformedResults;
+        }
+
+        // Filter the results based on the properties
+        List<JsonElement> filteredList = transformedResults.getContent().stream()
+                .filter(element -> matchesFilters(element, properties))
+                .collect(java.util.stream.Collectors.toList());
+
+        return new org.springframework.data.domain.PageImpl<>(filteredList, results.getPageable(), filteredList.size());
+    }
+
+    private boolean matchesFilters(JsonElement element, Map<String, Collection<String>> properties) {
+        if (properties == null || properties.isEmpty()) {
+            return true;
+        }
+
+        for (Map.Entry<String, Collection<String>> filter : properties.entrySet()) {
+            String filterKey = filter.getKey();
+            Collection<String> filterValues = filter.getValue();
+
+            if (filterValues == null || filterValues.isEmpty()) {
+                continue;
+            }
+
+            JsonElement fieldValue = getFieldValue(element, filterKey);
+            if (fieldValue == null || fieldValue.isJsonNull()) {
+                return false; // Field doesn't exist or is null, doesn't match filter
+            }
+
+            boolean matches = false;
+            for (String filterValue : filterValues) {
+                if (fieldValueMatches(fieldValue, filterValue)) {
+                    matches = true;
+                    break;
+                }
+            }
+            if (!matches) {
+                return false; // None of the filter values matched
+            }
+        }
+        return true;
+    }
+
+    private JsonElement getFieldValue(JsonElement element, String fieldPath) {
+        if (!element.isJsonObject()) {
+            return null;
+        }
+
+        JsonObject obj = element.getAsJsonObject();
+        
+        // Handle nested field paths like "ontologyId" or "is_obsolete"
+        String[] pathParts = fieldPath.split("\\.");
+        JsonElement current = obj;
+        
+        for (String part : pathParts) {
+            if (!current.isJsonObject()) {
+                return null;
+            }
+            current = current.getAsJsonObject().get(part);
+            if (current == null) {
+                return null;
+            }
+        }
+        
+        return current;
+    }
+
+    private boolean fieldValueMatches(JsonElement fieldValue, String filterValue) {
+        if (fieldValue.isJsonPrimitive()) {
+            String actualValue = fieldValue.getAsString().toLowerCase();
+            return actualValue.contains(filterValue.toLowerCase());
+        } else if (fieldValue.isJsonArray()) {
+            // Check if any array element matches
+            for (JsonElement arrayElement : fieldValue.getAsJsonArray()) {
+                if (arrayElement.isJsonPrimitive() && 
+                    arrayElement.getAsString().toLowerCase().contains(filterValue.toLowerCase())) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
