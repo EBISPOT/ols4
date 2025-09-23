@@ -148,6 +148,28 @@ public class V2LLMController {
         );
     }
 
+    @RequestMapping(path = "/ontologies/{onto}/classes/llm_embeddings", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
+    public HttpEntity<V2PagedResponse<V2Entity>> getEmbeddingsByOntology(
+            @PageableDefault(size = 20, page = 0)
+            @Parameter(name = "pageable",
+                    description = "Specify the size of the result you want to get in the output",
+                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "Ontology Id to get the information about.",
+                    example = "efo") String ontologyId,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            JsonTransformOptions outputOpts
+    ) throws ResourceNotFoundException {
+
+        return new ResponseEntity<>(
+                new V2PagedResponse<V2Entity>(
+                        classRepository.getEmbeddingsByOntologyId(ontologyId, pageable, lang, outputOpts).map(V2Entity::new)
+                ),
+                HttpStatus.OK
+        );
+    }
+
     @RequestMapping(path = "/ontologies/{onto}/properties/{property}/llm_similar", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<V2PagedResponse<V2Entity>> getSimilarPropertiesByOntology(
             @PageableDefault(size = 20, page = 0)

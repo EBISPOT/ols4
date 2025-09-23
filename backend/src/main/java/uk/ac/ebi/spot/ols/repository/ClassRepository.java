@@ -252,4 +252,14 @@ public class ClassRepository {
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
+
+    public Page<JsonElement> getEmbeddingsByOntologyId(String ontologyId, Pageable pageable, String lang, JsonTransformOptions outputOpts) {
+
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+
+        return this.neo4jClient.getEmbeddingsByOntologyId("OntologyClass", ontologyId, pageable)
+                .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
+                ;
+    }
 }

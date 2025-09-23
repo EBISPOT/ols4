@@ -310,5 +310,45 @@ public class OlsNeo4jClient {
 
 		return new PageImpl<JsonElement>(res, pageable, res.size());
     }
+
+    public Page<JsonElement> getEmbeddingsByOntologyId(String type, String ontologyId, Pageable pageable) {
+
+		String query = "MATCH (c:" + type + " {ontologyId: $ontologyId, isDefiningOntology:['true']}) " +
+		"WHERE c.embeddings IS NOT NULL " +
+		"RETURN c " +
+		"ORDER BY c.iri " +
+		"SKIP $skip LIMIT $limit";
+
+		String countQuery = "MATCH (c:" + type + " {ontologyId: $ontologyId, isDefiningOntology:['true']}) " +
+		"WHERE c.embeddings IS NOT NULL " +
+		"RETURN count(c) AS total";
+
+		Session session = neo4jClient.getSession();
+		
+		// Get total count for pagination
+		Result countResult = session.run(countQuery, Map.of("ontologyId", ontologyId));
+		long totalElements = 0;
+		if (countResult.hasNext()) {
+			totalElements = countResult.next().get("total").asLong();
+		}
+
+		// Get the actual results
+		Result result = session.run(query, Map.of(
+			"ontologyId", ontologyId, 
+			"skip", pageable.getOffset(), 
+			"limit", pageable.getPageSize()
+		));
+
+		ArrayList<JsonElement> res = new ArrayList<>();
+
+		for(Record r : result.list()) {
+			var rmap = r.asMap();
+			Map<String,Object> entity = ((Node) rmap.get("c")).asMap();
+			var resRow = JsonParser.parseString((String) entity.get("_json"));
+			res.add(resRow);
+		}
+
+		return new PageImpl<JsonElement>(res, pageable, totalElements);
+    }
 	
 }
