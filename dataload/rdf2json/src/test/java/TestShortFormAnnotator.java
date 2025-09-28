@@ -18,18 +18,24 @@ public class TestShortFormAnnotator {
     public void testOBODefaultNamespace() {
         // Test OBO default namespaces (added in https://github.com/EBISPOT/ols4/pull/937)
         assertEquals("obo:test#abc", extractShortForm(uriPrefixes, "TEST", "http://purl.obolibrary.org/obo/test#abc"));
+        
+        // Reverts to the guess workflow
+        assertEquals("abc", extractShortForm(uriPrefixes, "XXX", "http://purl.obolibrary.org/obo/test#abc"));
     }
 
     @Test
     public void testRegular() {
-        // Test regular parsing based, note that it uses PP instead of TEST
-        assertEquals("PP_1234567", extractShortForm(uriPrefixes, "PP", "http://purl.obolibrary.org/obo/TEST_1234567"));
+        // Test regular parsing based, note that it takes the prefix given
+        assertEquals("XXX_1234567", extractShortForm(uriPrefixes, "XXX", "http://purl.obolibrary.org/obo/TEST_1234567"));
+        assertEquals("TEST_1234567", extractShortForm(uriPrefixes, "TEST", "http://purl.obolibrary.org/obo/TEST_1234567"));
     }
 
     @Test
     public void testGuesses() {
         // Guesses
-        assertEquals("1234567", extractShortForm(uriPrefixes, "PP", "http://example.org/1234567"));
-        assertEquals("1234567", extractShortForm(uriPrefixes, "PP", "http://example.org/any.html#1234567"));
+        assertEquals("1234567", extractShortForm(uriPrefixes, "XXX", "http://example.org/1234567"));
+        assertEquals("1234567", extractShortForm(uriPrefixes, "TEST", "http://example.org/1234567"));
+        assertEquals("1234567", extractShortForm(uriPrefixes, "XXX", "http://example.org/any.html#1234567"));
+        assertEquals("1234567", extractShortForm(uriPrefixes, "TEST", "http://example.org/any.html#1234567"));
     }
 }
