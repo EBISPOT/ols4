@@ -16,6 +16,13 @@ jobs:
     permissions:
       contents: read
       packages: write
+
+    # don't run this workflow on forks, because only the
+    # default repository should push to the registry.
+    # we can tell if it's the main repo because the REGISTRY
+    # environment variable is set.
+    if: env.REGISTRY != ''
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
