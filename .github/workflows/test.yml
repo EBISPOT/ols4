@@ -1,4 +1,4 @@
-name: Run OLS4 dataload test cases
+name: Tests
 on:
   push:
     branches:
@@ -8,6 +8,7 @@ on:
       - dev
 jobs:
   testDataload:
+    name: Data Load
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -21,6 +22,7 @@ jobs:
       - name: Run dataload tests
         run: ./test_dataload.sh
   testApi:
+    name: API
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
