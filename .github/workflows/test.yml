@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set up JDK 11
+      - name: Set up Java
         uses: actions/setup-java@v3
         with:
-          java-version: '14'
+          java-version: '25'
           distribution: 'adopt'
       - name: Build with Maven
         run: mvn clean package
