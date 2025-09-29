@@ -10,15 +10,18 @@ jobs:
   testDataload:
     name: Data Load
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ 14 ]
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Java
-        uses: actions/setup-java@v3
+      - uses: actions/checkout@v4
+      - name: Set up Java ${{ matrix.java }}
+        uses: actions/setup-java@v4
         with:
-          java-version: '25'
-          distribution: 'adopt'
+          java-version: ${{ matrix.java }}
+          distribution: temurin
       - name: Build with Maven
-        run: mvn clean package
+        run: mvn -B clean package
       - name: Run dataload tests
         run: ./test_dataload.sh
   testApi:
