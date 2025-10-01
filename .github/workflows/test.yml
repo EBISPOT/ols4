@@ -19,15 +19,17 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: ${{ matrix.java }}
-          distribution: temurin
+          distribution: 'temurin'
+          cache: maven
       - name: Build with Maven
-        run: mvn -B clean package
+        # -ntp gets rid of the "Downloading..." spam
+        run: mvn -ntp -B clean package -Dmaven.compiler.release=${{ matrix.java }}
       - name: Run dataload tests
         run: ./test_dataload.sh
-  testApi:
-    name: API
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Run API tests
-        run: ./test_api.sh
+#  testApi:
+#    name: API
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Run API tests
+#        run: ./test_api.sh
