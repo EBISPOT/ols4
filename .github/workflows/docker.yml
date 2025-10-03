@@ -27,22 +27,29 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Prepare safe image tag
+        id: prep
+        run: |
+          RAW_TAG="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
+          SAFE_TAG=$(echo "$RAW_TAG" | tr '/' '-' | tr -c 'a-zA-Z0-9_.-' '-')
+          echo "safe_tag=$SAFE_TAG" >> $GITHUB_OUTPUT
+
       - name: Build and push ols4 dataload Docker image
         run: |
           docker build -t ghcr.io/ebispot/ols4-dataload:${{ github.sha }} -f ./dataload/Dockerfile .
-          docker tag ghcr.io/ebispot/ols4-dataload:${{github.sha}} ghcr.io/ebispot/ols4-dataload:${{ github.head_ref || github.ref_name }}
+          docker tag ghcr.io/ebispot/ols4-dataload:${{github.sha}} ghcr.io/ebispot/ols4-dataload:${{ steps.prep.outputs.safe_tag }}
           docker push --all-tags ghcr.io/ebispot/ols4-dataload
 
       - name: Build and push ols4 backend Docker image
         run: |
           docker build -t ghcr.io/ebispot/ols4-backend:${{ github.sha }} -f ./backend/Dockerfile .
-          docker tag ghcr.io/ebispot/ols4-backend:${{github.sha}} ghcr.io/ebispot/ols4-backend:${{ github.head_ref || github.ref_name }}
+          docker tag ghcr.io/ebispot/ols4-backend:${{github.sha}} ghcr.io/ebispot/ols4-backend:${{ steps.prep.outputs.safe_tag }}
           docker push --all-tags ghcr.io/ebispot/ols4-backend
 
       - name: Build and push ols4 frontend Docker image
         run: |
           cd frontend
           docker build -t ghcr.io/ebispot/ols4-frontend:${{ github.sha }} .
-          docker tag ghcr.io/ebispot/ols4-frontend:${{github.sha}} ghcr.io/ebispot/ols4-frontend:${{ github.head_ref || github.ref_name }}
+          docker tag ghcr.io/ebispot/ols4-frontend:${{github.sha}} ghcr.io/ebispot/ols4-frontend:${{ steps.prep.outputs.safe_tag }}
           docker push --all-tags ghcr.io/ebispot/ols4-frontend
 
