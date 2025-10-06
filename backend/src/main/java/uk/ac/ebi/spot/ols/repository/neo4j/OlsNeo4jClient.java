@@ -313,42 +313,17 @@ public class OlsNeo4jClient {
 
     public Page<JsonElement> getEmbeddingsByOntologyId(String type, String ontologyId, Pageable pageable) {
 
-		String query = "MATCH (c:" + type + " {ontologyId: $ontologyId, isDefiningOntology:['true']}) " +
-		"WHERE c.embeddings IS NOT NULL " +
-		"RETURN c " +
-		"ORDER BY c.iri " +
-		"SKIP $skip LIMIT $limit";
+		var node = Cypher.node(type).named("c");
+		var condition = node.property("ontologyId").isEqualTo(Cypher.parameter("ontologyId"))
+			.and(Cypher.literalOf("true").in(node.property("isDefiningOntology")))
+			.and(node.property("embeddings").isNotNull());
 
-		String countQuery = "MATCH (c:" + type + " {ontologyId: $ontologyId, isDefiningOntology:['true']}) " +
-		"WHERE c.embeddings IS NOT NULL " +
-		"RETURN count(c) AS total";
+		var statement = Cypher.match(node).where(condition);
 
-		Session session = neo4jClient.getSession();
-		
-		// Get total count for pagination
-		Result countResult = session.run(countQuery, Map.of("ontologyId", ontologyId));
-		long totalElements = 0;
-		if (countResult.hasNext()) {
-			totalElements = countResult.next().get("total").asLong();
-		}
+		var query = statement.returningDistinct(node).build().getCypher();
+		var countQuery = statement.returning(Cypher.countDistinct(node)).build().getCypher();
 
-		// Get the actual results
-		Result result = session.run(query, Map.of(
-			"ontologyId", ontologyId, 
-			"skip", pageable.getOffset(), 
-			"limit", pageable.getPageSize()
-		));
-
-		ArrayList<JsonElement> res = new ArrayList<>();
-
-		for(Record r : result.list()) {
-			var rmap = r.asMap();
-			Map<String,Object> entity = ((Node) rmap.get("c")).asMap();
-			var resRow = JsonParser.parseString((String) entity.get("_json"));
-			res.add(resRow);
-		}
-
-		return new PageImpl<JsonElement>(res, pageable, totalElements);
+		return neo4jClient.queryPaginated(query, "c", countQuery, parameters("ontologyId", ontologyId), pageable);
     }
 	
 }
