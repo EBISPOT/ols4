@@ -314,7 +314,7 @@ public class OlsNeo4jClient {
     public Page<JsonElement> getEmbeddingsByOntologyId(String type, String ontologyId, Pageable pageable) {
 
 		var node = Cypher.node(type).named("c");
-		var condition = node.property("ontologyId").isEqualTo(Cypher.parameter("ontologyId"))
+		var condition = Cypher.parameter("ontologyId").in(node.property("ontologyId"))
 			.and(Cypher.literalOf("true").in(node.property("isDefiningOntology")))
 			.and(node.property("embeddings").isNotNull());
 

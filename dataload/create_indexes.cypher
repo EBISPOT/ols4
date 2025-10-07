@@ -5,6 +5,7 @@ CREATE INDEX FOR (n:OntologyProperty) ON n.id;
 CREATE INDEX FOR (n:OntologyEntity) ON n.id;
 
 CREATE INDEX FOR (n:OntologyClass) ON n.iri;
+CREATE INDEX FOR (n:OntologyClass) ON n.ontologyId;
 
 CREATE VECTOR INDEX class_embeddings IF NOT EXISTS
 FOR (n:OntologyClass) ON n.embeddings OPTIONS { indexConfig: {
