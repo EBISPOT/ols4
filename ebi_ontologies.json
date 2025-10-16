@@ -1661,6 +1661,39 @@
       "repository": "https://github.com/arpcard/aro",
       "title": "Antibiotic Resistance Ontology",
       "tracker": "https://github.com/arpcard/aro/issues"
+    },
+    {
+      "id": "hgnc.genegroup",
+      "reasoner": "none",
+      "oboSlims": false,
+      "is_foundary": false,
+      "ontology_purl": "https://w3id.org/biopragmatics/resources/hgnc.genegroup/hgnc.genegroup.owl",
+      "creator": [
+        "Elspeth Bruford"
+      ],
+      "preferredPrefix": "hgnc.genegroup",
+      "title": "HGNC Gene Group",
+      "description": "The HGNC (HUGO Gene Nomenclature Committee) provides an approved gene name and symbol (short-form abbreviation) for each known human gene. All approved symbols are stored in the HGNC database, and each symbol is unique. In addition, HGNC also provides a unique numerical ID to identify gene families, providing a display of curated hierarchical relationships between families. Licensed under CC0-1.0.",
+      "uri": "https://www.genenames.org",
+      "homepage": "https://www.genenames.org",
+      "mailing_list": "elspeth@genenames.org",
+      "label_property": "https://www.w3.org/2000/01/rdf-schema#label",
+      "definition_property": [
+        "http://purl.org/dc/terms/description"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasCloseSynonym"
+      ],
+      "hierarchical_property": [
+        "https://www.w3.org/2000/01/rdf-schema#subClassOf"
+      ],
+      "hidden_property": [],
+      "base_uri": [
+        "https://www.genenames.org/data/genegroup/#!/group/"
+      ]
     }
   ]
 }
