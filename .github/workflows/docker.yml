@@ -21,7 +21,7 @@ jobs:
     # default repository should push to the registry.
     # we can tell if it's the main repo because the REGISTRY
     # environment variable is set.
-    if: env.REGISTRY != ''
+    if: ${{ env.REGISTRY != '' }}
 
     steps:
       - name: Checkout repository
