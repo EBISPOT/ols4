@@ -1,6 +1,8 @@
 import { Fragment } from "react";
 import Header from "../components/Header";
 import urlJoin from "url-join";
+import Link from "@mui/material/Link";
+import { List, ListItem } from "@mui/material";
 
 export default function About() {
   document.title = "Ontology Lookup Service (OLS)";
@@ -26,42 +28,37 @@ export default function About() {
             </a>
             &thinsp;at EMBL-EBI.
           </p>
+          <p>For more information about OLS please see our recent publication:</p>
+          <br/>
+          <p className="text-l ml-2">
+            <Link className="link-default" href="https://academic.oup.com/bioinformatics/article/41/5/btaf279/8125017">
+            <i>OLS4: a new Ontology Lookup Service for a growing interdisciplinary knowledge ecosystem</i>
+            </Link>
+            <br/><i>Bioinformatics</i>
+            <br/>Volume 41, Issue 5, May 2025, btaf279
+          </p>
         </div>
         <div className="text-2xl font-bold my-6">Funding</div>
         <div>
-          <p className="my-2">
-            OLS is supported in part by CORBEL funded by the EU's Horizon 2020
-            research and innovation programme (2014-2020) under grant agreement
-            number 654248 and previously by&thinsp;
-            <a
-              className="link-default"
-              href="http://www.diachron-fp7.eu/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              DIACHRON
-            </a>
-            , EU FP7 Capacities Specific
-            Programme,/grant/agreement/number/284209.
-          </p>
+          OLS has been supported by:
+          <List>
+            <ListItem>EMBL-EBI Core Funds</ListItem>
+            <ListItem>European Union HORIZON program grant number 101131959</ListItem>
+            <ListItem>Chan–Zuckerberg Initiative award for the Human Cell Atlas Data Coordination Platform</ListItem>
+            <ListItem>Office of the Director, National Institutes of Health (R24-OD011883, OT2OD033756)</ListItem>
+            <ListItem>NIH National Human Genome Research Institute Phenomics First Resource, NIH-NHGRI # 5RM1 HG010860, a Center of Excellence in Genomic Science</ListItem>
+            <ListItem>European Union’s Horizon 2020 research, and innovation program grant numbers 824087 (European Open Science Cloud Life from June 2020 to August 2023) and 825575 (European Joint Programme on Rare Diseases from June 2020 to December 2023)</ListItem>
+            <ListItem>The EVORA project has received funding from the European Union's HORIZON programme under grant agreement No 101131959.</ListItem>
+            <ListItem> CORBEL funded by the EU's Horizon 2020 research and innovation programme (2014-2020) under grant agreement number 654248</ListItem>
+            <ListItem>DIACHRON, EU FP7 Capacities Specific Programme,/grant/agreement/number/284209.</ListItem>
+          </List>
         </div>
         <div className="text-2xl font-bold my-6">Contact</div>
         <div>
           <ul className="list-disc list-inside">
             <li>
-              For feedback, enquiries or suggestion about OLS or to request a
-              new ontology please contact&thinsp;
-              <a
-                className="link-default"
-                href="mailto:ols-support@ebi.ac.uk"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                ols-support@ebi.ac.uk
-              </a>
-            </li>
-            <li>
-              For bugs or problems with the code or API please create a GitHub
+              For feedback, enquiries, suggestions about OLS or to request a
+              new ontology please create a GitHub
               issue (
               <a
                 className="link-default"

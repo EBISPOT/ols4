@@ -16,6 +16,9 @@ jobs:
     permissions:
       contents: read
       packages: write
+
+    if: ${{ github.repository_owner == 'EBISPOT' }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2

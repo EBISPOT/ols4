@@ -53,7 +53,7 @@ public class McpSearchService {
         return gson.toJson( res.getContent().stream().map(McpSearchResult::fromJson).toList() );
     }
     
-    @Tool(description = "OpenAI compliant tool to retrieve an entity from OLS by ID returned from the search tool")
+    @Tool(description = "OpenAI compliant tool to retrieve an entity from OLS by ID returned from the search tool. The ID must be of the format ontologyid+entityIri, e.g. go+http://purl.obolibrary.org/obo/GO_0008150. IDs in this format are returned by the OpenAI compliant 'search' tool.")
     String fetch(
         String id
     ) throws IOException {
@@ -62,9 +62,14 @@ public class McpSearchService {
         outputOpts.resolveReferences = true;
         outputOpts.manchesterSyntax = true;
 
+        var tokens = id.split("\\+");
+        if (tokens.length != 2) {
+            throw new IllegalArgumentException("ID must be of the format ontologyid+entityIri, e.g. go+http://purl.obolibrary.org/obo/GO_0008150");
+        }
+
         var res = entityRepository.getByOntologyIdAndIri(
-            id.split("\\+")[0],
-            id.split("\\+")[1],
+            tokens[0],
+            tokens[1],
             "en",
             outputOpts
         );

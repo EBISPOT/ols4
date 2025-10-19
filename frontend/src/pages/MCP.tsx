@@ -5,7 +5,7 @@ import Header from "../components/Header";
 
 export default function MCP() {
   document.title = "Ontology Lookup Service (OLS)";
-  let mcpUrl = process.env.REACT_APP_APIURL+'api/mcp/sse'
+  let mcpUrl = process.env.REACT_APP_APIURL+'api/mcp'
   mcpUrl = mcpUrl.split('www.ebi.ac.uk').join('wwwdev.ebi.ac.uk')
   return (
     <Fragment>
@@ -13,7 +13,7 @@ export default function MCP() {
       <main className="container mx-auto px-4 my-8">
           <div className="text-2xl font-bold my-6">MCP Server</div>
           <p className="mb-4">
-            OLS provides a hosted <a href="https://modelcontextprotocol.io/docs/getting-started/intro">Model Context Protocol (MCP)</a> server which can be used with LLMs to provide access to ontology terms and hierarchies.
+            OLS provides a hosted <a href="https://modelcontextprotocol.io/docs/getting-started/intro">Model Context Protocol (MCP)</a> server which enables LLMs to access ontology terms and hierarchies.
             </p>
             <p className="mb-4">
             The MCP server for this instance of OLS is available at:
@@ -25,7 +25,7 @@ export default function MCP() {
   <button
     type="button"
     onClick={() =>
-      navigator.clipboard.writeText(`${process.env.REACT_APP_APIURL}api/mcp/sse`)
+      navigator.clipboard.writeText(`${process.env.REACT_APP_APIURL}api/mcp`)
     }
     className="ml-2 text-gray-500 hover:text-gray-700 transition"
   >
@@ -36,6 +36,10 @@ export default function MCP() {
 
                 </li>
             </ul>
+	    <br/>
+            <p className="mb-4">
+            Please note that the type of this endpoint is <b>Streamable HTTP</b> and not legacy SSE.
+            </p>
       </main>
     </Fragment>
   );
