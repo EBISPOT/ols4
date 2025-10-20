@@ -313,17 +313,41 @@ public class OlsNeo4jClient {
 
     public Page<JsonElement> getEmbeddingsByOntologyId(String type, String ontologyId, Pageable pageable) {
 
-		var node = Cypher.node(type).named("c");
-		var condition = Cypher.parameter("ontologyId").in(node.property("ontologyId"))
-			.and(Cypher.literalOf("true").in(node.property("isDefiningOntology")))
-			.and(node.property("embeddings").isNotNull());
+		// Use UNWIND pattern for better performance
+		// This avoids the slow IN operator on array properties
+		String query =
+			"MATCH (c:" + type + ") " +
+			"WHERE c.embeddings IS NOT NULL " +
+			"UNWIND c.ontologyId AS oid " +
+			"WITH c, oid " +
+			"WHERE oid = $ontologyId " +
+			"WITH DISTINCT c " +
+			"UNWIND c.isDefiningOntology AS def " +
+			"WITH c, def " +
+			"WHERE def = 'true' " +
+			"RETURN DISTINCT c " +
+			"ORDER BY c.iri ASC " +
+			"SKIP $skip LIMIT $limit";
 
-		var statement = Cypher.match(node).where(condition);
+		ArrayList<JsonElement> res = new ArrayList<>();
 
-		var query = statement.returningDistinct(node).build().getCypher();
-		var countQuery = statement.returning(Cypher.countDistinct(node)).build().getCypher();
+		Session session = neo4jClient.getSession();
+		Result result = session.run(query, Map.of(
+			"ontologyId", ontologyId,
+			"skip", pageable.getOffset(),
+			"limit", pageable.getPageSize()
+		));
 
-		return neo4jClient.queryPaginated(query, "c", countQuery, parameters("ontologyId", ontologyId), pageable);
+		for(Record r : result.list()) {
+			var rmap = r.asMap();
+			Map<String,Object> entity = ((Node) rmap.get("c")).asMap();
+			var resRow = JsonParser.parseString((String) entity.get("_json"));
+			res.add(resRow);
+		}
+
+		// Return page with the results we have - total count is just the result size
+		// This avoids the expensive count query
+		return new PageImpl<JsonElement>(res, pageable, pageable.getOffset() + res.size());
     }
 	
 }
