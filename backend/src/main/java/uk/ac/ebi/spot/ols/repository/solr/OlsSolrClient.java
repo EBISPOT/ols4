@@ -8,6 +8,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.util.EntityUtils;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
@@ -21,6 +22,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.net.URLDecoder;
@@ -34,32 +37,83 @@ public class OlsSolrClient {
 
 
     @NotNull
-    @org.springframework.beans.factory.annotation.Value("${ols.solr.host:http://localhost:8983}")
-    public String host = "http://localhost:8983";
-
-
-    private Gson gson = new Gson();
-
-    private static final Logger logger = LoggerFactory.getLogger(OlsSolrClient.class);
+    @Value("${ols.solr.host:http://localhost:8983}")
+    private String host;
 
     @Value("${ols.solr.max-rows:1000}")
     private int maxRows;
 
-    public Map<String,Object> getCoreStatus() throws IOException {
-        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-            HttpGet request = new HttpGet(host + "/solr/admin/cores?wt=json");
-            try (CloseableHttpResponse response = httpClient.execute(request)) {
-                HttpEntity entity = response.getEntity();
-                if(entity == null) {
-                    return null;
-                }
-                Map<String,Object> obj = gson.fromJson(EntityUtils.toString(entity), Map.class);
-                Map<String,Object> status = (Map<String,Object>) obj.get("status");
-                Map<String,Object> coreStatus = (Map<String,Object>) status.get("ols4_entities");
-                response.close();
-                httpClient.close();
-                return coreStatus;
+    @Value("${ols.solr.max-connections:60}")
+    private int maxConnections;
+
+    @Value("${ols.solr.max-connections-per-route:30}")
+    private int maxConnectionsPerRoute;
+
+    @Value("${ols.solr.connection-timeout:5000}")
+    private int connectionTimeout;
+
+    @Value("${ols.solr.socket-timeout:30000}")
+    private int socketTimeout;
+
+    private final Gson gson = new Gson();
+    private static final Logger logger = LoggerFactory.getLogger(OlsSolrClient.class);
+
+    // Reusable SolrClient and HttpClient instances
+    private HttpSolrClient entitiesSolrClient;
+    private CloseableHttpClient httpClient;
+
+    @PostConstruct
+    public void init() {
+        logger.info("Initializing OLS Solr client with connection pooling - maxConnections: {}, maxPerRoute: {}",
+            maxConnections, maxConnectionsPerRoute);
+
+        // Configure connection pooling for high-volume traffic
+        PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager();
+        connManager.setMaxTotal(maxConnections);
+        connManager.setDefaultMaxPerRoute(maxConnectionsPerRoute);
+
+        this.httpClient = HttpClients.custom()
+            .setConnectionManager(connManager)
+            .setConnectionManagerShared(true)
+            .build();
+
+        // Create reusable SolrClient with connection pooling
+        this.entitiesSolrClient = new HttpSolrClient.Builder(host + "/solr/ols4_entities")
+            .withHttpClient(httpClient)
+            .withConnectionTimeout(connectionTimeout)
+            .withSocketTimeout(socketTimeout)
+            .build();
+
+        logger.info("OLS Solr client initialized successfully");
+    }
+
+    @PreDestroy
+    public void cleanup() {
+        logger.info("Shutting down OLS Solr client");
+        try {
+            if (entitiesSolrClient != null) {
+                entitiesSolrClient.close();
             }
+            if (httpClient != null) {
+                httpClient.close();
+            }
+            logger.info("OLS Solr client shut down successfully");
+        } catch (IOException e) {
+            logger.error("Error closing Solr clients", e);
+        }
+    }
+
+    public Map<String,Object> getCoreStatus() throws IOException {
+        // Reuse the shared httpClient
+        HttpGet request = new HttpGet(host + "/solr/admin/cores?wt=json");
+        try (CloseableHttpResponse response = httpClient.execute(request)) {
+            HttpEntity entity = response.getEntity();
+            if(entity == null) {
+                return null;
+            }
+            Map<String,Object> obj = gson.fromJson(EntityUtils.toString(entity), Map.class);
+            Map<String,Object> status = (Map<String,Object>) obj.get("status");
+            return (Map<String,Object>) status.get("ols4_entities");
         }
     }
 
@@ -124,32 +178,25 @@ public class OlsSolrClient {
         logger.debug("solr query urldecoded: {}",URLDecoder.decode(query.toQueryString()));
         logger.debug("solr host: {}", host);
 
-        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/ols4_entities").build();
-
-        QueryResponse qr = null;
         try {
-            qr = mySolrClient.query(query);
+            // Reuse the singleton client instead of creating new one
+            QueryResponse qr = entitiesSolrClient.query(query);
             logger.debug("solr query had {} result(s).", qr.getResults().getNumFound());
-        } catch (SolrServerException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } finally {
-            try {
-                mySolrClient.close();
-            } catch (IOException ioe){
-                logger.error("Failed to close Solr client with exception \"{}\"", ioe.getMessage());
-            }
+            return qr;
+        } catch (SolrServerException | IOException e) {
+            throw new RuntimeException("Solr query failed", e);
         }
-        return qr;
     }
 
     public QueryResponse dispatchSearch(SolrQuery query, String core) throws IOException, SolrServerException {
-        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/" + core).build();
-        final int rows = query.getRows().intValue() > maxRows ? maxRows : query.getRows().intValue();
-        query.setRows(rows);
-        QueryResponse qr = mySolrClient.query(query);
-        mySolrClient.close();
-        return qr;
+        try (HttpSolrClient client = new HttpSolrClient.Builder(host + "/solr/" + core)
+                .withHttpClient(httpClient)
+                .withConnectionTimeout(connectionTimeout)
+                .withSocketTimeout(socketTimeout)
+                .build()) {
+            final int rows = query.getRows().intValue() > maxRows ? maxRows : query.getRows().intValue();
+            query.setRows(rows);
+            return client.query(query);
+        }
     }
 }
