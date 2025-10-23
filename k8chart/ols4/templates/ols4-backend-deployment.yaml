@@ -43,7 +43,7 @@ spec:
             timeoutSeconds: 10
           resources:
             requests:
-              memory: 8Gi
+              memory: 5Gi
               cpu: 0.5
             limits:
               memory: 30Gi
