@@ -79,19 +79,22 @@ public class McpSearchService {
           This ID format is returned by the 'search' tool results. The ontologyId is the short identifier like "go", "efo", "uberon",
           and the entityIri is the full IRI/URL of the term.
         
-        Returns: A JSON object with detailed information about the term including:
-        - id: The identifier in "ontologyId+entityIri" format
-        - title: The CURIE and primary label (e.g., "GO:0008150 biological_process")
-        - text: The definition/description of the term
-        - url: The full IRI/URL of the term
-        - metadata: Object containing detailed information such as:
-          * ontologyId: The ontology identifier
-          * type: The entity type (e.g., "class", "property")
-          * iri: The full IRI
-          * curie: The compact URI (e.g., "GO:0008150")
-          * label: List of labels for the term
-          * definition: List of definitions
-          * directAncestor, directParent, hierarchicalParent: Lists of parent classes with their IRIs and labels
+        Returns: A JSON object with the following fields:
+        - id: String - The identifier in "ontologyId+entityIri" format (e.g., "go+http://purl.obolibrary.org/obo/GO_0008150")
+        - title: String - The CURIE and primary label concatenated (e.g., "GO:0008150 biological_process")
+        - text: String - The definition of the term (single string, not a list)
+        - url: String - The full IRI of the term (e.g., "http://purl.obolibrary.org/obo/GO_0008150")
+        - metadata: Object - For class entities, this is an object with the following fields:
+          * ontologyId: String - The ontology identifier (e.g., "go")
+          * type: List<String> - The entity types (e.g., ["class"])
+          * iri: String - The full IRI
+          * curie: String - The compact URI (e.g., "GO:0008150")
+          * label: List<String> - All labels for the term
+          * definition: List<String> - All definitions for the term
+          * directAncestor: List<Object> - Direct ancestors, each with fields: iri (String), definedBy (List<String>), label (List<String>)
+          * directParent: List<Object> - Direct parents, each with fields: iri (String), definedBy (List<String>), label (List<String>)
+          * hierarchicalParent: List<Object> - Hierarchical parents, each with fields: iri (String), definedBy (List<String>), label (List<String>)
+          For non-class entities, metadata contains only: {"type": "property"} or similar.
         
         Use this tool after using 'search' to get comprehensive information about a specific term.
         The metadata field contains structured information about the term's hierarchical relationships within the ontology.
