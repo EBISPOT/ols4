@@ -28,7 +28,23 @@ public class McpSearchService {
     // Specific params and result format to match OpenAI requirements:
     // https://platform.openai.com/docs/mcp#create-an-mcp-server
 
-    @Tool(description = "OpenAI compliant tool to search OLS for a query string")
+    @Tool(description = """
+        Search the Ontology Lookup Service (OLS) for ontology terms matching a query string.
+        
+        This tool performs a full-text search across all ontologies in OLS to find matching terms, classes, properties, and individuals.
+        
+        Parameters:
+        - query: The search term or phrase (e.g., "cell", "diabetes", "mitochondrion")
+        
+        Returns: A JSON array of search results, each containing:
+        - id: Unique identifier in format "ontologyId+entityIri" (e.g., "go+http://purl.obolibrary.org/obo/GO_0008150")
+        - title: The primary label/name of the term
+        - text: Description and additional information about the term
+        - score: Relevance score for the search result
+        
+        Use this tool to discover relevant ontology terms when you need to find concepts related to your query.
+        After finding relevant terms, use the 'fetch' tool to retrieve detailed information about a specific term.
+        """)
     String search(
         String query
     ) throws IOException {
@@ -53,7 +69,29 @@ public class McpSearchService {
         return gson.toJson( res.getContent().stream().map(McpSearchResult::fromJson).toList() );
     }
     
-    @Tool(description = "OpenAI compliant tool to retrieve an entity from OLS by ID returned from the search tool. The ID must be of the format ontologyid+entityIri, e.g. go+http://purl.obolibrary.org/obo/GO_0008150. IDs in this format are returned by the OpenAI compliant 'search' tool.")
+    @Tool(description = """
+        Retrieve detailed information about a specific ontology term by its ID.
+        
+        This tool fetches complete metadata for an ontology entity including its definition, synonyms, relationships, and hierarchical position.
+        
+        Parameters:
+        - id: The unique identifier in format "ontologyId+entityIri" (e.g., "go+http://purl.obolibrary.org/obo/GO_0008150")
+          This ID format is returned by the 'search' tool results. The ontologyId is the short identifier like "go", "efo", "uberon",
+          and the entityIri is the full IRI/URL of the term.
+        
+        Returns: A JSON object with detailed information about the term including:
+        - id: The identifier used to fetch the term
+        - title: The primary label/name
+        - text: Complete description including:
+          * Definition and source
+          * Synonyms (exact, broad, narrow, related)
+          * Cross-references to other databases
+          * Hierarchical relationships (parents, children, ancestors, descendants)
+          * Additional properties and annotations
+        
+        Use this tool after using 'search' to get comprehensive information about a specific term.
+        The detailed text includes structured information about the term's meaning, context, and relationships within the ontology.
+        """)
     String fetch(
         String id
     ) throws IOException {
