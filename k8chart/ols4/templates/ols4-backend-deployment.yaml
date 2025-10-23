@@ -43,10 +43,10 @@ spec:
             timeoutSeconds: 10
           resources:
             requests:
-              memory: 15Gi
+              memory: 10Gi
               cpu: 0.5
             limits:
-              memory: 30Gi
+              memory: 20Gi
               cpu: 2
           env:
             - name: OLS_SOLR_HOST
