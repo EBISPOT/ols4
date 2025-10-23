@@ -72,7 +72,7 @@ public class McpSearchService {
     @Tool(description = """
         Retrieve detailed information about a specific ontology term by its ID.
         
-        This tool fetches complete metadata for an ontology entity including its definition, synonyms, relationships, and hierarchical position.
+        This tool fetches complete metadata for an ontology entity including its definition, labels, and hierarchical relationships.
         
         Parameters:
         - id: The unique identifier in format "ontologyId+entityIri" (e.g., "go+http://purl.obolibrary.org/obo/GO_0008150")
@@ -80,17 +80,21 @@ public class McpSearchService {
           and the entityIri is the full IRI/URL of the term.
         
         Returns: A JSON object with detailed information about the term including:
-        - id: The identifier used to fetch the term
-        - title: The primary label/name
-        - text: Complete description including:
-          * Definition and source
-          * Synonyms (exact, broad, narrow, related)
-          * Cross-references to other databases
-          * Hierarchical relationships (parents, children, ancestors, descendants)
-          * Additional properties and annotations
+        - id: The identifier in "ontologyId+entityIri" format
+        - title: The CURIE and primary label (e.g., "GO:0008150 biological_process")
+        - text: The definition/description of the term
+        - url: The full IRI/URL of the term
+        - metadata: Object containing detailed information such as:
+          * ontologyId: The ontology identifier
+          * type: The entity type (e.g., "class", "property")
+          * iri: The full IRI
+          * curie: The compact URI (e.g., "GO:0008150")
+          * label: List of labels for the term
+          * definition: List of definitions
+          * directAncestor, directParent, hierarchicalParent: Lists of parent classes with their IRIs and labels
         
         Use this tool after using 'search' to get comprehensive information about a specific term.
-        The detailed text includes structured information about the term's meaning, context, and relationships within the ontology.
+        The metadata field contains structured information about the term's hierarchical relationships within the ontology.
         """)
     String fetch(
         String id
