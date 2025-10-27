@@ -42,7 +42,7 @@ public class OlsSolrClient {
 
     private static final Logger logger = LoggerFactory.getLogger(OlsSolrClient.class);
 
-    @Value("${ols.solr.max-rows:1000}")
+    @Value("${ols.solr.max-rows:100}")
     private int maxRows;
 
     public Map<String,Object> getCoreStatus() throws IOException {

@@ -31,6 +31,9 @@ public class Neo4jClient {
 	@org.springframework.beans.factory.annotation.Value("${ols.neo4j.host:bolt://localhost:7687}")
 	private String host;
 
+	@org.springframework.beans.factory.annotation.Value("${ols.neo4j.max-rows:100}")
+	private int maxRows;
+
 	private Gson gson = new Gson();
 
 	private Driver driver;
@@ -97,6 +100,16 @@ public class Neo4jClient {
 		String queryToRun;
 
 		if(pageable != null) {
+			// Enforce maximum page size to prevent OOM issues
+			int pageSize = pageable.getPageSize() > maxRows ? maxRows : pageable.getPageSize();
+			/*
+			Spring's Pageable interface is immutable. You cannot change its values once it's created.
+			There's no setPageSize() method. */
+			pageable = org.springframework.data.domain.PageRequest.of(
+					pageable.getPageNumber(),
+					pageSize,
+					pageable.getSort()
+			);
 			if(pageable.getSort() != null) {
 				for (Sort.Order order : pageable.getSort()) {
 					 if (sort.length() > 0) {
