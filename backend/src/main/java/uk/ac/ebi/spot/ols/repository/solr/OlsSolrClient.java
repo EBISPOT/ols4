@@ -93,8 +93,10 @@ public class OlsSolrClient {
     }
 
     public JsonElement getFirst(OlsSolrQuery query) {
+        SolrQuery solrQuery = query.constructQuery();
+        solrQuery.setRows(1);
 
-        QueryResponse qr = runSolrQuery(query, null);
+        QueryResponse qr = runSolrQuery(solrQuery, null);
 
         if(qr.getResults().getNumFound() < 1) {
             logger.debug("Expected at least 1 result for solr getFirst for solr query = {}", query.constructQuery().jsonStr());
@@ -117,6 +119,8 @@ public class OlsSolrClient {
         if(pageable != null) {
             query.setStart((int)pageable.getOffset());
             query.setRows(pageable.getPageSize() > maxRows ? maxRows : pageable.getPageSize());
+        } else if(query.getRows() == null) {
+            query.setRows(10);
         }
 
         logger.debug("solr rows: {} ", query.getRows());
