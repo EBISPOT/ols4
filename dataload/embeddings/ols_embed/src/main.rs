@@ -2,14 +2,94 @@ use clap::Parser;
 use openai_api_rust::{embeddings::{EmbeddingsApi, EmbeddingsBody}, Auth, OpenAI};
 use rusqlite::{Connection, Statement};
 use std::{
-    fs::File, io::BufReader
+    fs::File, io::BufReader, path::PathBuf
 };
 use struson::reader::{JsonReader, JsonStreamReader, ValueType};
 use tiktoken_rs::{cl100k_base, CoreBPE};
 use sha1::Digest;
 use std::error::Error;
+use anyhow::Result;
+use candle_core::{Device, Tensor};
+use candle_nn::VarBuilder;
+use candle_transformers::models::bert::{BertModel, Config, DTYPE};
+use tokenizers::Tokenizer;
 
 const BATCH_SIZE:usize = 1000;
+
+struct BertEmbeddingModel {
+    model: BertModel,
+    tokenizer: Tokenizer,
+    device: Device,
+}
+
+impl BertEmbeddingModel {
+    fn new(model_path: &str, tokenizer_path: &str) -> Result<Self> {
+        let device = Device::Cpu;
+        
+        // Load config
+        let config_path = format!("{}/config.json", model_path);
+        let config = std::fs::read_to_string(&config_path)?;
+        let config: Config = serde_json::from_str(&config)?;
+        
+        // Load model weights
+        let weights_path = format!("{}/model.safetensors", model_path);
+        let vb = if std::path::Path::new(&weights_path).exists() {
+            unsafe { VarBuilder::from_mmaped_safetensors(&[weights_path], DTYPE, &device)? }
+        } else {
+            // Try .bin format
+            let weights_path = format!("{}/pytorch_model.bin", model_path);
+            VarBuilder::from_pth(&weights_path, DTYPE, &device)?
+        };
+        
+        let model = BertModel::load(vb, &config)?;
+        
+        // Load tokenizer
+        let tokenizer = Tokenizer::from_file(tokenizer_path)
+            .map_err(|e| anyhow::anyhow!("Failed to load tokenizer: {}", e))?;
+        
+        Ok(Self {
+            model,
+            tokenizer,
+            device,
+        })
+    }
+    
+    fn encode(&self, texts: &[&str]) -> Result<Vec<Vec<f32>>> {
+        let mut all_embeddings = Vec::new();
+        
+        for text in texts {
+            // Tokenize
+            let encoding = self.tokenizer
+                .encode(*text, true)
+                .map_err(|e| anyhow::anyhow!("Tokenization error: {}", e))?;
+            
+            let tokens = encoding.get_ids();
+            let token_ids = Tensor::new(tokens, &self.device)?.unsqueeze(0)?;
+            let token_type_ids = token_ids.zeros_like()?;
+            
+            // Forward pass (third parameter is attention mask, None means use all tokens)
+            let embeddings = self.model.forward(&token_ids, &token_type_ids, None)?;
+            
+            // Mean pooling over sequence dimension
+            let (_n_sentence, n_tokens, _hidden_size) = embeddings.dims3()?;
+            let embeddings = (embeddings.sum(1)? / (n_tokens as f64))?;
+            
+            // Normalize
+            let embeddings = embeddings.broadcast_div(&embeddings.sqr()?.sum_keepdim(1)?.sqrt()?)?;
+            
+            // Convert to Vec<f32>
+            let embedding_vec = embeddings.squeeze(0)?.to_vec1::<f32>()?;
+            all_embeddings.push(embedding_vec);
+        }
+        
+        Ok(all_embeddings)
+    }
+}
+
+enum EmbeddingEngine {
+    OpenAI(OpenAI, String), // OpenAI client + model name
+    Bert(BertEmbeddingModel, String), // BERT model + model name (from filename)
+}
 
 struct DocToEmbed {
     ontology_id:String,
@@ -29,10 +109,22 @@ struct EmbeddingResult {
 struct Args {
     #[arg(long)]
     input_file: String,
+    
     #[arg(long)]
     db_path: String,
+    
     #[arg(long)]
     dry_run: bool,
+    
+    /// Path to local BERT model directory (containing config.json, model weights, and tokenizer.json)
+    /// Model name in database will be the directory name
+    #[arg(long, conflicts_with = "openai_model")]
+    local_model: Option<PathBuf>,
+    
+    /// OpenAI model name (e.g., text-embedding-3-small)
+    /// Requires OPENAI_API_KEY environment variable
+    #[arg(long, conflicts_with = "local_model")]
+    openai_model: Option<String>,
 }
 
 fn compute_sha1(doc:&str) -> String {
@@ -79,15 +171,95 @@ fn sqlite_insert(
     ]).unwrap();
 }
 
+fn create_embedding_engine(args: &Args) -> Result<EmbeddingEngine> {
+    if let Some(local_model_path) = &args.local_model {
+        // Local BERT model
+        let model_name = local_model_path
+            .file_name()
+            .and_then(|s| s.to_str())
+            .ok_or_else(|| anyhow::anyhow!("Invalid model directory name"))?
+            .to_string();
+        
+        // Tokenizer should be in the same directory as the model
+        let tokenizer_path = local_model_path.join("tokenizer.json");
+        
+        eprintln!("Loading local BERT model from: {}", local_model_path.display());
+        eprintln!("Loading tokenizer from: {}", tokenizer_path.display());
+        eprintln!("Model name for database: {}", model_name);
+        eprintln!("Using CPU with {} cores available", num_cpus::get());
+        
+        let model = BertEmbeddingModel::new(
+            local_model_path.to_str().unwrap(),
+            tokenizer_path.to_str().unwrap()
+        )?;
+        
+        Ok(EmbeddingEngine::Bert(model, model_name))
+    } else if let Some(openai_model_name) = &args.openai_model {
+        // OpenAI model
+        eprintln!("Using OpenAI model: {}", openai_model_name);
+        let auth = Auth::from_env()
+            .map_err(|e| anyhow::anyhow!("Failed to get OpenAI auth from environment: {}. Set OPENAI_API_KEY.", e))?;
+        let openai = OpenAI::new(auth, "https://api.openai.com/v1/");
+        Ok(EmbeddingEngine::OpenAI(openai, openai_model_name.clone()))
+    } else {
+        Err(anyhow::anyhow!("Must specify either --local-model or --openai-model"))
+    }
+}
+
+fn generate_embeddings(
+    engine: &EmbeddingEngine,
+    texts: Vec<String>,
+) -> Result<Vec<Vec<f32>>> {
+    match engine {
+        EmbeddingEngine::OpenAI(openai, model_name) => {
+            let embeddings = openai.embeddings_create(&EmbeddingsBody {
+                model: model_name.clone(),
+                input: texts,
+                user: None,
+            })
+            .map_err(|e| anyhow::anyhow!("OpenAI API error: {:?}", e))?;
+            
+            let embeddings_data = embeddings.data.ok_or_else(|| {
+                anyhow::anyhow!("No embeddings data returned from OpenAI")
+            })?;
+            
+            let result = embeddings_data
+                .iter()
+                .map(|emb| {
+                    // Convert Option<Vec<f64>> to Vec<f32>
+                    emb.embedding.as_ref()
+                        .map(|v| v.iter().map(|&x| x as f32).collect())
+                        .unwrap_or_else(Vec::new)
+                })
+                .collect();
+            
+            Ok(result)
+        }
+        EmbeddingEngine::Bert(model, _model_name) => {
+            let text_refs: Vec<&str> = texts.iter().map(|s| s.as_str()).collect();
+            let embeddings = model.encode(&text_refs)?;
+            Ok(embeddings)
+        }
+    }
+}
+
+fn get_model_name(engine: &EmbeddingEngine) -> &str {
+    match engine {
+        EmbeddingEngine::OpenAI(_, model_name) => model_name,
+        EmbeddingEngine::Bert(_, model_name) => model_name,
+    }
+}
+
 fn process_batch(
     batch: &Vec<DocToEmbed>,
     sqlite_get_stmt:&mut Statement,
     sqlite_exists_stmt:&mut Statement,
     sqlite_insert_stmt:&mut Statement,
-    openai: &OpenAI,
+    engine: &EmbeddingEngine,
     dry_run:bool
 ) -> EmbeddingResult {
 
+    let model_name = get_model_name(engine);
     let mut num_unchanged = 0;
     let mut num_reused = 0;
     let mut num_embedded = 0;
@@ -113,7 +285,7 @@ fn process_batch(
                     &doc.iri,
                     &doc.document,
                     &doc.hash,
-                    "text-embedding-3-small",
+                    model_name,
                     &embedding,
                     sqlite_insert_stmt
                 );
@@ -130,15 +302,11 @@ fn process_batch(
 
     if (!dry_run) && (!to_embed.is_empty()) {
 
-        let embeddings = openai.embeddings_create(&EmbeddingsBody {
-            model: "text-embedding-3-small".to_string(),
-            input: to_embed.iter().map(|doc| doc.document.clone()).collect(),
-            user: None,
-        }).unwrap();
+        let texts: Vec<String> = to_embed.iter().map(|doc| doc.document.clone()).collect();
+        
+        let embeddings = generate_embeddings(engine, texts).expect("Failed to generate embeddings");
 
-        let embeddings = embeddings.data.unwrap();
-
-        eprintln!("Got {} embeddings back from API", embeddings.len());
+        eprintln!("Got {} embeddings back", embeddings.len());
 
         let mut n = 0;
 
@@ -146,14 +314,19 @@ fn process_batch(
 
             let doc = &to_embed[n];
 
-            let embedding_json = serde_json::to_string(embedding).unwrap();
+            // Convert Vec<f32> to JSON string format compatible with existing storage
+            let embedding_json = serde_json::json!({
+                "embedding": embedding,
+                "index": n,
+                "object": "embedding"
+            }).to_string();
 
             sqlite_insert(&doc.ontology_id,
                 &doc.entity_type,
                 &doc.iri,
                 &doc.document,
                 &doc.hash,
-                "text-embedding-3-small",
+                model_name,
                 &embedding_json,
                 sqlite_insert_stmt
             );
@@ -203,11 +376,14 @@ fn get_values(json: &mut JsonStreamReader<BufReader<File>>) -> Vec<String> {
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let auth = Auth::from_env().unwrap();
-    let openai = OpenAI::new(auth, "https://api.openai.com/v1/");
     let args = Args::parse();
+    
+    eprintln!("System has {} CPU cores available", num_cpus::get());
+    
+    let engine = create_embedding_engine(&args)?;
+    eprintln!("Model name for database: {}", get_model_name(&engine));
 
-    let conn = Connection::open(args.db_path).unwrap();
+    let conn = Connection::open(&args.db_path).unwrap();
 
     // conn.execute_batch(
     //     format!("PRAGMA journal_mode = OFF;
@@ -283,7 +459,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                 while json.has_next().unwrap() {
                     // class
                     total = total + 1;
-                    let result = process_entity("class", &current_ont_id, &mut json, &mut batch, &mut sqlite_get_stmt, &mut sqlite_exists_stmt, &mut sqlite_insert_stmt, &openai, &tokenizer, args.dry_run);
+                    let result = process_entity("class", &current_ont_id, &mut json, &mut batch, &mut sqlite_get_stmt, &mut sqlite_exists_stmt, &mut sqlite_insert_stmt, &engine, &tokenizer, args.dry_run);
                     num_embedded = num_embedded + result.num_embedded;
                     num_unchanged = num_unchanged + result.num_unchanged;
                     num_reused = num_reused + result.num_reused;
@@ -295,7 +471,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                 while json.has_next().unwrap() {
                     // property
                     total = total + 1;
-                    let result = process_entity("property", &current_ont_id, &mut json, &mut batch, &mut sqlite_get_stmt, &mut sqlite_exists_stmt, &mut sqlite_insert_stmt, &openai, &tokenizer, args.dry_run);
+                    let result = process_entity("property", &current_ont_id, &mut json, &mut batch, &mut sqlite_get_stmt, &mut sqlite_exists_stmt, &mut sqlite_insert_stmt, &engine, &tokenizer, args.dry_run);
                     num_embedded = num_embedded + result.num_embedded;
                     num_unchanged = num_unchanged + result.num_unchanged;
                     num_reused = num_reused + result.num_reused;
@@ -307,7 +483,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                 while json.has_next().unwrap() {
                     // individual
                     total = total + 1;
-                    let result = process_entity("individual", &current_ont_id, &mut json, &mut batch, &mut sqlite_get_stmt, &mut sqlite_exists_stmt, &mut sqlite_insert_stmt, &openai, &tokenizer, args.dry_run);
+                    let result = process_entity("individual", &current_ont_id, &mut json, &mut batch, &mut sqlite_get_stmt, &mut sqlite_exists_stmt, &mut sqlite_insert_stmt, &engine, &tokenizer, args.dry_run);
                     num_embedded = num_embedded + result.num_embedded;
                     num_unchanged = num_unchanged + result.num_unchanged;
                     num_reused = num_reused + result.num_reused;
@@ -329,7 +505,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             &mut sqlite_get_stmt,
             &mut sqlite_exists_stmt,
             &mut sqlite_insert_stmt,
-            &openai,
+            &engine,
             args.dry_run
         );
         num_unchanged = num_unchanged + result.num_unchanged;
@@ -358,7 +534,7 @@ fn process_entity(
     sqlite_get_stmt:&mut Statement,
     sqlite_exists_stmt:&mut Statement,
     sqlite_insert_stmt:&mut Statement,
-    openai: &OpenAI,
+    engine: &EmbeddingEngine,
     tokenizer: &CoreBPE,
     dry_run:bool
 ) -> EmbeddingResult {
@@ -428,7 +604,7 @@ fn process_entity(
             sqlite_get_stmt,
             sqlite_exists_stmt,
             sqlite_insert_stmt,
-            &openai,
+            engine,
             dry_run);
 
         num_unchanged = num_unchanged + result.num_unchanged;

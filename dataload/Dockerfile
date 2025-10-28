@@ -1,13 +1,22 @@
 
 # This image, once built, should allow any arbitrary config to be loaded and output neo4j/solr datafiles
 
-FROM rust:1.79-buster
+FROM rust:1.90.0-bullseye
+
+RUN set -eux; \
+    # Use HTTPS mirrors
+    sed -i -e 's|http://deb.debian.org|https://deb.debian.org|g' \
+           -e 's|http://security.debian.org|https://security.debian.org|g' /etc/apt/sources.list; \
+    rm -rf /var/lib/apt/lists/*; \
+    # Update and refresh certs + archive keyring
+    apt-get update; \
+    apt-get install -y --no-install-recommends ca-certificates debian-archive-keyring; \
+    # Now your regular deps will install cleanly
+    apt-get update; \
+    apt-get install -y --no-install-recommends build-essential cmake pigz vim; \
+    rm -rf /var/lib/apt/lists/*
 
 SHELL ["/bin/bash", "-c"]
-
-RUN sed -i 's|http://deb.debian.org/debian|http://archive.debian.org/debian|g' /etc/apt/sources.list && \
-    sed -i 's|http://deb.debian.org/debian-security|http://archive.debian.org/debian-security|g' /etc/apt/sources.list && \
-    apt-get update
 
 RUN addgroup --system --gid 1000 ols && adduser --system --uid 1000 --ingroup ols ols
 
@@ -67,12 +76,17 @@ RUN mkdir /tmp/out
 #### EMBEDDINGS SUPPORT
 ####
 RUN apt-get update && apt install -y build-essential cmake pigz vim
-RUN cd /opt/ols/dataload/embeddings/ols_embed && cargo b --release && \
-        cd /opt/ols/dataload/embeddings/ols_inject_hierarchy && cargo b --release
+
+# Build ols_embed with Candle ML framework (CPU version)
+# Set environment variables for optimal CPU performance
+ENV OMP_NUM_THREADS=auto
+ENV MKL_NUM_THREADS=auto
+RUN cd /opt/ols/dataload/embeddings/ols_embed && \
+    cargo update -p base64ct --precise 1.6.0 && \
+    cargo b --release && \
+    cd /opt/ols/dataload/embeddings/ols_inject_hierarchy && cargo b --release
 
 # To enable materialising embeddings using ChromaDB
-# We have to use Debian buster as the base to run on the EBI HPC, so
-# use uv to get Python 3.13 which is not available otherwise.
 #
 ENV UV_INSTALL_DIR="/usr/bin"
 ENV UV_PYTHON_INSTALL_DIR="/usr/bin"
