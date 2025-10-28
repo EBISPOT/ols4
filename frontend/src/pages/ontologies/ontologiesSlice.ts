@@ -261,16 +261,33 @@ export const getOntologies = createAsyncThunk(
 export const getAllOntologies = createAsyncThunk(
     "ontologies_all",
     async (_, { rejectWithValue }) => {
-        const path = `api/v2/ontologies?size=1`;
+        const pageSize = 100; // Backend limit from Solr
+        const path = `api/v2/ontologies?size=${pageSize}&page=0`;
         try {
-            const response = await get<any>(path);
-            const totalElements = response.totalElements;
+            // Fetch first page to get total pages
+            const firstPageResponse = await get<any>(path);
+            const totalPages = firstPageResponse.totalPages;
 
-            const allOntologiesPath = `api/v2/ontologies?size=${totalElements}`;
-            const allOntologiesResponse = await get<any>(allOntologiesPath);
-            const data = allOntologiesResponse.elements.map((o: any) => new Ontology(o));
+            // Start with first page data
+            let allOntologies = firstPageResponse.elements || [];
 
-            //const data = (await getPaginated<any>(path)).map((o) => new Ontology(o));
+            // Fetch remaining pages in parallel
+            const pagePromises = [];
+            for (let page = 1; page < totalPages; page++) {
+                const pagePath = `api/v2/ontologies?size=${pageSize}&page=${page}`;
+                pagePromises.push(get<any>(pagePath));
+            }
+
+            // Wait for all pages to complete
+            const remainingPages = await Promise.all(pagePromises);
+
+            // Combine all elements from all pages
+            for (const pageResponse of remainingPages) {
+                allOntologies = allOntologies.concat(pageResponse.elements || []);
+            }
+
+            // Map to Ontology objects
+            const data = allOntologies.map((o: any) => new Ontology(o));
 
             return data;
         } catch (error: any) {
