@@ -35,6 +35,9 @@ public class WebConfig implements WebMvcConfigurer {
     @Value("${ols.solr.max-rows:1000}")
     private int maxPageSize;
 
+    @Autowired
+    RequestLoggingInterceptor requestLoggingInterceptor;
+
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
 //        UrlPathHelper urlPathHelper = new UrlPathHelper();
@@ -44,6 +47,11 @@ public class WebConfig implements WebMvcConfigurer {
             .setUseSuffixPatternMatch(false);
 
 
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(requestLoggingInterceptor);
     }
 
 //     @Bean

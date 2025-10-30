@@ -123,6 +123,13 @@ public class OlsSolrClient {
             query.setRows(10);
         }
 
+        // Log memory before query
+        Runtime runtime = Runtime.getRuntime();
+        long memBefore = runtime.totalMemory() - runtime.freeMemory();
+        long maxMem = runtime.maxMemory();
+        logger.debug("SOLR QUERY START - Memory before: {}MB / {}MB ({}% used)",
+            memBefore / 1024 / 1024, maxMem / 1024 / 1024, (memBefore * 100) / maxMem);
+
         logger.debug("solr rows: {} ", query.getRows());
         logger.debug("solr query: {} ", query.toQueryString());
         logger.debug("solr query urldecoded: {}",URLDecoder.decode(query.toQueryString()));
@@ -131,9 +138,37 @@ public class OlsSolrClient {
         org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/ols4_entities").build();
 
         QueryResponse qr = null;
+        long startTime = System.currentTimeMillis();
         try {
             qr = mySolrClient.query(query);
-            logger.debug("solr query had {} result(s).", qr.getResults().getNumFound());
+            long duration = System.currentTimeMillis() - startTime;
+
+            // Calculate response size
+            long responseSize = 0;
+            for(SolrDocument doc : qr.getResults()) {
+                String json = (String) doc.get("_json");
+                if(json != null) {
+                    responseSize += json.length();
+                }
+            }
+
+            // Log memory after query
+            long memAfter = runtime.totalMemory() - runtime.freeMemory();
+            long memDelta = memAfter - memBefore;
+
+            logger.info("SOLR QUERY COMPLETE - Results: {}, ResponseSize: {}MB, Duration: {}ms, MemoryDelta: {}MB, MemoryAfter: {}MB / {}MB ({}% used)",
+                qr.getResults().getNumFound(),
+                responseSize / 1024 / 1024,
+                duration,
+                memDelta / 1024 / 1024,
+                memAfter / 1024 / 1024,
+                maxMem / 1024 / 1024,
+                (memAfter * 100) / maxMem);
+
+            if(responseSize > 100 * 1024 * 1024) {
+                logger.warn("LARGE SOLR RESPONSE - {}MB - Query: {}", responseSize / 1024 / 1024, query.toQueryString());
+            }
+
         } catch (SolrServerException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -149,10 +184,51 @@ public class OlsSolrClient {
     }
 
     public QueryResponse dispatchSearch(SolrQuery query, String core) throws IOException, SolrServerException {
-        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/" + core).build();
+        // Log memory before query
+        Runtime runtime = Runtime.getRuntime();
+        long memBefore = runtime.totalMemory() - runtime.freeMemory();
+        long maxMem = runtime.maxMemory();
+
+        logger.debug("SOLR DISPATCH START - Core: {}, Memory before: {}MB / {}MB ({}% used)",
+            core, memBefore / 1024 / 1024, maxMem / 1024 / 1024, (memBefore * 100) / maxMem);
+
         final int rows = query.getRows().intValue() > maxRows ? maxRows : query.getRows().intValue();
         query.setRows(rows);
+
+        logger.debug("solr dispatch - core: {}, rows: {}, query: {}", core, rows, query.toQueryString());
+
+        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/" + core).build();
+        long startTime = System.currentTimeMillis();
         QueryResponse qr = mySolrClient.query(query);
+        long duration = System.currentTimeMillis() - startTime;
+
+        // Calculate response size
+        long responseSize = 0;
+        for(SolrDocument doc : qr.getResults()) {
+            String json = (String) doc.get("_json");
+            if(json != null) {
+                responseSize += json.length();
+            }
+        }
+
+        // Log memory after query
+        long memAfter = runtime.totalMemory() - runtime.freeMemory();
+        long memDelta = memAfter - memBefore;
+
+        logger.info("SOLR DISPATCH COMPLETE - Core: {}, Results: {}, ResponseSize: {}MB, Duration: {}ms, MemoryDelta: {}MB, MemoryAfter: {}MB / {}MB ({}% used)",
+            core,
+            qr.getResults().getNumFound(),
+            responseSize / 1024 / 1024,
+            duration,
+            memDelta / 1024 / 1024,
+            memAfter / 1024 / 1024,
+            maxMem / 1024 / 1024,
+            (memAfter * 100) / maxMem);
+
+        if(responseSize > 100 * 1024 * 1024) {
+            logger.warn("LARGE SOLR DISPATCH RESPONSE - {}MB - Core: {}, Query: {}", responseSize / 1024 / 1024, core, query.toQueryString());
+        }
+
         mySolrClient.close();
         return qr;
     }

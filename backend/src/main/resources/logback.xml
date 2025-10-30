@@ -7,7 +7,14 @@
         </encoder>
     </appender>
 
+    <!-- Enable DEBUG logging for Solr queries to diagnose memory issues -->
+    <logger name="uk.ac.ebi.spot.ols.repository.solr" level="debug"/>
+    <logger name="uk.ac.ebi.spot.ols.controller.api.v1.V1SearchController" level="debug"/>
+    <logger name="uk.ac.ebi.spot.ols.controller.api.v1.V1SelectController" level="debug"/>
+
+    <!-- Keep general OLS logging at info -->
     <logger name="uk.ac.ebi.spot.ols" level="info"/>
+
     <root level="error">
         <appender-ref ref="STDOUT" />
     </root>
