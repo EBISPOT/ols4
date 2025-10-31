@@ -312,10 +312,12 @@ public class RelatedAnnotator {
 			relatedToMap.put(ontologyNode, relatedToSetToUpdate);
 		}
 		void updateOntologyNodesWithRelatedLists() {
-			for(OntologyNode ontologyNode: relatedFromMap.keySet()) {
-				ontologyNode.properties.addProperty(RELATED_FROM.getText(),
-						new PropertyValueList(Arrays.asList(relatedFromMap.get(ontologyNode).toArray())));
-			}
+			// relatedFrom has been removed from dataload to improve performance (issue #1042)
+			// It can be computed on-demand by querying relatedTo in reverse via the new paginated endpoint
+			// for(OntologyNode ontologyNode: relatedFromMap.keySet()) {
+			// 	ontologyNode.properties.addProperty(RELATED_FROM.getText(),
+			// 			new PropertyValueList(Arrays.asList(relatedFromMap.get(ontologyNode).toArray())));
+			// }
 			for(OntologyNode ontologyNode: relatedToMap.keySet()) {
 				ontologyNode.properties.addProperty(RELATED_TO.getText(),
 						new PropertyValueList(Arrays.asList(relatedToMap.get(ontologyNode).toArray())));

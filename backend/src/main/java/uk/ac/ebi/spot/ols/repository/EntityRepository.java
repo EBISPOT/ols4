@@ -24,6 +24,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.data.domain.Page;
+
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
 @Component
 public class EntityRepository {
 
@@ -97,8 +101,30 @@ public class EntityRepository {
                 outputOpts);
     }
 
+    // New method for issue #1042: Get entities that reference the specified entity in their relatedTo field
+    // This effectively computes relatedFrom on-demand by querying relatedTo in reverse
+    public OlsFacetedResultsPage<JsonElement> getRelatedFromByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
 
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
 
+        OlsSolrQuery query = new OlsSolrQuery();
+        query.addFilter("type", List.of("entity"), SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", List.of(ontologyId), SearchType.CASE_INSENSITIVE_TOKENS);
+        // Search for entities where relatedTo.value contains the target IRI
+        query.addFilter("relatedTo.value", List.of(iri), SearchType.WHOLE_FIELD);
+
+        if (!includeObsolete) {
+            query.addFilter(IS_OBSOLETE.getText(), List.of("false"), SearchType.WHOLE_FIELD);
+        }
+
+        try {
+            return solrClient.searchSolrPaginated(query, pageable)
+                    .map(e -> JsonTransformer.transformJson(e, lang, outputOpts));
+        } catch (IOException e) {
+            throw new RuntimeException("Error querying Solr for relatedFrom entities", e);
+        }
+    }
 
 }
 

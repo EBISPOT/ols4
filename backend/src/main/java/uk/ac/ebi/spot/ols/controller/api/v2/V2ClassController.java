@@ -439,5 +439,39 @@ public class V2ClassController {
                 HttpStatus.OK);
 
     }
+
+    // New paginated endpoint for relatedFrom (issue #1042)
+    // This endpoint retrieves entities that reference the specified class in their relatedTo field
+    //
+    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/relatedFrom", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
+    public HttpEntity<V2PagedResponse<V2Entity>> getRelatedFromByOntology(
+            @PageableDefault(size = 20, page = 0)
+            @Parameter(name = "pageable",
+                    description = "Specify the size of the result you want to get in the output",
+                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "Ontology Id to get the information about.",
+                    example = "efo") String ontologyId,
+            @PathVariable("class")
+            @Parameter(name = "class",
+                    description = "The IRI of the class, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_0000001") String iri,
+            @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
+            @Parameter(name = "includeObsoleteEntities",
+                    description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            JsonTransformOptions outputOpts
+    ) throws ResourceNotFoundException {
+
+        iri = UriUtils.decode(iri, "UTF-8");
+
+        return new ResponseEntity<>(
+                new V2PagedResponse<V2Entity>(
+                    classRepository.getRelatedFromByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, lang, outputOpts)
+                    .map(V2Entity::new)
+                ),
+                HttpStatus.OK);
+    }
 }
 

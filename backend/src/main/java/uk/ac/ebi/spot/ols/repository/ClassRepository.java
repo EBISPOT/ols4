@@ -252,4 +252,29 @@ public class ClassRepository {
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
+
+    // New method for issue #1042: Get entities that reference the specified class in their relatedTo field
+    // This effectively computes relatedFrom on-demand by querying relatedTo in reverse
+    public Page<JsonElement> getRelatedFromByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
+
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+
+        OlsSolrQuery query = new OlsSolrQuery();
+        query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", List.of(ontologyId), SearchType.CASE_INSENSITIVE_TOKENS);
+        // Search for entities where relatedTo.value contains the target IRI
+        query.addFilter("relatedTo.value", List.of(iri), SearchType.WHOLE_FIELD);
+
+        if (!includeObsolete) {
+            query.addFilter(IS_OBSOLETE.getText(), List.of("false"), SearchType.WHOLE_FIELD);
+        }
+
+        try {
+            return solrClient.searchSolrPaginated(query, pageable)
+                    .map(e -> JsonTransformer.transformJson(e, lang, outputOpts));
+        } catch (IOException e) {
+            throw new RuntimeException("Error querying Solr for relatedFrom entities", e);
+        }
+    }
 }
