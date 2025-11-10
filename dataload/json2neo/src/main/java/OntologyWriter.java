@@ -1,6 +1,9 @@
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
+
+import uk.ac.ebi.ols.shared.OntologyScanner;
+
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
@@ -18,6 +21,7 @@ public class OntologyWriter {
     String outputFilePath;
     String ontologyId;
     OntologyScanner.Result ontologyScannerResult;
+    Map<String, Embeddings> embeddings;
 
     List<String> edgesProperties;
     CSVPrinter edgesPrinter;
@@ -26,9 +30,7 @@ public class OntologyWriter {
             // large and doesn't get queried
             APPEARS_IN.getText(),
             // all property values together, this is for solr and not useful in neo4j
-            "searchableAnnotationValues",
-            // this is written separately as a float array
-            "embeddings"
+            "searchableAnnotationValues"
     );
 
     public static final Set<String> EDGE_BLACKLIST = Set.of(
@@ -45,12 +47,13 @@ public class OntologyWriter {
             "relatedFrom"
     );
 
-    public OntologyWriter(JsonReader reader, String outputFilePath, OntologyScanner.Result ontologyScannerResult) {
+    public OntologyWriter(JsonReader reader, String outputFilePath, OntologyScanner.Result ontologyScannerResult, Map<String, Embeddings> embeddings) {
 
         this.ontologyId = ontologyScannerResult.ontologyId;
         this.reader = reader;
         this.ontologyScannerResult = ontologyScannerResult;
         this.outputFilePath = outputFilePath;
+        this.embeddings = embeddings;
 
         edgesProperties = new ArrayList<String>(ontologyScannerResult.allEdgeProperties);
     }
@@ -144,7 +147,6 @@ public class OntologyWriter {
         csvHeader.add(":LABEL");
         csvHeader.add("_json");
         csvHeader.addAll(propertyHeaders(properties));
-        csvHeader.add("embeddings:float[]");
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
@@ -163,15 +165,39 @@ public class OntologyWriter {
             int _jsonIdx = n++;
 
             for (String column : properties) {
-                row[n++] = serializeValue(entity, column);
-            }
 
-            if(entity.containsKey("embeddings")) {
-                List<Double> embeddings = (List<Double>) entity.get("embeddings");
-                row[n++] = String.join("|", embeddings.stream().map(Object::toString).toArray(String[]::new));
-                entity.remove("embeddings"); // don't want it in the _json field
-            } else {
-                row[n++] = "";
+                if(column.startsWith("embeddings_")) {
+                    String modelName = column.substring("embeddings_".length());
+                    
+                    // Check if embeddings were already added by linker
+                    Object existingEmbeddings = entity.get(column);
+                    
+                    if(existingEmbeddings != null) {
+                        // Embeddings from linker (List<Double>)
+                        List<Double> embeddingsList = (List<Double>) existingEmbeddings;
+                        row[n++] = String.join("|", embeddingsList.stream().map(Object::toString).toArray(String[]::new));
+                        entity.remove(column); // don't want embeddings in the _json field
+                    } else if(embeddings != null && embeddings.containsKey(modelName)) {
+                        // Get embeddings from database
+                        Embeddings emb = embeddings.get(modelName);
+                        String entityIri = (String) entity.get("iri");
+                        float[] embeddingsArray = emb.getEmbeddings(ontologyId, type, entityIri);
+                        
+                        if(embeddingsArray != null) {
+                            String[] embStrings = new String[embeddingsArray.length];
+                            for(int i = 0; i < embeddingsArray.length; i++) {
+                                embStrings[i] = String.valueOf(embeddingsArray[i]);
+                            }
+                            row[n++] = String.join("|", embStrings);
+                        } else {
+                            row[n++] = "";
+                        }
+                    } else {
+                        row[n++] = "";
+                    }
+                } else {
+                    row[n++] = serializeValue(entity, column);
+                }
             }
 
             row[_jsonIdx] = gson.toJson(entity);
@@ -362,6 +388,8 @@ public class OntologyWriter {
 
             if(k.equals("iri")) {
                 headers.add("iri");
+            } else if(k.startsWith("embeddings_")) {
+                headers.add("embeddings_" + k.substring("embeddings_".length()) + ":float[]");
             } else {
                 headers.add(k.replace(":", "__") + ":string[]");
             }

@@ -8,6 +8,7 @@ import com.google.gson.stream.JsonWriter;
 
 import java.io.*;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -21,7 +22,7 @@ public class LinkerPass2 {
     public static final OboDatabaseUrlService dbUrls = new OboDatabaseUrlService();
     public static final Bioregistry bioregistry = new Bioregistry();
 
-    public static void run(String inputJsonFilename, String outputJsonFilename, LevelDB leveldb, Embeddings embeddings, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+    public static void run(String inputJsonFilename, String outputJsonFilename, LevelDB leveldb, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
 
         JsonReader jsonReader = new JsonReader(new InputStreamReader(new FileInputStream(inputJsonFilename)));
         JsonWriter jsonWriter = new JsonWriter(new OutputStreamWriter(new FileOutputStream(outputJsonFilename)));
@@ -92,13 +93,13 @@ public class LinkerPass2 {
                         jsonWriter.name(key);
 
                         if(key.equals("classes")) {
-                            writeEntityArray(jsonReader, jsonWriter, "class", ontologyId, leveldb, embeddings, pass1Result);
+                            writeEntityArray(jsonReader, jsonWriter, "class", ontologyId, leveldb, pass1Result);
                             continue;
                         } else if(key.equals("properties")) {
-                            writeEntityArray(jsonReader, jsonWriter, "property", ontologyId, leveldb, embeddings, pass1Result);
+                            writeEntityArray(jsonReader, jsonWriter, "property", ontologyId, leveldb, pass1Result);
                             continue;
                         } else if(key.equals("individuals")) {
-                            writeEntityArray(jsonReader, jsonWriter, "individual", ontologyId, leveldb, embeddings, pass1Result);
+                            writeEntityArray(jsonReader, jsonWriter, "individual", ontologyId, leveldb, pass1Result);
                             continue;
                         } else {
                             ontologyGatheredStrings.add(ExtractIriFromPropertyName.extract(key));
@@ -139,7 +140,7 @@ public class LinkerPass2 {
         System.out.println("--- Linker Pass 2 complete");
     }
 
-    private static void writeEntityArray(JsonReader jsonReader, JsonWriter jsonWriter, String entityType, String ontologyId, LevelDB leveldb, Embeddings embeddings, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+    private static void writeEntityArray(JsonReader jsonReader, JsonWriter jsonWriter, String entityType, String ontologyId, LevelDB leveldb, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
 
         jsonReader.beginArray();
         jsonWriter.beginArray();
@@ -205,33 +206,6 @@ public class LinkerPass2 {
                 jsonWriter.value(linkToIri);
             }
             jsonWriter.endArray();
-
-
-            // Obsolete terms do not get embeddings
-            boolean isObsolete = defOfThisEntity.definingDefinitions
-                    .stream()
-                    .anyMatch(def -> def.isObsolete);
-            if(!isObsolete) {
-
-                // Only the defining instance of the term gets embeddings attached.
-                // Otherwise all of the most similar classes would just be the same class imported 
-                // into other ontologies.
-                //
-                if(defOfThisEntity.definingOntologyIds.contains(ontologyId)) {
-                    var entityEmbeddings = embeddings.getEmbeddings(ontologyId, entityType, entityIri);
-
-                    if(entityEmbeddings != null) {
-                        jsonWriter.name("embeddings");
-                        jsonWriter.beginArray();
-                        jsonWriter.setIndent("");
-                        for(double d : entityEmbeddings) {
-                            jsonWriter.value(d);
-                        }
-                        jsonWriter.endArray();
-                        jsonWriter.setIndent("  ");
-                    }
-                }
-            }
 
 
             jsonWriter.endObject();

@@ -241,14 +241,21 @@ public class ClassRepository {
 
         Validation.validateOntologyId(ontologyId);
 
+        // For backwards compatibility, still get from Neo4j
+        // In the future this could be removed if embeddings are only in Solr
         return this.neo4jClient.getEmbeddingVector("OntologyClass", iri);
     }
 
-    public Page<JsonElement> searchByVector(List<Double> vector, Pageable pageable, String lang, JsonTransformOptions outputOpts) {
-        Validation.validateVector(vector);
+    public Page<JsonElement> searchByVector(String modelName, float[] vector, Pageable pageable, String lang, JsonTransformOptions outputOpts) {
         Validation.validateLang(lang);
 
-        return this.neo4jClient.searchByVector("OntologyClass", vector, pageable)
+        if (vector == null || vector.length == 0) {
+            throw new IllegalArgumentException("Vector cannot be null or empty");
+        }
+        
+        int topK = pageable.getPageSize();
+        
+        return this.solrClient.searchByVector(modelName, vector, topK, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }

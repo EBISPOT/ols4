@@ -1,7 +1,7 @@
 
 import { Fragment, useEffect, useState } from "react";
 import Entity from "../../../../model/Entity";
-import { Typography } from "@mui/material";
+import { Typography, Select, MenuItem, FormControl, InputLabel, ThemeProvider } from "@mui/material";
 import { getPaginated } from "../../../../app/api";
 import LoadingOverlay from "../../../../components/LoadingOverlay";
 import PropertyValuesList from "../../../../components/PropertyValuesList";
@@ -10,12 +10,15 @@ import EntityLink from "../../../../components/EntityLink";
 import LinkedEntities from "../../../../model/LinkedEntities";
 import { Link, useSearchParams } from "react-router-dom";
 import { Warning } from "@mui/icons-material";
+import { theme } from "../../../../app/mui";
 
 type SimilarResult = { entity:Entity, score:number }
 
 export default function SimilarEntitiesSection({entity}:{entity:Entity}) {
 
     let [similar, setSimilar] = useState<any[]|null>(null);
+    const [selectedModel, setSelectedModel] = useState<string>("");
+    const [availableModels, setAvailableModels] = useState<string[]>([]);
 
     const [searchParams] = useSearchParams();
     let lang = searchParams.get("lang") || "en";
@@ -23,7 +26,29 @@ export default function SimilarEntitiesSection({entity}:{entity:Entity}) {
     useEffect(() => {
         setSimilar(null)
         const fetchSimilarEntities = async () => {
-            let page = await getPaginated<any>(`api/v2/ontologies/${entity.getOntologyId()}/${entity.getTypePlural()}/${encodeURIComponent(encodeURIComponent(entity.getIri()))}/llm_similar`)
+            // Fetch available models
+            try {
+                const modelsResponse = await fetch(`${process.env.REACT_APP_APIURL}api/v2/models`);
+                if (modelsResponse.ok) {
+                    const modelsData = await modelsResponse.json();
+                    if (modelsData.models && modelsData.models.length > 0) {
+                        setAvailableModels(modelsData.models);
+                        if (!selectedModel || selectedModel === "") {
+                            setSelectedModel(modelsData.models[0]);
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error("Error fetching models:", error);
+            }
+
+            if (!selectedModel || selectedModel === "") {
+                // No model selected yet, wait for models to load
+                return;
+            }
+
+            const modelParam = `?llm_model=${selectedModel}`;
+            let page = await getPaginated<any>(`api/v2/ontologies/${entity.getOntologyId()}/${entity.getTypePlural()}/${encodeURIComponent(encodeURIComponent(entity.getIri()))}/llm_similar${modelParam}`)
             setSimilar(page.elements.map((s) => new Class(s)))
         };
 
@@ -31,7 +56,7 @@ export default function SimilarEntitiesSection({entity}:{entity:Entity}) {
             fetchSimilarEntities();
         }
 
-    }, [entity?.getIri()])
+    }, [entity?.getIri(), selectedModel])
 
     if(!entity || (entity.getType() !== 'class' && entity.getType() !== 'property')) {
         return <Fragment/>
@@ -41,6 +66,26 @@ export default function SimilarEntitiesSection({entity}:{entity:Entity}) {
         { !similar && <i>Loading...</i> }
         { similar && similar.length === 0 && <p>No similar {entity.getTypePlural()} found</p> }
         { similar && similar.length > 0 && <Fragment>
+            <div className="mb-3">
+                <ThemeProvider theme={theme}>
+                    <FormControl sx={{ minWidth: 300 }} size="small">
+                        <InputLabel id="similar-model-select-label">Embedding Model</InputLabel>
+                        <Select
+                            labelId="similar-model-select-label"
+                            id="similar-model-select"
+                            value={selectedModel}
+                            label="Embedding Model"
+                            onChange={(e) => setSelectedModel(e.target.value)}
+                        >
+                            {availableModels.map((model) => (
+                                <MenuItem key={model} value={model}>
+                                    {model}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
+                </ThemeProvider>
+            </div>
             <PropertyValuesList
                 values={similar.filter((otherEntity:Entity) => otherEntity.getIri() !== entity.getIri())}
                 title="Similar entities"
@@ -69,7 +114,7 @@ export default function SimilarEntitiesSection({entity}:{entity:Entity}) {
             />
             <p className="text-xs text-gray-500 pt-2">
                 <i className="icon icon-common icon-exclamation-triangle icon-spacer" />
-                  Similarity results are derived from LLM embeddings and have not been manually curated. Model: <Link className="link-default" to="https://platform.openai.com/docs/models/text-embedding-3-small"><code>text-embedding-3-small</code></Link>
+                  Similarity results are derived from LLM embeddings and have not been manually curated. Model: <code>{selectedModel}</code>
             </p></Fragment>
         }
     </div>

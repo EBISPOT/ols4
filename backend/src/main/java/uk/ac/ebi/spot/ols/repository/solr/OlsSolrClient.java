@@ -62,6 +62,54 @@ public class OlsSolrClient {
             }
         }
     }
+    
+    /**
+     * Get list of embedding model names that have fields in Solr.
+     * Queries the Solr schema API to find all fields starting with "embeddings_".
+     * @return List of model names (without the "embeddings_" prefix)
+     */
+    public java.util.List<String> getEmbeddingModelsInSolr() throws IOException {
+        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+            HttpGet request = new HttpGet(host + "/solr/ols4_entities/schema/fields?wt=json");
+            try (CloseableHttpResponse response = httpClient.execute(request)) {
+                HttpEntity entity = response.getEntity();
+                if(entity == null) {
+                    return java.util.List.of();
+                }
+                
+                String jsonStr = EntityUtils.toString(entity);
+                com.google.gson.JsonObject jsonObj = gson.fromJson(jsonStr, com.google.gson.JsonObject.class);
+                
+                if (!jsonObj.has("fields")) {
+                    return java.util.List.of();
+                }
+                
+                com.google.gson.JsonArray fields = jsonObj.getAsJsonArray("fields");
+                java.util.List<String> models = new java.util.ArrayList<>();
+                
+                for (com.google.gson.JsonElement field : fields) {
+                    if (field.isJsonObject()) {
+                        com.google.gson.JsonObject fieldObj = field.getAsJsonObject();
+                        if (fieldObj.has("name")) {
+                            String fieldName = fieldObj.get("name").getAsString();
+                            if (fieldName.startsWith("embeddings_")) {
+                                // Extract model name by removing "embeddings_" prefix
+                                String modelName = fieldName.substring("embeddings_".length());
+                                models.add(modelName);
+                            }
+                        }
+                    }
+                }
+                
+                response.close();
+                httpClient.close();
+                return models;
+            }
+        } catch (Exception e) {
+            logger.error("Failed to get embedding models from Solr schema", e);
+            return java.util.List.of();
+        }
+    }
 
     public OlsFacetedResultsPage<JsonElement> searchSolrPaginated(OlsSolrQuery query, Pageable pageable) {
 
@@ -151,5 +199,72 @@ public class OlsSolrClient {
         QueryResponse qr = mySolrClient.query(query);
         mySolrClient.close();
         return qr;
+    }
+    
+    /**
+     * Perform a vector similarity search using Solr's dense vector search.
+     * @param modelName The embedding model name (e.g., "text-embedding-3-small")
+     * @param vector The query vector
+     * @param topK Number of results to return
+     * @param pageable Pagination info
+     * @return Faceted results page with similarity scores
+     */
+    public OlsFacetedResultsPage<JsonElement> searchByVector(String modelName, float[] vector, int topK, Pageable pageable) {
+        SolrQuery query = new SolrQuery();
+        
+        // Build vector string for KNN query
+        StringBuilder vectorStr = new StringBuilder("[");
+        for (int i = 0; i < vector.length; i++) {
+            if (i > 0) vectorStr.append(",");
+            vectorStr.append(vector[i]);
+        }
+        vectorStr.append("]");
+        
+        // Use Solr's KNN query parser
+        // {!knn f=<field> topK=<k>}<vector>
+        String embeddingField = "embeddings_" + modelName;
+        query.setQuery("{!knn f=" + embeddingField + " topK=" + topK + "}" + vectorStr.toString());
+        
+        // Request all standard fields
+        query.setFields("_json", "score");
+        
+        // Apply pagination
+        if (pageable != null) {
+            query.setStart((int) pageable.getOffset());
+            query.setRows(pageable.getPageSize() > maxRows ? maxRows : pageable.getPageSize());
+        } else {
+            query.setStart(0);
+            query.setRows(topK > maxRows ? maxRows : topK);
+        }
+        
+        logger.debug("Vector search query: {}", query.toQueryString());
+        
+        QueryResponse qr = null;
+        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/ols4_entities").build();
+        
+        try {
+            qr = mySolrClient.query(query);
+            logger.debug("Vector search found {} result(s)", qr.getResults().getNumFound());
+        } catch (SolrServerException | IOException e) {
+            throw new RuntimeException("Vector search failed", e);
+        } finally {
+            try {
+                mySolrClient.close();
+            } catch (IOException ioe) {
+                logger.error("Failed to close Solr client with exception \"{}\"", ioe.getMessage());
+            }
+        }
+        
+        Map<String, Map<String, Long>> facetFieldToCounts = new LinkedHashMap<>();
+        
+        return new OlsFacetedResultsPage<>(
+            qr.getResults()
+                .stream()
+                .map(res -> getOlsEntityFromSolrResult(res))
+                .collect(Collectors.toList()),
+            facetFieldToCounts,
+            pageable != null ? pageable : org.springframework.data.domain.PageRequest.of(0, topK),
+            qr.getResults().getNumFound()
+        );
     }
 }

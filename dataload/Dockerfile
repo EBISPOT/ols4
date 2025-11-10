@@ -66,23 +66,26 @@ RUN mkdir /tmp/out
 ####
 #### EMBEDDINGS SUPPORT
 ####
-RUN apt-get update && apt install -y build-essential cmake pigz vim
-RUN cd /opt/ols/dataload/embeddings/ols_embed && cargo b --release && \
-        cd /opt/ols/dataload/embeddings/ols_inject_hierarchy && cargo b --release
+# RUN apt-get update && apt install -y build-essential cmake pigz vim
+# RUN cd /opt/ols/dataload/embeddings/ols_embed && cargo b --release && \
+#         cd /opt/ols/dataload/embeddings/ols_inject_hierarchy && cargo b --release && \
+#         cd /opt/ols/dataload/embeddings/ols_add_embeddings_to_json && cargo b --release
+
+# ENV PATH="/opt/ols/dataload/embeddings/ols_embed/target/release:/opt/ols/dataload/embeddings/ols_inject_hierarchy/target/release:/opt/ols/dataload/embeddings/ols_add_embeddings_to_json/target/release:${PATH}"
 
 # To enable materialising embeddings using ChromaDB
 # We have to use Debian buster as the base to run on the EBI HPC, so
 # use uv to get Python 3.13 which is not available otherwise.
 #
-ENV UV_INSTALL_DIR="/usr/bin"
-ENV UV_PYTHON_INSTALL_DIR="/usr/bin"
-ENV UV_TOOL_DIR="/usr/bin"
-ENV UV_TOOL_BIN_DIR="/usr/bin"
-ENV UV_CACHE_DIR="/opt/uv_cache"
+# ENV UV_INSTALL_DIR="/usr/bin"
+# ENV UV_PYTHON_INSTALL_DIR="/usr/bin"
+# ENV UV_TOOL_DIR="/usr/bin"
+# ENV UV_TOOL_BIN_DIR="/usr/bin"
+# ENV UV_CACHE_DIR="/opt/uv_cache"
 #ENV UV_PROJECT_ENVIRONMENT="/opt/uv_venv"
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
-        uv python install cpython-3.13.5-linux-x86_64-gnu
-RUN cd /opt/ols/dataload/embeddings/ols_top_k && uv sync --frozen
+# RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
+#         uv python install cpython-3.13.5-linux-x86_64-gnu
+# RUN cd /opt/ols/dataload/embeddings/ols_top_k && uv sync --frozen
 ####
 ####
 

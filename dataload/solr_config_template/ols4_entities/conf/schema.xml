@@ -116,9 +116,14 @@
     -->
 
     <field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false" />
+
     <field name="iri" type="string" indexed="true" stored="true" required="true" multiValued="false" />
     <copyField source="iri" dest="str_iri"/>
-    <copyField source="iri" dest="lowercase_iri"/>
+    <copyField source="iri" dest="lowercase_iri" />
+
+    [[OLS_FIELDS]]
+
+    <field name="_json" type="ols4json" indexed="false" stored="true" multiValued="false" />
 
     <!-- docValues are enabled by default for long type so we don't need to index the version field  -->
     <field name="_version_" type="plong" indexed="false" stored="false"/>
@@ -130,15 +135,6 @@
 <!--    <field name="_nest_path_" type="_nest_path_" /><fieldType name="_nest_path_" class="solr.NestPathField" />-->
 
     <field name="_text_" type="text_general" indexed="false" stored="false" multiValued="true"/>
-
-
-    <!-- OLS4: we are using dynamic fields for everything so no need to specify much of a schema.
-	 however we do need to specify the fields we DON'T want to be indexed
-    -->
-    <field name="_json" type="ols4json" indexed="false" stored="true" multiValued="false" />
-
-    <fieldType name="knn_vector" class="solr.DenseVectorField" vectorDimension="1536" similarityFunction="cosine"/>
-    <field name="embeddings" type="knn_vector" indexed="true" stored="true"/>
 
 
     <!-- Type used for data-driven schema, to add a string copy for each text field -->
@@ -265,13 +261,9 @@
     </fieldType>
     -->
 
-    <!-- A text field that only splits on whitespace for exact matching of words -->
-    <dynamicField name="*_ws" type="text_ws"  indexed="true"  stored="true"/>
-    <fieldType name="text_ws" class="solr.TextField" positionIncrementGap="100">
-      <analyzer>
-        <tokenizer name="whitespace"/>
-      </analyzer>
-    </fieldType>
+
+
+
 
     <!-- A general text field that has reasonable, generic
          cross-language defaults: it tokenizes with StandardTokenizer,

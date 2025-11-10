@@ -1,6 +1,9 @@
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
+
+import uk.ac.ebi.ols.shared.OntologyScanner;
+
 import org.apache.commons.cli.*;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
@@ -15,10 +18,12 @@ public class NeoConverter {
 
     String inputFilePath;
     String outputFilePath;
+    Map<String, Embeddings> embeddings;
 
-    public NeoConverter(String inputFilePath, String outputFilePath) throws FileNotFoundException {
+    public NeoConverter(String inputFilePath, String outputFilePath, Map<String, Embeddings> embeddings) throws FileNotFoundException {
         this.inputFilePath = inputFilePath;
         this.outputFilePath = outputFilePath;
+        this.embeddings = embeddings;
     }
 
 
@@ -46,11 +51,11 @@ public class NeoConverter {
                     System.out.println("Scanning ontology...");
 
                     OntologyScanner.Result ontologyScannerResult =
-                            OntologyScanner.scanOntology(extractorReader);
+                            OntologyScanner.scanOntology(extractorReader, OntologyWriter.PROPERTY_BLACKLIST);
 
                     System.out.println("Ontology scan complete for " + ontologyScannerResult.ontologyId);
 
-                    new OntologyWriter(reader, outputFilePath, ontologyScannerResult).write();
+                    new OntologyWriter(reader, outputFilePath, ontologyScannerResult, embeddings).write();
 
                     System.out.println("OntologyWriter complete for " + ontologyScannerResult.ontologyId);
                 }

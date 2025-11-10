@@ -1,4 +1,4 @@
-import { Checkbox, FormControlLabel, ThemeProvider } from "@mui/material";
+import { Checkbox, FormControlLabel, ThemeProvider, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { get, getPaginated } from "../app/api";
@@ -37,6 +37,8 @@ export default function SearchBox({
   const [arrowKeySelectedN, setArrowKeySelectedN] = useState<
     number | undefined
   >(undefined);
+  const [availableModels, setAvailableModels] = useState<string[]>([]);
+  const [selectedModel, setSelectedModel] = useState<string>("lexical");
 
   let exact = searchParams.get("exactMatch") === "true";
   let obsolete = searchParams.get("includeObsoleteEntities") === "true";
@@ -90,6 +92,18 @@ export default function SearchBox({
   const mounted = useRef(false);
   useEffect(() => {
     mounted.current = true;
+    
+    // Fetch available models
+    get<any>("api/v2/models")
+      .then((response) => {
+        if (response && response.models) {
+          setAvailableModels(["lexical", ...response.models]);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching models:", error);
+      });
+    
     return () => {
       mounted.current = false;
     };
@@ -440,6 +454,22 @@ export default function SearchBox({
               }
               label="Include imported terms"
             />
+            <FormControl sx={{ minWidth: 200, ml: 2 }} size="small">
+              <InputLabel id="model-select-label">Search Model</InputLabel>
+              <Select
+                labelId="model-select-label"
+                id="model-select"
+                value={selectedModel}
+                label="Search Model"
+                onChange={(e) => setSelectedModel(e.target.value)}
+              >
+                {availableModels.map((model) => (
+                  <MenuItem key={model} value={model}>
+                    {model === "lexical" ? "Lexical (No embeddings)" : model}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </ThemeProvider>
         </div>
       </div>

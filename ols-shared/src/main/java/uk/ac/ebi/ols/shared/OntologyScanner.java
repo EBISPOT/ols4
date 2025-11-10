@@ -1,3 +1,4 @@
+package uk.ac.ebi.ols.shared;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
@@ -13,8 +14,8 @@ public class OntologyScanner {
         ONTOLOGY, CLASS, PROPERTY, INDIVIDUAL
     }
     public static class Result {
-        String ontologyId;
-        String ontologyUri;
+        public String ontologyId;
+        public String ontologyUri;
         public Set<String> allOntologyProperties = new HashSet<>();
         public Set<String> allClassProperties = new HashSet<>();
         public Set<String> allPropertyProperties = new HashSet<>();
@@ -32,7 +33,7 @@ public class OntologyScanner {
         types.add(type);
     }
 
-    public static Result scanOntology(JsonReader reader) throws IOException {
+    public static Result scanOntology(JsonReader reader, Set<String> ignoreProperties) throws IOException {
 
         Result res = new Result();
 
@@ -50,14 +51,14 @@ public class OntologyScanner {
 
                         String property = reader.nextName();
 
-                        if(!OntologyWriter.PROPERTY_BLACKLIST.contains(property))
+                        if(!ignoreProperties.contains(property))
                             res.allClassProperties.add(property);
 
                         if(property.equals("iri")) {
                             addType(res, reader.nextString(), NodeType.CLASS);
                         } else {
                             Object value = gson.fromJson(reader, Object.class);
-                            visitValue(property, value, res.allClassProperties, res.allEdgeProperties);
+                            visitValue(property, value, res.allClassProperties, res.allEdgeProperties, ignoreProperties);
                         }
                     }
                     reader.endObject();
@@ -74,14 +75,14 @@ public class OntologyScanner {
 
                         String property = reader.nextName();
 
-                        if(!OntologyWriter.PROPERTY_BLACKLIST.contains(property))
+                        if(!ignoreProperties.contains(property))
                             res.allPropertyProperties.add(property);
 
                         if(property.equals("iri")) {
                             addType(res, reader.nextString(), NodeType.PROPERTY);
                         } else {
                             Object value = gson.fromJson(reader, Object.class);
-                            visitValue(property, value, res.allPropertyProperties, res.allEdgeProperties);
+                            visitValue(property, value, res.allPropertyProperties, res.allEdgeProperties, ignoreProperties);
                         }
                     }
                     reader.endObject();
@@ -98,14 +99,14 @@ public class OntologyScanner {
 
                         String property = reader.nextName();
 
-                        if(!OntologyWriter.PROPERTY_BLACKLIST.contains(property))
+                        if(!ignoreProperties.contains(property))
                             res.allIndividualProperties.add(property);
 
                         if(property.equals("iri")) {
                             addType(res, reader.nextString(), NodeType.INDIVIDUAL);
                         } else {
                             Object value = gson.fromJson(reader, Object.class);
-                            visitValue(property, value, res.allIndividualProperties, res.allEdgeProperties);
+                            visitValue(property, value, res.allIndividualProperties, res.allEdgeProperties, ignoreProperties);
                         }
                     }
                     reader.endObject();
@@ -114,7 +115,7 @@ public class OntologyScanner {
                 continue;
             }
 
-            if(!OntologyWriter.PROPERTY_BLACKLIST.contains(name))
+            if(!ignoreProperties.contains(name))
                 res.allOntologyProperties.add(name);
 
             if(name.equals("iri")) {
@@ -124,7 +125,7 @@ public class OntologyScanner {
                 res.ontologyId = reader.nextString();
             } else {
                 Object value = gson.fromJson(reader, Object.class);
-                visitValue(name, value, res.allOntologyProperties, res.allEdgeProperties);
+                visitValue(name, value, res.allOntologyProperties, res.allEdgeProperties, ignoreProperties);
             }
         }
 
@@ -134,7 +135,7 @@ public class OntologyScanner {
 
     }
 
-    private static void visitValue(String predicate, Object value, Set<String> outProps, Set<String> outEdgeProps) {
+    private static void visitValue(String predicate, Object value, Set<String> outProps, Set<String> outEdgeProps, Set<String> ignoreProperties) {
 
         if(predicate.equals("linkedEntities")) {
             return;
@@ -147,7 +148,7 @@ public class OntologyScanner {
             List<Object> listValue = (List<Object>) value;
 
             for(Object entry : listValue)
-                visitValue(predicate, entry, outProps, outEdgeProps);
+                visitValue(predicate, entry, outProps, outEdgeProps, ignoreProperties);
 
         } else if(value instanceof Map) {
 
@@ -177,14 +178,14 @@ public class OntologyScanner {
                     // (english is the default and doesn't get a prefix)
                     // 
                     if(!lang.equals("en")) {
-                        if(!OntologyWriter.PROPERTY_BLACKLIST.contains(predicate))
+                        if(!ignoreProperties.contains(predicate))
                             outProps.add(lang + "+" + predicate);
                     }
 		}
 
 	    } else if(types.contains("related")) {
 
-                visitValue(predicate, mapValue.get("value"), outProps, outEdgeProps);
+                visitValue(predicate, mapValue.get("value"), outProps, outEdgeProps, ignoreProperties);
 
 	    } else if(types.contains("reification")) {
 
@@ -200,12 +201,12 @@ public class OntologyScanner {
                         if(edgePredicate.equals("type"))
                             continue;
 
-                        if(!OntologyWriter.PROPERTY_BLACKLIST.contains(edgePredicate))
+                        if(!ignoreProperties.contains(edgePredicate))
                             outEdgeProps.add(edgePredicate);
                     }
 		}
 
-                visitValue(predicate, mapValue.get("value"), outProps, outEdgeProps);
+                visitValue(predicate, mapValue.get("value"), outProps, outEdgeProps, ignoreProperties);
 
             } else if(types.contains("datatype")) {
 

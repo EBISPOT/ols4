@@ -993,9 +993,8 @@
       <str>EEE MMM ppd HH:mm:ss [z ]yyyy</str>
     </arr>
   </updateProcessor>-->
-  <updateProcessor class="solr.AddSchemaFieldsUpdateProcessorFactory" name="add-schema-fields">
+  <!-- <updateProcessor class="solr.AddSchemaFieldsUpdateProcessorFactory" name="add-schema-fields">
 
-    <!-- don't match "embeddings" or any field starting with an underscore-->
     <str name="fieldRegex">^(?!embeddings$)[^_].*</str>
 
     <lst name="typeMapping">
@@ -1021,9 +1020,8 @@
         <str name="dest">whitespace_edge_*</str>
         <int name="maxChars">8192</int>
       </lst>
-      <!-- Use as default mapping instead of defaultFieldType -->
       <bool name="default">true</bool>
-    </lst>
+    </lst> -->
     <!--
     <lst name="typeMapping">
       <str name="valueClass">java.lang.Boolean</str>
