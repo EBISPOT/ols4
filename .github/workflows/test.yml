@@ -15,7 +15,7 @@ jobs:
       matrix:
         java: [ 21 ]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Set up Java ${{ matrix.java }}
         uses: actions/setup-java@v4
         with:
