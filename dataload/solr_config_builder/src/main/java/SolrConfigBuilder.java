@@ -109,7 +109,7 @@ public class SolrConfigBuilder {
             int embeddingVectorSize = entry.getValue();
 
             sb.append("    <fieldType name=\"knn_vector_" + modelName + "\" class=\"solr.DenseVectorField\" vectorDimension=\"" + embeddingVectorSize + "\" similarityFunction=\"cosine\"/>\n");
-            sb.append("    <field name=\"embeddings_" + modelName + "\" type=\"knn_vector_" + modelName + "\" indexed=\"true\" stored=\"false\"/>\n");
+            sb.append("    <field name=\"embeddings_" + modelName + "\" type=\"knn_vector_" + modelName + "\" indexed=\"true\" stored=\"true\"/>\n");
         }
 
         return sb.toString();

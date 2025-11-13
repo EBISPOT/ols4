@@ -28,13 +28,15 @@ export default function SimilarEntitiesSection({entity}:{entity:Entity}) {
         const fetchSimilarEntities = async () => {
             // Fetch available models
             try {
-                const modelsResponse = await fetch(`${process.env.REACT_APP_APIURL}api/v2/models`);
+                const modelsResponse = await fetch(`${process.env.REACT_APP_APIURL}api/v2/llm_models`);
                 if (modelsResponse.ok) {
                     const modelsData = await modelsResponse.json();
-                    if (modelsData.models && modelsData.models.length > 0) {
-                        setAvailableModels(modelsData.models);
+                    if (modelsData && modelsData.length > 0) {
+                        // Extract model names from the response
+                        const modelNames = modelsData.map((m: any) => m.model);
+                        setAvailableModels(modelNames);
                         if (!selectedModel || selectedModel === "") {
-                            setSelectedModel(modelsData.models[0]);
+                            setSelectedModel(modelNames[0]);
                         }
                     }
                 }
@@ -47,7 +49,7 @@ export default function SimilarEntitiesSection({entity}:{entity:Entity}) {
                 return;
             }
 
-            const modelParam = `?llm_model=${selectedModel}`;
+            const modelParam = `?model=${selectedModel}`;
             let page = await getPaginated<any>(`api/v2/ontologies/${entity.getOntologyId()}/${entity.getTypePlural()}/${encodeURIComponent(encodeURIComponent(entity.getIri()))}/llm_similar${modelParam}`)
             setSimilar(page.elements.map((s) => new Class(s)))
         };
@@ -88,7 +90,7 @@ export default function SimilarEntitiesSection({entity}:{entity:Entity}) {
             </div>
             <PropertyValuesList
                 values={similar.filter((otherEntity:Entity) => otherEntity.getIri() !== entity.getIri())}
-                title="Similar entities"
+                title="Predicted similar entities"
                 renderValue={(otherEntity:Entity) => (
                     <Link
                         className="link-default"

@@ -45,14 +45,11 @@ public class EntityRepository {
 
         OlsSolrQuery query = new OlsSolrQuery();
         
-        // Choose between vector search or text search based on model parameter
         if (model != null && !model.isEmpty()) {
-            // Vector search: embed the query text
             float[] embeddings = embeddingServiceClient.embedText(model, search);
             query.setEmbeddingVector(embeddings, model);
             query.setTopK(pageable.getPageSize());
         } else {
-            // Text search
             query.setSearchText(search);
             query.setExactMatch(exactMatch);
         }

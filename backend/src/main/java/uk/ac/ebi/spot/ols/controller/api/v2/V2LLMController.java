@@ -133,44 +133,22 @@ public class V2LLMController {
                     description = "The IRI of the class, this value must be double URL encoded",
                     example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_1000967") String iri,
         @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-        @RequestParam(value = "model", required = false) 
+        @RequestParam(value = "model", required = false, defaultValue = "text-embedding-3-small") 
         @Parameter(name = "model",
-                description = "The embedding model name to use. If not provided, uses Neo4j vector search.",
+                description = "The embedding model name to use. Defaults to text-embedding-3-small.",
                 example = "text-embedding-3-small") String model,
         JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
 
         iri = UriUtils.decode(iri, "UTF-8");
 
-        if (model != null && !model.isEmpty()) {
-            // Get the embedding for this class first
-            List<Double> embeddingVector = classRepository.getEmbeddingVectorByOntologyId(ontologyId, iri);
-            if (embeddingVector == null || embeddingVector.isEmpty()) {
-                throw new ResourceNotFoundException("No embeddings found for class " + iri + " in ontology " + ontologyId);
-            }
-            
-            // Convert to float array
-            float[] vectorArray = new float[embeddingVector.size()];
-            for (int i = 0; i < embeddingVector.size(); i++) {
-                vectorArray[i] = embeddingVector.get(i).floatValue();
-            }
-            
-            // Use Solr vector search
-            return new ResponseEntity<>(
-                new V2PagedResponse<V2Entity>(
-                    classRepository.searchByVector(model, vectorArray, pageable, lang, outputOpts).map(V2Entity::new)
-                ),
-                HttpStatus.OK
-            );
-        } else {
-            // Fall back to Neo4j-based similarity search
-            return new ResponseEntity<>(
-                new V2PagedResponse<V2Entity>(
-                    classRepository.getSimilarByOntologyId(ontologyId, pageable, iri, false, lang, outputOpts).map(V2Entity::new)
-                ),
-                HttpStatus.OK
-            );
-        }
+        // Always use Solr-based similarity search with the specified model
+        return new ResponseEntity<>(
+            new V2PagedResponse<V2Entity>(
+                classRepository.getSimilarByOntologyId(ontologyId, pageable, iri, false, lang, outputOpts, model).map(V2Entity::new)
+            ),
+            HttpStatus.OK
+        );
     }
 
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}/llm_embedding", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
@@ -241,6 +219,10 @@ public class V2LLMController {
                     description = "The IRI of the property, this value must be double URL encoded",
                     example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_0000742") String iri,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            @RequestParam(value = "model", required = false, defaultValue = "text-embedding-3-small") 
+            @Parameter(name = "model",
+                    description = "The embedding model name to use. Defaults to text-embedding-3-small.",
+                    example = "text-embedding-3-small") String model,
             JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
 
@@ -248,7 +230,7 @@ public class V2LLMController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                        propertyRepository.getSimilarByOntologyId(ontologyId, pageable, iri, lang, outputOpts)
+                        propertyRepository.getSimilarByOntologyId(ontologyId, pageable, iri, lang, outputOpts, model)
                         .map(V2Entity::new)
                 ),
                 HttpStatus.OK

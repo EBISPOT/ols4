@@ -319,7 +319,9 @@ public class OlsSolrClient {
             query.setStart(0);
             query.setRows(topK > maxRows ? maxRows : topK);
         }
-        
+
+        query.setFilterQueries("isDefiningOntology:true", "isObsolete:false");
+
         logger.debug("Vector search query (length: {}): {}", query.toQueryString().length(), 
             query.toQueryString().length() > 200 ? query.toQueryString().substring(0, 200) + "..." : query.toQueryString());
         
@@ -353,5 +355,84 @@ public class OlsSolrClient {
             pageable != null ? pageable : org.springframework.data.domain.PageRequest.of(0, topK),
             qr.getResults().getNumFound()
         );
+    }
+
+    /**
+     * Get embedding vector for a specific entity from Solr.
+     * 
+     * @param type The entity type (e.g., "class", "property")
+     * @param iri The entity IRI
+     * @param ontologyId The ontology ID
+     * @param modelName The embedding model name
+     * @return The embedding vector as float array, or null if not found
+     */
+    public float[] getEmbeddingVector(String type, String iri, String ontologyId, String modelName) {
+        SolrQuery query = new SolrQuery();
+        
+        query.setQuery("iri:\"" + iri + "\" AND type:" + type + " AND ontologyId:" + ontologyId);
+        
+        String embeddingField = "embeddings_" + modelName;
+        query.setFields(embeddingField);
+        query.setRows(1);
+        
+        QueryResponse qr = null;
+        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/ols4_entities").build();
+        
+        try {
+            qr = mySolrClient.query(query);
+            if (qr.getResults().getNumFound() > 0) {
+                SolrDocument doc = qr.getResults().get(0);
+                Object embeddingObj = doc.get(embeddingField);
+                
+                if (embeddingObj instanceof java.util.List) {
+                    @SuppressWarnings("unchecked")
+                    java.util.List<Float> embeddingList = (java.util.List<Float>) embeddingObj;
+                    float[] result = new float[embeddingList.size()];
+                    for (int i = 0; i < embeddingList.size(); i++) {
+                        result[i] = embeddingList.get(i);
+                    }
+                    return result;
+                }
+            }
+        } catch (SolrServerException | IOException e) {
+            logger.error("Failed to get embedding vector for {} with IRI {}", type, iri, e);
+        } finally {
+            try {
+                mySolrClient.close();
+            } catch (IOException ioe) {
+                logger.error("Failed to close Solr client with exception \"{}\"", ioe.getMessage());
+            }
+        }
+        
+        return null;
+    }
+
+    /**
+     * Get similar entities using Solr vector search based on an entity's embedding.
+     * 
+     * @param type The entity type (e.g., "class", "property")
+     * @param iri The entity IRI to find similar entities for
+     * @param ontologyId The ontology ID
+     * @param modelName The embedding model name
+     * @param topK Number of similar entities to return
+     * @param pageable Pagination parameters
+     * @return Page of similar entities with scores
+     */
+    public OlsFacetedResultsPage<JsonElement> getSimilar(String type, String iri, String ontologyId, String modelName, int topK, Pageable pageable) {
+        // First, get the embedding vector for this entity
+        float[] vector = getEmbeddingVector(type, iri, ontologyId, modelName);
+        
+        if (vector == null) {
+            logger.warn("No embedding vector found for {} with IRI {} in ontology {} with model {}", type, iri, ontologyId, modelName);
+            return new OlsFacetedResultsPage<>(
+                java.util.List.of(),
+                new LinkedHashMap<>(),
+                pageable,
+                0
+            );
+        }
+        
+        // Use the existing searchByVector method
+        return searchByVector(modelName, vector, topK, pageable);
     }
 }
