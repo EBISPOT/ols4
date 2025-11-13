@@ -8,6 +8,7 @@ import Entity from "../model/Entity";
 import Ontology from "../model/Ontology";
 import { Suggest } from "../model/Suggest";
 import Thing from "../model/Thing";
+import Model from "../model/Model";
 
 let curSearchToken: any = null;
 
@@ -37,7 +38,7 @@ export default function SearchBox({
   const [arrowKeySelectedN, setArrowKeySelectedN] = useState<
     number | undefined
   >(undefined);
-  const [availableModels, setAvailableModels] = useState<string[]>([]);
+  const [availableModels, setAvailableModels] = useState<Model[]>([]);
   const [selectedModel, setSelectedModel] = useState<string>("lexical");
 
   let exact = searchParams.get("exactMatch") === "true";
@@ -93,21 +94,21 @@ export default function SearchBox({
   useEffect(() => {
     mounted.current = true;
     
-    // Fetch available models
-    get<any>("api/v2/models")
-      .then((response) => {
-        if (response && response.models) {
-          setAvailableModels(["lexical", ...response.models]);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching models:", error);
-      });
-    
     return () => {
       mounted.current = false;
     };
   });
+
+  useEffect(() => {
+
+    async function fetchModels() {
+      setAvailableModels(await get<Model[]>("api/v2/llm_models"));
+    }
+
+    fetchModels();
+
+  }, []);
+    
 
   const cancelPromisesRef = useRef(false);
   useEffect(() => {
@@ -128,6 +129,7 @@ export default function SearchBox({
             includeObsoleteEntities: obsolete.toString(),
             ...(ontologyId ? { ontologyId } : {}),
             ...((canonical ? { isDefiningOntology: true } : {}) as any),
+            ...((selectedModel && selectedModel !== 'lexical') ? { model: selectedModel } : {})
           })}`
         ),
         searchForOntologies
@@ -137,7 +139,7 @@ export default function SearchBox({
                 size: "5",
                 lang: "en",
                 exactMatch: exact.toString(),
-                includeObsoleteEntities: obsolete.toString(),
+                includeObsoleteEntities: obsolete.toString()
               })}`
             )
           : null,
@@ -463,9 +465,10 @@ export default function SearchBox({
                 label="Search Model"
                 onChange={(e) => setSelectedModel(e.target.value)}
               >
+                <MenuItem key="lexical" value="lexical">Lexical</MenuItem>
                 {availableModels.map((model) => (
-                  <MenuItem key={model} value={model}>
-                    {model === "lexical" ? "Lexical (No embeddings)" : model}
+                  <MenuItem key={model.model} value={model.model}>
+                    {model.model === "lexical" ? "Lexical" : model.model}
                   </MenuItem>
                 ))}
               </Select>

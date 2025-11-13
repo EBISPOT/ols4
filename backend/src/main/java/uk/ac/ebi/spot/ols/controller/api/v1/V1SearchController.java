@@ -127,8 +127,8 @@ public class V1SearchController {
             @RequestParam(value = "lang", defaultValue = "en") String lang,
             @RequestParam(value = "model", required = false)
             @Parameter(name = "model",
-                    description = "Optional: Use vector similarity search with the specified embedding model (e.g., text-embedding-3-small). When provided, the query will be embedded and vector search will be performed.",
-                    example = "text-embedding-3-small") String model,
+                    description = "Optional: Use vector similarity search with the specified embedding model. When provided, the query will be embedded and vector search will be performed.",
+                    example = "llama-embed-megatron-8b") String model,
             HttpServletResponse response
     ) throws IOException, SolrServerException {
 

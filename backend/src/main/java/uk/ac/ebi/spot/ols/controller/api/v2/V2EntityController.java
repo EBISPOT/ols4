@@ -78,6 +78,10 @@ public class V2EntityController {
                     description = "Specify any other search field here which are not specified by searchFields or boostFields.",
                     example = "{}") MultiValueMap<String,String> searchProperties,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            @RequestParam(value = "model", required = false)
+            @Parameter(name = "model",
+                    description = "Optional: Use vector similarity search with the specified embedding model. When provided, the query will be embedded and vector search will be performed.",
+                    example = "llama-embed-megatron-8b") String model,
             JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
 
@@ -88,7 +92,7 @@ public class V2EntityController {
 
         return new ResponseEntity<>(
                 new V2PagedAndFacetedResponse<V2Entity>(
-                    entityRepository.find(pageable, lang, search, searchFields, boostFields, facetFields, exactMatch, DynamicQueryHelper.filterProperties(properties), outputOpts) .map(V2Entity::new)
+                    entityRepository.find(pageable, lang, search, searchFields, boostFields, facetFields, exactMatch, DynamicQueryHelper.filterProperties(properties), model, outputOpts) .map(V2Entity::new)
                         ),
                     HttpStatus.OK);
     }
@@ -136,6 +140,10 @@ public class V2EntityController {
                     description = "Specify any other search field here which are not specified by searchFields or boostFields.",
                     example = "{}") MultiValueMap<String,String> searchProperties,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            @RequestParam(value = "model", required = false)
+            @Parameter(name = "model",
+                    description = "Optional: Use vector similarity search with the specified embedding model. When provided, the query will be embedded and vector search will be performed.",
+                    example = "llama-embed-megatron-8b") String model,
             JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
 
@@ -146,7 +154,7 @@ public class V2EntityController {
 
         return new ResponseEntity<>(
                 new V2PagedAndFacetedResponse<V2Entity>(
-                    entityRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, boostFields, facetFields, exactMatch, DynamicQueryHelper.filterProperties(properties), outputOpts).map(V2Entity::new)
+                    entityRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, boostFields, facetFields, exactMatch, DynamicQueryHelper.filterProperties(properties), model, outputOpts).map(V2Entity::new)
                 ),
                 HttpStatus.OK);
     }

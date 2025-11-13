@@ -18,6 +18,7 @@ import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.helpers.DynamicFilterParser;
 import uk.ac.ebi.spot.ols.repository.helpers.SearchFieldsParser;
+import uk.ac.ebi.spot.ols.service.EmbeddingServiceClient;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -32,16 +33,30 @@ public class EntityRepository {
 
     @Autowired
     OlsNeo4jClient neo4jClient;
+    
+    @Autowired
+    EmbeddingServiceClient embeddingServiceClient;
 
 
     public OlsFacetedResultsPage<JsonElement> find(
-            Pageable pageable, String lang, String search, String searchFields, String boostFields, String facetFields, boolean exactMatch, Map<String, Collection<String>> properties, JsonTransformOptions outputOpts) throws IOException {
+            Pageable pageable, String lang, String search, String searchFields, String boostFields, String facetFields, boolean exactMatch, Map<String, Collection<String>> properties, String model, JsonTransformOptions outputOpts) throws IOException {
 
         Validation.validateLang(lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.setSearchText(search);
-        query.setExactMatch(exactMatch);
+        
+        // Choose between vector search or text search based on model parameter
+        if (model != null && !model.isEmpty()) {
+            // Vector search: embed the query text
+            float[] embeddings = embeddingServiceClient.embedText(model, search);
+            query.setEmbeddingVector(embeddings, model);
+            query.setTopK(pageable.getPageSize());
+        } else {
+            // Text search
+            query.setSearchText(search);
+            query.setExactMatch(exactMatch);
+        }
+        
         query.addFilter("type", List.of("entity"), SearchType.WHOLE_FIELD);
         SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
@@ -54,14 +69,24 @@ public class EntityRepository {
     }
 
     public OlsFacetedResultsPage<JsonElement> findByOntologyId(
-            String ontologyId, Pageable pageable, String lang, String search, String searchFields, String boostFields, String facetFields, boolean exactMatch, Map<String,Collection<String>> properties, JsonTransformOptions outputOpts) throws IOException {
+            String ontologyId, Pageable pageable, String lang, String search, String searchFields, String boostFields, String facetFields, boolean exactMatch, Map<String,Collection<String>> properties, String model, JsonTransformOptions outputOpts) throws IOException {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
         OlsSolrQuery query = new OlsSolrQuery();
-        query.setSearchText(search);
-        query.setExactMatch(exactMatch);
+        
+        // Choose between vector search or text search based on model parameter
+        if (model != null && !model.isEmpty()) {
+            // Vector search: embed the query text
+            float[] embeddings = embeddingServiceClient.embedText(model, search);
+            query.setEmbeddingVector(embeddings, model);
+            query.setTopK(pageable.getPageSize());
+        } else {
+            // Text search
+            query.setSearchText(search);
+            query.setExactMatch(exactMatch);
+        }
 
         query.addFilter("type", List.of("entity"), SearchType.WHOLE_FIELD);
         query.addFilter("ontologyId", List.of(ontologyId), SearchType.CASE_INSENSITIVE_TOKENS);

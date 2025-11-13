@@ -61,13 +61,6 @@ public class V2LLMController {
     @Autowired
     OlsSolrClient solrClient;
 
-    @RequestMapping(path = "/models", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-    public HttpEntity<Map<String, Object>> getAvailableModels() {
-        Map<String, Object> response = new HashMap<>();
-        response.put("models", embeddingServiceClient.getAvailableModels());
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
-    
     @RequestMapping(path = "/llm_models", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     @Parameter(name = "llm_models",
             description = "Returns a list of embedding models, indicating which can be used for embedding (via the embedding service) and which only have pre-computed embeddings stored in Solr")

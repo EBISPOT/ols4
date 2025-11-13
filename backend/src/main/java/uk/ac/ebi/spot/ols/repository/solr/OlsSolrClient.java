@@ -164,7 +164,83 @@ public class OlsSolrClient {
     }
 
     public QueryResponse runSolrQuery(OlsSolrQuery query, Pageable pageable) {
-	    return runSolrQuery(query.constructQuery(), pageable);
+        // Check if this is a vector search
+        if (query.isVectorSearch()) {
+            return runVectorQuery(query, pageable);
+        }
+        return runSolrQuery(query.constructQuery(), pageable);
+    }
+    
+    private QueryResponse runVectorQuery(OlsSolrQuery query, Pageable pageable) {
+        float[] vector = query.getEmbeddingVector();
+        String modelName = query.getEmbeddingModel();
+        
+        SolrQuery solrQuery = new SolrQuery();
+        
+        // Build vector string for KNN query
+        StringBuilder vectorStr = new StringBuilder("[");
+        for (int i = 0; i < vector.length; i++) {
+            if (i > 0) vectorStr.append(",");
+            vectorStr.append(vector[i]);
+        }
+        vectorStr.append("]");
+        
+        // Use Solr's KNN query parser
+        String embeddingField = "embeddings_" + modelName;
+        int topK = query.getTopK() != null ? query.getTopK() : (pageable != null ? pageable.getPageSize() : 10);
+        solrQuery.setQuery("{!knn f=" + embeddingField + " topK=" + topK + "}" + vectorStr.toString());
+        
+        // Request all standard fields plus score
+        solrQuery.setFields("_json", "score");
+        
+        // Apply filters from the query
+        SolrQuery baseQuery = query.constructQuery();
+        String[] filterQueries = baseQuery.getFilterQueries();
+        if (filterQueries != null) {
+            for (String fq : filterQueries) {
+                solrQuery.addFilterQuery(fq);
+            }
+        }
+        
+        // Apply facets
+        if (baseQuery.getFacetFields() != null) {
+            for (String facetField : baseQuery.getFacetFields()) {
+                solrQuery.addFacetField(facetField);
+            }
+        }
+        
+        // Apply pagination
+        if (pageable != null) {
+            solrQuery.setStart((int) pageable.getOffset());
+            solrQuery.setRows(pageable.getPageSize() > maxRows ? maxRows : pageable.getPageSize());
+        } else {
+            solrQuery.setStart(0);
+            solrQuery.setRows(topK > maxRows ? maxRows : topK);
+        }
+        
+        logger.debug("Vector search query (length: {}): {}", solrQuery.toQueryString().length(), 
+            solrQuery.toQueryString().length() > 200 ? solrQuery.toQueryString().substring(0, 200) + "..." : solrQuery.toQueryString());
+        
+        QueryResponse qr = null;
+        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/ols4_entities").build();
+
+        try {
+            // Use POST method via QueryRequest to avoid URI too long errors with large vectors
+            org.apache.solr.client.solrj.request.QueryRequest req = new org.apache.solr.client.solrj.request.QueryRequest(solrQuery);
+            req.setMethod(org.apache.solr.client.solrj.SolrRequest.METHOD.POST);
+            qr = req.process(mySolrClient);
+            logger.debug("Vector search found {} result(s)", qr.getResults().getNumFound());
+        } catch (SolrServerException | IOException e) {
+            throw new RuntimeException("Vector search failed", e);
+        } finally {
+            try {
+                mySolrClient.close();
+            } catch (IOException ioe) {
+                logger.error("Failed to close Solr client with exception \"{}\"", ioe.getMessage());
+            }
+        }
+        
+        return qr;
     }
 
     public QueryResponse runSolrQuery(SolrQuery query, Pageable pageable) {
