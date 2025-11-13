@@ -1,8 +1,10 @@
+package uk.ac.ebi.ols.shared;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Properties;
 import java.sql.Array;
 
 public class Embeddings {
@@ -16,14 +18,17 @@ public class Embeddings {
     public void loadEmbeddingsFromFile(String duckdbPath) throws IOException {
     
         try {
-            this.connection = DriverManager.getConnection("jdbc:duckdb:" + duckdbPath);
-            this.connection.setReadOnly(true);
+            Properties readOnlyProperty = new Properties();
+            readOnlyProperty.setProperty("duckdb.read_only", "true");
+            this.connection = DriverManager.getConnection("jdbc:duckdb:" + duckdbPath, readOnlyProperty);
             this.stmt = this.connection.prepareStatement(
-                "SELECT embeddings FROM embeddings WHERE ontologyId = ? AND entityType = ? AND iri = ?"
+                "SELECT embedding FROM terms_embedded WHERE ontology_id = ? AND entity_type = ? AND iri = ?"
             );
 
         } catch (SQLException e) {
             e.printStackTrace();
+            this.connection = null;
+            this.stmt = null;
             return;
         }
 
@@ -42,7 +47,7 @@ public class Embeddings {
             this.stmt.setString(3, iri);
             var rs = this.stmt.executeQuery();
             if (rs.next()) {
-                Array sqlArray = rs.getArray("embeddings");
+                Array sqlArray = rs.getArray("embedding");
                 if (sqlArray == null) {
                     return null;
                 }

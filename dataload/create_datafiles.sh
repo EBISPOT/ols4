@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -Eeuo pipefail
+
 if [ $# == 0 ]; then
     echo "Usage: $0 <configurl> <outdir> <embeddingsdir> [--loadLocalFiles]"
     exit 1
@@ -25,12 +27,13 @@ echo linker
 java -jar $SCRIPT_PATH/linker/target/linker-1.0-SNAPSHOT.jar --input "$JSON_PATH" --output "$JSON_PATH_LINKED" 
 
 echo json2neo
-java -jar $SCRIPT_PATH/json2neo/target/json2neo-1.0-SNAPSHOT.jar --input "$JSON_PATH_LINKED" --outDir $OUTDIR --embeddingDbsPath $EMBEDDINGSDIR
+java -jar $SCRIPT_PATH/json2neo/target/json2neo-1.0-SNAPSHOT.jar --input "$JSON_PATH_LINKED" --outDir $OUTDIR
 
 echo json2solr
 java -jar $SCRIPT_PATH/json2solr/target/json2solr-1.0-SNAPSHOT.jar --input "$JSON_PATH_LINKED" --outDir $OUTDIR --embeddingDbsPath $EMBEDDINGSDIR
 
 echo solr_config_builder
-java -jar $SCRIPT_PATH/solr_config_builder/target/solr_config_builder-1.0-SNAPSHOT.jar --input "$JSON_PATH_LINKED" --solrConfigTemplatePath $SCRIPT_PATH/solr_config_template --outDir $OUTDIR/solr_config
+mkdir -p $OUTDIR/solr_config
+java -jar $SCRIPT_PATH/solr_config_builder/target/solr_config_builder-1.0-SNAPSHOT.jar --input "$JSON_PATH_LINKED" --solrConfigTemplatePath $SCRIPT_PATH/solr_config_template --outDir $OUTDIR/solr_config --embeddingDbsPath $EMBEDDINGSDIR
 
 

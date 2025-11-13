@@ -1,15 +1,15 @@
 
 import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
 import org.apache.commons.cli.*;
 import org.apache.commons.io.FileUtils;
 
 import java.io.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
-
-
-import static uk.ac.ebi.ols.shared.DefinedFields.*;
+import java.util.Properties;
 
 public class SolrConfigBuilder {
 
@@ -27,10 +27,9 @@ public class SolrConfigBuilder {
         solrConfigTemplatePath.setRequired(true);
         options.addOption(solrConfigTemplatePath);
 
-        Option embeddingVectorFields = new Option(null, "addEmbeddingField", true, "embedding field to add, specified as model name:size e.g. text-embedding-3-small:1536");
-        embeddingVectorFields.setRequired(true);
-        embeddingVectorFields.setArgs(Option.UNLIMITED_VALUES);
-        options.addOption(embeddingVectorFields);
+        Option embeddingDbsPath = new Option(null, "embeddingDbsPath", true, "optional folder containing embeddings DuckDB databases");
+        embeddingDbsPath.setRequired(false);
+        options.addOption(embeddingDbsPath);
 
         Option output = new Option(null, "outDir", true, "output solr config path");
         output.setRequired(true);
@@ -53,8 +52,7 @@ public class SolrConfigBuilder {
 
         String solrConfigTemplatePathValue = cmd.getOptionValue("solrConfigTemplatePath");
         String outPath = cmd.getOptionValue("outDir");
-
-
+        String embeddingsDbs = cmd.getOptionValue("embeddingDbsPath");
 
         var inputFilePath = cmd.getOptionValue("inputPath");
 
@@ -67,6 +65,12 @@ public class SolrConfigBuilder {
             skipProps
         );
 
+        // Process embedding databases to get model names and dimensions
+        Map<String, Integer> embeddingModels = new HashMap<>();
+        if (embeddingsDbs != null) {
+            embeddingModels = discoverEmbeddingModels(embeddingsDbs);
+        }
+
         FileUtils.copyDirectory(new File(solrConfigTemplatePathValue), new File(outPath));
 
         var schemaXml = FileUtils.readFileToString(
@@ -76,7 +80,7 @@ public class SolrConfigBuilder {
 
         schemaXml = schemaXml.replace(
             "[[OLS_FIELDS]]",
-            makeFieldDefinitions(allProps, cmd.getOptionValues("addEmbeddingField"))
+            makeFieldDefinitions(allProps, embeddingModels)
         );
 
         FileUtils.writeStringToFile(
@@ -86,7 +90,7 @@ public class SolrConfigBuilder {
         );
     }
 
-    static String makeFieldDefinitions(Set<String> allProps, String[] embeddingFields) {
+    static String makeFieldDefinitions(Set<String> allProps, Map<String, Integer> embeddingModels) {
         StringBuilder sb = new StringBuilder();
         for (String prop : allProps) {
 
@@ -100,20 +104,76 @@ public class SolrConfigBuilder {
             sb.append("    <copyField source=\"").append(prop).append("\" dest=\"whitespace_edge_").append(prop).append("\"/>\n");
         }
 
-        for(String ef : embeddingFields) {
-            String[] parts = ef.split(":");
-            if(parts.length != 2) {
-                System.err.println("Invalid embedding field specification: " + ef);
-                continue;
-            }
-            String modelName = parts[0];
-            int embeddingVectorSize = Integer.parseInt(parts[1]);
+        for(Map.Entry<String, Integer> entry : embeddingModels.entrySet()) {
+            String modelName = entry.getKey();
+            int embeddingVectorSize = entry.getValue();
 
             sb.append("    <fieldType name=\"knn_vector_" + modelName + "\" class=\"solr.DenseVectorField\" vectorDimension=\"" + embeddingVectorSize + "\" similarityFunction=\"cosine\"/>\n");
-            sb.append("    <field name=\"embeddings_" + modelName + "\" type=\"knn_vector_" + modelName + "\" indexed=\"true\" stored=\"true\"/>");
+            sb.append("    <field name=\"embeddings_" + modelName + "\" type=\"knn_vector_" + modelName + "\" indexed=\"true\" stored=\"false\"/>\n");
         }
 
         return sb.toString();
+    }
+
+    static Map<String, Integer> discoverEmbeddingModels(String embeddingDbsPath) {
+        Map<String, Integer> models = new HashMap<>();
+        
+        File embeddingsDbsDir = new File(embeddingDbsPath);
+        if (!embeddingsDbsDir.exists() || !embeddingsDbsDir.isDirectory()) {
+            System.err.println("Embeddings directory does not exist or is not a directory: " + embeddingDbsPath);
+            return models;
+        }
+        
+        File[] duckdbFiles = embeddingsDbsDir.listFiles((dir, name) -> name.endsWith(".duckdb"));
+        if (duckdbFiles == null) {
+            System.err.println("No DuckDB files found in: " + embeddingDbsPath);
+            return models;
+        }
+        
+        for (File duckdbFile : duckdbFiles) {
+            String modelName = duckdbFile.getName().substring(0, duckdbFile.getName().length() - ".duckdb".length());
+            
+            try {
+                int dimension = getEmbeddingDimension(duckdbFile.getAbsolutePath());
+                if (dimension > 0) {
+                    models.put(modelName, dimension);
+                    System.err.println("Found embedding model: " + modelName + " with dimension: " + dimension);
+                } else {
+                    System.err.println("Could not determine dimension for model: " + modelName);
+                }
+            } catch (Exception e) {
+                System.err.println("Error processing DuckDB file " + duckdbFile.getName() + ": " + e.getMessage());
+            }
+        }
+        
+        return models;
+    }
+    
+    static int getEmbeddingDimension(String duckdbPath) {
+        try {
+            Properties readOnlyProperty = new Properties();
+            readOnlyProperty.setProperty("duckdb.read_only", "true");
+            
+            try (Connection connection = DriverManager.getConnection("jdbc:duckdb:" + duckdbPath, readOnlyProperty)) {
+                // Query to get the dimension of the embedding column
+                // We'll get the first embedding to determine its length
+                String query = "SELECT embedding FROM terms_embedded LIMIT 1";
+                try (var stmt = connection.prepareStatement(query)) {
+                    ResultSet rs = stmt.executeQuery();
+                    if (rs.next()) {
+                        java.sql.Array sqlArray = rs.getArray("embedding");
+                        if (sqlArray != null) {
+                            Object[] objArray = (Object[]) sqlArray.getArray();
+                            return objArray.length;
+                        }
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error querying DuckDB for embedding dimension: " + e.getMessage());
+        }
+        
+        return -1; // Indicate failure
     }
 }
 

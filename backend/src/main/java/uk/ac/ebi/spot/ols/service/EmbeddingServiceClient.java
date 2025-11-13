@@ -10,6 +10,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.time.Duration;
 import java.util.List;
 
 /**
@@ -17,11 +18,14 @@ import java.util.List;
  */
 @Service
 public class EmbeddingServiceClient {
-    
-    @Value("${ols.embedding.service.url}")
+
+    @Value("${ols.embedding.service.url:#{null}}")
     private String embeddingServiceUrl;
     
-    private final HttpClient httpClient = HttpClient.newHttpClient();
+    private final HttpClient httpClient = HttpClient.newBuilder()
+        .version(HttpClient.Version.HTTP_1_1)
+        .connectTimeout(Duration.ofSeconds(30))
+        .build();
     private final Gson gson = new Gson();
     
     /**
@@ -37,6 +41,7 @@ public class EmbeddingServiceClient {
         try {
             HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(embeddingServiceUrl + "/models"))
+                .timeout(Duration.ofSeconds(30))
                 .GET()
                 .build();
             
@@ -89,14 +94,23 @@ public class EmbeddingServiceClient {
         requestBody.addProperty("model", model);
         requestBody.add("text", gson.toJsonTree(texts));
         
+        String requestBodyJson = gson.toJson(requestBody);
+        
         HttpRequest request = HttpRequest.newBuilder()
             .uri(URI.create(embeddingServiceUrl))
             .header("Content-Type", "application/json")
-            .POST(HttpRequest.BodyPublishers.ofString(gson.toJson(requestBody)))
+            .timeout(Duration.ofSeconds(60))
+            .POST(HttpRequest.BodyPublishers.ofString(requestBodyJson))
             .build();
         
         try {
+            System.err.println("Embedding service request URL: " + embeddingServiceUrl);
+            System.err.println("Request body: " + requestBodyJson);
+            
             HttpResponse<byte[]> response = httpClient.send(request, HttpResponse.BodyHandlers.ofByteArray());
+            
+            System.err.println("Response status: " + response.statusCode());
+            System.err.println("Response headers: " + response.headers().map());
             
             if (response.statusCode() == 200) {
                 // Get vector dimension from header
@@ -127,7 +141,10 @@ public class EmbeddingServiceClient {
                 
                 return embeddings;
             } else {
-                throw new IOException("Embedding service returned HTTP " + response.statusCode());
+                String responseBody = response.body() != null ? new String(response.body()) : "(empty)";
+                throw new IOException("Embedding service returned HTTP " + response.statusCode() + 
+                    " for URL: " + embeddingServiceUrl + 
+                    ". Response body: " + responseBody);
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();

@@ -2,6 +2,7 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 
+import uk.ac.ebi.ols.shared.Embeddings;
 import uk.ac.ebi.ols.shared.OntologyScanner;
 
 import org.apache.commons.cli.*;

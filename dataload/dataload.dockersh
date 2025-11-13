@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -Eeuo pipefail
+
 echo Loading data...
 ./create_datafiles.sh file://$(find /mnt/config -type f) /tmp/out /mnt/embeddings $@
 ./load_into_neo4j.sh /opt/neo4j /tmp/out

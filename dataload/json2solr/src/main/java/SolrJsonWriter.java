@@ -2,6 +2,9 @@
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
+
+import uk.ac.ebi.ols.shared.Embeddings;
+
 import org.apache.commons.cli.*;
 
 import java.io.*;
@@ -13,6 +16,30 @@ import static uk.ac.ebi.ols.shared.DefinedFields.*;
 public class SolrJsonWriter {
 
     static Gson gson = new Gson();
+
+    private static int countOntologies(String ontologiesJsonPath) throws IOException {
+        int count = 0;
+        JsonReader reader = new JsonReader(new InputStreamReader(new FileInputStream(ontologiesJsonPath)));
+        
+        reader.beginObject();
+        while (reader.peek() != JsonToken.END_OBJECT) {
+            String name = reader.nextName();
+            if (name.equals("ontologies")) {
+                reader.beginArray();
+                while (reader.peek() != JsonToken.END_ARRAY) {
+                    reader.skipValue(); // Skip entire ontology object
+                    count++;
+                }
+                reader.endArray();
+            } else {
+                reader.skipValue();
+            }
+        }
+        reader.endObject();
+        reader.close();
+        
+        return count;
+    }
 
     public static void writeSolrJson(String ontologiesJsonPath, String outPath, Map<String, Embeddings> embeddings) throws IOException {
 
@@ -35,10 +62,19 @@ public class SolrJsonWriter {
         individualsWriter = new PrintStream(individualsOutName);
         autocompleteWriter = new PrintStream(autocompleteOutName);
 
+        System.err.println("Starting json2solr processing...");
+        System.err.println("Input file: " + ontologiesJsonPath);
+        System.err.println("Output directory: " + outPath);
+
+        // First pass: count total ontologies for progress reporting
+        int totalOntologies = countOntologies(ontologiesJsonPath);
+        System.err.println("Found " + totalOntologies + " ontologies to process");
 
         JsonReader reader = new JsonReader(new InputStreamReader(new FileInputStream(ontologiesJsonPath)));
 
         reader.beginObject();
+
+        int processedOntologies = 0;
 
         while (reader.peek() != JsonToken.END_OBJECT) {
 
@@ -53,6 +89,9 @@ public class SolrJsonWriter {
                     reader.beginObject(); // ontology
 
                     Map<String,Object> ontology = new TreeMap<>();
+                    
+                    // Track progress - will be updated when we find the ontologyId
+                    processedOntologies++;
 
                     while (reader.peek() != JsonToken.END_OBJECT) {
 
@@ -61,8 +100,10 @@ public class SolrJsonWriter {
                         if (key.equals("classes")) {
 
                             reader.beginArray();
-
+                            
+                            int classCount = 0;
                             while (reader.peek() != JsonToken.END_ARRAY) {
+                                classCount++;
 
                                 Map<String, Object> _class = gson.fromJson(reader, Map.class);
 
@@ -75,7 +116,6 @@ public class SolrJsonWriter {
 
                                 flattenProperties(_class, flattenedClass);
                                 
-                                // Add embeddings if not already present (from linker)
                                 addEmbeddings(ontologyId, "class", (String) _class.get("iri"), _class, flattenedClass, embeddings);
                                 
                                 _class.remove("embeddings"); // remains in flattenedClass
@@ -84,6 +124,10 @@ public class SolrJsonWriter {
                                 classesWriter.println(gson.toJson(flattenedClass));
 
                                 writeAutocompleteEntries(ontologyId, entityId, flattenedClass, autocompleteWriter);
+                            
+                                if (classCount % 1000 == 0) {
+                                    System.err.println("  - Processed " + classCount + " classes...");
+                                }
                             }
 
                             reader.endArray();
@@ -91,8 +135,10 @@ public class SolrJsonWriter {
                         } else if (key.equals("properties")) {
 
                             reader.beginArray();
-
+                            
+                            int propertyCount = 0;
                             while (reader.peek() != JsonToken.END_ARRAY) {
+                                propertyCount++;
 
                                 Map<String, Object> property = gson.fromJson(reader, Map.class);
 
@@ -117,12 +163,18 @@ public class SolrJsonWriter {
                             }
 
                             reader.endArray();
+                            
+                            if (propertyCount > 0) {
+                                System.err.println("  - Processed " + propertyCount + " properties");
+                            }
 
                         } else if (key.equals("individuals")) {
 
                             reader.beginArray();
-
+                            
+                            int individualCount = 0;
                             while (reader.peek() != JsonToken.END_ARRAY) {
+                                individualCount++;
 
                                 Map<String, Object> individual = gson.fromJson(reader, Map.class);
 
@@ -146,6 +198,10 @@ public class SolrJsonWriter {
                             }
 
                             reader.endArray();
+                            
+                            if (individualCount > 0) {
+                                System.err.println("  - Processed " + individualCount + " individuals");
+                            }
 
                         } else {
                             ontology.put(key, gson.fromJson(reader, Object.class));
@@ -153,6 +209,12 @@ public class SolrJsonWriter {
                     }
 
                     String ontologyId = (String) ontology.get("ontologyId");
+                    
+                    // Report progress
+                    double progressPercent = (double) processedOntologies / totalOntologies * 100;
+                    System.err.printf("[%d/%d] (%.1f%%) Processing ontology: %s%n", 
+                        processedOntologies, totalOntologies, progressPercent, 
+                        ontologyId != null ? ontologyId : "unknown");
 
                     Map<String, Object> flattenedOntology = new TreeMap<>();
 
@@ -185,6 +247,9 @@ public class SolrJsonWriter {
 
         reader.endObject();
         reader.close();
+        
+        System.err.println("json2solr processing completed successfully!");
+        System.err.println("Processed " + processedOntologies + " ontologies total");
     }
 
     static private void flattenProperties(Map<String,Object> properties, Map<String,Object> flattened) {
@@ -330,20 +395,16 @@ public class SolrJsonWriter {
         
         for(String modelName : embeddings.keySet()) {
             String embeddingKey = "embeddings_" + modelName;
+        
+            Embeddings emb = embeddings.get(modelName);
+            float[] embeddingsArray = emb.getEmbeddings(ontologyId, entityType, iri);
             
-            // Check if embeddings were already added by linker
-            if(!sourceEntity.containsKey(embeddingKey)) {
-                // Get embeddings from database
-                Embeddings emb = embeddings.get(modelName);
-                float[] embeddingsArray = emb.getEmbeddings(ontologyId, entityType, iri);
-                
-                if(embeddingsArray != null) {
-                    List<Float> embeddingsList = new ArrayList<>();
-                    for(float f : embeddingsArray) {
-                        embeddingsList.add(f);
-                    }
-                    flattenedEntity.put(embeddingKey, embeddingsList);
+            if(embeddingsArray != null) {
+                List<Float> embeddingsList = new ArrayList<>();
+                for(float f : embeddingsArray) {
+                    embeddingsList.add(f);
                 }
+                flattenedEntity.put(embeddingKey, embeddingsList);
             }
         }
     }

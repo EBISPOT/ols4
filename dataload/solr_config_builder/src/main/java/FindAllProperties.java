@@ -37,6 +37,8 @@ public class FindAllProperties {
                     allProperties.addAll(ontologyScannerResult.allIndividualProperties);
                     allProperties.addAll(ontologyScannerResult.allPropertyProperties);
                 }
+
+                reader.endArray();
             }
         }
 

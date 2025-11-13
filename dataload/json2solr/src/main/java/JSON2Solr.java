@@ -1,6 +1,9 @@
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
+
+import uk.ac.ebi.ols.shared.Embeddings;
+
 import org.apache.commons.cli.*;
 
 import java.io.*;
@@ -52,8 +55,9 @@ public class JSON2Solr {
         if (embeddingsDbs != null) {
             File embeddingsDbsDir = new File(embeddingsDbs);
             for (File f : embeddingsDbsDir.listFiles()) {
-                if (f.getName().endsWith(".db")) {
-                    String modelName = f.getName().substring(0, f.getName().length() - ".db".length());
+                if (f.getName().endsWith(".duckdb")) {
+                    System.err.println("Loading embeddings from " + f.getAbsolutePath());
+                    String modelName = f.getName().substring(0, f.getName().length() - ".duckdb".length());
                     Embeddings e = new Embeddings();
                     e.loadEmbeddingsFromFile(f.getAbsolutePath());
                     embeddings.put(modelName, e);

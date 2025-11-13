@@ -153,7 +153,14 @@ public class OlsSolrClient {
     }
 
     private JsonElement getOlsEntityFromSolrResult(SolrDocument doc) {
-        return JsonParser.parseString((String) doc.get("_json"));
+        JsonElement json = JsonParser.parseString((String) doc.get("_json"));
+        
+        // Add score if available (for vector search)
+        if (doc.get("score") != null && json.isJsonObject()) {
+            json.getAsJsonObject().addProperty("_score", ((Number) doc.get("score")).floatValue());
+        }
+        
+        return json;
     }
 
     public QueryResponse runSolrQuery(OlsSolrQuery query, Pageable pageable) {
@@ -237,13 +244,17 @@ public class OlsSolrClient {
             query.setRows(topK > maxRows ? maxRows : topK);
         }
         
-        logger.debug("Vector search query: {}", query.toQueryString());
+        logger.debug("Vector search query (length: {}): {}", query.toQueryString().length(), 
+            query.toQueryString().length() > 200 ? query.toQueryString().substring(0, 200) + "..." : query.toQueryString());
         
         QueryResponse qr = null;
         org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/ols4_entities").build();
         
         try {
-            qr = mySolrClient.query(query);
+            // Use POST method via QueryRequest to avoid URI too long errors with large vectors
+            org.apache.solr.client.solrj.request.QueryRequest req = new org.apache.solr.client.solrj.request.QueryRequest(query);
+            req.setMethod(org.apache.solr.client.solrj.SolrRequest.METHOD.POST);
+            qr = req.process(mySolrClient);
             logger.debug("Vector search found {} result(s)", qr.getResults().getNumFound());
         } catch (SolrServerException | IOException e) {
             throw new RuntimeException("Vector search failed", e);

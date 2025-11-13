@@ -10,7 +10,7 @@ services:
         - ols4-neo4j-data:/opt/neo4j/data:rw
         - ./${OLS4_CONFIG:?OLS4 dataload requires a config file}:/mnt/config/${OLS4_CONFIG}:ro
         - ./testcases:/opt/ols/dataload/testcases:ro
-        - ./embeddings:/mnt/embeddings:rw
+        - /data/embeddings:/mnt/embeddings:rw
           #- ./docker_out:/tmp/out:rw
       command: ./dataload.dockersh ${OLS4_DATALOAD_ARGS:-}
     ols4-solr:

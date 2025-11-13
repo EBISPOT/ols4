@@ -1,25 +1,16 @@
 
-# This image, once built, should allow any arbitrary config to be loaded and output neo4j/solr datafiles
 
-FROM rust:1.79-buster
+FROM rust:1.90.0-bullseye
 
-SHELL ["/bin/bash", "-c"]
+RUN apt-get update -y
 
-RUN sed -i 's|http://deb.debian.org/debian|http://archive.debian.org/debian|g' /etc/apt/sources.list && \
-    sed -i 's|http://deb.debian.org/debian-security|http://archive.debian.org/debian-security|g' /etc/apt/sources.list && \
-    apt-get update
+RUN curl https://corretto.aws/downloads/resources/21.0.6.7.1/amazon-corretto-21.0.6.7.1-linux-x64.tar.gz | tar -C /opt -xzf - && \
+        echo 'export JAVA_HOME=/opt/amazon-corretto-21.0.6.7.1-linux-x64' >> ~/.bashrc && \
+        echo 'export PATH=$PATH:$JAVA_HOME/bin' >> ~/.bashrc
+ENV JAVA_HOME="/opt/amazon-corretto-21.0.6.7.1-linux-x64/"
+ENV PATH="$PATH:/opt/amazon-corretto-21.0.6.7.1-linux-x64/bin"
 
 RUN addgroup --system --gid 1000 ols && adduser --system --uid 1000 --ingroup ols ols
-
-# Install JDK
-#
-RUN arch=$(uname -m); arch=${arch/x86_64/x64}; \
-        curl https://corretto.aws/downloads/resources/21.0.6.7.1/amazon-corretto-21.0.6.7.1-linux-$arch.tar.gz | tar -C /opt -xzf - && \
-        mv /opt/amazon-corretto* /opt/amazon-corretto && \
-        echo 'export JAVA_HOME=/opt/amazon-corretto' >> ~/.bashrc && \
-        echo 'export PATH=$PATH:$JAVA_HOME/bin' >> ~/.bashrc
-ENV JAVA_HOME="/opt/amazon-corretto/"
-ENV PATH="$PATH:/opt/amazon-corretto/bin"
 
 # Install Maven
 #
@@ -54,13 +45,7 @@ RUN cd /opt/ols/ols-shared && mvn package
 RUN mvn install:install-file -DcreateChecksum=true -Dpackaging=jar -Dfile=/opt/ols/ols-shared/target/ols4-shared-1.0.0-SNAPSHOT.jar -DgroupId=uk.ac.ebi.spot.ols -DartifactId=ols4-shared -Dversion=1.0.0-SNAPSHOT
 RUN cd /opt/ols/dataload &&  mvn package
 
-# Copy the OLS4 Solr config into our temporary Solr server
-#
-RUN rm -rf /opt/solr/server/solr
-RUN cp -r /opt/ols/dataload/solr_config /opt/solr/server/solr
-
 RUN mkdir /tmp/out
-
 
 
 ####

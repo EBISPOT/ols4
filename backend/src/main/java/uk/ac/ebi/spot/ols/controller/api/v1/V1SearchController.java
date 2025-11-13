@@ -533,7 +533,11 @@ public class V1SearchController {
                 if (fieldList.contains("ontology_prefix")) outDoc.put("ontology_prefix", JsonHelper.getString(json, "ontologyPreferredPrefix"));
                 if (fieldList.contains("subset")) outDoc.put("subset", JsonHelper.getStrings(json, "http://www.geneontology.org/formats/oboInOwl#inSubset"));
                 if (fieldList.contains("ontology_iri")) outDoc.put("ontology_iri", JsonHelper.getStrings(json, "ontologyIri").get(0));
-                // Note: score would need to be extracted from Solr response if available
+                
+                // Include vector search score (cosine similarity)
+                if (json.has("_score")) {
+                    outDoc.put("score", json.get("_score").getAsFloat());
+                }
                 
                 docs.add(outDoc);
                 count++;
