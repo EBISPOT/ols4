@@ -151,7 +151,6 @@ public class SolrJsonWriter {
 
                                 flattenProperties(property, flattenedProperty);
                                 
-                                // Add embeddings if not already present (from linker)
                                 addEmbeddings(ontologyId, "property", (String) property.get("iri"), property, flattenedProperty, embeddings);
                                 
                                 property.remove("embeddings");
@@ -186,7 +185,6 @@ public class SolrJsonWriter {
 
                                 flattenProperties(individual, flattenedIndividual);
                                 
-                                // Add embeddings if not already present (from linker)
                                 addEmbeddings(ontologyId, "individual", (String) individual.get("iri"), individual, flattenedIndividual, embeddings);
                                 
                                 individual.remove("embeddings");

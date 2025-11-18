@@ -60,10 +60,18 @@ public class JSON2Solr {
                     String modelName = f.getName().substring(0, f.getName().length() - ".parquet".length());
                     Embeddings e = new Embeddings();
                     e.loadEmbeddingsFromFile(f.getAbsolutePath());
+
+                    System.out.println("Loaded embeddings model " + modelName + " with " + e.embeddingsCache.size() + " entries");
+
                     embeddings.put(modelName, e);
                 }
             }
+            System.err.println("Loaded " +  embeddings.size() + " embeddings databases from " + embeddingsDbsDir.listFiles().length + " files");
+        } else {
+            System.err.println("No embeddings path provided, skipping embeddings load.");
         }
+
+        System.out.println("calling writeSolrJson with " + embeddings.size() + " embedding models");
 
         SolrJsonWriter.writeSolrJson( inputFilePath, outPath, embeddings );
     }

@@ -9,7 +9,7 @@ import org.apache.hadoop.fs.Path;
 
 public class Embeddings {
 
-    private Map<String, float[]> embeddingsCache;
+    public Map<String, float[]> embeddingsCache;
 
     public Embeddings() {
         this.embeddingsCache = new HashMap<>();
