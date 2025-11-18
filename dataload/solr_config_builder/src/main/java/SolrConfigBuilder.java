@@ -27,7 +27,7 @@ public class SolrConfigBuilder {
         solrConfigTemplatePath.setRequired(true);
         options.addOption(solrConfigTemplatePath);
 
-        Option embeddingDbsPath = new Option(null, "embeddingDbsPath", true, "optional folder containing embeddings DuckDB databases");
+        Option embeddingDbsPath = new Option(null, "embeddingDbsPath", true, "optional folder containing embeddings Parquet files");
         embeddingDbsPath.setRequired(false);
         options.addOption(embeddingDbsPath);
 
@@ -124,17 +124,17 @@ public class SolrConfigBuilder {
             return models;
         }
         
-        File[] duckdbFiles = embeddingsDbsDir.listFiles((dir, name) -> name.endsWith(".duckdb"));
-        if (duckdbFiles == null) {
-            System.err.println("No DuckDB files found in: " + embeddingDbsPath);
+        File[] parquetFiles = embeddingsDbsDir.listFiles((dir, name) -> name.endsWith(".parquet"));
+        if (parquetFiles == null) {
+            System.err.println("No Parquet files found in: " + embeddingDbsPath);
             return models;
         }
         
-        for (File duckdbFile : duckdbFiles) {
-            String modelName = duckdbFile.getName().substring(0, duckdbFile.getName().length() - ".duckdb".length());
+        for (File parquetFile : parquetFiles) {
+            String modelName = parquetFile.getName().substring(0, parquetFile.getName().length() - ".parquet".length());
             
             try {
-                int dimension = getEmbeddingDimension(duckdbFile.getAbsolutePath());
+                int dimension = getEmbeddingDimension(parquetFile.getAbsolutePath());
                 if (dimension > 0) {
                     models.put(modelName, dimension);
                     System.err.println("Found embedding model: " + modelName + " with dimension: " + dimension);
@@ -142,35 +142,35 @@ public class SolrConfigBuilder {
                     System.err.println("Could not determine dimension for model: " + modelName);
                 }
             } catch (Exception e) {
-                System.err.println("Error processing DuckDB file " + duckdbFile.getName() + ": " + e.getMessage());
+                System.err.println("Error processing Parquet file " + parquetFile.getName() + ": " + e.getMessage());
             }
         }
         
         return models;
     }
     
-    static int getEmbeddingDimension(String duckdbPath) {
+    static int getEmbeddingDimension(String parquetPath) {
         try {
-            Properties readOnlyProperty = new Properties();
-            readOnlyProperty.setProperty("duckdb.read_only", "true");
+            org.apache.hadoop.conf.Configuration conf = new org.apache.hadoop.conf.Configuration();
+            org.apache.hadoop.fs.Path path = new org.apache.hadoop.fs.Path(parquetPath);
             
-            try (Connection connection = DriverManager.getConnection("jdbc:duckdb:" + duckdbPath, readOnlyProperty)) {
-                // Query to get the dimension of the embedding column
-                // We'll get the first embedding to determine its length
-                String query = "SELECT embedding FROM terms_embedded LIMIT 1";
-                try (var stmt = connection.prepareStatement(query)) {
-                    ResultSet rs = stmt.executeQuery();
-                    if (rs.next()) {
-                        java.sql.Array sqlArray = rs.getArray("embedding");
-                        if (sqlArray != null) {
-                            Object[] objArray = (Object[]) sqlArray.getArray();
-                            return objArray.length;
-                        }
-                    }
+            org.apache.parquet.hadoop.example.GroupReadSupport readSupport = new org.apache.parquet.hadoop.example.GroupReadSupport();
+            
+            try (org.apache.parquet.hadoop.ParquetReader<org.apache.parquet.example.data.Group> reader = 
+                    org.apache.parquet.hadoop.ParquetReader.builder(readSupport, path)
+                        .withConf(conf)
+                        .build()) {
+                
+                org.apache.parquet.example.data.Group group = reader.read();
+                if (group != null) {
+                    // Read the embedding array to determine dimension
+                    org.apache.parquet.example.data.Group embeddingGroup = group.getGroup("embedding", 0);
+                    int dimension = embeddingGroup.getFieldRepetitionCount("list");
+                    return dimension;
                 }
             }
-        } catch (SQLException e) {
-            System.err.println("Error querying DuckDB for embedding dimension: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Error reading Parquet file for embedding dimension: " + e.getMessage());
         }
         
         return -1; // Indicate failure

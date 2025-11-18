@@ -28,7 +28,7 @@ public class JSON2Solr {
         output.setRequired(true);
         options.addOption(output);
 
-        Option embeddingsDbsPath = new Option(null, "embeddingDbsPath", true, "optional folder containing embeddings DuckDB databases");
+        Option embeddingsDbsPath = new Option(null, "embeddingDbsPath", true, "optional folder containing embeddings Parquet files");
         embeddingsDbsPath.setRequired(false);
         options.addOption(embeddingsDbsPath);
 
@@ -55,9 +55,9 @@ public class JSON2Solr {
         if (embeddingsDbs != null) {
             File embeddingsDbsDir = new File(embeddingsDbs);
             for (File f : embeddingsDbsDir.listFiles()) {
-                if (f.getName().endsWith(".duckdb")) {
+                if (f.getName().endsWith(".parquet")) {
                     System.err.println("Loading embeddings from " + f.getAbsolutePath());
-                    String modelName = f.getName().substring(0, f.getName().length() - ".duckdb".length());
+                    String modelName = f.getName().substring(0, f.getName().length() - ".parquet".length());
                     Embeddings e = new Embeddings();
                     e.loadEmbeddingsFromFile(f.getAbsolutePath());
                     embeddings.put(modelName, e);

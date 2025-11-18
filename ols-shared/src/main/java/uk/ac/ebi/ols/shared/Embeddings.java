@@ -1,73 +1,66 @@
 package uk.ac.ebi.ols.shared;
 import java.io.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.Properties;
-import java.sql.Array;
+import java.util.*;
+import org.apache.parquet.hadoop.ParquetReader;
+import org.apache.parquet.hadoop.example.GroupReadSupport;
+import org.apache.parquet.example.data.Group;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
 
 public class Embeddings {
 
-    private Connection connection;
-    private PreparedStatement stmt;
+    private Map<String, float[]> embeddingsCache;
 
     public Embeddings() {
+        this.embeddingsCache = new HashMap<>();
     }
     
-    public void loadEmbeddingsFromFile(String duckdbPath) throws IOException {
-    
+    public void loadEmbeddingsFromFile(String parquetPath) throws IOException {
         try {
-            Properties readOnlyProperty = new Properties();
-            readOnlyProperty.setProperty("duckdb.read_only", "true");
-            this.connection = DriverManager.getConnection("jdbc:duckdb:" + duckdbPath, readOnlyProperty);
-            this.stmt = this.connection.prepareStatement(
-                "SELECT embedding FROM terms_embedded WHERE ontology_id = ? AND entity_type = ? AND iri = ?"
-            );
-
-        } catch (SQLException e) {
+            Configuration conf = new Configuration();
+            Path path = new Path(parquetPath);
+            
+            GroupReadSupport readSupport = new GroupReadSupport();
+            try (ParquetReader<Group> reader = ParquetReader.builder(readSupport, path)
+                    .withConf(conf)
+                    .build()) {
+                
+                Group group;
+                while ((group = reader.read()) != null) {
+                    String ontologyId = group.getString("ontology_id", 0);
+                    String entityType = group.getString("entity_type", 0);
+                    String iri = group.getString("iri", 0);
+                    
+                    // Read the embedding array
+                    Group embeddingGroup = group.getGroup("embedding", 0);
+                    int embeddingSize = embeddingGroup.getFieldRepetitionCount("list");
+                    float[] embedding = new float[embeddingSize];
+                    
+                    for (int i = 0; i < embeddingSize; i++) {
+                        Group element = embeddingGroup.getGroup("list", i);
+                        embedding[i] = element.getFloat("element", 0);
+                    }
+                    
+                    String key = makeKey(ontologyId, entityType, iri);
+                    embeddingsCache.put(key, embedding);
+                }
+            }
+        } catch (Exception e) {
             e.printStackTrace();
-            this.connection = null;
-            this.stmt = null;
-            return;
+            this.embeddingsCache = new HashMap<>();
         }
-
+    }
+    
+    private String makeKey(String ontologyId, String entityType, String iri) {
+        return ontologyId + "|" + entityType + "|" + iri;
     }
 
     public float[] getEmbeddings(String ontologyId, String entityType, String iri) {
-
-        if(this.connection == null) {
+        if(this.embeddingsCache == null) {
             return null;
         }
-
-        try {
-
-            this.stmt.setString(1, ontologyId);
-            this.stmt.setString(2, entityType);
-            this.stmt.setString(3, iri);
-            var rs = this.stmt.executeQuery();
-            if (rs.next()) {
-                Array sqlArray = rs.getArray("embedding");
-                if (sqlArray == null) {
-                    return null;
-                }
-                
-                Object[] objArray = (Object[]) sqlArray.getArray();
-                float[] result = new float[objArray.length];
-                for (int i = 0; i < objArray.length; i++) {
-                    result[i] = ((Number) objArray[i]).floatValue();
-                }
-                return result;
-
-            } else {
-                return null;
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
-
-
+        
+        String key = makeKey(ontologyId, entityType, iri);
+        return embeddingsCache.get(key);
     }
 }
