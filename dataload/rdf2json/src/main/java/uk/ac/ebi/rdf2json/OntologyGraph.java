@@ -734,7 +734,7 @@ public class OntologyGraph implements StreamRDF {
         String subjId = nodeIdFromJenaNode(triple.getSubject());
         OntologyNode subjNode = getOrCreateNode(triple.getSubject());
 
-        String lang = triple.getObject().getLiteralLanguage();
+        String lang = ValidateLanguage.validateLanguage( triple.getObject().getLiteralLanguage() );
         if(lang != null && !lang.equals("")) {
             languages.add(lang);
         }
