@@ -11,7 +11,7 @@ public class ValidateLanguage {
             !lang.matches("^[a-zA-Z0-9\\-]+$") ||
             lang.length() > 10
         ) {
-            return null;
+            return "";
         }
 
         return lang;
