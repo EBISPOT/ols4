@@ -43,7 +43,7 @@ COPY ./pom.xml /opt/ols
 RUN cd /opt/ols/ols-shared && mvn package
 
 RUN mvn install:install-file -DcreateChecksum=true -Dpackaging=jar -Dfile=/opt/ols/ols-shared/target/ols4-shared-1.0.0-SNAPSHOT.jar -DgroupId=uk.ac.ebi.spot.ols -DartifactId=ols4-shared -Dversion=1.0.0-SNAPSHOT
-RUN cd /opt/ols/dataload &&  mvn package
+RUN cd /opt/ols/dataload &&  mvn -T 1C package
 
 RUN mkdir /tmp/out
 

@@ -82,7 +82,4 @@ public class CopyJsonGatheringStrings {
         jsonReader.endObject();
         jsonWriter.endObject();
     }
-
-
-
 }

@@ -6,10 +6,8 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Map;
 
-public class Linker {
+public class Link {
 
     static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -17,11 +15,15 @@ public class Linker {
 
         Options options = new Options();
 
-        Option input = new Option(null, "input", true, "unlinked ontologies JSON input filename");
+        Option manifest = new Option(null, "manifest", true, "input manifest JSON file (from create-manifest)");
+        manifest.setRequired(true);
+        options.addOption(manifest);
+
+        Option input = new Option(null, "input", true, "unlinked ontology JSON input filename");
         input.setRequired(true);
         options.addOption(input);
 
-        Option output = new Option(null, "output", true, "linked ontologies JSON output filename");
+        Option output = new Option(null, "output", true, "linked ontology JSON output filename");
         output.setRequired(true);
         options.addOption(output);
 
@@ -37,12 +39,12 @@ public class Linker {
             cmd = parser.parse(options, args);
         } catch (ParseException e) {
             System.out.println(e.getMessage());
-            formatter.printHelp("linker", options);
-
+            formatter.printHelp("link", options);
             System.exit(1);
             return;
         }
 
+        String manifestFilePath = cmd.getOptionValue("manifest");
         String inputFilePath = cmd.getOptionValue("input");
         String outputFilePath = cmd.getOptionValue("output");
         String leveldb_path = cmd.getOptionValue("leveldbPath");
@@ -50,20 +52,19 @@ public class Linker {
         LevelDB leveldb = leveldb_path != null ? new LevelDB(leveldb_path) : null;
 
         try {
+            System.out.println("Loading manifest from: " + manifestFilePath);
+            LinkerPass1Result pass1Result = gson.fromJson(
+                new InputStreamReader(new FileInputStream(manifestFilePath)), 
+                LinkerPass1Result.class
+            );
 
-    //        LinkerPass1.LinkerPass1Result pass1Result = gson.fromJson(new InputStreamReader(new FileInputStream("/Users/james/ols4/linked.json")), LinkerPass1.LinkerPass1Result.class);
-            LinkerPass1.LinkerPass1Result pass1Result = LinkerPass1.run(inputFilePath);
-
-    //        gson.toJson(pass1Result, new FileWriter(outputFilePath));
-    //        Files.write(Path.of(outputFilePath), gson.toJson(pass1Result).getBytes(StandardCharsets.UTF_8));
-
+            System.out.println("Linking ontology from: " + inputFilePath);
             LinkerPass2.run(inputFilePath, outputFilePath, leveldb, pass1Result);
 
+            System.out.println("Linking complete. Output written to: " + outputFilePath);
         } finally {
             if(leveldb != null)
                 leveldb.close();
         }
     }
 }
-
-

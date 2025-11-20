@@ -61,6 +61,10 @@ public class RDF2JSON {
         sendNotifications.setRequired(false);
         options.addOption(sendNotifications);
 
+        Option ontologyIds = new Option(null, "ontologyIds", true, "Optional comma-separated list of ontology IDs to load. If specified, only these ontologies will be loaded from the config.");
+        ontologyIds.setRequired(false);
+        options.addOption(ontologyIds);
+
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
         CommandLine cmd;
@@ -84,6 +88,17 @@ public class RDF2JSON {
         String mergeOutputWith = cmd.getOptionValue("mergeOutputWith");
         String reportFilePath = cmd.getOptionValue("reportFile");
         boolean bSendNotifications = cmd.hasOption("sendNotifications");
+        
+        // Parse optional ontology IDs filter
+        Set<String> filterOntologyIds = null;
+        if (cmd.hasOption("ontologyIds")) {
+            String ontologyIdsValue = cmd.getOptionValue("ontologyIds");
+            filterOntologyIds = Arrays.stream(ontologyIdsValue.split(","))
+                .map(String::trim)
+                .map(String::toLowerCase)
+                .collect(Collectors.toSet());
+            logger.info("Filtering to load only these ontologies: {}", filterOntologyIds);
+        }
 
 
         logger.debug("Configs: {}", configFilePaths);
@@ -150,6 +165,20 @@ public class RDF2JSON {
                     existingConfig.put(key, ontologyConfig.get(key));
                 }
             }
+        }
+
+        // Filter ontologies if --ontologyIds was specified
+        if (filterOntologyIds != null) {
+            LinkedHashMap<String, Map<String,Object>> filteredConfigs = new LinkedHashMap<>();
+            for (Map.Entry<String, Map<String, Object>> entry : mergedConfigs.entrySet()) {
+                if (filterOntologyIds.contains(entry.getKey())) {
+                    filteredConfigs.put(entry.getKey(), entry.getValue());
+                } else {
+                    logger.info("Skipping ontology {} (not in --ontologyIds filter)", entry.getKey());
+                }
+            }
+            mergedConfigs = filteredConfigs;
+            logger.info("After filtering: {} ontologies to load", mergedConfigs.size());
         }
 
         JsonWriter writer = new JsonWriter(new FileWriter(outputFilePath));

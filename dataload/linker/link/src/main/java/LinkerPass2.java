@@ -22,7 +22,7 @@ public class LinkerPass2 {
     public static final OboDatabaseUrlService dbUrls = new OboDatabaseUrlService();
     public static final Bioregistry bioregistry = new Bioregistry();
 
-    public static void run(String inputJsonFilename, String outputJsonFilename, LevelDB leveldb, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+    public static void run(String inputJsonFilename, String outputJsonFilename, LevelDB leveldb, LinkerPass1Result pass1Result) throws IOException {
 
         JsonReader jsonReader = new JsonReader(new InputStreamReader(new FileInputStream(inputJsonFilename)));
         JsonWriter jsonWriter = new JsonWriter(new OutputStreamWriter(new FileOutputStream(outputJsonFilename)));
@@ -140,7 +140,7 @@ public class LinkerPass2 {
         System.out.println("--- Linker Pass 2 complete");
     }
 
-    private static void writeEntityArray(JsonReader jsonReader, JsonWriter jsonWriter, String entityType, String ontologyId, LevelDB leveldb, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+    private static void writeEntityArray(JsonReader jsonReader, JsonWriter jsonWriter, String entityType, String ontologyId, LevelDB leveldb, LinkerPass1Result pass1Result) throws IOException {
 
         jsonReader.beginArray();
         jsonWriter.beginArray();
@@ -218,7 +218,7 @@ public class LinkerPass2 {
     }
 
 
-    private static Set<String> writeLinkedEntitiesFromGatheredStrings(JsonWriter jsonWriter, Set<String> strings, String ontologyId, String entityIri, LevelDB leveldb, LinkerPass1.LinkerPass1Result pass1Result) throws IOException {
+    private static Set<String> writeLinkedEntitiesFromGatheredStrings(JsonWriter jsonWriter, Set<String> strings, String ontologyId, String entityIri, LevelDB leveldb, LinkerPass1Result pass1Result) throws IOException {
 
         Set<String> linksToIris = new HashSet<>();
 
@@ -469,7 +469,7 @@ public class LinkerPass2 {
         public String source;
     }
 
-    private static void processShortFormObject(JsonReader jsonReader, JsonWriter jsonWriter, LinkerPass1.LinkerPass1Result pass1Result, String entityIri) throws IOException {
+    private static void processShortFormObject(JsonReader jsonReader, JsonWriter jsonWriter, LinkerPass1Result pass1Result, String entityIri) throws IOException {
         jsonReader.beginObject();
         JsonObject shortFormObject = new JsonObject();
 
@@ -504,7 +504,7 @@ public class LinkerPass2 {
         jsonWriter.endObject();
     }
 
-    private static void processCurieObject(JsonReader jsonReader, JsonWriter jsonWriter, LinkerPass1.LinkerPass1Result pass1Result, String entityIri) throws IOException {
+    private static void processCurieObject(JsonReader jsonReader, JsonWriter jsonWriter, LinkerPass1Result pass1Result, String entityIri) throws IOException {
         jsonReader.beginObject();
         JsonObject curieObject = new JsonObject();
 
@@ -539,7 +539,7 @@ public class LinkerPass2 {
         jsonWriter.endObject();
     }
 
-    private static String getProcessedCurieValue(LinkerPass1.LinkerPass1Result pass1Result, String entityIri) {
+    private static String getProcessedCurieValue(LinkerPass1Result pass1Result, String entityIri) {
         if(isNullOrEmpty(entityIri)) {
             return "";
         }
