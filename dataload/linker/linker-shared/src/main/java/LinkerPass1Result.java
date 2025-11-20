@@ -1,6 +1,3 @@
-import com.google.common.collect.LinkedHashMultimap;
-import com.google.common.collect.Multimap;
-
 import java.util.*;
 
 public class LinkerPass1Result {
@@ -18,8 +15,8 @@ public class LinkerPass1Result {
     Map<String, Set<String>> ontologyIdToBaseUris = new HashMap<>();
 
     // ontology id -> IDs of ontologies that import at least 1 term from the ontology
-    Multimap<String, String> ontologyIdToImportingOntologyIds = LinkedHashMultimap.create();
+    Map<String, List<String>> ontologyIdToImportingOntologyIds = new HashMap<>();
 
     // ontology id -> IDs of ontologies it imports at least 1 term from
-    Multimap<String, String> ontologyIdToImportedOntologyIds = LinkedHashMultimap.create();
+    Map<String, List<String>> ontologyIdToImportedOntologyIds = new HashMap<>();
 }

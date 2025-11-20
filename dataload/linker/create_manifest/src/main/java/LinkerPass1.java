@@ -180,8 +180,8 @@ public class LinkerPass1 {
 					//
 					for(EntityDefinition defB : definitions.definitions) {
 						if(!defB.isDefiningOntology) {
-							result.ontologyIdToImportedOntologyIds.put(defB.ontologyId, defA.ontologyId);
-							result.ontologyIdToImportingOntologyIds.put(defA.ontologyId, defB.ontologyId);
+							addToMapList(result.ontologyIdToImportedOntologyIds, defB.ontologyId, defA.ontologyId);
+							addToMapList(result.ontologyIdToImportingOntologyIds, defA.ontologyId, defB.ontologyId);
 						}
 					}
 				}
@@ -193,6 +193,10 @@ public class LinkerPass1 {
         System.out.println("--- Linker Pass 1 complete. Found " + nOntologies + " ontologies and " + result.iriToDefinitions.size() + " distinct IRIs");
 
         return result;
+    }
+
+    private static void addToMapList(Map<String, List<String>> map, String key, String value) {
+        map.computeIfAbsent(key, k -> new ArrayList<>()).add(value);
     }
 
     public static void parseEntityArray(JsonReader jsonReader, String entityType, String ontologyId, Set<String> ontologyBaseUris, LinkerPass1Result result) throws IOException {

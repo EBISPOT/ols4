@@ -11,7 +11,9 @@ import java.util.List;
 
 public class CreateManifest {
 
-    static Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    static Gson gson = new GsonBuilder()
+            .setPrettyPrinting()
+            .create();
 
     public static void main(String[] args) throws IOException {
 
@@ -93,9 +95,13 @@ public class CreateManifest {
         });
 
         // Merge ontologyIdToImportingOntologyIds
-        target.ontologyIdToImportingOntologyIds.putAll(source.ontologyIdToImportingOntologyIds);
+        source.ontologyIdToImportingOntologyIds.forEach((id, values) -> {
+            target.ontologyIdToImportingOntologyIds.computeIfAbsent(id, k -> new java.util.ArrayList<>()).addAll(values);
+        });
 
         // Merge ontologyIdToImportedOntologyIds
-        target.ontologyIdToImportedOntologyIds.putAll(source.ontologyIdToImportedOntologyIds);
+        source.ontologyIdToImportedOntologyIds.forEach((id, values) -> {
+            target.ontologyIdToImportedOntologyIds.computeIfAbsent(id, k -> new java.util.ArrayList<>()).addAll(values);
+        });
     }
 }

@@ -9,7 +9,9 @@ import java.nio.file.Path;
 
 public class Link {
 
-    static Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    static Gson gson = new GsonBuilder()
+            .setPrettyPrinting()
+            .create();
 
     public static void main(String[] args) throws IOException {
 
