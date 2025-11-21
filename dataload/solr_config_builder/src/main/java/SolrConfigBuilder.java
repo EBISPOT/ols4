@@ -64,6 +64,8 @@ public class SolrConfigBuilder {
             manifestFilePath
         );
 
+        allProps.removeAll(skipProps);
+
         // Process embedding databases to get model names and dimensions
         Map<String, Integer> embeddingModels = new HashMap<>();
         if (embeddingsDbs != null) {

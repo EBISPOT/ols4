@@ -2,7 +2,7 @@
 
 FROM rust:1.90.0-bullseye
 
-RUN apt-get update -y && apt-get install -y pigz
+RUN apt-get update -y && apt-get install -y pigz python3-requests
 
 RUN curl https://corretto.aws/downloads/resources/21.0.6.7.1/amazon-corretto-21.0.6.7.1-linux-x64.tar.gz | tar -C /opt -xzf - && \
         echo 'export JAVA_HOME=/opt/amazon-corretto-21.0.6.7.1-linux-x64' >> ~/.bashrc && \
