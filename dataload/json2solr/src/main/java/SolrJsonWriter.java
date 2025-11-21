@@ -5,8 +5,6 @@ import com.google.gson.stream.JsonToken;
 
 import uk.ac.ebi.ols.shared.Embeddings;
 
-import org.apache.commons.cli.*;
-
 import java.io.*;
 import java.util.*;
 
@@ -16,6 +14,51 @@ import static uk.ac.ebi.ols.shared.DefinedFields.*;
 public class SolrJsonWriter {
 
     static Gson gson = new Gson();
+
+    /**
+     * A rotating writer that creates numbered output files when max rows is reached
+     */
+    static class RotatingWriter {
+        private String basePath;
+        private String ontologyId;
+        private String entityType;
+        private int maxRowsPerFile;
+        private int currentFileIndex = 0;
+        private int currentRowCount = 0;
+        private PrintStream currentWriter;
+
+        public RotatingWriter(String outPath, String ontologyId, String entityType, int maxRowsPerFile) throws IOException {
+            this.basePath = outPath;
+            this.ontologyId = ontologyId;
+            this.entityType = entityType;
+            this.maxRowsPerFile = maxRowsPerFile;
+            openNextFile();
+        }
+
+        private void openNextFile() throws IOException {
+            if (currentWriter != null) {
+                currentWriter.close();
+            }
+            String filename = String.format("%s/%s_%s_%04d.jsonl", basePath, ontologyId, entityType, currentFileIndex);
+            currentWriter = new PrintStream(filename);
+            currentRowCount = 0;
+            currentFileIndex++;
+        }
+
+        public void println(String line) throws IOException {
+            if (currentRowCount >= maxRowsPerFile) {
+                openNextFile();
+            }
+            currentWriter.println(line);
+            currentRowCount++;
+        }
+
+        public void close() {
+            if (currentWriter != null) {
+                currentWriter.close();
+            }
+        }
+    }
 
     private static int countOntologies(String ontologiesJsonPath) throws IOException {
         int count = 0;
@@ -41,26 +84,19 @@ public class SolrJsonWriter {
         return count;
     }
 
-    public static void writeSolrJson(String ontologiesJsonPath, String outPath, Map<String, Embeddings> embeddings) throws IOException {
+    public static void writeSolrJson(String outputOntologyId, String ontologiesJsonPath, String outPath, Map<String, Embeddings> embeddings, int maxRowsPerFile) throws IOException {
 
-        PrintStream ontologiesWriter = null;
-        PrintStream classesWriter = null;
-        PrintStream propertiesWriter = null;
-        PrintStream individualsWriter = null;
-        PrintStream autocompleteWriter = null;
+        RotatingWriter ontologiesWriter = null;
+        RotatingWriter classesWriter = null;
+        RotatingWriter propertiesWriter = null;
+        RotatingWriter individualsWriter = null;
+        RotatingWriter autocompleteWriter = null;
 
-
-        String ontologiesOutName = outPath + "/ontologies.jsonl";
-        String classesOutName = outPath + "/classes.jsonl";
-        String propertiesOutName = outPath + "/properties.jsonl";
-        String individualsOutName = outPath + "/individuals.jsonl";
-        String autocompleteOutName = outPath + "/autocomplete.jsonl";
-
-        ontologiesWriter = new PrintStream(ontologiesOutName);
-        classesWriter = new PrintStream(classesOutName);
-        propertiesWriter = new PrintStream(propertiesOutName);
-        individualsWriter = new PrintStream(individualsOutName);
-        autocompleteWriter = new PrintStream(autocompleteOutName);
+        ontologiesWriter = new RotatingWriter(outPath, outputOntologyId, "ontologies", maxRowsPerFile);
+        classesWriter = new RotatingWriter(outPath, outputOntologyId, "classes", maxRowsPerFile);
+        propertiesWriter = new RotatingWriter(outPath, outputOntologyId, "properties", maxRowsPerFile);
+        individualsWriter = new RotatingWriter(outPath, outputOntologyId, "individuals", maxRowsPerFile);
+        autocompleteWriter = new RotatingWriter(outPath, outputOntologyId, "autocomplete", maxRowsPerFile);
 
         System.err.println("Starting json2solr processing...");
         System.err.println("Input file: " + ontologiesJsonPath);
@@ -90,14 +126,37 @@ public class SolrJsonWriter {
 
                     Map<String,Object> ontology = new TreeMap<>();
                     
-                    // Track progress - will be updated when we find the ontologyId
-                    processedOntologies++;
+                    // First pass: read ontologyId to check if we should process this ontology
+                    String ontologyId = null;
+                    boolean shouldProcess = false;
 
                     while (reader.peek() != JsonToken.END_OBJECT) {
 
                         String key = reader.nextName();
-
-                        if (key.equals("classes")) {
+                        
+                        // Read ontologyId first to determine if we should process
+                        if (key.equals("ontologyId")) {
+                            ontologyId = gson.fromJson(reader, String.class);
+                            ontology.put(key, ontologyId);
+                            shouldProcess = ontologyId.equals(outputOntologyId);
+                            
+                            // Report progress
+                            processedOntologies++;
+                            double progressPercent = (double) processedOntologies / totalOntologies * 100;
+                            System.err.printf("[%d/%d] (%.1f%%) %s ontology: %s%n", 
+                                processedOntologies, totalOntologies, progressPercent,
+                                shouldProcess ? "Processing" : "Skipping",
+                                ontologyId);
+                            
+                            if (!shouldProcess) {
+                                // Skip the rest of this ontology
+                                while (reader.peek() != JsonToken.END_OBJECT) {
+                                    reader.nextName();
+                                    reader.skipValue();
+                                }
+                                break;
+                            }
+                        } else if (key.equals("classes") && shouldProcess) {
 
                             reader.beginArray();
                             
@@ -109,7 +168,6 @@ public class SolrJsonWriter {
 
                                 Map<String, Object> flattenedClass = new TreeMap<>();
 
-                                String ontologyId = (String) ontology.get("ontologyId");
                                 String entityId = ontologyId + "+class+" + (String) _class.get("iri");
 
                                 flattenedClass.put("id", entityId);
@@ -144,7 +202,6 @@ public class SolrJsonWriter {
 
                                 Map<String, Object> flattenedProperty = new TreeMap<>();
 
-                                String ontologyId = (String) ontology.get("ontologyId");
                                 String entityId = ontologyId + "+property+" + (String) property.get("iri");
 
                                 flattenedProperty.put("id", entityId);
@@ -179,7 +236,6 @@ public class SolrJsonWriter {
 
                                 Map<String, Object> flattenedIndividual = new TreeMap<>();
 
-                                String ontologyId = (String) ontology.get("ontologyId");
                                 String entityId = ontologyId + "+individual+" + (String) individual.get("iri");
                                 flattenedIndividual.put("id", entityId);
 
@@ -206,30 +262,25 @@ public class SolrJsonWriter {
                         }
                     }
 
-                    String ontologyId = (String) ontology.get("ontologyId");
-                    
-                    // Report progress
-                    double progressPercent = (double) processedOntologies / totalOntologies * 100;
-                    System.err.printf("[%d/%d] (%.1f%%) Processing ontology: %s%n", 
-                        processedOntologies, totalOntologies, progressPercent, 
-                        ontologyId != null ? ontologyId : "unknown");
+                    // Only write ontology document if we processed this ontology
+                    if (shouldProcess) {
+                        Map<String, Object> flattenedOntology = new TreeMap<>();
 
-                    Map<String, Object> flattenedOntology = new TreeMap<>();
+                        // don't want to store a copy of all the entities in here too
+                        Map<String, Object> ontologyJsonObj = new TreeMap<>();
+                        for(String k : ontology.keySet()) {
+                            if(k.equals("classes") || k.equals("properties") || k.equals("individuals"))
+                                continue;
+                            ontologyJsonObj.put(k, ontology.get(k));
+                        }
 
-                    // don't want to store a copy of all the entities in here too
-                    Map<String, Object> ontologyJsonObj = new TreeMap<>();
-                    for(String k : ontology.keySet()) {
-                        if(k.equals("classes") || k.equals("properties") || k.equals("individuals"))
-                            continue;
-                        ontologyJsonObj.put(k, ontology.get(k));
+                        flattenedOntology.put("_json", gson.toJson(ontologyJsonObj));
+                        flattenedOntology.put("id", ontologyId + "+ontology+" + ontology.get("iri"));
+
+                        flattenProperties(ontology, flattenedOntology);
+
+                        ontologiesWriter.println(gson.toJson(flattenedOntology));
                     }
-
-                    flattenedOntology.put("_json", gson.toJson(ontologyJsonObj));
-                    flattenedOntology.put("id", ontologyId + "+ontology+" + ontology.get("iri"));
-
-                    flattenProperties(ontology, flattenedOntology);
-
-                    ontologiesWriter.println(gson.toJson(flattenedOntology));
 
                     reader.endObject(); // ontology
                 }
@@ -245,6 +296,13 @@ public class SolrJsonWriter {
 
         reader.endObject();
         reader.close();
+        
+        // Close all writers
+        ontologiesWriter.close();
+        classesWriter.close();
+        propertiesWriter.close();
+        individualsWriter.close();
+        autocompleteWriter.close();
         
         System.err.println("json2solr processing completed successfully!");
         System.err.println("Processed " + processedOntologies + " ontologies total");
@@ -355,7 +413,7 @@ public class SolrJsonWriter {
 
 
 
-   static void writeAutocompleteEntries(String ontologyId, String entityId, Map<String,Object> flattenedEntity, PrintStream autocompleteWriter) {
+   static void writeAutocompleteEntries(String ontologyId, String entityId, Map<String,Object> flattenedEntity, RotatingWriter autocompleteWriter) throws IOException {
 
 	Object labels = flattenedEntity.get(LABEL.getText());
 

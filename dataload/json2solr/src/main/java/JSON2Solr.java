@@ -1,6 +1,4 @@
 import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
 
 import uk.ac.ebi.ols.shared.Embeddings;
 
@@ -10,8 +8,6 @@ import java.io.*;
 import java.util.*;
 
 
-import static uk.ac.ebi.ols.shared.DefinedFields.*;
-
 public class JSON2Solr {
 
     static Gson gson = new Gson();
@@ -19,6 +15,10 @@ public class JSON2Solr {
     public static void main(String[] args) throws IOException {
 
         Options options = new Options();
+
+        Option ontologyIdOpt = new Option(null, "ontologyId", true, "ontology ID");
+        ontologyIdOpt.setRequired(true);
+        options.addOption(ontologyIdOpt);
 
         Option input = new Option(null, "input", true, "ontologies JSON input filename");
         input.setRequired(true);
@@ -31,6 +31,10 @@ public class JSON2Solr {
         Option embeddingsDbsPath = new Option(null, "embeddingDbsPath", true, "optional folder containing embeddings Parquet files");
         embeddingsDbsPath.setRequired(false);
         options.addOption(embeddingsDbsPath);
+
+        Option maxRowsPerFileOpt = new Option(null, "maxRowsPerFile", true, "maximum number of rows per output file");
+        maxRowsPerFileOpt.setRequired(true);
+        options.addOption(maxRowsPerFileOpt);
 
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
@@ -46,9 +50,11 @@ public class JSON2Solr {
             return;
         }
 
+        String ontologyId = cmd.getOptionValue("ontologyId");
         String inputFilePath = cmd.getOptionValue("input");
         String outPath = cmd.getOptionValue("outDir");
         String embeddingsDbs = cmd.getOptionValue("embeddingDbsPath");
+        int maxRowsPerFile = Integer.parseInt(cmd.getOptionValue("maxRowsPerFile"));
 
         Map<String, Embeddings> embeddings = new HashMap<>();
 
@@ -59,9 +65,9 @@ public class JSON2Solr {
                     System.err.println("Loading embeddings from " + f.getAbsolutePath());
                     String modelName = f.getName().substring(0, f.getName().length() - ".parquet".length());
                     Embeddings e = new Embeddings();
-                    e.loadEmbeddingsFromFile(f.getAbsolutePath());
+                    e.loadEmbeddingsFromFile(f.getAbsolutePath(), ontologyId);
 
-                    System.out.println("Loaded embeddings model " + modelName + " with " + e.embeddingsCache.size() + " entries");
+                    System.out.println("Loaded embeddings model " + modelName + " with " + e.embeddingsCache.size() + " entries for ontology id " + ontologyId);
 
                     embeddings.put(modelName, e);
                 }
@@ -73,7 +79,7 @@ public class JSON2Solr {
 
         System.out.println("calling writeSolrJson with " + embeddings.size() + " embedding models");
 
-        SolrJsonWriter.writeSolrJson( inputFilePath, outPath, embeddings );
+        SolrJsonWriter.writeSolrJson( ontologyId, inputFilePath, outPath, embeddings, maxRowsPerFile );
     }
 }
 

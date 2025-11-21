@@ -33,10 +33,6 @@ public class JSON2CSV {
         manifest.setRequired(true);
         options.addOption(manifest);
 
-        Option embeddingsDbsPath = new Option(null, "embeddingDbsPath", true, "optional folder containing embeddings DuckDB databases");
-        embeddingsDbsPath.setRequired(false);
-        options.addOption(embeddingsDbsPath);
-
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
         CommandLine cmd;
@@ -54,23 +50,8 @@ public class JSON2CSV {
         String inputFilePath = cmd.getOptionValue("input");
         String outputFilePath = cmd.getOptionValue("outDir");
         String manifestFilePath = cmd.getOptionValue("manifest");
-        String embeddingsDbs = cmd.getOptionValue("embeddingDbsPath");
 
-        Map<String, Embeddings> embeddings = new HashMap<>();
-
-        if (embeddingsDbs != null) {
-            File embeddingsDbsDir = new File(embeddingsDbs);
-            for (File f : embeddingsDbsDir.listFiles()) {
-                if (f.getName().endsWith(".db")) {
-                    String modelName = f.getName().substring(0, f.getName().length() - ".db".length());
-                    Embeddings e = new Embeddings();
-                    e.loadEmbeddingsFromFile(f.getAbsolutePath());
-                    embeddings.put(modelName, e);
-                }
-            }
-        }
-
-        new NeoConverter(inputFilePath, outputFilePath, manifestFilePath, embeddings).convert();
+        new NeoConverter(inputFilePath, outputFilePath, manifestFilePath).convert();
     }
 
 }

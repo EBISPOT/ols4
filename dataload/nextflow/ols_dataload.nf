@@ -7,35 +7,63 @@ jsonSlurper = new JsonSlurper()
 import groovy.yaml.YamlSlurper
 yamlSlurper = new YamlSlurper()
 
-params.config = "$OLS_CONFIG"
+params.configs_dir = "$OLS_CONFIGS_DIR"
 params.out = "$OLS_OUT_DIR"
-params.solr_mem = "32g"
-params.neo_mem = "32g"
+params.solr_mem = "8g"
+params.neo_mem = "16g"
 params.embeddings_path = "$OLS_EMBEDDINGS_PATH"
+params.max_rows_per_file = "100"
 
 workflow {
 
-    config_path = params.config
-    config = (new JsonSlurper().parse(new File(config_path)))
+    config_files = Channel.fromPath("${params.configs_dir}/*.json").collect()
+    
+    merged_config_file = merge_configs(config_files)
+    
+    merged_config = merged_config_file.map { Path configFile ->
+        new JsonSlurper().parse(configFile)
+    }   
 
-    ontologies = Channel.from(config.ontologies)
+    ontologies = merged_config.flatMap { it.ontologies }
     ontology_ids = ontologies.map { it.id }
 
-    ontology_jsons = rdf2json(config_path, ontology_ids)
+    ontology_jsons_by_id = rdf2json(merged_config_file, ontology_ids)
 
-    linker_manifest = linker__create_manifest(ontology_jsons.collect())
-    linked_ontologies = linker__link_ontologies(linker_manifest, ontology_jsons)
+    linker_manifest = linker__create_manifest(ontology_jsons_by_id.map { it[1] }.collect())
+    linked_ontologies_by_id = linker__link_ontologies(linker_manifest, ontology_jsons_by_id)
 
-    neo_csvs = json2neo(linker_manifest, linked_ontologies)
-    solr_jsonls = json2solr(linked_ontologies, params.embeddings_path)
+    neo_csvs = json2neo(linker_manifest, linked_ontologies_by_id.map { it[1] })
+    solr_jsonls = json2solr(linked_ontologies_by_id, params.embeddings_path)
 
-    // neo = create_neo(neo_csvs.collect())
+    neo = create_neo(neo_csvs.collect())
     solr = create_solr(solr_jsonls.collect(), linker_manifest, params.embeddings_path)
+}
+
+
+process merge_configs {
+    cache "lenient"
+    memory { 1.GB }
+    time "10m"
+    
+    input:
+    path(config_files)
+
+    output:
+    path("merged_config.json")
+
+    script:
+    """
+    #!/usr/bin/env bash
+    set -Eeuo pipefail
+    java -jar /opt/ols/dataload/merge_configs/target/merge_configs-1.0-SNAPSHOT.jar \
+        --config ${config_files.join(',')} \
+        --output merged_config.json
+    """
 }
 
 process rdf2json {
     cache "lenient"
-    memory { 16.GB }
+    memory { 16.GB + 8.GB * (task.attempt-1) }
     time { 1.hour + 8.hour * (task.attempt-1) }
     errorStrategy { task.exitStatus in 137..140 ? 'retry' : 'terminate' }
     maxRetries 5
@@ -45,7 +73,7 @@ process rdf2json {
     val(ontology_id)
 
     output:
-    path("${ontology_id}.json")
+    tuple val(ontology_id), path("${ontology_id}.json")
 
     script:
     """
@@ -60,10 +88,8 @@ process rdf2json {
 
 process linker__create_manifest {
     cache "lenient"
-    memory { 48.GB }
-    time { 1.hour + 8.hour * (task.attempt-1) }
-    errorStrategy { task.exitStatus in 137..140 ? 'retry' : 'terminate' }
-    maxRetries 5
+    memory { 16.GB }
+    time "4h"
     
     input:
     path(ontology_jsons)
@@ -83,17 +109,17 @@ process linker__create_manifest {
 
 process linker__link_ontologies {
     cache "lenient"
-    memory { 48.GB }
+    memory { 16.GB + 32.GB * (task.attempt-1) }
     time { 1.hour + 8.hour * (task.attempt-1) }
     errorStrategy { task.exitStatus in 137..140 ? 'retry' : 'terminate' }
     maxRetries 5
     
     input:
     path("linker_manifest.json")
-    path(ontology_json)
+    tuple val(ontology_id), path(ontology_json)
 
     output:
-    path("${ontology_json.name.replace('.json', '_linked.json')}")
+    tuple val(ontology_id), path("${ontology_json.name.replace('.json', '_linked.json')}")
 
     script:
     """
@@ -108,10 +134,7 @@ process linker__link_ontologies {
 
 process json2neo {
     cache "lenient"
-    memory { 48.GB }
-    time { 1.hour + 8.hour * (task.attempt-1) }
-    errorStrategy { task.exitStatus in 137..140 ? 'retry' : 'terminate' }
-    maxRetries 5
+    memory { 16.GB }
     
     input:
     path(manifest)
@@ -133,13 +156,13 @@ process json2neo {
 
 process json2solr {
     cache "lenient"
-    memory { 48.GB }
+    memory { 16.GB }
     time { 1.hour + 8.hour * (task.attempt-1) }
     errorStrategy { task.exitStatus in 137..140 ? 'retry' : 'terminate' }
     maxRetries 5
     
     input:
-    path(ontology_json)
+    tuple val(ontology_id), path(ontology_json)
     path(embeddings_path)
 
     output:
@@ -151,14 +174,16 @@ process json2solr {
     set -Eeuo pipefail
     java -jar /opt/ols/dataload/json2solr/target/json2solr-1.0-SNAPSHOT.jar \
         --input ${ontology_json} \
+        --ontologyId ${ontology_id} \
         --outDir . \
-        --embeddingDbsPath ${embeddings_path}
+        --embeddingDbsPath ${embeddings_path} \
+        --maxRowsPerFile ${params.max_rows_per_file}
     """
 }
 
 process create_neo {
     cache "lenient"
-    memory { 48.GB }
+    memory { 16.GB }
     time "8h"
 
     publishDir "${params.out}", overwrite: true
@@ -181,7 +206,7 @@ process create_neo {
 
 process create_solr {
     cache "lenient"
-    memory { 48.GB }
+    memory { 16.GB }
     time "8h"
 
     publishDir "${params.out}", overwrite: true
@@ -204,7 +229,7 @@ process create_solr {
         --manifestPath ${manifest} \
         --solrConfigTemplatePath /opt/ols/dataload/solr_config_template \
         --embeddingDbsPath ${embeddings_path} \
-        --outDir solr \
+        --outDir solr/server/solr \
 
     python3 /opt/ols/dataload/solr_import.py ./solr 8983 ${params.solr_mem}
 

@@ -19,14 +19,12 @@ public class NeoConverter {
     String inputFilePath;
     String outputFilePath;
     String manifestFilePath;
-    Map<String, Embeddings> embeddings;
     LinkerPass1Result manifest;
 
-    public NeoConverter(String inputFilePath, String outputFilePath, String manifestFilePath, Map<String, Embeddings> embeddings) throws FileNotFoundException, IOException {
+    public NeoConverter(String inputFilePath, String outputFilePath, String manifestFilePath) throws FileNotFoundException, IOException {
         this.inputFilePath = inputFilePath;
         this.outputFilePath = outputFilePath;
         this.manifestFilePath = manifestFilePath;
-        this.embeddings = embeddings;
         
         // Load the manifest
         System.out.println("Loading manifest from: " + manifestFilePath);
@@ -86,7 +84,7 @@ public class NeoConverter {
                         manifestInfo.uriToTypes.put(entry.getKey(), nodeTypes);
                     }
 
-                    new OntologyWriter(reader, outputFilePath, manifestInfo, embeddings).write();
+                    new OntologyWriter(reader, outputFilePath, manifestInfo).write();
                     
                     reader.endObject(); // close the ontology object
 
