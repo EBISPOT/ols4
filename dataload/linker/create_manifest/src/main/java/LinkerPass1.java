@@ -1,6 +1,7 @@
 import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
+import uk.ac.ebi.ols.shared.OntologyScanner;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -9,11 +10,18 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static uk.ac.ebi.ols.shared.DefinedFields.BASE_URI;
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 public class LinkerPass1 {
 
     private static final Gson gson = new Gson();
     private static final JsonParser jsonParser = new JsonParser();
+    
+    // Property blacklist for OntologyScanner
+    public static final Set<String> PROPERTY_BLACKLIST = Set.of(
+            APPEARS_IN.getText(),
+            "searchableAnnotationValues"
+    );
 
     public static LinkerPass1Result run(String inputJsonFilename) throws IOException {
 
@@ -22,18 +30,26 @@ public class LinkerPass1 {
         FileInputStream is = new FileInputStream(inputJsonFilename);
         InputStreamReader reader = new InputStreamReader(is);
         JsonReader jsonReader = new JsonReader(reader);
+        
+        // Second reader for OntologyScanner
+        FileInputStream extractorIs = new FileInputStream(inputJsonFilename);
+        InputStreamReader extractorReader = new InputStreamReader(extractorIs);
+        JsonReader extractorJsonReader = new JsonReader(extractorReader);
 
         int nOntologies = 0;
 
         System.out.println("--- Linker Pass 1: Scanning " + inputJsonFilename);
 
         jsonReader.beginObject();
+        extractorJsonReader.beginObject();
 
         while (jsonReader.peek() != JsonToken.END_OBJECT) {
             String name = jsonReader.nextName();
+            String extractorName = extractorJsonReader.nextName();
 
             if (name.equals("ontologies")) {
                 jsonReader.beginArray();
+                extractorJsonReader.beginArray();
 
                 while(jsonReader.peek() != JsonToken.END_ARRAY) {
 
@@ -41,6 +57,27 @@ public class LinkerPass1 {
 
 					String ontologyId = null;
 					Set<String> ontologyBaseUris = new HashSet<>();
+					
+					// Scan ontology for property sets using OntologyScanner
+                    OntologyScanner.Result scanResult = OntologyScanner.scanOntology(extractorJsonReader, PROPERTY_BLACKLIST);
+                    
+                    // Store the scanner results in the manifest
+                    result.ontologyIdToOntologyProperties.put(scanResult.ontologyId, scanResult.allOntologyProperties);
+                    result.ontologyIdToClassProperties.put(scanResult.ontologyId, scanResult.allClassProperties);
+                    result.ontologyIdToPropertyProperties.put(scanResult.ontologyId, scanResult.allPropertyProperties);
+                    result.ontologyIdToIndividualProperties.put(scanResult.ontologyId, scanResult.allIndividualProperties);
+                    result.ontologyIdToEdgeProperties.put(scanResult.ontologyId, scanResult.allEdgeProperties);
+                    
+                    // Convert NodeType enum to strings for serialization
+                    Map<String, Set<String>> uriToTypeStrings = new HashMap<>();
+                    for (Map.Entry<String, Set<OntologyScanner.NodeType>> entry : scanResult.uriToTypes.entrySet()) {
+                        Set<String> typeStrings = new HashSet<>();
+                        for (OntologyScanner.NodeType nodeType : entry.getValue()) {
+                            typeStrings.add(nodeType.toString());
+                        }
+                        uriToTypeStrings.put(entry.getKey(), typeStrings);
+                    }
+                    result.ontologyIdToUriToTypes.put(scanResult.ontologyId, uriToTypeStrings);
 
 					String key;
 
@@ -130,12 +167,14 @@ public class LinkerPass1 {
             } else {
 
                 jsonReader.skipValue();
+                extractorJsonReader.skipValue();
 
             }
         }
 
         jsonReader.endObject();
         jsonReader.close();
+        extractorJsonReader.close();
 
         System.out.println("--- Linker Pass 1: Finished scan. Establishing defining ontologies...");
 

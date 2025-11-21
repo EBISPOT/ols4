@@ -19,9 +19,9 @@ public class SolrConfigBuilder {
 
         Options options = new Options();
 
-        Option inputPath = new Option(null, "inputPath", true, "path to ontologies json");
-        inputPath.setRequired(true);
-        options.addOption(inputPath);
+        Option manifestPath = new Option(null, "manifestPath", true, "path to manifest JSON from create-manifest");
+        manifestPath.setRequired(true);
+        options.addOption(manifestPath);
 
         Option solrConfigTemplatePath = new Option(null, "solrConfigTemplatePath", true, "path to solr_config_template folder");
         solrConfigTemplatePath.setRequired(true);
@@ -54,15 +54,14 @@ public class SolrConfigBuilder {
         String outPath = cmd.getOptionValue("outDir");
         String embeddingsDbs = cmd.getOptionValue("embeddingDbsPath");
 
-        var inputFilePath = cmd.getOptionValue("inputPath");
+        var manifestFilePath = cmd.getOptionValue("manifestPath");
 
         // props already in the template config xml
         // or that we don't want in solr
         final var skipProps = Set.of("iri");
 
-        Set<String> allProps = FindAllProperties.findAllProperties(
-            inputFilePath,
-            skipProps
+        Set<String> allProps = FindAllProperties.findAllPropertiesFromManifest(
+            manifestFilePath
         );
 
         // Process embedding databases to get model names and dimensions

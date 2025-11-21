@@ -103,5 +103,31 @@ public class CreateManifest {
         source.ontologyIdToImportedOntologyIds.forEach((id, values) -> {
             target.ontologyIdToImportedOntologyIds.computeIfAbsent(id, k -> new java.util.ArrayList<>()).addAll(values);
         });
+        
+        // Merge scanner results - property sets
+        source.ontologyIdToOntologyProperties.forEach((id, props) -> {
+            target.ontologyIdToOntologyProperties.put(id, props);
+        });
+        
+        source.ontologyIdToClassProperties.forEach((id, props) -> {
+            target.ontologyIdToClassProperties.put(id, props);
+        });
+        
+        source.ontologyIdToPropertyProperties.forEach((id, props) -> {
+            target.ontologyIdToPropertyProperties.put(id, props);
+        });
+        
+        source.ontologyIdToIndividualProperties.forEach((id, props) -> {
+            target.ontologyIdToIndividualProperties.put(id, props);
+        });
+        
+        source.ontologyIdToEdgeProperties.forEach((id, props) -> {
+            target.ontologyIdToEdgeProperties.put(id, props);
+        });
+        
+        // Merge scanner results - URI to types mapping
+        source.ontologyIdToUriToTypes.forEach((id, uriToTypes) -> {
+            target.ontologyIdToUriToTypes.put(id, uriToTypes);
+        });
     }
 }

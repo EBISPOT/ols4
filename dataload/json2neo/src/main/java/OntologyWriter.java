@@ -3,7 +3,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 
 import uk.ac.ebi.ols.shared.Embeddings;
-import uk.ac.ebi.ols.shared.OntologyScanner;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
@@ -21,7 +20,7 @@ public class OntologyWriter {
     JsonReader reader;
     String outputFilePath;
     String ontologyId;
-    OntologyScanner.Result ontologyScannerResult;
+    OntologyManifestInfo manifestInfo;
     Map<String, Embeddings> embeddings;
 
     List<String> edgesProperties;
@@ -48,15 +47,15 @@ public class OntologyWriter {
             "relatedFrom"
     );
 
-    public OntologyWriter(JsonReader reader, String outputFilePath, OntologyScanner.Result ontologyScannerResult, Map<String, Embeddings> embeddings) {
+    public OntologyWriter(JsonReader reader, String outputFilePath, OntologyManifestInfo manifestInfo, Map<String, Embeddings> embeddings) {
 
-        this.ontologyId = ontologyScannerResult.ontologyId;
+        this.ontologyId = manifestInfo.ontologyId;
         this.reader = reader;
-        this.ontologyScannerResult = ontologyScannerResult;
+        this.manifestInfo = manifestInfo;
         this.outputFilePath = outputFilePath;
         this.embeddings = embeddings;
 
-        edgesProperties = new ArrayList<String>(ontologyScannerResult.allEdgeProperties);
+        edgesProperties = new ArrayList<String>(manifestInfo.allEdgeProperties);
     }
 
     public void write() throws IOException {
@@ -73,36 +72,39 @@ public class OntologyWriter {
                 new File(outputFilePath + "/" + ontologyId + "_edges.csv"), Charset.defaultCharset());
 
 
-        reader.beginObject(); // ontology
+        // Note: reader is already positioned inside the ontology object (ontologyId was already read in NeoConverter)
 
 	Map<String,Object> ontologyProperties = new LinkedHashMap<>();
+	
+	// Store the ontologyId that was already read
+	ontologyProperties.put("ontologyId", ontologyId);
 
 	while(reader.peek() != JsonToken.END_OBJECT) {
 
 		String name = reader.nextName();
 
 		if(name.equals("classes")) {
-			writeEntities(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_classes.csv", ontologyId,
-				"OntologyEntity|OntologyClass", "class", ontologyScannerResult.allClassProperties);
+			writeEntities(outputFilePath + "/" + manifestInfo.ontologyId + "_classes.csv", ontologyId,
+				"OntologyEntity|OntologyClass", "class", manifestInfo.allClassProperties);
 			continue;
 		}
 
 		if(name.equals("properties")) {
-			writeEntities(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_properties.csv", ontologyId,
-				"OntologyEntity|OntologyProperty", "property", ontologyScannerResult.allPropertyProperties);
+			writeEntities(outputFilePath + "/" + manifestInfo.ontologyId + "_properties.csv", ontologyId,
+				"OntologyEntity|OntologyProperty", "property", manifestInfo.allPropertyProperties);
 			continue;
 		}
 
 		if(name.equals("individuals")) {
-			writeEntities(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_individuals.csv", ontologyId,
-				"OntologyEntity|OntologyIndividual", "individual", ontologyScannerResult.allIndividualProperties);
+			writeEntities(outputFilePath + "/" + manifestInfo.ontologyId + "_individuals.csv", ontologyId,
+				"OntologyEntity|OntologyIndividual", "individual", manifestInfo.allIndividualProperties);
 			continue;
 		}
 
 		ontologyProperties.put(name, gson.fromJson(reader, Object.class));
 	}
 
-	reader.endObject(); // ontology
+	// Note: reader.endObject() is not called here - it will be called in NeoConverter after this method returns
 
 	writeOntology(ontologyProperties);
 
@@ -111,7 +113,7 @@ public class OntologyWriter {
 
     public void writeOntology(Map<String,Object> ontologyProperties) throws IOException {
 
-        List<String> properties = new ArrayList<String>( ontologyScannerResult.allOntologyProperties);
+        List<String> properties = new ArrayList<String>( manifestInfo.allOntologyProperties);
 
         List<String> csvHeader = new ArrayList<>();
         csvHeader.add("id:ID");
@@ -119,7 +121,7 @@ public class OntologyWriter {
         csvHeader.add("_json");
         csvHeader.addAll(propertyHeaders(properties));
 
-        String outName = outputFilePath + "/" + (String) ontologyScannerResult.ontologyId + "_ontologies.csv";
+        String outName = outputFilePath + "/" + (String) manifestInfo.ontologyId + "_ontologies.csv";
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
@@ -246,7 +248,7 @@ public class OntologyWriter {
 		    assert(axioms != null);
 
                     // is the value the URI of something that exists in the ontology?
-                    if (ontologyScannerResult.uriToTypes.containsKey(reifiedValue)) {
+                    if (manifestInfo.uriToTypes.containsKey(reifiedValue)) {
 			// create one edge for each axiom
 			for(Map<String,Object> axiom : axioms) {
 				printEdge(ontologyId, subject, property, reifiedValue, axiom);
@@ -259,7 +261,7 @@ public class OntologyWriter {
                     assert (relatedValue instanceof String);
 
                     // is the value the URI of something that exists in the ontology?
-                    if (ontologyScannerResult.uriToTypes.containsKey(relatedValue)) {
+                    if (manifestInfo.uriToTypes.containsKey(relatedValue)) {
 			printEdge(ontologyId, subject, property, relatedValue, mapValue);
                     }
 		}
@@ -267,7 +269,7 @@ public class OntologyWriter {
             } else if (v instanceof String) {
 
                 // is the value the URI of something that exists in the ontology?
-                if (ontologyScannerResult.uriToTypes.containsKey(v)) {
+                if (manifestInfo.uriToTypes.containsKey(v)) {
                     printEdge(ontologyId, subject, property, v, Map.of());
                 }
 
@@ -294,11 +296,11 @@ public class OntologyWriter {
         //
         // TODO: fix
         //
-        Set<OntologyScanner.NodeType> aTypes = ontologyScannerResult.uriToTypes.get(aUri);
-        Set<OntologyScanner.NodeType> bTypes = ontologyScannerResult.uriToTypes.get(bUri);
+        Set<OntologyManifestInfo.NodeType> aTypes = manifestInfo.uriToTypes.get(aUri);
+        Set<OntologyManifestInfo.NodeType> bTypes = manifestInfo.uriToTypes.get(bUri);
 
-        for(OntologyScanner.NodeType aType : aTypes) {
-            for (OntologyScanner.NodeType bType : bTypes) {
+        for(OntologyManifestInfo.NodeType aType : aTypes) {
+            for (OntologyManifestInfo.NodeType bType : bTypes) {
 
                 String[] row = new String[4 + edgesProperties.size()];
                 int n = 0;
@@ -318,7 +320,7 @@ public class OntologyWriter {
 
     }
 
-    private String nodeTypeToString(OntologyScanner.NodeType type) {
+    private String nodeTypeToString(OntologyManifestInfo.NodeType type) {
         switch(type) {
             case CLASS:
                 return "class";

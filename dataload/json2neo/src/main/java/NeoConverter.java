@@ -3,7 +3,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 
 import uk.ac.ebi.ols.shared.Embeddings;
-import uk.ac.ebi.ols.shared.OntologyScanner;
 
 import org.apache.commons.cli.*;
 import org.apache.commons.csv.CSVFormat;
@@ -19,53 +18,86 @@ public class NeoConverter {
 
     String inputFilePath;
     String outputFilePath;
+    String manifestFilePath;
     Map<String, Embeddings> embeddings;
+    LinkerPass1Result manifest;
 
-    public NeoConverter(String inputFilePath, String outputFilePath, Map<String, Embeddings> embeddings) throws FileNotFoundException {
+    public NeoConverter(String inputFilePath, String outputFilePath, String manifestFilePath, Map<String, Embeddings> embeddings) throws FileNotFoundException, IOException {
         this.inputFilePath = inputFilePath;
         this.outputFilePath = outputFilePath;
+        this.manifestFilePath = manifestFilePath;
         this.embeddings = embeddings;
+        
+        // Load the manifest
+        System.out.println("Loading manifest from: " + manifestFilePath);
+        this.manifest = gson.fromJson(
+            new InputStreamReader(new FileInputStream(manifestFilePath)), 
+            LinkerPass1Result.class
+        );
     }
 
 
-    JsonReader extractorReader;
     JsonReader reader;
 
     public void convert() throws IOException {
 
-        extractorReader = new JsonReader(new InputStreamReader(new FileInputStream(inputFilePath)));
         reader = new JsonReader(new InputStreamReader(new FileInputStream(inputFilePath)));
 
-        reader.beginObject(); extractorReader.beginObject();
+        reader.beginObject();
 
         while(reader.peek() != JsonToken.END_OBJECT) {
 
-            String name = reader.nextName(); extractorReader.nextName();
+            String name = reader.nextName();
 
             if (name.equals("ontologies")) {
 
-                reader.beginArray(); extractorReader.beginArray();
+                reader.beginArray();
 
                 while(reader.peek() != JsonToken.END_ARRAY) {
 
+                    reader.beginObject(); // ontology
+                    
+                    // Read the ontologyId to get the scanner result from manifest
+                    String ontologyIdKey = reader.nextName();
+                    if (!ontologyIdKey.equals("ontologyId")) {
+                        throw new RuntimeException("Expected 'ontologyId' as first field in ontology");
+                    }
+                    String ontologyId = reader.nextString();
 
-                    System.out.println("Scanning ontology...");
+                    System.out.println("Processing ontology: " + ontologyId);
+                    
+                    // Get scanner results from manifest
+                    OntologyManifestInfo manifestInfo = new OntologyManifestInfo();
+                    manifestInfo.ontologyId = ontologyId;
+                    manifestInfo.allOntologyProperties = manifest.ontologyIdToOntologyProperties.getOrDefault(ontologyId, new HashSet<>());
+                    manifestInfo.allClassProperties = manifest.ontologyIdToClassProperties.getOrDefault(ontologyId, new HashSet<>());
+                    manifestInfo.allPropertyProperties = manifest.ontologyIdToPropertyProperties.getOrDefault(ontologyId, new HashSet<>());
+                    manifestInfo.allIndividualProperties = manifest.ontologyIdToIndividualProperties.getOrDefault(ontologyId, new HashSet<>());
+                    manifestInfo.allEdgeProperties = manifest.ontologyIdToEdgeProperties.getOrDefault(ontologyId, new HashSet<>());
+                    
+                    // Convert string type sets to NodeType sets for uriToTypes
+                    Map<String, Set<String>> uriToTypeStrings = manifest.ontologyIdToUriToTypes.getOrDefault(ontologyId, new HashMap<>());
+                    manifestInfo.uriToTypes = new HashMap<>();
+                    for (Map.Entry<String, Set<String>> entry : uriToTypeStrings.entrySet()) {
+                        Set<OntologyManifestInfo.NodeType> nodeTypes = new HashSet<>();
+                        for (String typeStr : entry.getValue()) {
+                            nodeTypes.add(OntologyManifestInfo.NodeType.valueOf(typeStr));
+                        }
+                        manifestInfo.uriToTypes.put(entry.getKey(), nodeTypes);
+                    }
 
-                    OntologyScanner.Result ontologyScannerResult =
-                            OntologyScanner.scanOntology(extractorReader, OntologyWriter.PROPERTY_BLACKLIST);
+                    new OntologyWriter(reader, outputFilePath, manifestInfo, embeddings).write();
+                    
+                    reader.endObject(); // close the ontology object
 
-                    System.out.println("Ontology scan complete for " + ontologyScannerResult.ontologyId);
-
-                    new OntologyWriter(reader, outputFilePath, ontologyScannerResult, embeddings).write();
-
-                    System.out.println("OntologyWriter complete for " + ontologyScannerResult.ontologyId);
+                    System.out.println("OntologyWriter complete for " + ontologyId);
                 }
 
-                reader.endArray(); extractorReader.endArray();
+                reader.endArray();
 
             } else {
 
-                reader.skipValue(); extractorReader.skipValue();
+                reader.skipValue();
 
             }
         }

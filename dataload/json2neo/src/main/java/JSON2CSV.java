@@ -28,6 +28,10 @@ public class JSON2CSV {
         Option output = new Option(null, "outDir", true, "output CSV folder path");
         output.setRequired(true);
         options.addOption(output);
+        
+        Option manifest = new Option(null, "manifest", true, "manifest JSON file from create-manifest");
+        manifest.setRequired(true);
+        options.addOption(manifest);
 
         Option embeddingsDbsPath = new Option(null, "embeddingDbsPath", true, "optional folder containing embeddings DuckDB databases");
         embeddingsDbsPath.setRequired(false);
@@ -49,6 +53,7 @@ public class JSON2CSV {
 
         String inputFilePath = cmd.getOptionValue("input");
         String outputFilePath = cmd.getOptionValue("outDir");
+        String manifestFilePath = cmd.getOptionValue("manifest");
         String embeddingsDbs = cmd.getOptionValue("embeddingDbsPath");
 
         Map<String, Embeddings> embeddings = new HashMap<>();
@@ -65,7 +70,7 @@ public class JSON2CSV {
             }
         }
 
-        new NeoConverter(inputFilePath, outputFilePath, embeddings).convert();
+        new NeoConverter(inputFilePath, outputFilePath, manifestFilePath, embeddings).convert();
     }
 
 }
