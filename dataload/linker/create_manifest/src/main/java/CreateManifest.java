@@ -60,6 +60,9 @@ public class CreateManifest {
 
         // Write the combined manifest
         System.out.println("Writing manifest to: " + outputFilePath);
+        try (FileWriter writer = new FileWriter(outputFilePath, StandardCharsets.UTF_8)) {
+            gson.toJson(combinedResult, writer);
+        }
         Files.write(Path.of(outputFilePath), gson.toJson(combinedResult).getBytes(StandardCharsets.UTF_8));
         System.out.println("Manifest creation complete.");
     }

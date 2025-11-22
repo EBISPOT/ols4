@@ -7,7 +7,7 @@ jsonSlurper = new JsonSlurper()
 import groovy.yaml.YamlSlurper
 yamlSlurper = new YamlSlurper()
 
-params.configs_dir = "$OLS_CONFIGS_DIR"
+params.configs = "$OLS_CONFIGS"
 params.out = "$OLS_OUT_DIR"
 params.solr_mem = "8g"
 params.neo_mem = "16g"
@@ -16,7 +16,8 @@ params.max_rows_per_file = "100"
 
 workflow {
 
-    config_files = Channel.fromPath("${params.configs_dir}/*.json").collect()
+    config_files = Channel.fromPath(params.configs.split(',').collect { it.trim() })
+        .collect()
     
     merged_config_file = merge_configs(config_files)
     
@@ -63,7 +64,7 @@ process merge_configs {
 
 process rdf2json {
     cache "lenient"
-    memory { 16.GB + 8.GB * (task.attempt-1) }
+    memory { 16.GB + 32.GB * (task.attempt-1) }
     time { 1.hour + 8.hour * (task.attempt-1) }
     errorStrategy { task.exitStatus in 137..140 ? 'retry' : 'terminate' }
     maxRetries 5
@@ -109,10 +110,8 @@ process linker__create_manifest {
 
 process linker__link_ontologies {
     cache "lenient"
-    memory { 16.GB + 32.GB * (task.attempt-1) }
-    time { 1.hour + 8.hour * (task.attempt-1) }
-    errorStrategy { task.exitStatus in 137..140 ? 'retry' : 'terminate' }
-    maxRetries 5
+    memory { 16.GB }
+    time { 1.hour }
     
     input:
     path("linker_manifest.json")
@@ -156,7 +155,7 @@ process json2neo {
 
 process json2solr {
     cache "lenient"
-    memory { 16.GB }
+    memory { 16.GB + 16.GB * (task.attempt-1) }
     time { 1.hour + 8.hour * (task.attempt-1) }
     errorStrategy { task.exitStatus in 137..140 ? 'retry' : 'terminate' }
     maxRetries 5
