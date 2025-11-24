@@ -28,7 +28,9 @@ workflow {
     ontologies = merged_config.flatMap { it.ontologies }
     ontology_ids = ontologies.map { it.id }
 
-    ontology_jsons_by_id = rdf2json(merged_config_file, ontology_ids)
+    ontology_jsons_and_status = rdf2json(merged_config_file, ontology_ids)
+    ontology_jsons_by_id = ontology_jsons_and_status.map { id, json, status -> [id, json] }
+    status_files = ontology_jsons_and_status.map { id, json, status -> status }.collect()
 
     linker_manifest = linker__create_manifest(ontology_jsons_by_id.map { it[1] }.collect())
     linked_ontologies_by_id = linker__link_ontologies(linker_manifest, ontology_jsons_by_id)
@@ -38,6 +40,9 @@ workflow {
 
     neo = create_neo(neo_csvs.collect())
     solr = create_solr(solr_jsonls.collect(), linker_manifest, params.embeddings_path)
+
+    // Generate loading report after all ontologies have been processed
+    report = generate_loading_report(merged_config_file, status_files)
 }
 
 
@@ -75,7 +80,7 @@ process rdf2json {
     val(ontology_id)
 
     output:
-    tuple val(ontology_id), path("${ontology_id}.json")
+    tuple val(ontology_id), path("${ontology_id}.json"), path("${ontology_id}.status.json")
 
     script:
     def mem_mb = (task.memory.toMega() * 0.9).intValue()
@@ -240,6 +245,42 @@ process create_solr {
     python3 /opt/ols/dataload/solr_import.py ./solr 8983 ${params.solr_mem}
 
     tar -chf solr.tgz --use-compress-program="pigz --fast" solr 
+    """
+}
+
+process generate_loading_report {
+    cache "lenient"
+    memory { 4.GB }
+    time "30m"
+
+    publishDir "${params.out}", overwrite: true
+    
+    input:
+    path(config_path)
+    path(status_files)
+
+    output:
+    path("loading_report.txt")
+
+    script:
+    def mem_mb = (task.memory.toMega() * 0.9).intValue()
+    """
+    #!/usr/bin/env bash
+    set -Eeuo pipefail
+    
+    # Create a directory for status files
+    mkdir -p status_files
+    
+    # Copy all status files to the directory
+    for f in ${status_files}; do
+        cp "\$f" status_files/
+    done
+    
+    # Generate the report
+    java -Xms${mem_mb}m -Xmx${mem_mb}m -jar /opt/ols/dataload/reporting/target/reporting-1.0-SNAPSHOT.jar \
+        --config ${config_path} \
+        --statusDir status_files \
+        --reportFile loading_report.txt
     """
 }
 
