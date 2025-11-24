@@ -53,10 +53,11 @@ process merge_configs {
     path("merged_config.json")
 
     script:
+    def mem_mb = (task.memory.toMega() * 0.9).intValue()
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    java -jar /opt/ols/dataload/merge_configs/target/merge_configs-1.0-SNAPSHOT.jar \
+    java -Xms${mem_mb}m -Xmx${mem_mb}m -jar /opt/ols/dataload/merge_configs/target/merge_configs-1.0-SNAPSHOT.jar \
         --config ${config_files.join(',')} \
         --output merged_config.json
     """
@@ -77,10 +78,11 @@ process rdf2json {
     tuple val(ontology_id), path("${ontology_id}.json")
 
     script:
+    def mem_mb = (task.memory.toMega() * 0.9).intValue()
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    java -jar /opt/ols/dataload/rdf2json/target/rdf2json-1.0-SNAPSHOT.jar \
+    java -Xms${mem_mb}m -Xmx${mem_mb}m -jar /opt/ols/dataload/rdf2json/target/rdf2json-1.0-SNAPSHOT.jar \
         --config ${config_path} \
         --ontologyIds ${ontology_id} \
         --output ${ontology_id}.json
@@ -99,10 +101,11 @@ process linker__create_manifest {
     path("linker_manifest.json")
 
     script:
+    def mem_mb = (task.memory.toMega() * 0.9).intValue()
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    java -jar /opt/ols/dataload/linker/create_manifest/target/create-manifest-1.0-SNAPSHOT.jar \
+    java -Xms${mem_mb}m -Xmx${mem_mb}m -jar /opt/ols/dataload/linker/create_manifest/target/create-manifest-1.0-SNAPSHOT.jar \
         --input ${ontology_jsons.join(',')} \
         --output "linker_manifest.json"
     """
@@ -121,10 +124,11 @@ process linker__link_ontologies {
     tuple val(ontology_id), path("${ontology_json.name.replace('.json', '_linked.json')}")
 
     script:
+    def mem_mb = (task.memory.toMega() * 0.9).intValue()
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    java -jar /opt/ols/dataload/linker/link/target/link-1.0-SNAPSHOT.jar \
+    java -Xms${mem_mb}m -Xmx${mem_mb}m -jar /opt/ols/dataload/linker/link/target/link-1.0-SNAPSHOT.jar \
         --input ${ontology_json} \
         --manifest "linker_manifest.json" \
         --output "${ontology_json.name.replace('.json', '_linked.json')}"
@@ -143,10 +147,11 @@ process json2neo {
     path("*.csv")
 
     script:
+    def mem_mb = (task.memory.toMega() * 0.9).intValue()
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    java -jar /opt/ols/dataload/json2neo/target/json2neo-1.0-SNAPSHOT.jar \
+    java -Xms${mem_mb}m -Xmx${mem_mb}m -jar /opt/ols/dataload/json2neo/target/json2neo-1.0-SNAPSHOT.jar \
         --input ${ontology_json} \
         --outDir . \
         --manifest ${manifest}
@@ -168,10 +173,11 @@ process json2solr {
     path("*.jsonl")
 
     script:
+    def mem_mb = (task.memory.toMega() * 0.9).intValue()
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    java -jar /opt/ols/dataload/json2solr/target/json2solr-1.0-SNAPSHOT.jar \
+    java -Xms${mem_mb}m -Xmx${mem_mb}m -jar /opt/ols/dataload/json2solr/target/json2solr-1.0-SNAPSHOT.jar \
         --input ${ontology_json} \
         --ontologyId ${ontology_id} \
         --outDir . \
@@ -219,12 +225,13 @@ process create_solr {
     path("solr.tgz")
 
     script:
+    def mem_mb = (task.memory.toMega() * 0.9).intValue()
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
     cp -r /opt/solr .
 
-    java -jar /opt/ols/dataload/solr_config_builder/target/solr_config_builder-1.0-SNAPSHOT.jar \
+    java -Xms${mem_mb}m -Xmx${mem_mb}m -jar /opt/ols/dataload/solr_config_builder/target/solr_config_builder-1.0-SNAPSHOT.jar \
         --manifestPath ${manifest} \
         --solrConfigTemplatePath /opt/ols/dataload/solr_config_template \
         --embeddingDbsPath ${embeddings_path} \

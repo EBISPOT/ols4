@@ -48,7 +48,7 @@ def main():
     filenames = glob.glob("*.jsonl") 
         
     print("ls")
-    os.system("ls -hl")
+    os.system("ls -Lhl")
     print(f"Found filenames: {','.join(filenames)}")
 
     with ThreadPoolExecutor(max_workers=WORKERS) as executor:

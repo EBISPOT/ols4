@@ -19,8 +19,6 @@ public class LinkerPass1 {
     
     // Property blacklist for OntologyScanner
     public static final Set<String> PROPERTY_BLACKLIST = Set.of(
-            APPEARS_IN.getText(),
-            "searchableAnnotationValues"
     );
 
     public static LinkerPass1Result run(String inputJsonFilename) throws IOException {

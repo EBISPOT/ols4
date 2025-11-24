@@ -63,7 +63,6 @@ public class CreateManifest {
         try (FileWriter writer = new FileWriter(outputFilePath, StandardCharsets.UTF_8)) {
             gson.toJson(combinedResult, writer);
         }
-        Files.write(Path.of(outputFilePath), gson.toJson(combinedResult).getBytes(StandardCharsets.UTF_8));
         System.out.println("Manifest creation complete.");
     }
 

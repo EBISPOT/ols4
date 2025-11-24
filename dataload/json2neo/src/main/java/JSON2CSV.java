@@ -51,7 +51,13 @@ public class JSON2CSV {
         String outputFilePath = cmd.getOptionValue("outDir");
         String manifestFilePath = cmd.getOptionValue("manifest");
 
-        new NeoConverter(inputFilePath, outputFilePath, manifestFilePath).convert();
+        try {
+            new NeoConverter(inputFilePath, outputFilePath, manifestFilePath).convert();
+        } catch (Exception e) {
+            System.err.println("ERROR: Failed to convert JSON to CSV");
+            e.printStackTrace();
+            System.exit(1);
+        }
     }
 
 }

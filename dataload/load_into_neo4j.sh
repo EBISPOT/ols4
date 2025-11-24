@@ -16,7 +16,9 @@ export NEO4J_dbms_memory_transaction_max=0
 rm -rf $1/data/databases/neo4j
 rm -rf $1/data/transactions/neo4j
 
-echo $1/bin/neo4j-admin database import full \
+ls -Lhl $2
+
+$1/bin/neo4j-admin database import full \
         --ignore-empty-strings=true \
         --legacy-style-quoting=false \
         --multiline-fields=true \

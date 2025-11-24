@@ -39,19 +39,29 @@ public class NeoConverter {
 
     public void convert() throws IOException {
 
+        System.out.println("Reading input file: " + inputFilePath);
         reader = new JsonReader(new InputStreamReader(new FileInputStream(inputFilePath)));
 
         reader.beginObject();
+        
+        boolean foundOntologies = false;
 
         while(reader.peek() != JsonToken.END_OBJECT) {
 
             String name = reader.nextName();
+            System.out.println("Found top-level key: " + name);
 
             if (name.equals("ontologies")) {
+                
+                foundOntologies = true;
 
                 reader.beginArray();
+                
+                int ontologyCount = 0;
 
                 while(reader.peek() != JsonToken.END_ARRAY) {
+                    
+                    ontologyCount++;
 
                     reader.beginObject(); // ontology
                     
@@ -92,6 +102,8 @@ public class NeoConverter {
                 }
 
                 reader.endArray();
+                
+                System.out.println("Processed " + ontologyCount + " ontologies");
 
             } else {
 
@@ -102,6 +114,10 @@ public class NeoConverter {
 
         reader.endObject();
         reader.close();
+        
+        if (!foundOntologies) {
+            System.err.println("WARNING: No 'ontologies' array found in input JSON");
+        }
     }
 
 }
