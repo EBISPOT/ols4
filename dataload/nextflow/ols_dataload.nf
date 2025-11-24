@@ -143,13 +143,14 @@ process linker__link_ontologies {
 process json2neo {
     cache "lenient"
     memory { 16.GB }
+    time "8h"
     
     input:
     path(manifest)
     path(ontology_json)
 
     output:
-    path("*.csv")
+    path("*.csv"), optional: true
 
     script:
     def mem_mb = (task.memory.toMega() * 0.9).intValue()
@@ -175,7 +176,7 @@ process json2solr {
     path(embeddings_path)
 
     output:
-    path("*.jsonl")
+    path("*.jsonl"), optional: true
 
     script:
     def mem_mb = (task.memory.toMega() * 0.9).intValue()
