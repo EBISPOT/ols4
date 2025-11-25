@@ -51,6 +51,7 @@ public enum DefinedFields {
             " in defining this class. It only considers classes in the filler position, not classes expressions in the filler position." +
             "I.e. 'liver disease' (EFO:0001421) has a relatedTo relation with 'liver' (UBERON:0002107) because " +
             "'liver disease' is a subclass of 'has_disease_location some liver'.", "array"),
+    LINKS_TO("linksTo", "", "A list of entities that this entity links to.", "array"),
     SYNONYM("synonym", "", "The list of names that are synonyms of this entity.", "array");
 
     private final String text;

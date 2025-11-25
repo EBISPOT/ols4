@@ -8,9 +8,12 @@ import org.apache.commons.cli.*;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
+import static uk.ac.ebi.ols.shared.DefinedFields.*;
+
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class NeoConverter {
 
@@ -77,10 +80,12 @@ public class NeoConverter {
                     // Get scanner results from manifest
                     OntologyManifestInfo manifestInfo = new OntologyManifestInfo();
                     manifestInfo.ontologyId = ontologyId;
-                    manifestInfo.allOntologyProperties = manifest.ontologyIdToOntologyProperties.getOrDefault(ontologyId, new HashSet<>());
-                    manifestInfo.allClassProperties = manifest.ontologyIdToClassProperties.getOrDefault(ontologyId, new HashSet<>());
-                    manifestInfo.allPropertyProperties = manifest.ontologyIdToPropertyProperties.getOrDefault(ontologyId, new HashSet<>());
-                    manifestInfo.allIndividualProperties = manifest.ontologyIdToIndividualProperties.getOrDefault(ontologyId, new HashSet<>());
+                    
+                    // Apply blacklist to remove properties that shouldn't be in Neo4j
+                    manifestInfo.allOntologyProperties = filterBlacklist(manifest.ontologyIdToOntologyProperties.getOrDefault(ontologyId, new HashSet<>()));
+                    manifestInfo.allClassProperties = filterBlacklist(manifest.ontologyIdToClassProperties.getOrDefault(ontologyId, new HashSet<>()));
+                    manifestInfo.allPropertyProperties = filterBlacklist(manifest.ontologyIdToPropertyProperties.getOrDefault(ontologyId, new HashSet<>()));
+                    manifestInfo.allIndividualProperties = filterBlacklist(manifest.ontologyIdToIndividualProperties.getOrDefault(ontologyId, new HashSet<>()));
                     manifestInfo.allEdgeProperties = manifest.ontologyIdToEdgeProperties.getOrDefault(ontologyId, new HashSet<>());
                     
                     // Convert string type sets to NodeType sets for uriToTypes
@@ -120,6 +125,22 @@ public class NeoConverter {
         }
     }
 
+    /**
+     * Filter out blacklisted properties that shouldn't be stored as Neo4j node properties.
+     * These properties are still available in the _json field.
+     */
+    private Set<String> filterBlacklist(Set<String> properties) {
+        // Property blacklist from OntologyWriter
+        Set<String> blacklist = Set.of(
+            // large and doesn't get queried
+            APPEARS_IN.getText(),
+            // all property values together, this is for solr and not useful in neo4j
+            "searchableAnnotationValues"
+        );
+        
+        return properties.stream()
+            .filter(prop -> !blacklist.contains(prop))
+            .collect(Collectors.toSet());
+    }
+
 }
-
-

@@ -167,7 +167,7 @@ process json2neo {
 process json2solr {
     cache "lenient"
     memory { 16.GB + 16.GB * (task.attempt-1) }
-    time { 1.hour + 8.hour * (task.attempt-1) }
+    time "4h"
     errorStrategy { task.exitStatus in 137..140 ? 'retry' : 'terminate' }
     maxRetries 5
     

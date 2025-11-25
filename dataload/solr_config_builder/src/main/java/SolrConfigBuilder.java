@@ -2,6 +2,7 @@
 import com.google.gson.Gson;
 import org.apache.commons.cli.*;
 import org.apache.commons.io.FileUtils;
+import uk.ac.ebi.ols.shared.DefinedFields;
 
 import java.io.*;
 import java.sql.Connection;
@@ -65,6 +66,15 @@ public class SolrConfigBuilder {
         );
 
         allProps.removeAll(skipProps);
+        
+        // Add defined fields that are added by LinkerPass2 and won't be in the manifest
+        // These fields are programmatically added during the linking phase
+        for (DefinedFields field : DefinedFields.values()) {
+            String fieldName = field.getText();
+            if (!skipProps.contains(fieldName)) {
+                allProps.add(fieldName);
+            }
+        }
 
         // Process embedding databases to get model names and dimensions
         Map<String, Integer> embeddingModels = new HashMap<>();
