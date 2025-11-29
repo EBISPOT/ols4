@@ -151,9 +151,9 @@ public class OntologyGraph implements StreamRDF {
     private static HttpEntity getURL(String url) throws FileNotFoundException, IOException {
 
         RequestConfig config = RequestConfig.custom()
-                .setConnectTimeout(5000)
-                .setConnectionRequestTimeout(5000)
-                .setSocketTimeout(5000).build();
+                .setConnectTimeout(30000)
+                .setConnectionRequestTimeout(30000)
+                .setSocketTimeout(3600000).build(); 
 
         CloseableHttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
 
