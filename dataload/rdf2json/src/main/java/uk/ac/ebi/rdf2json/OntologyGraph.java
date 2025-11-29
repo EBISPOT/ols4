@@ -137,8 +137,14 @@ public class OntologyGraph implements StreamRDF {
         } else {
             HttpEntity res = getURL(url);
             InputStream is = res.getContent();
-            String contentType = res.getContentType().getValue();
-            parseRDF(url, is, contentType);
+            var ct = res.getContentType();
+            if(ct == null) {
+                parseRDF(url, is, null);
+                return;
+            } else {
+                String contentType = res.getContentType().getValue();
+                parseRDF(url, is, contentType);
+            }
         }
     }
 
