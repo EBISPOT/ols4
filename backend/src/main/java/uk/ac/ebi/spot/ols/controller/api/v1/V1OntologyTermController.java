@@ -66,7 +66,7 @@ public class V1OntologyTermController {
 
     @RequestMapping(path = "/{onto}/terms", produces = {MediaType.APPLICATION_JSON_VALUE,
         MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
-    private HttpEntity<PagedModel<V1Term>> termsByOntology(
+    public HttpEntity<PagedModel<V1Term>> termsByOntology(
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "The ID of the ontology. For example for Data Use Ontology, the ID is duo.",
