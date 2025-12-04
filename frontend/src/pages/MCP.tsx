@@ -6,7 +6,7 @@ import Header from "../components/Header";
 export default function MCP() {
   document.title = "Ontology Lookup Service (OLS)";
   let mcpUrl = process.env.REACT_APP_APIURL+'api/mcp'
-  mcpUrl = mcpUrl.split('www.ebi.ac.uk').join('wwwdev.ebi.ac.uk')
+  // mcpUrl = mcpUrl.split('www.ebi.ac.uk').join('wwwdev.ebi.ac.uk')
   return (
     <Fragment>
       <Header section="mcp" />
