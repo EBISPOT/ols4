@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-mcp
+  labels:
+    app: {{ .Release.Name }}-mcp
+spec:
+  type: ClusterIP
+  ports:
+    - name: "application"
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: {{ .Release.Name }}-mcp

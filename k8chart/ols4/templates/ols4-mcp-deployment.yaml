@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-mcp
+  labels:
+    app: {{ .Release.Name }}-mcp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-mcp
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-mcp
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values:
+                    - hh-rke-wp-webadmin-47-worker-3.caas.ebi.ac.uk
+                    - hx-rke-wp-webadmin-40-worker-3.caas.ebi.ac.uk
+      containers:
+        - name: web
+          image: ghcr.io/ebispot/ols4-backend:{{.Values.imageTag}}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /ols4/api/v2/health
+              port: 8080
+              scheme: HTTP
+              httpHeaders:
+                - name: Host
+                  value: {{ .Release.Name }}-backend
+            initialDelaySeconds: 15
+            periodSeconds: 60
+            timeoutSeconds: 10
+          resources:
+            requests:
+              memory: 10Gi
+              cpu: 0.5
+            limits:
+              memory: 10Gi
+              cpu: 2
+          env:
+            - name: OLS_SOLR_HOST
+              value: http://{{ .Release.Name }}-solr:8983
+            - name: OLS_NEO4J_HOST
+              value: bolt://{{ .Release.Name }}-neo4j:7687
+            - name: SERVER_SERVLET_CONTEXT_PATH
+              value: /ols4
+            - name: SPRING_AI_MCP_SERVER_BASE_URL
+              value: /ols4
+            - name: JDK_JAVA_OPTIONS
+              value: "-XX:InitialRAMPercentage=60.0 -XX:MinRAMPercentage=60.0 -XX:MaxRAMPercentage=80.0"
+              

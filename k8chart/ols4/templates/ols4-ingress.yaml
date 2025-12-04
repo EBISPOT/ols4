@@ -9,6 +9,13 @@ spec:
   rules:
     - http:
         paths:
+          - path: /ols4/api/mcp
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Release.Name }}-mcp
+                port:
+                  number: 8080
           - path: /ols4/api
             pathType: Prefix
             backend:
