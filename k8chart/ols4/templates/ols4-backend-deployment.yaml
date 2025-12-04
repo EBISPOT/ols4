@@ -46,7 +46,7 @@ spec:
               memory: 10Gi
               cpu: 0.5
             limits:
-              memory: 48Gi
+              memory: 40Gi
               cpu: 2
           env:
             - name: OLS_SOLR_HOST
