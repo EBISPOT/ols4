@@ -7,11 +7,21 @@ RUN apt-get update -y && apt-get install -y pigz python3-requests
 RUN curl https://install.duckdb.org | sh
 RUN cp /root/.duckdb/cli/latest/duckdb /usr/bin/
 
-RUN curl https://corretto.aws/downloads/resources/21.0.6.7.1/amazon-corretto-21.0.6.7.1-linux-x64.tar.gz | tar -C /opt -xzf - && \
+# Install Amazon Corretto 21 with multi-arch support
+RUN ARCH=$(dpkg --print-architecture) && \
+    if [ "$ARCH" = "amd64" ]; then \
+        curl https://corretto.aws/downloads/resources/21.0.6.7.1/amazon-corretto-21.0.6.7.1-linux-x64.tar.gz | tar -C /opt -xzf - && \
         echo 'export JAVA_HOME=/opt/amazon-corretto-21.0.6.7.1-linux-x64' >> ~/.bashrc && \
-        echo 'export PATH=$PATH:$JAVA_HOME/bin' >> ~/.bashrc
-ENV JAVA_HOME="/opt/amazon-corretto-21.0.6.7.1-linux-x64/"
-ENV PATH="$PATH:/opt/amazon-corretto-21.0.6.7.1-linux-x64/bin"
+        echo 'export PATH=$PATH:$JAVA_HOME/bin' >> ~/.bashrc && \
+        ln -s /opt/amazon-corretto-21.0.6.7.1-linux-x64 /opt/java; \
+    elif [ "$ARCH" = "arm64" ]; then \
+        curl https://corretto.aws/downloads/resources/21.0.6.7.1/amazon-corretto-21.0.6.7.1-linux-aarch64.tar.gz | tar -C /opt -xzf - && \
+        echo 'export JAVA_HOME=/opt/amazon-corretto-21.0.6.7.1-linux-aarch64' >> ~/.bashrc && \
+        echo 'export PATH=$PATH:$JAVA_HOME/bin' >> ~/.bashrc && \
+        ln -s /opt/amazon-corretto-21.0.6.7.1-linux-aarch64 /opt/java; \
+    fi
+ENV JAVA_HOME="/opt/java"
+ENV PATH="$PATH:/opt/java/bin"
 
 RUN addgroup --system --gid 1000 ols && adduser --system --uid 1000 --ingroup ols ols
 
@@ -72,7 +82,12 @@ RUN mkdir /tmp/out
 # ENV UV_CACHE_DIR="/opt/uv_cache"
 #ENV UV_PROJECT_ENVIRONMENT="/opt/uv_venv"
 # RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
-#         uv python install cpython-3.13.5-linux-x86_64-gnu
+#         ARCH=$(dpkg --print-architecture) && \
+#         if [ "$ARCH" = "amd64" ]; then \
+#             uv python install cpython-3.13.5-linux-x86_64-gnu; \
+#         elif [ "$ARCH" = "arm64" ]; then \
+#             uv python install cpython-3.13.5-linux-aarch64-gnu; \
+#         fi
 # RUN cd /opt/ols/dataload/embeddings/ols_top_k && uv sync --frozen
 ####
 ####
