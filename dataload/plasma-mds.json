@@ -1,0 +1,27 @@
+{
+  "ontologies": [
+    {
+      "id": "plsmo",
+      "preferredPrefix": "plsmo",
+      "title": "Plasma Ontology",
+      "uri": "https://plasma-mds.org/ontology/plasma-o/",
+      "description": "The plasma ontology (Plasma-O) supports the standardized documentation of research data in the field of plasma physics. In accordance with typical plasma processes and applications, the ontology contains terminologicial knowledge about plasma source, plasma medium, and plasma target. Furthermore, metadata for the respectively applied diagnostic and modelling/simulation methods are represented.",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "label_property": [
+        "http://www.w3.org/2000/01/rdf-schema#label"
+      ],
+      "hierarchical_property": [
+        "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      ],
+      "synonym_property": [
+        "http://www.w3.org/2000/01/rdf-schema#label"
+      ],
+      "base_uri": [
+        "https://plasma-mds.org/ontology/plasma-o/PLSMO_"
+      ],
+      "ontology_purl": "https://raw.githubusercontent.com/plasma-mds/plasma-ontology/refs/heads/master/plasma-ontology.ttl"
+    }
+  ]
+}
