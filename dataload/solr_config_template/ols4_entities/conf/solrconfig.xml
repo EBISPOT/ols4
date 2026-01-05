@@ -21,6 +21,9 @@
      this file, see https://solr.apache.org/guide/configuring-solrconfig-xml.html.
 -->
 <config>
+
+  <schemaFactory class="ClassicIndexSchemaFactory"/>
+
   <!-- In all configuration below, a prefix of "solr." for class names
        is an alias that causes solr to search appropriate packages,
        including org.apache.solr.(search|update|request|core|analysis)

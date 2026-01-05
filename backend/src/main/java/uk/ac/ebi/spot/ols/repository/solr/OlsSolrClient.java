@@ -45,6 +45,19 @@ public class OlsSolrClient {
     @Value("${ols.solr.max-rows:1000}")
     private int maxRows;
 
+    // Reusable Solr client with connection pooling for better performance
+    private org.apache.solr.client.solrj.SolrClient solrClient;
+
+    private org.apache.solr.client.solrj.SolrClient getSolrClient() {
+        if (solrClient == null) {
+            solrClient = new HttpSolrClient.Builder(host + "/solr/ols4_entities")
+                    .withConnectionTimeout(10000)
+                    .withSocketTimeout(60000)
+                    .build();
+        }
+        return solrClient;
+    }
+
     public Map<String,Object> getCoreStatus() throws IOException {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             HttpGet request = new HttpGet(host + "/solr/admin/cores?wt=json");
@@ -326,22 +339,15 @@ public class OlsSolrClient {
             query.toQueryString().length() > 200 ? query.toQueryString().substring(0, 200) + "..." : query.toQueryString());
         
         QueryResponse qr = null;
-        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/ols4_entities").build();
         
         try {
             // Use POST method via QueryRequest to avoid URI too long errors with large vectors
             org.apache.solr.client.solrj.request.QueryRequest req = new org.apache.solr.client.solrj.request.QueryRequest(query);
             req.setMethod(org.apache.solr.client.solrj.SolrRequest.METHOD.POST);
-            qr = req.process(mySolrClient);
+            qr = req.process(getSolrClient());
             logger.debug("Vector search found {} result(s)", qr.getResults().getNumFound());
         } catch (SolrServerException | IOException e) {
             throw new RuntimeException("Vector search failed", e);
-        } finally {
-            try {
-                mySolrClient.close();
-            } catch (IOException ioe) {
-                logger.error("Failed to close Solr client with exception \"{}\"", ioe.getMessage());
-            }
         }
         
         Map<String, Map<String, Long>> facetFieldToCounts = new LinkedHashMap<>();
@@ -376,10 +382,9 @@ public class OlsSolrClient {
         query.setRows(1);
         
         QueryResponse qr = null;
-        org.apache.solr.client.solrj.SolrClient mySolrClient = new HttpSolrClient.Builder(host + "/solr/ols4_entities").build();
         
         try {
-            qr = mySolrClient.query(query);
+            qr = getSolrClient().query(query);
             if (qr.getResults().getNumFound() > 0) {
                 SolrDocument doc = qr.getResults().get(0);
                 Object embeddingObj = doc.get(embeddingField);
@@ -396,12 +401,6 @@ public class OlsSolrClient {
             }
         } catch (SolrServerException | IOException e) {
             logger.error("Failed to get embedding vector for {} with IRI {}", type, iri, e);
-        } finally {
-            try {
-                mySolrClient.close();
-            } catch (IOException ioe) {
-                logger.error("Failed to close Solr client with exception \"{}\"", ioe.getMessage());
-            }
         }
         
         return null;

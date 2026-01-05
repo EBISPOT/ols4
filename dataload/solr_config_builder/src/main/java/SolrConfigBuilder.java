@@ -119,7 +119,10 @@ public class SolrConfigBuilder {
             String modelName = entry.getKey();
             int embeddingVectorSize = entry.getValue();
 
-            sb.append("    <fieldType name=\"knn_vector_" + modelName + "\" class=\"solr.DenseVectorField\" vectorDimension=\"" + embeddingVectorSize + "\" similarityFunction=\"cosine\"/>\n");
+            // Add HNSW parameters for faster approximate nearest neighbor search
+            // hnswMaxConnections (M): max bidirectional links per node (default 16, like Neo4j vector.hnsw.m)
+            // hnswBeamWidth (efConstruction): size of dynamic candidate list during construction (default 100, Neo4j uses 200)
+            sb.append("    <fieldType name=\"knn_vector_" + modelName + "\" class=\"solr.DenseVectorField\" vectorDimension=\"" + embeddingVectorSize + "\" similarityFunction=\"cosine\" hnswMaxConnections=\"16\" hnswBeamWidth=\"200\"/>\n");
             sb.append("    <field name=\"embeddings_" + modelName + "\" type=\"knn_vector_" + modelName + "\" indexed=\"true\" stored=\"true\"/>\n");
         }
 

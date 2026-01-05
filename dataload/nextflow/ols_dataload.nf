@@ -12,7 +12,7 @@ params.out = "$OLS_OUT_DIR"
 params.solr_mem = "8g"
 params.neo_mem = "16g"
 params.embeddings_path = "$OLS_EMBEDDINGS_PATH"
-params.max_rows_per_file = "100"
+params.max_rows_per_file = "100000"
 
 workflow {
 
@@ -70,9 +70,9 @@ process merge_configs {
 
 process rdf2json {
     cache "lenient"
-    memory { 16.GB + 32.GB * (task.attempt-1) }
-    time { 1.hour + 8.hour * (task.attempt-1) }
-    errorStrategy { task.exitStatus in 137..140 ? 'retry' : 'terminate' }
+    memory { 64.GB + 128.GB * (task.attempt-1) }
+    time "4h"
+    errorStrategy 'retry'
     maxRetries 5
     
     input:
@@ -87,7 +87,10 @@ process rdf2json {
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    java -Xms${mem_mb}m -Xmx${mem_mb}m -jar /opt/ols/dataload/rdf2json/target/rdf2json-1.0-SNAPSHOT.jar \
+    java -Xms${mem_mb}m -Xmx${mem_mb}m \
+        -DentityExpansionLimit=0 -DtotalEntitySizeLimit=0 \
+        -Djdk.xml.totalEntitySizeLimit=0 -Djdk.xml.entityExpansionLimit=0 \
+        -jar /opt/ols/dataload/rdf2json/target/rdf2json-1.0-SNAPSHOT.jar \
         --config ${config_path} \
         --ontologyIds ${ontology_id} \
         --output ${ontology_id}.json
@@ -118,9 +121,11 @@ process linker__create_manifest {
 
 process linker__link_ontologies {
     cache "lenient"
-    memory { 16.GB }
-    time { 1.hour }
-    
+    memory { 128.GB + 128.GB * (task.attempt-1) }
+    time "4h"
+    errorStrategy 'retry'
+    maxRetries 5
+
     input:
     path("linker_manifest.json")
     tuple val(ontology_id), path(ontology_json)
@@ -167,8 +172,8 @@ process json2neo {
 process json2solr {
     cache "lenient"
     memory { 16.GB + 16.GB * (task.attempt-1) }
-    time "4h"
-    errorStrategy { task.exitStatus in 137..140 ? 'retry' : 'terminate' }
+    time "8h"
+    errorStrategy 'retry'
     maxRetries 5
     
     input:
@@ -211,14 +216,14 @@ process create_neo {
     set -Eeuo pipefail
     cp -r /opt/neo4j .
     /opt/ols/dataload/load_into_neo4j.sh ./neo4j . ${params.neo_mem}
-    tar -chf neo4j.tgz --use-compress-program="pigz --fast" neo4j 
+    tar -chf neo4j.tgz --use-compress-program="pigz --fast" -C neo4j/data databases transactions
     """
 }
 
 process create_solr {
     cache "lenient"
     memory { 16.GB }
-    time "8h"
+    time "23h"
 
     publishDir "${params.out}", overwrite: true
     
@@ -231,7 +236,7 @@ process create_solr {
     path("solr.tgz")
 
     script:
-    def mem_mb = (task.memory.toMega() * 0.9).intValue()
+    def mem_mb = (task.memory.toMega() * 0.5).intValue()
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail

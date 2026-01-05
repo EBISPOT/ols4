@@ -142,7 +142,6 @@ public class V2LLMController {
 
         iri = UriUtils.decode(iri, "UTF-8");
 
-        // Always use Solr-based similarity search with the specified model
         return new ResponseEntity<>(
             new V2PagedResponse<V2Entity>(
                 classRepository.getSimilarByOntologyId(ontologyId, pageable, iri, false, lang, outputOpts, model).map(V2Entity::new)

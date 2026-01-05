@@ -65,29 +65,29 @@ export default function SimilarEntitiesSection({entity}:{entity:Entity}) {
     }
 
     return <div>
+        <div className="mb-3">
+            <ThemeProvider theme={theme}>
+                <FormControl sx={{ minWidth: 300 }} size="small">
+                    <InputLabel id="similar-model-select-label">Embedding Model</InputLabel>
+                    <Select
+                        labelId="similar-model-select-label"
+                        id="similar-model-select"
+                        value={selectedModel}
+                        label="Embedding Model"
+                        onChange={(e) => setSelectedModel(e.target.value)}
+                    >
+                        {availableModels.map((model) => (
+                            <MenuItem key={model} value={model}>
+                                {model}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
+            </ThemeProvider>
+        </div>
         { !similar && <i>Loading...</i> }
         { similar && similar.length === 0 && <p>No similar {entity.getTypePlural()} found</p> }
         { similar && similar.length > 0 && <Fragment>
-            <div className="mb-3">
-                <ThemeProvider theme={theme}>
-                    <FormControl sx={{ minWidth: 300 }} size="small">
-                        <InputLabel id="similar-model-select-label">Embedding Model</InputLabel>
-                        <Select
-                            labelId="similar-model-select-label"
-                            id="similar-model-select"
-                            value={selectedModel}
-                            label="Embedding Model"
-                            onChange={(e) => setSelectedModel(e.target.value)}
-                        >
-                            {availableModels.map((model) => (
-                                <MenuItem key={model} value={model}>
-                                    {model}
-                                </MenuItem>
-                            ))}
-                        </Select>
-                    </FormControl>
-                </ThemeProvider>
-            </div>
             <PropertyValuesList
                 values={similar.filter((otherEntity:Entity) => otherEntity.getIri() !== entity.getIri())}
                 title="Predicted similar entities"
