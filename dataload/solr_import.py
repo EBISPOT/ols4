@@ -56,7 +56,7 @@ def main():
     
     time.sleep(5)
     response = session.get(f"http://127.0.0.1:{port}/solr/ols4_entities/update",
-                            params={'commit': 'true'})
+                            params={'commit': 'true', 'optimize': 'true', 'maxSegments': '1'})
     print(response.text)
 
     time.sleep(5)
