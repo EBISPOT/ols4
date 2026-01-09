@@ -7,7 +7,7 @@ jsonSlurper = new JsonSlurper()
 import groovy.yaml.YamlSlurper
 yamlSlurper = new YamlSlurper()
 
-params.configs = "$OLS_CONFIGS"
+params.configs = "$OLS4_CONFIG"
 params.out = "$OLS_OUT_DIR"
 params.solr_mem = "8g"
 params.neo_mem = "16g"
@@ -35,11 +35,13 @@ workflow {
     linker_manifest = linker__create_manifest(ontology_jsons_by_id.map { it[1] }.collect())
     linked_ontologies_by_id = linker__link_ontologies(linker_manifest, ontology_jsons_by_id)
 
-    neo_csvs = json2neo(linker_manifest, linked_ontologies_by_id.map { it[1] })
+    neo_csvs = json2neo(linker_manifest, linked_ontologies_by_id, params.embeddings_path)
     solr_jsonls = json2solr(linked_ontologies_by_id, params.embeddings_path)
 
-    neo = create_neo(neo_csvs.collect())
+    neo = create_neo(neo_csvs.collect(), params.embeddings_path)
     solr = create_solr(solr_jsonls.collect(), linker_manifest, params.embeddings_path)
+
+    // check_api_works(neo.neo_dir, solr.solr_dir)
 
     // Generate loading report after all ontologies have been processed
     report = generate_loading_report(merged_config_file, status_files)
@@ -52,7 +54,7 @@ process merge_configs {
     time "10m"
     
     input:
-    path(config_files)
+    path(config_files, stageAs: '?/*')
 
     output:
     path("merged_config.json")
@@ -152,7 +154,8 @@ process json2neo {
     
     input:
     path(manifest)
-    path(ontology_json)
+    tuple val(ontology_id), path(ontology_json)
+    path(embeddings_path)
 
     output:
     path("*.csv"), optional: true
@@ -164,8 +167,10 @@ process json2neo {
     set -Eeuo pipefail
     java -Xms${mem_mb}m -Xmx${mem_mb}m -jar /opt/ols/dataload/json2neo/target/json2neo-1.0-SNAPSHOT.jar \
         --input ${ontology_json} \
+        --ontologyId ${ontology_id} \
         --outDir . \
-        --manifest ${manifest}
+        --manifest ${manifest} \
+        --embeddingDbsPath ${embeddings_path}
     """
 }
 
@@ -206,16 +211,18 @@ process create_neo {
     
     input:
     path(neo_csvs)
+    path(embeddings_path)
 
     output:
-    path("neo4j.tgz")
+    path("neo4j"), emit: neo_dir
+    path("neo4j.tgz"), emit: neo_tgz
 
     script:
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
     cp -r /opt/neo4j .
-    /opt/ols/dataload/load_into_neo4j.sh ./neo4j . ${params.neo_mem}
+    /opt/ols/dataload/load_into_neo4j.sh ./neo4j . ${params.neo_mem} ${embeddings_path}
     tar -chf neo4j.tgz --use-compress-program="pigz --fast" -C neo4j/data databases transactions
     """
 }
@@ -233,7 +240,8 @@ process create_solr {
     path(embeddings_path)
 
     output:
-    path("solr.tgz")
+    path("solr"), emit: solr_dir
+    path("solr.tgz"), emit: solr_tgz
 
     script:
     def mem_mb = (task.memory.toMega() * 0.5).intValue()

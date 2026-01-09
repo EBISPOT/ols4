@@ -2,6 +2,8 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 
+import uk.ac.ebi.ols.shared.Embeddings;
+
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
@@ -19,6 +21,7 @@ public class OntologyWriter {
     String outputFilePath;
     String ontologyId;
     OntologyManifestInfo manifestInfo;
+    Map<String, Embeddings> embeddings;
 
     List<String> edgesProperties;
     CSVPrinter edgesPrinter;
@@ -44,12 +47,13 @@ public class OntologyWriter {
             "relatedFrom"
     );
 
-    public OntologyWriter(JsonReader reader, String outputFilePath, OntologyManifestInfo manifestInfo) {
+    public OntologyWriter(JsonReader reader, String outputFilePath, OntologyManifestInfo manifestInfo, Map<String, Embeddings> embeddings) {
 
         this.ontologyId = manifestInfo.ontologyId;
         this.reader = reader;
         this.manifestInfo = manifestInfo;
         this.outputFilePath = outputFilePath;
+        this.embeddings = embeddings;
 
         edgesProperties = new ArrayList<String>(manifestInfo.allEdgeProperties);
     }
@@ -140,12 +144,24 @@ public class OntologyWriter {
     public void writeEntities(String outName, String ontologyId, String nodeLabels, String type, Set<String> allEntityProperties) throws IOException {
 
         List<String> properties = new ArrayList<String>(allEntityProperties);
+        
+        // Get embedding model names for CSV columns
+        List<String> embeddingModelNames = new ArrayList<>();
+        if (embeddings != null) {
+            embeddingModelNames.addAll(embeddings.keySet());
+            Collections.sort(embeddingModelNames); // Ensure consistent column order
+        }
 
         List<String> csvHeader = new ArrayList<>();
         csvHeader.add("id:ID");
         csvHeader.add(":LABEL");
         csvHeader.add("_json");
         csvHeader.addAll(propertyHeaders(properties));
+        
+        // Add embedding columns
+        for (String modelName : embeddingModelNames) {
+            csvHeader.add("embeddings_" + modelName + ":float[]");
+        }
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
@@ -165,6 +181,11 @@ public class OntologyWriter {
 
             for (String column : properties) {
                 row[n++] = serializeValue(entity, column);
+            }
+            
+            // Serialize embedding values as pipe-separated floats
+            for (String modelName : embeddingModelNames) {
+                row[n++] = serializeEmbedding(ontologyId, type, (String) entity.get("iri"), modelName);
             }
 
             row[_jsonIdx] = gson.toJson(entity);
@@ -413,6 +434,34 @@ public class OntologyWriter {
         }
 
         return null;
+    }
+
+    /**
+     * Serialize embeddings for a given entity and model as a pipe-separated string of floats.
+     */
+    private String serializeEmbedding(String ontologyId, String entityType, String iri, String modelName) {
+        if (embeddings == null) {
+            return "";
+        }
+        
+        Embeddings emb = embeddings.get(modelName);
+        if (emb == null) {
+            return "";
+        }
+        
+        float[] embeddingsArray = emb.getEmbeddings(ontologyId, entityType, iri);
+        if (embeddingsArray == null) {
+            return "";
+        }
+        
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < embeddingsArray.length; i++) {
+            if (i > 0) {
+                sb.append("|");
+            }
+            sb.append(embeddingsArray[i]);
+        }
+        return sb.toString();
     }
 
 

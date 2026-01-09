@@ -2,10 +2,9 @@
 
 FROM rust:1.90.0-bullseye
 
-RUN apt-get update -y && apt-get install -y pigz python3-requests
+RUN apt-get update -y && apt-get install -y pigz python3-requests python3-pip
 
-RUN curl https://install.duckdb.org | sh
-RUN cp /root/.duckdb/cli/latest/duckdb /usr/bin/
+RUN pip3 install pyarrow
 
 # Install Amazon Corretto 21 with multi-arch support
 RUN ARCH=$(dpkg --print-architecture) && \
@@ -58,40 +57,13 @@ RUN cd /opt/ols/ols-shared && mvn package
 RUN mvn install:install-file -DcreateChecksum=true -Dpackaging=jar -Dfile=/opt/ols/ols-shared/target/ols4-shared-1.0.0-SNAPSHOT.jar -DgroupId=uk.ac.ebi.spot.ols -DartifactId=ols4-shared -Dversion=1.0.0-SNAPSHOT
 RUN cd /opt/ols/dataload &&  mvn -T 1C package
 
+
+# COPY ./backend /opt/ols/backend
+# RUN cd /opt/ols/backend && mvn -T 1C package
+
+
+
 RUN mkdir /tmp/out
-
-
-####
-#### EMBEDDINGS SUPPORT
-####
-# RUN apt-get update && apt install -y build-essential cmake pigz vim
-# RUN cd /opt/ols/dataload/embeddings/ols_embed && cargo b --release && \
-#         cd /opt/ols/dataload/embeddings/ols_inject_hierarchy && cargo b --release && \
-#         cd /opt/ols/dataload/embeddings/ols_add_embeddings_to_json && cargo b --release
-
-# ENV PATH="/opt/ols/dataload/embeddings/ols_embed/target/release:/opt/ols/dataload/embeddings/ols_inject_hierarchy/target/release:/opt/ols/dataload/embeddings/ols_add_embeddings_to_json/target/release:${PATH}"
-
-# To enable materialising embeddings using ChromaDB
-# We have to use Debian buster as the base to run on the EBI HPC, so
-# use uv to get Python 3.13 which is not available otherwise.
-#
-# ENV UV_INSTALL_DIR="/usr/bin"
-# ENV UV_PYTHON_INSTALL_DIR="/usr/bin"
-# ENV UV_TOOL_DIR="/usr/bin"
-# ENV UV_TOOL_BIN_DIR="/usr/bin"
-# ENV UV_CACHE_DIR="/opt/uv_cache"
-#ENV UV_PROJECT_ENVIRONMENT="/opt/uv_venv"
-# RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
-#         ARCH=$(dpkg --print-architecture) && \
-#         if [ "$ARCH" = "amd64" ]; then \
-#             uv python install cpython-3.13.5-linux-x86_64-gnu; \
-#         elif [ "$ARCH" = "arm64" ]; then \
-#             uv python install cpython-3.13.5-linux-aarch64-gnu; \
-#         fi
-# RUN cd /opt/ols/dataload/embeddings/ols_top_k && uv sync --frozen
-####
-####
-
 
 
 RUN chown -R ols:ols /opt/* /tmp/out

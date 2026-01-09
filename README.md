@@ -21,22 +21,18 @@ This repository contains three projects:
 
 # Deploying OLS4
 
-If you want to try OLS4 out, this should get you going:
+First run the OLS dataload (requires Docker):
 
-    export OLS4_CONFIG=./dataload/configs/efo.json
-    docker compose up
+    OLS4_CONFIG=./dataload/configs/efo.json ./dataload.sh
+
+This will create Solr and Neo4j databases in the `out` directory. Now start the OLS stack:
+
+    UID=$(id -u) GID=$(id -g) docker compose up
 
 You should now be able to access the OLS4 frontend at `http://localhost:8081`.
 
-If you need to set the heap size, you can do so using:
-
-    JAVA_OPTS="-Xms5G -Xmx25G"  docker compose up
-
-If you want to test it with your own ontology, copy the OWL or RDFS ontology file to the `testcases` folder (which is
-mounted in Docker). Then make a new config file for your ontology in `dataload/configs` (you can use `efo.json` as a
-template). For the `ontology_purl` property in the config, use e.g. `file:///opt/dataload/testcases/myontology.owl` if
-your ontology is in `testcases/myontology.owl`. Then follow the above steps for efo with the config filename you
-created.
+If you want to test it with your own ontology, copy the OWL or RDFS ontology file into this repository folder.  Then make a new config file for your ontology; you can use `efo.json` from `dataload/configs` as a
+template. For the `ontology_purl` property in the config, use the relative path in this repository to your ontology e.g. `./myontology.owl`. Then follow the above steps for efo with the config filename you created.
 
 ## Deployment: Using Kubernetes with GitHub Packages
 
@@ -97,21 +93,16 @@ You can run OLS4, or any combination of its consistuent parts (dataload, backend
 it is often useful to run, for example, just Solr and Neo4j in Docker, while running the API server locally; or to run
 Solr, Neo4j, and the backend API server in Docker while running the frontend locally.
 
-First install the latest version of Docker Desktop if you are on Mac or Windows. This now includes the `docker compose`
+First install the latest version of Docker Desktop (or compatible, such as Rancher Desktop) if you are on Mac or Windows. This now includes the `docker compose`
 command. If you are on Linux, make sure you have the `docker compose` plugin
 installed (`apt install docker.io docker-compose-plugin` on Ubuntu).
-
-You will need a config file, which configures the ontologies to load into OLS4. You can provide this to `docker compose`
-using the `OLS4_CONFIG` environment variable. For example:
-
-	export OLS4_CONFIG=./dataload/configs/efo.json
 
 Then, start up the components you would like to run. For example, Solr and Neo4j only (to develop the backend API server
 and/or frontend):
 
     docker compose up --force-recreate --build --always-recreate-deps --attach-dependencies ols4-solr ols4-neo4j
 
-This will build and run the dataload, and start up Solr and Neo4j with your new dataset on ports 8983 and 7474,
+This will start up Solr and Neo4j with your new dataset on ports 8983 and 7474,
 respectively. To start Solr and Neo4j **AND** the backend API server (to develop the frontend):
 
     docker compose up --force-recreate --build --always-recreate-deps --attach-dependencies ols4-solr ols4-neo4j ols4-backend
@@ -122,14 +113,13 @@ To start everything, including the frontend:
 
 ## Development: Running OLS4 locally
 
-Alternatively, you can run OLS4 or any of its constituent parts locally, which is more useful for development. Software
+Alternatively, you can run OLS4 or any of its constituent parts locally, which can be useful for development. Software
 requirements are as follows:
 
-1. Java 11. Later versions of Java are probably fine, though the Neo4j we use only works with Java 11.
+1. Java 21. Later versions of Java are probably fine.
 2. Maven 3.x.x
-3. Neo4J 4.4.x
-4. Solr 9.0.0
-5. Your favourite Git client
+3. Neo4j 2025.03.0-community
+4. Solr 9.8.1
 
 ### Acquire source and build
 
@@ -137,12 +127,13 @@ Clone repo:
 
     git clone git@github.com:EBISPOT/ols4.git
 
-Build backend:
+Build Java components (dataload and backend):
 
     mvn clean package
 
 Build frontend:
 
+    cd frontend
     npm install
 
 ### Test testcases from dataload to UI
@@ -224,8 +215,7 @@ First, make sure the configuration files (that determine which ontologies to loa
     java \
     -jar linker.jar \
     --input <LOCAL_DIR>/output_json/ontologies.json \
-    --output <LOCAL_DIR>/output_json/ontologies_linked.json \
-    --leveldbPath <LEVEL_DB_DIR>
+    --output <LOCAL_DIR>/output_json/ontologies_linked.json
 
 #### Convert JSON to Neo4j CSV
 

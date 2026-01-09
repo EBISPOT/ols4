@@ -4,14 +4,9 @@ import com.google.gson.stream.JsonToken;
 
 import uk.ac.ebi.ols.shared.Embeddings;
 
-import org.apache.commons.cli.*;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVPrinter;
-
 import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 import java.io.*;
-import java.nio.charset.Charset;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -19,15 +14,19 @@ public class NeoConverter {
 
     static Gson gson = new Gson();
 
+    String ontologyId;
     String inputFilePath;
     String outputFilePath;
     String manifestFilePath;
     LinkerPass1Result manifest;
+    Map<String, Embeddings> embeddings;
 
-    public NeoConverter(String inputFilePath, String outputFilePath, String manifestFilePath) throws FileNotFoundException, IOException {
+    public NeoConverter(String ontologyId, String inputFilePath, String outputFilePath, String manifestFilePath, Map<String, Embeddings> embeddings) throws FileNotFoundException, IOException {
+        this.ontologyId = ontologyId;
         this.inputFilePath = inputFilePath;
         this.outputFilePath = outputFilePath;
         this.manifestFilePath = manifestFilePath;
+        this.embeddings = embeddings;
         
         // Load the manifest
         System.out.println("Loading manifest from: " + manifestFilePath);
@@ -73,23 +72,34 @@ public class NeoConverter {
                     if (!ontologyIdKey.equals("ontologyId")) {
                         throw new RuntimeException("Expected 'ontologyId' as first field in ontology");
                     }
-                    String ontologyId = reader.nextString();
+                    String readOntologyId = reader.nextString();
 
-                    System.out.println("Processing ontology: " + ontologyId);
+                    // Skip ontologies that don't match the requested ontologyId
+                    if (!readOntologyId.equals(this.ontologyId)) {
+                        System.out.println("Skipping ontology: " + readOntologyId);
+                        while (reader.peek() != JsonToken.END_OBJECT) {
+                            reader.nextName();
+                            reader.skipValue();
+                        }
+                        reader.endObject();
+                        continue;
+                    }
+
+                    System.out.println("Processing ontology: " + readOntologyId);
                     
                     // Get scanner results from manifest
                     OntologyManifestInfo manifestInfo = new OntologyManifestInfo();
-                    manifestInfo.ontologyId = ontologyId;
+                    manifestInfo.ontologyId = readOntologyId;
                     
                     // Apply blacklist to remove properties that shouldn't be in Neo4j
-                    manifestInfo.allOntologyProperties = filterBlacklist(manifest.ontologyIdToOntologyProperties.getOrDefault(ontologyId, new HashSet<>()));
-                    manifestInfo.allClassProperties = filterBlacklist(manifest.ontologyIdToClassProperties.getOrDefault(ontologyId, new HashSet<>()));
-                    manifestInfo.allPropertyProperties = filterBlacklist(manifest.ontologyIdToPropertyProperties.getOrDefault(ontologyId, new HashSet<>()));
-                    manifestInfo.allIndividualProperties = filterBlacklist(manifest.ontologyIdToIndividualProperties.getOrDefault(ontologyId, new HashSet<>()));
-                    manifestInfo.allEdgeProperties = manifest.ontologyIdToEdgeProperties.getOrDefault(ontologyId, new HashSet<>());
+                    manifestInfo.allOntologyProperties = filterBlacklist(manifest.ontologyIdToOntologyProperties.getOrDefault(readOntologyId, new HashSet<>()));
+                    manifestInfo.allClassProperties = filterBlacklist(manifest.ontologyIdToClassProperties.getOrDefault(readOntologyId, new HashSet<>()));
+                    manifestInfo.allPropertyProperties = filterBlacklist(manifest.ontologyIdToPropertyProperties.getOrDefault(readOntologyId, new HashSet<>()));
+                    manifestInfo.allIndividualProperties = filterBlacklist(manifest.ontologyIdToIndividualProperties.getOrDefault(readOntologyId, new HashSet<>()));
+                    manifestInfo.allEdgeProperties = manifest.ontologyIdToEdgeProperties.getOrDefault(readOntologyId, new HashSet<>());
                     
                     // Convert string type sets to NodeType sets for uriToTypes
-                    Map<String, Set<String>> uriToTypeStrings = manifest.ontologyIdToUriToTypes.getOrDefault(ontologyId, new HashMap<>());
+                    Map<String, Set<String>> uriToTypeStrings = manifest.ontologyIdToUriToTypes.getOrDefault(readOntologyId, new HashMap<>());
                     manifestInfo.uriToTypes = new HashMap<>();
                     for (Map.Entry<String, Set<String>> entry : uriToTypeStrings.entrySet()) {
                         Set<OntologyManifestInfo.NodeType> nodeTypes = new HashSet<>();
@@ -99,7 +109,7 @@ public class NeoConverter {
                         manifestInfo.uriToTypes.put(entry.getKey(), nodeTypes);
                     }
 
-                    new OntologyWriter(reader, outputFilePath, manifestInfo).write();
+                    new OntologyWriter(reader, outputFilePath, manifestInfo, embeddings).write();
                     
                     reader.endObject(); // close the ontology object
 
