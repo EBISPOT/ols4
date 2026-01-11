@@ -26,6 +26,7 @@ RUN npm install
 COPY . /opt/ols4-frontend/
 
 RUN chmod +x /opt/ols4-frontend/entrypoint.dockersh
+RUN chmod -R 777 /opt/ols4-frontend/dist
 
 CMD ["/opt/ols4-frontend/entrypoint.dockersh"]
 

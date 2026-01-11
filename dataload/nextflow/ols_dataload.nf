@@ -13,6 +13,7 @@ params.solr_mem = "8g"
 params.neo_mem = "16g"
 params.embeddings_path = "$OLS_EMBEDDINGS_PATH"
 params.max_rows_per_file = "100000"
+params.dataload_args = System.getenv('OLS4_DATALOAD_ARGS') ?: ''
 
 workflow {
 
@@ -86,6 +87,9 @@ process rdf2json {
 
     script:
     def mem_mb = (task.memory.toMega() * 0.9).intValue()
+    def extra_args = params.dataload_args ?: ''
+    def ols_home = System.getenv('OLS_HOME')
+    def base_path_arg = ols_home ? "--basePath ${ols_home}" : ''
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
@@ -95,7 +99,9 @@ process rdf2json {
         -jar /opt/ols/dataload/rdf2json/target/rdf2json-1.0-SNAPSHOT.jar \
         --config ${config_path} \
         --ontologyIds ${ontology_id} \
-        --output ${ontology_id}.json
+        --output ${ontology_id}.json \
+        ${base_path_arg} \
+        ${extra_args}
     """
 }
 

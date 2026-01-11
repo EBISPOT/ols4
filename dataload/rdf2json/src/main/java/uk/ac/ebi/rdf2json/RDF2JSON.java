@@ -48,6 +48,10 @@ public class RDF2JSON {
         loadLocalFiles.setRequired(false);
         options.addOption(loadLocalFiles);
 
+        Option basePath = new Option(null, "basePath", true, "Base path for resolving relative file paths (used with --loadLocalFiles)");
+        basePath.setRequired(false);
+        options.addOption(basePath);
+
         Option noDates = new Option(null, "noDates", false, "Set to leave LOADED dates blank (for testing)");
         noDates.setRequired(false);
         options.addOption(noDates);
@@ -75,6 +79,7 @@ public class RDF2JSON {
 
 	    String downloadedPath = cmd.getOptionValue("downloadedPath");
         boolean bLoadLocalFiles = cmd.hasOption("loadLocalFiles");
+        String sBasePath = cmd.getOptionValue("basePath");
         boolean bNoDates = cmd.hasOption("noDates");
         String mergeOutputWith = cmd.getOptionValue("mergeOutputWith");
         
@@ -188,7 +193,7 @@ public class RDF2JSON {
 
             try {
 
-                OntologyGraph graph = new OntologyGraph(ontoConfig, bLoadLocalFiles, bNoDates, downloadedPath);
+                OntologyGraph graph = new OntologyGraph(ontoConfig, bLoadLocalFiles, sBasePath, bNoDates, downloadedPath);
 
                 if(graph.ontologyNode == null) {
                     logger.error("No Ontology node found; nothing will be written");

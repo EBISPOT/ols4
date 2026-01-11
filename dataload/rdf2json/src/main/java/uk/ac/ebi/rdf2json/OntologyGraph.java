@@ -102,9 +102,13 @@ public class OntologyGraph implements StreamRDF {
     private void parseRDF(String url) throws IOException  {
 
         if (loadLocalFiles && !url.contains("://")) {
-            logger.debug("parseRDF: Using local file for {}", url);
-            sourceFileTimestamp = new File(url).lastModified();
-            parseRDF(url, new FileInputStream(url), null);
+            String resolvedPath = url;
+            if (basePath != null && !url.startsWith("/")) {
+                resolvedPath = basePath + "/" + url;
+            }
+            logger.debug("parseRDF: Using local file for {} (resolved: {})", url, resolvedPath);
+            sourceFileTimestamp = new File(resolvedPath).lastModified();
+            parseRDF(url, new FileInputStream(resolvedPath), null);
             return;
         }
 
@@ -170,13 +174,15 @@ public class OntologyGraph implements StreamRDF {
 
 
     private boolean loadLocalFiles;
+    private String basePath;
 
     String downloadedPath;
 
 
-    OntologyGraph(Map<String, Object> config, boolean loadLocalFiles, boolean noDates, String downloadedPath) throws IOException {
+    OntologyGraph(Map<String, Object> config, boolean loadLocalFiles, String basePath, boolean noDates, String downloadedPath) throws IOException {
 
         this.loadLocalFiles = loadLocalFiles;
+        this.basePath = basePath;
         this.downloadedPath = downloadedPath;
 
         long startTime = System.nanoTime();

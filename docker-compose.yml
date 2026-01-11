@@ -3,13 +3,15 @@ services:
       image: solr:9.8.1
       user: "${UID:?}:${GID:?}"
       environment:
-        - SOLR_HOME=/mnt/solr
+        - SOLR_HOME=/mnt/solr/server/solr
+        - SOLR_LOGS_DIR=/mnt/solr/logs
         - JAVA_OPTS=--add-modules jdk.incubator.vector
       ports:
         - 8983:8983
       volumes:
-        - ./out/solr/server/solr:/mnt/solr
-      command: ["-f"]
+        - ./out/solr:/mnt/solr
+      entrypoint: []
+      command: ["bash", "-c", "echo hi && cd /mnt/solr && bin/solr start -f"]
     ols4-neo4j:
       image: neo4j:2025.03.0-community
       user: "${UID:?}:${GID:?}"
@@ -17,7 +19,7 @@ services:
         - 7474:7474
         - 7687:7687
       volumes:
-        - ./out/neo4j/data:/var/lib/neo4j/data
+        - ./out/neo4j/data:/data
       environment:
         - NEO4J_AUTH=none
         - JAVA_OPTS=--add-modules jdk.incubator.vector
