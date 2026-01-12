@@ -2,41 +2,36 @@ name: Build & Test
 
 on:
   push:
-    branches: [ "dev", "stable", "nextflow" ]
   pull_request:
-    branches: [ "dev", "nextflow" ]
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  testDataload:
-    name: Data Load Tests
+  # Determine if we should push to registry
+  check-branch:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        java: [ 21 ]
+    if: ${{ github.repository_owner == 'EBISPOT' }}
+    outputs:
+      should-push: ${{ steps.check.outputs.should-push }}
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up Java ${{ matrix.java }}
-        uses: actions/setup-java@v4
-        with:
-          java-version: ${{ matrix.java }}
-          distribution: 'temurin'
-          cache: maven
-      - name: Build with Maven
-        run: mvn -ntp -B clean package -Dmaven.compiler.release=${{ matrix.java }}
-      - name: Run dataload tests
-        run: ./test_dataload.sh
+      - id: check
+        run: |
+          if [[ "${{ github.event_name }}" == "push" && ("${{ github.ref }}" == "refs/heads/dev" || "${{ github.ref }}" == "refs/heads/stable" || "${{ github.ref }}" == "refs/heads/nextflow") ]]; then
+            echo "should-push=true" >> $GITHUB_OUTPUT
+          else
+            echo "should-push=false" >> $GITHUB_OUTPUT
+          fi
 
+  # Build and push images for dev/stable/nextflow branches
   build-and-push-image:
     runs-on: ubuntu-latest
+    needs: [check-branch]
+    if: ${{ needs.check-branch.outputs.should-push == 'true' }}
     permissions:
       contents: read
       packages: write
-
-    if: ${{ github.repository_owner == 'EBISPOT' }}
 
     strategy:
       matrix:
@@ -77,16 +72,83 @@ jobs:
           push: true
           tags: |
             ghcr.io/ebispot/ols4-${{ matrix.component }}:${{ github.sha }}
-            ghcr.io/ebispot/ols4-${{ matrix.component }}:${{ github.head_ref || github.ref_name }}
+            ghcr.io/ebispot/ols4-${{ matrix.component }}:${{ github.ref_name }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-  testApi:
-    name: API Tests
+  # Build images locally for PRs and other branches (no push)
+  build-local:
     runs-on: ubuntu-latest
-    needs: [testDataload, build-and-push-image]
-    if: ${{ github.repository_owner == 'EBISPOT' }}
+    needs: [check-branch]
+    if: ${{ needs.check-branch.outputs.should-push == 'false' }}
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build dataload image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./dataload/Dockerfile
+          load: true
+          tags: ols4-dataload:local
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build backend image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./backend/Dockerfile
+          load: true
+          tags: ols4-backend:local
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build frontend image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend
+          file: ./frontend/Dockerfile
+          load: true
+          tags: ols4-frontend:local
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build apitester4 image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./apitester4
+          file: ./apitester4/Dockerfile
+          load: true
+          tags: ols4-apitester4:local
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Save images as artifacts
+        run: |
+          docker save ols4-backend:local ols4-frontend:local ols4-apitester4:local | gzip > ols4-images.tar.gz
+
+      - name: Upload images artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ols4-images
+          path: ols4-images.tar.gz
+          retention-days: 1
+
+  # API tests for pushed images (dev/stable/nextflow)
+  testApi-pushed:
+    name: API Tests (Registry)
+    runs-on: ubuntu-latest
+    needs: [check-branch, build-and-push-image]
+    if: ${{ needs.check-branch.outputs.should-push == 'true' }}
     steps:
       - uses: actions/checkout@v4
       - name: Log in to the Container registry
@@ -103,5 +165,26 @@ jobs:
           echo "OLS4_BACKEND_IMAGE=ghcr.io/ebispot/ols4-backend:${{ github.sha }}" >> $GITHUB_ENV
           echo "OLS4_FRONTEND_IMAGE=ghcr.io/ebispot/ols4-frontend:${{ github.sha }}" >> $GITHUB_ENV
           echo "OLS4_APITESTER_IMAGE=ghcr.io/ebispot/ols4-apitester4:${{ github.sha }}" >> $GITHUB_ENV
+      - name: Run API tests
+        run: ./test_api.sh
+
+  # API tests for local images (PRs and other branches)
+  testApi-local:
+    name: API Tests (Local)
+    runs-on: ubuntu-latest
+    needs: [check-branch, build-local]
+    if: ${{ needs.check-branch.outputs.should-push == 'false' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download images artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ols4-images
+      - name: Load Docker images
+        run: |
+          gunzip -c ols4-images.tar.gz | docker load
+          echo "OLS4_BACKEND_IMAGE=ols4-backend:local" >> $GITHUB_ENV
+          echo "OLS4_FRONTEND_IMAGE=ols4-frontend:local" >> $GITHUB_ENV
+          echo "OLS4_APITESTER_IMAGE=ols4-apitester4:local" >> $GITHUB_ENV
       - name: Run API tests
         run: ./test_api.sh
