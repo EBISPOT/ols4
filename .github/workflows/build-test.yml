@@ -18,7 +18,11 @@ jobs:
           sudo rm -rf /usr/local/lib/android
           sudo rm -rf /opt/ghc
           sudo rm -rf /opt/hostedtoolcache/CodeQL
+          sudo rm -rf /usr/local/share/boost
+          sudo rm -rf /usr/share/swift
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
           sudo docker system prune -af
+          sudo apt-get clean
           df -h
 
       - name: Checkout repository
@@ -33,6 +37,7 @@ jobs:
           context: .
           file: ./dataload/Dockerfile
           load: true
+          platforms: linux/amd64
           tags: ols4-dataload:local
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -43,6 +48,7 @@ jobs:
           context: .
           file: ./backend/Dockerfile
           load: true
+          platforms: linux/amd64
           tags: ols4-backend:local
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -53,6 +59,7 @@ jobs:
           context: ./frontend
           file: ./frontend/Dockerfile
           load: true
+          platforms: linux/amd64
           tags: ols4-frontend:local
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -63,13 +70,14 @@ jobs:
           context: ./apitester4
           file: ./apitester4/Dockerfile
           load: true
+          platforms: linux/amd64
           tags: ols4-apitester4:local
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
       - name: Save images as artifacts
         run: |
-          docker save ols4-backend:local ols4-frontend:local ols4-apitester4:local | gzip > ols4-images.tar.gz
+          docker save ols4-dataload:local ols4-backend:local ols4-frontend:local ols4-apitester4:local | gzip > ols4-images.tar.gz
 
       - name: Upload images artifact
         uses: actions/upload-artifact@v4
