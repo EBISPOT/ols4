@@ -1,16 +1,35 @@
-name: Build & publish ols4 images
+name: Build & Test
 
 on:
   push:
-    branches: [ "dev", "stable" ]
+    branches: [ "dev", "stable", "nextflow" ]
   pull_request:
-    branches: [ "dev" ]
+    branches: [ "dev", "nextflow" ]
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  testDataload:
+    name: Data Load Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ 21 ]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Java ${{ matrix.java }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ matrix.java }}
+          distribution: 'temurin'
+          cache: maven
+      - name: Build with Maven
+        run: mvn -ntp -B clean package -Dmaven.compiler.release=${{ matrix.java }}
+      - name: Run dataload tests
+        run: ./test_dataload.sh
+
   build-and-push-image:
     runs-on: ubuntu-latest
     permissions:
@@ -21,7 +40,7 @@ jobs:
 
     strategy:
       matrix:
-        component: [dataload, backend, frontend]
+        component: [dataload, backend, frontend, apitester4]
 
     steps:
       - name: Checkout repository
@@ -52,7 +71,7 @@ jobs:
       - name: Build and push ols4 ${{ matrix.component }} Docker image
         uses: docker/build-push-action@v5
         with:
-          context: ${{ matrix.component == 'frontend' && './frontend' || '.' }}
+          context: ${{ matrix.component == 'frontend' && './frontend' || (matrix.component == 'apitester4' && './apitester4' || '.') }}
           file: ${{ matrix.component == 'frontend' && './frontend/Dockerfile' || format('./{0}/Dockerfile', matrix.component) }}
           platforms: linux/amd64,linux/arm64
           push: true
@@ -63,3 +82,26 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+  testApi:
+    name: API Tests
+    runs-on: ubuntu-latest
+    needs: [testDataload, build-and-push-image]
+    if: ${{ github.repository_owner == 'EBISPOT' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Pull Docker images
+        run: |
+          docker pull ghcr.io/ebispot/ols4-backend:${{ github.sha }}
+          docker pull ghcr.io/ebispot/ols4-frontend:${{ github.sha }}
+          docker pull ghcr.io/ebispot/ols4-apitester4:${{ github.sha }}
+          echo "OLS4_BACKEND_IMAGE=ghcr.io/ebispot/ols4-backend:${{ github.sha }}" >> $GITHUB_ENV
+          echo "OLS4_FRONTEND_IMAGE=ghcr.io/ebispot/ols4-frontend:${{ github.sha }}" >> $GITHUB_ENV
+          echo "OLS4_APITESTER_IMAGE=ghcr.io/ebispot/ols4-apitester4:${{ github.sha }}" >> $GITHUB_ENV
+      - name: Run API tests
+        run: ./test_api.sh

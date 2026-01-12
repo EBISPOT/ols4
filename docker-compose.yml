@@ -25,6 +25,7 @@ services:
         - JAVA_OPTS=--add-modules jdk.incubator.vector
     ols4-backend:
       user: "${UID:?}:${GID:?}"
+      image: ${OLS4_BACKEND_IMAGE:-ghcr.io/ebispot/ols4-backend:dev}
       build:
         context: .
         dockerfile: ./backend/Dockerfile
@@ -41,6 +42,7 @@ services:
         - ols4-neo4j
     ols4-frontend:
       user: "${UID:?}:${GID:?}"
+      image: ${OLS4_FRONTEND_IMAGE:-ghcr.io/ebispot/ols4-frontend:dev}
       build:
         context: ./frontend
       env_file: ./frontend/.env
@@ -52,6 +54,7 @@ services:
         - ols4-backend
     run-api-tests:
       profiles: ["run-api-tests"]
+      image: ${OLS4_APITESTER_IMAGE:-ghcr.io/ebispot/ols4-apitester4:dev}
       build: ./apitester4
       user: "${UID:?}:${GID:?}"
       volumes:
