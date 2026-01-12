@@ -5,6 +5,7 @@ export OLS4_DATALOAD_ARGS="--loadLocalFiles"
 export BUILDKIT_PROGRESS=plain
 
 rm -rf testcases_output_api/*
+mkdir -p testcases_output_api
 
 EXIT_CODE=0
 

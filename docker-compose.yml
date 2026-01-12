@@ -57,10 +57,12 @@ services:
       image: ${OLS4_APITESTER_IMAGE:-ghcr.io/ebispot/ols4-apitester4:dev}
       build: ./apitester4
       user: "${UID:?}:${GID:?}"
+      environment:
+        - HOME=/tmp
       volumes:
         - ./testcases_output_api:/mnt/out:rw
         - ./testcases_expected_output_api:/mnt/compare:rw
-      command: ["bash", "-c", "java -jar /opt/apitester/target/apitester-1.0-SNAPSHOT-jar-with-dependencies.jar --url http://ols4-backend:8080 --outDir /mnt/out --compareDir /mnt/compare --deep > /mnt/out/apitester4.log"]
+      command: ["java", "-jar", "/opt/apitester/apitester.jar", "--url", "http://ols4-backend:8080", "--outDir", "/mnt/out", "--compareDir", "/mnt/compare", "--deep"]
       depends_on:
         - ols4-backend
       links:
