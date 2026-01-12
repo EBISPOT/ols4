@@ -92,6 +92,19 @@ jobs:
     needs: [build]
     if: ${{ github.repository_owner == 'EBISPOT' }}
     steps:
+      - name: Free up disk space on GH actions runner
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /opt/hostedtoolcache/CodeQL
+          sudo rm -rf /usr/local/share/boost
+          sudo rm -rf /usr/share/swift
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo docker system prune -af
+          sudo apt-get clean
+          df -h
+
       - uses: actions/checkout@v4
 
       - name: Download images artifact
@@ -102,6 +115,7 @@ jobs:
       - name: Load Docker images
         run: |
           gunzip -c ols4-images.tar.gz | docker load
+          echo "OLS4_DATALOAD_IMAGE=ols4-dataload:local" >> $GITHUB_ENV
           echo "OLS4_BACKEND_IMAGE=ols4-backend:local" >> $GITHUB_ENV
           echo "OLS4_FRONTEND_IMAGE=ols4-frontend:local" >> $GITHUB_ENV
           echo "OLS4_APITESTER_IMAGE=ols4-apitester4:local" >> $GITHUB_ENV
