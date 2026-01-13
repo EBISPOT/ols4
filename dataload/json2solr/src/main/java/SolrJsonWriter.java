@@ -39,14 +39,19 @@ public class SolrJsonWriter {
             if (currentWriter != null) {
                 currentWriter.close();
             }
-            String filename = String.format("%s/%s_%s_%04d.jsonl", basePath, ontologyId, entityType, currentFileIndex);
+            String filename;
+            if(maxRowsPerFile == -1) {
+                filename = String.format("%s/%s_%s.jsonl", basePath, ontologyId,  entityType);
+            } else {
+                filename = String.format("%s/%s_%s_%04d.jsonl", basePath, ontologyId, entityType, currentFileIndex);
+            }
             currentWriter = new PrintStream(filename);
             currentRowCount = 0;
             currentFileIndex++;
         }
 
         public void println(String line) throws IOException {
-            if (currentRowCount >= maxRowsPerFile) {
+            if (maxRowsPerFile != -1 && currentRowCount >= maxRowsPerFile) {
                 openNextFile();
             }
             currentWriter.println(line);
@@ -138,8 +143,9 @@ public class SolrJsonWriter {
                         if (key.equals("ontologyId")) {
                             ontologyId = gson.fromJson(reader, String.class);
                             ontology.put(key, ontologyId);
-                            shouldProcess = ontologyId.equals(outputOntologyId);
-                            
+
+                            shouldProcess = outputOntologyId == null || ontologyId.equals(outputOntologyId);
+
                             // Report progress
                             processedOntologies++;
                             double progressPercent = (double) processedOntologies / totalOntologies * 100;

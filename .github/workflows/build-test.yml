@@ -32,6 +32,10 @@ jobs:
       - name: Build dataload image
         run: docker build -t ols4-dataload:local -f ./dataload/Dockerfile .
 
+      - name: Run mock dataload and dataload tests
+        run: |
+          docker run -it ols4-dataload:local bash -c "cd /opt/ols && ./test_dataload.sh"
+
       - name: Build other images with docker compose
         run: docker compose build --parallel
         env:
@@ -52,6 +56,6 @@ jobs:
         run: |
           sed -i "s|process.container = '.*'|process.container = 'ols4-dataload:local'|" dataload/nextflow/local_nextflow.config
 
-      - name: Run API tests
+      - name: Run full Nextflow dataload and API tests
         run: |
           ./test_api.sh

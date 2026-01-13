@@ -17,7 +17,7 @@ public class JSON2CSV {
         Options options = new Options();
 
         Option ontologyIdOpt = new Option(null, "ontologyId", true, "ontology ID to process");
-        ontologyIdOpt.setRequired(true);
+        ontologyIdOpt.setRequired(false);
         options.addOption(ontologyIdOpt);
 
         Option input = new Option(null, "input", true, "ontologies JSON input filename");

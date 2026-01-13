@@ -52,6 +52,11 @@ COPY ./dataload /opt/ols/dataload
 COPY ./ols-shared /opt/ols/ols-shared
 COPY ./pom.xml /opt/ols
 
+COPY ./test_dataload.sh /opt/ols
+COPY ./dev-testing /opt/ols/dev-testing
+COPY ./testcases_expected_output /opt/ols/testcases_expected_output
+COPY ./testcases /opt/ols/testcases
+
 RUN cd /opt/ols/ols-shared && mvn package
 
 RUN mvn install:install-file -DcreateChecksum=true -Dpackaging=jar -Dfile=/opt/ols/ols-shared/target/ols4-shared-1.0.0-SNAPSHOT.jar -DgroupId=uk.ac.ebi.spot.ols -DartifactId=ols4-shared -Dversion=1.0.0-SNAPSHOT

@@ -74,15 +74,17 @@ public class NeoConverter {
                     }
                     String readOntologyId = reader.nextString();
 
-                    // Skip ontologies that don't match the requested ontologyId
-                    if (!readOntologyId.equals(this.ontologyId)) {
-                        System.out.println("Skipping ontology: " + readOntologyId);
-                        while (reader.peek() != JsonToken.END_OBJECT) {
-                            reader.nextName();
-                            reader.skipValue();
+                    if(this.ontologyId != null && !this.ontologyId.isEmpty()) {
+                        // Skip ontologies that don't match the requested ontologyId
+                        if (!readOntologyId.equals(this.ontologyId)) {
+                            System.out.println("Skipping ontology: " + readOntologyId);
+                            while (reader.peek() != JsonToken.END_OBJECT) {
+                                reader.nextName();
+                                reader.skipValue();
+                            }
+                            reader.endObject();
+                            continue;
                         }
-                        reader.endObject();
-                        continue;
                     }
 
                     System.out.println("Processing ontology: " + readOntologyId);

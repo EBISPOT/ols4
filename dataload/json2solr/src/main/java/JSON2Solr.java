@@ -17,7 +17,7 @@ public class JSON2Solr {
         Options options = new Options();
 
         Option ontologyIdOpt = new Option(null, "ontologyId", true, "ontology ID");
-        ontologyIdOpt.setRequired(true);
+        ontologyIdOpt.setRequired(false);
         options.addOption(ontologyIdOpt);
 
         Option input = new Option(null, "input", true, "ontologies JSON input filename");
@@ -33,7 +33,7 @@ public class JSON2Solr {
         options.addOption(embeddingsDbsPath);
 
         Option maxRowsPerFileOpt = new Option(null, "maxRowsPerFile", true, "maximum number of rows per output file");
-        maxRowsPerFileOpt.setRequired(true);
+        maxRowsPerFileOpt.setRequired(false);
         options.addOption(maxRowsPerFileOpt);
 
         CommandLineParser parser = new DefaultParser();
@@ -54,7 +54,9 @@ public class JSON2Solr {
         String inputFilePath = cmd.getOptionValue("input");
         String outPath = cmd.getOptionValue("outDir");
         String embeddingsDbs = cmd.getOptionValue("embeddingDbsPath");
-        int maxRowsPerFile = Integer.parseInt(cmd.getOptionValue("maxRowsPerFile"));
+
+        var _maxRowsPerFile = cmd.getOptionValue("maxRowsPerFile");
+        int maxRowsPerFile = _maxRowsPerFile == null ? -1 : Integer.parseInt(_maxRowsPerFile);
 
         Map<String, Embeddings> embeddings = new HashMap<>();
 
