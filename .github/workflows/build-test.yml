@@ -24,6 +24,11 @@ jobs:
 
       - uses: actions/checkout@v4
 
+      - name: Set UID and GID
+        run: |
+          echo "UID=$(id -u)" >> $GITHUB_ENV
+          echo "GID=$(id -g)" >> $GITHUB_ENV
+
       - name: Build dataload image
         run: docker build -t ols4-dataload:local -f ./dataload/Dockerfile .
 
