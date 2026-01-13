@@ -34,7 +34,7 @@ jobs:
 
       - name: Run mock dataload and dataload tests
         run: |
-          docker run -it ols4-dataload:local bash -c "cd /opt/ols && ./test_dataload.sh"
+          docker run ols4-dataload:local bash -c "cd /opt/ols && ./test_dataload.sh"
 
       - name: Build other images with docker compose
         run: docker compose build --parallel
