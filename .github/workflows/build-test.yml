@@ -53,4 +53,5 @@ jobs:
           sed -i "s|process.container = '.*'|process.container = 'ols4-dataload:local'|" dataload/nextflow/local_nextflow.config
 
       - name: Run API tests
-        run: ./test_api.sh
+        run: |
+          ./test_api.sh

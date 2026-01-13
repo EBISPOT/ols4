@@ -33,8 +33,14 @@ mkdir -p $TMP_DIR/work $TMP_DIR/NXF_HOME $TMP_DIR/NXF_TEMP $TMP_DIR/NXF_CACHE_DI
 
 DOCKER_GID=$(stat -c '%g' /var/run/docker.sock)
 
+# Ensure nested Docker containers (spawned by Nextflow) run with the same UID/GID as the host user
+# to avoid permission issues when writing to the bind-mounted work directory on GitHub Actions.
+HOST_UID=$(id -u)
+HOST_GID=$(id -g)
+NXF_DOCKER_OPTS_VAL="-u ${HOST_UID}:${HOST_GID}"
+
 docker run \
-  --user "$(id -u)":"$(id -g)" \
+  --user "${HOST_UID}":"${HOST_GID}" \
   --group-add $DOCKER_GID \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v $OLS_HOME:$OLS_HOME \
@@ -44,7 +50,8 @@ docker run \
   -e OLS4_CONFIG=$OLS4_CONFIG \
   -e OLS4_DATALOAD_ARGS="$OLS4_DATALOAD_ARGS" \
   -e OLS_EMBEDDINGS_PATH=$OLS_EMBEDDINGS_PATH \
-  -e NXF_USRMAP=$(id -u) \
+  -e NXF_USRMAP=${HOST_UID} \
+  -e NXF_DOCKER_OPTS="$NXF_DOCKER_OPTS_VAL" \
   -e NXF_WORK=$TMP_DIR/work \
   -e NXF_HOME=$TMP_DIR/NXF_HOME\
   -e NXF_TEMP=$TMP_DIR/NXF_TEMP \
