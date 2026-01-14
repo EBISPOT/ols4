@@ -3,7 +3,7 @@ FROM maven:3.8-jdk-11 AS builder
 
 ADD . /opt/apitester
 
-RUN cd /opt/apitester && mvn clean package
+RUN cd /opt/apitester && mvn -B -ntp -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn clean package
 
 FROM eclipse-temurin:11-jre
 
