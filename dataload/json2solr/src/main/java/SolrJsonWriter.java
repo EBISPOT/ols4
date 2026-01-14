@@ -41,7 +41,7 @@ public class SolrJsonWriter {
             }
             String filename;
             if(maxRowsPerFile == -1) {
-                filename = String.format("%s/%s_%s.jsonl", basePath, ontologyId,  entityType);
+                filename = String.format("%s/%s.jsonl", basePath,  entityType);
             } else {
                 filename = String.format("%s/%s_%s_%04d.jsonl", basePath, ontologyId, entityType, currentFileIndex);
             }
