@@ -87,7 +87,7 @@ database.
 
 ![OLS4 overview](docs/overview.png)
 
-## Development: Running OLS4 using Docker
+## Running OLS4 components using Docker
 
 You can run OLS4, or any combination of its consistuent parts (dataload, backend, frontend) in Docker. When developing,
 it is often useful to run, for example, just Solr and Neo4j in Docker, while running the API server locally; or to run
@@ -111,325 +111,67 @@ To start everything, including the frontend:
 
     docker compose up --force-recreate --build --always-recreate-deps --attach-dependencies ols4-solr ols4-neo4j ols4-backend ols4-frontend
 
-## Development: Running OLS4 locally
 
-Alternatively, you can run OLS4 or any of its constituent parts locally, which can be useful for development. Software
-requirements are as follows:
+## Making the tests pass
 
-1. Java 21. Later versions of Java are probably fine.
-2. Maven 3.x.x
-3. Neo4j 2025.03.0-community
-4. Solr 9.8.1
+OLS has a comprehensive suite of automated CI tests for the dataload and API. If code changes change the output such that it no longer matches `testcases_expected_output` (dataload) and/or `testcases_expected_output_api` (API) the CI will fail, and you will need to update the expected output.
 
-### Acquire source and build
-
-Clone repo:
-
-    git clone git@github.com:EBISPOT/ols4.git
-
-Build Java components (dataload and backend):
-
-    mvn clean package
-
-Build frontend:
-
-    cd frontend
-    npm install
-
-### Test testcases from dataload to UI
-
-The scripts below assume you have the following environment variables set:
-
-`NEO4J_HOME`
-
-`SOLR_HOME`
-
-`OLS4_HOME` - this should point to the root folder where you have the OLS4 code.
-
-Change the directory to $OLS4_HOME.
-
-    cd $OLS4_HOME
-
-To load a testcase and start Neo4J and Solr, run:
-
-    ./dev-testing/teststack.sh <rel_json_config_url> <rel_output_dir>
-
-where `<rel_json_config_url>` can be a JSON config file or a directory with JSON file, and `<rel_outdir>`
-the output directory, both relative from $OLS4_HOME, i.e.:
-
-    ./dev-testing/teststack.sh ./testcases/owl2-primer/minimal.json ./output
-
-or if you want to load all testcases, you can use
-
-    ./dev-testing/teststack.sh ./testcases ./output
-
-If you need to set the Java heap size, you can set the environment the JAVA_OPTS variable as follows:
-
-     export JAVA_OPTS="-Xms5G -Xmx10G"
-
-Once Neo4J and Solr is up, to start the backend (REST API) you can run:
-
-    ./dev-testing/start-backend.sh
-
-Once the backend is up, you can start the frontend with:
-
-    ./dev-testing/start-frontend.sh
-
-Once you are done testing, to stop everything:
-
-    ./stopNeo4JSolr.sh
-
-### Running the dataload locally
-
-All related files for loading and processing data are in `dataload`.
-First, make sure the configuration files (that determine which ontologies to load) are ready and to build all the JAR files:
-
-    cd dataload
-    mvn clean package
-
-#### Pre-download RDF
-
-    java \
-    -DentityExpansionLimit=0 \
-    -DtotalEntitySizeLimit=0 \
-    -Djdk.xml.totalEntitySizeLimit=0 \
-    -Djdk.xml.entityExpansionLimit=0 \
-    -jar predownloader.jar \
-    --config <CONFIG_FILE> \
-    --downloadPath <DOWNLOAD_PATH>
-
-#### Convert RDF to JSON
-
-    java \
-    -DentityExpansionLimit=0 \
-    -DtotalEntitySizeLimit=0 \
-    -Djdk.xml.totalEntitySizeLimit=0 \
-    -Djdk.xml.entityExpansionLimit=0 \
-    -jar rdf2json.jar \
-    --downloadedPath <DOWNLOAD_PATH> \
-    --config <CONFIG_FILE> \
-    --output <LOCAL_DIR>/output_json/ontologies.json
-
-#### Run ontologies linker
-
-    java \
-    -jar linker.jar \
-    --input <LOCAL_DIR>/output_json/ontologies.json \
-    --output <LOCAL_DIR>/output_json/ontologies_linked.json
-
-#### Convert JSON to Neo4j CSV
-
-    java \
-    -jar json2neo.jar \
-    --input <LOCAL_DIR>/output_json/ontologies_linked.json \
-    --outDir <LOCAL_DIR>/output_csv/
-
-#### Create Neo4j from CSV
-
-Run Neo4j `import` command:
-
-    ./neo4j-admin database import full \
-    --ignore-empty-strings=true \
-    --legacy-style-quoting=false \
-    --array-delimiter="|" \
-    --multiline-fields=true \
-    --read-buffer-size=134217728 \
-    $(<LOCAL_DIR>/make_csv_import_cmd.sh)
-
-Here is a sample `make_csv_import_cmd.sh` file:
-
-    for f in ./output_csv/*_ontologies.csv
-    do
-    echo -n "--nodes=$f "
-    done
-    
-    for f in ./output_csv/*_classes.csv
-    do
-    echo -n "--nodes=$f "
-    done
-    
-    for f in ./output_csv/*_properties.csv
-    do
-    echo -n "--nodes=$f "
-    done
-    
-    for f in ./output_csv/*_individuals.csv
-    do
-    echo -n "--nodes=$f "
-    done
-    
-    for f in ./output_csv/*_edges.csv
-    do
-    echo -n "--relationships=$f "
-    done
-
-#### Make Neo4j indexes
-
-Start Neo4j locally and then run the sample database commands, which are also defined in `create_indexes.cypher` inside the `dataload` directory:
-
-    CREATE INDEX FOR (n:OntologyClass) ON n.id;
-    CREATE INDEX FOR (n:OntologyIndividual) ON n.id;
-    CREATE INDEX FOR (n:OntologyProperty) ON n.id;
-    CREATE INDEX FOR (n:OntologyEntity) ON n.id;
-    
-    CALL db.awaitIndexes(10800);
-
-After creating the indexes, stop Neo4j as needed.
-
-#### Convert JSON output to Solr JSON
-
-    java \
-    -jar json2solr.jar \
-    --input <LOCAL_DIR>/output_json/ontologies_linked.json \
-    --outDir <LOCAL_DIR>/output_jsonl/
-
-#### Update Solr indexes
-
-Before running Solr, make sure to copy the configuration (`solr_config`) from inside `dataload` directory to local, e.g., `<SOLR_DIR>/server/solr/`.
-Then, start Solr locally and use the generated JSON files to update. See sample commands below:
-
-    wget \
-    --method POST --no-proxy -O - --server-response --content-on-error=on \
-    --header="Content-Type: application/json" \
-    --body-file <LOCAL_DIR>/output_jsonl/ontologies.jsonl \
-    http://localhost:8983/solr/ols4_entities/update/json/docs?commit=true
-    
-    wget \
-    --method POST --no-proxy -O - --server-response --content-on-error=on \
-    --header="Content-Type: application/json" \
-    --body-file <LOCAL_DIR>/output_jsonl/classes.jsonl \
-    http://localhost:8983/solr/ols4_entities/update/json/docs?commit=true
-    
-    wget --method POST --no-proxy -O - --server-response --content-on-error=on \
-    --header="Content-Type: application/json" \
-    --body-file <LOCAL_DIR>/output_jsonl/properties.jsonl \
-    http://localhost:8983/solr/ols4_entities/update/json/docs?commit=true
-    
-    wget --method POST --no-proxy -O - --server-response --content-on-error=on \
-    --header="Content-Type: application/json" \
-    --body-file <LOCAL_DIR>/output_jsonl/individuals.jsonl \
-    http://localhost:8983/solr/ols4_entities/update/json/docs?commit=true
-    
-    wget --method POST --no-proxy -O - --server-response --content-on-error=on \
-    --header="Content-Type: application/json" \
-    --body-file <LOCAL_DIR>/output_jsonl/autocomplete.jsonl \
-    http://localhost:8983/solr/ols4_autocomplete/update/json/docs?commit=true
-
-Update `ols4_entities` core:
-
-    wget --no-proxy -O - --server-response --content-on-error=on \
-    http://localhost:8983/solr/ols4_entities/update?commit=true
-
-Update `ols4_autocomplete` core:
-
-    wget --no-proxy -O - --server-response --content-on-error=on \
-    http://localhost:8983/solr/ols4_autocomplete/update?commit=true
-
-After updating the indexes, stop Solr as needed.
-
-#### Create data archives for Solr and Neo4j
-
-Finally, create archives for both Solr and Neo4j data folders.
-
-    tar --use-compress-program="pigz --fast --recursive" \
-    -cf <LOCAL_DIR>/neo4j.tgz -C <LOCAL_DIR>/neo4j/data .
-
-    tar --use-compress-program="pigz --fast --recursive" \
-    -cf <LOCAL_DIR>/solr.tgz -C <LOCAL_DIR>/solr/server solr
-
-### Running the API server backend locally
-
-The API server Spring Boot application located in `backend`. Set the following environment variables to point it at your
-local (Dockerized) Solr and Neo4j servers:
-
-    OLS_SOLR_HOST=http://localhost:8983
-    OLS_NEO4J_HOST=bolt://localhost:7687
-
-### Running the frontend locally
-
-The frontend is a React application in `frontend`. See [frontend docs](frontend/README.md)
-for details on how to run the frontend.
-
-## Development: Updating `testcases_expected_output` and `testcases_expected_output_api`
-If you make changes to the data load or API of OLS, you need to run testcases and compare it against the expected outputs 
-to ensure backward compatibility. This testing consists of 
-
-1. testing the dataload outputs by comparing test outputs to expected outputs,
-2. API testing which compares API responses to expected responses, and
-3. adding the latest expected outputs to Git.
-
-### Testing dataload
-These tests are run locally as described in [Test testcases from dataload to UI](#test-testcases-from-dataload-to-ui).
-Ensure that the environment variables `NEO4J_HOME`, `SOLR_HOME` and `OLS4_HOME` are set up accordingly.
-
-1. Before running your testcases, ensure that your work is already commited. Create a new branch based on the branch you worked on
+Before running your testcases, ensure that your work is already committed. Create a new branch based on the branch you worked on
 but with a `-testcases` suffix. I.e., if your branch is called "fix-xyz", the new branch for the testcases will be 
 `fix-xyz-testcases`. We commit testcases to a separate branch due to the large number of files updated when testcases are run.
 
-2. First make sure all the OLS4 JARs are up to date by running :
- 
-       mvn clean package
+### Testing the dataload (without Nextflow)
 
-3. Generate new output files and import into Neo4J and Solr: 
+First, build an up to date Docker image for the dataload:
 
-       ./dev-testing/teststack.sh ./testcases ./testcases_output
+    docker build -t ols4-dataload:local -f ./dataload/Dockerfile .
 
-4. Compare `/testcases_output` with `/testcases_expected_output`:
+Remove the old `testcases_expected_output` contents from your local working tree:
 
-       ./compare_testcase_output.sh
+    rm -rf testcases_expected_output/*
 
-5. The output of step 3 is written to `testcases_compare_result.log`. If no differences are found, this file will be empty.
-   `testcases_compare_result.log` will only tell you which files are different. To see the actual differences in dicated in 
-   `testcases_compare_result.log`, compare files that are stated to be different in a visual editor like Meld. Ensure that 
-    all differences in this file can be explained and that they do make sense. 
+Re-populate `testcases_expected_output` directory with updated test output:
 
-6. Once you are happy with the output in `testcases_output`, remove the old `testcases_expected_output` and replace with
-new expected output:
+    mkdir testcases_output && docker run \
+        -v $(pwd)/testcases_expected_output:/opt/ols/testcases_output \
+        ols4-dataload:local \
+        bash -c "cd /opt/ols && ./test_dataload.sh"
 
-       rm -rf testcases_expected_output
-       cp -r testcases_output/testcases testcases_expected_output
+Now you can inspect any changes to the files in `testcases_expected_output` and make sure they are intentional, e.g. using `git diff` or from VS Code. When you are happy, stage and commit the updated `testcases_expected_output`.
 
-7. Add updated expected output to git.
+    git add -A testcases_expected_output
+    git commit -m "Update testcase output"
 
-        git add -A testcases_expected_output
- 
-8. Commit the updates to testcases to a branch with suffix `-testcases` and message "TESTCASES updated".
-9. Now continue with API testing.
+### Testing the full Nextflow dataload and API
 
-### Testing API
-Before doing API testing you must have completed the [dataload testing](#testing-dataload).
+First follow the instructions above for testing the dataload. Then build up to date Docker images for remainder of the OLS stack:
 
-10. Before running the API tests, create a new branch with suffix `api-tests`. I.e., if the branch you worked on was 
-`fix-xyz-api-tests`.
+    export OLS4_BACKEND_IMAGE=ols4-backend:local
+    export OLS4_FRONTEND_IMAGE=ols4-frontend:local  
+    export OLS4_APITESTER_IMAGE=ols4-apitester4:local
+    docker compose build
 
-11. Start the backend:
+Update the Nextflow config in `dataload/nextflow/local_nextflow.config` to use the local dataload image instead of the published one:
 
-        ./dev-testing/start-backend.sh
+    sed -i "s|process.container = '.*'|process.container = 'ols4-dataload:local'|" dataload/nextflow/local_nextflow.config
 
-12. Run API tests against backend using: 
+Run the test script to produce a `testcases_output_api` directory:
 
-        ./test_api_fast.sh http://localhost:8080 ./testcases_output_api ./testcases_expected_output_api --deep
+    ./test_api.sh
 
-13. The results of step 8 is written to `./apitester4.log`. Differences are written to the end of the file. When there are no
-differences, this file will end with these lines:
+The log file `testcases_output_api/apitester4.log` contains diff information. You can also manually compare the files in `testcases_output_api` with the files in `testcases_expected_output_api`. Once you are happy the changes are intentional, replace the old test outputs with the new ones:
 
-        RecursiveJsonDiff.diff() reported success
-        apitester reported success; exit code 0
+    rm -rf testcases_expected_output_api
+    mv testcases_output_api testcases_expected_output_api
 
-14. Ensure that all differences listed in `./apitester4.log` are accounted for. Once you are happy with the output, remove 
-the old `testcases_expected_output_api` and replace with new expected output: 
+Stage and commit the updated `testcases_expected_output_api`:
 
-        rm -rf testcases_expected_output_api
-        cp -r testcases_output_api testcases_expected_output_api
+    git add -A testcases_expected_output_api
+    git commit -m "Update API testcase output"
 
-15. Add the latest expected outputs to Git:
+## Running OLS locally
 
-        git add -A testcases_expected_output_api
+OLS is intended to be run as a containerised application. However, for some debugging scenarios it may be useful to run OLS non-containerised (i.e. outside of Docker). Best effort instructions are provided in [RUNNING_LOCALLY.md](docs/RUNNING_LOCALLY.md), though these may not be suitable for all platforms.
 
-16. Commit the API tests to a branch with suffix `-api-tests` and message "API-TESTS updated".
-
-17. You can stop the OLS4 backend with "Ctrl-C", and Solr and Neo4J with:
-
-        ./dev-testing/stopNeo4JSolr.sh
 
 
