@@ -97,12 +97,6 @@ public class SolrJsonWriter {
         RotatingWriter individualsWriter = null;
         RotatingWriter autocompleteWriter = null;
 
-        ontologiesWriter = new RotatingWriter(outPath, outputOntologyId, "ontologies", maxRowsPerFile);
-        classesWriter = new RotatingWriter(outPath, outputOntologyId, "classes", maxRowsPerFile);
-        propertiesWriter = new RotatingWriter(outPath, outputOntologyId, "properties", maxRowsPerFile);
-        individualsWriter = new RotatingWriter(outPath, outputOntologyId, "individuals", maxRowsPerFile);
-        autocompleteWriter = new RotatingWriter(outPath, outputOntologyId, "autocomplete", maxRowsPerFile);
-
         System.err.println("Starting json2solr processing...");
         System.err.println("Input file: " + ontologiesJsonPath);
         System.err.println("Output directory: " + outPath);
@@ -162,6 +156,13 @@ public class SolrJsonWriter {
                                 }
                                 break;
                             }
+
+                            ontologiesWriter = new RotatingWriter(outPath, ontologyId, "ontologies", maxRowsPerFile);
+                            classesWriter = new RotatingWriter(outPath, ontologyId, "classes", maxRowsPerFile);
+                            propertiesWriter = new RotatingWriter(outPath, ontologyId, "properties", maxRowsPerFile);
+                            individualsWriter = new RotatingWriter(outPath, ontologyId, "individuals", maxRowsPerFile);
+                            autocompleteWriter = new RotatingWriter(outPath, ontologyId, "autocomplete", maxRowsPerFile);
+
                         } else if (key.equals("classes") && shouldProcess) {
 
                             reader.beginArray();
