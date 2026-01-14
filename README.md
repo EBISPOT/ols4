@@ -44,22 +44,11 @@ utilized. Software requirements are as follows:
 
 ### Create data archives for Solr and Neo4j
 
-To create your own Solr and Neo4j data archives, follow the steps on [how to load data locally](#running-the-dataload-locally).
+First run the OLS dataload (requires Docker):
 
-### Startup dataserver
+    OLS4_CONFIG=./dataload/configs/efo.json ./dataload.sh
 
-Uninstall existing `dataserver` deployments, if any, before installing a new one. Do not forget to set `KUBECONFIG`
-environment variable.
-
-    export KUBECONFIG=<K8S_CONFIG>
-    helm install ols4-dataserver --wait <OLS4_DIR>/k8chart/dataserver
-
-### Copy data to dataserver
-
-From your local directory, copy the Solr and Neo4j data archive files to the `dataserver`.
-
-    kubectl cp <LOCAL_DIR>/neo4j.tgz $(/srv/data/k8s/kubectl get pods -l app=ols4-dataserver -o custom-columns=:metadata.name):/usr/share/nginx/html/neo4j.tgz
-    kubectl cp <LOCAL_DIR>/solr.tgz $(/srv/data/k8s/kubectl get pods -l app=ols4-dataserver -o custom-columns=:metadata.name):/usr/share/nginx/html/solr.tgz
+This will create Solr and Neo4j databases in the `out` directory.
 
 ### Startup OLS4 deployment
 
