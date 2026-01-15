@@ -1,0 +1,286 @@
+{
+  "iriToDefinitions": {
+    "http://example.com/reified-bnode#part_of": {
+      "definitions": [
+        {
+          "ontologyId": "reified-bnode",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "part_of"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "part_of"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "reified-bnode": {
+          "ontologyId": "reified-bnode",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "part_of"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "part_of"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://example.com/reified-bnode#cell": {
+      "definitions": [
+        {
+          "ontologyId": "reified-bnode",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "cell"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "cell"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "reified-bnode": {
+          "ontologyId": "reified-bnode",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "cell"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "cell"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://example.com/reified-bnode#cell_part": {
+      "definitions": [
+        {
+          "ontologyId": "reified-bnode",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "cell_part"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "cell_part"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "reified-bnode": {
+          "ontologyId": "reified-bnode",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "cell_part"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "cell_part"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://example.com/reified-bnode": [
+      "reified-bnode"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "reified-bnode": [
+      "reified-bnode"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "reified-bnode": [
+      "http://purl.obolibrary.org/obo/reified-bnode_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "reified-bnode": [
+      "iri",
+      "numberOfIndividuals",
+      "numDescendants",
+      "numberOfProperties",
+      "numberOfClasses",
+      "language",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "type",
+      "ontologyPurl",
+      "preferredPrefix",
+      "directAncestor",
+      "imported",
+      "numberOfEntities",
+      "ontologyId",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "reified-bnode": [
+      "isPreferredRoot",
+      "hasDirectChildren",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "hierarchicalProperty",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "type",
+      "relatedTo",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "hasDirectParents",
+      "imported",
+      "ontologyIri",
+      "iri",
+      "hierarchicalAncestor",
+      "relatedFrom",
+      "numDescendants",
+      "isObsolete",
+      "label",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "shortForm",
+      "ontologyId",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "reified-bnode": [
+      "isPreferredRoot",
+      "iri",
+      "hasDirectChildren",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "label",
+      "type",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "hasDirectParents",
+      "imported",
+      "shortForm",
+      "ontologyId",
+      "ontologyIri",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "reified-bnode": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "reified-bnode": [
+      "http://www.w3.org/2000/01/rdf-schema#comment"
+    ]
+  },
+  "ontologyIdToUriToTypes": {
+    "reified-bnode": {
+      "http://example.com/reified-bnode": [
+        "ONTOLOGY"
+      ],
+      "http://example.com/reified-bnode#part_of": [
+        "PROPERTY"
+      ],
+      "http://example.com/reified-bnode#cell": [
+        "CLASS"
+      ],
+      "http://example.com/reified-bnode#cell_part": [
+        "CLASS"
+      ]
+    }
+  }
+}

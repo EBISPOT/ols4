@@ -48,7 +48,6 @@
         "value": "2"
       },
       "searchableAnnotationValues": [
-        false,
         {
           "type": [
             "literal"
@@ -59,23 +58,24 @@
           "type": [
             "literal"
           ],
-          "value": "4"
+          "value": "2"
         },
         {
           "type": [
             "literal"
           ],
-          "value": "2"
-        }
+          "value": "4"
+        },
+        false
       ],
       "classes": [],
       "properties": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -132,9 +132,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -193,8 +193,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#John",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -249,8 +249,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#Mary",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [

@@ -47,7 +47,18 @@
         "value": "2"
       },
       "searchableAnnotationValues": [
-        false,
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "0"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "2"
+        },
         {
           "type": [
             "literal"
@@ -60,18 +71,7 @@
           ],
           "value": "5"
         },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "2"
-        }
+        false
       ],
       "classes": [
         {
@@ -448,9 +448,9 @@
         {
           "iri": "http://purl.obolibrary.org/obo/IAO_0000115",
           "type": [
-            "property",
             "annotationProperty",
-            "entity"
+            "entity",
+            "property"
           ],
           "curie": {
             "type": [
@@ -506,9 +506,9 @@
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#source",
           "type": [
-            "property",
             "annotationProperty",
-            "entity"
+            "entity",
+            "property"
           ],
           "curie": {
             "type": [

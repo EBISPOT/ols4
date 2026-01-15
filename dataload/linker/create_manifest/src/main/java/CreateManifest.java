@@ -98,12 +98,12 @@ public class CreateManifest {
 
         // Merge ontologyIdToImportingOntologyIds
         source.ontologyIdToImportingOntologyIds.forEach((id, values) -> {
-            target.ontologyIdToImportingOntologyIds.computeIfAbsent(id, k -> new java.util.ArrayList<>()).addAll(values);
+            target.ontologyIdToImportingOntologyIds.computeIfAbsent(id, k -> new java.util.TreeSet<>()).addAll(values);
         });
 
         // Merge ontologyIdToImportedOntologyIds
         source.ontologyIdToImportedOntologyIds.forEach((id, values) -> {
-            target.ontologyIdToImportedOntologyIds.computeIfAbsent(id, k -> new java.util.ArrayList<>()).addAll(values);
+            target.ontologyIdToImportedOntologyIds.computeIfAbsent(id, k -> new java.util.TreeSet<>()).addAll(values);
         });
         
         // Merge scanner results - property sets

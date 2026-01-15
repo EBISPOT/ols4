@@ -1,0 +1,143 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-irreflexive.owl#hasParent": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-objectproperty-irreflexive",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasParent"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasParent"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-objectproperty-irreflexive": {
+          "ontologyId": "owl2primer-objectproperty-irreflexive",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasParent"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasParent"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-irreflexive.owl": [
+      "owl2primer-objectproperty-irreflexive"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-objectProperty-irreflexive": [
+      "owl2primer-objectproperty-irreflexive"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-objectproperty-irreflexive": [
+      "http://purl.obolibrary.org/obo/owl2primer-objectProperty-irreflexive_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-objectproperty-irreflexive": [
+      "iri",
+      "numberOfIndividuals",
+      "numDescendants",
+      "numberOfProperties",
+      "numberOfClasses",
+      "language",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "type",
+      "ontologyPurl",
+      "preferredPrefix",
+      "directAncestor",
+      "imported",
+      "numberOfEntities",
+      "ontologyId",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-objectproperty-irreflexive": []
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-objectproperty-irreflexive": [
+      "isPreferredRoot",
+      "iri",
+      "hasDirectChildren",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "label",
+      "type",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "hasDirectParents",
+      "imported",
+      "shortForm",
+      "ontologyId",
+      "ontologyIri",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-objectproperty-irreflexive": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-objectproperty-irreflexive": []
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-objectproperty-irreflexive": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-irreflexive.owl#hasParent": [
+        "PROPERTY"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-irreflexive.owl": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}

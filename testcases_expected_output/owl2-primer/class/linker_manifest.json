@@ -1,0 +1,142 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/class#Person": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-class",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Person"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Person"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-class": {
+          "ontologyId": "owl2primer-class",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Person"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Person"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/class.owl": [
+      "owl2primer-class"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-class": [
+      "owl2primer-class"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-class": [
+      "http://purl.obolibrary.org/obo/owl2primer-class_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-class": [
+      "iri",
+      "numberOfIndividuals",
+      "numDescendants",
+      "numberOfProperties",
+      "numberOfClasses",
+      "language",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "type",
+      "ontologyPurl",
+      "preferredPrefix",
+      "directAncestor",
+      "imported",
+      "numberOfEntities",
+      "ontologyId",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-class": [
+      "isPreferredRoot",
+      "iri",
+      "hasDirectChildren",
+      "hierarchicalAncestor",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "label",
+      "type",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "hasDirectParents",
+      "imported",
+      "shortForm",
+      "ontologyId",
+      "ontologyIri",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-class": []
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-class": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-class": []
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-class": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/class.owl": [
+        "ONTOLOGY"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/class#Person": [
+        "CLASS"
+      ]
+    }
+  }
+}

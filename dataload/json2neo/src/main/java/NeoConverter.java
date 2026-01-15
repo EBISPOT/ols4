@@ -102,13 +102,22 @@ public class NeoConverter {
                     
                     // Add defined fields that are added by LinkerPass2 and won't be in the manifest
                     // These fields are programmatically added during the linking phase
-                    Set<String> linkerAddedFields = Set.of(
+                    Set<String> linkerAddedEntityFields = Set.of(
+                        "linkedEntities",
                         IS_DEFINING_ONTOLOGY.getText(),
-                        DEFINED_BY.getText()
+                        DEFINED_BY.getText(),
+                        LINKS_TO.getText()
                     );
-                    manifestInfo.allClassProperties.addAll(linkerAddedFields);
-                    manifestInfo.allPropertyProperties.addAll(linkerAddedFields);
-                    manifestInfo.allIndividualProperties.addAll(linkerAddedFields);
+                    manifestInfo.allClassProperties.addAll(linkerAddedEntityFields);
+                    manifestInfo.allPropertyProperties.addAll(linkerAddedEntityFields);
+                    manifestInfo.allIndividualProperties.addAll(linkerAddedEntityFields);
+
+                    manifestInfo.allOntologyProperties.addAll( Set.of(
+                        "linkedEntities",
+                        IMPORTS_FROM.getText(),
+                        EXPORTS_TO.getText(),
+                        LINKS_TO.getText()
+                    ));
                     
                     // Convert string type sets to NodeType sets for uriToTypes
                     Map<String, Set<String>> uriToTypeStrings = manifest.ontologyIdToUriToTypes.getOrDefault(readOntologyId, new HashMap<>());

@@ -7,7 +7,6 @@ import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 
 import java.io.*;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -150,7 +149,7 @@ public class LinkerPass2 {
             jsonWriter.beginObject();
             jsonReader.beginObject();
 
-            Set<String> stringsInEntity = new HashSet<String>();
+            Set<String> stringsInEntity = new TreeSet<String>();
             String entityIri = null;
 
             while(jsonReader.peek() != JsonToken.END_OBJECT) {
@@ -220,7 +219,7 @@ public class LinkerPass2 {
 
     private static Set<String> writeLinkedEntitiesFromGatheredStrings(JsonWriter jsonWriter, Set<String> strings, String ontologyId, String entityIri, LevelDB leveldb, LinkerPass1Result pass1Result) throws IOException {
 
-        Set<String> linksToIris = new HashSet<>();
+        Set<String> linksToIris = new TreeSet<>();
 
         jsonWriter.beginObject();
 

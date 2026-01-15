@@ -1,0 +1,145 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/defined-fields/PreferredRoot.owl#PreferredRoot_0001": {
+      "definitions": [
+        {
+          "ontologyId": "preferred-root",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "liver disease"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "PreferredRoot:0001"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "preferred-root": {
+          "ontologyId": "preferred-root",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "liver disease"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "PreferredRoot:0001"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/class.owl": [
+      "preferred-root"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "Preferred-Root": [
+      "preferred-root"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "preferred-root": [
+      "http://purl.obolibrary.org/obo/Preferred-Root_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "preferred-root": [
+      "iri",
+      "numberOfIndividuals",
+      "numDescendants",
+      "numberOfProperties",
+      "numberOfClasses",
+      "language",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "type",
+      "ontologyPurl",
+      "preferredPrefix",
+      "directAncestor",
+      "imported",
+      "numberOfEntities",
+      "ontologyId",
+      "http://purl.obolibrary.org/obo/IAO_0000700",
+      "preferredRoot",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "preferred-root": [
+      "isPreferredRoot",
+      "iri",
+      "hasDirectChildren",
+      "hierarchicalAncestor",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "label",
+      "type",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "hasDirectParents",
+      "imported",
+      "shortForm",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "ontologyId",
+      "ontologyIri",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "preferred-root": []
+  },
+  "ontologyIdToIndividualProperties": {
+    "preferred-root": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "preferred-root": []
+  },
+  "ontologyIdToUriToTypes": {
+    "preferred-root": {
+      "http://www.ebi.ac.uk/testcases/defined-fields/PreferredRoot.owl#PreferredRoot_0001": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/class.owl": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}

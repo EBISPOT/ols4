@@ -15,10 +15,10 @@ public class LinkerPass1Result {
     Map<String, Set<String>> ontologyIdToBaseUris = new HashMap<>();
 
     // ontology id -> IDs of ontologies that import at least 1 term from the ontology
-    Map<String, List<String>> ontologyIdToImportingOntologyIds = new HashMap<>();
+    Map<String, Set<String>> ontologyIdToImportingOntologyIds = new HashMap<>();
 
     // ontology id -> IDs of ontologies it imports at least 1 term from
-    Map<String, List<String>> ontologyIdToImportedOntologyIds = new HashMap<>();
+    Map<String, Set<String>> ontologyIdToImportedOntologyIds = new HashMap<>();;
 
     // Per-ontology property sets (formerly from OntologyScanner)
     // ontology id -> set of properties found in ontology metadata

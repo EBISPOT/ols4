@@ -1,0 +1,224 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/class-expression-issues/maxCardinality.owl#Person": {
+      "definitions": [
+        {
+          "ontologyId": "max-cardinality",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Person"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Person"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "max-cardinality": {
+          "ontologyId": "max-cardinality",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Person"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Person"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/class-expression-issues/maxCardinality.owl#hasArm": {
+      "definitions": [
+        {
+          "ontologyId": "max-cardinality",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasArm"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasArm"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "max-cardinality": {
+          "ontologyId": "max-cardinality",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasArm"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasArm"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/class-expression-issues/maxCardinality.owl": [
+      "max-cardinality"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "max-cardinality": [
+      "max-cardinality"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "max-cardinality": [
+      "http://purl.obolibrary.org/obo/max-cardinality_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "max-cardinality": [
+      "iri",
+      "numberOfIndividuals",
+      "numDescendants",
+      "numberOfProperties",
+      "numberOfClasses",
+      "language",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "type",
+      "ontologyPurl",
+      "preferredPrefix",
+      "directAncestor",
+      "imported",
+      "numberOfEntities",
+      "ontologyId",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "max-cardinality": [
+      "isPreferredRoot",
+      "iri",
+      "hasDirectChildren",
+      "hierarchicalAncestor",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "numDescendants",
+      "hierarchicalProperty",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "label",
+      "type",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "hasDirectParents",
+      "imported",
+      "shortForm",
+      "ontologyId",
+      "ontologyIri",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "max-cardinality": [
+      "isPreferredRoot",
+      "iri",
+      "hasDirectChildren",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "label",
+      "type",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "hasDirectParents",
+      "imported",
+      "shortForm",
+      "ontologyId",
+      "ontologyIri",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "max-cardinality": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "max-cardinality": []
+  },
+  "ontologyIdToUriToTypes": {
+    "max-cardinality": {
+      "http://www.ebi.ac.uk/testcases/class-expression-issues/maxCardinality.owl#Person": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/class-expression-issues/maxCardinality.owl#hasArm": [
+        "PROPERTY"
+      ],
+      "http://www.ebi.ac.uk/testcases/class-expression-issues/maxCardinality.owl": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}

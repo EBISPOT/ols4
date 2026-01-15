@@ -3,7 +3,7 @@ import com.google.gson.JsonElement;
 import java.util.Objects;
 import java.util.Set;
 
-public class EntityDefinition {
+public class EntityDefinition implements Comparable<EntityDefinition> {
 
     String ontologyId;
     Set<String> entityTypes;
@@ -22,5 +22,12 @@ public class EntityDefinition {
     @Override
     public int hashCode() {
         return Objects.hash(ontologyId, entityTypes, isDefiningOntology);
+    }
+
+    @Override
+    public int compareTo(EntityDefinition other) {
+        int cmp = this.ontologyId.compareTo(other.ontologyId);
+        if (cmp != 0) return cmp;
+        return this.entityTypes.toString().compareTo(other.entityTypes.toString());
     }
 }

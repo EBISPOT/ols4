@@ -1,0 +1,143 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/symmetric-object-property.rdf#hasSpouse": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-symmetric-object-property",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasSpouse"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasSpouse"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-symmetric-object-property": {
+          "ontologyId": "owl2primer-symmetric-object-property",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasSpouse"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasSpouse"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/symmetric-object-property.rdf": [
+      "owl2primer-symmetric-object-property"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-symmetric-object-property": [
+      "owl2primer-symmetric-object-property"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-symmetric-object-property": [
+      "http://purl.obolibrary.org/obo/owl2primer-symmetric-object-property_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-symmetric-object-property": [
+      "iri",
+      "numberOfIndividuals",
+      "numDescendants",
+      "numberOfProperties",
+      "numberOfClasses",
+      "language",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "type",
+      "ontologyPurl",
+      "preferredPrefix",
+      "directAncestor",
+      "imported",
+      "numberOfEntities",
+      "ontologyId",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-symmetric-object-property": []
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-symmetric-object-property": [
+      "isPreferredRoot",
+      "iri",
+      "hasDirectChildren",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "label",
+      "type",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "hasDirectParents",
+      "imported",
+      "shortForm",
+      "ontologyId",
+      "ontologyIri",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-symmetric-object-property": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-symmetric-object-property": []
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-symmetric-object-property": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/symmetric-object-property.rdf": [
+        "ONTOLOGY"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/symmetric-object-property.rdf#hasSpouse": [
+        "PROPERTY"
+      ]
+    }
+  }
+}

@@ -48,7 +48,6 @@
         "value": "0"
       },
       "searchableAnnotationValues": [
-        false,
         {
           "type": [
             "literal"
@@ -60,7 +59,8 @@
             "literal"
           ],
           "value": "2"
-        }
+        },
+        false
       ],
       "classes": [],
       "properties": [],
@@ -68,8 +68,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals#Bill",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -125,8 +125,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals#John",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [

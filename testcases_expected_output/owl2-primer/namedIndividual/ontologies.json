@@ -48,7 +48,6 @@
         "value": "0"
       },
       "searchableAnnotationValues": [
-        false,
         {
           "type": [
             "literal"
@@ -60,7 +59,8 @@
             "literal"
           ],
           "value": "1"
-        }
+        },
+        false
       ],
       "classes": [],
       "properties": [],
@@ -68,8 +68,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual#Mary",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [

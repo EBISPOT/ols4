@@ -217,8 +217,8 @@ public class LinkerPass1 {
 					//
 					for(EntityDefinition defB : definitions.definitions) {
 						if(!defB.isDefiningOntology) {
-							addToMapList(result.ontologyIdToImportedOntologyIds, defB.ontologyId, defA.ontologyId);
-							addToMapList(result.ontologyIdToImportingOntologyIds, defA.ontologyId, defB.ontologyId);
+							addToMapSet(result.ontologyIdToImportedOntologyIds, defB.ontologyId, defA.ontologyId);
+							addToMapSet(result.ontologyIdToImportingOntologyIds, defA.ontologyId, defB.ontologyId);
 						}
 					}
 				}
@@ -232,8 +232,8 @@ public class LinkerPass1 {
         return result;
     }
 
-    private static void addToMapList(Map<String, List<String>> map, String key, String value) {
-        map.computeIfAbsent(key, k -> new ArrayList<>()).add(value);
+    private static void addToMapSet(Map<String, Set<String>> map, String key, String value) {
+        map.computeIfAbsent(key, k -> new TreeSet<>()).add(value);
     }
 
     public static void parseEntityArray(JsonReader jsonReader, String entityType, String ontologyId, Set<String> ontologyBaseUris, LinkerPass1Result result) throws IOException {

@@ -1,0 +1,143 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/reflexive-object-property.rdf#hasRelative": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-reflexive-object-property",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasRelative"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasRelative"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-reflexive-object-property": {
+          "ontologyId": "owl2primer-reflexive-object-property",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasRelative"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasRelative"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/reflexive-object-property.rdf": [
+      "owl2primer-reflexive-object-property"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-reflexive-object-property": [
+      "owl2primer-reflexive-object-property"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-reflexive-object-property": [
+      "http://purl.obolibrary.org/obo/owl2primer-reflexive-object-property_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-reflexive-object-property": [
+      "iri",
+      "numberOfIndividuals",
+      "numDescendants",
+      "numberOfProperties",
+      "numberOfClasses",
+      "language",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "type",
+      "ontologyPurl",
+      "preferredPrefix",
+      "directAncestor",
+      "imported",
+      "numberOfEntities",
+      "ontologyId",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-reflexive-object-property": []
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-reflexive-object-property": [
+      "isPreferredRoot",
+      "iri",
+      "hasDirectChildren",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "label",
+      "type",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "hasDirectParents",
+      "imported",
+      "shortForm",
+      "ontologyId",
+      "ontologyIri",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-reflexive-object-property": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-reflexive-object-property": []
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-reflexive-object-property": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/reflexive-object-property.rdf#hasRelative": [
+        "PROPERTY"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/reflexive-object-property.rdf": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}
