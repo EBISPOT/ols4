@@ -102,9 +102,13 @@ public class OntologyGraph implements StreamRDF {
     private void parseRDF(String url) throws IOException  {
 
         if (loadLocalFiles && !url.contains("://")) {
-            logger.debug("parseRDF: Using local file for {}", url);
-            sourceFileTimestamp = new File(url).lastModified();
-            parseRDF(url, new FileInputStream(url), null);
+            String resolvedPath = url;
+            if (basePath != null && !url.startsWith("/")) {
+                resolvedPath = basePath + "/" + url;
+            }
+            logger.debug("parseRDF: Using local file for {} (resolved: {})", url, resolvedPath);
+            sourceFileTimestamp = new File(resolvedPath).lastModified();
+            parseRDF(url, new FileInputStream(resolvedPath), null);
             return;
         }
 
@@ -137,17 +141,23 @@ public class OntologyGraph implements StreamRDF {
         } else {
             HttpEntity res = getURL(url);
             InputStream is = res.getContent();
-            String contentType = res.getContentType().getValue();
-            parseRDF(url, is, contentType);
+            var ct = res.getContentType();
+            if(ct == null) {
+                parseRDF(url, is, null);
+                return;
+            } else {
+                String contentType = res.getContentType().getValue();
+                parseRDF(url, is, contentType);
+            }
         }
     }
 
     private static HttpEntity getURL(String url) throws FileNotFoundException, IOException {
 
         RequestConfig config = RequestConfig.custom()
-                .setConnectTimeout(5000)
-                .setConnectionRequestTimeout(5000)
-                .setSocketTimeout(5000).build();
+                .setConnectTimeout(30000)
+                .setConnectionRequestTimeout(30000)
+                .setSocketTimeout(3600000).build(); 
 
         CloseableHttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
 
@@ -164,13 +174,15 @@ public class OntologyGraph implements StreamRDF {
 
 
     private boolean loadLocalFiles;
+    private String basePath;
 
     String downloadedPath;
 
 
-    OntologyGraph(Map<String, Object> config, boolean loadLocalFiles, boolean noDates, String downloadedPath) throws IOException {
+    OntologyGraph(Map<String, Object> config, boolean loadLocalFiles, String basePath, boolean noDates, String downloadedPath) throws IOException {
 
         this.loadLocalFiles = loadLocalFiles;
+        this.basePath = basePath;
         this.downloadedPath = downloadedPath;
 
         long startTime = System.nanoTime();
@@ -526,7 +538,7 @@ public class OntologyGraph implements StreamRDF {
                 continue;
             }
 
-            List<PropertyValue> values = properties.getPropertyValues(predicate);
+            List<PropertyValue> values = properties.getSortedPropertyValues(predicate);
 
             writer.name(predicate);
             if (values.size() == 1 && values.get(0) instanceof PropertyValueList) {
@@ -562,7 +574,7 @@ public class OntologyGraph implements StreamRDF {
             writeValue(writer, value);
             writer.name("axioms");
             writer.beginArray();
-            for(PropertySet axiom : value.axioms) {
+            for(PropertySet axiom : value.getSortedAxioms()) {
                 writer.beginObject();
                 writeProperties(writer, axiom, null);
                 writer.endObject();
@@ -734,7 +746,7 @@ public class OntologyGraph implements StreamRDF {
         String subjId = nodeIdFromJenaNode(triple.getSubject());
         OntologyNode subjNode = getOrCreateNode(triple.getSubject());
 
-        String lang = triple.getObject().getLiteralLanguage();
+        String lang = ValidateLanguage.validateLanguage( triple.getObject().getLiteralLanguage() );
         if(lang != null && !lang.equals("")) {
             languages.add(lang);
         }

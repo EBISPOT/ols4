@@ -8,7 +8,7 @@ import java.util.TreeMap;
 
 import uk.ac.ebi.rdf2json.OntologyGraph;
 
-public class PropertySet {
+public class PropertySet implements Comparable<PropertySet> {
 
     private Map<String, List<PropertyValue>> properties = new TreeMap<>();
 
@@ -105,6 +105,38 @@ public class PropertySet {
         properties.remove(predicate);
     }
 
+    public List<PropertyValue> getSortedPropertyValues(String predicate) {
+        List<PropertyValue> values = properties.get(predicate);
+        if (values == null) return null;
+        List<PropertyValue> sorted = new ArrayList<>(values);
+        sorted.sort(null);
+        return sorted;
+    }
+
+    @Override
+    public int compareTo(PropertySet other) {
+        // Compare by sorted keys first
+        List<String> thisKeys = new ArrayList<>(properties.keySet());
+        List<String> otherKeys = new ArrayList<>(other.properties.keySet());
+        int sizeCompare = Integer.compare(thisKeys.size(), otherKeys.size());
+        if (sizeCompare != 0) return sizeCompare;
+
+        for (int i = 0; i < thisKeys.size(); i++) {
+            int keyCompare = thisKeys.get(i).compareTo(otherKeys.get(i));
+            if (keyCompare != 0) return keyCompare;
+
+            List<PropertyValue> thisValues = getSortedPropertyValues(thisKeys.get(i));
+            List<PropertyValue> otherValues = other.getSortedPropertyValues(otherKeys.get(i));
+            int valueSizeCompare = Integer.compare(thisValues.size(), otherValues.size());
+            if (valueSizeCompare != 0) return valueSizeCompare;
+
+            for (int j = 0; j < thisValues.size(); j++) {
+                int valueCompare = thisValues.get(j).compareTo(otherValues.get(j));
+                if (valueCompare != 0) return valueCompare;
+            }
+        }
+        return 0;
+    }
 
 }
 

@@ -137,7 +137,22 @@ public class PropertyRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        return this.neo4jClient.getSimilar("OntologyProperty", iri, pageable)
+        // Use default model for backwards compatibility
+        return getSimilarByOntologyId(ontologyId, pageable, iri, lang, outputOpts, "text-embedding-3-small");
+    }
+
+    public Page<JsonElement> getSimilarByOntologyId(String ontologyId, Pageable pageable, String iri, String lang, JsonTransformOptions outputOpts, String modelName) {
+
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+
+        if (modelName == null || modelName.isEmpty()) {
+            modelName = "text-embedding-3-small"; // Default model
+        }
+
+        int topK = pageable.getPageSize();
+        
+        return this.solrClient.getSimilar("property", iri, ontologyId, modelName, topK, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }

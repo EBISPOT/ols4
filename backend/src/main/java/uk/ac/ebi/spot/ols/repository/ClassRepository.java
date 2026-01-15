@@ -225,30 +225,71 @@ public class ClassRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        return this.neo4jClient.getSimilar("OntologyClass", iri, pageable)
+        return getSimilarByOntologyId(ontologyId, pageable, iri, includeObsolete, lang, outputOpts, "text-embedding-3-small");
+    }
+
+    public Page<JsonElement> getSimilarByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts, String modelName) {
+
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+
+        if (modelName == null || modelName.isEmpty()) {
+            modelName = "text-embedding-3-small"; // Default model
+        }
+
+        return this.neo4jClient.getSimilar("OntologyClass", iri, pageable, modelName)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
 
-    public double getSimilarityByOntologyId(String ontologyId, String iri, String iri2) {
+    public double getSimilarityByOntologyId(String ontologyId, String iri, String iri2, String modelName) {
 
         Validation.validateOntologyId(ontologyId);
 
-        return this.neo4jClient.getSimilarity("OntologyClass", iri, iri2);
+        if (modelName == null || modelName.isEmpty()) {
+            modelName = "text-embedding-3-small"; // Default model
+        }
+
+        return this.neo4jClient.getSimilarity("OntologyClass", iri, iri2, modelName);
+    }
+
+    public double getSimilarityByOntologyId(String ontologyId, String iri, String iri2) {
+        return getSimilarityByOntologyId(ontologyId, iri, iri2, "text-embedding-3-small");
+    }
+
+    public List<Double> getEmbeddingVectorByOntologyId(String ontologyId, String iri, String modelName) {
+
+        Validation.validateOntologyId(ontologyId);
+
+        if (modelName == null || modelName.isEmpty()) {
+            modelName = "text-embedding-3-small"; // Default model
+        }
+
+        return this.neo4jClient.getEmbeddingVector("OntologyClass", iri, modelName);
     }
 
     public List<Double> getEmbeddingVectorByOntologyId(String ontologyId, String iri) {
-
-        Validation.validateOntologyId(ontologyId);
-
-        return this.neo4jClient.getEmbeddingVector("OntologyClass", iri);
+        return getEmbeddingVectorByOntologyId(ontologyId, iri, "text-embedding-3-small");
     }
 
-    public Page<JsonElement> searchByVector(List<Double> vector, Pageable pageable, String lang, JsonTransformOptions outputOpts) {
-        Validation.validateVector(vector);
+    public Page<JsonElement> searchByVector(String modelName, float[] vector, Pageable pageable, String lang, JsonTransformOptions outputOpts) {
         Validation.validateLang(lang);
 
-        return this.neo4jClient.searchByVector("OntologyClass", vector, pageable)
+        if (vector == null || vector.length == 0) {
+            throw new IllegalArgumentException("Vector cannot be null or empty");
+        }
+        
+        if (modelName == null || modelName.isEmpty()) {
+            modelName = "text-embedding-3-small"; // Default model
+        }
+        
+        // Convert float[] to List<Double> for Neo4j
+        List<Double> vectorList = new java.util.ArrayList<>(vector.length);
+        for (float f : vector) {
+            vectorList.add((double) f);
+        }
+        
+        return this.neo4jClient.searchByVector("OntologyClass", vectorList, pageable, modelName)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }

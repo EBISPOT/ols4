@@ -207,17 +207,19 @@ public class OlsNeo4jClient {
         public double score;
     }
 
-    public Page<JsonElement> getSimilar(String type, String iri, Pageable pageable) {
+    public Page<JsonElement> getSimilar(String type, String iri, Pageable pageable, String modelName) {
 
 		// Only the defining class has vector embeddings. So instead of searching by
 		// ID (where we may get an imported class with no embeddings), search by IRI
 		// and isDefiningOntology=true
 
-		String index = type == "OntologyClass" ? "class_embeddings" : "property_embeddings";
+		// Index name pattern: {type_lowercase}_{model_name}_embeddings
+		String index = type.toLowerCase() + "_" + modelName.replace("-", "_") + "_embeddings";
+		String embeddingProperty = "embeddings_" + modelName.replace("-", "_");
 
 		String query = "MATCH (c:" + type + " {iri: $iri}) "
 		+ "WHERE \"true\" IN c.isDefiningOntology "
-		+ "CALL db.index.vector.queryNodes('" + index + "', $size, c.embeddings) "
+		+ "CALL db.index.vector.queryNodes('" + index + "', $size, c." + embeddingProperty + ") "
 		+ "YIELD node AS similar, score "
 		+ "RETURN similar as entity, score "
 		+ "ORDER BY score DESC ";
@@ -245,11 +247,13 @@ public class OlsNeo4jClient {
 		return new PageImpl<JsonElement>(res, pageable, res.size());
     }
 
-    public double getSimilarity(String type, String iri, String iri2) {
+    public double getSimilarity(String type, String iri, String iri2, String modelName) {
+
+		String embeddingProperty = "embeddings_" + modelName.replace("-", "_");
 
 		String query = "MATCH (c:" + type + " {iri: $iri, isDefiningOntology:['true']}) " +
 		"MATCH (c2:" + type + " {iri: $iri2, isDefiningOntology:['true']}) " +
-		"RETURN vector.similarity.cosine(c.embeddings, c2.embeddings) AS score";
+		"RETURN vector.similarity.cosine(c." + embeddingProperty + ", c2." + embeddingProperty + ") AS score";
 
 		Session session = neo4jClient.getSession();
 		Result result = session.run(query, Map.of("iri", iri, "iri2", iri2));
@@ -263,10 +267,12 @@ public class OlsNeo4jClient {
 		throw new ResourceNotFoundException("entity not found");
     }
 
-    public List<Double> getEmbeddingVector(String type, String iri) {
+    public List<Double> getEmbeddingVector(String type, String iri, String modelName) {
+
+		String embeddingProperty = "embeddings_" + modelName.replace("-", "_");
 
 		String query = "MATCH (c:" + type + " {iri: $iri, isDefiningOntology:['true']}) " +
-		"RETURN c.embeddings AS embeddings";
+		"RETURN c." + embeddingProperty + " AS embeddings";
 
 		Session session = neo4jClient.getSession();
 		Result result = session.run(query, Map.of("iri", iri));
@@ -280,9 +286,10 @@ public class OlsNeo4jClient {
 		throw new ResourceNotFoundException("entity not found");
     }
 
-    public Page<JsonElement> searchByVector(String type, List<Double> vector, Pageable pageable) {
+    public Page<JsonElement> searchByVector(String type, List<Double> vector, Pageable pageable, String modelName) {
 
-		String index = type == "OntologyClass" ? "class_embeddings" : "property_embeddings";
+		// Index name pattern: {type_lowercase}_{model_name}_embeddings
+		String index = type.toLowerCase() + "_" + modelName.replace("-", "_") + "_embeddings";
 
 		String query = "CALL db.index.vector.queryNodes('" + index + "', $size, $vec) "
 		+ "YIELD node AS similar, score "

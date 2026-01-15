@@ -39,10 +39,13 @@ import org.springframework.web.bind.annotation.RestController;
 import uk.ac.ebi.spot.ols.JsonHelper;
 import uk.ac.ebi.spot.ols.repository.Validation;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
+import uk.ac.ebi.spot.ols.repository.solr.OlsFacetedResultsPage;
+import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.repository.transforms.RemoveLiteralDatatypesTransform;
 import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
 import uk.ac.ebi.spot.ols.repository.v1.mappers.AnnotationExtractor;
+import uk.ac.ebi.spot.ols.service.EmbeddingServiceClient;
 
 import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
@@ -58,6 +61,12 @@ public class V1SearchController {
 
     @Autowired
     private OlsSolrClient solrClient;
+    
+    @Autowired
+    private OlsNeo4jClient neo4jClient;
+    
+    @Autowired
+    private EmbeddingServiceClient embeddingServiceClient;
 
 
     private static final Logger logger = LoggerFactory.getLogger(V1SearchController.class);
@@ -120,9 +129,20 @@ public class V1SearchController {
                     description = "You can select the format you want the response in. Default is `json` but you can select xml, csv etc. Full list of acceptable value can be found here: https://solr.apache.org/guide/solr/latest/query-guide/response-writers.html")
             String format,
             @RequestParam(value = "lang", defaultValue = "en") String lang,
+            @RequestParam(value = "model", required = false)
+            @Parameter(name = "model",
+                    description = "Optional: Use vector similarity search with the specified embedding model. When provided, the query will be embedded and vector search will be performed.",
+                    example = "llama-embed-megatron-8b") String model,
             HttpServletResponse response
     ) throws IOException, SolrServerException {
 
+        // If model is provided, use vector search
+        if (model != null && !model.isEmpty()) {
+            performVectorSearch(query, model, ontologies, types, rows, start, fieldList, lang, response);
+            return;
+        }
+
+        // Otherwise, continue with regular text search
         final SolrQuery solrQuery = new SolrQuery(); // 1
 
         if (queryFields == null) {
@@ -425,6 +445,135 @@ public class V1SearchController {
             }
         }
         return builder.toString();
+    }
+    
+    private void performVectorSearch(
+            String query,
+            String model,
+            Collection<String> ontologies,
+            Collection<String> types,
+            Integer rows,
+            Integer start,
+            Collection<String> fieldList,
+            String lang,
+            HttpServletResponse response
+    ) throws IOException {
+        try {
+            // Embed the query using the embedding service
+            float[] queryVector = embeddingServiceClient.embedText(model, query);
+            
+            // Convert float[] to List<Double> for Neo4j
+            java.util.List<Double> vectorList = new java.util.ArrayList<>(queryVector.length);
+            for (float f : queryVector) {
+                vectorList.add((double) f);
+            }
+            
+            // Perform vector search using Neo4j
+            org.springframework.data.domain.Page<com.google.gson.JsonElement> results = neo4jClient.searchByVector(
+                "OntologyClass", 
+                vectorList, 
+                org.springframework.data.domain.PageRequest.of(start / rows, rows),
+                model
+            );
+            
+            // Process results similar to regular search
+            List<Object> docs = new ArrayList<>();
+            int count = 0;
+            for(com.google.gson.JsonElement jsonElement : results.getContent()) {
+                if (count >= rows) break;
+                
+                JsonObject json = RemoveLiteralDatatypesTransform.transform(
+                    LocalizationTransform.transform(jsonElement, lang)
+                ).getAsJsonObject();
+                
+                // Apply filters
+                if (ontologies != null && !ontologies.isEmpty()) {
+                    String ontologyId = JsonHelper.getString(json, "ontologyId");
+                    if (ontologyId == null || !ontologies.contains(ontologyId)) {
+                        continue;
+                    }
+                }
+                
+                if (types != null && !types.isEmpty()) {
+                    String type = JsonHelper.getString(json, "type");
+                    if (type == null || !types.contains(type)) {
+                        continue;
+                    }
+                }
+                
+                Map<String,Object> outDoc = new HashMap<>();
+                
+                if (fieldList == null) {
+                    fieldList = new HashSet<>();
+                }
+                // default fields
+                if (fieldList.isEmpty()) {
+                    fieldList.add("id");
+                    fieldList.add("iri");
+                    fieldList.add("ontology_name");
+                    fieldList.add(LABEL.getText());
+                    fieldList.add(DEFINITION.getOls3Text());
+                    fieldList.add("short_form");
+                    fieldList.add("obo_id");
+                    fieldList.add("type");
+                    fieldList.add("ontology_prefix");
+                }
+                
+                if (fieldList.contains("id")) outDoc.put("id", JsonHelper.getString(json, "id"));
+                if (fieldList.contains("iri")) outDoc.put("iri", JsonHelper.getString(json, "iri"));
+                if (fieldList.contains("ontology_name")) outDoc.put("ontology_name", JsonHelper.getString(json, "ontologyId"));
+                if (fieldList.contains(LABEL.getText())) {
+                    var label = JsonHelper.getString(json, LABEL.getText());
+                    if(label != null) {
+                        outDoc.put(LABEL.getText(), label);
+                    }
+                }
+                if (fieldList.contains(DEFINITION.getOls3Text())) outDoc.put(DEFINITION.getOls3Text(),
+                        JsonHelper.getStrings(json, DEFINITION.getText()));
+                if (fieldList.contains("short_form")) outDoc.put("short_form", JsonHelper.getString(json, "shortForm"));
+                if (fieldList.contains("obo_id")) outDoc.put("obo_id", JsonHelper.getString(json, "curie"));
+                if (fieldList.contains(IS_DEFINING_ONTOLOGY.getOls3Text())) outDoc.put(IS_DEFINING_ONTOLOGY.getOls3Text(),
+                        JsonHelper.getString(json, IS_DEFINING_ONTOLOGY.getText()) != null &&
+                                JsonHelper.getString(json, IS_DEFINING_ONTOLOGY.getText()).equals("true"));
+                if (fieldList.contains("type")) {
+                    outDoc.put("type", JsonHelper.getType(json, "type"));
+                }
+                if (fieldList.contains(SYNONYM.getText())) outDoc.put(SYNONYM.getText(), JsonHelper.getStrings(json, SYNONYM.getText()));
+                if (fieldList.contains("ontology_prefix")) outDoc.put("ontology_prefix", JsonHelper.getString(json, "ontologyPreferredPrefix"));
+                if (fieldList.contains("subset")) outDoc.put("subset", JsonHelper.getStrings(json, "http://www.geneontology.org/formats/oboInOwl#inSubset"));
+                if (fieldList.contains("ontology_iri")) outDoc.put("ontology_iri", JsonHelper.getStrings(json, "ontologyIri").get(0));
+                
+                // Include vector search score (cosine similarity)
+                if (json.has("_score")) {
+                    outDoc.put("score", json.get("_score").getAsFloat());
+                }
+                
+                docs.add(outDoc);
+                count++;
+            }
+            
+            Map<String, Object> responseHeader = new HashMap<>();
+            responseHeader.put("status", 0);
+            responseHeader.put("QTime", 0);
+            
+            Map<String, Object> responseBody = new HashMap<>();
+            responseBody.put("numFound", results.getTotalElements());
+            responseBody.put("start", start);
+            responseBody.put("docs", docs);
+            
+            Map<String, Object> responseObj = new HashMap<>();
+            responseObj.put("responseHeader", responseHeader);
+            responseObj.put("response", responseBody);
+            
+            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+            response.setCharacterEncoding(StandardCharsets.UTF_8.name());
+            response.getOutputStream().write(gson.toJson(responseObj).getBytes(StandardCharsets.UTF_8));
+            response.flushBuffer();
+            
+        } catch (Exception e) {
+            logger.error("Vector search failed", e);
+            throw new IOException("Vector search failed: " + e.getMessage(), e);
+        }
     }
 
 

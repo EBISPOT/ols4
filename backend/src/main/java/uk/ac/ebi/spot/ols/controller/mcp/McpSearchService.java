@@ -47,6 +47,7 @@ public class McpSearchService {
             null,
             false,
             Map.of(),
+            null, // model
             outputOpts
         );
 

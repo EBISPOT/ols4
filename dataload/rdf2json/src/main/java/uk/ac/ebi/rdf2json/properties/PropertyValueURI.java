@@ -30,4 +30,13 @@ public class PropertyValueURI extends PropertyValue {
                 "uri='" + uri + '\'' +
                 '}';
     }
+
+    @Override
+    public int compareTo(PropertyValue other) {
+        int typeCompare = compareByType(other);
+        if (typeCompare != 0) return typeCompare;
+        int cmp = uri.compareTo(((PropertyValueURI) other).uri);
+        if (cmp != 0) return cmp;
+        return compareAxioms(other);
+    }
 }

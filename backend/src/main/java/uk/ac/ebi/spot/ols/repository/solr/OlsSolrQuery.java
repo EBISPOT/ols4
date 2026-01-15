@@ -15,6 +15,11 @@ public class OlsSolrQuery {
 	List<BoostField> boostFields = new ArrayList<>();
 	List<String> facetFields = new ArrayList<>();
 	List<Filter> filters = new ArrayList<>();
+	
+	// Vector search fields
+	float[] embeddingVector = null;
+	String embeddingModel = null;
+	Integer topK = null;
 
 	public OlsSolrQuery() {
 	}
@@ -29,6 +34,31 @@ public class OlsSolrQuery {
 
 	public void setExactMatch(boolean exactMatch) {
 		this.exactMatch = exactMatch;
+	}
+	
+	public void setEmbeddingVector(float[] vector, String model) {
+		this.embeddingVector = vector;
+		this.embeddingModel = model;
+	}
+	
+	public void setTopK(Integer topK) {
+		this.topK = topK;
+	}
+	
+	public float[] getEmbeddingVector() {
+		return this.embeddingVector;
+	}
+	
+	public String getEmbeddingModel() {
+		return this.embeddingModel;
+	}
+	
+	public Integer getTopK() {
+		return this.topK;
+	}
+	
+	public boolean isVectorSearch() {
+		return embeddingVector != null && embeddingModel != null;
 	}
 
 	public void addSearchField(String propertyName, int weight, SearchType searchType) {

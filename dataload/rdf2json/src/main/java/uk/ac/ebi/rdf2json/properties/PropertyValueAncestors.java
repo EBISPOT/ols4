@@ -42,6 +42,18 @@ public class PropertyValueAncestors extends PropertyValue {
                 ", hierarchyPredicate='" + hierarchyPredicate + '\'' +
                 '}';
     }
+
+    @Override
+    public int compareTo(PropertyValue other) {
+        int typeCompare = compareByType(other);
+        if (typeCompare != 0) return typeCompare;
+        PropertyValueAncestors o = (PropertyValueAncestors) other;
+        int cmp = node.uri.compareTo(o.node.uri);
+        if (cmp != 0) return cmp;
+        cmp = hierarchyPredicate.compareTo(o.hierarchyPredicate);
+        if (cmp != 0) return cmp;
+        return compareAxioms(other);
+    }
 }
 
 

@@ -1,25 +1,28 @@
 
-# This image, once built, should allow any arbitrary config to be loaded and output neo4j/solr datafiles
 
-FROM rust:1.79-buster
+FROM rust:1.90.0-bullseye
 
-SHELL ["/bin/bash", "-c"]
+RUN apt-get update -y && apt-get install -y pigz python3-requests python3-pip
 
-RUN sed -i 's|http://deb.debian.org/debian|http://archive.debian.org/debian|g' /etc/apt/sources.list && \
-    sed -i 's|http://deb.debian.org/debian-security|http://archive.debian.org/debian-security|g' /etc/apt/sources.list && \
-    apt-get update
+RUN pip3 install pyarrow
+
+# Install Amazon Corretto 21 with multi-arch support
+RUN ARCH=$(dpkg --print-architecture) && \
+    if [ "$ARCH" = "amd64" ]; then \
+        curl https://corretto.aws/downloads/resources/21.0.6.7.1/amazon-corretto-21.0.6.7.1-linux-x64.tar.gz | tar -C /opt -xzf - && \
+        echo 'export JAVA_HOME=/opt/amazon-corretto-21.0.6.7.1-linux-x64' >> ~/.bashrc && \
+        echo 'export PATH=$PATH:$JAVA_HOME/bin' >> ~/.bashrc && \
+        ln -s /opt/amazon-corretto-21.0.6.7.1-linux-x64 /opt/java; \
+    elif [ "$ARCH" = "arm64" ]; then \
+        curl https://corretto.aws/downloads/resources/21.0.6.7.1/amazon-corretto-21.0.6.7.1-linux-aarch64.tar.gz | tar -C /opt -xzf - && \
+        echo 'export JAVA_HOME=/opt/amazon-corretto-21.0.6.7.1-linux-aarch64' >> ~/.bashrc && \
+        echo 'export PATH=$PATH:$JAVA_HOME/bin' >> ~/.bashrc && \
+        ln -s /opt/amazon-corretto-21.0.6.7.1-linux-aarch64 /opt/java; \
+    fi
+ENV JAVA_HOME="/opt/java"
+ENV PATH="$PATH:/opt/java/bin"
 
 RUN addgroup --system --gid 1000 ols && adduser --system --uid 1000 --ingroup ols ols
-
-# Install JDK
-#
-RUN arch=$(uname -m); arch=${arch/x86_64/x64}; \
-        curl https://corretto.aws/downloads/resources/21.0.6.7.1/amazon-corretto-21.0.6.7.1-linux-$arch.tar.gz | tar -C /opt -xzf - && \
-        mv /opt/amazon-corretto* /opt/amazon-corretto && \
-        echo 'export JAVA_HOME=/opt/amazon-corretto' >> ~/.bashrc && \
-        echo 'export PATH=$PATH:$JAVA_HOME/bin' >> ~/.bashrc
-ENV JAVA_HOME="/opt/amazon-corretto/"
-ENV PATH="$PATH:/opt/amazon-corretto/bin"
 
 # Install Maven
 #
@@ -49,43 +52,23 @@ COPY ./dataload /opt/ols/dataload
 COPY ./ols-shared /opt/ols/ols-shared
 COPY ./pom.xml /opt/ols
 
-RUN cd /opt/ols/ols-shared && mvn package
+COPY ./test_dataload.sh /opt/ols
+COPY ./dev-testing /opt/ols/dev-testing
+COPY ./testcases_expected_output /opt/ols/testcases_expected_output
+COPY ./testcases /opt/ols/testcases
 
-RUN mvn install:install-file -DcreateChecksum=true -Dpackaging=jar -Dfile=/opt/ols/ols-shared/target/ols4-shared-1.0.0-SNAPSHOT.jar -DgroupId=uk.ac.ebi.spot.ols -DartifactId=ols4-shared -Dversion=1.0.0-SNAPSHOT
-RUN cd /opt/ols/dataload &&  mvn package
+RUN cd /opt/ols/ols-shared && mvn -B -ntp -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn package
 
-# Copy the OLS4 Solr config into our temporary Solr server
-#
-RUN rm -rf /opt/solr/server/solr
-RUN cp -r /opt/ols/dataload/solr_config /opt/solr/server/solr
+RUN mvn -B -ntp -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn install:install-file -DcreateChecksum=true -Dpackaging=jar -Dfile=/opt/ols/ols-shared/target/ols4-shared-1.0.0-SNAPSHOT.jar -DgroupId=uk.ac.ebi.spot.ols -DartifactId=ols4-shared -Dversion=1.0.0-SNAPSHOT
+RUN cd /opt/ols/dataload &&  mvn -B -ntp -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn -T 1C package
+
+
+# COPY ./backend /opt/ols/backend
+# RUN cd /opt/ols/backend && mvn -T 1C package
+
+
 
 RUN mkdir /tmp/out
-
-
-
-####
-#### EMBEDDINGS SUPPORT
-####
-RUN apt-get update && apt install -y build-essential cmake pigz vim
-RUN cd /opt/ols/dataload/embeddings/ols_embed && cargo b --release && \
-        cd /opt/ols/dataload/embeddings/ols_inject_hierarchy && cargo b --release
-
-# To enable materialising embeddings using ChromaDB
-# We have to use Debian buster as the base to run on the EBI HPC, so
-# use uv to get Python 3.13 which is not available otherwise.
-#
-ENV UV_INSTALL_DIR="/usr/bin"
-ENV UV_PYTHON_INSTALL_DIR="/usr/bin"
-ENV UV_TOOL_DIR="/usr/bin"
-ENV UV_TOOL_BIN_DIR="/usr/bin"
-ENV UV_CACHE_DIR="/opt/uv_cache"
-#ENV UV_PROJECT_ENVIRONMENT="/opt/uv_venv"
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
-        uv python install cpython-3.13.5-linux-x86_64-gnu
-RUN cd /opt/ols/dataload/embeddings/ols_top_k && uv sync --frozen
-####
-####
-
 
 
 RUN chown -R ols:ols /opt/* /tmp/out

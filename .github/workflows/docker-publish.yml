@@ -1,0 +1,60 @@
+name: Publish Docker Images
+
+on:
+  push:
+    branches: [dev, stable]
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'EBISPOT' }}
+    permissions:
+      contents: read
+      packages: write
+
+    strategy:
+      matrix:
+        component: [dataload, backend, frontend, apitester4]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/ebispot/ols4-${{ matrix.component }}
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix={{branch}}-
+
+      - name: Build and push ols4 ${{ matrix.component }} Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ${{ matrix.component == 'frontend' && './frontend' || (matrix.component == 'apitester4' && './apitester4' || '.') }}
+          file: ${{ matrix.component == 'frontend' && './frontend/Dockerfile' || format('./{0}/Dockerfile', matrix.component) }}
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/ebispot/ols4-${{ matrix.component }}:${{ github.sha }}
+            ghcr.io/ebispot/ols4-${{ matrix.component }}:${{ github.ref_name }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
