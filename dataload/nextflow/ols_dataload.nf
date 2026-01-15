@@ -240,7 +240,7 @@ process create_solr {
     publishDir "${params.out}", overwrite: true
     
     input:
-    path(solr_jsonls)
+    path(solr_jsonls, stageAs: '?/*')
     path(manifest)
     path(embeddings_path)
 

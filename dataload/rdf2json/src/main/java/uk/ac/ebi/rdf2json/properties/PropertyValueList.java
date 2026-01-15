@@ -52,4 +52,18 @@ public class PropertyValueList extends PropertyValue {
         }
         return true;
     }
+
+    @Override
+    public int compareTo(PropertyValue other) {
+        int typeCompare = compareByType(other);
+        if (typeCompare != 0) return typeCompare;
+        PropertyValueList o = (PropertyValueList) other;
+        int sizeCompare = Integer.compare(propertyValues.size(), o.propertyValues.size());
+        if (sizeCompare != 0) return sizeCompare;
+        for (int i = 0; i < propertyValues.size(); i++) {
+            int cmp = propertyValues.get(i).compareTo(o.propertyValues.get(i));
+            if (cmp != 0) return cmp;
+        }
+        return compareAxioms(other);
+    }
 }

@@ -57,4 +57,18 @@ public class PropertyValueLiteral extends PropertyValue {
                 ", lang='" + lang + '\'' +
                 '}';
     }
+
+    @Override
+    public int compareTo(PropertyValue other) {
+        int typeCompare = compareByType(other);
+        if (typeCompare != 0) return typeCompare;
+        PropertyValueLiteral o = (PropertyValueLiteral) other;
+        int cmp = value.compareTo(o.value);
+        if (cmp != 0) return cmp;
+        cmp = datatype.compareTo(o.datatype);
+        if (cmp != 0) return cmp;
+        cmp = lang.compareTo(o.lang);
+        if (cmp != 0) return cmp;
+        return compareAxioms(other);
+    }
 }

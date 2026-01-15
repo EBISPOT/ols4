@@ -50,4 +50,18 @@ public class PropertyValueRelated extends PropertyValue {
                 ", filler=" + filler +
                 '}';
     }
+
+    @Override
+    public int compareTo(PropertyValue other) {
+        int typeCompare = compareByType(other);
+        if (typeCompare != 0) return typeCompare;
+        PropertyValueRelated o = (PropertyValueRelated) other;
+        int cmp = property.compareTo(o.property);
+        if (cmp != 0) return cmp;
+        cmp = classExpression.uri.compareTo(o.classExpression.uri);
+        if (cmp != 0) return cmp;
+        cmp = filler.uri.compareTo(o.filler.uri);
+        if (cmp != 0) return cmp;
+        return compareAxioms(other);
+    }
 }

@@ -26,4 +26,13 @@ public class PropertyValueBNode extends PropertyValue {
                 "id='" + id + '\'' +
                 '}';
     }
+
+    @Override
+    public int compareTo(PropertyValue other) {
+        int typeCompare = compareByType(other);
+        if (typeCompare != 0) return typeCompare;
+        int cmp = id.compareTo(((PropertyValueBNode) other).id);
+        if (cmp != 0) return cmp;
+        return compareAxioms(other);
+    }
 }

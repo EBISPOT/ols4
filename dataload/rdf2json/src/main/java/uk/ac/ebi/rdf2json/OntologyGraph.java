@@ -538,7 +538,7 @@ public class OntologyGraph implements StreamRDF {
                 continue;
             }
 
-            List<PropertyValue> values = properties.getPropertyValues(predicate);
+            List<PropertyValue> values = properties.getSortedPropertyValues(predicate);
 
             writer.name(predicate);
             if (values.size() == 1 && values.get(0) instanceof PropertyValueList) {
@@ -574,7 +574,7 @@ public class OntologyGraph implements StreamRDF {
             writeValue(writer, value);
             writer.name("axioms");
             writer.beginArray();
-            for(PropertySet axiom : value.axioms) {
+            for(PropertySet axiom : value.getSortedAxioms()) {
                 writer.beginObject();
                 writeProperties(writer, axiom, null);
                 writer.endObject();

@@ -103,13 +103,13 @@ To start everything, including the frontend:
 
 ## Making the tests pass
 
-OLS has a comprehensive suite of automated CI tests for the dataload and API. If code changes change the output such that it no longer matches `testcases_expected_output` (dataload) and/or `testcases_expected_output_api` (API) the CI will fail, and you will need to update the expected output.
+OLS has a comprehensive suite of automated CI tests for the dataload and API. If code changes change the output such that it no longer matches `testcases_expected_output` (mock dataload) and/or `testcases_expected_output_api` (full Nextflow dataload and API) the CI will fail, and you will need to update the expected output.
 
 Before running your testcases, ensure that your work is already committed. Create a new branch based on the branch you worked on
 but with a `-testcases` suffix. I.e., if your branch is called "fix-xyz", the new branch for the testcases will be 
 `fix-xyz-testcases`. We commit testcases to a separate branch due to the large number of files updated when testcases are run.
 
-### Testing the dataload (without Nextflow)
+### Testing the mock dataload
 
 First, build an up to date Docker image for the dataload:
 
@@ -133,7 +133,7 @@ Now you can inspect any changes to the files in `testcases_expected_output` and 
 
 ### Testing the full Nextflow dataload and API
 
-First follow the instructions above for testing the dataload. Then build up to date Docker images for remainder of the OLS stack:
+First follow the instructions above for testing the mock dataload. Then build up to date Docker images for remainder of the OLS stack:
 
     export OLS4_BACKEND_IMAGE=ols4-backend:local
     export OLS4_FRONTEND_IMAGE=ols4-frontend:local  
