@@ -33,7 +33,7 @@ public class OntologyNode {
         }
 
         static public Set<String> toString(Set<NodeType> nodeTypes) {
-            return nodeTypes.stream().map(t -> t.name).collect(Collectors.toSet());
+            return nodeTypes.stream().map(t -> t.name).collect(Collectors.toCollection(TreeSet::new));
         }
     }
     

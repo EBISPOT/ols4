@@ -105,6 +105,5 @@ public class PropertySet {
         properties.remove(predicate);
     }
 
-
 }
 

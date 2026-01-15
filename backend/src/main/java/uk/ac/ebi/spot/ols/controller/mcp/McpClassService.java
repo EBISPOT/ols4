@@ -64,6 +64,7 @@ public class McpClassService {
             null,
             false,
             properties,
+            null, // model
             outputOpts
         );
 

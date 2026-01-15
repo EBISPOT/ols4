@@ -1,6 +1,9 @@
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
+
+import uk.ac.ebi.ols.shared.Embeddings;
+
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
@@ -17,7 +20,8 @@ public class OntologyWriter {
     JsonReader reader;
     String outputFilePath;
     String ontologyId;
-    OntologyScanner.Result ontologyScannerResult;
+    OntologyManifestInfo manifestInfo;
+    Map<String, Embeddings> embeddings;
 
     List<String> edgesProperties;
     CSVPrinter edgesPrinter;
@@ -26,9 +30,7 @@ public class OntologyWriter {
             // large and doesn't get queried
             APPEARS_IN.getText(),
             // all property values together, this is for solr and not useful in neo4j
-            "searchableAnnotationValues",
-            // this is written separately as a float array
-            "embeddings"
+            "searchableAnnotationValues"
     );
 
     public static final Set<String> EDGE_BLACKLIST = Set.of(
@@ -45,14 +47,16 @@ public class OntologyWriter {
             "relatedFrom"
     );
 
-    public OntologyWriter(JsonReader reader, String outputFilePath, OntologyScanner.Result ontologyScannerResult) {
+    public OntologyWriter(JsonReader reader, String outputFilePath, OntologyManifestInfo manifestInfo, Map<String, Embeddings> embeddings) {
 
-        this.ontologyId = ontologyScannerResult.ontologyId;
+        this.ontologyId = manifestInfo.ontologyId;
         this.reader = reader;
-        this.ontologyScannerResult = ontologyScannerResult;
+        this.manifestInfo = manifestInfo;
         this.outputFilePath = outputFilePath;
+        this.embeddings = embeddings;
 
-        edgesProperties = new ArrayList<String>(ontologyScannerResult.allEdgeProperties);
+        edgesProperties = new ArrayList<String>(manifestInfo.allEdgeProperties);
+        Collections.sort(edgesProperties);
     }
 
     public void write() throws IOException {
@@ -69,36 +73,39 @@ public class OntologyWriter {
                 new File(outputFilePath + "/" + ontologyId + "_edges.csv"), Charset.defaultCharset());
 
 
-        reader.beginObject(); // ontology
+        // Note: reader is already positioned inside the ontology object (ontologyId was already read in NeoConverter)
 
 	Map<String,Object> ontologyProperties = new LinkedHashMap<>();
+	
+	// Store the ontologyId that was already read
+	ontologyProperties.put("ontologyId", ontologyId);
 
 	while(reader.peek() != JsonToken.END_OBJECT) {
 
 		String name = reader.nextName();
 
 		if(name.equals("classes")) {
-			writeEntities(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_classes.csv", ontologyId,
-				"OntologyEntity|OntologyClass", "class", ontologyScannerResult.allClassProperties);
+			writeEntities(outputFilePath + "/" + manifestInfo.ontologyId + "_classes.csv", ontologyId,
+				"OntologyEntity|OntologyClass", "class", manifestInfo.allClassProperties);
 			continue;
 		}
 
 		if(name.equals("properties")) {
-			writeEntities(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_properties.csv", ontologyId,
-				"OntologyEntity|OntologyProperty", "property", ontologyScannerResult.allPropertyProperties);
+			writeEntities(outputFilePath + "/" + manifestInfo.ontologyId + "_properties.csv", ontologyId,
+				"OntologyEntity|OntologyProperty", "property", manifestInfo.allPropertyProperties);
 			continue;
 		}
 
 		if(name.equals("individuals")) {
-			writeEntities(outputFilePath + "/" + ontologyScannerResult.ontologyId + "_individuals.csv", ontologyId,
-				"OntologyEntity|OntologyIndividual", "individual", ontologyScannerResult.allIndividualProperties);
+			writeEntities(outputFilePath + "/" + manifestInfo.ontologyId + "_individuals.csv", ontologyId,
+				"OntologyEntity|OntologyIndividual", "individual", manifestInfo.allIndividualProperties);
 			continue;
 		}
 
 		ontologyProperties.put(name, gson.fromJson(reader, Object.class));
 	}
 
-	reader.endObject(); // ontology
+	// Note: reader.endObject() is not called here - it will be called in NeoConverter after this method returns
 
 	writeOntology(ontologyProperties);
 
@@ -107,7 +114,8 @@ public class OntologyWriter {
 
     public void writeOntology(Map<String,Object> ontologyProperties) throws IOException {
 
-        List<String> properties = new ArrayList<String>( ontologyScannerResult.allOntologyProperties);
+        List<String> properties = new ArrayList<String>( manifestInfo.allOntologyProperties);
+        Collections.sort(properties);
 
         List<String> csvHeader = new ArrayList<>();
         csvHeader.add("id:ID");
@@ -115,7 +123,7 @@ public class OntologyWriter {
         csvHeader.add("_json");
         csvHeader.addAll(propertyHeaders(properties));
 
-        String outName = outputFilePath + "/" + (String) ontologyScannerResult.ontologyId + "_ontologies.csv";
+        String outName = outputFilePath + "/" + (String) manifestInfo.ontologyId + "_ontologies.csv";
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
@@ -138,13 +146,25 @@ public class OntologyWriter {
     public void writeEntities(String outName, String ontologyId, String nodeLabels, String type, Set<String> allEntityProperties) throws IOException {
 
         List<String> properties = new ArrayList<String>(allEntityProperties);
+        Collections.sort(properties);
+        
+        // Get embedding model names for CSV columns
+        List<String> embeddingModelNames = new ArrayList<>();
+        if (embeddings != null) {
+            embeddingModelNames.addAll(embeddings.keySet());
+            Collections.sort(embeddingModelNames); // Ensure consistent column order
+        }
 
         List<String> csvHeader = new ArrayList<>();
         csvHeader.add("id:ID");
         csvHeader.add(":LABEL");
         csvHeader.add("_json");
         csvHeader.addAll(propertyHeaders(properties));
-        csvHeader.add("embeddings:float[]");
+        
+        // Add embedding columns
+        for (String modelName : embeddingModelNames) {
+            csvHeader.add("embeddings_" + modelName + ":float[]");
+        }
 
         CSVPrinter printer = CSVFormat.POSTGRESQL_CSV.withHeader(csvHeader.toArray(new String[0])).print(
                 new File(outName), Charset.defaultCharset());
@@ -165,13 +185,10 @@ public class OntologyWriter {
             for (String column : properties) {
                 row[n++] = serializeValue(entity, column);
             }
-
-            if(entity.containsKey("embeddings")) {
-                List<Double> embeddings = (List<Double>) entity.get("embeddings");
-                row[n++] = String.join("|", embeddings.stream().map(Object::toString).toArray(String[]::new));
-                entity.remove("embeddings"); // don't want it in the _json field
-            } else {
-                row[n++] = "";
+            
+            // Serialize embedding values as pipe-separated floats
+            for (String modelName : embeddingModelNames) {
+                row[n++] = serializeEmbedding(ontologyId, type, (String) entity.get("iri"), modelName);
             }
 
             row[_jsonIdx] = gson.toJson(entity);
@@ -219,7 +236,7 @@ public class OntologyWriter {
 		    assert(axioms != null);
 
                     // is the value the URI of something that exists in the ontology?
-                    if (ontologyScannerResult.uriToTypes.containsKey(reifiedValue)) {
+                    if (manifestInfo.uriToTypes.containsKey(reifiedValue)) {
 			// create one edge for each axiom
 			for(Map<String,Object> axiom : axioms) {
 				printEdge(ontologyId, subject, property, reifiedValue, axiom);
@@ -232,7 +249,7 @@ public class OntologyWriter {
                     assert (relatedValue instanceof String);
 
                     // is the value the URI of something that exists in the ontology?
-                    if (ontologyScannerResult.uriToTypes.containsKey(relatedValue)) {
+                    if (manifestInfo.uriToTypes.containsKey(relatedValue)) {
 			printEdge(ontologyId, subject, property, relatedValue, mapValue);
                     }
 		}
@@ -240,7 +257,7 @@ public class OntologyWriter {
             } else if (v instanceof String) {
 
                 // is the value the URI of something that exists in the ontology?
-                if (ontologyScannerResult.uriToTypes.containsKey(v)) {
+                if (manifestInfo.uriToTypes.containsKey(v)) {
                     printEdge(ontologyId, subject, property, v, Map.of());
                 }
 
@@ -267,11 +284,11 @@ public class OntologyWriter {
         //
         // TODO: fix
         //
-        Set<OntologyScanner.NodeType> aTypes = ontologyScannerResult.uriToTypes.get(aUri);
-        Set<OntologyScanner.NodeType> bTypes = ontologyScannerResult.uriToTypes.get(bUri);
+        Set<OntologyManifestInfo.NodeType> aTypes = manifestInfo.uriToTypes.get(aUri);
+        Set<OntologyManifestInfo.NodeType> bTypes = manifestInfo.uriToTypes.get(bUri);
 
-        for(OntologyScanner.NodeType aType : aTypes) {
-            for (OntologyScanner.NodeType bType : bTypes) {
+        for(OntologyManifestInfo.NodeType aType : aTypes) {
+            for (OntologyManifestInfo.NodeType bType : bTypes) {
 
                 String[] row = new String[4 + edgesProperties.size()];
                 int n = 0;
@@ -291,7 +308,7 @@ public class OntologyWriter {
 
     }
 
-    private String nodeTypeToString(OntologyScanner.NodeType type) {
+    private String nodeTypeToString(OntologyManifestInfo.NodeType type) {
         switch(type) {
             case CLASS:
                 return "class";
@@ -362,6 +379,8 @@ public class OntologyWriter {
 
             if(k.equals("iri")) {
                 headers.add("iri");
+            } else if(k.startsWith("embeddings_")) {
+                // headers.add("embeddings_" + k.substring("embeddings_".length()) + ":float[]");
             } else {
                 headers.add(k.replace(":", "__") + ":string[]");
             }
@@ -418,6 +437,34 @@ public class OntologyWriter {
         }
 
         return null;
+    }
+
+    /**
+     * Serialize embeddings for a given entity and model as a pipe-separated string of floats.
+     */
+    private String serializeEmbedding(String ontologyId, String entityType, String iri, String modelName) {
+        if (embeddings == null) {
+            return "";
+        }
+        
+        Embeddings emb = embeddings.get(modelName);
+        if (emb == null) {
+            return "";
+        }
+        
+        float[] embeddingsArray = emb.getEmbeddings(ontologyId, entityType, iri);
+        if (embeddingsArray == null) {
+            return "";
+        }
+        
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < embeddingsArray.length; i++) {
+            if (i > 0) {
+                sb.append("|");
+            }
+            sb.append(embeddingsArray[i]);
+        }
+        return sb.toString();
     }
 
 

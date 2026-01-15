@@ -1,4 +1,4 @@
-import { Checkbox, FormControlLabel, ThemeProvider } from "@mui/material";
+import { Checkbox, FormControlLabel, ThemeProvider, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { get, getPaginated } from "../app/api";
@@ -8,6 +8,7 @@ import Entity from "../model/Entity";
 import Ontology from "../model/Ontology";
 import { Suggest } from "../model/Suggest";
 import Thing from "../model/Thing";
+import Model from "../model/Model";
 
 let curSearchToken: any = null;
 
@@ -37,6 +38,8 @@ export default function SearchBox({
   const [arrowKeySelectedN, setArrowKeySelectedN] = useState<
     number | undefined
   >(undefined);
+  const [availableModels, setAvailableModels] = useState<Model[]>([]);
+  const [selectedModel, setSelectedModel] = useState<string>("lexical");
 
   let exact = searchParams.get("exactMatch") === "true";
   let obsolete = searchParams.get("includeObsoleteEntities") === "true";
@@ -90,10 +93,22 @@ export default function SearchBox({
   const mounted = useRef(false);
   useEffect(() => {
     mounted.current = true;
+    
     return () => {
       mounted.current = false;
     };
   });
+
+  useEffect(() => {
+
+    async function fetchModels() {
+      setAvailableModels(await get<Model[]>("api/v2/llm_models"));
+    }
+
+    fetchModels();
+
+  }, []);
+    
 
   const cancelPromisesRef = useRef(false);
   useEffect(() => {
@@ -114,6 +129,7 @@ export default function SearchBox({
             includeObsoleteEntities: obsolete.toString(),
             ...(ontologyId ? { ontologyId } : {}),
             ...((canonical ? { isDefiningOntology: true } : {}) as any),
+            ...((selectedModel && selectedModel !== 'lexical') ? { model: selectedModel } : {})
           })}`
         ),
         searchForOntologies
@@ -123,7 +139,7 @@ export default function SearchBox({
                 size: "5",
                 lang: "en",
                 exactMatch: exact.toString(),
-                includeObsoleteEntities: obsolete.toString(),
+                includeObsoleteEntities: obsolete.toString()
               })}`
             )
           : null,
@@ -440,6 +456,23 @@ export default function SearchBox({
               }
               label="Include imported terms"
             />
+            <FormControl sx={{ minWidth: 200, ml: 2 }} size="small">
+              <InputLabel id="model-select-label">Search Model</InputLabel>
+              <Select
+                labelId="model-select-label"
+                id="model-select"
+                value={selectedModel}
+                label="Search Model"
+                onChange={(e) => setSelectedModel(e.target.value)}
+              >
+                <MenuItem key="lexical" value="lexical">Lexical</MenuItem>
+                {availableModels.map((model) => (
+                  <MenuItem key={model.model} value={model.model}>
+                    {model.model === "lexical" ? "Lexical" : model.model}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </ThemeProvider>
         </div>
       </div>

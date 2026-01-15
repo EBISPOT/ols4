@@ -1,48 +1,31 @@
 services:
-    ols4-dataload:
-      environment:
-        - JAVA_OPTS=${JAVA_OPTS}
-        - OPENAI_API_KEY=${OPENAI_API_KEY} # Used for embeddings if set
-      build:
-        context: .
-        dockerfile: ./dataload/Dockerfile
-      volumes:
-        - ols4-solr-data:/opt/solr/server/solr:rw
-        - ols4-neo4j-data:/opt/neo4j/data:rw
-        - ols4-embeddings:/mnt/embeddings:rw
-        - ./${OLS4_CONFIG:?OLS4 dataload requires a config file}:/mnt/config/${OLS4_CONFIG}:ro
-        - ./testcases:/opt/ols/dataload/testcases:ro
-          #- ./docker_out:/tmp/out:rw
-      command: ./dataload.dockersh ${OLS4_DATALOAD_ARGS:-}
     ols4-solr:
       image: solr:9.8.1
+      user: "${HOST_UID:?}:${HOST_GID:?}"
       environment:
-        - SOLR_HOME=/mnt/ols4-solr-data
+        - SOLR_HOME=/mnt/solr/server/solr
+        - SOLR_LOGS_DIR=/mnt/solr/logs
         - JAVA_OPTS=--add-modules jdk.incubator.vector
       ports:
         - 8983:8983
       volumes:
-        - ols4-solr-data:/mnt/ols4-solr-data
-        # - /data/ols_from_codon/solr/solr:/mnt/ols4-solr-data
-      command: ["-f"]
-      depends_on:
-        ols4-dataload:
-          condition: service_completed_successfully
+        - ./out/solr:/mnt/solr
+      entrypoint: []
+      command: ["bash", "-c", "echo hi && cd /mnt/solr && bin/solr start -f"]
     ols4-neo4j:
       image: neo4j:2025.03.0-community
+      user: "${HOST_UID:?}:${HOST_GID:?}"
       ports:
         - 7474:7474
         - 7687:7687
       volumes:
-        - ols4-neo4j-data:/var/lib/neo4j/data
-        # - /data/ols_from_codon/neo4j/neo4j/data:/var/lib/neo4j/data
+        - ./out/neo4j/data:/data
       environment:
         - NEO4J_AUTH=none
         - JAVA_OPTS=--add-modules jdk.incubator.vector
-      depends_on:
-        ols4-dataload:
-          condition: service_completed_successfully
     ols4-backend:
+      user: "${HOST_UID:?}:${HOST_GID:?}"
+      image: ${OLS4_BACKEND_IMAGE:-ghcr.io/ebispot/ols4-backend:dev}
       build:
         context: .
         dockerfile: ./backend/Dockerfile
@@ -53,11 +36,13 @@ services:
         - OLS_NEO4J_HOST=bolt://ols4-neo4j:7687
       depends_on:
         - ols4-solr
-        - ols4-neo4j    
+        - ols4-neo4j
       links:
         - ols4-solr
-        - ols4-neo4j 
+        - ols4-neo4j
     ols4-frontend:
+      user: "${HOST_UID:?}:${HOST_GID:?}"
+      image: ${OLS4_FRONTEND_IMAGE:-ghcr.io/ebispot/ols4-frontend:dev}
       build:
         context: ./frontend
       env_file: ./frontend/.env
@@ -69,16 +54,16 @@ services:
         - ols4-backend
     run-api-tests:
       profiles: ["run-api-tests"]
+      image: ${OLS4_APITESTER_IMAGE:-ghcr.io/ebispot/ols4-apitester4:dev}
       build: ./apitester4
+      user: "${HOST_UID:?}:${HOST_GID:?}"
+      environment:
+        - HOME=/tmp
       volumes:
-        - ${OLS4_APITEST_OUTDIR:-./to_be_filled_by_script_outdir}:/mnt/out:rw
-        - ${OLS4_APITEST_COMPAREDIR:-./to_be_filled_by_script_comparedir}:/mnt/compare:rw
-      command: ["bash", "-c", "chown -R apitester:apitester /mnt && su -c \"java -jar /opt/apitester/target/apitester-1.0-SNAPSHOT-jar-with-dependencies.jar --url http://ols4-backend:8080 --outDir /mnt/out --compareDir /mnt/compare --deep > /mnt/out/apitester4.log\" apitester"]
+        - ./testcases_output_api:/mnt/out:rw
+        - ./testcases_expected_output_api:/mnt/compare:rw
+      command: ["bash", "-c", "set -o pipefail; java -jar /opt/apitester/apitester.jar --url http://ols4-backend:8080 --outDir /mnt/out --compareDir /mnt/compare --deep 2>&1 | tee /mnt/out/apitester4.log"]
       depends_on:
         - ols4-backend
       links:
         - ols4-backend
-volumes:
-    ols4-neo4j-data:
-    ols4-solr-data:
-    ols4-embeddings:

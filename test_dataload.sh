@@ -15,7 +15,7 @@ TEST_FOLDER=$DIRNAME/$BASENAME
 mkdir -p ./testcases_output/$DIRNAME
 mkdir -p ./testcases_output/$TEST_FOLDER
 
-./dataload/create_datafiles.sh $f ./testcases_output/$TEST_FOLDER --loadLocalFiles --noDates
+./dev-testing/create_datafiles.sh $f ./testcases_output/$TEST_FOLDER --loadLocalFiles --noDates
 done
 
 diff --recursive --exclude=.gitkeep testcases_output testcases_expected_output/

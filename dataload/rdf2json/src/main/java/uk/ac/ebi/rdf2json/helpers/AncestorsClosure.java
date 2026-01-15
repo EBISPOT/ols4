@@ -6,14 +6,14 @@ import uk.ac.ebi.rdf2json.properties.PropertyValue;
 import uk.ac.ebi.rdf2json.properties.PropertyValueList;
 import uk.ac.ebi.rdf2json.properties.PropertyValueURI;
 
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class AncestorsClosure {
 
     public static Set<String> getAncestors(OntologyNode node, String hierarchyPredicate, OntologyGraph graph) {
-        return getAncestors(node, hierarchyPredicate, graph, new LinkedHashSet<>());
+        return getAncestors(node, hierarchyPredicate, graph, new TreeSet<>());
     }
 
     private static Set<String> getAncestors(OntologyNode node, String hierarchyPredicate, OntologyGraph graph, Set<String> ancestors) {
