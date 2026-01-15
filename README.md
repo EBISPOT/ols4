@@ -27,7 +27,7 @@ First run the OLS dataload (requires Docker):
 
 This will create Solr and Neo4j databases in the `out` directory. Now start the OLS stack:
 
-    UID=$(id -u) GID=$(id -g) docker compose up
+    HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose up
 
 You should now be able to access the OLS4 frontend at `http://localhost:8081`.
 
@@ -65,7 +65,7 @@ use either the `dev` or `stable` image.
 
 OLS is different to most webapps in that its API provides both full text search and recursive graph queries, neither of
 which are possible and/or performant using traditional RDBMS. It therefore uses two specialized database servers: [**Solr**](https://solr.apache.org), a Lucene server similar to ElasticSearch; and [**Neo4j**](https://neo4j.com), a graph
-database.
+database which is also used to store embedding vectors.
 
 * The `dataload` directory contains the code which turns ontologies from RDF (specified using OWL and/or RDFS) into JSON
   and CSV datasets which can be loaded into Solr and Neo4j, respectively; and some minimal bash scripts which help with
@@ -121,7 +121,7 @@ Remove the old `testcases_expected_output` contents from your local working tree
 
 Re-populate `testcases_expected_output` directory with updated test output:
 
-    mkdir testcases_output && docker run \
+    docker run \
         -v $(pwd)/testcases_expected_output:/opt/ols/testcases_output \
         ols4-dataload:local \
         bash -c "cd /opt/ols && ./test_dataload.sh"
@@ -138,15 +138,11 @@ First follow the instructions above for testing the dataload. Then build up to d
     export OLS4_BACKEND_IMAGE=ols4-backend:local
     export OLS4_FRONTEND_IMAGE=ols4-frontend:local  
     export OLS4_APITESTER_IMAGE=ols4-apitester4:local
-    docker compose build
-
-Update the Nextflow config in `dataload/nextflow/local_nextflow.config` to use the local dataload image instead of the published one:
-
-    sed -i "s|process.container = '.*'|process.container = 'ols4-dataload:local'|" dataload/nextflow/local_nextflow.config
+    HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose build
 
 Run the test script to produce a `testcases_output_api` directory:
 
-    ./test_api.sh
+    OLS4_DATALOAD_IMAGE=ols4-dataload:local ./test_api.sh
 
 The log file `testcases_output_api/apitester4.log` contains diff information. You can also manually compare the files in `testcases_output_api` with the files in `testcases_expected_output_api`. Once you are happy the changes are intentional, replace the old test outputs with the new ones:
 

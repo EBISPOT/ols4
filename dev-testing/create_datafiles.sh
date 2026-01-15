@@ -32,7 +32,7 @@ java -jar $SCRIPT_PATH/../dataload/linker/link/target/link-1.0-SNAPSHOT.jar \
 
 echo json2neo
 java -jar $SCRIPT_PATH/../dataload/json2neo/target/json2neo-1.0-SNAPSHOT.jar \
-    --manifest "$LINKER_MANIFEST_PATH" --input "$JSON_PATH_LINKED" --outDir $OUTDIR
+    --manifest "$LINKER_MANIFEST_PATH" --input "$JSON_PATH_LINKED" --outDir $OUTDIR --embeddingDbsPath $SCRIPT_PATH/../testcases/embeddings
 
 echo json2solr
 java -jar $SCRIPT_PATH/../dataload/json2solr/target/json2solr-1.0-SNAPSHOT.jar \

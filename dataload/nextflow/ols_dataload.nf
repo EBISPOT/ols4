@@ -203,7 +203,6 @@ process json2solr {
         --input ${ontology_json} \
         --ontologyId ${ontology_id} \
         --outDir . \
-        --embeddingDbsPath ${embeddings_path} \
         --maxRowsPerFile ${params.max_rows_per_file}
     """
 }

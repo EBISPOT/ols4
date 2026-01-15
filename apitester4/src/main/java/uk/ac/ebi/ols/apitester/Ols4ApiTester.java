@@ -216,6 +216,11 @@ public class Ols4ApiTester {
 				JsonElement classJson = get(url + "/api/ontologies/" + ontologyId + "/classes/" + doubleEncodedIri);
 				write(outDir + "/ontologies/" + ontologyId + "/classes/" + doubleEncodedIri + ".json", classJson);
 
+				if(ontologyId.equals("duo")) {
+					JsonElement llmSimilarJson = get(url + "/api/ontologies/" + ontologyId + "/classes/" + doubleEncodedIri + "/llm_similar");
+					write(outDir + "/ontologies/" + ontologyId + "/classes/" + doubleEncodedIri + "/llm_similar.json", llmSimilarJson);
+				}
+
 				// TODO
 			}
 
@@ -287,18 +292,18 @@ public class Ols4ApiTester {
 				JsonElement nextObj = links.get("next");
 
 				if(nextObj == null) {
-					System.out.println("no next link, we are done");
+					// System.out.println("no next link, we are done");
 					break;
 				}
 
 				String next = nextObj.getAsJsonObject().get("href").getAsString();
 
-				System.out.println("next link is " + next);
+				// System.out.println("next link is " + next);
 
 				res = get(next).getAsJsonObject();
 			}
 
-			System.out.println("sorting and returning result...");
+			// System.out.println("sorting and returning result...");
 			return deepSort(removeDates(normalizeURLs(allEntries))).getAsJsonArray();
 
 		} catch(Exception e) {

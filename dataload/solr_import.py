@@ -55,8 +55,10 @@ def main():
         futures = [executor.submit(upload_file, port, filename) for filename in filenames]
     
     time.sleep(5)
+    # response = session.get(f"http://127.0.0.1:{port}/solr/ols4_entities/update",
+    #                         params={'commit': 'true', 'optimize': 'true', 'maxSegments': '1'})
     response = session.get(f"http://127.0.0.1:{port}/solr/ols4_entities/update",
-                            params={'commit': 'true', 'optimize': 'true', 'maxSegments': '1'})
+                            params={'commit': 'true'})
     print(response.text)
 
     time.sleep(5)

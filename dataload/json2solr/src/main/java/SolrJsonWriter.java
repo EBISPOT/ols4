@@ -304,12 +304,12 @@ public class SolrJsonWriter {
         reader.endObject();
         reader.close();
         
-        // Close all writers
-        ontologiesWriter.close();
-        classesWriter.close();
-        propertiesWriter.close();
-        individualsWriter.close();
-        autocompleteWriter.close();
+        // Close all writers (may be null if all ontologies were skipped)
+        if (ontologiesWriter != null) ontologiesWriter.close();
+        if (classesWriter != null) classesWriter.close();
+        if (propertiesWriter != null) propertiesWriter.close();
+        if (individualsWriter != null) individualsWriter.close();
+        if (autocompleteWriter != null) autocompleteWriter.close();
         
         System.err.println("json2solr processing completed successfully!");
         System.err.println("Processed " + processedOntologies + " ontologies total");

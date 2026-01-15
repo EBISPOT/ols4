@@ -9,13 +9,20 @@ mkdir -p testcases_output_api
 
 EXIT_CODE=0
 
+# some mock embeddings for duo we can use in tests
+export OLS_EMBEDDINGS_PATH=./testcases/embeddings
+
 rm -rf tmp out
 ./dataload.sh
 
-export UID=$(id -u)
-export GID=$(id -g)
+if [[ "$?" != "0" ]]
+then
+    EXIT_CODE=1
+    echo Dataload returned a non-zero exit code
+    exit $EXIT_CODE
+fi
 
-docker compose --profile run-api-tests \
+HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose --profile run-api-tests \
     up \
 --force-recreate \
 --always-recreate-deps \
