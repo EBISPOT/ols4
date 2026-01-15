@@ -54,19 +54,19 @@
         "http://www.ebi.ac.uk/testcases/defined-fields/PreferredRoot.owl#PreferredRoot_0001"
       ],
       "searchableAnnotationValues": [
-        false,
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "0"
+        },
         {
           "type": [
             "literal"
           ],
           "value": "1"
         },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
-        }
+        false
       ],
       "classes": [
         {

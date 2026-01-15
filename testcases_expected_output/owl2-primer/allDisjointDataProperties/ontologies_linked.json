@@ -50,19 +50,6 @@
         "value": "3"
       },
       "searchableAnnotationValues": [
-        false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "1"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "4"
-        },
         {
           "type": [
             "literal"
@@ -73,8 +60,21 @@
           "type": [
             "literal"
           ],
+          "value": "1"
+        },
+        {
+          "type": [
+            "literal"
+          ],
           "value": "3"
-        }
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "4"
+        },
+        false
       ],
       "classes": [
         {
@@ -147,8 +147,8 @@
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propA",
           "type": [
             "dataProperty",
-            "property",
-            "entity"
+            "entity",
+            "property"
           ],
           "curie": {
             "type": [
@@ -228,8 +228,8 @@
               },
               "type": [
                 "dataProperty",
-                "property",
-                "entity"
+                "entity",
+                "property"
               ]
             },
             "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propC": {
@@ -251,8 +251,8 @@
               },
               "type": [
                 "dataProperty",
-                "property",
-                "entity"
+                "entity",
+                "property"
               ]
             }
           },
@@ -265,8 +265,8 @@
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propB",
           "type": [
             "dataProperty",
-            "property",
-            "entity"
+            "entity",
+            "property"
           ],
           "curie": {
             "type": [
@@ -346,8 +346,8 @@
               },
               "type": [
                 "dataProperty",
-                "property",
-                "entity"
+                "entity",
+                "property"
               ]
             },
             "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propC": {
@@ -369,8 +369,8 @@
               },
               "type": [
                 "dataProperty",
-                "property",
-                "entity"
+                "entity",
+                "property"
               ]
             }
           },
@@ -383,8 +383,8 @@
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propC",
           "type": [
             "dataProperty",
-            "property",
-            "entity"
+            "entity",
+            "property"
           ],
           "curie": {
             "type": [
@@ -464,8 +464,8 @@
               },
               "type": [
                 "dataProperty",
-                "property",
-                "entity"
+                "entity",
+                "property"
               ]
             },
             "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointDataProperties.owl#propB": {
@@ -487,8 +487,8 @@
               },
               "type": [
                 "dataProperty",
-                "property",
-                "entity"
+                "entity",
+                "property"
               ]
             }
           },

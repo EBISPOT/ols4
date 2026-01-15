@@ -48,7 +48,6 @@
         "value": "3"
       },
       "searchableAnnotationValues": [
-        false,
         {
           "type": [
             "literal"
@@ -60,16 +59,17 @@
             "literal"
           ],
           "value": "3"
-        }
+        },
+        false
       ],
       "classes": [],
       "properties": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propA",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -129,9 +129,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propB",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -191,9 +191,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propC",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [

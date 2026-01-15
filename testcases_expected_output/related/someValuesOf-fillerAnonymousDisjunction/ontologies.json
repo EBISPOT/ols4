@@ -47,7 +47,18 @@
         "value": "1"
       },
       "searchableAnnotationValues": [
-        false,
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "0"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "1"
+        },
         {
           "type": [
             "literal"
@@ -60,18 +71,7 @@
           ],
           "value": "4"
         },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "1"
-        }
+        false
       ],
       "classes": [
         {
@@ -276,9 +276,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#p",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [

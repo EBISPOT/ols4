@@ -48,7 +48,6 @@
         "value": "1"
       },
       "searchableAnnotationValues": [
-        false,
         {
           "type": [
             "literal"
@@ -60,16 +59,17 @@
             "literal"
           ],
           "value": "1"
-        }
+        },
+        false
       ],
       "classes": [],
       "properties": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-asymmetric.owl#hasChild",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -83,8 +83,8 @@
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
-            "http://www.w3.org/2002/07/owl#ObjectProperty",
-            "http://www.w3.org/2002/07/owl#AsymmetricProperty"
+            "http://www.w3.org/2002/07/owl#AsymmetricProperty",
+            "http://www.w3.org/2002/07/owl#ObjectProperty"
           ],
           "imported": false,
           "isObsolete": false,

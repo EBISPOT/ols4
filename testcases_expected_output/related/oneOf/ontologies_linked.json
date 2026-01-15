@@ -50,18 +50,17 @@
         "value": "0"
       },
       "searchableAnnotationValues": [
-        false,
         {
           "type": [
             "literal"
           ],
-          "value": "1"
+          "value": "0"
         },
         {
           "type": [
             "literal"
           ],
-          "value": "4"
+          "value": "1"
         },
         {
           "type": [
@@ -73,8 +72,9 @@
           "type": [
             "literal"
           ],
-          "value": "0"
-        }
+          "value": "4"
+        },
+        false
       ],
       "classes": [
         {
@@ -104,7 +104,7 @@
               "type": [
                 "reification"
               ],
-              "value": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1",
+              "value": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3",
               "axioms": [
                 {
                   "childRelationToParent": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
@@ -126,7 +126,7 @@
               "type": [
                 "reification"
               ],
-              "value": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3",
+              "value": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1",
               "axioms": [
                 {
                   "childRelationToParent": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
@@ -183,7 +183,7 @@
           "relatedTo": [
             {
               "property": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-              "value": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1",
+              "value": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3",
               "type": [
                 "related"
               ],
@@ -209,7 +209,7 @@
             },
             {
               "property": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-              "value": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3",
+              "value": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1",
               "type": [
                 "related"
               ],
@@ -251,8 +251,8 @@
                 "value": "b1"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2": {
@@ -273,8 +273,8 @@
                 "value": "b2"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3": {
@@ -295,8 +295,8 @@
                 "value": "b3"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             }
           },
@@ -312,8 +312,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -402,8 +402,8 @@
                 "value": "b2"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3": {
@@ -424,8 +424,8 @@
                 "value": "b3"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A": {
@@ -460,8 +460,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -550,8 +550,8 @@
                 "value": "b1"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3": {
@@ -572,8 +572,8 @@
                 "value": "b3"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A": {
@@ -608,8 +608,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -698,8 +698,8 @@
                 "value": "b1"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2": {
@@ -720,8 +720,8 @@
                 "value": "b2"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A": {

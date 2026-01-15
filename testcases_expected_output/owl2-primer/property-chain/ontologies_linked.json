@@ -50,7 +50,6 @@
         "value": "2"
       },
       "searchableAnnotationValues": [
-        false,
         {
           "type": [
             "literal"
@@ -62,16 +61,17 @@
             "literal"
           ],
           "value": "2"
-        }
+        },
+        false
       ],
       "classes": [],
       "properties": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/property-chain.owl#hasGrandParent",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -150,9 +150,9 @@
                 "value": "hasParent"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             }
           },
@@ -163,9 +163,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/property-chain.owl#hasParent",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [

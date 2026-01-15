@@ -53,7 +53,18 @@
         "value": "1"
       },
       "searchableAnnotationValues": [
-        false,
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "0"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "1"
+        },
         {
           "type": [
             "literal"
@@ -66,18 +77,7 @@
           ],
           "value": "3"
         },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "1"
-        }
+        false
       ],
       "classes": [
         {
@@ -222,9 +222,9 @@
                 "value": "r"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             }
           },
@@ -348,9 +348,9 @@
                 "value": "r"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             }
           },
@@ -364,9 +364,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -446,9 +446,9 @@
             "value": "r"
           },
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ]
         }
       },

@@ -50,19 +50,19 @@
         "value": "0"
       },
       "searchableAnnotationValues": [
-        false,
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "0"
+        },
         {
           "type": [
             "literal"
           ],
           "value": "1"
         },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
-        }
+        false
       ],
       "classes": [
         {
@@ -135,13 +135,13 @@
               ],
               "value": "2.62"
             },
+            false,
             {
               "type": [
                 "literal"
               ],
               "value": "moving toward PATO quality space, use PATO_0000047 instead."
-            },
-            false
+            }
           ],
           "shortForm": {
             "type": [

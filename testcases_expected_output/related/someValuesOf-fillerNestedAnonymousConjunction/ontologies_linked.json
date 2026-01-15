@@ -50,7 +50,18 @@
         "value": "2"
       },
       "searchableAnnotationValues": [
-        false,
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "0"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "2"
+        },
         {
           "type": [
             "literal"
@@ -63,18 +74,7 @@
           ],
           "value": "6"
         },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "2"
-        }
+        false
       ],
       "classes": [
         {
@@ -287,9 +287,9 @@
                 "value": "p"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#r": {
@@ -310,9 +310,9 @@
                 "value": "r"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             }
           },
@@ -500,9 +500,9 @@
                 "value": "p"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#r": {
@@ -523,9 +523,9 @@
                 "value": "r"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             }
           },
@@ -670,9 +670,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#p",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -734,9 +734,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#r",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [

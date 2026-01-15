@@ -50,7 +50,6 @@
         "value": "2"
       },
       "searchableAnnotationValues": [
-        false,
         {
           "type": [
             "literal"
@@ -61,14 +60,15 @@
           "type": [
             "literal"
           ],
-          "value": "4"
+          "value": "2"
         },
         {
           "type": [
             "literal"
           ],
-          "value": "2"
-        }
+          "value": "4"
+        },
+        false
       ],
       "classes": [
         {
@@ -176,8 +176,8 @@
                 "value": "a"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation": {
@@ -198,9 +198,9 @@
                 "value": "relation"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             }
           },
@@ -214,9 +214,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -293,9 +293,9 @@
                 "value": "relation"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             }
           },
@@ -306,9 +306,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -385,9 +385,9 @@
                 "value": "inverseRelation"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             }
           },
@@ -400,8 +400,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -496,9 +496,9 @@
                 "value": "inverseRelation"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             },
             "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation": {
@@ -519,9 +519,9 @@
                 "value": "relation"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             },
             "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A": {

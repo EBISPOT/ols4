@@ -48,7 +48,6 @@
         "value": "1"
       },
       "searchableAnnotationValues": [
-        false,
         {
           "type": [
             "literal"
@@ -60,16 +59,17 @@
             "literal"
           ],
           "value": "1"
-        }
+        },
+        false
       ],
       "classes": [],
       "properties": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/symmetric-object-property.rdf#hasSpouse",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [

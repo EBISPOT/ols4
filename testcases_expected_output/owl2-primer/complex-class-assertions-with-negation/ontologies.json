@@ -48,7 +48,18 @@
         "value": "0"
       },
       "searchableAnnotationValues": [
-        false,
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "0"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "1"
+        },
         {
           "type": [
             "literal"
@@ -61,18 +72,7 @@
           ],
           "value": "3"
         },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "1"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
-        }
+        false
       ],
       "classes": [
         {
@@ -197,8 +197,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/complex-class-assertions-with-negation.rdf#Jack",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [

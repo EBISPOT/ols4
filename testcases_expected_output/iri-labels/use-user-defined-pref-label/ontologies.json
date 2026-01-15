@@ -61,7 +61,18 @@
         "value": "2"
       },
       "searchableAnnotationValues": [
-        false,
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "0"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "2"
+        },
         {
           "type": [
             "literal"
@@ -74,18 +85,7 @@
           ],
           "value": "5"
         },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "2"
-        }
+        false
       ],
       "classes": [
         {
@@ -167,14 +167,7 @@
             "value": "XMPL"
           },
           "searchableAnnotationValues": [
-            {
-              "type": [
-                "literal"
-              ],
-              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "parent class pref label",
-              "lang": "en"
-            },
+            false,
             {
               "type": [
                 "literal"
@@ -183,7 +176,14 @@
               "value": "label of the parent class",
               "lang": "en"
             },
-            false
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "parent class pref label",
+              "lang": "en"
+            }
           ],
           "shortForm": {
             "type": [
@@ -312,6 +312,7 @@
               "value": "1st children class pref label",
               "lang": "en"
             },
+            false,
             {
               "type": [
                 "literal"
@@ -319,8 +320,7 @@
               "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
               "value": "label of the first children class",
               "lang": "en"
-            },
-            false
+            }
           ],
           "shortForm": {
             "type": [
@@ -449,6 +449,7 @@
               "value": "2nd children class pref label",
               "lang": "en"
             },
+            false,
             {
               "type": [
                 "literal"
@@ -456,8 +457,7 @@
               "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
               "value": "label of the second children class",
               "lang": "en"
-            },
-            false
+            }
           ],
           "shortForm": {
             "type": [
@@ -487,9 +487,9 @@
         {
           "iri": "http://exmpl.org/xmpl/Preferred_name",
           "type": [
-            "property",
             "annotationProperty",
-            "entity"
+            "entity",
+            "property"
           ],
           "curie": {
             "type": [
@@ -546,9 +546,9 @@
         {
           "iri": "http://exmpl.org/xmpl/Synonym",
           "type": [
-            "property",
             "annotationProperty",
-            "entity"
+            "entity",
+            "property"
           ],
           "curie": {
             "type": [

@@ -1,0 +1,226 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/class-expression-based-on-datatype-restriction.rdf#Teenager": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-class-expression-based-on-datatype-restriction",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Teenager"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Teenager"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-class-expression-based-on-datatype-restriction": {
+          "ontologyId": "owl2primer-class-expression-based-on-datatype-restriction",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Teenager"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Teenager"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/class-expression-based-on-datatype-restriction.rdf#hasAge": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-class-expression-based-on-datatype-restriction",
+          "entityTypes": [
+            "dataProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasAge"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasAge"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-class-expression-based-on-datatype-restriction": {
+          "ontologyId": "owl2primer-class-expression-based-on-datatype-restriction",
+          "entityTypes": [
+            "dataProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasAge"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasAge"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/class-expression-based-on-datatype-restriction.rdf": [
+      "owl2primer-class-expression-based-on-datatype-restriction"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-class-expression-based-on-datatype-restriction": [
+      "owl2primer-class-expression-based-on-datatype-restriction"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-class-expression-based-on-datatype-restriction": [
+      "http://purl.obolibrary.org/obo/owl2primer-class-expression-based-on-datatype-restriction_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-class-expression-based-on-datatype-restriction": [
+      "iri",
+      "numberOfIndividuals",
+      "numDescendants",
+      "numberOfProperties",
+      "numberOfClasses",
+      "language",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "type",
+      "ontologyPurl",
+      "preferredPrefix",
+      "directAncestor",
+      "imported",
+      "numberOfEntities",
+      "ontologyId",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-class-expression-based-on-datatype-restriction": [
+      "isPreferredRoot",
+      "iri",
+      "hasDirectChildren",
+      "hierarchicalAncestor",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "numDescendants",
+      "hierarchicalProperty",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "label",
+      "type",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "hasDirectParents",
+      "imported",
+      "shortForm",
+      "ontologyId",
+      "ontologyIri",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-class-expression-based-on-datatype-restriction": [
+      "isPreferredRoot",
+      "iri",
+      "hasDirectChildren",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "label",
+      "type",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "hasDirectParents",
+      "imported",
+      "shortForm",
+      "ontologyId",
+      "ontologyIri",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#range"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-class-expression-based-on-datatype-restriction": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-class-expression-based-on-datatype-restriction": []
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-class-expression-based-on-datatype-restriction": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/class-expression-based-on-datatype-restriction.rdf#Teenager": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/class-expression-based-on-datatype-restriction.rdf#hasAge": [
+        "PROPERTY"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/class-expression-based-on-datatype-restriction.rdf": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}

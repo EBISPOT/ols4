@@ -50,7 +50,6 @@
         "value": "1"
       },
       "searchableAnnotationValues": [
-        false,
         {
           "type": [
             "literal"
@@ -61,14 +60,15 @@
           "type": [
             "literal"
           ],
-          "value": "5"
+          "value": "3"
         },
         {
           "type": [
             "literal"
           ],
-          "value": "3"
-        }
+          "value": "5"
+        },
+        false
       ],
       "classes": [
         {
@@ -143,7 +143,7 @@
           "relatedTo": [
             {
               "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r",
-              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1",
+              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3",
               "type": [
                 "related"
               ],
@@ -169,7 +169,7 @@
             },
             {
               "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r",
-              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3",
+              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1",
               "type": [
                 "related"
               ],
@@ -211,9 +211,9 @@
                 "value": "r"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3": {
@@ -234,8 +234,8 @@
                 "value": "b3"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2": {
@@ -256,8 +256,8 @@
                 "value": "b2"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1": {
@@ -278,8 +278,8 @@
                 "value": "b1"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             }
           },
@@ -295,9 +295,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -361,8 +361,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -451,9 +451,9 @@
                 "value": "r"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3": {
@@ -474,8 +474,8 @@
                 "value": "b3"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2": {
@@ -496,8 +496,8 @@
                 "value": "b2"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A": {
@@ -533,8 +533,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -623,9 +623,9 @@
                 "value": "r"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3": {
@@ -646,8 +646,8 @@
                 "value": "b3"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1": {
@@ -668,8 +668,8 @@
                 "value": "b1"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A": {
@@ -705,8 +705,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -795,9 +795,9 @@
                 "value": "r"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2": {
@@ -818,8 +818,8 @@
                 "value": "b2"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1": {
@@ -840,8 +840,8 @@
                 "value": "b1"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A": {
