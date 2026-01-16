@@ -469,6 +469,11 @@ public class Ols4ApiTester {
 					continue;
 				}
 
+				if(entry.getKey().equals("sourceFileTimestamp")) {
+					res.add(entry.getKey(), new JsonPrimitive("<sourceFileTimestamp>"));
+					continue;
+				}
+
 				res.add(entry.getKey(), removeDates(entry.getValue()));
 			}
 

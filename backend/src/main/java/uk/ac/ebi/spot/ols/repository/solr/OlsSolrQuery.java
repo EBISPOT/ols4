@@ -105,8 +105,14 @@ public class OlsSolrQuery {
 
 			query.set("qf", qf.toString());
 
+			// When searching, sort by relevance score with secondary sort by id for deterministic ordering
+			query.setSort("score", SolrQuery.ORDER.desc);
+			query.addSort("id", SolrQuery.ORDER.asc);
+
 		} else {
 			query.setQuery("*:*");
+			// When not searching, sort by id for deterministic ordering
+			query.setSort("id", SolrQuery.ORDER.asc);
 		}
 
 		if(boostFields.size() > 0) {

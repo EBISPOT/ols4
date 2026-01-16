@@ -252,6 +252,9 @@ public class V1SearchController {
 
         solrQuery.setStart(start);
         solrQuery.setRows(rows);
+        // Sort by relevance score with secondary sort by id for deterministic ordering
+        solrQuery.setSort("score", SolrQuery.ORDER.desc);
+        solrQuery.addSort("id", SolrQuery.ORDER.asc);
 //        solrQuery.setHighlight(true);
 //        solrQuery.add("hl.simple.pre", "<b>");
 //        solrQuery.add("hl.simple.post", "</b>");
