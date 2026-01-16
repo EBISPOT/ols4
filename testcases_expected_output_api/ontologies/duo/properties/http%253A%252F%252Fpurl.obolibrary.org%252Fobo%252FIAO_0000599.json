@@ -1,10 +1,9 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/IAO_0000599",
-  "lang": "en",
-  "description": [
-    "Relates an ontology used to record id policy to a prefix concatenated with an integer in the id range (left padded with \"0\"s to make this many digits) to construct an ID for a term being created."
-  ],
-  "synonyms": [],
+  "_links": {
+    "self": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000599?lang=en"
+    }
+  },
   "annotation": {
     "editor preferred term": [
       "has ID prefix"
@@ -16,19 +15,20 @@
       "Person:Alan Ruttenberg"
     ]
   },
+  "description": [
+    "Relates an ontology used to record id policy to a prefix concatenated with an integer in the id range (left padded with \"0\"s to make this many digits) to construct an ID for a term being created."
+  ],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000599",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": true,
   "label": "has ID prefix",
+  "lang": "en",
+  "obo_id": "IAO:0000599",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontology_name": "duo",
   "ontology_prefix": "DUO",
-  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": false,
-  "is_root": true,
   "short_form": "IAO_0000599",
-  "obo_id": "IAO:0000599",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000599?lang=en"
-    }
-  }
+  "synonyms": []
 }

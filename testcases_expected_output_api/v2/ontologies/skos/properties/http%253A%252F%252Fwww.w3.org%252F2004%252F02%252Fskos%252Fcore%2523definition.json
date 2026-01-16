@@ -1,0 +1,118 @@
+{
+  "appearsIn": [
+    "skos"
+  ],
+  "curie": "SKOS:definition",
+  "definedBy": [
+    "skos"
+  ],
+  "directAncestor": [
+    "http://www.w3.org/2004/02/skos/core#note"
+  ],
+  "directParent": [
+    "http://www.w3.org/2004/02/skos/core#note"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+    "http://www.w3.org/2002/07/owl#AnnotationProperty"
+  ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2004/02/skos/core",
+  "http://www.w3.org/2000/01/rdf-schema#label": "definition",
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.w3.org/2004/02/skos/core#note",
+  "http://www.w3.org/2004/02/skos/core#definition": "A statement or formal explanation of the meaning of a concept.",
+  "imported": false,
+  "iri": "http://www.w3.org/2004/02/skos/core#definition",
+  "isDefiningOntology": true,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "definition"
+  ],
+  "linkedEntities": {
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
+      "curie": "RDFS:isDefinedBy",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "isDefinedBy"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+      "curie": "RDFS:subPropertyOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subPropertyOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2004/02/skos/core#note": {
+      "curie": "SKOS:note",
+      "definedBy": [
+        "skos"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "note"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf",
+    "http://www.w3.org/2004/02/skos/core#note"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "skos",
+  "ontologyIri": "http://www.w3.org/2004/02/skos/core",
+  "searchableAnnotationValues": [
+    "A statement or formal explanation of the meaning of a concept.",
+    false
+  ],
+  "shortForm": "SKOS_definition",
+  "type": [
+    "annotationProperty",
+    "entity",
+    "property"
+  ]
+}

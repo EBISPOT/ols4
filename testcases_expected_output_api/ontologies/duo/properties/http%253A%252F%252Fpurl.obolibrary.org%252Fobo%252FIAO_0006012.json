@@ -1,10 +1,9 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/IAO_0006012",
-  "lang": "en",
-  "description": [
-    "Used when the class or object is scheduled for obsoletion/deprecation on or after a particular date."
-  ],
-  "synonyms": [],
+  "_links": {
+    "self": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0006012?lang=en"
+    }
+  },
   "annotation": {
     "editor preferred term": [
       "scheduled for obsoletion on or after"
@@ -20,19 +19,20 @@
       "https://github.com/information-artifact-ontology/ontology-metadata/issues/32"
     ]
   },
+  "description": [
+    "Used when the class or object is scheduled for obsoletion/deprecation on or after a particular date."
+  ],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0006012",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": true,
   "label": "scheduled for obsoletion on or after",
+  "lang": "en",
+  "obo_id": "IAO:0006012",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontology_name": "duo",
   "ontology_prefix": "DUO",
-  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": false,
-  "is_root": true,
   "short_form": "IAO_0006012",
-  "obo_id": "IAO:0006012",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0006012?lang=en"
-    }
-  }
+  "synonyms": []
 }

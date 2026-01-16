@@ -37,10 +37,26 @@
           "objectProperty",
           "property"
         ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+        "curie": "RDFS:subClassOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subClassOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
       }
     },
     "linksTo": [
-      "http://www.ebi.ac.uk/testcases/class-expression-issues/maxCardinality.owl#hasArm"
+      "http://www.ebi.ac.uk/testcases/class-expression-issues/maxCardinality.owl#hasArm",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

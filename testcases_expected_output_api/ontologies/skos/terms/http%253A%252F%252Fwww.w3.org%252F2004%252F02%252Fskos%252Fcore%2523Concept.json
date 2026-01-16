@@ -1,29 +1,29 @@
 {
-  "iri": "http://www.w3.org/2004/02/skos/core#Concept",
-  "lang": "en",
-  "description": [],
-  "synonyms": [],
+  "_links": {
+    "graph": {
+      "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Concept/graph"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Concept?lang=en"
+    }
+  },
   "annotation": {
     "definition": [
       "An idea or notion; a unit of thought."
     ]
   },
-  "label": "Concept",
-  "ontology_name": "skos",
-  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
-  "is_obsolete": false,
-  "is_defining_ontology": true,
+  "description": [],
   "has_children": false,
-  "is_root": true,
-  "short_form": "SKOS_Concept",
-  "obo_id": "SKOS:Concept",
+  "iri": "http://www.w3.org/2004/02/skos/core#Concept",
+  "is_defining_ontology": true,
+  "is_obsolete": false,
   "is_preferred_root": false,
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Concept?lang=en"
-    },
-    "graph": {
-      "href": "http://localhost:8080/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Concept/graph"
-    }
-  }
+  "is_root": true,
+  "label": "Concept",
+  "lang": "en",
+  "obo_id": "SKOS:Concept",
+  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+  "ontology_name": "skos",
+  "short_form": "SKOS_Concept",
+  "synonyms": []
 }

@@ -182,10 +182,42 @@
           "class",
           "entity"
         ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#domain": {
+        "curie": "RDFS:domain",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "domain"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#range": {
+        "curie": "RDFS:range",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "range"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
       }
     },
     "linksTo": [
-      "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property.owl#Person"
+      "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property.owl#Person",
+      "http://www.w3.org/2000/01/rdf-schema#domain",
+      "http://www.w3.org/2000/01/rdf-schema#range"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

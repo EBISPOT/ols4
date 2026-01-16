@@ -1,27 +1,27 @@
 {
-  "iri": "http://www.w3.org/2004/02/skos/core#memberList",
-  "lang": "en",
-  "description": [
-    "For any resource, every item in the list given as the value of the\n      skos:memberList property is also a value of the skos:member property."
-  ],
-  "synonyms": [],
+  "_links": {
+    "self": {
+      "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523memberList?lang=en"
+    }
+  },
   "annotation": {
     "definition": [
       "Relates an ordered collection to the RDF list containing its members."
     ]
   },
-  "label": "has member list",
-  "ontology_name": "skos",
-  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
+  "description": [
+    "For any resource, every item in the list given as the value of the\n      skos:memberList property is also a value of the skos:member property."
+  ],
   "has_children": false,
+  "iri": "http://www.w3.org/2004/02/skos/core#memberList",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
   "is_root": true,
-  "short_form": "SKOS_memberList",
+  "label": "has member list",
+  "lang": "en",
   "obo_id": "SKOS:memberList",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523memberList?lang=en"
-    }
-  }
+  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+  "ontology_name": "skos",
+  "short_form": "SKOS_memberList",
+  "synonyms": []
 }

@@ -1,0 +1,94 @@
+{
+  "appearsIn": [
+    "efo-hierarchical-properties"
+  ],
+  "curie": "UBERON:0001638",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/UBERON_0001981"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/UBERON_0001981"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/UBERON_0001981"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/UBERON_0001981"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "vein",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/UBERON_0001981",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/UBERON_0001638",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "vein"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/UBERON_0001981": {
+      "curie": "UBERON:0001981",
+      "hasLocalDefinition": true,
+      "label": [
+        "blood vessel"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/UBERON_0001981",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 2.0,
+  "numHierarchicalDescendants": 2.0,
+  "ontologyId": "efo-hierarchical-properties",
+  "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+  "ontologyPreferredPrefix": "efo-hierarchical-properties",
+  "searchableAnnotationValues": false,
+  "shortForm": "UBERON_0001638",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

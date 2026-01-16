@@ -1,42 +1,42 @@
 {
-  "iri": "http://www.w3.org/2002/07/owl#IrreflexiveProperty",
-  "lang": "en",
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523IrreflexiveProperty/ancestors"
+    },
+    "graph": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523IrreflexiveProperty/graph"
+    },
+    "hierarchicalAncestors": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523IrreflexiveProperty/hierarchicalAncestors"
+    },
+    "hierarchicalParents": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523IrreflexiveProperty/hierarchicalParents"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523IrreflexiveProperty/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523IrreflexiveProperty/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523IrreflexiveProperty?lang=en"
+    }
+  },
+  "annotation": {},
   "description": [
     "The class of irreflexive properties."
   ],
-  "synonyms": [],
-  "annotation": {},
-  "label": "IrreflexiveProperty",
-  "ontology_name": "owl",
-  "ontology_iri": "http://www.w3.org/2002/07/owl",
-  "is_obsolete": false,
-  "is_defining_ontology": true,
   "has_children": false,
-  "is_root": false,
-  "short_form": "OWL_IrreflexiveProperty",
-  "obo_id": "OWL:IrreflexiveProperty",
+  "iri": "http://www.w3.org/2002/07/owl#IrreflexiveProperty",
+  "is_defining_ontology": true,
+  "is_obsolete": false,
   "is_preferred_root": false,
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523IrreflexiveProperty?lang=en"
-    },
-    "parents": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523IrreflexiveProperty/parents"
-    },
-    "ancestors": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523IrreflexiveProperty/ancestors"
-    },
-    "hierarchicalParents": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523IrreflexiveProperty/hierarchicalParents"
-    },
-    "hierarchicalAncestors": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523IrreflexiveProperty/hierarchicalAncestors"
-    },
-    "jstree": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523IrreflexiveProperty/jstree"
-    },
-    "graph": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523IrreflexiveProperty/graph"
-    }
-  }
+  "is_root": false,
+  "label": "IrreflexiveProperty",
+  "lang": "en",
+  "obo_id": "OWL:IrreflexiveProperty",
+  "ontology_iri": "http://www.w3.org/2002/07/owl",
+  "ontology_name": "owl",
+  "short_form": "OWL_IrreflexiveProperty",
+  "synonyms": []
 }

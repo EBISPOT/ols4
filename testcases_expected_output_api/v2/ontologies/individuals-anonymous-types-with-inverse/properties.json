@@ -32,10 +32,26 @@
           "objectProperty",
           "property"
         ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+        "curie": "RDFS:subPropertyOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subPropertyOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
       }
     },
     "linksTo": [
-      "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation"
+      "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -83,10 +99,26 @@
           "objectProperty",
           "property"
         ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+        "curie": "RDFS:subPropertyOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subPropertyOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
       }
     },
     "linksTo": [
-      "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation"
+      "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

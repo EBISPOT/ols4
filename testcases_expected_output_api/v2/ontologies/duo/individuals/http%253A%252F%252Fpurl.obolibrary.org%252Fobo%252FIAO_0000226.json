@@ -1,0 +1,219 @@
+{
+  "appearsIn": [
+    "duo"
+  ],
+  "curie": "IAO:0000226",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/IAO_0000027",
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0000102",
+    "http://purl.obolibrary.org/obo/IAO_0000225"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/IAO_0000225"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://purl.obolibrary.org/obo/IAO_0000111": "placeholder removed",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+    "http://purl.obolibrary.org/obo/IAO_0000225",
+    "http://www.w3.org/2002/07/owl#NamedIndividual",
+    "http://www.w3.org/2002/07/owl#Thing"
+  ],
+  "http://www.w3.org/2000/01/rdf-schema#label": "placeholder removed",
+  "http://www.w3.org/2002/07/owl#differentFrom": [
+    "http://purl.obolibrary.org/obo/IAO_0000227",
+    "http://purl.obolibrary.org/obo/IAO_0000228",
+    "http://purl.obolibrary.org/obo/IAO_0000229"
+  ],
+  "imported": true,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000226",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "label": [
+    "placeholder removed"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000001": {
+      "curie": "BFO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000031": {
+      "curie": "BFO:0000031",
+      "hasLocalDefinition": true,
+      "label": [
+        "generically dependent continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000027": {
+      "curie": "IAO:0000027",
+      "hasLocalDefinition": true,
+      "label": [
+        "data item"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000030": {
+      "curie": "IAO:0000030",
+      "hasLocalDefinition": true,
+      "label": [
+        "information content entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000102": {
+      "curie": "IAO:0000102",
+      "hasLocalDefinition": true,
+      "label": [
+        "data about an ontology part"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000111": {
+      "curie": "IAO:0000111",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor preferred term"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000225": {
+      "curie": "IAO:0000225",
+      "hasLocalDefinition": true,
+      "label": [
+        "obsolescence reason specification"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000227": {
+      "curie": "IAO:0000227",
+      "hasLocalDefinition": true,
+      "label": [
+        "terms merged"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "individual"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000228": {
+      "curie": "IAO:0000228",
+      "hasLocalDefinition": true,
+      "label": [
+        "term imported"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "individual"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000229": {
+      "curie": "IAO:0000229",
+      "hasLocalDefinition": true,
+      "label": [
+        "term split"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "individual"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/IAO_0000027",
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0000102",
+    "http://purl.obolibrary.org/obo/IAO_0000111",
+    "http://purl.obolibrary.org/obo/IAO_0000225",
+    "http://purl.obolibrary.org/obo/IAO_0000227",
+    "http://purl.obolibrary.org/obo/IAO_0000228",
+    "http://purl.obolibrary.org/obo/IAO_0000229",
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    "placeholder removed",
+    true
+  ],
+  "shortForm": "IAO_0000226",
+  "type": [
+    "entity",
+    "individual"
+  ]
+}

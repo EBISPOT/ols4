@@ -1,38 +1,38 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/UBERON_0001981",
-  "lang": "en",
-  "description": [],
-  "synonyms": [],
-  "annotation": {},
-  "label": "blood vessel",
-  "ontology_name": "efo-hierarchical-properties",
-  "ontology_prefix": "efo-hierarchical-properties",
-  "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": true,
-  "is_root": true,
-  "short_form": "UBERON_0001981",
-  "obo_id": "UBERON:0001981",
-  "is_preferred_root": false,
   "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981?lang=en"
-    },
     "children": {
-      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/children"
+      "href": "<base>/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/children"
     },
     "descendants": {
-      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/descendants"
-    },
-    "hierarchicalChildren": {
-      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/hierarchicalChildren"
-    },
-    "hierarchicalDescendants": {
-      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/hierarchicalDescendants"
+      "href": "<base>/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/descendants"
     },
     "graph": {
-      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/graph"
+      "href": "<base>/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/graph"
+    },
+    "hierarchicalChildren": {
+      "href": "<base>/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "<base>/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981/hierarchicalDescendants"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001981?lang=en"
     }
-  }
+  },
+  "annotation": {},
+  "description": [],
+  "has_children": true,
+  "iri": "http://purl.obolibrary.org/obo/UBERON_0001981",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_preferred_root": false,
+  "is_root": true,
+  "label": "blood vessel",
+  "lang": "en",
+  "obo_id": "UBERON:0001981",
+  "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+  "ontology_name": "efo-hierarchical-properties",
+  "ontology_prefix": "efo-hierarchical-properties",
+  "short_form": "UBERON_0001981",
+  "synonyms": []
 }

@@ -1,0 +1,312 @@
+{
+  "appearsIn": [
+    "duo"
+  ],
+  "curie": "APOLLO_SV:00000524",
+  "definition": [
+    "A planned process that converts human-written or curated software into a machine-executable or interpretable set of instructions.",
+    "It's compiling \"software\" (scare quotes) and not \"source code\" because you can compile Java bytecode to machine code, and Java bytecode is not technically \"source code\".  Compiling source code would be a subclass of this class (as would compiling Java bytecode, etc.).",
+    "Source code can be automatically generated to some extent, but we're assuming humans still curate it minimally. Also, in the case of Java and its JVM, it's machine interpretable instructions, not directly executable. Ditto for other languages with intermediate form like Java byte code."
+  ],
+  "definitionProperty": [
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://www.w3.org/2000/01/rdf-schema#comment"
+  ],
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/APOLLO_SV_00000008",
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000003",
+    "http://purl.obolibrary.org/obo/BFO_0000015",
+    "http://purl.obolibrary.org/obo/OBI_0000011"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/APOLLO_SV_00000008"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/APOLLO_SV_00000008",
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000003",
+    "http://purl.obolibrary.org/obo/BFO_0000015",
+    "http://purl.obolibrary.org/obo/OBI_0000011"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/APOLLO_SV_00000008"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/IAO_0000111": "process of compiling software",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "A planned process that converts human-written or curated software into a machine-executable or interpretable set of instructions.",
+  "http://purl.obolibrary.org/obo/IAO_0000117": "William R. Hogan",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#comment": [
+    "It's compiling \"software\" (scare quotes) and not \"source code\" because you can compile Java bytecode to machine code, and Java bytecode is not technically \"source code\".  Compiling source code would be a subclass of this class (as would compiling Java bytecode, etc.).",
+    "Source code can be automatically generated to some extent, but we're assuming humans still curate it minimally. Also, in the case of Java and its JVM, it's machine interpretable instructions, not directly executable. Ditto for other languages with intermediate form like Java byte code."
+  ],
+  "http://www.w3.org/2000/01/rdf-schema#label": "compiling software",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+    "http://purl.obolibrary.org/obo/APOLLO_SV_00000008",
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+      "http://www.w3.org/2002/07/owl#intersectionOf": [
+        {
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000293",
+          "http://www.w3.org/2002/07/owl#someValuesFrom": {
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+            "http://www.w3.org/2002/07/owl#unionOf": [
+              "http://purl.obolibrary.org/obo/IAO_0000010",
+              "http://purl.obolibrary.org/obo/IAO_0000096"
+            ]
+          },
+          "isObsolete": false
+        },
+        {
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000299",
+          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000010",
+          "isObsolete": false
+        }
+      ]
+    }
+  ],
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/APOLLO_SV_00000524",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "compiling software"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/APOLLO_SV_00000008": {
+      "curie": "APOLLO_SV:00000008",
+      "hasLocalDefinition": true,
+      "label": [
+        "software development"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000001": {
+      "curie": "BFO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000003": {
+      "curie": "BFO:0000003",
+      "hasLocalDefinition": true,
+      "label": [
+        "occurrent"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000015": {
+      "curie": "BFO:0000015",
+      "hasLocalDefinition": true,
+      "label": [
+        "process"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000010": {
+      "curie": "IAO:0000010",
+      "hasLocalDefinition": true,
+      "label": [
+        "software"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000096": {
+      "curie": "IAO:0000096",
+      "hasLocalDefinition": true,
+      "label": [
+        "source code module"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000111": {
+      "curie": "IAO:0000111",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor preferred term"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000117": {
+      "curie": "IAO:0000117",
+      "hasLocalDefinition": true,
+      "label": [
+        "term editor"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/OBI_0000011": {
+      "curie": "OBI:0000011",
+      "hasLocalDefinition": true,
+      "label": [
+        "planned process"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/OBI_0000293": {
+      "curie": "OBI:0000293",
+      "hasLocalDefinition": true,
+      "label": [
+        "has_specified_input"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/OBI_0000299": {
+      "curie": "OBI:0000299",
+      "hasLocalDefinition": true,
+      "label": [
+        "has_specified_output"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#comment": {
+      "curie": "RDFS:comment",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "comment"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/APOLLO_SV_00000008",
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000003",
+    "http://purl.obolibrary.org/obo/BFO_0000015",
+    "http://purl.obolibrary.org/obo/IAO_0000010",
+    "http://purl.obolibrary.org/obo/IAO_0000096",
+    "http://purl.obolibrary.org/obo/IAO_0000111",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000117",
+    "http://purl.obolibrary.org/obo/OBI_0000011",
+    "http://purl.obolibrary.org/obo/OBI_0000293",
+    "http://purl.obolibrary.org/obo/OBI_0000299",
+    "http://www.w3.org/2000/01/rdf-schema#comment",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    "A planned process that converts human-written or curated software into a machine-executable or interpretable set of instructions.",
+    "William R. Hogan",
+    "process of compiling software",
+    false
+  ],
+  "shortForm": "APOLLO_SV_00000524",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

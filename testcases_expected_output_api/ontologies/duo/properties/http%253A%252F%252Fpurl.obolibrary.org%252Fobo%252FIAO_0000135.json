@@ -1,10 +1,18 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/IAO_0000135",
-  "lang": "en",
-  "description": [
-    "c specifically denotes r =def \nr is a portion of reality\n& c is a particular quality\n& c depends specifically on some independent continuant b \n& b acquired c as the result of the achievement of an objective to enable pointing to r repeatedly. \n\nMarked means there is a changed or additional quality of the bearer - the  quality is the information carrier.\n\nCase 1\nMemory trace as mark created when reading some description of some friend. The trace can denote.\n\nCase 2\nPattern of ink arrayed on paper as mark when writing down a friend's name\n\nCase 3\nPattern of magnetic domains on scattered pieces of a hard disk platter as mark when saving a file."
-  ],
-  "synonyms": [],
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000135/ancestors"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000135/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000135/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000135?lang=en"
+    }
+  },
   "annotation": {
     "definition source": [
       "Smith, Ceusters, Ruttenberg, 2000 years of philosophy"
@@ -26,28 +34,20 @@
       "Alan Ruttenberg"
     ]
   },
+  "description": [
+    "c specifically denotes r =def \nr is a portion of reality\n& c is a particular quality\n& c depends specifically on some independent continuant b \n& b acquired c as the result of the achievement of an objective to enable pointing to r repeatedly. \n\nMarked means there is a changed or additional quality of the bearer - the  quality is the information carrier.\n\nCase 1\nMemory trace as mark created when reading some description of some friend. The trace can denote.\n\nCase 2\nPattern of ink arrayed on paper as mark when writing down a friend's name\n\nCase 3\nPattern of magnetic domains on scattered pieces of a hard disk platter as mark when saving a file."
+  ],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000135",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": false,
   "label": "obsolete_specifically denotes",
+  "lang": "en",
+  "obo_id": "IAO:0000135",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontology_name": "duo",
   "ontology_prefix": "DUO",
-  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": false,
-  "is_root": false,
   "short_form": "IAO_0000135",
-  "obo_id": "IAO:0000135",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000135?lang=en"
-    },
-    "parents": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000135/parents"
-    },
-    "ancestors": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000135/ancestors"
-    },
-    "jstree": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000135/jstree"
-    }
-  }
+  "synonyms": []
 }

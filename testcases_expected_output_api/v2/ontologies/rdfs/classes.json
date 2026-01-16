@@ -4,7 +4,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "RDFS:Class",
+    "curie": "Class",
     "definedBy": [
       "rdfs"
     ],
@@ -67,7 +67,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -82,7 +82,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -97,7 +97,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -131,7 +131,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "RDFS_Class",
+    "shortForm": "Class",
     "type": [
       "class",
       "entity"
@@ -142,7 +142,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "RDFS:Container",
+    "curie": "Container",
     "definedBy": [
       "rdfs"
     ],
@@ -220,7 +220,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -235,7 +235,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -250,7 +250,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -285,7 +285,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "RDFS_Container",
+    "shortForm": "Container",
     "type": [
       "class",
       "entity"
@@ -296,7 +296,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "RDFS:ContainerMembershipProperty",
+    "curie": "ContainerMembershipProperty",
     "definedBy": [
       "rdfs"
     ],
@@ -347,7 +347,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -362,7 +362,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -377,7 +377,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -411,7 +411,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "RDFS_ContainerMembershipProperty",
+    "shortForm": "ContainerMembershipProperty",
     "type": [
       "class",
       "entity"
@@ -422,7 +422,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "RDFS:Datatype",
+    "curie": "Datatype",
     "definedBy": [
       "rdfs"
     ],
@@ -502,7 +502,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -517,7 +517,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -532,7 +532,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -567,7 +567,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "RDFS_Datatype",
+    "shortForm": "Datatype",
     "type": [
       "class",
       "entity"
@@ -578,7 +578,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "RDFS:Literal",
+    "curie": "Literal",
     "definedBy": [
       "rdfs"
     ],
@@ -656,7 +656,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -671,7 +671,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -686,7 +686,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -721,7 +721,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "RDFS_Literal",
+    "shortForm": "Literal",
     "type": [
       "class",
       "entity"
@@ -732,7 +732,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "RDFS:Resource",
+    "curie": "Resource",
     "definedBy": [
       "rdfs"
     ],
@@ -781,7 +781,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -796,7 +796,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -811,7 +811,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -829,7 +829,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "RDFS_Resource",
+    "shortForm": "Resource",
     "type": [
       "class",
       "entity"

@@ -1,16 +1,17 @@
 {
-  "iri": "http://www.geneontology.org/formats/oboInOwl#hasDefaultNamespace",
-  "lang": "en",
-  "description": [],
-  "synonyms": [],
+  "_links": {
+    "self": {
+      "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasDefaultNamespace?lang=en"
+    }
+  },
   "annotation": {
     "has_dbxref": [
       {
         "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
           "type": [
             "literal"
           ],
-          "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
           "value": "http://purl.org/obo/owl/oboFormat#oboFormat_default-namespace"
         },
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
@@ -24,18 +25,17 @@
       }
     ]
   },
-  "label": "has_default_namespace",
-  "ontology_name": "oio",
-  "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
+  "description": [],
   "has_children": false,
+  "iri": "http://www.geneontology.org/formats/oboInOwl#hasDefaultNamespace",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
   "is_root": true,
-  "short_form": "OIO_hasDefaultNamespace",
+  "label": "has_default_namespace",
+  "lang": "en",
   "obo_id": "OIO:hasDefaultNamespace",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasDefaultNamespace?lang=en"
-    }
-  }
+  "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+  "ontology_name": "oio",
+  "short_form": "OIO_hasDefaultNamespace",
+  "synonyms": []
 }

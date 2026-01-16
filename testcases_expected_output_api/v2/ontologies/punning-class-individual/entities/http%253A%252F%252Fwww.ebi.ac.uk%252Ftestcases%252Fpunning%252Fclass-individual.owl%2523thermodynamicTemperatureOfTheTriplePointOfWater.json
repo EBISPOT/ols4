@@ -1,0 +1,69 @@
+{
+  "appearsIn": [
+    "punning-class-individual"
+  ],
+  "curie": "thermodynamicTemperatureOfTheTriplePointOfWater",
+  "directAncestor": [
+    "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+    "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature"
+  ],
+  "directParent": [
+    "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+    "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
+    "http://www.w3.org/2002/07/owl#NamedIndividual"
+  ],
+  "imported": false,
+  "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#thermodynamicTemperatureOfTheTriplePointOfWater",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "label": [
+    "thermodynamicTemperatureOfTheTriplePointOfWater"
+  ],
+  "linkedEntities": {
+    "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity": {
+      "curie": "Quantity",
+      "hasLocalDefinition": true,
+      "label": [
+        "Quantity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature": {
+      "curie": "ThermodynamicTemperature",
+      "hasLocalDefinition": true,
+      "label": [
+        "ThermodynamicTemperature"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "individual"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+    "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "punning-class-individual",
+  "ontologyIri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl",
+  "ontologyPreferredPrefix": "punning-class-individual",
+  "searchableAnnotationValues": false,
+  "shortForm": "thermodynamicTemperatureOfTheTriplePointOfWater",
+  "type": [
+    "entity",
+    "individual"
+  ]
+}

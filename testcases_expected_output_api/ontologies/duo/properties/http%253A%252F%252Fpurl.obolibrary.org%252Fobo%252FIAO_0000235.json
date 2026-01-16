@@ -1,10 +1,9 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/IAO_0000235",
-  "lang": "en",
-  "description": [
-    "inverse of the relation 'denotes'"
-  ],
-  "synonyms": [],
+  "_links": {
+    "self": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000235?lang=en"
+    }
+  },
   "annotation": {
     "term editor": [
       "Person: Jie Zheng, Chris Stoeckert, Mike Conlon"
@@ -13,19 +12,20 @@
       "https://github.com/information-artifact-ontology/IAO/issues/206"
     ]
   },
+  "description": [
+    "inverse of the relation 'denotes'"
+  ],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000235",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": true,
   "label": "denoted by",
+  "lang": "en",
+  "obo_id": "IAO:0000235",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontology_name": "duo",
   "ontology_prefix": "DUO",
-  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": false,
-  "is_root": true,
   "short_form": "IAO_0000235",
-  "obo_id": "IAO:0000235",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000235?lang=en"
-    }
-  }
+  "synonyms": []
 }

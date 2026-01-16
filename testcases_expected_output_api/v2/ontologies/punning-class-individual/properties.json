@@ -30,10 +30,26 @@
           "class",
           "entity"
         ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#domain": {
+        "curie": "RDFS:domain",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "domain"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
       }
     },
     "linksTo": [
-      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+      "http://www.w3.org/2000/01/rdf-schema#domain"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

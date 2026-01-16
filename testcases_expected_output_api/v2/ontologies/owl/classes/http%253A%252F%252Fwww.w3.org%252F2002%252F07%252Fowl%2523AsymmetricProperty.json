@@ -1,0 +1,137 @@
+{
+  "appearsIn": [
+    "owl"
+  ],
+  "curie": "OWL:AsymmetricProperty",
+  "definedBy": [
+    "owl"
+  ],
+  "definition": [
+    "The class of asymmetric properties."
+  ],
+  "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
+  "directAncestor": [
+    "http://www.w3.org/2002/07/owl#ObjectProperty"
+  ],
+  "directParent": [
+    "http://www.w3.org/2002/07/owl#ObjectProperty"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://www.w3.org/2002/07/owl#ObjectProperty"
+  ],
+  "hierarchicalParent": [
+    "http://www.w3.org/2002/07/owl#ObjectProperty"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2000/01/rdf-schema#Class",
+  "http://www.w3.org/2000/01/rdf-schema#comment": "The class of asymmetric properties.",
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2002/07/owl#",
+  "http://www.w3.org/2000/01/rdf-schema#label": "AsymmetricProperty",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.w3.org/2002/07/owl#ObjectProperty",
+  "imported": false,
+  "iri": "http://www.w3.org/2002/07/owl#AsymmetricProperty",
+  "isDefiningOntology": true,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "AsymmetricProperty"
+  ],
+  "linkedEntities": {
+    "http://www.w3.org/2000/01/rdf-schema#Class": {
+      "curie": "RDFS:Class",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "Class"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#comment": {
+      "curie": "RDFS:comment",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "comment"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
+      "curie": "RDFS:isDefinedBy",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "isDefinedBy"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://www.w3.org/2000/01/rdf-schema#Class",
+    "http://www.w3.org/2000/01/rdf-schema#comment",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "owl",
+  "ontologyIri": "http://www.w3.org/2002/07/owl",
+  "searchableAnnotationValues": false,
+  "shortForm": "OWL_AsymmetricProperty",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

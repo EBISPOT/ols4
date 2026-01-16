@@ -1,22 +1,22 @@
 {
-  "iri": "http://www.ebi.ac.uk/ols4/testcase/label#deProperty",
-  "lang": "en",
-  "description": [],
-  "synonyms": [],
-  "annotation": {},
-  "label": "deProperty",
-  "ontology_name": "label",
-  "ontology_prefix": "label",
-  "ontology_iri": "http://www.ebi.ac.uk/ols4/testcase/label",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": false,
-  "is_root": true,
-  "short_form": "deProperty",
-  "obo_id": "deProperty",
   "_links": {
     "self": {
-      "href": "http://localhost:8080/api/ontologies/label/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Fols4%252Ftestcase%252Flabel%2523deProperty?lang=en"
+      "href": "<base>/api/ontologies/label/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Fols4%252Ftestcase%252Flabel%2523deProperty?lang=en"
     }
-  }
+  },
+  "annotation": {},
+  "description": [],
+  "has_children": false,
+  "iri": "http://www.ebi.ac.uk/ols4/testcase/label#deProperty",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": true,
+  "label": "deProperty",
+  "lang": "en",
+  "obo_id": "deProperty",
+  "ontology_iri": "http://www.ebi.ac.uk/ols4/testcase/label",
+  "ontology_name": "label",
+  "ontology_prefix": "label",
+  "short_form": "deProperty",
+  "synonyms": []
 }

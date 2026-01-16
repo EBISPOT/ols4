@@ -1,10 +1,18 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/IAO_0000427",
-  "lang": "en",
-  "description": [
-    "Use boolean value xsd:true to indicate that the property is an antisymmetric property"
-  ],
-  "synonyms": [],
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000427/ancestors"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000427/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000427/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000427?lang=en"
+    }
+  },
   "annotation": {
     "editor preferred term": [
       "antisymmetric property"
@@ -16,28 +24,20 @@
       "Alan Ruttenberg"
     ]
   },
+  "description": [
+    "Use boolean value xsd:true to indicate that the property is an antisymmetric property"
+  ],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000427",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": false,
   "label": "antisymmetric property",
+  "lang": "en",
+  "obo_id": "IAO:0000427",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontology_name": "duo",
   "ontology_prefix": "DUO",
-  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": false,
-  "is_root": false,
   "short_form": "IAO_0000427",
-  "obo_id": "IAO:0000427",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000427?lang=en"
-    },
-    "parents": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000427/parents"
-    },
-    "ancestors": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000427/ancestors"
-    },
-    "jstree": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000427/jstree"
-    }
-  }
+  "synonyms": []
 }

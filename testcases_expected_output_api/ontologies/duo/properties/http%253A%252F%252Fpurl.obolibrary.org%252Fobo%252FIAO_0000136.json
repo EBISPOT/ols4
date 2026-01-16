@@ -1,10 +1,15 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/IAO_0000136",
-  "lang": "en",
-  "description": [
-    "A (currently) primitive relation that relates an information artifact to an entity."
-  ],
-  "synonyms": [],
+  "_links": {
+    "children": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000136/children"
+    },
+    "descendants": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000136/descendants"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000136?lang=en"
+    }
+  },
   "annotation": {
     "definition source": [
       "Smith, Ceusters, Ruttenberg, 2000 years of philosophy"
@@ -22,25 +27,20 @@
       "person:Alan Ruttenberg"
     ]
   },
+  "description": [
+    "A (currently) primitive relation that relates an information artifact to an entity."
+  ],
+  "has_children": true,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000136",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": true,
   "label": "is about",
+  "lang": "en",
+  "obo_id": "IAO:0000136",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontology_name": "duo",
   "ontology_prefix": "DUO",
-  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": true,
-  "is_root": true,
   "short_form": "IAO_0000136",
-  "obo_id": "IAO:0000136",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000136?lang=en"
-    },
-    "children": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000136/children"
-    },
-    "descendants": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000136/descendants"
-    }
-  }
+  "synonyms": []
 }

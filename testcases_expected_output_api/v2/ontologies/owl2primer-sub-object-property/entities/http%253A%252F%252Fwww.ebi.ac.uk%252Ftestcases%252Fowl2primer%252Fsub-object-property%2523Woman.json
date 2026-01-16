@@ -1,0 +1,77 @@
+{
+  "appearsIn": [
+    "owl2primer-sub-object-property"
+  ],
+  "curie": "Woman",
+  "directAncestor": [
+    "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person"
+  ],
+  "directParent": [
+    "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person"
+  ],
+  "hierarchicalParent": [
+    "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person",
+  "imported": false,
+  "iri": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Woman",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "Woman"
+  ],
+  "linkedEntities": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person": {
+      "curie": "Person",
+      "hasLocalDefinition": true,
+      "label": [
+        "Person"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "owl2primer-sub-object-property",
+  "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property",
+  "ontologyPreferredPrefix": "owl2primer-sub-object-property",
+  "searchableAnnotationValues": false,
+  "shortForm": "Woman",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

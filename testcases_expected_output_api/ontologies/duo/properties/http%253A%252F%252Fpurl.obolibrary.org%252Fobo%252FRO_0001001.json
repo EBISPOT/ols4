@@ -1,10 +1,9 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/RO_0001001",
-  "lang": "en",
-  "description": [
-    "a relation between two distinct material entities, the old entity and the new entity, in which the new entity begins to exist when the old entity ceases to exist, and the new entity inherits the significant portion of the matter of the old entity"
-  ],
-  "synonyms": [],
+  "_links": {
+    "self": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0001001?lang=en"
+    }
+  },
   "annotation": {
     "alternative label": [
       "derives_into"
@@ -20,19 +19,20 @@
       "http://purl.obolibrary.org/obo/IAO_0000125"
     ]
   },
+  "description": [
+    "a relation between two distinct material entities, the old entity and the new entity, in which the new entity begins to exist when the old entity ceases to exist, and the new entity inherits the significant portion of the matter of the old entity"
+  ],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/RO_0001001",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": true,
   "label": "derives into",
+  "lang": "en",
+  "obo_id": "RO:0001001",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontology_name": "duo",
   "ontology_prefix": "DUO",
-  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": false,
-  "is_root": true,
   "short_form": "RO_0001001",
-  "obo_id": "RO:0001001",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0001001?lang=en"
-    }
-  }
+  "synonyms": []
 }

@@ -1,23 +1,23 @@
 {
-  "iri": "http://www.w3.org/2002/07/owl#incompatibleWith",
-  "lang": "en",
+  "_links": {
+    "self": {
+      "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523incompatibleWith?lang=en"
+    }
+  },
+  "annotation": {},
   "description": [
     "The annotation property that indicates that a given ontology is incompatible with another ontology."
   ],
-  "synonyms": [],
-  "annotation": {},
-  "label": "incompatibleWith",
-  "ontology_name": "owl",
-  "ontology_iri": "http://www.w3.org/2002/07/owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
   "has_children": false,
+  "iri": "http://www.w3.org/2002/07/owl#incompatibleWith",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
   "is_root": true,
-  "short_form": "OWL_incompatibleWith",
+  "label": "incompatibleWith",
+  "lang": "en",
   "obo_id": "OWL:incompatibleWith",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523incompatibleWith?lang=en"
-    }
-  }
+  "ontology_iri": "http://www.w3.org/2002/07/owl",
+  "ontology_name": "owl",
+  "short_form": "OWL_incompatibleWith",
+  "synonyms": []
 }

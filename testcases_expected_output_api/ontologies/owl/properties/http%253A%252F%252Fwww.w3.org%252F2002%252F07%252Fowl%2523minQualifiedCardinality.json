@@ -1,23 +1,23 @@
 {
-  "iri": "http://www.w3.org/2002/07/owl#minQualifiedCardinality",
-  "lang": "en",
+  "_links": {
+    "self": {
+      "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523minQualifiedCardinality?lang=en"
+    }
+  },
+  "annotation": {},
   "description": [
     "The property that determines the cardinality of a minimum qualified cardinality restriction."
   ],
-  "synonyms": [],
-  "annotation": {},
-  "label": "minQualifiedCardinality",
-  "ontology_name": "owl",
-  "ontology_iri": "http://www.w3.org/2002/07/owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
   "has_children": false,
+  "iri": "http://www.w3.org/2002/07/owl#minQualifiedCardinality",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
   "is_root": true,
-  "short_form": "OWL_minQualifiedCardinality",
+  "label": "minQualifiedCardinality",
+  "lang": "en",
   "obo_id": "OWL:minQualifiedCardinality",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523minQualifiedCardinality?lang=en"
-    }
-  }
+  "ontology_iri": "http://www.w3.org/2002/07/owl",
+  "ontology_name": "owl",
+  "short_form": "OWL_minQualifiedCardinality",
+  "synonyms": []
 }

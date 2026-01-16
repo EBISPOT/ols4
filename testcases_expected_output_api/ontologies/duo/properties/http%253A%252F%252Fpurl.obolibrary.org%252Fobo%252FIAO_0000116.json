@@ -1,10 +1,9 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/IAO_0000116",
-  "lang": "en",
-  "description": [
-    "An administrative note intended for its editor. It may not be included in the publication version of the ontology, so it should contain nothing necessary for end users to understand the ontology."
-  ],
-  "synonyms": [],
+  "_links": {
+    "self": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000116?lang=en"
+    }
+  },
   "annotation": {
     "definition source": [
       "GROUP:OBI:<http://purl.obofoundry.org/obo/obi>"
@@ -19,19 +18,20 @@
       "PERSON:Daniel Schober"
     ]
   },
+  "description": [
+    "An administrative note intended for its editor. It may not be included in the publication version of the ontology, so it should contain nothing necessary for end users to understand the ontology."
+  ],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000116",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": true,
   "label": "editor note",
+  "lang": "en",
+  "obo_id": "IAO:0000116",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontology_name": "duo",
   "ontology_prefix": "DUO",
-  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": false,
-  "is_root": true,
   "short_form": "IAO_0000116",
-  "obo_id": "IAO:0000116",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000116?lang=en"
-    }
-  }
+  "synonyms": []
 }

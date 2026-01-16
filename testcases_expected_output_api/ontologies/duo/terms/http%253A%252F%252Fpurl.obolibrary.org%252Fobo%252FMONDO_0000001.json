@@ -1,23 +1,29 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/MONDO_0000001",
-  "lang": "en",
-  "description": [
-    "A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism."
-  ],
-  "synonyms": [
-    "condition",
-    "disease",
-    "disease or disorder",
-    "disease or disorder, non-neoplastic",
-    "diseases",
-    "diseases and disorders",
-    "disorder",
-    "disorders",
-    "medical condition",
-    "other disease"
-  ],
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/ancestors"
+    },
+    "graph": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/graph"
+    },
+    "hierarchicalAncestors": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/hierarchicalAncestors"
+    },
+    "hierarchicalParents": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/hierarchicalParents"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001?lang=en"
+    }
+  },
   "annotation": {
-    "exactMatch": [
+    "has exact match": [
       "http://identifiers.org/mesh/D004194",
       "http://identifiers.org/snomedct/64572001",
       "http://linkedlifedata.com/resource/umls/id/C0012634",
@@ -25,7 +31,7 @@
       "http://purl.obolibrary.org/obo/NCIT_C2991",
       "http://www.orpha.net/ORDO/Orphanet_377788"
     ],
-    "hasDbXref": [
+    "has_dbxref": [
       "DOID:4",
       "EFO:0000408",
       "ICD10:N18",
@@ -41,15 +47,17 @@
       "MONDO:0000001"
     ]
   },
-  "label": "disease or disorder",
-  "ontology_name": "duo",
-  "ontology_prefix": "DUO",
-  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
+  "description": [
+    "A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism."
+  ],
   "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0000001",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_preferred_root": false,
   "is_root": false,
-  "short_form": "MONDO_0000001",
+  "label": "disease or disorder",
+  "lang": "en",
   "obo_id": "MONDO:0000001",
   "obo_xref": [
     {
@@ -94,7 +102,7 @@
     {
       "database": "SCTID",
       "id": "64572001",
-      "url": "http://snomed.info/id/64572001"
+      "url": "http://purl.bioontology.org/ontology/SNOMEDCT/64572001"
     },
     {
       "database": "UMLS",
@@ -102,28 +110,20 @@
       "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0012634"
     }
   ],
-  "is_preferred_root": false,
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001?lang=en"
-    },
-    "parents": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/parents"
-    },
-    "ancestors": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/ancestors"
-    },
-    "hierarchicalParents": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/hierarchicalParents"
-    },
-    "hierarchicalAncestors": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/hierarchicalAncestors"
-    },
-    "jstree": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/jstree"
-    },
-    "graph": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0000001/graph"
-    }
-  }
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "short_form": "MONDO_0000001",
+  "synonyms": [
+    "condition",
+    "disease or disorder",
+    "disease or disorder, non-neoplastic",
+    "disease",
+    "diseases and disorders",
+    "diseases",
+    "disorder",
+    "disorders",
+    "medical condition",
+    "other disease"
+  ]
 }

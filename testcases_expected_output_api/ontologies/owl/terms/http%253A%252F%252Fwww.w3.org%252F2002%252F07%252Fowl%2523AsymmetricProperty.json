@@ -1,42 +1,42 @@
 {
-  "iri": "http://www.w3.org/2002/07/owl#AsymmetricProperty",
-  "lang": "en",
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AsymmetricProperty/ancestors"
+    },
+    "graph": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AsymmetricProperty/graph"
+    },
+    "hierarchicalAncestors": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AsymmetricProperty/hierarchicalAncestors"
+    },
+    "hierarchicalParents": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AsymmetricProperty/hierarchicalParents"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AsymmetricProperty/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AsymmetricProperty/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AsymmetricProperty?lang=en"
+    }
+  },
+  "annotation": {},
   "description": [
     "The class of asymmetric properties."
   ],
-  "synonyms": [],
-  "annotation": {},
-  "label": "AsymmetricProperty",
-  "ontology_name": "owl",
-  "ontology_iri": "http://www.w3.org/2002/07/owl",
-  "is_obsolete": false,
-  "is_defining_ontology": true,
   "has_children": false,
-  "is_root": false,
-  "short_form": "OWL_AsymmetricProperty",
-  "obo_id": "OWL:AsymmetricProperty",
+  "iri": "http://www.w3.org/2002/07/owl#AsymmetricProperty",
+  "is_defining_ontology": true,
+  "is_obsolete": false,
   "is_preferred_root": false,
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AsymmetricProperty?lang=en"
-    },
-    "parents": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AsymmetricProperty/parents"
-    },
-    "ancestors": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AsymmetricProperty/ancestors"
-    },
-    "hierarchicalParents": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AsymmetricProperty/hierarchicalParents"
-    },
-    "hierarchicalAncestors": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AsymmetricProperty/hierarchicalAncestors"
-    },
-    "jstree": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AsymmetricProperty/jstree"
-    },
-    "graph": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523AsymmetricProperty/graph"
-    }
-  }
+  "is_root": false,
+  "label": "AsymmetricProperty",
+  "lang": "en",
+  "obo_id": "OWL:AsymmetricProperty",
+  "ontology_iri": "http://www.w3.org/2002/07/owl",
+  "ontology_name": "owl",
+  "short_form": "OWL_AsymmetricProperty",
+  "synonyms": []
 }

@@ -1,8 +1,24 @@
 {
-  "iri": "http://www.w3.org/2004/02/skos/core#Collection",
-  "lang": "en",
-  "description": [],
-  "synonyms": [],
+  "_links": {
+    "children": {
+      "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection/children"
+    },
+    "descendants": {
+      "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection/descendants"
+    },
+    "graph": {
+      "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection/graph"
+    },
+    "hierarchicalChildren": {
+      "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection/hierarchicalDescendants"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection?lang=en"
+    }
+  },
   "annotation": {
     "definition": [
       "A meaningful collection of concepts."
@@ -11,34 +27,18 @@
       "Labelled collections can be used where you would like a set of concepts to be displayed under a 'node label' in the hierarchy."
     ]
   },
-  "label": "Collection",
-  "ontology_name": "skos",
-  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
-  "is_obsolete": false,
-  "is_defining_ontology": true,
+  "description": [],
   "has_children": true,
-  "is_root": true,
-  "short_form": "SKOS_Collection",
-  "obo_id": "SKOS:Collection",
+  "iri": "http://www.w3.org/2004/02/skos/core#Collection",
+  "is_defining_ontology": true,
+  "is_obsolete": false,
   "is_preferred_root": false,
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection?lang=en"
-    },
-    "children": {
-      "href": "http://localhost:8080/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection/children"
-    },
-    "descendants": {
-      "href": "http://localhost:8080/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection/descendants"
-    },
-    "hierarchicalChildren": {
-      "href": "http://localhost:8080/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection/hierarchicalChildren"
-    },
-    "hierarchicalDescendants": {
-      "href": "http://localhost:8080/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection/hierarchicalDescendants"
-    },
-    "graph": {
-      "href": "http://localhost:8080/api/ontologies/skos/terms/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523Collection/graph"
-    }
-  }
+  "is_root": true,
+  "label": "Collection",
+  "lang": "en",
+  "obo_id": "SKOS:Collection",
+  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+  "ontology_name": "skos",
+  "short_form": "SKOS_Collection",
+  "synonyms": []
 }
