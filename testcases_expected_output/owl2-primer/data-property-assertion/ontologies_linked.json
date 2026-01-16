@@ -135,8 +135,8 @@
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#hasAge",
           "type": [
             "dataProperty",
-            "property",
-            "entity"
+            "entity",
+            "property"
           ],
           "curie": {
             "type": [
@@ -227,8 +227,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/data-property-assertion#John",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -307,8 +307,8 @@
               },
               "type": [
                 "dataProperty",
-                "property",
-                "entity"
+                "entity",
+                "property"
               ]
             }
           },

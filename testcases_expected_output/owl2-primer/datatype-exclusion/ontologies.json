@@ -14,12 +14,7 @@
       "imported": false,
       "isObsolete": false,
       "language": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        }
+        {"type":["literal"],"value":"en"}
       ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
@@ -49,24 +44,9 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "1"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "2"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
-        }
+        {"type":["literal"],"value":"0"},
+        {"type":["literal"],"value":"1"},
+        {"type":["literal"],"value":"2"}
       ],
       "classes": [
         {
@@ -92,12 +72,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "Dummy"
-            }
+            {"type":["literal"],"value":"Dummy"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -133,8 +108,8 @@
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl#ageOfAdult",
           "type": [
             "dataProperty",
-            "property",
-            "entity"
+            "entity",
+            "property"
           ],
           "curie": {
             "type": [
@@ -195,12 +170,7 @@
                   "imported": false,
                   "isObsolete": false,
                   "label": [
-                    {
-                      "type": [
-                        "literal"
-                      ],
-                      "value": "personAge"
-                    }
+                    {"type":["literal"],"value":"personAge"}
                   ],
                   "numDescendants": 0,
                   "numHierarchicalDescendants": 0,
@@ -259,12 +229,7 @@
                         "imported": false,
                         "isObsolete": false,
                         "label": [
-                          {
-                            "type": [
-                              "literal"
-                            ],
-                            "value": "personAge"
-                          }
+                          {"type":["literal"],"value":"personAge"}
                         ],
                         "numDescendants": 0,
                         "numHierarchicalDescendants": 0,
@@ -302,12 +267,7 @@
                     "imported": false,
                     "isObsolete": false,
                     "label": [
-                      {
-                        "type": [
-                          "literal"
-                        ],
-                        "value": "minorAge"
-                      }
+                      {"type":["literal"],"value":"minorAge"}
                     ],
                     "numDescendants": 0,
                     "numHierarchicalDescendants": 0,
@@ -326,12 +286,7 @@
             "imported": false,
             "isObsolete": false,
             "label": [
-              {
-                "type": [
-                  "literal"
-                ],
-                "value": "majorAge"
-              }
+              {"type":["literal"],"value":"majorAge"}
             ],
             "numDescendants": 0,
             "numHierarchicalDescendants": 0,
@@ -346,12 +301,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "ageOfAdult"
-            }
+            {"type":["literal"],"value":"ageOfAdult"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,

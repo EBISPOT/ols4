@@ -14,12 +14,7 @@
       "imported": false,
       "isObsolete": false,
       "language": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        }
+        {"type":["literal"],"value":"en"}
       ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
@@ -49,24 +44,9 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "2"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "7"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "3"
-        }
+        {"type":["literal"],"value":"2"},
+        {"type":["literal"],"value":"3"},
+        {"type":["literal"],"value":"7"}
       ],
       "classes": [
         {
@@ -92,12 +72,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "Address"
-            }
+            {"type":["literal"],"value":"Address"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -153,12 +128,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "Business"
-            }
+            {"type":["literal"],"value":"Business"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -193,9 +163,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#businessAddress",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -215,12 +185,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "businessAddress"
-            }
+            {"type":["literal"],"value":"businessAddress"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -253,9 +218,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#hasSSN",
           "type": [
-            "property",
             "annotationProperty",
-            "entity"
+            "entity",
+            "property"
           ],
           "curie": {
             "type": [
@@ -273,12 +238,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "hasSSN"
-            }
+            {"type":["literal"],"value":"hasSSN"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -313,8 +273,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#a",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -331,12 +291,7 @@
           "imported": false,
           "isObsolete": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "a"
-            }
+            {"type":["literal"],"value":"a"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -369,8 +324,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#b1",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -388,12 +343,7 @@
           "imported": false,
           "isObsolete": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "b1"
-            }
+            {"type":["literal"],"value":"b1"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -426,8 +376,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-hasKey.owl#b2",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -445,12 +395,7 @@
           "imported": false,
           "isObsolete": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "b2"
-            }
+            {"type":["literal"],"value":"b2"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,

@@ -1,0 +1,341 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-equivalentobjectproperty",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasLifePartner"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasLifePartner"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-equivalentobjectproperty": {
+          "ontologyId": "owl2primer-equivalentobjectproperty",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasLifePartner"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasLifePartner"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-equivalentobjectproperty",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasSpouse"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasSpouse"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-equivalentobjectproperty": {
+          "ontologyId": "owl2primer-equivalentobjectproperty",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasSpouse"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasSpouse"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#John": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-equivalentobjectproperty",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "John"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "John"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-equivalentobjectproperty": {
+          "ontologyId": "owl2primer-equivalentobjectproperty",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "John"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "John"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#Mary": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-equivalentobjectproperty",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Mary"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Mary"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-equivalentobjectproperty": {
+          "ontologyId": "owl2primer-equivalentobjectproperty",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Mary"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Mary"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl": [
+      "owl2primer-equivalentobjectproperty"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-equivalentObjectProperty": [
+      "owl2primer-equivalentobjectproperty"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-equivalentobjectproperty": [
+      "http://purl.obolibrary.org/obo/owl2primer-equivalentObjectProperty_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-equivalentobjectproperty": [
+      "iri",
+      "numberOfIndividuals",
+      "numDescendants",
+      "numberOfProperties",
+      "numberOfClasses",
+      "language",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "type",
+      "ontologyPurl",
+      "preferredPrefix",
+      "directAncestor",
+      "imported",
+      "numberOfEntities",
+      "ontologyId",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-equivalentobjectproperty": []
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-equivalentobjectproperty": [
+      "http://www.w3.org/2002/07/owl#equivalentProperty",
+      "isPreferredRoot",
+      "iri",
+      "hasDirectChildren",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "label",
+      "type",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "hasDirectParents",
+      "imported",
+      "shortForm",
+      "ontologyId",
+      "ontologyIri",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-equivalentobjectproperty": [
+      "iri",
+      "hasDirectChildren",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "label",
+      "type",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "hasDirectParents",
+      "imported",
+      "shortForm",
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner",
+      "ontologyId",
+      "ontologyIri",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-equivalentobjectproperty": []
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-equivalentobjectproperty": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl": [
+        "ONTOLOGY"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner": [
+        "PROPERTY"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse": [
+        "PROPERTY"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#John": [
+        "INDIVIDUAL"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#Mary": [
+        "INDIVIDUAL"
+      ]
+    }
+  }
+}

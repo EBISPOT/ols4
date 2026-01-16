@@ -55,13 +55,13 @@
           "type": [
             "literal"
           ],
-          "value": "1"
+          "value": "0"
         },
         {
           "type": [
             "literal"
           ],
-          "value": "0"
+          "value": "1"
         }
       ],
       "classes": [
@@ -168,6 +168,7 @@
             "value": "Definition-Multiple"
           },
           "searchableAnnotationValues": [
+            false,
             {
               "type": [
                 "literal"
@@ -185,8 +186,7 @@
                 "literal"
               ],
               "value": "Pathological processes of the LIVER."
-            },
-            false
+            }
           ],
           "shortForm": {
             "type": [

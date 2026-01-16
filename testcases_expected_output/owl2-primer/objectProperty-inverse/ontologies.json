@@ -14,12 +14,7 @@
       "imported": false,
       "isObsolete": false,
       "language": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        }
+        {"type":["literal"],"value":"en"}
       ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
@@ -49,27 +44,17 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "2"
-        }
+        {"type":["literal"],"value":"0"},
+        {"type":["literal"],"value":"2"}
       ],
       "classes": [],
       "properties": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasChild",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -88,12 +73,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "hasChild"
-            }
+            {"type":["literal"],"value":"hasChild"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -126,9 +106,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasParent",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -147,12 +127,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "hasParent"
-            }
+            {"type":["literal"],"value":"hasParent"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,

@@ -1,0 +1,224 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl#ageOfToddler": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-datatype-enumeration",
+          "entityTypes": [
+            "dataProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "ageOfToddler"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ageOfToddler"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-datatype-enumeration": {
+          "ontologyId": "owl2primer-datatype-enumeration",
+          "entityTypes": [
+            "dataProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "ageOfToddler"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ageOfToddler"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl#Dummy": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-datatype-enumeration",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Dummy"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Dummy"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-datatype-enumeration": {
+          "ontologyId": "owl2primer-datatype-enumeration",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Dummy"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Dummy"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl": [
+      "owl2primer-datatype-enumeration"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-datatype-enumeration": [
+      "owl2primer-datatype-enumeration"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-datatype-enumeration": [
+      "http://purl.obolibrary.org/obo/owl2primer-datatype-enumeration_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-datatype-enumeration": [
+      "iri",
+      "numberOfIndividuals",
+      "numDescendants",
+      "numberOfProperties",
+      "numberOfClasses",
+      "language",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "type",
+      "ontologyPurl",
+      "preferredPrefix",
+      "directAncestor",
+      "imported",
+      "numberOfEntities",
+      "ontologyId",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-datatype-enumeration": [
+      "isPreferredRoot",
+      "iri",
+      "hasDirectChildren",
+      "hierarchicalAncestor",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "label",
+      "type",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "hasDirectParents",
+      "imported",
+      "shortForm",
+      "ontologyId",
+      "ontologyIri",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-datatype-enumeration": [
+      "isPreferredRoot",
+      "iri",
+      "hasDirectChildren",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "label",
+      "type",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "hasDirectParents",
+      "imported",
+      "shortForm",
+      "ontologyId",
+      "ontologyIri",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#range"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-datatype-enumeration": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-datatype-enumeration": []
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-datatype-enumeration": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl#ageOfToddler": [
+        "PROPERTY"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl#Dummy": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}

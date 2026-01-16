@@ -1,0 +1,67 @@
+{
+  "iriToDefinitions": {},
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/baseUri/BaseUri.owl": [
+      "base_uri"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "BASE_URI": [
+      "base_uri"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "base_uri": [
+      "http://purl.obolibrary.org/obo/BASE_URI_",
+      "http://www.ebi.ac.uk/baseUri/BASE_URI_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "base_uri": [
+      "iri",
+      "numberOfIndividuals",
+      "numDescendants",
+      "numberOfProperties",
+      "numberOfClasses",
+      "oboSlims",
+      "language",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "title",
+      "type",
+      "ontologyPurl",
+      "preferredPrefix",
+      "directAncestor",
+      "baseUri",
+      "imported",
+      "numberOfEntities",
+      "ontologyId",
+      "reasoner",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "http://www.w3.org/2002/07/owl#versionInfo",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "base_uri": []
+  },
+  "ontologyIdToPropertyProperties": {
+    "base_uri": []
+  },
+  "ontologyIdToIndividualProperties": {
+    "base_uri": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "base_uri": []
+  },
+  "ontologyIdToUriToTypes": {
+    "base_uri": {
+      "http://www.ebi.ac.uk/baseUri/BaseUri.owl": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}

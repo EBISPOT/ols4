@@ -55,13 +55,7 @@
           "type": [
             "literal"
           ],
-          "value": "3"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "6"
+          "value": "1"
         },
         {
           "type": [
@@ -73,7 +67,13 @@
           "type": [
             "literal"
           ],
-          "value": "1"
+          "value": "3"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "6"
         }
       ],
       "classes": [
@@ -383,9 +383,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#hasWife",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -449,8 +449,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#John",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -470,8 +470,8 @@
           "hasHierarchicalParents": false,
           "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#hasWife": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Mary",
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
-            "http://www.w3.org/2002/07/owl#NamedIndividual",
-            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person"
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
+            "http://www.w3.org/2002/07/owl#NamedIndividual"
           ],
           "imported": false,
           "isObsolete": false,
@@ -533,31 +533,8 @@
                 "value": "Mary"
               },
               "type": [
-                "individual",
-                "entity"
-              ]
-            },
-            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#hasWife": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "hasWife"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "hasWife"
-              },
-              "type": [
-                "property",
-                "objectProperty",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person": {
@@ -581,19 +558,42 @@
                 "class",
                 "entity"
               ]
+            },
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#hasWife": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "hasWife"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "hasWife"
+              },
+              "type": [
+                "entity",
+                "objectProperty",
+                "property"
+              ]
             }
           },
           "linksTo": [
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Mary",
             "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
-            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#hasWife",
-            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Mary"
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#hasWife"
           ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Mary",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -612,8 +612,8 @@
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
-            "http://www.w3.org/2002/07/owl#NamedIndividual",
-            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person"
+            "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person",
+            "http://www.w3.org/2002/07/owl#NamedIndividual"
           ],
           "imported": false,
           "isObsolete": false,

@@ -1,0 +1,285 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#B": {
+      "definitions": [
+        {
+          "ontologyId": "related-somevaluesof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "B"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "B"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "related-somevaluesof": {
+          "ontologyId": "related-somevaluesof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "B"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "B"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r": {
+      "definitions": [
+        {
+          "ontologyId": "related-somevaluesof",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "r"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "r"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "related-somevaluesof": {
+          "ontologyId": "related-somevaluesof",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "r"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "r"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#A": {
+      "definitions": [
+        {
+          "ontologyId": "related-somevaluesof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "A"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "A"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "related-somevaluesof": {
+          "ontologyId": "related-somevaluesof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "A"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "A"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl": [
+      "related-somevaluesof"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "related-someValuesOf": [
+      "related-somevaluesof"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "related-somevaluesof": [
+      "http://purl.obolibrary.org/obo/related-someValuesOf_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "related-somevaluesof": [
+      "iri",
+      "numberOfIndividuals",
+      "numDescendants",
+      "numberOfProperties",
+      "numberOfClasses",
+      "language",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "type",
+      "ontologyPurl",
+      "preferredPrefix",
+      "directAncestor",
+      "imported",
+      "numberOfEntities",
+      "ontologyId",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "related-somevaluesof": [
+      "isPreferredRoot",
+      "hasDirectChildren",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "hierarchicalProperty",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "type",
+      "relatedTo",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "hasDirectParents",
+      "imported",
+      "ontologyIri",
+      "iri",
+      "hierarchicalAncestor",
+      "relatedFrom",
+      "numDescendants",
+      "isObsolete",
+      "label",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "shortForm",
+      "ontologyId",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "related-somevaluesof": [
+      "isPreferredRoot",
+      "iri",
+      "hasDirectChildren",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "label",
+      "type",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "hasDirectParents",
+      "imported",
+      "shortForm",
+      "ontologyId",
+      "ontologyIri",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "related-somevaluesof": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "related-somevaluesof": []
+  },
+  "ontologyIdToUriToTypes": {
+    "related-somevaluesof": {
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#B": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#r": [
+        "PROPERTY"
+      ],
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl#A": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf.owl": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}

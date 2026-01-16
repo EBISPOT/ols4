@@ -55,13 +55,13 @@
           "type": [
             "literal"
           ],
-          "value": "2"
+          "value": "1"
         },
         {
           "type": [
             "literal"
           ],
-          "value": "6"
+          "value": "2"
         },
         {
           "type": [
@@ -73,7 +73,7 @@
           "type": [
             "literal"
           ],
-          "value": "1"
+          "value": "6"
         }
       ],
       "classes": [
@@ -248,28 +248,6 @@
                 "entity"
               ]
             },
-            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "terakelvin"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "terakelvin"
-              },
-              "type": [
-                "individual",
-                "entity"
-              ]
-            },
             "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -288,16 +266,38 @@
                 "value": "commonlyHasUnit"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
+              ]
+            },
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "terakelvin"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "terakelvin"
+              },
+              "type": [
+                "entity",
+                "individual"
               ]
             }
           },
           "linksTo": [
-            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin",
             "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
-            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit"
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit",
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin"
           ]
         }
       ],
@@ -305,9 +305,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -397,8 +397,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -501,28 +501,6 @@
                 "entity"
               ]
             },
-            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "terakelvin"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "terakelvin"
-              },
-              "type": [
-                "individual",
-                "entity"
-              ]
-            },
             "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -541,23 +519,45 @@
                 "value": "commonlyHasUnit"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
+              ]
+            },
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "terakelvin"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "terakelvin"
+              },
+              "type": [
+                "entity",
+                "individual"
               ]
             }
           },
           "linksTo": [
-            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin",
             "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
-            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit"
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit",
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin"
           ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -618,8 +618,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#thermodynamicTemperatureOfTheTriplePointOfWater",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -628,8 +628,8 @@
             "value": "thermodynamicTemperatureOfTheTriplePointOfWater"
           },
           "directAncestor": [
-            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
-            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature"
           ],
           "directParent": [
             "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature"
@@ -639,8 +639,8 @@
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
-            "http://www.w3.org/2002/07/owl#NamedIndividual",
-            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature"
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
+            "http://www.w3.org/2002/07/owl#NamedIndividual"
           ],
           "imported": false,
           "isObsolete": false,
@@ -724,14 +724,14 @@
                 "value": "ThermodynamicTemperature"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             }
           },
           "linksTo": [
-            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature",
-            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
+            "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature"
           ]
         }
       ],

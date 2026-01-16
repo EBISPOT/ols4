@@ -55,13 +55,13 @@
           "type": [
             "literal"
           ],
-          "value": "5"
+          "value": "0"
         },
         {
           "type": [
             "literal"
           ],
-          "value": "0"
+          "value": "5"
         }
       ],
       "classes": [
@@ -339,28 +339,6 @@
             "owl2primer-alldisjointclasses"
           ],
           "linkedEntities": {
-            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "Person"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Person"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
             "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -382,11 +360,33 @@
                 "class",
                 "entity"
               ]
+            },
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Person"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "Person"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
             }
           },
           "linksTo": [
-            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person",
-            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man"
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Man",
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointClasses#Person"
           ]
         }
       ],

@@ -54,18 +54,6 @@
           "type": [
             "literal"
           ],
-          "value": "2"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "3"
-        },
-        {
-          "type": [
-            "literal"
-          ],
           "value": "0"
         },
         {
@@ -73,6 +61,18 @@
             "literal"
           ],
           "value": "1"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "2"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "3"
         }
       ],
       "classes": [
@@ -151,29 +151,6 @@
             "reified-bnode"
           ],
           "linkedEntities": {
-            "http://example.com/reified-bnode#part_of": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "part_of"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "part_of"
-              },
-              "type": [
-                "property",
-                "objectProperty",
-                "entity"
-              ]
-            },
             "http://example.com/reified-bnode#cell_part": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -195,11 +172,34 @@
                 "class",
                 "entity"
               ]
+            },
+            "http://example.com/reified-bnode#part_of": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "part_of"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "part_of"
+              },
+              "type": [
+                "entity",
+                "objectProperty",
+                "property"
+              ]
             }
           },
           "linksTo": [
-            "http://example.com/reified-bnode#part_of",
-            "http://example.com/reified-bnode#cell_part"
+            "http://example.com/reified-bnode#cell_part",
+            "http://example.com/reified-bnode#part_of"
           ]
         },
         {
@@ -312,29 +312,6 @@
             "reified-bnode"
           ],
           "linkedEntities": {
-            "http://example.com/reified-bnode#part_of": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "part_of"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "part_of"
-              },
-              "type": [
-                "property",
-                "objectProperty",
-                "entity"
-              ]
-            },
             "http://example.com/reified-bnode#cell": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -356,11 +333,34 @@
                 "class",
                 "entity"
               ]
+            },
+            "http://example.com/reified-bnode#part_of": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "part_of"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "part_of"
+              },
+              "type": [
+                "entity",
+                "objectProperty",
+                "property"
+              ]
             }
           },
           "linksTo": [
-            "http://example.com/reified-bnode#part_of",
-            "http://example.com/reified-bnode#cell"
+            "http://example.com/reified-bnode#cell",
+            "http://example.com/reified-bnode#part_of"
           ]
         }
       ],
@@ -368,9 +368,9 @@
         {
           "iri": "http://example.com/reified-bnode#part_of",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [

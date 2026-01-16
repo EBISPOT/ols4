@@ -1,0 +1,343 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1": {
+      "definitions": [
+        {
+          "ontologyId": "related-oneof",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "b1"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "b1"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "related-oneof": {
+          "ontologyId": "related-oneof",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "b1"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "b1"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2": {
+      "definitions": [
+        {
+          "ontologyId": "related-oneof",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "b2"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "b2"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "related-oneof": {
+          "ontologyId": "related-oneof",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "b2"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "b2"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A": {
+      "definitions": [
+        {
+          "ontologyId": "related-oneof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "A"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "A"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "related-oneof": {
+          "ontologyId": "related-oneof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "A"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "A"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3": {
+      "definitions": [
+        {
+          "ontologyId": "related-oneof",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "b3"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "b3"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "related-oneof": {
+          "ontologyId": "related-oneof",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "b3"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "b3"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/related/oneOf.owl": [
+      "related-oneof"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "related-oneOf": [
+      "related-oneof"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "related-oneof": [
+      "http://purl.obolibrary.org/obo/related-oneOf_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "related-oneof": [
+      "iri",
+      "numberOfIndividuals",
+      "numDescendants",
+      "numberOfProperties",
+      "numberOfClasses",
+      "language",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "type",
+      "ontologyPurl",
+      "preferredPrefix",
+      "directAncestor",
+      "imported",
+      "numberOfEntities",
+      "ontologyId",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "related-oneof": [
+      "isPreferredRoot",
+      "hasDirectChildren",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "hierarchicalProperty",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "type",
+      "relatedTo",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "hasDirectParents",
+      "imported",
+      "ontologyIri",
+      "hierarchicalParent",
+      "iri",
+      "hierarchicalAncestor",
+      "numDescendants",
+      "isObsolete",
+      "label",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "shortForm",
+      "ontologyId",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "related-oneof": []
+  },
+  "ontologyIdToIndividualProperties": {
+    "related-oneof": [
+      "iri",
+      "hasDirectChildren",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "relatedFrom",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "label",
+      "type",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "hasDirectParents",
+      "imported",
+      "shortForm",
+      "ontologyId",
+      "ontologyIri",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToEdgeProperties": {
+    "related-oneof": [
+      "childRelationToParent"
+    ]
+  },
+  "ontologyIdToUriToTypes": {
+    "related-oneof": {
+      "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1": [
+        "INDIVIDUAL"
+      ],
+      "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2": [
+        "INDIVIDUAL"
+      ],
+      "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3": [
+        "INDIVIDUAL"
+      ],
+      "http://www.ebi.ac.uk/testcases/related/oneOf.owl": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}

@@ -55,18 +55,6 @@
           "type": [
             "literal"
           ],
-          "value": "4"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "6"
-        },
-        {
-          "type": [
-            "literal"
-          ],
           "value": "0"
         },
         {
@@ -74,6 +62,18 @@
             "literal"
           ],
           "value": "2"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "4"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "6"
         }
       ],
       "classes": [
@@ -203,6 +203,28 @@
             "related-somevaluesof-fillernestedanonymousconjunction"
           ],
           "linkedEntities": {
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#B": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "B"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "B"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
+            },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#C": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -247,28 +269,6 @@
                 "entity"
               ]
             },
-            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#B": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "B"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "B"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#p": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -287,9 +287,9 @@
                 "value": "p"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#r": {
@@ -310,17 +310,17 @@
                 "value": "r"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             }
           },
           "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#B",
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#C",
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#D",
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#p",
-            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#B",
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#r"
           ]
         },
@@ -416,6 +416,28 @@
             "related-somevaluesof-fillernestedanonymousconjunction"
           ],
           "linkedEntities": {
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#A": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "A"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "A"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
+            },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#C": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -460,28 +482,6 @@
                 "entity"
               ]
             },
-            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#A": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "A"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "A"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#p": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -500,9 +500,9 @@
                 "value": "p"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#r": {
@@ -523,17 +523,17 @@
                 "value": "r"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             }
           },
           "linksTo": [
+            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#A",
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#C",
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#D",
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#p",
-            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#A",
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#r"
           ]
         },
@@ -670,9 +670,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#p",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -734,9 +734,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#r",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [

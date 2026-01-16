@@ -1,0 +1,143 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/transitive-object-property.rdf#hasAncestor": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-transitive-object-property",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasAncestor"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasAncestor"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-transitive-object-property": {
+          "ontologyId": "owl2primer-transitive-object-property",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasAncestor"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasAncestor"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/transitive-object-property.rdf": [
+      "owl2primer-transitive-object-property"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-transitive-object-property": [
+      "owl2primer-transitive-object-property"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-transitive-object-property": [
+      "http://purl.obolibrary.org/obo/owl2primer-transitive-object-property_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-transitive-object-property": [
+      "iri",
+      "numberOfIndividuals",
+      "numDescendants",
+      "numberOfProperties",
+      "numberOfClasses",
+      "language",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "type",
+      "ontologyPurl",
+      "preferredPrefix",
+      "directAncestor",
+      "imported",
+      "numberOfEntities",
+      "ontologyId",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-transitive-object-property": []
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-transitive-object-property": [
+      "isPreferredRoot",
+      "iri",
+      "hasDirectChildren",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "label",
+      "type",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "hasDirectParents",
+      "imported",
+      "shortForm",
+      "ontologyId",
+      "ontologyIri",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-transitive-object-property": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-transitive-object-property": []
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-transitive-object-property": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/transitive-object-property.rdf#hasAncestor": [
+        "PROPERTY"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/transitive-object-property.rdf": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}

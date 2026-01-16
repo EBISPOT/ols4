@@ -13,12 +13,7 @@
       "imported": false,
       "isObsolete": false,
       "language": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        }
+        {"type":["literal"],"value":"en"}
       ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
@@ -48,24 +43,9 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "1"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "2"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
-        }
+        {"type":["literal"],"value":"0"},
+        {"type":["literal"],"value":"1"},
+        {"type":["literal"],"value":"2"}
       ],
       "classes": [
         {
@@ -109,12 +89,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "Person"
-            }
+            {"type":["literal"],"value":"Person"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -149,9 +124,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/class-expression-issues/maxCardinality.owl#hasArm",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -169,12 +144,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "hasArm"
-            }
+            {"type":["literal"],"value":"hasArm"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,

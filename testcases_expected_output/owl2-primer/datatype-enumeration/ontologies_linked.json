@@ -55,6 +55,12 @@
           "type": [
             "literal"
           ],
+          "value": "0"
+        },
+        {
+          "type": [
+            "literal"
+          ],
           "value": "1"
         },
         {
@@ -62,12 +68,6 @@
             "literal"
           ],
           "value": "2"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
         }
       ],
       "classes": [
@@ -141,8 +141,8 @@
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl#ageOfToddler",
           "type": [
             "dataProperty",
-            "property",
-            "entity"
+            "entity",
+            "property"
           ],
           "curie": {
             "type": [

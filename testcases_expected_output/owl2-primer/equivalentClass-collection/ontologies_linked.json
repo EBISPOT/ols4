@@ -55,13 +55,13 @@
           "type": [
             "literal"
           ],
-          "value": "1"
+          "value": "0"
         },
         {
           "type": [
             "literal"
           ],
-          "value": "4"
+          "value": "1"
         },
         {
           "type": [
@@ -73,7 +73,7 @@
           "type": [
             "literal"
           ],
-          "value": "0"
+          "value": "4"
         }
       ],
       "classes": [
@@ -166,30 +166,8 @@
                 "value": "Bill"
               },
               "type": [
-                "individual",
-                "entity"
-              ]
-            },
-            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Mary": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "Mary"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Mary"
-              },
-              "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#John": {
@@ -210,15 +188,37 @@
                 "value": "John"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
+              ]
+            },
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Mary": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Mary"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "Mary"
+              },
+              "type": [
+                "entity",
+                "individual"
               ]
             }
           },
           "linksTo": [
-            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Mary",
             "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Bill",
-            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#John"
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#John",
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Mary"
           ]
         }
       ],
@@ -227,8 +227,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Bill",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -247,8 +247,8 @@
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
-            "http://www.w3.org/2002/07/owl#NamedIndividual",
-            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests"
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests",
+            "http://www.w3.org/2002/07/owl#NamedIndividual"
           ],
           "imported": false,
           "isObsolete": false,
@@ -322,8 +322,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#John",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -342,8 +342,8 @@
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
-            "http://www.w3.org/2002/07/owl#NamedIndividual",
-            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests"
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests",
+            "http://www.w3.org/2002/07/owl#NamedIndividual"
           ],
           "imported": false,
           "isObsolete": false,
@@ -417,8 +417,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#Mary",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -437,8 +437,8 @@
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
-            "http://www.w3.org/2002/07/owl#NamedIndividual",
-            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests"
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass-collection.owl#MyBirthdayGuests",
+            "http://www.w3.org/2002/07/owl#NamedIndividual"
           ],
           "imported": false,
           "isObsolete": false,

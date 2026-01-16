@@ -1,0 +1,199 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals#Bill": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-different-individuals",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Bill"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Bill"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-different-individuals": {
+          "ontologyId": "owl2primer-different-individuals",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Bill"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Bill"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals#John": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-different-individuals",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "John"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "John"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-different-individuals": {
+          "ontologyId": "owl2primer-different-individuals",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "John"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "John"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals.owl": [
+      "owl2primer-different-individuals"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-different-individuals": [
+      "owl2primer-different-individuals"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-different-individuals": [
+      "http://purl.obolibrary.org/obo/owl2primer-different-individuals_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-different-individuals": [
+      "iri",
+      "numberOfIndividuals",
+      "numDescendants",
+      "numberOfProperties",
+      "numberOfClasses",
+      "language",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "type",
+      "ontologyPurl",
+      "preferredPrefix",
+      "directAncestor",
+      "imported",
+      "numberOfEntities",
+      "ontologyId",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-different-individuals": []
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-different-individuals": []
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-different-individuals": [
+      "iri",
+      "hasDirectChildren",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "numDescendants",
+      "http://www.w3.org/2002/07/owl#differentFrom",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "label",
+      "type",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "hasDirectParents",
+      "imported",
+      "shortForm",
+      "ontologyId",
+      "ontologyIri",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-different-individuals": []
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-different-individuals": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals#Bill": [
+        "INDIVIDUAL"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals#John": [
+        "INDIVIDUAL"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/different-individuals.owl": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}

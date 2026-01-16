@@ -14,12 +14,7 @@
       "imported": false,
       "isObsolete": false,
       "language": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        }
+        {"type":["literal"],"value":"en"}
       ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
@@ -49,24 +44,9 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "1"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "2"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
-        }
+        {"type":["literal"],"value":"0"},
+        {"type":["literal"],"value":"1"},
+        {"type":["literal"],"value":"2"}
       ],
       "classes": [
         {
@@ -93,12 +73,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "Person"
-            }
+            {"type":["literal"],"value":"Person"}
           ],
           "numDescendants": 1,
           "numHierarchicalDescendants": 0,
@@ -134,8 +109,8 @@
         {
           "iri": "http://example.com/owl2primer#Mary",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -154,18 +129,13 @@
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
-            "http://www.w3.org/2002/07/owl#NamedIndividual",
-            "http://example.com/owl2primer#Person"
+            "http://example.com/owl2primer#Person",
+            "http://www.w3.org/2002/07/owl#NamedIndividual"
           ],
           "imported": false,
           "isObsolete": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "Mary"
-            }
+            {"type":["literal"],"value":"Mary"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,

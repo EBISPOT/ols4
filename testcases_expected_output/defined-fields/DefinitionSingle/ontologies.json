@@ -14,12 +14,7 @@
       "directAncestor": [],
       "isObsolete": false,
       "language": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        }
+        {"type":["literal"],"value":"en"}
       ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
@@ -48,18 +43,8 @@
         "value": "0"
       },
       "searchableAnnotationValues": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "1"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
-        }
+        {"type":["literal"],"value":"0"},
+        {"type":["literal"],"value":"1"}
       ],
       "classes": [
         {
@@ -75,12 +60,7 @@
             "value": "Definition-Single:Thing"
           },
           "definition": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "The class of OWL individuals."
-            }
+            {"type":["literal"],"value":"The class of OWL individuals."}
           ],
           "definitionProperty": {
             "type": [
@@ -112,12 +92,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "Thing"
-            }
+            {"type":["literal"],"value":"Thing"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,

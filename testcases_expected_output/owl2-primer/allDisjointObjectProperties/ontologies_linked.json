@@ -69,9 +69,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propA",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -132,29 +132,6 @@
             "owl2primer-alldisjointobjectproperties"
           ],
           "linkedEntities": {
-            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propC": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "propC"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "propC"
-              },
-              "type": [
-                "property",
-                "objectProperty",
-                "entity"
-              ]
-            },
             "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propB": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -173,23 +150,46 @@
                 "value": "propB"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
+              ]
+            },
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propC": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "propC"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "propC"
+              },
+              "type": [
+                "entity",
+                "objectProperty",
+                "property"
               ]
             }
           },
           "linksTo": [
-            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propC",
-            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propB"
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propB",
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propC"
           ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propB",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -250,29 +250,6 @@
             "owl2primer-alldisjointobjectproperties"
           ],
           "linkedEntities": {
-            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propC": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "propC"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "propC"
-              },
-              "type": [
-                "property",
-                "objectProperty",
-                "entity"
-              ]
-            },
             "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propA": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -291,23 +268,46 @@
                 "value": "propA"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
+              ]
+            },
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propC": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "propC"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "propC"
+              },
+              "type": [
+                "entity",
+                "objectProperty",
+                "property"
               ]
             }
           },
           "linksTo": [
-            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propC",
-            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propA"
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propA",
+            "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propC"
           ]
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propC",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -386,9 +386,9 @@
                 "value": "propA"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             },
             "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propB": {
@@ -409,9 +409,9 @@
                 "value": "propB"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             }
           },

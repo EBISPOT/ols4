@@ -1,0 +1,140 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual#Mary": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-individual",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Mary"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Mary"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-individual": {
+          "ontologyId": "owl2primer-individual",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Mary"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Mary"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual.owl": [
+      "owl2primer-individual"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-individual": [
+      "owl2primer-individual"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-individual": [
+      "http://purl.obolibrary.org/obo/owl2primer-individual_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-individual": [
+      "iri",
+      "numberOfIndividuals",
+      "numDescendants",
+      "numberOfProperties",
+      "numberOfClasses",
+      "language",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "type",
+      "ontologyPurl",
+      "preferredPrefix",
+      "directAncestor",
+      "imported",
+      "numberOfEntities",
+      "ontologyId",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-individual": []
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-individual": []
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-individual": [
+      "iri",
+      "hasDirectChildren",
+      "hasHierarchicalParents",
+      "hasHierarchicalChildren",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "searchableAnnotationValues",
+      "isObsolete",
+      "label",
+      "type",
+      "ontologyPreferredPrefix",
+      "directAncestor",
+      "curie",
+      "hasDirectParents",
+      "imported",
+      "shortForm",
+      "ontologyId",
+      "ontologyIri",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ]
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-individual": []
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-individual": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual#Mary": [
+        "INDIVIDUAL"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/namedIndividual.owl": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}
