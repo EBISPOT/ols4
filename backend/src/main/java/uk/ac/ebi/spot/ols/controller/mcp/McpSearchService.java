@@ -46,6 +46,7 @@ public class McpSearchService {
             null,
             null,
             false,
+            null, // excludeOntologyIds
             Map.of(),
             null, // model
             outputOpts

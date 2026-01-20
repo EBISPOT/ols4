@@ -63,6 +63,7 @@ public class McpClassService {
             null,
             null,
             false,
+            null, // excludeOntologyIds
             properties,
             null, // model
             outputOpts
