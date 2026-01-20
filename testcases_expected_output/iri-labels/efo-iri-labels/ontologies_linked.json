@@ -592,25 +592,6 @@
             ],
             "value": "efo-iri-labels"
           },
-          "relatedFrom": [
-            {
-              "property": "http://purl.obolibrary.org/obo/BFO_0000054",
-              "value": "http://www.ebi.ac.uk/efo/EFO_0000400",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-              "http://www.w3.org/2002/07/owl#intersectionOf": [
-                "http://purl.obolibrary.org/obo/OGMS_0000063",
-                {
-                  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-                  "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
-                  "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0008152",
-                  "isObsolete": false
-                }
-              ]
-            }
-          ],
           "searchableAnnotationValues": [
             false,
             {
@@ -631,60 +612,6 @@
             "efo-iri-labels"
           ],
           "linkedEntities": {
-            "http://purl.obolibrary.org/obo/BFO_0000051": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "has part"
-                },
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "has_part"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "BFO:0000051"
-              },
-              "type": [
-                "entity",
-                "objectProperty",
-                "property"
-              ]
-            },
-            "http://purl.obolibrary.org/obo/BFO_0000054": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-                  "value": "realized in",
-                  "lang": "en"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "BFO:0000054"
-              },
-              "type": [
-                "entity",
-                "objectProperty",
-                "property"
-              ]
-            },
             "http://purl.obolibrary.org/obo/GO_0008150": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -707,44 +634,14 @@
                 "entity"
               ]
             },
-            "http://purl.obolibrary.org/obo/GO_0008152": {
-              "url": "http://amigo.geneontology.org/amigo/term/GO:0008152",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "go:0008152"
-            },
             "http://purl.obolibrary.org/obo/IAO_0000115": {
               "url": "http://purl.obolibrary.org/obo/IAO_0000115",
               "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
               "curie": "iao:0000115"
-            },
-            "http://www.ebi.ac.uk/efo/EFO_0000400": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "EFO_0000400"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "EFO:0000400"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
             }
           },
           "linksTo": [
-            "http://purl.obolibrary.org/obo/BFO_0000051",
-            "http://purl.obolibrary.org/obo/BFO_0000054",
-            "http://purl.obolibrary.org/obo/GO_0008150",
-            "http://www.ebi.ac.uk/efo/EFO_0000400"
+            "http://purl.obolibrary.org/obo/GO_0008150"
           ]
         },
         {

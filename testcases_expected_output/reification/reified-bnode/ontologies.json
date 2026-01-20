@@ -94,9 +94,6 @@
             ],
             "value": "reified-bnode"
           },
-          "relatedFrom": [
-            {"property":"http://example.com/reified-bnode#part_of","value":"http://example.com/reified-bnode#cell_part","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://example.com/reified-bnode#part_of","http://www.w3.org/2002/07/owl#someValuesFrom":"http://example.com/reified-bnode#cell","isObsolete":false}
-          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [

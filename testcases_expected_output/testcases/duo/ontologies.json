@@ -1047,9 +1047,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/IAO_0000136","value":"http://purl.obolibrary.org/obo/IAO_0000030","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/IAO_0000136","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/BFO_0000001","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"BFO 2 Reference: In all areas of empirical inquiry we encounter general terms of two sorts. First are general terms which refer to universals or types:animaltuberculosissurgical procedurediseaseSecond, are general terms used to refer to groups of entities which instantiate a given universal but do not correspond to the extension of any subuniversal of that universal because there is nothing intrinsic to the entities in question by virtue of which they – and only they – are counted as belonging to the given group. Examples are: animal purchased by the Emperortuberculosis diagnosed on a Wednesdaysurgical procedure performed on a patient from Stockholmperson identified as candidate for clinical trial #2056-555person who is signatory of Form 656-PPVpainting by Leonardo da VinciSuch terms, which represent what are called ‘specializations’ in [81","lang":"en"},
@@ -2609,9 +2606,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/IAO_0000136","value":"http://purl.obolibrary.org/obo/IAO_0000033","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/IAO_0000136","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/BFO_0000017","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A specifically dependent continuant  that inheres in continuant  entities and are not exhibited in full at every time in which it inheres in an entity or group of entities. The exhibition or actualization of a realizable entity is a particular manifestation, functioning or process that occurs under certain circumstances.","lang":"en"},
@@ -2756,12 +2750,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/IAO_0000219","value":"http://purl.obolibrary.org/obo/IAO_0000400","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/IAO_0000219","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/BFO_0000018","isObsolete":false},
-            {"property":"http://purl.obolibrary.org/obo/IAO_0000219","value":"http://purl.obolibrary.org/obo/IAO_0000401","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Class","http://www.w3.org/2002/07/owl#intersectionOf":["http://purl.obolibrary.org/obo/BFO_0000018",{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000050","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/BFO_0000026","isObsolete":false}]},
-            {"property":"http://purl.obolibrary.org/obo/IAO_0000219","value":"http://purl.obolibrary.org/obo/IAO_0000402","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Class","http://www.w3.org/2002/07/owl#intersectionOf":["http://purl.obolibrary.org/obo/BFO_0000018",{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000050","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/BFO_0000009","isObsolete":false}]},
-            {"property":"http://purl.obolibrary.org/obo/IAO_0000219","value":"http://purl.obolibrary.org/obo/IAO_0000403","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Class","http://www.w3.org/2002/07/owl#intersectionOf":["http://purl.obolibrary.org/obo/BFO_0000018",{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000050","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/BFO_0000028","isObsolete":false}]}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"value":"0d-s-region"},
@@ -11240,9 +11228,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/DUO_0000010","value":"http://purl.obolibrary.org/obo/DUO_0000022","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/DUO_0000010","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/GAZ_00000448","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"value":"GAZ:00000448"}
@@ -11657,10 +11642,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000104","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000005","isObsolete":false},
-            {"property":"http://purl.obolibrary.org/obo/IAO_0000136","value":"http://purl.obolibrary.org/obo/IAO_0000316","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/IAO_0000136","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000005","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"2009-03-16: original definition when imported from OBI read: \"objective is an non realizable information entity which can serve as that  proper part of a plan towards which the realization of the plan is directed.\"","lang":"en"},
@@ -11948,9 +11929,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000104","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000007","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A directive information entity that describes an action the bearer will take.","lang":"en"},
@@ -12592,9 +12570,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/OBI_0000293","value":"http://purl.obolibrary.org/obo/IAO_0000443","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/OBI_0000293","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000013","isObsolete":false}
-          ],
           "relatedTo": [
             {"property":"http://purl.obolibrary.org/obo/OBI_0000312","value":"http://purl.obolibrary.org/obo/IAO_0000444","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/OBI_0000312","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000444","isObsolete":false}
           ],
@@ -13511,10 +13486,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/APOLLO_SV_00000522","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Class","http://www.w3.org/2002/07/owl#intersectionOf":["http://purl.obolibrary.org/obo/IAO_0000027",{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/IAO_0000136","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000096","isObsolete":false}]},
-            {"property":"http://purl.obolibrary.org/obo/OBI_0000299","value":"http://purl.obolibrary.org/obo/IAO_0000443","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/OBI_0000299","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000027","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"2/2/2009 Alan and Bjoern discussing FACS run output data. This is a data item because it is about the cell population. Each element records an event and is typically further composed a set of measurment data items that record the fluorescent intensity stimulated by one of the lasers.","lang":"en"},
@@ -13936,13 +13907,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/OBI_0000293","value":"http://purl.obolibrary.org/obo/IAO_0000572","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/OBI_0000293","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000030","isObsolete":false},
-            {"property":"http://purl.obolibrary.org/obo/OBI_0000293","value":"http://purl.obolibrary.org/obo/IAO_0000575","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/OBI_0000293","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000030","isObsolete":false},
-            {"property":"http://purl.obolibrary.org/obo/OBI_0000293","value":"http://purl.obolibrary.org/obo/IAO_0000650","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/OBI_0000293","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000030","isObsolete":false},
-            {"property":"http://purl.obolibrary.org/obo/OBI_0000299","value":"http://purl.obolibrary.org/obo/IAO_0000580","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/OBI_0000299","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000030","isObsolete":false},
-            {"property":"http://purl.obolibrary.org/obo/OBI_0000299","value":"http://purl.obolibrary.org/obo/IAO_0000650","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/OBI_0000299","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000030","isObsolete":false}
-          ],
           "relatedTo": [
             {"property":"http://purl.obolibrary.org/obo/IAO_0000136","value":"http://purl.obolibrary.org/obo/BFO_0000001","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/IAO_0000136","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/BFO_0000001","isObsolete":false}
           ],
@@ -16553,9 +16517,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/APOLLO_SV_00000522","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000096","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A source code module is a directive information entity that specifies, using a programming language, some algorithm.","lang":"en"},
@@ -18501,9 +18462,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000615","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000144","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"2009/09/28 Alan Ruttenberg. Fucoidan-use-case","lang":"en"},
@@ -20187,9 +20145,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000320","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000301","isObsolete":false}
-          ],
           "relatedTo": [
             {"property":"http://purl.obolibrary.org/obo/IAO_0000136","value":"http://purl.obolibrary.org/obo/IAO_0000310","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/IAO_0000136","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000310","isObsolete":false}
           ],
@@ -20329,9 +20284,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000321","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000302","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A textual entity intended to identify a particular author","lang":"en"},
@@ -20466,9 +20418,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000322","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000303","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A textual entity intended to identify a particular institution","lang":"en"},
@@ -20877,9 +20826,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000645","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000306","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A textual entity that contains a two-dimensional arrangement of texts repeated at regular intervals across a spatial range, such that the spatial relationships among the constituent texts expresses propositions","lang":"en"},
@@ -21148,10 +21094,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000622","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000308","isObsolete":false},
-            {"property":"http://purl.obolibrary.org/obo/IAO_0000136","value":"http://purl.obolibrary.org/obo/IAO_0000304","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/IAO_0000136","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000308","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"An information content entity consisting of a two dimensional arrangement of information content entities such that the arrangement itself is about something.","lang":"en"},
@@ -21418,12 +21360,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000050","value":"http://purl.obolibrary.org/obo/IAO_0000314","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000050","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000310","isObsolete":false},
-            {"property":"http://purl.obolibrary.org/obo/IAO_0000136","value":"http://purl.obolibrary.org/obo/IAO_0000301","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/IAO_0000136","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000310","isObsolete":false},
-            {"property":"http://purl.obolibrary.org/obo/IAO_0000136","value":"http://purl.obolibrary.org/obo/IAO_0000315","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/IAO_0000136","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000310","isObsolete":false},
-            {"property":"http://purl.obolibrary.org/obo/OBI_0000299","value":"http://purl.obolibrary.org/obo/IAO_0000572","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/OBI_0000299","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000310","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A collection of information content entities intended to be understood together as a whole","lang":"en"},
@@ -22008,9 +21944,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/IAO_0000136","value":"http://purl.obolibrary.org/obo/IAO_0000325","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/IAO_0000136","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000314","isObsolete":false}
-          ],
           "relatedTo": [
             {"property":"http://purl.obolibrary.org/obo/BFO_0000050","value":"http://purl.obolibrary.org/obo/IAO_0000310","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000050","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000310","isObsolete":false}
           ],
@@ -26116,9 +26049,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/OBI_0000312","value":"http://purl.obolibrary.org/obo/IAO_0000013","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/OBI_0000312","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000444","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A planned process of making information, such as literature, music, and software etc., available to the public for sale or for free.","lang":"en"},
@@ -27075,12 +27005,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000578","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000577","isObsolete":false},
-            {"property":"http://purl.obolibrary.org/obo/OBI_0000293","value":"http://purl.obolibrary.org/obo/IAO_0000575","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/OBI_0000293","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000577","isObsolete":false},
-            {"property":"http://purl.obolibrary.org/obo/OBI_0000293","value":"http://purl.obolibrary.org/obo/IAO_0000580","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/OBI_0000293","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000577","isObsolete":false},
-            {"property":"http://purl.obolibrary.org/obo/OBI_0000299","value":"http://purl.obolibrary.org/obo/IAO_0000574","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/OBI_0000299","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000577","isObsolete":false}
-          ],
           "relatedTo": [
             {"property":"http://purl.obolibrary.org/obo/BFO_0000050","value":"http://purl.obolibrary.org/obo/IAO_0000578","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000050","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000578","isObsolete":false}
           ],
@@ -27235,9 +27159,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000050","value":"http://purl.obolibrary.org/obo/IAO_0000577","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000050","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000578","isObsolete":false}
-          ],
           "relatedTo": [
             {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000577","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000577","isObsolete":false}
           ],
@@ -27404,11 +27325,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/RO_0000057","value":"http://purl.obolibrary.org/obo/IAO_0000574","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/RO_0000057","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000579","isObsolete":false},
-            {"property":"http://purl.obolibrary.org/obo/RO_0000057","value":"http://purl.obolibrary.org/obo/IAO_0000575","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/RO_0000057","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000579","isObsolete":false},
-            {"property":"http://purl.obolibrary.org/obo/RO_0000057","value":"http://purl.obolibrary.org/obo/IAO_0000580","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/RO_0000057","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000579","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A code set of CRID records, each consisting of a CRID symbol and additional information which was recorded in the code set through an assigning a centrally registered identifier process.","lang":"en"},
@@ -27652,9 +27568,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000584","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000582","isObsolete":false}
-          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -28706,9 +28619,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000606","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000605","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A textual entity listing abbreviations and their expansions that are used in a document.","lang":"en"},
@@ -29167,9 +29077,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000607","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000608","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A textual entity expression information about an author of a document. This information may include biographical information and may discuss how the authors' professional experiences are relevant to the work described in the document.","lang":"en"},
@@ -29470,9 +29377,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000609","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000610","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A textual entity, distinct from the abstract, that describes the significance and broader context of the document content. The author summary is often written in a non-technical manner and is aimed at both scientists and non-scientist readers, e.g as described in the article submission guidelines for PLoS Genetics (http://journals.plos.org/plosgenetics/s/submission-guidelines).","lang":"en"},
@@ -29766,9 +29670,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000611","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000612","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A textual entity expressing the location of a resource, e.g. software, or the manner in which a resource can be obtained.","lang":"en"},
@@ -30050,9 +29951,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000613","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000614","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A textual entity that expresses a detailed account of a portion of the medical history for a specific patient.","lang":"en"},
@@ -30516,9 +30414,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000616","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000617","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A textual entity that expresses a situation involving one or more of the authors, or the funding source of a document whereby the authors or funding source stand to potentially gain (typically financially) from the results reported in the document.","lang":"en"},
@@ -30803,9 +30698,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000618","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000619","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A textual entity that documents the consenting process used to enroll patients in a study.","lang":"en"},
@@ -31097,9 +30989,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000620","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000621","isObsolete":false}
-          ],
           "relatedTo": [
             {"property":"http://purl.obolibrary.org/obo/IAO_0000136","value":"http://purl.obolibrary.org/obo/OBI_0500000","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/IAO_0000136","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/OBI_0500000","isObsolete":false}
           ],
@@ -31555,9 +31444,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000623","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000624","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A textual entity documenting the source of funding that supported some study.","lang":"en"},
@@ -31864,9 +31750,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000625","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000626","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A textual entity expressing ideas regarding future work relevant to work described in a document that could be done.","lang":"en"},
@@ -32151,9 +32034,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000627","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000628","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A textual entity that describes the generation and public release of a novel, draft genome sequence.","lang":"en"},
@@ -32288,9 +32168,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000630","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000629","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A textual entity listing keywords indicating the major theme(s) of a document.","lang":"en"},
@@ -32741,9 +32618,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000631","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000632","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A textual entity addressing a shortcoming or bias of a study design or execution.","lang":"en"},
@@ -33308,9 +33182,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000635","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000636","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A textual entity expressing information regarding the patients used in a study.","lang":"en"},
@@ -33592,9 +33463,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000637","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000638","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A textual entity that expresses the pre-publication history (submission dates, reviewer comments, etc) for a document, often including a hyperlink to a web page detailing the information.","lang":"en"},
@@ -33876,9 +33744,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000639","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000640","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A textual entity that discusses work from other publications and expresses their relevancy to the content of a document.","lang":"en"},
@@ -34163,9 +34028,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000641","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000642","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A textual entity that expresses the requirements necessary to use a resource, e.g. software.","lang":"en"},
@@ -34300,9 +34162,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0000644","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0000643","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"A textual entity documenting statistical analysis tools and techniques employed.","lang":"en"},
@@ -36409,9 +36268,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/BFO_0000051","value":"http://purl.obolibrary.org/obo/IAO_0020020","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/BFO_0000051","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/IAO_0020000","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"An information content entity that is the outcome of a dubbing process and is used to refer to one instance of entity shared by a group of people to refer to that individual entity.","lang":"en"},
@@ -40000,9 +39856,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/DUO_0000010","value":"http://purl.obolibrary.org/obo/DUO_0000007","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/DUO_0000010","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/MONDO_0000001","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"value":"A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism."},
@@ -40267,9 +40120,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/IAO_0000136","value":"http://purl.obolibrary.org/obo/IAO_0000312","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/IAO_0000136","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/OBI_0000066","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"a planned process that consists of parts: planning, study design execution, documentation and which produce conclusion(s).","lang":"en"},
@@ -40378,9 +40228,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/IAO_0000136","value":"http://purl.obolibrary.org/obo/IAO_0000318","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/IAO_0000136","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/OBI_0000471","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"value":"a planned process that carries out a study design"},
@@ -40611,11 +40458,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/IAO_0000136","value":"http://purl.obolibrary.org/obo/IAO_0000317","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/IAO_0000136","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/OBI_0500000","isObsolete":false},
-            {"property":"http://purl.obolibrary.org/obo/IAO_0000136","value":"http://purl.obolibrary.org/obo/IAO_0000621","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/IAO_0000136","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/OBI_0500000","isObsolete":false},
-            {"property":"http://purl.obolibrary.org/obo/IAO_0000136","value":"http://purl.obolibrary.org/obo/IAO_0000631","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/IAO_0000136","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/OBI_0500000","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"study design","lang":"en"},
@@ -40838,9 +40680,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/IAO_0000221","value":"http://purl.obolibrary.org/obo/IAO_0000408","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/IAO_0000221","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/PATO_0000122","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"value":"A 1-D extent quality which is equal to the distance between two points."},
@@ -41268,9 +41107,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/IAO_0000039","value":"http://purl.obolibrary.org/obo/IAO_0000408","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/IAO_0000039","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/UO_0000001","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"value":"length unit"}
@@ -41569,9 +41405,6 @@
             ],
             "value": "DUO"
           },
-          "relatedFrom": [
-            {"property":"http://purl.obolibrary.org/obo/DUO_0000010","value":"http://purl.obolibrary.org/obo/DUO_0000012","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://purl.obolibrary.org/obo/DUO_0000010","http://www.w3.org/2002/07/owl#someValuesFrom":"http://purl.obolibrary.org/obo/topic_0003","isObsolete":false}
-          ],
           "searchableAnnotationValues": [
             false,
             {"type":["literal"],"value":"A category denoting a rather broad domain or field of interest, study, application, work, data, or technology. Topics have no clearly defined borders between each other."},

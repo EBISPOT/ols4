@@ -307,20 +307,6 @@
             ],
             "value": "related-someValuesOf-fillerAnonymousConjunction"
           },
-          "relatedFrom": [
-            {
-              "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#r",
-              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#A",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-              "http://www.w3.org/2002/07/owl#intersectionOf": [
-                "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#B",
-                "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#C"
-              ]
-            }
-          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -332,80 +318,8 @@
           "appearsIn": [
             "related-somevaluesof-filleranonymousconjunction"
           ],
-          "linkedEntities": {
-            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#A": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "A"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "A"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
-            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#C": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "C"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "C"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
-            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#r": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "r"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "r"
-              },
-              "type": [
-                "entity",
-                "objectProperty",
-                "property"
-              ]
-            }
-          },
-          "linksTo": [
-            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#A",
-            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#C",
-            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#r"
-          ]
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#C",
@@ -457,20 +371,6 @@
             ],
             "value": "related-someValuesOf-fillerAnonymousConjunction"
           },
-          "relatedFrom": [
-            {
-              "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#r",
-              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#A",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-              "http://www.w3.org/2002/07/owl#intersectionOf": [
-                "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#B",
-                "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#C"
-              ]
-            }
-          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -482,80 +382,8 @@
           "appearsIn": [
             "related-somevaluesof-filleranonymousconjunction"
           ],
-          "linkedEntities": {
-            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#A": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "A"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "A"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
-            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#B": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "B"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "B"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
-            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#r": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "r"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "r"
-              },
-              "type": [
-                "entity",
-                "objectProperty",
-                "property"
-              ]
-            }
-          },
-          "linksTo": [
-            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#A",
-            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#B",
-            "http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerAnonymousConjunction.owl#r"
-          ]
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "properties": [

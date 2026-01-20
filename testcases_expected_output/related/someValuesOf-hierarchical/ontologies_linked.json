@@ -283,19 +283,6 @@
             ],
             "value": "related-someValuesOf-hierarchical"
           },
-          "relatedFrom": [
-            {
-              "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
-              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#A",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
-              "isObsolete": false
-            }
-          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -307,57 +294,8 @@
           "appearsIn": [
             "related-somevaluesof-hierarchical"
           ],
-          "linkedEntities": {
-            "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#A": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "A"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "A"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
-            "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "r"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "r"
-              },
-              "type": [
-                "entity",
-                "objectProperty",
-                "property"
-              ]
-            }
-          },
-          "linksTo": [
-            "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#A",
-            "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r"
-          ]
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "properties": [

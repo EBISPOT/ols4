@@ -126,19 +126,6 @@
             ],
             "value": "reified-bnode"
           },
-          "relatedFrom": [
-            {
-              "property": "http://example.com/reified-bnode#part_of",
-              "value": "http://example.com/reified-bnode#cell_part",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://example.com/reified-bnode#part_of",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://example.com/reified-bnode#cell",
-              "isObsolete": false
-            }
-          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -150,57 +137,8 @@
           "appearsIn": [
             "reified-bnode"
           ],
-          "linkedEntities": {
-            "http://example.com/reified-bnode#cell_part": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "cell_part"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "cell_part"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
-            "http://example.com/reified-bnode#part_of": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "part_of"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "part_of"
-              },
-              "type": [
-                "entity",
-                "objectProperty",
-                "property"
-              ]
-            }
-          },
-          "linksTo": [
-            "http://example.com/reified-bnode#cell_part",
-            "http://example.com/reified-bnode#part_of"
-          ]
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://example.com/reified-bnode#cell_part",

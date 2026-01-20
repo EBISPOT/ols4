@@ -185,9 +185,6 @@
             ],
             "value": "related-someValuesOf-fillerNestedAnonymousConjunction"
           },
-          "relatedFrom": [
-            {"property":"http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#r","value":"http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#A","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Class","http://www.w3.org/2002/07/owl#intersectionOf":["http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#B",{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#p","http://www.w3.org/2002/07/owl#someValuesFrom":{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Class","http://www.w3.org/2002/07/owl#intersectionOf":["http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#C",{"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#p","http://www.w3.org/2002/07/owl#someValuesFrom":"http://www.ebi.ac.uk/testcases/related/someValuesOf-fillerNestedAnonymousConjunction.owl#D","isObsolete":false}]},"isObsolete":false}]}
-          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
