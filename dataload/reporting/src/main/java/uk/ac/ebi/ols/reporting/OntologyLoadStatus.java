@@ -8,7 +8,8 @@ public class OntologyLoadStatus {
     public enum Status {
         SUCCESS,          // Ontology loaded successfully
         FALLBACK,         // Ontology failed to load but fallback version used
-        FAILED_NO_FALLBACK // Ontology failed to load and no fallback available
+        FAILED_NO_FALLBACK, // Ontology failed to load and no fallback available
+        SKIPPED           // Ontology was skipped (e.g., marked as obsolete)
     }
 
     private final String ontologyId;
@@ -52,6 +53,6 @@ public class OntologyLoadStatus {
     }
 
     public boolean hasIssue() {
-        return status != Status.SUCCESS;
+        return status != Status.SUCCESS && status != Status.SKIPPED;
     }
 }
