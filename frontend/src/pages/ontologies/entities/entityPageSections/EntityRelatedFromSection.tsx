@@ -1,6 +1,6 @@
 import { Fragment } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { randomString } from "../../../../app/util";
-import EntityLink from "../../../../components/EntityLink";
 import PropertyValuesList from "../../../../components/PropertyValuesList";
 import Class from "../../../../model/Class";
 import Entity from "../../../../model/Entity";
@@ -9,56 +9,111 @@ import Property from "../../../../model/Property";
 
 export default function EntityRelatedFromSection({
   entity,
+  relatedFrom,
   linkedEntities,
 }: {
   entity: Entity;
+  relatedFrom: Entity[] | null;
   linkedEntities: LinkedEntities;
 }) {
+  const [searchParams] = useSearchParams();
+  const lang = searchParams.get("lang") || "en";
+
   if (!(entity instanceof Class || entity instanceof Property)) {
     return <Fragment />;
   }
 
-  let relatedFroms = entity?.getRelatedFrom();
-
-  if (!relatedFroms || relatedFroms.length === 0) {
+  if (!relatedFrom || relatedFrom.length === 0) {
     return <Fragment />;
   }
 
-  let predicates = Array.from(
-    new Set(relatedFroms.map((relatedFrom) => relatedFrom.value.property))
-  );
+  // Group entities by their relationship property
+  const entitiesByProperty = new Map<string, Entity[]>();
 
+  relatedFrom.forEach((relatedEntity) => {
+    // Extract the property from relatedTo that references the current entity
+    const relatedToArray = relatedEntity.properties["relatedTo"];
+    if (relatedToArray && Array.isArray(relatedToArray)) {
+      relatedToArray.forEach((relatedTo: any) => {
+        if (relatedTo.value === entity.getIri()) {
+          const propertyIri = relatedTo.property;
+          if (!entitiesByProperty.has(propertyIri)) {
+            entitiesByProperty.set(propertyIri, []);
+          }
+          entitiesByProperty.get(propertyIri)!.push(relatedEntity);
+        }
+      });
+    }
+  });
+
+  // If no property grouping found, show all entities without grouping
+  if (entitiesByProperty.size === 0) {
+    return (
+      <PropertyValuesList
+        values={relatedFrom}
+        title="Related from"
+        renderValue={(relatedEntity: Entity) => {
+          const encodedIri = encodeURIComponent(
+            encodeURIComponent(relatedEntity.getIri())
+          );
+          const label = relatedEntity.getName() || relatedEntity.getShortForm();
+
+          return (
+            <Link
+              className="link-default"
+              to={`/ontologies/${relatedEntity.getOntologyId()}/classes/${encodedIri}?lang=${lang}`}
+            >
+              {label}
+            </Link>
+          );
+        }}
+        searchFilter={(relatedEntity: Entity, searchQuery: string) => {
+          const name = relatedEntity.getName()?.toLowerCase() || '';
+          const iri = relatedEntity.getIri().toLowerCase();
+          return name.includes(searchQuery) || iri.includes(searchQuery);
+        }}
+      />
+    );
+  }
+
+  // Render grouped by property
   return (
     <div>
       <div className="font-bold">Related from</div>
-      {predicates.map((p) => {
-        let label = linkedEntities.getLabelForIri(p);
-        let predicateRelatedFroms = relatedFroms.filter((relatedFrom) => relatedFrom.value.property === p);
-        
+      {Array.from(entitiesByProperty.entries()).map(([propertyIri, entities]) => {
+        // Try to get property label from the first entity's linkedEntities (since all share same property)
+        const firstEntityLinkedEntities = entities[0]?.getLinkedEntities();
+        const propertyLabel = firstEntityLinkedEntities?.getLabelForIri(propertyIri) ||
+                             linkedEntities.getLabelForIri(propertyIri) ||
+                             propertyIri.split('/').pop() ||
+                             propertyIri;
+
         return (
-          <div key={p.toString() + randomString()}>
+          <div key={propertyIri + randomString()}>
             <div className="mb-2">
-              <i>{label || p}</i>
+              <i>{propertyLabel}</i>
             </div>
             <PropertyValuesList
-              values={predicateRelatedFroms}
-              renderValue={(relatedFrom) => {
-                let relatedIri = relatedFrom.value.value;
+              values={entities}
+              renderValue={(relatedEntity: Entity) => {
+                const encodedIri = encodeURIComponent(
+                  encodeURIComponent(relatedEntity.getIri())
+                );
+                const label = relatedEntity.getName() || relatedEntity.getShortForm();
+
                 return (
-                  <EntityLink
-                    ontologyId={entity.getOntologyId()}
-                    currentEntity={entity}
-                    entityType={"classes"}
-                    iri={relatedIri}
-                    linkedEntities={linkedEntities}
-                  />
+                  <Link
+                    className="link-default"
+                    to={`/ontologies/${relatedEntity.getOntologyId()}/classes/${encodedIri}?lang=${lang}`}
+                  >
+                    {label}
+                  </Link>
                 );
               }}
-              searchFilter={(relatedFrom, searchQuery) => {
-                let relatedIri = relatedFrom.value.value;
-                let entityLabel = linkedEntities.getLabelForIri(relatedIri)?.toLowerCase() || '';
-                let iriText = relatedIri.toLowerCase();
-                return entityLabel.includes(searchQuery) || iriText.includes(searchQuery);
+              searchFilter={(relatedEntity: Entity, searchQuery: string) => {
+                const name = relatedEntity.getName()?.toLowerCase() || '';
+                const iri = relatedEntity.getIri().toLowerCase();
+                return name.includes(searchQuery) || iri.includes(searchQuery);
               }}
             />
           </div>

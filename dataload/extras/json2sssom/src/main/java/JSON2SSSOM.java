@@ -157,15 +157,55 @@ public class JSON2SSSOM {
         JsonElement exactMatch = entity.get("http://www.w3.org/2004/02/skos/core#exactMatch");
         if(exactMatch != null) {
             writeMappingsForEntity(entity, "skos:exactMatch", exactMatch, null, null, ontologyProperties, writer, curieMap);
+        }        
+        JsonElement narrowMatch = entity.get("http://www.w3.org/2004/02/skos/core#narrowMatch");
+        if(narrowMatch != null) {
+            writeMappingsForEntity(entity, "skos:narrowMatch", narrowMatch, null, null, ontologyProperties, writer, curieMap);
         }
+        JsonElement broadMatch = entity.get("http://www.w3.org/2004/02/skos/core#broadMatch");
+        if(broadMatch != null) {
+            writeMappingsForEntity(entity, "skos:broadMatch", broadMatch, null, null, ontologyProperties, writer, curieMap);
+        }
+        JsonElement relatedMatch = entity.get("http://www.w3.org/2004/02/skos/core#relatedMatch");
+        if(relatedMatch != null) {
+            writeMappingsForEntity(entity, "skos:relatedMatch", relatedMatch, null, null, ontologyProperties, writer, curieMap);
+        }   
+        JsonElement closeMatch = entity.get("http://www.w3.org/2004/02/skos/core#closeMatch");
+        if(closeMatch != null) {
+            writeMappingsForEntity(entity, "skos:closeMatch", closeMatch, null, null, ontologyProperties, writer, curieMap);
+        }                
+
         JsonElement hasDbXref = entity.get("http://www.geneontology.org/formats/oboInOwl#hasDbXref");
         if(hasDbXref != null) {
             writeMappingsForEntity(entity, "oboInOwl:hasDbXref", hasDbXref, null, null, ontologyProperties, writer, curieMap);
         }
+
+
         JsonElement equivalentClass = entity.get("http://www.w3.org/2002/07/owl#equivalentClass");
         if(equivalentClass != null) {
             writeMappingsForEntity(entity, "owl:equivalentClass", equivalentClass, null, null, ontologyProperties, writer, curieMap);
+
         }
+        JsonElement equivalentProperty = entity.get("http://www.w3.org/2002/07/owl#equivalentProperty");
+        if(equivalentProperty != null) {
+            writeMappingsForEntity(entity, "owl:equivalentProperty", equivalentProperty, null, null, ontologyProperties, writer, curieMap);
+        }     
+        JsonElement sameAs = entity.get("http://www.w3.org/2002/07/owl#sameAs");
+        if(sameAs != null) {
+            writeMappingsForEntity(entity, "owl:sameAs", sameAs, null, null, ontologyProperties, writer, curieMap);
+        }     
+        
+        JsonElement subClassOf = entity.get("http://www.w3.org/2000/01/rdf-schema#subClassOf");
+        if(subClassOf != null) {
+            writeMappingsForEntity(entity, "rdfs:subClassOf", subClassOf, null, null, ontologyProperties, writer, curieMap);
+
+        }
+        JsonElement subPropertyOf = entity.get("http://www.w3.org/2000/01/rdf-schema#subPropertyOf");
+        if(subPropertyOf != null) {
+            writeMappingsForEntity(entity, "rdfs:subPropertyOf", subPropertyOf, null, null, ontologyProperties, writer, curieMap);
+
+        }        
+        
 
         // hacky special cases for chemical specific mapping predicates
         //
@@ -269,7 +309,7 @@ public class JSON2SSSOM {
 
                 JsonObject linkedEntity = linkedEntityElem.getAsJsonObject();
 
-                CurieMap.CurieMapping objCurie = curieMap.mapEntity(linkedEntity);
+                CurieMap.CurieMapping objCurie = curieMap.mapEntity(linkedEntity, value);
 
                 if(objCurie == null) {
                     return;
@@ -318,6 +358,9 @@ public class JSON2SSSOM {
         }
     }
 
+    private static boolean isNotOWLAxiom(){
+        return true;
+    }
 
 
 

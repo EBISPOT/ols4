@@ -293,4 +293,32 @@ public class ClassRepository {
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
+
+    /**
+     * Get classes that have a relatedTo relationship pointing to the specified class (i.e., relatedFrom).
+     * This is the inverse of relatedTo - it returns classes that reference the given class in their definitions.
+     *
+     * @param ontologyId The ontology ID
+     * @param iri The IRI of the class to find related-from classes for
+     * @param pageable Pagination parameters
+     * @param lang Language for localization
+     * @param outputOpts JSON transformation options
+     * @return Paginated list of classes that reference this class
+     * @throws IOException If there's an error querying
+     */
+    public OlsFacetedResultsPage<JsonElement> getRelatedFrom(
+            String ontologyId, String iri, Pageable pageable, String lang, JsonTransformOptions outputOpts) throws IOException {
+
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+
+        // Query Solr for classes that have this class in their relatedTo field
+        OlsSolrQuery query = new OlsSolrQuery();
+        query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
+        query.addFilter("ontologyId", List.of(ontologyId), SearchType.CASE_INSENSITIVE_TOKENS);
+        query.addFilter("relatedTo", List.of(iri), SearchType.WHOLE_FIELD);
+
+        return solrClient.searchSolrPaginated(query, pageable)
+                .map(e -> JsonTransformer.transformJson(e, lang, outputOpts));
+    }
 }

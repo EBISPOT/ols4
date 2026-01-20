@@ -2,7 +2,9 @@ import { useEffect, useRef } from "react";
 import Class from "../model/Class";
 import Entity from "../model/Entity";
 import Individual from "../model/Individual";
+import Ontology from "../model/Ontology";
 import Property from "../model/Property";
+import Thing from "../model/Thing";
 
 export function asArray<T>(obj: T | T[]): T[] {
   if (Array.isArray(obj)) {
@@ -38,8 +40,9 @@ export function usePrevious(value: any) {
   }, [value]);
   return ref.current;
 }
-export function thingFromJsonProperties(properties: any): Entity {
+export function thingFromJsonProperties(properties: any): Thing {
   const types = properties["type"] || [];
+  if (types.indexOf("ontology") !== -1) return new Ontology(properties);
   if (types.indexOf("class") !== -1) return new Class(properties);
   if (types.indexOf("property") !== -1) return new Property(properties);
   if (types.indexOf("individual") !== -1) return new Individual(properties);

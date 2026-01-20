@@ -31,6 +31,7 @@ import MetadataTooltip from "./entities/entityPageSections/MetadataTooltip";
 import addLinksToText from "./entities/entityPageSections/addLinksToText";
 import { getOntology } from "./ontologiesSlice";
 import {Helmet} from 'react-helmet';
+import {Banner} from "../../components/Banner";
 
 export default function OntologyPage() {
   const params = useParams();
@@ -107,6 +108,15 @@ export default function OntologyPage() {
         </Helmet>
       <main className="container mx-auto px-4">
         <FallbackWarning ontology={ontology} />
+        {ontology && ontology.isDeprecated() && (
+            <Banner type="error">
+              <div>
+                <p className="font-bold">This ontology is deprecated</p>
+                <p className="text-sm">This ontology is no longer actively maintained and may not receive future
+                  updates.</p>
+              </div>
+            </Banner>
+        )}
         {ontology ? (
           <div className="my-8">
             <div className="flex flex-wrap justify-between items-center gap-y-2 px-1 mb-4">
@@ -142,8 +152,13 @@ export default function OntologyPage() {
             </div>
             <div className="bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 mb-4 text-neutral-black">
               <div className="overflow-x-auto mb-4">
-                <div className="text-2xl font-bold mb-4">
-                  {ontology.getName() || ontology.getOntologyId()}
+                <div className="text-2xl font-bold mb-4 flex items-center gap-2">
+                  <span>{ontology.getName() || ontology.getOntologyId()}</span>
+                  {ontology.isDeprecated() && (
+                    <span className="text-white text-xs bg-red-500 px-2 py-1 rounded-md uppercase">
+                      Deprecated
+                    </span>
+                  )}
                 </div>
                 {version && (
                   <div className="mb-4">
@@ -352,12 +367,11 @@ export default function OntologyPage() {
                     {ontology.getSourceFileTimestamp() && (
                       <div>
                         <span className="font-bold">Last loaded: </span>
-                        <a
+                        <p
                           id="lastLoaded"
-                          href={ontology.getSourceFileTimestamp()}
                         >
                           {ontology.getSourceFileTimestamp()}
-                        </a>
+                        </p>
                       </div>
                     )}
                     <OntologyAnnotationsSection ontology={ontology} />

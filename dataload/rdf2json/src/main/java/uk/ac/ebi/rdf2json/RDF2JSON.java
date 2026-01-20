@@ -189,6 +189,14 @@ public class RDF2JSON {
         for(var ontoConfig : mergedConfigs.values()) {
 
             String ontologyId = ((String)ontoConfig.get("id")).toLowerCase();
+
+            // Skip obsolete ontologies unless explicitly overridden
+            if(ontoConfig.containsKey("is_obsolete") &&
+               Boolean.TRUE.equals(ontoConfig.get("is_obsolete"))) {
+                logger.info("Skipping obsolete ontology: {}", ontologyId);
+                continue;
+            }
+
             logger.info("--- Loading ontology: {}", ontologyId);
 
             try {

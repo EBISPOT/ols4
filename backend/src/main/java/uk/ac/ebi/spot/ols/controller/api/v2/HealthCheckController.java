@@ -40,7 +40,7 @@ public class HealthCheckController {
     private boolean checkNeo4j() {
         try {
             if (neo4jClient.getDatabaseNodeCount() > 0) {
-                logger.info("Neo4J is initialized.");
+                logger.debug("Neo4J is initialized.");
                 return true;
             } else {
                 logger.error("Neo4J is not initialized yet as Neo4J node elements were less than 1.");
@@ -61,7 +61,7 @@ public class HealthCheckController {
                     .map(V2Entity::new)
                             );
             if (result.totalElements > 0) {
-                logger.info("Solr is initialized.");
+                logger.debug("Solr is initialized.");
                 return true;
             } else {
                 logger.error("Solr is not initialized yet as 'totalElements' in jsonResponse not found or less than 1.");

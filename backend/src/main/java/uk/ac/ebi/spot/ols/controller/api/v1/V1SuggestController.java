@@ -51,11 +51,12 @@ public class V1SuggestController {
 
         final SolrQuery solrQuery = new SolrQuery();
 
-        String queryLc = query.toLowerCase();
-        queryLc = ClientUtils.escapeQueryChars(queryLc);
-        query = new StringBuilder(queryLc.length()+2).append('"').append(queryLc).append('"').toString();
+        // Escape special characters but don't force lowercase or add quotes
+        // The field analyzers (edge_label, whitespace_edge_label) already apply LowerCaseFilterFactory
+        String escapedQuery = query.toLowerCase();
+        escapedQuery = ClientUtils.escapeQueryChars(escapedQuery);
 
-        solrQuery.setQuery(query);
+        solrQuery.setQuery(escapedQuery);
         solrQuery.set("defType", "edismax");
         solrQuery.set("qf", LABEL.getText()+"^10 edge_label^2 whitespace_edge_label^1");
         solrQuery.set("wt", "json");

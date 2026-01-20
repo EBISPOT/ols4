@@ -117,4 +117,7 @@ export default class Ontology extends Thing {
   isFallback(): boolean {
     return this.properties["is_fallback"] === true;
   }
+  isDeprecated(): boolean {
+    return this.properties["is_deprecated"] === true;
+  }
 }

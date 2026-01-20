@@ -274,10 +274,7 @@ public class OntologyReportingService {
                 logger.info("Found existing issue #{} for ontology {}. Adding update comment.",
                     existingIssue.getNumber(), issue.getOntologyId());
 
-                String updateComment = generateUpdateComment(issue);
-                existingIssue.comment(updateComment);
-
-                logger.info("Added update to existing GitHub issue #{} for ontology {} at {}",
+                logger.info("GitHub issue #{} already exist for ontology {} at {}. Doing nothing and moving on!",
                     existingIssue.getNumber(), issue.getOntologyId(), existingIssue.getHtmlUrl());
 
                 return true;

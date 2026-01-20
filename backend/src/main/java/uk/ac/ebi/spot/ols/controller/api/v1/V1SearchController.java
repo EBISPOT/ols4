@@ -90,8 +90,8 @@ public class V1SearchController {
                     description = "Restrict a search to an particular set of slims by name") Collection<String> slims,
             @RequestParam(value = "fieldList", required = false)
             @Parameter(name = "fieldList",
-                    description = "Specifcy the fields to return, the defaults are {iri,label,short_form,obo_id,ontology_name,ontology_prefix,description,type}",
-                    example = "iri,label,short_form,obo_id,ontology_name") Collection<String> fieldList,
+                    description = "Specify the fields to return, the defaults are {iri,label,short_form,obo_id,ontology_name,ontology_prefix,description,type,exact_synonyms,related_synonyms,narrow_synonyms,broad_synonyms}. Additional synonym field available: {synonym} which returns all synonyms in one array",
+                    example = "iri,label,short_form,obo_id,ontology_name,exact_synonyms,related_synonyms") Collection<String> fieldList,
             @RequestParam(value = "queryFields", required = false)
             @Parameter(name = "queryFields",
                     description = "Specify the fields to query, the defaults are {label, synonym, description, short_form, obo_id, annotations, logical_description, iri}",
@@ -163,7 +163,7 @@ public class V1SearchController {
                 solrQuery.set("defType", "edismax");
                 solrQuery.setQuery(query);
 
-                String[] fields = {LABEL.getText()+"^5", SYNONYM.getText()+"^3", DEFINITION.getText(), "short_form^2", "obo_id^2", "iri", "annotations_trimmed"};
+                String[] fields = {LABEL.getText()+"_s^5", SYNONYM.getText()+"_s^3", DEFINITION.getText(), "short_form_s^2", "obo_id_s^2", "iri_s", "annotations_trimmed"};
 
                 solrQuery.set("qf", String.join(" ", SolrFieldMapper.mapFieldsList(List.of(fields))));
 
@@ -203,7 +203,7 @@ public class V1SearchController {
         }
 
         if (isLocal) {
-            solrQuery.addFilterQuery(IMPORTED.getText() + ":false");
+            solrQuery.addFilterQuery(IS_DEFINING_ONTOLOGY.getText() + ":true");
         }
 
         if (isLeaf) {
@@ -282,7 +282,7 @@ public class V1SearchController {
 		 */
         solrQuery.add("wt", format);
 
-        logger.debug("search: ()", solrQuery.toQueryString());
+        logger.debug("V1 SEARCH QUERY: {}", solrQuery.toQueryString());
 
         QueryResponse qr = solrClient.dispatchSearch(solrQuery, "ols4_entities");
 
@@ -313,6 +313,10 @@ public class V1SearchController {
                 fieldList.add("obo_id");
                 fieldList.add("type");
                 fieldList.add("ontology_prefix");
+                fieldList.add("exact_synonyms");
+                fieldList.add("related_synonyms");
+                fieldList.add("narrow_synonyms");
+                fieldList.add("broad_synonyms");
             }
 
             if (fieldList.contains("id")) outDoc.put("id", JsonHelper.getString(json, "id"));
@@ -335,6 +339,33 @@ public class V1SearchController {
                 outDoc.put("type", JsonHelper.getType(json, "type"));
             }
             if (fieldList.contains(SYNONYM.getText())) outDoc.put(SYNONYM.getText(), JsonHelper.getStrings(json, SYNONYM.getText()));
+
+            // Add split synonym types (only if non-empty)
+            if (fieldList.contains("exact_synonyms")) {
+                List<String> exactSynonyms = JsonHelper.getStrings(json, "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym");
+                if (!exactSynonyms.isEmpty()) {
+                    outDoc.put("exact_synonyms", exactSynonyms);
+                }
+            }
+            if (fieldList.contains("related_synonyms")) {
+                List<String> relatedSynonyms = JsonHelper.getStrings(json, "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym");
+                if (!relatedSynonyms.isEmpty()) {
+                    outDoc.put("related_synonyms", relatedSynonyms);
+                }
+            }
+            if (fieldList.contains("narrow_synonyms")) {
+                List<String> narrowSynonyms = JsonHelper.getStrings(json, "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym");
+                if (!narrowSynonyms.isEmpty()) {
+                    outDoc.put("narrow_synonyms", narrowSynonyms);
+                }
+            }
+            if (fieldList.contains("broad_synonyms")) {
+                List<String> broadSynonyms = JsonHelper.getStrings(json, "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym");
+                if (!broadSynonyms.isEmpty()) {
+                    outDoc.put("broad_synonyms", broadSynonyms);
+                }
+            }
+
             if (fieldList.contains("ontology_prefix")) outDoc.put("ontology_prefix", JsonHelper.getString(json, "ontologyPreferredPrefix"));
             if (fieldList.contains("subset")) outDoc.put("subset", JsonHelper.getStrings(json, "http://www.geneontology.org/formats/oboInOwl#inSubset"));
             if (fieldList.contains("ontology_iri")) outDoc.put("ontology_iri", JsonHelper.getStrings(json, "ontologyIri").get(0));

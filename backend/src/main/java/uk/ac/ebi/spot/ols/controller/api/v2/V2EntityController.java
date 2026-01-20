@@ -73,6 +73,10 @@ public class V2EntityController {
             @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
+            @RequestParam(value = "excludeOntologyId", required = false)
+            @Parameter(name = "excludeOntologyId",
+                    description = "Exclude entities from specific ontologies. Provide a comma-separated list of ontology IDs.",
+                    example = "ncit,snomed") Collection<String> excludeOntologyIds,
             @RequestParam
             @Parameter(name="searchProperties",
                     description = "Specify any other search field here which are not specified by searchFields or boostFields.",
@@ -92,7 +96,7 @@ public class V2EntityController {
 
         return new ResponseEntity<>(
                 new V2PagedAndFacetedResponse<V2Entity>(
-                    entityRepository.find(pageable, lang, search, searchFields, boostFields, facetFields, exactMatch, DynamicQueryHelper.filterProperties(properties), model, outputOpts) .map(V2Entity::new)
+                    entityRepository.find(pageable, lang, search, searchFields, boostFields, facetFields, exactMatch, excludeOntologyIds, DynamicQueryHelper.filterProperties(properties), model, outputOpts) .map(V2Entity::new)
                         ),
                     HttpStatus.OK);
     }
@@ -178,6 +182,33 @@ public class V2EntityController {
         var entity = entityRepository.getByOntologyIdAndIri(ontologyId, iri, lang, outputOpts);
         if (entity == null) throw new ResourceNotFoundException("The requested resource was not found.");
         return new ResponseEntity<V2Entity>( new V2Entity(entity), HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/ontologies/{onto}/entities/{entity}/relatedFrom", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
+    public HttpEntity<V2PagedAndFacetedResponse<V2Entity>> getEntityRelatedFrom(
+            @PageableDefault(size = 20, page = 0)
+            @Parameter(name = "pageable",
+                    description = "Specify the size of the result you want to get in the output",
+                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "Ontology Id to get the information about.",
+                    example = "efo") String ontologyId,
+            @PathVariable("entity")
+            @Parameter(name = "entity",
+                    description = "The IRI of the entity, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_1000967") String iri,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            JsonTransformOptions outputOpts
+    ) throws ResourceNotFoundException, IOException {
+
+        iri = UriUtils.decode(iri, "UTF-8");
+
+        return new ResponseEntity<>(
+                new V2PagedAndFacetedResponse<V2Entity>(
+                        entityRepository.getRelatedFrom(ontologyId, iri, pageable, lang, outputOpts).map(V2Entity::new)
+                ),
+                HttpStatus.OK);
     }
 }
 

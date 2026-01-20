@@ -23,6 +23,7 @@ public class CurieMap {
     public CurieMap() {
         addMapping("semapv", "https://w3id.org/semapv/vocab/");
         addMapping("owl", "http://www.w3.org/2002/07/owl#");
+        addMapping("rdfs", "http://www.w3.org/2000/01/rdf-schema#");
         addMapping("skos", "http://www.w3.org/2004/02/skos/core#");
         addMapping("oboInOwl", "http://www.geneontology.org/formats/oboInOwl#");
         addMapping("chebi", "http://purl.obolibrary.org/obo/chebi/");
@@ -31,9 +32,36 @@ public class CurieMap {
         addMapping("smiles", "https://bioregistry.io/smiles:");
     }
 
+
+    private static boolean isIRI(String str) {
+        if (str == null || str.trim().isEmpty()) {
+            return false;
+        }
+        
+        String trimmed = str.trim();
+        
+        if (!trimmed.contains(":")) {
+            return false;
+        }
+        
+        int colonIndex = trimmed.indexOf(':');
+        if (colonIndex == 0 || colonIndex == trimmed.length() - 1) {
+            return false;
+        }
+        
+        String scheme = trimmed.substring(0, colonIndex);
+        if (scheme.isEmpty() || !scheme.matches("^[a-zA-Z][a-zA-Z0-9+.-]*$")) {
+            return false;
+        }
+        
+        return true;
+    }
+
+
     public CurieMapping mapEntity(JsonObject entityOrLinkedEntity) {
 
         String iriOrUrl = null;
+
 
         if(entityOrLinkedEntity.has("iri")) {
             iriOrUrl = entityOrLinkedEntity.get("iri").getAsString();
@@ -119,6 +147,104 @@ public class CurieMap {
     private void addMapping(String curiePrefix, String curieNamespace) {
         curiePrefixToNamespace.put(curiePrefix, curieNamespace);
         namespaceToCuriePrefix.put(curieNamespace, curiePrefix);
+    }
+
+
+    public CurieMapping mapEntity(JsonObject entityOrLinkedEntity, String valueIRIOrUrl) {
+
+        String iriOrUrl = null;
+
+
+        if(entityOrLinkedEntity.has("iri")) {
+            iriOrUrl = entityOrLinkedEntity.get("iri").getAsString();
+        } else if(entityOrLinkedEntity.has("url")) {
+            iriOrUrl = entityOrLinkedEntity.get("url").getAsString();
+        }
+
+        if(!entityOrLinkedEntity.has("curie")) {
+            if(iriOrUrl == null) {
+                return null;
+            }
+            CurieMapping mapping = new CurieMapping();
+            mapping.iriOrUrl = iriOrUrl;
+            return mapping;
+        }
+
+        String curie = JsonHelper.getFirstStringValue(entityOrLinkedEntity.get("curie"));
+
+        if(!curie.contains(":")) {
+            if (curie.length() > 100) {
+                curie = curie.substring(0, 100);
+                System.out.println("Curie provided by OLS " + curie + 
+                    " does not look like a curie, in entity/linkedEntity: " + gson.toJson(entityOrLinkedEntity) + 
+                    " . Curie truncated to 100 characters.");
+            } else {
+                System.out.println("Curie provided by OLS " + curie + 
+
+                    " does not look like a curie, in entity/linkedEntity: " + gson.toJson(entityOrLinkedEntity));
+            }
+            // TODO ???
+            return null;
+        }
+
+        String curiePrefix = curie.split(":")[0];
+        String curieLocalPart = curie.split(":")[1];
+        if (iriOrUrl == null && isIRI(valueIRIOrUrl)) {
+            iriOrUrl = valueIRIOrUrl;
+        }
+        if(iriOrUrl == null || !iriOrUrl.endsWith(curieLocalPart)) {
+            System.out.println(iriOrUrl + " does not end with local part of curie " + curie + ". This mapping will be omitted from the results.");
+
+            // We can't print the iri/url in SSSOM and we can't put the CURIE in the prefix map
+            // TODO: Currently we just drop the mapping, maybe a better way to approach this.
+            //
+            return null;
+//            CurieMapping mapping = new CurieMapping();
+//            mapping.curiePrefix = curiePrefix;
+//            mapping.curieLocalPart = curieLocalPart;
+//            mapping.curie = curie;
+//            return mapping;
+        }
+
+        String curieNamespace = iriOrUrl.substring(0, iriOrUrl.length() - curieLocalPart.length());
+
+        if(curiePrefixToNamespace.containsKey(curiePrefix)) {
+
+            String existingNs = curiePrefixToNamespace.get(curiePrefix);
+
+            if(!existingNs.equals(curieNamespace)) {
+
+                String origCurieForDebugLog = curiePrefix;
+
+                // try to find a different curie prefix for this namespace
+                String nsToCp = namespaceToCuriePrefix.get(curieNamespace);
+                if(nsToCp != null) {
+                    curiePrefix = nsToCp;
+                    curie = curiePrefix + ":" + curieLocalPart;
+                } else {
+                    // establish this namespace as a curie prefix
+                    int n = 2;
+                    while(curiePrefixToNamespace.containsKey(curiePrefix + "_" + n)) {
+                        ++ n;
+                    }
+                    curiePrefix = curiePrefix + "_" + n;
+                    curie = curiePrefix + ":" + curieLocalPart;
+                    addMapping(curiePrefix, curieNamespace);
+                }
+//                System.out.println("Namespace " + curieNamespace + " did not match existing namespace " + existingNs + " for curie prefix " + origCurieForDebugLog + ". Using " + curiePrefix + " instead. In entity/linkedEntity: " + gson.toJson(entityOrLinkedEntity));
+            }
+
+        } else {
+            addMapping(curiePrefix, curieNamespace);
+        }
+
+        CurieMapping mapping = new CurieMapping();
+        mapping.iriOrUrl = iriOrUrl;
+        mapping.curie = curie;
+        mapping.curiePrefix = curiePrefix;
+        mapping.curieLocalPart = curieLocalPart;
+        mapping.curieNamespace = curieNamespace;
+        return mapping;
     }
 
 

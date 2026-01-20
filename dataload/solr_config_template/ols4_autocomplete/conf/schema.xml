@@ -133,39 +133,90 @@
 
     <fieldType name="textWhitespaceEdge" class="solr.TextField">
         <analyzer type="index">
-            <filter class="solr.LowerCaseFilterFactory"/>
             <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+            <filter class="solr.WordDelimiterGraphFilterFactory"
+                    generateWordParts="1"
+                    generateNumberParts="1"
+                    catenateWords="1"
+                    catenateNumbers="1"
+                    catenateAll="0"
+                    splitOnCaseChange="0"
+                    preserveOriginal="1"/>
+            <filter class="solr.FlattenGraphFilterFactory"/>
+            <filter class="solr.LowerCaseFilterFactory"/>
             <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
             <filter class="solr.EdgeNGramFilterFactory" minGramSize="1" maxGramSize="35" />
         </analyzer>
         <analyzer type="query">
-            <filter class="solr.LowerCaseFilterFactory"/>
             <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+            <filter class="solr.WordDelimiterGraphFilterFactory"
+                    generateWordParts="1"
+                    generateNumberParts="1"
+                    catenateWords="0"
+                    catenateNumbers="0"
+                    catenateAll="0"
+                    splitOnCaseChange="0"
+                    preserveOriginal="1"/>
+            <filter class="solr.LowerCaseFilterFactory"/>
             <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
         </analyzer>
     </fieldType>
     <fieldType name="textEdge" class="solr.TextField">
         <analyzer type="index">
             <tokenizer class="solr.PatternTokenizerFactory" pattern="______" />
+            <filter class="solr.WordDelimiterGraphFilterFactory"
+                    generateWordParts="1"
+                    generateNumberParts="1"
+                    catenateWords="1"
+                    catenateNumbers="1"
+                    catenateAll="0"
+                    splitOnCaseChange="0"
+                    preserveOriginal="1"/>
+            <filter class="solr.FlattenGraphFilterFactory"/>
             <filter class="solr.LowerCaseFilterFactory"/>
             <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
             <filter class="solr.EdgeNGramFilterFactory" minGramSize="1" maxGramSize="35" />
         </analyzer>
         <analyzer type="query">
             <tokenizer class="solr.PatternTokenizerFactory" pattern="_______" />
+            <filter class="solr.WordDelimiterGraphFilterFactory"
+                    generateWordParts="1"
+                    generateNumberParts="1"
+                    catenateWords="0"
+                    catenateNumbers="0"
+                    catenateAll="0"
+                    splitOnCaseChange="0"
+                    preserveOriginal="1"/>
             <filter class="solr.LowerCaseFilterFactory"/>
             <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
         </analyzer>
     </fieldType>
     <fieldType name="textWhitespace" class="solr.TextField">
         <analyzer type="index">
-            <filter class="solr.LowerCaseFilterFactory"/>
             <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+            <filter class="solr.WordDelimiterGraphFilterFactory"
+                    generateWordParts="1"
+                    generateNumberParts="1"
+                    catenateWords="1"
+                    catenateNumbers="1"
+                    catenateAll="0"
+                    splitOnCaseChange="0"
+                    preserveOriginal="1"/>
+            <filter class="solr.FlattenGraphFilterFactory"/>
+            <filter class="solr.LowerCaseFilterFactory"/>
             <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
         </analyzer>
         <analyzer type="query">
-            <filter class="solr.LowerCaseFilterFactory"/>
             <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+            <filter class="solr.WordDelimiterGraphFilterFactory"
+                    generateWordParts="1"
+                    generateNumberParts="1"
+                    catenateWords="0"
+                    catenateNumbers="0"
+                    catenateAll="0"
+                    splitOnCaseChange="0"
+                    preserveOriginal="1"/>
+            <filter class="solr.LowerCaseFilterFactory"/>
             <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
         </analyzer>
     </fieldType>

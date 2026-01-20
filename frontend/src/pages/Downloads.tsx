@@ -119,4 +119,11 @@ const data: any[] = [
       "https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/mappings_sssom.tgz",
     format: "tab separated file",
   },
+  {
+    description: "Embeddings db of all ontologies in OLS",
+    downloadLabel: "embeddings.db.gz",
+    downloadLink:
+        "https://ftp.ebi.ac.uk/pub/databases/spot/ols/embeddings.db.gz",
+    format: "SQLite database",
+  },
 ];

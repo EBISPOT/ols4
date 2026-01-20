@@ -59,11 +59,17 @@ export default function OntologiesPage() {
                 size: 20,
                 filterFn: 'startsWith',
                 Cell: ({row, renderedCellValue}) => {
+                    const ontology = row.original;
                     return (
                         <div style={{width: '50px'}}>
-                            <div className="bg-link-default text-white rounded-md px-2 py-1 w-fit font-bold break-keep">
+                            <div className="bg-link-default text-white rounded-md px-2 py-1 w-fit font-bold break-keep mb-1">
                                 {renderedCellValue}
                             </div>
+                            {ontology.isDeprecated() && (
+                                <div className="bg-red-500 text-white text-xs px-2 py-1 rounded-md uppercase w-fit">
+                                    Deprecated
+                                </div>
+                            )}
                         </div>
                     );
                 },

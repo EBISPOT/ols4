@@ -19,6 +19,7 @@ import LinkedEntities from "../../../model/LinkedEntities";
 import Reified from "../../../model/Reified";
 import {
   getClassInstances,
+  getRelatedFrom,
   getEntityWithType,
   getOntology,
 } from "../ontologiesSlice";
@@ -70,6 +71,9 @@ export default function EntityPage({
   const loading = useAppSelector((state) => state.ontologies.loadingEntity);
   const classInstances = useAppSelector(
     (state) => state.ontologies.classInstances
+  );
+  const relatedFrom = useAppSelector(
+    (state) => state.ontologies.relatedFrom
   );
   const errorMessage = useAppSelector((state) => state.ontologies.errorMessage);
 
@@ -144,6 +148,18 @@ export default function EntityPage({
     }
   }, [dispatch, entityType, entity, searchParams]);
 
+  useEffect(() => {
+    if (entity && entityType === "classes") {
+      dispatch(
+        getRelatedFrom({
+          ontologyId: entity.getOntologyId(),
+          classIri: entity.getIri(),
+          searchParams,
+        })
+      );
+    }
+  }, [dispatch, entityType, entity, searchParams]);
+
   const navigate = useNavigate();
   useEffect(() => {
     if (errorMessage) navigate("/error", { state: { message: errorMessage } });
@@ -162,10 +178,19 @@ export default function EntityPage({
         </Helmet>
       <main className="container mx-auto px-4">
         <FallbackWarning ontology={ontology} />
+        {ontology && ontology.isDeprecated() && (
+            <Banner type="error">
+              <div>
+                <p className="font-bold">This ontology is deprecated</p>
+                <p className="text-sm">This ontology is no longer actively maintained and may not receive future
+                  updates.</p>
+              </div>
+            </Banner>
+        )}
         {ontology && entity ? (
-          <div className="my-8">
-            <div className="flex flex-wrap justify-between items-center gap-y-2 px-1 mb-4">
-              <div className="flex flex-wrap items-center gap-y-2">
+            <div className="my-8">
+              <div className="flex flex-wrap justify-between items-center gap-y-2 px-1 mb-4">
+                <div className="flex flex-wrap items-center gap-y-2">
                 <Link className="link-default" to={"/ontologies"}>
                   Ontologies
                 </Link>
@@ -492,6 +517,7 @@ export default function EntityPage({
                     />
                     <EntityRelatedFromSection
                       entity={entity}
+                      relatedFrom={relatedFrom}
                       linkedEntities={linkedEntities}
                     />
                     <ClassInstancesSection

@@ -106,8 +106,9 @@ public class RelatedAnnotator {
 			relatedInfo.addRelatedTo(classNode,
 					new PropertyValueRelated(fillerClassExpr, "http://www.w3.org/2000/01/rdf-schema#subClassOf", individualNode));
 
-			relatedInfo.addRelatedFrom(individualNode,
-					new PropertyValueRelated(fillerClassExpr, "http://www.w3.org/2000/01/rdf-schema#subClassOf", classNode));
+			// relatedFrom removed to prevent large response sizes - available via separate paginated endpoint
+			// relatedInfo.addRelatedFrom(individualNode,
+			// 		new PropertyValueRelated(fillerClassExpr, "http://www.w3.org/2000/01/rdf-schema#subClassOf", classNode));
 		}
 		return relatedInfo;
 	}
@@ -133,8 +134,9 @@ public class RelatedAnnotator {
 				relatedInfo.addRelatedTo(classNode,
 						new PropertyValueRelated(fillerClassExpr, "http://www.w3.org/2000/01/rdf-schema#subClassOf", fillerClassNode));
 
-				relatedInfo.addRelatedFrom(fillerClassNode,
-						new PropertyValueRelated(fillerClassExpr, "http://www.w3.org/2000/01/rdf-schema#subClassOf", classNode));
+				// relatedFrom removed to prevent large response sizes - available via separate paginated endpoint
+				// relatedInfo.addRelatedFrom(fillerClassNode,
+				// 		new PropertyValueRelated(fillerClassExpr, "http://www.w3.org/2000/01/rdf-schema#subClassOf", classNode));
 			}
 		}
 		return relatedInfo;
@@ -191,7 +193,8 @@ public class RelatedAnnotator {
 					if(fillerNode != null) { // sometimes filler not included in ontology, e.g. "subClassOf some xsd:float" in cdao
 
 						relatedInfo.addRelatedTo(classNode, new PropertyValueRelated(fillerRestriction, propertyUri, fillerNode));
-						relatedInfo.addRelatedFrom(fillerNode, new PropertyValueRelated(fillerRestriction, propertyUri, classNode));
+						// relatedFrom removed to prevent large response sizes - available via separate paginated endpoint
+						// relatedInfo.addRelatedFrom(fillerNode, new PropertyValueRelated(fillerRestriction, propertyUri, classNode));
 
 					}
 				}
@@ -235,7 +238,8 @@ public class RelatedAnnotator {
 
 		for(OntologyNode individualNode : fillerIndividuals) {
 			relatedInfo.addRelatedTo(classNode, new PropertyValueRelated(fillerNode, propertyUri, individualNode));
-			relatedInfo.addRelatedFrom(individualNode, new PropertyValueRelated(fillerNode, propertyUri, classNode));
+			// relatedFrom removed to prevent large response sizes - available via separate paginated endpoint
+			// relatedInfo.addRelatedFrom(individualNode, new PropertyValueRelated(fillerNode, propertyUri, classNode));
 		}
 		return relatedInfo;
 	}
@@ -258,7 +262,8 @@ public class RelatedAnnotator {
 			// Named nodes only. TODO what to do about bnodes in this case?
 			if(fillerClassNode.uri != null) {
 				relatedInfo.addRelatedTo(classNode, new PropertyValueRelated(fillerRestriction, propertyUri, fillerClassNode));
-				relatedInfo.addRelatedFrom(fillerClassNode, new PropertyValueRelated(fillerRestriction, propertyUri, classNode));
+				// relatedFrom removed to prevent large response sizes - available via separate paginated endpoint
+				// relatedInfo.addRelatedFrom(fillerClassNode, new PropertyValueRelated(fillerRestriction, propertyUri, classNode));
 			}
 		}
 		return relatedInfo;
@@ -276,7 +281,8 @@ public class RelatedAnnotator {
 			if(fillerNode.types.contains(OntologyNode.NodeType.INDIVIDUAL)) {
 				// fillerNode is an individual
 				relatedInfo.addRelatedTo(fillerNode, new PropertyValueRelated(fillerRestriction, propertyUri, classNode));
-				relatedInfo.addRelatedFrom(classNode, new PropertyValueRelated(fillerRestriction, propertyUri, fillerNode));
+				// relatedFrom removed to prevent large response sizes - available via separate paginated endpoint
+				// relatedInfo.addRelatedFrom(classNode, new PropertyValueRelated(fillerRestriction, propertyUri, fillerNode));
 			}
 
 
@@ -312,10 +318,11 @@ public class RelatedAnnotator {
 			relatedToMap.put(ontologyNode, relatedToSetToUpdate);
 		}
 		void updateOntologyNodesWithRelatedLists() {
-			for(OntologyNode ontologyNode: relatedFromMap.keySet()) {
-				ontologyNode.properties.addProperty(RELATED_FROM.getText(),
-						new PropertyValueList(Arrays.asList(relatedFromMap.get(ontologyNode).toArray())));
-			}
+			// relatedFrom removed to prevent large response sizes - available via separate paginated endpoint
+			// for(OntologyNode ontologyNode: relatedFromMap.keySet()) {
+			// 	ontologyNode.properties.addProperty(RELATED_FROM.getText(),
+			// 			new PropertyValueList(Arrays.asList(relatedFromMap.get(ontologyNode).toArray())));
+			// }
 			for(OntologyNode ontologyNode: relatedToMap.keySet()) {
 				ontologyNode.properties.addProperty(RELATED_TO.getText(),
 						new PropertyValueList(Arrays.asList(relatedToMap.get(ontologyNode).toArray())));

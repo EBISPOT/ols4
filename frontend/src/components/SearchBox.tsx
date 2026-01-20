@@ -287,15 +287,20 @@ export default function SearchBox({
                   }}
                   to={linkUrl}
                 >
-                  <div className="flex">
-                    <span
-                      className="truncate text-link-dark font-bold"
+                  <div className="flex justify-between">
+                    <div
+                      className="truncate flex-auto font-bold"
                       title={
                         jumpToEntry.getName() || jumpToEntry.getOntologyId()
                       }
                     >
                       {jumpToEntry.getName() || jumpToEntry.getOntologyId()}
-                    </span>
+                    </div>
+                    <div className="truncate flex-initial ml-2 text-right">
+                      <span className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase">
+                        {jumpToEntry.getOntologyId()}
+                      </span>
+                    </div>
                   </div>
                 </Link>
               </li>

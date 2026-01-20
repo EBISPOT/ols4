@@ -6,7 +6,7 @@ import Header from "../components/Header";
 export default function MCP() {
   document.title = "Ontology Lookup Service (OLS)";
   let mcpUrl = process.env.REACT_APP_APIURL+'api/mcp'
-  mcpUrl = mcpUrl.split('www.ebi.ac.uk').join('wwwdev.ebi.ac.uk')
+  // mcpUrl = mcpUrl.split('www.ebi.ac.uk').join('wwwdev.ebi.ac.uk')
   return (
     <Fragment>
       <Header section="mcp" />
@@ -25,7 +25,7 @@ export default function MCP() {
   <button
     type="button"
     onClick={() =>
-      navigator.clipboard.writeText(`${process.env.REACT_APP_APIURL}api/mcp`)
+      navigator.clipboard.writeText(mcpUrl)
     }
     className="ml-2 text-gray-500 hover:text-gray-700 transition"
   >

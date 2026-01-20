@@ -27,6 +27,8 @@ export interface OntologiesState {
   loadingEntity: boolean;
   classInstances: Page<Entity> | null;
   loadingClassInstances: boolean;
+  relatedFrom: Entity[] | null;
+  loadingRelatedFrom: boolean;
   directChildrenCounts: { [key: string]: number };
   directChildrenEntities: Entity[];
   totalDirectChildrenEntities: number;
@@ -69,6 +71,8 @@ const initialState: OntologiesState = {
   loadingEntity: false,
   classInstances: null,
   loadingClassInstances: false,
+  relatedFrom: null,
+  loadingRelatedFrom: false,
   directChildrenCounts: {},
   directChildrenEntities: [],
   totalDirectChildrenEntities: 0,
@@ -232,6 +236,72 @@ export const getClassInstances = createAsyncThunk(
           thingFromJsonProperties(i)
         );
         return instances;
+      } else {
+        return rejectWithValue(
+          `Warning accessing: ${path}; Class IRI not provided`
+        );
+      }
+    } catch (error: any) {
+      return rejectWithValue(`Error accessing: ${path}; ${error.message}`);
+    }
+  }
+);
+
+export const getRelatedFrom = createAsyncThunk(
+  "ontologies_entity_related_from",
+  async (
+    {
+      ontologyId,
+      classIri,
+      searchParams,
+    }: {
+      ontologyId: string;
+      classIri: string;
+      searchParams: URLSearchParams;
+    },
+    { rejectWithValue }
+  ) => {
+    let path = "";
+    try {
+      if (classIri) {
+        const apiSearchParams = mapToApiParams(searchParams);
+        const doubleEncodedTermUri = encodeURIComponent(
+          encodeURIComponent(classIri)
+        );
+
+        // Fetch first page to get total pages
+        path = `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedTermUri}/relatedFrom?${new URLSearchParams(
+          apiSearchParams
+        )}`;
+        const firstPage = await get<any>(path);
+
+        // Collect all elements
+        let allElements = firstPage.elements || [];
+        const totalPages = firstPage.totalPages || 1;
+
+        // Fetch remaining pages if there are more than 1 page
+        if (totalPages > 1) {
+          const pagePromises = [];
+          for (let page = 1; page < totalPages; page++) {
+            const pageParams = new URLSearchParams(apiSearchParams);
+            pageParams.set("page", page.toString());
+            const pagePath = `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedTermUri}/relatedFrom?${pageParams}`;
+            pagePromises.push(get<any>(pagePath));
+          }
+
+          // Wait for all pages to complete
+          const remainingPages = await Promise.all(pagePromises);
+
+          // Combine all elements
+          remainingPages.forEach((page) => {
+            if (page.elements) {
+              allElements = allElements.concat(page.elements);
+            }
+          });
+        }
+
+        // Transform to entities and return array
+        return allElements.map((i) => thingFromJsonProperties(i));
       } else {
         return rejectWithValue(
           `Warning accessing: ${path}; Class IRI not provided`
@@ -704,6 +774,25 @@ const ontologiesSlice = createSlice({
       (state: OntologiesState, error: any) => {
         state.loadingClassInstances = false;
         state.classInstances = initialState.classInstances;
+        state.errorMessage = error.payload;
+      }
+    );
+    builder.addCase(
+      getRelatedFrom.fulfilled,
+      (state: OntologiesState, action: PayloadAction<Entity[]>) => {
+        state.relatedFrom = action.payload;
+        state.loadingRelatedFrom = false;
+      }
+    );
+    builder.addCase(getRelatedFrom.pending, (state: OntologiesState) => {
+      state.loadingRelatedFrom = true;
+      state.errorMessage = initialState.errorMessage;
+    });
+    builder.addCase(
+      getRelatedFrom.rejected,
+      (state: OntologiesState, error: any) => {
+        state.loadingRelatedFrom = false;
+        state.relatedFrom = initialState.relatedFrom;
         state.errorMessage = error.payload;
       }
     );
