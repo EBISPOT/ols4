@@ -19,79 +19,6 @@
     "multicellular organism"
   ],
   "linkedEntities": {
-    "http://purl.obolibrary.org/obo/BFO_0000050": {
-      "curie": "BFO:0000050",
-      "hasLocalDefinition": true,
-      "label": [
-        "part of"
-      ],
-      "numAppearsIn": 3.0,
-      "type": [
-        "entity",
-        "objectProperty",
-        "property"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/UBERON_0000467": {
-      "curie": "UBERON:0000467",
-      "hasLocalDefinition": true,
-      "label": [
-        "anatomical system"
-      ],
-      "numAppearsIn": 2.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/UBERON_0000483": {
-      "curie": "UBERON:0000483",
-      "hasLocalDefinition": true,
-      "label": [
-        "epithelium"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/UBERON_0000916": {
-      "curie": "UBERON:0000916",
-      "hasLocalDefinition": true,
-      "label": [
-        "abdomen"
-      ],
-      "numAppearsIn": 2.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/UBERON_0002100": {
-      "curie": "UBERON:0002100",
-      "hasLocalDefinition": true,
-      "label": [
-        "trunk"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/UBERON_0013702": {
-      "curie": "UBERON:0013702",
-      "hasLocalDefinition": true,
-      "label": [
-        "body proper"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
     "http://www.w3.org/2000/01/rdf-schema#label": {
       "curie": "RDFS:label",
       "definedBy": [
@@ -109,12 +36,6 @@
     }
   },
   "linksTo": [
-    "http://purl.obolibrary.org/obo/BFO_0000050",
-    "http://purl.obolibrary.org/obo/UBERON_0000467",
-    "http://purl.obolibrary.org/obo/UBERON_0000483",
-    "http://purl.obolibrary.org/obo/UBERON_0000916",
-    "http://purl.obolibrary.org/obo/UBERON_0002100",
-    "http://purl.obolibrary.org/obo/UBERON_0013702",
     "http://www.w3.org/2000/01/rdf-schema#label"
   ],
   "numDescendants": 0.0,
@@ -122,63 +43,6 @@
   "ontologyId": "efo-hierarchical-properties",
   "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
   "ontologyPreferredPrefix": "efo-hierarchical-properties",
-  "relatedFrom": [
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/UBERON_0000467"
-    },
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/UBERON_0000483"
-    },
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/UBERON_0000916"
-    },
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/UBERON_0002100"
-    },
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/UBERON_0013702"
-    }
-  ],
   "searchableAnnotationValues": false,
   "shortForm": "UBERON_0000468",
   "type": [

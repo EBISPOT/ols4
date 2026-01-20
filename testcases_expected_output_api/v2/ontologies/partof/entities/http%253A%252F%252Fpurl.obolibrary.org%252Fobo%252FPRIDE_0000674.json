@@ -18,18 +18,6 @@
     "human gut"
   ],
   "linkedEntities": {
-    "http://purl.obolibrary.org/obo/PRIDE_0000675": {
-      "curie": "PRIDE:0000675",
-      "hasLocalDefinition": true,
-      "label": [
-        "sample name"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
     "http://www.w3.org/2000/01/rdf-schema#label": {
       "curie": "RDFS:label",
       "definedBy": [
@@ -47,7 +35,6 @@
     }
   },
   "linksTo": [
-    "http://purl.obolibrary.org/obo/PRIDE_0000675",
     "http://www.w3.org/2000/01/rdf-schema#label"
   ],
   "numDescendants": 0.0,
@@ -55,19 +42,6 @@
   "ontologyId": "partof",
   "ontologyIri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
   "ontologyPreferredPrefix": "partof",
-  "relatedFrom": [
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/pride#part_of",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/PRIDE_0000674",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/pride#part_of",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/PRIDE_0000675"
-    }
-  ],
   "searchableAnnotationValues": false,
   "shortForm": "PRIDE_0000674",
   "type": [

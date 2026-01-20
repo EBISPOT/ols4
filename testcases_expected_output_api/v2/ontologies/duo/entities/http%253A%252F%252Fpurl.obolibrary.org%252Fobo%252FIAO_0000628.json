@@ -85,19 +85,6 @@
         "entity"
       ]
     },
-    "http://purl.obolibrary.org/obo/BFO_0000051": {
-      "curie": "BFO:0000051",
-      "hasLocalDefinition": true,
-      "label": [
-        "has part"
-      ],
-      "numAppearsIn": 4.0,
-      "type": [
-        "entity",
-        "objectProperty",
-        "property"
-      ]
-    },
     "http://purl.obolibrary.org/obo/IAO_0000030": {
       "curie": "IAO:0000030",
       "hasLocalDefinition": true,
@@ -187,18 +174,6 @@
         "entity"
       ]
     },
-    "http://purl.obolibrary.org/obo/IAO_0000627": {
-      "curie": "IAO:0000627",
-      "hasLocalDefinition": true,
-      "label": [
-        "genome announcement section"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
     "http://www.w3.org/2000/01/rdf-schema#label": {
       "curie": "RDFS:label",
       "definedBy": [
@@ -239,7 +214,6 @@
     "http://purl.obolibrary.org/obo/BFO_0000001",
     "http://purl.obolibrary.org/obo/BFO_0000002",
     "http://purl.obolibrary.org/obo/BFO_0000031",
-    "http://purl.obolibrary.org/obo/BFO_0000051",
     "http://purl.obolibrary.org/obo/IAO_0000030",
     "http://purl.obolibrary.org/obo/IAO_0000111",
     "http://purl.obolibrary.org/obo/IAO_0000112",
@@ -247,7 +221,6 @@
     "http://purl.obolibrary.org/obo/IAO_0000117",
     "http://purl.obolibrary.org/obo/IAO_0000233",
     "http://purl.obolibrary.org/obo/IAO_0000300",
-    "http://purl.obolibrary.org/obo/IAO_0000627",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf"
   ],
@@ -256,19 +229,6 @@
   "ontologyId": "duo",
   "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontologyPreferredPrefix": "DUO",
-  "relatedFrom": [
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000628",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/BFO_0000051",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/IAO_0000627"
-    }
-  ],
   "searchableAnnotationValues": [
     "A textual entity that describes the generation and public release of a novel, draft genome sequence.",
     "Excerpt from Kim et al. J Bacteriol. 2011 Oct; 193(19): 5537. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3187466/):\n\nHere we report the genome sequence of Lactobacillus malefermentans KCTC 3548, which we obtained using a whole-genome shotgun strategy (4) with Roche 454 GS (FLX Titanium) pyrosequencing (257,559 reads totaling ∼89.8 Mb; ∼45-fold coverage of the genome) at the Genome Resource Center, Korea Research Institute of Bioscience and Biotechnology (KRIBB).",

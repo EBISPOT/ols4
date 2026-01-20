@@ -194,37 +194,6 @@
       "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
       "url": "http://purl.obolibrary.org/obo/DOID_4"
     },
-    "http://purl.obolibrary.org/obo/DUO_0000007": {
-      "curie": "DUO:0000007",
-      "definedBy": [
-        "duo"
-      ],
-      "hasLocalDefinition": true,
-      "label": [
-        "disease specific research"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/DUO_0000010": {
-      "curie": "DUO:0000010",
-      "definedBy": [
-        "duo"
-      ],
-      "hasLocalDefinition": true,
-      "label": [
-        "is restricted to"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "entity",
-        "objectProperty",
-        "property"
-      ]
-    },
     "http://purl.obolibrary.org/obo/IAO_0000115": {
       "curie": "IAO:0000115",
       "hasLocalDefinition": true,
@@ -346,8 +315,6 @@
     "http://purl.obolibrary.org/obo/BFO_0000016",
     "http://purl.obolibrary.org/obo/BFO_0000017",
     "http://purl.obolibrary.org/obo/BFO_0000020",
-    "http://purl.obolibrary.org/obo/DUO_0000007",
-    "http://purl.obolibrary.org/obo/DUO_0000010",
     "http://purl.obolibrary.org/obo/IAO_0000115",
     "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
     "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
@@ -361,19 +328,6 @@
   "ontologyId": "duo",
   "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontologyPreferredPrefix": "DUO",
-  "relatedFrom": [
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/DUO_0000010",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/MONDO_0000001",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/DUO_0000010",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/DUO_0000007"
-    }
-  ],
   "searchableAnnotationValues": [
     false
   ],

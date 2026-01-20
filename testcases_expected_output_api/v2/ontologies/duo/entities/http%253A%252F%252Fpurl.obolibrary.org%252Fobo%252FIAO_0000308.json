@@ -83,19 +83,6 @@
         "entity"
       ]
     },
-    "http://purl.obolibrary.org/obo/BFO_0000051": {
-      "curie": "BFO:0000051",
-      "hasLocalDefinition": true,
-      "label": [
-        "has part"
-      ],
-      "numAppearsIn": 4.0,
-      "type": [
-        "entity",
-        "objectProperty",
-        "property"
-      ]
-    },
     "http://purl.obolibrary.org/obo/IAO_0000030": {
       "curie": "IAO:0000030",
       "hasLocalDefinition": true,
@@ -185,43 +172,6 @@
         "individual"
       ]
     },
-    "http://purl.obolibrary.org/obo/IAO_0000136": {
-      "curie": "IAO:0000136",
-      "hasLocalDefinition": true,
-      "label": [
-        "is about"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "entity",
-        "objectProperty",
-        "property"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/IAO_0000304": {
-      "curie": "IAO:0000304",
-      "hasLocalDefinition": true,
-      "label": [
-        "caption"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/IAO_0000622": {
-      "curie": "IAO:0000622",
-      "hasLocalDefinition": true,
-      "label": [
-        "figures section"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
     "http://www.w3.org/2000/01/rdf-schema#label": {
       "curie": "RDFS:label",
       "definedBy": [
@@ -257,7 +207,6 @@
     "http://purl.obolibrary.org/obo/BFO_0000001",
     "http://purl.obolibrary.org/obo/BFO_0000002",
     "http://purl.obolibrary.org/obo/BFO_0000031",
-    "http://purl.obolibrary.org/obo/BFO_0000051",
     "http://purl.obolibrary.org/obo/IAO_0000030",
     "http://purl.obolibrary.org/obo/IAO_0000111",
     "http://purl.obolibrary.org/obo/IAO_0000112",
@@ -265,9 +214,6 @@
     "http://purl.obolibrary.org/obo/IAO_0000115",
     "http://purl.obolibrary.org/obo/IAO_0000117",
     "http://purl.obolibrary.org/obo/IAO_0000120",
-    "http://purl.obolibrary.org/obo/IAO_0000136",
-    "http://purl.obolibrary.org/obo/IAO_0000304",
-    "http://purl.obolibrary.org/obo/IAO_0000622",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf"
   ],
@@ -276,30 +222,6 @@
   "ontologyId": "duo",
   "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontologyPreferredPrefix": "DUO",
-  "relatedFrom": [
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000308",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/BFO_0000051",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/IAO_0000622"
-    },
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/IAO_0000136",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000308",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/IAO_0000136",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/IAO_0000304"
-    }
-  ],
   "searchableAnnotationValues": [
     "An information content entity consisting of a two dimensional arrangement of information content entities such that the arrangement itself is about something.",
     "Any picture, diagram or table",

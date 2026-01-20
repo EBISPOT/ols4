@@ -251,18 +251,6 @@
         "entity"
       ]
     },
-    "http://purl.obolibrary.org/obo/IAO_0000443": {
-      "curie": "IAO:0000443",
-      "hasLocalDefinition": true,
-      "label": [
-        "data item extraction from journal article"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
     "http://purl.obolibrary.org/obo/IAO_0000444": {
       "curie": "IAO:0000444",
       "hasLocalDefinition": true,
@@ -273,19 +261,6 @@
       "type": [
         "class",
         "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/OBI_0000293": {
-      "curie": "OBI:0000293",
-      "hasLocalDefinition": true,
-      "label": [
-        "has_specified_input"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "entity",
-        "objectProperty",
-        "property"
       ]
     },
     "http://purl.obolibrary.org/obo/OBI_0000312": {
@@ -347,9 +322,7 @@
     "http://purl.obolibrary.org/obo/IAO_0000120",
     "http://purl.obolibrary.org/obo/IAO_0000310",
     "http://purl.obolibrary.org/obo/IAO_0000311",
-    "http://purl.obolibrary.org/obo/IAO_0000443",
     "http://purl.obolibrary.org/obo/IAO_0000444",
-    "http://purl.obolibrary.org/obo/OBI_0000293",
     "http://purl.obolibrary.org/obo/OBI_0000312",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf"
@@ -359,19 +332,6 @@
   "ontologyId": "duo",
   "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontologyPreferredPrefix": "DUO",
-  "relatedFrom": [
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000293",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000013",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/OBI_0000293",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/IAO_0000443"
-    }
-  ],
   "relatedTo": [
     {
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",

@@ -4428,37 +4428,6 @@
             "entity"
           ]
         },
-        "http://purl.obolibrary.org/obo/DUO_0000010": {
-          "curie": "DUO:0000010",
-          "definedBy": [
-            "duo"
-          ],
-          "hasLocalDefinition": true,
-          "label": [
-            "is restricted to"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "entity",
-            "objectProperty",
-            "property"
-          ]
-        },
-        "http://purl.obolibrary.org/obo/DUO_0000022": {
-          "curie": "DUO:0000022",
-          "definedBy": [
-            "duo"
-          ],
-          "hasLocalDefinition": true,
-          "label": [
-            "geographical restriction"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "class",
-            "entity"
-          ]
-        },
         "http://www.geneontology.org/formats/oboInOwl#id": {
           "curie": "id",
           "hasLocalDefinition": true,
@@ -4509,8 +4478,6 @@
         "http://purl.obolibrary.org/obo/BFO_0000004",
         "http://purl.obolibrary.org/obo/BFO_0000029",
         "http://purl.obolibrary.org/obo/BFO_0000141",
-        "http://purl.obolibrary.org/obo/DUO_0000010",
-        "http://purl.obolibrary.org/obo/DUO_0000022",
         "http://www.geneontology.org/formats/oboInOwl#id",
         "http://www.w3.org/2000/01/rdf-schema#label",
         "http://www.w3.org/2000/01/rdf-schema#subClassOf"
@@ -4520,19 +4487,6 @@
       "ontologyId": "duo",
       "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
       "ontologyPreferredPrefix": "DUO",
-      "relatedFrom": [
-        {
-          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/DUO_0000010",
-          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GAZ_00000448",
-          "isObsolete": false,
-          "property": "http://purl.obolibrary.org/obo/DUO_0000010",
-          "type": [
-            "related"
-          ],
-          "value": "http://purl.obolibrary.org/obo/DUO_0000022"
-        }
-      ],
       "score": "<score>",
       "searchableAnnotationValues": [
         false

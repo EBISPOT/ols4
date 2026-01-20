@@ -56,18 +56,6 @@
     "source code module"
   ],
   "linkedEntities": {
-    "http://purl.obolibrary.org/obo/APOLLO_SV_00000522": {
-      "curie": "APOLLO_SV:00000522",
-      "hasLocalDefinition": true,
-      "label": [
-        "source code repository"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
     "http://purl.obolibrary.org/obo/BFO_0000001": {
       "curie": "BFO:0000001",
       "hasLocalDefinition": true,
@@ -102,19 +90,6 @@
       "type": [
         "class",
         "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/BFO_0000051": {
-      "curie": "BFO:0000051",
-      "hasLocalDefinition": true,
-      "label": [
-        "has part"
-      ],
-      "numAppearsIn": 4.0,
-      "type": [
-        "entity",
-        "objectProperty",
-        "property"
       ]
     },
     "http://purl.obolibrary.org/obo/IAO_0000030": {
@@ -263,11 +238,9 @@
     }
   },
   "linksTo": [
-    "http://purl.obolibrary.org/obo/APOLLO_SV_00000522",
     "http://purl.obolibrary.org/obo/BFO_0000001",
     "http://purl.obolibrary.org/obo/BFO_0000002",
     "http://purl.obolibrary.org/obo/BFO_0000031",
-    "http://purl.obolibrary.org/obo/BFO_0000051",
     "http://purl.obolibrary.org/obo/IAO_0000030",
     "http://purl.obolibrary.org/obo/IAO_0000033",
     "http://purl.obolibrary.org/obo/IAO_0000111",
@@ -285,19 +258,6 @@
   "ontologyId": "duo",
   "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontologyPreferredPrefix": "DUO",
-  "relatedFrom": [
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000096",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/BFO_0000051",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/APOLLO_SV_00000522"
-    }
-  ],
   "searchableAnnotationValues": [
     "A source code module is a directive information entity that specifies, using a programming language, some algorithm.",
     "OBI_0000039",

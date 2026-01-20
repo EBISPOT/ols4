@@ -84,18 +84,6 @@
         "entity"
       ]
     },
-    "http://purl.obolibrary.org/obo/IAO_0000013": {
-      "curie": "IAO:0000013",
-      "hasLocalDefinition": true,
-      "label": [
-        "journal article"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
     "http://purl.obolibrary.org/obo/IAO_0000114": {
       "curie": "IAO:0000114",
       "hasLocalDefinition": true,
@@ -198,19 +186,6 @@
         "entity"
       ]
     },
-    "http://purl.obolibrary.org/obo/OBI_0000312": {
-      "curie": "OBI:0000312",
-      "hasLocalDefinition": true,
-      "label": [
-        "is_specified_output_of"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "entity",
-        "objectProperty",
-        "property"
-      ]
-    },
     "http://www.w3.org/2000/01/rdf-schema#label": {
       "curie": "RDFS:label",
       "definedBy": [
@@ -251,7 +226,6 @@
     "http://purl.obolibrary.org/obo/BFO_0000001",
     "http://purl.obolibrary.org/obo/BFO_0000003",
     "http://purl.obolibrary.org/obo/BFO_0000015",
-    "http://purl.obolibrary.org/obo/IAO_0000013",
     "http://purl.obolibrary.org/obo/IAO_0000114",
     "http://purl.obolibrary.org/obo/IAO_0000115",
     "http://purl.obolibrary.org/obo/IAO_0000117",
@@ -260,7 +234,6 @@
     "http://purl.obolibrary.org/obo/IAO_0000233",
     "http://purl.obolibrary.org/obo/IAO_0000234",
     "http://purl.obolibrary.org/obo/OBI_0000011",
-    "http://purl.obolibrary.org/obo/OBI_0000312",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf"
   ],
@@ -269,19 +242,6 @@
   "ontologyId": "duo",
   "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontologyPreferredPrefix": "DUO",
-  "relatedFrom": [
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000312",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000444",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/OBI_0000312",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/IAO_0000013"
-    }
-  ],
   "searchableAnnotationValues": [
     "A planned process of making information, such as literature, music, and software etc., available to the public for sale or for free.",
     "Person: Jie Zheng",

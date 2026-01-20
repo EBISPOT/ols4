@@ -115,19 +115,6 @@
         "entity"
       ]
     },
-    "http://purl.obolibrary.org/obo/BFO_0000050": {
-      "curie": "BFO:0000050",
-      "hasLocalDefinition": true,
-      "label": [
-        "part of"
-      ],
-      "numAppearsIn": 3.0,
-      "type": [
-        "entity",
-        "objectProperty",
-        "property"
-      ]
-    },
     "http://purl.obolibrary.org/obo/BFO_0000051": {
       "curie": "BFO:0000051",
       "hasLocalDefinition": true,
@@ -340,7 +327,6 @@
     "http://purl.obolibrary.org/obo/BFO_0000001",
     "http://purl.obolibrary.org/obo/BFO_0000002",
     "http://purl.obolibrary.org/obo/BFO_0000031",
-    "http://purl.obolibrary.org/obo/BFO_0000050",
     "http://purl.obolibrary.org/obo/BFO_0000051",
     "http://purl.obolibrary.org/obo/IAO_0000030",
     "http://purl.obolibrary.org/obo/IAO_0000112",
@@ -363,19 +349,6 @@
   "ontologyId": "duo",
   "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontologyPreferredPrefix": "DUO",
-  "relatedFrom": [
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000578",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/IAO_0000577"
-    }
-  ],
   "relatedTo": [
     {
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",

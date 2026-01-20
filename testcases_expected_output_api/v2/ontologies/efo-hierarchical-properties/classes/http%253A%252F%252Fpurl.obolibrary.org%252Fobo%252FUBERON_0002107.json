@@ -239,42 +239,6 @@
         "entity"
       ]
     },
-    "http://purl.obolibrary.org/obo/UBERON_0001193": {
-      "curie": "UBERON:0001193",
-      "hasLocalDefinition": true,
-      "label": [
-        "hepatic artery"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/UBERON_0001281": {
-      "curie": "UBERON:0001281",
-      "hasLocalDefinition": true,
-      "label": [
-        "hepatic sinusoid"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/UBERON_0001639": {
-      "curie": "UBERON:0001639",
-      "hasLocalDefinition": true,
-      "label": [
-        "hepatic portal vein"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
     "http://purl.obolibrary.org/obo/UBERON_0002100": {
       "curie": "UBERON:0002100",
       "hasLocalDefinition": true,
@@ -318,30 +282,6 @@
         "gland"
       ],
       "numAppearsIn": 2.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/UBERON_0004647": {
-      "curie": "UBERON:0004647",
-      "hasLocalDefinition": true,
-      "label": [
-        "liver lobule"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/UBERON_0006841": {
-      "curie": "UBERON:0006841",
-      "hasLocalDefinition": true,
-      "label": [
-        "central vein of liver"
-      ],
-      "numAppearsIn": 1.0,
       "type": [
         "class",
         "entity"
@@ -398,15 +338,10 @@
     "http://purl.obolibrary.org/obo/UBERON_0000916",
     "http://purl.obolibrary.org/obo/UBERON_0000949",
     "http://purl.obolibrary.org/obo/UBERON_0001007",
-    "http://purl.obolibrary.org/obo/UBERON_0001193",
-    "http://purl.obolibrary.org/obo/UBERON_0001281",
-    "http://purl.obolibrary.org/obo/UBERON_0001639",
     "http://purl.obolibrary.org/obo/UBERON_0002100",
     "http://purl.obolibrary.org/obo/UBERON_0002368",
     "http://purl.obolibrary.org/obo/UBERON_0002423",
     "http://purl.obolibrary.org/obo/UBERON_0002530",
-    "http://purl.obolibrary.org/obo/UBERON_0004647",
-    "http://purl.obolibrary.org/obo/UBERON_0006841",
     "http://purl.obolibrary.org/obo/UBERON_0013702",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf"
@@ -416,63 +351,6 @@
   "ontologyId": "efo-hierarchical-properties",
   "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
   "ontologyPreferredPrefix": "efo-hierarchical-properties",
-  "relatedFrom": [
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/UBERON_0001193"
-    },
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/UBERON_0001281"
-    },
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/UBERON_0001639"
-    },
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/UBERON_0004647"
-    },
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002107",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/UBERON_0006841"
-    }
-  ],
   "relatedTo": [
     {
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",

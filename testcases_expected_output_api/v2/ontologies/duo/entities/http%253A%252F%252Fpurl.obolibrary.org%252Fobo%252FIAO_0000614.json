@@ -85,19 +85,6 @@
         "entity"
       ]
     },
-    "http://purl.obolibrary.org/obo/BFO_0000051": {
-      "curie": "BFO:0000051",
-      "hasLocalDefinition": true,
-      "label": [
-        "has part"
-      ],
-      "numAppearsIn": 4.0,
-      "type": [
-        "entity",
-        "objectProperty",
-        "property"
-      ]
-    },
     "http://purl.obolibrary.org/obo/IAO_0000030": {
       "curie": "IAO:0000030",
       "hasLocalDefinition": true,
@@ -187,18 +174,6 @@
         "entity"
       ]
     },
-    "http://purl.obolibrary.org/obo/IAO_0000613": {
-      "curie": "IAO:0000613",
-      "hasLocalDefinition": true,
-      "label": [
-        "case report section"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
     "http://www.w3.org/2000/01/rdf-schema#label": {
       "curie": "RDFS:label",
       "definedBy": [
@@ -239,7 +214,6 @@
     "http://purl.obolibrary.org/obo/BFO_0000001",
     "http://purl.obolibrary.org/obo/BFO_0000002",
     "http://purl.obolibrary.org/obo/BFO_0000031",
-    "http://purl.obolibrary.org/obo/BFO_0000051",
     "http://purl.obolibrary.org/obo/IAO_0000030",
     "http://purl.obolibrary.org/obo/IAO_0000111",
     "http://purl.obolibrary.org/obo/IAO_0000112",
@@ -247,7 +221,6 @@
     "http://purl.obolibrary.org/obo/IAO_0000117",
     "http://purl.obolibrary.org/obo/IAO_0000233",
     "http://purl.obolibrary.org/obo/IAO_0000300",
-    "http://purl.obolibrary.org/obo/IAO_0000613",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf"
   ],
@@ -256,19 +229,6 @@
   "ontologyId": "duo",
   "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontologyPreferredPrefix": "DUO",
-  "relatedFrom": [
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000614",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/BFO_0000051",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/IAO_0000613"
-    }
-  ],
   "searchableAnnotationValues": [
     "A textual entity that expresses a detailed account of a portion of the medical history for a specific patient.",
     "Excerpt from Taglia et al. Acta Myol. 2012 Dec; 31(3): 201–203. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3631801/):\n\nThe patient is a 50-year-old man. His medical history was not contributory. At the age of 37 years, he complained of persistent fatigue and dyspnoea even for modest efforts and oedema of lower limbs. The patient was examined at the department of internal medicine of the local hospital, and hospitalised with a diagnosis of dilated cardiomyopathy probably consequence of a myocarditis process. Soon after he was transferred to the cardiologic department of the regional hospital, and pharmacologically treated for heart failure and pulmonary hypertension.",

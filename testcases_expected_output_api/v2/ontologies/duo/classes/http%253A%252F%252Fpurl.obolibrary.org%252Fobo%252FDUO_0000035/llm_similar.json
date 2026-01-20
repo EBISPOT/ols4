@@ -903,19 +903,6 @@
             "entity"
           ]
         },
-        "http://purl.obolibrary.org/obo/BFO_0000051": {
-          "curie": "BFO:0000051",
-          "hasLocalDefinition": true,
-          "label": [
-            "has part"
-          ],
-          "numAppearsIn": 4.0,
-          "type": [
-            "entity",
-            "objectProperty",
-            "property"
-          ]
-        },
         "http://purl.obolibrary.org/obo/IAO_0000030": {
           "curie": "IAO:0000030",
           "hasLocalDefinition": true,
@@ -933,18 +920,6 @@
           "hasLocalDefinition": true,
           "label": [
             "directive information entity"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "class",
-            "entity"
-          ]
-        },
-        "http://purl.obolibrary.org/obo/IAO_0000104": {
-          "curie": "IAO:0000104",
-          "hasLocalDefinition": true,
-          "label": [
-            "plan specification"
           ],
           "numAppearsIn": 1.0,
           "type": [
@@ -1068,31 +1043,6 @@
             "individual"
           ]
         },
-        "http://purl.obolibrary.org/obo/IAO_0000136": {
-          "curie": "IAO:0000136",
-          "hasLocalDefinition": true,
-          "label": [
-            "is about"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "entity",
-            "objectProperty",
-            "property"
-          ]
-        },
-        "http://purl.obolibrary.org/obo/IAO_0000316": {
-          "curie": "IAO:0000316",
-          "hasLocalDefinition": true,
-          "label": [
-            "introduction to a publication about an investigation"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "class",
-            "entity"
-          ]
-        },
         "http://www.w3.org/2000/01/rdf-schema#label": {
           "curie": "RDFS:label",
           "definedBy": [
@@ -1128,10 +1078,8 @@
         "http://purl.obolibrary.org/obo/BFO_0000001",
         "http://purl.obolibrary.org/obo/BFO_0000002",
         "http://purl.obolibrary.org/obo/BFO_0000031",
-        "http://purl.obolibrary.org/obo/BFO_0000051",
         "http://purl.obolibrary.org/obo/IAO_0000030",
         "http://purl.obolibrary.org/obo/IAO_0000033",
-        "http://purl.obolibrary.org/obo/IAO_0000104",
         "http://purl.obolibrary.org/obo/IAO_0000111",
         "http://purl.obolibrary.org/obo/IAO_0000112",
         "http://purl.obolibrary.org/obo/IAO_0000114",
@@ -1141,8 +1089,6 @@
         "http://purl.obolibrary.org/obo/IAO_0000118",
         "http://purl.obolibrary.org/obo/IAO_0000119",
         "http://purl.obolibrary.org/obo/IAO_0000122",
-        "http://purl.obolibrary.org/obo/IAO_0000136",
-        "http://purl.obolibrary.org/obo/IAO_0000316",
         "http://www.w3.org/2000/01/rdf-schema#label",
         "http://www.w3.org/2000/01/rdf-schema#subClassOf"
       ],
@@ -1151,30 +1097,6 @@
       "ontologyId": "duo",
       "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
       "ontologyPreferredPrefix": "DUO",
-      "relatedFrom": [
-        {
-          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
-          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000005",
-          "isObsolete": false,
-          "property": "http://purl.obolibrary.org/obo/BFO_0000051",
-          "type": [
-            "related"
-          ],
-          "value": "http://purl.obolibrary.org/obo/IAO_0000104"
-        },
-        {
-          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/IAO_0000136",
-          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000005",
-          "isObsolete": false,
-          "property": "http://purl.obolibrary.org/obo/IAO_0000136",
-          "type": [
-            "related"
-          ],
-          "value": "http://purl.obolibrary.org/obo/IAO_0000316"
-        }
-      ],
       "score": "<score>",
       "searchableAnnotationValues": [
         "2009-03-16: original definition when imported from OBI read: \"objective is an non realizable information entity which can serve as that  proper part of a plan towards which the realization of the plan is directed.\"",
@@ -3221,19 +3143,6 @@
             "entity"
           ]
         },
-        "http://purl.obolibrary.org/obo/BFO_0000051": {
-          "curie": "BFO:0000051",
-          "hasLocalDefinition": true,
-          "label": [
-            "has part"
-          ],
-          "numAppearsIn": 4.0,
-          "type": [
-            "entity",
-            "objectProperty",
-            "property"
-          ]
-        },
         "http://purl.obolibrary.org/obo/IAO_0000030": {
           "curie": "IAO:0000030",
           "hasLocalDefinition": true,
@@ -3323,18 +3232,6 @@
             "entity"
           ]
         },
-        "http://purl.obolibrary.org/obo/IAO_0000627": {
-          "curie": "IAO:0000627",
-          "hasLocalDefinition": true,
-          "label": [
-            "genome announcement section"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "class",
-            "entity"
-          ]
-        },
         "http://www.w3.org/2000/01/rdf-schema#label": {
           "curie": "RDFS:label",
           "definedBy": [
@@ -3375,7 +3272,6 @@
         "http://purl.obolibrary.org/obo/BFO_0000001",
         "http://purl.obolibrary.org/obo/BFO_0000002",
         "http://purl.obolibrary.org/obo/BFO_0000031",
-        "http://purl.obolibrary.org/obo/BFO_0000051",
         "http://purl.obolibrary.org/obo/IAO_0000030",
         "http://purl.obolibrary.org/obo/IAO_0000111",
         "http://purl.obolibrary.org/obo/IAO_0000112",
@@ -3383,7 +3279,6 @@
         "http://purl.obolibrary.org/obo/IAO_0000117",
         "http://purl.obolibrary.org/obo/IAO_0000233",
         "http://purl.obolibrary.org/obo/IAO_0000300",
-        "http://purl.obolibrary.org/obo/IAO_0000627",
         "http://www.w3.org/2000/01/rdf-schema#label",
         "http://www.w3.org/2000/01/rdf-schema#subClassOf"
       ],
@@ -3392,19 +3287,6 @@
       "ontologyId": "duo",
       "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
       "ontologyPreferredPrefix": "DUO",
-      "relatedFrom": [
-        {
-          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
-          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000628",
-          "isObsolete": false,
-          "property": "http://purl.obolibrary.org/obo/BFO_0000051",
-          "type": [
-            "related"
-          ],
-          "value": "http://purl.obolibrary.org/obo/IAO_0000627"
-        }
-      ],
       "score": "<score>",
       "searchableAnnotationValues": [
         "A textual entity that describes the generation and public release of a novel, draft genome sequence.",
@@ -4696,18 +4578,6 @@
             "property"
           ]
         },
-        "http://purl.obolibrary.org/obo/IAO_0000033": {
-          "curie": "IAO:0000033",
-          "hasLocalDefinition": true,
-          "label": [
-            "directive information entity"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "class",
-            "entity"
-          ]
-        },
         "http://purl.obolibrary.org/obo/IAO_0000112": {
           "curie": "IAO:0000112",
           "hasLocalDefinition": true,
@@ -4731,19 +4601,6 @@
           "type": [
             "annotationProperty",
             "entity",
-            "property"
-          ]
-        },
-        "http://purl.obolibrary.org/obo/IAO_0000136": {
-          "curie": "IAO:0000136",
-          "hasLocalDefinition": true,
-          "label": [
-            "is about"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "entity",
-            "objectProperty",
             "property"
           ]
         },
@@ -4852,10 +4709,8 @@
         "http://purl.obolibrary.org/obo/BFO_0000020",
         "http://purl.obolibrary.org/obo/BFO_0000179",
         "http://purl.obolibrary.org/obo/BFO_0000180",
-        "http://purl.obolibrary.org/obo/IAO_0000033",
         "http://purl.obolibrary.org/obo/IAO_0000112",
         "http://purl.obolibrary.org/obo/IAO_0000115",
-        "http://purl.obolibrary.org/obo/IAO_0000136",
         "http://purl.obolibrary.org/obo/IAO_0000600",
         "http://purl.obolibrary.org/obo/IAO_0000601",
         "http://purl.obolibrary.org/obo/IAO_0000602",
@@ -4869,19 +4724,6 @@
       "ontologyId": "duo",
       "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
       "ontologyPreferredPrefix": "DUO",
-      "relatedFrom": [
-        {
-          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/IAO_0000136",
-          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/BFO_0000017",
-          "isObsolete": false,
-          "property": "http://purl.obolibrary.org/obo/IAO_0000136",
-          "type": [
-            "related"
-          ],
-          "value": "http://purl.obolibrary.org/obo/IAO_0000033"
-        }
-      ],
       "score": "<score>",
       "searchableAnnotationValues": [
         "A specifically dependent continuant  that inheres in continuant  entities and are not exhibited in full at every time in which it inheres in an entity or group of entities. The exhibition or actualization of a realizable entity is a particular manifestation, functioning or process that occurs under certain circumstances.",

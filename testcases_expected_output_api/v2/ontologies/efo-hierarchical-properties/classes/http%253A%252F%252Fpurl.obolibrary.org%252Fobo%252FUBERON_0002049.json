@@ -18,31 +18,6 @@
     "vasculature"
   ],
   "linkedEntities": {
-    "http://purl.obolibrary.org/obo/BFO_0000050": {
-      "curie": "BFO:0000050",
-      "hasLocalDefinition": true,
-      "label": [
-        "part of"
-      ],
-      "numAppearsIn": 3.0,
-      "type": [
-        "entity",
-        "objectProperty",
-        "property"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/UBERON_0001982": {
-      "curie": "UBERON:0001982",
-      "hasLocalDefinition": true,
-      "label": [
-        "capillary"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
     "http://www.w3.org/2000/01/rdf-schema#label": {
       "curie": "RDFS:label",
       "definedBy": [
@@ -60,8 +35,6 @@
     }
   },
   "linksTo": [
-    "http://purl.obolibrary.org/obo/BFO_0000050",
-    "http://purl.obolibrary.org/obo/UBERON_0001982",
     "http://www.w3.org/2000/01/rdf-schema#label"
   ],
   "numDescendants": 0.0,
@@ -69,19 +42,6 @@
   "ontologyId": "efo-hierarchical-properties",
   "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
   "ontologyPreferredPrefix": "efo-hierarchical-properties",
-  "relatedFrom": [
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002049",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/UBERON_0001982"
-    }
-  ],
   "searchableAnnotationValues": false,
   "shortForm": "UBERON_0002049",
   "type": [

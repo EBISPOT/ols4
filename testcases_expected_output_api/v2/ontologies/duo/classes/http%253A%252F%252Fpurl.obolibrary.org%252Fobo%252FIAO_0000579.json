@@ -241,42 +241,6 @@
         "property"
       ]
     },
-    "http://purl.obolibrary.org/obo/IAO_0000574": {
-      "curie": "IAO:0000574",
-      "hasLocalDefinition": true,
-      "label": [
-        "assigning a centrally registered identifier"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/IAO_0000575": {
-      "curie": "IAO:0000575",
-      "hasLocalDefinition": true,
-      "label": [
-        "associating information with a centrally registered identifier in its registry"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/IAO_0000580": {
-      "curie": "IAO:0000580",
-      "hasLocalDefinition": true,
-      "label": [
-        "looking up a centrally registered identifier"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
     "http://purl.obolibrary.org/obo/IAO_0020020": {
       "curie": "IAO:0020020",
       "hasLocalDefinition": true,
@@ -287,19 +251,6 @@
       "type": [
         "class",
         "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/RO_0000057": {
-      "curie": "RO:0000057",
-      "hasLocalDefinition": true,
-      "label": [
-        "has participant"
-      ],
-      "numAppearsIn": 2.0,
-      "type": [
-        "entity",
-        "objectProperty",
-        "property"
       ]
     },
     "http://www.w3.org/2000/01/rdf-schema#label": {
@@ -353,11 +304,7 @@
     "http://purl.obolibrary.org/obo/IAO_0000119",
     "http://purl.obolibrary.org/obo/IAO_0000120",
     "http://purl.obolibrary.org/obo/IAO_0000233",
-    "http://purl.obolibrary.org/obo/IAO_0000574",
-    "http://purl.obolibrary.org/obo/IAO_0000575",
-    "http://purl.obolibrary.org/obo/IAO_0000580",
     "http://purl.obolibrary.org/obo/IAO_0020020",
-    "http://purl.obolibrary.org/obo/RO_0000057",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf"
   ],
@@ -366,41 +313,6 @@
   "ontologyId": "duo",
   "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontologyPreferredPrefix": "DUO",
-  "relatedFrom": [
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0000057",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000579",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/RO_0000057",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/IAO_0000574"
-    },
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0000057",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000579",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/RO_0000057",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/IAO_0000575"
-    },
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0000057",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000579",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/RO_0000057",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/IAO_0000580"
-    }
-  ],
   "searchableAnnotationValues": [
     "A code set of CRID records, each consisting of a CRID symbol and additional information which was recorded in the code set through an assigning a centrally registered identifier process.",
     "Justin Whorton",

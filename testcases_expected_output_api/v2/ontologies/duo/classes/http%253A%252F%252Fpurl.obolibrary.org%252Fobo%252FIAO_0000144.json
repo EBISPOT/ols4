@@ -94,19 +94,6 @@
         "entity"
       ]
     },
-    "http://purl.obolibrary.org/obo/BFO_0000051": {
-      "curie": "BFO:0000051",
-      "hasLocalDefinition": true,
-      "label": [
-        "has part"
-      ],
-      "numAppearsIn": 4.0,
-      "type": [
-        "entity",
-        "objectProperty",
-        "property"
-      ]
-    },
     "http://purl.obolibrary.org/obo/IAO_0000030": {
       "curie": "IAO:0000030",
       "hasLocalDefinition": true,
@@ -221,18 +208,6 @@
         "entity"
       ]
     },
-    "http://purl.obolibrary.org/obo/IAO_0000615": {
-      "curie": "IAO:0000615",
-      "hasLocalDefinition": true,
-      "label": [
-        "conclusion section"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
     "http://www.w3.org/2000/01/rdf-schema#label": {
       "curie": "RDFS:label",
       "definedBy": [
@@ -268,7 +243,6 @@
     "http://purl.obolibrary.org/obo/BFO_0000001",
     "http://purl.obolibrary.org/obo/BFO_0000002",
     "http://purl.obolibrary.org/obo/BFO_0000031",
-    "http://purl.obolibrary.org/obo/BFO_0000051",
     "http://purl.obolibrary.org/obo/IAO_0000030",
     "http://purl.obolibrary.org/obo/IAO_0000111",
     "http://purl.obolibrary.org/obo/IAO_0000112",
@@ -278,7 +252,6 @@
     "http://purl.obolibrary.org/obo/IAO_0000117",
     "http://purl.obolibrary.org/obo/IAO_0000120",
     "http://purl.obolibrary.org/obo/IAO_0000300",
-    "http://purl.obolibrary.org/obo/IAO_0000615",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf"
   ],
@@ -287,19 +260,6 @@
   "ontologyId": "duo",
   "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontologyPreferredPrefix": "DUO",
-  "relatedFrom": [
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000144",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/BFO_0000051",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/IAO_0000615"
-    }
-  ],
   "searchableAnnotationValues": [
     "2009/09/28 Alan Ruttenberg. Fucoidan-use-case",
     "2009/10/23 Alan Ruttenberg: We need to work on the definition still",

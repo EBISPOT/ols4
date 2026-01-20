@@ -219,36 +219,11 @@
         "individual"
       ]
     },
-    "http://purl.obolibrary.org/obo/IAO_0000136": {
-      "curie": "IAO:0000136",
-      "hasLocalDefinition": true,
-      "label": [
-        "is about"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "entity",
-        "objectProperty",
-        "property"
-      ]
-    },
     "http://purl.obolibrary.org/obo/IAO_0000310": {
       "curie": "IAO:0000310",
       "hasLocalDefinition": true,
       "label": [
         "document"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/IAO_0000325": {
-      "curie": "IAO:0000325",
-      "hasLocalDefinition": true,
-      "label": [
-        "footnote"
       ],
       "numAppearsIn": 1.0,
       "type": [
@@ -300,9 +275,7 @@
     "http://purl.obolibrary.org/obo/IAO_0000115",
     "http://purl.obolibrary.org/obo/IAO_0000117",
     "http://purl.obolibrary.org/obo/IAO_0000120",
-    "http://purl.obolibrary.org/obo/IAO_0000136",
     "http://purl.obolibrary.org/obo/IAO_0000310",
-    "http://purl.obolibrary.org/obo/IAO_0000325",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf"
   ],
@@ -311,19 +284,6 @@
   "ontologyId": "duo",
   "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontologyPreferredPrefix": "DUO",
-  "relatedFrom": [
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/IAO_0000136",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000314",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/IAO_0000136",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/IAO_0000325"
-    }
-  ],
   "relatedTo": [
     {
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",

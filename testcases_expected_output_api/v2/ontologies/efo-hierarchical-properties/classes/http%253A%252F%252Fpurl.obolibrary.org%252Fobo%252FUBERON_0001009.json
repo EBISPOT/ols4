@@ -34,19 +34,6 @@
     "circulatory system"
   ],
   "linkedEntities": {
-    "http://purl.obolibrary.org/obo/BFO_0000050": {
-      "curie": "BFO:0000050",
-      "hasLocalDefinition": true,
-      "label": [
-        "part of"
-      ],
-      "numAppearsIn": 3.0,
-      "type": [
-        "entity",
-        "objectProperty",
-        "property"
-      ]
-    },
     "http://purl.obolibrary.org/obo/UBERON_0000467": {
       "curie": "UBERON:0000467",
       "hasLocalDefinition": true,
@@ -76,18 +63,6 @@
       "hasLocalDefinition": true,
       "label": [
         "hepatobiliary system"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/UBERON_0004535": {
-      "curie": "UBERON:0004535",
-      "hasLocalDefinition": true,
-      "label": [
-        "cardiovascular system"
       ],
       "numAppearsIn": 1.0,
       "type": [
@@ -127,11 +102,9 @@
     }
   },
   "linksTo": [
-    "http://purl.obolibrary.org/obo/BFO_0000050",
     "http://purl.obolibrary.org/obo/UBERON_0000467",
     "http://purl.obolibrary.org/obo/UBERON_0000468",
     "http://purl.obolibrary.org/obo/UBERON_0002423",
-    "http://purl.obolibrary.org/obo/UBERON_0004535",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf"
   ],
@@ -140,19 +113,6 @@
   "ontologyId": "efo-hierarchical-properties",
   "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
   "ontologyPreferredPrefix": "efo-hierarchical-properties",
-  "relatedFrom": [
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0001009",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/UBERON_0004535"
-    }
-  ],
   "searchableAnnotationValues": false,
   "shortForm": "UBERON_0001009",
   "type": [

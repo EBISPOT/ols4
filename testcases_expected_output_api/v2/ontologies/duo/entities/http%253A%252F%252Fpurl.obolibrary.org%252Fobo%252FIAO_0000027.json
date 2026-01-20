@@ -58,18 +58,6 @@
     "data item"
   ],
   "linkedEntities": {
-    "http://purl.obolibrary.org/obo/APOLLO_SV_00000522": {
-      "curie": "APOLLO_SV:00000522",
-      "hasLocalDefinition": true,
-      "label": [
-        "source code repository"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
     "http://purl.obolibrary.org/obo/BFO_0000001": {
       "curie": "BFO:0000001",
       "hasLocalDefinition": true,
@@ -106,36 +94,11 @@
         "entity"
       ]
     },
-    "http://purl.obolibrary.org/obo/BFO_0000051": {
-      "curie": "BFO:0000051",
-      "hasLocalDefinition": true,
-      "label": [
-        "has part"
-      ],
-      "numAppearsIn": 4.0,
-      "type": [
-        "entity",
-        "objectProperty",
-        "property"
-      ]
-    },
     "http://purl.obolibrary.org/obo/IAO_0000030": {
       "curie": "IAO:0000030",
       "hasLocalDefinition": true,
       "label": [
         "information content entity"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/IAO_0000096": {
-      "curie": "IAO:0000096",
-      "hasLocalDefinition": true,
-      "label": [
-        "source code module"
       ],
       "numAppearsIn": 1.0,
       "type": [
@@ -246,44 +209,6 @@
         "individual"
       ]
     },
-    "http://purl.obolibrary.org/obo/IAO_0000136": {
-      "curie": "IAO:0000136",
-      "hasLocalDefinition": true,
-      "label": [
-        "is about"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "entity",
-        "objectProperty",
-        "property"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/IAO_0000443": {
-      "curie": "IAO:0000443",
-      "hasLocalDefinition": true,
-      "label": [
-        "data item extraction from journal article"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/OBI_0000299": {
-      "curie": "OBI:0000299",
-      "hasLocalDefinition": true,
-      "label": [
-        "has_specified_output"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "entity",
-        "objectProperty",
-        "property"
-      ]
-    },
     "http://www.w3.org/2000/01/rdf-schema#label": {
       "curie": "RDFS:label",
       "definedBy": [
@@ -316,13 +241,10 @@
     }
   },
   "linksTo": [
-    "http://purl.obolibrary.org/obo/APOLLO_SV_00000522",
     "http://purl.obolibrary.org/obo/BFO_0000001",
     "http://purl.obolibrary.org/obo/BFO_0000002",
     "http://purl.obolibrary.org/obo/BFO_0000031",
-    "http://purl.obolibrary.org/obo/BFO_0000051",
     "http://purl.obolibrary.org/obo/IAO_0000030",
-    "http://purl.obolibrary.org/obo/IAO_0000096",
     "http://purl.obolibrary.org/obo/IAO_0000111",
     "http://purl.obolibrary.org/obo/IAO_0000112",
     "http://purl.obolibrary.org/obo/IAO_0000114",
@@ -331,9 +253,6 @@
     "http://purl.obolibrary.org/obo/IAO_0000117",
     "http://purl.obolibrary.org/obo/IAO_0000118",
     "http://purl.obolibrary.org/obo/IAO_0000125",
-    "http://purl.obolibrary.org/obo/IAO_0000136",
-    "http://purl.obolibrary.org/obo/IAO_0000443",
-    "http://purl.obolibrary.org/obo/OBI_0000299",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf"
   ],
@@ -342,36 +261,6 @@
   "ontologyId": "duo",
   "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontologyPreferredPrefix": "DUO",
-  "relatedFrom": [
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-      "http://www.w3.org/2002/07/owl#intersectionOf": [
-        "http://purl.obolibrary.org/obo/IAO_0000027",
-        {
-          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/IAO_0000136",
-          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000096",
-          "isObsolete": false
-        }
-      ],
-      "property": "http://purl.obolibrary.org/obo/BFO_0000051",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/APOLLO_SV_00000522"
-    },
-    {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000299",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000027",
-      "isObsolete": false,
-      "property": "http://purl.obolibrary.org/obo/OBI_0000299",
-      "type": [
-        "related"
-      ],
-      "value": "http://purl.obolibrary.org/obo/IAO_0000443"
-    }
-  ],
   "searchableAnnotationValues": [
     "2/2/2009 Alan and Bjoern discussing FACS run output data. This is a data item because it is about the cell population. Each element records an event and is typically further composed a set of measurment data items that record the fluorescent intensity stimulated by one of the lasers.",
     "2009-03-16: data item deliberatly ambiguous: we merged data set and datum to be one entity, not knowing how to define singular versus plural. So data item is more general than datum.",
