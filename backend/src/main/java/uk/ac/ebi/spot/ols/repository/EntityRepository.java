@@ -94,7 +94,7 @@ public class EntityRepository {
             boolean exactMatch, Map<String, Collection<String>> properties,
             JsonTransformOptions outputOpts) throws IOException {
 
-        return find(pageable, lang, search, searchFields, boostFields, facetFields, exactMatch, null, properties, outputOpts);
+        return find(pageable, lang, search, searchFields, boostFields, facetFields, exactMatch, null, properties, null, outputOpts);
 
         }
 
