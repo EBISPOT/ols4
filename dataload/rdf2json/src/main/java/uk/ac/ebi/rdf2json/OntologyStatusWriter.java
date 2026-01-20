@@ -20,7 +20,8 @@ public class OntologyStatusWriter {
     public enum Status {
         SUCCESS,
         FALLBACK,
-        FAILED_NO_FALLBACK
+        FAILED_NO_FALLBACK,
+        SKIPPED
     }
 
     public static class OntologyStatus {
@@ -56,6 +57,13 @@ public class OntologyStatusWriter {
      */
     public static void writeFailedNoFallback(String outputPath, String ontologyId, String errorMessage) {
         writeStatus(outputPath, new OntologyStatus(ontologyId, Status.FAILED_NO_FALLBACK, errorMessage, null));
+    }
+
+    /**
+     * Write a status file for an ontology that was skipped (e.g., obsolete).
+     */
+    public static void writeSkipped(String outputPath, String ontologyId, String reason) {
+        writeStatus(outputPath, new OntologyStatus(ontologyId, Status.SKIPPED, reason, null));
     }
 
     private static void writeStatus(String outputPath, OntologyStatus status) {

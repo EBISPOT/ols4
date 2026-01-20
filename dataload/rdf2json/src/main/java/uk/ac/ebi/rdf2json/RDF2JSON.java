@@ -194,6 +194,7 @@ public class RDF2JSON {
             if(ontoConfig.containsKey("is_obsolete") &&
                Boolean.TRUE.equals(ontoConfig.get("is_obsolete"))) {
                 logger.info("Skipping obsolete ontology: {}", ontologyId);
+                OntologyStatusWriter.writeSkipped(outputFilePath, ontologyId, "Ontology is marked as obsolete");
                 continue;
             }
 
