@@ -37,7 +37,7 @@ workflow {
     linked_ontologies_by_id = linker__link_ontologies(linker_manifest, ontology_jsons_by_id)
 
     neo_csvs = json2neo(linker_manifest, linked_ontologies_by_id, params.embeddings_path)
-    solr_jsonls = json2solr(linked_ontologies_by_id, params.embeddings_path)
+    solr_jsonls = json2solr(linked_ontologies_by_id)
 
     neo = create_neo(neo_csvs.collect(), params.embeddings_path)
     solr = create_solr(solr_jsonls.collect(), linker_manifest, params.embeddings_path)
@@ -189,7 +189,6 @@ process json2solr {
     
     input:
     tuple val(ontology_id), path(ontology_json)
-    path(embeddings_path)
 
     output:
     path("*.jsonl"), optional: true
