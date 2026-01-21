@@ -31,7 +31,7 @@ export default function SimilarEntitiesSection({entity}:{entity:Entity}) {
             fetchSimilarEntities();
         }
 
-    }, [entity?.getIri()])
+    }, [entity?.getOntologyId(), entity?.getIri()])
 
     if(!entity || (entity.getType() !== 'class' && entity.getType() !== 'property')) {
         return <Fragment/>
