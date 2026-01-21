@@ -20,14 +20,16 @@ public class SolrJsonWriter {
      */
     static class RotatingWriter {
         private String basePath;
+        private String outputOntologyId;
         private String entityType;
         private int maxRowsPerFile;
         private int currentFileIndex = 0;
         private int currentRowCount = 0;
         private PrintStream currentWriter;
 
-        public RotatingWriter(String outPath, String entityType, int maxRowsPerFile) throws IOException {
+        public RotatingWriter(String outPath, String entityType, String outputOntologyId, int maxRowsPerFile) throws IOException {
             this.basePath = outPath;
+            this.outputOntologyId = outputOntologyId;
             this.entityType = entityType;
             this.maxRowsPerFile = maxRowsPerFile;
             openNextFile();
@@ -39,9 +41,17 @@ public class SolrJsonWriter {
             }
             String filename;
             if(maxRowsPerFile == -1) {
-                filename = String.format("%s/%s.jsonl", basePath, entityType);
+                if(outputOntologyId != null && !outputOntologyId.isEmpty()) {
+                    filename = String.format("%s/%s_%s.jsonl", basePath, outputOntologyId, entityType);
+                } else {
+                    filename = String.format("%s/%s.jsonl", basePath, entityType);
+                }
             } else {
-                filename = String.format("%s/%s_%04d.jsonl", basePath, entityType, currentFileIndex);
+                if(outputOntologyId != null && !outputOntologyId.isEmpty()) {
+                    filename = String.format("%s/%s_%s_%04d.jsonl", basePath, outputOntologyId, entityType, currentFileIndex);
+                } else {
+                    filename = String.format("%s/%s_%04d.jsonl", basePath, entityType, currentFileIndex);
+                }
             }
             currentWriter = new PrintStream(filename);
             currentRowCount = 0;
@@ -99,11 +109,11 @@ public class SolrJsonWriter {
 
         // Create writers once before processing any ontologies
         // They will be shared across all ontologies, rotating only by row count if maxRowsPerFile is set
-        RotatingWriter ontologiesWriter = new RotatingWriter(outPath, "ontologies", maxRowsPerFile);
-        RotatingWriter classesWriter = new RotatingWriter(outPath, "classes", maxRowsPerFile);
-        RotatingWriter propertiesWriter = new RotatingWriter(outPath, "properties", maxRowsPerFile);
-        RotatingWriter individualsWriter = new RotatingWriter(outPath, "individuals", maxRowsPerFile);
-        RotatingWriter autocompleteWriter = new RotatingWriter(outPath, "autocomplete", maxRowsPerFile);
+        RotatingWriter ontologiesWriter = new RotatingWriter(outPath, outputOntologyId, "ontologies", maxRowsPerFile);
+        RotatingWriter classesWriter = new RotatingWriter(outPath, outputOntologyId, "classes", maxRowsPerFile);
+        RotatingWriter propertiesWriter = new RotatingWriter(outPath, outputOntologyId, "properties", maxRowsPerFile);
+        RotatingWriter individualsWriter = new RotatingWriter(outPath, outputOntologyId, "individuals", maxRowsPerFile);
+        RotatingWriter autocompleteWriter = new RotatingWriter(outPath, outputOntologyId, "autocomplete", maxRowsPerFile);
 
         JsonReader reader = new JsonReader(new InputStreamReader(new FileInputStream(ontologiesJsonPath)));
 
