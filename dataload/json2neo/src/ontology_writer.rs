@@ -325,8 +325,14 @@ impl<'a> OntologyWriter<'a> {
         let b_types = self.manifest_info.uri_to_types.get(b_uri);
 
         if let (Some(a_types), Some(b_types)) = (a_types, b_types) {
-            for a_type in a_types {
-                for b_type in b_types {
+            // Sort types for deterministic output order
+            let mut a_types_sorted: Vec<_> = a_types.iter().collect();
+            let mut b_types_sorted: Vec<_> = b_types.iter().collect();
+            a_types_sorted.sort_by_key(|t| t.to_string_lowercase());
+            b_types_sorted.sort_by_key(|t| t.to_string_lowercase());
+
+            for a_type in a_types_sorted {
+                for b_type in b_types_sorted.iter() {
                     let mut row: Vec<String> = Vec::with_capacity(4 + self.edges_properties.len());
 
                     row.push(format!("{}+{}+{}", self.ontology_id, a_type.to_string_lowercase(), a_uri));
