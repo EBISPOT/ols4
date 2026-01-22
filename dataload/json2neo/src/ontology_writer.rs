@@ -171,7 +171,7 @@ impl<'a> OntologyWriter<'a> {
         row.push(serde_json::to_string(&Value::Object(ontology_properties.clone()))?);
 
         for column in &properties {
-            row.push(self.serialize_value(&ontology_props_indexmap, column, None)?);
+            row.push(self.serialize_value(&ontology_props_indexmap, column, Some(iri))?);
         }
 
         writer.write_record(&row)?;
