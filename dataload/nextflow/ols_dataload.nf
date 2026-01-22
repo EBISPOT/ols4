@@ -167,13 +167,12 @@ process json2neo {
     path("*.csv"), optional: true
 
     script:
-    def mem_mb = (task.memory.toMega() * 0.9).intValue()
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    java -Xms${mem_mb}m -Xmx${mem_mb}m -jar /opt/ols/dataload/json2neo/target/json2neo-1.0-SNAPSHOT.jar \
+    ols_json2neo \
         --input ${ontology_json} \
-        --ontologyId ${ontology_id} \
+        --ontology-id ${ontology_id} \
         --outDir . \
         --manifest ${manifest} \
         --embeddingDbsPath ${embeddings_path}

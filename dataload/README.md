@@ -18,10 +18,10 @@ Now (after about 15 min) you should have a huge file called `foundry_out.json` t
 
 ## Step 2: JSON to CSV *for Neo4j*
 
-You can now convert this huge JSON file to a CSV file ready for Neo4j, using json2neo:
+You can now convert this huge JSON file to a CSV file ready for Neo4j, using ols_json2neo:
 
     rm -rf output_csv && mkdir output_csv
-    java -jar json2neo/target/json2neo-1.0-SNAPSHOT.jar --input foundry_out_flat.json --outDir output_csv
+    ols_json2neo --input foundry_out_flat.json --outDir output_csv --manifest linker_manifest.json
 
 ## Step 3: CSV to Neo4j
 

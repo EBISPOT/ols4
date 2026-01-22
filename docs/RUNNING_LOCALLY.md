@@ -111,10 +111,10 @@ First, make sure the configuration files (that determine which ontologies to loa
 
 #### Convert JSON to Neo4j CSV
 
-    java \
-    -jar json2neo.jar \
+    ols_json2neo \
     --input <LOCAL_DIR>/output_json/ontologies_linked.json \
-    --outDir <LOCAL_DIR>/output_csv/
+    --outDir <LOCAL_DIR>/output_csv/ \
+    --manifest <LOCAL_DIR>/output_json/linker_manifest.json
 
 #### Create Neo4j from CSV
 
