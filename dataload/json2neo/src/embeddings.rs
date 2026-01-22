@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 use std::fs::File;
 
-use arrow::array::{Array, Float32Array, LargeListArray, LargeStringArray, ListArray, StringArray};
+use arrow::array::{Array, FixedSizeListArray, Float32Array, Float64Array, LargeListArray, LargeStringArray, ListArray, StringArray};
 use parquet::arrow::arrow_reader::ParquetRecordBatchReaderBuilder;
 
 /// Helper enum to handle both StringArray and LargeStringArray
@@ -71,14 +71,16 @@ impl Embeddings {
                 .column_by_name("embedding")
                 .ok_or("Missing embedding column")?;
 
-            // Handle the embedding column - it's a list of floats (could be ListArray or LargeListArray)
+            // Handle the embedding column - it's a list of floats (could be ListArray, LargeListArray, or FixedSizeListArray)
             let embedding_list: Box<dyn Fn(usize) -> arrow::array::ArrayRef> = 
                 if let Some(list) = embedding_col.as_any().downcast_ref::<ListArray>() {
                     Box::new(move |i| list.value(i))
                 } else if let Some(list) = embedding_col.as_any().downcast_ref::<LargeListArray>() {
                     Box::new(move |i| list.value(i))
+                } else if let Some(list) = embedding_col.as_any().downcast_ref::<FixedSizeListArray>() {
+                    Box::new(move |i| list.value(i))
                 } else {
-                    return Err("embedding is not a list column".into());
+                    return Err(format!("embedding is not a list column (got {:?})", embedding_col.data_type()).into());
                 };
 
             for i in 0..batch.num_rows() {
@@ -94,16 +96,15 @@ impl Embeddings {
                 let entity_type = entity_type_col.value(i);
                 let iri = iri_col.value(i);
 
-                // Extract embedding values
+                // Extract embedding values - handle both f32 and f64
                 let embedding_array = embedding_list(i);
-                let float_array = embedding_array
-                    .as_any()
-                    .downcast_ref::<Float32Array>()
-                    .ok_or("embedding elements are not f32")?;
-
-                let embedding: Vec<f32> = (0..float_array.len())
-                    .map(|j| float_array.value(j))
-                    .collect();
+                let embedding: Vec<f32> = if let Some(float_array) = embedding_array.as_any().downcast_ref::<Float32Array>() {
+                    (0..float_array.len()).map(|j| float_array.value(j)).collect()
+                } else if let Some(float_array) = embedding_array.as_any().downcast_ref::<Float64Array>() {
+                    (0..float_array.len()).map(|j| float_array.value(j) as f32).collect()
+                } else {
+                    return Err(format!("embedding elements are not f32 or f64 (got {:?})", embedding_array.data_type()).into());
+                };
 
                 let key = Self::make_key(ontology_id, entity_type, iri);
                 self.embeddings_cache.insert(key, embedding);
