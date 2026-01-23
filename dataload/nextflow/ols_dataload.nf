@@ -155,7 +155,7 @@ process linker__link_ontologies {
 
 process json2neo {
     cache "lenient"
-    memory { 16.GB }
+    memory { 128.GB + 128.GB * (task.attempt-1) }
     time "8h"
     
     input:
