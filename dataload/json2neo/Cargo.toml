@@ -17,6 +17,7 @@ parquet = "54.1"
 arrow = { version = "54.1", features = ["ffi"] }
 thiserror = "2.0"
 indexmap = { version = "2.7", features = ["serde"] }
+struson = "0.5"
 
 [profile.release]
 lto = true

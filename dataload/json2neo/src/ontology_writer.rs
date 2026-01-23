@@ -1,4 +1,4 @@
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 use std::fs::File;
 use std::io::BufWriter;
 
@@ -28,6 +28,15 @@ const EDGE_BLACKLIST: &[&str] = &[
     "relatedFrom",           // redundant - we already have relatedTo which can be queried both ways
 ];
 
+/// Entity writer state for streaming writes
+struct EntityWriter {
+    writer: Writer<BufWriter<File>>,
+    properties: Vec<String>,
+    embedding_model_names: Vec<String>,
+    node_labels: String,
+    entity_type_str: String,
+}
+
 pub struct OntologyWriter<'a> {
     output_file_path: String,
     ontology_id: String,
@@ -35,6 +44,8 @@ pub struct OntologyWriter<'a> {
     embeddings: &'a HashMap<String, Embeddings>,
     edges_properties: Vec<String>,
     edges_writer: Writer<BufWriter<File>>,
+    /// Current entity writer (for streaming entity writes)
+    current_entity_writer: Option<EntityWriter>,
 }
 
 impl<'a> OntologyWriter<'a> {
@@ -70,67 +81,142 @@ impl<'a> OntologyWriter<'a> {
             embeddings,
             edges_properties,
             edges_writer,
+            current_entity_writer: None,
         })
     }
-
-    pub fn write(&mut self, ontology: &Map<String, Value>) -> Result<(), Box<dyn std::error::Error>> {
-        // Process entities first (classes, properties, individuals)
-        for (name, value) in ontology {
-            match name.as_str() {
-                "classes" => {
-                    if let Some(classes) = value.as_array() {
-                        self.write_entities(
-                            &format!("{}/{}_classes.csv", self.output_file_path, self.manifest_info.ontology_id),
-                            "OntologyEntity|OntologyClass",
-                            "class",
-                            &self.manifest_info.all_class_properties.clone(),
-                            classes,
-                        )?;
-                    }
-                }
-                "properties" => {
-                    if let Some(properties) = value.as_array() {
-                        self.write_entities(
-                            &format!("{}/{}_properties.csv", self.output_file_path, self.manifest_info.ontology_id),
-                            "OntologyEntity|OntologyProperty",
-                            "property",
-                            &self.manifest_info.all_property_properties.clone(),
-                            properties,
-                        )?;
-                    }
-                }
-                "individuals" => {
-                    if let Some(individuals) = value.as_array() {
-                        self.write_entities(
-                            &format!("{}/{}_individuals.csv", self.output_file_path, self.manifest_info.ontology_id),
-                            "OntologyEntity|OntologyIndividual",
-                            "individual",
-                            &self.manifest_info.all_individual_properties.clone(),
-                            individuals,
-                        )?;
-                    }
-                }
-                _ => {}
-            }
+    
+    /// Begin writing entities of a specific type (streaming mode)
+    pub fn begin_entities(&mut self, entity_type: &str) -> Result<(), Box<dyn std::error::Error>> {
+        let (out_name, node_labels, entity_type_str, all_entity_properties) = match entity_type {
+            "classes" => (
+                format!("{}/{}_classes.csv", self.output_file_path, self.ontology_id),
+                "OntologyEntity|OntologyClass",
+                "class",
+                &self.manifest_info.all_class_properties,
+            ),
+            "properties" => (
+                format!("{}/{}_properties.csv", self.output_file_path, self.ontology_id),
+                "OntologyEntity|OntologyProperty",
+                "property",
+                &self.manifest_info.all_property_properties,
+            ),
+            "individuals" => (
+                format!("{}/{}_individuals.csv", self.output_file_path, self.ontology_id),
+                "OntologyEntity|OntologyIndividual",
+                "individual",
+                &self.manifest_info.all_individual_properties,
+            ),
+            _ => return Err(format!("Unknown entity type: {}", entity_type).into()),
+        };
+        
+        let mut properties: Vec<String> = all_entity_properties.iter().cloned().collect();
+        properties.sort();
+        
+        let mut embedding_model_names: Vec<String> = self.embeddings.keys().cloned().collect();
+        embedding_model_names.sort();
+        
+        let mut csv_header = vec![
+            "id:ID".to_string(),
+            ":LABEL".to_string(),
+            "_json".to_string(),
+        ];
+        csv_header.extend(property_headers(&properties));
+        
+        for model_name in &embedding_model_names {
+            csv_header.push(format!("embeddings_{}:float[]", model_name));
         }
-
-        // Build ontology properties map (excluding entities) preserving original order
-        let ontology_properties: Map<String, Value> = ontology
-            .iter()
-            .filter(|(k, _)| k.as_str() != "classes" && k.as_str() != "properties" && k.as_str() != "individuals")
+        
+        let file = File::create(&out_name)?;
+        let mut writer = WriterBuilder::new()
+            .quote_style(QuoteStyle::Always)
+            .from_writer(BufWriter::new(file));
+        writer.write_record(&csv_header)?;
+        
+        self.current_entity_writer = Some(EntityWriter {
+            writer,
+            properties,
+            embedding_model_names,
+            node_labels: node_labels.to_string(),
+            entity_type_str: entity_type_str.to_string(),
+        });
+        
+        Ok(())
+    }
+    
+    /// Write a single entity (streaming mode)
+    pub fn write_entity(
+        &mut self,
+        _entity_type: &str,
+        entity: &Map<String, Value>,
+        entity_value: &Value,
+    ) -> Result<(), Box<dyn std::error::Error>> {
+        // Extract what we need from current_entity_writer first to avoid borrow conflicts
+        let (properties, embedding_model_names, node_labels, entity_type_str) = {
+            let ew = self.current_entity_writer.as_ref()
+                .ok_or("No entity writer active - call begin_entities first")?;
+            (
+                ew.properties.clone(),
+                ew.embedding_model_names.clone(),
+                ew.node_labels.clone(),
+                ew.entity_type_str.clone(),
+            )
+        };
+        
+        let iri = entity
+            .get("iri")
+            .and_then(|v| v.as_str())
+            .unwrap_or("");
+        
+        let mut row: Vec<String> = Vec::with_capacity(3 + properties.len() + embedding_model_names.len());
+        row.push(format!("{}+{}+{}", self.ontology_id, entity_type_str, iri));
+        row.push(node_labels);
+        
+        let json_idx = row.len();
+        row.push(String::new()); // placeholder
+        
+        let entity_map: IndexMap<String, Value> = entity.iter()
             .map(|(k, v)| (k.clone(), v.clone()))
             .collect();
-
-        // Write ontology node
-        self.write_ontology(&ontology_properties)?;
-
-        // Flush edges writer
+        
+        for column in &properties {
+            row.push(self.serialize_value(&entity_map, column, Some(iri))?);
+        }
+        
+        for model_name in &embedding_model_names {
+            row.push(self.serialize_embedding(&entity_type_str, iri, model_name));
+        }
+        
+        row[json_idx] = serde_json::to_string(entity_value)?;
+        
+        // Now get mutable access to write the record
+        let ew = self.current_entity_writer.as_mut().unwrap();
+        ew.writer.write_record(&row)?;
+        
+        Ok(())
+    }
+    
+    /// End writing entities of the current type (streaming mode)
+    pub fn end_entities(&mut self, _entity_type: &str) -> Result<(), Box<dyn std::error::Error>> {
+        if let Some(mut ew) = self.current_entity_writer.take() {
+            ew.writer.flush()?;
+        }
+        Ok(())
+    }
+    
+    /// Write an empty entities file (for entity types not present in the ontology)
+    pub fn write_empty_entities(&mut self, entity_type: &str) -> Result<(), Box<dyn std::error::Error>> {
+        self.begin_entities(entity_type)?;
+        self.end_entities(entity_type)?;
+        Ok(())
+    }
+    
+    /// Finish writing (flush all writers)
+    pub fn finish(&mut self) -> Result<(), Box<dyn std::error::Error>> {
         self.edges_writer.flush()?;
-
         Ok(())
     }
 
-    fn write_ontology(&mut self, ontology_properties: &Map<String, Value>) -> Result<(), Box<dyn std::error::Error>> {
+    pub fn write_ontology(&mut self, ontology_properties: &Map<String, Value>) -> Result<(), Box<dyn std::error::Error>> {
         let mut properties: Vec<String> = self.manifest_info.all_ontology_properties.iter().cloned().collect();
         properties.sort();
 
@@ -175,80 +261,6 @@ impl<'a> OntologyWriter<'a> {
         }
 
         writer.write_record(&row)?;
-        writer.flush()?;
-
-        Ok(())
-    }
-
-    fn write_entities(
-        &mut self,
-        out_name: &str,
-        node_labels: &str,
-        entity_type: &str,
-        all_entity_properties: &HashSet<String>,
-        entities: &[Value],
-    ) -> Result<(), Box<dyn std::error::Error>> {
-        let mut properties: Vec<String> = all_entity_properties.iter().cloned().collect();
-        properties.sort();
-
-        // Get embedding model names for CSV columns
-        let mut embedding_model_names: Vec<String> = self.embeddings.keys().cloned().collect();
-        embedding_model_names.sort();
-
-        let mut csv_header = vec![
-            "id:ID".to_string(),
-            ":LABEL".to_string(),
-            "_json".to_string(),
-        ];
-        csv_header.extend(property_headers(&properties));
-
-        // Add embedding columns
-        for model_name in &embedding_model_names {
-            csv_header.push(format!("embeddings_{}:float[]", model_name));
-        }
-
-        let file = File::create(out_name)?;
-        let mut writer = WriterBuilder::new()
-            .quote_style(QuoteStyle::Always)
-            .from_writer(BufWriter::new(file));
-        writer.write_record(&csv_header)?;
-
-        for entity_value in entities {
-            if let Some(entity) = entity_value.as_object() {
-                let iri = entity
-                    .get("iri")
-                    .and_then(|v| v.as_str())
-                    .unwrap_or("");
-
-                let mut row: Vec<String> = Vec::with_capacity(csv_header.len());
-                row.push(format!("{}+{}+{}", self.ontology_id, entity_type, iri));
-                row.push(node_labels.to_string());
-                
-                // _json will be set after processing properties
-                let json_idx = row.len();
-                row.push(String::new()); // placeholder
-
-                // Convert to IndexMap to preserve order
-                let entity_map: IndexMap<String, Value> = entity.iter()
-                    .map(|(k, v)| (k.clone(), v.clone()))
-                    .collect();
-
-                for column in &properties {
-                    row.push(self.serialize_value(&entity_map, column, Some(iri))?);
-                }
-
-                // Serialize embedding values
-                for model_name in &embedding_model_names {
-                    row.push(self.serialize_embedding(entity_type, iri, model_name));
-                }
-
-                // Set _json
-                row[json_idx] = serde_json::to_string(entity_value)?;
-
-                writer.write_record(&row)?;
-            }
-        }
-
         writer.flush()?;
 
         Ok(())

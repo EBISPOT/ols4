@@ -5,16 +5,19 @@ use std::path::Path;
 
 use clap::Parser;
 use serde_json::Value;
+use struson::reader::{JsonReader, JsonStreamReader};
 
 mod defined_fields;
 mod embeddings;
 mod manifest;
 mod ontology_writer;
+mod streaming;
 
 use defined_fields::DefinedFields;
 use embeddings::Embeddings;
 use manifest::{LinkerPass1Result, OntologyManifestInfo, NodeType};
 use ontology_writer::OntologyWriter;
+use streaming::read_value;
 
 /// JSON to Neo4j CSV converter for OLS4
 #[derive(Parser, Debug)]
@@ -139,70 +142,210 @@ impl NeoConverter {
     }
 
     fn convert(self) -> Result<(), Box<dyn std::error::Error>> {
-        eprintln!("Reading input file: {}", self.input_file_path);
+        eprintln!("Streaming input file: {}", self.input_file_path);
+        
         let input_file = File::open(&self.input_file_path)?;
-        let reader = BufReader::new(input_file);
+        let reader = BufReader::with_capacity(256 * 1024, input_file);
+        let mut json = JsonStreamReader::new(reader);
         
-        // Parse the entire JSON
-        let root: Value = serde_json::from_reader(reader)?;
-        
-        let root_obj = root.as_object().ok_or("Expected JSON object at root")?;
+        json.begin_object()?;
         
         let mut found_ontologies = false;
         
-        for (name, value) in root_obj {
-            eprintln!("Found top-level key: {}", name);
+        while json.has_next()? {
+            let key = json.next_name_owned()?;
+            eprintln!("Found top-level key: {}", key);
             
-            if name == "ontologies" {
+            if key == "ontologies" {
                 found_ontologies = true;
                 
-                let ontologies = value.as_array().ok_or("Expected 'ontologies' to be an array")?;
+                json.begin_array()?;
                 let mut ontology_count = 0;
                 
-                for ontology_value in ontologies {
+                while json.has_next()? {
                     ontology_count += 1;
-                    
-                    let ontology = ontology_value.as_object().ok_or("Expected ontology to be an object")?;
-                    
-                    let read_ontology_id = ontology
-                        .get("ontologyId")
-                        .and_then(|v| v.as_str())
-                        .ok_or("Expected 'ontologyId' as first field in ontology")?;
-                    
-                    // Skip ontologies that don't match the requested ontologyId
-                    if let Some(ref filter_id) = self.ontology_id {
-                        if !filter_id.is_empty() && read_ontology_id != filter_id {
-                            eprintln!("Skipping ontology: {}", read_ontology_id);
-                            continue;
-                        }
-                    }
-                    
-                    eprintln!("Processing ontology: {}", read_ontology_id);
-                    
-                    // Get scanner results from manifest
-                    let manifest_info = self.build_manifest_info(read_ontology_id);
-                    
-                    // Create output directory if it doesn't exist
-                    std::fs::create_dir_all(&self.output_file_path)?;
-                    
-                    let mut writer = OntologyWriter::new(
-                        &self.output_file_path,
-                        manifest_info,
-                        &self.embeddings,
-                    )?;
-                    
-                    writer.write(ontology)?;
-                    
-                    eprintln!("OntologyWriter complete for {:?}", self.ontology_id);
+                    self.process_ontology_streaming(&mut json)?;
                 }
                 
+                json.end_array()?;
                 eprintln!("Processed {} ontologies", ontology_count);
+            } else {
+                json.skip_value()?;
             }
         }
+        
+        json.end_object()?;
         
         if !found_ontologies {
             eprintln!("WARNING: No 'ontologies' array found in input JSON");
         }
+        
+        Ok(())
+    }
+    
+    fn process_ontology_streaming(&self, json: &mut JsonStreamReader<BufReader<File>>) -> Result<(), Box<dyn std::error::Error>> {
+        json.begin_object()?;
+        
+        let mut ontology_id: Option<String> = None;
+        let mut ontology_properties: serde_json::Map<String, Value> = serde_json::Map::new();
+        let mut classes_processed = false;
+        let mut properties_processed = false;
+        let mut individuals_processed = false;
+        let mut writer: Option<OntologyWriter> = None;
+        
+        while json.has_next()? {
+            let key = json.next_name_owned()?;
+            
+            match key.as_str() {
+                "ontologyId" => {
+                    let value: Value = read_value(json);
+                    let id = value.as_str().ok_or("Expected ontologyId to be a string")?.to_string();
+                    ontology_id = Some(id.clone());
+                    ontology_properties.insert("ontologyId".to_string(), value);
+                    
+                    // Check if we should skip this ontology
+                    if let Some(ref filter_id) = self.ontology_id {
+                        if !filter_id.is_empty() && ontology_id.as_ref() != Some(filter_id) {
+                            eprintln!("Skipping ontology: {}", ontology_id.as_ref().unwrap());
+                            // Skip remaining fields
+                            while json.has_next()? {
+                                json.skip_name()?;
+                                json.skip_value()?;
+                            }
+                            json.end_object()?;
+                            return Ok(());
+                        }
+                    }
+                    
+                    eprintln!("Processing ontology: {}", id);
+                }
+                "iri" => {
+                    let value: Value = read_value(json);
+                    ontology_properties.insert("iri".to_string(), value);
+                }
+                "classes" => {
+                    let ont_id = ontology_id.as_ref().ok_or("classes found before ontologyId")?;
+                    
+                    if writer.is_none() {
+                        let manifest_info = self.build_manifest_info(ont_id);
+                        std::fs::create_dir_all(&self.output_file_path)?;
+                        writer = Some(OntologyWriter::new(
+                            &self.output_file_path,
+                            manifest_info,
+                            &self.embeddings,
+                        )?);
+                    }
+                    
+                    let w = writer.as_mut().unwrap();
+                    self.process_entity_array_streaming(json, w, "classes")?;
+                    classes_processed = true;
+                }
+                "properties" => {
+                    let ont_id = ontology_id.as_ref().ok_or("properties found before ontologyId")?;
+                    
+                    if writer.is_none() {
+                        let manifest_info = self.build_manifest_info(ont_id);
+                        std::fs::create_dir_all(&self.output_file_path)?;
+                        writer = Some(OntologyWriter::new(
+                            &self.output_file_path,
+                            manifest_info,
+                            &self.embeddings,
+                        )?);
+                    }
+                    
+                    let w = writer.as_mut().unwrap();
+                    self.process_entity_array_streaming(json, w, "properties")?;
+                    properties_processed = true;
+                }
+                "individuals" => {
+                    let ont_id = ontology_id.as_ref().ok_or("individuals found before ontologyId")?;
+                    
+                    if writer.is_none() {
+                        let manifest_info = self.build_manifest_info(ont_id);
+                        std::fs::create_dir_all(&self.output_file_path)?;
+                        writer = Some(OntologyWriter::new(
+                            &self.output_file_path,
+                            manifest_info,
+                            &self.embeddings,
+                        )?);
+                    }
+                    
+                    let w = writer.as_mut().unwrap();
+                    self.process_entity_array_streaming(json, w, "individuals")?;
+                    individuals_processed = true;
+                }
+                _ => {
+                    // Store other ontology properties (they're usually small)
+                    let value: Value = read_value(json);
+                    ontology_properties.insert(key, value);
+                }
+            }
+        }
+        
+        json.end_object()?;
+        
+        // Write ontology node if we have a valid ontology
+        if let Some(ref ont_id) = ontology_id {
+            if writer.is_none() {
+                let manifest_info = self.build_manifest_info(ont_id);
+                std::fs::create_dir_all(&self.output_file_path)?;
+                writer = Some(OntologyWriter::new(
+                    &self.output_file_path,
+                    manifest_info,
+                    &self.embeddings,
+                )?);
+            }
+            
+            let w = writer.as_mut().unwrap();
+            
+            if !classes_processed {
+                w.write_empty_entities("classes")?;
+            }
+            if !properties_processed {
+                w.write_empty_entities("properties")?;
+            }
+            if !individuals_processed {
+                w.write_empty_entities("individuals")?;
+            }
+            
+            w.write_ontology(&ontology_properties)?;
+            w.finish()?;
+            
+            eprintln!("OntologyWriter complete for {:?}", ontology_id);
+        }
+        
+        Ok(())
+    }
+    
+    fn process_entity_array_streaming(
+        &self,
+        json: &mut JsonStreamReader<BufReader<File>>,
+        writer: &mut OntologyWriter,
+        entity_type: &str,
+    ) -> Result<(), Box<dyn std::error::Error>> {
+        writer.begin_entities(entity_type)?;
+        
+        json.begin_array()?;
+        
+        let mut count = 0;
+        
+        while json.has_next()? {
+            let entity: Value = read_value(json);
+            
+            if let Some(entity_obj) = entity.as_object() {
+                writer.write_entity(entity_type, entity_obj, &entity)?;
+                count += 1;
+                
+                if count % 10000 == 0 {
+                    eprintln!("  Processed {} {}...", count, entity_type);
+                }
+            }
+        }
+        
+        json.end_array()?;
+        
+        writer.end_entities(entity_type)?;
+        eprintln!("  Finished processing {} {}", count, entity_type);
         
         Ok(())
     }
