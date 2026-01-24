@@ -157,7 +157,9 @@ process json2neo {
     cache "lenient"
     memory { 16.GB + 128.GB * (task.attempt-1) }
     time "8h"
-    
+    errorStrategy 'retry'
+    maxRetries 5
+
     input:
     path(manifest)
     tuple val(ontology_id), path(ontology_json)
