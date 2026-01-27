@@ -888,11 +888,21 @@ dependencies = [
  "clap",
  "csv",
  "indexmap",
+ "ols_shared",
  "parquet",
  "serde",
  "serde_json",
  "struson",
  "thiserror 2.0.18",
+]
+
+[[package]]
+name = "ols_shared"
+version = "1.0.0"
+dependencies = [
+ "serde",
+ "serde_json",
+ "struson",
 ]
 
 [[package]]

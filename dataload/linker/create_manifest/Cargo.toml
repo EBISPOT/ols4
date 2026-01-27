@@ -1,24 +1,20 @@
 [package]
-name = "ols_json2neo"
+name = "ols_create_manifest"
 version = "1.0.0"
 edition = "2024"
 rust-version = "1.90.0"
 
 [[bin]]
-name = "ols_json2neo"
+name = "ols_create_manifest"
 path = "src/main.rs"
 
 [dependencies]
 clap = { version = "4.5", features = ["derive"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = { version = "1.0", features = ["preserve_order"] }
-csv = "1.3"
-parquet = "54.1"
-arrow = { version = "54.1", features = ["ffi"] }
 thiserror = "2.0"
-indexmap = { version = "2.7", features = ["serde"] }
 struson = "0.5"
-ols_shared = { path = "../ols-shared-rs" }
+ols_shared = { path = "../../ols-shared-rs" }
 
 [profile.release]
 lto = true

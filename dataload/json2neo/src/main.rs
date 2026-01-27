@@ -4,20 +4,18 @@ use std::io::BufReader;
 use std::path::Path;
 
 use clap::Parser;
+use ols_shared::streaming::read_value;
+use ols_shared::DefinedFields;
 use serde_json::Value;
 use struson::reader::{JsonReader, JsonStreamReader};
 
-mod defined_fields;
 mod embeddings;
 mod manifest;
 mod ontology_writer;
-mod streaming;
 
-use defined_fields::DefinedFields;
 use embeddings::Embeddings;
 use manifest::{LinkerPass1Result, OntologyManifestInfo, NodeType};
 use ontology_writer::OntologyWriter;
-use streaming::read_value;
 
 /// JSON to Neo4j CSV converter for OLS4
 #[derive(Parser, Debug)]

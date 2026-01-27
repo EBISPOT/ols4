@@ -117,11 +117,10 @@ process linker__create_manifest {
     path("linker_manifest.json")
 
     script:
-    def mem_mb = (task.memory.toMega() * 0.9).intValue()
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    java -Xms${mem_mb}m -Xmx${mem_mb}m -jar /opt/ols/dataload/linker/create_manifest/target/create-manifest-1.0-SNAPSHOT.jar \
+    ols_create_manifest \
         --input ${ontology_jsons.join(',')} \
         --output "linker_manifest.json"
     """
