@@ -1,60 +1,5 @@
 {
   "iriToDefinitions": {
-    "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person": {
-      "definitions": [
-        {
-          "ontologyId": "owl2primer-object-property-assertion",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "Person"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "Person"
-          },
-          "isObsolete": false
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIris": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "owl2primer-object-property-assertion": {
-          "ontologyId": "owl2primer-object-property-assertion",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "Person"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "Person"
-          },
-          "isObsolete": false
-        }
-      }
-    },
     "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Man": {
       "definitions": [
         {
@@ -105,6 +50,61 @@
               "literal"
             ],
             "value": "Man"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-object-property-assertion",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Person"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Person"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-object-property-assertion": {
+          "ontologyId": "owl2primer-object-property-assertion",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Person"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Person"
           },
           "isObsolete": false
         }
@@ -222,61 +222,6 @@
         }
       }
     },
-    "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Mary": {
-      "definitions": [
-        {
-          "ontologyId": "owl2primer-object-property-assertion",
-          "entityTypes": [
-            "entity",
-            "individual"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "Mary"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "Mary"
-          },
-          "isObsolete": false
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIris": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "owl2primer-object-property-assertion": {
-          "ontologyId": "owl2primer-object-property-assertion",
-          "entityTypes": [
-            "entity",
-            "individual"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "Mary"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "Mary"
-          },
-          "isObsolete": false
-        }
-      }
-    },
     "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#John": {
       "definitions": [
         {
@@ -331,6 +276,61 @@
           "isObsolete": false
         }
       }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Mary": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-object-property-assertion",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Mary"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Mary"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-object-property-assertion": {
+          "ontologyId": "owl2primer-object-property-assertion",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Mary"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Mary"
+          },
+          "isObsolete": false
+        }
+      }
     }
   },
   "ontologyIriToOntologyIds": {
@@ -352,104 +352,104 @@
   "ontologyIdToImportedOntologyIds": {},
   "ontologyIdToOntologyProperties": {
     "owl2primer-object-property-assertion": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
       "iri",
-      "numberOfIndividuals",
-      "numDescendants",
-      "numberOfProperties",
-      "numberOfClasses",
-      "language",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
       "isObsolete",
-      "type",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
       "ontologyPurl",
       "preferredPrefix",
-      "directAncestor",
-      "imported",
-      "numberOfEntities",
-      "ontologyId",
-      "http://www.w3.org/2002/07/owl#versionIRI",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "searchableAnnotationValues",
+      "type"
     ]
   },
   "ontologyIdToClassProperties": {
     "owl2primer-object-property-assertion": [
-      "isPreferredRoot",
-      "hasDirectChildren",
-      "hasHierarchicalParents",
-      "hasHierarchicalChildren",
-      "hierarchicalProperty",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "type",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "hasDirectParents",
-      "imported",
-      "ontologyIri",
-      "hierarchicalParent",
-      "iri",
-      "hierarchicalAncestor",
-      "numDescendants",
-      "isObsolete",
-      "label",
-      "hasIndividuals",
-      "directParent",
-      "ontologyPreferredPrefix",
-      "directAncestor",
       "curie",
+      "directAncestor",
+      "directParent",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hasIndividuals",
+      "hierarchicalAncestor",
+      "hierarchicalParent",
+      "hierarchicalProperty",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
       "http://www.w3.org/2002/07/owl#disjointWith",
-      "shortForm",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
       "ontologyId",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToPropertyProperties": {
     "owl2primer-object-property-assertion": [
-      "isPreferredRoot",
-      "iri",
+      "curie",
+      "directAncestor",
       "hasDirectChildren",
-      "hasHierarchicalParents",
+      "hasDirectParents",
       "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
       "numDescendants",
       "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "isObsolete",
-      "label",
-      "type",
-      "ontologyPreferredPrefix",
-      "directAncestor",
-      "curie",
-      "hasDirectParents",
-      "imported",
-      "shortForm",
       "ontologyId",
       "ontologyIri",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToIndividualProperties": {
     "owl2primer-object-property-assertion": [
-      "iri",
+      "curie",
+      "directAncestor",
+      "directParent",
       "hasDirectChildren",
-      "hasHierarchicalParents",
+      "hasDirectParents",
       "hasHierarchicalChildren",
+      "hasHierarchicalParents",
       "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#hasWife",
-      "numDescendants",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
       "isObsolete",
       "label",
-      "type",
-      "directParent",
-      "ontologyPreferredPrefix",
-      "directAncestor",
-      "curie",
-      "hasDirectParents",
-      "imported",
-      "shortForm",
+      "numDescendants",
+      "numHierarchicalDescendants",
       "ontologyId",
       "ontologyIri",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToEdgeProperties": {
@@ -457,10 +457,16 @@
   },
   "ontologyIdToUriToTypes": {
     "owl2primer-object-property-assertion": {
-      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person": [
-        "CLASS"
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#John": [
+        "INDIVIDUAL"
       ],
       "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Man": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Mary": [
+        "INDIVIDUAL"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Person": [
         "CLASS"
       ],
       "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Woman": [
@@ -468,12 +474,6 @@
       ],
       "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#hasWife": [
         "PROPERTY"
-      ],
-      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#Mary": [
-        "INDIVIDUAL"
-      ],
-      "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion#John": [
-        "INDIVIDUAL"
       ],
       "http://www.ebi.ac.uk/testcases/owl2primer/object-property-assertion.owl": [
         "ONTOLOGY"

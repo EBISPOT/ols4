@@ -75,51 +75,51 @@
   "ontologyIdToImportedOntologyIds": {},
   "ontologyIdToOntologyProperties": {
     "genepio": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
       "iri",
-      "numberOfIndividuals",
-      "numDescendants",
-      "numberOfProperties",
-      "numberOfClasses",
-      "language",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
       "isObsolete",
-      "type",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
       "ontologyPurl",
       "preferredPrefix",
-      "directAncestor",
-      "imported",
-      "numberOfEntities",
-      "ontologyId",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "searchableAnnotationValues",
+      "type"
     ]
   },
   "ontologyIdToClassProperties": {
     "genepio": [
-      "isPreferredRoot",
-      "iri",
-      "hasDirectChildren",
-      "hierarchicalAncestor",
-      "hasHierarchicalParents",
-      "hasHierarchicalChildren",
-      "numDescendants",
-      "hierarchicalProperty",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "isObsolete",
-      "label",
-      "type",
-      "relatedTo",
-      "ontologyPreferredPrefix",
-      "directAncestor",
       "curie",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "directAncestor",
+      "hasDirectChildren",
       "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "hierarchicalProperty",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
       "imported",
-      "shortForm",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
       "ontologyId",
       "ontologyIri",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyPreferredPrefix",
+      "relatedTo",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToPropertyProperties": {
@@ -133,11 +133,11 @@
   },
   "ontologyIdToUriToTypes": {
     "genepio": {
-      "http://purl.obolibrary.org/obo/genepio.owl": [
-        "ONTOLOGY"
-      ],
       "http://purl.obolibrary.org/obo/GENEPIO_0002113": [
         "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/genepio.owl": [
+        "ONTOLOGY"
       ]
     }
   }

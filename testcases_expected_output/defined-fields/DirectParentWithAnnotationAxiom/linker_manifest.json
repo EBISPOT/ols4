@@ -110,6 +110,61 @@
         }
       }
     },
+    "http://purl.obolibrary.org/obo/MONDO_0005151": {
+      "definitions": [
+        {
+          "ontologyId": "direct-parent-with-annotation-axiom",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "endocrine system disorder"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "MONDO:0005151"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "direct-parent-with-annotation-axiom": {
+          "ontologyId": "direct-parent-with-annotation-axiom",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "endocrine system disorder"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "MONDO:0005151"
+          },
+          "isObsolete": false
+        }
+      }
+    },
     "http://purl.obolibrary.org/obo/IAO_0000115": {
       "definitions": [
         {
@@ -162,61 +217,6 @@
               "literal"
             ],
             "value": "IAO:0000115"
-          },
-          "isObsolete": false
-        }
-      }
-    },
-    "http://purl.obolibrary.org/obo/MONDO_0005151": {
-      "definitions": [
-        {
-          "ontologyId": "direct-parent-with-annotation-axiom",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "endocrine system disorder"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "MONDO:0005151"
-          },
-          "isObsolete": false
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIris": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "direct-parent-with-annotation-axiom": {
-          "ontologyId": "direct-parent-with-annotation-axiom",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "endocrine system disorder"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "MONDO:0005151"
           },
           "isObsolete": false
         }
@@ -299,80 +299,80 @@
   "ontologyIdToImportedOntologyIds": {},
   "ontologyIdToOntologyProperties": {
     "direct-parent-with-annotation-axiom": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
       "iri",
-      "numberOfIndividuals",
-      "numDescendants",
-      "numberOfProperties",
-      "numberOfClasses",
-      "language",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
       "isObsolete",
-      "type",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
       "ontologyPurl",
       "preferredPrefix",
-      "directAncestor",
-      "imported",
-      "numberOfEntities",
-      "ontologyId",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "searchableAnnotationValues",
+      "type"
     ]
   },
   "ontologyIdToClassProperties": {
     "direct-parent-with-annotation-axiom": [
-      "isPreferredRoot",
-      "hasDirectChildren",
-      "hasHierarchicalParents",
-      "hasHierarchicalChildren",
-      "hierarchicalProperty",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "type",
-      "definitionProperty",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "hasDirectParents",
-      "imported",
-      "definition",
-      "ontologyIri",
-      "hierarchicalParent",
-      "http://purl.obolibrary.org/obo/IAO_0000115",
-      "iri",
-      "hierarchicalAncestor",
-      "numDescendants",
-      "isObsolete",
-      "label",
-      "directParent",
-      "ontologyPreferredPrefix",
-      "directAncestor",
       "curie",
-      "shortForm",
+      "definition",
+      "definitionProperty",
+      "directAncestor",
+      "directParent",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "hierarchicalParent",
+      "hierarchicalProperty",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
       "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
       "ontologyId",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToPropertyProperties": {
     "direct-parent-with-annotation-axiom": [
-      "isPreferredRoot",
-      "iri",
+      "curie",
+      "directAncestor",
       "hasDirectChildren",
-      "hasHierarchicalParents",
+      "hasDirectParents",
       "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
       "numDescendants",
       "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "isObsolete",
-      "label",
-      "type",
-      "ontologyPreferredPrefix",
-      "directAncestor",
-      "curie",
-      "hasDirectParents",
-      "imported",
-      "shortForm",
       "ontologyId",
       "ontologyIri",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToIndividualProperties": {
@@ -385,20 +385,20 @@
   },
   "ontologyIdToUriToTypes": {
     "direct-parent-with-annotation-axiom": {
+      "http://purl.obolibrary.org/obo/IAO_0000115": [
+        "PROPERTY"
+      ],
       "http://purl.obolibrary.org/obo/MONDO_0002259": [
         "CLASS"
       ],
       "http://purl.obolibrary.org/obo/MONDO_0005039": [
         "CLASS"
       ],
-      "http://purl.obolibrary.org/obo/mondo.owl": [
-        "ONTOLOGY"
-      ],
-      "http://purl.obolibrary.org/obo/IAO_0000115": [
-        "PROPERTY"
-      ],
       "http://purl.obolibrary.org/obo/MONDO_0005151": [
         "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/mondo.owl": [
+        "ONTOLOGY"
       ],
       "http://www.geneontology.org/formats/oboInOwl#source": [
         "PROPERTY"

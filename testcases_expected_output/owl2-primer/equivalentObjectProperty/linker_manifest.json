@@ -244,24 +244,24 @@
   "ontologyIdToImportedOntologyIds": {},
   "ontologyIdToOntologyProperties": {
     "owl2primer-equivalentobjectproperty": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
       "iri",
-      "numberOfIndividuals",
-      "numDescendants",
-      "numberOfProperties",
-      "numberOfClasses",
-      "language",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
       "isObsolete",
-      "type",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
       "ontologyPurl",
       "preferredPrefix",
-      "directAncestor",
-      "imported",
-      "numberOfEntities",
-      "ontologyId",
-      "http://www.w3.org/2002/07/owl#versionIRI",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "searchableAnnotationValues",
+      "type"
     ]
   },
   "ontologyIdToClassProperties": {
@@ -269,51 +269,51 @@
   },
   "ontologyIdToPropertyProperties": {
     "owl2primer-equivalentobjectproperty": [
-      "http://www.w3.org/2002/07/owl#equivalentProperty",
-      "isPreferredRoot",
-      "iri",
+      "curie",
+      "directAncestor",
       "hasDirectChildren",
-      "hasHierarchicalParents",
+      "hasDirectParents",
       "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#equivalentProperty",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
       "numDescendants",
       "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "isObsolete",
-      "label",
-      "type",
-      "ontologyPreferredPrefix",
-      "directAncestor",
-      "curie",
-      "hasDirectParents",
-      "imported",
-      "shortForm",
       "ontologyId",
       "ontologyIri",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToIndividualProperties": {
     "owl2primer-equivalentobjectproperty": [
-      "iri",
+      "curie",
+      "directAncestor",
       "hasDirectChildren",
-      "hasHierarchicalParents",
+      "hasDirectParents",
       "hasHierarchicalChildren",
-      "numDescendants",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
+      "hasHierarchicalParents",
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
       "isObsolete",
       "label",
-      "type",
-      "ontologyPreferredPrefix",
-      "directAncestor",
-      "curie",
-      "hasDirectParents",
-      "imported",
-      "shortForm",
-      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner",
+      "numDescendants",
+      "numHierarchicalDescendants",
       "ontologyId",
       "ontologyIri",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToEdgeProperties": {
@@ -321,8 +321,11 @@
   },
   "ontologyIdToUriToTypes": {
     "owl2primer-equivalentobjectproperty": {
-      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl": [
-        "ONTOLOGY"
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#John": [
+        "INDIVIDUAL"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#Mary": [
+        "INDIVIDUAL"
       ],
       "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner": [
         "PROPERTY"
@@ -330,11 +333,8 @@
       "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse": [
         "PROPERTY"
       ],
-      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#John": [
-        "INDIVIDUAL"
-      ],
-      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#Mary": [
-        "INDIVIDUAL"
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl": [
+        "ONTOLOGY"
       ]
     }
   }

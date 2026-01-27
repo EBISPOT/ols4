@@ -112,7 +112,7 @@
         }
       }
     },
-    "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3": {
+    "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1": {
       "definitions": [
         {
           "ontologyId": "related-somevaluesof-oneof",
@@ -126,14 +126,14 @@
               "type": [
                 "literal"
               ],
-              "value": "b3"
+              "value": "b1"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "b3"
+            "value": "b1"
           },
           "isObsolete": false
         }
@@ -154,14 +154,14 @@
               "type": [
                 "literal"
               ],
-              "value": "b3"
+              "value": "b1"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "b3"
+            "value": "b1"
           },
           "isObsolete": false
         }
@@ -222,7 +222,7 @@
         }
       }
     },
-    "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1": {
+    "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3": {
       "definitions": [
         {
           "ontologyId": "related-somevaluesof-oneof",
@@ -236,14 +236,14 @@
               "type": [
                 "literal"
               ],
-              "value": "b1"
+              "value": "b3"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "b1"
+            "value": "b3"
           },
           "isObsolete": false
         }
@@ -264,14 +264,14 @@
               "type": [
                 "literal"
               ],
-              "value": "b1"
+              "value": "b3"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "b1"
+            "value": "b3"
           },
           "isObsolete": false
         }
@@ -297,99 +297,99 @@
   "ontologyIdToImportedOntologyIds": {},
   "ontologyIdToOntologyProperties": {
     "related-somevaluesof-oneof": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
       "iri",
-      "numberOfIndividuals",
-      "numDescendants",
-      "numberOfProperties",
-      "numberOfClasses",
-      "language",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
       "isObsolete",
-      "type",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
       "ontologyPurl",
       "preferredPrefix",
-      "directAncestor",
-      "imported",
-      "numberOfEntities",
-      "ontologyId",
-      "http://www.w3.org/2002/07/owl#versionIRI",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "searchableAnnotationValues",
+      "type"
     ]
   },
   "ontologyIdToClassProperties": {
     "related-somevaluesof-oneof": [
-      "isPreferredRoot",
-      "iri",
-      "hasDirectChildren",
-      "hierarchicalAncestor",
-      "hasHierarchicalParents",
-      "hasHierarchicalChildren",
-      "numDescendants",
-      "hierarchicalProperty",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "isObsolete",
-      "label",
-      "type",
-      "relatedTo",
-      "ontologyPreferredPrefix",
-      "directAncestor",
       "curie",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "directAncestor",
+      "hasDirectChildren",
       "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "hierarchicalProperty",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
       "imported",
-      "shortForm",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
       "ontologyId",
       "ontologyIri",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyPreferredPrefix",
+      "relatedTo",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToPropertyProperties": {
     "related-somevaluesof-oneof": [
-      "isPreferredRoot",
-      "iri",
+      "curie",
+      "directAncestor",
       "hasDirectChildren",
-      "hasHierarchicalParents",
+      "hasDirectParents",
       "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
       "numDescendants",
       "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "isObsolete",
-      "label",
-      "type",
-      "ontologyPreferredPrefix",
-      "directAncestor",
-      "curie",
-      "hasDirectParents",
-      "imported",
-      "shortForm",
       "ontologyId",
       "ontologyIri",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToIndividualProperties": {
     "related-somevaluesof-oneof": [
-      "iri",
+      "curie",
+      "directAncestor",
       "hasDirectChildren",
-      "hasHierarchicalParents",
+      "hasDirectParents",
       "hasHierarchicalChildren",
-      "numDescendants",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
       "isObsolete",
       "label",
-      "type",
-      "ontologyPreferredPrefix",
-      "directAncestor",
-      "curie",
-      "hasDirectParents",
-      "imported",
-      "shortForm",
+      "numDescendants",
+      "numHierarchicalDescendants",
       "ontologyId",
       "ontologyIri",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToEdgeProperties": {
@@ -397,23 +397,23 @@
   },
   "ontologyIdToUriToTypes": {
     "related-somevaluesof-oneof": {
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl": [
+        "ONTOLOGY"
+      ],
       "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#A": [
         "CLASS"
       ],
-      "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r": [
-        "PROPERTY"
-      ],
-      "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3": [
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1": [
         "INDIVIDUAL"
-      ],
-      "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl": [
-        "ONTOLOGY"
       ],
       "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b2": [
         "INDIVIDUAL"
       ],
-      "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b1": [
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#b3": [
         "INDIVIDUAL"
+      ],
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf-oneOf.owl#r": [
+        "PROPERTY"
       ]
     }
   }
