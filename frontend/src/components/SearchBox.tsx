@@ -471,7 +471,7 @@ export default function SearchBox({
                 onChange={(e) => setSelectedModel(e.target.value)}
               >
                 <MenuItem key="lexical" value="lexical">Lexical</MenuItem>
-                {availableModels.map((model) => (
+                {availableModels.filter((model) => model.can_embed).map((model) => (
                   <MenuItem key={model.model} value={model.model}>
                     {model.model === "lexical" ? "Lexical" : model.model}
                   </MenuItem>

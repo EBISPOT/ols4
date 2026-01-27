@@ -212,11 +212,11 @@ public class Ols4ApiTester {
 				write(outDir + "/v2/ontologies/" + ontologyId + "/classes/" + doubleEncodedIri + ".json", classJson);
 
 				if(ontologyId.equals("duo")) {
-					JsonElement llmSimilarJson = get(url + "/api/v2/ontologies/" + ontologyId + "/classes/" + doubleEncodedIri + "/llm_similar?model=mock");
-					write(outDir + "/v2/ontologies/" + ontologyId + "/classes/" + doubleEncodedIri + "/llm_similar.json", llmSimilarJson);
+					JsonElement llmSimilarJson = get(url + "/api/v2/classes/" + doubleEncodedIri + "/llm_similar?model=mock");
+					write(outDir + "/v2/classes/" + doubleEncodedIri + "/llm_similar.json", llmSimilarJson);
 
-					JsonElement llmEmbeddingJson = get(url + "/api/v2/ontologies/" + ontologyId + "/classes/" + doubleEncodedIri + "/llm_embedding?model=mock");
-					write(outDir + "/v2/ontologies/" + ontologyId + "/classes/" + doubleEncodedIri + "/llm_embedding.json", llmEmbeddingJson);
+					JsonElement llmEmbeddingJson = get(url + "/api/v2/classes/" + doubleEncodedIri + "/llm_embedding?model=mock");
+					write(outDir + "/v2/classes/" + doubleEncodedIri + "/llm_embedding.json", llmEmbeddingJson);
 				}
 
 				// TODO

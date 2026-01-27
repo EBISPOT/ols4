@@ -220,17 +220,8 @@ public class ClassRepository {
     }
 
 
-    public Page<JsonElement> getSimilarByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
+    public Page<JsonElement> getSimilar(Pageable pageable, String iri, String lang, JsonTransformOptions outputOpts, String modelName) {
 
-        Validation.validateOntologyId(ontologyId);
-        Validation.validateLang(lang);
-
-        return getSimilarByOntologyId(ontologyId, pageable, iri, includeObsolete, lang, outputOpts, "text-embedding-3-small");
-    }
-
-    public Page<JsonElement> getSimilarByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts, String modelName) {
-
-        Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
         if (modelName == null || modelName.isEmpty()) {
@@ -242,9 +233,7 @@ public class ClassRepository {
                 ;
     }
 
-    public double getSimilarityByOntologyId(String ontologyId, String iri, String iri2, String modelName) {
-
-        Validation.validateOntologyId(ontologyId);
+    public double getSimilarity(String iri, String iri2, String modelName) {
 
         if (modelName == null || modelName.isEmpty()) {
             modelName = "text-embedding-3-small"; // Default model
@@ -253,23 +242,13 @@ public class ClassRepository {
         return this.neo4jClient.getSimilarity("OntologyClass", iri, iri2, modelName);
     }
 
-    public double getSimilarityByOntologyId(String ontologyId, String iri, String iri2) {
-        return getSimilarityByOntologyId(ontologyId, iri, iri2, "text-embedding-3-small");
-    }
-
-    public List<Double> getEmbeddingVectorByOntologyId(String ontologyId, String iri, String modelName) {
-
-        Validation.validateOntologyId(ontologyId);
+    public List<Double> getEmbeddingVector(String iri, String modelName) {
 
         if (modelName == null || modelName.isEmpty()) {
             modelName = "text-embedding-3-small"; // Default model
         }
 
         return this.neo4jClient.getEmbeddingVector("OntologyClass", iri, modelName);
-    }
-
-    public List<Double> getEmbeddingVectorByOntologyId(String ontologyId, String iri) {
-        return getEmbeddingVectorByOntologyId(ontologyId, iri, "text-embedding-3-small");
     }
 
     public Page<JsonElement> searchByVector(String modelName, float[] vector, Pageable pageable, String lang, JsonTransformOptions outputOpts) {

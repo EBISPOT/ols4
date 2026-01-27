@@ -213,13 +213,15 @@ public class OlsNeo4jClient {
 		// ID (where we may get an imported class with no embeddings), search by IRI
 		// and isDefiningOntology=true
 
-		// Index name pattern: {type_lowercase}_{model_name}_embeddings
-		String index = type.toLowerCase() + "_" + modelName.replace("-", "_") + "_embeddings";
-		String embeddingProperty = "embeddings_" + modelName.replace("-", "_");
+		// Index name pattern: {type_lowercase}_{model_name_with_underscores}_embeddings
+		String index = type.toLowerCase() + "_" + modelName.replace("-", "_").replace(".", "_") + "_embeddings";
+		// Property name preserves the original model name format
+		String embeddingProperty = "embeddings_" + modelName;
 
 		String query = "MATCH (c:" + type + " {iri: $iri}) "
 		+ "WHERE \"true\" IN c.isDefiningOntology "
-		+ "CALL db.index.vector.queryNodes('" + index + "', $size, c." + embeddingProperty + ") "
+		+ "AND c.`" + embeddingProperty + "` IS NOT NULL "
+		+ "CALL db.index.vector.queryNodes('" + index + "', $size, c.`" + embeddingProperty + "`) "
 		+ "YIELD node AS similar, score "
 		+ "RETURN similar as entity, score "
 		+ "ORDER BY score DESC ";
@@ -249,11 +251,12 @@ public class OlsNeo4jClient {
 
     public double getSimilarity(String type, String iri, String iri2, String modelName) {
 
-		String embeddingProperty = "embeddings_" + modelName.replace("-", "_");
+		// Property name preserves the original model name format
+		String embeddingProperty = "embeddings_" + modelName;
 
 		String query = "MATCH (c:" + type + " {iri: $iri, isDefiningOntology:['true']}) " +
 		"MATCH (c2:" + type + " {iri: $iri2, isDefiningOntology:['true']}) " +
-		"RETURN vector.similarity.cosine(c." + embeddingProperty + ", c2." + embeddingProperty + ") AS score";
+		"RETURN vector.similarity.cosine(c.`" + embeddingProperty + "`, c2.`" + embeddingProperty + "`) AS score";
 
 		Session session = neo4jClient.getSession();
 		Result result = session.run(query, Map.of("iri", iri, "iri2", iri2));
@@ -269,10 +272,11 @@ public class OlsNeo4jClient {
 
     public List<Double> getEmbeddingVector(String type, String iri, String modelName) {
 
-		String embeddingProperty = "embeddings_" + modelName.replace("-", "_");
+		// Property name preserves the original model name format
+		String embeddingProperty = "embeddings_" + modelName;
 
 		String query = "MATCH (c:" + type + " {iri: $iri, isDefiningOntology:['true']}) " +
-		"RETURN c." + embeddingProperty + " AS embeddings";
+		"RETURN c.`" + embeddingProperty + "` AS embeddings";
 
 		Session session = neo4jClient.getSession();
 		Result result = session.run(query, Map.of("iri", iri));
@@ -288,8 +292,8 @@ public class OlsNeo4jClient {
 
     public Page<JsonElement> searchByVector(String type, List<Double> vector, Pageable pageable, String modelName) {
 
-		// Index name pattern: {type_lowercase}_{model_name}_embeddings
-		String index = type.toLowerCase() + "_" + modelName.replace("-", "_") + "_embeddings";
+		// Index name pattern: {type_lowercase}_{model_name_with_underscores}_embeddings
+		String index = type.toLowerCase() + "_" + modelName.replace("-", "_").replace(".", "_") + "_embeddings";
 
 		String query = "CALL db.index.vector.queryNodes('" + index + "', $size, $vec) "
 		+ "YIELD node AS similar, score "
@@ -316,6 +320,29 @@ public class OlsNeo4jClient {
 		}
 
 		return new PageImpl<JsonElement>(res, pageable, res.size());
+    }
+
+    public List<String> getEmbeddingModelsInNeo4j() {
+		// Query Neo4j property keys to find embedding properties
+		// Property name pattern: embeddings_{model_name}
+		// This is faster than querying nodes and preserves the exact model name format
+		String query = "CALL db.propertyKeys() YIELD propertyKey WHERE propertyKey STARTS WITH 'embeddings_' RETURN propertyKey";
+
+		ArrayList<String> models = new ArrayList<>();
+
+		Session session = neo4jClient.getSession();
+		Result result = session.run(query);
+
+		for (Record r : result.list()) {
+			String propertyKey = r.get("propertyKey").asString();
+			// Extract model name by removing the "embeddings_" prefix
+			String modelName = propertyKey.substring("embeddings_".length());
+			if (!models.contains(modelName)) {
+				models.add(modelName);
+			}
+		}
+
+		return models;
     }
 	
 }

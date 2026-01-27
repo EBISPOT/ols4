@@ -183,7 +183,7 @@ impl<'a> OntologyWriter<'a> {
         }
         
         for model_name in &embedding_model_names {
-            row.push(self.serialize_embedding(&entity_type_str, iri, model_name));
+            row.push(self.serialize_embedding(entity, &entity_type_str, iri, model_name));
         }
         
         row[json_idx] = serde_json::to_string(entity_value)?;
@@ -390,7 +390,18 @@ impl<'a> OntologyWriter<'a> {
         Ok(value_to_csv(&value.cloned()))
     }
 
-    fn serialize_embedding(&self, entity_type: &str, iri: &str, model_name: &str) -> String {
+    fn serialize_embedding(&self, entity: &Map<String, Value>, entity_type: &str, iri: &str, model_name: &str) -> String {
+        // Only add embeddings to defining entities
+        let is_defining = entity
+            .get("isDefiningOntology")
+            .and_then(|v| v.as_array())
+            .map(|arr| arr.iter().any(|v| v.as_str() == Some("true")))
+            .unwrap_or(false);
+        
+        if !is_defining {
+            return String::new();
+        }
+        
         if let Some(emb) = self.embeddings.get(model_name) {
             if let Some(embeddings_array) = emb.get_embeddings(&self.ontology_id, entity_type, iri) {
                 return embeddings_array

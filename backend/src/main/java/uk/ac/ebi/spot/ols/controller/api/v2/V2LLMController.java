@@ -26,7 +26,7 @@ import uk.ac.ebi.spot.ols.repository.ClassRepository;
 import uk.ac.ebi.spot.ols.repository.PropertyRepository;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 import uk.ac.ebi.spot.ols.service.EmbeddingServiceClient;
-import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
+import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
@@ -59,24 +59,22 @@ public class V2LLMController {
     EmbeddingServiceClient embeddingServiceClient;
     
     @Autowired
-    OlsSolrClient solrClient;
+    OlsNeo4jClient neo4jClient;
 
     @RequestMapping(path = "/llm_models", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     @Parameter(name = "llm_models",
             description = "Returns a list of embedding models, indicating which can be used for embedding (via the embedding service) and which only have pre-computed embeddings stored in Solr")
     public HttpEntity<List<Map<String, Object>>> getLLMModels() throws IOException {
-        // Get models from embedding service
+        // Get models from embedding service (for determining which can do live embedding)
         List<String> embeddingServiceModels = embeddingServiceClient.getAvailableModels();
         Set<String> canEmbedModels = new HashSet<>(embeddingServiceModels);
         
-        // Get models from Solr schema
-        List<String> solrModels = solrClient.getEmbeddingModelsInSolr();
-        Set<String> allModels = new HashSet<>(solrModels);
-        allModels.addAll(canEmbedModels);
+        // Get models from Neo4j (only these are usable for similarity search)
+        List<String> neo4jModels = neo4jClient.getEmbeddingModelsInNeo4j();
         
-        // Build response
+        // Build response - only include models that exist in Neo4j
         List<Map<String, Object>> result = new ArrayList<>();
-        for (String model : allModels) {
+        for (String model : neo4jModels) {
             Map<String, Object> modelInfo = new HashMap<>();
             modelInfo.put("model", model);
             modelInfo.put("can_embed", canEmbedModels.contains(model));
@@ -118,16 +116,12 @@ public class V2LLMController {
                 );
         }
 
-    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/llm_similar", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-    public HttpEntity<V2PagedResponse<V2Entity>> getSimilarByOntology(
+    @RequestMapping(path = "/classes/{class}/llm_similar", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
+    public HttpEntity<V2PagedResponse<V2Entity>> getSimilarClasses(
             @PageableDefault(size = 20, page = 0)
             @Parameter(name = "pageable",
                     description = "Specify the size of the result you want to get in the output",
                     example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
-            @PathVariable("onto")
-            @Parameter(name = "onto",
-                    description = "Ontology Id to get the information about.",
-                    example = "efo") String ontologyId,
             @PathVariable("class")
             @Parameter(name = "class",
                     description = "The IRI of the class, this value must be double URL encoded",
@@ -144,22 +138,14 @@ public class V2LLMController {
 
         return new ResponseEntity<>(
             new V2PagedResponse<V2Entity>(
-                classRepository.getSimilarByOntologyId(ontologyId, pageable, iri, false, lang, outputOpts, model).map(V2Entity::new)
+                classRepository.getSimilar(pageable, iri, lang, outputOpts, model).map(V2Entity::new)
             ),
             HttpStatus.OK
         );
     }
 
-    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/llm_embedding", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-    public HttpEntity<String> getEmbeddingByOntology(
-            @PageableDefault(size = 20, page = 0)
-            @Parameter(name = "pageable",
-                    description = "Specify the size of the result you want to get in the output",
-                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
-            @PathVariable("onto")
-            @Parameter(name = "onto",
-                    description = "Ontology Id to get the information about.",
-                    example = "efo") String ontologyId,
+    @RequestMapping(path = "/classes/{class}/llm_embedding", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
+    public HttpEntity<String> getClassEmbedding(
             @PathVariable("class")
             @Parameter(name = "class",
                     description = "The IRI of the class, this value must be double URL encoded",
@@ -173,21 +159,13 @@ public class V2LLMController {
         iri = UriUtils.decode(iri, "UTF-8");
 
         return new ResponseEntity<>(
-                gson.toJson( classRepository.getEmbeddingVectorByOntologyId(ontologyId, iri, model) ),
+                gson.toJson( classRepository.getEmbeddingVector(iri, model) ),
                 HttpStatus.OK
         );
     }
 
-    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/llm_similarity/{otherclass}", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-    public HttpEntity<String> getSimilarityByOntology(
-            @PageableDefault(size = 20, page = 0)
-            @Parameter(name = "pageable",
-                    description = "Specify the size of the result you want to get in the output",
-                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
-            @PathVariable("onto")
-            @Parameter(name = "onto",
-                    description = "Ontology Id to get the information about.",
-                    example = "efo") String ontologyId,
+    @RequestMapping(path = "/classes/{class}/llm_similarity/{otherclass}", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
+    public HttpEntity<String> getClassSimilarity(
             @PathVariable("class")
             @Parameter(name = "class",
                     description = "The IRI of the class, this value must be double URL encoded",
@@ -206,21 +184,17 @@ public class V2LLMController {
         iri2 = UriUtils.decode(iri2, "UTF-8");
 
         return new ResponseEntity<>(
-                Double.toString( classRepository.getSimilarityByOntologyId(ontologyId, iri, iri2, model) ),
+                Double.toString( classRepository.getSimilarity(iri, iri2, model) ),
                 HttpStatus.OK
         );
     }
 
-    @RequestMapping(path = "/ontologies/{onto}/properties/{property}/llm_similar", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
-    public HttpEntity<V2PagedResponse<V2Entity>> getSimilarPropertiesByOntology(
+    @RequestMapping(path = "/properties/{property}/llm_similar", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
+    public HttpEntity<V2PagedResponse<V2Entity>> getSimilarProperties(
             @PageableDefault(size = 20, page = 0)
             @Parameter(name = "pageable",
                     description = "Specify the size of the result you want to get in the output",
                     example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
-            @PathVariable("onto")
-            @Parameter(name = "onto",
-                    description = "Ontology Id to get the information about.",
-                    example = "efo") String ontologyId,
             @PathVariable("property")
             @Parameter(name = "property",
                     description = "The IRI of the property, this value must be double URL encoded",
@@ -237,7 +211,7 @@ public class V2LLMController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                        propertyRepository.getSimilarByOntologyId(ontologyId, pageable, iri, lang, outputOpts, model)
+                        propertyRepository.getSimilar(pageable, iri, lang, outputOpts, model)
                         .map(V2Entity::new)
                 ),
                 HttpStatus.OK

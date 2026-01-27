@@ -50,7 +50,7 @@ export default function SimilarEntitiesSection({entity}:{entity:Entity}) {
             }
 
             const modelParam = `?model=${selectedModel}`;
-            let page = await getPaginated<any>(`api/v2/ontologies/${entity.getOntologyId()}/${entity.getTypePlural()}/${encodeURIComponent(encodeURIComponent(entity.getIri()))}/llm_similar${modelParam}`)
+            let page = await getPaginated<any>(`api/v2/${entity.getTypePlural()}/${encodeURIComponent(encodeURIComponent(entity.getIri()))}/llm_similar${modelParam}`)
             setSimilar(page.elements.map((s) => new Class(s)))
         };
 
