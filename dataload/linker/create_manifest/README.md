@@ -14,15 +14,15 @@ The create-manifest tool:
 
 ```bash
 cd dataload/linker/create_manifest
-mvn clean package
+cargo build --release
 ```
 
-This creates `target/create-manifest-1.0-SNAPSHOT.jar`
+This creates `target/release/ols_create_manifest`
 
 ## Usage
 
 ```bash
-java -jar target/create-manifest-1.0-SNAPSHOT.jar \
+./target/release/ols_create_manifest \
   --input ontology1.json,ontology2.json,ontology3.json \
   --output manifest.json
 ```
@@ -37,7 +37,7 @@ java -jar target/create-manifest-1.0-SNAPSHOT.jar \
 Process multiple ontology files to create a manifest:
 
 ```bash
-java -jar target/create-manifest-1.0-SNAPSHOT.jar \
+./target/release/ols_create_manifest \
   --input /data/efo.json,/data/mondo.json,/data/cl.json \
   --output /data/manifest.json
 ```

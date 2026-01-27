@@ -23,7 +23,7 @@ java $JAVA_OPTS -DentityExpansionLimit=0 -DtotalEntitySizeLimit=0 -Djdk.xml.tota
     -jar $SCRIPT_PATH/../dataload/rdf2json/target/rdf2json-1.0-SNAPSHOT.jar --config "$CONFIG_URL" --output "$JSON_PATH" "${@:3}"
 
 echo linker: create manifest
-java -jar $SCRIPT_PATH/../dataload/linker/create_manifest/target/create-manifest-1.0-SNAPSHOT.jar \
+$SCRIPT_PATH/../dataload/linker/create_manifest/target/release/ols_create_manifest \
     --input "$JSON_PATH" --output "$LINKER_MANIFEST_PATH"
 
 echo linker: link

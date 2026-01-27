@@ -67,6 +67,11 @@ RUN cd /opt/ols/dataload/json2neo && cargo build --release
 RUN cp /opt/ols/dataload/json2neo/target/release/ols_json2neo /usr/local/bin/
 RUN chmod +x /usr/local/bin/ols_json2neo
 
+# Build the Rust create_manifest binary
+RUN cd /opt/ols/dataload/linker/create_manifest && cargo build --release
+RUN cp /opt/ols/dataload/linker/create_manifest/target/release/ols_create_manifest /usr/local/bin/
+RUN chmod +x /usr/local/bin/ols_create_manifest
+
 # COPY ./backend /opt/ols/backend
 # RUN cd /opt/ols/backend && mvn -T 1C package
 
