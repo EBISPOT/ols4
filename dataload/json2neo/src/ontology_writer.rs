@@ -394,8 +394,16 @@ impl<'a> OntologyWriter<'a> {
         // Only add embeddings to defining entities
         let is_defining = entity
             .get("isDefiningOntology")
-            .and_then(|v| v.as_array())
-            .map(|arr| arr.iter().any(|v| v.as_str() == Some("true")))
+            .map(|v| {
+                // Handle both boolean and array formats
+                if let Some(b) = v.as_bool() {
+                    b
+                } else if let Some(arr) = v.as_array() {
+                    arr.iter().any(|v| v.as_str() == Some("true"))
+                } else {
+                    false
+                }
+            })
             .unwrap_or(false);
         
         if !is_defining {

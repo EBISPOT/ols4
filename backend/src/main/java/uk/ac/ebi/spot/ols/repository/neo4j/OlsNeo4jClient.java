@@ -275,7 +275,9 @@ public class OlsNeo4jClient {
 		// Property name preserves the original model name format
 		String embeddingProperty = "embeddings_" + modelName;
 
-		String query = "MATCH (c:" + type + " {iri: $iri, isDefiningOntology:['true']}) " +
+		// Only defining entities have embeddings (enforced by dataload)
+		String query = "MATCH (c:" + type + " {iri: $iri}) " +
+		"WHERE c.`" + embeddingProperty + "` IS NOT NULL " +
 		"RETURN c.`" + embeddingProperty + "` AS embeddings";
 
 		Session session = neo4jClient.getSession();

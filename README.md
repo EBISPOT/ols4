@@ -138,7 +138,7 @@ First follow the instructions above for testing the mock dataload. Then build up
     export OLS4_BACKEND_IMAGE=ols4-backend:local
     export OLS4_FRONTEND_IMAGE=ols4-frontend:local  
     export OLS4_APITESTER_IMAGE=ols4-apitester4:local
-    HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose build
+    HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose --profile run-api-tests build --no-cache
 
 Run the test script to produce a `testcases_output_api` directory:
 
