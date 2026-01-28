@@ -1,6 +1,6 @@
 {
   "iriToDefinitions": {
-    "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedClass": {
+    "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#AnGODefinedObsoleteClass": {
       "definitions": [
         {
           "ontologyId": "isobsolete",
@@ -14,126 +14,14 @@
               "type": [
                 "literal"
               ],
-              "value": "NonDeprecatedClass"
+              "value": "AnGODefinedObsoleteClass"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "NonDeprecatedClass"
-          },
-          "isObsolete": false
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIris": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "isobsolete": {
-          "ontologyId": "isobsolete",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "NonDeprecatedClass"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "NonDeprecatedClass"
-          },
-          "isObsolete": false
-        }
-      }
-    },
-    "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedObjectProperty": {
-      "definitions": [
-        {
-          "ontologyId": "isobsolete",
-          "entityTypes": [
-            "entity",
-            "objectProperty",
-            "property"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "DeprecatedObjectProperty"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "DeprecatedObjectProperty"
-          },
-          "isObsolete": true
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIris": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "isobsolete": {
-          "ontologyId": "isobsolete",
-          "entityTypes": [
-            "entity",
-            "objectProperty",
-            "property"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "DeprecatedObjectProperty"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "DeprecatedObjectProperty"
-          },
-          "isObsolete": true
-        }
-      }
-    },
-    "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTrue": {
-      "definitions": [
-        {
-          "ontologyId": "isobsolete",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "DeprecatedClassWithValueTrue"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "DeprecatedClassWithValueTrue"
+            "value": "AnGODefinedObsoleteClass"
           },
           "isObsolete": true
         }
@@ -154,14 +42,14 @@
               "type": [
                 "literal"
               ],
-              "value": "DeprecatedClassWithValueTrue"
+              "value": "AnGODefinedObsoleteClass"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "DeprecatedClassWithValueTrue"
+            "value": "AnGODefinedObsoleteClass"
           },
           "isObsolete": true
         }
@@ -222,63 +110,6 @@
         }
       }
     },
-    "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedDataProperty": {
-      "definitions": [
-        {
-          "ontologyId": "isobsolete",
-          "entityTypes": [
-            "dataProperty",
-            "entity",
-            "property"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "NonDeprecatedDataProperty"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "NonDeprecatedDataProperty"
-          },
-          "isObsolete": false
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIris": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "isobsolete": {
-          "ontologyId": "isobsolete",
-          "entityTypes": [
-            "dataProperty",
-            "entity",
-            "property"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "NonDeprecatedDataProperty"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "NonDeprecatedDataProperty"
-          },
-          "isObsolete": false
-        }
-      }
-    },
     "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTRUE": {
       "definitions": [
         {
@@ -334,13 +165,13 @@
         }
       }
     },
-    "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedIndividual": {
+    "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTrue": {
       "definitions": [
         {
           "ontologyId": "isobsolete",
           "entityTypes": [
-            "entity",
-            "individual"
+            "class",
+            "entity"
           ],
           "isDefiningOntology": false,
           "label": [
@@ -348,14 +179,14 @@
               "type": [
                 "literal"
               ],
-              "value": "DeprecatedIndividual"
+              "value": "DeprecatedClassWithValueTrue"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "DeprecatedIndividual"
+            "value": "DeprecatedClassWithValueTrue"
           },
           "isObsolete": true
         }
@@ -367,8 +198,8 @@
         "isobsolete": {
           "ontologyId": "isobsolete",
           "entityTypes": [
-            "entity",
-            "individual"
+            "class",
+            "entity"
           ],
           "isDefiningOntology": false,
           "label": [
@@ -376,14 +207,14 @@
               "type": [
                 "literal"
               ],
-              "value": "DeprecatedIndividual"
+              "value": "DeprecatedClassWithValueTrue"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "DeprecatedIndividual"
+            "value": "DeprecatedClassWithValueTrue"
           },
           "isObsolete": true
         }
@@ -446,6 +277,230 @@
         }
       }
     },
+    "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedIndividual": {
+      "definitions": [
+        {
+          "ontologyId": "isobsolete",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "DeprecatedIndividual"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedIndividual"
+          },
+          "isObsolete": true
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "isobsolete": {
+          "ontologyId": "isobsolete",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "DeprecatedIndividual"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedIndividual"
+          },
+          "isObsolete": true
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedObjectProperty": {
+      "definitions": [
+        {
+          "ontologyId": "isobsolete",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "DeprecatedObjectProperty"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedObjectProperty"
+          },
+          "isObsolete": true
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "isobsolete": {
+          "ontologyId": "isobsolete",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "DeprecatedObjectProperty"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedObjectProperty"
+          },
+          "isObsolete": true
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedClass": {
+      "definitions": [
+        {
+          "ontologyId": "isobsolete",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "NonDeprecatedClass"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "NonDeprecatedClass"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "isobsolete": {
+          "ontologyId": "isobsolete",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "NonDeprecatedClass"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "NonDeprecatedClass"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedDataProperty": {
+      "definitions": [
+        {
+          "ontologyId": "isobsolete",
+          "entityTypes": [
+            "dataProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "NonDeprecatedDataProperty"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "NonDeprecatedDataProperty"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "isobsolete": {
+          "ontologyId": "isobsolete",
+          "entityTypes": [
+            "dataProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "NonDeprecatedDataProperty"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "NonDeprecatedDataProperty"
+          },
+          "isObsolete": false
+        }
+      }
+    },
     "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedIndividual": {
       "definitions": [
         {
@@ -496,116 +551,6 @@
               "literal"
             ],
             "value": "NonDeprecatedIndividual"
-          },
-          "isObsolete": false
-        }
-      }
-    },
-    "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#AnGODefinedObsoleteClass": {
-      "definitions": [
-        {
-          "ontologyId": "isobsolete",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "AnGODefinedObsoleteClass"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "AnGODefinedObsoleteClass"
-          },
-          "isObsolete": true
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIris": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "isobsolete": {
-          "ontologyId": "isobsolete",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "AnGODefinedObsoleteClass"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "AnGODefinedObsoleteClass"
-          },
-          "isObsolete": true
-        }
-      }
-    },
-    "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass": {
-      "definitions": [
-        {
-          "ontologyId": "isobsolete",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "ObsoleteClass"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "ObsoleteClass"
-          },
-          "isObsolete": false
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIris": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "isobsolete": {
-          "ontologyId": "isobsolete",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "ObsoleteClass"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "ObsoleteClass"
           },
           "isObsolete": false
         }
@@ -667,6 +612,61 @@
           "isObsolete": false
         }
       }
+    },
+    "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass": {
+      "definitions": [
+        {
+          "ontologyId": "isobsolete",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "ObsoleteClass"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ObsoleteClass"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "isobsolete": {
+          "ontologyId": "isobsolete",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "ObsoleteClass"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ObsoleteClass"
+          },
+          "isObsolete": false
+        }
+      }
     }
   },
   "ontologyIriToOntologyIds": {
@@ -688,103 +688,103 @@
   "ontologyIdToImportedOntologyIds": {},
   "ontologyIdToOntologyProperties": {
     "isobsolete": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
       "iri",
-      "numberOfIndividuals",
-      "numDescendants",
-      "numberOfProperties",
-      "numberOfClasses",
-      "language",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
       "isObsolete",
-      "type",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
       "ontologyPurl",
       "preferredPrefix",
-      "directAncestor",
-      "imported",
-      "numberOfEntities",
-      "ontologyId",
-      "http://www.w3.org/2002/07/owl#versionIRI",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "searchableAnnotationValues",
+      "type"
     ]
   },
   "ontologyIdToClassProperties": {
     "isobsolete": [
-      "isPreferredRoot",
-      "hasDirectChildren",
-      "hasHierarchicalParents",
-      "hasHierarchicalChildren",
-      "hierarchicalProperty",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "type",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "hasDirectParents",
-      "imported",
-      "ontologyIri",
-      "hierarchicalParent",
-      "iri",
-      "hierarchicalAncestor",
-      "numDescendants",
-      "http://www.w3.org/2002/07/owl#deprecated",
-      "isObsolete",
-      "label",
-      "directParent",
-      "ontologyPreferredPrefix",
-      "directAncestor",
       "curie",
-      "shortForm",
+      "directAncestor",
+      "directParent",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "hierarchicalParent",
+      "hierarchicalProperty",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "http://www.w3.org/2002/07/owl#deprecated",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
       "ontologyId",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToPropertyProperties": {
     "isobsolete": [
-      "isPreferredRoot",
-      "iri",
-      "hasDirectChildren",
-      "hasHierarchicalParents",
-      "hasHierarchicalChildren",
-      "numDescendants",
-      "http://www.w3.org/2002/07/owl#deprecated",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "isObsolete",
-      "label",
-      "type",
-      "ontologyPreferredPrefix",
-      "directAncestor",
       "curie",
+      "directAncestor",
+      "hasDirectChildren",
       "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#deprecated",
       "imported",
-      "shortForm",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
       "ontologyId",
       "ontologyIri",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToIndividualProperties": {
     "isobsolete": [
-      "iri",
+      "curie",
+      "directAncestor",
       "hasDirectChildren",
-      "hasHierarchicalParents",
+      "hasDirectParents",
       "hasHierarchicalChildren",
-      "numDescendants",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
       "http://www.w3.org/2002/07/owl#deprecated",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
+      "imported",
+      "iri",
       "isObsolete",
       "label",
-      "type",
-      "ontologyPreferredPrefix",
-      "directAncestor",
-      "curie",
-      "hasDirectParents",
-      "imported",
-      "shortForm",
+      "numDescendants",
+      "numHierarchicalDescendants",
       "ontologyId",
       "ontologyIri",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToEdgeProperties": {
@@ -792,44 +792,44 @@
   },
   "ontologyIdToUriToTypes": {
     "isobsolete": {
-      "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedClass": [
-        "CLASS"
+      "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf": [
+        "ONTOLOGY"
       ],
-      "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTrue": [
+      "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#AnGODefinedObsoleteClass": [
         "CLASS"
       ],
       "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValue1": [
         "CLASS"
       ],
-      "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedDataProperty": [
-        "PROPERTY"
-      ],
       "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTRUE": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTrue": [
         "CLASS"
       ],
       "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedDataProperty": [
         "PROPERTY"
       ],
-      "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass": [
-        "CLASS"
+      "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedIndividual": [
+        "INDIVIDUAL"
       ],
       "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedObjectProperty": [
         "PROPERTY"
       ],
-      "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedIndividual": [
-        "INDIVIDUAL"
+      "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedClass": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedDataProperty": [
+        "PROPERTY"
       ],
       "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedIndividual": [
         "INDIVIDUAL"
       ],
-      "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#AnGODefinedObsoleteClass": [
-        "CLASS"
-      ],
-      "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf": [
-        "ONTOLOGY"
-      ],
       "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedObjectProperty": [
         "PROPERTY"
+      ],
+      "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass": [
+        "CLASS"
       ]
     }
   }

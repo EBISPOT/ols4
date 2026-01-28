@@ -1,225 +1,5 @@
 {
   "iriToDefinitions": {
-    "http://www.ebi.ac.uk/efo/EFO_0000400": {
-      "definitions": [
-        {
-          "ontologyId": "efo-iri-labels",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "EFO_0000400"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "EFO:0000400"
-          },
-          "isObsolete": false
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIris": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "efo-iri-labels": {
-          "ontologyId": "efo-iri-labels",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "EFO_0000400"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "EFO:0000400"
-          },
-          "isObsolete": false
-        }
-      }
-    },
-    "http://purl.obolibrary.org/obo/GO_0008150": {
-      "definitions": [
-        {
-          "ontologyId": "efo-iri-labels",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "GO_0008150"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "GO:0008150"
-          },
-          "isObsolete": false
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIris": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "efo-iri-labels": {
-          "ontologyId": "efo-iri-labels",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "GO_0008150"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "GO:0008150"
-          },
-          "isObsolete": false
-        }
-      }
-    },
-    "http://purl.obolibrary.org/obo/OGMS_0000063": {
-      "definitions": [
-        {
-          "ontologyId": "efo-iri-labels",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "disease course"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "OGMS:0000063"
-          },
-          "isObsolete": false
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIris": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "efo-iri-labels": {
-          "ontologyId": "efo-iri-labels",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "disease course"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "OGMS:0000063"
-          },
-          "isObsolete": false
-        }
-      }
-    },
-    "http://purl.obolibrary.org/obo/GO_0006807": {
-      "definitions": [
-        {
-          "ontologyId": "efo-iri-labels",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "nitrogen compound metabolic process"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "GO:0006807"
-          },
-          "isObsolete": false
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIris": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "efo-iri-labels": {
-          "ontologyId": "efo-iri-labels",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "nitrogen compound metabolic process"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "GO:0006807"
-          },
-          "isObsolete": false
-        }
-      }
-    },
     "http://purl.obolibrary.org/obo/BFO_0000051": {
       "definitions": [
         {
@@ -351,6 +131,226 @@
           "isObsolete": false
         }
       }
+    },
+    "http://purl.obolibrary.org/obo/GO_0006807": {
+      "definitions": [
+        {
+          "ontologyId": "efo-iri-labels",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "nitrogen compound metabolic process"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "GO:0006807"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-iri-labels": {
+          "ontologyId": "efo-iri-labels",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "nitrogen compound metabolic process"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "GO:0006807"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/GO_0008150": {
+      "definitions": [
+        {
+          "ontologyId": "efo-iri-labels",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "GO_0008150"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "GO:0008150"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-iri-labels": {
+          "ontologyId": "efo-iri-labels",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "GO_0008150"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "GO:0008150"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/OGMS_0000063": {
+      "definitions": [
+        {
+          "ontologyId": "efo-iri-labels",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "disease course"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OGMS:0000063"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-iri-labels": {
+          "ontologyId": "efo-iri-labels",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "disease course"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OGMS:0000063"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/efo/EFO_0000400": {
+      "definitions": [
+        {
+          "ontologyId": "efo-iri-labels",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "EFO_0000400"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "EFO:0000400"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-iri-labels": {
+          "ontologyId": "efo-iri-labels",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "EFO_0000400"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "EFO:0000400"
+          },
+          "isObsolete": false
+        }
+      }
     }
   },
   "ontologyIriToOntologyIds": {
@@ -372,95 +372,95 @@
   "ontologyIdToImportedOntologyIds": {},
   "ontologyIdToOntologyProperties": {
     "efo-iri-labels": [
-      "numberOfProperties",
-      "numberOfClasses",
-      "language",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "type",
-      "http://purl.obolibrary.org/obo/format-version",
-      "ontologyPurl",
-      "preferredPrefix",
-      "http://www.w3.org/2000/01/rdf-schema#comment",
-      "imported",
-      "numberOfEntities",
       "definition",
-      "http://www.w3.org/2002/07/owl#versionIRI",
+      "directAncestor",
+      "http://purl.obolibrary.org/obo/format-version",
+      "http://purl.org/dc/elements/1.1/creator",
+      "http://purl.org/dc/elements/1.1/rights",
       "http://purl.org/dc/terms/license",
       "http://www.ebi.ac.uk/efo/creator",
-      "iri",
-      "numberOfIndividuals",
-      "numDescendants",
-      "http://purl.org/dc/elements/1.1/rights",
-      "isObsolete",
-      "http://purl.org/dc/elements/1.1/creator",
-      "directAncestor",
-      "ontologyId",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2002/07/owl#versionIRI",
       "http://www.w3.org/2002/07/owl#versionInfo",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
     ]
   },
   "ontologyIdToClassProperties": {
     "efo-iri-labels": [
-      "isPreferredRoot",
-      "hasDirectChildren",
-      "hasHierarchicalParents",
-      "hasHierarchicalChildren",
-      "hierarchicalProperty",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "type",
-      "relatedTo",
-      "definitionProperty",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "hasDirectParents",
-      "imported",
-      "ontologyIri",
-      "definition",
-      "hierarchicalParent",
-      "http://purl.obolibrary.org/obo/IAO_0000115",
-      "iri",
-      "hierarchicalAncestor",
-      "numDescendants",
-      "isObsolete",
-      "label",
-      "directParent",
-      "ontologyPreferredPrefix",
-      "directAncestor",
       "curie",
-      "shortForm",
+      "definition",
+      "definitionProperty",
+      "directAncestor",
+      "directParent",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "hierarchicalParent",
+      "hierarchicalProperty",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
       "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
       "ontologyId",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "relatedTo",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToPropertyProperties": {
     "efo-iri-labels": [
-      "isPreferredRoot",
-      "hasDirectChildren",
-      "hasHierarchicalParents",
-      "hasHierarchicalChildren",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "type",
-      "definitionProperty",
-      "hasDirectParents",
-      "imported",
-      "http://www.w3.org/2000/01/rdf-schema#comment",
-      "ontologyIri",
-      "definition",
-      "iri",
-      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
-      "numDescendants",
-      "isObsolete",
-      "label",
-      "ontologyPreferredPrefix",
-      "directAncestor",
       "curie",
-      "shortForm",
+      "definition",
+      "definitionProperty",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
       "http://www.w3.org/2000/01/rdf-schema#label",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
       "ontologyId",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToIndividualProperties": {
@@ -471,10 +471,13 @@
   },
   "ontologyIdToUriToTypes": {
     "efo-iri-labels": {
-      "http://www.ebi.ac.uk/efo/efo.owl": [
-        "ONTOLOGY"
+      "http://purl.obolibrary.org/obo/BFO_0000051": [
+        "PROPERTY"
       ],
-      "http://www.ebi.ac.uk/efo/EFO_0000400": [
+      "http://purl.obolibrary.org/obo/BFO_0000054": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/GO_0006807": [
         "CLASS"
       ],
       "http://purl.obolibrary.org/obo/GO_0008150": [
@@ -483,14 +486,11 @@
       "http://purl.obolibrary.org/obo/OGMS_0000063": [
         "CLASS"
       ],
-      "http://purl.obolibrary.org/obo/GO_0006807": [
+      "http://www.ebi.ac.uk/efo/EFO_0000400": [
         "CLASS"
       ],
-      "http://purl.obolibrary.org/obo/BFO_0000051": [
-        "PROPERTY"
-      ],
-      "http://purl.obolibrary.org/obo/BFO_0000054": [
-        "PROPERTY"
+      "http://www.ebi.ac.uk/efo/efo.owl": [
+        "ONTOLOGY"
       ]
     }
   }

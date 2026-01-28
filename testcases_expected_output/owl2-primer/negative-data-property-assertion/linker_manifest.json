@@ -1,5 +1,60 @@
 {
   "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf#Jack": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-negative-data-property-assertion",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Jack"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Jack"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-negative-data-property-assertion": {
+          "ontologyId": "owl2primer-negative-data-property-assertion",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Jack"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Jack"
+          },
+          "isObsolete": false
+        }
+      }
+    },
     "http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf#hasAge": {
       "definitions": [
         {
@@ -56,61 +111,6 @@
           "isObsolete": false
         }
       }
-    },
-    "http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf#Jack": {
-      "definitions": [
-        {
-          "ontologyId": "owl2primer-negative-data-property-assertion",
-          "entityTypes": [
-            "entity",
-            "individual"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "Jack"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "Jack"
-          },
-          "isObsolete": false
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIris": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "owl2primer-negative-data-property-assertion": {
-          "ontologyId": "owl2primer-negative-data-property-assertion",
-          "entityTypes": [
-            "entity",
-            "individual"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "Jack"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "Jack"
-          },
-          "isObsolete": false
-        }
-      }
     }
   },
   "ontologyIriToOntologyIds": {
@@ -132,24 +132,24 @@
   "ontologyIdToImportedOntologyIds": {},
   "ontologyIdToOntologyProperties": {
     "owl2primer-negative-data-property-assertion": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
       "iri",
-      "numberOfIndividuals",
-      "numDescendants",
-      "numberOfProperties",
-      "numberOfClasses",
-      "language",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
       "isObsolete",
-      "type",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
       "ontologyPurl",
       "preferredPrefix",
-      "directAncestor",
-      "imported",
-      "numberOfEntities",
-      "ontologyId",
-      "http://www.w3.org/2002/07/owl#versionIRI",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "searchableAnnotationValues",
+      "type"
     ]
   },
   "ontologyIdToClassProperties": {
@@ -157,50 +157,50 @@
   },
   "ontologyIdToPropertyProperties": {
     "owl2primer-negative-data-property-assertion": [
-      "isPreferredRoot",
-      "iri",
+      "curie",
+      "directAncestor",
       "hasDirectChildren",
-      "hasHierarchicalParents",
+      "hasDirectParents",
       "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
       "numDescendants",
       "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "isObsolete",
-      "label",
-      "type",
-      "ontologyPreferredPrefix",
-      "directAncestor",
-      "curie",
-      "hasDirectParents",
-      "imported",
-      "shortForm",
       "ontologyId",
       "ontologyIri",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToIndividualProperties": {
     "owl2primer-negative-data-property-assertion": [
-      "iri",
+      "curie",
+      "directAncestor",
       "hasDirectChildren",
-      "hasHierarchicalParents",
+      "hasDirectParents",
       "hasHierarchicalChildren",
-      "numDescendants",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
       "isObsolete",
       "label",
-      "type",
-      "ontologyPreferredPrefix",
-      "directAncestor",
       "negativePropertyAssertion+http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf#hasAge",
-      "curie",
-      "hasDirectParents",
-      "imported",
-      "shortForm",
+      "numDescendants",
+      "numHierarchicalDescendants",
       "ontologyId",
       "ontologyIri",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToEdgeProperties": {
@@ -208,14 +208,14 @@
   },
   "ontologyIdToUriToTypes": {
     "owl2primer-negative-data-property-assertion": {
-      "http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf#hasAge": [
-        "PROPERTY"
-      ],
       "http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf": [
         "ONTOLOGY"
       ],
       "http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf#Jack": [
         "INDIVIDUAL"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf#hasAge": [
+        "PROPERTY"
       ]
     }
   }

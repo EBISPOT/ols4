@@ -1,13 +1,12 @@
 {
   "iriToDefinitions": {
-    "http://www.ebi.ac.uk/ols4/testcase/label#noLabelProperty": {
+    "http://www.ebi.ac.uk/ols4/testcase/label#deLangClass": {
       "definitions": [
         {
           "ontologyId": "label",
           "entityTypes": [
-            "entity",
-            "objectProperty",
-            "property"
+            "class",
+            "entity"
           ],
           "isDefiningOntology": false,
           "label": [
@@ -15,14 +14,22 @@
               "type": [
                 "literal"
               ],
-              "value": "noLabelProperty"
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "de lang class",
+              "lang": "de"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "deLangClass"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "noLabelProperty"
+            "value": "deLangClass"
           },
           "isObsolete": false
         }
@@ -34,9 +41,8 @@
         "label": {
           "ontologyId": "label",
           "entityTypes": [
-            "entity",
-            "objectProperty",
-            "property"
+            "class",
+            "entity"
           ],
           "isDefiningOntology": false,
           "label": [
@@ -44,14 +50,22 @@
               "type": [
                 "literal"
               ],
-              "value": "noLabelProperty"
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "de lang class",
+              "lang": "de"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "deLangClass"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "noLabelProperty"
+            "value": "deLangClass"
           },
           "isObsolete": false
         }
@@ -130,7 +144,7 @@
         }
       }
     },
-    "http://www.ebi.ac.uk/ols4/testcase/label#deLangClass": {
+    "http://www.ebi.ac.uk/ols4/testcase/label#enLabelClass": {
       "definitions": [
         {
           "ontologyId": "label",
@@ -145,21 +159,15 @@
                 "literal"
               ],
               "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "de lang class",
-              "lang": "de"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "deLangClass"
+              "value": "en label class",
+              "lang": "en"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "deLangClass"
+            "value": "enLabelClass"
           },
           "isObsolete": false
         }
@@ -181,188 +189,15 @@
                 "literal"
               ],
               "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "de lang class",
-              "lang": "de"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "deLangClass"
+              "value": "en label class",
+              "lang": "en"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "deLangClass"
-          },
-          "isObsolete": false
-        }
-      }
-    },
-    "http://www.ebi.ac.uk/ols4/testcase/label#property": {
-      "definitions": [
-        {
-          "ontologyId": "label",
-          "entityTypes": [
-            "entity",
-            "objectProperty",
-            "property"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "noLangProperty"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "property"
-          },
-          "isObsolete": false
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIris": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "label": {
-          "ontologyId": "label",
-          "entityTypes": [
-            "entity",
-            "objectProperty",
-            "property"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "noLangProperty"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "property"
-          },
-          "isObsolete": false
-        }
-      }
-    },
-    "http://www.ebi.ac.uk/ols4/testcase/label#noLangClass": {
-      "definitions": [
-        {
-          "ontologyId": "label",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "no lang label class"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "noLangClass"
-          },
-          "isObsolete": false
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIris": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "label": {
-          "ontologyId": "label",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "no lang label class"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "noLangClass"
-          },
-          "isObsolete": false
-        }
-      }
-    },
-    "http://www.ebi.ac.uk/ols4/testcase/label#noLabelClass": {
-      "definitions": [
-        {
-          "ontologyId": "label",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "noLabelClass"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "noLabelClass"
-          },
-          "isObsolete": false
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIris": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "label": {
-          "ontologyId": "label",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "noLabelClass"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "noLabelClass"
+            "value": "enLabelClass"
           },
           "isObsolete": false
         }
@@ -429,7 +264,7 @@
         }
       }
     },
-    "http://www.ebi.ac.uk/ols4/testcase/label#enLabelClass": {
+    "http://www.ebi.ac.uk/ols4/testcase/label#noLabelClass": {
       "definitions": [
         {
           "ontologyId": "label",
@@ -443,16 +278,14 @@
               "type": [
                 "literal"
               ],
-              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "en label class",
-              "lang": "en"
+              "value": "noLabelClass"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "enLabelClass"
+            "value": "noLabelClass"
           },
           "isObsolete": false
         }
@@ -473,16 +306,183 @@
               "type": [
                 "literal"
               ],
-              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "en label class",
-              "lang": "en"
+              "value": "noLabelClass"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "enLabelClass"
+            "value": "noLabelClass"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/ols4/testcase/label#noLabelProperty": {
+      "definitions": [
+        {
+          "ontologyId": "label",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "noLabelProperty"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "noLabelProperty"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "label": {
+          "ontologyId": "label",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "noLabelProperty"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "noLabelProperty"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/ols4/testcase/label#noLangClass": {
+      "definitions": [
+        {
+          "ontologyId": "label",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "no lang label class"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "noLangClass"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "label": {
+          "ontologyId": "label",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "no lang label class"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "noLangClass"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/ols4/testcase/label#property": {
+      "definitions": [
+        {
+          "ontologyId": "label",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "noLangProperty"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "property"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "label": {
+          "ontologyId": "label",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "noLangProperty"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "property"
           },
           "isObsolete": false
         }
@@ -508,82 +508,82 @@
   "ontologyIdToImportedOntologyIds": {},
   "ontologyIdToOntologyProperties": {
     "label": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
       "iri",
-      "numberOfIndividuals",
-      "numDescendants",
-      "numberOfProperties",
-      "numberOfClasses",
-      "language",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
       "isObsolete",
-      "type",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
       "ontologyPurl",
       "preferredPrefix",
-      "directAncestor",
-      "imported",
-      "numberOfEntities",
-      "ontologyId",
-      "http://www.w3.org/2002/07/owl#versionIRI",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "searchableAnnotationValues",
+      "type"
     ]
   },
   "ontologyIdToClassProperties": {
     "label": [
-      "isPreferredRoot",
-      "hasDirectChildren",
-      "hasHierarchicalParents",
-      "hasHierarchicalChildren",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "type",
-      "de+http://www.w3.org/2000/01/rdf-schema#label",
-      "definitionProperty",
-      "hasDirectParents",
-      "imported",
-      "http://www.w3.org/2000/01/rdf-schema#comment",
-      "ontologyIri",
-      "definition",
-      "de+label",
-      "iri",
-      "hierarchicalAncestor",
-      "numDescendants",
-      "isObsolete",
-      "label",
-      "ontologyPreferredPrefix",
-      "directAncestor",
       "curie",
-      "shortForm",
+      "de+http://www.w3.org/2000/01/rdf-schema#label",
+      "de+label",
+      "definition",
+      "definitionProperty",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
       "http://www.w3.org/2000/01/rdf-schema#label",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
       "ontologyId",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToPropertyProperties": {
     "label": [
-      "isPreferredRoot",
+      "curie",
+      "de+http://www.w3.org/2000/01/rdf-schema#label",
       "de+label",
-      "iri",
+      "directAncestor",
       "hasDirectChildren",
-      "hasHierarchicalParents",
+      "hasDirectParents",
       "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
       "numDescendants",
       "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "isObsolete",
-      "label",
-      "type",
-      "ontologyPreferredPrefix",
-      "directAncestor",
-      "de+http://www.w3.org/2000/01/rdf-schema#label",
-      "curie",
-      "hasDirectParents",
-      "imported",
-      "shortForm",
-      "http://www.w3.org/2000/01/rdf-schema#label",
       "ontologyId",
       "ontologyIri",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToIndividualProperties": {
@@ -594,32 +594,32 @@
   },
   "ontologyIdToUriToTypes": {
     "label": {
-      "http://www.ebi.ac.uk/ols4/testcase/label#noLabelProperty": [
-        "PROPERTY"
-      ],
-      "http://www.ebi.ac.uk/ols4/testcase/label#deProperty": [
-        "PROPERTY"
+      "http://www.ebi.ac.uk/ols4/testcase/label": [
+        "ONTOLOGY"
       ],
       "http://www.ebi.ac.uk/ols4/testcase/label#deLangClass": [
         "CLASS"
       ],
-      "http://www.ebi.ac.uk/ols4/testcase/label#property": [
+      "http://www.ebi.ac.uk/ols4/testcase/label#deProperty": [
         "PROPERTY"
       ],
-      "http://www.ebi.ac.uk/ols4/testcase/label#noLangClass": [
-        "CLASS"
-      ],
-      "http://www.ebi.ac.uk/ols4/testcase/label#noLabelClass": [
+      "http://www.ebi.ac.uk/ols4/testcase/label#enLabelClass": [
         "CLASS"
       ],
       "http://www.ebi.ac.uk/ols4/testcase/label#enProperty": [
         "PROPERTY"
       ],
-      "http://www.ebi.ac.uk/ols4/testcase/label": [
-        "ONTOLOGY"
-      ],
-      "http://www.ebi.ac.uk/ols4/testcase/label#enLabelClass": [
+      "http://www.ebi.ac.uk/ols4/testcase/label#noLabelClass": [
         "CLASS"
+      ],
+      "http://www.ebi.ac.uk/ols4/testcase/label#noLabelProperty": [
+        "PROPERTY"
+      ],
+      "http://www.ebi.ac.uk/ols4/testcase/label#noLangClass": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/ols4/testcase/label#property": [
+        "PROPERTY"
       ]
     }
   }

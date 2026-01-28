@@ -1,62 +1,5 @@
 {
   "iriToDefinitions": {
-    "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasParent": {
-      "definitions": [
-        {
-          "ontologyId": "owl2primer-objectproperty-inverse",
-          "entityTypes": [
-            "entity",
-            "objectProperty",
-            "property"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "hasParent"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "hasParent"
-          },
-          "isObsolete": false
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIris": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "owl2primer-objectproperty-inverse": {
-          "ontologyId": "owl2primer-objectproperty-inverse",
-          "entityTypes": [
-            "entity",
-            "objectProperty",
-            "property"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "hasParent"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "hasParent"
-          },
-          "isObsolete": false
-        }
-      }
-    },
     "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasChild": {
       "definitions": [
         {
@@ -113,6 +56,63 @@
           "isObsolete": false
         }
       }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasParent": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-objectproperty-inverse",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasParent"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasParent"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-objectproperty-inverse": {
+          "ontologyId": "owl2primer-objectproperty-inverse",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasParent"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasParent"
+          },
+          "isObsolete": false
+        }
+      }
     }
   },
   "ontologyIriToOntologyIds": {
@@ -134,24 +134,24 @@
   "ontologyIdToImportedOntologyIds": {},
   "ontologyIdToOntologyProperties": {
     "owl2primer-objectproperty-inverse": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
       "iri",
-      "numberOfIndividuals",
-      "numDescendants",
-      "numberOfProperties",
-      "numberOfClasses",
-      "language",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
       "isObsolete",
-      "type",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
       "ontologyPurl",
       "preferredPrefix",
-      "directAncestor",
-      "imported",
-      "numberOfEntities",
-      "ontologyId",
-      "http://www.w3.org/2002/07/owl#versionIRI",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "searchableAnnotationValues",
+      "type"
     ]
   },
   "ontologyIdToClassProperties": {
@@ -159,27 +159,27 @@
   },
   "ontologyIdToPropertyProperties": {
     "owl2primer-objectproperty-inverse": [
-      "isPreferredRoot",
-      "iri",
+      "curie",
+      "directAncestor",
       "hasDirectChildren",
-      "hasHierarchicalParents",
+      "hasDirectParents",
       "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#inverseOf",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
       "numDescendants",
       "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "isObsolete",
-      "label",
-      "type",
-      "http://www.w3.org/2002/07/owl#inverseOf",
-      "ontologyPreferredPrefix",
-      "directAncestor",
-      "curie",
-      "hasDirectParents",
-      "imported",
-      "shortForm",
       "ontologyId",
       "ontologyIri",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToIndividualProperties": {
@@ -190,14 +190,14 @@
   },
   "ontologyIdToUriToTypes": {
     "owl2primer-objectproperty-inverse": {
-      "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasParent": [
-        "PROPERTY"
+      "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl": [
+        "ONTOLOGY"
       ],
       "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasChild": [
         "PROPERTY"
       ],
-      "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl": [
-        "ONTOLOGY"
+      "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasParent": [
+        "PROPERTY"
       ]
     }
   }

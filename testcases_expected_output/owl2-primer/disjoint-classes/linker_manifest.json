@@ -1,60 +1,5 @@
 {
   "iriToDefinitions": {
-    "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Woman": {
-      "definitions": [
-        {
-          "ontologyId": "owl2primer-disjoint-classes",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "Woman"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "Woman"
-          },
-          "isObsolete": false
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIris": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "owl2primer-disjoint-classes": {
-          "ontologyId": "owl2primer-disjoint-classes",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "Woman"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "Woman"
-          },
-          "isObsolete": false
-        }
-      }
-    },
     "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Man": {
       "definitions": [
         {
@@ -109,6 +54,61 @@
           "isObsolete": false
         }
       }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Woman": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-disjoint-classes",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Woman"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Woman"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-disjoint-classes": {
+          "ontologyId": "owl2primer-disjoint-classes",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Woman"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Woman"
+          },
+          "isObsolete": false
+        }
+      }
     }
   },
   "ontologyIriToOntologyIds": {
@@ -130,50 +130,50 @@
   "ontologyIdToImportedOntologyIds": {},
   "ontologyIdToOntologyProperties": {
     "owl2primer-disjoint-classes": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
       "iri",
-      "numberOfIndividuals",
-      "numDescendants",
-      "numberOfProperties",
-      "numberOfClasses",
-      "language",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
       "isObsolete",
-      "type",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
       "ontologyPurl",
       "preferredPrefix",
-      "directAncestor",
-      "imported",
-      "numberOfEntities",
-      "ontologyId",
-      "http://www.w3.org/2002/07/owl#versionIRI",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "searchableAnnotationValues",
+      "type"
     ]
   },
   "ontologyIdToClassProperties": {
     "owl2primer-disjoint-classes": [
-      "isPreferredRoot",
-      "iri",
-      "hasDirectChildren",
-      "hierarchicalAncestor",
-      "hasHierarchicalParents",
-      "hasHierarchicalChildren",
-      "numDescendants",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "isObsolete",
-      "label",
-      "type",
-      "ontologyPreferredPrefix",
-      "directAncestor",
       "curie",
+      "directAncestor",
+      "hasDirectChildren",
       "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
       "http://www.w3.org/2002/07/owl#disjointWith",
       "imported",
-      "shortForm",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
       "ontologyId",
       "ontologyIri",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToPropertyProperties": {
@@ -187,13 +187,13 @@
   },
   "ontologyIdToUriToTypes": {
     "owl2primer-disjoint-classes": {
-      "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Woman": [
-        "CLASS"
-      ],
       "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf": [
         "ONTOLOGY"
       ],
       "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Man": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/disjoint-classes.rdf#Woman": [
         "CLASS"
       ]
     }

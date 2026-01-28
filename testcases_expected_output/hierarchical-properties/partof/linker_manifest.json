@@ -55,7 +55,7 @@
         }
       }
     },
-    "http://purl.obolibrary.org/obo/PRIDE_0000675": {
+    "http://purl.obolibrary.org/obo/MS_1003056": {
       "definitions": [
         {
           "ontologyId": "partof",
@@ -69,14 +69,14 @@
               "type": [
                 "literal"
               ],
-              "value": "sample name"
+              "value": "adduct ion property"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "PRIDE:0000675"
+            "value": "MS:1003056"
           },
           "isObsolete": false
         }
@@ -97,14 +97,14 @@
               "type": [
                 "literal"
               ],
-              "value": "sample name"
+              "value": "adduct ion property"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "PRIDE:0000675"
+            "value": "MS:1003056"
           },
           "isObsolete": false
         }
@@ -165,7 +165,7 @@
         }
       }
     },
-    "http://purl.obolibrary.org/obo/MS_1003056": {
+    "http://purl.obolibrary.org/obo/PRIDE_0000675": {
       "definitions": [
         {
           "ontologyId": "partof",
@@ -179,14 +179,14 @@
               "type": [
                 "literal"
               ],
-              "value": "adduct ion property"
+              "value": "sample name"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "MS:1003056"
+            "value": "PRIDE:0000675"
           },
           "isObsolete": false
         }
@@ -207,14 +207,14 @@
               "type": [
                 "literal"
               ],
-              "value": "adduct ion property"
+              "value": "sample name"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "MS:1003056"
+            "value": "PRIDE:0000675"
           },
           "isObsolete": false
         }
@@ -350,57 +350,57 @@
   "ontologyIdToImportedOntologyIds": {},
   "ontologyIdToOntologyProperties": {
     "partof": [
-      "iri",
-      "numberOfIndividuals",
-      "numDescendants",
-      "numberOfProperties",
-      "numberOfClasses",
-      "oboSlims",
-      "language",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
+      "directAncestor",
       "hierarchical_property",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
+      "iri",
       "isObsolete",
-      "title",
-      "type",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "oboSlims",
+      "ontologyId",
       "ontologyPurl",
       "preferredPrefix",
-      "directAncestor",
-      "imported",
-      "numberOfEntities",
-      "ontologyId",
-      "http://www.w3.org/2002/07/owl#versionIRI",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "searchableAnnotationValues",
+      "title",
+      "type"
     ]
   },
   "ontologyIdToClassProperties": {
     "partof": [
-      "isPreferredRoot",
-      "hasDirectChildren",
-      "hasHierarchicalParents",
-      "hasHierarchicalChildren",
-      "hierarchicalProperty",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "type",
-      "relatedTo",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "hasDirectParents",
-      "imported",
-      "ontologyIri",
-      "hierarchicalParent",
-      "iri",
-      "hierarchicalAncestor",
-      "numDescendants",
-      "isObsolete",
-      "label",
-      "ontologyPreferredPrefix",
-      "directAncestor",
       "curie",
-      "shortForm",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "hierarchicalParent",
+      "hierarchicalProperty",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
       "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
       "ontologyId",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "relatedTo",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToPropertyProperties": {
@@ -416,19 +416,16 @@
   },
   "ontologyIdToUriToTypes": {
     "partof": {
-      "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl": [
-        "ONTOLOGY"
-      ],
       "http://purl.obolibrary.org/obo/MS_1000353": [
         "CLASS"
       ],
-      "http://purl.obolibrary.org/obo/PRIDE_0000675": [
+      "http://purl.obolibrary.org/obo/MS_1003056": [
         "CLASS"
       ],
       "http://purl.obolibrary.org/obo/PRIDE_0000674": [
         "CLASS"
       ],
-      "http://purl.obolibrary.org/obo/MS_1003056": [
+      "http://purl.obolibrary.org/obo/PRIDE_0000675": [
         "CLASS"
       ],
       "http://purl.obolibrary.org/obo/UBERON_0000916": [
@@ -436,6 +433,9 @@
       ],
       "http://purl.obolibrary.org/obo/UBERON_0003684": [
         "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl": [
+        "ONTOLOGY"
       ]
     }
   }

@@ -1,5 +1,60 @@
 {
   "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity": {
+      "definitions": [
+        {
+          "ontologyId": "punning-class-individual",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Quantity"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Quantity"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIris": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "punning-class-individual": {
+          "ontologyId": "punning-class-individual",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Quantity"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Quantity"
+          },
+          "isObsolete": false
+        }
+      }
+    },
     "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature": {
       "definitions": [
         {
@@ -78,13 +133,14 @@
         }
       }
     },
-    "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#thermodynamicTemperatureOfTheTriplePointOfWater": {
+    "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit": {
       "definitions": [
         {
           "ontologyId": "punning-class-individual",
           "entityTypes": [
             "entity",
-            "individual"
+            "objectProperty",
+            "property"
           ],
           "isDefiningOntology": false,
           "label": [
@@ -92,14 +148,14 @@
               "type": [
                 "literal"
               ],
-              "value": "thermodynamicTemperatureOfTheTriplePointOfWater"
+              "value": "commonlyHasUnit"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "thermodynamicTemperatureOfTheTriplePointOfWater"
+            "value": "commonlyHasUnit"
           },
           "isObsolete": false
         }
@@ -112,7 +168,8 @@
           "ontologyId": "punning-class-individual",
           "entityTypes": [
             "entity",
-            "individual"
+            "objectProperty",
+            "property"
           ],
           "isDefiningOntology": false,
           "label": [
@@ -120,14 +177,14 @@
               "type": [
                 "literal"
               ],
-              "value": "thermodynamicTemperatureOfTheTriplePointOfWater"
+              "value": "commonlyHasUnit"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "thermodynamicTemperatureOfTheTriplePointOfWater"
+            "value": "commonlyHasUnit"
           },
           "isObsolete": false
         }
@@ -188,69 +245,13 @@
         }
       }
     },
-    "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity": {
-      "definitions": [
-        {
-          "ontologyId": "punning-class-individual",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "Quantity"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "Quantity"
-          },
-          "isObsolete": false
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIris": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "punning-class-individual": {
-          "ontologyId": "punning-class-individual",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "Quantity"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "Quantity"
-          },
-          "isObsolete": false
-        }
-      }
-    },
-    "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit": {
+    "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#thermodynamicTemperatureOfTheTriplePointOfWater": {
       "definitions": [
         {
           "ontologyId": "punning-class-individual",
           "entityTypes": [
             "entity",
-            "objectProperty",
-            "property"
+            "individual"
           ],
           "isDefiningOntology": false,
           "label": [
@@ -258,14 +259,14 @@
               "type": [
                 "literal"
               ],
-              "value": "commonlyHasUnit"
+              "value": "thermodynamicTemperatureOfTheTriplePointOfWater"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "commonlyHasUnit"
+            "value": "thermodynamicTemperatureOfTheTriplePointOfWater"
           },
           "isObsolete": false
         }
@@ -278,8 +279,7 @@
           "ontologyId": "punning-class-individual",
           "entityTypes": [
             "entity",
-            "objectProperty",
-            "property"
+            "individual"
           ],
           "isDefiningOntology": false,
           "label": [
@@ -287,14 +287,14 @@
               "type": [
                 "literal"
               ],
-              "value": "commonlyHasUnit"
+              "value": "thermodynamicTemperatureOfTheTriplePointOfWater"
             }
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "commonlyHasUnit"
+            "value": "thermodynamicTemperatureOfTheTriplePointOfWater"
           },
           "isObsolete": false
         }
@@ -320,111 +320,111 @@
   "ontologyIdToImportedOntologyIds": {},
   "ontologyIdToOntologyProperties": {
     "punning-class-individual": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
       "iri",
-      "numberOfIndividuals",
-      "numDescendants",
-      "numberOfProperties",
-      "numberOfClasses",
-      "language",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
       "isObsolete",
-      "type",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
       "ontologyPurl",
       "preferredPrefix",
-      "directAncestor",
-      "imported",
-      "numberOfEntities",
-      "ontologyId",
-      "http://www.w3.org/2002/07/owl#versionIRI",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "searchableAnnotationValues",
+      "type"
     ]
   },
   "ontologyIdToClassProperties": {
     "punning-class-individual": [
-      "isPreferredRoot",
-      "hasDirectChildren",
-      "hasHierarchicalParents",
-      "hasHierarchicalChildren",
-      "hierarchicalProperty",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "type",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "hasDirectParents",
-      "imported",
-      "ontologyIri",
-      "hierarchicalParent",
-      "iri",
-      "hierarchicalAncestor",
-      "numDescendants",
-      "isObsolete",
-      "label",
-      "hasIndividuals",
-      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit",
-      "directParent",
-      "ontologyPreferredPrefix",
-      "directAncestor",
       "curie",
-      "shortForm",
+      "directAncestor",
+      "directParent",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hasIndividuals",
+      "hierarchicalAncestor",
+      "hierarchicalParent",
+      "hierarchicalProperty",
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
       "ontologyId",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToPropertyProperties": {
     "punning-class-individual": [
-      "isPreferredRoot",
-      "iri",
+      "curie",
+      "directAncestor",
       "hasDirectChildren",
-      "hasHierarchicalParents",
+      "hasDirectParents",
       "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#domain",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
       "numDescendants",
       "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "http://www.w3.org/2000/01/rdf-schema#domain",
-      "isObsolete",
-      "label",
-      "type",
-      "ontologyPreferredPrefix",
-      "directAncestor",
-      "curie",
-      "hasDirectParents",
-      "imported",
-      "shortForm",
       "ontologyId",
       "ontologyIri",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToIndividualProperties": {
     "punning-class-individual": [
-      "isPreferredRoot",
-      "hasDirectChildren",
-      "hasHierarchicalParents",
-      "hasHierarchicalChildren",
-      "hierarchicalProperty",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "type",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "hasDirectParents",
-      "imported",
-      "ontologyIri",
-      "hierarchicalParent",
-      "iri",
-      "hierarchicalAncestor",
-      "numDescendants",
-      "isObsolete",
-      "label",
-      "hasIndividuals",
-      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit",
-      "directParent",
-      "ontologyPreferredPrefix",
-      "directAncestor",
       "curie",
-      "shortForm",
+      "directAncestor",
+      "directParent",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hasIndividuals",
+      "hierarchicalAncestor",
+      "hierarchicalParent",
+      "hierarchicalProperty",
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
       "ontologyId",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToEdgeProperties": {
@@ -432,24 +432,24 @@
   },
   "ontologyIdToUriToTypes": {
     "punning-class-individual": {
-      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature": [
-        "CLASS",
-        "INDIVIDUAL"
-      ],
       "http://www.ebi.ac.uk/testcases/punning/class-individual.owl": [
         "ONTOLOGY"
-      ],
-      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#thermodynamicTemperatureOfTheTriplePointOfWater": [
-        "INDIVIDUAL"
-      ],
-      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin": [
-        "INDIVIDUAL"
       ],
       "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity": [
         "CLASS"
       ],
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#ThermodynamicTemperature": [
+        "CLASS",
+        "INDIVIDUAL"
+      ],
       "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit": [
         "PROPERTY"
+      ],
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin": [
+        "INDIVIDUAL"
+      ],
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#thermodynamicTemperatureOfTheTriplePointOfWater": [
+        "INDIVIDUAL"
       ]
     }
   }

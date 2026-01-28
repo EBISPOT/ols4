@@ -75,53 +75,53 @@
   "ontologyIdToImportedOntologyIds": {},
   "ontologyIdToOntologyProperties": {
     "definition-multiple": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
       "iri",
-      "numberOfIndividuals",
-      "numDescendants",
-      "numberOfProperties",
-      "numberOfClasses",
-      "language",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
       "isObsolete",
-      "type",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
       "ontologyPurl",
       "preferredPrefix",
-      "directAncestor",
-      "imported",
-      "numberOfEntities",
-      "ontologyId",
-      "http://www.w3.org/2002/07/owl#versionIRI",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "searchableAnnotationValues",
+      "type"
     ]
   },
   "ontologyIdToClassProperties": {
     "definition-multiple": [
-      "isPreferredRoot",
-      "hasDirectChildren",
-      "hasHierarchicalParents",
-      "hasHierarchicalChildren",
-      "numHierarchicalDescendants",
-      "searchableAnnotationValues",
-      "type",
-      "definitionProperty",
-      "hasDirectParents",
-      "imported",
-      "definition",
-      "ontologyIri",
-      "http://purl.obolibrary.org/obo/IAO_0000115",
-      "iri",
-      "hierarchicalAncestor",
-      "numDescendants",
-      "isObsolete",
-      "label",
-      "ontologyPreferredPrefix",
-      "directAncestor",
       "curie",
-      "shortForm",
+      "definition",
+      "definitionProperty",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
       "http://www.w3.org/2000/01/rdf-schema#label",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
       "ontologyId",
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
     ]
   },
   "ontologyIdToPropertyProperties": {
@@ -135,11 +135,11 @@
   },
   "ontologyIdToUriToTypes": {
     "definition-multiple": {
-      "http://www.ebi.ac.uk/testcases/owl2primer/class.owl": [
-        "ONTOLOGY"
-      ],
       "http://www.ebi.ac.uk/testcases/defined-fields/DefinitionMultiple.owl#Definition-Multiple_0001": [
         "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/class.owl": [
+        "ONTOLOGY"
       ]
     }
   }
