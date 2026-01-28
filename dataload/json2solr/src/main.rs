@@ -5,13 +5,9 @@ use std::path::Path;
 
 use clap::Parser;
 use ols_shared::streaming::read_value;
-use ols_shared::DefinedFields;
+use ols_shared::{DefinedFields, Embeddings};
 use serde_json::{Map, Value};
 use struson::reader::{JsonReader, JsonStreamReader};
-
-mod embeddings;
-
-use embeddings::Embeddings;
 
 /// JSON to Solr JSONL converter for OLS4
 #[derive(Parser, Debug)]

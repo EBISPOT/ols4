@@ -23,19 +23,19 @@ java $JAVA_OPTS -DentityExpansionLimit=0 -DtotalEntitySizeLimit=0 -Djdk.xml.tota
     -jar $SCRIPT_PATH/../dataload/rdf2json/target/rdf2json-1.0-SNAPSHOT.jar --config "$CONFIG_URL" --output "$JSON_PATH" "${@:3}"
 
 echo linker: create manifest
-$SCRIPT_PATH/../dataload/linker/create_manifest/target/release/ols_create_manifest \
+$SCRIPT_PATH/../dataload/target/release/ols_create_manifest \
     --input "$JSON_PATH" --output "$LINKER_MANIFEST_PATH"
 
 echo linker: link
-$SCRIPT_PATH/../dataload/linker/link/target/release/ols_link \
+$SCRIPT_PATH/../dataload/target/release/ols_link \
     --manifest "$LINKER_MANIFEST_PATH" --input "$JSON_PATH" --output "$JSON_PATH_LINKED"
 
 echo json2neo
-$SCRIPT_PATH/../dataload/json2neo/target/release/ols_json2neo \
+$SCRIPT_PATH/../dataload/target/release/ols_json2neo \
     --manifest "$LINKER_MANIFEST_PATH" --input "$JSON_PATH_LINKED" --outDir $OUTDIR --embeddingDbsPath $SCRIPT_PATH/../testcases/embeddings
 
 echo json2solr
-$SCRIPT_PATH/../dataload/json2solr/target/release/ols_json2solr \
+$SCRIPT_PATH/../dataload/target/release/ols_json2solr \
     --input "$JSON_PATH_LINKED" --outDir $OUTDIR
 
 

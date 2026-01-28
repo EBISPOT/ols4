@@ -8,7 +8,7 @@ use serde_json::Value;
 use struson::reader::{JsonReader, JsonStreamReader};
 
 use crate::ontology_scanner::scan_ontology;
-use crate::types::{EntityDefinition, EntityDefinitionSet, LinkerPass1Result};
+use ols_shared::{EntityDefinition, EntityDefinitionSet, LinkerPass1Result};
 
 /// Run LinkerPass1 on an input JSON file
 pub fn run(input_json_filename: &str) -> Result<LinkerPass1Result, Box<dyn std::error::Error>> {

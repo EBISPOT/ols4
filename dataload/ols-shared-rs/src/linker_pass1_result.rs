@@ -1,57 +1,11 @@
+//! LinkerPass1Result type shared between linker tools
+//!
+//! This matches the Java LinkerPass1Result class for JSON compatibility.
+
 use serde::{Deserialize, Serialize};
-use serde_json::Value;
-use std::collections::{BTreeMap, BTreeSet, HashMap, HashSet};
+use std::collections::{BTreeMap, BTreeSet};
 
-/// Entity definition within an ontology
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
-#[serde(rename_all = "camelCase")]
-pub struct EntityDefinition {
-    pub ontology_id: String,
-    pub entity_types: BTreeSet<String>,
-    #[serde(default)]
-    pub is_defining_ontology: bool,
-    #[serde(default)]
-    pub label: Option<Value>,
-    #[serde(default)]
-    pub curie: Option<Value>,
-    #[serde(default)]
-    pub is_obsolete: bool,
-}
-
-impl PartialOrd for EntityDefinition {
-    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
-        Some(self.cmp(other))
-    }
-}
-
-impl Ord for EntityDefinition {
-    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
-        match self.ontology_id.cmp(&other.ontology_id) {
-            std::cmp::Ordering::Equal => {
-                let self_types: Vec<_> = self.entity_types.iter().collect();
-                let other_types: Vec<_> = other.entity_types.iter().collect();
-                self_types.cmp(&other_types)
-            }
-            other => other,
-        }
-    }
-}
-
-/// Set of all definitions for a single IRI across all ontologies
-#[derive(Debug, Clone, Serialize, Deserialize, Default)]
-#[serde(rename_all = "camelCase")]
-pub struct EntityDefinitionSet {
-    #[serde(default)]
-    pub definitions: BTreeSet<EntityDefinition>,
-    #[serde(default)]
-    pub defining_definitions: BTreeSet<EntityDefinition>,
-    #[serde(default)]
-    pub defining_ontology_iris: BTreeSet<String>,
-    #[serde(default)]
-    pub defining_ontology_ids: BTreeSet<String>,
-    #[serde(default)]
-    pub ontology_id_to_definitions: BTreeMap<String, EntityDefinition>,
-}
+use crate::EntityDefinitionSet;
 
 /// Result from LinkerPass1 - matches the Java LinkerPass1Result class
 #[derive(Debug, Clone, Serialize, Deserialize, Default)]
@@ -191,43 +145,4 @@ impl LinkerPass1Result {
         self.ontology_id_to_uri_to_types
             .extend(source.ontology_id_to_uri_to_types);
     }
-}
-
-/// Node type for tracking what type(s) a URI represents
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
-pub enum NodeType {
-    Ontology,
-    Class,
-    Property,
-    Individual,
-}
-
-impl NodeType {
-    pub fn as_str(&self) -> &'static str {
-        match self {
-            NodeType::Ontology => "ONTOLOGY",
-            NodeType::Class => "CLASS",
-            NodeType::Property => "PROPERTY",
-            NodeType::Individual => "INDIVIDUAL",
-        }
-    }
-}
-
-impl std::fmt::Display for NodeType {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", self.as_str())
-    }
-}
-
-/// Result from scanning a single ontology
-#[derive(Debug, Clone, Default)]
-pub struct OntologyScanResult {
-    pub ontology_id: String,
-    pub ontology_uri: String,
-    pub all_ontology_properties: BTreeSet<String>,
-    pub all_class_properties: BTreeSet<String>,
-    pub all_property_properties: BTreeSet<String>,
-    pub all_individual_properties: BTreeSet<String>,
-    pub all_edge_properties: BTreeSet<String>,
-    pub uri_to_types: BTreeMap<String, BTreeSet<NodeType>>,
 }

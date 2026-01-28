@@ -62,25 +62,15 @@ RUN cd /opt/ols/ols-shared && mvn -B -ntp -Dorg.slf4j.simpleLogger.log.org.apach
 RUN mvn -B -ntp -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn install:install-file -DcreateChecksum=true -Dpackaging=jar -Dfile=/opt/ols/ols-shared/target/ols4-shared-1.0.0-SNAPSHOT.jar -DgroupId=uk.ac.ebi.spot.ols -DartifactId=ols4-shared -Dversion=1.0.0-SNAPSHOT
 RUN cd /opt/ols/dataload &&  mvn -B -ntp -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn -T 1C package
 
-# Build the Rust json2neo binary
-RUN cd /opt/ols/dataload/json2neo && cargo build --release
-RUN cp /opt/ols/dataload/json2neo/target/release/ols_json2neo /usr/local/bin/
-RUN chmod +x /usr/local/bin/ols_json2neo
+# Build all Rust binaries using workspace
+RUN cd /opt/ols/dataload && cargo build --release
 
-# Build the Rust create_manifest binary
-RUN cd /opt/ols/dataload/linker/create_manifest && cargo build --release
-RUN cp /opt/ols/dataload/linker/create_manifest/target/release/ols_create_manifest /usr/local/bin/
-RUN chmod +x /usr/local/bin/ols_create_manifest
-
-# Build the Rust link binary
-RUN cd /opt/ols/dataload/linker/link && cargo build --release
-RUN cp /opt/ols/dataload/linker/link/target/release/ols_link /usr/local/bin/
-RUN chmod +x /usr/local/bin/ols_link
-
-# Build the Rust json2solr binary
-RUN cd /opt/ols/dataload/json2solr && cargo build --release
-RUN cp /opt/ols/dataload/json2solr/target/release/ols_json2solr /usr/local/bin/
-RUN chmod +x /usr/local/bin/ols_json2solr
+# Install Rust binaries
+RUN cp /opt/ols/dataload/target/release/ols_json2neo /usr/local/bin/ && \
+    cp /opt/ols/dataload/target/release/ols_create_manifest /usr/local/bin/ && \
+    cp /opt/ols/dataload/target/release/ols_link /usr/local/bin/ && \
+    cp /opt/ols/dataload/target/release/ols_json2solr /usr/local/bin/ && \
+    chmod +x /usr/local/bin/ols_json2neo /usr/local/bin/ols_create_manifest /usr/local/bin/ols_link /usr/local/bin/ols_json2solr
 
 # COPY ./backend /opt/ols/backend
 # RUN cd /opt/ols/backend && mvn -T 1C package

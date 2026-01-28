@@ -13,7 +13,7 @@ use crate::copy_json_gathering_strings::{copy_json_gathering_strings, write_valu
 use crate::extract_iri_from_property_name;
 use crate::leveldb::LevelDB;
 use crate::obo_database_url_service::{map_curie, OboDatabaseUrlService};
-use crate::types::{EntityDefinitionSet, LinkerPass1Result};
+use ols_shared::{EntityDefinitionSet, LinkerPass1Result};
 
 /// Run LinkerPass2 on an input JSON file
 pub fn run(

@@ -4,7 +4,8 @@ use std::io::Read;
 use ols_shared::streaming::read_value;
 use struson::reader::{JsonReader, JsonStreamReader};
 
-use crate::types::{NodeType, OntologyScanResult};
+use crate::node_type::NodeType;
+use crate::ontology_scan_result::OntologyScanResult;
 
 /// Scan an ontology from a streaming JSON reader
 /// This matches the behavior of Java's OntologyScanner.scanOntology

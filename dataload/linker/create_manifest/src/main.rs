@@ -4,11 +4,12 @@ use std::io::Write;
 use clap::Parser;
 
 mod linker_pass1;
+mod node_type;
+mod ontology_scan_result;
 mod ontology_scanner;
-mod types;
 
 use linker_pass1::run;
-use types::LinkerPass1Result;
+use ols_shared::LinkerPass1Result;
 
 /// Create manifest for OLS4 linker
 #[derive(Parser, Debug)]

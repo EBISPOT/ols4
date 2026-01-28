@@ -5,15 +5,13 @@ use std::path::Path;
 
 use clap::Parser;
 use ols_shared::streaming::read_value;
-use ols_shared::DefinedFields;
+use ols_shared::{DefinedFields, Embeddings};
 use serde_json::Value;
 use struson::reader::{JsonReader, JsonStreamReader};
 
-mod embeddings;
 mod manifest;
 mod ontology_writer;
 
-use embeddings::Embeddings;
 use manifest::{LinkerPass1Result, OntologyManifestInfo, NodeType};
 use ontology_writer::OntologyWriter;
 

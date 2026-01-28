@@ -6,14 +6,14 @@ use clap::Parser;
 mod bioregistry;
 mod copy_json_gathering_strings;
 mod extract_iri_from_property_name;
+mod curie_map_result;
 mod leveldb;
 mod linker_pass2;
 mod obo_database_url_service;
-mod types;
 
 use leveldb::LevelDB;
 use linker_pass2::run;
-use types::LinkerPass1Result;
+use ols_shared::LinkerPass1Result;
 
 /// Link OLS4 ontology JSON files
 #[derive(Parser, Debug)]

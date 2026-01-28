@@ -1,14 +1,16 @@
 [package]
 name = "ols_shared"
-version = "1.0.0"
-edition = "2024"
-rust-version = "1.90.0"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
 
 [lib]
 name = "ols_shared"
 path = "src/lib.rs"
 
 [dependencies]
-serde = { version = "1.0", features = ["derive"] }
-serde_json = { version = "1.0", features = ["preserve_order"] }
-struson = "0.5"
+serde.workspace = true
+serde_json.workspace = true
+struson.workspace = true
+parquet.workspace = true
+arrow.workspace = true

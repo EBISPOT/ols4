@@ -6,7 +6,7 @@ use csv::{Writer, WriterBuilder, QuoteStyle};
 use indexmap::IndexMap;
 use serde_json::{Map, Value};
 
-use crate::embeddings::Embeddings;
+use ols_shared::Embeddings;
 #[allow(unused_imports)]
 use crate::manifest::{NodeType, OntologyManifestInfo};
 

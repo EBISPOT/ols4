@@ -1,22 +1,17 @@
 [package]
 name = "ols_create_manifest"
-version = "1.0.0"
-edition = "2024"
-rust-version = "1.90.0"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
 
 [[bin]]
 name = "ols_create_manifest"
 path = "src/main.rs"
 
 [dependencies]
-clap = { version = "4.5", features = ["derive"] }
-serde = { version = "1.0", features = ["derive"] }
-serde_json = { version = "1.0", features = ["preserve_order"] }
-thiserror = "2.0"
-struson = "0.5"
-ols_shared = { path = "../../ols-shared-rs" }
-
-[profile.release]
-lto = true
-codegen-units = 1
-strip = true
+clap.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+struson.workspace = true
+ols_shared.workspace = true

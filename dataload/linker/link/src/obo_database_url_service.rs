@@ -1,7 +1,7 @@
 use serde::Deserialize;
 use std::collections::HashMap;
 
-use crate::types::CurieMapResult;
+use crate::curie_map_result::CurieMapResult;
 
 const DEFAULT_XREF_URL: &str = "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml";
 
