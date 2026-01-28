@@ -141,11 +141,10 @@ process linker__link_ontologies {
     tuple val(ontology_id), path("${ontology_json.name.replace('.json', '_linked.json')}")
 
     script:
-    def mem_mb = (task.memory.toMega() * 0.9).intValue()
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    java -Xms${mem_mb}m -Xmx${mem_mb}m -jar /opt/ols/dataload/linker/link/target/link-1.0-SNAPSHOT.jar \
+    ols_link \
         --input ${ontology_json} \
         --manifest "linker_manifest.json" \
         --output "${ontology_json.name.replace('.json', '_linked.json')}"

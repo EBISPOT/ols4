@@ -24,14 +24,14 @@ The typical two-step workflow is:
 
 1. **Create manifest once** from all ontologies:
    ```bash
-   java -jar create_manifest/target/create-manifest-1.0-SNAPSHOT.jar \
+   ./create_manifest/target/release/ols_create_manifest \
      --input ont1.json,ont2.json,ont3.json \
      --output manifest.json
    ```
 
 2. **Link each ontology** individually using the manifest:
    ```bash
-   java -jar link/target/link-1.0-SNAPSHOT.jar \
+   ./link/target/release/ols_link \
      --manifest manifest.json \
      --input ont1.json \
      --output ont1-linked.json
@@ -41,19 +41,20 @@ This approach allows for parallel execution of step 2 across multiple ontologies
 
 ## Building
 
-Build both projects from the dataload directory:
+Both linker tools are written in Rust. Build from the linker directory:
 
 ```bash
-cd dataload
-mvn clean package
-```
+cd dataload/linker
 
-Or build individually:
+# Build create_manifest
+cd create_manifest
+cargo build --release
 
-```bash
-cd linker/create_manifest
-mvn clean package
-
+# Build link
 cd ../link
-mvn clean package
+cargo build --release
 ```
+
+The binaries will be at:
+- `create_manifest/target/release/ols_create_manifest`
+- `link/target/release/ols_link`

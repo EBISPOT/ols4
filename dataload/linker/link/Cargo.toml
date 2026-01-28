@@ -1,0 +1,26 @@
+[package]
+name = "ols_link"
+version = "1.0.0"
+edition = "2024"
+rust-version = "1.90.0"
+
+[[bin]]
+name = "ols_link"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0", features = ["preserve_order"] }
+serde_yaml = "0.9"
+thiserror = "2.0"
+struson = "0.5"
+regex = "1.10"
+ureq = { version = "2.9", features = ["json"] }
+rusty-leveldb = "3.0"
+ols_shared = { path = "../../ols-shared-rs" }
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true

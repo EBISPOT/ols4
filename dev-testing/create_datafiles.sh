@@ -27,7 +27,7 @@ $SCRIPT_PATH/../dataload/linker/create_manifest/target/release/ols_create_manife
     --input "$JSON_PATH" --output "$LINKER_MANIFEST_PATH"
 
 echo linker: link
-java -jar $SCRIPT_PATH/../dataload/linker/link/target/link-1.0-SNAPSHOT.jar \
+$SCRIPT_PATH/../dataload/linker/link/target/release/ols_link \
     --manifest "$LINKER_MANIFEST_PATH" --input "$JSON_PATH" --output "$JSON_PATH_LINKED"
 
 echo json2neo

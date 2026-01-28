@@ -72,6 +72,11 @@ RUN cd /opt/ols/dataload/linker/create_manifest && cargo build --release
 RUN cp /opt/ols/dataload/linker/create_manifest/target/release/ols_create_manifest /usr/local/bin/
 RUN chmod +x /usr/local/bin/ols_create_manifest
 
+# Build the Rust link binary
+RUN cd /opt/ols/dataload/linker/link && cargo build --release
+RUN cp /opt/ols/dataload/linker/link/target/release/ols_link /usr/local/bin/
+RUN chmod +x /usr/local/bin/ols_link
+
 # COPY ./backend /opt/ols/backend
 # RUN cd /opt/ols/backend && mvn -T 1C package
 

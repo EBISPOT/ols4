@@ -10,19 +10,19 @@ The link tool:
 - Adds linking information to entities and ontology metadata
 - Outputs a linked ontology JSON file
 
-## Building
+## Building (Rust)
 
 ```bash
 cd dataload/linker/link
-mvn clean package
+cargo build --release
 ```
 
-This creates `target/link-1.0-SNAPSHOT.jar`
+This creates `target/release/ols_link`
 
-## Usage
+## Usage (Rust)
 
 ```bash
-java -jar target/link-1.0-SNAPSHOT.jar \
+./target/release/ols_link \
   --manifest manifest.json \
   --input unlinked-ontology.json \
   --output linked-ontology.json \
@@ -41,7 +41,7 @@ java -jar target/link-1.0-SNAPSHOT.jar \
 Link a single ontology using a pre-computed manifest:
 
 ```bash
-java -jar target/link-1.0-SNAPSHOT.jar \
+./target/release/ols_link \
   --manifest /data/manifest.json \
   --input /data/efo-unlinked.json \
   --output /data/efo-linked.json
@@ -50,11 +50,30 @@ java -jar target/link-1.0-SNAPSHOT.jar \
 With LevelDB for additional mappings:
 
 ```bash
-java -jar target/link-1.0-SNAPSHOT.jar \
+./target/release/ols_link \
   --manifest /data/manifest.json \
   --input /data/efo-unlinked.json \
   --output /data/efo-linked.json \
   --leveldbPath /data/orcid.leveldb
+```
+
+## Building (Java - Legacy)
+
+```bash
+cd dataload/linker/link
+mvn clean package
+```
+
+This creates `target/link-1.0-SNAPSHOT.jar`
+
+## Usage (Java - Legacy)
+
+```bash
+java -jar target/link-1.0-SNAPSHOT.jar \
+  --manifest manifest.json \
+  --input unlinked-ontology.json \
+  --output linked-ontology.json \
+  [--leveldbPath /path/to/leveldb]
 ```
 
 ## Output
@@ -74,14 +93,14 @@ The typical workflow is:
 
 1. **Create manifest once** from all ontologies:
    ```bash
-   java -jar create-manifest.jar --input ont1.json,ont2.json,ont3.json --output manifest.json
+   ./target/release/ols_create_manifest --input ont1.json,ont2.json,ont3.json --output manifest.json
    ```
 
 2. **Link each ontology** using the manifest:
    ```bash
-   java -jar link.jar --manifest manifest.json --input ont1.json --output ont1-linked.json
-   java -jar link.jar --manifest manifest.json --input ont2.json --output ont2-linked.json
-   java -jar link.jar --manifest manifest.json --input ont3.json --output ont3-linked.json
+   ./target/release/ols_link --manifest manifest.json --input ont1.json --output ont1-linked.json
+   ./target/release/ols_link --manifest manifest.json --input ont2.json --output ont2-linked.json
+   ./target/release/ols_link --manifest manifest.json --input ont3.json --output ont3-linked.json
    ```
 
 This approach is more efficient when linking many ontologies, as Pass 1 only needs to run once.
