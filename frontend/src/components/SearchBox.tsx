@@ -39,7 +39,7 @@ export default function SearchBox({
     number | undefined
   >(undefined);
   const [availableModels, setAvailableModels] = useState<Model[]>([]);
-  const [selectedModel, setSelectedModel] = useState<string>("lexical");
+  const [selectedModel, setSelectedModel] = useState<string>(searchParams.get("model") || "lexical");
 
   let exact = searchParams.get("exactMatch") === "true";
   let obsolete = searchParams.get("includeObsoleteEntities") === "true";
@@ -56,7 +56,7 @@ export default function SearchBox({
       }
       setSearchParams(newSearchParams);
     },
-    [searchParams, setSearchParams]
+    [searchParams, setSearchParams, query]
   );
 
   const setObsolete = useCallback(
@@ -70,7 +70,7 @@ export default function SearchBox({
       }
       setSearchParams(newSearchParams);
     },
-    [searchParams, setSearchParams]
+    [searchParams, setSearchParams, query]
   );
 
   const setCanonical = useCallback(
@@ -84,7 +84,28 @@ export default function SearchBox({
       }
       setSearchParams(newSearchParams);
     },
-    [searchParams, setSearchParams]
+    [searchParams, setSearchParams, query]
+  );
+
+  // Check if we're on the search results page (has a query in URL)
+  const isOnSearchPage = !!searchParams.get("q");
+
+  const handleModelChange = useCallback(
+    (model: string) => {
+      setSelectedModel(model);
+      // If on search results page, update URL to trigger new search
+      if (isOnSearchPage) {
+        const newSearchParams = new URLSearchParams(searchParams);
+        if (model && model !== "lexical") {
+          newSearchParams.set("model", model);
+        } else {
+          newSearchParams.delete("model");
+        }
+        // Use navigate instead of setSearchParams to avoid issues
+        navigate(`/search?${newSearchParams}`);
+      }
+    },
+    [isOnSearchPage, searchParams, navigate]
   );
 
   const searchForOntologies = ontologyId === undefined;
@@ -170,14 +191,15 @@ export default function SearchBox({
     return () => {
       cancelPromisesRef.current = true;
     };
-  }, [query, exact, obsolete, canonical]);
+  }, [query, exact, obsolete, canonical, selectedModel]);
 
   let autocompleteToShow = autocomplete?.response.docs.slice(0, 5) || [];
   let autocompleteElements = autocompleteToShow.map(
     (autocomplete, i): SearchBoxEntry => {
-      searchParams.set("q", autocomplete.autosuggest);
-      if (ontologyId) searchParams.set("ontology", ontologyId);
-      const linkUrl = `/search?${new URLSearchParams(searchParams)}`;
+      const linkParams = new URLSearchParams(searchParams);
+      linkParams.set("q", autocomplete.autosuggest);
+      if (ontologyId) linkParams.set("ontology", ontologyId);
+      const linkUrl = `/search?${linkParams}`;
       return {
         linkUrl,
         li: (
@@ -350,9 +372,15 @@ export default function SearchBox({
                   ) {
                     navigate(allDropdownElements[arrowKeySelectedN].linkUrl);
                   } else if (query) {
-                    searchParams.set("q", query);
-                    if (ontologyId) searchParams.set("ontology", ontologyId);
-                    navigate(`/search?${new URLSearchParams(searchParams)}`);
+                    const navParams = new URLSearchParams(searchParams);
+                    navParams.set("q", query);
+                    if (ontologyId) navParams.set("ontology", ontologyId);
+                    if (selectedModel && selectedModel !== "lexical") {
+                      navParams.set("model", selectedModel);
+                    } else {
+                      navParams.delete("model");
+                    }
+                    navigate(`/search?${navParams}`);
                   }
                 } else if (ev.key === "ArrowDown") {
                   setArrowKeySelectedN(
@@ -404,10 +432,16 @@ export default function SearchBox({
                   }
                   onClick={() => {
                     if (query) {
-                      searchParams.set("q", query);
+                      const navParams = new URLSearchParams(searchParams);
+                      navParams.set("q", query);
                       if (ontologyId)
-                        searchParams.set("ontology", ontologyId);
-                      navigate(`/search?${new URLSearchParams(searchParams)}`);
+                        navParams.set("ontology", ontologyId);
+                      if (selectedModel && selectedModel !== "lexical") {
+                        navParams.set("model", selectedModel);
+                      } else {
+                        navParams.delete("model");
+                      }
+                      navigate(`/search?${navParams}`);
                     }
                   }}
                 >
@@ -422,9 +456,15 @@ export default function SearchBox({
               className="button-primary text-lg font-bold self-center"
               onClick={() => {
                 if (query) {
-                  searchParams.set("q", query);
-                  if (ontologyId) searchParams.set("ontology", ontologyId);
-                  navigate(`/search?${new URLSearchParams(searchParams)}`);
+                  const navParams = new URLSearchParams(searchParams);
+                  navParams.set("q", query);
+                  if (ontologyId) navParams.set("ontology", ontologyId);
+                  if (selectedModel && selectedModel !== "lexical") {
+                    navParams.set("model", selectedModel);
+                  } else {
+                    navParams.delete("model");
+                  }
+                  navigate(`/search?${navParams}`);
                 }
               }}
             >
@@ -468,7 +508,7 @@ export default function SearchBox({
                 id="model-select"
                 value={selectedModel}
                 label="Search Model"
-                onChange={(e) => setSelectedModel(e.target.value)}
+                onChange={(e) => handleModelChange(e.target.value)}
               >
                 <MenuItem key="lexical" value="lexical">Lexical</MenuItem>
                 {availableModels.filter((model) => model.can_embed).map((model) => (

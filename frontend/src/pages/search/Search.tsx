@@ -15,6 +15,8 @@ import { getSearchResults } from "./searchSlice";
 export default function Search() {
   const [searchParams] = useSearchParams();
   const search = searchParams.get("q") || "";
+  const model = searchParams.get("model") || "";
+  const isEmbeddingSearch = model !== "" && model !== "lexical";
 
   const dispatch = useAppDispatch();
   const loadingResults = useAppSelector(
@@ -34,7 +36,7 @@ export default function Search() {
   const [hideFilters, setHideFilters] = useState<boolean>(true);
 
   const ontologyFacets =
-    facets && Object.keys(facets).length > 0 ? facets["ontologyId"] : {};
+    facets && Object.keys(facets).length > 0 && facets["ontologyId"] ? facets["ontologyId"] : null;
   const [ontologyFacetSelected, setOntologyFacetSelected] = useState<string[]>(
     []
   );
@@ -72,7 +74,7 @@ export default function Search() {
     [ontologyFacetExcluded, setOntologyFacetExcluded]
   );
   const typeFacets =
-    facets && Object.keys(facets).length > 0 ? facets["type"] : {};
+    facets && Object.keys(facets).length > 0 && facets["type"] ? facets["type"] : null;
   const [typeFacetSelected, setTypeFacetSelected] = useState<string[]>([]);
   const handleTypeFacet = useCallback(
     (checked, key) => {
@@ -90,15 +92,17 @@ export default function Search() {
     [typeFacetSelected, setTypeFacetSelected]
   );
 
-  const [ontologyFacetFiltered, setOntologyFacetFiltered] = useState<object>(
-    {}
+  const [ontologyFacetFiltered, setOntologyFacetFiltered] = useState<object | null>(
+    null
   );
-  const [ontologyExcludedFacetFiltered, setOntologyExcludedFacetFiltered] = useState<object>(
-    {}
+  const [ontologyExcludedFacetFiltered, setOntologyExcludedFacetFiltered] = useState<object | null>(
+    null
   );
   useEffect(() => {
-    setOntologyFacetFiltered(ontologyFacets);
-    setOntologyExcludedFacetFiltered(ontologyFacets);
+    if (ontologyFacets) {
+      setOntologyFacetFiltered(ontologyFacets);
+      setOntologyExcludedFacetFiltered(ontologyFacets);
+    }
   }, [ontologyFacets]);
 
   const [isShortFormCopied, setIsShortFormCopied] = useState(false);
@@ -131,12 +135,12 @@ export default function Search() {
   }, [
     dispatch,
     search,
+    model,
     page,
     rowsPerPage,
     ontologyFacetSelected,
     ontologyFacetExcluded,
     typeFacetSelected,
-    searchParams,
   ]);
   useEffect(() => {
     if (prevSearch !== search) setPage(0);
@@ -149,7 +153,14 @@ export default function Search() {
         <div className="flex flex-nowrap gap-4 mb-6">
           <SearchBox initialQuery={search} />
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-4 lg:gap-8">
+        {isEmbeddingSearch && (
+          <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg text-blue-800">
+            <i className="icon icon-common icon-info icon-spacer" />
+            Embedding search using model: <code className="font-mono bg-blue-100 px-1 rounded">{model}</code>. Faceting and filtering are not available for embedding search.
+          </div>
+        )}
+        <div className={`grid grid-cols-1 ${isEmbeddingSearch ? '' : 'lg:grid-cols-4'} lg:gap-8`}>
+          {!isEmbeddingSearch && (
           <div
             className={`fixed top-0 left-0 mb-4 z-30 lg:z-0 lg:static lg:col-span-1 bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 text-neutral-black overflow-x-auto h-full lg:h-fit lg:translate-x-0 transition-transform ${
               hideFilters ? "-translate-x-full" : "translate-x-0"
@@ -368,12 +379,14 @@ export default function Search() {
               </div>
             ) : null}
           </div>
-          <div className="lg:col-span-3">
+          )}
+          <div className={isEmbeddingSearch ? '' : 'lg:col-span-3'}>
             <div className="flex flex-col-reverse gap-4 lg:flex-row justify-between mb-4">
               <div className="lg:basis-3/4 lg:self-center text-2xl font-bold text-neutral-dark">
                 Search results for: {search}
               </div>
               <div className="justify-between flex flex-row items-center gap-4">
+                {!isEmbeddingSearch && (
                 <button
                   className="lg:hidden button-secondary"
                   type="button"
@@ -383,6 +396,7 @@ export default function Search() {
                 >
                   Filters
                 </button>
+                )}
                 <div className="flex-none flex group relative text-md">
                   <label className="self-center px-3">Show</label>
                   <select
