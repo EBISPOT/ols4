@@ -94,13 +94,6 @@ pub fn run(input_json_filename: &str) -> Result<LinkerPass1Result, Box<dyn std::
     entity_reader.end_object().unwrap();
 
     eprintln!(
-        "--- Linker Pass 1: Finished scan. Establishing defining ontologies..."
-    );
-
-    // Establish defining ontologies
-    establish_defining_ontologies(&mut result);
-
-    eprintln!(
         "--- Linker Pass 1 complete. Found {} ontologies and {} distinct IRIs",
         n_ontologies,
         result.iri_to_definitions.len()
@@ -356,7 +349,10 @@ fn extract_defined_by_item(item: &Value, defined_by: &mut BTreeSet<String>) {
     }
 }
 
-fn establish_defining_ontologies(result: &mut LinkerPass1Result) {
+/// Establish defining ontologies and cross-ontology import relationships.
+/// This must be called AFTER all ontology files have been parsed and merged,
+/// otherwise cross-ontology relationships will not be detected.
+pub fn establish_defining_ontologies(result: &mut LinkerPass1Result) {
     // First pass: establish defining ontologies based on ontology IRIs
     let ontology_iri_to_ids = result.ontology_iri_to_ontology_ids.clone();
 

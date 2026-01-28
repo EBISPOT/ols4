@@ -1,0 +1,16 @@
+{
+  "ontologies": [
+    {
+      "id": "inter-ontology-a",
+      "preferredPrefix": "inter-ontology-a",
+      "base_uri": ["http://www.ebi.ac.uk/testcases/inter-ontology/a#"],
+      "ontology_purl": "./testcases/imports/inter-ontology-a.owl"
+    },
+    {
+      "id": "inter-ontology-b",
+      "preferredPrefix": "inter-ontology-b",
+      "base_uri": ["http://www.ebi.ac.uk/testcases/inter-ontology/b#"],
+      "ontology_purl": "./testcases/imports/inter-ontology-b.owl"
+    }
+  ]
+}
