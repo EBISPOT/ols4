@@ -170,8 +170,7 @@ After creating the indexes, stop Neo4j as needed.
 
 #### Convert JSON output to Solr JSON
 
-    java \
-    -jar json2solr.jar \
+    ols_json2solr \
     --input <LOCAL_DIR>/output_json/ontologies_linked.json \
     --outDir <LOCAL_DIR>/output_jsonl/
 

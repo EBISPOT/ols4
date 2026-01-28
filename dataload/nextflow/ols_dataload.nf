@@ -193,13 +193,12 @@ process json2solr {
     path("*.jsonl"), optional: true
 
     script:
-    def mem_mb = (task.memory.toMega() * 0.9).intValue()
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    java -Xms${mem_mb}m -Xmx${mem_mb}m -jar /opt/ols/dataload/json2solr/target/json2solr-1.0-SNAPSHOT.jar \
+    ols_json2solr \
         --input ${ontology_json} \
-        --ontologyId ${ontology_id} \
+        --ontology-id ${ontology_id} \
         --outDir . \
         --maxRowsPerFile ${params.max_rows_per_file}
     """

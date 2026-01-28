@@ -35,7 +35,7 @@ $SCRIPT_PATH/../dataload/json2neo/target/release/ols_json2neo \
     --manifest "$LINKER_MANIFEST_PATH" --input "$JSON_PATH_LINKED" --outDir $OUTDIR --embeddingDbsPath $SCRIPT_PATH/../testcases/embeddings
 
 echo json2solr
-java -jar $SCRIPT_PATH/../dataload/json2solr/target/json2solr-1.0-SNAPSHOT.jar \
+$SCRIPT_PATH/../dataload/json2solr/target/release/ols_json2solr \
     --input "$JSON_PATH_LINKED" --outDir $OUTDIR
 
 

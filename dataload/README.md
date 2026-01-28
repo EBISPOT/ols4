@@ -38,9 +38,9 @@ Now you should have a Neo4j database ready to start!
 
 ## Step 4: JSON to JSON *for Solr*
 
-Similar to how the Neo4j CSV was generated, you can also generate JSON files ready for uploading to SOLR using neo2solr.
+Similar to how the Neo4j CSV was generated, you can also generate JSON files ready for uploading to SOLR using json2solr.
 
-    java -jar json2solr/target/json2solr-1.0-SNAPSHOT.jar --input foundry_out_flat.json --outDir output_csv
+    ols_json2solr --input foundry_out_flat.json --outDir output_csv
 
 ## Loading Reports
 

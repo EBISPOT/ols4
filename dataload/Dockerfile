@@ -77,6 +77,11 @@ RUN cd /opt/ols/dataload/linker/link && cargo build --release
 RUN cp /opt/ols/dataload/linker/link/target/release/ols_link /usr/local/bin/
 RUN chmod +x /usr/local/bin/ols_link
 
+# Build the Rust json2solr binary
+RUN cd /opt/ols/dataload/json2solr && cargo build --release
+RUN cp /opt/ols/dataload/json2solr/target/release/ols_json2solr /usr/local/bin/
+RUN chmod +x /usr/local/bin/ols_json2solr
+
 # COPY ./backend /opt/ols/backend
 # RUN cd /opt/ols/backend && mvn -T 1C package
 
