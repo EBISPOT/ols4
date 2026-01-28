@@ -61,7 +61,7 @@ spec:
             - name: http_proxy
               value: http://hx-wwwcache.ebi.ac.uk:3128
             - name: https_proxy
-              value: http://hx-wwwcache.ebi.ac.uk:3kk128
+              value: http://hx-wwwcache.ebi.ac.uk:3128
             - name: no_proxy
               value: localhost,.cluster.local
             - name: SERVER_SERVLET_CONTEXT_PATH
