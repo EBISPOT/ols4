@@ -346,6 +346,108 @@
   {
     "_links": {
       "individuals": {
+        "href": "<base>/api/ontologies/inter-ontology-a/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/inter-ontology-a/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/inter-ontology-a?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/inter-ontology-a/terms"
+      }
+    },
+    "baseUris": [
+      "http://www.ebi.ac.uk/testcases/inter-ontology/a#"
+    ],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [
+        "http://www.ebi.ac.uk/testcases/inter-ontology/a#"
+      ],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/imports/inter-ontology-a.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "inter-ontology-a",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "inter-ontology-a",
+      "oboSlims": false,
+      "preferredPrefix": "inter-ontology-a",
+      "preferredRootTerms": [],
+      "synonymProperties": []
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 2,
+    "ontologyId": "inter-ontology-a",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
+        "href": "<base>/api/ontologies/inter-ontology-b/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/inter-ontology-b/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/inter-ontology-b?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/inter-ontology-b/terms"
+      }
+    },
+    "baseUris": [
+      "http://www.ebi.ac.uk/testcases/inter-ontology/b#"
+    ],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [
+        "http://www.ebi.ac.uk/testcases/inter-ontology/b#"
+      ],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/imports/inter-ontology-b.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "inter-ontology-b",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "inter-ontology-b",
+      "oboSlims": false,
+      "preferredPrefix": "inter-ontology-b",
+      "preferredRootTerms": [],
+      "synonymProperties": []
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 0,
+    "numberOfTerms": 1,
+    "ontologyId": "inter-ontology-b",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
         "href": "<base>/api/ontologies/label/individuals"
       },
       "properties": {

@@ -4,7 +4,7 @@
     "owl",
     "rdfs"
   ],
-  "curie": "isDefinedBy",
+  "curie": "RDFS:isDefinedBy",
   "definedBy": [
     "rdfs"
   ],
@@ -158,7 +158,7 @@
   "ontologyId": "rdfs",
   "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
   "searchableAnnotationValues": false,
-  "shortForm": "isDefinedBy",
+  "shortForm": "RDFS_isDefinedBy",
   "type": [
     "entity",
     "property"

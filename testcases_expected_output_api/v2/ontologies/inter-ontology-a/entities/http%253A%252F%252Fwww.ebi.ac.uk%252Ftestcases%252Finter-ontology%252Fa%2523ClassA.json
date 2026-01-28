@@ -1,0 +1,100 @@
+{
+  "appearsIn": [
+    "inter-ontology-a"
+  ],
+  "curie": "inter-ontology-a:ClassA",
+  "definedBy": [
+    "inter-ontology-a"
+  ],
+  "directAncestor": [
+    "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB"
+  ],
+  "directParent": [
+    "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB"
+  ],
+  "hierarchicalParent": [
+    "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "Class A",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB",
+  "imported": false,
+  "iri": "http://www.ebi.ac.uk/testcases/inter-ontology/a#ClassA",
+  "isDefiningOntology": true,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "Class A"
+  ],
+  "linkedEntities": {
+    "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB": {
+      "curie": "inter-ontology-b:ClassB",
+      "definedBy": [
+        "inter-ontology-b"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "Class B"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "inter-ontology-a",
+  "ontologyIri": "http://www.ebi.ac.uk/testcases/inter-ontology/a",
+  "ontologyPreferredPrefix": "inter-ontology-a",
+  "searchableAnnotationValues": false,
+  "shortForm": "inter-ontology-a_ClassA",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

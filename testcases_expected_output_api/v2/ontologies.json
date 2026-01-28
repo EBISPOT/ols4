@@ -30,6 +30,11 @@
     "http://www.w3.org/2002/07/owl#imports": "http://purl.obolibrary.org/obo/iao.owl",
     "http://www.w3.org/2002/07/owl#versionIRI": "http://purl.obolibrary.org/obo/duo/releases/2021-02-23/duo.owl",
     "imported": false,
+    "importsFrom": [
+      "oio",
+      "rdfs",
+      "skos"
+    ],
     "iri": "http://purl.obolibrary.org/obo/duo.owl",
     "isObsolete": false,
     "jobs": [
@@ -177,11 +182,83 @@
   },
   {
     "baseUri": [
+      "http://www.ebi.ac.uk/testcases/inter-ontology/a#"
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "imported": false,
+    "importsFrom": [
+      "inter-ontology-b"
+    ],
+    "iri": "http://www.ebi.ac.uk/testcases/inter-ontology/a",
+    "isObsolete": false,
+    "language": [
+      "en"
+    ],
+    "linkedEntities": {},
+    "loaded": "<loaded>",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "numberOfClasses": "2",
+    "numberOfEntities": "2",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "0",
+    "ontologyId": "inter-ontology-a",
+    "ontologyPurl": "./testcases/imports/inter-ontology-a.owl",
+    "preferredPrefix": "inter-ontology-a",
+    "searchableAnnotationValues": [
+      false
+    ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
+    "type": [
+      "ontology"
+    ]
+  },
+  {
+    "baseUri": [
+      "http://www.ebi.ac.uk/testcases/inter-ontology/b#"
+    ],
+    "exportsTo": [
+      "inter-ontology-a"
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/inter-ontology/b",
+    "isObsolete": false,
+    "language": [
+      "en"
+    ],
+    "linkedEntities": {},
+    "loaded": "<loaded>",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "numberOfClasses": "1",
+    "numberOfEntities": "1",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "0",
+    "ontologyId": "inter-ontology-b",
+    "ontologyPurl": "./testcases/imports/inter-ontology-b.owl",
+    "preferredPrefix": "inter-ontology-b",
+    "searchableAnnotationValues": [
+      false
+    ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
+    "type": [
+      "ontology"
+    ]
+  },
+  {
+    "baseUri": [
       "http://www.geneontology.org/formats/oboInOwl#"
     ],
     "definition": [
       "OBO Format metamodel. This meta-ontology is self-describing. OBO metamodel properties are described using OBO metamodel properties",
       "\n          This is an OWL translation of an ontology whose native representational form is .obo. The translation was performed using the oboInOwl xslt library. For details, see http://www.berkeleybop.org/obo-conv.cgi\n        "
+    ],
+    "exportsTo": [
+      "duo",
+      "efo-hierarchical-properties",
+      "gitissue502",
+      "isobsolete"
     ],
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
     "http://www.w3.org/2000/01/rdf-schema#comment": [
@@ -275,6 +352,9 @@
     "http://www.w3.org/2002/07/owl#versionInfo": "$Date: 2009/11/15 10:54:12 $",
     "http://www.w3.org/2003/g/data-view#namespaceTransformation": "http://dev.w3.org/cvsweb/2009/owl-grddl/owx2rdf.xsl",
     "imported": false,
+    "importsFrom": [
+      "rdfs"
+    ],
     "iri": "http://www.w3.org/2002/07/owl",
     "isObsolete": false,
     "label": [
@@ -493,6 +573,9 @@
     ],
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
     "imported": false,
+    "importsFrom": [
+      "oio"
+    ],
     "iri": "http://www.ebi.ac.uk/efo/efo.owl",
     "isObsolete": false,
     "language": [
@@ -537,34 +620,6 @@
       "ontology"
     ],
     "uri": "http://www.ebi.ac.uk/efo"
-  },
-  {
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "http://www.w3.org/2002/07/owl#versionIRI": "http://example.com/owl2primer/v.0.0.1",
-    "imported": false,
-    "iri": "http://example.com/owl2primer",
-    "isObsolete": false,
-    "language": [
-      "en"
-    ],
-    "linkedEntities": {},
-    "loaded": "<loaded>",
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "numberOfClasses": "1",
-    "numberOfEntities": "2",
-    "numberOfIndividuals": "1",
-    "numberOfProperties": "0",
-    "ontologyId": "owl2primer-class-assertion",
-    "ontologyPurl": "./testcases/owl2-primer/class-assertion.owl",
-    "preferredPrefix": "owl2primer-class-assertion",
-    "searchableAnnotationValues": [
-      false
-    ],
-    "sourceFileTimestamp": "<sourceFileTimestamp>",
-    "type": [
-      "ontology"
-    ]
   },
   {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
@@ -755,34 +810,6 @@
     "ontologyId": "ontology-annotations-version-efo",
     "ontologyPurl": "./testcases/ontology-annotations/version/efo.owl",
     "preferredPrefix": "ontology-annotations-version-efo",
-    "searchableAnnotationValues": [
-      false
-    ],
-    "sourceFileTimestamp": "<sourceFileTimestamp>",
-    "type": [
-      "ontology"
-    ]
-  },
-  {
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/class.owl",
-    "imported": false,
-    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/class.owl",
-    "isObsolete": false,
-    "language": [
-      "en"
-    ],
-    "linkedEntities": {},
-    "loaded": "<loaded>",
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "numberOfClasses": "1",
-    "numberOfEntities": "1",
-    "numberOfIndividuals": "0",
-    "numberOfProperties": "0",
-    "ontologyId": "owl2primer-class",
-    "ontologyPurl": "./testcases/owl2-primer/class.owl",
-    "preferredPrefix": "owl2primer-class",
     "searchableAnnotationValues": [
       false
     ],

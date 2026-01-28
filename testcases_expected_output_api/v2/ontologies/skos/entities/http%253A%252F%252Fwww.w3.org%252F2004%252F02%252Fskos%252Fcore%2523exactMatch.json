@@ -4,7 +4,7 @@
     "gitissue502",
     "skos"
   ],
-  "curie": "exactMatch",
+  "curie": "SKOS:exactMatch",
   "definedBy": [
     "skos"
   ],
@@ -187,7 +187,7 @@
     "skos:exactMatch is used to link two concepts, indicating a high degree of confidence that the concepts can be used interchangeably across a wide range of information retrieval applications. skos:exactMatch is a transitive property, and is a sub-property of skos:closeMatch.",
     false
   ],
-  "shortForm": "exactMatch",
+  "shortForm": "SKOS_exactMatch",
   "type": [
     "entity",
     "objectProperty",

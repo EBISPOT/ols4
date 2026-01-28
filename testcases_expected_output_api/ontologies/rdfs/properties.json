@@ -25,10 +25,10 @@
     "is_root": false,
     "label": "isDefinedBy",
     "lang": "en",
-    "obo_id": "isDefinedBy",
+    "obo_id": "RDFS:isDefinedBy",
     "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
     "ontology_name": "rdfs",
-    "short_form": "isDefinedBy",
+    "short_form": "RDFS_isDefinedBy",
     "synonyms": []
   },
   {
@@ -54,10 +54,10 @@
     "is_root": true,
     "label": "seeAlso",
     "lang": "en",
-    "obo_id": "seeAlso",
+    "obo_id": "RDFS:seeAlso",
     "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
     "ontology_name": "rdfs",
-    "short_form": "seeAlso",
+    "short_form": "RDFS_seeAlso",
     "synonyms": []
   },
   {
@@ -77,10 +77,10 @@
     "is_root": true,
     "label": "comment",
     "lang": "en",
-    "obo_id": "comment",
+    "obo_id": "RDFS:comment",
     "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
     "ontology_name": "rdfs",
-    "short_form": "comment",
+    "short_form": "RDFS_comment",
     "synonyms": []
   },
   {
@@ -100,10 +100,10 @@
     "is_root": true,
     "label": "domain",
     "lang": "en",
-    "obo_id": "domain",
+    "obo_id": "RDFS:domain",
     "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
     "ontology_name": "rdfs",
-    "short_form": "domain",
+    "short_form": "RDFS_domain",
     "synonyms": []
   },
   {
@@ -123,10 +123,10 @@
     "is_root": true,
     "label": "label",
     "lang": "en",
-    "obo_id": "label",
+    "obo_id": "RDFS:label",
     "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
     "ontology_name": "rdfs",
-    "short_form": "label",
+    "short_form": "RDFS_label",
     "synonyms": []
   },
   {
@@ -146,10 +146,10 @@
     "is_root": true,
     "label": "member",
     "lang": "en",
-    "obo_id": "member",
+    "obo_id": "RDFS:member",
     "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
     "ontology_name": "rdfs",
-    "short_form": "member",
+    "short_form": "RDFS_member",
     "synonyms": []
   },
   {
@@ -169,10 +169,10 @@
     "is_root": true,
     "label": "range",
     "lang": "en",
-    "obo_id": "range",
+    "obo_id": "RDFS:range",
     "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
     "ontology_name": "rdfs",
-    "short_form": "range",
+    "short_form": "RDFS_range",
     "synonyms": []
   },
   {
@@ -192,10 +192,10 @@
     "is_root": true,
     "label": "subClassOf",
     "lang": "en",
-    "obo_id": "subClassOf",
+    "obo_id": "RDFS:subClassOf",
     "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
     "ontology_name": "rdfs",
-    "short_form": "subClassOf",
+    "short_form": "RDFS_subClassOf",
     "synonyms": []
   },
   {
@@ -215,10 +215,10 @@
     "is_root": true,
     "label": "subPropertyOf",
     "lang": "en",
-    "obo_id": "subPropertyOf",
+    "obo_id": "RDFS:subPropertyOf",
     "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
     "ontology_name": "rdfs",
-    "short_form": "subPropertyOf",
+    "short_form": "RDFS_subPropertyOf",
     "synonyms": []
   }
 ]

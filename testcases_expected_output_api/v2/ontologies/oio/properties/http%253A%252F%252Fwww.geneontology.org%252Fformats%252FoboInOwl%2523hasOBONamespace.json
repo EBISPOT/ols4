@@ -3,7 +3,7 @@
     "efo-hierarchical-properties",
     "oio"
   ],
-  "curie": "hasOBONamespace",
+  "curie": "OIO:hasOBONamespace",
   "definedBy": [
     "oio"
   ],
@@ -156,7 +156,7 @@
   "ontologyId": "oio",
   "ontologyIri": "http://www.geneontology.org/formats/oboInOwl",
   "searchableAnnotationValues": false,
-  "shortForm": "hasOBONamespace",
+  "shortForm": "OIO_hasOBONamespace",
   "type": [
     "annotationProperty",
     "entity",

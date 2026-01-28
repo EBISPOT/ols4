@@ -972,7 +972,7 @@
       "gitissue502",
       "oio"
     ],
-    "curie": "hasBroadSynonym",
+    "curie": "OIO:hasBroadSynonym",
     "definedBy": [
       "oio"
     ],
@@ -996,7 +996,7 @@
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
     "searchableAnnotationValues": false,
-    "shortForm": "hasBroadSynonym",
+    "shortForm": "OIO_hasBroadSynonym",
     "type": [
       "annotationProperty",
       "entity",
@@ -1010,7 +1010,7 @@
       "gitissue502",
       "oio"
     ],
-    "curie": "hasDbXref",
+    "curie": "OIO:hasDbXref",
     "definedBy": [
       "oio"
     ],
@@ -1034,7 +1034,7 @@
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
     "searchableAnnotationValues": false,
-    "shortForm": "hasDbXref",
+    "shortForm": "OIO_hasDbXref",
     "type": [
       "annotationProperty",
       "entity",
@@ -1048,7 +1048,7 @@
       "gitissue502",
       "oio"
     ],
-    "curie": "hasExactSynonym",
+    "curie": "OIO:hasExactSynonym",
     "definedBy": [
       "oio"
     ],
@@ -1072,7 +1072,7 @@
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
     "searchableAnnotationValues": false,
-    "shortForm": "hasExactSynonym",
+    "shortForm": "OIO_hasExactSynonym",
     "type": [
       "annotationProperty",
       "entity",
@@ -1086,7 +1086,7 @@
       "gitissue502",
       "oio"
     ],
-    "curie": "hasRelatedSynonym",
+    "curie": "OIO:hasRelatedSynonym",
     "definedBy": [
       "oio"
     ],
@@ -1110,7 +1110,7 @@
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
     "searchableAnnotationValues": false,
-    "shortForm": "hasRelatedSynonym",
+    "shortForm": "OIO_hasRelatedSynonym",
     "type": [
       "annotationProperty",
       "entity",
@@ -1699,7 +1699,7 @@
       "gitissue502",
       "oio"
     ],
-    "curie": "hasSynonymType",
+    "curie": "OIO:hasSynonymType",
     "definedBy": [
       "oio"
     ],
@@ -1723,7 +1723,7 @@
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
     "searchableAnnotationValues": false,
-    "shortForm": "hasSynonymType",
+    "shortForm": "OIO_hasSynonymType",
     "type": [
       "annotationProperty",
       "entity",
@@ -1736,7 +1736,7 @@
       "gitissue502",
       "oio"
     ],
-    "curie": "inSubset",
+    "curie": "OIO:inSubset",
     "definedBy": [
       "oio"
     ],
@@ -1760,7 +1760,7 @@
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
     "searchableAnnotationValues": false,
-    "shortForm": "inSubset",
+    "shortForm": "OIO_inSubset",
     "type": [
       "annotationProperty",
       "entity",
@@ -1772,7 +1772,7 @@
       "efo-hierarchical-properties",
       "oio"
     ],
-    "curie": "hasAlternativeId",
+    "curie": "OIO:hasAlternativeId",
     "definedBy": [
       "oio"
     ],
@@ -1796,7 +1796,7 @@
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
     "searchableAnnotationValues": false,
-    "shortForm": "hasAlternativeId",
+    "shortForm": "OIO_hasAlternativeId",
     "type": [
       "annotationProperty",
       "entity",
@@ -1808,7 +1808,7 @@
       "efo-hierarchical-properties",
       "oio"
     ],
-    "curie": "hasOBONamespace",
+    "curie": "OIO:hasOBONamespace",
     "definedBy": [
       "oio"
     ],
@@ -1832,7 +1832,7 @@
     "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
     "ontologyPreferredPrefix": "efo-hierarchical-properties",
     "searchableAnnotationValues": false,
-    "shortForm": "hasOBONamespace",
+    "shortForm": "OIO_hasOBONamespace",
     "type": [
       "annotationProperty",
       "entity",

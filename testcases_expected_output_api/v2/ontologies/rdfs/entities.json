@@ -6,7 +6,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "label",
+    "curie": "RDFS:label",
     "definedBy": [
       "rdfs"
     ],
@@ -137,7 +137,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "label",
+    "shortForm": "RDFS_label",
     "type": [
       "entity",
       "property"
@@ -149,7 +149,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "comment",
+    "curie": "RDFS:comment",
     "definedBy": [
       "rdfs"
     ],
@@ -280,7 +280,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "comment",
+    "shortForm": "RDFS_comment",
     "type": [
       "entity",
       "property"
@@ -292,7 +292,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "isDefinedBy",
+    "curie": "RDFS:isDefinedBy",
     "definedBy": [
       "rdfs"
     ],
@@ -446,7 +446,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "isDefinedBy",
+    "shortForm": "RDFS_isDefinedBy",
     "type": [
       "entity",
       "property"
@@ -458,7 +458,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "seeAlso",
+    "curie": "RDFS:seeAlso",
     "definedBy": [
       "rdfs"
     ],
@@ -589,7 +589,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "seeAlso",
+    "shortForm": "RDFS_seeAlso",
     "type": [
       "entity",
       "property"
@@ -600,7 +600,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "Class",
+    "curie": "RDFS:Class",
     "definedBy": [
       "rdfs"
     ],
@@ -727,7 +727,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "Class",
+    "shortForm": "RDFS_Class",
     "type": [
       "class",
       "entity"
@@ -738,7 +738,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "Container",
+    "curie": "RDFS:Container",
     "definedBy": [
       "rdfs"
     ],
@@ -881,7 +881,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "Container",
+    "shortForm": "RDFS_Container",
     "type": [
       "class",
       "entity"
@@ -892,7 +892,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "ContainerMembershipProperty",
+    "curie": "RDFS:ContainerMembershipProperty",
     "definedBy": [
       "rdfs"
     ],
@@ -1007,7 +1007,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "ContainerMembershipProperty",
+    "shortForm": "RDFS_ContainerMembershipProperty",
     "type": [
       "class",
       "entity"
@@ -1018,7 +1018,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "Datatype",
+    "curie": "RDFS:Datatype",
     "definedBy": [
       "rdfs"
     ],
@@ -1163,7 +1163,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "Datatype",
+    "shortForm": "RDFS_Datatype",
     "type": [
       "class",
       "entity"
@@ -1174,7 +1174,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "Literal",
+    "curie": "RDFS:Literal",
     "definedBy": [
       "rdfs"
     ],
@@ -1317,7 +1317,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "Literal",
+    "shortForm": "RDFS_Literal",
     "type": [
       "class",
       "entity"
@@ -1328,7 +1328,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "Resource",
+    "curie": "RDFS:Resource",
     "definedBy": [
       "rdfs"
     ],
@@ -1425,7 +1425,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "Resource",
+    "shortForm": "RDFS_Resource",
     "type": [
       "class",
       "entity"
@@ -1436,7 +1436,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "domain",
+    "curie": "RDFS:domain",
     "definedBy": [
       "rdfs"
     ],
@@ -1551,7 +1551,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "domain",
+    "shortForm": "RDFS_domain",
     "type": [
       "entity",
       "property"
@@ -1562,7 +1562,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "member",
+    "curie": "RDFS:member",
     "definedBy": [
       "rdfs"
     ],
@@ -1693,7 +1693,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "member",
+    "shortForm": "RDFS_member",
     "type": [
       "entity",
       "property"
@@ -1704,7 +1704,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "range",
+    "curie": "RDFS:range",
     "definedBy": [
       "rdfs"
     ],
@@ -1819,7 +1819,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "range",
+    "shortForm": "RDFS_range",
     "type": [
       "entity",
       "property"
@@ -1830,7 +1830,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "subClassOf",
+    "curie": "RDFS:subClassOf",
     "definedBy": [
       "rdfs"
     ],
@@ -1961,7 +1961,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "subClassOf",
+    "shortForm": "RDFS_subClassOf",
     "type": [
       "entity",
       "property"
@@ -1972,7 +1972,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "subPropertyOf",
+    "curie": "RDFS:subPropertyOf",
     "definedBy": [
       "rdfs"
     ],
@@ -2087,7 +2087,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "subPropertyOf",
+    "shortForm": "RDFS_subPropertyOf",
     "type": [
       "entity",
       "property"

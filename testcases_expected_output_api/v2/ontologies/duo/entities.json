@@ -92766,7 +92766,7 @@
       "gitissue502",
       "oio"
     ],
-    "curie": "hasBroadSynonym",
+    "curie": "OIO:hasBroadSynonym",
     "definedBy": [
       "oio"
     ],
@@ -92915,7 +92915,7 @@
     "searchableAnnotationValues": [
       true
     ],
-    "shortForm": "hasBroadSynonym",
+    "shortForm": "OIO_hasBroadSynonym",
     "type": [
       "annotationProperty",
       "entity",
@@ -92929,7 +92929,7 @@
       "gitissue502",
       "oio"
     ],
-    "curie": "hasDbXref",
+    "curie": "OIO:hasDbXref",
     "definedBy": [
       "oio"
     ],
@@ -92953,7 +92953,7 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": false,
-    "shortForm": "hasDbXref",
+    "shortForm": "OIO_hasDbXref",
     "type": [
       "annotationProperty",
       "entity",
@@ -92967,7 +92967,7 @@
       "gitissue502",
       "oio"
     ],
-    "curie": "hasExactSynonym",
+    "curie": "OIO:hasExactSynonym",
     "definedBy": [
       "oio"
     ],
@@ -93116,7 +93116,7 @@
     "searchableAnnotationValues": [
       false
     ],
-    "shortForm": "hasExactSynonym",
+    "shortForm": "OIO_hasExactSynonym",
     "type": [
       "annotationProperty",
       "entity",
@@ -93130,7 +93130,7 @@
       "gitissue502",
       "oio"
     ],
-    "curie": "hasRelatedSynonym",
+    "curie": "OIO:hasRelatedSynonym",
     "definedBy": [
       "oio"
     ],
@@ -93279,7 +93279,7 @@
     "searchableAnnotationValues": [
       true
     ],
-    "shortForm": "hasRelatedSynonym",
+    "shortForm": "OIO_hasRelatedSynonym",
     "type": [
       "annotationProperty",
       "entity",
@@ -102321,7 +102321,7 @@
       "gitissue502",
       "oio"
     ],
-    "curie": "hasNarrowSynonym",
+    "curie": "OIO:hasNarrowSynonym",
     "definedBy": [
       "oio"
     ],
@@ -102470,7 +102470,7 @@
     "searchableAnnotationValues": [
       true
     ],
-    "shortForm": "hasNarrowSynonym",
+    "shortForm": "OIO_hasNarrowSynonym",
     "type": [
       "annotationProperty",
       "entity",
@@ -102484,7 +102484,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "label",
+    "curie": "RDFS:label",
     "definedBy": [
       "rdfs"
     ],
@@ -102508,7 +102508,7 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": true,
-    "shortForm": "label",
+    "shortForm": "RDFS_label",
     "type": [
       "annotationProperty",
       "entity",
@@ -102521,7 +102521,7 @@
       "gitissue502",
       "skos"
     ],
-    "curie": "exactMatch",
+    "curie": "SKOS:exactMatch",
     "definedBy": [
       "skos"
     ],
@@ -102545,7 +102545,7 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": false,
-    "shortForm": "exactMatch",
+    "shortForm": "SKOS_exactMatch",
     "type": [
       "annotationProperty",
       "entity",
@@ -102558,7 +102558,7 @@
       "isobsolete",
       "oio"
     ],
-    "curie": "ObsoleteClass",
+    "curie": "OIO:ObsoleteClass",
     "definedBy": [
       "oio"
     ],
@@ -102603,7 +102603,7 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": false,
-    "shortForm": "ObsoleteClass",
+    "shortForm": "OIO_ObsoleteClass",
     "type": [
       "class",
       "entity"
@@ -102614,7 +102614,7 @@
       "duo",
       "oio"
     ],
-    "curie": "ObsoleteProperty",
+    "curie": "OIO:ObsoleteProperty",
     "definedBy": [
       "oio"
     ],
@@ -102638,7 +102638,7 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": true,
-    "shortForm": "ObsoleteProperty",
+    "shortForm": "OIO_ObsoleteProperty",
     "type": [
       "entity",
       "objectProperty",
@@ -102651,7 +102651,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "comment",
+    "curie": "RDFS:comment",
     "definedBy": [
       "rdfs"
     ],
@@ -102675,7 +102675,7 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": true,
-    "shortForm": "comment",
+    "shortForm": "RDFS_comment",
     "type": [
       "annotationProperty",
       "entity",
@@ -102688,7 +102688,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "isDefinedBy",
+    "curie": "RDFS:isDefinedBy",
     "definedBy": [
       "rdfs"
     ],
@@ -102712,7 +102712,7 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": true,
-    "shortForm": "isDefinedBy",
+    "shortForm": "RDFS_isDefinedBy",
     "type": [
       "annotationProperty",
       "entity",
@@ -102725,7 +102725,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "seeAlso",
+    "curie": "RDFS:seeAlso",
     "definedBy": [
       "rdfs"
     ],
@@ -102749,7 +102749,7 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": true,
-    "shortForm": "seeAlso",
+    "shortForm": "RDFS_seeAlso",
     "type": [
       "annotationProperty",
       "entity",

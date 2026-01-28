@@ -4,7 +4,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "Class",
+    "curie": "RDFS:Class",
     "definedBy": [
       "rdfs"
     ],
@@ -131,7 +131,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "Class",
+    "shortForm": "RDFS_Class",
     "type": [
       "class",
       "entity"
@@ -142,7 +142,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "Container",
+    "curie": "RDFS:Container",
     "definedBy": [
       "rdfs"
     ],
@@ -285,7 +285,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "Container",
+    "shortForm": "RDFS_Container",
     "type": [
       "class",
       "entity"
@@ -296,7 +296,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "ContainerMembershipProperty",
+    "curie": "RDFS:ContainerMembershipProperty",
     "definedBy": [
       "rdfs"
     ],
@@ -411,7 +411,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "ContainerMembershipProperty",
+    "shortForm": "RDFS_ContainerMembershipProperty",
     "type": [
       "class",
       "entity"
@@ -422,7 +422,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "Datatype",
+    "curie": "RDFS:Datatype",
     "definedBy": [
       "rdfs"
     ],
@@ -567,7 +567,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "Datatype",
+    "shortForm": "RDFS_Datatype",
     "type": [
       "class",
       "entity"
@@ -578,7 +578,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "Literal",
+    "curie": "RDFS:Literal",
     "definedBy": [
       "rdfs"
     ],
@@ -721,7 +721,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "Literal",
+    "shortForm": "RDFS_Literal",
     "type": [
       "class",
       "entity"
@@ -732,7 +732,7 @@
       "owl",
       "rdfs"
     ],
-    "curie": "Resource",
+    "curie": "RDFS:Resource",
     "definedBy": [
       "rdfs"
     ],
@@ -829,7 +829,7 @@
     "ontologyId": "rdfs",
     "ontologyIri": "http://www.w3.org/2000/01/rdf-schema#",
     "searchableAnnotationValues": false,
-    "shortForm": "Resource",
+    "shortForm": "RDFS_Resource",
     "type": [
       "class",
       "entity"

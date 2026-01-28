@@ -6,7 +6,7 @@
       "gitissue502",
       "oio"
     ],
-    "curie": "hasBroadSynonym",
+    "curie": "OIO:hasBroadSynonym",
     "definedBy": [
       "oio"
     ],
@@ -199,7 +199,7 @@
     "ontologyId": "oio",
     "ontologyIri": "http://www.geneontology.org/formats/oboInOwl",
     "searchableAnnotationValues": false,
-    "shortForm": "hasBroadSynonym",
+    "shortForm": "OIO_hasBroadSynonym",
     "type": [
       "annotationProperty",
       "entity",
@@ -213,7 +213,7 @@
       "gitissue502",
       "oio"
     ],
-    "curie": "hasDbXref",
+    "curie": "OIO:hasDbXref",
     "definedBy": [
       "oio"
     ],
@@ -300,7 +300,7 @@
     "ontologyId": "oio",
     "ontologyIri": "http://www.geneontology.org/formats/oboInOwl",
     "searchableAnnotationValues": false,
-    "shortForm": "hasDbXref",
+    "shortForm": "OIO_hasDbXref",
     "type": [
       "annotationProperty",
       "entity",
@@ -314,7 +314,7 @@
       "gitissue502",
       "oio"
     ],
-    "curie": "hasExactSynonym",
+    "curie": "OIO:hasExactSynonym",
     "definedBy": [
       "oio"
     ],
@@ -507,7 +507,7 @@
     "ontologyId": "oio",
     "ontologyIri": "http://www.geneontology.org/formats/oboInOwl",
     "searchableAnnotationValues": false,
-    "shortForm": "hasExactSynonym",
+    "shortForm": "OIO_hasExactSynonym",
     "type": [
       "annotationProperty",
       "entity",
@@ -521,7 +521,7 @@
       "gitissue502",
       "oio"
     ],
-    "curie": "hasRelatedSynonym",
+    "curie": "OIO:hasRelatedSynonym",
     "definedBy": [
       "oio"
     ],
@@ -714,7 +714,7 @@
     "ontologyId": "oio",
     "ontologyIri": "http://www.geneontology.org/formats/oboInOwl",
     "searchableAnnotationValues": false,
-    "shortForm": "hasRelatedSynonym",
+    "shortForm": "OIO_hasRelatedSynonym",
     "type": [
       "annotationProperty",
       "entity",
@@ -727,7 +727,7 @@
       "gitissue502",
       "oio"
     ],
-    "curie": "hasNarrowSynonym",
+    "curie": "OIO:hasNarrowSynonym",
     "definedBy": [
       "oio"
     ],
@@ -920,7 +920,7 @@
     "ontologyId": "oio",
     "ontologyIri": "http://www.geneontology.org/formats/oboInOwl",
     "searchableAnnotationValues": false,
-    "shortForm": "hasNarrowSynonym",
+    "shortForm": "OIO_hasNarrowSynonym",
     "type": [
       "annotationProperty",
       "entity",
@@ -932,7 +932,7 @@
       "duo",
       "oio"
     ],
-    "curie": "ObsoleteProperty",
+    "curie": "OIO:ObsoleteProperty",
     "definedBy": [
       "oio"
     ],
@@ -1095,7 +1095,7 @@
     "ontologyId": "oio",
     "ontologyIri": "http://www.geneontology.org/formats/oboInOwl",
     "searchableAnnotationValues": false,
-    "shortForm": "ObsoleteProperty",
+    "shortForm": "OIO_ObsoleteProperty",
     "type": [
       "entity",
       "objectProperty",
@@ -1108,7 +1108,7 @@
       "gitissue502",
       "oio"
     ],
-    "curie": "hasSynonymType",
+    "curie": "OIO:hasSynonymType",
     "definedBy": [
       "oio"
     ],
@@ -1207,7 +1207,7 @@
     "ontologyId": "oio",
     "ontologyIri": "http://www.geneontology.org/formats/oboInOwl",
     "searchableAnnotationValues": false,
-    "shortForm": "hasSynonymType",
+    "shortForm": "OIO_hasSynonymType",
     "type": [
       "annotationProperty",
       "entity",
@@ -1220,7 +1220,7 @@
       "gitissue502",
       "oio"
     ],
-    "curie": "inSubset",
+    "curie": "OIO:inSubset",
     "definedBy": [
       "oio"
     ],
@@ -1373,7 +1373,7 @@
     "ontologyId": "oio",
     "ontologyIri": "http://www.geneontology.org/formats/oboInOwl",
     "searchableAnnotationValues": false,
-    "shortForm": "inSubset",
+    "shortForm": "OIO_inSubset",
     "type": [
       "annotationProperty",
       "entity",
@@ -1385,7 +1385,7 @@
       "efo-hierarchical-properties",
       "oio"
     ],
-    "curie": "hasAlternativeId",
+    "curie": "OIO:hasAlternativeId",
     "definedBy": [
       "oio"
     ],
@@ -1538,7 +1538,7 @@
     "ontologyId": "oio",
     "ontologyIri": "http://www.geneontology.org/formats/oboInOwl",
     "searchableAnnotationValues": false,
-    "shortForm": "hasAlternativeId",
+    "shortForm": "OIO_hasAlternativeId",
     "type": [
       "annotationProperty",
       "entity",
@@ -1550,7 +1550,7 @@
       "efo-hierarchical-properties",
       "oio"
     ],
-    "curie": "hasOBONamespace",
+    "curie": "OIO:hasOBONamespace",
     "definedBy": [
       "oio"
     ],
@@ -1703,7 +1703,7 @@
     "ontologyId": "oio",
     "ontologyIri": "http://www.geneontology.org/formats/oboInOwl",
     "searchableAnnotationValues": false,
-    "shortForm": "hasOBONamespace",
+    "shortForm": "OIO_hasOBONamespace",
     "type": [
       "annotationProperty",
       "entity",
