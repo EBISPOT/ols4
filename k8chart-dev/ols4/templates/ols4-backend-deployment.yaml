@@ -68,6 +68,6 @@ spec:
               value: /ols4
             - name: SPRING_AI_MCP_SERVER_BASE_URL
               value: /ols4
-            - name: JAVA_OPTIONS
-              value: -Xmx6G
+            - name: JDK_JAVA_OPTIONS
+              value: "-Xmx6G -Dhttp.proxyHost=hx-wwwcache.ebi.ac.uk -Dhttp.proxyPort=3128"
               

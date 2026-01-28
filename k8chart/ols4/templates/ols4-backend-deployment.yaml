@@ -50,7 +50,7 @@ spec:
             - name: SPRING_AI_MCP_SERVER_BASE_URL
               value: /ols4
             - name: JDK_JAVA_OPTIONS
-              value: "-XX:InitialRAMPercentage=60.0 -XX:MinRAMPercentage=60.0 -XX:MaxRAMPercentage=80.0"
+              value: "-XX:InitialRAMPercentage=60.0 -XX:MinRAMPercentage=60.0 -XX:MaxRAMPercentage=80.0 -Dhttp.proxyHost=hx-wwwcache.ebi.ac.uk -Dhttp.proxyPort=3128"
       volumes:
         - name: embeddings
           persistentVolumeClaim:
