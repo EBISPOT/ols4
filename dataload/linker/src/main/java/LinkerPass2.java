@@ -152,6 +152,22 @@ public class LinkerPass2 {
             Set<String> stringsInEntity = new HashSet<String>();
             String entityIri = null;
 
+            EntityDefinitionSet defOfThisEntity = pass1Result.iriToDefinitions.get(entityIri);
+
+            String curie = null;
+            if(defOfThisEntity != null && defOfThisEntity.definingDefinitions.size() > 0) {
+                // always use the defining ontology's curie, as the defining
+                // ontology knows the base URI and we might not
+                //
+                var curieFromDefinition = defOfThisEntity.definingDefinitions.iterator().next().curie.getAsString();
+                if(curieFromDefinition == null) {
+                    throw new RuntimeException("Term " + entityIri + " is defined by ontology " +
+                            defOfThisEntity.definingDefinitions.iterator().next().ontologyId +
+                            " but that definition does not have a CURIE");
+                }
+                curie = curieFromDefinition;
+            }
+
             while(jsonReader.peek() != JsonToken.END_OBJECT) {
 
                 String name = jsonReader.nextName();
@@ -161,17 +177,35 @@ public class LinkerPass2 {
                 if(name.equals("iri")) {
                     entityIri = jsonReader.nextString();
                     jsonWriter.value(entityIri);
-                } else if (name.equalsIgnoreCase("curie")) {
-                    processCurieObject(jsonReader, jsonWriter, pass1Result, entityIri);
-                } else if (name.equalsIgnoreCase("shortForm")) {
-                    processShortFormObject(jsonReader, jsonWriter, pass1Result, entityIri);
-                } else {
-                    CopyJsonGatheringStrings.copyJsonGatheringStrings(jsonReader, jsonWriter, stringsInEntity);
+                    continue;
                 }
+
+                if(name == "curie") {
+                    if(curie != null) {
+                        // use the defining ontology curie
+                        jsonReader.skipValue();
+                        jsonWriter.value(curie);
+                    } else {
+                        // fallthrough to using the curie from rdf2json
+                        curie = jsonReader.nextString();
+                        if(curie == null) {
+                            throw new RuntimeException("(1) Term " + entityIri + " in ontology " + ontologyId + " does not have a CURIE");
+                        }
+                        jsonWriter.value(curie);
+                    }
+                    continue;
+                }
+
+                CopyJsonGatheringStrings.copyJsonGatheringStrings(jsonReader, jsonWriter, stringsInEntity);
             }
 
+            if(curie == null) {
+                throw new RuntimeException("(2) Term " + entityIri + " in ontology " + ontologyId + " does not have a CURIE");
+            }
 
-            EntityDefinitionSet defOfThisEntity = pass1Result.iriToDefinitions.get(entityIri);
+            jsonWriter.name("shortForm");
+            jsonWriter.value(curie.replaceFirst(":", "_"));
+
             if(defOfThisEntity != null) {
 
                 jsonWriter.name(IS_DEFINING_ONTOLOGY.getText());
@@ -493,89 +527,5 @@ public class LinkerPass2 {
     private static class CurieMapResult {
         public String url;
         public String source;
-    }
-
-    private static void processShortFormObject(JsonReader jsonReader, JsonWriter jsonWriter, LinkerPass1.LinkerPass1Result pass1Result, String entityIri) throws IOException {
-        jsonReader.beginObject();
-        JsonObject shortFormObject = new JsonObject();
-
-        while (jsonReader.peek() != JsonToken.END_OBJECT) {
-            String shortFormFieldName = jsonReader.nextName();
-            if (shortFormFieldName.equals("type")) {
-                JsonArray typeArray = new JsonArray();
-                jsonReader.beginArray();
-                while (jsonReader.peek() != JsonToken.END_ARRAY) {
-                    typeArray.add(jsonReader.nextString());
-                }
-                jsonReader.endArray();
-                shortFormObject.add("type", typeArray);
-            } else if (shortFormFieldName.equals("value")) {
-                String shortFormValue = jsonReader.nextString();
-                // Modify the value attribute
-                shortFormValue = getProcessedCurieValue(pass1Result, entityIri).replace(":", "_");
-                shortFormObject.addProperty("value", shortFormValue);
-            }
-        }
-        jsonReader.endObject();
-
-        // Write the modified short form object
-        jsonWriter.beginObject();
-        jsonWriter.name("type");
-        jsonWriter.beginArray();
-        for (JsonElement typeElement : shortFormObject.getAsJsonArray("type")) {
-            jsonWriter.value(typeElement.getAsString());
-        }
-        jsonWriter.endArray();
-        jsonWriter.name("value").value(shortFormObject.get("value").getAsString());
-        jsonWriter.endObject();
-    }
-
-    private static void processCurieObject(JsonReader jsonReader, JsonWriter jsonWriter, LinkerPass1.LinkerPass1Result pass1Result, String entityIri) throws IOException {
-        jsonReader.beginObject();
-        JsonObject curieObject = new JsonObject();
-
-        while (jsonReader.peek() != JsonToken.END_OBJECT) {
-            String curieFieldName = jsonReader.nextName();
-            if (curieFieldName.equals("type")) {
-                JsonArray typeArray = new JsonArray();
-                jsonReader.beginArray();
-                while (jsonReader.peek() != JsonToken.END_ARRAY) {
-                    typeArray.add(jsonReader.nextString());
-                }
-                jsonReader.endArray();
-                curieObject.add("type", typeArray);
-            } else if (curieFieldName.equals("value")) {
-                String curieValue = jsonReader.nextString();
-                // Modify the value attribute
-                curieValue = getProcessedCurieValue(pass1Result, entityIri);
-                curieObject.addProperty("value", curieValue);
-            }
-        }
-        jsonReader.endObject();
-
-        // Write the modified curie object
-        jsonWriter.beginObject();
-        jsonWriter.name("type");
-        jsonWriter.beginArray();
-        for (JsonElement typeElement : curieObject.getAsJsonArray("type")) {
-            jsonWriter.value(typeElement.getAsString());
-        }
-        jsonWriter.endArray();
-        jsonWriter.name("value").value(curieObject.get("value").getAsString());
-        jsonWriter.endObject();
-    }
-
-    private static String getProcessedCurieValue(LinkerPass1.LinkerPass1Result pass1Result, String entityIri) {
-        if(isNullOrEmpty(entityIri)) {
-            return "";
-        }
-        var def =  pass1Result.iriToDefinitions.get(entityIri);
-        if (def.definitions.iterator().hasNext()) {
-            JsonObject defCurieObject = def.definitions.iterator().next().curie.getAsJsonObject();
-            if (defCurieObject.has("value")) {
-                return defCurieObject.get("value").getAsString();
-            }
-        }
-        return "";
     }
 }
