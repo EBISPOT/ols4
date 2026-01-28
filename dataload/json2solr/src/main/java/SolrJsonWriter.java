@@ -1,7 +1,10 @@
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
+import com.google.gson.stream.JsonWriter;
 
 import uk.ac.ebi.ols.shared.Embeddings;
 
@@ -13,7 +16,31 @@ import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 public class SolrJsonWriter {
 
-    static Gson gson = new Gson();
+    // Custom Gson that formats whole-number floats as integers (e.g., 1.0 -> 1)
+    // and disables HTML escaping so ' is not escaped as \u0027
+    static Gson gson = new GsonBuilder()
+        .disableHtmlEscaping()
+        .registerTypeAdapter(Double.class, new TypeAdapter<Double>() {
+            @Override
+            public void write(JsonWriter out, Double value) throws IOException {
+                if (value == null) {
+                    out.nullValue();
+                } else if (value == Math.floor(value) && !Double.isInfinite(value)) {
+                    out.value((long) value.doubleValue());
+                } else {
+                    out.value(value);
+                }
+            }
+            @Override
+            public Double read(JsonReader in) throws IOException {
+                if (in.peek() == JsonToken.NULL) {
+                    in.nextNull();
+                    return null;
+                }
+                return in.nextDouble();
+            }
+        })
+        .create();
 
     /**
      * A rotating writer that creates numbered output files when max rows is reached
@@ -406,6 +433,15 @@ public class SolrJsonWriter {
     public static String objToString(Object obj) {
         if(obj instanceof String) {
             return (String)obj;
+        } else if(obj instanceof Number) {
+            // Format numbers without unnecessary decimal places
+            // e.g. 1.0 becomes "1", but 1.5 stays "1.5"
+            double d = ((Number) obj).doubleValue();
+            if(d == Math.floor(d) && !Double.isInfinite(d)) {
+                return String.valueOf((long) d);
+            } else {
+                return String.valueOf(d);
+            }
         } else {
             return gson.toJson(obj);
         }
