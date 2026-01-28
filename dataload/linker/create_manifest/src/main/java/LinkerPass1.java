@@ -54,7 +54,7 @@ public class LinkerPass1 {
                     jsonReader.beginObject(); // ontology
 
 					String ontologyId = null;
-					Set<String> ontologyBaseUris = new HashSet<>();
+					Set<String> ontologyBaseUris = new TreeSet<>();
 					
 					// Scan ontology for property sets using OntologyScanner
                     OntologyScanner.Result scanResult = OntologyScanner.scanOntology(extractorJsonReader, PROPERTY_BLACKLIST);
@@ -67,9 +67,9 @@ public class LinkerPass1 {
                     result.ontologyIdToEdgeProperties.put(scanResult.ontologyId, scanResult.allEdgeProperties);
                     
                     // Convert NodeType enum to strings for serialization
-                    Map<String, Set<String>> uriToTypeStrings = new HashMap<>();
+                    Map<String, Set<String>> uriToTypeStrings = new TreeMap<>();
                     for (Map.Entry<String, Set<OntologyScanner.NodeType>> entry : scanResult.uriToTypes.entrySet()) {
-                        Set<String> typeStrings = new HashSet<>();
+                        Set<String> typeStrings = new TreeSet<>();
                         for (OntologyScanner.NodeType nodeType : entry.getValue()) {
                             typeStrings.add(nodeType.toString());
                         }
@@ -98,7 +98,7 @@ public class LinkerPass1 {
 
 						Set<String> ids = result.ontologyIriToOntologyIds.get(ontologyIri);
 						if(ids == null) {
-							ids = new HashSet<>();
+							ids = new TreeSet<>();
 							ids.add(ontologyId);
 							result.ontologyIriToOntologyIds.put(ontologyIri, ids);
 						} else {
@@ -120,7 +120,7 @@ public class LinkerPass1 {
 
 						Set<String> ids = result.preferredPrefixToOntologyIds.get(preferredPrefix);
 						if(ids == null) {
-							ids = new HashSet<>();
+							ids = new TreeSet<>();
 							ids.add(ontologyId);
 							result.preferredPrefixToOntologyIds.put(preferredPrefix, ids);
 						} else {
@@ -224,7 +224,7 @@ public class LinkerPass1 {
 				}
 			}
 
-			definitions.definingDefinitions = definitions.definitions.stream().filter(def -> def.isDefiningOntology).collect(Collectors.toSet());
+			definitions.definingDefinitions = definitions.definitions.stream().filter(def -> def.isDefiningOntology).collect(Collectors.toCollection(TreeSet::new));
 		}
 
         System.out.println("--- Linker Pass 1 complete. Found " + nOntologies + " ontologies and " + result.iriToDefinitions.size() + " distinct IRIs");
@@ -252,7 +252,7 @@ public class LinkerPass1 {
         String iri = null;
         JsonElement label = null;
 		JsonElement curie = null;
-		Set<String> definedBy = new HashSet<>();
+		Set<String> definedBy = new TreeSet<>();
 		Set<String> types = null;
 		boolean isObsolete = false;
 
@@ -266,7 +266,8 @@ public class LinkerPass1 {
 			} else if(key.equals("curie")) {
 				curie = jsonParser.parse(jsonReader);
 			} else if(key.equals("type")) {
-                types = gson.fromJson(jsonReader, Set.class);
+                Set<String> rawTypes = gson.fromJson(jsonReader, Set.class);
+                types = new TreeSet<>(rawTypes);
 			} else if(key.equals("isObsolete")) {
 				isObsolete = jsonReader.nextBoolean();
 			} else if(key.equals("http://www.w3.org/2000/01/rdf-schema#isDefinedBy")) {

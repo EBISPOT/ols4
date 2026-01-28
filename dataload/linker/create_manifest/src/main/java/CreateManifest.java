@@ -13,6 +13,7 @@ public class CreateManifest {
 
     static Gson gson = new GsonBuilder()
             .setPrettyPrinting()
+            .disableHtmlEscaping()
             .create();
 
     public static void main(String[] args) throws IOException {
@@ -83,17 +84,17 @@ public class CreateManifest {
 
         // Merge ontologyIriToOntologyIds
         source.ontologyIriToOntologyIds.forEach((iri, ids) -> {
-            target.ontologyIriToOntologyIds.computeIfAbsent(iri, k -> new java.util.HashSet<>()).addAll(ids);
+            target.ontologyIriToOntologyIds.computeIfAbsent(iri, k -> new java.util.TreeSet<>()).addAll(ids);
         });
 
         // Merge preferredPrefixToOntologyIds
         source.preferredPrefixToOntologyIds.forEach((prefix, ids) -> {
-            target.preferredPrefixToOntologyIds.computeIfAbsent(prefix, k -> new java.util.HashSet<>()).addAll(ids);
+            target.preferredPrefixToOntologyIds.computeIfAbsent(prefix, k -> new java.util.TreeSet<>()).addAll(ids);
         });
 
         // Merge ontologyIdToBaseUris
         source.ontologyIdToBaseUris.forEach((id, uris) -> {
-            target.ontologyIdToBaseUris.computeIfAbsent(id, k -> new java.util.HashSet<>()).addAll(uris);
+            target.ontologyIdToBaseUris.computeIfAbsent(id, k -> new java.util.TreeSet<>()).addAll(uris);
         });
 
         // Merge ontologyIdToImportingOntologyIds

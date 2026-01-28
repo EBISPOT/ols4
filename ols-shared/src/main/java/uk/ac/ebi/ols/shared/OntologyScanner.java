@@ -16,12 +16,12 @@ public class OntologyScanner {
     public static class Result {
         public String ontologyId;
         public String ontologyUri;
-        public Set<String> allOntologyProperties = new HashSet<>();
-        public Set<String> allClassProperties = new HashSet<>();
-        public Set<String> allPropertyProperties = new HashSet<>();
-        public Set<String> allIndividualProperties = new HashSet<>();
-        public Set<String> allEdgeProperties = new HashSet<>();
-        public Map<String, Set<NodeType>> uriToTypes = new HashMap<>();
+        public Set<String> allOntologyProperties = new TreeSet<>();
+        public Set<String> allClassProperties = new TreeSet<>();
+        public Set<String> allPropertyProperties = new TreeSet<>();
+        public Set<String> allIndividualProperties = new TreeSet<>();
+        public Set<String> allEdgeProperties = new TreeSet<>();
+        public Map<String, Set<NodeType>> uriToTypes = new TreeMap<>();
     }
 
     private static void addType(Result res, String uri, NodeType type) {

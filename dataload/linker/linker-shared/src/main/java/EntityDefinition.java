@@ -2,11 +2,12 @@ import com.google.gson.JsonElement;
 
 import java.util.Objects;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class EntityDefinition implements Comparable<EntityDefinition> {
 
     String ontologyId;
-    Set<String> entityTypes;
+    Set<String> entityTypes = new TreeSet<>();
     boolean isDefiningOntology;
     JsonElement label;
     JsonElement curie;
