@@ -79,9 +79,6 @@ impl LinkerPass1Result {
                 .defining_definitions
                 .extend(def_set.defining_definitions);
             target_def_set
-                .defining_ontology_iris
-                .extend(def_set.defining_ontology_iris);
-            target_def_set
                 .defining_ontology_ids
                 .extend(def_set.defining_ontology_ids);
             target_def_set

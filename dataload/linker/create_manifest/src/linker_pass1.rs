@@ -310,14 +310,6 @@ pub fn establish_defining_ontologies(result: &mut LinkerPass1Result) {
     let ontology_iri_to_ids = result.ontology_iri_to_ontology_ids.clone();
 
     for (iri, definitions) in result.iri_to_definitions.iter_mut() {
-        // definingOntologyIris -> definingOntologyIds
-        for ontology_iri in definitions.defining_ontology_iris.clone() {
-            if let Some(ontology_ids) = ontology_iri_to_ids.get(&ontology_iri) {
-                for ontology_id in ontology_ids {
-                    definitions.defining_ontology_ids.insert(ontology_id.clone());
-                }
-            }
-        }
 
         // Update curie values and set isDefiningOntology flag
         let defining_ids = definitions.defining_ontology_ids.clone();

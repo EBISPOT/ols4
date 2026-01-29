@@ -14,8 +14,6 @@ pub struct EntityDefinitionSet {
     #[serde(default)]
     pub defining_definitions: BTreeSet<EntityDefinition>,
     #[serde(default)]
-    pub defining_ontology_iris: BTreeSet<String>,
-    #[serde(default)]
     pub defining_ontology_ids: BTreeSet<String>,
     #[serde(default)]
     pub ontology_id_to_definitions: BTreeMap<String, EntityDefinition>,
