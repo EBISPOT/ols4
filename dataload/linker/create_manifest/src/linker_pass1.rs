@@ -230,7 +230,6 @@ fn parse_entity<R: Read>(
     let mut iri: Option<String> = None;
     let mut label: Option<Value> = None;
     let mut curie: Option<Value> = None;
-    let mut defined_by: BTreeSet<String> = BTreeSet::new();
     let mut types: Option<BTreeSet<String>> = None;
     let mut is_obsolete = false;
 
@@ -259,10 +258,6 @@ fn parse_entity<R: Read>(
             }
             "isObsolete" => {
                 is_obsolete = reader.next_bool().unwrap();
-            }
-            "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" => {
-                let json_defined_by = read_value(reader);
-                extract_defined_by(&json_defined_by, &mut defined_by);
             }
             _ => {
                 skip_value(reader);
@@ -293,7 +288,6 @@ fn parse_entity<R: Read>(
     definition_set
         .ontology_id_to_definitions
         .insert(ontology_id.to_string(), entity_definition);
-    definition_set.defining_ontology_iris.extend(defined_by);
 
     // Check if this entity's IRI starts with any of the ontology's base URIs
     for base_uri in ontology_base_uris {
@@ -306,47 +300,6 @@ fn parse_entity<R: Read>(
     }
 
     Ok(())
-}
-
-fn extract_defined_by(value: &Value, defined_by: &mut BTreeSet<String>) {
-    match value {
-        Value::Array(arr) => {
-            for item in arr {
-                extract_defined_by_item(item, defined_by);
-            }
-        }
-        Value::Object(_) => {
-            extract_defined_by_item(value, defined_by);
-        }
-        Value::String(s) => {
-            defined_by.insert(s.clone());
-        }
-        _ => {}
-    }
-}
-
-fn extract_defined_by_item(item: &Value, defined_by: &mut BTreeSet<String>) {
-    match item {
-        Value::Object(obj) => {
-            if let Some(val) = obj.get("value") {
-                match val {
-                    Value::Object(inner_obj) => {
-                        if let Some(Value::String(s)) = inner_obj.get("value") {
-                            defined_by.insert(s.clone());
-                        }
-                    }
-                    Value::String(s) => {
-                        defined_by.insert(s.clone());
-                    }
-                    _ => {}
-                }
-            }
-        }
-        Value::String(s) => {
-            defined_by.insert(s.clone());
-        }
-        _ => {}
-    }
 }
 
 /// Establish defining ontologies and cross-ontology import relationships.
