@@ -80,6 +80,10 @@ export default abstract class Thing {
     return this.properties["ontologyId"];
   }
 
+  getScore(): number | null {
+    return this.properties["score"] ?? null;
+  }
+
   getLabelForIri(id: string) {
     const linkedEntities = this.properties["linkedEntities"];
     if (linkedEntities) {

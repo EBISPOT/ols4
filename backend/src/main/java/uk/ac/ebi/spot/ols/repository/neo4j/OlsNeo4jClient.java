@@ -213,24 +213,33 @@ public class OlsNeo4jClient {
 		// ID (where we may get an imported class with no embeddings), search by IRI
 		// and isDefiningOntology=true
 
-		// Index name pattern: {type_lowercase}_{model_name_with_underscores}_embeddings
-		String index = type.toLowerCase() + "_" + modelName.replace("-", "_").replace(".", "_") + "_embeddings";
+		// Use single OntologyEntity index, then filter by type
+		String index = "ontologyentity_" + modelName.replace("-", "_").replace(".", "_") + "_embeddings";
 		// Property name preserves the original model name format
 		String embeddingProperty = "embeddings_" + modelName;
+
+		// Over-fetch from vector index since we're filtering by type
+		int fetchSize = pageable.getPageSize() * 5;
 
 		String query = "MATCH (c:" + type + " {iri: $iri}) "
 		+ "WHERE \"true\" IN c.isDefiningOntology "
 		+ "AND c.`" + embeddingProperty + "` IS NOT NULL "
-		+ "CALL db.index.vector.queryNodes('" + index + "', $size, c.`" + embeddingProperty + "`) "
+		+ "CALL db.index.vector.queryNodes('" + index + "', $fetchSize, c.`" + embeddingProperty + "`) "
 		+ "YIELD node AS similar, score "
+		+ "WHERE similar:" + type + " "
 		+ "RETURN similar as entity, score "
-		+ "ORDER BY score DESC ";
+		+ "ORDER BY score DESC "
+		+ "LIMIT $size";
 
 
 		ArrayList<JsonElement> res = new ArrayList<>();
 
 		Session session = neo4jClient.getSession();
-		Result result = session.run(query, Map.of("iri", iri, "size", pageable.getPageSize()));
+		Map<String, Object> params = new HashMap<>();
+		params.put("iri", iri);
+		params.put("fetchSize", fetchSize);
+		params.put("size", pageable.getPageSize());
+		Result result = session.run(query, params);
 
 		for(Record r : result.list()) {
 
@@ -292,20 +301,33 @@ public class OlsNeo4jClient {
 		throw new ResourceNotFoundException("entity not found");
     }
 
+    /**
+     * Search by vector globally (all ontologies, defining classes only).
+     * Uses single OntologyEntity index and post-filters by type.
+     */
     public Page<JsonElement> searchByVector(String type, List<Double> vector, Pageable pageable, String modelName) {
 
-		// Index name pattern: {type_lowercase}_{model_name_with_underscores}_embeddings
-		String index = type.toLowerCase() + "_" + modelName.replace("-", "_").replace(".", "_") + "_embeddings";
+		// Use single OntologyEntity index, then filter by type
+		String index = "ontologyentity_" + modelName.replace("-", "_").replace(".", "_") + "_embeddings";
 
-		String query = "CALL db.index.vector.queryNodes('" + index + "', $size, $vec) "
-		+ "YIELD node AS similar, score "
-		+ "RETURN similar as entity, score "
-		+ "ORDER BY score DESC ";
+		// Over-fetch from vector index since we're filtering by type
+		int fetchSize = pageable.getPageSize() * 5;
+
+		String query = "CALL db.index.vector.queryNodes('" + index + "', $fetchSize, $vec) "
+			+ "YIELD node AS similar, score "
+			+ "WHERE similar:" + type + " "
+			+ "RETURN similar as entity, score "
+			+ "ORDER BY score DESC "
+			+ "LIMIT $size";
 
 		ArrayList<JsonElement> res = new ArrayList<>();
 
 		Session session = neo4jClient.getSession();
-		Result result = session.run(query, Map.of("vec", vector, "size", pageable.getPageSize()));
+		Map<String, Object> params = new HashMap<>();
+		params.put("vec", vector);
+		params.put("fetchSize", fetchSize);
+		params.put("size", pageable.getPageSize());
+		Result result = session.run(query, params);
 
 		for(Record r : result.list()) {
 
@@ -314,11 +336,73 @@ public class OlsNeo4jClient {
 			Map<String,Object> entity = ((Node) rmap.get("entity")).asMap();
 			double score = (Double) rmap.get("score");
 
-			var resRow = JsonParser.parseString((String) entity.get("_json"));
-			var json = gson.fromJson(resRow, JsonElement.class);
-			json.getAsJsonObject().addProperty("score", score);
+			var json = JsonParser.parseString((String) entity.get("_json")).getAsJsonObject();
+			json.addProperty("score", score);
 
-			res.add(resRow);
+			res.add(json);
+		}
+
+		return new PageImpl<JsonElement>(res, pageable, res.size());
+    }
+
+    /**
+     * Search by vector within a specific ontology.
+     * If isDefiningOntology is true, only returns classes defined in this ontology (simple post-filter).
+     * If isDefiningOntology is false, includes imported classes by joining on IRI.
+     * Uses single OntologyEntity index and post-filters by type and ontology.
+     */
+    public Page<JsonElement> searchByVectorInOntology(String type, List<Double> vector, Pageable pageable, String modelName, String ontologyId, boolean isDefiningOntology) {
+
+		// Use single OntologyEntity index, then filter by type and ontology
+		String index = "ontologyentity_" + modelName.replace("-", "_").replace(".", "_") + "_embeddings";
+
+		// Over-fetch from vector index since we're filtering/joining to a subset
+		int fetchSize = pageable.getPageSize() * 5;
+
+		String query;
+		if (isDefiningOntology) {
+			// Simple post-filter: only classes from this ontology (which are defining, since embeddings only exist on defining classes)
+			// Also filter by type since we're using the OntologyEntity index
+			query = "CALL db.index.vector.queryNodes('" + index + "', $fetchSize, $vec) "
+				+ "YIELD node AS similar, score "
+				+ "WHERE similar:" + type + " AND $ontologyId IN similar.ontologyId "
+				+ "RETURN similar as entity, score "
+				+ "ORDER BY score DESC "
+				+ "LIMIT $limit";
+		} else {
+			// Join by IRI to find the class in the target ontology (includes imported classes)
+			// Also filter by type since we're using the OntologyEntity index
+			query = "CALL db.index.vector.queryNodes('" + index + "', $fetchSize, $vec) "
+				+ "YIELD node AS similar, score "
+				+ "WHERE similar:" + type + " "
+				+ "MATCH (target:" + type + " {iri: similar.iri}) "
+				+ "WHERE $ontologyId IN target.ontologyId "
+				+ "RETURN target as entity, score "
+				+ "ORDER BY score DESC "
+				+ "LIMIT $limit";
+		}
+
+		ArrayList<JsonElement> res = new ArrayList<>();
+
+		Session session = neo4jClient.getSession();
+		Map<String, Object> params = new HashMap<>();
+		params.put("vec", vector);
+		params.put("fetchSize", fetchSize);
+		params.put("ontologyId", ontologyId.toLowerCase());
+		params.put("limit", pageable.getPageSize());
+		Result result = session.run(query, params);
+
+		for(Record r : result.list()) {
+
+			var rmap = r.asMap();
+
+			Map<String,Object> entity = ((Node) rmap.get("entity")).asMap();
+			double score = (Double) rmap.get("score");
+
+			var json = JsonParser.parseString((String) entity.get("_json")).getAsJsonObject();
+			json.addProperty("score", score);
+
+			res.add(json);
 		}
 
 		return new PageImpl<JsonElement>(res, pageable, res.size());

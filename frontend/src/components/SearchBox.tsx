@@ -92,20 +92,22 @@ export default function SearchBox({
 
   const handleModelChange = useCallback(
     (model: string) => {
+      console.log("SearchBox handleModelChange called with:", model, "isOnSearchPage:", isOnSearchPage, "current q:", searchParams.get("q"));
       setSelectedModel(model);
-      // If on search results page, update URL to trigger new search
-      if (isOnSearchPage) {
+      // If there's already a search query, update URL to trigger new search
+      const currentQuery = searchParams.get("q");
+      if (currentQuery) {
         const newSearchParams = new URLSearchParams(searchParams);
         if (model && model !== "lexical") {
           newSearchParams.set("model", model);
         } else {
           newSearchParams.delete("model");
         }
-        // Use navigate instead of setSearchParams to avoid issues
+        console.log("SearchBox navigating to:", `/search?${newSearchParams}`);
         navigate(`/search?${newSearchParams}`);
       }
     },
-    [isOnSearchPage, searchParams, navigate]
+    [searchParams, navigate]
   );
 
   const searchForOntologies = ontologyId === undefined;
@@ -133,6 +135,10 @@ export default function SearchBox({
 
   const cancelPromisesRef = useRef(false);
   useEffect(() => {
+    // Clear previous results immediately when search params change
+    setJumpTo([]);
+    setAutocomplete(null);
+    
     async function loadSuggestions() {
       setLoading(true);
       setArrowKeySelectedN(undefined);
@@ -140,20 +146,33 @@ export default function SearchBox({
       const searchToken = randomString();
       curSearchToken = searchToken;
 
+      // Use llm_search endpoint if embedding model is selected
+      const isEmbeddingSearch = selectedModel && selectedModel !== 'lexical';
+      
+      const entitiesPromise = isEmbeddingSearch
+        ? getPaginated<any>(
+            `api/v2/entities/llm_search?${new URLSearchParams({
+              q: query,
+              size: "5",
+              model: selectedModel,
+              ...(ontologyId ? { ontologyId } : {}),
+            })}`
+          )
+        : getPaginated<any>(
+            `api/v2/entities?${new URLSearchParams({
+              search: query,
+              size: "5",
+              lang: "en",
+              exactMatch: exact.toString(),
+              includeObsoleteEntities: obsolete.toString(),
+              ...(ontologyId ? { ontologyId } : {}),
+              ...((canonical ? { isDefiningOntology: true } : {}) as any),
+            })}`
+          );
+
       const [entities, ontologies, autocomplete] = await Promise.all([
-        getPaginated<any>(
-          `api/v2/entities?${new URLSearchParams({
-            search: query,
-            size: "5",
-            lang: "en",
-            exactMatch: exact.toString(),
-            includeObsoleteEntities: obsolete.toString(),
-            ...(ontologyId ? { ontologyId } : {}),
-            ...((canonical ? { isDefiningOntology: true } : {}) as any),
-            ...((selectedModel && selectedModel !== 'lexical') ? { model: selectedModel } : {})
-          })}`
-        ),
-        searchForOntologies
+        entitiesPromise,
+        searchForOntologies && !isEmbeddingSearch
           ? getPaginated<any>(
               `api/v2/ontologies?${new URLSearchParams({
                 search: query,
@@ -164,7 +183,7 @@ export default function SearchBox({
               })}`
             )
           : null,
-        showSuggestions
+        showSuggestions && !isEmbeddingSearch
           ? get<Suggest>(
               `api/suggest?${new URLSearchParams({
                 q: query,
@@ -464,6 +483,7 @@ export default function SearchBox({
                   } else {
                     navParams.delete("model");
                   }
+                  console.log("Search button clicked, navigating with model:", selectedModel, "url:", `/search?${navParams}`);
                   navigate(`/search?${navParams}`);
                 }
               }}

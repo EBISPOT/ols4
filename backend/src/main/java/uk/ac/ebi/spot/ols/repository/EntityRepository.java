@@ -8,8 +8,6 @@ import org.springframework.stereotype.Component;
 
 import com.google.gson.JsonElement;
 
-import uk.ac.ebi.spot.ols.model.v2.V2Entity;
-import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 import uk.ac.ebi.spot.ols.repository.solr.SearchType;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformer;
@@ -18,7 +16,6 @@ import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.helpers.DynamicFilterParser;
 import uk.ac.ebi.spot.ols.repository.helpers.SearchFieldsParser;
-import uk.ac.ebi.spot.ols.service.EmbeddingServiceClient;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -31,39 +28,11 @@ public class EntityRepository {
     @Autowired
     OlsSolrClient solrClient;
 
-    @Autowired
-    OlsNeo4jClient neo4jClient;
-    
-    @Autowired
-    EmbeddingServiceClient embeddingServiceClient;
-
 
     public OlsFacetedResultsPage<JsonElement> find(
-            Pageable pageable, String lang, String search, String searchFields, String boostFields, String facetFields, boolean exactMatch, Collection<String> excludeOntologyIds, Map<String, Collection<String>> properties, String model, JsonTransformOptions outputOpts) throws IOException {
+            Pageable pageable, String lang, String search, String searchFields, String boostFields, String facetFields, boolean exactMatch, Collection<String> excludeOntologyIds, Map<String, Collection<String>> properties, JsonTransformOptions outputOpts) throws IOException {
 
         Validation.validateLang(lang);
-
-        // Use Neo4j for vector search when model is provided
-        if (model != null && !model.isEmpty()) {
-            float[] embeddings = embeddingServiceClient.embedText(model, search);
-            
-            // Convert float[] to List<Double> for Neo4j
-            List<Double> vectorList = new java.util.ArrayList<>(embeddings.length);
-            for (float f : embeddings) {
-                vectorList.add((double) f);
-            }
-            
-            // Use Neo4j vector search
-            org.springframework.data.domain.Page<JsonElement> results = neo4jClient.searchByVector("OntologyEntity", vectorList, pageable, model);
-            return new OlsFacetedResultsPage<>(
-                results.getContent().stream()
-                    .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
-                    .collect(java.util.stream.Collectors.toList()),
-                new java.util.LinkedHashMap<>(),
-                pageable,
-                results.getTotalElements()
-            );
-        }
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.setSearchText(search);
@@ -94,37 +63,15 @@ public class EntityRepository {
             boolean exactMatch, Map<String, Collection<String>> properties,
             JsonTransformOptions outputOpts) throws IOException {
 
-        return find(pageable, lang, search, searchFields, boostFields, facetFields, exactMatch, null, properties, null, outputOpts);
+        return find(pageable, lang, search, searchFields, boostFields, facetFields, exactMatch, null, properties, outputOpts);
 
         }
 
     public OlsFacetedResultsPage<JsonElement> findByOntologyId(
-            String ontologyId, Pageable pageable, String lang, String search, String searchFields, String boostFields, String facetFields, boolean exactMatch, Map<String,Collection<String>> properties, String model, JsonTransformOptions outputOpts) throws IOException {
+            String ontologyId, Pageable pageable, String lang, String search, String searchFields, String boostFields, String facetFields, boolean exactMatch, Map<String,Collection<String>> properties, JsonTransformOptions outputOpts) throws IOException {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
-
-        // Use Neo4j for vector search when model is provided
-        if (model != null && !model.isEmpty()) {
-            float[] embeddings = embeddingServiceClient.embedText(model, search);
-            
-            // Convert float[] to List<Double> for Neo4j
-            List<Double> vectorList = new java.util.ArrayList<>(embeddings.length);
-            for (float f : embeddings) {
-                vectorList.add((double) f);
-            }
-            
-            // Use Neo4j vector search
-            org.springframework.data.domain.Page<JsonElement> results = neo4jClient.searchByVector("OntologyEntity", vectorList, pageable, model);
-            return new OlsFacetedResultsPage<>(
-                results.getContent().stream()
-                    .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
-                    .collect(java.util.stream.Collectors.toList()),
-                new java.util.LinkedHashMap<>(),
-                pageable,
-                results.getTotalElements()
-            );
-        }
 
         OlsSolrQuery query = new OlsSolrQuery();
         query.setSearchText(search);

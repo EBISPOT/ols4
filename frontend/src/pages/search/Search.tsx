@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { copyToClipboard, randomString, usePrevious } from "../../app/util";
 import Header from "../../components/Header";
 import LoadingOverlay from "../../components/LoadingOverlay";
+import OntologyAutocomplete from "../../components/OntologyAutocomplete";
 import { Pagination } from "../../components/Pagination";
 import SearchBox from "../../components/SearchBox";
 import Entity from "../../model/Entity";
@@ -17,6 +18,11 @@ export default function Search() {
   const search = searchParams.get("q") || "";
   const model = searchParams.get("model") || "";
   const isEmbeddingSearch = model !== "" && model !== "lexical";
+  
+  // Convert searchParams to string for useEffect dependency tracking
+  const searchParamsString = searchParams.toString();
+  
+  console.log("Search.tsx render: model =", model, "searchParamsString =", searchParamsString);
 
   const dispatch = useAppDispatch();
   const loadingResults = useAppSelector(
@@ -121,6 +127,7 @@ export default function Search() {
   };
 
   useEffect(() => {
+    console.log("Search.tsx useEffect firing, searchParamsString =", searchParamsString);
     dispatch(
       getSearchResults({
         page,
@@ -135,7 +142,7 @@ export default function Search() {
   }, [
     dispatch,
     search,
-    model,
+    searchParamsString,
     page,
     rowsPerPage,
     ontologyFacetSelected,
@@ -155,11 +162,29 @@ export default function Search() {
         </div>
         {isEmbeddingSearch && (
           <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg text-blue-800">
-            <i className="icon icon-common icon-info icon-spacer" />
-            Embedding search using model: <code className="font-mono bg-blue-100 px-1 rounded">{model}</code>. Faceting and filtering are not available for embedding search.
+            <div className="flex flex-wrap items-center gap-4">
+              <div>
+                <i className="icon icon-common icon-info icon-spacer" />
+                Embedding search using model: <code className="font-mono bg-blue-100 px-1 rounded">{model}</code>
+              </div>
+              <div className="flex items-center gap-2">
+                <label htmlFor="embedding-ontology-filter" className="text-sm font-medium">Filter by ontology:</label>
+                <OntologyAutocomplete
+                  value={ontologyFacetSelected.length > 0 ? ontologyFacetSelected[0] : ""}
+                  onChange={(ontologyId) => {
+                    if (ontologyId) {
+                      setOntologyFacetSelected([ontologyId]);
+                    } else {
+                      setOntologyFacetSelected([]);
+                    }
+                    setPage(0);
+                  }}
+                />
+              </div>
+            </div>
           </div>
         )}
-        <div className={`grid grid-cols-1 ${isEmbeddingSearch ? '' : 'lg:grid-cols-4'} lg:gap-8`}>
+        <div className={`grid grid-cols-1 ${isEmbeddingSearch ? '' : 'lg:grid-cols-4 lg:gap-8'}`}>
           {!isEmbeddingSearch && (
           <div
             className={`fixed top-0 left-0 mb-4 z-30 lg:z-0 lg:static lg:col-span-1 bg-gradient-to-r from-neutral-light to-white rounded-lg p-8 text-neutral-black overflow-x-auto h-full lg:h-fit lg:translate-x-0 transition-transform ${
@@ -506,6 +531,11 @@ export default function Search() {
                         >
                           {entity!.getName()}
                         </Link>
+                        {isEmbeddingSearch && entity!.getScore() !== null && (
+                          <span className="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-0.5 rounded-md mr-2" title="Similarity score">
+                            {(entity!.getScore()! * 100).toFixed(1)}%
+                          </span>
+                        )}
                         {entity!.getShortForm() ? (
                           <span className="mr-1">
                             <span className="bg-orange-default text-white text-sm rounded-md px-2 py-1 w-fit font-bold break-all">

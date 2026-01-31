@@ -53,27 +53,27 @@ def get_embedding_dimension(parquet_path: str) -> int:
 
 
 def generate_vector_index_cypher(model_name: str, dimensions: int) -> str:
-    """Generate Cypher statements to create vector indexes for a given model."""
+    """Generate Cypher statements to create vector indexes for a given model.
+    
+    Only creates a single OntologyEntity index per model. The API uses this index
+    for all entity types (classes, properties, individuals) and post-filters by type.
+    This reduces index count from 4 per model to 1 per model.
+    """
     
     # Sanitize model name for index name (replace hyphens with underscores)
     safe_model_name = model_name.replace('-', '_').replace('.', '_')
     property_name = f"embeddings_{model_name}"
     
-    # Include OntologyEntity for cross-type vector searches
-    entity_types = ['OntologyClass', 'OntologyProperty', 'OntologyIndividual', 'OntologyEntity']
+    # Only create OntologyEntity index - API will post-filter by type
+    index_name = f"ontologyentity_{safe_model_name}_embeddings"
     
-    statements = []
-    for entity_type in entity_types:
-        index_name = f"{entity_type.lower()}_{safe_model_name}_embeddings"
-        
-        statement = f"""CREATE VECTOR INDEX {index_name} IF NOT EXISTS
-FOR (n:{entity_type}) ON n.`{property_name}` OPTIONS {{ indexConfig: {{
+    statement = f"""CREATE VECTOR INDEX {index_name} IF NOT EXISTS
+FOR (n:OntologyEntity) ON n.`{property_name}` OPTIONS {{ indexConfig: {{
  `vector.dimensions`: {dimensions},
  `vector.similarity_function`: 'cosine'
 }}}};"""
-        statements.append(statement)
     
-    return '\n\n'.join(statements)
+    return statement
 
 
 def generate_embedding_indexes(embeddings_path: Path) -> str:

@@ -1,9 +1,11 @@
 package uk.ac.ebi.spot.ols.controller.mcp;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.ai.tool.annotation.Tool;
+import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,13 +16,21 @@ import com.google.gson.Gson;
 import uk.ac.ebi.spot.ols.model.mcp.McpFetchResult;
 import uk.ac.ebi.spot.ols.model.mcp.McpSearchResult;
 import uk.ac.ebi.spot.ols.repository.EntityRepository;
+import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
+import uk.ac.ebi.spot.ols.service.EmbeddingServiceClient;
 
 @Service
 public class McpSearchService {
 
     @Autowired
     EntityRepository entityRepository;
+
+    @Autowired
+    EmbeddingServiceClient embeddingServiceClient;
+    
+    @Autowired
+    OlsNeo4jClient neo4jClient;
 
     Gson gson = new Gson();
 
@@ -48,7 +58,6 @@ public class McpSearchService {
             false,
             null, // excludeOntologyIds
             Map.of(),
-            null, // model
             outputOpts
         );
 

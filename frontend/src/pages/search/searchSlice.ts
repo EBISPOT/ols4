@@ -23,6 +23,33 @@ export const getSearchResults = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
+      // Check if this is an embedding search (model parameter provided and not "lexical")
+      const model = searchParams.get("model");
+      console.log("searchSlice: model param =", model, "searchParams =", searchParams.toString());
+      const isEmbeddingSearch = model && model !== "" && model !== "lexical";
+      console.log("searchSlice: isEmbeddingSearch =", isEmbeddingSearch);
+
+      if (isEmbeddingSearch) {
+        console.log("searchSlice: Using LLM search endpoint");
+        // Use the llm_search endpoint for embedding-based search
+        let llmQuery: any = {
+          q: search,
+          size: rowsPerPage,
+          page,
+          model: model,
+        };
+        // Add ontologyId filter if specified
+        if (ontologyId && ontologyId.length > 0) {
+          llmQuery.ontologyId = ontologyId[0]; // llm_search only supports single ontology
+        }
+        const parsedQuery = new URLSearchParams(llmQuery);
+        const data = (
+          await getPaginated<any>(`api/v2/entities/llm_search?${parsedQuery}`)
+        ).map((e) => thingFromJsonProperties(e));
+        return data;
+      }
+
+      // Standard lexical search using entities endpoint
       let query = {
         search: search,
         size: rowsPerPage,
@@ -35,6 +62,8 @@ export const getSearchResults = createAsyncThunk(
 
         ...Object.fromEntries(searchParams as URLSearchParams),
       };
+      // Remove model from query since entities endpoint no longer supports it
+      delete query.model;
       for (const param in query) {
         if (
           query[param] === undefined ||

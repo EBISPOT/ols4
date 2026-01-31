@@ -251,7 +251,16 @@ public class ClassRepository {
         return this.neo4jClient.getEmbeddingVector("OntologyClass", iri, modelName);
     }
 
-    public Page<JsonElement> searchByVector(String modelName, float[] vector, Pageable pageable, String lang, JsonTransformOptions outputOpts) {
+    /**
+     * Search by vector globally (all ontologies, defining classes only) or filtered by ontology.
+     * When ontologyId is provided, only returns classes defined in that ontology.
+     */
+    public Page<JsonElement> searchByVector(String modelName, float[] vector, Pageable pageable, String lang, String ontologyId, JsonTransformOptions outputOpts) {
+        if (ontologyId != null) {
+            // Delegate to ontology-specific search with isDefiningOntology=true
+            return searchByVectorInOntology(ontologyId, modelName, vector, pageable, lang, true, outputOpts);
+        }
+        
         Validation.validateLang(lang);
 
         if (vector == null || vector.length == 0) {
@@ -269,6 +278,34 @@ public class ClassRepository {
         }
         
         return this.neo4jClient.searchByVector("OntologyClass", vectorList, pageable, modelName)
+                .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
+                ;
+    }
+
+    /**
+     * Search by vector within a specific ontology.
+     * If isDefiningOntology is true, only returns classes defined in this ontology.
+     * If isDefiningOntology is false, includes imported classes by matching IRI.
+     */
+    public Page<JsonElement> searchByVectorInOntology(String ontologyId, String modelName, float[] vector, Pageable pageable, String lang, boolean isDefiningOntology, JsonTransformOptions outputOpts) {
+        Validation.validateLang(lang);
+        Validation.validateOntologyId(ontologyId);
+
+        if (vector == null || vector.length == 0) {
+            throw new IllegalArgumentException("Vector cannot be null or empty");
+        }
+        
+        if (modelName == null || modelName.isEmpty()) {
+            modelName = "text-embedding-3-small"; // Default model
+        }
+        
+        // Convert float[] to List<Double> for Neo4j
+        List<Double> vectorList = new java.util.ArrayList<>(vector.length);
+        for (float f : vector) {
+            vectorList.add((double) f);
+        }
+        
+        return this.neo4jClient.searchByVectorInOntology("OntologyClass", vectorList, pageable, modelName, ontologyId, isDefiningOntology)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
