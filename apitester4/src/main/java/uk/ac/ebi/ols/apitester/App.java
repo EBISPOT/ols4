@@ -42,14 +42,6 @@ public class App
         optDeep.setRequired(false);
         options.addOption(optDeep);
 
-        Option optMcp = new Option(null, "mcp", false, "Test MCP (Model Context Protocol) functionality");
-        optMcp.setRequired(false);
-        options.addOption(optMcp);
-
-        Option optMcpOnly = new Option(null, "mcpOnly", false, "Only test MCP functionality (skip REST API tests)");
-        optMcpOnly.setRequired(false);
-        options.addOption(optMcpOnly);
-
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
         CommandLine cmd = null;
@@ -69,12 +61,10 @@ public class App
         String compareDir = cmd.getOptionValue("compareDir");
 	boolean deep = cmd.hasOption("deep");
 	String ontology = cmd.getOptionValue("ontology");
-	boolean mcp = cmd.hasOption("mcp");
-	boolean mcpOnly = cmd.hasOption("mcpOnly");
 
         boolean success = true;
 
-	if (url != null && !mcpOnly) {
+	if (url != null) {
 		if (!new Ols4ApiTester(url, outDir, deep, ontology).test()) {
 			System.out.println("Ols4ApiTester.test() reported failure");
 			success = false;
@@ -83,8 +73,8 @@ public class App
 		}
 	}
 
-	// Test MCP functionality if --mcp or --mcpOnly is specified
-	if (url != null && (mcp || mcpOnly)) {
+	// Test MCP functionality
+	if (url != null) {
 		System.out.println("Starting MCP tests...");
 		if (!new McpTester(url, outDir).test()) {
 			System.out.println("McpTester.test() reported failure");
@@ -94,7 +84,7 @@ public class App
 		}
 	}
 
-	if(compareUrl != null && !mcpOnly) {
+	if(compareUrl != null) {
 		if(!new Ols4ApiTester(compareUrl, compareDir, deep, ontology).test()) {
 		System.out.println("Ols4ApiTester.test() reported failure for compareUrl");
 		success = false;
@@ -103,8 +93,8 @@ public class App
 		}
 	}
 
-	// Test MCP for compareUrl if requested
-	if(compareUrl != null && (mcp || mcpOnly)) {
+	// Test MCP for compareUrl
+	if(compareUrl != null) {
 		System.out.println("Starting MCP tests for compareUrl...");
 		if (!new McpTester(compareUrl, compareDir).test()) {
 			System.out.println("McpTester.test() reported failure for compareUrl");
