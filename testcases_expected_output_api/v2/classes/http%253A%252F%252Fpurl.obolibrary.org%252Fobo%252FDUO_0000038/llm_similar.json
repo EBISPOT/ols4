@@ -1619,60 +1619,73 @@
       "appearsIn": [
         "duo"
       ],
-      "curie": "DUO:0000014",
+      "curie": "DUO:0000012",
       "definedBy": [
         "duo"
       ],
       "definition": [
-        "Deprecated as GRU-CC was split into GRU and CC, so this is not applicable anymore as a qualifier of GRU-CC",
-        "This data use limitation indicates that use is limited to research purposes (e.g., does not include its use in clinical care)."
+        "This data use modifier indicates that use is limited to studies of a certain research type."
       ],
-      "definitionProperty": [
-        "http://purl.obolibrary.org/obo/IAO_0000115",
-        "http://www.w3.org/2000/01/rdf-schema#comment"
-      ],
+      "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
       "directAncestor": [
-        "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"
+        "http://purl.obolibrary.org/obo/BFO_0000001",
+        "http://purl.obolibrary.org/obo/BFO_0000002",
+        "http://purl.obolibrary.org/obo/BFO_0000031",
+        "http://purl.obolibrary.org/obo/DUO_0000017",
+        "http://purl.obolibrary.org/obo/IAO_0000027",
+        "http://purl.obolibrary.org/obo/IAO_0000030"
       ],
       "directParent": [
-        "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"
+        "http://purl.obolibrary.org/obo/DUO_0000017"
       ],
       "hasDirectChildren": false,
       "hasDirectParents": true,
       "hasHierarchicalChildren": false,
       "hasHierarchicalParents": true,
       "hierarchicalAncestor": [
-        "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"
+        "http://purl.obolibrary.org/obo/BFO_0000001",
+        "http://purl.obolibrary.org/obo/BFO_0000002",
+        "http://purl.obolibrary.org/obo/BFO_0000031",
+        "http://purl.obolibrary.org/obo/DUO_0000017",
+        "http://purl.obolibrary.org/obo/IAO_0000027",
+        "http://purl.obolibrary.org/obo/IAO_0000030"
       ],
       "hierarchicalParent": [
-        "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"
+        "http://purl.obolibrary.org/obo/DUO_0000017"
       ],
       "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "http://purl.obolibrary.org/obo/IAO_0000115": "This data use limitation indicates that use is limited to research purposes (e.g., does not include its use in clinical care).",
-      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000014",
-      "http://www.geneontology.org/formats/oboInOwl#shorthand": "RU",
+      "http://purl.obolibrary.org/obo/IAO_0000115": "This data use modifier indicates that use is limited to studies of a certain research type.",
+      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000012",
+      "http://www.geneontology.org/formats/oboInOwl#shorthand": "RS",
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-      "http://www.w3.org/2000/01/rdf-schema#comment": "Deprecated as GRU-CC was split into GRU and CC, so this is not applicable anymore as a qualifier of GRU-CC",
-      "http://www.w3.org/2000/01/rdf-schema#label": "obsolete research use only",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
+      "http://www.w3.org/2000/01/rdf-schema#label": "research specific restrictions",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+        "http://purl.obolibrary.org/obo/DUO_0000017",
+        {
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/DUO_0000010",
+          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/topic_0003",
+          "isObsolete": false
+        }
+      ],
       "imported": false,
-      "iri": "http://purl.obolibrary.org/obo/DUO_0000014",
+      "iri": "http://purl.obolibrary.org/obo/DUO_0000012",
       "isDefiningOntology": true,
-      "isObsolete": true,
+      "isObsolete": false,
       "isPreferredRoot": false,
       "label": [
-        "obsolete research use only"
+        "research specific restrictions"
       ],
       "linkedEntities": {
-        "DUO:0000014": {
-          "curie": "DUO:0000014",
+        "DUO:0000012": {
+          "curie": "DUO:0000012",
           "definedBy": [
             "duo"
           ],
           "hasLocalDefinition": true,
-          "iri": "http://purl.obolibrary.org/obo/DUO_0000014",
+          "iri": "http://purl.obolibrary.org/obo/DUO_0000012",
           "label": [
-            "obsolete research use only"
+            "research specific restrictions"
           ],
           "numAppearsIn": 1.0,
           "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
@@ -1680,7 +1693,98 @@
             "class",
             "entity"
           ],
-          "url": "http://purl.obolibrary.org/obo/DUO_0000014"
+          "url": "http://purl.obolibrary.org/obo/DUO_0000012"
+        },
+        "http://purl.obolibrary.org/obo/BFO_0000001": {
+          "curie": "BFO:0000001",
+          "hasLocalDefinition": true,
+          "label": [
+            "entity"
+          ],
+          "numAppearsIn": 1.0,
+          "type": [
+            "class",
+            "entity"
+          ]
+        },
+        "http://purl.obolibrary.org/obo/BFO_0000002": {
+          "curie": "BFO:0000002",
+          "hasLocalDefinition": true,
+          "label": [
+            "continuant"
+          ],
+          "numAppearsIn": 2.0,
+          "type": [
+            "class",
+            "entity"
+          ]
+        },
+        "http://purl.obolibrary.org/obo/BFO_0000031": {
+          "curie": "BFO:0000031",
+          "hasLocalDefinition": true,
+          "label": [
+            "generically dependent continuant"
+          ],
+          "numAppearsIn": 1.0,
+          "type": [
+            "class",
+            "entity"
+          ]
+        },
+        "http://purl.obolibrary.org/obo/DUO_0000010": {
+          "curie": "DUO:0000010",
+          "definedBy": [
+            "duo"
+          ],
+          "hasLocalDefinition": true,
+          "label": [
+            "is restricted to"
+          ],
+          "numAppearsIn": 1.0,
+          "type": [
+            "entity",
+            "objectProperty",
+            "property"
+          ]
+        },
+        "http://purl.obolibrary.org/obo/DUO_0000017": {
+          "curie": "DUO:0000017",
+          "definedBy": [
+            "duo"
+          ],
+          "hasLocalDefinition": true,
+          "label": [
+            "data use modifier"
+          ],
+          "numAppearsIn": 1.0,
+          "type": [
+            "class",
+            "entity"
+          ]
+        },
+        "http://purl.obolibrary.org/obo/IAO_0000027": {
+          "curie": "IAO:0000027",
+          "hasLocalDefinition": true,
+          "label": [
+            "data item"
+          ],
+          "numAppearsIn": 1.0,
+          "type": [
+            "class",
+            "entity"
+          ]
+        },
+        "http://purl.obolibrary.org/obo/IAO_0000030": {
+          "curie": "IAO:0000030",
+          "hasLocalDefinition": true,
+          "label": [
+            "information content entity"
+          ],
+          "numAppearsIn": 1.0,
+          "type": [
+            "class",
+            "entity"
+          ]
         },
         "http://purl.obolibrary.org/obo/IAO_0000115": {
           "curie": "IAO:0000115",
@@ -1695,16 +1799,13 @@
             "property"
           ]
         },
-        "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass": {
-          "curie": "OIO:ObsoleteClass",
-          "definedBy": [
-            "oio"
-          ],
+        "http://purl.obolibrary.org/obo/topic_0003": {
+          "curie": "topic:0003",
           "hasLocalDefinition": true,
           "label": [
-            "obsolete_class"
+            "Topic"
           ],
-          "numAppearsIn": 3.0,
+          "numAppearsIn": 1.0,
           "type": [
             "class",
             "entity"
@@ -1732,21 +1833,6 @@
           "numAppearsIn": 3.0,
           "type": [
             "annotationProperty",
-            "entity",
-            "property"
-          ]
-        },
-        "http://www.w3.org/2000/01/rdf-schema#comment": {
-          "curie": "RDFS:comment",
-          "definedBy": [
-            "rdfs"
-          ],
-          "hasLocalDefinition": true,
-          "label": [
-            "comment"
-          ],
-          "numAppearsIn": 3.0,
-          "type": [
             "entity",
             "property"
           ]
@@ -1783,12 +1869,18 @@
         }
       },
       "linksTo": [
-        "http://purl.obolibrary.org/obo/DUO_0000014",
+        "http://purl.obolibrary.org/obo/BFO_0000001",
+        "http://purl.obolibrary.org/obo/BFO_0000002",
+        "http://purl.obolibrary.org/obo/BFO_0000031",
+        "http://purl.obolibrary.org/obo/DUO_0000010",
+        "http://purl.obolibrary.org/obo/DUO_0000012",
+        "http://purl.obolibrary.org/obo/DUO_0000017",
+        "http://purl.obolibrary.org/obo/IAO_0000027",
+        "http://purl.obolibrary.org/obo/IAO_0000030",
         "http://purl.obolibrary.org/obo/IAO_0000115",
-        "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
+        "http://purl.obolibrary.org/obo/topic_0003",
         "http://www.geneontology.org/formats/oboInOwl#id",
         "http://www.geneontology.org/formats/oboInOwl#shorthand",
-        "http://www.w3.org/2000/01/rdf-schema#comment",
         "http://www.w3.org/2000/01/rdf-schema#label",
         "http://www.w3.org/2000/01/rdf-schema#subClassOf"
       ],
@@ -1797,12 +1889,25 @@
       "ontologyId": "duo",
       "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
       "ontologyPreferredPrefix": "DUO",
+      "relatedTo": [
+        {
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/DUO_0000010",
+          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/topic_0003",
+          "isObsolete": false,
+          "property": "http://purl.obolibrary.org/obo/DUO_0000010",
+          "type": [
+            "related"
+          ],
+          "value": "http://purl.obolibrary.org/obo/topic_0003"
+        }
+      ],
       "score": "<score>",
       "searchableAnnotationValues": [
-        "This data use limitation indicates that use is limited to research purposes (e.g., does not include its use in clinical care).",
+        "This data use modifier indicates that use is limited to studies of a certain research type.",
         false
       ],
-      "shortForm": "DUO_0000014",
+      "shortForm": "DUO_0000012",
       "type": [
         "class",
         "entity"
