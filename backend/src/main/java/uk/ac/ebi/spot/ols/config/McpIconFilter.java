@@ -1,7 +1,6 @@
 package uk.ac.ebi.spot.ols.config;
 
 import jakarta.servlet.*;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpServletResponseWrapper;
 import org.slf4j.Logger;
@@ -27,7 +26,6 @@ public class McpIconFilter implements Filter {
 
     private static final Logger logger = LoggerFactory.getLogger(McpIconFilter.class);
     
-    private static final String MCP_ENDPOINT = "/api/mcp";
     private static final String ICON_PATH = "static/icon-small.png";
     
     private String iconDataUri;
@@ -59,13 +57,11 @@ public class McpIconFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
         
-        HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         
-        String path = httpRequest.getRequestURI();
-        
-        // Only filter MCP endpoint responses
-        if (path != null && path.startsWith(MCP_ENDPOINT) && iconDataUri != null) {
+        // This filter is registered only for /api/mcp and /api/mcp/* URL patterns,
+        // so we know this is an MCP request. Only check if icon was loaded successfully.
+        if (iconDataUri != null) {
             // Wrap the response to capture the output
             ContentCachingResponseWrapper responseWrapper = new ContentCachingResponseWrapper(httpResponse);
             
