@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { Banner } from "../../components/Banner";
 import Header from "../../components/Header";
 import SearchBox from "../../components/SearchBox";
+import UMAPViewer from "../../components/UMAPViewer";
 import { getBannerText, getStats } from "./homeSlice";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
@@ -208,6 +209,23 @@ export default function Home() {
                 </p>
               </div>
             </div>
+            {process.env.REACT_APP_UMAP_URL && (
+              <div className="mt-8 mb-8">
+                <div className="text-2xl mb-4 text-neutral-default">
+                  <i className="icon icon-common icon-3d icon-spacer text-yellow-default" />
+                  <span>Explore Ontology Embeddings</span>
+                </div>
+                <p className="px-2 text-neutral-black mb-4">
+                  This interactive visualization shows all of the terms in OLS in a 2D space, where the distance between terms reflects their semantic similarity based on LLM embeddings of the label, synonym, and definition. Terms that are semantically similar appear closer together.
+                </p>
+                <div className="px-2 rounded-lg border border-neutral-light overflow-hidden">
+                  <UMAPViewer 
+                    dataPath={process.env.REACT_APP_UMAP_URL}
+                    height="600px"
+                  />
+                </div>
+              </div>
+            )}
           </div>
           <div className="lg:col-span-1 lg:order-none order-first">
             <div className="shadow-card border-b-8 border-link-default rounded-md mt-8 p-4">
