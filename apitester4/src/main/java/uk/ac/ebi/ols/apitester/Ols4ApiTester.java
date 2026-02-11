@@ -307,7 +307,9 @@ public class Ols4ApiTester {
 			return allEntries;
 
 		} catch(Exception e) {
-			return gson.toJsonTree(e);
+			JsonObject err = new JsonObject();
+			err.addProperty("error", e.getClass().getName() + ": " + e.getMessage());
+			return err;
 		}
 	}
 
@@ -340,7 +342,9 @@ public class Ols4ApiTester {
 			return allEntries;
 
 		} catch(Exception e) {
-			return gson.toJsonTree(e);
+			JsonObject err = new JsonObject();
+			err.addProperty("error", e.getClass().getName() + ": " + e.getMessage());
+			return err;
 		}
 	}
 

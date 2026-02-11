@@ -1,6 +1,7 @@
 package uk.ac.ebi.spot.ols.config;
 
 import jakarta.servlet.*;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpServletResponseWrapper;
 import org.slf4j.Logger;
@@ -58,32 +59,89 @@ public class McpIconFilter implements Filter {
             throws IOException, ServletException {
         
         HttpServletResponse httpResponse = (HttpServletResponse) response;
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
         
-        // This filter is registered only for /api/mcp and /api/mcp/* URL patterns,
-        // so we know this is an MCP request. Only check if icon was loaded successfully.
-        if (iconDataUri != null) {
-            // Wrap the response to capture the output
-            ContentCachingResponseWrapper responseWrapper = new ContentCachingResponseWrapper(httpResponse);
+        // Only intercept POST initialize requests to inject the server icon.
+        // Other MCP requests (tools/list, tools/call, etc.) use SSE streaming
+        // which must not be buffered, so we let them pass through directly.
+        if (iconDataUri != null && "POST".equalsIgnoreCase(httpRequest.getMethod())) {
+            // Wrap the request so we can read the body without consuming it
+            CachedBodyHttpServletRequest cachedRequest = new CachedBodyHttpServletRequest(httpRequest);
+            String body = cachedRequest.getCachedBody();
             
-            chain.doFilter(request, responseWrapper);
-            
-            // Get the response content
-            byte[] content = responseWrapper.getContentAsByteArray();
-            String responseBody = new String(content, StandardCharsets.UTF_8);
-            
-            // Check if this is an initialize response (contains serverInfo)
-            if (responseBody.contains("\"serverInfo\"") && responseBody.contains("\"protocolVersion\"")) {
-                responseBody = injectIconsIntoResponse(responseBody);
+            if (body.contains("\"method\"") && body.contains("\"initialize\"")
+                    && !body.contains("\"notifications/initialized\"")) {
+                // This is an initialize request - wrap response to inject icon
+                ContentCachingResponseWrapper responseWrapper = new ContentCachingResponseWrapper(httpResponse);
+                
+                chain.doFilter(cachedRequest, responseWrapper);
+                
+                // Get the response content
+                byte[] content = responseWrapper.getContentAsByteArray();
+                String responseBody = new String(content, StandardCharsets.UTF_8);
+                
+                // Inject icon into initialize response
+                if (responseBody.contains("\"serverInfo\"") && responseBody.contains("\"protocolVersion\"")) {
+                    responseBody = injectIconsIntoResponse(responseBody);
+                }
+                
+                // Write the (potentially modified) response
+                byte[] modifiedContent = responseBody.getBytes(StandardCharsets.UTF_8);
+                httpResponse.setContentType(responseWrapper.getContentType());
+                httpResponse.setContentLength(modifiedContent.length);
+                httpResponse.getOutputStream().write(modifiedContent);
+                httpResponse.getOutputStream().flush();
+                return;
             }
             
-            // Write the (potentially modified) response, preserving content type
-            byte[] modifiedContent = responseBody.getBytes(StandardCharsets.UTF_8);
-            httpResponse.setContentType(responseWrapper.getContentType());
-            httpResponse.setContentLength(modifiedContent.length);
-            httpResponse.getOutputStream().write(modifiedContent);
-            httpResponse.getOutputStream().flush();
-        } else {
-            chain.doFilter(request, response);
+            // Not an initialize request - pass through with cached request
+            chain.doFilter(cachedRequest, response);
+            return;
+        }
+        
+        chain.doFilter(request, response);
+    }
+
+    /**
+     * An HttpServletRequest wrapper that caches the request body so it can be
+     * read multiple times (once for inspection, once by the downstream handler).
+     */
+    private static class CachedBodyHttpServletRequest extends jakarta.servlet.http.HttpServletRequestWrapper {
+        private final byte[] cachedBody;
+        
+        public CachedBodyHttpServletRequest(HttpServletRequest request) throws IOException {
+            super(request);
+            this.cachedBody = request.getInputStream().readAllBytes();
+        }
+        
+        public String getCachedBody() {
+            return new String(cachedBody, StandardCharsets.UTF_8);
+        }
+        
+        @Override
+        public ServletInputStream getInputStream() {
+            ByteArrayInputStream bais = new ByteArrayInputStream(cachedBody);
+            return new ServletInputStream() {
+                @Override
+                public int read() { return bais.read(); }
+                
+                @Override
+                public int read(byte[] b, int off, int len) { return bais.read(b, off, len); }
+                
+                @Override
+                public boolean isFinished() { return bais.available() == 0; }
+                
+                @Override
+                public boolean isReady() { return true; }
+                
+                @Override
+                public void setReadListener(ReadListener listener) { }
+            };
+        }
+        
+        @Override
+        public BufferedReader getReader() {
+            return new BufferedReader(new InputStreamReader(getInputStream(), StandardCharsets.UTF_8));
         }
     }
 

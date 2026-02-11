@@ -1,24 +1,27 @@
 package uk.ac.ebi.ols.apitester;
 
 import java.io.*;
-import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.util.*;
 
 import com.google.gson.*;
 
+import io.modelcontextprotocol.client.McpClient;
+import io.modelcontextprotocol.client.McpSyncClient;
+import io.modelcontextprotocol.client.transport.HttpClientStreamableHttpTransport;
+import io.modelcontextprotocol.spec.McpClientTransport;
+import io.modelcontextprotocol.spec.McpSchema;
+
 /**
- * Tests MCP (Model Context Protocol) functionality by calling MCP tools
- * via the streamable HTTP protocol endpoint.
+ * Tests MCP (Model Context Protocol) functionality using the official MCP Java SDK
+ * client with Streamable HTTP transport.
  */
 public class McpTester {
 
     private final String baseUrl;
     private final String outDir;
     private final Gson gson;
-    private String sessionId;
-    private int requestId = 1;
 
     public McpTester(String baseUrl, String outDir) {
         this.baseUrl = baseUrl.endsWith("/") ? baseUrl.substring(0, baseUrl.length() - 1) : baseUrl;
@@ -27,719 +30,446 @@ public class McpTester {
     }
 
     public boolean test() throws IOException {
-        System.out.println("Starting MCP tests...");
+        System.out.println("Starting MCP tests (SDK client)...");
+
+        McpClientTransport transport = HttpClientStreamableHttpTransport.builder(baseUrl)
+                .endpoint("/api/mcp")
+                .build();
+
+        McpSyncClient client = McpClient.sync(transport)
+                .clientInfo(new McpSchema.Implementation("ols4-apitester", "1.0.0"))
+                .build();
 
         boolean success = true;
 
-        // Initialize MCP session
-        if (!initializeSession()) {
-            System.out.println("Failed to initialize MCP session");
-            return false;
-        }
-
-        // Get available tools
-        JsonElement toolsList = listTools();
-        write(outDir + "/mcp/tools.json", toolsList);
-
-        if (toolsList == null || !toolsList.isJsonObject()) {
-            System.out.println("Failed to list MCP tools");
-            return false;
-        }
-
-        // Test each MCP tool
         try {
-            // Test listOntologies
-            if (!testListOntologies()) {
-                success = false;
-            }
+            // Initialize MCP session
+            System.out.println("Initializing MCP session...");
+            McpSchema.InitializeResult initResult = client.initialize();
+            System.out.println("MCP session initialized: server=" + initResult.serverInfo().name()
+                    + " version=" + initResult.serverInfo().version());
 
-            // Test search
-            if (!testSearch()) {
-                success = false;
-            }
+            // List tools
+            System.out.println("Listing MCP tools...");
+            McpSchema.ListToolsResult toolsResult = client.listTools();
+            JsonElement toolsJson = toToolsJson(toolsResult);
+            write(outDir + "/mcp/tools.json", toolsJson);
 
-            // Test searchClasses
-            if (!testSearchClasses()) {
-                success = false;
+            if (toolsResult.tools() == null || toolsResult.tools().isEmpty()) {
+                System.out.println("No tools found!");
+                return false;
             }
+            System.out.println("Found " + toolsResult.tools().size() + " tools");
 
-            // Test fetch with a known entity
-            if (!testFetch()) {
-                success = false;
-            }
-
-            // Test getAncestors
-            if (!testGetAncestors()) {
-                success = false;
-            }
-
-            // Test getDescendants
-            if (!testGetDescendants()) {
-                success = false;
-            }
-
-            // Test listEmbeddingModels
-            if (!testListEmbeddingModels()) {
-                success = false;
-            }
-
-            // Test searchWithEmbeddingModel (if models available)
-            if (!testSearchWithEmbeddingModel()) {
-                success = false;
-            }
-
-            // Test searchClassesWithEmbeddingModel (if models available)
-            if (!testSearchClassesWithEmbeddingModel()) {
-                success = false;
-            }
-
-            // Test getSimilarClasses (if models available)
-            if (!testGetSimilarClasses()) {
-                success = false;
-            }
-
-            // Test getClassSimilarity (if models available)
-            if (!testGetClassSimilarity()) {
-                success = false;
-            }
+            // Test each MCP tool
+            if (!testListOntologies(client)) success = false;
+            if (!testSearch(client)) success = false;
+            if (!testSearchClasses(client)) success = false;
+            if (!testFetch(client)) success = false;
+            if (!testGetAncestors(client)) success = false;
+            if (!testGetDescendants(client)) success = false;
+            if (!testListEmbeddingModels(client)) success = false;
+            if (!testSearchWithEmbeddingModel(client)) success = false;
+            if (!testSearchClassesWithEmbeddingModel(client)) success = false;
+            if (!testGetSimilarClasses(client)) success = false;
+            if (!testGetClassSimilarity(client)) success = false;
 
         } catch (Exception e) {
             System.out.println("Error during MCP tests: " + e.getMessage());
             e.printStackTrace();
             success = false;
+        } finally {
+            try {
+                client.close();
+            } catch (Exception e) {
+                // ignore
+            }
         }
 
         return success;
     }
 
-    private boolean initializeSession() throws IOException {
-        System.out.println("Initializing MCP session...");
+    // -----------------------------------------------------------------------
+    // Tool test methods
+    // -----------------------------------------------------------------------
 
-        JsonObject request = new JsonObject();
-        request.addProperty("jsonrpc", "2.0");
-        request.addProperty("id", requestId++);
-        request.addProperty("method", "initialize");
-
-        JsonObject params = new JsonObject();
-        params.addProperty("protocolVersion", "2025-03-26");
-
-        JsonObject clientInfo = new JsonObject();
-        clientInfo.addProperty("name", "ols4-apitester");
-        clientInfo.addProperty("version", "1.0.0");
-        params.add("clientInfo", clientInfo);
-
-        JsonObject capabilities = new JsonObject();
-        params.add("capabilities", capabilities);
-
-        request.add("params", params);
-
-        JsonElement response = sendMcpRequest(request);
-
-        if (response != null && response.isJsonObject()) {
-            JsonObject responseObj = response.getAsJsonObject();
-            if (responseObj.has("result")) {
-                System.out.println("MCP session initialized successfully");
-
-                // Send initialized notification
-                JsonObject notification = new JsonObject();
-                notification.addProperty("jsonrpc", "2.0");
-                notification.addProperty("method", "notifications/initialized");
-                sendMcpRequest(notification);
-
-                return true;
-            } else if (responseObj.has("error")) {
-                System.out.println("MCP initialization error: " + responseObj.get("error"));
-            }
-        }
-        return false;
-    }
-
-    private JsonElement listTools() throws IOException {
-        System.out.println("Listing MCP tools...");
-
-        JsonObject request = new JsonObject();
-        request.addProperty("jsonrpc", "2.0");
-        request.addProperty("id", requestId++);
-        request.addProperty("method", "tools/list");
-        request.add("params", new JsonObject());
-
-        JsonElement response = sendMcpRequest(request);
-        return response;
-    }
-
-    private boolean testListOntologies() throws IOException {
+    private boolean testListOntologies(McpSyncClient client) throws IOException {
         System.out.println("Testing listOntologies...");
-
-        JsonObject args = new JsonObject();
-        // lang is optional, defaults to "en"
-
-        JsonElement result = callTool("listOntologies", args);
+        JsonElement result = callToolAsJson(client, "listOntologies", Map.of());
         write(outDir + "/mcp/listOntologies.json", result);
-
-        if (result == null) {
-            System.out.println("listOntologies returned null");
-            return false;
-        }
-
+        if (result == null) { System.out.println("listOntologies returned null"); return false; }
         System.out.println("listOntologies: SUCCESS");
         return true;
     }
 
-    private boolean testSearch() throws IOException {
+    private boolean testSearch(McpSyncClient client) throws IOException {
         System.out.println("Testing search...");
-
-        JsonObject args = new JsonObject();
-        args.addProperty("query", "cell");
-
-        JsonElement result = callTool("search", args);
+        JsonElement result = callToolAsJson(client, "search", Map.of("query", "cell"));
         write(outDir + "/mcp/search.json", result);
-
-        if (result == null) {
-            System.out.println("search returned null");
-            return false;
-        }
-
+        if (result == null) { System.out.println("search returned null"); return false; }
         System.out.println("search: SUCCESS");
         return true;
     }
 
-    private boolean testSearchClasses() throws IOException {
+    private boolean testSearchClasses(McpSyncClient client) throws IOException {
         System.out.println("Testing searchClasses...");
-
-        JsonObject args = new JsonObject();
-        args.addProperty("query", "cell");
-        args.addProperty("pageSize", 10);
-
-        JsonElement result = callTool("searchClasses", args);
+        JsonElement result = callToolAsJson(client, "searchClasses",
+                Map.of("query", "cell", "pageSize", 10));
         write(outDir + "/mcp/searchClasses.json", result);
-
-        if (result == null) {
-            System.out.println("searchClasses returned null");
-            return false;
-        }
+        if (result == null) { System.out.println("searchClasses returned null"); return false; }
 
         // Also test with ontologyId filter
-        JsonObject argsWithOntology = new JsonObject();
-        argsWithOntology.addProperty("query", "research");
-        argsWithOntology.addProperty("ontologyId", "duo");
-        argsWithOntology.addProperty("pageSize", 10);
-
-        JsonElement resultWithOntology = callTool("searchClasses", argsWithOntology);
+        JsonElement resultWithOntology = callToolAsJson(client, "searchClasses",
+                Map.of("query", "research", "ontologyId", "duo", "pageSize", 10));
         write(outDir + "/mcp/searchClasses_withOntology.json", resultWithOntology);
 
         System.out.println("searchClasses: SUCCESS");
         return true;
     }
 
-    private boolean testFetch() throws IOException {
+    private boolean testFetch(McpSyncClient client) throws IOException {
         System.out.println("Testing fetch...");
 
-        // First, do a search to get a valid entity ID
-        JsonObject searchArgs = new JsonObject();
-        searchArgs.addProperty("query", "data use permission");
+        // Search first to find a valid entity ID
+        JsonElement searchResult = callToolAsJson(client, "search",
+                Map.of("query", "data use permission"));
 
-        JsonElement searchResult = callTool("search", searchArgs);
-
-        String entityId = null;
-        if (searchResult != null && searchResult.isJsonObject()) {
-            JsonObject resultObj = searchResult.getAsJsonObject();
-            if (resultObj.has("result")) {
-                JsonObject result = resultObj.get("result").getAsJsonObject();
-                if (result.has("content") && result.get("content").isJsonArray()) {
-                    JsonArray content = result.get("content").getAsJsonArray();
-                    if (content.size() > 0) {
-                        JsonObject firstContent = content.get(0).getAsJsonObject();
-                        if (firstContent.has("text")) {
-                            // Parse the text content to extract an ID
-                            String text = firstContent.get("text").getAsString();
-                            JsonArray items = JsonParser.parseString(text).getAsJsonArray();
-                            if (items.size() > 0) {
-                                JsonObject firstItem = items.get(0).getAsJsonObject();
-                                if (firstItem.has("id")) {
-                                    entityId = firstItem.get("id").getAsString();
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
+        String entityId = extractEntityIdFromResult(searchResult);
         if (entityId == null) {
-            // Fallback to a known DUO entity
             entityId = "duo+http://purl.obolibrary.org/obo/DUO_0000001";
             System.out.println("Using fallback entity ID: " + entityId);
         } else {
             System.out.println("Using entity ID from search: " + entityId);
         }
 
-        JsonObject args = new JsonObject();
-        args.addProperty("id", entityId);
-
-        JsonElement result = callTool("fetch", args);
+        JsonElement result = callToolAsJson(client, "fetch", Map.of("id", entityId));
         write(outDir + "/mcp/fetch.json", result);
-
-        if (result == null) {
-            System.out.println("fetch returned null");
-            return false;
-        }
-
+        if (result == null) { System.out.println("fetch returned null"); return false; }
         System.out.println("fetch: SUCCESS");
         return true;
     }
 
-    private boolean testGetAncestors() throws IOException {
+    private boolean testGetAncestors(McpSyncClient client) throws IOException {
         System.out.println("Testing getAncestors...");
-
-        JsonObject args = new JsonObject();
-        args.addProperty("ontologyId", "duo");
-        args.addProperty("classIri", "http://purl.obolibrary.org/obo/DUO_0000001");
-        args.addProperty("pageSize", 10);
-
-        JsonElement result = callTool("getAncestors", args);
+        JsonElement result = callToolAsJson(client, "getAncestors",
+                Map.of("ontologyId", "duo",
+                       "classIri", "http://purl.obolibrary.org/obo/DUO_0000001",
+                       "pageSize", 10));
         write(outDir + "/mcp/getAncestors.json", result);
-
-        if (result == null) {
-            System.out.println("getAncestors returned null");
-            return false;
-        }
-
+        if (result == null) { System.out.println("getAncestors returned null"); return false; }
         System.out.println("getAncestors: SUCCESS");
         return true;
     }
 
-    private boolean testGetDescendants() throws IOException {
+    private boolean testGetDescendants(McpSyncClient client) throws IOException {
         System.out.println("Testing getDescendants...");
-
-        JsonObject args = new JsonObject();
-        args.addProperty("ontologyId", "duo");
-        args.addProperty("classIri", "http://purl.obolibrary.org/obo/DUO_0000001");
-        args.addProperty("pageSize", 10);
-
-        JsonElement result = callTool("getDescendants", args);
+        JsonElement result = callToolAsJson(client, "getDescendants",
+                Map.of("ontologyId", "duo",
+                       "classIri", "http://purl.obolibrary.org/obo/DUO_0000001",
+                       "pageSize", 10));
         write(outDir + "/mcp/getDescendants.json", result);
-
-        if (result == null) {
-            System.out.println("getDescendants returned null");
-            return false;
-        }
-
+        if (result == null) { System.out.println("getDescendants returned null"); return false; }
         System.out.println("getDescendants: SUCCESS");
         return true;
     }
 
-    private boolean testListEmbeddingModels() throws IOException {
+    private boolean testListEmbeddingModels(McpSyncClient client) throws IOException {
         System.out.println("Testing listEmbeddingModels...");
-
-        JsonObject args = new JsonObject();
-
-        JsonElement result = callTool("listEmbeddingModels", args);
+        JsonElement result = callToolAsJson(client, "listEmbeddingModels", Map.of());
         write(outDir + "/mcp/listEmbeddingModels.json", result);
-
-        if (result == null) {
-            System.out.println("listEmbeddingModels returned null");
-            return false;
-        }
-
+        if (result == null) { System.out.println("listEmbeddingModels returned null"); return false; }
         System.out.println("listEmbeddingModels: SUCCESS");
         return true;
     }
 
-    private boolean testSearchWithEmbeddingModel() throws IOException {
+    private boolean testSearchWithEmbeddingModel(McpSyncClient client) throws IOException {
         System.out.println("Testing searchWithEmbeddingModel...");
 
-        // First, get available models
-        JsonObject listArgs = new JsonObject();
-        JsonElement modelsResult = callTool("listEmbeddingModels", listArgs);
-
+        JsonElement modelsResult = callToolAsJson(client, "listEmbeddingModels", Map.of());
         String modelName = findEmbeddableModel(modelsResult);
-
         if (modelName == null) {
-            System.out.println("No embedding model with can_embed=true found, skipping searchWithEmbeddingModel test");
+            System.out.println("No embedding model with can_embed=true found, skipping");
             write(outDir + "/mcp/searchWithEmbeddingModel.json",
                     JsonParser.parseString("{\"skipped\": \"no embeddable model available\"}"));
-            return true; // Not a failure, just skipped
+            return true;
         }
 
-        JsonObject args = new JsonObject();
-        args.addProperty("query", "genetic research");
-        args.addProperty("model", modelName);
-        args.addProperty("pageSize", 10);
-
-        JsonElement result = callTool("searchWithEmbeddingModel", args);
+        JsonElement result = callToolAsJson(client, "searchWithEmbeddingModel",
+                Map.of("query", "genetic research", "model", modelName, "pageSize", 10));
         write(outDir + "/mcp/searchWithEmbeddingModel.json", result);
-
-        if (result == null) {
-            System.out.println("searchWithEmbeddingModel returned null");
-            return false;
-        }
+        if (result == null) { System.out.println("searchWithEmbeddingModel returned null"); return false; }
 
         // Test with ontologyId filter
-        JsonObject argsWithOntology = new JsonObject();
-        argsWithOntology.addProperty("query", "data use");
-        argsWithOntology.addProperty("model", modelName);
-        argsWithOntology.addProperty("ontologyId", "duo");
-        argsWithOntology.addProperty("pageSize", 10);
-
-        JsonElement resultWithOntology = callTool("searchWithEmbeddingModel", argsWithOntology);
+        JsonElement resultWithOntology = callToolAsJson(client, "searchWithEmbeddingModel",
+                Map.of("query", "data use", "model", modelName, "ontologyId", "duo", "pageSize", 10));
         write(outDir + "/mcp/searchWithEmbeddingModel_withOntology.json", resultWithOntology);
 
         System.out.println("searchWithEmbeddingModel: SUCCESS");
         return true;
     }
 
-    private boolean testSearchClassesWithEmbeddingModel() throws IOException {
+    private boolean testSearchClassesWithEmbeddingModel(McpSyncClient client) throws IOException {
         System.out.println("Testing searchClassesWithEmbeddingModel...");
 
-        // First, get available models
-        JsonObject listArgs = new JsonObject();
-        JsonElement modelsResult = callTool("listEmbeddingModels", listArgs);
-
+        JsonElement modelsResult = callToolAsJson(client, "listEmbeddingModels", Map.of());
         String modelName = findEmbeddableModel(modelsResult);
-
         if (modelName == null) {
-            System.out.println("No embedding model with can_embed=true found, skipping searchClassesWithEmbeddingModel test");
+            System.out.println("No embedding model with can_embed=true found, skipping");
             write(outDir + "/mcp/searchClassesWithEmbeddingModel.json",
                     JsonParser.parseString("{\"skipped\": \"no embeddable model available\"}"));
-            return true; // Not a failure, just skipped
+            return true;
         }
 
-        JsonObject args = new JsonObject();
-        args.addProperty("query", "permission for research");
-        args.addProperty("model", modelName);
-        args.addProperty("pageSize", 10);
-
-        JsonElement result = callTool("searchClassesWithEmbeddingModel", args);
+        JsonElement result = callToolAsJson(client, "searchClassesWithEmbeddingModel",
+                Map.of("query", "permission for research", "model", modelName, "pageSize", 10));
         write(outDir + "/mcp/searchClassesWithEmbeddingModel.json", result);
-
-        if (result == null) {
-            System.out.println("searchClassesWithEmbeddingModel returned null");
-            return false;
-        }
-
+        if (result == null) { System.out.println("searchClassesWithEmbeddingModel returned null"); return false; }
         System.out.println("searchClassesWithEmbeddingModel: SUCCESS");
         return true;
     }
 
-    private boolean testGetSimilarClasses() throws IOException {
+    private boolean testGetSimilarClasses(McpSyncClient client) throws IOException {
         System.out.println("Testing getSimilarClasses...");
 
-        // First, get available models
-        JsonObject listArgs = new JsonObject();
-        JsonElement modelsResult = callTool("listEmbeddingModels", listArgs);
-
+        JsonElement modelsResult = callToolAsJson(client, "listEmbeddingModels", Map.of());
         String modelName = findAnyModel(modelsResult);
-
         if (modelName == null) {
-            System.out.println("No embedding model found, skipping getSimilarClasses test");
+            System.out.println("No embedding model found, skipping");
             write(outDir + "/mcp/getSimilarClasses.json",
                     JsonParser.parseString("{\"skipped\": \"no embedding model available\"}"));
-            return true; // Not a failure, just skipped
+            return true;
         }
 
-        JsonObject args = new JsonObject();
-        args.addProperty("classIri", "http://purl.obolibrary.org/obo/DUO_0000001");
-        args.addProperty("model", modelName);
-        args.addProperty("pageSize", 10);
-
-        JsonElement result = callTool("getSimilarClasses", args);
+        JsonElement result = callToolAsJson(client, "getSimilarClasses",
+                Map.of("classIri", "http://purl.obolibrary.org/obo/DUO_0000001",
+                       "model", modelName, "pageSize", 10));
         write(outDir + "/mcp/getSimilarClasses.json", result);
-
-        if (result == null) {
-            System.out.println("getSimilarClasses returned null");
-            return false;
-        }
-
+        if (result == null) { System.out.println("getSimilarClasses returned null"); return false; }
         System.out.println("getSimilarClasses: SUCCESS");
         return true;
     }
 
-    private boolean testGetClassSimilarity() throws IOException {
+    private boolean testGetClassSimilarity(McpSyncClient client) throws IOException {
         System.out.println("Testing getClassSimilarity...");
 
-        // First, get available models
-        JsonObject listArgs = new JsonObject();
-        JsonElement modelsResult = callTool("listEmbeddingModels", listArgs);
-
+        JsonElement modelsResult = callToolAsJson(client, "listEmbeddingModels", Map.of());
         String modelName = findAnyModel(modelsResult);
-
         if (modelName == null) {
-            System.out.println("No embedding model found, skipping getClassSimilarity test");
+            System.out.println("No embedding model found, skipping");
             write(outDir + "/mcp/getClassSimilarity.json",
                     JsonParser.parseString("{\"skipped\": \"no embedding model available\"}"));
-            return true; // Not a failure, just skipped
+            return true;
         }
 
-        JsonObject args = new JsonObject();
-        args.addProperty("classIri1", "http://purl.obolibrary.org/obo/DUO_0000001");
-        args.addProperty("classIri2", "http://purl.obolibrary.org/obo/DUO_0000004");
-        args.addProperty("model", modelName);
-
-        JsonElement result = callTool("getClassSimilarity", args);
+        JsonElement result = callToolAsJson(client, "getClassSimilarity",
+                Map.of("classIri1", "http://purl.obolibrary.org/obo/DUO_0000001",
+                       "classIri2", "http://purl.obolibrary.org/obo/DUO_0000004",
+                       "model", modelName));
         write(outDir + "/mcp/getClassSimilarity.json", result);
-
-        if (result == null) {
-            System.out.println("getClassSimilarity returned null");
-            return false;
-        }
-
+        if (result == null) { System.out.println("getClassSimilarity returned null"); return false; }
         System.out.println("getClassSimilarity: SUCCESS");
         return true;
     }
 
-    private String findEmbeddableModel(JsonElement modelsResult) {
-        if (modelsResult == null || !modelsResult.isJsonObject()) {
-            return null;
-        }
+    // -----------------------------------------------------------------------
+    // SDK helper: call a tool and convert the result to Gson JsonElement
+    // -----------------------------------------------------------------------
 
-        JsonObject resultObj = modelsResult.getAsJsonObject();
-        if (!resultObj.has("result")) {
-            return null;
-        }
+    private JsonElement callToolAsJson(McpSyncClient client, String toolName, Map<String, Object> arguments) {
+        try {
+            System.out.println("  Calling tool: " + toolName);
+            McpSchema.CallToolResult callResult = client.callTool(
+                    new McpSchema.CallToolRequest(toolName, arguments));
 
-        JsonObject result = resultObj.get("result").getAsJsonObject();
-        if (!result.has("content") || !result.get("content").isJsonArray()) {
-            return null;
-        }
+            // Build a JSON structure matching the old format:
+            // { "result": { "content": [ { "type": "text", "text": "..." }, ... ] } }
+            JsonObject wrapper = new JsonObject();
+            JsonObject result = new JsonObject();
+            JsonArray contentArray = new JsonArray();
 
-        JsonArray content = result.get("content").getAsJsonArray();
-        for (JsonElement contentItem : content) {
-            if (contentItem.isJsonObject()) {
-                JsonObject item = contentItem.getAsJsonObject();
-                if (item.has("text")) {
-                    try {
-                        JsonArray models = JsonParser.parseString(item.get("text").getAsString()).getAsJsonArray();
-                        for (JsonElement modelElement : models) {
-                            JsonObject model = modelElement.getAsJsonObject();
-                            if (model.has("can_embed") && model.get("can_embed").getAsBoolean()) {
-                                return model.get("model").getAsString();
-                            }
-                        }
-                    } catch (Exception e) {
-                        // Continue if parsing fails
+            if (callResult.content() != null) {
+                for (McpSchema.Content content : callResult.content()) {
+                    JsonObject contentObj = new JsonObject();
+                    if (content instanceof McpSchema.TextContent tc) {
+                        contentObj.addProperty("type", "text");
+                        contentObj.addProperty("text", tc.text());
+                    } else if (content instanceof McpSchema.ImageContent ic) {
+                        contentObj.addProperty("type", "image");
+                        contentObj.addProperty("data", ic.data());
+                        contentObj.addProperty("mimeType", ic.mimeType());
+                    } else {
+                        contentObj.addProperty("type", content.type());
                     }
+                    contentArray.add(contentObj);
                 }
+            }
+
+            result.add("content", contentArray);
+            if (callResult.isError() != null && callResult.isError()) {
+                result.addProperty("isError", true);
+            }
+            wrapper.add("result", result);
+            return wrapper;
+
+        } catch (Exception e) {
+            System.out.println("  Error calling tool " + toolName + ": " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    // -----------------------------------------------------------------------
+    // Convert ListToolsResult to Gson JSON for output
+    // -----------------------------------------------------------------------
+
+    private JsonElement toToolsJson(McpSchema.ListToolsResult toolsResult) {
+        JsonObject wrapper = new JsonObject();
+        JsonArray toolsArray = new JsonArray();
+
+        if (toolsResult.tools() != null) {
+            for (McpSchema.Tool tool : toolsResult.tools()) {
+                JsonObject toolObj = new JsonObject();
+                toolObj.addProperty("name", tool.name());
+                toolObj.addProperty("description", tool.description());
+                if (tool.inputSchema() != null) {
+                    // Convert the input schema map to a JsonElement
+                    String schemaJson = gson.toJson(tool.inputSchema());
+                    toolObj.add("inputSchema", JsonParser.parseString(schemaJson));
+                }
+                toolsArray.add(toolObj);
             }
         }
 
-        // Try looking for mock model as fallback for testing
+        wrapper.add("tools", toolsArray);
+        return wrapper;
+    }
+
+    // -----------------------------------------------------------------------
+    // Helper: extract entity ID from a search result
+    // -----------------------------------------------------------------------
+
+    private String extractEntityIdFromResult(JsonElement searchResult) {
+        if (searchResult == null || !searchResult.isJsonObject()) return null;
+        try {
+            JsonObject resultObj = searchResult.getAsJsonObject();
+            JsonObject result = resultObj.getAsJsonObject("result");
+            if (result == null) return null;
+            JsonArray content = result.getAsJsonArray("content");
+            if (content == null || content.size() == 0) return null;
+            JsonObject firstContent = content.get(0).getAsJsonObject();
+            String text = firstContent.get("text").getAsString();
+            JsonArray items = JsonParser.parseString(text).getAsJsonArray();
+            if (items.size() > 0) {
+                JsonObject firstItem = items.get(0).getAsJsonObject();
+                if (firstItem.has("id")) {
+                    return firstItem.get("id").getAsString();
+                }
+            }
+        } catch (Exception e) {
+            // fall through
+        }
+        return null;
+    }
+
+    // -----------------------------------------------------------------------
+    // Helpers to find embedding models from listEmbeddingModels result
+    // -----------------------------------------------------------------------
+
+    private String findEmbeddableModel(JsonElement modelsResult) {
+        if (modelsResult == null || !modelsResult.isJsonObject()) return null;
+        try {
+            JsonArray content = modelsResult.getAsJsonObject()
+                    .getAsJsonObject("result").getAsJsonArray("content");
+            for (JsonElement contentItem : content) {
+                JsonObject item = contentItem.getAsJsonObject();
+                if (item.has("text")) {
+                    JsonArray models = JsonParser.parseString(item.get("text").getAsString()).getAsJsonArray();
+                    for (JsonElement modelElement : models) {
+                        JsonObject model = modelElement.getAsJsonObject();
+                        if (model.has("can_embed") && model.get("can_embed").getAsBoolean()) {
+                            return model.get("model").getAsString();
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) { /* fall through */ }
         return "mock";
     }
 
     private String findAnyModel(JsonElement modelsResult) {
-        if (modelsResult == null || !modelsResult.isJsonObject()) {
-            return "mock"; // Fallback
-        }
-
-        JsonObject resultObj = modelsResult.getAsJsonObject();
-        if (!resultObj.has("result")) {
-            return "mock";
-        }
-
-        JsonObject result = resultObj.get("result").getAsJsonObject();
-        if (!result.has("content") || !result.get("content").isJsonArray()) {
-            return "mock";
-        }
-
-        JsonArray content = result.get("content").getAsJsonArray();
-        for (JsonElement contentItem : content) {
-            if (contentItem.isJsonObject()) {
+        if (modelsResult == null || !modelsResult.isJsonObject()) return "mock";
+        try {
+            JsonArray content = modelsResult.getAsJsonObject()
+                    .getAsJsonObject("result").getAsJsonArray("content");
+            for (JsonElement contentItem : content) {
                 JsonObject item = contentItem.getAsJsonObject();
                 if (item.has("text")) {
-                    try {
-                        JsonArray models = JsonParser.parseString(item.get("text").getAsString()).getAsJsonArray();
-                        if (models.size() > 0) {
-                            // Return the first available model
-                            return models.get(0).getAsJsonObject().get("model").getAsString();
-                        }
-                    } catch (Exception e) {
-                        // Continue if parsing fails
+                    JsonArray models = JsonParser.parseString(item.get("text").getAsString()).getAsJsonArray();
+                    if (models.size() > 0) {
+                        return models.get(0).getAsJsonObject().get("model").getAsString();
                     }
                 }
             }
-        }
-
-        return "mock"; // Fallback to mock for testing
+        } catch (Exception e) { /* fall through */ }
+        return "mock";
     }
 
-    private JsonElement callTool(String toolName, JsonObject arguments) throws IOException {
-        JsonObject request = new JsonObject();
-        request.addProperty("jsonrpc", "2.0");
-        request.addProperty("id", requestId++);
-        request.addProperty("method", "tools/call");
-
-        JsonObject params = new JsonObject();
-        params.addProperty("name", toolName);
-        params.add("arguments", arguments);
-        request.add("params", params);
-
-        return sendMcpRequest(request);
-    }
-
-    private JsonElement sendMcpRequest(JsonObject request) throws IOException {
-        String mcpEndpoint = baseUrl + "/api/mcp";
-
-        System.out.println("POST " + mcpEndpoint + " - " + request.get("method"));
-
-        HttpURLConnection conn = (HttpURLConnection) new URL(mcpEndpoint).openConnection();
-        conn.setRequestMethod("POST");
-        conn.setRequestProperty("Content-Type", "application/json");
-        conn.setRequestProperty("Accept", "application/json, text/event-stream");
-        conn.setDoOutput(true);
-
-        // Add session ID if we have one
-        if (sessionId != null) {
-            conn.setRequestProperty("Mcp-Session-Id", sessionId);
-        }
-
-        // Write request body
-        try (OutputStream os = conn.getOutputStream()) {
-            byte[] input = gson.toJson(request).getBytes(StandardCharsets.UTF_8);
-            os.write(input, 0, input.length);
-        }
-
-        // Get response
-        int responseCode = conn.getResponseCode();
-
-        // Extract session ID from response headers
-        String newSessionId = conn.getHeaderField("Mcp-Session-Id");
-        if (newSessionId != null) {
-            this.sessionId = newSessionId;
-        }
-
-        InputStream is;
-        if (responseCode >= 200 && responseCode < 300) {
-            is = conn.getInputStream();
-        } else {
-            is = conn.getErrorStream();
-            if (is == null) {
-                System.out.println("Error: HTTP " + responseCode);
-                return null;
-            }
-        }
-
-        String contentType = conn.getContentType();
-
-        // Handle SSE (Server-Sent Events) responses
-        if (contentType != null && contentType.contains("text/event-stream")) {
-            return parseSSEResponse(is);
-        }
-
-        // Handle regular JSON response
-        try (Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8)) {
-            return JsonParser.parseReader(reader);
-        }
-    }
-
-    private JsonElement parseSSEResponse(InputStream is) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
-        StringBuilder eventData = new StringBuilder();
-        String line;
-        JsonElement lastResult = null;
-
-        while ((line = reader.readLine()) != null) {
-            if (line.startsWith("data: ")) {
-                String data = line.substring(6);
-                try {
-                    JsonElement parsed = JsonParser.parseString(data);
-                    if (parsed.isJsonObject()) {
-                        JsonObject obj = parsed.getAsJsonObject();
-                        if (obj.has("result") || obj.has("error")) {
-                            lastResult = parsed;
-                        }
-                    }
-                } catch (JsonSyntaxException e) {
-                    // Continue reading
-                }
-            } else if (line.isEmpty() && eventData.length() > 0) {
-                // End of event
-                eventData.setLength(0);
-            }
-        }
-
-        return lastResult;
-    }
+    // -----------------------------------------------------------------------
+    // Output helpers (deep sort, remove volatile fields)
+    // -----------------------------------------------------------------------
 
     private void write(String path, JsonElement element) throws IOException {
         if (element == null) {
             element = JsonNull.INSTANCE;
         }
-
         Files.createDirectories(Paths.get(path).toAbsolutePath().getParent());
-
-        // Apply normalization (similar to Ols4ApiTester)
         JsonElement normalized = deepSort(removeVolatileFields(element));
-
         try (FileOutputStream os = new FileOutputStream(path)) {
             os.write(gson.toJson(normalized).getBytes(StandardCharsets.UTF_8));
         }
     }
 
     private JsonElement removeVolatileFields(JsonElement element) {
-        if (element == null || element.isJsonNull()) {
-            return JsonNull.INSTANCE;
-        }
-
+        if (element == null || element.isJsonNull()) return JsonNull.INSTANCE;
         if (element.isJsonArray()) {
             JsonArray arr = element.getAsJsonArray();
             JsonArray res = new JsonArray();
-            for (int i = 0; i < arr.size(); i++) {
-                res.add(removeVolatileFields(arr.get(i)));
-            }
+            for (int i = 0; i < arr.size(); i++) res.add(removeVolatileFields(arr.get(i)));
             return res;
         } else if (element.isJsonObject()) {
             JsonObject obj = element.getAsJsonObject();
             JsonObject res = new JsonObject();
-
             for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
                 String key = entry.getKey();
-
-                // Skip volatile fields
                 if (key.equals("loaded") || key.equals("updated") ||
                     key.equals("sourceFileTimestamp") || key.equals("score")) {
                     res.add(key, new JsonPrimitive("<" + key + ">"));
                     continue;
                 }
-
                 res.add(key, removeVolatileFields(entry.getValue()));
             }
             return res;
         }
-
         return element.deepCopy();
     }
 
     private JsonElement deepSort(JsonElement element) {
-        if (element == null || element.isJsonNull()) {
-            return JsonNull.INSTANCE;
-        }
-
+        if (element == null || element.isJsonNull()) return JsonNull.INSTANCE;
         if (element.isJsonArray()) {
             JsonArray arr = element.getAsJsonArray();
             JsonElement[] elems = new JsonElement[arr.size()];
-
-            for (int i = 0; i < arr.size(); i++) {
-                elems[i] = deepSort(arr.get(i));
-            }
-
+            for (int i = 0; i < arr.size(); i++) elems[i] = deepSort(arr.get(i));
             Arrays.sort(elems, Comparator.comparing(elem -> gson.toJson(elem)));
-
             JsonArray res = new JsonArray();
-            for (JsonElement elem : elems) {
-                res.add(elem);
-            }
+            for (JsonElement elem : elems) res.add(elem);
             return res;
         } else if (element.isJsonObject()) {
             JsonObject obj = element.getAsJsonObject();
             TreeSet<String> sortedKeys = new TreeSet<>(obj.keySet());
             JsonObject res = new JsonObject();
-
-            for (String key : sortedKeys) {
-                res.add(key, deepSort(obj.get(key)));
-            }
+            for (String key : sortedKeys) res.add(key, deepSort(obj.get(key)));
             return res;
         }
-
         return element.deepCopy();
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import uk.ac.ebi.spot.ols.controller.mcp.McpClassService;
+import uk.ac.ebi.spot.ols.controller.mcp.McpEmbeddingService;
 import uk.ac.ebi.spot.ols.controller.mcp.McpOntologyService;
 import uk.ac.ebi.spot.ols.controller.mcp.McpSearchService;
 
@@ -28,7 +29,7 @@ public class Ols4Backend {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**").allowedOrigins("*").allowedHeaders("*").allowedMethods("GET");
+                registry.addMapping("/api/**").allowedOrigins("*").allowedHeaders("*").allowedMethods("GET", "POST", "DELETE", "OPTIONS");
             }
         };
     }
@@ -43,6 +44,10 @@ public class Ols4Backend {
 	}
 	@Bean
 	public ToolCallbackProvider mcpSearchTools(McpSearchService service) {
+        return MethodToolCallbackProvider.builder().toolObjects(service).build();
+	}
+	@Bean
+	public ToolCallbackProvider mcpEmbeddingTools(McpEmbeddingService service) {
         return MethodToolCallbackProvider.builder().toolObjects(service).build();
 	}
 }
