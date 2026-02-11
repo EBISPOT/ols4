@@ -1,11 +1,10 @@
-use std::collections::{BTreeMap, HashMap};
+use std::collections::BTreeMap;
 use std::fs::File;
 use std::io::{BufReader, BufWriter, Write};
-use std::path::Path;
 
 use clap::Parser;
 use ols_shared::streaming::read_value;
-use ols_shared::{DefinedFields, Embeddings};
+use ols_shared::DefinedFields;
 use serde_json::{Map, Value};
 use struson::reader::{JsonReader, JsonStreamReader};
 
@@ -26,10 +25,6 @@ struct Args {
     #[arg(long = "outDir")]
     out_dir: String,
 
-    /// Optional folder containing embeddings Parquet files
-    #[arg(long = "embeddingDbsPath")]
-    embedding_dbs_path: Option<String>,
-
     /// Maximum number of rows per output file (-1 for unlimited)
     #[arg(long = "maxRowsPerFile", default_value = "-1")]
     max_rows_per_file: i32,
@@ -46,56 +41,11 @@ fn main() {
 fn run() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
 
-    // Load embeddings if path provided
-    let mut embeddings: HashMap<String, Embeddings> = HashMap::new();
-
-    if let Some(ref embeddings_path) = args.embedding_dbs_path {
-        let embeddings_dir = Path::new(embeddings_path);
-        if embeddings_dir.exists() && embeddings_dir.is_dir() {
-            for entry in std::fs::read_dir(embeddings_dir)? {
-                let entry = entry?;
-                let path = entry.path();
-                if path.extension().and_then(|s| s.to_str()) == Some("parquet") {
-                    eprintln!("Loading embeddings from {}", path.display());
-                    let model_name = path
-                        .file_stem()
-                        .and_then(|s| s.to_str())
-                        .unwrap_or("unknown")
-                        .to_string();
-
-                    let mut emb = Embeddings::new();
-                    emb.load_embeddings_from_file(
-                        path.to_str().unwrap(),
-                        args.ontology_id.as_deref(),
-                    )?;
-
-                    eprintln!(
-                        "Loaded embeddings model {} with {} entries for ontology id {:?}",
-                        model_name,
-                        emb.embeddings_cache.len(),
-                        args.ontology_id
-                    );
-
-                    embeddings.insert(model_name, emb);
-                }
-            }
-            eprintln!("Loaded {} embeddings databases", embeddings.len());
-        }
-    } else {
-        eprintln!("No embeddings path provided, skipping embeddings load.");
-    }
-
-    eprintln!(
-        "calling writeSolrJson with {} embedding models",
-        embeddings.len()
-    );
-
     // Create converter and run
     let converter = SolrConverter::new(
         args.ontology_id,
         args.input,
         args.out_dir,
-        embeddings,
         args.max_rows_per_file,
     )?;
     converter.convert()?;
@@ -177,7 +127,6 @@ struct SolrConverter {
     ontology_id: Option<String>,
     input_file_path: String,
     output_file_path: String,
-    embeddings: HashMap<String, Embeddings>,
     max_rows_per_file: i32,
 }
 
@@ -186,7 +135,6 @@ impl SolrConverter {
         ontology_id: Option<String>,
         input_file_path: String,
         output_file_path: String,
-        embeddings: HashMap<String, Embeddings>,
         max_rows_per_file: i32,
     ) -> Result<Self, Box<dyn std::error::Error>> {
         // Create output directory
@@ -196,7 +144,6 @@ impl SolrConverter {
             ontology_id,
             input_file_path,
             output_file_path,
-            embeddings,
             max_rows_per_file,
         })
     }
@@ -511,9 +458,6 @@ impl SolrConverter {
 
         flatten_properties(entity, &mut flattened_entity);
 
-        // Add embeddings
-        self.add_embeddings(ontology_id, entity_type, iri, &mut flattened_entity);
-
         // Store original JSON (without embeddings in it), preserving original key order
         // Java's Gson preserves LinkedHashMap insertion order from JSON parsing
         let entity_for_json: Map<String, Value> = entity
@@ -534,29 +478,6 @@ impl SolrConverter {
         Ok(())
     }
 
-    fn add_embeddings(
-        &self,
-        ontology_id: &str,
-        entity_type: &str,
-        iri: &str,
-        flattened_entity: &mut BTreeMap<String, Value>,
-    ) {
-        if self.embeddings.is_empty() {
-            return;
-        }
-
-        for (model_name, emb) in &self.embeddings {
-            let embedding_key = format!("embeddings_{}", model_name);
-
-            if let Some(embeddings_array) = emb.get_embeddings(ontology_id, entity_type, iri) {
-                let embeddings_list: Vec<Value> = embeddings_array
-                    .iter()
-                    .map(|&f| Value::Number(serde_json::Number::from_f64(f as f64).unwrap()))
-                    .collect();
-                flattened_entity.insert(embedding_key, Value::Array(embeddings_list));
-            }
-        }
-    }
 }
 
 fn flatten_properties(

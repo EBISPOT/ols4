@@ -40,7 +40,7 @@ workflow {
     solr_jsonls = json2solr(linked_ontologies_by_id)
 
     neo = create_neo(neo_csvs.collect(), params.embeddings_path)
-    solr = create_solr(solr_jsonls.collect(), linker_manifest, params.embeddings_path)
+    solr = create_solr(solr_jsonls.collect(), linker_manifest)
 
     // check_api_works(neo.neo_dir, solr.solr_dir)
 
@@ -239,7 +239,6 @@ process create_solr {
     input:
     path(solr_jsonls, stageAs: '?/*')
     path(manifest)
-    path(embeddings_path)
 
     output:
     path("solr"), emit: solr_dir
@@ -255,7 +254,6 @@ process create_solr {
     java -Xms${mem_mb}m -Xmx${mem_mb}m -jar /opt/ols/dataload/solr_config_builder/target/solr_config_builder-1.0-SNAPSHOT.jar \
         --manifestPath ${manifest} \
         --solrConfigTemplatePath /opt/ols/dataload/solr_config_template \
-        --embeddingDbsPath ${embeddings_path} \
         --outDir solr/server/solr \
 
     python3 /opt/ols/dataload/solr_import.py ./solr 8983 ${params.solr_mem}

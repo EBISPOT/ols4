@@ -55,25 +55,35 @@ def get_embedding_dimension(parquet_path: str) -> int:
 def generate_vector_index_cypher(model_name: str, dimensions: int) -> str:
     """Generate Cypher statements to create vector indexes for a given model.
     
-    Only creates a single OntologyEntity index per model. The API uses this index
-    for all entity types (classes, properties, individuals) and post-filters by type.
-    This reduces index count from 4 per model to 1 per model.
+    Creates two indexes per model:
+    1. OntologyEntity index on the average embedding (for term-term similarity)
+    2. Embedding child node index on individual embeddings (for free-text vector search)
     """
     
     # Sanitize model name for index name (replace hyphens with underscores)
     safe_model_name = model_name.replace('-', '_').replace('.', '_')
-    property_name = f"embeddings_{model_name}"
     
-    # Only create OntologyEntity index - API will post-filter by type
-    index_name = f"ontologyentity_{safe_model_name}_embeddings"
+    statements = []
     
-    statement = f"""CREATE VECTOR INDEX {index_name} IF NOT EXISTS
-FOR (n:OntologyEntity) ON n.`{property_name}` OPTIONS {{ indexConfig: {{
+    # 1. OntologyEntity index for average embeddings (term-term similarity)
+    avg_property_name = f"embeddings_{model_name}"
+    avg_index_name = f"ontologyentity_{safe_model_name}_embeddings"
+    statements.append(f"""CREATE VECTOR INDEX {avg_index_name} IF NOT EXISTS
+FOR (n:OntologyEntity) ON n.`{avg_property_name}` OPTIONS {{ indexConfig: {{
  `vector.dimensions`: {dimensions},
  `vector.similarity_function`: 'cosine'
-}}}};"""
+}}}};""")
     
-    return statement
+    # 2. Embedding child node index for individual embeddings (free-text search)
+    emb_property_name = f"embedding_{model_name}"
+    emb_index_name = f"embedding_{safe_model_name}"
+    statements.append(f"""CREATE VECTOR INDEX {emb_index_name} IF NOT EXISTS
+FOR (n:Embedding) ON n.`{emb_property_name}` OPTIONS {{ indexConfig: {{
+ `vector.dimensions`: {dimensions},
+ `vector.similarity_function`: 'cosine'
+}}}};""")
+    
+    return '\n\n'.join(statements)
 
 
 def generate_embedding_indexes(embeddings_path: Path) -> str:

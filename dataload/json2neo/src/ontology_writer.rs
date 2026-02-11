@@ -37,6 +37,16 @@ struct EntityWriter {
     entity_type_str: String,
 }
 
+/// Writer for Embedding child nodes
+struct EmbeddingNodeWriter {
+    writer: Writer<BufWriter<File>>,
+}
+
+/// Writer for HAS_EMBEDDING edges
+struct EmbeddingEdgeWriter {
+    writer: Writer<BufWriter<File>>,
+}
+
 pub struct OntologyWriter<'a> {
     output_file_path: String,
     ontology_id: String,
@@ -46,6 +56,10 @@ pub struct OntologyWriter<'a> {
     edges_writer: Writer<BufWriter<File>>,
     /// Current entity writer (for streaming entity writes)
     current_entity_writer: Option<EntityWriter>,
+    /// Embedding node writer (created once, shared across entity types)
+    embedding_node_writer: Option<EmbeddingNodeWriter>,
+    /// Embedding edge writer (created once, shared across entity types)
+    embedding_edge_writer: Option<EmbeddingEdgeWriter>,
 }
 
 impl<'a> OntologyWriter<'a> {
@@ -82,6 +96,8 @@ impl<'a> OntologyWriter<'a> {
             edges_properties,
             edges_writer,
             current_entity_writer: None,
+            embedding_node_writer: None,
+            embedding_edge_writer: None,
         })
     }
     
@@ -115,6 +131,7 @@ impl<'a> OntologyWriter<'a> {
         let mut embedding_model_names: Vec<String> = self.embeddings.keys().cloned().collect();
         embedding_model_names.sort();
         
+        // Entity CSV header: id, labels, _json, properties..., average embedding per model
         let mut csv_header = vec![
             "id:ID".to_string(),
             ":LABEL".to_string(),
@@ -131,6 +148,45 @@ impl<'a> OntologyWriter<'a> {
             .quote_style(QuoteStyle::Always)
             .from_writer(BufWriter::new(file));
         writer.write_record(&csv_header)?;
+        
+        // Initialize embedding node/edge writers on first call (shared across entity types)
+        if !embedding_model_names.is_empty() && self.embedding_node_writer.is_none() {
+            // Embedding nodes CSV: id, label, one embedding column per model
+            let mut emb_node_header = vec![
+                "id:ID".to_string(),
+                ":LABEL".to_string(),
+            ];
+            for model_name in &embedding_model_names {
+                emb_node_header.push(format!("embedding_{}:float[]", model_name));
+            }
+            
+            let emb_node_file = File::create(format!("{}/{}_embedding_nodes.csv", self.output_file_path, self.ontology_id))?;
+            let mut emb_node_writer = WriterBuilder::new()
+                .quote_style(QuoteStyle::Always)
+                .from_writer(BufWriter::new(emb_node_file));
+            emb_node_writer.write_record(&emb_node_header)?;
+            
+            self.embedding_node_writer = Some(EmbeddingNodeWriter {
+                writer: emb_node_writer,
+            });
+            
+            // Embedding edges CSV: start_id, type, end_id
+            let emb_edge_header = vec![
+                ":START_ID".to_string(),
+                ":TYPE".to_string(),
+                ":END_ID".to_string(),
+            ];
+            
+            let emb_edge_file = File::create(format!("{}/{}_embedding_edges.csv", self.output_file_path, self.ontology_id))?;
+            let mut emb_edge_writer = WriterBuilder::new()
+                .quote_style(QuoteStyle::Always)
+                .from_writer(BufWriter::new(emb_edge_file));
+            emb_edge_writer.write_record(&emb_edge_header)?;
+            
+            self.embedding_edge_writer = Some(EmbeddingEdgeWriter {
+                writer: emb_edge_writer,
+            });
+        }
         
         self.current_entity_writer = Some(EntityWriter {
             writer,
@@ -167,8 +223,10 @@ impl<'a> OntologyWriter<'a> {
             .and_then(|v| v.as_str())
             .unwrap_or("");
         
+        let entity_node_id = format!("{}+{}+{}", self.ontology_id, entity_type_str, iri);
+        
         let mut row: Vec<String> = Vec::with_capacity(3 + properties.len() + embedding_model_names.len());
-        row.push(format!("{}+{}+{}", self.ontology_id, entity_type_str, iri));
+        row.push(entity_node_id.clone());
         row.push(node_labels);
         
         let json_idx = row.len();
@@ -182,15 +240,19 @@ impl<'a> OntologyWriter<'a> {
             row.push(self.serialize_value(&entity_map, column, Some(iri))?);
         }
         
+        // Write average embedding per model on the parent node
         for model_name in &embedding_model_names {
-            row.push(self.serialize_embedding(entity, &entity_type_str, iri, model_name));
+            row.push(self.serialize_average_embedding(entity, &entity_type_str, iri, model_name));
         }
         
         row[json_idx] = serde_json::to_string(entity_value)?;
         
-        // Now get mutable access to write the record
+        // Write the entity row
         let ew = self.current_entity_writer.as_mut().unwrap();
         ew.writer.write_record(&row)?;
+        
+        // Write individual Embedding child nodes + HAS_EMBEDDING edges
+        self.write_embedding_child_nodes(&entity_node_id, entity, &entity_type_str, iri, &embedding_model_names)?;
         
         Ok(())
     }
@@ -213,6 +275,12 @@ impl<'a> OntologyWriter<'a> {
     /// Finish writing (flush all writers)
     pub fn finish(&mut self) -> Result<(), Box<dyn std::error::Error>> {
         self.edges_writer.flush()?;
+        if let Some(ref mut w) = self.embedding_node_writer {
+            w.writer.flush()?;
+        }
+        if let Some(ref mut w) = self.embedding_edge_writer {
+            w.writer.flush()?;
+        }
         Ok(())
     }
 
@@ -390,12 +458,105 @@ impl<'a> OntologyWriter<'a> {
         Ok(value_to_csv(&value.cloned()))
     }
 
-    fn serialize_embedding(&self, entity: &Map<String, Value>, entity_type: &str, iri: &str, model_name: &str) -> String {
-        // Only add embeddings to defining entities
-        let is_defining = entity
+    /// Serialize the average embedding for a given model on the parent entity node.
+    fn serialize_average_embedding(&self, entity: &Map<String, Value>, entity_type: &str, iri: &str, model_name: &str) -> String {
+        if !self.is_defining_entity(entity) {
+            return String::new();
+        }
+        
+        if let Some(emb) = self.embeddings.get(model_name) {
+            if let Some(avg) = emb.get_average_embedding(&self.ontology_id, entity_type, iri) {
+                return avg
+                    .iter()
+                    .map(|f| f.to_string())
+                    .collect::<Vec<_>>()
+                    .join("|");
+            }
+        }
+        String::new()
+    }
+    
+    /// Write Embedding child nodes and HAS_EMBEDDING edges for all models for a given entity.
+    fn write_embedding_child_nodes(
+        &mut self,
+        entity_node_id: &str,
+        entity: &Map<String, Value>,
+        entity_type: &str,
+        iri: &str,
+        embedding_model_names: &[String],
+    ) -> Result<(), Box<dyn std::error::Error>> {
+        if !self.is_defining_entity(entity) {
+            return Ok(());
+        }
+        
+        // Collect all embedding child node data first to avoid borrow conflicts
+        struct EmbNodeRow {
+            node_id: String,
+            /// Index of the model in embedding_model_names
+            model_idx: usize,
+            embedding_str: String,
+        }
+        
+        let num_models = embedding_model_names.len();
+        let mut emb_rows: Vec<EmbNodeRow> = Vec::new();
+        
+        for (model_idx, model_name) in embedding_model_names.iter().enumerate() {
+            if let Some(emb) = self.embeddings.get(model_name) {
+                if let Some(vectors) = emb.get_embeddings(&self.ontology_id, entity_type, iri) {
+                    for (vec_idx, vector) in vectors.iter().enumerate() {
+                        let node_id = format!("{}+emb+{}+{}+{}+{}", self.ontology_id, model_name, entity_type, iri, vec_idx);
+                        let embedding_str = vector
+                            .iter()
+                            .map(|f| f.to_string())
+                            .collect::<Vec<_>>()
+                            .join("|");
+                        emb_rows.push(EmbNodeRow {
+                            node_id,
+                            model_idx,
+                            embedding_str,
+                        });
+                    }
+                }
+            }
+        }
+        
+        // Now write the rows
+        if let (Some(node_writer), Some(edge_writer)) = (
+            self.embedding_node_writer.as_mut(),
+            self.embedding_edge_writer.as_mut(),
+        ) {
+            for emb_row in &emb_rows {
+                // Build embedding node row: id, :LABEL, then one column per model (only one filled)
+                let mut row = Vec::with_capacity(2 + num_models);
+                row.push(emb_row.node_id.clone());
+                row.push("Embedding".to_string());
+                for i in 0..num_models {
+                    if i == emb_row.model_idx {
+                        row.push(emb_row.embedding_str.clone());
+                    } else {
+                        row.push(String::new());
+                    }
+                }
+                node_writer.writer.write_record(&row)?;
+                
+                // Build HAS_EMBEDDING edge row
+                let edge_row = vec![
+                    entity_node_id.to_string(),
+                    "HAS_EMBEDDING".to_string(),
+                    emb_row.node_id.clone(),
+                ];
+                edge_writer.writer.write_record(&edge_row)?;
+            }
+        }
+        
+        Ok(())
+    }
+    
+    /// Check if entity is a defining entity (only defining entities get embeddings)
+    fn is_defining_entity(&self, entity: &Map<String, Value>) -> bool {
+        entity
             .get("isDefiningOntology")
             .map(|v| {
-                // Handle both boolean and array formats
                 if let Some(b) = v.as_bool() {
                     b
                 } else if let Some(arr) = v.as_array() {
@@ -404,22 +565,7 @@ impl<'a> OntologyWriter<'a> {
                     false
                 }
             })
-            .unwrap_or(false);
-        
-        if !is_defining {
-            return String::new();
-        }
-        
-        if let Some(emb) = self.embeddings.get(model_name) {
-            if let Some(embeddings_array) = emb.get_embeddings(&self.ontology_id, entity_type, iri) {
-                return embeddings_array
-                    .iter()
-                    .map(|f| f.to_string())
-                    .collect::<Vec<_>>()
-                    .join("|");
-            }
-        }
-        String::new()
+            .unwrap_or(false)
     }
 }
 

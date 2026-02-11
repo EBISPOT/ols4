@@ -303,20 +303,22 @@ public class OlsNeo4jClient {
 
     /**
      * Search by vector globally (all ontologies, defining classes only).
-     * Uses single OntologyEntity index and post-filters by type.
+     * Queries the Embedding child node index for precise matching, then traverses
+     * back to the parent entity node. Deduplicates by entity IRI.
      */
     public Page<JsonElement> searchByVector(String type, List<Double> vector, Pageable pageable, String modelName) {
 
-		// Use single OntologyEntity index, then filter by type
-		String index = "ontologyentity_" + modelName.replace("-", "_").replace(".", "_") + "_embeddings";
+		// Use Embedding child node index for precise free-text search
+		String index = "embedding_" + modelName.replace("-", "_").replace(".", "_");
 
-		// Over-fetch from vector index since we're filtering by type
-		int fetchSize = pageable.getPageSize() * 5;
+		// Over-fetch from vector index since we deduplicate and filter by type
+		int fetchSize = pageable.getPageSize() * 10;
 
 		String query = "CALL db.index.vector.queryNodes('" + index + "', $fetchSize, $vec) "
-			+ "YIELD node AS similar, score "
-			+ "WHERE similar:" + type + " "
-			+ "RETURN similar as entity, score "
+			+ "YIELD node AS emb, score "
+			+ "MATCH (entity:" + type + ")-[:HAS_EMBEDDING]->(emb) "
+			+ "WITH entity, max(score) AS score "
+			+ "RETURN entity, score "
 			+ "ORDER BY score DESC "
 			+ "LIMIT $size";
 
@@ -347,37 +349,39 @@ public class OlsNeo4jClient {
 
     /**
      * Search by vector within a specific ontology.
+     * Uses Embedding child node index for precise matching, then traverses
+     * back to the parent entity node.
      * If isDefiningOntology is true, only returns classes defined in this ontology (simple post-filter).
      * If isDefiningOntology is false, includes imported classes by joining on IRI.
-     * Uses single OntologyEntity index and post-filters by type and ontology.
      */
     public Page<JsonElement> searchByVectorInOntology(String type, List<Double> vector, Pageable pageable, String modelName, String ontologyId, boolean isDefiningOntology) {
 
-		// Use single OntologyEntity index, then filter by type and ontology
-		String index = "ontologyentity_" + modelName.replace("-", "_").replace(".", "_") + "_embeddings";
+		// Use Embedding child node index for precise free-text search
+		String index = "embedding_" + modelName.replace("-", "_").replace(".", "_");
 
 		// Over-fetch from vector index since we're filtering/joining to a subset
-		int fetchSize = pageable.getPageSize() * 5;
+		int fetchSize = pageable.getPageSize() * 10;
 
 		String query;
 		if (isDefiningOntology) {
-			// Simple post-filter: only classes from this ontology (which are defining, since embeddings only exist on defining classes)
-			// Also filter by type since we're using the OntologyEntity index
+			// Post-filter: only entities from this ontology
 			query = "CALL db.index.vector.queryNodes('" + index + "', $fetchSize, $vec) "
-				+ "YIELD node AS similar, score "
-				+ "WHERE similar:" + type + " AND $ontologyId IN similar.ontologyId "
-				+ "RETURN similar as entity, score "
+				+ "YIELD node AS emb, score "
+				+ "MATCH (entity:" + type + ")-[:HAS_EMBEDDING]->(emb) "
+				+ "WHERE $ontologyId IN entity.ontologyId "
+				+ "WITH entity, max(score) AS score "
+				+ "RETURN entity, score "
 				+ "ORDER BY score DESC "
 				+ "LIMIT $limit";
 		} else {
-			// Join by IRI to find the class in the target ontology (includes imported classes)
-			// Also filter by type since we're using the OntologyEntity index
+			// Join by IRI to find the entity in the target ontology (includes imported)
 			query = "CALL db.index.vector.queryNodes('" + index + "', $fetchSize, $vec) "
-				+ "YIELD node AS similar, score "
-				+ "WHERE similar:" + type + " "
-				+ "MATCH (target:" + type + " {iri: similar.iri}) "
+				+ "YIELD node AS emb, score "
+				+ "MATCH (defining:" + type + ")-[:HAS_EMBEDDING]->(emb) "
+				+ "MATCH (target:" + type + " {iri: defining.iri}) "
 				+ "WHERE $ontologyId IN target.ontologyId "
-				+ "RETURN target as entity, score "
+				+ "WITH target AS entity, max(score) AS score "
+				+ "RETURN entity, score "
 				+ "ORDER BY score DESC "
 				+ "LIMIT $limit";
 		}
@@ -410,8 +414,9 @@ public class OlsNeo4jClient {
 
     public List<String> getEmbeddingModelsInNeo4j() {
 		// Query Neo4j property keys to find embedding properties
-		// Property name pattern: embeddings_{model_name}
-		// This is faster than querying nodes and preserves the exact model name format
+		// Average embeddings on OntologyEntity use pattern: embeddings_{model_name}
+		// Individual embeddings on Embedding nodes use pattern: embedding_{model_name}
+		// We report based on the OntologyEntity properties (which have averages)
 		String query = "CALL db.propertyKeys() YIELD propertyKey WHERE propertyKey STARTS WITH 'embeddings_' RETURN propertyKey";
 
 		ArrayList<String> models = new ArrayList<>();

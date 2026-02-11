@@ -30,7 +30,8 @@ fn get_string_column<'a>(col: &'a dyn Array, col_name: &str) -> Result<StringCol
 }
 
 pub struct Embeddings {
-    pub embeddings_cache: HashMap<String, Vec<f32>>,
+    /// Cache of embeddings: key -> list of embedding vectors (multiple per entity)
+    pub embeddings_cache: HashMap<String, Vec<Vec<f32>>>,
 }
 
 impl Embeddings {
@@ -38,6 +39,11 @@ impl Embeddings {
         Self {
             embeddings_cache: HashMap::new(),
         }
+    }
+
+    /// Returns the total number of individual embedding vectors stored
+    pub fn total_vectors(&self) -> usize {
+        self.embeddings_cache.values().map(|v| v.len()).sum()
     }
 
     pub fn load_embeddings_from_file(
@@ -107,7 +113,7 @@ impl Embeddings {
                 };
 
                 let key = Self::make_key(ontology_id, entity_type, iri);
-                self.embeddings_cache.insert(key, embedding);
+                self.embeddings_cache.entry(key).or_insert_with(Vec::new).push(embedding);
             }
         }
 
@@ -118,8 +124,37 @@ impl Embeddings {
         format!("{}|{}|{}", ontology_id, entity_type, iri)
     }
 
-    pub fn get_embeddings(&self, ontology_id: &str, entity_type: &str, iri: &str) -> Option<&Vec<f32>> {
+    /// Get all embedding vectors for a given entity (multiple per entity: label + synonyms)
+    pub fn get_embeddings(&self, ontology_id: &str, entity_type: &str, iri: &str) -> Option<&Vec<Vec<f32>>> {
         let key = Self::make_key(ontology_id, entity_type, iri);
         self.embeddings_cache.get(&key)
     }
+
+    /// Get the mean (average) of all embedding vectors for a given entity
+    pub fn get_average_embedding(&self, ontology_id: &str, entity_type: &str, iri: &str) -> Option<Vec<f32>> {
+        let vectors = self.get_embeddings(ontology_id, entity_type, iri)?;
+        if vectors.is_empty() {
+            return None;
+        }
+        Some(mean_vector(vectors))
+    }
+}
+
+/// Compute the element-wise mean of a slice of vectors
+pub fn mean_vector(vectors: &[Vec<f32>]) -> Vec<f32> {
+    if vectors.is_empty() {
+        return Vec::new();
+    }
+    let dim = vectors[0].len();
+    let n = vectors.len() as f32;
+    let mut result = vec![0.0f32; dim];
+    for v in vectors {
+        for (i, &val) in v.iter().enumerate() {
+            result[i] += val;
+        }
+    }
+    for val in &mut result {
+        *val /= n;
+    }
+    result
 }
