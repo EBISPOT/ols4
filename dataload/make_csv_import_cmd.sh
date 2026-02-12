@@ -27,6 +27,7 @@ done
 
 for f in $1/*_edges.csv
 do
+	[[ "$f" == *_embedding_edges.csv ]] && continue
 	echo -n "--relationships=$f "
 done
 
