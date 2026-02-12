@@ -46,16 +46,32 @@ workflow embeddings {
     local_embeddings  = embed(local_tsvs)
     openai_embeddings = embed_openai(openai_tsvs)
 
-    // Group all new parquet shards per model
-    embeddings_by_model = local_embeddings.mix(openai_embeddings).groupTuple(by: 0)
+    // Collect all new embedding parquets.  .ifEmpty([]) ensures that when
+    // embed/embed_openai produce nothing (all terms already embedded), we
+    // still emit an empty list so every configured model reaches
+    // join_embeddings.
+    all_new_embeddings = local_embeddings
+        .mix(openai_embeddings)
+        .collect()
+        .ifEmpty([])
 
-    embeddings_by_model_with_prev = embeddings_by_model.map { model, new_parquets ->
-        def model_short        = model.split('/')[1]
-        def prev_parquet_path  = new File(prev_dir, "${model_short}.parquet")
-        def prev_parquet_file  = prev_parquet_path.exists() ? file(prev_parquet_path) : file('NO_FILE')
-        tuple(model, prev_parquet_file, new_parquets)
+    // Build join_embeddings inputs for EVERY model.  Models that received
+    // new embeddings get those parquets; models that didn't get NO_FILE.
+    embeddings_by_model_with_prev = all_new_embeddings.flatMap { new_emb_list ->
+        // Group new parquets by model name
+        def new_by_model = [:].withDefault { [] }
+        new_emb_list.each { item ->
+            new_by_model[item[0]] << item[1]
+        }
+        config.models.collect { model ->
+            def model_short       = model.split('/')[1]
+            def prev_parquet_path = new File(prev_dir, "${model_short}.parquet")
+            def prev_parquet_file = prev_parquet_path.exists() ? file(prev_parquet_path) : file('NO_FILE')
+            def new_pqs           = new_by_model[model] ?: [file('NO_FILE')]
+            tuple(model, prev_parquet_file, new_pqs)
+        }
     }
-    
+
     join_embeddings(
         embeddings_by_model_with_prev,
         ols_to_tsv.out
@@ -249,7 +265,9 @@ process join_embeddings {
   script:
   def model_short = model.split('/')[1]
 
-  def new_list_sql = new_pq.collect { "'${it.toString()}'" }.join(', ')
+  def new_pq_files = (new_pq instanceof List ? new_pq : [new_pq])
+  def has_new_pq   = !new_pq_files.any { it.name == 'NO_FILE' }
+  def new_list_sql = has_new_pq ? new_pq_files.collect { "'${it.toString()}'" }.join(', ') : ''
 
   def prev_sql = (prev_pq.toString() == 'NO_FILE')
     ? """
@@ -280,11 +298,16 @@ process join_embeddings {
         FROM read_csv_auto('${terms_tsv}', delim='\\t', header=true)
       ),
       new_emb AS (
+        ${has_new_pq ? """
         SELECT
           hash,
           any_value(embedding) AS embedding
         FROM read_parquet([${new_list_sql}])
         GROUP BY hash
+        """ : """
+        SELECT NULL::VARCHAR AS hash, NULL::FLOAT[] AS embedding
+        WHERE FALSE
+        """}
       ),
       prev_terms AS (
         ${prev_sql}

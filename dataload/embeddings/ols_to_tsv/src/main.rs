@@ -74,50 +74,77 @@ fn main() -> Result<(), Box<dyn Error>> {
         let reader = BufReader::new(file);
         let mut json = JsonStreamReader::new(reader);
 
-        // Each linked ontology JSON is a single ontology object
+        // The linked ontology JSON wraps ontologies in:
+        //   { "ontologies": [ { ontologyId, classes, ... }, ... ] }
         json.begin_object().unwrap();
 
-        let mut current_ont_id = String::new();
-
         while json.has_next().unwrap() {
-            let name = json.next_name().unwrap();
-            if name == "ontologyId" {
-                current_ont_id = json.next_string().unwrap();
-                eprintln!("  Ontology: {}", current_ont_id);
-            } else if name == "classes" {
-                eprintln!("  Processing classes for ontology {}", current_ont_id);
+            let top_key = json.next_name().unwrap();
+            if top_key == "ontologies" {
                 json.begin_array().unwrap();
                 while json.has_next().unwrap() {
-                    total += 1;
-                    embedded += process_entity("class", &current_ont_id, &mut json, &tokenizer, &mut writer);
-                }
-                json.end_array().unwrap();
-            } else if name == "properties" {
-                eprintln!("  Processing properties for ontology {}", current_ont_id);
-                json.begin_array().unwrap();
-                while json.has_next().unwrap() {
-                    total += 1;
-                    embedded += process_entity("property", &current_ont_id, &mut json, &tokenizer, &mut writer);
-                }
-                json.end_array().unwrap();
-            } else if name == "individuals" {
-                eprintln!("  Processing individuals for ontology {}", current_ont_id);
-                json.begin_array().unwrap();
-                while json.has_next().unwrap() {
-                    total += 1;
-                    embedded += process_entity("individual", &current_ont_id, &mut json, &tokenizer, &mut writer);
+                    process_ontology_object(&mut json, &tokenizer, &mut writer, &mut total, &mut embedded);
                 }
                 json.end_array().unwrap();
             } else {
                 json.skip_value().unwrap();
             }
         }
+
         json.end_object().unwrap();
     }
 
     eprintln!("Total entities seen: {}, entities with isDefiningOntology=true written: {}", total, embedded);
 
     Ok(())
+}
+
+/// Process a single ontology object from within the "ontologies" array.
+fn process_ontology_object(
+    json: &mut JsonStreamReader<BufReader<File>>,
+    tokenizer: &CoreBPE,
+    writer: &mut BufWriter<StdoutLock>,
+    total: &mut u64,
+    embedded: &mut u64,
+) {
+    json.begin_object().unwrap();
+
+    let mut current_ont_id = String::new();
+
+    while json.has_next().unwrap() {
+        let name = json.next_name().unwrap();
+        if name == "ontologyId" {
+            current_ont_id = json.next_string().unwrap();
+            eprintln!("  Ontology: {}", current_ont_id);
+        } else if name == "classes" {
+            eprintln!("  Processing classes for ontology {}", current_ont_id);
+            json.begin_array().unwrap();
+            while json.has_next().unwrap() {
+                *total += 1;
+                *embedded += process_entity("class", &current_ont_id, json, tokenizer, writer);
+            }
+            json.end_array().unwrap();
+        } else if name == "properties" {
+            eprintln!("  Processing properties for ontology {}", current_ont_id);
+            json.begin_array().unwrap();
+            while json.has_next().unwrap() {
+                *total += 1;
+                *embedded += process_entity("property", &current_ont_id, json, tokenizer, writer);
+            }
+            json.end_array().unwrap();
+        } else if name == "individuals" {
+            eprintln!("  Processing individuals for ontology {}", current_ont_id);
+            json.begin_array().unwrap();
+            while json.has_next().unwrap() {
+                *total += 1;
+                *embedded += process_entity("individual", &current_ont_id, json, tokenizer, writer);
+            }
+            json.end_array().unwrap();
+        } else {
+            json.skip_value().unwrap();
+        }
+    }
+    json.end_object().unwrap();
 }
 
 /// Process a single entity from the JSON stream.

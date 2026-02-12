@@ -42,7 +42,11 @@ workflow {
     // Run embeddings pipeline if enabled
     if (params.enable_embeddings) {
         embeddings(linked_ontologies_by_id)
-        embedding_parquets = embeddings.out.pca_parquets.map { it[1] }.collect()
+        embedding_parquets = embeddings.out.pca_parquets
+            .map { it[1] }
+            .collect()
+            .map { list -> list.isEmpty() ? [file('NO_FILE')] : list }
+            .ifEmpty([file('NO_FILE')])
     } else if (params.embeddings_path && params.embeddings_path != '' && params.embeddings_path != 'NO_DIR') {
         embedding_parquets = Channel.fromPath("${params.embeddings_path}/*.parquet").collect()
     } else {
