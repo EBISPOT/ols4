@@ -62,11 +62,12 @@ process merge_configs {
 
     script:
     def mem_mb = (task.memory.toMega() * 0.9).intValue()
+    def config_list = (config_files instanceof List) ? config_files : [config_files]
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
     java -Xms${mem_mb}m -Xmx${mem_mb}m -jar /opt/ols/dataload/merge_configs/target/merge_configs-1.0-SNAPSHOT.jar \
-        --config ${config_files.join(',')} \
+        --config ${config_list.collect{ it.toString() }.join(',')} \
         --output merged_config.json
     """
 }
