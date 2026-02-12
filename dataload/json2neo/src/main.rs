@@ -36,9 +36,9 @@ struct Args {
     #[arg(long)]
     manifest: String,
 
-    /// Optional folder containing embeddings Parquet files
-    #[arg(long = "embeddingDbsPath")]
-    embedding_dbs_path: Option<String>,
+    /// Optional list of individual embeddings Parquet files
+    #[arg(long = "embeddingParquets", num_args = 1..)]
+    embedding_parquets: Option<Vec<String>>,
 }
 
 fn main() {
@@ -49,49 +49,50 @@ fn main() {
     }
 }
 
+fn load_parquet_file(
+    path: &Path,
+    ontology_id: Option<&str>,
+) -> Result<(String, Embeddings), Box<dyn std::error::Error>> {
+    eprintln!("Loading embeddings from {}", path.display());
+    let model_name = path
+        .file_stem()
+        .and_then(|s| s.to_str())
+        .unwrap_or("unknown")
+        .to_string();
+
+    let mut emb = Embeddings::new();
+    emb.load_embeddings_from_file(path.to_str().unwrap(), ontology_id)?;
+
+    eprintln!(
+        "Loaded embeddings model {} with {} entries for ontology id {:?}",
+        model_name,
+        emb.embeddings_cache.len(),
+        ontology_id
+    );
+
+    Ok((model_name, emb))
+}
+
 fn run() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
 
-    // Load embeddings if path provided
+    // Load embeddings from individual parquet files or from a directory
     let mut embeddings: HashMap<String, Embeddings> = HashMap::new();
 
-    if let Some(ref embeddings_path) = args.embedding_dbs_path {
-        let embeddings_dir = Path::new(embeddings_path);
-        if embeddings_dir.exists() && embeddings_dir.is_dir() {
-            for entry in std::fs::read_dir(embeddings_dir)? {
-                let entry = entry?;
-                let path = entry.path();
-                if path.extension().and_then(|s| s.to_str()) == Some("parquet") {
-                    eprintln!("Loading embeddings from {}", path.display());
-                    let model_name = path
-                        .file_stem()
-                        .and_then(|s| s.to_str())
-                        .unwrap_or("unknown")
-                        .to_string();
-
-                    let mut emb = Embeddings::new();
-                    emb.load_embeddings_from_file(
-                        path.to_str().unwrap(),
-                        args.ontology_id.as_deref(),
-                    )?;
-
-                    eprintln!(
-                        "Loaded embeddings model {} with {} entries for ontology id {:?}",
-                        model_name,
-                        emb.embeddings_cache.len(),
-                        args.ontology_id
-                    );
-
-                    embeddings.insert(model_name, emb);
-                }
+    if let Some(ref parquet_files) = args.embedding_parquets {
+        for parquet_path in parquet_files {
+            let path = Path::new(parquet_path);
+            if path.exists() {
+                let (model_name, emb) =
+                    load_parquet_file(path, args.ontology_id.as_deref())?;
+                embeddings.insert(model_name, emb);
+            } else {
+                eprintln!("Warning: embeddings parquet not found: {}", parquet_path);
             }
-            eprintln!(
-                "Loaded {} embeddings databases",
-                embeddings.len()
-            );
         }
+        eprintln!("Loaded {} embeddings from parquet files", embeddings.len());
     } else {
-        eprintln!("No embeddings path provided, skipping embeddings load.");
+        eprintln!("No embeddings parquets provided, skipping embeddings load.");
     }
 
     // Create converter and run

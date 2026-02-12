@@ -1,0 +1,361 @@
+
+nextflow.enable.dsl=2
+
+import groovy.json.JsonSlurper
+
+params.embeddings_config       = "$OLS_EMBEDDINGS_CONFIG"
+params.embeddings_prev         = "$OLS_EMBEDDINGS_PREV"
+params.embeddings_batch_size   = 10000
+params.embeddings_pca_components = 512
+params.embed_image             = ""
+
+workflow embeddings {
+
+    take:
+    linked_ontologies  // channel of tuple(ontology_id, linked_json_path)
+
+    main:
+
+    config = new JsonSlurper().parse(new File(params.embeddings_config))
+    models = Channel.from(config.models)
+
+    // Collect all linked ontology JSONs and run ols_to_tsv on them
+    all_linked_jsons = linked_ontologies.map { it[1] }.collect()
+    deduped = ols_to_tsv(all_linked_jsons) | dedupe_by_hash
+
+    // For each model, look for a corresponding previous embeddings Parquet file
+    prev_dir = params.embeddings_prev ?: 'NO_DIR'
+    models_with_prev = models.map { model ->
+        def model_short        = model.split('/')[1]
+        def prev_parquet_path  = new File(prev_dir, "${model_short}.parquet")
+        def prev_parquet_file  = prev_parquet_path.exists() ? file(prev_parquet_path) : file('NO_FILE')
+        tuple(model, prev_parquet_file)
+    }
+
+    // Filter out already embedded terms for each model
+    filtered_per_model = filter_existing(models_with_prev, deduped)
+
+    tsvs = split_tsv(filtered_per_model).map { model, files ->
+        def list = (files instanceof List) ? files : [files]
+        list.collect { f -> tuple(model, f) }
+    }.flatMap()
+
+    local_tsvs  = tsvs.filter { it[0] && !it[0].toString().startsWith('openai/') }
+    openai_tsvs = tsvs.filter { it[0] &&  it[0].toString().startsWith('openai/') }
+
+    local_embeddings  = embed(local_tsvs)
+    openai_embeddings = embed_openai(openai_tsvs)
+
+    // Group all new parquet shards per model
+    embeddings_by_model = local_embeddings.mix(openai_embeddings).groupTuple(by: 0)
+
+    embeddings_by_model_with_prev = embeddings_by_model.map { model, new_parquets ->
+        def model_short        = model.split('/')[1]
+        def prev_parquet_path  = new File(prev_dir, "${model_short}.parquet")
+        def prev_parquet_file  = prev_parquet_path.exists() ? file(prev_parquet_path) : file('NO_FILE')
+        tuple(model, prev_parquet_file, new_parquets)
+    }
+    
+    join_embeddings(
+        embeddings_by_model_with_prev,
+        ols_to_tsv.out
+    )
+
+    pca_inputs = join_embeddings.out.combine(Channel.from(params.embeddings_pca_components))
+    pca(pca_inputs)
+
+    emit:
+    // Emit the PCA parquet files (for use in json2neo)
+    pca_parquets = pca.out.pca_parquets
+    // Emit the PCA JSON model files (for loading in the backend)
+    pca_jsons = pca.out.pca_jsons
+}
+
+
+process ols_to_tsv {
+    container params.embed_image
+    cache "lenient"
+    memory '8 GB'
+    time '1h'
+    cpus "4"
+
+    input:
+    path(linked_jsons)
+
+    output:
+    path("terms.tsv")
+
+    script:
+    def json_list = (linked_jsons instanceof List) ? linked_jsons : [linked_jsons]
+    """
+    ols_to_tsv ${json_list.join(' ')} > terms.tsv
+    """
+}
+
+process dedupe_by_hash {
+
+    container params.embed_image
+    cache "lenient"
+    memory '64 GB'
+    time '10m'
+    cpus "8"
+
+    input:
+    path("terms.tsv")
+
+    output:
+    path("deduped.tsv")
+
+    script:
+    """
+    duckdb -c "COPY (
+        SELECT hash, text_to_embed
+        FROM read_csv_auto('terms.tsv', delim='\t', quote='', header=1)
+        QUALIFY row_number() OVER (PARTITION BY hash)=1
+    ) TO 'deduped.tsv' (HEADER false, DELIMITER '\t');"
+    """
+}
+
+process split_tsv {
+
+    container params.embed_image
+    cache "lenient"
+    memory '64 GB'
+    time '10m'
+    cpus "4"
+
+    input:
+    tuple val(model), path(tsv)
+
+    output:
+    tuple val(model), path("split.tsv.*"), optional: true
+
+    script:
+    """
+    cat ${tsv} | split -a 6 -d -l ${params.embeddings_batch_size} - split.tsv.
+    """
+}
+
+process filter_existing {
+
+    container params.embed_image
+    cache "lenient"
+    memory '64 GB'
+    time '30m'
+    cpus "8"
+
+    input:
+    tuple val(model), path(prev_parquet)
+    path(deduped_tsv)
+
+    output:
+    tuple val(model), path("filtered_${model.split('/')[1]}.tsv")
+
+    script:
+    def model_short = model.split('/')[1]
+    def filter_cmd = prev_parquet.name != 'NO_FILE' ?
+        """
+        duckdb << 'EOF'
+        COPY (
+            SELECT new.hash, new.text_to_embed
+            FROM read_csv_auto('${deduped_tsv}', delim='\t', quote='', header=0,
+                               names=['hash', 'text_to_embed']) AS new
+            LEFT JOIN (
+                SELECT DISTINCT hash FROM read_parquet('${prev_parquet}')
+            ) AS prev
+            ON new.hash = prev.hash
+            WHERE prev.hash IS NULL
+        ) TO 'filtered_${model_short}.tsv' (HEADER false, DELIMITER '\t');
+        EOF
+        """ :
+        "cp ${deduped_tsv} filtered_${model_short}.tsv"
+
+    """
+    ${filter_cmd}
+    """
+}
+
+process embed {
+
+    container params.embed_image
+    cache "lenient"
+    memory '32 GB'
+    time '1h'
+    cpus "8"
+    clusterOptions = '--gres=gpu:a100:1'
+    errorStrategy "retry"
+    maxRetries 100
+
+    input:
+    tuple val(model), path(split_tsv)
+
+    output:
+    tuple val(model), path("embedded_${model.split('/')[1]}_${task.index}.parquet")
+
+    script:
+    def model_short = model.split('/')[1]
+
+    """
+    python3 /opt/ols_embed/embed2.py \
+       --input-tsv ${split_tsv} \
+       --output-parquet embedded_${model_short}_${task.index}.parquet \
+       --model-name ${model} \
+       --batch-size 200 \
+       --device cuda
+    """
+}
+
+process embed_openai {
+
+    container params.embed_image
+    cache "lenient"
+    memory '16 GB'
+    time '2h'
+    cpus "4"
+
+    input:
+    tuple val(model), path(split_tsv)
+
+    output:
+    tuple val(model), path("embedded_${model.split('/')[1]}_${task.index}.parquet")
+
+    script:
+    def model_short = model.split('/')[1]
+
+    """
+    python3 /opt/ols_embed/embed_openai.py \
+       --input-tsv ${split_tsv} \
+       --output-parquet embedded_${model_short}_${task.index}.parquet \
+       --model-name ${model_short} \
+       --batch-size 2000
+    """
+}
+
+process join_embeddings {
+
+  container params.embed_image
+  cache "lenient"
+  memory '1500 GB'
+  time '4h'
+  cpus 32
+
+  input:
+  tuple val(model), path(prev_pq, stageAs: 'prev.parquet'), path(new_pq)
+  path terms_tsv
+
+  output:
+  tuple val(model), path("${model.split('/')[1]}.parquet")
+
+  script:
+  def model_short = model.split('/')[1]
+
+  def new_list_sql = new_pq.collect { "'${it.toString()}'" }.join(', ')
+
+  def prev_sql = (prev_pq.toString() == 'NO_FILE')
+    ? """
+      SELECT
+        NULL::BIGINT   AS pk,
+        NULL::VARCHAR  AS ontology_id,
+        NULL::VARCHAR  AS entity_type,
+        NULL::VARCHAR  AS iri,
+        NULL::VARCHAR  AS label,
+        NULL::VARCHAR  AS hash,
+        NULL::VARCHAR  AS text_to_embed,
+        NULL::FLOAT[]  AS embedding
+      WHERE FALSE
+      """
+    : "SELECT * FROM read_parquet('prev.parquet')"
+
+  """
+  duckdb /dev/shm/terms_embedded.duckdb -c "
+    PRAGMA threads=${task.cpus};
+    PRAGMA memory_limit='1200GB';
+    PRAGMA temp_directory='.';
+
+    COPY (
+      WITH
+      terms AS (
+        SELECT
+          pk, ontology_id, entity_type, iri, label, hash, text_to_embed
+        FROM read_csv_auto('${terms_tsv}', delim='\\t', header=true)
+      ),
+      new_emb AS (
+        SELECT
+          hash,
+          any_value(embedding) AS embedding
+        FROM read_parquet([${new_list_sql}])
+        GROUP BY hash
+      ),
+      prev_terms AS (
+        ${prev_sql}
+      ),
+      prev_emb AS (
+        SELECT
+          hash,
+          any_value(embedding) AS embedding
+        FROM prev_terms
+        WHERE embedding IS NOT NULL
+        GROUP BY hash
+      ),
+      joined_terms AS (
+        SELECT
+          t.pk,
+          t.ontology_id,
+          t.entity_type,
+          t.iri,
+          t.label,
+          t.hash,
+          t.text_to_embed,
+          COALESCE(n.embedding, p.embedding) AS embedding
+        FROM terms t
+        LEFT JOIN new_emb  n ON n.hash = t.hash
+        LEFT JOIN prev_emb p ON p.hash = t.hash
+      ),
+      carryover AS (
+        SELECT
+          pt.pk,
+          pt.ontology_id,
+          pt.entity_type,
+          pt.iri,
+          pt.label,
+          pt.hash,
+          pt.text_to_embed,
+          pt.embedding
+        FROM prev_terms pt
+        LEFT JOIN terms t USING (pk)
+        WHERE t.pk IS NULL
+      )
+      SELECT * FROM joined_terms
+      UNION ALL
+      SELECT * FROM carryover
+    )
+    TO '${model_short}.parquet'
+    (FORMAT PARQUET, COMPRESSION ZSTD);
+  "
+  """
+}
+
+process pca {
+
+    container params.embed_image
+    cache "lenient"
+    memory '1500 GB'
+    time '4h'
+    cpus "32"
+
+    publishDir "${params.out}/embeddings", overwrite: true
+
+    input:
+    tuple val(model), path(parquet), val(n_components)
+
+    output:
+    tuple val("${model}_pca${n_components}"), path("${model.split('/')[1]}_pca${n_components}.parquet"), emit: pca_parquets
+    path("${model.split('/')[1]}_pca${n_components}.json"), emit: pca_jsons
+
+    script:
+    """
+    python3 /opt/ols_embed/pca.py ${parquet} ${model.split('/')[1]}_pca${n_components}.parquet ${n_components} \
+        --pca-model-out ${model.split('/')[1]}_pca${n_components}.joblib \
+        --pca-json-out ${model.split('/')[1]}_pca${n_components}.json
+    """
+}

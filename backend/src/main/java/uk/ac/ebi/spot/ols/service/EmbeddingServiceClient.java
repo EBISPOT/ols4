@@ -1,36 +1,156 @@
 package uk.ac.ebi.spot.ols.service;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import jakarta.annotation.PostConstruct;
 import java.io.IOException;
+import java.io.Reader;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Client for the OLS embedding service.
+ * 
+ * Handles PCA transformations locally: when a PCA model name is requested
+ * (e.g. "model_pca512"), the client calls the embedding service with the
+ * base model name ("model") and applies the PCA transform using a JSON
+ * file loaded from the configured PCA models directory.
  */
 @Service
 public class EmbeddingServiceClient {
 
     @Value("${ols.embedding.service.url:#{null}}")
     private String embeddingServiceUrl;
+
+    @Value("${ols.embedding.pca.models.dir:#{null}}")
+    private String pcaModelsDir;
     
     private final HttpClient httpClient = HttpClient.newBuilder()
         .version(HttpClient.Version.HTTP_1_1)
         .connectTimeout(Duration.ofSeconds(30))
         .build();
     private final Gson gson = new Gson();
+
+    // PCA model name (e.g. "model_pca512") -> PcaModel
+    private final Map<String, PcaModel> pcaModels = new ConcurrentHashMap<>();
+
+    private static final Pattern PCA_PATTERN = Pattern.compile("^(.+)_pca(\\d+)$");
+
+    private static class PcaModel {
+        final String baseModelName;
+        final int nComponents;
+        final double[] mean;        // length = n_features
+        final double[][] components; // shape = (n_features, n_components)
+
+        PcaModel(String baseModelName, int nComponents, double[] mean, double[][] components) {
+            this.baseModelName = baseModelName;
+            this.nComponents = nComponents;
+            this.mean = mean;
+            this.components = components;
+        }
+    }
+
+    @PostConstruct
+    public void init() {
+        loadPcaModels();
+    }
+
+    private void loadPcaModels() {
+        if (pcaModelsDir == null || pcaModelsDir.isEmpty()) {
+            return;
+        }
+        Path dir = Paths.get(pcaModelsDir);
+        if (!Files.isDirectory(dir)) {
+            System.err.println("PCA models directory does not exist: " + pcaModelsDir);
+            return;
+        }
+
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*_pca*.json")) {
+            for (Path file : stream) {
+                String filename = file.getFileName().toString();
+                // Expected format: {base_model}_pca{n}.json
+                String stem = filename.replaceFirst("\\.json$", "");
+                Matcher m = PCA_PATTERN.matcher(stem);
+                if (!m.matches()) continue;
+
+                String baseModelName = m.group(1);
+                int nComponents = Integer.parseInt(m.group(2));
+                String pcaModelName = stem;
+
+                System.err.println("Loading PCA model: " + pcaModelName + " from " + file);
+
+                try (Reader reader = Files.newBufferedReader(file)) {
+                    JsonObject json = gson.fromJson(reader, JsonObject.class);
+
+                    double[] mean = toDoubleArray(json.getAsJsonArray("mean"));
+                    double[][] components = toDoubleArray2D(json.getAsJsonArray("components"));
+
+                    pcaModels.put(pcaModelName, new PcaModel(baseModelName, nComponents, mean, components));
+                    System.err.println("Loaded PCA model: " + pcaModelName +
+                            " (base=" + baseModelName + ", components=" + nComponents +
+                            ", features=" + mean.length + ")");
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error loading PCA models from " + pcaModelsDir + ": " + e.getMessage());
+        }
+    }
+
+    private static double[] toDoubleArray(JsonArray arr) {
+        double[] result = new double[arr.size()];
+        for (int i = 0; i < arr.size(); i++) {
+            result[i] = arr.get(i).getAsDouble();
+        }
+        return result;
+    }
+
+    private static double[][] toDoubleArray2D(JsonArray arr) {
+        double[][] result = new double[arr.size()][];
+        for (int i = 0; i < arr.size(); i++) {
+            result[i] = toDoubleArray(arr.get(i).getAsJsonArray());
+        }
+        return result;
+    }
+
+    /**
+     * Apply PCA transform: (x - mean) @ components
+     */
+    private float[] applyPca(float[] embedding, PcaModel pca) {
+        int nFeatures = pca.mean.length;
+        int nComponents = pca.nComponents;
+        float[] result = new float[nComponents];
+
+        for (int j = 0; j < nComponents; j++) {
+            double sum = 0.0;
+            for (int i = 0; i < nFeatures; i++) {
+                sum += ((double) embedding[i] - pca.mean[i]) * pca.components[i][j];
+            }
+            result[j] = (float) sum;
+        }
+        return result;
+    }
     
     /**
      * Get list of available models from the embedding service.
-     * Queries the /models endpoint to get the current list.
+     * Includes PCA model variants loaded from JSON files.
      */
     public List<String> getAvailableModels() {
 
@@ -47,44 +167,62 @@ public class EmbeddingServiceClient {
             
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             
+            Set<String> serviceModels = new java.util.HashSet<String>();
             if (response.statusCode() == 200) {
                 JsonObject json = gson.fromJson(response.body(), JsonObject.class);
                 if (json.has("models") && json.get("models").isJsonArray()) {
-                    List<String> models = new java.util.ArrayList<>();
                     json.getAsJsonArray("models").forEach(element -> {
                         if (element.isJsonPrimitive()) {
-                            models.add(element.getAsString());
+                            serviceModels.add(element.getAsString());
                         }
                     });
-                    return models;
                 }
             }
-            // Fallback to empty list if service is unavailable
-            return List.of();
+
+            List<String> models = new java.util.ArrayList<>(serviceModels);
+
+            // Only include PCA models whose base model is available in the service
+            for (var entry : pcaModels.entrySet()) {
+                if (serviceModels.contains(entry.getValue().baseModelName)) {
+                    models.add(entry.getKey());
+                }
+            }
+
+            return models;
         } catch (Exception e) {
-            // Service unavailable, return empty list
             return List.of();
         }
     }
     
     /**
-     * Embed a single text using the new embedding service.
-     * @param model The model name to use for embedding
-     * @param text The text to embed
-     * @return The embedding vector as a float array
+     * Embed a single text. If the model name is a PCA model (e.g. "model_pca512"),
+     * embeds with the base model and applies the PCA transform locally.
      */
     public float[] embedText(String model, String text) throws IOException {
         return embedTexts(model, List.of(text))[0];
     }
     
     /**
-     * Embed multiple texts using the new embedding service.
-     * The service returns binary blob of float32 arrays.
-     * @param model The model name to use for embedding  
-     * @param texts List of texts to embed
-     * @return Array of embedding vectors
+     * Embed multiple texts. If the model name is a PCA model, embeds with the
+     * base model and applies the PCA transform locally.
      */
     public float[][] embedTexts(String model, List<String> texts) throws IOException {
+
+        PcaModel pca = pcaModels.get(model);
+        String serviceModel = (pca != null) ? pca.baseModelName : model;
+
+        float[][] embeddings = embedTextsFromService(serviceModel, texts);
+
+        if (pca != null) {
+            for (int i = 0; i < embeddings.length; i++) {
+                embeddings[i] = applyPca(embeddings[i], pca);
+            }
+        }
+
+        return embeddings;
+    }
+
+    private float[][] embedTextsFromService(String model, List<String> texts) throws IOException {
 
         if(embeddingServiceUrl == null || embeddingServiceUrl.isEmpty()) {
             throw new IOException("Embedding service URL is not configured");
@@ -104,25 +242,17 @@ public class EmbeddingServiceClient {
             .build();
         
         try {
-            System.err.println("Embedding service request URL: " + embeddingServiceUrl);
-            System.err.println("Request body: " + requestBodyJson);
-            
             HttpResponse<byte[]> response = httpClient.send(request, HttpResponse.BodyHandlers.ofByteArray());
             
-            System.err.println("Response status: " + response.statusCode());
-            System.err.println("Response headers: " + response.headers().map());
-            
             if (response.statusCode() == 200) {
-                // Get vector dimension from header
                 String dimHeader = response.headers().firstValue("x-embedding-dim").orElse(null);
                 if (dimHeader == null) {
                     throw new IOException("Missing x-embedding-dim header in response");
                 }
                 int dimension = Integer.parseInt(dimHeader);
                 
-                // Parse binary blob as float32 array
                 byte[] binaryData = response.body();
-                int expectedBytes = texts.size() * dimension * 4; // 4 bytes per float
+                int expectedBytes = texts.size() * dimension * 4;
                 
                 if (binaryData.length != expectedBytes) {
                     throw new IOException("Unexpected response size: got " + binaryData.length + 

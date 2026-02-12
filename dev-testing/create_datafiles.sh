@@ -31,8 +31,10 @@ $SCRIPT_PATH/../dataload/target/release/ols_link \
     --manifest "$LINKER_MANIFEST_PATH" --input "$JSON_PATH" --output "$JSON_PATH_LINKED"
 
 echo json2neo
+EMBEDDING_PARQUETS=$(find $SCRIPT_PATH/../testcases/embeddings -name '*.parquet' 2>/dev/null | tr '\n' ' ')
 $SCRIPT_PATH/../dataload/target/release/ols_json2neo \
-    --manifest "$LINKER_MANIFEST_PATH" --input "$JSON_PATH_LINKED" --outDir $OUTDIR --embeddingDbsPath $SCRIPT_PATH/../testcases/embeddings
+    --manifest "$LINKER_MANIFEST_PATH" --input "$JSON_PATH_LINKED" --outDir $OUTDIR \
+    ${EMBEDDING_PARQUETS:+--embeddingParquets $EMBEDDING_PARQUETS}
 
 echo json2solr
 $SCRIPT_PATH/../dataload/target/release/ols_json2solr \

@@ -7,6 +7,8 @@ jsonSlurper = new JsonSlurper()
 import groovy.yaml.YamlSlurper
 yamlSlurper = new YamlSlurper()
 
+include { embeddings } from './ols_embeddings.nf'
+
 params.configs = "$OLS4_CONFIG"
 params.out = "$OLS_OUT_DIR"
 params.solr_mem = "8g"
@@ -14,6 +16,7 @@ params.neo_mem = "16g"
 params.embeddings_path = "$OLS_EMBEDDINGS_PATH"
 params.max_rows_per_file = "100000"
 params.dataload_args = System.getenv('OLS4_DATALOAD_ARGS') ?: ''
+params.enable_embeddings = false
 
 workflow {
 
@@ -36,10 +39,20 @@ workflow {
     linker_manifest = linker__create_manifest(ontology_jsons_by_id.map { it[1] }.collect())
     linked_ontologies_by_id = linker__link_ontologies(linker_manifest, ontology_jsons_by_id)
 
-    neo_csvs = json2neo(linker_manifest, linked_ontologies_by_id, params.embeddings_path)
+    // Run embeddings pipeline if enabled
+    if (params.enable_embeddings) {
+        embeddings(linked_ontologies_by_id)
+        embedding_parquets = embeddings.out.pca_parquets.map { it[1] }.collect()
+    } else if (params.embeddings_path && params.embeddings_path != '' && params.embeddings_path != 'NO_DIR') {
+        embedding_parquets = Channel.fromPath("${params.embeddings_path}/*.parquet").collect()
+    } else {
+        embedding_parquets = Channel.of(file('NO_FILE'))
+    }
+
+    neo_csvs = json2neo(linker_manifest, linked_ontologies_by_id, embedding_parquets)
     solr_jsonls = json2solr(linked_ontologies_by_id)
 
-    neo = create_neo(neo_csvs.collect(), params.embeddings_path)
+    neo = create_neo(neo_csvs.collect(), embedding_parquets)
     solr = create_solr(solr_jsonls.collect(), linker_manifest)
 
     // check_api_works(neo.neo_dir, solr.solr_dir)
@@ -162,12 +175,15 @@ process json2neo {
     input:
     path(manifest)
     tuple val(ontology_id), path(ontology_json)
-    path(embeddings_path)
+    path(embedding_parquets)
 
     output:
     path("*.csv"), optional: true
 
     script:
+    def parquets = (embedding_parquets instanceof List ? embedding_parquets : [embedding_parquets])
+    def has_embeddings = !parquets.any { it.name == 'NO_FILE' }
+    def parquet_args = has_embeddings ? "--embeddingParquets ${parquets.join(' ')}" : ''
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
@@ -176,7 +192,7 @@ process json2neo {
         --ontology-id ${ontology_id} \
         --outDir . \
         --manifest ${manifest} \
-        --embeddingDbsPath ${embeddings_path}
+        ${parquet_args}
     """
 }
 
@@ -214,18 +230,21 @@ process create_neo {
     
     input:
     path(neo_csvs)
-    path(embeddings_path)
+    path(embedding_parquets)
 
     output:
     path("neo4j"), emit: neo_dir
     path("neo4j.tgz"), emit: neo_tgz
 
     script:
+    def parquets = (embedding_parquets instanceof List ? embedding_parquets : [embedding_parquets])
+    def has_embeddings = !parquets.any { it.name == 'NO_FILE' }
+    def parquet_list = has_embeddings ? parquets.collect { it.toString() }.join(' ') : ''
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
     cp -r /opt/neo4j .
-    /opt/ols/dataload/load_into_neo4j.sh ./neo4j . ${params.neo_mem} ${embeddings_path}
+    /opt/ols/dataload/load_into_neo4j.sh ./neo4j . ${params.neo_mem} ${parquet_list}
     tar -chf neo4j.tgz --use-compress-program="pigz --fast" -C neo4j/data databases transactions
     """
 }

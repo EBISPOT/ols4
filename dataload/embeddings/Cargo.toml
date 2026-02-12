@@ -1,0 +1,21 @@
+[workspace]
+resolver = "2"
+
+members = [
+    "ols_to_tsv",
+    "ols_semsim",
+]
+
+[workspace.package]
+version = "1.0.0"
+edition = "2024"
+rust-version = "1.90.0"
+
+[workspace.dependencies]
+clap = { version = "4.5", features = ["derive"] }
+struson = "0.6"
+sha1 = "0.10"
+tiktoken-rs = "0.7"
+anyhow = "1.0"
+rayon = "1.10"
+polars = { version = "0.51", features = ["lazy", "parquet", "dtype-full"] }

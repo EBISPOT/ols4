@@ -3,7 +3,7 @@ imageTag: dev
 
 embeddingService:
   image:
-    repository: ols4-embedding-service
+    repository: ols4-embed
     pullPolicy: IfNotPresent
     tag: ""
   resources:

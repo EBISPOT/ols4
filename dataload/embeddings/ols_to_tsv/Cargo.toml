@@ -1,0 +1,12 @@
+[package]
+name = "ols_to_tsv"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+clap.workspace = true
+struson.workspace = true
+sha1.workspace = true
+tiktoken-rs.workspace = true
+

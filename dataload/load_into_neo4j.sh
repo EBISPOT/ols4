@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ $# -lt 3 ]; then
-    echo "Usage: $0 <neo4jpath> <csvdir> <mem> [embeddings_path]"
+    echo "Usage: $0 <neo4jpath> <csvdir> <mem> [parquet_file ...]"
     exit 1
 fi
 
@@ -10,7 +10,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 NEO4J_PATH=$1
 CSV_DIR=$2
 NEO_MEM=$3
-EMBEDDINGS_PATH="${4:-}"
+shift 3
+EMBEDDING_PARQUETS=("$@")
 
 export NEO_MEM
 export HEAP_SIZE=$NEO_MEM
@@ -38,7 +39,7 @@ echo "Creating Neo4j indexes..."
 
 # Generate index creation script (includes standard indexes + dynamic embedding indexes)
 CYPHER_SCRIPT=$(mktemp)
-python3 "$SCRIPT_DIR/create_neo4j_indexes.py" "$EMBEDDINGS_PATH" > "$CYPHER_SCRIPT"
+python3 "$SCRIPT_DIR/create_neo4j_indexes.py" "${EMBEDDING_PARQUETS[@]}" > "$CYPHER_SCRIPT"
 
 cat "$CYPHER_SCRIPT"
 

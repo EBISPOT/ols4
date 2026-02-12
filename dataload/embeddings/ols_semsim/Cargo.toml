@@ -1,0 +1,13 @@
+[package]
+name = "ols_semsim"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+clap.workspace = true
+rayon.workspace = true
+polars.workspace = true
+
+

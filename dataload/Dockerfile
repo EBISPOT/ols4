@@ -46,7 +46,7 @@ RUN echo "server.jvm.additional=-Dorg.neo4j.kernel.impl.index.schema.GenericNati
 # Copy all the code for dataload into /opt/dataload and build the JARs
 #
 
-RUN mkdir /opt/ols && mkdir /opt/ols/dataload && mkdir /opt/ols/ols-shared && mkdir /opt/uv_cache
+RUN mkdir /opt/ols && mkdir /opt/ols/dataload && mkdir /opt/ols/ols-shared
 
 COPY ./dataload /opt/ols/dataload
 COPY ./ols-shared /opt/ols/ols-shared
@@ -62,7 +62,7 @@ RUN cd /opt/ols/ols-shared && mvn -B -ntp -Dorg.slf4j.simpleLogger.log.org.apach
 RUN mvn -B -ntp -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn install:install-file -DcreateChecksum=true -Dpackaging=jar -Dfile=/opt/ols/ols-shared/target/ols4-shared-1.0.0-SNAPSHOT.jar -DgroupId=uk.ac.ebi.spot.ols -DartifactId=ols4-shared -Dversion=1.0.0-SNAPSHOT
 RUN cd /opt/ols/dataload &&  mvn -B -ntp -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn -T 1C package
 
-# Build all Rust binaries using workspace
+# Build all Rust binaries
 RUN cd /opt/ols/dataload && cargo build --release
 
 # Install Rust binaries

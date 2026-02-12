@@ -1,0 +1,16 @@
+{
+    "models": [
+        "nvidia/llama-embed-nemotron-8b",
+        "openai/text-embedding-3-small"
+    ],
+    "semsim_groups": [
+        ["efo", "hp", "mp", "zp", "mondo", "oba"],
+        ["efo", "hancestro"]
+    ],
+    "semsim_thresholds": {
+        "nvidia/llama-embed-nemotron-8b": 0.7,
+        "nvidia/llama-embed-nemotron-8b_pca512": 0.7,
+        "openai/text-embedding-3-small": 0.4,
+        "openai/text-embedding-3-small_pca512": 0.4
+    }
+}

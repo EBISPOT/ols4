@@ -17,7 +17,28 @@ jobs:
 
     strategy:
       matrix:
-        component: [dataload, backend, frontend, apitester4]
+        component: [dataload, embed, backend, frontend, apitester4]
+        include:
+          - component: dataload
+            context: .
+            dockerfile: ./dataload/Dockerfile
+            build-args: ""
+          - component: embed
+            context: ./dataload/embeddings
+            dockerfile: ./dataload/embeddings/Dockerfile
+            build-args: ""
+          - component: backend
+            context: .
+            dockerfile: ./backend/Dockerfile
+            build-args: ""
+          - component: frontend
+            context: ./frontend
+            dockerfile: ./frontend/Dockerfile
+            build-args: ""
+          - component: apitester4
+            context: ./apitester4
+            dockerfile: ./apitester4/Dockerfile
+            build-args: ""
 
     steps:
       - name: Checkout repository
@@ -48,10 +69,11 @@ jobs:
       - name: Build and push ols4 ${{ matrix.component }} Docker image
         uses: docker/build-push-action@v5
         with:
-          context: ${{ matrix.component == 'frontend' && './frontend' || (matrix.component == 'apitester4' && './apitester4' || '.') }}
-          file: ${{ matrix.component == 'frontend' && './frontend/Dockerfile' || format('./{0}/Dockerfile', matrix.component) }}
-          platforms: linux/amd64,linux/arm64
+          context: ${{ matrix.context }}
+          file: ${{ matrix.dockerfile }}
+          platforms: ${{ matrix.component == 'embed' && 'linux/amd64' || 'linux/amd64,linux/arm64' }}
           push: true
+          build-args: ${{ matrix.build-args }}
           tags: |
             ghcr.io/ebispot/ols4-${{ matrix.component }}:${{ github.sha }}
             ghcr.io/ebispot/ols4-${{ matrix.component }}:${{ github.ref_name }}

@@ -39,6 +39,13 @@ else
   echo "Using OLS4_DATALOAD_IMAGE: $OLS4_DATALOAD_IMAGE"
 fi
 
+if [ -z "${OLS4_EMBED_IMAGE:-}" ]; then
+  echo "OLS4_EMBED_IMAGE environment variable is not set. Using dev image."
+  OLS4_EMBED_IMAGE="ghcr.io/ebispot/ols4-embed:dev"
+else
+  echo "Using OLS4_EMBED_IMAGE: $OLS4_EMBED_IMAGE"
+fi
+
 TMP_DIR="$OLS_HOME/tmp"
 OUT_DIR="$OLS_HOME/out"
 
@@ -64,7 +71,10 @@ docker run \
   -e OLS4_CONFIG="$OLS4_CONFIG" \
   -e OLS4_DATALOAD_ARGS="${OLS4_DATALOAD_ARGS:-}" \
   -e OLS_EMBEDDINGS_PATH="$OLS_EMBEDDINGS_PATH" \
+  -e OLS_EMBEDDINGS_CONFIG="${OLS_EMBEDDINGS_CONFIG:-}" \
+  -e OLS_EMBEDDINGS_PREV="${OLS_EMBEDDINGS_PREV:-}" \
   -e OLS4_DATALOAD_IMAGE="$OLS4_DATALOAD_IMAGE" \
+  -e OLS4_EMBED_IMAGE="$OLS4_EMBED_IMAGE" \
   -e NXF_USRMAP="${HOST_UID}" \
   -e HOST_UID="${HOST_UID}" \
   -e HOST_GID="${HOST_GID}" \
