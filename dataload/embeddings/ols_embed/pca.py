@@ -105,7 +105,8 @@ def full_pca_via_covariance(X: np.ndarray, n_components: int):
     N, D = X.shape
     k = n_components
     if k > min(N, D):
-        raise ValueError(f"n_components={k} must be <= min(N, D)={min(N, D)}")
+        print(f"WARNING: n_components={k} > min(N, D)={min(N, D)}; clamping to {min(N, D)}")
+        k = min(N, D)
 
     print(f"Centering data in-place (N={N}, D={D})...")
     mean = X.mean(axis=0, dtype=np.float64)
