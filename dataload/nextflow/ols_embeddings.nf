@@ -52,7 +52,7 @@ workflow embeddings {
     // join_embeddings.
     all_new_embeddings = local_embeddings
         .mix(openai_embeddings)
-        .collect()
+        .collect(flat: false)
         .ifEmpty([])
 
     // Build join_embeddings inputs for EVERY model.  Models that received
