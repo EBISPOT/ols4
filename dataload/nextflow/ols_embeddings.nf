@@ -66,9 +66,11 @@ workflow embeddings {
         config.models.collect { model ->
             def model_short       = model.split('/')[1]
             def prev_parquet_path = new File(prev_dir, "${model_short}.parquet")
-            def prev_parquet_file = prev_parquet_path.exists() ? file(prev_parquet_path) : file('NO_FILE')
-            def new_pqs           = new_by_model[model] ?: [file('NO_FILE')]
-            tuple(model, prev_parquet_file, new_pqs)
+            def has_prev          = prev_parquet_path.exists()
+            def prev_parquet_file = has_prev ? file(prev_parquet_path) : file('NO_FILE')
+            def has_new           = new_by_model.containsKey(model)
+            def new_pqs           = has_new ? new_by_model[model] : [file('NO_FILE')]
+            tuple(model, has_prev, prev_parquet_file, has_new, new_pqs)
         }
     }
 
@@ -256,7 +258,7 @@ process join_embeddings {
   cpus 32
 
   input:
-  tuple val(model), path(prev_pq, stageAs: 'prev.parquet'), path(new_pq)
+  tuple val(model), val(has_prev), path(prev_pq, stageAs: 'prev.parquet'), val(has_new_pq), path(new_pq)
   path terms_tsv
 
   output:
@@ -266,10 +268,9 @@ process join_embeddings {
   def model_short = model.split('/')[1]
 
   def new_pq_files = (new_pq instanceof List ? new_pq : [new_pq])
-  def has_new_pq   = !new_pq_files.any { it.name == 'NO_FILE' }
   def new_list_sql = has_new_pq ? new_pq_files.collect { "'${it.toString()}'" }.join(', ') : ''
 
-  def prev_sql = (prev_pq.toString() == 'NO_FILE')
+  def prev_sql = !has_prev
     ? """
       SELECT
         NULL::BIGINT   AS pk,

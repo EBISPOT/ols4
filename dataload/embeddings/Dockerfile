@@ -16,7 +16,15 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
 RUN curl https://install.duckdb.org | sh && \
     cp /root/.duckdb/cli/latest/duckdb /usr/bin/
 
-# Rust things first
+
+# Python
+#
+RUN mkdir -p /opt/ols_embed
+COPY ols_embed/pyproject.toml ols_embed/uv.lock /opt/ols_embed/
+RUN cd /opt/ols_embed && uv sync --frozen --extra gpu
+
+
+# Rust
 #
 COPY Cargo.toml Cargo.lock /opt/
 COPY ols_to_tsv /opt/ols_to_tsv/
@@ -26,11 +34,6 @@ RUN cargo build --release
 RUN cp /opt/target/release/ols_to_tsv /usr/local/bin/ && \
     cp /opt/target/release/ols_semsim /usr/local/bin/
 
-# Python
-#
-RUN mkdir -p /opt/ols_embed
-COPY ols_embed/pyproject.toml ols_embed/uv.lock /opt/ols_embed/
-RUN cd /opt/ols_embed && uv sync --frozen --extra gpu
 
 COPY ols_embed/embed2.py /opt/ols_embed/
 COPY ols_embed/embed_openai.py /opt/ols_embed/
