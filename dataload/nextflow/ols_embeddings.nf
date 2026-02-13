@@ -3,6 +3,7 @@ nextflow.enable.dsl=2
 
 import groovy.json.JsonSlurper
 
+params.out                     = "$OLS_OUT_DIR"
 params.embeddings_config       = "$OLS_EMBEDDINGS_CONFIG"
 params.embeddings_prev         = "$OLS_EMBEDDINGS_PREV"
 params.embeddings_batch_size   = 10000
@@ -79,8 +80,25 @@ workflow embeddings {
         ols_to_tsv.out
     )
 
-    pca_inputs = join_embeddings.out.combine(Channel.from(params.embeddings_pca_components))
+    // Build ontology pairs for semsim
+    def pairs = new LinkedHashSet<Tuple>()
+    config.semsim_groups.each { group ->
+        group.withIndex().each { a, i ->
+            group.withIndex().each { b, j ->
+                if (j >= i) {                    // ensures (a,b) but not (b,a)
+                    pairs << tuple(a, b)
+                }
+            }
+        }
+    }
+
+    pca_inputs = join_embeddings.out.combine(Channel.from(params.embeddings_pca_components, 16))
     pca(pca_inputs)
+
+    visualize_embeddings(pca.out.pca_parquets.filter { it[0].endsWith('_pca16') })
+
+    models_and_parquets = join_embeddings.out.concat( pca.out.pca_parquets )
+    run_semsim(models_and_parquets.combine(Channel.from(pairs)), config.semsim_thresholds)
 
     emit:
     // Emit the PCA parquet files (for use in json2neo)
@@ -257,6 +275,8 @@ process join_embeddings {
   time '4h'
   cpus 32
 
+  publishDir "${params.out}/embeddings", overwrite: true
+
   input:
   tuple val(model), val(has_prev), path(prev_pq, stageAs: 'prev.parquet'), val(has_new_pq), path(new_pq)
   path terms_tsv
@@ -381,5 +401,56 @@ process pca {
     python3 /opt/ols_embed/pca.py ${parquet} ${model.split('/')[1]}_pca${n_components}.parquet ${n_components} \
         --pca-model-out ${model.split('/')[1]}_pca${n_components}.joblib \
         --pca-json-out ${model.split('/')[1]}_pca${n_components}.json
+    """
+}
+
+process visualize_embeddings {
+
+    container params.embed_image
+    cache "lenient"
+    memory '400 GB'
+    time '1h'
+    cpus "32"
+    clusterOptions = '--gres=gpu:a100:1'
+
+    publishDir "${params.out}/embeddings", overwrite: true
+
+    input:
+    tuple val(model), path(parquet)
+
+    output:
+    path("${model.split('/')[1]}_umap.parquet")
+    path("${model.split('/')[1]}_umap.png")
+
+    script:
+    def model_short = model.split('/')[1]
+    """
+    python3 /opt/ols_embed/visualize_embeddings.py ${parquet} \\
+        --output-parquet ${model_short}_umap.parquet \\
+        --output-plot ${model_short}_umap.png
+    """
+}
+
+process run_semsim {
+
+    container params.embed_image
+    cache "lenient"
+    memory '256 GB'
+    time '40h'
+    cpus "32"
+
+    publishDir "${params.out}/embeddings/semsim/${model.split('/')[1]}", overwrite: true
+
+    input:
+    tuple val(model), path(parquet), val(ont_a), val(ont_b)
+    val(semsim_thresholds)
+
+    output:
+    path("${ont_a}_${ont_b}__${model.split('/')[1]}__${semsim_thresholds[model]}.tsv.gz")
+
+    script:
+    """
+    ols_semsim --parquet ${parquet} --a ${ont_a} --b ${ont_b} --threshold ${semsim_thresholds[model]} \\
+        | pigz --best > ${ont_a}_${ont_b}__${model.split('/')[1]}__${semsim_thresholds[model]}.tsv.gz
     """
 }
