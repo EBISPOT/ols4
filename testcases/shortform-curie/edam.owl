@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://edamontology.org/"
+     xml:base="http://edamontology.org/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:doap="http://usefulinc.com/ns/doap#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:dcterms="http://purl.org/dc/terms/"
+     xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#"
+     xmlns:oboLegacy="http://purl.obolibrary.org/obo/">
+    <owl:Ontology rdf:about="http://edamontology.org">
+        <owl:versionIRI rdf:resource="http://edamontology.org/1.25-20251112T1620Z-unstable(1.26)"/>
+    </owl:Ontology>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://edamontology.org/has_format -->
+
+    <owl:ObjectProperty rdf:about="http://edamontology.org/has_format">
+        <owl:inverseOf rdf:resource="http://edamontology.org/is_format_of"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://edamontology.org/has_function -->
+
+    <owl:ObjectProperty rdf:about="http://edamontology.org/has_function">
+        <owl:inverseOf rdf:resource="http://edamontology.org/is_function_of"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://edamontology.org/has_identifier -->
+
+    <owl:ObjectProperty rdf:about="http://edamontology.org/has_identifier">
+        <owl:inverseOf rdf:resource="http://edamontology.org/is_identifier_of"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://edamontology.org/has_input -->
+
+    <owl:ObjectProperty rdf:about="http://edamontology.org/has_input">
+        <owl:inverseOf rdf:resource="http://edamontology.org/is_input_of"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://edamontology.org/has_output -->
+
+    <owl:ObjectProperty rdf:about="http://edamontology.org/has_output">
+        <owl:inverseOf rdf:resource="http://edamontology.org/is_output_of"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://edamontology.org/has_topic -->
+
+    <owl:ObjectProperty rdf:about="http://edamontology.org/has_topic">
+        <owl:inverseOf rdf:resource="http://edamontology.org/is_topic_of"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://edamontology.org/is_format_of -->
+
+    <owl:ObjectProperty rdf:about="http://edamontology.org/is_format_of"/>
+
+
+
+    <!-- http://edamontology.org/is_function_of -->
+
+    <owl:ObjectProperty rdf:about="http://edamontology.org/is_function_of"/>
+
+
+
+    <!-- http://edamontology.org/is_identifier_of -->
+
+    <owl:ObjectProperty rdf:about="http://edamontology.org/is_identifier_of"/>
+
+
+
+    <!-- http://edamontology.org/is_input_of -->
+
+    <owl:ObjectProperty rdf:about="http://edamontology.org/is_input_of"/>
+
+
+
+    <!-- http://edamontology.org/is_output_of -->
+
+    <owl:ObjectProperty rdf:about="http://edamontology.org/is_output_of"/>
+
+
+
+    <!-- http://edamontology.org/is_topic_of -->
+
+    <owl:ObjectProperty rdf:about="http://edamontology.org/is_topic_of"/>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://edamontology.org/data_1152 -->
+
+    <owl:Class rdf:about="http://edamontology.org/data_1152"/>
+
+
+
+    <!-- http://edamontology.org/data_1156 -->
+
+    <owl:Class rdf:about="http://edamontology.org/data_1156"/>
+
+
+
+    <!-- http://edamontology.org/data_1390 -->
+
+    <owl:Class rdf:about="http://edamontology.org/data_1390"/>
+
+
+
+    <!-- http://edamontology.org/data_1395 -->
+
+    <owl:Class rdf:about="http://edamontology.org/data_1395"/>
+
+
+
+    <!-- http://edamontology.org/data_2240 -->
+
+    <owl:Class rdf:about="http://edamontology.org/data_2240"/>
+
+
+
+    <!-- http://edamontology.org/data_2242 -->
+
+    <owl:Class rdf:about="http://edamontology.org/data_2242"/>
+
+
+
+    <!-- http://edamontology.org/data_2245 -->
+
+    <owl:Class rdf:about="http://edamontology.org/data_2245"/>
+
+
+
+    <!-- http://edamontology.org/format_2322 -->
+
+    <owl:Class rdf:about="http://edamontology.org/format_2322"/>
+
+
+
+    <!-- http://edamontology.org/format_2323 -->
+
+    <owl:Class rdf:about="http://edamontology.org/format_2323"/>
+
+
+
+    <!-- http://edamontology.org/format_2329 -->
+
+    <owl:Class rdf:about="http://edamontology.org/format_2329"/>
+
+
+
+    <!-- http://edamontology.org/operation_0493 -->
+
+    <owl:Class rdf:about="http://edamontology.org/operation_0493"/>
+
+
+
+    <!-- http://edamontology.org/operation_0494 -->
+
+    <owl:Class rdf:about="http://edamontology.org/operation_0494"/>
+
+
+
+    <!-- http://edamontology.org/topic_2839 -->
+
+    <owl:Class rdf:about="http://edamontology.org/topic_2839"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+
