@@ -188,6 +188,7 @@ def main():
     # ---- PCA via covariance eigendecomposition (exact) ----
     print(f"Running PCA via covariance: N={N}, D={D}, k={k}")
     X_reduced, pca_model = full_pca_via_covariance(X, k)
+    k = pca_model["n_components_"]  # may have been clamped to min(N, D)
     print("PCA completed.")
 
     joblib.dump(pca_model, args.pca_model_out)
