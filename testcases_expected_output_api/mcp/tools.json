@@ -161,6 +161,10 @@
       "inputSchema": {
         "additionalProperties": false,
         "properties": {
+          "includeObsoleteEntities": {
+            "description": "Whether to include obsolete entities in search results. Default is false.",
+            "type": "boolean"
+          },
           "query": {
             "type": "string"
           }
@@ -209,6 +213,10 @@
       "inputSchema": {
         "additionalProperties": false,
         "properties": {
+          "includeObsoleteEntities": {
+            "description": "Whether to include obsolete entities in search results. Default is false.",
+            "type": "boolean"
+          },
           "lang": {
             "type": "string"
           },
