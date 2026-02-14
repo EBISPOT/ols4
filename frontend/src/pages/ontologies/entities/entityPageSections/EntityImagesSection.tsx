@@ -4,6 +4,7 @@ import Image3D from "../../../../components/Image3D";
 import Entity from "../../../../model/Entity";
 import LinkedEntities from "../../../../model/LinkedEntities";
 import Reified from "../../../../model/Reified";
+import MetadataTooltip from "./MetadataTooltip";
 
 export default function EntityImagesSection({
   entity,
@@ -28,8 +29,9 @@ export default function EntityImagesSection({
       <div className="flex flex-row">
         {images
           .map((img: Reified<string>) => {
+            const hasMetadata = img.hasMetadata();
             return (
-              <div key={img.value}>
+              <div key={img.value} className="relative">
                 {img.value.toLowerCase().match(imgFile3D)?.length === 1 ? (
                   <Image3D src={img.value} />
                 ) : (
@@ -41,6 +43,14 @@ export default function EntityImagesSection({
                       style={{ maxWidth: "300px", minWidth: "300px" }}
                     />
                   </a>
+                )}
+                {hasMetadata && (
+                  <div className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-md">
+                    <MetadataTooltip
+                      metadata={img.getMetadata()}
+                      linkedEntities={linkedEntities}
+                    />
+                  </div>
                 )}
               </div>
             );

@@ -3,7 +3,7 @@ import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { get, getPaginated } from "../app/api";
 import { theme } from "../app/mui";
-import { randomString, thingFromJsonProperties } from "../app/util";
+import { randomString, thingFromJsonProperties, highlightMatch } from "../app/util";
 import Entity from "../model/Entity";
 import Ontology from "../model/Ontology";
 import { Suggest } from "../model/Suggest";
@@ -232,7 +232,11 @@ export default function SearchBox({
               setQuery(autocomplete.autosuggest);
             }}
           >
-            {autocomplete.autosuggest}
+            <span
+              dangerouslySetInnerHTML={{
+                __html: highlightMatch(autocomplete.autosuggest, query)
+              }}
+            />
           </li>
         ),
       };
@@ -273,9 +277,13 @@ export default function SearchBox({
                   to={linkUrl}
                 >
                   <div className="flex justify-between">
-                    <div className="truncate flex-auto" title={name}>
-                      {name}
-                    </div>
+                    <div
+                      className="truncate flex-auto"
+                      title={name}
+                      dangerouslySetInnerHTML={{
+                        __html: highlightMatch(name, query)
+                      }}
+                    />
                     <div className="truncate flex-initial ml-2 text-right">
                       <span
                         className="mr-2 bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase"
@@ -334,9 +342,10 @@ export default function SearchBox({
                       title={
                         jumpToEntry.getName() || jumpToEntry.getOntologyId()
                       }
-                    >
-                      {jumpToEntry.getName() || jumpToEntry.getOntologyId()}
-                    </div>
+                      dangerouslySetInnerHTML={{
+                        __html: highlightMatch(jumpToEntry.getName() || jumpToEntry.getOntologyId(), query)
+                      }}
+                    />
                     <div className="truncate flex-initial ml-2 text-right">
                       <span className="bg-link-default px-3 py-1 rounded-lg text-sm text-white uppercase">
                         {jumpToEntry.getOntologyId()}

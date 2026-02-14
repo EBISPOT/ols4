@@ -65,3 +65,24 @@ export function toCamel(str: string) {
     return $1.toUpperCase().replace("-", "").replace("_", "");
   });
 }
+
+/**
+ * Highlights the query text within the target text by wrapping matches in <mark> tags
+ * @param text The text to search in
+ * @param query The search query to highlight
+ * @returns HTML string with highlighted matches
+ */
+export function highlightMatch(text: string, query: string): string {
+  if (!query || !text) {
+    return text;
+  }
+
+  // Escape special regex characters in the query
+  const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+  // Create a case-insensitive regex to find all occurrences
+  const regex = new RegExp(`(${escapedQuery})`, 'gi');
+
+  // Replace matches with highlighted version
+  return text.replace(regex, '<mark>$1</mark>');
+}

@@ -11,6 +11,7 @@ public class ContactInfo {
     private String homepage;
     private String repository;
     private String tracker;
+    private boolean isDeprecated;
 
     public String getEmail() {
         return email;
@@ -66,6 +67,14 @@ public class ContactInfo {
 
     public void setTracker(String tracker) {
         this.tracker = tracker;
+    }
+
+    public boolean isDeprecated() {
+        return isDeprecated;
+    }
+
+    public void setDeprecated(boolean deprecated) {
+        isDeprecated = deprecated;
     }
 
     public boolean hasContactMethod() {
