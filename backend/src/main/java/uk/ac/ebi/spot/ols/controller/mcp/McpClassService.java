@@ -41,7 +41,8 @@ public class McpClassService {
         @ToolParam(required=false) String ontologyId,
         @ToolParam(required=false) Integer pageNum,
         @ToolParam(required=false) Integer pageSize,
-        @ToolParam(required=false) String lang
+        @ToolParam(required=false) String lang,
+        @ToolParam(required=false, description = "Whether to include obsolete entities in search results. Default is false.") Boolean includeObsoleteEntities
     ) throws IOException {
         var pageable = PageRequest.of(
             pageNum != null ? pageNum : 0,
@@ -57,6 +58,10 @@ public class McpClassService {
 
         if(ontologyId != null)
             properties.put("ontologyId", List.of(ontologyId));
+
+        if(includeObsoleteEntities == null || !includeObsoleteEntities) {
+            properties.put("isObsolete", List.of("false"));
+        }
 
         JsonTransformOptions outputOpts = new JsonTransformOptions();
         outputOpts.resolveReferences = true;

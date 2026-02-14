@@ -12,6 +12,7 @@ public class McpClass {
     public String curie;
     public List<String> label;
     public List<String> definition;
+    public boolean isObsolete;
     public List<McpEntityReference> directAncestor;
     public List<McpEntityReference> directParent;
     public List<McpEntityReference> hierarchicalParent;
@@ -25,6 +26,7 @@ public class McpClass {
         mc.ontologyId = JsonHelper.getString(object, "ontologyId");
         mc.label = JsonHelper.getStrings(object, "label");
         mc.definition = JsonHelper.getStrings(object, "definition");
+        mc.isObsolete = Boolean.parseBoolean(JsonHelper.getString(object, "isObsolete"));
 
         mc.directAncestor = JsonHelper.getObjects(object, "directAncestor")
                 .stream().map(McpEntityReference::fromJson).toList();

@@ -1,6 +1,7 @@
 package uk.ac.ebi.spot.ols.controller.mcp;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -40,13 +41,19 @@ public class McpSearchService {
 
     @Tool(description = "OpenAI compliant tool to search OLS for a query string")
     String search(
-        String query
+        String query,
+        @ToolParam(required=false, description = "Whether to include obsolete entities in search results. Default is false.") Boolean includeObsoleteEntities
     ) throws IOException {
         var pageable = PageRequest.of(0, 20);
 
         JsonTransformOptions outputOpts = new JsonTransformOptions();
         outputOpts.resolveReferences = true;
         outputOpts.manchesterSyntax = true;
+
+        var properties = new java.util.LinkedHashMap<String, Collection<String>>();
+        if(includeObsoleteEntities == null || !includeObsoleteEntities) {
+            properties.put("isObsolete", List.of("false"));
+        }
 
         var res = entityRepository.find(
             pageable,
@@ -57,7 +64,7 @@ public class McpSearchService {
             null,
             false,
             null, // excludeOntologyIds
-            Map.of(),
+            properties,
             outputOpts
         );
 
