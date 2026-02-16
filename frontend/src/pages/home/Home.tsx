@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { Banner } from "../../components/Banner";
 import Header from "../../components/Header";
 import SearchBox from "../../components/SearchBox";
+import TagTextBox from "../../components/TagTextBox";
 import UMAPViewer from "../../components/UMAPViewer";
 import { getBannerText, getStats } from "./homeSlice";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -79,28 +80,7 @@ export default function Home() {
               <div className="text-3xl mb-4 text-neutral-black font-bold">
                 Welcome to the EMBL-EBI Ontology Lookup Service
               </div>
-              <div className="flex flex-nowrap gap-4 mb-4">
-                <SearchBox />
-              </div>
-              <div className="grid md:grid-cols-2 grid-cols-1 gap-2">
-                <div className="text-neutral-black">
-                  <span>
-                    Examples:&nbsp;
-                    <Link to={"/search?q=diabetes"} className="link-default">
-                      diabetes
-                    </Link>
-                    &#44;&nbsp;
-                    <Link to={"/search?q=GO:0098743"} className="link-default">
-                      GO:0098743
-                    </Link>
-                  </span>
-                </div>
-                <div className="md:text-right">
-                  <Link to={"/ontologies"} className="link-default">
-                    Looking for a particular ontology?
-                  </Link>
-                </div>
-              </div>
+              <HomeSearchTabs />
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
               <div className="px-2">
@@ -263,6 +243,66 @@ export default function Home() {
           </div>
         </div>
       </main>
+    </div>
+  );
+}
+
+function HomeSearchTabs() {
+  const [activeTab, setActiveTab] = useState<"search" | "tag">("search");
+
+  return (
+    <div>
+      <div className="flex border-b border-neutral-300 mb-4">
+        <button
+          className={`px-4 py-2 text-sm font-semibold transition-colors ${
+            activeTab === "search"
+              ? "text-link-default border-b-2 border-link-default"
+              : "text-neutral-500 hover:text-neutral-700"
+          }`}
+          onClick={() => setActiveTab("search")}
+        >
+          Search
+        </button>
+        <button
+          className={`px-4 py-2 text-sm font-semibold transition-colors ${
+            activeTab === "tag"
+              ? "text-link-default border-b-2 border-link-default"
+              : "text-neutral-500 hover:text-neutral-700"
+          }`}
+          onClick={() => setActiveTab("tag")}
+        >
+          Tag Text
+        </button>
+      </div>
+
+      {activeTab === "search" ? (
+        <div>
+          <div className="flex flex-nowrap gap-4 mb-4">
+            <SearchBox />
+          </div>
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-2">
+            <div className="text-neutral-black">
+              <span>
+                Examples:&nbsp;
+                <Link to={"/search?q=diabetes"} className="link-default">
+                  diabetes
+                </Link>
+                &#44;&nbsp;
+                <Link to={"/search?q=GO:0098743"} className="link-default">
+                  GO:0098743
+                </Link>
+              </span>
+            </div>
+            <div className="md:text-right">
+              <Link to={"/ontologies"} className="link-default">
+                Looking for a particular ontology?
+              </Link>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <TagTextBox compact={true} />
+      )}
     </div>
   );
 }

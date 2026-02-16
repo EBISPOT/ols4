@@ -59,6 +59,18 @@ export default function Header({ section }: { section?: string }) {
                 Ontologies
               </li>
             </Link>
+            <Link to="/tag-text">
+              <li
+                role="menuitem"
+                className={`px-4 py-3 ${
+                  section === "tag-text"
+                    ? " bg-opacity-75 bg-neutral-500"
+                    : "hover:bg-opacity-50 hover:bg-neutral-500"
+                }`}
+              >
+                Tag Text
+              </li>
+            </Link>
             <Link to={`/api-docs`}>
               <li
                 role="menuitem"

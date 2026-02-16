@@ -22,6 +22,7 @@ import OntologyPage from "./pages/ontologies/OntologyPage";
 import EntityPage from "./pages/ontologies/entities/EntityPage";
 import { getEntity } from "./pages/ontologies/ontologiesSlice";
 import Search from "./pages/search/Search";
+import TagTextPage from "./pages/TagTextPage";
 import {Helmet} from "react-helmet";
 import LoadingOverlay from "./components/LoadingOverlay";
 
@@ -42,6 +43,7 @@ class App extends React.Component {
           <Route path={`/home`} element={<Home />} />
           <Route path={`/index`} element={<Home />} />
           <Route path={`/search`} element={<Search />} />
+          <Route path={`/tag-text`} element={<TagTextPage />} />
 
           <Route path={`/ontologies`} element={<OntologiesPage />} />
           <Route path={`/ontologies/:ontologyId`} element={<OntologyPage />} />

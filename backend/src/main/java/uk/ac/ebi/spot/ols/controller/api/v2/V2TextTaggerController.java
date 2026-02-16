@@ -31,7 +31,9 @@ public class V2TextTaggerController {
     public HttpEntity<Map<String, Object>> tagText(
             @RequestBody Map<String, Object> requestBody,
             @RequestParam(value = "ontologyId", required = false) List<String> ontologyIds,
-            @RequestParam(value = "delimiters", required = false) String delimiters
+            @RequestParam(value = "delimiters", required = false) String delimiters,
+            @RequestParam(value = "minLength", required = false, defaultValue = "3") int minLength,
+            @RequestParam(value = "includeSubstrings", required = false, defaultValue = "true") boolean includeSubstrings
     ) {
 
         if (!textTaggerService.isAvailable()) {
@@ -50,7 +52,7 @@ public class V2TextTaggerController {
 
         String text = textObj.toString();
 
-        List<TaggedEntity> entities = textTaggerService.tagText(text, ontologyIds, delimiters);
+        List<TaggedEntity> entities = textTaggerService.tagText(text, ontologyIds, delimiters, minLength, includeSubstrings);
 
         List<Map<String, Object>> entityMaps = new ArrayList<>(entities.size());
         for (TaggedEntity e : entities) {

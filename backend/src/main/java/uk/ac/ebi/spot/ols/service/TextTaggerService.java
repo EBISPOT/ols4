@@ -104,9 +104,11 @@ public class TextTaggerService {
      * @param text                the input text to annotate
      * @param priorityOntologyIds ordered list of ontology IDs (highest priority first), or null for all
      * @param delimiters          optional delimiter characters for word-boundary matching
+     * @param minLength           minimum matched text length (inclusive); matches shorter than this are dropped
+     * @param includeSubstrings   if false, when one match's span is entirely contained within another's, the shorter is removed
      * @return list of entity matches (empty if service unavailable)
      */
-    public List<TaggedEntity> tagText(String text, List<String> priorityOntologyIds, String delimiters) {
+    public List<TaggedEntity> tagText(String text, List<String> priorityOntologyIds, String delimiters, int minLength, boolean includeSubstrings) {
         if (!available) {
             return Collections.emptyList();
         }
@@ -130,6 +132,10 @@ public class TextTaggerService {
             }
 
             List<TaggedEntity> entities = parseResponse(responseLine);
+            entities = applyMinLength(entities, minLength);
+            if (!includeSubstrings) {
+                entities = removeSubstrings(entities);
+            }
             return applyPriority(entities, priorityOntologyIds);
 
         } catch (IOException e) {
@@ -139,6 +145,13 @@ public class TextTaggerService {
         } finally {
             lock.unlock();
         }
+    }
+
+    /**
+     * Backwards-compatible overload without minLength/includeSubstrings.
+     */
+    public List<TaggedEntity> tagText(String text, List<String> priorityOntologyIds, String delimiters) {
+        return tagText(text, priorityOntologyIds, delimiters, 3, true);
     }
 
     // ------------------------------------------------------------------
@@ -267,5 +280,61 @@ public class TextTaggerService {
 
     private static long spanKey(int start, int end) {
         return ((long) start << 32) | (end & 0xFFFFFFFFL);
+    }
+
+    // ------------------------------------------------------------------
+    // Min-length filtering
+    // ------------------------------------------------------------------
+
+    /**
+     * Remove entities whose matched span is shorter than {@code minLength}.
+     */
+    private List<TaggedEntity> applyMinLength(List<TaggedEntity> entities, int minLength) {
+        if (minLength <= 0) return entities;
+        List<TaggedEntity> filtered = new ArrayList<>();
+        for (TaggedEntity e : entities) {
+            if ((e.end - e.start) >= minLength) {
+                filtered.add(e);
+            }
+        }
+        return filtered;
+    }
+
+    // ------------------------------------------------------------------
+    // Substring removal
+    // ------------------------------------------------------------------
+
+    /**
+     * Remove entities whose span is strictly contained within another
+     * entity's span.  When two entities have identical spans they are
+     * both kept (they are not substrings of each other).
+     */
+    private List<TaggedEntity> removeSubstrings(List<TaggedEntity> entities) {
+        if (entities.size() <= 1) return entities;
+
+        // Sort by start asc, then by span length desc so longer spans come first
+        List<TaggedEntity> sorted = new ArrayList<>(entities);
+        sorted.sort((a, b) -> {
+            int cmp = Integer.compare(a.start, b.start);
+            if (cmp != 0) return cmp;
+            return Integer.compare((b.end - b.start), (a.end - a.start));
+        });
+
+        List<TaggedEntity> result = new ArrayList<>();
+        for (TaggedEntity candidate : sorted) {
+            boolean isSubstring = false;
+            for (TaggedEntity kept : result) {
+                // candidate is strictly contained within kept
+                if (kept.start <= candidate.start && kept.end >= candidate.end
+                        && (kept.start < candidate.start || kept.end > candidate.end)) {
+                    isSubstring = true;
+                    break;
+                }
+            }
+            if (!isSubstring) {
+                result.add(candidate);
+            }
+        }
+        return result;
     }
 }
