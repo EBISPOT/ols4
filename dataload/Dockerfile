@@ -49,6 +49,7 @@ RUN echo "server.jvm.additional=-Dorg.neo4j.kernel.impl.index.schema.GenericNati
 RUN mkdir /opt/ols && mkdir /opt/ols/dataload && mkdir /opt/ols/ols-shared
 
 COPY ./dataload /opt/ols/dataload
+COPY ./text_tagger /opt/ols/text_tagger
 COPY ./ols-shared /opt/ols/ols-shared
 COPY ./pom.xml /opt/ols
 
@@ -65,12 +66,17 @@ RUN cd /opt/ols/dataload &&  mvn -B -ntp -Dorg.slf4j.simpleLogger.log.org.apache
 # Build all Rust binaries
 RUN cd /opt/ols/dataload && cargo build --release
 
+# Build text_tagger
+RUN cd /opt/ols/text_tagger && cargo build --release
+
 # Install Rust binaries
 RUN cp /opt/ols/dataload/target/release/ols_json2neo /usr/local/bin/ && \
     cp /opt/ols/dataload/target/release/ols_create_manifest /usr/local/bin/ && \
     cp /opt/ols/dataload/target/release/ols_link /usr/local/bin/ && \
     cp /opt/ols/dataload/target/release/ols_json2solr /usr/local/bin/ && \
-    chmod +x /usr/local/bin/ols_json2neo /usr/local/bin/ols_create_manifest /usr/local/bin/ols_link /usr/local/bin/ols_json2solr
+    cp /opt/ols/dataload/target/release/ols_to_tsv /usr/local/bin/ && \
+    cp /opt/ols/text_tagger/target/release/ols_text_tagger /usr/local/bin/ && \
+    chmod +x /usr/local/bin/ols_json2neo /usr/local/bin/ols_create_manifest /usr/local/bin/ols_link /usr/local/bin/ols_json2solr /usr/local/bin/ols_to_tsv /usr/local/bin/ols_text_tagger
 
 # COPY ./backend /opt/ols/backend
 # RUN cd /opt/ols/backend && mvn -T 1C package

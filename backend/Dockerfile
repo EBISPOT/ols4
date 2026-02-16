@@ -1,5 +1,14 @@
 
+FROM rust:1.90.0-bullseye AS rust-builder
+
+COPY ./text_tagger /opt/text_tagger
+RUN cd /opt/text_tagger && cargo build --release
+
 FROM maven:3.9.10-eclipse-temurin-24
+
+# Copy text_tagger binary from rust builder
+COPY --from=rust-builder /opt/text_tagger/target/release/ols_text_tagger /usr/local/bin/ols_text_tagger
+RUN chmod +x /usr/local/bin/ols_text_tagger
 
 RUN mkdir /opt/ols && mkdir /opt/ols/backend && mkdir /opt/ols/ols-shared
 COPY ./backend /opt/ols/backend

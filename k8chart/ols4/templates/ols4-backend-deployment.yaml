@@ -47,6 +47,8 @@ spec:
               value: http://wwwdev.ebi.ac.uk/spot/embed
             - name: OLS_EMBEDDING_PCA_MODELS_DIR
               value: /data/pca_models
+            - name: OLS_TEXT_TAGGER_DB
+              value: /data/text_tagger_db.bin
             - name: SERVER_SERVLET_CONTEXT_PATH
               value: /ols4
             - name: SPRING_AI_MCP_SERVER_BASE_URL

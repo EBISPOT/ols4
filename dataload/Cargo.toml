@@ -7,6 +7,7 @@ members = [
     "json2solr",
     "linker/create_manifest",
     "linker/link",
+    "ols_to_tsv",
 ]
 
 [workspace.package]
@@ -36,6 +37,8 @@ serde_yaml = "0.9"
 regex = "1.10"
 ureq = { version = "2.9", features = ["json"] }
 rusty-leveldb = "3.0"
+sha1 = "0.10"
+tiktoken-rs = "0.7"
 
 # Internal crate
 ols_shared = { path = "ols-shared-rs" }

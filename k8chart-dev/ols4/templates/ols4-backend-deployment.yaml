@@ -63,6 +63,8 @@ spec:
               value: http://wwwdev.ebi.ac.uk/spot/embed
             - name: OLS_EMBEDDING_PCA_MODELS_DIR
               value: /data_import
+            - name: OLS_TEXT_TAGGER_DB
+              value: /data_import/text_tagger_db.bin
             - name: HTTP_PROXY
               value: http://hx-wwwcache.ebi.ac.uk:3128
             - name: HTTPS_PROXY

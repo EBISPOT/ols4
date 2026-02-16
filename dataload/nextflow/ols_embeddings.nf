@@ -13,16 +13,15 @@ params.embed_image             = ""
 workflow embeddings {
 
     take:
-    linked_ontologies  // channel of tuple(ontology_id, linked_json_path)
+    terms_tsv  // path to terms.tsv (output of ols_to_tsv from the dataload pipeline)
 
     main:
 
     config = new JsonSlurper().parse(new File(params.embeddings_config))
     models = Channel.from(config.models)
 
-    // Collect all linked ontology JSONs and run ols_to_tsv on them
-    all_linked_jsons = linked_ontologies.map { it[1] }.collect()
-    deduped = ols_to_tsv(all_linked_jsons) | dedupe_by_hash
+    // Deduplicate the terms TSV (already produced by the dataload pipeline)
+    deduped = dedupe_by_hash(terms_tsv)
 
     // For each model, look for a corresponding previous embeddings Parquet file
     prev_dir = params.embeddings_prev ?: 'NO_DIR'
@@ -77,7 +76,7 @@ workflow embeddings {
 
     join_embeddings(
         embeddings_by_model_with_prev,
-        ols_to_tsv.out
+        terms_tsv
     )
 
     // Build ontology pairs for semsim
@@ -108,25 +107,7 @@ workflow embeddings {
 }
 
 
-process ols_to_tsv {
-    container params.embed_image
-    cache "lenient"
-    memory '8 GB'
-    time '1h'
-    cpus "4"
 
-    input:
-    path(linked_jsons)
-
-    output:
-    path("terms.tsv")
-
-    script:
-    def json_list = (linked_jsons instanceof List) ? linked_jsons : [linked_jsons]
-    """
-    ols_to_tsv ${json_list.join(' ')} > terms.tsv
-    """
-}
 
 process dedupe_by_hash {
 

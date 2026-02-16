@@ -34,6 +34,10 @@ services:
       environment:
         - OLS_SOLR_HOST=http://ols4-solr:8983
         - OLS_NEO4J_HOST=bolt://ols4-neo4j:7687
+        - OLS_TEXT_TAGGER_DB=/mnt/text_tagger_db.bin
+
+      volumes:
+        - ./out/text_tagger_db.bin:/mnt/text_tagger_db.bin:ro
       depends_on:
         - ols4-solr
         - ols4-neo4j

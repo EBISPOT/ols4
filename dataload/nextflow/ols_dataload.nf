@@ -41,7 +41,7 @@ workflow {
 
     // Run embeddings pipeline if enabled
     if (params.enable_embeddings) {
-        embeddings(linked_ontologies_by_id)
+        embeddings(terms_tsv)
         embedding_parquets = embeddings.out.pca_parquets
             .map { it[1] }
             .collect()
@@ -55,6 +55,11 @@ workflow {
 
     neo_csvs = json2neo(linker_manifest, linked_ontologies_by_id, embedding_parquets)
     solr_jsonls = json2solr(linked_ontologies_by_id)
+
+    // Build text tagger database from linked ontology JSONs
+    all_linked_jsons = linked_ontologies_by_id.map { it[1] }.collect()
+    terms_tsv = ols_to_tsv(all_linked_jsons)
+    text_tagger_db = build_text_tagger_db(terms_tsv)
 
     neo = create_neo(neo_csvs.collect(), embedding_parquets)
     solr = create_solr(solr_jsonls.collect(), linker_manifest)
@@ -328,4 +333,44 @@ def parseJson(json) {
 
 def basename(filename) {
     return new File(filename).name
+}
+
+process ols_to_tsv {
+    cache "lenient"
+    memory '8 GB'
+    time '1h'
+    cpus "4"
+
+    input:
+    path(linked_jsons)
+
+    output:
+    path("terms.tsv")
+
+    script:
+    def json_list = (linked_jsons instanceof List) ? linked_jsons : [linked_jsons]
+    """
+    ols_to_tsv ${json_list.join(' ')} > terms.tsv
+    """
+}
+
+process build_text_tagger_db {
+    cache "lenient"
+    memory '8 GB'
+    time '1h'
+
+    publishDir "${params.out}", overwrite: true
+
+    input:
+    path(terms_tsv)
+
+    output:
+    path("text_tagger_db.bin")
+
+    script:
+    """
+    #!/usr/bin/env bash
+    set -Eeuo pipefail
+    ols_text_tagger build --output text_tagger_db.bin < ${terms_tsv}
+    """
 }

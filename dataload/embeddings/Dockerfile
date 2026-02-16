@@ -27,12 +27,10 @@ RUN cd /opt/ols_embed && uv sync --frozen --extra gpu
 # Rust
 #
 COPY Cargo.toml Cargo.lock /opt/
-COPY ols_to_tsv /opt/ols_to_tsv/
 COPY ols_semsim /opt/ols_semsim/
 WORKDIR /opt
 RUN cargo build --release
-RUN cp /opt/target/release/ols_to_tsv /usr/local/bin/ && \
-    cp /opt/target/release/ols_semsim /usr/local/bin/
+RUN cp /opt/target/release/ols_semsim /usr/local/bin/
 
 
 COPY ols_embed/embed2.py /opt/ols_embed/
