@@ -12,6 +12,7 @@ import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
 
 public class ShortFormAnnotator {
 	private static final Logger logger = LoggerFactory.getLogger(ShortFormAnnotator.class);
+	private static final String oboPurlPrefix = "http://purl.obolibrary.org/obo/";
 
 	public static void annotateShortForms(OntologyGraph graph) {
 
@@ -36,7 +37,7 @@ public class ShortFormAnnotator {
 				preferredPrefix = graph.config.get("id").toString().toUpperCase();
 			}
 
-			String shortForm = extractShortForm(graph, ontologyBaseUris, preferredPrefix, c.uri);
+			String shortForm = extractShortForm(ontologyBaseUris, preferredPrefix, c.uri);
           
 			/*
 			CURIEs are formed by following rules:
@@ -75,16 +76,26 @@ public class ShortFormAnnotator {
 
 	}
 	
-	private static String extractShortForm(OntologyGraph graph, Set<String> ontologyBaseUris, String preferredPrefix,
+	public static String extractShortForm(Set<String> ontologyBaseUris, String preferredPrefix,
 			String uri) {
 
 		if (uri.startsWith("urn:")) {
 			return uri.substring(4);
 		}
 
-		// if(uri.startsWith("http://purl.obolibrary.org/obo/")) {
-		// return uri.substring("http://purl.obolibrary.org/obo/".length());
-		// }
+		// Check if it's an ad-hoc member of an OBO space, for example, how
+		// http://obolibrary.org/obo/mesh#C is an ad-hoc member of the OBO
+		// mesh space or http://purl.obolibrary.org/obo/chebi#mass as an ad-hoc
+		// member of the OBO chebi space (not the same as the CHEBI space).
+		//
+		// For example, http://purl.obolibrary.org/obo/chebi#mass becomes 
+		// obo:chebi#mass
+		//
+		// See further discussion at https://github.com/EBISPOT/ols4/issues/935.
+		String oboAdHocURIPrefix = oboPurlPrefix + preferredPrefix.toLowerCase() + "#";
+		if (uri.startsWith(oboAdHocURIPrefix)) {
+			return "obo:" + uri.substring(oboPurlPrefix.length());
+		}
 
 		for (String baseUri : ontologyBaseUris) {
 			if (uri.startsWith(baseUri) && preferredPrefix != null) {
