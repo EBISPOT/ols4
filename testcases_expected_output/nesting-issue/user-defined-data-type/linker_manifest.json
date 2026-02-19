@@ -1,0 +1,143 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/user-defined-data-type.rdf#hasToddlerAge": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-user-defined-data-type-nesting-issue",
+          "entityTypes": [
+            "dataProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasToddlerAge"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasToddlerAge"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-user-defined-data-type-nesting-issue": {
+          "ontologyId": "owl2primer-user-defined-data-type-nesting-issue",
+          "entityTypes": [
+            "dataProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasToddlerAge"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasToddlerAge"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/user-defined-data-type.rdf": [
+      "owl2primer-user-defined-data-type-nesting-issue"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-user-defined-data-type-nesting-issue": [
+      "owl2primer-user-defined-data-type-nesting-issue"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-user-defined-data-type-nesting-issue": [
+      "http://purl.obolibrary.org/obo/owl2primer-user-defined-data-type-nesting-issue_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-user-defined-data-type-nesting-issue": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-user-defined-data-type-nesting-issue": []
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-user-defined-data-type-nesting-issue": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#range",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-user-defined-data-type-nesting-issue": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-user-defined-data-type-nesting-issue": []
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-user-defined-data-type-nesting-issue": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/user-defined-data-type.rdf": [
+        "ONTOLOGY"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/user-defined-data-type.rdf#hasToddlerAge": [
+        "PROPERTY"
+      ]
+    }
+  }
+}

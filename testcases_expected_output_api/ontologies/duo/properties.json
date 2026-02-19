@@ -1235,11 +1235,11 @@
     "is_root": false,
     "label": "has broad synonym",
     "lang": "en",
-    "obo_id": "hasBroadSynonym",
+    "obo_id": "OIO:hasBroadSynonym",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontology_name": "duo",
     "ontology_prefix": "DUO",
-    "short_form": "hasBroadSynonym",
+    "short_form": "OIO_hasBroadSynonym",
     "synonyms": []
   },
   {
@@ -1278,11 +1278,11 @@
     "is_root": false,
     "label": "has exact synonym",
     "lang": "en",
-    "obo_id": "hasExactSynonym",
+    "obo_id": "OIO:hasExactSynonym",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontology_name": "duo",
     "ontology_prefix": "DUO",
-    "short_form": "hasExactSynonym",
+    "short_form": "OIO_hasExactSynonym",
     "synonyms": []
   },
   {
@@ -1321,11 +1321,11 @@
     "is_root": false,
     "label": "has narrow synonym",
     "lang": "en",
-    "obo_id": "hasNarrowSynonym",
+    "obo_id": "OIO:hasNarrowSynonym",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontology_name": "duo",
     "ontology_prefix": "DUO",
-    "short_form": "hasNarrowSynonym",
+    "short_form": "OIO_hasNarrowSynonym",
     "synonyms": []
   },
   {
@@ -1364,11 +1364,11 @@
     "is_root": false,
     "label": "has related synonym",
     "lang": "en",
-    "obo_id": "hasRelatedSynonym",
+    "obo_id": "OIO:hasRelatedSynonym",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontology_name": "duo",
     "ontology_prefix": "DUO",
-    "short_form": "hasRelatedSynonym",
+    "short_form": "OIO_hasRelatedSynonym",
     "synonyms": []
   },
   {
@@ -1803,11 +1803,11 @@
     "is_root": true,
     "label": "ObsoleteProperty",
     "lang": "en",
-    "obo_id": "ObsoleteProperty",
+    "obo_id": "OIO:ObsoleteProperty",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontology_name": "duo",
     "ontology_prefix": "DUO",
-    "short_form": "ObsoleteProperty",
+    "short_form": "OIO_ObsoleteProperty",
     "synonyms": []
   },
   {
@@ -1831,11 +1831,11 @@
     "is_root": true,
     "label": "label",
     "lang": "en",
-    "obo_id": "label",
+    "obo_id": "RDFS:label",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontology_name": "duo",
     "ontology_prefix": "DUO",
-    "short_form": "label",
+    "short_form": "RDFS_label",
     "synonyms": []
   },
   {
@@ -4275,11 +4275,11 @@
     "is_root": true,
     "label": "hasDbXref",
     "lang": "en",
-    "obo_id": "hasDbXref",
+    "obo_id": "OIO:hasDbXref",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontology_name": "duo",
     "ontology_prefix": "DUO",
-    "short_form": "hasDbXref",
+    "short_form": "OIO_hasDbXref",
     "synonyms": []
   },
   {
@@ -4341,11 +4341,11 @@
     "is_root": true,
     "label": "comment",
     "lang": "en",
-    "obo_id": "comment",
+    "obo_id": "RDFS:comment",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontology_name": "duo",
     "ontology_prefix": "DUO",
-    "short_form": "comment",
+    "short_form": "RDFS_comment",
     "synonyms": []
   },
   {
@@ -4363,11 +4363,11 @@
     "is_root": true,
     "label": "isDefinedBy",
     "lang": "en",
-    "obo_id": "isDefinedBy",
+    "obo_id": "RDFS:isDefinedBy",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontology_name": "duo",
     "ontology_prefix": "DUO",
-    "short_form": "isDefinedBy",
+    "short_form": "RDFS_isDefinedBy",
     "synonyms": []
   },
   {
@@ -4385,11 +4385,11 @@
     "is_root": true,
     "label": "seeAlso",
     "lang": "en",
-    "obo_id": "seeAlso",
+    "obo_id": "RDFS:seeAlso",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontology_name": "duo",
     "ontology_prefix": "DUO",
-    "short_form": "seeAlso",
+    "short_form": "RDFS_seeAlso",
     "synonyms": []
   },
   {
@@ -4407,11 +4407,11 @@
     "is_root": true,
     "label": "exactMatch",
     "lang": "en",
-    "obo_id": "exactMatch",
+    "obo_id": "SKOS:exactMatch",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontology_name": "duo",
     "ontology_prefix": "DUO",
-    "short_form": "exactMatch",
+    "short_form": "SKOS_exactMatch",
     "synonyms": []
   },
   {

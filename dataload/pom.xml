@@ -8,11 +8,10 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <modules>
-		<module>predownloader</module>
+		<module>merge_configs</module>
 		<module>rdf2json</module>
-		<module>linker</module>
-		<module>json2solr</module>
-		<module>json2neo</module>
+		<module>reporting</module>
+		<module>solr_config_builder</module>
 		<module>extras</module>
     </modules>
 

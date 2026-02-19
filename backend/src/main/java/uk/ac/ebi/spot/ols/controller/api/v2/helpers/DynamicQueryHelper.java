@@ -21,7 +21,9 @@ public class DynamicQueryHelper {
                         || k.equals("includeObsoleteEntities")
                         || k.equals("excludeOntologyId")
                         || k.equals("resolveReferences")
-                        || k.equals("manchesterSyntax"))
+                        || k.equals("manchesterSyntax")
+                        || k.equals("model")
+                        )
                 continue;
 
             newProps.put(k, properties.get(k));

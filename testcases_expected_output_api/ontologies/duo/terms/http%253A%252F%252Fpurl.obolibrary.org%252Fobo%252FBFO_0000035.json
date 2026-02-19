@@ -1,10 +1,27 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/BFO_0000035",
-  "lang": "en",
-  "description": [
-    "p is a process boundary =Def. p is a temporal part of a process & p has no proper temporal parts. (axiom label in BFO2 Reference: [084-001])"
-  ],
-  "synonyms": [],
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000035/ancestors"
+    },
+    "graph": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000035/graph"
+    },
+    "hierarchicalAncestors": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000035/hierarchicalAncestors"
+    },
+    "hierarchicalParents": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000035/hierarchicalParents"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000035/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000035/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000035?lang=en"
+    }
+  },
   "annotation": {
     "BFO CLIF specification label": [
       "ProcessBoundary"
@@ -23,38 +40,21 @@
       "Every process boundary occupies_temporal_region a zero-dimensional temporal region. (axiom label in BFO2 Reference: [085-002])"
     ]
   },
+  "description": [
+    "p is a process boundary =Def. p is a temporal part of a process & p has no proper temporal parts. (axiom label in BFO2 Reference: [084-001])"
+  ],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/BFO_0000035",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_preferred_root": false,
+  "is_root": false,
   "label": "process boundary",
+  "lang": "en",
+  "obo_id": "BFO:0000035",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontology_name": "duo",
   "ontology_prefix": "DUO",
-  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": false,
-  "is_root": false,
   "short_form": "BFO_0000035",
-  "obo_id": "BFO:0000035",
-  "is_preferred_root": false,
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000035?lang=en"
-    },
-    "parents": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000035/parents"
-    },
-    "ancestors": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000035/ancestors"
-    },
-    "hierarchicalParents": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000035/hierarchicalParents"
-    },
-    "hierarchicalAncestors": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000035/hierarchicalAncestors"
-    },
-    "jstree": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000035/jstree"
-    },
-    "graph": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000035/graph"
-    }
-  }
+  "synonyms": []
 }

@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      volumes:
+        - name: models
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-pvc
+      containers:
+        - name: web
+          image: ghcr.io/ebispot/ols4-embed:{{ .Values.imageTag }}
+          imagePullPolicy: Always
+          volumeMounts:
+            - mountPath: "/data"
+              name: models
+              readOnly: true
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              memory: {{ .Values.resources.requests.memory }}
+              cpu: {{ .Values.resources.requests.cpu }}
+              nvidia.com/gpu: {{ index .Values.resources.requests "nvidia.com/gpu" }}
+            limits:
+              memory: {{ .Values.resources.limits.memory }}
+              cpu: {{ .Values.resources.limits.cpu }}
+              nvidia.com/gpu: {{ index .Values.resources.limits "nvidia.com/gpu" }}
+          env:
+            - name: MODELS_DIR
+              value: "/data/models"
+          envFrom:
+            - configMapRef:
+                name: {{ .Release.Name }}-proxy-configmap
+          readinessProbe:
+            httpGet:
+              path: /spot/embed/models
+              port: 5000
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            timeoutSeconds: 10

@@ -1,0 +1,154 @@
+{
+  "appearsIn": [
+    "duo",
+    "isobsolete",
+    "oio"
+  ],
+  "curie": "OIO:ObsoleteClass",
+  "definedBy": [
+    "oio"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+      "http://www.geneontology.org/formats/oboInOwl#hasURI": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.w3.org/2000/01/rdf-schema#label": "oboInOwl:cjm",
+      "isObsolete": false
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+    "http://www.w3.org/2000/01/rdf-schema#label": "pseudo-class. in the oboInOwl translation, all obsolete classes are subclasses of this class. Note that this is not a metaclass",
+    "isObsolete": false
+  },
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "obsolete_class",
+  "imported": false,
+  "iri": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
+  "isDefiningOntology": true,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "obsolete_class"
+  ],
+  "linkedEntities": {
+    "http://www.geneontology.org/formats/oboInOwl#DbXref": {
+      "curie": "OIO:DbXref",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "database_cross_reference"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#Definition": {
+      "curie": "OIO:Definition",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+      "curie": "OIO:hasDbXref",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_dbxref"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+      "curie": "OIO:hasDefinition",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_definition"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+      "curie": "OIO:hasURI",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_URI"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "oboInOwl:cjm": {
+      "curie": "oboInOwl:cjm",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://www.geneontology.org/formats/oboInOwl#cjm"
+    }
+  },
+  "linksTo": [
+    "http://www.geneontology.org/formats/oboInOwl#DbXref",
+    "http://www.geneontology.org/formats/oboInOwl#Definition",
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+    "http://www.geneontology.org/formats/oboInOwl#hasDefinition",
+    "http://www.geneontology.org/formats/oboInOwl#hasURI",
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "oio",
+  "ontologyIri": "http://www.geneontology.org/formats/oboInOwl",
+  "searchableAnnotationValues": false,
+  "shortForm": "OIO_ObsoleteClass",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

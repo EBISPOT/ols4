@@ -54,18 +54,6 @@
           "type": [
             "literal"
           ],
-          "value": "3"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "4"
-        },
-        {
-          "type": [
-            "literal"
-          ],
           "value": "0"
         },
         {
@@ -73,6 +61,18 @@
             "literal"
           ],
           "value": "1"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "3"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "4"
         }
       ],
       "classes": [
@@ -161,7 +161,7 @@
             "related-somevaluesof-filleranonymousdisjunction"
           ],
           "linkedEntities": {
-            "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#p": {
+            "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#B": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
@@ -169,18 +169,17 @@
                   "type": [
                     "literal"
                   ],
-                  "value": "p"
+                  "value": "B"
                 }
               ],
               "curie": {
                 "type": [
                   "literal"
                 ],
-                "value": "p"
+                "value": "B"
               },
               "type": [
-                "property",
-                "objectProperty",
+                "class",
                 "entity"
               ]
             },
@@ -206,7 +205,7 @@
                 "entity"
               ]
             },
-            "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#B": {
+            "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#p": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
@@ -214,24 +213,25 @@
                   "type": [
                     "literal"
                   ],
-                  "value": "B"
+                  "value": "p"
                 }
               ],
               "curie": {
                 "type": [
                   "literal"
                 ],
-                "value": "B"
+                "value": "p"
               },
               "type": [
-                "class",
-                "entity"
+                "entity",
+                "objectProperty",
+                "property"
               ]
             }
           },
           "linksTo": [
-            "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#C",
             "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#B",
+            "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#C",
             "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#p"
           ]
         },
@@ -368,9 +368,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#p",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [

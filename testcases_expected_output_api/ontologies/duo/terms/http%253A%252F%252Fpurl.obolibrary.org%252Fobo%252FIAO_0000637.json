@@ -1,10 +1,30 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/IAO_0000637",
-  "lang": "en",
-  "description": [
-    "A part of the document about the publication history of a document. This section typically details dates of document submission to a journal and dates of any re-submissions as well as reviewer comments and responses to reviewers by the authors."
-  ],
-  "synonyms": [],
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000637/ancestors"
+    },
+    "graph": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000637/graph"
+    },
+    "has_part": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000637/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000051"
+    },
+    "hierarchicalAncestors": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000637/hierarchicalAncestors"
+    },
+    "hierarchicalParents": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000637/hierarchicalParents"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000637/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000637/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000637?lang=en"
+    }
+  },
   "annotation": {
     "alternative label": [
       "notice of republication",
@@ -23,41 +43,21 @@
       "https://github.com/information-artifact-ontology/IAO/issues/183"
     ]
   },
+  "description": [
+    "A part of the document about the publication history of a document. This section typically details dates of document submission to a journal and dates of any re-submissions as well as reviewer comments and responses to reviewers by the authors."
+  ],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000637",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_preferred_root": false,
+  "is_root": false,
   "label": "pre-publication history section",
+  "lang": "en",
+  "obo_id": "IAO:0000637",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontology_name": "duo",
   "ontology_prefix": "DUO",
-  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": false,
-  "is_root": false,
   "short_form": "IAO_0000637",
-  "obo_id": "IAO:0000637",
-  "is_preferred_root": false,
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000637?lang=en"
-    },
-    "parents": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000637/parents"
-    },
-    "ancestors": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000637/ancestors"
-    },
-    "hierarchicalParents": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000637/hierarchicalParents"
-    },
-    "hierarchicalAncestors": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000637/hierarchicalAncestors"
-    },
-    "jstree": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000637/jstree"
-    },
-    "graph": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000637/graph"
-    },
-    "has_part": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000637/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000051"
-    }
-  }
+  "synonyms": []
 }

@@ -1,10 +1,39 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/BFO_0000017",
-  "lang": "en",
-  "description": [
-    "A specifically dependent continuant  that inheres in continuant  entities and are not exhibited in full at every time in which it inheres in an entity or group of entities. The exhibition or actualization of a realizable entity is a particular manifestation, functioning or process that occurs under certain circumstances."
-  ],
-  "synonyms": [],
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017/ancestors"
+    },
+    "children": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017/children"
+    },
+    "descendants": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017/descendants"
+    },
+    "graph": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017/graph"
+    },
+    "hierarchicalAncestors": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017/hierarchicalAncestors"
+    },
+    "hierarchicalChildren": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017/hierarchicalDescendants"
+    },
+    "hierarchicalParents": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017/hierarchicalParents"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017?lang=en"
+    }
+  },
   "annotation": {
     "BFO CLIF specification label": [
       "RealizableEntity"
@@ -30,50 +59,21 @@
       "All realizable dependent continuants have independent continuants that are not spatial regions as their bearers. (axiom label in BFO2 Reference: [060-002])"
     ]
   },
+  "description": [
+    "A specifically dependent continuant  that inheres in continuant  entities and are not exhibited in full at every time in which it inheres in an entity or group of entities. The exhibition or actualization of a realizable entity is a particular manifestation, functioning or process that occurs under certain circumstances."
+  ],
+  "has_children": true,
+  "iri": "http://purl.obolibrary.org/obo/BFO_0000017",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_preferred_root": false,
+  "is_root": false,
   "label": "realizable entity",
+  "lang": "en",
+  "obo_id": "BFO:0000017",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontology_name": "duo",
   "ontology_prefix": "DUO",
-  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": true,
-  "is_root": false,
   "short_form": "BFO_0000017",
-  "obo_id": "BFO:0000017",
-  "is_preferred_root": false,
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017?lang=en"
-    },
-    "parents": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017/parents"
-    },
-    "ancestors": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017/ancestors"
-    },
-    "hierarchicalParents": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017/hierarchicalParents"
-    },
-    "hierarchicalAncestors": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017/hierarchicalAncestors"
-    },
-    "jstree": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017/jstree"
-    },
-    "children": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017/children"
-    },
-    "descendants": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017/descendants"
-    },
-    "hierarchicalChildren": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017/hierarchicalChildren"
-    },
-    "hierarchicalDescendants": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017/hierarchicalDescendants"
-    },
-    "graph": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000017/graph"
-    }
-  }
+  "synonyms": []
 }

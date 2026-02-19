@@ -1,10 +1,42 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/IAO_0000400",
-  "lang": "en",
-  "description": [
-    "A cartesian spatial coordinate datum is a representation of a point in a spatial region, in which equal changes in the magnitude of a coordinate value denote length qualities with the same magnitude"
-  ],
-  "synonyms": [],
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/ancestors"
+    },
+    "children": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/children"
+    },
+    "denotes": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000219"
+    },
+    "descendants": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/descendants"
+    },
+    "graph": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/graph"
+    },
+    "hierarchicalAncestors": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/hierarchicalAncestors"
+    },
+    "hierarchicalChildren": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/hierarchicalDescendants"
+    },
+    "hierarchicalParents": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/hierarchicalParents"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400?lang=en"
+    }
+  },
   "annotation": {
     "curator note": [
       "AR notes: We need to discuss whether it should include site."
@@ -22,53 +54,21 @@
       "Alan Ruttenberg"
     ]
   },
+  "description": [
+    "A cartesian spatial coordinate datum is a representation of a point in a spatial region, in which equal changes in the magnitude of a coordinate value denote length qualities with the same magnitude"
+  ],
+  "has_children": true,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000400",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_preferred_root": false,
+  "is_root": false,
   "label": "cartesian spatial coordinate datum",
+  "lang": "en",
+  "obo_id": "IAO:0000400",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontology_name": "duo",
   "ontology_prefix": "DUO",
-  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": true,
-  "is_root": false,
   "short_form": "IAO_0000400",
-  "obo_id": "IAO:0000400",
-  "is_preferred_root": false,
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400?lang=en"
-    },
-    "parents": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/parents"
-    },
-    "ancestors": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/ancestors"
-    },
-    "hierarchicalParents": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/hierarchicalParents"
-    },
-    "hierarchicalAncestors": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/hierarchicalAncestors"
-    },
-    "jstree": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/jstree"
-    },
-    "children": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/children"
-    },
-    "descendants": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/descendants"
-    },
-    "hierarchicalChildren": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/hierarchicalChildren"
-    },
-    "hierarchicalDescendants": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/hierarchicalDescendants"
-    },
-    "graph": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/graph"
-    },
-    "denotes": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000400/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000219"
-    }
-  }
+  "synonyms": []
 }

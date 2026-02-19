@@ -1,0 +1,61 @@
+name: Build & Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test-api:
+    name: Build & Test API
+    runs-on: ubuntu-latest
+    steps:
+      - name: Free up disk space on GH actions runner
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /opt/hostedtoolcache/CodeQL
+          sudo rm -rf /usr/local/share/boost
+          sudo rm -rf /usr/share/swift
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo docker system prune -af
+          sudo apt-get clean
+          df -h
+
+      - uses: actions/checkout@v4
+
+      - name: Set UID and GID
+        run: |
+          echo "HOST_UID=$(id -u)" >> $GITHUB_ENV
+          echo "HOST_GID=$(id -g)" >> $GITHUB_ENV
+
+      - name: Build dataload image
+        run: docker build -t ols4-dataload:local -f ./dataload/Dockerfile .
+
+      - name: Run mock dataload and dataload tests
+        run: |
+          docker run ols4-dataload:local bash -c "cd /opt/ols && ./test_dataload.sh"
+
+      - name: Build other images with docker compose
+        run: docker compose build --parallel
+        env:
+          OLS4_BACKEND_IMAGE: ols4-backend:local
+          OLS4_FRONTEND_IMAGE: ols4-frontend:local
+          OLS4_APITESTER_IMAGE: ols4-apitester4:local
+          DOCKER_BUILDKIT: 1
+          COMPOSE_DOCKER_CLI_BUILD: 1
+
+      - name: Set image environment variables
+        run: |
+          echo "OLS4_DATALOAD_IMAGE=ols4-dataload:local" >> $GITHUB_ENV
+          echo "OLS4_BACKEND_IMAGE=ols4-backend:local" >> $GITHUB_ENV
+          echo "OLS4_FRONTEND_IMAGE=ols4-frontend:local" >> $GITHUB_ENV
+          echo "OLS4_APITESTER_IMAGE=ols4-apitester4:local" >> $GITHUB_ENV
+
+      - name: Update nextflow config to use local dataload image
+        run: |
+          sed -i "s|process.container = '.*'|process.container = 'ols4-dataload:local'|" dataload/nextflow/local_nextflow.config
+
+      - name: Run full Nextflow dataload and API tests
+        run: |
+          ./test_api.sh

@@ -1,42 +1,42 @@
 {
-  "iri": "http://www.w3.org/2000/01/rdf-schema#Literal",
-  "lang": "en",
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/ancestors"
+    },
+    "graph": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/graph"
+    },
+    "hierarchicalAncestors": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/hierarchicalAncestors"
+    },
+    "hierarchicalParents": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/hierarchicalParents"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal?lang=en"
+    }
+  },
+  "annotation": {},
   "description": [
     "The class of literal values, eg. textual strings and integers."
   ],
-  "synonyms": [],
-  "annotation": {},
-  "label": "Literal",
-  "ontology_name": "owl",
-  "ontology_iri": "http://www.w3.org/2002/07/owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
   "has_children": false,
-  "is_root": false,
-  "short_form": "RDFS_Literal",
-  "obo_id": "RDFS:Literal",
+  "iri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
   "is_preferred_root": false,
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal?lang=en"
-    },
-    "parents": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/parents"
-    },
-    "ancestors": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/ancestors"
-    },
-    "hierarchicalParents": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/hierarchicalParents"
-    },
-    "hierarchicalAncestors": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/hierarchicalAncestors"
-    },
-    "jstree": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/jstree"
-    },
-    "graph": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523Literal/graph"
-    }
-  }
+  "is_root": false,
+  "label": "Literal",
+  "lang": "en",
+  "obo_id": "RDFS:Literal",
+  "ontology_iri": "http://www.w3.org/2002/07/owl",
+  "ontology_name": "owl",
+  "short_form": "RDFS_Literal",
+  "synonyms": []
 }

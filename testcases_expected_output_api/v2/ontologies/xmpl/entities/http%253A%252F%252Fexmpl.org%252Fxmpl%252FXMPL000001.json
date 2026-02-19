@@ -1,0 +1,100 @@
+{
+  "appearsIn": [
+    "xmpl"
+  ],
+  "curie": "XMPL:XMPL000001",
+  "definedBy": [
+    "xmpl"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": false,
+  "http://exmpl.org/xmpl/Preferred_name": "parent class pref label",
+  "http://exmpl.org/xmpl/Synonym": [
+    "label of the parent class"
+  ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "XMPL000001",
+  "imported": false,
+  "iri": "http://exmpl.org/xmpl/XMPL000001",
+  "isDefiningOntology": true,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "parent class pref label"
+  ],
+  "linkedEntities": {
+    "http://exmpl.org/xmpl/Preferred_name": {
+      "curie": "XMPL_Preferred_name",
+      "definedBy": [
+        "xmpl"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "XMPL_Preferred_name"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://exmpl.org/xmpl/Synonym": {
+      "curie": "XMPL:Synonym",
+      "definedBy": [
+        "xmpl"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "XMPL_Synonym"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://exmpl.org/xmpl/Preferred_name",
+    "http://exmpl.org/xmpl/Synonym",
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 2.0,
+  "numHierarchicalDescendants": 2.0,
+  "ontologyId": "xmpl",
+  "ontologyIri": "http://exmpl.org/xmpl/xmpl.owl",
+  "ontologyPreferredPrefix": "XMPL",
+  "searchableAnnotationValues": [
+    "label of the parent class",
+    "parent class pref label",
+    false
+  ],
+  "shortForm": "XMPL_XMPL000001",
+  "synonym": [
+    "label of the parent class"
+  ],
+  "synonymProperty": "http://exmpl.org/xmpl/Synonym",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

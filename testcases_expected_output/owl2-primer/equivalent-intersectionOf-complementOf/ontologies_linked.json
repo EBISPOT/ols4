@@ -55,13 +55,13 @@
           "type": [
             "literal"
           ],
-          "value": "3"
+          "value": "0"
         },
         {
           "type": [
             "literal"
           ],
-          "value": "0"
+          "value": "3"
         }
       ],
       "classes": [
@@ -155,28 +155,6 @@
             "owl2primer-equivalent-intersectionof-complementof"
           ],
           "linkedEntities": {
-            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "Person"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Person"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
             "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -198,11 +176,33 @@
                 "class",
                 "entity"
               ]
+            },
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Person"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "Person"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
             }
           },
           "linksTo": [
-            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person",
-            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent"
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent",
+            "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person"
           ]
         },
         {

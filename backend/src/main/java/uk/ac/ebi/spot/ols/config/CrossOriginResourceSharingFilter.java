@@ -35,7 +35,7 @@ public class CrossOriginResourceSharingFilter implements Filter {
         // Alwasy add CORS headers. add CORS "pre-flight" request headers
         httpResponse.addHeader("Access-Control-Allow-Origin", "*");
         httpResponse.addHeader("Access-Control-Allow-Headers", "*");
-        httpResponse.addHeader("Access-Control-Allow-Methods", "GET");
+        httpResponse.addHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
         httpResponse.addHeader("Access-Control-Max-Age", "3600");
 
         // is this a CORS request?

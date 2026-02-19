@@ -17,12 +17,7 @@
       "imported": false,
       "isObsolete": false,
       "language": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        }
+        {"type":["literal"],"value":"en"}
       ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
@@ -52,30 +47,10 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "2"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "3"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "1"
-        }
+        {"type":["literal"],"value":"0"},
+        {"type":["literal"],"value":"1"},
+        {"type":["literal"],"value":"2"},
+        {"type":["literal"],"value":"3"}
       ],
       "classes": [
         {
@@ -99,17 +74,7 @@
             "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B"
           ],
           "hierarchicalParent": [
-            {
-              "type": [
-                "reification"
-              ],
-              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
-              "axioms": [
-                {
-                  "childRelationToParent": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r"
-                }
-              ]
-            }
+            {"type":["reification"],"value":"http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B","axioms":[{"childRelationToParent":"http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r"}]}
           ],
           "hierarchicalProperty": {
             "type": [
@@ -128,12 +93,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "A"
-            }
+            {"type":["literal"],"value":"A"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -156,17 +116,7 @@
             "value": "related-someValuesOf-hierarchical"
           },
           "relatedTo": [
-            {
-              "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
-              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
-              "isObsolete": false
-            }
+            {"property":"http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r","value":"http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r","http://www.w3.org/2002/07/owl#someValuesFrom":"http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B","isObsolete":false}
           ],
           "searchableAnnotationValues": false,
           "shortForm": {
@@ -199,12 +149,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "B"
-            }
+            {"type":["literal"],"value":"B"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 1,
@@ -226,19 +171,6 @@
             ],
             "value": "related-someValuesOf-hierarchical"
           },
-          "relatedFrom": [
-            {
-              "property": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
-              "value": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#A",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B",
-              "isObsolete": false
-            }
-          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -252,9 +184,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -272,12 +204,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "r"
-            }
+            {"type":["literal"],"value":"r"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,

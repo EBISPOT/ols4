@@ -1,34 +1,34 @@
 {
-  "iri": "http://www.w3.org/2004/02/skos/core#broadMatch",
-  "lang": "en",
-  "description": [],
-  "synonyms": [],
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broadMatch/ancestors"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broadMatch/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broadMatch/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broadMatch?lang=en"
+    }
+  },
   "annotation": {
     "definition": [
       "skos:broadMatch is used to state a hierarchical mapping link between two conceptual resources in different concept schemes."
     ]
   },
-  "label": "has broader match",
-  "ontology_name": "skos",
-  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
+  "description": [],
   "has_children": false,
+  "iri": "http://www.w3.org/2004/02/skos/core#broadMatch",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
   "is_root": false,
-  "short_form": "SKOS_broadMatch",
+  "label": "has broader match",
+  "lang": "en",
   "obo_id": "SKOS:broadMatch",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broadMatch?lang=en"
-    },
-    "parents": {
-      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broadMatch/parents"
-    },
-    "ancestors": {
-      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broadMatch/ancestors"
-    },
-    "jstree": {
-      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broadMatch/jstree"
-    }
-  }
+  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+  "ontology_name": "skos",
+  "short_form": "SKOS_broadMatch",
+  "synonyms": []
 }

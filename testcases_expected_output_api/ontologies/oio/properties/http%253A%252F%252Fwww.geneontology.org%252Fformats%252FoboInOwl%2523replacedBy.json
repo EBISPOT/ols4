@@ -1,16 +1,17 @@
 {
-  "iri": "http://www.geneontology.org/formats/oboInOwl#replacedBy",
-  "lang": "en",
-  "description": [],
-  "synonyms": [],
+  "_links": {
+    "self": {
+      "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523replacedBy?lang=en"
+    }
+  },
   "annotation": {
     "has_dbxref": [
       {
         "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
           "type": [
             "literal"
           ],
-          "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
           "value": "http://purl.org/obo/owl/oboFormat#oboFormat_replaced_by"
         },
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
@@ -27,10 +28,10 @@
       {
         "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
           "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
             "type": [
               "literal"
             ],
-            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
             "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
           },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
@@ -44,29 +45,28 @@
         },
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
         "http://www.w3.org/2000/01/rdf-schema#label": {
+          "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "lang": "en",
           "type": [
             "literal"
           ],
-          "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-          "value": "Gives a term which replaces an obsolete term. The value is the id of the replacement term. The value of this tag can safely be used to automatically reassign links to an obsolete term. The replaced_by tag may only be specified for obsolete terms. A single obsolete term may have more than one replaced_by tag. This tag can be used in conjunction with the consider tag.",
-          "lang": "en"
+          "value": "Gives a term which replaces an obsolete term. The value is the id of the replacement term. The value of this tag can safely be used to automatically reassign links to an obsolete term. The replaced_by tag may only be specified for obsolete terms. A single obsolete term may have more than one replaced_by tag. This tag can be used in conjunction with the consider tag."
         },
         "isObsolete": false
       }
     ]
   },
-  "label": "replaced_by",
-  "ontology_name": "oio",
-  "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
+  "description": [],
   "has_children": false,
+  "iri": "http://www.geneontology.org/formats/oboInOwl#replacedBy",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
   "is_root": true,
-  "short_form": "OIO_replacedBy",
+  "label": "replaced_by",
+  "lang": "en",
   "obo_id": "OIO:replacedBy",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523replacedBy?lang=en"
-    }
-  }
+  "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+  "ontology_name": "oio",
+  "short_form": "OIO_replacedBy",
+  "synonyms": []
 }

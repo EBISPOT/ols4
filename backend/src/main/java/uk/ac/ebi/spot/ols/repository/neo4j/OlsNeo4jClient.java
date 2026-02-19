@@ -207,26 +207,39 @@ public class OlsNeo4jClient {
         public double score;
     }
 
-    public Page<JsonElement> getSimilar(String type, String iri, Pageable pageable) {
+    public Page<JsonElement> getSimilar(String type, String iri, Pageable pageable, String modelName) {
 
 		// Only the defining class has vector embeddings. So instead of searching by
 		// ID (where we may get an imported class with no embeddings), search by IRI
 		// and isDefiningOntology=true
 
-		String index = type == "OntologyClass" ? "class_embeddings" : "property_embeddings";
+		// Use single OntologyEntity index, then filter by type
+		String index = "ontologyentity_" + modelName.replace("-", "_").replace(".", "_") + "_embeddings";
+		// Property name preserves the original model name format
+		String embeddingProperty = "embeddings_" + modelName;
+
+		// Over-fetch from vector index since we're filtering by type
+		int fetchSize = pageable.getPageSize() * 5;
 
 		String query = "MATCH (c:" + type + " {iri: $iri}) "
 		+ "WHERE \"true\" IN c.isDefiningOntology "
-		+ "CALL db.index.vector.queryNodes('" + index + "', $size, c.embeddings) "
+		+ "AND c.`" + embeddingProperty + "` IS NOT NULL "
+		+ "CALL db.index.vector.queryNodes('" + index + "', $fetchSize, c.`" + embeddingProperty + "`) "
 		+ "YIELD node AS similar, score "
+		+ "WHERE similar:" + type + " "
 		+ "RETURN similar as entity, score "
-		+ "ORDER BY score DESC ";
+		+ "ORDER BY score DESC "
+		+ "LIMIT $size";
 
 
 		ArrayList<JsonElement> res = new ArrayList<>();
 
 		Session session = neo4jClient.getSession();
-		Result result = session.run(query, Map.of("iri", iri, "size", pageable.getPageSize()));
+		Map<String, Object> params = new HashMap<>();
+		params.put("iri", iri);
+		params.put("fetchSize", fetchSize);
+		params.put("size", pageable.getPageSize());
+		Result result = session.run(query, params);
 
 		for(Record r : result.list()) {
 
@@ -245,11 +258,14 @@ public class OlsNeo4jClient {
 		return new PageImpl<JsonElement>(res, pageable, res.size());
     }
 
-    public double getSimilarity(String type, String iri, String iri2) {
+    public double getSimilarity(String type, String iri, String iri2, String modelName) {
+
+		// Property name preserves the original model name format
+		String embeddingProperty = "embeddings_" + modelName;
 
 		String query = "MATCH (c:" + type + " {iri: $iri, isDefiningOntology:['true']}) " +
 		"MATCH (c2:" + type + " {iri: $iri2, isDefiningOntology:['true']}) " +
-		"RETURN vector.similarity.cosine(c.embeddings, c2.embeddings) AS score";
+		"RETURN vector.similarity.cosine(c.`" + embeddingProperty + "`, c2.`" + embeddingProperty + "`) AS score";
 
 		Session session = neo4jClient.getSession();
 		Result result = session.run(query, Map.of("iri", iri, "iri2", iri2));
@@ -263,10 +279,15 @@ public class OlsNeo4jClient {
 		throw new ResourceNotFoundException("entity not found");
     }
 
-    public List<Double> getEmbeddingVector(String type, String iri) {
+    public List<Double> getEmbeddingVector(String type, String iri, String modelName) {
 
-		String query = "MATCH (c:" + type + " {iri: $iri, isDefiningOntology:['true']}) " +
-		"RETURN c.embeddings AS embeddings";
+		// Property name preserves the original model name format
+		String embeddingProperty = "embeddings_" + modelName;
+
+		// Only defining entities have embeddings (enforced by dataload)
+		String query = "MATCH (c:" + type + " {iri: $iri}) " +
+		"WHERE c.`" + embeddingProperty + "` IS NOT NULL " +
+		"RETURN c.`" + embeddingProperty + "` AS embeddings";
 
 		Session session = neo4jClient.getSession();
 		Result result = session.run(query, Map.of("iri", iri));
@@ -280,19 +301,35 @@ public class OlsNeo4jClient {
 		throw new ResourceNotFoundException("entity not found");
     }
 
-    public Page<JsonElement> searchByVector(String type, List<Double> vector, Pageable pageable) {
+    /**
+     * Search by vector globally (all ontologies, defining classes only).
+     * Queries the Embedding child node index for precise matching, then traverses
+     * back to the parent entity node. Deduplicates by entity IRI.
+     */
+    public Page<JsonElement> searchByVector(String type, List<Double> vector, Pageable pageable, String modelName) {
 
-		String index = type == "OntologyClass" ? "class_embeddings" : "property_embeddings";
+		// Use Embedding child node index for precise free-text search
+		String index = "embedding_" + modelName.replace("-", "_").replace(".", "_");
 
-		String query = "CALL db.index.vector.queryNodes('" + index + "', $size, $vec) "
-		+ "YIELD node AS similar, score "
-		+ "RETURN similar as entity, score "
-		+ "ORDER BY score DESC ";
+		// Over-fetch from vector index since we deduplicate and filter by type
+		int fetchSize = pageable.getPageSize() * 10;
+
+		String query = "CALL db.index.vector.queryNodes('" + index + "', $fetchSize, $vec) "
+			+ "YIELD node AS emb, score "
+			+ "MATCH (entity:" + type + ")-[:HAS_EMBEDDING]->(emb) "
+			+ "WITH entity, max(score) AS score "
+			+ "RETURN entity, score "
+			+ "ORDER BY score DESC "
+			+ "LIMIT $size";
 
 		ArrayList<JsonElement> res = new ArrayList<>();
 
 		Session session = neo4jClient.getSession();
-		Result result = session.run(query, Map.of("vec", vector, "size", pageable.getPageSize()));
+		Map<String, Object> params = new HashMap<>();
+		params.put("vec", vector);
+		params.put("fetchSize", fetchSize);
+		params.put("size", pageable.getPageSize());
+		Result result = session.run(query, params);
 
 		for(Record r : result.list()) {
 
@@ -301,14 +338,102 @@ public class OlsNeo4jClient {
 			Map<String,Object> entity = ((Node) rmap.get("entity")).asMap();
 			double score = (Double) rmap.get("score");
 
-			var resRow = JsonParser.parseString((String) entity.get("_json"));
-			var json = gson.fromJson(resRow, JsonElement.class);
-			json.getAsJsonObject().addProperty("score", score);
+			var json = JsonParser.parseString((String) entity.get("_json")).getAsJsonObject();
+			json.addProperty("score", score);
 
-			res.add(resRow);
+			res.add(json);
 		}
 
 		return new PageImpl<JsonElement>(res, pageable, res.size());
+    }
+
+    /**
+     * Search by vector within a specific ontology.
+     * Uses Embedding child node index for precise matching, then traverses
+     * back to the parent entity node.
+     * If isDefiningOntology is true, only returns classes defined in this ontology (simple post-filter).
+     * If isDefiningOntology is false, includes imported classes by joining on IRI.
+     */
+    public Page<JsonElement> searchByVectorInOntology(String type, List<Double> vector, Pageable pageable, String modelName, String ontologyId, boolean isDefiningOntology) {
+
+		// Use Embedding child node index for precise free-text search
+		String index = "embedding_" + modelName.replace("-", "_").replace(".", "_");
+
+		// Over-fetch from vector index since we're filtering/joining to a subset
+		int fetchSize = pageable.getPageSize() * 10;
+
+		String query;
+		if (isDefiningOntology) {
+			// Post-filter: only entities from this ontology
+			query = "CALL db.index.vector.queryNodes('" + index + "', $fetchSize, $vec) "
+				+ "YIELD node AS emb, score "
+				+ "MATCH (entity:" + type + ")-[:HAS_EMBEDDING]->(emb) "
+				+ "WHERE $ontologyId IN entity.ontologyId "
+				+ "WITH entity, max(score) AS score "
+				+ "RETURN entity, score "
+				+ "ORDER BY score DESC "
+				+ "LIMIT $limit";
+		} else {
+			// Join by IRI to find the entity in the target ontology (includes imported)
+			query = "CALL db.index.vector.queryNodes('" + index + "', $fetchSize, $vec) "
+				+ "YIELD node AS emb, score "
+				+ "MATCH (defining:" + type + ")-[:HAS_EMBEDDING]->(emb) "
+				+ "MATCH (target:" + type + " {iri: defining.iri}) "
+				+ "WHERE $ontologyId IN target.ontologyId "
+				+ "WITH target AS entity, max(score) AS score "
+				+ "RETURN entity, score "
+				+ "ORDER BY score DESC "
+				+ "LIMIT $limit";
+		}
+
+		ArrayList<JsonElement> res = new ArrayList<>();
+
+		Session session = neo4jClient.getSession();
+		Map<String, Object> params = new HashMap<>();
+		params.put("vec", vector);
+		params.put("fetchSize", fetchSize);
+		params.put("ontologyId", ontologyId.toLowerCase());
+		params.put("limit", pageable.getPageSize());
+		Result result = session.run(query, params);
+
+		for(Record r : result.list()) {
+
+			var rmap = r.asMap();
+
+			Map<String,Object> entity = ((Node) rmap.get("entity")).asMap();
+			double score = (Double) rmap.get("score");
+
+			var json = JsonParser.parseString((String) entity.get("_json")).getAsJsonObject();
+			json.addProperty("score", score);
+
+			res.add(json);
+		}
+
+		return new PageImpl<JsonElement>(res, pageable, res.size());
+    }
+
+    public List<String> getEmbeddingModelsInNeo4j() {
+		// Query Neo4j property keys to find embedding properties
+		// Average embeddings on OntologyEntity use pattern: embeddings_{model_name}
+		// Individual embeddings on Embedding nodes use pattern: embedding_{model_name}
+		// We report based on the OntologyEntity properties (which have averages)
+		String query = "CALL db.propertyKeys() YIELD propertyKey WHERE propertyKey STARTS WITH 'embeddings_' RETURN propertyKey";
+
+		ArrayList<String> models = new ArrayList<>();
+
+		Session session = neo4jClient.getSession();
+		Result result = session.run(query);
+
+		for (Record r : result.list()) {
+			String propertyKey = r.get("propertyKey").asString();
+			// Extract model name by removing the "embeddings_" prefix
+			String modelName = propertyKey.substring("embeddings_".length());
+			if (!models.contains(modelName)) {
+				models.add(modelName);
+			}
+		}
+
+		return models;
     }
 	
 }

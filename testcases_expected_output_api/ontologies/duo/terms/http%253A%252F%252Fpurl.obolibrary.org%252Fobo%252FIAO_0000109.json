@@ -1,10 +1,39 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/IAO_0000109",
-  "lang": "en",
-  "description": [
-    "A measurement datum is an information content entity that is a recording of the output of a measurement such as produced by a device."
-  ],
-  "synonyms": [],
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109/ancestors"
+    },
+    "children": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109/children"
+    },
+    "descendants": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109/descendants"
+    },
+    "graph": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109/graph"
+    },
+    "hierarchicalAncestors": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109/hierarchicalAncestors"
+    },
+    "hierarchicalChildren": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109/hierarchicalDescendants"
+    },
+    "hierarchicalParents": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109/hierarchicalParents"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109?lang=en"
+    }
+  },
   "annotation": {
     "definition source": [
       "OBI_0000305",
@@ -26,50 +55,21 @@
       "person:Chris Stoeckert"
     ]
   },
+  "description": [
+    "A measurement datum is an information content entity that is a recording of the output of a measurement such as produced by a device."
+  ],
+  "has_children": true,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000109",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_preferred_root": false,
+  "is_root": false,
   "label": "measurement datum",
+  "lang": "en",
+  "obo_id": "IAO:0000109",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontology_name": "duo",
   "ontology_prefix": "DUO",
-  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": true,
-  "is_root": false,
   "short_form": "IAO_0000109",
-  "obo_id": "IAO:0000109",
-  "is_preferred_root": false,
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109?lang=en"
-    },
-    "parents": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109/parents"
-    },
-    "ancestors": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109/ancestors"
-    },
-    "hierarchicalParents": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109/hierarchicalParents"
-    },
-    "hierarchicalAncestors": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109/hierarchicalAncestors"
-    },
-    "jstree": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109/jstree"
-    },
-    "children": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109/children"
-    },
-    "descendants": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109/descendants"
-    },
-    "hierarchicalChildren": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109/hierarchicalChildren"
-    },
-    "hierarchicalDescendants": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109/hierarchicalDescendants"
-    },
-    "graph": {
-      "href": "http://localhost:8080/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000109/graph"
-    }
-  }
+  "synonyms": []
 }

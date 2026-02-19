@@ -132,12 +132,15 @@ public class PropertyRepository {
                 ;
     }
 
-    public Page<JsonElement> getSimilarByOntologyId(String ontologyId, Pageable pageable, String iri, String lang, JsonTransformOptions outputOpts) {
+    public Page<JsonElement> getSimilar(Pageable pageable, String iri, String lang, JsonTransformOptions outputOpts, String modelName) {
 
-        Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        return this.neo4jClient.getSimilar("OntologyProperty", iri, pageable)
+        if (modelName == null || modelName.isEmpty()) {
+            modelName = "text-embedding-3-small"; // Default model
+        }
+
+        return this.neo4jClient.getSimilar("OntologyProperty", iri, pageable, modelName)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }

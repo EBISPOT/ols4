@@ -1,0 +1,125 @@
+{
+  "appearsIn": [
+    "owl"
+  ],
+  "curie": "OWL:propertyChainAxiom",
+  "definedBy": [
+    "owl"
+  ],
+  "definition": [
+    "The property that determines the n-tuple of properties that build a sub property chain of a given property."
+  ],
+  "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
+  "hasDirectChildren": false,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+  "http://www.w3.org/2000/01/rdf-schema#comment": "The property that determines the n-tuple of properties that build a sub property chain of a given property.",
+  "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.w3.org/2002/07/owl#ObjectProperty",
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2002/07/owl#",
+  "http://www.w3.org/2000/01/rdf-schema#label": "propertyChainAxiom",
+  "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List",
+  "imported": false,
+  "iri": "http://www.w3.org/2002/07/owl#propertyChainAxiom",
+  "isDefiningOntology": true,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "propertyChainAxiom"
+  ],
+  "linkedEntities": {
+    "http://www.w3.org/2000/01/rdf-schema#comment": {
+      "curie": "RDFS:comment",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "comment"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#domain": {
+      "curie": "RDFS:domain",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "domain"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
+      "curie": "RDFS:isDefinedBy",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "isDefinedBy"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#range": {
+      "curie": "RDFS:range",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "range"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://www.w3.org/2000/01/rdf-schema#comment",
+    "http://www.w3.org/2000/01/rdf-schema#domain",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#range"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "owl",
+  "ontologyIri": "http://www.w3.org/2002/07/owl",
+  "searchableAnnotationValues": false,
+  "shortForm": "OWL_propertyChainAxiom",
+  "type": [
+    "entity",
+    "property"
+  ]
+}

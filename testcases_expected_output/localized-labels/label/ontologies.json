@@ -14,18 +14,8 @@
       "imported": false,
       "isObsolete": false,
       "language": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "de"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        }
+        {"type":["literal"],"value":"de"},
+        {"type":["literal"],"value":"en"}
       ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
@@ -55,24 +45,9 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "4"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "8"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
-        }
+        {"type":["literal"],"value":"0"},
+        {"type":["literal"],"value":"4"},
+        {"type":["literal"],"value":"8"}
       ],
       "classes": [
         {
@@ -106,20 +81,8 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "de lang class",
-              "lang": "de"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "deLangClass"
-            }
+            {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"de lang class","lang":"de"},
+            {"type":["literal"],"value":"deLangClass"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -180,14 +143,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "en label class",
-              "lang": "en"
-            }
+            {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"en label class","lang":"en"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -240,12 +196,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "noLabelClass"
-            }
+            {"type":["literal"],"value":"noLabelClass"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -288,12 +239,7 @@
             "value": "noLangClass"
           },
           "definition": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": ""
-            }
+            {"type":["literal"],"value":""}
           ],
           "definitionProperty": {
             "type": [
@@ -324,12 +270,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "no lang label class"
-            }
+            {"type":["literal"],"value":"no lang label class"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -364,9 +305,9 @@
         {
           "iri": "http://www.ebi.ac.uk/ols4/testcase/label#deProperty",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -392,20 +333,8 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "de Lang",
-              "lang": "de"
-            },
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "deProperty"
-            }
+            {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"de Lang","lang":"de"},
+            {"type":["literal"],"value":"deProperty"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -438,9 +367,9 @@
         {
           "iri": "http://www.ebi.ac.uk/ols4/testcase/label#enProperty",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -466,14 +395,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "en label",
-              "lang": "en"
-            }
+            {"type":["literal"],"datatype":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString","value":"en label","lang":"en"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -506,9 +428,9 @@
         {
           "iri": "http://www.ebi.ac.uk/ols4/testcase/label#noLabelProperty",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -526,12 +448,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "noLabelProperty"
-            }
+            {"type":["literal"],"value":"noLabelProperty"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -564,9 +481,9 @@
         {
           "iri": "http://www.ebi.ac.uk/ols4/testcase/label#property",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -590,12 +507,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "noLangProperty"
-            }
+            {"type":["literal"],"value":"noLangProperty"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,

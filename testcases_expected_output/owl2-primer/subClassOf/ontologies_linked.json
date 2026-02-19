@@ -55,13 +55,13 @@
           "type": [
             "literal"
           ],
-          "value": "3"
+          "value": "0"
         },
         {
           "type": [
             "literal"
           ],
-          "value": "0"
+          "value": "3"
         }
       ],
       "classes": [
@@ -78,8 +78,8 @@
             "value": "Mother"
           },
           "directAncestor": [
-            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
-            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person"
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman"
           ],
           "directParent": [
             "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman"
@@ -89,8 +89,8 @@
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": true,
           "hierarchicalAncestor": [
-            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
-            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person"
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman"
           ],
           "hierarchicalParent": [
             "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman"

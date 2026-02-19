@@ -55,13 +55,13 @@
           "type": [
             "literal"
           ],
-          "value": "3"
+          "value": "0"
         },
         {
           "type": [
             "literal"
           ],
-          "value": "0"
+          "value": "3"
         }
       ],
       "classes": [
@@ -367,28 +367,6 @@
             "owl2primer-disjointunionof"
           ],
           "linkedEntities": {
-            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "Mother"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Mother"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
             "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Father": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -405,6 +383,28 @@
                   "literal"
                 ],
                 "value": "Father"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
+            },
+            "http://www.ebi.ac.uk/testcases/owl2primer/disjointUnionOf#Mother": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Mother"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "Mother"
               },
               "type": [
                 "class",

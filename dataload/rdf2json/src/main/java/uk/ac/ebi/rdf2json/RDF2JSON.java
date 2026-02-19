@@ -7,7 +7,6 @@ import com.google.gson.stream.JsonWriter;
 import org.apache.commons.cli.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.ac.ebi.rdf2json.reporting.OntologyReportingService;
 
 import java.io.*;
 import java.net.URL;
@@ -49,17 +48,17 @@ public class RDF2JSON {
         loadLocalFiles.setRequired(false);
         options.addOption(loadLocalFiles);
 
+        Option basePath = new Option(null, "basePath", true, "Base path for resolving relative file paths (used with --loadLocalFiles)");
+        basePath.setRequired(false);
+        options.addOption(basePath);
+
         Option noDates = new Option(null, "noDates", false, "Set to leave LOADED dates blank (for testing)");
         noDates.setRequired(false);
         options.addOption(noDates);
 
-        Option reportFile = new Option(null, "reportFile", true, "Output file for the ontology load report");
-        reportFile.setRequired(false);
-        options.addOption(reportFile);
-
-        Option sendNotifications = new Option(null, "sendNotifications", false, "Send email/GitHub notifications to ontology owners and OLS developers");
-        sendNotifications.setRequired(false);
-        options.addOption(sendNotifications);
+        Option ontologyIds = new Option(null, "ontologyIds", true, "Optional comma-separated list of ontology IDs to load. If specified, only these ontologies will be loaded from the config.");
+        ontologyIds.setRequired(false);
+        options.addOption(ontologyIds);
 
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
@@ -80,17 +79,24 @@ public class RDF2JSON {
 
 	    String downloadedPath = cmd.getOptionValue("downloadedPath");
         boolean bLoadLocalFiles = cmd.hasOption("loadLocalFiles");
+        String sBasePath = cmd.getOptionValue("basePath");
         boolean bNoDates = cmd.hasOption("noDates");
         String mergeOutputWith = cmd.getOptionValue("mergeOutputWith");
-        String reportFilePath = cmd.getOptionValue("reportFile");
-        boolean bSendNotifications = cmd.hasOption("sendNotifications");
+        
+        // Parse optional ontology IDs filter
+        Set<String> filterOntologyIds = null;
+        if (cmd.hasOption("ontologyIds")) {
+            String ontologyIdsValue = cmd.getOptionValue("ontologyIds");
+            filterOntologyIds = Arrays.stream(ontologyIdsValue.split(","))
+                .map(String::trim)
+                .map(String::toLowerCase)
+                .collect(Collectors.toSet());
+            logger.info("Filtering to load only these ontologies: {}", filterOntologyIds);
+        }
 
 
         logger.debug("Configs: {}", configFilePaths);
         logger.debug("Output: {}", outputFilePath);
-
-        // Initialize reporting service with all config files so is_deprecated flags are properly merged
-        OntologyReportingService reportingService = new OntologyReportingService(configFilePaths);
 
         Gson gson = new Gson();
 
@@ -152,6 +158,20 @@ public class RDF2JSON {
             }
         }
 
+        // Filter ontologies if --ontologyIds was specified
+        if (filterOntologyIds != null) {
+            LinkedHashMap<String, Map<String,Object>> filteredConfigs = new LinkedHashMap<>();
+            for (Map.Entry<String, Map<String, Object>> entry : mergedConfigs.entrySet()) {
+                if (filterOntologyIds.contains(entry.getKey())) {
+                    filteredConfigs.put(entry.getKey(), entry.getValue());
+                } else {
+                    logger.info("Skipping ontology {} (not in --ontologyIds filter)", entry.getKey());
+                }
+            }
+            mergedConfigs = filteredConfigs;
+            logger.info("After filtering: {} ontologies to load", mergedConfigs.size());
+        }
+
         JsonWriter writer = new JsonWriter(new FileWriter(outputFilePath));
         writer.setIndent("  ");
 
@@ -174,6 +194,7 @@ public class RDF2JSON {
             if(ontoConfig.containsKey("is_obsolete") &&
                Boolean.TRUE.equals(ontoConfig.get("is_obsolete"))) {
                 logger.info("Skipping obsolete ontology: {}", ontologyId);
+                OntologyStatusWriter.writeSkipped(outputFilePath, ontologyId, "Ontology is marked as obsolete");
                 continue;
             }
 
@@ -181,13 +202,13 @@ public class RDF2JSON {
 
             try {
 
-                OntologyGraph graph = new OntologyGraph(ontoConfig, bLoadLocalFiles, bNoDates, downloadedPath);
+                OntologyGraph graph = new OntologyGraph(ontoConfig, bLoadLocalFiles, sBasePath, bNoDates, downloadedPath);
 
                 if(graph.ontologyNode == null) {
                     logger.error("No Ontology node found; nothing will be written");
-                    // Record as failed (will check for fallback later)
+                    // Write status file for failed ontology (will check for fallback later)
                     if (mergeOutputWith == null) {
-                        reportingService.recordFailedNoFallback(ontologyId, "No Ontology node found in RDF");
+                        OntologyStatusWriter.writeFailedNoFallback(outputFilePath, ontologyId, "No Ontology node found in RDF");
                     }
                     continue;
                 }
@@ -200,24 +221,24 @@ public class RDF2JSON {
 
                 loadedOntologyIds.add(ontologyId);
 
-                // Extract version from the ontology node for reporting
+                // Extract version from the ontology node and write status file
                 String version = null;
                 if (graph.ontologyNode.properties.getPropertyValue("version") != null) {
                     version = graph.ontologyNode.properties.getPropertyValue("version").toString();
                 }
-                reportingService.recordSuccess(ontologyId, version);
+                OntologyStatusWriter.writeSuccess(outputFilePath, ontologyId, version);
 
             } catch(Throwable t) {
                 logger.error("Error processing ontology {}: {}", ontologyId, t.getMessage());
                 t.printStackTrace();
-                // Mark as failed for now - we'll update to fallback in merge section if a previous version exists
-                reportingService.recordFailedNoFallback(ontologyId, t.getMessage());
+                // Write status file for failed ontology - we'll update in merge section if fallback found
+                OntologyStatusWriter.writeFailedNoFallback(outputFilePath, ontologyId, t.getMessage());
 
                 if (mergeOutputWith == null) {
                     logger.info("No previous build available for fallback for: {}", ontologyId);
                 } else {
                     logger.info("Will attempt to use previous build as fallback for: {}", ontologyId);
-                    // Note: We'll update this to recordFallback in the merge section if we find a previous version
+                    // Note: We'll update the status file to FALLBACK in the merge section if we find a previous version
                 }
             }
         }
@@ -279,12 +300,13 @@ public class RDF2JSON {
 
                             if (wasInConfig) {
                                 logger.info("Using previous build as fallback for failed ontology: {}", ontologyId);
-                                reportingService.recordFallback(ontologyId, fallbackVersion,
+                                OntologyStatusWriter.writeFallback(outputFilePath, ontologyId, fallbackVersion,
                                     "Latest ontology version is failing to load, using the last successful version instead");
                             } else {
                                 logger.info("Keeping output for ontology {} from previous run (--mergeOutputWith)", ontologyId);
                                 // This is an ontology that wasn't in the config, so we just keep it
-                                // No need to report this as an issue
+                                // Write success status for kept ontology
+                                OntologyStatusWriter.writeSuccess(outputFilePath, ontologyId, fallbackVersion);
                             }
 
                             // If this is a fallback for a failed ontology, add a note about it
@@ -320,8 +342,7 @@ public class RDF2JSON {
 
         writer.close();
 
-        // Generate report and send notifications
-        reportingService.generateReportAndNotify(reportFilePath, bSendNotifications);
+        logger.info("RDF2JSON processing complete. Status file written alongside output.");
     }
 
 

@@ -54,18 +54,6 @@
           "type": [
             "literal"
           ],
-          "value": "3"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "5"
-        },
-        {
-          "type": [
-            "literal"
-          ],
           "value": "0"
         },
         {
@@ -73,6 +61,18 @@
             "literal"
           ],
           "value": "2"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "3"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "5"
         }
       ],
       "classes": [
@@ -246,13 +246,13 @@
             "value": "Direct-Parent-With-Annotation-Axiom"
           },
           "searchableAnnotationValues": [
+            false,
             {
               "type": [
                 "literal"
               ],
               "value": "A non-neoplastic or neoplastic disorder that affects the testis or the ovary."
-            },
-            false
+            }
           ],
           "shortForm": {
             "type": [
@@ -269,6 +269,11 @@
               "url": "http://purl.obolibrary.org/obo/DOID_2277",
               "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
               "curie": "DOID:2277"
+            },
+            "MESH:D006058": {
+              "url": "http://id.nlm.nih.gov/mesh/D006058",
+              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+              "curie": "MESH:D006058"
             },
             "http://purl.obolibrary.org/obo/IAO_0000115": {
               "numAppearsIn": 1,
@@ -288,15 +293,10 @@
                 "value": "IAO:0000115"
               },
               "type": [
-                "property",
                 "annotationProperty",
-                "entity"
+                "entity",
+                "property"
               ]
-            },
-            "MESH:D006058": {
-              "url": "http://id.nlm.nih.gov/mesh/D006058",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "MESH:D006058"
             },
             "http://purl.obolibrary.org/obo/MONDO_0005039": {
               "numAppearsIn": 1,
@@ -360,15 +360,15 @@
                 "value": "source"
               },
               "type": [
-                "property",
                 "annotationProperty",
-                "entity"
+                "entity",
+                "property"
               ]
             }
           },
           "linksTo": [
-            "http://purl.obolibrary.org/obo/MONDO_0005039",
             "http://purl.obolibrary.org/obo/IAO_0000115",
+            "http://purl.obolibrary.org/obo/MONDO_0005039",
             "http://purl.obolibrary.org/obo/MONDO_0005151",
             "http://www.geneontology.org/formats/oboInOwl#source"
           ]
@@ -450,13 +450,13 @@
             "value": "Direct-Parent-With-Annotation-Axiom"
           },
           "searchableAnnotationValues": [
+            false,
             {
               "type": [
                 "literal"
               ],
               "value": "A disease involving the reproductive system."
-            },
-            false
+            }
           ],
           "shortForm": {
             "type": [
@@ -487,9 +487,9 @@
                 "value": "IAO:0000115"
               },
               "type": [
-                "property",
                 "annotationProperty",
-                "entity"
+                "entity",
+                "property"
               ]
             }
           },
@@ -574,13 +574,13 @@
             "value": "Direct-Parent-With-Annotation-Axiom"
           },
           "searchableAnnotationValues": [
+            false,
             {
               "type": [
                 "literal"
               ],
               "value": "A disease involving the endocrine system."
-            },
-            false
+            }
           ],
           "shortForm": {
             "type": [
@@ -611,9 +611,9 @@
                 "value": "IAO:0000115"
               },
               "type": [
-                "property",
                 "annotationProperty",
-                "entity"
+                "entity",
+                "property"
               ]
             }
           },
@@ -626,9 +626,9 @@
         {
           "iri": "http://purl.obolibrary.org/obo/IAO_0000115",
           "type": [
-            "property",
             "annotationProperty",
-            "entity"
+            "entity",
+            "property"
           ],
           "curie": {
             "type": [
@@ -690,9 +690,9 @@
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#source",
           "type": [
-            "property",
             "annotationProperty",
-            "entity"
+            "entity",
+            "property"
           ],
           "curie": {
             "type": [

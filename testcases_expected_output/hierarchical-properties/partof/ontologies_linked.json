@@ -62,13 +62,13 @@
           "type": [
             "literal"
           ],
-          "value": "6"
+          "value": "0"
         },
         {
           "type": [
             "literal"
           ],
-          "value": "0"
+          "value": "6"
         }
       ],
       "classes": [
@@ -128,19 +128,6 @@
             ],
             "value": "partof"
           },
-          "relatedFrom": [
-            {
-              "property": "http://purl.obolibrary.org/obo/ms#part_of",
-              "value": "http://purl.obolibrary.org/obo/MS_1003056",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/ms#part_of",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/MS_1000353",
-              "isObsolete": false
-            }
-          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -152,33 +139,8 @@
           "appearsIn": [
             "partof"
           ],
-          "linkedEntities": {
-            "http://purl.obolibrary.org/obo/MS_1003056": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "adduct ion property"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "MS:1003056"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            }
-          },
-          "linksTo": [
-            "http://purl.obolibrary.org/obo/MS_1003056"
-          ]
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://purl.obolibrary.org/obo/MS_1003056",
@@ -371,19 +333,6 @@
             ],
             "value": "partof"
           },
-          "relatedFrom": [
-            {
-              "property": "http://purl.obolibrary.org/obo/pride#part_of",
-              "value": "http://purl.obolibrary.org/obo/PRIDE_0000675",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/pride#part_of",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/PRIDE_0000674",
-              "isObsolete": false
-            }
-          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -395,33 +344,8 @@
           "appearsIn": [
             "partof"
           ],
-          "linkedEntities": {
-            "http://purl.obolibrary.org/obo/PRIDE_0000675": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "sample name"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "PRIDE:0000675"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            }
-          },
-          "linksTo": [
-            "http://purl.obolibrary.org/obo/PRIDE_0000675"
-          ]
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://purl.obolibrary.org/obo/PRIDE_0000675",
@@ -622,19 +546,6 @@
             ],
             "value": "partof"
           },
-          "relatedFrom": [
-            {
-              "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "value": "http://purl.obolibrary.org/obo/UBERON_0003684",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000916",
-              "isObsolete": false
-            }
-          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -646,38 +557,8 @@
           "appearsIn": [
             "partof"
           ],
-          "linkedEntities": {
-            "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "url": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "bfo:0000050"
-            },
-            "http://purl.obolibrary.org/obo/UBERON_0003684": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "abdominal cavity"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "UBERON:0003684"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            }
-          },
-          "linksTo": [
-            "http://purl.obolibrary.org/obo/UBERON_0003684"
-          ]
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://purl.obolibrary.org/obo/UBERON_0003684",
@@ -787,6 +668,11 @@
             "partof"
           ],
           "linkedEntities": {
+            "http://purl.obolibrary.org/obo/BFO_0000050": {
+              "url": "http://purl.obolibrary.org/obo/BFO_0000050",
+              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+              "curie": "bfo:0000050"
+            },
             "http://purl.obolibrary.org/obo/UBERON_0000916": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -808,11 +694,6 @@
                 "class",
                 "entity"
               ]
-            },
-            "http://purl.obolibrary.org/obo/BFO_0000050": {
-              "url": "http://purl.obolibrary.org/obo/BFO_0000050",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "bfo:0000050"
             }
           },
           "linksTo": [

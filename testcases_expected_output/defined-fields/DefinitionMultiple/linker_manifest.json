@@ -1,0 +1,145 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/defined-fields/DefinitionMultiple.owl#Definition-Multiple_0001": {
+      "definitions": [
+        {
+          "ontologyId": "definition-multiple",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "liver disease"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Definition-Multiple:0001"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "definition-multiple": {
+          "ontologyId": "definition-multiple",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "liver disease"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Definition-Multiple:0001"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/class.owl": [
+      "definition-multiple"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "Definition-Multiple": [
+      "definition-multiple"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "definition-multiple": [
+      "http://purl.obolibrary.org/obo/Definition-Multiple_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "definition-multiple": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "definition-multiple": [
+      "curie",
+      "definition",
+      "definitionProperty",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "definition-multiple": []
+  },
+  "ontologyIdToIndividualProperties": {
+    "definition-multiple": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "definition-multiple": []
+  },
+  "ontologyIdToUriToTypes": {
+    "definition-multiple": {
+      "http://www.ebi.ac.uk/testcases/defined-fields/DefinitionMultiple.owl#Definition-Multiple_0001": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/class.owl": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/functional-data-property.rdf#numberOfChildren": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-functional-data-property",
+          "entityTypes": [
+            "dataProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "numberOfChildren"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "numberOfChildren"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-functional-data-property": {
+          "ontologyId": "owl2primer-functional-data-property",
+          "entityTypes": [
+            "dataProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "numberOfChildren"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "numberOfChildren"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/functional-data-property.rdf": [
+      "owl2primer-functional-data-property"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-functional-data-property": [
+      "owl2primer-functional-data-property"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-functional-data-property": [
+      "http://purl.obolibrary.org/obo/owl2primer-functional-data-property_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-functional-data-property": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-functional-data-property": []
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-functional-data-property": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-functional-data-property": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-functional-data-property": []
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-functional-data-property": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/functional-data-property.rdf": [
+        "ONTOLOGY"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/functional-data-property.rdf#numberOfChildren": [
+        "PROPERTY"
+      ]
+    }
+  }
+}

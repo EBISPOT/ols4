@@ -1,0 +1,61 @@
+{
+  "iriToDefinitions": {},
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/ontology-annotations/version/chebi.owl": [
+      "ontology-annotations-version-chebi"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "ontology-annotations-version-chebi": [
+      "ontology-annotations-version-chebi"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "ontology-annotations-version-chebi": [
+      "http://purl.obolibrary.org/obo/ontology-annotations-version-chebi_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "ontology-annotations-version-chebi": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "ontology-annotations-version-chebi": []
+  },
+  "ontologyIdToPropertyProperties": {
+    "ontology-annotations-version-chebi": []
+  },
+  "ontologyIdToIndividualProperties": {
+    "ontology-annotations-version-chebi": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "ontology-annotations-version-chebi": []
+  },
+  "ontologyIdToUriToTypes": {
+    "ontology-annotations-version-chebi": {
+      "http://www.ebi.ac.uk/testcases/ontology-annotations/version/chebi.owl": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}

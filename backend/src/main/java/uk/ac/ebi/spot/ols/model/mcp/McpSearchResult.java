@@ -12,6 +12,7 @@ public class McpSearchResult {
     public String id;
     public String title;
     public String url;
+    public boolean isObsolete;
     
     public static McpSearchResult fromJson(JsonElement entity) {
         var object = entity.getAsJsonObject();
@@ -20,6 +21,7 @@ public class McpSearchResult {
         mc.id = JsonHelper.getString(object, "ontologyId") + "+" + JsonHelper.getString(object, "iri");
         mc.url = JsonHelper.getString(object, "iri");
         mc.title = JsonHelper.getString(object, "curie") + " " + JsonHelper.getString(object, "label");
+        mc.isObsolete = Boolean.parseBoolean(JsonHelper.getString(object, "isObsolete"));
 
         return mc;
     }

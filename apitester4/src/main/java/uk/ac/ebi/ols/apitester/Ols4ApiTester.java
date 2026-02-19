@@ -21,11 +21,10 @@ public class Ols4ApiTester {
 
 	Gson gson;
 	String url, outDir;
-	boolean ols3only;
 	boolean deep;
 	String ontologyId;
 
-	public Ols4ApiTester(String url, String outDir, boolean ols3only, boolean deep, String ontologyId) {
+	public Ols4ApiTester(String url, String outDir, boolean deep, String ontologyId) {
 
 		gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
@@ -35,7 +34,6 @@ public class Ols4ApiTester {
 
 		this.url = url;
 		this.outDir = outDir;
-		this.ols3only = ols3only;
 		this.deep = deep;
 		this.ontologyId = ontologyId;
 	}
@@ -72,6 +70,7 @@ public class Ols4ApiTester {
 		} else {
 			System.out.println("Testing all ontologies");
 
+			// v1
 			write(outDir + "/ontologies.json", ontologies);
 
 			if(ontologies == null || !ontologies.isJsonArray()) {
@@ -81,10 +80,10 @@ public class Ols4ApiTester {
 				System.out.println("Got " + ontologies.getAsJsonArray().size() + " ontologies");
 			}
 
-			if(!ols3only) {
-				JsonElement v2Ontologies = ols4GetAll(url + "/api/v2/ontologies");
-				write(outDir + "/v2/ontologies.json", v2Ontologies);
-			}
+			// v2
+			JsonElement v2Ontologies = ols4GetAll(url + "/api/v2/ontologies");
+			write(outDir + "/v2/ontologies.json", v2Ontologies);
+
 
 			List<String> ontologyIds = new ArrayList();
 			for(JsonElement ontology : ontologies.getAsJsonArray()) {
@@ -99,9 +98,46 @@ public class Ols4ApiTester {
 				}
 			}
 
+			// Test text tagger endpoint
+			if(!testTagText()) {
+				System.out.println("testTagText() reported failure");
+				success = false;
+			}
+
 			return success;
 		}
 
+	}
+
+	public boolean testTagText() throws IOException {
+		System.out.println("Testing /api/v2/tag_text endpoint...");
+
+		// First check availability via GET
+		JsonElement statusResult = get(url + "/api/v2/tag_text");
+		write(outDir + "/v2/tag_text_status.json", statusResult);
+
+		if (statusResult.isJsonObject() && statusResult.getAsJsonObject().has("available")) {
+			boolean available = statusResult.getAsJsonObject().get("available").getAsBoolean();
+			if (!available) {
+				System.out.println("Text tagger is not available (this is OK if not configured)");
+				return true;
+			}
+		}
+
+		// Test basic tagging
+		JsonElement tagResult = post(url + "/api/v2/tag_text", "{\"text\": \"This is a test of cell and protein annotation\"}");
+		write(outDir + "/v2/tag_text.json", tagResult);
+
+		if (tagResult.isJsonObject() && tagResult.getAsJsonObject().has("error")) {
+			System.out.println("tag_text returned error: " + tagResult);
+			return false;
+		}
+
+		// Test with ontology filter
+		JsonElement tagFilteredResult = post(url + "/api/v2/tag_text?ontologyId=duo", "{\"text\": \"This is a test of data use modifiers\"}");
+		write(outDir + "/v2/tag_text_filtered.json", tagFilteredResult);
+
+		return true;
 	}
 
 	public boolean testOntology(String ontologyId) throws IOException{
@@ -175,10 +211,6 @@ public class Ols4ApiTester {
 			}
 		}
 
-		if(ols3only) {
-			return true;
-		}
-
 
 
 		/// v2
@@ -202,8 +234,8 @@ public class Ols4ApiTester {
 				String iri = v2Entity.getAsJsonObject().get("iri").getAsString();
 				String doubleEncodedIri = doubleEncode(iri);
 
-				JsonElement entityJson = get(url + "/api/ontologies/" + ontologyId + "/entities/" + doubleEncodedIri);
-				write(outDir + "/ontologies/" + ontologyId + "/entities/" + doubleEncodedIri + ".json", entityJson);
+				JsonElement entityJson = get(url + "/api/v2/ontologies/" + ontologyId + "/entities/" + doubleEncodedIri);
+				write(outDir + "/v2/ontologies/" + ontologyId + "/entities/" + doubleEncodedIri + ".json", entityJson);
 
 				// TODO
 			}
@@ -213,8 +245,16 @@ public class Ols4ApiTester {
 				String iri = v2Class.getAsJsonObject().get("iri").getAsString();
 				String doubleEncodedIri = doubleEncode(iri);
 
-				JsonElement classJson = get(url + "/api/ontologies/" + ontologyId + "/classes/" + doubleEncodedIri);
-				write(outDir + "/ontologies/" + ontologyId + "/classes/" + doubleEncodedIri + ".json", classJson);
+				JsonElement classJson = get(url + "/api/v2/ontologies/" + ontologyId + "/classes/" + doubleEncodedIri);
+				write(outDir + "/v2/ontologies/" + ontologyId + "/classes/" + doubleEncodedIri + ".json", classJson);
+
+				if(ontologyId.equals("duo")) {
+					JsonElement llmSimilarJson = get(url + "/api/v2/classes/" + doubleEncodedIri + "/llm_similar?model=mock&size=1");
+					write(outDir + "/v2/classes/" + doubleEncodedIri + "/llm_similar.json", llmSimilarJson);
+
+					JsonElement llmEmbeddingJson = get(url + "/api/v2/classes/" + doubleEncodedIri + "/llm_embedding?model=mock");
+					write(outDir + "/v2/classes/" + doubleEncodedIri + "/llm_embedding.json", llmEmbeddingJson);
+				}
 
 				// TODO
 			}
@@ -224,8 +264,8 @@ public class Ols4ApiTester {
 				String iri = v2Property.getAsJsonObject().get("iri").getAsString();
 				String doubleEncodedIri = doubleEncode(iri);
 
-				JsonElement propertyJson = get(url + "/api/ontologies/" + ontologyId + "/properties/" + doubleEncodedIri);
-				write(outDir + "/ontologies/" + ontologyId + "/properties/" + doubleEncodedIri + ".json", propertyJson);
+				JsonElement propertyJson = get(url + "/api/v2/ontologies/" + ontologyId + "/properties/" + doubleEncodedIri);
+				write(outDir + "/v2/ontologies/" + ontologyId + "/properties/" + doubleEncodedIri + ".json", propertyJson);
 
 				// TODO
 			}
@@ -235,8 +275,8 @@ public class Ols4ApiTester {
 				String iri = v2Individual.getAsJsonObject().get("iri").getAsString();
 				String doubleEncodedIri = doubleEncode(iri);
 
-				JsonElement individualJson = get(url + "/api/ontologies/" + ontologyId + "/individuals/" + doubleEncodedIri);
-				write(outDir + "/ontologies/" + ontologyId + "/individuals/" + doubleEncodedIri + ".json", individualJson);
+				JsonElement individualJson = get(url + "/api/v2/ontologies/" + ontologyId + "/individuals/" + doubleEncodedIri);
+				write(outDir + "/v2/ontologies/" + ontologyId + "/individuals/" + doubleEncodedIri + ".json", individualJson);
 
 				// TODO
 			}
@@ -251,10 +291,13 @@ public class Ols4ApiTester {
 
 		File file = new File(path);
 
+		// Apply all normalization before writing so standard diff tools can be used
+		JsonElement normalized = deepSort(removeDates(normalizeScores(normalizeURLs(element))));
+
 		FileOutputStream os = new FileOutputStream(file);
 
 		try {
-			os.write( gson.toJson(element).getBytes());
+			os.write( gson.toJson(normalized).getBytes());
 		} finally {
 			os.close();
 		}
@@ -287,22 +330,23 @@ public class Ols4ApiTester {
 				JsonElement nextObj = links.get("next");
 
 				if(nextObj == null) {
-					System.out.println("no next link, we are done");
+					// System.out.println("no next link, we are done");
 					break;
 				}
 
 				String next = nextObj.getAsJsonObject().get("href").getAsString();
 
-				System.out.println("next link is " + next);
+				// System.out.println("next link is " + next);
 
 				res = get(next).getAsJsonObject();
 			}
 
-			System.out.println("sorting and returning result...");
-			return deepSort(removeDates(normalizeURLs(allEntries))).getAsJsonArray();
+			return allEntries;
 
 		} catch(Exception e) {
-			return gson.toJsonTree(e);
+			JsonObject err = new JsonObject();
+			err.addProperty("error", e.getClass().getName() + ": " + e.getMessage());
+			return err;
 		}
 	}
 
@@ -332,11 +376,12 @@ public class Ols4ApiTester {
 				res = get(reqUrl).getAsJsonObject();
 			}
 
-			System.out.println("sorting and returning result...");
-			return deepSort(removeDates(normalizeURLs(allEntries))).getAsJsonArray();
+			return allEntries;
 
 		} catch(Exception e) {
-			return gson.toJsonTree(e);
+			JsonObject err = new JsonObject();
+			err.addProperty("error", e.getClass().getName() + ": " + e.getMessage());
+			return err;
 		}
 	}
 
@@ -354,6 +399,30 @@ public class Ols4ApiTester {
 		}
 		Reader reader = new InputStreamReader(is, "UTF-8");
         return JsonParser.parseReader(reader);
+	}
+
+	public static JsonElement post(String url, String jsonBody) throws IOException {
+
+		System.out.println("POST " + url);
+
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		conn.setRequestMethod("POST");
+		conn.setRequestProperty("Content-Type", "application/json");
+		conn.setDoOutput(true);
+
+		try (OutputStream os = conn.getOutputStream()) {
+			os.write(jsonBody.getBytes("UTF-8"));
+			os.flush();
+		}
+
+		InputStream is = null;
+		if (100 <= conn.getResponseCode() && conn.getResponseCode() <= 399) {
+			is = conn.getInputStream();
+		} else {
+			is = conn.getErrorStream();
+		}
+		Reader reader = new InputStreamReader(is, "UTF-8");
+		return JsonParser.parseReader(reader);
 	}
 
 	public JsonElement normalizeURLs(JsonElement element) {
@@ -465,7 +534,47 @@ public class Ols4ApiTester {
 					continue;
 				}
 
+				if(entry.getKey().equals("sourceFileTimestamp")) {
+					res.add(entry.getKey(), new JsonPrimitive("<sourceFileTimestamp>"));
+					continue;
+				}
+
 				res.add(entry.getKey(), removeDates(entry.getValue()));
+			}
+
+			return res;
+
+		}
+
+		return element.deepCopy();
+	}
+
+	public static JsonElement normalizeScores(JsonElement element) {
+
+		if(element.isJsonArray()) {
+
+			JsonArray arr = element.getAsJsonArray();
+			JsonArray res = new JsonArray();
+			
+			for(int i = 0; i < arr.size(); ++ i) {
+				res.add(normalizeScores(arr.get(i)));
+			}
+
+			return res;
+
+		} else if(element.isJsonObject()) {
+
+			JsonObject obj = element.getAsJsonObject();
+			JsonObject res = new JsonObject();
+
+			for(Entry<String, JsonElement> entry : obj.entrySet()) {
+
+				if(entry.getKey().equals("score")) {
+					res.add(entry.getKey(), new JsonPrimitive("<score>"));
+					continue;
+				}
+
+				res.add(entry.getKey(), normalizeScores(entry.getValue()));
 			}
 
 			return res;

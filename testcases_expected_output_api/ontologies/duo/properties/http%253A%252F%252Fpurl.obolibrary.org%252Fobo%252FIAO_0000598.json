@@ -1,10 +1,9 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/IAO_0000598",
-  "lang": "en",
-  "description": [
-    "Relating an ontology used to record id policy to the ontology namespace whose policy it manages"
-  ],
-  "synonyms": [],
+  "_links": {
+    "self": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000598?lang=en"
+    }
+  },
   "annotation": {
     "editor preferred term": [
       "has ID policy for"
@@ -16,19 +15,20 @@
       "Person:Alan Ruttenberg"
     ]
   },
+  "description": [
+    "Relating an ontology used to record id policy to the ontology namespace whose policy it manages"
+  ],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000598",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": true,
   "label": "has ID policy for",
+  "lang": "en",
+  "obo_id": "IAO:0000598",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontology_name": "duo",
   "ontology_prefix": "DUO",
-  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": false,
-  "is_root": true,
   "short_form": "IAO_0000598",
-  "obo_id": "IAO:0000598",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000598?lang=en"
-    }
-  }
+  "synonyms": []
 }

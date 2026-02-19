@@ -1,38 +1,38 @@
 {
-  "iri": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person",
-  "lang": "en",
-  "description": [],
-  "synonyms": [],
-  "annotation": {},
-  "label": "Person",
-  "ontology_name": "owl2primer-sub-object-property",
-  "ontology_prefix": "owl2primer-sub-object-property",
-  "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": true,
-  "is_root": true,
-  "short_form": "Person",
-  "obo_id": "Person",
-  "is_preferred_root": false,
   "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/owl2primer-sub-object-property/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fsub-object-property%2523Person?lang=en"
-    },
     "children": {
-      "href": "http://localhost:8080/api/ontologies/owl2primer-sub-object-property/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fsub-object-property%2523Person/children"
+      "href": "<base>/api/ontologies/owl2primer-sub-object-property/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fsub-object-property%2523Person/children"
     },
     "descendants": {
-      "href": "http://localhost:8080/api/ontologies/owl2primer-sub-object-property/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fsub-object-property%2523Person/descendants"
-    },
-    "hierarchicalChildren": {
-      "href": "http://localhost:8080/api/ontologies/owl2primer-sub-object-property/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fsub-object-property%2523Person/hierarchicalChildren"
-    },
-    "hierarchicalDescendants": {
-      "href": "http://localhost:8080/api/ontologies/owl2primer-sub-object-property/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fsub-object-property%2523Person/hierarchicalDescendants"
+      "href": "<base>/api/ontologies/owl2primer-sub-object-property/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fsub-object-property%2523Person/descendants"
     },
     "graph": {
-      "href": "http://localhost:8080/api/ontologies/owl2primer-sub-object-property/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fsub-object-property%2523Person/graph"
+      "href": "<base>/api/ontologies/owl2primer-sub-object-property/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fsub-object-property%2523Person/graph"
+    },
+    "hierarchicalChildren": {
+      "href": "<base>/api/ontologies/owl2primer-sub-object-property/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fsub-object-property%2523Person/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "<base>/api/ontologies/owl2primer-sub-object-property/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fsub-object-property%2523Person/hierarchicalDescendants"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/owl2primer-sub-object-property/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252Fsub-object-property%2523Person?lang=en"
     }
-  }
+  },
+  "annotation": {},
+  "description": [],
+  "has_children": true,
+  "iri": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_preferred_root": false,
+  "is_root": true,
+  "label": "Person",
+  "lang": "en",
+  "obo_id": "Person",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property",
+  "ontology_name": "owl2primer-sub-object-property",
+  "ontology_prefix": "owl2primer-sub-object-property",
+  "short_form": "Person",
+  "synonyms": []
 }

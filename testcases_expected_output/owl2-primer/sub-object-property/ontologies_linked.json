@@ -55,18 +55,6 @@
           "type": [
             "literal"
           ],
-          "value": "3"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "5"
-        },
-        {
-          "type": [
-            "literal"
-          ],
           "value": "0"
         },
         {
@@ -74,6 +62,18 @@
             "literal"
           ],
           "value": "2"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "3"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "5"
         }
       ],
       "classes": [
@@ -157,28 +157,6 @@
             "owl2primer-sub-object-property"
           ],
           "linkedEntities": {
-            "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Woman": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "Woman"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "Woman"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
             "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -200,11 +178,33 @@
                 "class",
                 "entity"
               ]
+            },
+            "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Woman": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "Woman"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "Woman"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
             }
           },
           "linksTo": [
-            "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Woman",
-            "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person"
+            "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person",
+            "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Woman"
           ]
         },
         {
@@ -382,9 +382,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#hasSpouse",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -446,9 +446,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#hasWife",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -529,9 +529,9 @@
                 "value": "hasSpouse"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             }
           },

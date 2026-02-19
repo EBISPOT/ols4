@@ -1,0 +1,153 @@
+{
+  "appearsIn": [
+    "efo-hierarchical-properties",
+    "gitissue502"
+  ],
+  "curie": "UBERON:0000949",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/UBERON_0000467"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/UBERON_0000467"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "http://purl.obolibrary.org/obo/UBERON_0000468"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/UBERON_0000467"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "endocrine system",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/UBERON_0000467",
+  "http://www.w3.org/2002/07/owl#disjointWith": [
+    "http://purl.obolibrary.org/obo/UBERON_0001007",
+    "http://purl.obolibrary.org/obo/UBERON_0001009",
+    "http://purl.obolibrary.org/obo/UBERON_0002423"
+  ],
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/UBERON_0000949",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "endocrine system"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/UBERON_0000467": {
+      "curie": "UBERON:0000467",
+      "hasLocalDefinition": true,
+      "label": [
+        "anatomical system"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0000468": {
+      "curie": "UBERON:0000468",
+      "hasLocalDefinition": true,
+      "label": [
+        "multicellular organism"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0001007": {
+      "curie": "UBERON:0001007",
+      "hasLocalDefinition": true,
+      "label": [
+        "digestive system"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0001009": {
+      "curie": "UBERON:0001009",
+      "hasLocalDefinition": true,
+      "label": [
+        "circulatory system"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0002423": {
+      "curie": "UBERON:0002423",
+      "hasLocalDefinition": true,
+      "label": [
+        "hepatobiliary system"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "http://purl.obolibrary.org/obo/UBERON_0000468",
+    "http://purl.obolibrary.org/obo/UBERON_0001007",
+    "http://purl.obolibrary.org/obo/UBERON_0001009",
+    "http://purl.obolibrary.org/obo/UBERON_0002423",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 7.0,
+  "ontologyId": "efo-hierarchical-properties",
+  "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+  "ontologyPreferredPrefix": "efo-hierarchical-properties",
+  "searchableAnnotationValues": false,
+  "shortForm": "UBERON_0000949",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

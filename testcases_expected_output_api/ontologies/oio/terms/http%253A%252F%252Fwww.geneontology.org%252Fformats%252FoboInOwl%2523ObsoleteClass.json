@@ -1,17 +1,21 @@
 {
-  "iri": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
-  "lang": "en",
-  "description": [],
-  "synonyms": [],
+  "_links": {
+    "graph": {
+      "href": "<base>/api/ontologies/oio/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass/graph"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/oio/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass?lang=en"
+    }
+  },
   "annotation": {
     "has_definition": [
       {
         "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
           "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
             "type": [
               "literal"
             ],
-            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
             "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
           },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
@@ -25,33 +29,29 @@
         },
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
         "http://www.w3.org/2000/01/rdf-schema#label": {
+          "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "lang": "en",
           "type": [
             "literal"
           ],
-          "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-          "value": "pseudo-class. in the oboInOwl translation, all obsolete classes are subclasses of this class. Note that this is not a metaclass",
-          "lang": "en"
+          "value": "pseudo-class. in the oboInOwl translation, all obsolete classes are subclasses of this class. Note that this is not a metaclass"
         },
         "isObsolete": false
       }
     ]
   },
-  "label": "obsolete_class",
-  "ontology_name": "oio",
-  "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
-  "is_obsolete": false,
-  "is_defining_ontology": true,
+  "description": [],
   "has_children": false,
-  "is_root": true,
-  "short_form": "OIO_ObsoleteClass",
-  "obo_id": "OIO:ObsoleteClass",
+  "iri": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
+  "is_defining_ontology": true,
+  "is_obsolete": false,
   "is_preferred_root": false,
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/oio/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass?lang=en"
-    },
-    "graph": {
-      "href": "http://localhost:8080/api/ontologies/oio/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass/graph"
-    }
-  }
+  "is_root": true,
+  "label": "obsolete_class",
+  "lang": "en",
+  "obo_id": "OIO:ObsoleteClass",
+  "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+  "ontology_name": "oio",
+  "short_form": "OIO_ObsoleteClass",
+  "synonyms": []
 }

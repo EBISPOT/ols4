@@ -1,0 +1,24 @@
+[project]
+name = "ols-embed"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "sentence-transformers>=5.1.2",
+    "openai>=1.0.0",
+    "flask>=3.1.2",
+    "gunicorn>=23.0.0",
+    "scikit-learn>=1.7.2",
+    "pyarrow>=22.0.0",
+    "numpy>=2.3.4",
+    "joblib>=1.5.2",
+    "polars-u64-idx>=1.33.1",
+    "umap-learn>=0.5.0",
+    "matplotlib>=3.10.8",
+    "torchdr>=0.4",
+]
+
+[project.optional-dependencies]
+cpu = ["faiss-cpu>=1.7.0"]
+gpu = ["faiss-gpu-cu12>=1.7.0"]

@@ -1,0 +1,57 @@
+{
+  "appearsIn": [
+    "duo",
+    "isobsolete",
+    "oio"
+  ],
+  "curie": "OIO:ObsoleteClass",
+  "definedBy": [
+    "oio"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": false,
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.w3.org/2002/07/owl#Thing",
+  "imported": false,
+  "iri": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "ObsoleteClass"
+  ],
+  "linkedEntities": {
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 20.0,
+  "numHierarchicalDescendants": 20.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": false,
+  "shortForm": "OIO_ObsoleteClass",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

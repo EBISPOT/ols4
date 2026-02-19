@@ -1,0 +1,129 @@
+{
+  "appearsIn": [
+    "xmpl"
+  ],
+  "curie": "XMPL:XMPL000003",
+  "definedBy": [
+    "xmpl"
+  ],
+  "directAncestor": [
+    "http://exmpl.org/xmpl/XMPL000001"
+  ],
+  "directParent": [
+    "http://exmpl.org/xmpl/XMPL000001"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://exmpl.org/xmpl/XMPL000001"
+  ],
+  "hierarchicalParent": [
+    "http://exmpl.org/xmpl/XMPL000001"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://exmpl.org/xmpl/Other_preferred_name": "2nd children class pref label",
+  "http://exmpl.org/xmpl/Synonym": [
+    "label of the second children class"
+  ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "XMPL000003",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://exmpl.org/xmpl/XMPL000001",
+  "imported": false,
+  "iri": "http://exmpl.org/xmpl/XMPL000003",
+  "isDefiningOntology": true,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "2nd children class pref label"
+  ],
+  "linkedEntities": {
+    "http://exmpl.org/xmpl/Synonym": {
+      "curie": "XMPL:Synonym",
+      "definedBy": [
+        "xmpl"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "XMPL_Synonym"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://exmpl.org/xmpl/XMPL000001": {
+      "curie": "XMPL:XMPL000001",
+      "definedBy": [
+        "xmpl"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "parent class pref label"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://exmpl.org/xmpl/Synonym",
+    "http://exmpl.org/xmpl/XMPL000001",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "xmpl",
+  "ontologyIri": "http://exmpl.org/xmpl/xmpl.owl",
+  "ontologyPreferredPrefix": "XMPL",
+  "searchableAnnotationValues": [
+    "2nd children class pref label",
+    "label of the second children class",
+    false
+  ],
+  "shortForm": "XMPL_XMPL000003",
+  "synonym": [
+    "label of the second children class"
+  ],
+  "synonymProperty": "http://exmpl.org/xmpl/Synonym",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

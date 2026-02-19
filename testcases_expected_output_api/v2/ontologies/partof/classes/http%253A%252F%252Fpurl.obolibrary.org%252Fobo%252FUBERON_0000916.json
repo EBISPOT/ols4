@@ -1,0 +1,52 @@
+{
+  "appearsIn": [
+    "efo-hierarchical-properties",
+    "partof"
+  ],
+  "curie": "UBERON:0000916",
+  "hasDirectChildren": false,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": false,
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "abdomen",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/UBERON_0000916",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "abdomen"
+  ],
+  "linkedEntities": {
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 1.0,
+  "ontologyId": "partof",
+  "ontologyIri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
+  "ontologyPreferredPrefix": "partof",
+  "searchableAnnotationValues": false,
+  "shortForm": "UBERON_0000916",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

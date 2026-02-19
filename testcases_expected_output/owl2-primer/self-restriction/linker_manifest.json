@@ -1,0 +1,222 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/self-restriction.owl#NarcisticPerson": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-self-restriction",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "NarcisticPerson"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "NarcisticPerson"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-self-restriction": {
+          "ontologyId": "owl2primer-self-restriction",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "NarcisticPerson"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "NarcisticPerson"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/self-restriction.owl#loves": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-self-restriction",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "loves"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "loves"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-self-restriction": {
+          "ontologyId": "owl2primer-self-restriction",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "loves"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "loves"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/self-restriction.owl": [
+      "owl2primer-self-restriction"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-self-restriction": [
+      "owl2primer-self-restriction"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-self-restriction": [
+      "http://purl.obolibrary.org/obo/owl2primer-self-restriction_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-self-restriction": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-self-restriction": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#equivalentClass",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-self-restriction": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-self-restriction": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-self-restriction": []
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-self-restriction": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/self-restriction.owl": [
+        "ONTOLOGY"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/self-restriction.owl#NarcisticPerson": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/self-restriction.owl#loves": [
+        "PROPERTY"
+      ]
+    }
+  }
+}

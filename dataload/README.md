@@ -18,10 +18,10 @@ Now (after about 15 min) you should have a huge file called `foundry_out.json` t
 
 ## Step 2: JSON to CSV *for Neo4j*
 
-You can now convert this huge JSON file to a CSV file ready for Neo4j, using json2neo:
+You can now convert this huge JSON file to a CSV file ready for Neo4j, using ols_json2neo:
 
     rm -rf output_csv && mkdir output_csv
-    java -jar json2neo/target/json2neo-1.0-SNAPSHOT.jar --input foundry_out_flat.json --outDir output_csv
+    ols_json2neo --input foundry_out_flat.json --outDir output_csv --manifest linker_manifest.json
 
 ## Step 3: CSV to Neo4j
 
@@ -38,8 +38,13 @@ Now you should have a Neo4j database ready to start!
 
 ## Step 4: JSON to JSON *for Solr*
 
-Similar to how the Neo4j CSV was generated, you can also generate JSON files ready for uploading to SOLR using neo2solr.
+Similar to how the Neo4j CSV was generated, you can also generate JSON files ready for uploading to SOLR using json2solr.
 
-    java -jar json2solr/target/json2solr-1.0-SNAPSHOT.jar --input foundry_out_flat.json --outDir output_csv
+    ols_json2solr --input foundry_out_flat.json --outDir output_csv
 
+## Loading Reports
+
+Each rdf2json process writes a `.status.json` file alongside its output JSON file. These status files can be collected and processed by the reporting service to generate a consolidated loading report and optionally send notifications.
+
+See the [reporting module README](reporting/README.md) for more details on how the reporting system works.
 

@@ -1,0 +1,61 @@
+{
+  "iriToDefinitions": {},
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/ontology-annotations/version/obo-date.owl": [
+      "ontology-annotations-version-obo-date"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "ontology-annotations-version-obo-date": [
+      "ontology-annotations-version-obo-date"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "ontology-annotations-version-obo-date": [
+      "http://purl.obolibrary.org/obo/ontology-annotations-version-obo-date_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "ontology-annotations-version-obo-date": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "ontology-annotations-version-obo-date": []
+  },
+  "ontologyIdToPropertyProperties": {
+    "ontology-annotations-version-obo-date": []
+  },
+  "ontologyIdToIndividualProperties": {
+    "ontology-annotations-version-obo-date": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "ontology-annotations-version-obo-date": []
+  },
+  "ontologyIdToUriToTypes": {
+    "ontology-annotations-version-obo-date": {
+      "http://www.ebi.ac.uk/testcases/ontology-annotations/version/obo-date.owl": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}

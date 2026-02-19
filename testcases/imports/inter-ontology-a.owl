@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.ebi.ac.uk/testcases/inter-ontology/a#"
+     xml:base="http://www.ebi.ac.uk/testcases/inter-ontology/a"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:ontb="http://www.ebi.ac.uk/testcases/inter-ontology/b#">
+
+    <owl:Ontology rdf:about="http://www.ebi.ac.uk/testcases/inter-ontology/a"/>
+
+    <!-- ClassA is defined in this ontology -->
+    <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/inter-ontology/a#ClassA">
+        <rdfs:label>Class A</rdfs:label>
+        <!-- ClassA is a subclass of ClassB which is defined in ontology B -->
+        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB"/>
+    </owl:Class>
+
+    <!-- ClassB is imported from ontology B - declared here but defined there -->
+    <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB">
+        <rdfs:label>Class B (imported)</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://www.ebi.ac.uk/testcases/inter-ontology/b"/>
+    </owl:Class>
+
+</rdf:RDF>

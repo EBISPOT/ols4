@@ -1,0 +1,18 @@
+
+imageTag: dev
+
+resources:
+  requests:
+    memory: 28Gi
+    cpu: 4
+    nvidia.com/gpu: 1
+  limits:
+    memory: 28Gi
+    cpu: 4
+    nvidia.com/gpu: 1
+
+modelsVolume:
+  server: hh-isi-srv-vlan1496.ebi.ac.uk
+  path: /ifs/public/rw/ontoapps/ols_embedding_service
+  storageClassName: standard-nfs-production
+  storageSize: 1000Gi

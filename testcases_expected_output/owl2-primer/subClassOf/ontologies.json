@@ -14,12 +14,7 @@
       "imported": false,
       "isObsolete": false,
       "language": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        }
+        {"type":["literal"],"value":"en"}
       ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
@@ -49,18 +44,8 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "3"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
-        }
+        {"type":["literal"],"value":"0"},
+        {"type":["literal"],"value":"3"}
       ],
       "classes": [
         {
@@ -76,8 +61,8 @@
             "value": "Mother"
           },
           "directAncestor": [
-            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
-            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person"
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman"
           ],
           "directParent": [
             "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman"
@@ -87,8 +72,8 @@
           "hasHierarchicalChildren": false,
           "hasHierarchicalParents": true,
           "hierarchicalAncestor": [
-            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
-            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person"
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
+            "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman"
           ],
           "hierarchicalParent": [
             "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman"
@@ -105,12 +90,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "Mother"
-            }
+            {"type":["literal"],"value":"Mother"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -163,12 +143,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "Person"
-            }
+            {"type":["literal"],"value":"Person"}
           ],
           "numDescendants": 2,
           "numHierarchicalDescendants": 2,
@@ -238,12 +213,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "Woman"
-            }
+            {"type":["literal"],"value":"Woman"}
           ],
           "numDescendants": 1,
           "numHierarchicalDescendants": 1,

@@ -206,6 +206,13 @@
         "value": "2"
       },
       "searchableAnnotationValues": [
+        false,
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "0"
+        },
         {
           "type": [
             "literal"
@@ -216,55 +223,31 @@
           "type": [
             "literal"
           ],
-          "value": "Gautier Koscielny"
+          "value": "2"
         },
         {
           "type": [
             "literal"
           ],
-          "value": "Laura Huerta Martinez"
+          "value": "4"
         },
         {
           "type": [
             "literal"
           ],
-          "value": "Olamidipupo Ajigboye"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "Paola Roncaglia"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "Trish Whetzel"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "Zoe May Pendlington"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "Copyright [2014] EMBL - European Bioinformatics Institute\nLicensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the\nLicense. "
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "www.apache.org/licenses/LICENSE-2.0"
+          "value": "6"
         },
         {
           "type": [
             "literal"
           ],
           "value": "Catherine Leroy"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "Copyright [2014] EMBL - European Bioinformatics Institute\nLicensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the\nLicense. "
         },
         {
           "type": [
@@ -300,6 +283,12 @@
           "type": [
             "literal"
           ],
+          "value": "Gautier Koscielny"
+        },
+        {
+          "type": [
+            "literal"
+          ],
           "value": "Helen Parkinson"
         },
         {
@@ -318,7 +307,25 @@
           "type": [
             "literal"
           ],
+          "value": "Laura Huerta Martinez"
+        },
+        {
+          "type": [
+            "literal"
+          ],
           "value": "Natalja Kurbatova"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "Olamidipupo Ajigboye"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "Paola Roncaglia"
         },
         {
           "type": [
@@ -338,30 +345,23 @@
           ],
           "value": "Tomasz Adamusiak"
         },
-        false,
         {
           "type": [
             "literal"
           ],
-          "value": "4"
+          "value": "Trish Whetzel"
         },
         {
           "type": [
             "literal"
           ],
-          "value": "6"
+          "value": "Zoe May Pendlington"
         },
         {
           "type": [
             "literal"
           ],
-          "value": "0"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "2"
+          "value": "www.apache.org/licenses/LICENSE-2.0"
         }
       ],
       "classes": [
@@ -592,33 +592,14 @@
             ],
             "value": "efo-iri-labels"
           },
-          "relatedFrom": [
-            {
-              "property": "http://purl.obolibrary.org/obo/BFO_0000054",
-              "value": "http://www.ebi.ac.uk/efo/EFO_0000400",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-              "http://www.w3.org/2002/07/owl#intersectionOf": [
-                "http://purl.obolibrary.org/obo/OGMS_0000063",
-                {
-                  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-                  "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
-                  "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0008152",
-                  "isObsolete": false
-                }
-              ]
-            }
-          ],
           "searchableAnnotationValues": [
+            false,
             {
               "type": [
                 "literal"
               ],
               "value": "The totality of all processes through which a given disease instance is realized."
-            },
-            false
+            }
           ],
           "shortForm": {
             "type": [
@@ -631,92 +612,6 @@
             "efo-iri-labels"
           ],
           "linkedEntities": {
-            "http://purl.obolibrary.org/obo/IAO_0000115": {
-              "url": "http://purl.obolibrary.org/obo/IAO_0000115",
-              "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-              "curie": "iao:0000115"
-            },
-            "http://purl.obolibrary.org/obo/BFO_0000051": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "has part"
-                },
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "has_part"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "BFO:0000051"
-              },
-              "type": [
-                "property",
-                "objectProperty",
-                "entity"
-              ]
-            },
-            "http://purl.obolibrary.org/obo/BFO_0000054": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-                  "value": "realized in",
-                  "lang": "en"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "BFO:0000054"
-              },
-              "type": [
-                "property",
-                "objectProperty",
-                "entity"
-              ]
-            },
-            "http://www.ebi.ac.uk/efo/EFO_0000400": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "EFO_0000400"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "EFO:0000400"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
-            "http://purl.obolibrary.org/obo/GO_0008152": {
-              "url": "http://amigo.geneontology.org/amigo/term/GO:0008152",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "go:0008152"
-            },
             "http://purl.obolibrary.org/obo/GO_0008150": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -738,13 +633,15 @@
                 "class",
                 "entity"
               ]
+            },
+            "http://purl.obolibrary.org/obo/IAO_0000115": {
+              "url": "http://purl.obolibrary.org/obo/IAO_0000115",
+              "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+              "curie": "iao:0000115"
             }
           },
           "linksTo": [
-            "http://www.ebi.ac.uk/efo/EFO_0000400",
-            "http://purl.obolibrary.org/obo/GO_0008150",
-            "http://purl.obolibrary.org/obo/BFO_0000051",
-            "http://purl.obolibrary.org/obo/BFO_0000054"
+            "http://purl.obolibrary.org/obo/GO_0008150"
           ]
         },
         {
@@ -851,33 +748,6 @@
             "efo-iri-labels"
           ],
           "linkedEntities": {
-            "http://purl.obolibrary.org/obo/OGMS_0000063": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "disease course"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "OGMS:0000063"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
-            "http://purl.obolibrary.org/obo/GO_0008152": {
-              "url": "http://amigo.geneontology.org/amigo/term/GO:0008152",
-              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-              "curie": "go:0008152"
-            },
             "http://purl.obolibrary.org/obo/BFO_0000051": {
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
@@ -902,9 +772,9 @@
                 "value": "BFO:0000051"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
-                "entity"
+                "property"
               ]
             },
             "http://purl.obolibrary.org/obo/BFO_0000054": {
@@ -927,16 +797,43 @@
                 "value": "BFO:0000054"
               },
               "type": [
-                "property",
+                "entity",
                 "objectProperty",
+                "property"
+              ]
+            },
+            "http://purl.obolibrary.org/obo/GO_0008152": {
+              "url": "http://amigo.geneontology.org/amigo/term/GO:0008152",
+              "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+              "curie": "go:0008152"
+            },
+            "http://purl.obolibrary.org/obo/OGMS_0000063": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "value": "disease course"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "OGMS:0000063"
+              },
+              "type": [
+                "class",
                 "entity"
               ]
             }
           },
           "linksTo": [
-            "http://purl.obolibrary.org/obo/OGMS_0000063",
             "http://purl.obolibrary.org/obo/BFO_0000051",
-            "http://purl.obolibrary.org/obo/BFO_0000054"
+            "http://purl.obolibrary.org/obo/BFO_0000054",
+            "http://purl.obolibrary.org/obo/OGMS_0000063"
           ]
         }
       ],
@@ -944,9 +841,9 @@
         {
           "iri": "http://purl.obolibrary.org/obo/BFO_0000051",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -1031,9 +928,9 @@
         {
           "iri": "http://purl.obolibrary.org/obo/BFO_0000054",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [

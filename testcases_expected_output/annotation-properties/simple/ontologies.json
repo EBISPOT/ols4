@@ -14,12 +14,7 @@
       "imported": false,
       "isObsolete": false,
       "language": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        }
+        {"type":["literal"],"value":"en"}
       ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
@@ -49,27 +44,17 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "1"
-        }
+        {"type":["literal"],"value":"0"},
+        {"type":["literal"],"value":"1"}
       ],
       "classes": [],
       "properties": [
         {
           "iri": "http://www.ebi.ac.uk/testcases/annotation-properties/simple.owl#MyAnnotationProperty",
           "type": [
-            "property",
             "annotationProperty",
-            "entity"
+            "entity",
+            "property"
           ],
           "curie": {
             "type": [
@@ -78,12 +63,7 @@
             "value": "MyAnnotationProperty"
           },
           "definition": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "For our own special use case."
-            }
+            {"type":["literal"],"value":"For our own special use case."}
           ],
           "definitionProperty": {
             "type": [
@@ -113,12 +93,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "special annotation property"
-            }
+            {"type":["literal"],"value":"special annotation property"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,

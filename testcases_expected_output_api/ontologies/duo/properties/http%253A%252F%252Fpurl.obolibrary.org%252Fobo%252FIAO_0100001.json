@@ -1,11 +1,9 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/IAO_0100001",
-  "lang": "en",
-  "description": [
-    "Use on obsolete terms, relating the term to another term that can be used as a substitute",
-    "Add as annotation triples in the granting ontology"
-  ],
-  "synonyms": [],
+  "_links": {
+    "self": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0100001?lang=en"
+    }
+  },
   "annotation": {
     "definition source": [
       "Person:Alan Ruttenberg"
@@ -20,19 +18,21 @@
       "Person:Alan Ruttenberg"
     ]
   },
+  "description": [
+    "Add as annotation triples in the granting ontology",
+    "Use on obsolete terms, relating the term to another term that can be used as a substitute"
+  ],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0100001",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": true,
   "label": "term replaced by",
+  "lang": "en",
+  "obo_id": "IAO:0100001",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontology_name": "duo",
   "ontology_prefix": "DUO",
-  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": false,
-  "is_root": true,
   "short_form": "IAO_0100001",
-  "obo_id": "IAO:0100001",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0100001?lang=en"
-    }
-  }
+  "synonyms": []
 }

@@ -1,0 +1,143 @@
+{
+  "iriToDefinitions": {
+    "http://purl.obolibrary.org/obo/GENEPIO_0002113": {
+      "definitions": [
+        {
+          "ontologyId": "genepio",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "GENEPIO_0002113"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "GENEPIO:0002113"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "genepio": {
+          "ontologyId": "genepio",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "GENEPIO_0002113"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "GENEPIO:0002113"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://purl.obolibrary.org/obo/genepio.owl": [
+      "genepio"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "genepio": [
+      "genepio"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "genepio": [
+      "http://purl.obolibrary.org/obo/genepio_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "genepio": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "genepio": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "hierarchicalProperty",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "relatedTo",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "genepio": []
+  },
+  "ontologyIdToIndividualProperties": {
+    "genepio": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "genepio": []
+  },
+  "ontologyIdToUriToTypes": {
+    "genepio": {
+      "http://purl.obolibrary.org/obo/GENEPIO_0002113": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/genepio.owl": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}

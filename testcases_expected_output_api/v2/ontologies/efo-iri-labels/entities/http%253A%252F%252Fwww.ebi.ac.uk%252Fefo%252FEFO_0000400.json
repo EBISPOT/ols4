@@ -1,0 +1,134 @@
+{
+  "appearsIn": [
+    "efo-iri-labels"
+  ],
+  "curie": "EFO:0000400",
+  "hasDirectChildren": false,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+    "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000054",
+    "http://www.w3.org/2002/07/owl#someValuesFrom": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+      "http://www.w3.org/2002/07/owl#intersectionOf": [
+        "http://purl.obolibrary.org/obo/OGMS_0000063",
+        {
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0008152",
+          "isObsolete": false
+        }
+      ]
+    },
+    "isObsolete": false
+  },
+  "imported": false,
+  "iri": "http://www.ebi.ac.uk/efo/EFO_0000400",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "EFO_0000400"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000051": {
+      "curie": "BFO:0000051",
+      "hasLocalDefinition": true,
+      "label": [
+        "has part",
+        "has_part"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000054": {
+      "curie": "BFO:0000054",
+      "hasLocalDefinition": true,
+      "label": [
+        "realized in"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0008152": {
+      "curie": "go:0008152",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "http://amigo.geneontology.org/amigo/term/GO:0008152"
+    },
+    "http://purl.obolibrary.org/obo/OGMS_0000063": {
+      "curie": "OGMS:0000063",
+      "hasLocalDefinition": true,
+      "label": [
+        "disease course"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000051",
+    "http://purl.obolibrary.org/obo/BFO_0000054",
+    "http://purl.obolibrary.org/obo/OGMS_0000063",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "efo-iri-labels",
+  "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+  "ontologyPreferredPrefix": "efo-iri-labels",
+  "relatedTo": [
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+      "http://www.w3.org/2002/07/owl#intersectionOf": [
+        "http://purl.obolibrary.org/obo/OGMS_0000063",
+        {
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0008152",
+          "isObsolete": false
+        }
+      ],
+      "property": "http://purl.obolibrary.org/obo/BFO_0000054",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/OGMS_0000063"
+    }
+  ],
+  "searchableAnnotationValues": false,
+  "shortForm": "EFO_0000400",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

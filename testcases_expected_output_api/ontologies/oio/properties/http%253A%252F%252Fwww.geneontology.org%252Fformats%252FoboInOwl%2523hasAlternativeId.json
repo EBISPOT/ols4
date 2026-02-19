@@ -1,16 +1,17 @@
 {
-  "iri": "http://www.geneontology.org/formats/oboInOwl#hasAlternativeId",
-  "lang": "en",
-  "description": [],
-  "synonyms": [],
+  "_links": {
+    "self": {
+      "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasAlternativeId?lang=en"
+    }
+  },
   "annotation": {
     "has_dbxref": [
       {
         "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
           "type": [
             "literal"
           ],
-          "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
           "value": "http://purl.org/obo/owl/oboFormat#oboFormat_alt_id"
         },
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
@@ -27,10 +28,10 @@
       {
         "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
           "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
             "type": [
               "literal"
             ],
-            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
             "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm"
           },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
@@ -44,29 +45,28 @@
         },
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
         "http://www.w3.org/2000/01/rdf-schema#label": {
+          "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "lang": "en",
           "type": [
             "literal"
           ],
-          "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-          "value": "An alternative identifier for this class; should follow ID syntax. These can result from class merges",
-          "lang": "en"
+          "value": "An alternative identifier for this class; should follow ID syntax. These can result from class merges"
         },
         "isObsolete": false
       }
     ]
   },
-  "label": "has_alternative_id",
-  "ontology_name": "oio",
-  "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
+  "description": [],
   "has_children": false,
+  "iri": "http://www.geneontology.org/formats/oboInOwl#hasAlternativeId",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
   "is_root": true,
-  "short_form": "OIO_hasAlternativeId",
+  "label": "has_alternative_id",
+  "lang": "en",
   "obo_id": "OIO:hasAlternativeId",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasAlternativeId?lang=en"
-    }
-  }
+  "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+  "ontology_name": "oio",
+  "short_form": "OIO_hasAlternativeId",
+  "synonyms": []
 }

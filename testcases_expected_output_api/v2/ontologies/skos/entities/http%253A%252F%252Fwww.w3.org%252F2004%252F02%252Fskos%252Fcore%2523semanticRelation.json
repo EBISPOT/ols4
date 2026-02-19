@@ -1,0 +1,164 @@
+{
+  "appearsIn": [
+    "skos"
+  ],
+  "curie": "SKOS:semanticRelation",
+  "definedBy": [
+    "skos"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+    "http://www.w3.org/2002/07/owl#ObjectProperty"
+  ],
+  "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.w3.org/2004/02/skos/core#Concept",
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2004/02/skos/core",
+  "http://www.w3.org/2000/01/rdf-schema#label": "is in semantic relation with",
+  "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2004/02/skos/core#Concept",
+  "http://www.w3.org/2004/02/skos/core#definition": "Links a concept to a concept related by meaning.",
+  "http://www.w3.org/2004/02/skos/core#scopeNote": "This property should not be used directly, but as a super-property for all properties denoting a relationship of meaning between concepts.",
+  "imported": false,
+  "iri": "http://www.w3.org/2004/02/skos/core#semanticRelation",
+  "isDefiningOntology": true,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "is in semantic relation with"
+  ],
+  "linkedEntities": {
+    "http://www.w3.org/2000/01/rdf-schema#domain": {
+      "curie": "RDFS:domain",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "domain"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
+      "curie": "RDFS:isDefinedBy",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "isDefinedBy"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#range": {
+      "curie": "RDFS:range",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "range"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2004/02/skos/core#Concept": {
+      "curie": "SKOS:Concept",
+      "definedBy": [
+        "skos"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "Concept"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2004/02/skos/core#definition": {
+      "curie": "SKOS:definition",
+      "definedBy": [
+        "skos"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2004/02/skos/core#scopeNote": {
+      "curie": "SKOS:scopeNote",
+      "definedBy": [
+        "skos"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "scope note"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://www.w3.org/2000/01/rdf-schema#domain",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#range",
+    "http://www.w3.org/2004/02/skos/core#Concept",
+    "http://www.w3.org/2004/02/skos/core#definition",
+    "http://www.w3.org/2004/02/skos/core#scopeNote"
+  ],
+  "numDescendants": 11.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "skos",
+  "ontologyIri": "http://www.w3.org/2004/02/skos/core",
+  "searchableAnnotationValues": [
+    "Links a concept to a concept related by meaning.",
+    "This property should not be used directly, but as a super-property for all properties denoting a relationship of meaning between concepts.",
+    false
+  ],
+  "shortForm": "SKOS_semanticRelation",
+  "type": [
+    "entity",
+    "objectProperty",
+    "property"
+  ]
+}

@@ -55,13 +55,13 @@
           "type": [
             "literal"
           ],
-          "value": "1"
+          "value": "0"
         },
         {
           "type": [
             "literal"
           ],
-          "value": "0"
+          "value": "1"
         }
       ],
       "classes": [
@@ -129,6 +129,7 @@
             "value": "IsObsoleteSimpleWithEfoReason"
           },
           "searchableAnnotationValues": [
+            false,
             {
               "type": [
                 "literal"
@@ -140,8 +141,7 @@
                 "literal"
               ],
               "value": "moving toward PATO quality space, use PATO_0000047 instead."
-            },
-            false
+            }
           ],
           "shortForm": {
             "type": [

@@ -56,11 +56,27 @@
           "class",
           "entity"
         ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+        "curie": "RDFS:subClassOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subClassOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
       }
     },
     "linksTo": [
       "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person",
-      "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Woman"
+      "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Woman",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -149,10 +165,26 @@
           "class",
           "entity"
         ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+        "curie": "RDFS:subClassOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subClassOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
       }
     },
     "linksTo": [
-      "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person"
+      "http://www.ebi.ac.uk/testcases/owl2primer/negative-object-property-assertion#Person",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

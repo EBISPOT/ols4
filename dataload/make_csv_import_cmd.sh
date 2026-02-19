@@ -20,7 +20,18 @@ do
 	echo -n "--nodes=$f "
 done
 
+for f in $1/*_embedding_nodes.csv
+do
+	echo -n "--nodes=$f "
+done
+
 for f in $1/*_edges.csv
+do
+	[[ "$f" == *_embedding_edges.csv ]] && continue
+	echo -n "--relationships=$f "
+done
+
+for f in $1/*_embedding_edges.csv
 do
 	echo -n "--relationships=$f "
 done

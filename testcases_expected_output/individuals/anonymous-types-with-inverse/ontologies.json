@@ -14,12 +14,7 @@
       "imported": false,
       "isObsolete": false,
       "language": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        }
+        {"type":["literal"],"value":"en"}
       ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
@@ -49,24 +44,9 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "1"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "4"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "2"
-        }
+        {"type":["literal"],"value":"1"},
+        {"type":["literal"],"value":"2"},
+        {"type":["literal"],"value":"4"}
       ],
       "classes": [
         {
@@ -96,7 +76,7 @@
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2002/07/owl#hasValue": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
+            "http://www.w3.org/2002/07/owl#hasValue": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#individual_a",
             "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
             "isObsolete": false
           },
@@ -104,12 +84,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "A"
-            }
+            {"type":["literal"],"value":"A"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -131,19 +106,6 @@
             ],
             "value": "individuals-anonymous-types-with-inverse"
           },
-          "relatedFrom": [
-            {
-              "property": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
-              "value": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#hasValue": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
-              "isObsolete": false
-            }
-          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -157,9 +119,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -179,12 +141,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "inverseRelation"
-            }
+            {"type":["literal"],"value":"inverseRelation"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -217,9 +174,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -239,12 +196,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "relation"
-            }
+            {"type":["literal"],"value":"relation"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -277,16 +229,16 @@
       ],
       "individuals": [
         {
-          "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
+          "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#individual_a",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
               "literal"
             ],
-            "value": "a"
+            "value": "individual_a"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -295,22 +247,12 @@
           "hasHierarchicalParents": false,
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
             "http://www.w3.org/2002/07/owl#NamedIndividual",
-            {
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation",
-              "http://www.w3.org/2002/07/owl#someValuesFrom": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A",
-              "isObsolete": false
-            }
+            {"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation","http://www.w3.org/2002/07/owl#someValuesFrom":"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A","isObsolete":false}
           ],
           "imported": false,
           "isObsolete": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "a"
-            }
+            {"type":["literal"],"value":"individual_a"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -333,24 +275,14 @@
             "value": "individuals-anonymous-types-with-inverse"
           },
           "relatedTo": [
-            {
-              "property": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
-              "value": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-              "http://www.w3.org/2002/07/owl#hasValue": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a",
-              "http://www.w3.org/2002/07/owl#onProperty": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
-              "isObsolete": false
-            }
+            {"property":"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation","value":"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#A","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#hasValue":"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#individual_a","http://www.w3.org/2002/07/owl#onProperty":"http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation","isObsolete":false}
           ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
               "literal"
             ],
-            "value": "a"
+            "value": "individual_a"
           }
         }
       ]

@@ -1,0 +1,20 @@
+[package]
+name = "ols_json2solr"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "ols_json2solr"
+path = "src/main.rs"
+
+[dependencies]
+clap.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+parquet.workspace = true
+arrow.workspace = true
+thiserror.workspace = true
+indexmap.workspace = true
+struson.workspace = true
+ols_shared.workspace = true

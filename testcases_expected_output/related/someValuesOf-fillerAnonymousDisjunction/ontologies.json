@@ -13,12 +13,7 @@
       "imported": false,
       "isObsolete": false,
       "language": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        }
+        {"type":["literal"],"value":"en"}
       ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
@@ -48,30 +43,10 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "3"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "4"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "1"
-        }
+        {"type":["literal"],"value":"0"},
+        {"type":["literal"],"value":"1"},
+        {"type":["literal"],"value":"3"},
+        {"type":["literal"],"value":"4"}
       ],
       "classes": [
         {
@@ -120,12 +95,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "A"
-            }
+            {"type":["literal"],"value":"A"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -178,12 +148,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "B"
-            }
+            {"type":["literal"],"value":"B"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -236,12 +201,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "C"
-            }
+            {"type":["literal"],"value":"C"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -276,9 +236,9 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/v.0.0.1/someValuesOf-fillerAnonymousDisjunction#p",
           "type": [
-            "property",
+            "entity",
             "objectProperty",
-            "entity"
+            "property"
           ],
           "curie": {
             "type": [
@@ -296,12 +256,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "p"
-            }
+            {"type":["literal"],"value":"p"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,

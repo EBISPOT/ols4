@@ -1,32 +1,32 @@
 {
-  "iri": "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
-  "lang": "en",
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523isDefinedBy/ancestors"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523isDefinedBy/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523isDefinedBy/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523isDefinedBy?lang=en"
+    }
+  },
+  "annotation": {},
   "description": [
     "The definition of the subject resource."
   ],
-  "synonyms": [],
-  "annotation": {},
-  "label": "isDefinedBy",
-  "ontology_name": "rdfs",
-  "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
   "has_children": false,
+  "iri": "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
   "is_root": false,
-  "short_form": "RDFS_isDefinedBy",
+  "label": "isDefinedBy",
+  "lang": "en",
   "obo_id": "RDFS:isDefinedBy",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523isDefinedBy?lang=en"
-    },
-    "parents": {
-      "href": "http://localhost:8080/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523isDefinedBy/parents"
-    },
-    "ancestors": {
-      "href": "http://localhost:8080/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523isDefinedBy/ancestors"
-    },
-    "jstree": {
-      "href": "http://localhost:8080/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523isDefinedBy/jstree"
-    }
-  }
+  "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
+  "ontology_name": "rdfs",
+  "short_form": "RDFS_isDefinedBy",
+  "synonyms": []
 }

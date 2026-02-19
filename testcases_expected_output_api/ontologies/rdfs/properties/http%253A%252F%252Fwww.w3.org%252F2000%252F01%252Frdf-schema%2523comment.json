@@ -1,23 +1,23 @@
 {
-  "iri": "http://www.w3.org/2000/01/rdf-schema#comment",
-  "lang": "en",
+  "_links": {
+    "self": {
+      "href": "<base>/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523comment?lang=en"
+    }
+  },
+  "annotation": {},
   "description": [
     "A description of the subject resource."
   ],
-  "synonyms": [],
-  "annotation": {},
-  "label": "comment",
-  "ontology_name": "rdfs",
-  "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
   "has_children": false,
+  "iri": "http://www.w3.org/2000/01/rdf-schema#comment",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
   "is_root": true,
-  "short_form": "RDFS_comment",
+  "label": "comment",
+  "lang": "en",
   "obo_id": "RDFS:comment",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/rdfs/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523comment?lang=en"
-    }
-  }
+  "ontology_iri": "http://www.w3.org/2000/01/rdf-schema#",
+  "ontology_name": "rdfs",
+  "short_form": "RDFS_comment",
+  "synonyms": []
 }

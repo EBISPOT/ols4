@@ -61,13 +61,13 @@
           "type": [
             "literal"
           ],
-          "value": "4"
+          "value": "2"
         },
         {
           "type": [
             "literal"
           ],
-          "value": "2"
+          "value": "4"
         }
       ],
       "classes": [
@@ -155,8 +155,8 @@
               },
               "type": [
                 "dataProperty",
-                "property",
-                "entity"
+                "entity",
+                "property"
               ]
             }
           },
@@ -170,8 +170,8 @@
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property#hasSSN",
           "type": [
             "dataProperty",
-            "property",
-            "entity"
+            "entity",
+            "property"
           ],
           "curie": {
             "type": [
@@ -262,8 +262,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property#Anne",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -314,13 +314,13 @@
             "value": "owl2primer-key-constraint-on-data-property"
           },
           "searchableAnnotationValues": [
+            false,
             {
               "type": [
                 "literal"
               ],
               "value": "1234"
-            },
-            false
+            }
           ],
           "shortForm": {
             "type": [
@@ -352,8 +352,8 @@
               },
               "type": [
                 "dataProperty",
-                "property",
-                "entity"
+                "entity",
+                "property"
               ]
             }
           },
@@ -364,8 +364,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/key-constraint-on-data-property.owl#Annie",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -416,13 +416,13 @@
             "value": "owl2primer-key-constraint-on-data-property"
           },
           "searchableAnnotationValues": [
+            false,
             {
               "type": [
                 "literal"
               ],
               "value": "1234"
-            },
-            false
+            }
           ],
           "shortForm": {
             "type": [
@@ -454,8 +454,8 @@
               },
               "type": [
                 "dataProperty",
-                "property",
-                "entity"
+                "entity",
+                "property"
               ]
             }
           },

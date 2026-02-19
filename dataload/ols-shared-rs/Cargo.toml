@@ -1,0 +1,16 @@
+[package]
+name = "ols_shared"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+[lib]
+name = "ols_shared"
+path = "src/lib.rs"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+struson.workspace = true
+parquet.workspace = true
+arrow.workspace = true

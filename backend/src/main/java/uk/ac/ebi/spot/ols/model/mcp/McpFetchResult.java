@@ -15,6 +15,7 @@ public class McpFetchResult {
     public String title;
     public String text;
     public String url;
+    public boolean isObsolete;
     public Object metadata;
     
     public static McpFetchResult fromJson(JsonElement entity) {
@@ -25,6 +26,7 @@ public class McpFetchResult {
         mc.url = JsonHelper.getString(object, "iri");
         mc.title = JsonHelper.getString(object, "curie") + " " + JsonHelper.getString(object, "label");
         mc.text = JsonHelper.getString(object, "definition");
+        mc.isObsolete = Boolean.parseBoolean(JsonHelper.getString(object, "isObsolete"));
 
         var type = JsonHelper.getString(object, "type");
         if(type == "class") {

@@ -1,44 +1,44 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/UBERON_0001193",
-  "lang": "en",
-  "description": [],
-  "synonyms": [],
-  "annotation": {},
-  "label": "hepatic artery",
-  "ontology_name": "efo-hierarchical-properties",
-  "ontology_prefix": "efo-hierarchical-properties",
-  "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": false,
-  "is_root": false,
-  "short_form": "UBERON_0001193",
-  "obo_id": "UBERON:0001193",
-  "is_preferred_root": false,
   "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001193?lang=en"
-    },
-    "parents": {
-      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001193/parents"
-    },
     "ancestors": {
-      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001193/ancestors"
-    },
-    "hierarchicalParents": {
-      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001193/hierarchicalParents"
-    },
-    "hierarchicalAncestors": {
-      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001193/hierarchicalAncestors"
-    },
-    "jstree": {
-      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001193/jstree"
+      "href": "<base>/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001193/ancestors"
     },
     "graph": {
-      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001193/graph"
+      "href": "<base>/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001193/graph"
+    },
+    "hierarchicalAncestors": {
+      "href": "<base>/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001193/hierarchicalAncestors"
+    },
+    "hierarchicalParents": {
+      "href": "<base>/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001193/hierarchicalParents"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001193/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001193/parents"
     },
     "part_of": {
-      "href": "http://localhost:8080/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001193/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000050"
+      "href": "<base>/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001193/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000050"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/efo-hierarchical-properties/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001193?lang=en"
     }
-  }
+  },
+  "annotation": {},
+  "description": [],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/UBERON_0001193",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_preferred_root": false,
+  "is_root": false,
+  "label": "hepatic artery",
+  "lang": "en",
+  "obo_id": "UBERON:0001193",
+  "ontology_iri": "http://www.ebi.ac.uk/efo/efo.owl",
+  "ontology_name": "efo-hierarchical-properties",
+  "ontology_prefix": "efo-hierarchical-properties",
+  "short_form": "UBERON_0001193",
+  "synonyms": []
 }

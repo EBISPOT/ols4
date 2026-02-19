@@ -220,35 +220,92 @@ public class ClassRepository {
     }
 
 
-    public Page<JsonElement> getSimilarByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
+    public Page<JsonElement> getSimilar(Pageable pageable, String iri, String lang, JsonTransformOptions outputOpts, String modelName) {
 
-        Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        return this.neo4jClient.getSimilar("OntologyClass", iri, pageable)
+        if (modelName == null || modelName.isEmpty()) {
+            modelName = "text-embedding-3-small"; // Default model
+        }
+
+        return this.neo4jClient.getSimilar("OntologyClass", iri, pageable, modelName)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
 
-    public double getSimilarityByOntologyId(String ontologyId, String iri, String iri2) {
+    public double getSimilarity(String iri, String iri2, String modelName) {
 
-        Validation.validateOntologyId(ontologyId);
+        if (modelName == null || modelName.isEmpty()) {
+            modelName = "text-embedding-3-small"; // Default model
+        }
 
-        return this.neo4jClient.getSimilarity("OntologyClass", iri, iri2);
+        return this.neo4jClient.getSimilarity("OntologyClass", iri, iri2, modelName);
     }
 
-    public List<Double> getEmbeddingVectorByOntologyId(String ontologyId, String iri) {
+    public List<Double> getEmbeddingVector(String iri, String modelName) {
 
-        Validation.validateOntologyId(ontologyId);
+        if (modelName == null || modelName.isEmpty()) {
+            modelName = "text-embedding-3-small"; // Default model
+        }
 
-        return this.neo4jClient.getEmbeddingVector("OntologyClass", iri);
+        return this.neo4jClient.getEmbeddingVector("OntologyClass", iri, modelName);
     }
 
-    public Page<JsonElement> searchByVector(List<Double> vector, Pageable pageable, String lang, JsonTransformOptions outputOpts) {
-        Validation.validateVector(vector);
+    /**
+     * Search by vector globally (all ontologies, defining classes only) or filtered by ontology.
+     * When ontologyId is provided, only returns classes defined in that ontology.
+     */
+    public Page<JsonElement> searchByVector(String modelName, float[] vector, Pageable pageable, String lang, String ontologyId, JsonTransformOptions outputOpts) {
+        if (ontologyId != null) {
+            // Delegate to ontology-specific search with isDefiningOntology=true
+            return searchByVectorInOntology(ontologyId, modelName, vector, pageable, lang, true, outputOpts);
+        }
+        
         Validation.validateLang(lang);
 
-        return this.neo4jClient.searchByVector("OntologyClass", vector, pageable)
+        if (vector == null || vector.length == 0) {
+            throw new IllegalArgumentException("Vector cannot be null or empty");
+        }
+        
+        if (modelName == null || modelName.isEmpty()) {
+            modelName = "text-embedding-3-small"; // Default model
+        }
+        
+        // Convert float[] to List<Double> for Neo4j
+        List<Double> vectorList = new java.util.ArrayList<>(vector.length);
+        for (float f : vector) {
+            vectorList.add((double) f);
+        }
+        
+        return this.neo4jClient.searchByVector("OntologyClass", vectorList, pageable, modelName)
+                .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
+                ;
+    }
+
+    /**
+     * Search by vector within a specific ontology.
+     * If isDefiningOntology is true, only returns classes defined in this ontology.
+     * If isDefiningOntology is false, includes imported classes by matching IRI.
+     */
+    public Page<JsonElement> searchByVectorInOntology(String ontologyId, String modelName, float[] vector, Pageable pageable, String lang, boolean isDefiningOntology, JsonTransformOptions outputOpts) {
+        Validation.validateLang(lang);
+        Validation.validateOntologyId(ontologyId);
+
+        if (vector == null || vector.length == 0) {
+            throw new IllegalArgumentException("Vector cannot be null or empty");
+        }
+        
+        if (modelName == null || modelName.isEmpty()) {
+            modelName = "text-embedding-3-small"; // Default model
+        }
+        
+        // Convert float[] to List<Double> for Neo4j
+        List<Double> vectorList = new java.util.ArrayList<>(vector.length);
+        for (float f : vector) {
+            vectorList.add((double) f);
+        }
+        
+        return this.neo4jClient.searchByVectorInOntology("OntologyClass", vectorList, pageable, modelName, ontologyId, isDefiningOntology)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }

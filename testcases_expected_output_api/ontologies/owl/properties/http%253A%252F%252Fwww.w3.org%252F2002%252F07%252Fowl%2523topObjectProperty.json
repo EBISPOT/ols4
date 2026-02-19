@@ -1,23 +1,23 @@
 {
-  "iri": "http://www.w3.org/2002/07/owl#topObjectProperty",
-  "lang": "en",
+  "_links": {
+    "self": {
+      "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523topObjectProperty?lang=en"
+    }
+  },
+  "annotation": {},
   "description": [
     "The object property that relates every two individuals."
   ],
-  "synonyms": [],
-  "annotation": {},
-  "label": "topObjectProperty",
-  "ontology_name": "owl",
-  "ontology_iri": "http://www.w3.org/2002/07/owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
   "has_children": false,
+  "iri": "http://www.w3.org/2002/07/owl#topObjectProperty",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
   "is_root": true,
-  "short_form": "OWL_topObjectProperty",
+  "label": "topObjectProperty",
+  "lang": "en",
   "obo_id": "OWL:topObjectProperty",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523topObjectProperty?lang=en"
-    }
-  }
+  "ontology_iri": "http://www.w3.org/2002/07/owl",
+  "ontology_name": "owl",
+  "short_form": "OWL_topObjectProperty",
+  "synonyms": []
 }

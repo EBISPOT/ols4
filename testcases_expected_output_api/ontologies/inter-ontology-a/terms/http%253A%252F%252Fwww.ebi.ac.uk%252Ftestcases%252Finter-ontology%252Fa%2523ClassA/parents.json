@@ -1,0 +1,40 @@
+[
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/inter-ontology-a/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Finter-ontology%252Fb%2523ClassB/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/inter-ontology-a/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Finter-ontology%252Fb%2523ClassB/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/inter-ontology-a/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Finter-ontology%252Fb%2523ClassB/graph"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/inter-ontology-a/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Finter-ontology%252Fb%2523ClassB/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/inter-ontology-a/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Finter-ontology%252Fb%2523ClassB/hierarchicalDescendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/inter-ontology-a/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Finter-ontology%252Fb%2523ClassB?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": true,
+    "iri": "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "Class B (imported)",
+    "lang": "en",
+    "obo_id": "inter-ontology-b:ClassB",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/inter-ontology/a",
+    "ontology_name": "inter-ontology-a",
+    "ontology_prefix": "inter-ontology-a",
+    "short_form": "inter-ontology-b_ClassB",
+    "synonyms": []
+  }
+]

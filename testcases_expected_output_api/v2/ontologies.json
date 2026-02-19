@@ -30,6 +30,11 @@
     "http://www.w3.org/2002/07/owl#imports": "http://purl.obolibrary.org/obo/iao.owl",
     "http://www.w3.org/2002/07/owl#versionIRI": "http://purl.obolibrary.org/obo/duo/releases/2021-02-23/duo.owl",
     "imported": false,
+    "importsFrom": [
+      "oio",
+      "rdfs",
+      "skos"
+    ],
     "iri": "http://purl.obolibrary.org/obo/duo.owl",
     "isObsolete": false,
     "jobs": [
@@ -143,6 +148,7 @@
       "http://purl.org/dc/elements/1.1/creator",
       "http://purl.org/dc/terms/license"
     ],
+    "loaded": "<loaded>",
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "numberOfClasses": "308",
@@ -167,6 +173,7 @@
     "searchableAnnotationValues": [
       false
     ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
     "title": "Data Use Ontology",
     "tracker": "https://github.com/EBISPOT/DUO/issues",
     "type": [
@@ -175,33 +182,66 @@
   },
   {
     "baseUri": [
-      "http://www.ebi.ac.uk/baseUri/BASE_URI_"
+      "http://www.ebi.ac.uk/testcases/inter-ontology/a#"
     ],
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/baseUri/releases/v3.63.0/BaseUri.owl",
-    "http://www.w3.org/2002/07/owl#versionInfo": "3.63.0",
     "imported": false,
-    "iri": "http://www.ebi.ac.uk/baseUri/BaseUri.owl",
+    "importsFrom": [
+      "inter-ontology-b"
+    ],
+    "iri": "http://www.ebi.ac.uk/testcases/inter-ontology/a",
     "isObsolete": false,
     "language": [
       "en"
     ],
     "linkedEntities": {},
+    "loaded": "<loaded>",
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
-    "numberOfClasses": "0",
-    "numberOfEntities": "0",
+    "numberOfClasses": "2",
+    "numberOfEntities": "2",
     "numberOfIndividuals": "0",
     "numberOfProperties": "0",
-    "oboSlims": false,
-    "ontologyId": "base_uri",
-    "ontologyPurl": "./testcases/defined-fields/BaseUri.owl",
-    "preferredPrefix": "BASE_URI",
-    "reasoner": "OWL2",
+    "ontologyId": "inter-ontology-a",
+    "ontologyPurl": "./testcases/imports/inter-ontology-a.owl",
+    "preferredPrefix": "inter-ontology-a",
     "searchableAnnotationValues": [
       false
     ],
-    "title": "Experimental Factor Ontology",
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
+    "type": [
+      "ontology"
+    ]
+  },
+  {
+    "baseUri": [
+      "http://www.ebi.ac.uk/testcases/inter-ontology/b#"
+    ],
+    "exportsTo": [
+      "inter-ontology-a"
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/inter-ontology/b",
+    "isObsolete": false,
+    "language": [
+      "en"
+    ],
+    "linkedEntities": {},
+    "loaded": "<loaded>",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "numberOfClasses": "1",
+    "numberOfEntities": "1",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "0",
+    "ontologyId": "inter-ontology-b",
+    "ontologyPurl": "./testcases/imports/inter-ontology-b.owl",
+    "preferredPrefix": "inter-ontology-b",
+    "searchableAnnotationValues": [
+      false
+    ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
     "type": [
       "ontology"
     ]
@@ -215,7 +255,10 @@
       "\n          This is an OWL translation of an ontology whose native representational form is .obo. The translation was performed using the oboInOwl xslt library. For details, see http://www.berkeleybop.org/obo-conv.cgi\n        "
     ],
     "exportsTo": [
-      "gitissue502"
+      "duo",
+      "efo-hierarchical-properties",
+      "gitissue502",
+      "isobsolete"
     ],
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
     "http://www.w3.org/2000/01/rdf-schema#comment": [
@@ -242,7 +285,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -257,7 +300,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -268,6 +311,7 @@
       "http://www.w3.org/2000/01/rdf-schema#comment",
       "http://www.w3.org/2000/01/rdf-schema#label"
     ],
+    "loaded": "<loaded>",
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "numberOfClasses": "12",
@@ -279,61 +323,7 @@
     "searchableAnnotationValues": [
       false
     ],
-    "type": [
-      "ontology"
-    ]
-  },
-  {
-    "baseUri": [
-      "http://www.w3.org/2000/01/rdf-schema#"
-    ],
-    "exportsTo": [
-      "gitissue502",
-      "owl"
-    ],
-    "http://purl.org/dc/elements/1.1/title": "The RDF Schema vocabulary (RDFS)",
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "http://www.w3.org/2000/01/rdf-schema#seeAlso": "http://www.w3.org/2000/01/rdf-schema-more",
-    "imported": false,
-    "iri": "http://www.w3.org/2000/01/rdf-schema#",
-    "isObsolete": false,
-    "label": [
-      "The RDF Schema vocabulary (RDFS)"
-    ],
-    "language": [
-      "en"
-    ],
-    "linkedEntities": {
-      "http://www.w3.org/2000/01/rdf-schema#seeAlso": {
-        "curie": "RDFS:seeAlso",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "seeAlso"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://www.w3.org/2000/01/rdf-schema#seeAlso"
-    ],
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "numberOfClasses": "6",
-    "numberOfEntities": "15",
-    "numberOfIndividuals": "0",
-    "numberOfProperties": "9",
-    "ontologyId": "rdfs",
-    "ontologyPurl": "https://www.w3.org/2000/01/rdf-schema",
-    "searchableAnnotationValues": [
-      false
-    ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
     "type": [
       "ontology"
     ]
@@ -374,6 +364,19 @@
       "en"
     ],
     "linkedEntities": {
+      "http://purl.org/dc/elements/1.1/title": {
+        "curie": "title",
+        "hasLocalDefinition": false,
+        "label": [
+          "title"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS:comment",
         "definedBy": [
@@ -383,7 +386,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -398,7 +401,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -413,7 +416,7 @@
         "label": [
           "seeAlso"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -421,10 +424,12 @@
       }
     },
     "linksTo": [
+      "http://purl.org/dc/elements/1.1/title",
       "http://www.w3.org/2000/01/rdf-schema#comment",
       "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
       "http://www.w3.org/2000/01/rdf-schema#seeAlso"
     ],
+    "loaded": "<loaded>",
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "numberOfClasses": "32",
@@ -436,71 +441,53 @@
     "searchableAnnotationValues": [
       false
     ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
     "type": [
       "ontology"
     ]
   },
   {
-    "baseUri": [
-      "http://www.w3.org/2002/07/owl#"
-    ],
-    "iri": "http://www.w3.org/2002/07/owl#",
-    "isObsolete": false,
-    "language": [
-      "en"
-    ],
-    "linkedEntities": {},
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "numberOfClasses": "1",
-    "numberOfEntities": "1",
-    "numberOfIndividuals": "0",
-    "numberOfProperties": "0",
-    "ontologyId": "definition-single",
-    "ontologyPurl": "./testcases/defined-fields/DefinitionSingle.ttl",
-    "preferredPrefix": "Definition-Single",
-    "searchableAnnotationValues": [
-      "0",
-      "1"
-    ],
-    "type": [
-      "ontology"
-    ]
-  },
-  {
-    "baseUri": [
-      "http://www.w3.org/2004/02/skos/core#"
-    ],
     "definition": [
-      "An RDF vocabulary for describing the basic structure and content of concept schemes such as thesauri, classification schemes, subject heading lists, taxonomies, 'folksonomies', other types of controlled vocabulary, and also concept schemes embedded in glossaries and terminologies."
+      "2022-05-16"
     ],
-    "exportsTo": [
-      "gitissue502"
+    "http://purl.obolibrary.org/obo/format-version": "1.4",
+    "http://purl.org/dc/elements/1.1/creator": [
+      "Gautier Koscielny",
+      "Laura Huerta Martinez",
+      "Olamidipupo Ajigboye",
+      "Paola Roncaglia",
+      "Trish Whetzel",
+      "Zoe May Pendlington"
     ],
-    "http://purl.org/dc/terms/contributor": [
-      "Dave Beckett",
-      "Nikki Rogers",
-      "Participants in W3C's Semantic Web Deployment Working Group."
+    "http://purl.org/dc/elements/1.1/rights": "Copyright [2014] EMBL - European Bioinformatics Institute\nLicensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the\nLicense. ",
+    "http://purl.org/dc/terms/license": "www.apache.org/licenses/LICENSE-2.0",
+    "http://www.ebi.ac.uk/efo/creator": [
+      "Catherine Leroy",
+      "Dani Welter",
+      "Drashtti Vasant",
+      "Ele Holloway",
+      "Eleanor Williams",
+      "Emma Kate Hastings",
+      "Helen Parkinson",
+      "James Malone",
+      "Jon Ison",
+      "Natalja Kurbatova",
+      "Simon Jupp",
+      "Sirarat Sarntivijai",
+      "Tomasz Adamusiak"
     ],
-    "http://purl.org/dc/terms/creator": [
-      "Alistair Miles",
-      "Sean Bechhofer"
-    ],
-    "http://purl.org/dc/terms/description": "An RDF vocabulary for describing the basic structure and content of concept schemes such as thesauri, classification schemes, subject heading lists, taxonomies, 'folksonomies', other types of controlled vocabulary, and also concept schemes embedded in glossaries and terminologies.",
-    "http://purl.org/dc/terms/title": "SKOS Vocabulary",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "http://www.w3.org/2000/01/rdf-schema#seeAlso": "http://www.w3.org/TR/skos-reference/",
+    "http://www.w3.org/2000/01/rdf-schema#comment": "2022-05-16",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/efo/releases/v3.42.0/efo.owl",
+    "http://www.w3.org/2002/07/owl#versionInfo": "3.42.0",
     "imported": false,
-    "iri": "http://www.w3.org/2004/02/skos/core",
+    "iri": "http://www.ebi.ac.uk/efo/efo.owl",
     "isObsolete": false,
-    "label": [
-      "SKOS Vocabulary"
-    ],
     "language": [
       "en"
     ],
     "linkedEntities": {
-      "http://purl.org/dc/terms/creator": {
+      "http://purl.org/dc/elements/1.1/creator": {
         "curie": "creator",
         "hasLocalDefinition": false,
         "label": [
@@ -513,16 +500,42 @@
           "property"
         ]
       },
-      "http://www.w3.org/2000/01/rdf-schema#seeAlso": {
-        "curie": "RDFS:seeAlso",
+      "http://purl.org/dc/elements/1.1/rights": {
+        "curie": "rights",
+        "hasLocalDefinition": false,
+        "label": [
+          "rights"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/license": {
+        "curie": "license",
+        "hasLocalDefinition": false,
+        "label": [
+          "license"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#comment": {
+        "curie": "RDFS:comment",
         "definedBy": [
           "rdfs"
         ],
         "hasLocalDefinition": false,
         "label": [
-          "seeAlso"
+          "comment"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -530,73 +543,109 @@
       }
     },
     "linksTo": [
-      "http://purl.org/dc/terms/creator",
-      "http://www.w3.org/2000/01/rdf-schema#seeAlso"
+      "http://purl.org/dc/elements/1.1/creator",
+      "http://purl.org/dc/elements/1.1/rights",
+      "http://purl.org/dc/terms/license",
+      "http://www.w3.org/2000/01/rdf-schema#comment"
     ],
+    "loaded": "<loaded>",
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
-    "numberOfClasses": "6",
-    "numberOfEntities": "62",
+    "numberOfClasses": "4",
+    "numberOfEntities": "6",
     "numberOfIndividuals": "0",
-    "numberOfProperties": "56",
-    "ontologyId": "skos",
-    "ontologyPurl": "http://www.w3.org/TR/skos-reference/skos.rdf",
+    "numberOfProperties": "2",
+    "ontologyId": "efo-iri-labels",
+    "ontologyPurl": "./testcases/iri-labels/efo-iri-labels.owl",
+    "preferredPrefix": "efo-iri-labels",
     "searchableAnnotationValues": [
-      "An RDF vocabulary for describing the basic structure and content of concept schemes such as thesauri, classification schemes, subject heading lists, taxonomies, 'folksonomies', other types of controlled vocabulary, and also concept schemes embedded in glossaries and terminologies.",
-      "SKOS Vocabulary",
       false
     ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
     "type": [
       "ontology"
     ]
   },
   {
-    "http://purl.obolibrary.org/obo/IAO_0000700": "http://www.ebi.ac.uk/testcases/defined-fields/PreferredRoot.owl#PreferredRoot_0001",
+    "description": "The Experimental Factor Ontology (EFO) provides a systematic description of many experimental variables available in EBI databases, and for external projects such as the NHGRI GWAS catalogue. It combines parts of several biological ontologies, such as anatomy, disease and chemical compounds. The scope of EFO is to support the annotation, analysis and visualization of data handled by many groups at the EBI and as the core ontology for OpenTargets.org",
+    "hierarchical_property": [
+      "http://purl.obolibrary.org/obo/BFO_0000050"
+    ],
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/defined-fields/v.0.0.1/PreferredRoot.owl",
     "imported": false,
-    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/class.owl",
+    "importsFrom": [
+      "oio"
+    ],
+    "iri": "http://www.ebi.ac.uk/efo/efo.owl",
     "isObsolete": false,
     "language": [
       "en"
     ],
     "linkedEntities": {
-      "http://purl.obolibrary.org/obo/IAO_0000700": {
-        "curie": "iao:0000700",
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "url": "http://purl.obolibrary.org/obo/IAO_0000700"
-      },
-      "http://www.ebi.ac.uk/testcases/defined-fields/PreferredRoot.owl#PreferredRoot_0001": {
-        "curie": "PreferredRoot:0001",
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
         "hasLocalDefinition": true,
         "label": [
-          "liver disease"
+          "part of"
         ],
-        "numAppearsIn": 1.0,
+        "numAppearsIn": 3.0,
         "type": [
-          "class",
-          "entity"
+          "entity",
+          "objectProperty",
+          "property"
         ]
       }
     },
     "linksTo": [
-      "http://www.ebi.ac.uk/testcases/defined-fields/PreferredRoot.owl#PreferredRoot_0001"
+      "http://purl.obolibrary.org/obo/BFO_0000050"
     ],
+    "loaded": "<loaded>",
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
-    "numberOfClasses": "1",
-    "numberOfEntities": "1",
+    "numberOfClasses": "25",
+    "numberOfEntities": "63",
     "numberOfIndividuals": "0",
-    "numberOfProperties": "0",
-    "ontologyId": "preferred-root",
-    "ontologyPurl": "./testcases/defined-fields/PreferredRoot.owl",
-    "preferredPrefix": "Preferred-Root",
-    "preferredRoot": [
-      "http://www.ebi.ac.uk/testcases/defined-fields/PreferredRoot.owl#PreferredRoot_0001"
-    ],
+    "numberOfProperties": "38",
+    "oboSlims": false,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyPurl": "./testcases/hierarchical-properties/efo.owl",
+    "preferredPrefix": "efo-hierarchical-properties",
+    "reasoner": "OWL2",
     "searchableAnnotationValues": [
       false
     ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
+    "title": "Experimental Factor Ontology",
+    "type": [
+      "ontology"
+    ],
+    "uri": "http://www.ebi.ac.uk/efo"
+  },
+  {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/ols4/testcase/label/v.0.0.1",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/ols4/testcase/label",
+    "isObsolete": false,
+    "language": [
+      "de",
+      "en"
+    ],
+    "linkedEntities": {},
+    "loaded": "<loaded>",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "numberOfClasses": "4",
+    "numberOfEntities": "8",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "4",
+    "ontologyId": "label",
+    "ontologyPurl": "./testcases/localized-labels/label.rdf",
+    "preferredPrefix": "label",
+    "searchableAnnotationValues": [
+      false
+    ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
     "type": [
       "ontology"
     ]
@@ -611,6 +660,7 @@
       "en"
     ],
     "linkedEntities": {},
+    "loaded": "<loaded>",
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "numberOfClasses": "0",
@@ -623,192 +673,231 @@
     "searchableAnnotationValues": [
       false
     ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
     "type": [
       "ontology"
     ]
   },
   {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/defined-fields/v.0.0.1/DefinitionMultiple.owl",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/individuals/v.0.0.1/anonymous-types-with-inverse.owl",
     "imported": false,
-    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/class.owl",
+    "iri": "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl",
     "isObsolete": false,
     "language": [
       "en"
     ],
     "linkedEntities": {},
+    "loaded": "<loaded>",
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "numberOfClasses": "1",
-    "numberOfEntities": "1",
+    "numberOfEntities": "4",
+    "numberOfIndividuals": "1",
+    "numberOfProperties": "2",
+    "ontologyId": "individuals-anonymous-types-with-inverse",
+    "ontologyPurl": "./testcases/individuals/anonymous-types-with-inverse.owl",
+    "preferredPrefix": "individuals-anonymous-types-with-inverse",
+    "searchableAnnotationValues": [
+      false
+    ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
+    "type": [
+      "ontology"
+    ]
+  },
+  {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/ontology-annotations/version/chebi/214/chebi.owl",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/ontology-annotations/version/chebi.owl",
+    "isObsolete": false,
+    "language": [
+      "en"
+    ],
+    "linkedEntities": {},
+    "loaded": "<loaded>",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "numberOfClasses": "0",
+    "numberOfEntities": "0",
     "numberOfIndividuals": "0",
     "numberOfProperties": "0",
-    "ontologyId": "definition-multiple",
-    "ontologyPurl": "./testcases/defined-fields/DefinitionMultiple.owl",
-    "preferredPrefix": "Definition-Multiple",
+    "ontologyId": "ontology-annotations-version-chebi",
+    "ontologyPurl": "./testcases/ontology-annotations/version/chebi.owl",
+    "preferredPrefix": "ontology-annotations-version-chebi",
     "searchableAnnotationValues": [
       false
     ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
     "type": [
       "ontology"
     ]
   },
   {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/defined-fields/v0.0.1/isObsolete.rdf",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/ontology-annotations/version/ncbitaxon/2022-08-18/ncbitaxon.owl",
     "imported": false,
-    "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf",
+    "iri": "http://www.ebi.ac.uk/testcases/ontology-annotations/version/ncbitaxon.owl",
     "isObsolete": false,
     "language": [
       "en"
     ],
     "linkedEntities": {},
+    "loaded": "<loaded>",
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
-    "numberOfClasses": "6",
-    "numberOfEntities": "12",
-    "numberOfIndividuals": "2",
-    "numberOfProperties": "4",
-    "ontologyId": "isobsolete",
-    "ontologyPurl": "./testcases/defined-fields/IsObsolete.rdf",
-    "preferredPrefix": "IsObsolete",
+    "numberOfClasses": "0",
+    "numberOfEntities": "0",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "0",
+    "ontologyId": "ontology-annotations-version-ncbitaxon",
+    "ontologyPurl": "./testcases/ontology-annotations/version/ncbitaxon.owl",
+    "preferredPrefix": "ontology-annotations-version-ncbitaxon",
     "searchableAnnotationValues": [
       false
     ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
     "type": [
       "ontology"
     ]
   },
   {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatype-enumeration.owl",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/ontology-annotations/version/releases/20221125/obo-date.owl",
     "imported": false,
-    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-enumeration.owl",
+    "iri": "http://www.ebi.ac.uk/testcases/ontology-annotations/version/obo-date.owl",
     "isObsolete": false,
     "language": [
       "en"
     ],
     "linkedEntities": {},
+    "loaded": "<loaded>",
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
-    "numberOfClasses": "1",
-    "numberOfEntities": "2",
+    "numberOfClasses": "0",
+    "numberOfEntities": "0",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "0",
+    "ontologyId": "ontology-annotations-version-obo-date",
+    "ontologyPurl": "./testcases/ontology-annotations/version/obo-date.owl",
+    "preferredPrefix": "ontology-annotations-version-obo-date",
+    "searchableAnnotationValues": [
+      false
+    ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
+    "type": [
+      "ontology"
+    ]
+  },
+  {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/ontology-annotations/version/releases/v3.23.11/efo.owl",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/ontology-annotations/version/efo.owl",
+    "isObsolete": false,
+    "language": [
+      "en"
+    ],
+    "linkedEntities": {},
+    "loaded": "<loaded>",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "numberOfClasses": "0",
+    "numberOfEntities": "0",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "0",
+    "ontologyId": "ontology-annotations-version-efo",
+    "ontologyPurl": "./testcases/ontology-annotations/version/efo.owl",
+    "preferredPrefix": "ontology-annotations-version-efo",
+    "searchableAnnotationValues": [
+      false
+    ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
+    "type": [
+      "ontology"
+    ]
+  },
+  {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/anonymous-inverse-object-property.rdf",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/anonymous-inverse-object-property.rdf",
+    "isObsolete": false,
+    "language": [
+      "en"
+    ],
+    "linkedEntities": {},
+    "loaded": "<loaded>",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "numberOfClasses": "2",
+    "numberOfEntities": "3",
     "numberOfIndividuals": "0",
     "numberOfProperties": "1",
-    "ontologyId": "owl2primer-datatype-enumeration-nesting-issue",
-    "ontologyPurl": "./testcases/owl2-primer/datatype-enumeration.owl",
-    "preferredPrefix": "owl2primer-datatype-enumeration-nesting-issue",
+    "ontologyId": "owl2primer-anonymous-inverse-object-property",
+    "ontologyPurl": "./testcases/owl2-primer/anonymous-inverse-object-property.rdf",
+    "preferredPrefix": "owl2primer-anonymous-inverse-object-property",
     "searchableAnnotationValues": [
       false
     ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
     "type": [
       "ontology"
     ]
   },
   {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatype-exclusion.owl",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/asymmetric-object-property.rdf",
     "imported": false,
-    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl",
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/asymmetric-object-property.rdf",
     "isObsolete": false,
     "language": [
       "en"
     ],
     "linkedEntities": {},
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "numberOfClasses": "1",
-    "numberOfEntities": "2",
-    "numberOfIndividuals": "0",
-    "numberOfProperties": "1",
-    "ontologyId": "owl2primer-datatype-exclusion-nesting-issue",
-    "ontologyPurl": "./testcases/datatypes/nesting-issue/datatype-exclusion.owl",
-    "preferredPrefix": "owl2primer-datatype-exclusion-nesting-issue",
-    "searchableAnnotationValues": [
-      false
-    ],
-    "type": [
-      "ontology"
-    ]
-  },
-  {
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v.0.0.1/datatype-minmax.owl",
-    "imported": false,
-    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/datatype-minmax.owl",
-    "isObsolete": false,
-    "language": [
-      "en"
-    ],
-    "linkedEntities": {},
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "numberOfClasses": "1",
-    "numberOfEntities": "2",
-    "numberOfIndividuals": "0",
-    "numberOfProperties": "1",
-    "ontologyId": "owl2primer-datatype-minmax-nesting-issue",
-    "ontologyPurl": "./testcases/datatypes/nesting-issue/datatype-minmax.owl",
-    "preferredPrefix": "owl2primer-datatype-minmax-nesting-issue",
-    "searchableAnnotationValues": [
-      false
-    ],
-    "type": [
-      "ontology"
-    ]
-  },
-  {
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/user-defined-data-type.rdf",
-    "imported": false,
-    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/user-defined-data-type.rdf",
-    "isObsolete": false,
-    "language": [
-      "en"
-    ],
-    "linkedEntities": {},
+    "loaded": "<loaded>",
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "numberOfClasses": "0",
     "numberOfEntities": "1",
     "numberOfIndividuals": "0",
     "numberOfProperties": "1",
-    "ontologyId": "owl2primer-user-defined-data-type-nesting-issue",
-    "ontologyPurl": "./testcases/datatypes/nesting-issue/user-defined-data-type.rdf",
-    "preferredPrefix": "owl2primer-user-defined-data-type-nesting-issue",
+    "ontologyId": "owl2primer-asymmetric-object-property",
+    "ontologyPurl": "./testcases/owl2-primer/asymmetric-object-property.rdf",
+    "preferredPrefix": "owl2primer-asymmetric-object-property",
     "searchableAnnotationValues": [
       false
     ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
     "type": [
       "ontology"
     ]
   },
   {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "http://www.w3.org/2002/07/owl#versionIRI": "http://www.ebi.ac.uk/testcases/owl2primer/v0.0.1/data-property-domain-range-restrictions.rdf",
     "imported": false,
-    "importsFrom": [
-      "oio",
-      "rdfs",
-      "skos"
-    ],
-    "iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/data-property-domain-range-restrictions.rdf",
     "isObsolete": false,
     "language": [
       "en"
     ],
     "linkedEntities": {},
+    "loaded": "<loaded>",
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
-    "numberOfClasses": "249",
-    "numberOfEntities": "412",
+    "numberOfClasses": "1",
+    "numberOfEntities": "2",
     "numberOfIndividuals": "0",
-    "numberOfProperties": "163",
-    "ontologyId": "gitissue502",
-    "ontologyPurl": "./testcases/annotation-properties/gitIssue502.owl",
-    "preferredPrefix": "gitIssue502",
+    "numberOfProperties": "1",
+    "ontologyId": "data-property-domain-range-restrictions",
+    "ontologyPurl": "./testcases/owl2-primer/data-property-domain-range-restrictions.rdf",
+    "preferredPrefix": "data-property-domain-range-restrictions",
     "searchableAnnotationValues": [
       false
     ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
     "type": [
       "ontology"
     ]
@@ -822,6 +911,7 @@
       "en"
     ],
     "linkedEntities": {},
+    "loaded": "<loaded>",
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "numberOfClasses": "1",
@@ -834,31 +924,7 @@
     "searchableAnnotationValues": [
       false
     ],
-    "type": [
-      "ontology"
-    ]
-  },
-  {
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "imported": false,
-    "iri": "http://purl.obolibrary.org/obo/mondo.owl",
-    "isObsolete": false,
-    "language": [
-      "en"
-    ],
-    "linkedEntities": {},
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "numberOfClasses": "3",
-    "numberOfEntities": "5",
-    "numberOfIndividuals": "0",
-    "numberOfProperties": "2",
-    "ontologyId": "direct-parent-with-annotation-axiom",
-    "ontologyPurl": "./testcases/defined-fields/DirectParentWithAnnotationAxiom.owl",
-    "preferredPrefix": "Direct-Parent-With-Annotation-Axiom",
-    "searchableAnnotationValues": [
-      false
-    ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
     "type": [
       "ontology"
     ]
@@ -872,6 +938,7 @@
       "en"
     ],
     "linkedEntities": {},
+    "loaded": "<loaded>",
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "numberOfClasses": "1",
@@ -884,6 +951,7 @@
     "searchableAnnotationValues": [
       false
     ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
     "type": [
       "ontology"
     ]
@@ -897,6 +965,7 @@
       "en"
     ],
     "linkedEntities": {},
+    "loaded": "<loaded>",
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "numberOfClasses": "1",
@@ -909,6 +978,7 @@
     "searchableAnnotationValues": [
       false
     ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
     "type": [
       "ontology"
     ]

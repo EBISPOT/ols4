@@ -1,23 +1,23 @@
 {
-  "iri": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-  "lang": "en",
+  "_links": {
+    "self": {
+      "href": "<base>/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523subClassOf?lang=en"
+    }
+  },
+  "annotation": {},
   "description": [
     "The subject is a subclass of a class."
   ],
-  "synonyms": [],
-  "annotation": {},
-  "label": "subClassOf",
-  "ontology_name": "owl",
-  "ontology_iri": "http://www.w3.org/2002/07/owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
   "has_children": false,
+  "iri": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
   "is_root": true,
-  "short_form": "RDFS_subClassOf",
+  "label": "subClassOf",
+  "lang": "en",
   "obo_id": "RDFS:subClassOf",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/owl/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523subClassOf?lang=en"
-    }
-  }
+  "ontology_iri": "http://www.w3.org/2002/07/owl",
+  "ontology_name": "owl",
+  "short_form": "RDFS_subClassOf",
+  "synonyms": []
 }

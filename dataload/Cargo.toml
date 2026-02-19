@@ -1,0 +1,49 @@
+[workspace]
+resolver = "2"
+
+members = [
+    "ols-shared-rs",
+    "json2neo",
+    "json2solr",
+    "linker/create_manifest",
+    "linker/link",
+    "ols_to_tsv",
+]
+
+[workspace.package]
+version = "1.0.0"
+edition = "2024"
+rust-version = "1.90.0"
+
+[workspace.dependencies]
+# Shared dependencies across workspace
+clap = { version = "4.5", features = ["derive"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0", features = ["preserve_order"] }
+thiserror = "2.0"
+struson = "0.6"
+indexmap = { version = "2.7", features = ["serde"] }
+rayon = "1.10"
+
+# Parquet/Arrow for Neo4j embeddings import
+parquet = "54.1"
+arrow = { version = "54.1", features = ["ffi"] }
+
+# CSV for Neo4j output
+csv = "1.3"
+
+# Link-specific dependencies
+serde_yaml = "0.9"
+regex = "1.10"
+ureq = { version = "2.9", features = ["json"] }
+rusty-leveldb = "3.0"
+sha1 = "0.10"
+tiktoken-rs = "0.7"
+
+# Internal crate
+ols_shared = { path = "ols-shared-rs" }
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true

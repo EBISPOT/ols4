@@ -1,0 +1,285 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#A": {
+      "definitions": [
+        {
+          "ontologyId": "related-somevaluesof-hierarchical",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "A"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "A"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "related-somevaluesof-hierarchical": {
+          "ontologyId": "related-somevaluesof-hierarchical",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "A"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "A"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B": {
+      "definitions": [
+        {
+          "ontologyId": "related-somevaluesof-hierarchical",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "B"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "B"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "related-somevaluesof-hierarchical": {
+          "ontologyId": "related-somevaluesof-hierarchical",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "B"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "B"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r": {
+      "definitions": [
+        {
+          "ontologyId": "related-somevaluesof-hierarchical",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "r"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "r"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "related-somevaluesof-hierarchical": {
+          "ontologyId": "related-somevaluesof-hierarchical",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "r"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "r"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl": [
+      "related-somevaluesof-hierarchical"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "related-someValuesOf-hierarchical": [
+      "related-somevaluesof-hierarchical"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "related-somevaluesof-hierarchical": [
+      "http://purl.obolibrary.org/obo/related-someValuesOf-hierarchical_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "related-somevaluesof-hierarchical": [
+      "directAncestor",
+      "hierarchical_property",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "related-somevaluesof-hierarchical": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "hierarchicalParent",
+      "hierarchicalProperty",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "relatedTo",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "related-somevaluesof-hierarchical": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "related-somevaluesof-hierarchical": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "related-somevaluesof-hierarchical": [
+      "childRelationToParent"
+    ]
+  },
+  "ontologyIdToUriToTypes": {
+    "related-somevaluesof-hierarchical": {
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl": [
+        "ONTOLOGY"
+      ],
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#A": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#B": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/related/someValuesOf-hierarchical.owl#r": [
+        "PROPERTY"
+      ]
+    }
+  }
+}

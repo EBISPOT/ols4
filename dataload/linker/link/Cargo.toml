@@ -1,0 +1,21 @@
+[package]
+name = "ols_link"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "ols_link"
+path = "src/main.rs"
+
+[dependencies]
+clap.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+serde_yaml.workspace = true
+thiserror.workspace = true
+struson.workspace = true
+regex.workspace = true
+ureq.workspace = true
+rusty-leveldb.workspace = true
+ols_shared.workspace = true

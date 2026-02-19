@@ -1,0 +1,55 @@
+{
+  "appearsIn": [
+    "inter-ontology-a",
+    "inter-ontology-b"
+  ],
+  "curie": "inter-ontology-b:ClassB",
+  "definedBy": [
+    "inter-ontology-b"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "Class B",
+  "imported": false,
+  "iri": "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB",
+  "isDefiningOntology": true,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "Class B"
+  ],
+  "linkedEntities": {
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "inter-ontology-b",
+  "ontologyIri": "http://www.ebi.ac.uk/testcases/inter-ontology/b",
+  "ontologyPreferredPrefix": "inter-ontology-b",
+  "searchableAnnotationValues": false,
+  "shortForm": "inter-ontology-b_ClassB",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

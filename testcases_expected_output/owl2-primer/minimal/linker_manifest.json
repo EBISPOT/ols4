@@ -1,0 +1,61 @@
+{
+  "iriToDefinitions": {},
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/minimal.owl": [
+      "owl2primer-minimal"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-minimal": [
+      "owl2primer-minimal"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-minimal": [
+      "http://purl.obolibrary.org/obo/owl2primer-minimal_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-minimal": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-minimal": []
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-minimal": []
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-minimal": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-minimal": []
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-minimal": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/minimal.owl": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}

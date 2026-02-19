@@ -29,8 +29,26 @@
         "curie": "obi:0002135",
         "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
         "url": "http://purl.obolibrary.org/obo/OBI_0002135"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+        "curie": "RDFS:subClassOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subClassOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
       }
     },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "genepio",

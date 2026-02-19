@@ -1,0 +1,261 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propA": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-alldisjointobjectproperties",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "propA"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "propA"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-alldisjointobjectproperties": {
+          "ontologyId": "owl2primer-alldisjointobjectproperties",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "propA"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "propA"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propB": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-alldisjointobjectproperties",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "propB"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "propB"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-alldisjointobjectproperties": {
+          "ontologyId": "owl2primer-alldisjointobjectproperties",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "propB"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "propB"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propC": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-alldisjointobjectproperties",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "propC"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "propC"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-alldisjointobjectproperties": {
+          "ontologyId": "owl2primer-alldisjointobjectproperties",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "propC"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "propC"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl": [
+      "owl2primer-alldisjointobjectproperties"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-allDisjointObjectProperties": [
+      "owl2primer-alldisjointobjectproperties"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-alldisjointobjectproperties": [
+      "http://purl.obolibrary.org/obo/owl2primer-allDisjointObjectProperties_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-alldisjointobjectproperties": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-alldisjointobjectproperties": []
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-alldisjointobjectproperties": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#propertyDisjointWith",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-alldisjointobjectproperties": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-alldisjointobjectproperties": []
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-alldisjointobjectproperties": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl": [
+        "ONTOLOGY"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propA": [
+        "PROPERTY"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propB": [
+        "PROPERTY"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/allDisjointObjectProperties.owl#propC": [
+        "PROPERTY"
+      ]
+    }
+  }
+}

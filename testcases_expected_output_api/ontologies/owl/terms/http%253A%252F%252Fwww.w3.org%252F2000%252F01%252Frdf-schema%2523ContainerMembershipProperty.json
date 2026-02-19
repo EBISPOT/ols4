@@ -1,27 +1,27 @@
 {
-  "iri": "http://www.w3.org/2000/01/rdf-schema#ContainerMembershipProperty",
-  "lang": "en",
+  "_links": {
+    "graph": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523ContainerMembershipProperty/graph"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523ContainerMembershipProperty?lang=en"
+    }
+  },
+  "annotation": {},
   "description": [
     "The class of container membership properties, rdf:_1, rdf:_2, ..., all of which are sub-properties of 'member'."
   ],
-  "synonyms": [],
-  "annotation": {},
-  "label": "ContainerMembershipProperty",
-  "ontology_name": "owl",
-  "ontology_iri": "http://www.w3.org/2002/07/owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
   "has_children": false,
-  "is_root": true,
-  "short_form": "RDFS_ContainerMembershipProperty",
-  "obo_id": "RDFS:ContainerMembershipProperty",
+  "iri": "http://www.w3.org/2000/01/rdf-schema#ContainerMembershipProperty",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
   "is_preferred_root": false,
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523ContainerMembershipProperty?lang=en"
-    },
-    "graph": {
-      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523ContainerMembershipProperty/graph"
-    }
-  }
+  "is_root": true,
+  "label": "ContainerMembershipProperty",
+  "lang": "en",
+  "obo_id": "RDFS:ContainerMembershipProperty",
+  "ontology_iri": "http://www.w3.org/2002/07/owl",
+  "ontology_name": "owl",
+  "short_form": "RDFS_ContainerMembershipProperty",
+  "synonyms": []
 }

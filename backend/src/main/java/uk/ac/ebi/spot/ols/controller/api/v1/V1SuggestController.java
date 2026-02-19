@@ -62,7 +62,9 @@ public class V1SuggestController {
         solrQuery.set("wt", "json");
         solrQuery.setFields(LABEL.getText());
 
+        // Sort by relevance score with secondary sort by id for deterministic ordering
         solrQuery.setSort("score", SolrQuery.ORDER.desc);
+        solrQuery.addSort("id", SolrQuery.ORDER.asc);
 
         if (ontologies != null && !ontologies.isEmpty()) {
 

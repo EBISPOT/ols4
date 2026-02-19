@@ -28,6 +28,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.StringWriter;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -121,9 +122,13 @@ public class OntologyGraph implements StreamRDF {
     private void parseRDF(String url) throws IOException  {
 
         if (loadLocalFiles && !url.contains("://")) {
-            logger.debug("parseRDF: Using local file for {}", url);
-            sourceFileTimestamp = new File(url).lastModified();
-            parseRDF(url, new FileInputStream(url), null);
+            String resolvedPath = url;
+            if (basePath != null && !url.startsWith("/")) {
+                resolvedPath = basePath + "/" + url;
+            }
+            logger.debug("parseRDF: Using local file for {} (resolved: {})", url, resolvedPath);
+            sourceFileTimestamp = new File(resolvedPath).lastModified();
+            parseRDF(url, new FileInputStream(resolvedPath), null);
             return;
         }
 
@@ -156,17 +161,23 @@ public class OntologyGraph implements StreamRDF {
         } else {
             HttpEntity res = getURL(url);
             InputStream is = res.getContent();
-            String contentType = res.getContentType().getValue();
-            parseRDF(url, is, contentType);
+            var ct = res.getContentType();
+            if(ct == null) {
+                parseRDF(url, is, null);
+                return;
+            } else {
+                String contentType = res.getContentType().getValue();
+                parseRDF(url, is, contentType);
+            }
         }
     }
 
     private static HttpEntity getURL(String url) throws FileNotFoundException, IOException {
 
         RequestConfig config = RequestConfig.custom()
-                .setConnectTimeout(5000)
-                .setConnectionRequestTimeout(5000)
-                .setSocketTimeout(5000).build();
+                .setConnectTimeout(30000)
+                .setConnectionRequestTimeout(30000)
+                .setSocketTimeout(3600000).build(); 
 
         CloseableHttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
 
@@ -222,13 +233,15 @@ public class OntologyGraph implements StreamRDF {
 
 
     private boolean loadLocalFiles;
+    private String basePath;
 
     String downloadedPath;
 
 
-    OntologyGraph(Map<String, Object> config, boolean loadLocalFiles, boolean noDates, String downloadedPath) throws IOException {
+    OntologyGraph(Map<String, Object> config, boolean loadLocalFiles, String basePath, boolean noDates, String downloadedPath) throws IOException {
 
         this.loadLocalFiles = loadLocalFiles;
+        this.basePath = basePath;
         this.downloadedPath = downloadedPath;
 
         long startTime = System.nanoTime();
@@ -599,21 +612,57 @@ public class OntologyGraph implements StreamRDF {
             writer.name(predicate);
             if (values.size() == 1 && values.get(0) instanceof PropertyValueList) {
                 List<PropertyValue> propertyValues = ((PropertyValueList) values.get(0)).getPropertyValues();
-                writer.beginArray();
+                // Serialize each value to JSON, sort, then write
+                List<String> serialized = new ArrayList<>();
                 for (PropertyValue propertyValue : propertyValues) {
-                    writePropertyValue(writer, propertyValue, null);
+                    serialized.add(serializePropertyValue(propertyValue));
+                }
+                Collections.sort(serialized);
+                writer.beginArray();
+                for (String json : serialized) {
+                    writer.jsonValue(json);
                 }
                 writer.endArray();
             } else if(values.size() == 1) {
                 writePropertyValue(writer, values.get(0), null);
             } else {
-                writer.beginArray();
+                // Serialize each value to JSON, sort, then write
+                List<String> serialized = new ArrayList<>();
                 for (PropertyValue value : values) {
-                    writePropertyValue(writer, value, null);
+                    serialized.add(serializePropertyValue(value));
+                }
+                Collections.sort(serialized);
+                writer.beginArray();
+                for (String json : serialized) {
+                    writer.jsonValue(json);
                 }
                 writer.endArray();
             }
         }
+    }
+
+    /**
+     * Serialize a PropertyValue to a JSON string.
+     */
+    private String serializePropertyValue(PropertyValue value) throws Throwable {
+        StringWriter sw = new StringWriter();
+        JsonWriter jw = new JsonWriter(sw);
+        writePropertyValue(jw, value, null);
+        jw.close();
+        return sw.toString();
+    }
+
+    /**
+     * Serialize an axiom (PropertySet) to a JSON string.
+     */
+    private String serializeAxiom(PropertySet axiom) throws Throwable {
+        StringWriter sw = new StringWriter();
+        JsonWriter jw = new JsonWriter(sw);
+        jw.beginObject();
+        writeProperties(jw, axiom, null);
+        jw.endObject();
+        jw.close();
+        return sw.toString();
     }
 
 
@@ -630,10 +679,14 @@ public class OntologyGraph implements StreamRDF {
             writeValue(writer, value);
             writer.name("axioms");
             writer.beginArray();
-            for(PropertySet axiom : value.axioms) {
-                writer.beginObject();
-                writeProperties(writer, axiom, null);
-                writer.endObject();
+            // Serialize axioms to JSON, sort, then write for deterministic output
+            List<String> serializedAxioms = new ArrayList<>();
+            for (PropertySet axiom : value.axioms) {
+                serializedAxioms.add(serializeAxiom(axiom));
+            }
+            Collections.sort(serializedAxioms);
+            for (String axiomJson : serializedAxioms) {
+                writer.jsonValue(axiomJson);
             }
             writer.endArray();
             writer.endObject();
@@ -802,7 +855,7 @@ public class OntologyGraph implements StreamRDF {
         String subjId = nodeIdFromJenaNode(triple.getSubject());
         OntologyNode subjNode = getOrCreateNode(triple.getSubject());
 
-        String lang = triple.getObject().getLiteralLanguage();
+        String lang = ValidateLanguage.validateLanguage( triple.getObject().getLiteralLanguage() );
         if(lang != null && !lang.equals("")) {
             languages.add(lang);
         }
@@ -960,7 +1013,6 @@ public class OntologyGraph implements StreamRDF {
         }
         throw new RuntimeException("unknown node type");
     }
-
 
 
     private static void writeGenericValue(JsonWriter writer, Object val) throws IOException {

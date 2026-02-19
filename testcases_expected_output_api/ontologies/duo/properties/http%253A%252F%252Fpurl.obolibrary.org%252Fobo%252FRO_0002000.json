@@ -1,10 +1,9 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/RO_0002000",
-  "lang": "en",
-  "description": [
-    "a relation between a 2D immaterial entity (the boundary) and a material entity, in which the boundary delimits the material entity"
-  ],
-  "synonyms": [],
+  "_links": {
+    "self": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002000?lang=en"
+    }
+  },
   "annotation": {
     "alternative label": [
       "2D_boundary_of",
@@ -23,19 +22,20 @@
       "http://purl.obolibrary.org/obo/RO_0001901"
     ]
   },
+  "description": [
+    "a relation between a 2D immaterial entity (the boundary) and a material entity, in which the boundary delimits the material entity"
+  ],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/RO_0002000",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": true,
   "label": "2D boundary of",
+  "lang": "en",
+  "obo_id": "RO:0002000",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontology_name": "duo",
   "ontology_prefix": "DUO",
-  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": false,
-  "is_root": true,
   "short_form": "RO_0002000",
-  "obo_id": "RO:0002000",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002000?lang=en"
-    }
-  }
+  "synonyms": []
 }

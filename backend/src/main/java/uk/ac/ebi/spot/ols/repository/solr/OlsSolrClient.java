@@ -159,13 +159,20 @@ public class OlsSolrClient {
     }
 
     private JsonElement getOlsEntityFromSolrResult(SolrDocument doc) {
-        return JsonParser.parseString((String) doc.get("_json"));
+        JsonElement json = JsonParser.parseString((String) doc.get("_json"));
+        
+        // Add score if available (for vector search)
+        if (doc.get("score") != null && json.isJsonObject()) {
+            json.getAsJsonObject().addProperty("_score", ((Number) doc.get("score")).floatValue());
+        }
+        
+        return json;
     }
 
     public QueryResponse runSolrQuery(OlsSolrQuery query, Pageable pageable) {
-	    return runSolrQuery(query.constructQuery(), pageable);
+        return runSolrQuery(query.constructQuery(), pageable);
     }
-
+    
     public QueryResponse runSolrQuery(SolrQuery query, Pageable pageable) {
 
         if(pageable != null) {

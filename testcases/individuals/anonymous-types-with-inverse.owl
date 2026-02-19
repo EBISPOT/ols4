@@ -57,7 +57,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation"/>
-                <owl:hasValue rdf:resource="http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a"/>
+                <owl:hasValue rdf:resource="http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#individual_a"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -75,9 +75,9 @@
     
 
 
-    <!-- http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a -->
+    <!-- http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#individual_a -->
 
-    <owl:NamedIndividual rdf:about="http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#a">
+    <owl:NamedIndividual rdf:about="http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#individual_a">
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#inverseRelation"/>

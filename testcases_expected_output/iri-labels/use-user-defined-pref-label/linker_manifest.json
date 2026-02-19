@@ -1,0 +1,562 @@
+{
+  "iriToDefinitions": {
+    "http://exmpl.org/xmpl/Preferred_name": {
+      "definitions": [
+        {
+          "ontologyId": "xmpl",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "XMPL_Preferred_name"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "XMPL_Preferred_name"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [
+        {
+          "ontologyId": "xmpl",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "XMPL_Preferred_name"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "XMPL_Preferred_name"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingOntologyIds": [
+        "xmpl"
+      ],
+      "ontologyIdToDefinitions": {
+        "xmpl": {
+          "ontologyId": "xmpl",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "XMPL_Preferred_name"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "XMPL_Preferred_name"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://exmpl.org/xmpl/Synonym": {
+      "definitions": [
+        {
+          "ontologyId": "xmpl",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "XMPL_Synonym"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "XMPL:Synonym"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [
+        {
+          "ontologyId": "xmpl",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "XMPL_Synonym"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "XMPL:Synonym"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingOntologyIds": [
+        "xmpl"
+      ],
+      "ontologyIdToDefinitions": {
+        "xmpl": {
+          "ontologyId": "xmpl",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "XMPL_Synonym"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "XMPL:Synonym"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://exmpl.org/xmpl/XMPL000001": {
+      "definitions": [
+        {
+          "ontologyId": "xmpl",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "parent class pref label",
+              "lang": "en"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "XMPL:XMPL000001"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [
+        {
+          "ontologyId": "xmpl",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "parent class pref label",
+              "lang": "en"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "XMPL:XMPL000001"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingOntologyIds": [
+        "xmpl"
+      ],
+      "ontologyIdToDefinitions": {
+        "xmpl": {
+          "ontologyId": "xmpl",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "parent class pref label",
+              "lang": "en"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "XMPL:XMPL000001"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://exmpl.org/xmpl/XMPL000002": {
+      "definitions": [
+        {
+          "ontologyId": "xmpl",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "1st children class pref label",
+              "lang": "en"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "XMPL:XMPL000002"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [
+        {
+          "ontologyId": "xmpl",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "1st children class pref label",
+              "lang": "en"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "XMPL:XMPL000002"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingOntologyIds": [
+        "xmpl"
+      ],
+      "ontologyIdToDefinitions": {
+        "xmpl": {
+          "ontologyId": "xmpl",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "1st children class pref label",
+              "lang": "en"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "XMPL:XMPL000002"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://exmpl.org/xmpl/XMPL000003": {
+      "definitions": [
+        {
+          "ontologyId": "xmpl",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "2nd children class pref label",
+              "lang": "en"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "XMPL:XMPL000003"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [
+        {
+          "ontologyId": "xmpl",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "2nd children class pref label",
+              "lang": "en"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "XMPL:XMPL000003"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingOntologyIds": [
+        "xmpl"
+      ],
+      "ontologyIdToDefinitions": {
+        "xmpl": {
+          "ontologyId": "xmpl",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "2nd children class pref label",
+              "lang": "en"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "XMPL:XMPL000003"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://exmpl.org/xmpl/xmpl.owl": [
+      "xmpl"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "XMPL": [
+      "xmpl"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "xmpl": [
+      "http://exmpl.org/xmpl/",
+      "http://purl.obolibrary.org/obo/XMPL_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "xmpl": [
+      "baseUri",
+      "description",
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
+      "isObsolete",
+      "label_property",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "reasoner",
+      "searchableAnnotationValues",
+      "synonym_property",
+      "title",
+      "type",
+      "uri"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "xmpl": [
+      "curie",
+      "directAncestor",
+      "directParent",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "hierarchicalParent",
+      "hierarchicalProperty",
+      "http://exmpl.org/xmpl/Other_preferred_name",
+      "http://exmpl.org/xmpl/Preferred_name",
+      "http://exmpl.org/xmpl/Synonym",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "synonym",
+      "synonymProperty",
+      "type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "xmpl": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#range",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "xmpl": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "xmpl": []
+  },
+  "ontologyIdToUriToTypes": {
+    "xmpl": {
+      "http://exmpl.org/xmpl/Preferred_name": [
+        "PROPERTY"
+      ],
+      "http://exmpl.org/xmpl/Synonym": [
+        "PROPERTY"
+      ],
+      "http://exmpl.org/xmpl/XMPL000001": [
+        "CLASS"
+      ],
+      "http://exmpl.org/xmpl/XMPL000002": [
+        "CLASS"
+      ],
+      "http://exmpl.org/xmpl/XMPL000003": [
+        "CLASS"
+      ],
+      "http://exmpl.org/xmpl/xmpl.owl": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}

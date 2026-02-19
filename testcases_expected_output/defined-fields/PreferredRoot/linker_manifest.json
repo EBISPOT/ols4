@@ -1,0 +1,144 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/defined-fields/PreferredRoot.owl#PreferredRoot_0001": {
+      "definitions": [
+        {
+          "ontologyId": "preferred-root",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "liver disease"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "PreferredRoot:0001"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "preferred-root": {
+          "ontologyId": "preferred-root",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "liver disease"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "PreferredRoot:0001"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/class.owl": [
+      "preferred-root"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "Preferred-Root": [
+      "preferred-root"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "preferred-root": [
+      "http://purl.obolibrary.org/obo/Preferred-Root_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "preferred-root": [
+      "directAncestor",
+      "http://purl.obolibrary.org/obo/IAO_0000700",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "preferredRoot",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "preferred-root": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "preferred-root": []
+  },
+  "ontologyIdToIndividualProperties": {
+    "preferred-root": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "preferred-root": []
+  },
+  "ontologyIdToUriToTypes": {
+    "preferred-root": {
+      "http://www.ebi.ac.uk/testcases/defined-fields/PreferredRoot.owl#PreferredRoot_0001": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/class.owl": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}

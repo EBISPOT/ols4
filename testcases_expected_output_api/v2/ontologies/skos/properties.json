@@ -1,161 +1,7 @@
 [
   {
     "appearsIn": [
-      "gitissue502",
-      "skos"
-    ],
-    "curie": "SKOS:closeMatch",
-    "definedBy": [
-      "skos"
-    ],
-    "directAncestor": [
-      "http://www.w3.org/2004/02/skos/core#mappingRelation",
-      "http://www.w3.org/2004/02/skos/core#semanticRelation"
-    ],
-    "directParent": [
-      "http://www.w3.org/2004/02/skos/core#mappingRelation"
-    ],
-    "hasDirectChildren": true,
-    "hasDirectParents": true,
-    "hasHierarchicalChildren": false,
-    "hasHierarchicalParents": false,
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
-      "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "http://www.w3.org/2002/07/owl#SymmetricProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2004/02/skos/core",
-    "http://www.w3.org/2000/01/rdf-schema#label": "has close match",
-    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.w3.org/2004/02/skos/core#mappingRelation",
-    "http://www.w3.org/2004/02/skos/core#definition": "skos:closeMatch is used to link two concepts that are sufficiently similar that they can be used interchangeably in some information retrieval applications. In order to avoid the possibility of \"compound errors\" when combining mappings across more than two concept schemes, skos:closeMatch is not declared to be a transitive property.",
-    "imported": false,
-    "iri": "http://www.w3.org/2004/02/skos/core#closeMatch",
-    "isDefiningOntology": true,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": [
-      "has close match"
-    ],
-    "linkedEntities": {
-      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "RDFS:isDefinedBy",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "isDefinedBy"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "RDFS:subPropertyOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subPropertyOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2004/02/skos/core#definition": {
-        "curie": "SKOS:definition",
-        "definedBy": [
-          "skos"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "definition"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "annotationProperty",
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2004/02/skos/core#mappingRelation": {
-        "curie": "SKOS:mappingRelation",
-        "definedBy": [
-          "skos"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "is in mapping relation with"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "entity",
-          "objectProperty",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2004/02/skos/core#semanticRelation": {
-        "curie": "SKOS:semanticRelation",
-        "definedBy": [
-          "skos"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "is in semantic relation with"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "entity",
-          "objectProperty",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf",
-      "http://www.w3.org/2004/02/skos/core#definition",
-      "http://www.w3.org/2004/02/skos/core#mappingRelation",
-      "http://www.w3.org/2004/02/skos/core#semanticRelation"
-    ],
-    "numDescendants": 1.0,
-    "numHierarchicalDescendants": 0.0,
-    "ontologyId": "skos",
-    "ontologyIri": "http://www.w3.org/2004/02/skos/core",
-    "searchableAnnotationValues": [
-      "skos:closeMatch is used to link two concepts that are sufficiently similar that they can be used interchangeably in some information retrieval applications. In order to avoid the possibility of \"compound errors\" when combining mappings across more than two concept schemes, skos:closeMatch is not declared to be a transitive property.",
-      false
-    ],
-    "shortForm": "SKOS_closeMatch",
-    "type": [
-      "entity",
-      "objectProperty",
-      "property"
-    ]
-  },
-  {
-    "appearsIn": [
+      "duo",
       "gitissue502",
       "skos"
     ],
@@ -208,7 +54,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -223,7 +69,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -238,7 +84,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -351,6 +197,161 @@
   },
   {
     "appearsIn": [
+      "gitissue502",
+      "skos"
+    ],
+    "curie": "SKOS:closeMatch",
+    "definedBy": [
+      "skos"
+    ],
+    "directAncestor": [
+      "http://www.w3.org/2004/02/skos/core#mappingRelation",
+      "http://www.w3.org/2004/02/skos/core#semanticRelation"
+    ],
+    "directParent": [
+      "http://www.w3.org/2004/02/skos/core#mappingRelation"
+    ],
+    "hasDirectChildren": true,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+      "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "http://www.w3.org/2002/07/owl#SymmetricProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2004/02/skos/core",
+    "http://www.w3.org/2000/01/rdf-schema#label": "has close match",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.w3.org/2004/02/skos/core#mappingRelation",
+    "http://www.w3.org/2004/02/skos/core#definition": "skos:closeMatch is used to link two concepts that are sufficiently similar that they can be used interchangeably in some information retrieval applications. In order to avoid the possibility of \"compound errors\" when combining mappings across more than two concept schemes, skos:closeMatch is not declared to be a transitive property.",
+    "imported": false,
+    "iri": "http://www.w3.org/2004/02/skos/core#closeMatch",
+    "isDefiningOntology": true,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "has close match"
+    ],
+    "linkedEntities": {
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
+        "curie": "RDFS:isDefinedBy",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "isDefinedBy"
+        ],
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+        "curie": "RDFS:subPropertyOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subPropertyOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2004/02/skos/core#definition": {
+        "curie": "SKOS:definition",
+        "definedBy": [
+          "skos"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2004/02/skos/core#mappingRelation": {
+        "curie": "SKOS:mappingRelation",
+        "definedBy": [
+          "skos"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "is in mapping relation with"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2004/02/skos/core#semanticRelation": {
+        "curie": "SKOS:semanticRelation",
+        "definedBy": [
+          "skos"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "is in semantic relation with"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf",
+      "http://www.w3.org/2004/02/skos/core#definition",
+      "http://www.w3.org/2004/02/skos/core#mappingRelation",
+      "http://www.w3.org/2004/02/skos/core#semanticRelation"
+    ],
+    "numDescendants": 1.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "skos",
+    "ontologyIri": "http://www.w3.org/2004/02/skos/core",
+    "searchableAnnotationValues": [
+      "skos:closeMatch is used to link two concepts that are sufficiently similar that they can be used interchangeably in some information retrieval applications. In order to avoid the possibility of \"compound errors\" when combining mappings across more than two concept schemes, skos:closeMatch is not declared to be a transitive property.",
+      false
+    ],
+    "shortForm": "SKOS_closeMatch",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
       "skos"
     ],
     "curie": "SKOS:altLabel",
@@ -397,7 +398,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -412,7 +413,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -427,7 +428,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -557,7 +558,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -572,7 +573,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -768,7 +769,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -783,7 +784,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -798,7 +799,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -974,7 +975,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -989,7 +990,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -1143,7 +1144,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -1158,7 +1159,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -1278,7 +1279,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -1293,7 +1294,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -1396,7 +1397,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -1411,7 +1412,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -1531,7 +1532,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -1546,7 +1547,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -1677,7 +1678,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -1692,7 +1693,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -1848,7 +1849,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -1863,7 +1864,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -1878,7 +1879,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -1982,7 +1983,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -1997,7 +1998,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -2112,7 +2113,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -2127,7 +2128,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -2269,7 +2270,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -2284,7 +2285,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -2299,7 +2300,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -2436,7 +2437,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -2451,7 +2452,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -2588,7 +2589,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -2618,7 +2619,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -2633,7 +2634,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -2762,7 +2763,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -2777,7 +2778,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -2973,7 +2974,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -2988,7 +2989,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -3003,7 +3004,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -3179,7 +3180,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -3194,7 +3195,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -3342,7 +3343,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -3357,7 +3358,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -3456,7 +3457,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -3471,7 +3472,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -3581,7 +3582,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -3596,7 +3597,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -3611,7 +3612,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -3721,7 +3722,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -3736,7 +3737,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -3751,7 +3752,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -3879,7 +3880,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -3894,7 +3895,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -4048,7 +4049,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -4063,7 +4064,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -4194,7 +4195,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -4209,7 +4210,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"
@@ -4365,7 +4366,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -4380,7 +4381,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 4.0,
         "type": [
           "entity",
           "property"

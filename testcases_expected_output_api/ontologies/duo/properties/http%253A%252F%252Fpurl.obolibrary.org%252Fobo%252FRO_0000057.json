@@ -1,10 +1,15 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/RO_0000057",
-  "lang": "en",
-  "description": [
-    "a relation between a process and a continuant, in which the continuant is somehow involved in the process"
-  ],
-  "synonyms": [],
+  "_links": {
+    "children": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000057/children"
+    },
+    "descendants": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000057/descendants"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000057?lang=en"
+    }
+  },
   "annotation": {
     "alternative label": [
       "has_participant"
@@ -24,25 +29,20 @@
       "http://www.obofoundry.org/ro/#OBO_REL:has_participant"
     ]
   },
+  "description": [
+    "a relation between a process and a continuant, in which the continuant is somehow involved in the process"
+  ],
+  "has_children": true,
+  "iri": "http://purl.obolibrary.org/obo/RO_0000057",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": true,
   "label": "has participant",
+  "lang": "en",
+  "obo_id": "RO:0000057",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontology_name": "duo",
   "ontology_prefix": "DUO",
-  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": true,
-  "is_root": true,
   "short_form": "RO_0000057",
-  "obo_id": "RO:0000057",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000057?lang=en"
-    },
-    "children": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000057/children"
-    },
-    "descendants": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000057/descendants"
-    }
-  }
+  "synonyms": []
 }

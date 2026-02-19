@@ -1,10 +1,9 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/OMO_0002000",
-  "lang": "en",
-  "description": [
-    "Links an annotation property to a SPARQL CONSTRUCT query which is meant to provide semantics for a shortcut relation."
-  ],
-  "synonyms": [],
+  "_links": {
+    "self": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0002000?lang=en"
+    }
+  },
   "annotation": {
     "contributor": [
       "https://orcid.org/0000-0002-7356-1779",
@@ -17,19 +16,20 @@
       "https://github.com/ontodev/robot/issues/963"
     ]
   },
+  "description": [
+    "Links an annotation property to a SPARQL CONSTRUCT query which is meant to provide semantics for a shortcut relation."
+  ],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/OMO_0002000",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": true,
   "label": "defined by construct",
+  "lang": "en",
+  "obo_id": "OMO:0002000",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontology_name": "duo",
   "ontology_prefix": "DUO",
-  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": false,
-  "is_root": true,
   "short_form": "OMO_0002000",
-  "obo_id": "OMO:0002000",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0002000?lang=en"
-    }
-  }
+  "synonyms": []
 }

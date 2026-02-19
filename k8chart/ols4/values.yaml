@@ -1,6 +1,15 @@
 
 imageTag: dev
 
-neo4jTarballUrl: http://ols4-dataserver/neo4j.tgz
-solrTarballUrl: http://ols4-dataserver/solr.tgz
-
+embeddingService:
+  image:
+    repository: ols4-embed
+    pullPolicy: IfNotPresent
+    tag: ""
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 4Gi
+    requests:
+      cpu: 500m
+      memory: 2Gi

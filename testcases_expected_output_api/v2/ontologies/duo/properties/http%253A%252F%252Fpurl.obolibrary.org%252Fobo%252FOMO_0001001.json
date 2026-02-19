@@ -1,0 +1,103 @@
+{
+  "appearsIn": [
+    "duo"
+  ],
+  "curie": "OMO:0001001",
+  "definition": [
+    "This is an annotation used on an object property to indicate a logical characterstic beyond what is possible in OWL."
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "hasDirectChildren": true,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://purl.obolibrary.org/obo/IAO_0000115": "This is an annotation used on an object property to indicate a logical characterstic beyond what is possible in OWL.",
+  "http://purl.obolibrary.org/obo/IAO_0000119": "OBO Operations call",
+  "http://www.geneontology.org/formats/oboInOwl#created_by": "http://orcid.org/0000-0001-5208-3432",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+  "http://www.w3.org/2000/01/rdf-schema#label": "logical characteristic of object property",
+  "imported": true,
+  "iri": "http://purl.obolibrary.org/obo/OMO_0001001",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "logical characteristic of object property"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000119": {
+      "curie": "IAO:0000119",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition source"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#created_by": {
+      "curie": "created_by",
+      "hasLocalDefinition": true,
+      "label": [
+        "created_by"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000119",
+    "http://www.geneontology.org/formats/oboInOwl#created_by",
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 1.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    true
+  ],
+  "shortForm": "OMO_0001001",
+  "type": [
+    "annotationProperty",
+    "entity",
+    "property"
+  ]
+}

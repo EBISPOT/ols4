@@ -55,13 +55,13 @@
           "type": [
             "literal"
           ],
-          "value": "1"
+          "value": "0"
         },
         {
           "type": [
             "literal"
           ],
-          "value": "4"
+          "value": "1"
         },
         {
           "type": [
@@ -73,7 +73,7 @@
           "type": [
             "literal"
           ],
-          "value": "0"
+          "value": "4"
         }
       ],
       "classes": [
@@ -251,8 +251,8 @@
                 "value": "b1"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2": {
@@ -273,8 +273,8 @@
                 "value": "b2"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3": {
@@ -295,8 +295,8 @@
                 "value": "b3"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             }
           },
@@ -312,8 +312,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -357,21 +357,6 @@
             ],
             "value": "related-oneOf"
           },
-          "relatedFrom": [
-            {
-              "property": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-              "value": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-              "http://www.w3.org/2002/07/owl#oneOf": [
-                "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1",
-                "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2",
-                "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3"
-              ]
-            }
-          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -383,85 +368,14 @@
           "appearsIn": [
             "related-oneof"
           ],
-          "linkedEntities": {
-            "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "b2"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "b2"
-              },
-              "type": [
-                "individual",
-                "entity"
-              ]
-            },
-            "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "b3"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "b3"
-              },
-              "type": [
-                "individual",
-                "entity"
-              ]
-            },
-            "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "A"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "A"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            }
-          },
-          "linksTo": [
-            "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2",
-            "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3",
-            "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A"
-          ]
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -505,21 +419,6 @@
             ],
             "value": "related-oneOf"
           },
-          "relatedFrom": [
-            {
-              "property": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-              "value": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-              "http://www.w3.org/2002/07/owl#oneOf": [
-                "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1",
-                "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2",
-                "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3"
-              ]
-            }
-          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -531,85 +430,14 @@
           "appearsIn": [
             "related-oneof"
           ],
-          "linkedEntities": {
-            "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "b1"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "b1"
-              },
-              "type": [
-                "individual",
-                "entity"
-              ]
-            },
-            "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "b3"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "b3"
-              },
-              "type": [
-                "individual",
-                "entity"
-              ]
-            },
-            "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "A"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "A"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            }
-          },
-          "linksTo": [
-            "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1",
-            "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3",
-            "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A"
-          ]
+          "linkedEntities": {},
+          "linksTo": []
         },
         {
           "iri": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -653,21 +481,6 @@
             ],
             "value": "related-oneOf"
           },
-          "relatedFrom": [
-            {
-              "property": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-              "value": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A",
-              "type": [
-                "related"
-              ],
-              "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-              "http://www.w3.org/2002/07/owl#oneOf": [
-                "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1",
-                "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2",
-                "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b3"
-              ]
-            }
-          ],
           "searchableAnnotationValues": false,
           "shortForm": {
             "type": [
@@ -679,79 +492,8 @@
           "appearsIn": [
             "related-oneof"
           ],
-          "linkedEntities": {
-            "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "b1"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "b1"
-              },
-              "type": [
-                "individual",
-                "entity"
-              ]
-            },
-            "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "b2"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "b2"
-              },
-              "type": [
-                "individual",
-                "entity"
-              ]
-            },
-            "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A": {
-              "numAppearsIn": 1,
-              "hasLocalDefinition": true,
-              "label": [
-                {
-                  "type": [
-                    "literal"
-                  ],
-                  "value": "A"
-                }
-              ],
-              "curie": {
-                "type": [
-                  "literal"
-                ],
-                "value": "A"
-              },
-              "type": [
-                "class",
-                "entity"
-              ]
-            }
-          },
-          "linksTo": [
-            "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b1",
-            "http://www.ebi.ac.uk/testcases/related/oneOf.owl#b2",
-            "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A"
-          ]
+          "linkedEntities": {},
+          "linksTo": []
         }
       ],
       "linkedEntities": {},

@@ -1,0 +1,17 @@
+[workspace]
+resolver = "2"
+
+members = [
+    "ols_semsim",
+]
+
+[workspace.package]
+version = "1.0.0"
+edition = "2024"
+rust-version = "1.90.0"
+
+[workspace.dependencies]
+clap = { version = "4.5", features = ["derive"] }
+anyhow = "1.0"
+rayon = "1.10"
+polars = { version = "0.51", features = ["lazy", "parquet", "dtype-full"] }

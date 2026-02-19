@@ -55,13 +55,13 @@
           "type": [
             "literal"
           ],
-          "value": "1"
+          "value": "0"
         },
         {
           "type": [
             "literal"
           ],
-          "value": "4"
+          "value": "1"
         },
         {
           "type": [
@@ -73,7 +73,7 @@
           "type": [
             "literal"
           ],
-          "value": "0"
+          "value": "4"
         }
       ],
       "classes": [
@@ -165,8 +165,8 @@
                 "value": "Bill"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf#John": {
@@ -187,8 +187,8 @@
                 "value": "John"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             },
             "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf#Mary": {
@@ -209,8 +209,8 @@
                 "value": "Mary"
               },
               "type": [
-                "individual",
-                "entity"
+                "entity",
+                "individual"
               ]
             }
           },
@@ -226,8 +226,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf#Bill",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -288,8 +288,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf#John",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [
@@ -350,8 +350,8 @@
         {
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/enumeration-of-individuals.rdf#Mary",
           "type": [
-            "individual",
-            "entity"
+            "entity",
+            "individual"
           ],
           "curie": {
             "type": [

@@ -1,34 +1,34 @@
 {
-  "iri": "http://www.w3.org/2004/02/skos/core#narrowMatch",
-  "lang": "en",
-  "description": [],
-  "synonyms": [],
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrowMatch/ancestors"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrowMatch/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrowMatch/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrowMatch?lang=en"
+    }
+  },
   "annotation": {
     "definition": [
       "skos:narrowMatch is used to state a hierarchical mapping link between two conceptual resources in different concept schemes."
     ]
   },
-  "label": "has narrower match",
-  "ontology_name": "skos",
-  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
+  "description": [],
   "has_children": false,
+  "iri": "http://www.w3.org/2004/02/skos/core#narrowMatch",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
   "is_root": false,
-  "short_form": "SKOS_narrowMatch",
+  "label": "has narrower match",
+  "lang": "en",
   "obo_id": "SKOS:narrowMatch",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrowMatch?lang=en"
-    },
-    "parents": {
-      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrowMatch/parents"
-    },
-    "ancestors": {
-      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrowMatch/ancestors"
-    },
-    "jstree": {
-      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523narrowMatch/jstree"
-    }
-  }
+  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+  "ontology_name": "skos",
+  "short_form": "SKOS_narrowMatch",
+  "synonyms": []
 }

@@ -1,10 +1,18 @@
 {
-  "iri": "http://purl.obolibrary.org/obo/RO_0000080",
-  "lang": "en",
-  "description": [
-    "a relation between a quality and an independent continuant (the bearer), in which the quality specifically depends on the bearer for its existence"
-  ],
-  "synonyms": [],
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000080/ancestors"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000080/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000080/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000080?lang=en"
+    }
+  },
   "annotation": {
     "alternative label": [
       "is quality of",
@@ -17,28 +25,20 @@
       "this red color is a quality of this apple"
     ]
   },
+  "description": [
+    "a relation between a quality and an independent continuant (the bearer), in which the quality specifically depends on the bearer for its existence"
+  ],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/RO_0000080",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": false,
   "label": "quality of",
+  "lang": "en",
+  "obo_id": "RO:0000080",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontology_name": "duo",
   "ontology_prefix": "DUO",
-  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
-  "is_obsolete": false,
-  "is_defining_ontology": false,
-  "has_children": false,
-  "is_root": false,
   "short_form": "RO_0000080",
-  "obo_id": "RO:0000080",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000080?lang=en"
-    },
-    "parents": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000080/parents"
-    },
-    "ancestors": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000080/ancestors"
-    },
-    "jstree": {
-      "href": "http://localhost:8080/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000080/jstree"
-    }
-  }
+  "synonyms": []
 }

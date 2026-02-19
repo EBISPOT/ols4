@@ -55,6 +55,12 @@
           "type": [
             "literal"
           ],
+          "value": "0"
+        },
+        {
+          "type": [
+            "literal"
+          ],
           "value": "1"
         },
         {
@@ -62,12 +68,6 @@
             "literal"
           ],
           "value": "2"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
         }
       ],
       "classes": [
@@ -178,8 +178,8 @@
               },
               "type": [
                 "dataProperty",
-                "property",
-                "entity"
+                "entity",
+                "property"
               ]
             }
           },
@@ -193,8 +193,8 @@
           "iri": "http://www.ebi.ac.uk/testcases/owl2primer/class-expression-based-on-datatype-restriction.rdf#hasAge",
           "type": [
             "dataProperty",
-            "property",
-            "entity"
+            "entity",
+            "property"
           ],
           "curie": {
             "type": [

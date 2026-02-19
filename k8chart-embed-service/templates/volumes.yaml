@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Release.Name }}-pv
+  finalizers:
+  - kubernetes.io/pv-protection
+spec:
+  accessModes: ['ReadWriteMany']
+  storageClassName: {{ .Values.modelsVolume.storageClassName }}
+  volumeMode: Filesystem
+  mountOptions: ['nfsvers=3']
+  nfs:
+    server: {{ .Values.modelsVolume.server }}
+    path: {{ .Values.modelsVolume.path }}
+  capacity:
+    storage: 2Ti
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Release.Name }}-pvc
+spec:
+  storageClassName: {{ .Values.modelsVolume.storageClassName }}
+  volumeName: {{ .Release.Name }}-pv
+  accessModes: ['ReadWriteMany']
+  resources:
+    requests:
+      storage: {{ .Values.modelsVolume.storageSize }}

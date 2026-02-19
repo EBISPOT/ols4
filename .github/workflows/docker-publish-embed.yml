@@ -1,0 +1,56 @@
+name: Publish Docker Image (Embed)
+
+on:
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  build-and-push-embed:
+    runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'EBISPOT' }}
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/ebispot/ols4-embed
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix={{branch}}-
+
+      - name: Build and push ols4 embed Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./dataload/embeddings
+          file: ./dataload/embeddings/Dockerfile
+          platforms: linux/amd64
+          push: true
+          build-args: ""
+          tags: |
+            ghcr.io/ebispot/ols4-embed:${{ github.sha }}
+            ghcr.io/ebispot/ols4-embed:${{ github.ref_name }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

@@ -47,6 +47,7 @@ jobs:
       matrix:
         image:
           - ols4-dataload
+          - ols4-embed
           - ols4-backend
           - ols4-frontend
 

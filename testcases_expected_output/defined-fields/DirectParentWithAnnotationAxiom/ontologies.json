@@ -13,12 +13,7 @@
       "imported": false,
       "isObsolete": false,
       "language": [
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "en"
-        }
+        {"type":["literal"],"value":"en"}
       ],
       "numDescendants": 0,
       "numHierarchicalDescendants": 0,
@@ -48,30 +43,10 @@
       },
       "searchableAnnotationValues": [
         false,
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "3"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "5"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "0"
-        },
-        {
-          "type": [
-            "literal"
-          ],
-          "value": "2"
-        }
+        {"type":["literal"],"value":"0"},
+        {"type":["literal"],"value":"2"},
+        {"type":["literal"],"value":"3"},
+        {"type":["literal"],"value":"5"}
       ],
       "classes": [
         {
@@ -87,12 +62,7 @@
             "value": "MONDO:0002259"
           },
           "definition": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "A non-neoplastic or neoplastic disorder that affects the testis or the ovary."
-            }
+            {"type":["literal"],"value":"A non-neoplastic or neoplastic disorder that affects the testis or the ovary."}
           ],
           "definitionProperty": {
             "type": [
@@ -106,30 +76,7 @@
           ],
           "directParent": [
             "http://purl.obolibrary.org/obo/MONDO_0005039",
-            {
-              "type": [
-                "reification"
-              ],
-              "value": "http://purl.obolibrary.org/obo/MONDO_0005151",
-              "axioms": [
-                {
-                  "http://www.geneontology.org/formats/oboInOwl#source": [
-                    {
-                      "type": [
-                        "literal"
-                      ],
-                      "value": "DOID:2277"
-                    },
-                    {
-                      "type": [
-                        "literal"
-                      ],
-                      "value": "MESH:D006058"
-                    }
-                  ]
-                }
-              ]
-            }
+            {"type":["reification"],"value":"http://purl.obolibrary.org/obo/MONDO_0005151","axioms":[{"http://www.geneontology.org/formats/oboInOwl#source":[{"type":["literal"],"value":"DOID:2277"},{"type":["literal"],"value":"MESH:D006058"}]}]}
           ],
           "hasDirectChildren": false,
           "hasDirectParents": true,
@@ -141,30 +88,7 @@
           ],
           "hierarchicalParent": [
             "http://purl.obolibrary.org/obo/MONDO_0005039",
-            {
-              "type": [
-                "reification"
-              ],
-              "value": "http://purl.obolibrary.org/obo/MONDO_0005151",
-              "axioms": [
-                {
-                  "http://www.geneontology.org/formats/oboInOwl#source": [
-                    {
-                      "type": [
-                        "literal"
-                      ],
-                      "value": "DOID:2277"
-                    },
-                    {
-                      "type": [
-                        "literal"
-                      ],
-                      "value": "MESH:D006058"
-                    }
-                  ]
-                }
-              ]
-            }
+            {"type":["reification"],"value":"http://purl.obolibrary.org/obo/MONDO_0005151","axioms":[{"http://www.geneontology.org/formats/oboInOwl#source":[{"type":["literal"],"value":"DOID:2277"},{"type":["literal"],"value":"MESH:D006058"}]}]}
           ],
           "hierarchicalProperty": {
             "type": [
@@ -187,41 +111,13 @@
           },
           "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             "http://purl.obolibrary.org/obo/MONDO_0005039",
-            {
-              "type": [
-                "reification"
-              ],
-              "value": "http://purl.obolibrary.org/obo/MONDO_0005151",
-              "axioms": [
-                {
-                  "http://www.geneontology.org/formats/oboInOwl#source": [
-                    {
-                      "type": [
-                        "literal"
-                      ],
-                      "value": "DOID:2277"
-                    },
-                    {
-                      "type": [
-                        "literal"
-                      ],
-                      "value": "MESH:D006058"
-                    }
-                  ]
-                }
-              ]
-            }
+            {"type":["reification"],"value":"http://purl.obolibrary.org/obo/MONDO_0005151","axioms":[{"http://www.geneontology.org/formats/oboInOwl#source":[{"type":["literal"],"value":"DOID:2277"},{"type":["literal"],"value":"MESH:D006058"}]}]}
           ],
           "imported": false,
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "gonadal disorder"
-            }
+            {"type":["literal"],"value":"gonadal disorder"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -244,13 +140,8 @@
             "value": "Direct-Parent-With-Annotation-Axiom"
           },
           "searchableAnnotationValues": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "A non-neoplastic or neoplastic disorder that affects the testis or the ovary."
-            },
-            false
+            false,
+            {"type":["literal"],"value":"A non-neoplastic or neoplastic disorder that affects the testis or the ovary."}
           ],
           "shortForm": {
             "type": [
@@ -272,12 +163,7 @@
             "value": "MONDO:0005039"
           },
           "definition": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "A disease involving the reproductive system."
-            }
+            {"type":["literal"],"value":"A disease involving the reproductive system."}
           ],
           "definitionProperty": {
             "type": [
@@ -308,12 +194,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "reproductive system disorder"
-            }
+            {"type":["literal"],"value":"reproductive system disorder"}
           ],
           "numDescendants": 1,
           "numHierarchicalDescendants": 1,
@@ -336,13 +217,8 @@
             "value": "Direct-Parent-With-Annotation-Axiom"
           },
           "searchableAnnotationValues": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "A disease involving the reproductive system."
-            },
-            false
+            false,
+            {"type":["literal"],"value":"A disease involving the reproductive system."}
           ],
           "shortForm": {
             "type": [
@@ -364,12 +240,7 @@
             "value": "MONDO:0005151"
           },
           "definition": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "A disease involving the endocrine system."
-            }
+            {"type":["literal"],"value":"A disease involving the endocrine system."}
           ],
           "definitionProperty": {
             "type": [
@@ -400,12 +271,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "endocrine system disorder"
-            }
+            {"type":["literal"],"value":"endocrine system disorder"}
           ],
           "numDescendants": 1,
           "numHierarchicalDescendants": 1,
@@ -428,13 +294,8 @@
             "value": "Direct-Parent-With-Annotation-Axiom"
           },
           "searchableAnnotationValues": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "A disease involving the endocrine system."
-            },
-            false
+            false,
+            {"type":["literal"],"value":"A disease involving the endocrine system."}
           ],
           "shortForm": {
             "type": [
@@ -448,9 +309,9 @@
         {
           "iri": "http://purl.obolibrary.org/obo/IAO_0000115",
           "type": [
-            "property",
             "annotationProperty",
-            "entity"
+            "entity",
+            "property"
           ],
           "curie": {
             "type": [
@@ -468,12 +329,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "IAO_0000115"
-            }
+            {"type":["literal"],"value":"IAO_0000115"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,
@@ -506,9 +362,9 @@
         {
           "iri": "http://www.geneontology.org/formats/oboInOwl#source",
           "type": [
-            "property",
             "annotationProperty",
-            "entity"
+            "entity",
+            "property"
           ],
           "curie": {
             "type": [
@@ -526,12 +382,7 @@
           "isObsolete": false,
           "isPreferredRoot": false,
           "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "source"
-            }
+            {"type":["literal"],"value":"source"}
           ],
           "numDescendants": 0,
           "numHierarchicalDescendants": 0,

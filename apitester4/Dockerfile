@@ -1,18 +1,12 @@
 
-FROM maven:3.8-jdk-11
-
-ARG USERNAME=apitester
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
-
-RUN groupadd --gid $USER_GID $USERNAME \
-    && useradd --create-home --no-log-init --uid $USER_UID --gid $USER_GID -m $USERNAME
+FROM maven:3-eclipse-temurin-17 AS builder
 
 ADD . /opt/apitester
-RUN chown -R apitester:apitester /opt/apitester
 
-RUN cd /opt/apitester && mvn clean package
-RUN find opt/apitester
+RUN cd /opt/apitester && mvn -B -ntp -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn clean package
 
+FROM eclipse-temurin:17-jre
 
+COPY --from=builder /opt/apitester/target/apitester-1.0-SNAPSHOT-jar-with-dependencies.jar /opt/apitester/apitester.jar
 
+WORKDIR /opt/apitester

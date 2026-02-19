@@ -57,11 +57,27 @@
           "entity",
           "property"
         ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
       }
     },
     "linksTo": [
       "http://exmpl.org/xmpl/Preferred_name",
-      "http://exmpl.org/xmpl/Synonym"
+      "http://exmpl.org/xmpl/Synonym",
+      "http://www.w3.org/2000/01/rdf-schema#label"
     ],
     "numDescendants": 2.0,
     "numHierarchicalDescendants": 2.0,
@@ -170,12 +186,44 @@
           "class",
           "entity"
         ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+        "curie": "RDFS:subClassOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subClassOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
       }
     },
     "linksTo": [
       "http://exmpl.org/xmpl/Preferred_name",
       "http://exmpl.org/xmpl/Synonym",
-      "http://exmpl.org/xmpl/XMPL000001"
+      "http://exmpl.org/xmpl/XMPL000001",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -268,11 +316,43 @@
           "class",
           "entity"
         ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+        "curie": "RDFS:subClassOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subClassOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
       }
     },
     "linksTo": [
       "http://exmpl.org/xmpl/Synonym",
-      "http://exmpl.org/xmpl/XMPL000001"
+      "http://exmpl.org/xmpl/XMPL000001",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

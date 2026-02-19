@@ -15,6 +15,12 @@ public class OlsSolrQuery {
 	List<BoostField> boostFields = new ArrayList<>();
 	List<String> facetFields = new ArrayList<>();
 	List<Filter> filters = new ArrayList<>();
+	
+	// Vector search fields
+	float[] embeddingVector = null;
+	String embeddingModel = null;
+	Integer topK = null;
+
 	List<ExcludeFilter> excludeFilters = new ArrayList<>();
 
 	public OlsSolrQuery() {
@@ -30,6 +36,31 @@ public class OlsSolrQuery {
 
 	public void setExactMatch(boolean exactMatch) {
 		this.exactMatch = exactMatch;
+	}
+	
+	public void setEmbeddingVector(float[] vector, String model) {
+		this.embeddingVector = vector;
+		this.embeddingModel = model;
+	}
+	
+	public void setTopK(Integer topK) {
+		this.topK = topK;
+	}
+	
+	public float[] getEmbeddingVector() {
+		return this.embeddingVector;
+	}
+	
+	public String getEmbeddingModel() {
+		return this.embeddingModel;
+	}
+	
+	public Integer getTopK() {
+		return this.topK;
+	}
+	
+	public boolean isVectorSearch() {
+		return embeddingVector != null && embeddingModel != null;
 	}
 
 	public void addSearchField(String propertyName, int weight, SearchType searchType) {
@@ -80,8 +111,14 @@ public class OlsSolrQuery {
 
 			query.set("qf", qf.toString());
 
+			// When searching, sort by relevance score with secondary sort by id for deterministic ordering
+			query.setSort("score", SolrQuery.ORDER.desc);
+			query.addSort("id", SolrQuery.ORDER.asc);
+
 		} else {
 			query.setQuery("*:*");
+			// When not searching, sort by id for deterministic ordering
+			query.setSort("id", SolrQuery.ORDER.asc);
 		}
 
 		if(boostFields.size() > 0) {
