@@ -2,7 +2,7 @@ name: Container Security Scanning
 
 on:
   workflow_run:
-    workflows: ["Build & publish ols4 images"]
+    workflows: ["Publish Docker Images"]
     types:
       - completed
   pull_request:
@@ -27,7 +27,7 @@ jobs:
         uses: lewagon/wait-on-check-action@v1.3.4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          check-name: 'build-and-push-image'
+          check-name: 'build-and-push'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
 
