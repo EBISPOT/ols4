@@ -7,7 +7,7 @@ members = [
     "json2solr",
     "linker/create_manifest",
     "linker/link",
-    "ols_to_tsv",
+    "extract_strings_from_terms",
 ]
 
 [workspace.package]

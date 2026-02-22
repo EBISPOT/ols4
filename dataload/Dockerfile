@@ -74,9 +74,9 @@ RUN cp /opt/ols/dataload/target/release/ols_json2neo /usr/local/bin/ && \
     cp /opt/ols/dataload/target/release/ols_create_manifest /usr/local/bin/ && \
     cp /opt/ols/dataload/target/release/ols_link /usr/local/bin/ && \
     cp /opt/ols/dataload/target/release/ols_json2solr /usr/local/bin/ && \
-    cp /opt/ols/dataload/target/release/ols_to_tsv /usr/local/bin/ && \
+    cp /opt/ols/dataload/target/release/extract_strings_from_terms /usr/local/bin/ && \
     cp /opt/ols/text_tagger/target/release/ols_text_tagger /usr/local/bin/ && \
-    chmod +x /usr/local/bin/ols_json2neo /usr/local/bin/ols_create_manifest /usr/local/bin/ols_link /usr/local/bin/ols_json2solr /usr/local/bin/ols_to_tsv /usr/local/bin/ols_text_tagger
+    chmod +x /usr/local/bin/ols_json2neo /usr/local/bin/ols_create_manifest /usr/local/bin/ols_link /usr/local/bin/ols_json2solr /usr/local/bin/extract_strings_from_terms /usr/local/bin/ols_text_tagger
 
 # COPY ./backend /opt/ols/backend
 # RUN cd /opt/ols/backend && mvn -T 1C package

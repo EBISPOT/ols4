@@ -13,7 +13,7 @@ params.embed_image             = ""
 workflow embeddings {
 
     take:
-    terms_tsv  // path to terms.tsv (output of ols_to_tsv from the dataload pipeline)
+    terms_tsv  // path to terms.tsv (output of extract_strings_from_terms from the dataload pipeline)
 
     main:
 

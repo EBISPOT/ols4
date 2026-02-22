@@ -41,7 +41,7 @@ workflow {
 
     // Build text tagger database from linked ontology JSONs
     all_linked_jsons = linked_ontologies_by_id.map { it[1] }.collect()
-    terms_tsv = ols_to_tsv(all_linked_jsons)
+    terms_tsv = extract_strings_from_terms(all_linked_jsons)
     text_tagger_db = build_text_tagger_db(terms_tsv)
 
     // Run embeddings pipeline if enabled
@@ -335,7 +335,7 @@ def basename(filename) {
     return new File(filename).name
 }
 
-process ols_to_tsv {
+process extract_strings_from_terms {
     cache "lenient"
     memory '8 GB'
     time '1h'
@@ -350,7 +350,7 @@ process ols_to_tsv {
     script:
     def json_list = (linked_jsons instanceof List) ? linked_jsons : [linked_jsons]
     """
-    ols_to_tsv ${json_list.join(' ')} > terms.tsv
+    extract_strings_from_terms ${json_list.join(' ')} > terms.tsv
     """
 }
 
