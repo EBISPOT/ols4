@@ -1,0 +1,222 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl#Dummy": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-datatype-exclusion-nesting-issue",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Dummy"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Dummy"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-datatype-exclusion-nesting-issue": {
+          "ontologyId": "owl2primer-datatype-exclusion-nesting-issue",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Dummy"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Dummy"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl#ageOfAdult": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-datatype-exclusion-nesting-issue",
+          "entityTypes": [
+            "dataProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "ageOfAdult"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ageOfAdult"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-datatype-exclusion-nesting-issue": {
+          "ontologyId": "owl2primer-datatype-exclusion-nesting-issue",
+          "entityTypes": [
+            "dataProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "ageOfAdult"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ageOfAdult"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl": [
+      "owl2primer-datatype-exclusion-nesting-issue"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-datatype-exclusion-nesting-issue": [
+      "owl2primer-datatype-exclusion-nesting-issue"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-datatype-exclusion-nesting-issue": [
+      "http://purl.obolibrary.org/obo/owl2primer-datatype-exclusion-nesting-issue_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-datatype-exclusion-nesting-issue": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-datatype-exclusion-nesting-issue": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-datatype-exclusion-nesting-issue": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#range",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-datatype-exclusion-nesting-issue": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-datatype-exclusion-nesting-issue": []
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-datatype-exclusion-nesting-issue": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl": [
+        "ONTOLOGY"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl#Dummy": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/datatype-exclusion.owl#ageOfAdult": [
+        "PROPERTY"
+      ]
+    }
+  }
+}
