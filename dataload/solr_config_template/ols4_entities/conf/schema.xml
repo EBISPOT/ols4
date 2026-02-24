@@ -146,6 +146,12 @@
     <dynamicField name="whitespace_*" type="ols4textWhitespace" stored="false" indexed="true" multiValued="true" />
     <dynamicField name="whitespace_edge_*" type="ols4textWhitespaceEdge" stored="false" indexed="true" multiValued="true" />
 
+    <!-- Catch-all for any OLS ontology fields not explicitly defined above (e.g. appearsIn, etc).
+         In production, solr_config_builder replaces [[OLS_FIELDS]] with explicit definitions that
+         take priority over this pattern. Locally (where solr_config_builder isn't run), this ensures
+         Solr accepts all dynamically-generated fields without a 400 "unknown field" error. -->
+    <dynamicField name="*" type="string" indexed="true" stored="true" multiValued="true"/>
+
     <!-- Field to use to determine and enforce document uniqueness.
       Unless this field is marked with required="false", it will be a required field
     -->
