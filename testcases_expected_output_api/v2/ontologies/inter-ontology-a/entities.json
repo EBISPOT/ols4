@@ -50,42 +50,10 @@
           "class",
           "entity"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
-      "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -123,42 +91,7 @@
     "label": [
       "Class B (imported)"
     ],
-    "linkedEntities": {
-      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "RDFS:isDefinedBy",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "isDefinedBy"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
-      "http://www.w3.org/2000/01/rdf-schema#label"
-    ],
+    "linkedEntities": {},
     "numDescendants": 1.0,
     "numHierarchicalDescendants": 1.0,
     "ontologyId": "inter-ontology-a",

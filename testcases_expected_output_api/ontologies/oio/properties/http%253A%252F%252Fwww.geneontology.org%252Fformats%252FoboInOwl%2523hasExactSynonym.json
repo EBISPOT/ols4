@@ -1,26 +1,16 @@
 {
-  "_links": {
-    "ancestors": {
-      "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasExactSynonym/ancestors"
-    },
-    "jstree": {
-      "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasExactSynonym/jstree"
-    },
-    "parents": {
-      "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasExactSynonym/parents"
-    },
-    "self": {
-      "href": "<base>/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasExactSynonym?lang=en"
-    }
-  },
+  "iri": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
   "annotation": {
     "has_dbxref": [
       {
         "http://www.geneontology.org/formats/oboInOwl#hasURI": {
-          "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
           "type": [
             "literal"
           ],
+          "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
           "value": "http://purl.org/obo/owl/oboFormat#oboFormat_exact_synonym"
         },
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
@@ -37,10 +27,10 @@
       {
         "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
           "http://www.geneontology.org/formats/oboInOwl#hasURI": {
-            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
             "type": [
               "literal"
             ],
+            "datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
             "value": "http://purl.org/obo/owl/oboInOwl#oboInOwl_GOC"
           },
           "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
@@ -54,28 +44,38 @@
         },
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
         "http://www.w3.org/2000/01/rdf-schema#label": {
-          "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-          "lang": "en",
           "type": [
             "literal"
           ],
-          "value": "An alias in which the alias exhibits true synonymy. Example: ornithine cycle is an exact synonym of urea cycle"
+          "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "value": "An alias in which the alias exhibits true synonymy. Example: ornithine cycle is an exact synonym of urea cycle",
+          "lang": "en"
         },
         "isObsolete": false
       }
     ]
   },
-  "description": [],
-  "has_children": false,
-  "iri": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
-  "is_defining_ontology": false,
-  "is_obsolete": false,
-  "is_root": false,
   "label": "has_exact_synonym",
-  "lang": "en",
-  "obo_id": "OIO:hasExactSynonym",
-  "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
   "ontology_name": "oio",
+  "ontology_iri": "http://www.geneontology.org/formats/oboInOwl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
   "short_form": "OIO_hasExactSynonym",
-  "synonyms": []
+  "obo_id": "OIO:hasExactSynonym",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasExactSynonym?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasExactSynonym/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasExactSynonym/ancestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/oio/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasExactSynonym/jstree"
+    }
+  }
 }

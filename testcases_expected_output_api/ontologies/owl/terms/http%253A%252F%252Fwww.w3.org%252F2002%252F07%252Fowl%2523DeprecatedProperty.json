@@ -1,27 +1,27 @@
 {
-  "_links": {
-    "graph": {
-      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523DeprecatedProperty/graph"
-    },
-    "self": {
-      "href": "<base>/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523DeprecatedProperty?lang=en"
-    }
-  },
-  "annotation": {},
+  "iri": "http://www.w3.org/2002/07/owl#DeprecatedProperty",
+  "lang": "en",
   "description": [
     "The class of deprecated properties."
   ],
-  "has_children": false,
-  "iri": "http://www.w3.org/2002/07/owl#DeprecatedProperty",
-  "is_defining_ontology": true,
-  "is_obsolete": false,
-  "is_preferred_root": false,
-  "is_root": true,
+  "synonyms": [],
+  "annotation": {},
   "label": "DeprecatedProperty",
-  "lang": "en",
-  "obo_id": "OWL:DeprecatedProperty",
-  "ontology_iri": "http://www.w3.org/2002/07/owl",
   "ontology_name": "owl",
+  "ontology_iri": "http://www.w3.org/2002/07/owl",
+  "is_obsolete": false,
+  "is_defining_ontology": true,
+  "has_children": false,
+  "is_root": true,
   "short_form": "OWL_DeprecatedProperty",
-  "synonyms": []
+  "obo_id": "OWL:DeprecatedProperty",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523DeprecatedProperty?lang=en"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/owl/terms/http%253A%252F%252Fwww.w3.org%252F2002%252F07%252Fowl%2523DeprecatedProperty/graph"
+    }
+  }
 }

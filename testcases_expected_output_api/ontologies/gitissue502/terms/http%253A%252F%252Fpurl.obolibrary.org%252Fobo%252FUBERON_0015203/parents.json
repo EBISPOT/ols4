@@ -1,0 +1,67 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0034923/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0034923/children"
+      },
+      "composed_primarily_of": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0034923/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002473"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0034923/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0034923/graph"
+      },
+      "has_quality": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0034923/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000086"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0034923/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0034923/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0034923/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0034923/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0034923/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0034923/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0034923?lang=en"
+      }
+    },
+    "annotation": {
+      "RO_0002175": [
+        "http://purl.obolibrary.org/obo/NCBITaxon_33090",
+        "http://purl.obolibrary.org/obo/NCBITaxon_33208",
+        "http://purl.obolibrary.org/obo/NCBITaxon_4751"
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0034923",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "disconnected anatomical group",
+    "lang": "en",
+    "obo_id": "UBERON:0034923",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "UBERON_0034923",
+    "synonyms": []
+  }
+]

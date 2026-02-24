@@ -1,0 +1,53 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/GO_0003008",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "system process",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "GO_0003008",
+  "obo_id": "GO:0003008",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0003008?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0003008/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0003008/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0003008/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0003008/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0003008/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0003008/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0003008/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0003008/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0003008/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0003008/graph"
+    }
+  }
+}

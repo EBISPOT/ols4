@@ -1,0 +1,38 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/NCBITaxon_131567",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "cellular organisms",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "NCBITaxon_131567",
+  "obo_id": "NCBITaxon:131567",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCBITaxon_131567?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCBITaxon_131567/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCBITaxon_131567/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCBITaxon_131567/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCBITaxon_131567/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCBITaxon_131567/graph"
+    }
+  }
+}

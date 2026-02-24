@@ -1,0 +1,35 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0002434",
+  "lang": "en",
+  "description": [
+    "A relationship that holds between two entities in which the processes executed by the two entities are causally connected."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "IAO_0000116": [
+      "Considering relabeling as 'pairwise interacts with'",
+      "This relation and all sub-relations can be applied to either (1) pairs of entities that are interacting at any moment of time (2) populations or species of entity whose members have the disposition to interact (3) classes whose members have the disposition to interact."
+    ]
+  },
+  "label": "interacts with",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "RO_0002434",
+  "obo_id": "RO:0002434",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002434?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002434/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002434/descendants"
+    }
+  }
+}

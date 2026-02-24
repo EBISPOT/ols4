@@ -17642,7 +17642,7 @@
       }
     },
     "annotation": {
-      "has exact match": [
+      "exactMatch": [
         "http://identifiers.org/mesh/D004194",
         "http://identifiers.org/snomedct/64572001",
         "http://linkedlifedata.com/resource/umls/id/C0012634",
@@ -17650,7 +17650,7 @@
         "http://purl.obolibrary.org/obo/NCIT_C2991",
         "http://www.orpha.net/ORDO/Orphanet_377788"
       ],
-      "has_dbxref": [
+      "hasDbXref": [
         "DOID:4",
         "EFO:0000408",
         "ICD10:N18",
@@ -18586,11 +18586,11 @@
     "is_root": true,
     "label": "ObsoleteClass",
     "lang": "en",
-    "obo_id": "OIO:ObsoleteClass",
+    "obo_id": "ObsoleteClass",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontology_name": "duo",
     "ontology_prefix": "DUO",
-    "short_form": "OIO_ObsoleteClass",
+    "short_form": "ObsoleteClass",
     "synonyms": []
   }
 ]

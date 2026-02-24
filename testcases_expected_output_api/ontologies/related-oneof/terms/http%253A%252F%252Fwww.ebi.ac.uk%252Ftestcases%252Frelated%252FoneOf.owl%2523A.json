@@ -1,0 +1,41 @@
+{
+  "iri": "http://www.ebi.ac.uk/testcases/related/oneOf.owl#A",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "A",
+  "ontology_name": "related-oneof",
+  "ontology_prefix": "related-oneOf",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/related/oneOf.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "A",
+  "obo_id": "A",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/related-oneof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Frelated%252FoneOf.owl%2523A?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/related-oneof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Frelated%252FoneOf.owl%2523A/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/related-oneof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Frelated%252FoneOf.owl%2523A/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/related-oneof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Frelated%252FoneOf.owl%2523A/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/related-oneof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Frelated%252FoneOf.owl%2523A/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/related-oneof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Frelated%252FoneOf.owl%2523A/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/related-oneof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Frelated%252FoneOf.owl%2523A/graph"
+    }
+  }
+}

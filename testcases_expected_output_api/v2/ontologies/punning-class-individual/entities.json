@@ -61,26 +61,10 @@
           "class",
           "entity"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "RDFS:domain",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "domain"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
-      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
-      "http://www.w3.org/2000/01/rdf-schema#domain"
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -269,28 +253,12 @@
           "entity",
           "individual"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
       "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
       "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit",
-      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin"
     ],
     "numDescendants": 1.0,
     "numHierarchicalDescendants": 0.0,
@@ -379,28 +347,12 @@
           "entity",
           "individual"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
       "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#Quantity",
       "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#commonlyHasUnit",
-      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://www.ebi.ac.uk/testcases/punning/class-individual.owl#terakelvin"
     ],
     "numDescendants": 1.0,
     "numHierarchicalDescendants": 0.0,

@@ -1,0 +1,60 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0021136",
+  "lang": "en",
+  "description": [
+    "A disease or disorder is defined as rare in Europe when it affects fewer than 1 in 2000. A disease or disorder is defined as rare in the USA when it affects fewer than 200,000 persons at any given time. Here we take the European definition to be consistent with Orphanet."
+  ],
+  "synonyms": [
+    "rare (European definition)"
+  ],
+  "annotation": {
+    "id": [
+      "MONDO:0021136"
+    ]
+  },
+  "label": "rare",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "MONDO_0021136",
+  "obo_id": "MONDO:0021136",
+  "obo_definition_citation": [
+    {
+      "definition": "A disease or disorder is defined as rare in Europe when it affects fewer than 1 in 2000. A disease or disorder is defined as rare in the USA when it affects fewer than 200,000 persons at any given time. Here we take the European definition to be consistent with Orphanet.",
+      "oboXrefs": [
+        {
+          "id": "https://www.rarediseaseday.org/article/what-is-a-rare-disease",
+          "url": "https://www.rarediseaseday.org/article/what-is-a-rare-disease"
+        }
+      ]
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021136?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021136/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021136/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021136/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021136/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021136/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021136/graph"
+    }
+  }
+}

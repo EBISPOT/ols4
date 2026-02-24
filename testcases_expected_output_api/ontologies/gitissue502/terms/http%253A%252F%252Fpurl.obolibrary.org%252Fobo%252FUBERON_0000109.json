@@ -1,0 +1,53 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/UBERON_0000109",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "gastrula stage",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "UBERON_0000109",
+  "obo_id": "UBERON:0000109",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000109?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000109/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000109/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000109/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000109/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000109/jstree"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000109/graph"
+    },
+    "part_of": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000109/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000050"
+    },
+    "preceded_by": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000109/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000062"
+    },
+    "simultaneous_with": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000109/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002082"
+    },
+    "only_in_taxon": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000109/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002160"
+    }
+  }
+}

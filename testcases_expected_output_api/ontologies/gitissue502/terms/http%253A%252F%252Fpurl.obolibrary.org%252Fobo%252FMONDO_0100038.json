@@ -1,0 +1,88 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0100038",
+  "lang": "en",
+  "description": [
+    "A disorder that involves more than one phenotype associated with the central nervous system, including but not limited to intellectual disability, autism, and seizures (epilepsy)."
+  ],
+  "synonyms": [
+    "complex neurodevelopmental disorder"
+  ],
+  "annotation": {
+    "IAO_0000233": [
+      "https://github.com/monarch-initiative/mondo/issues/3680"
+    ],
+    "creator": [
+      "https://orcid.org/0000-0001-5208-3432"
+    ],
+    "date": [
+      "2018-06-29T18:21:11Z"
+    ],
+    "excluded_subClassOf": [
+      "http://purl.obolibrary.org/obo/MONDO_0019117"
+    ],
+    "id": [
+      "MONDO:0100038"
+    ]
+  },
+  "label": "complex neurodevelopmental disorder",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "MONDO_0100038",
+  "obo_id": "MONDO:0100038",
+  "obo_definition_citation": [
+    {
+      "definition": "A disorder that involves more than one phenotype associated with the central nervous system, including but not limited to intellectual disability, autism, and seizures (epilepsy).",
+      "oboXrefs": [
+        {
+          "id": "https://orcid.org/0000-0002-6733-369X",
+          "url": "https://orcid.org/0000-0002-6733-369X"
+        },
+        {
+          "id": "https://www.clinicalgenome.org/working-groups/clinical-domain/neurodevelopmental-disorders/",
+          "url": "https://www.clinicalgenome.org/working-groups/clinical-domain/neurodevelopmental-disorders/"
+        }
+      ]
+    }
+  ],
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0100038?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0100038/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0100038/ancestors"
+    },
+    "hierarchicalParents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0100038/hierarchicalParents"
+    },
+    "hierarchicalAncestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0100038/hierarchicalAncestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0100038/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0100038/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0100038/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0100038/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0100038/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0100038/graph"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/BFO_0000003",
+  "lang": "en",
+  "description": [
+    "An entity that has temporal parts and that happens, unfolds or develops through time."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "IAO_0000116": [
+      "BFO 2 Reference: every occurrent that is not a temporal or spatiotemporal region is s-dependent on some independent continuant that is not a spatial region",
+      "BFO 2 Reference: s-dependence obtains between every process and its participants in the sense that, as a matter of necessity, this process could not have existed unless these or those participants existed also. A process may have a succession of participants at different phases of its unfolding. Thus there may be different players on the field at different times during the course of a football game; but the process which is the entire game s-depends_on all of these players nonetheless. Some temporal parts of this process will s-depend_on on only some of the players."
+    ]
+  },
+  "label": "occurrent",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "BFO_0000003",
+  "obo_id": "BFO:0000003",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000003?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000003/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000003/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000003/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000003/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000003/graph"
+    }
+  }
+}

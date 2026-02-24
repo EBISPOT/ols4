@@ -1,0 +1,38 @@
+{
+  "iri": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "ObsoleteClass",
+  "ontology_name": "isobsolete",
+  "ontology_prefix": "IsObsolete",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "ObsoleteClass",
+  "obo_id": "ObsoleteClass",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/isobsolete/terms/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523ObsoleteClass/graph"
+    }
+  }
+}

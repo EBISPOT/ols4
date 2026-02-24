@@ -1,0 +1,39 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0002411",
+  "lang": "en",
+  "description": [
+    "p is causally upstream of q iff p is causally related to q, the end of p precedes the end of q, and p is not an occurrent part of q."
+  ],
+  "synonyms": [],
+  "annotation": {},
+  "label": "causally upstream of",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
+  "short_form": "RO_0002411",
+  "obo_id": "RO:0002411",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002411?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002411/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002411/ancestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002411/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002411/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002411/descendants"
+    }
+  }
+}

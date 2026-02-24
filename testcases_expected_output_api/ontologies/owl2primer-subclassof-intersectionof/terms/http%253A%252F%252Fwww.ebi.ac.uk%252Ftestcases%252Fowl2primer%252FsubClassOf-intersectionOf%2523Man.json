@@ -1,0 +1,38 @@
+{
+  "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man",
+  "lang": "en",
+  "description": [],
+  "synonyms": [],
+  "annotation": {},
+  "label": "Man",
+  "ontology_name": "owl2primer-subclassof-intersectionof",
+  "ontology_prefix": "owl2primer-subClassOf-intersectionOf",
+  "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "Man",
+  "obo_id": "Man",
+  "is_preferred_root": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-subclassof-intersectionof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FsubClassOf-intersectionOf%2523Man?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-subclassof-intersectionof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FsubClassOf-intersectionOf%2523Man/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-subclassof-intersectionof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FsubClassOf-intersectionOf%2523Man/descendants"
+    },
+    "hierarchicalChildren": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-subclassof-intersectionof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FsubClassOf-intersectionOf%2523Man/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-subclassof-intersectionof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FsubClassOf-intersectionOf%2523Man/hierarchicalDescendants"
+    },
+    "graph": {
+      "href": "http://localhost:8080/api/ontologies/owl2primer-subclassof-intersectionof/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FsubClassOf-intersectionOf%2523Man/graph"
+    }
+  }
+}

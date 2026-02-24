@@ -1,0 +1,34 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0002595",
+  "lang": "en",
+  "description": [
+    "A relationship that holds between a material entity and a process in which causality is involved, with either the material entity or some part of the material entity exerting some influence over the process, or the process influencing some aspect of the material entity."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "IAO_0000116": [
+      "Do not use this relation directly. It is intended as a grouping for a diverse set of relations, all involving cause and effect."
+    ]
+  },
+  "label": "causal relation between material entity and a process",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": true,
+  "short_form": "RO_0002595",
+  "obo_id": "RO:0002595",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002595?lang=en"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002595/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002595/descendants"
+    }
+  }
+}

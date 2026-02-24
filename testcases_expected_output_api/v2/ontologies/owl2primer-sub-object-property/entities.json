@@ -56,27 +56,11 @@
           "class",
           "entity"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
       "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person",
-      "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Woman",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Woman"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -165,26 +149,10 @@
           "class",
           "entity"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
-      "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#Person"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -268,26 +236,10 @@
           "objectProperty",
           "property"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "RDFS:subPropertyOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subPropertyOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
-      "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#hasSpouse",
-      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+      "http://www.ebi.ac.uk/testcases/owl2primer/sub-object-property#hasSpouse"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

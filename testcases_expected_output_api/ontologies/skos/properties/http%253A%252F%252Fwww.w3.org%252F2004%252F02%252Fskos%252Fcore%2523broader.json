@@ -1,24 +1,10 @@
 {
-  "_links": {
-    "ancestors": {
-      "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broader/ancestors"
-    },
-    "children": {
-      "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broader/children"
-    },
-    "descendants": {
-      "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broader/descendants"
-    },
-    "jstree": {
-      "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broader/jstree"
-    },
-    "parents": {
-      "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broader/parents"
-    },
-    "self": {
-      "href": "<base>/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broader?lang=en"
-    }
-  },
+  "iri": "http://www.w3.org/2004/02/skos/core#broader",
+  "lang": "en",
+  "description": [
+    "Broader concepts are typically rendered as parents in a concept hierarchy (tree)."
+  ],
+  "synonyms": [],
   "annotation": {
     "definition": [
       "Relates a concept to a concept that is more general in meaning."
@@ -27,19 +13,33 @@
       "By convention, skos:broader is only used to assert an immediate (i.e. direct) hierarchical link between two conceptual resources."
     ]
   },
-  "description": [
-    "Broader concepts are typically rendered as parents in a concept hierarchy (tree)."
-  ],
-  "has_children": true,
-  "iri": "http://www.w3.org/2004/02/skos/core#broader",
-  "is_defining_ontology": false,
-  "is_obsolete": false,
-  "is_root": false,
   "label": "has broader",
-  "lang": "en",
-  "obo_id": "SKOS:broader",
-  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
   "ontology_name": "skos",
+  "ontology_iri": "http://www.w3.org/2004/02/skos/core",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": true,
+  "is_root": false,
   "short_form": "SKOS_broader",
-  "synonyms": []
+  "obo_id": "SKOS:broader",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broader?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broader/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broader/ancestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broader/jstree"
+    },
+    "children": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broader/children"
+    },
+    "descendants": {
+      "href": "http://localhost:8080/api/ontologies/skos/properties/http%253A%252F%252Fwww.w3.org%252F2004%252F02%252Fskos%252Fcore%2523broader/descendants"
+    }
+  }
 }

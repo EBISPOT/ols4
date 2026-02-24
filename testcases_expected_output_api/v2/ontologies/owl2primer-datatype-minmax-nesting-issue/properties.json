@@ -1,7 +1,6 @@
 [
   {
     "appearsIn": [
-      "owl2primer-datatype-minmax",
       "owl2primer-datatype-minmax-nesting-issue"
     ],
     "curie": "hasAge",
@@ -50,42 +49,7 @@
     "label": [
       "hasAge"
     ],
-    "linkedEntities": {
-      "http://www.w3.org/2000/01/rdf-schema#Datatype": {
-        "curie": "RDFS:Datatype",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "Datatype"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "RDFS:range",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "range"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://www.w3.org/2000/01/rdf-schema#Datatype",
-      "http://www.w3.org/2000/01/rdf-schema#range"
-    ],
+    "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "owl2primer-datatype-minmax-nesting-issue",

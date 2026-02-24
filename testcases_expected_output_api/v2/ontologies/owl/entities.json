@@ -1,100 +1,6 @@
 [
   {
     "appearsIn": [
-      "definition-single",
-      "owl"
-    ],
-    "curie": "Definition-Single:Thing",
-    "definedBy": [
-      "definition-single",
-      "owl"
-    ],
-    "definition": [
-      "The class of OWL individuals."
-    ],
-    "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
-    "hasDirectChildren": false,
-    "hasDirectParents": false,
-    "hasHierarchicalChildren": false,
-    "hasHierarchicalParents": false,
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-    "http://www.w3.org/2000/01/rdf-schema#comment": "The class of OWL individuals.",
-    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2002/07/owl#",
-    "http://www.w3.org/2000/01/rdf-schema#label": "Thing",
-    "imported": false,
-    "iri": "http://www.w3.org/2002/07/owl#Thing",
-    "isDefiningOntology": true,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": [
-      "Thing"
-    ],
-    "linkedEntities": {
-      "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "RDFS:comment",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "comment"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "RDFS:isDefinedBy",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "isDefinedBy"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://www.w3.org/2000/01/rdf-schema#comment",
-      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
-      "http://www.w3.org/2000/01/rdf-schema#label"
-    ],
-    "numDescendants": 2.0,
-    "numHierarchicalDescendants": 2.0,
-    "ontologyId": "owl",
-    "ontologyIri": "http://www.w3.org/2002/07/owl",
-    "searchableAnnotationValues": false,
-    "shortForm": "Definition-Single_Thing",
-    "type": [
-      "class",
-      "entity"
-    ]
-  },
-  {
-    "appearsIn": [
-      "duo",
       "gitissue502",
       "owl",
       "rdfs"
@@ -165,7 +71,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -195,7 +101,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -231,458 +137,6 @@
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": true,
     "shortForm": "RDFS_label",
-    "type": [
-      "entity",
-      "property"
-    ]
-  },
-  {
-    "appearsIn": [
-      "duo",
-      "owl",
-      "rdfs"
-    ],
-    "curie": "RDFS:comment",
-    "definedBy": [
-      "rdfs"
-    ],
-    "definition": [
-      "A description of the subject resource."
-    ],
-    "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
-    "hasDirectChildren": false,
-    "hasDirectParents": false,
-    "hasHierarchicalChildren": false,
-    "hasHierarchicalParents": false,
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
-    "http://www.w3.org/2000/01/rdf-schema#comment": "A description of the subject resource.",
-    "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.w3.org/2000/01/rdf-schema#Resource",
-    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2000/01/rdf-schema#",
-    "http://www.w3.org/2000/01/rdf-schema#label": "comment",
-    "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "imported": true,
-    "iri": "http://www.w3.org/2000/01/rdf-schema#comment",
-    "isDefiningOntology": false,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": [
-      "comment"
-    ],
-    "linkedEntities": {
-      "http://www.w3.org/2000/01/rdf-schema#Literal": {
-        "curie": "RDFS:Literal",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "Literal"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#Resource": {
-        "curie": "RDFS:Resource",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "Resource"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "RDFS:domain",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "domain"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "RDFS:isDefinedBy",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "isDefinedBy"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "RDFS:range",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "range"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://www.w3.org/2000/01/rdf-schema#Literal",
-      "http://www.w3.org/2000/01/rdf-schema#Resource",
-      "http://www.w3.org/2000/01/rdf-schema#domain",
-      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#range"
-    ],
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "ontologyId": "owl",
-    "ontologyIri": "http://www.w3.org/2002/07/owl",
-    "searchableAnnotationValues": true,
-    "shortForm": "RDFS_comment",
-    "type": [
-      "entity",
-      "property"
-    ]
-  },
-  {
-    "appearsIn": [
-      "duo",
-      "owl",
-      "rdfs"
-    ],
-    "curie": "RDFS:isDefinedBy",
-    "definedBy": [
-      "rdfs"
-    ],
-    "definition": [
-      "The definition of the subject resource."
-    ],
-    "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
-    "directAncestor": [
-      "http://www.w3.org/2000/01/rdf-schema#seeAlso"
-    ],
-    "directParent": [
-      "http://www.w3.org/2000/01/rdf-schema#seeAlso"
-    ],
-    "hasDirectChildren": false,
-    "hasDirectParents": true,
-    "hasHierarchicalChildren": false,
-    "hasHierarchicalParents": false,
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
-    "http://www.w3.org/2000/01/rdf-schema#comment": "The definition of the subject resource.",
-    "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.w3.org/2000/01/rdf-schema#Resource",
-    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2000/01/rdf-schema#",
-    "http://www.w3.org/2000/01/rdf-schema#label": "isDefinedBy",
-    "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Resource",
-    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
-    "imported": true,
-    "iri": "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
-    "isDefiningOntology": false,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": [
-      "isDefinedBy"
-    ],
-    "linkedEntities": {
-      "http://www.w3.org/2000/01/rdf-schema#Resource": {
-        "curie": "RDFS:Resource",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "Resource"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "RDFS:comment",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "comment"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "RDFS:domain",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "domain"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "RDFS:range",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "range"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#seeAlso": {
-        "curie": "RDFS:seeAlso",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "seeAlso"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
-        "curie": "RDFS:subPropertyOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "subPropertyOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://www.w3.org/2000/01/rdf-schema#Resource",
-      "http://www.w3.org/2000/01/rdf-schema#comment",
-      "http://www.w3.org/2000/01/rdf-schema#domain",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#range",
-      "http://www.w3.org/2000/01/rdf-schema#seeAlso",
-      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
-    ],
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "ontologyId": "owl",
-    "ontologyIri": "http://www.w3.org/2002/07/owl",
-    "searchableAnnotationValues": true,
-    "shortForm": "RDFS_isDefinedBy",
-    "type": [
-      "entity",
-      "property"
-    ]
-  },
-  {
-    "appearsIn": [
-      "duo",
-      "owl",
-      "rdfs"
-    ],
-    "curie": "RDFS:seeAlso",
-    "definedBy": [
-      "rdfs"
-    ],
-    "definition": [
-      "Further information about the subject resource."
-    ],
-    "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
-    "hasDirectChildren": true,
-    "hasDirectParents": false,
-    "hasHierarchicalChildren": false,
-    "hasHierarchicalParents": false,
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
-    "http://www.w3.org/2000/01/rdf-schema#comment": "Further information about the subject resource.",
-    "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.w3.org/2000/01/rdf-schema#Resource",
-    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2000/01/rdf-schema#",
-    "http://www.w3.org/2000/01/rdf-schema#label": "seeAlso",
-    "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Resource",
-    "imported": true,
-    "iri": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
-    "isDefiningOntology": false,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": [
-      "seeAlso"
-    ],
-    "linkedEntities": {
-      "http://www.w3.org/2000/01/rdf-schema#Resource": {
-        "curie": "RDFS:Resource",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "Resource"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "RDFS:comment",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "comment"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "curie": "RDFS:domain",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "domain"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
-        "curie": "RDFS:isDefinedBy",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "isDefinedBy"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#range": {
-        "curie": "RDFS:range",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "range"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://www.w3.org/2000/01/rdf-schema#Resource",
-      "http://www.w3.org/2000/01/rdf-schema#comment",
-      "http://www.w3.org/2000/01/rdf-schema#domain",
-      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#range"
-    ],
-    "numDescendants": 1.0,
-    "numHierarchicalDescendants": 0.0,
-    "ontologyId": "owl",
-    "ontologyIri": "http://www.w3.org/2002/07/owl",
-    "searchableAnnotationValues": true,
-    "shortForm": "RDFS_seeAlso",
     "type": [
       "entity",
       "property"
@@ -770,7 +224,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -785,7 +239,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -800,7 +254,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -923,7 +377,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -938,7 +392,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -953,7 +407,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -1076,7 +530,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -1091,7 +545,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -1106,7 +560,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -1229,7 +683,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -1244,7 +698,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -1259,7 +713,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -1355,7 +809,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -1370,7 +824,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -1385,7 +839,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -1492,7 +946,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -1507,7 +961,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -1522,7 +976,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -1644,7 +1098,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -1659,7 +1113,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -1674,7 +1128,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -1799,7 +1253,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -1814,7 +1268,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -1829,7 +1283,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -1971,7 +1425,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -1986,7 +1440,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -2001,7 +1455,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -2098,7 +1552,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -2113,7 +1567,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -2128,7 +1582,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -2252,7 +1706,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -2267,7 +1721,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -2282,7 +1736,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -2378,7 +1832,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -2393,7 +1847,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -2408,7 +1862,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -2503,7 +1957,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -2518,7 +1972,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -2533,7 +1987,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -2640,7 +2094,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -2655,7 +2109,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -2670,7 +2124,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -2777,7 +2231,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -2792,7 +2246,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -2807,7 +2261,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -2914,7 +2368,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -2929,7 +2383,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -2944,7 +2398,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -3066,7 +2520,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -3081,7 +2535,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -3096,7 +2550,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -3189,7 +2643,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -3204,7 +2658,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -3219,7 +2673,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -3313,7 +2767,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -3328,7 +2782,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -3343,7 +2797,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -3465,7 +2919,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -3480,7 +2934,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -3495,7 +2949,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -3591,7 +3045,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -3606,7 +3060,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -3621,7 +3075,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -3728,7 +3182,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -3743,7 +3197,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -3758,7 +3212,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -3884,7 +3338,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -3899,7 +3353,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -3914,7 +3368,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -4022,7 +3476,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -4037,7 +3491,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -4052,7 +3506,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -4087,6 +3541,97 @@
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": false,
     "shortForm": "OWL_SymmetricProperty",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl"
+    ],
+    "curie": "OWL:Thing",
+    "definedBy": [
+      "owl"
+    ],
+    "definition": [
+      "The class of OWL individuals."
+    ],
+    "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#comment": "The class of OWL individuals.",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2002/07/owl#",
+    "http://www.w3.org/2000/01/rdf-schema#label": "Thing",
+    "imported": false,
+    "iri": "http://www.w3.org/2002/07/owl#Thing",
+    "isDefiningOntology": true,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "Thing"
+    ],
+    "linkedEntities": {
+      "http://www.w3.org/2000/01/rdf-schema#comment": {
+        "curie": "RDFS:comment",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "comment"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
+        "curie": "RDFS:isDefinedBy",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "isDefinedBy"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
+    "numDescendants": 2.0,
+    "numHierarchicalDescendants": 2.0,
+    "ontologyId": "owl",
+    "ontologyIri": "http://www.w3.org/2002/07/owl",
+    "searchableAnnotationValues": false,
+    "shortForm": "OWL_Thing",
     "type": [
       "class",
       "entity"
@@ -4159,7 +3704,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -4174,7 +3719,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -4189,7 +3734,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -4284,7 +3829,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -4314,7 +3859,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -4329,7 +3874,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -4425,7 +3970,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -4455,7 +4000,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -4470,7 +4015,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -4566,7 +4111,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -4596,7 +4141,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -4611,7 +4156,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -4707,7 +4252,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -4737,7 +4282,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -4752,7 +4297,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -4833,7 +4378,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -4863,7 +4408,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -4878,7 +4423,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -4961,7 +4506,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -4991,7 +4536,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -5006,7 +4551,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -5102,7 +4647,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -5132,7 +4677,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -5147,7 +4692,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -5229,7 +4774,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -5259,7 +4804,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -5274,7 +4819,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -5355,7 +4900,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -5385,7 +4930,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -5400,7 +4945,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -5480,7 +5025,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -5510,7 +5055,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -5525,7 +5070,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -5620,7 +5165,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -5650,7 +5195,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -5665,7 +5210,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -5761,7 +5306,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -5791,7 +5336,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -5806,7 +5351,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -5888,7 +5433,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -5918,7 +5463,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -5933,7 +5478,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -6013,7 +5558,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -6043,7 +5588,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -6058,7 +5603,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -6138,7 +5683,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -6168,7 +5713,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -6183,7 +5728,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -6263,7 +5808,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -6293,7 +5838,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -6308,7 +5853,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -6403,7 +5948,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -6433,7 +5978,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -6448,7 +5993,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -6529,7 +6074,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -6559,7 +6104,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -6574,7 +6119,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -6654,7 +6199,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -6684,7 +6229,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -6699,7 +6244,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -6794,7 +6339,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -6824,7 +6369,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -6839,7 +6384,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -6935,7 +6480,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -6965,7 +6510,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -6980,7 +6525,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -7064,7 +6609,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -7094,7 +6639,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -7109,7 +6654,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -7205,7 +6750,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -7235,7 +6780,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -7250,7 +6795,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -7331,7 +6876,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -7361,7 +6906,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -7376,7 +6921,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -7456,7 +7001,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -7486,7 +7031,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -7501,7 +7046,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -7581,7 +7126,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -7611,7 +7156,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -7626,7 +7171,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -7721,7 +7266,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -7751,7 +7296,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -7766,7 +7311,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -7847,7 +7392,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -7877,7 +7422,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -7892,7 +7437,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -7972,7 +7517,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -8002,7 +7547,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -8017,7 +7562,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -8097,7 +7642,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -8127,7 +7672,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -8142,7 +7687,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -8237,7 +7782,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -8267,7 +7812,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -8282,7 +7827,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -8378,7 +7923,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -8408,7 +7953,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -8423,7 +7968,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -8504,7 +8049,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -8534,7 +8079,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -8549,7 +8094,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -8629,7 +8174,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -8659,7 +8204,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -8674,7 +8219,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -8769,7 +8314,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -8799,7 +8344,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -8814,7 +8359,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -8898,7 +8443,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -8928,7 +8473,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -8943,7 +8488,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -9024,7 +8569,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -9054,7 +8599,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -9069,7 +8614,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -9149,7 +8694,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -9179,7 +8724,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -9194,7 +8739,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -9274,7 +8819,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -9304,7 +8849,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -9319,7 +8864,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -9399,7 +8944,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -9429,7 +8974,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -9444,7 +8989,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -9539,7 +9084,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -9569,7 +9114,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -9584,7 +9129,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -9665,7 +9210,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -9695,7 +9240,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -9710,7 +9255,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -9790,7 +9335,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -9820,7 +9365,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -9835,7 +9380,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -9930,7 +9475,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -9960,7 +9505,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -9975,7 +9520,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -10071,7 +9616,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -10101,7 +9646,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -10116,7 +9661,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -10198,7 +9743,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -10228,7 +9773,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -10243,7 +9788,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -10339,7 +9884,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -10369,7 +9914,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -10384,7 +9929,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -10480,7 +10025,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -10510,7 +10055,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -10525,7 +10070,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -10622,7 +10167,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -10652,7 +10197,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -10667,7 +10212,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -10776,7 +10321,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -10791,7 +10336,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -10806,7 +10351,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -10929,7 +10474,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -10944,7 +10489,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -10959,7 +10504,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -11056,7 +10601,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -11071,7 +10616,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -11086,7 +10631,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -11211,7 +10756,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -11226,7 +10771,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -11241,7 +10786,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -11365,7 +10910,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -11380,7 +10925,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -11395,7 +10940,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -11490,7 +11035,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -11505,7 +11050,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -11520,7 +11065,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -11542,6 +11087,148 @@
     "type": [
       "class",
       "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl",
+      "rdfs"
+    ],
+    "curie": "RDFS:comment",
+    "definedBy": [
+      "rdfs"
+    ],
+    "definition": [
+      "A description of the subject resource."
+    ],
+    "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+    "http://www.w3.org/2000/01/rdf-schema#comment": "A description of the subject resource.",
+    "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.w3.org/2000/01/rdf-schema#Resource",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2000/01/rdf-schema#",
+    "http://www.w3.org/2000/01/rdf-schema#label": "comment",
+    "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "imported": true,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#comment",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "comment"
+    ],
+    "linkedEntities": {
+      "http://www.w3.org/2000/01/rdf-schema#Literal": {
+        "curie": "RDFS:Literal",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "Literal"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#Resource": {
+        "curie": "RDFS:Resource",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "Resource"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#domain": {
+        "curie": "RDFS:domain",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "domain"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
+        "curie": "RDFS:isDefinedBy",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "isDefinedBy"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#range": {
+        "curie": "RDFS:range",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "range"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#Literal",
+      "http://www.w3.org/2000/01/rdf-schema#Resource",
+      "http://www.w3.org/2000/01/rdf-schema#domain",
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#range"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl",
+    "ontologyIri": "http://www.w3.org/2002/07/owl",
+    "searchableAnnotationValues": true,
+    "shortForm": "RDFS_comment",
+    "type": [
+      "entity",
+      "property"
     ]
   },
   {
@@ -11600,7 +11287,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -11615,7 +11302,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -11630,7 +11317,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -11665,6 +11352,171 @@
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": true,
     "shortForm": "RDFS_domain",
+    "type": [
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl",
+      "rdfs"
+    ],
+    "curie": "RDFS:isDefinedBy",
+    "definedBy": [
+      "rdfs"
+    ],
+    "definition": [
+      "The definition of the subject resource."
+    ],
+    "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
+    "directAncestor": [
+      "http://www.w3.org/2000/01/rdf-schema#seeAlso"
+    ],
+    "directParent": [
+      "http://www.w3.org/2000/01/rdf-schema#seeAlso"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+    "http://www.w3.org/2000/01/rdf-schema#comment": "The definition of the subject resource.",
+    "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.w3.org/2000/01/rdf-schema#Resource",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2000/01/rdf-schema#",
+    "http://www.w3.org/2000/01/rdf-schema#label": "isDefinedBy",
+    "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Resource",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+    "imported": true,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "isDefinedBy"
+    ],
+    "linkedEntities": {
+      "http://www.w3.org/2000/01/rdf-schema#Resource": {
+        "curie": "RDFS:Resource",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "Resource"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#comment": {
+        "curie": "RDFS:comment",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "comment"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#domain": {
+        "curie": "RDFS:domain",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "domain"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#range": {
+        "curie": "RDFS:range",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "range"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#seeAlso": {
+        "curie": "RDFS:seeAlso",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "seeAlso"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+        "curie": "RDFS:subPropertyOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "subPropertyOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#Resource",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#domain",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#range",
+      "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl",
+    "ontologyIri": "http://www.w3.org/2002/07/owl",
+    "searchableAnnotationValues": true,
+    "shortForm": "RDFS_isDefinedBy",
     "type": [
       "entity",
       "property"
@@ -11726,7 +11578,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -11756,7 +11608,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -11771,7 +11623,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -11868,7 +11720,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -11898,7 +11750,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -11913,7 +11765,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -11933,6 +11785,148 @@
     "ontologyIri": "http://www.w3.org/2002/07/owl",
     "searchableAnnotationValues": true,
     "shortForm": "RDFS_range",
+    "type": [
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "owl",
+      "rdfs"
+    ],
+    "curie": "RDFS:seeAlso",
+    "definedBy": [
+      "rdfs"
+    ],
+    "definition": [
+      "Further information about the subject resource."
+    ],
+    "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
+    "hasDirectChildren": true,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+    "http://www.w3.org/2000/01/rdf-schema#comment": "Further information about the subject resource.",
+    "http://www.w3.org/2000/01/rdf-schema#domain": "http://www.w3.org/2000/01/rdf-schema#Resource",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2000/01/rdf-schema#",
+    "http://www.w3.org/2000/01/rdf-schema#label": "seeAlso",
+    "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2000/01/rdf-schema#Resource",
+    "imported": true,
+    "iri": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "seeAlso"
+    ],
+    "linkedEntities": {
+      "http://www.w3.org/2000/01/rdf-schema#Resource": {
+        "curie": "RDFS:Resource",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "Resource"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#comment": {
+        "curie": "RDFS:comment",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "comment"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#domain": {
+        "curie": "RDFS:domain",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "domain"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
+        "curie": "RDFS:isDefinedBy",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "isDefinedBy"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#range": {
+        "curie": "RDFS:range",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "range"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#Resource",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#domain",
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#range"
+    ],
+    "numDescendants": 1.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "owl",
+    "ontologyIri": "http://www.w3.org/2002/07/owl",
+    "searchableAnnotationValues": true,
+    "shortForm": "RDFS_seeAlso",
     "type": [
       "entity",
       "property"
@@ -11994,7 +11988,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -12024,7 +12018,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -12039,7 +12033,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"
@@ -12121,7 +12115,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -12151,7 +12145,7 @@
         "label": [
           "isDefinedBy"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -12166,7 +12160,7 @@
         "label": [
           "label"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 3.0,
         "type": [
           "entity",
           "property"

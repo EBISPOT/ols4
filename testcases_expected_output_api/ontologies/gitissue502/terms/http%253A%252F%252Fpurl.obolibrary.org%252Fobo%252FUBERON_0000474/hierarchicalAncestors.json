@@ -1,0 +1,651 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000004?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000004",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "independent continuant",
+    "lang": "en",
+    "obo_id": "BFO:0000004",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "BFO_0000004",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040?lang=en"
+      }
+    },
+    "annotation": {
+      "IAO_0000116": [
+        "BFO 2 Reference: Material entities (continuants) can preserve their identity even while gaining and losing material parts. Continuants are contrasted with occurrents, which unfold themselves in successive temporal parts or phases [60",
+        "BFO 2 Reference: Object, Fiat Object Part and Object Aggregate are not intended to be exhaustive of Material Entity. Users are invited to propose new subcategories of Material Entity.",
+        "BFO 2 Reference: ‘Matter’ is intended to encompass both mass and energy (we will address the ontological treatment of portions of energy in a later version of BFO). A portion of matter is anything that includes elementary particles among its proper or improper parts: quarks and leptons, including electrons, as the smallest particles thus far discovered; baryons (including protons and neutrons) at a higher level of granularity; atoms and molecules at still higher levels, forming the cells, organs, organisms and other material entities studied by biologists, the portions of rock studied by geologists, the fossils studied by paleontologists, and so on.Material entities are three-dimensional entities (entities extended in three spatial dimensions), as contrasted with the processes in which they participate, which are four-dimensional entities (entities extended also along the dimension of time).According to the FMA, material entities may have immaterial entities as parts – including the entities identified below as sites; for example the interior (or ‘lumen’) of your small intestine is a part of your body. BFO 2.0 embodies a decision to follow the FMA here."
+      ]
+    },
+    "description": [
+      "An independent continuant that is spatially extended whose identity is independent of that of other entities and can be maintained through time."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000040",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "material entity",
+    "lang": "en",
+    "obo_id": "BFO:0000040",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "BFO_0000040",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000061/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000061/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000061/descendants"
+      },
+      "existence_ends_during_or_before": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000061/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002497"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000061/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000061/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000061/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000061/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000061/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000061/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000061/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000061?lang=en"
+      }
+    },
+    "annotation": {
+      "RO_0002175": [
+        "http://purl.obolibrary.org/obo/NCBITaxon_33090",
+        "http://purl.obolibrary.org/obo/NCBITaxon_33208",
+        "http://purl.obolibrary.org/obo/NCBITaxon_4751"
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0000061",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "anatomical structure",
+    "lang": "en",
+    "obo_id": "UBERON:0000061",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "UBERON_0000061",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000465/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000465/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000465/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000465/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000465/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000465/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000465/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000465/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000465/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000465/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000465?lang=en"
+      }
+    },
+    "annotation": {
+      "RO_0002175": [
+        "http://purl.obolibrary.org/obo/NCBITaxon_33090",
+        "http://purl.obolibrary.org/obo/NCBITaxon_33208",
+        "http://purl.obolibrary.org/obo/NCBITaxon_4751"
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0000465",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "material anatomical entity",
+    "lang": "en",
+    "obo_id": "UBERON:0000465",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "UBERON_0000465",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000467/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000467/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000467/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000467/graph"
+      },
+      "has_part": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000467/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000051"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000467/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000467/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000467/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000467/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000467/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000467/parents"
+      },
+      "part_of": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000467/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000050"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000467?lang=en"
+      }
+    },
+    "annotation": {
+      "RO_0002175": [
+        "http://purl.obolibrary.org/obo/NCBITaxon_33090",
+        "http://purl.obolibrary.org/obo/NCBITaxon_33208",
+        "http://purl.obolibrary.org/obo/NCBITaxon_4751"
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "anatomical system",
+    "lang": "en",
+    "obo_id": "UBERON:0000467",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "UBERON_0000467",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000468/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000468/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000468/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000468/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000468/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000468/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000468/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000468/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000468/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000468/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000468?lang=en"
+      }
+    },
+    "annotation": {
+      "IAO_0000116": [
+        "TODO - split body and mc organism? body continues after death stage"
+      ],
+      "RO_0002175": [
+        "http://purl.obolibrary.org/obo/NCBITaxon_33090",
+        "http://purl.obolibrary.org/obo/NCBITaxon_33208",
+        "http://purl.obolibrary.org/obo/NCBITaxon_4751"
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0000468",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "multicellular organism",
+    "lang": "en",
+    "obo_id": "UBERON:0000468",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "UBERON_0000468",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000990/ancestors"
+      },
+      "capable_of_part_of": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000990/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002216"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000990/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000990/descendants"
+      },
+      "existence_ends_during": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000990/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002492"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000990/graph"
+      },
+      "has_part": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000990/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000051"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000990/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000990/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000990/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000990/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000990/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000990/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000990?lang=en"
+      }
+    },
+    "annotation": {
+      "IAO_0000116": [
+        "consider splitting genitalia from reproductive system"
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0000990",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "reproductive system",
+    "lang": "en",
+    "obo_id": "UBERON:0000990",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "UBERON_0000990",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062?lang=en"
+      }
+    },
+    "annotation": {
+      "RO_0002175": [
+        "http://purl.obolibrary.org/obo/NCBITaxon_33090",
+        "http://purl.obolibrary.org/obo/NCBITaxon_33208",
+        "http://purl.obolibrary.org/obo/NCBITaxon_4751"
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0001062",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "anatomical entity",
+    "lang": "en",
+    "obo_id": "UBERON:0001062",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "UBERON_0001062",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003100/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003100/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003100/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003100/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003100/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003100/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003100/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003100/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003100/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003100/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0003100?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0003100",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "female organism",
+    "lang": "en",
+    "obo_id": "UBERON:0003100",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "UBERON_0003100",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0010000/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0010000/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0010000/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0010000/graph"
+      },
+      "has_part": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0010000/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000051"
+      },
+      "has_quality": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0010000/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000086"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0010000/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0010000/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0010000/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0010000/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0010000/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0010000/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0010000?lang=en"
+      }
+    },
+    "annotation": {
+      "RO_0002175": [
+        "http://purl.obolibrary.org/obo/NCBITaxon_33090",
+        "http://purl.obolibrary.org/obo/NCBITaxon_33208",
+        "http://purl.obolibrary.org/obo/NCBITaxon_4751"
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0010000",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "multicellular anatomical structure",
+    "lang": "en",
+    "obo_id": "UBERON:0010000",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "UBERON_0010000",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000002/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000002/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000002/graph"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000002/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000002/hierarchicalDescendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000002?lang=en"
+      }
+    },
+    "annotation": {
+      "IAO_0000116": [
+        "BFO 2 Reference: Continuant entities are entities which can be sliced to yield parts only along the spatial dimension, yielding for example the parts of your table which we call its legs, its top, its nails. ‘My desk stretches from the window to the door. It has spatial parts, and can be sliced (in space) in two. With respect to time, however, a thing is a continuant.’ [60, p. 240"
+      ]
+    },
+    "description": [
+      "An entity that exists in full at any time in which it exists at all, persists through time while maintaining its identity and has no temporal parts."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000002",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "continuant",
+    "lang": "en",
+    "obo_id": "BFO:0000002",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "BFO_0000002",
+    "synonyms": []
+  }
+]

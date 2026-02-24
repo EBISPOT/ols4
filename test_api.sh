@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export OLS4_CONFIG=$(find testcases | grep json | paste -sd,)
+export OLS4_CONFIG=$(find testcases | grep json | paste -sd, -)
 export OLS4_DATALOAD_ARGS="--loadLocalFiles"
 export BUILDKIT_PROGRESS=plain
 

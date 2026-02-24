@@ -1,0 +1,266 @@
+[
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/edam/properties/http%253A%252F%252Fedamontology.org%252Fhas_format?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://edamontology.org/has_format",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has_format",
+    "lang": "en",
+    "obo_id": "has:format",
+    "ontology_iri": "http://edamontology.org",
+    "ontology_name": "edam",
+    "ontology_prefix": "EDAM",
+    "short_form": "has_format",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/edam/properties/http%253A%252F%252Fedamontology.org%252Fhas_function?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://edamontology.org/has_function",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has_function",
+    "lang": "en",
+    "obo_id": "has:function",
+    "ontology_iri": "http://edamontology.org",
+    "ontology_name": "edam",
+    "ontology_prefix": "EDAM",
+    "short_form": "has_function",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/edam/properties/http%253A%252F%252Fedamontology.org%252Fhas_identifier?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://edamontology.org/has_identifier",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has_identifier",
+    "lang": "en",
+    "obo_id": "has:identifier",
+    "ontology_iri": "http://edamontology.org",
+    "ontology_name": "edam",
+    "ontology_prefix": "EDAM",
+    "short_form": "has_identifier",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/edam/properties/http%253A%252F%252Fedamontology.org%252Fhas_input?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://edamontology.org/has_input",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has_input",
+    "lang": "en",
+    "obo_id": "has:input",
+    "ontology_iri": "http://edamontology.org",
+    "ontology_name": "edam",
+    "ontology_prefix": "EDAM",
+    "short_form": "has_input",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/edam/properties/http%253A%252F%252Fedamontology.org%252Fhas_output?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://edamontology.org/has_output",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has_output",
+    "lang": "en",
+    "obo_id": "has:output",
+    "ontology_iri": "http://edamontology.org",
+    "ontology_name": "edam",
+    "ontology_prefix": "EDAM",
+    "short_form": "has_output",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/edam/properties/http%253A%252F%252Fedamontology.org%252Fhas_topic?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://edamontology.org/has_topic",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has_topic",
+    "lang": "en",
+    "obo_id": "has:topic",
+    "ontology_iri": "http://edamontology.org",
+    "ontology_name": "edam",
+    "ontology_prefix": "EDAM",
+    "short_form": "has_topic",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/edam/properties/http%253A%252F%252Fedamontology.org%252Fis_format_of?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://edamontology.org/is_format_of",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "is_format_of",
+    "lang": "en",
+    "obo_id": "is:format:of",
+    "ontology_iri": "http://edamontology.org",
+    "ontology_name": "edam",
+    "ontology_prefix": "EDAM",
+    "short_form": "is_format_of",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/edam/properties/http%253A%252F%252Fedamontology.org%252Fis_function_of?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://edamontology.org/is_function_of",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "is_function_of",
+    "lang": "en",
+    "obo_id": "is:function:of",
+    "ontology_iri": "http://edamontology.org",
+    "ontology_name": "edam",
+    "ontology_prefix": "EDAM",
+    "short_form": "is_function_of",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/edam/properties/http%253A%252F%252Fedamontology.org%252Fis_identifier_of?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://edamontology.org/is_identifier_of",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "is_identifier_of",
+    "lang": "en",
+    "obo_id": "is:identifier:of",
+    "ontology_iri": "http://edamontology.org",
+    "ontology_name": "edam",
+    "ontology_prefix": "EDAM",
+    "short_form": "is_identifier_of",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/edam/properties/http%253A%252F%252Fedamontology.org%252Fis_input_of?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://edamontology.org/is_input_of",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "is_input_of",
+    "lang": "en",
+    "obo_id": "is:input:of",
+    "ontology_iri": "http://edamontology.org",
+    "ontology_name": "edam",
+    "ontology_prefix": "EDAM",
+    "short_form": "is_input_of",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/edam/properties/http%253A%252F%252Fedamontology.org%252Fis_output_of?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://edamontology.org/is_output_of",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "is_output_of",
+    "lang": "en",
+    "obo_id": "is:output:of",
+    "ontology_iri": "http://edamontology.org",
+    "ontology_name": "edam",
+    "ontology_prefix": "EDAM",
+    "short_form": "is_output_of",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/edam/properties/http%253A%252F%252Fedamontology.org%252Fis_topic_of?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://edamontology.org/is_topic_of",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "is_topic_of",
+    "lang": "en",
+    "obo_id": "is:topic:of",
+    "ontology_iri": "http://edamontology.org",
+    "ontology_name": "edam",
+    "ontology_prefix": "EDAM",
+    "short_form": "is_topic_of",
+    "synonyms": []
+  }
+]

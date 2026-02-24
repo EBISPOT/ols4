@@ -1,0 +1,37 @@
+{
+  "iri": "http://purl.obolibrary.org/obo/RO_0002160",
+  "lang": "en",
+  "description": [
+    "x only in taxon y if and only if x is in taxon y, and there is no other organism z such that y!=z a and x is in taxon z."
+  ],
+  "synonyms": [],
+  "annotation": {
+    "IAO_0000116": [
+      "The original intent was to treat this as a macro that expands to 'in taxon' only ?Y - however, this is not necessary if we instead have supplemental axioms that state that each pair of sibling tax have a disjointness axiom using the 'in taxon' property - e.g.\n\n 'in taxon' some Eukaryota DisjointWith 'in taxon' some Eubacteria"
+    ]
+  },
+  "label": "only in taxon",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "is_obsolete": false,
+  "is_defining_ontology": false,
+  "has_children": false,
+  "is_root": false,
+  "short_form": "RO_0002160",
+  "obo_id": "RO:0002160",
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002160?lang=en"
+    },
+    "parents": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002160/parents"
+    },
+    "ancestors": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002160/ancestors"
+    },
+    "jstree": {
+      "href": "http://localhost:8080/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002160/jstree"
+    }
+  }
+}

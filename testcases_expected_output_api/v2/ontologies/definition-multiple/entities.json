@@ -1,0 +1,53 @@
+[
+  {
+    "appearsIn": [
+      "definition-multiple"
+    ],
+    "curie": "Definition-Multiple:0001",
+    "definition": [
+      "A disease involving the liver.",
+      "Any disease or dysfunction of the liver and the intrahepatic bile ducts.",
+      "Pathological processes of the LIVER."
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000115": [
+      "A disease involving the liver.",
+      "Any disease or dysfunction of the liver and the intrahepatic bile ducts.",
+      "Pathological processes of the LIVER."
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "liver disease",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/defined-fields/DefinitionMultiple.owl#Definition-Multiple_0001",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "liver disease"
+    ],
+    "linkedEntities": {
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "iao:0000115",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0000115"
+      }
+    },
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "definition-multiple",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/class.owl",
+    "ontologyPreferredPrefix": "Definition-Multiple",
+    "searchableAnnotationValues": [
+      false
+    ],
+    "shortForm": "Definition-Multiple_0001",
+    "type": [
+      "class",
+      "entity"
+    ]
+  }
+]

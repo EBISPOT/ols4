@@ -49,27 +49,11 @@
           "objectProperty",
           "property"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
       "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#individual_a",
-      "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://www.ebi.ac.uk/testcases/individuals/anonymous-types-with-inverse.owl#relation"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,

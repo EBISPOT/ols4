@@ -43,7 +43,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -56,7 +56,7 @@
         "label": [
           "realized in"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -79,28 +79,12 @@
           "class",
           "entity"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
       "http://purl.obolibrary.org/obo/BFO_0000051",
       "http://purl.obolibrary.org/obo/BFO_0000054",
-      "http://purl.obolibrary.org/obo/OGMS_0000063",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://purl.obolibrary.org/obo/OGMS_0000063"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -152,26 +136,7 @@
     "label": [
       "nitrogen compound metabolic process"
     ],
-    "linkedEntities": {
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://www.w3.org/2000/01/rdf-schema#label"
-    ],
+    "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "efo-iri-labels",
@@ -179,6 +144,37 @@
     "ontologyPreferredPrefix": "efo-iri-labels",
     "searchableAnnotationValues": false,
     "shortForm": "GO_0006807",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-iri-labels"
+    ],
+    "curie": "GO:0008150",
+    "hasDirectChildren": true,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/GO_0008150",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "GO_0008150"
+    ],
+    "linkedEntities": {},
+    "numDescendants": 1.0,
+    "numHierarchicalDescendants": 1.0,
+    "ontologyId": "efo-iri-labels",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-iri-labels",
+    "searchableAnnotationValues": false,
+    "shortForm": "GO_0008150",
     "type": [
       "class",
       "entity"
@@ -229,61 +225,20 @@
         "label": [
           "GO_0008150"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
         ]
       },
       "http://purl.obolibrary.org/obo/IAO_0000115": {
-        "curie": "IAO:0000115",
-        "hasLocalDefinition": false,
-        "label": [
-          "IAO_0000115"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "annotationProperty",
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
+        "curie": "iao:0000115",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0000115"
       }
     },
     "linksTo": [
-      "http://purl.obolibrary.org/obo/GO_0008150",
-      "http://purl.obolibrary.org/obo/IAO_0000115",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://purl.obolibrary.org/obo/GO_0008150"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -294,38 +249,6 @@
       false
     ],
     "shortForm": "OGMS_0000063",
-    "type": [
-      "class",
-      "entity"
-    ]
-  },
-  {
-    "appearsIn": [
-      "efo-iri-labels",
-      "gitissue502"
-    ],
-    "curie": "GO:0008150",
-    "hasDirectChildren": true,
-    "hasDirectParents": false,
-    "hasHierarchicalChildren": true,
-    "hasHierarchicalParents": false,
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-    "imported": false,
-    "iri": "http://purl.obolibrary.org/obo/GO_0008150",
-    "isDefiningOntology": false,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": [
-      "GO_0008150"
-    ],
-    "linkedEntities": {},
-    "numDescendants": 1.0,
-    "numHierarchicalDescendants": 1.0,
-    "ontologyId": "efo-iri-labels",
-    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
-    "ontologyPreferredPrefix": "efo-iri-labels",
-    "searchableAnnotationValues": false,
-    "shortForm": "GO_0008150",
     "type": [
       "class",
       "entity"

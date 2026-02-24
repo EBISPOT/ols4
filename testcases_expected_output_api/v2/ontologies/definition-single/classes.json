@@ -1,0 +1,43 @@
+[
+  {
+    "appearsIn": [
+      "definition-single"
+    ],
+    "curie": "Definition-Single:Thing",
+    "definedBy": [
+      "definition-single"
+    ],
+    "definition": [
+      "The class of OWL individuals."
+    ],
+    "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#comment": "The class of OWL individuals.",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2002/07/owl#",
+    "http://www.w3.org/2000/01/rdf-schema#label": "Thing",
+    "imported": false,
+    "iri": "http://www.w3.org/2002/07/owl#Thing",
+    "isDefiningOntology": true,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "Thing"
+    ],
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "definition-single",
+    "ontologyIri": "http://www.w3.org/2002/07/owl#",
+    "ontologyPreferredPrefix": "Definition-Single",
+    "searchableAnnotationValues": false,
+    "shortForm": "Definition-Single_Thing",
+    "type": [
+      "class",
+      "entity"
+    ]
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000040?lang=en"
+      }
+    },
+    "annotation": {
+      "IAO_0000116": [
+        "BFO 2 Reference: Material entities (continuants) can preserve their identity even while gaining and losing material parts. Continuants are contrasted with occurrents, which unfold themselves in successive temporal parts or phases [60",
+        "BFO 2 Reference: Object, Fiat Object Part and Object Aggregate are not intended to be exhaustive of Material Entity. Users are invited to propose new subcategories of Material Entity.",
+        "BFO 2 Reference: ‘Matter’ is intended to encompass both mass and energy (we will address the ontological treatment of portions of energy in a later version of BFO). A portion of matter is anything that includes elementary particles among its proper or improper parts: quarks and leptons, including electrons, as the smallest particles thus far discovered; baryons (including protons and neutrons) at a higher level of granularity; atoms and molecules at still higher levels, forming the cells, organs, organisms and other material entities studied by biologists, the portions of rock studied by geologists, the fossils studied by paleontologists, and so on.Material entities are three-dimensional entities (entities extended in three spatial dimensions), as contrasted with the processes in which they participate, which are four-dimensional entities (entities extended also along the dimension of time).According to the FMA, material entities may have immaterial entities as parts – including the entities identified below as sites; for example the interior (or ‘lumen’) of your small intestine is a part of your body. BFO 2.0 embodies a decision to follow the FMA here."
+      ]
+    },
+    "description": [
+      "An independent continuant that is spatially extended whose identity is independent of that of other entities and can be maintained through time."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000040",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "material entity",
+    "lang": "en",
+    "obo_id": "BFO:0000040",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "BFO_0000040",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0001062?lang=en"
+      }
+    },
+    "annotation": {
+      "RO_0002175": [
+        "http://purl.obolibrary.org/obo/NCBITaxon_33090",
+        "http://purl.obolibrary.org/obo/NCBITaxon_33208",
+        "http://purl.obolibrary.org/obo/NCBITaxon_4751"
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0001062",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "anatomical entity",
+    "lang": "en",
+    "obo_id": "UBERON:0001062",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "UBERON_0001062",
+    "synonyms": []
+  }
+]

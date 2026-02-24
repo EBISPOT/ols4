@@ -3,6 +3,152 @@
     "appearsIn": [
       "efo-hierarchical-properties"
     ],
+    "curie": "UBERON:0000467",
+    "hasDirectChildren": true,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000468"
+    ],
+    "hierarchicalParent": [
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000468"
+      }
+    ],
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "anatomical system",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "isObsolete": false
+    },
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "anatomical system"
+    ],
+    "linkedEntities": {
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": [
+          "multicellular organism"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://purl.obolibrary.org/obo/BFO_0000051",
+      "http://purl.obolibrary.org/obo/UBERON_0000468"
+    ],
+    "numDescendants": 4.0,
+    "numHierarchicalDescendants": 13.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedTo": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000468"
+      }
+    ],
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0000467",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0000468",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "multicellular organism",
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0000468",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "multicellular organism"
+    ],
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 19.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0000468",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
     "curie": "UBERON:0000483",
     "hasDirectChildren": true,
     "hasDirectParents": false,
@@ -49,7 +195,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -63,7 +209,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -76,49 +222,17 @@
         "label": [
           "multicellular organism"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
         ]
       }
     },
     "linksTo": [
       "http://purl.obolibrary.org/obo/BFO_0000050",
       "http://purl.obolibrary.org/obo/BFO_0000051",
-      "http://purl.obolibrary.org/obo/UBERON_0000468",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://purl.obolibrary.org/obo/UBERON_0000468"
     ],
     "numDescendants": 2.0,
     "numHierarchicalDescendants": 2.0,
@@ -140,6 +254,299 @@
     ],
     "searchableAnnotationValues": false,
     "shortForm": "UBERON_0000483",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0000916",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "http://purl.obolibrary.org/obo/UBERON_0002100",
+      "http://purl.obolibrary.org/obo/UBERON_0013702"
+    ],
+    "hierarchicalParent": [
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000468"
+      },
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002100"
+      }
+    ],
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "abdomen",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
+        "isObsolete": false
+      }
+    ],
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0000916",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "abdomen"
+    ],
+    "linkedEntities": {
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": [
+          "multicellular organism"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002100": {
+        "curie": "UBERON:0002100",
+        "hasLocalDefinition": true,
+        "label": [
+          "trunk"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0013702": {
+        "curie": "UBERON:0013702",
+        "hasLocalDefinition": true,
+        "label": [
+          "body proper"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://purl.obolibrary.org/obo/BFO_0000051",
+      "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "http://purl.obolibrary.org/obo/UBERON_0002100",
+      "http://purl.obolibrary.org/obo/UBERON_0013702"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 6.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedTo": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000468"
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0002100"
+      }
+    ],
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0000916",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0000949",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467"
+    ],
+    "directParent": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "http://purl.obolibrary.org/obo/UBERON_0000468"
+    ],
+    "hierarchicalParent": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467"
+    ],
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "endocrine system",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "http://www.w3.org/2002/07/owl#disjointWith": [
+      "http://purl.obolibrary.org/obo/UBERON_0001007",
+      "http://purl.obolibrary.org/obo/UBERON_0001009",
+      "http://purl.obolibrary.org/obo/UBERON_0002423"
+    ],
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0000949",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "endocrine system"
+    ],
+    "linkedEntities": {
+      "http://purl.obolibrary.org/obo/UBERON_0000467": {
+        "curie": "UBERON:0000467",
+        "hasLocalDefinition": true,
+        "label": [
+          "anatomical system"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": [
+          "multicellular organism"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001007": {
+        "curie": "UBERON:0001007",
+        "hasLocalDefinition": true,
+        "label": [
+          "digestive system"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0001009": {
+        "curie": "UBERON:0001009",
+        "hasLocalDefinition": true,
+        "label": [
+          "circulatory system"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002423": {
+        "curie": "UBERON:0002423",
+        "hasLocalDefinition": true,
+        "label": [
+          "hepatobiliary system"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "http://purl.obolibrary.org/obo/UBERON_0001007",
+      "http://purl.obolibrary.org/obo/UBERON_0001009",
+      "http://purl.obolibrary.org/obo/UBERON_0002423"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 7.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0000949",
     "type": [
       "class",
       "entity"
@@ -190,7 +597,7 @@
         "label": [
           "anatomical system"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -202,7 +609,7 @@
         "label": [
           "multicellular organism"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -231,45 +638,13 @@
           "class",
           "entity"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
       "http://purl.obolibrary.org/obo/UBERON_0000467",
       "http://purl.obolibrary.org/obo/UBERON_0000468",
       "http://purl.obolibrary.org/obo/UBERON_0001009",
-      "http://purl.obolibrary.org/obo/UBERON_0002423",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://purl.obolibrary.org/obo/UBERON_0002423"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 7.0,
@@ -325,7 +700,7 @@
         "label": [
           "anatomical system"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -337,7 +712,7 @@
         "label": [
           "multicellular organism"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -354,44 +729,12 @@
           "class",
           "entity"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
       "http://purl.obolibrary.org/obo/UBERON_0000467",
       "http://purl.obolibrary.org/obo/UBERON_0000468",
-      "http://purl.obolibrary.org/obo/UBERON_0002423",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://purl.obolibrary.org/obo/UBERON_0002423"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 2.0,
@@ -497,7 +840,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -511,7 +854,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -524,7 +867,7 @@
         "label": [
           "anatomical system"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -536,7 +879,7 @@
         "label": [
           "multicellular organism"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -548,7 +891,7 @@
         "label": [
           "abdomen"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -560,7 +903,7 @@
         "label": [
           "endocrine system"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -632,7 +975,7 @@
         "label": [
           "endocrine gland"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -656,7 +999,7 @@
         "label": [
           "gland"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -685,36 +1028,6 @@
           "class",
           "entity"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
@@ -733,9 +1046,7 @@
       "http://purl.obolibrary.org/obo/UBERON_0002423",
       "http://purl.obolibrary.org/obo/UBERON_0002530",
       "http://purl.obolibrary.org/obo/UBERON_0004647",
-      "http://purl.obolibrary.org/obo/UBERON_0013702",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://purl.obolibrary.org/obo/UBERON_0013702"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -947,7 +1258,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -961,7 +1272,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -974,7 +1285,7 @@
         "label": [
           "anatomical system"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -986,7 +1297,7 @@
         "label": [
           "multicellular organism"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1010,7 +1321,7 @@
         "label": [
           "abdomen"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1022,7 +1333,7 @@
         "label": [
           "endocrine system"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1130,7 +1441,7 @@
         "label": [
           "endocrine gland"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1154,7 +1465,7 @@
         "label": [
           "gland"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1195,36 +1506,6 @@
           "class",
           "entity"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
@@ -1248,9 +1529,7 @@
       "http://purl.obolibrary.org/obo/UBERON_0002530",
       "http://purl.obolibrary.org/obo/UBERON_0004535",
       "http://purl.obolibrary.org/obo/UBERON_0004647",
-      "http://purl.obolibrary.org/obo/UBERON_0013702",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://purl.obolibrary.org/obo/UBERON_0013702"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -1377,42 +1656,10 @@
           "class",
           "entity"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
-      "http://purl.obolibrary.org/obo/UBERON_0001981",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://purl.obolibrary.org/obo/UBERON_0001981"
     ],
     "numDescendants": 1.0,
     "numHierarchicalDescendants": 1.0,
@@ -1471,42 +1718,10 @@
           "class",
           "entity"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
-      "http://purl.obolibrary.org/obo/UBERON_0001981",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://purl.obolibrary.org/obo/UBERON_0001981"
     ],
     "numDescendants": 2.0,
     "numHierarchicalDescendants": 2.0,
@@ -1612,7 +1827,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -1626,7 +1841,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -1639,7 +1854,7 @@
         "label": [
           "anatomical system"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1651,7 +1866,7 @@
         "label": [
           "multicellular organism"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1663,7 +1878,7 @@
         "label": [
           "abdomen"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1675,7 +1890,7 @@
         "label": [
           "endocrine system"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1747,7 +1962,7 @@
         "label": [
           "endocrine gland"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1771,7 +1986,7 @@
         "label": [
           "gland"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -1800,36 +2015,6 @@
           "class",
           "entity"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
@@ -1848,9 +2033,7 @@
       "http://purl.obolibrary.org/obo/UBERON_0002423",
       "http://purl.obolibrary.org/obo/UBERON_0002530",
       "http://purl.obolibrary.org/obo/UBERON_0004647",
-      "http://purl.obolibrary.org/obo/UBERON_0013702",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://purl.obolibrary.org/obo/UBERON_0013702"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -1907,26 +2090,7 @@
     "label": [
       "blood vessel"
     ],
-    "linkedEntities": {
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://www.w3.org/2000/01/rdf-schema#label"
-    ],
+    "linkedEntities": {},
     "numDescendants": 7.0,
     "numHierarchicalDescendants": 7.0,
     "ontologyId": "efo-hierarchical-properties",
@@ -2000,7 +2164,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -2014,7 +2178,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -2044,45 +2208,13 @@
           "class",
           "entity"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
       "http://purl.obolibrary.org/obo/BFO_0000050",
       "http://purl.obolibrary.org/obo/BFO_0000051",
       "http://purl.obolibrary.org/obo/UBERON_0001981",
-      "http://purl.obolibrary.org/obo/UBERON_0002049",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://purl.obolibrary.org/obo/UBERON_0002049"
     ],
     "numDescendants": 1.0,
     "numHierarchicalDescendants": 1.0,
@@ -2150,7 +2282,7 @@
         "label": [
           "multicellular organism"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2167,43 +2299,11 @@
           "class",
           "entity"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
       "http://purl.obolibrary.org/obo/UBERON_0000468",
-      "http://purl.obolibrary.org/obo/UBERON_0000483",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://purl.obolibrary.org/obo/UBERON_0000483"
     ],
     "numDescendants": 1.0,
     "numHierarchicalDescendants": 1.0,
@@ -2236,26 +2336,7 @@
     "label": [
       "vasculature"
     ],
-    "linkedEntities": {
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://www.w3.org/2000/01/rdf-schema#label"
-    ],
+    "linkedEntities": {},
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 2.0,
     "ontologyId": "efo-hierarchical-properties",
@@ -2339,7 +2420,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -2353,7 +2434,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -2366,7 +2447,7 @@
         "label": [
           "multicellular organism"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2383,45 +2464,13 @@
           "class",
           "entity"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
       "http://purl.obolibrary.org/obo/BFO_0000050",
       "http://purl.obolibrary.org/obo/BFO_0000051",
       "http://purl.obolibrary.org/obo/UBERON_0000468",
-      "http://purl.obolibrary.org/obo/UBERON_0013702",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://purl.obolibrary.org/obo/UBERON_0013702"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 7.0,
@@ -2619,7 +2668,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -2633,7 +2682,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -2646,7 +2695,7 @@
         "label": [
           "anatomical system"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2658,7 +2707,7 @@
         "label": [
           "multicellular organism"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2670,7 +2719,7 @@
         "label": [
           "abdomen"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2682,7 +2731,7 @@
         "label": [
           "endocrine system"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2718,7 +2767,7 @@
         "label": [
           "endocrine gland"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2742,7 +2791,7 @@
         "label": [
           "gland"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2759,36 +2808,6 @@
           "class",
           "entity"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
@@ -2803,9 +2822,7 @@
       "http://purl.obolibrary.org/obo/UBERON_0002368",
       "http://purl.obolibrary.org/obo/UBERON_0002423",
       "http://purl.obolibrary.org/obo/UBERON_0002530",
-      "http://purl.obolibrary.org/obo/UBERON_0013702",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://purl.obolibrary.org/obo/UBERON_0013702"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 5.0,
@@ -2891,6 +2908,184 @@
     "appearsIn": [
       "efo-hierarchical-properties"
     ],
+    "curie": "UBERON:0002368",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0002530"
+    ],
+    "directParent": [
+      "http://purl.obolibrary.org/obo/UBERON_0002530"
+    ],
+    "hasDirectChildren": true,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "http://purl.obolibrary.org/obo/UBERON_0000949",
+      "http://purl.obolibrary.org/obo/UBERON_0002530"
+    ],
+    "hierarchicalParent": [
+      "http://purl.obolibrary.org/obo/UBERON_0002530",
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000949"
+      }
+    ],
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "endocrine gland",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      "http://purl.obolibrary.org/obo/UBERON_0002530",
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
+        "isObsolete": false
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#equivalentClass": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+      "http://www.w3.org/2002/07/owl#intersectionOf": [
+        "http://purl.obolibrary.org/obo/UBERON_0002530",
+        {
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
+          "isObsolete": false
+        }
+      ]
+    },
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0002368",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "endocrine gland"
+    ],
+    "linkedEntities": {
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000467": {
+        "curie": "UBERON:0000467",
+        "hasLocalDefinition": true,
+        "label": [
+          "anatomical system"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": [
+          "multicellular organism"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000949": {
+        "curie": "UBERON:0000949",
+        "hasLocalDefinition": true,
+        "label": [
+          "endocrine system"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0002530": {
+        "curie": "UBERON:0002530",
+        "hasLocalDefinition": true,
+        "label": [
+          "gland"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://purl.obolibrary.org/obo/BFO_0000051",
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "http://purl.obolibrary.org/obo/UBERON_0000468",
+      "http://purl.obolibrary.org/obo/UBERON_0000949",
+      "http://purl.obolibrary.org/obo/UBERON_0002530"
+    ],
+    "numDescendants": 1.0,
+    "numHierarchicalDescendants": 6.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedTo": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000949"
+      }
+    ],
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0002368",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
     "curie": "UBERON:0002423",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -2959,7 +3154,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -2973,7 +3168,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -2986,7 +3181,7 @@
         "label": [
           "anatomical system"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -2998,7 +3193,7 @@
         "label": [
           "multicellular organism"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3015,36 +3210,6 @@
           "class",
           "entity"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
@@ -3052,9 +3217,7 @@
       "http://purl.obolibrary.org/obo/BFO_0000051",
       "http://purl.obolibrary.org/obo/UBERON_0000467",
       "http://purl.obolibrary.org/obo/UBERON_0000468",
-      "http://purl.obolibrary.org/obo/UBERON_0001007",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://purl.obolibrary.org/obo/UBERON_0001007"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 6.0,
@@ -3087,6 +3250,134 @@
     ],
     "searchableAnnotationValues": false,
     "shortForm": "UBERON_0002423",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "efo-hierarchical-properties"
+    ],
+    "curie": "UBERON:0002530",
+    "hasDirectChildren": true,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": true,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "http://purl.obolibrary.org/obo/UBERON_0000468"
+    ],
+    "hierarchicalParent": [
+      {
+        "axioms": [
+          {
+            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
+            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
+          }
+        ],
+        "type": [
+          "reification"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000467"
+      }
+    ],
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "gland",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "isObsolete": false
+    },
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0002530",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "gland"
+    ],
+    "linkedEntities": {
+      "http://purl.obolibrary.org/obo/BFO_0000050": {
+        "curie": "BFO:0000050",
+        "hasLocalDefinition": true,
+        "label": [
+          "part of"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000051": {
+        "curie": "BFO:0000051",
+        "hasLocalDefinition": true,
+        "label": [
+          "has part",
+          "has_part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000467": {
+        "curie": "UBERON:0000467",
+        "hasLocalDefinition": true,
+        "label": [
+          "anatomical system"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/UBERON_0000468": {
+        "curie": "UBERON:0000468",
+        "hasLocalDefinition": true,
+        "label": [
+          "multicellular organism"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/BFO_0000050",
+      "http://purl.obolibrary.org/obo/BFO_0000051",
+      "http://purl.obolibrary.org/obo/UBERON_0000467",
+      "http://purl.obolibrary.org/obo/UBERON_0000468"
+    ],
+    "numDescendants": 2.0,
+    "numHierarchicalDescendants": 7.0,
+    "ontologyId": "efo-hierarchical-properties",
+    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+    "ontologyPreferredPrefix": "efo-hierarchical-properties",
+    "relatedTo": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/UBERON_0000467"
+      }
+    ],
+    "searchableAnnotationValues": false,
+    "shortForm": "UBERON_0002530",
     "type": [
       "class",
       "entity"
@@ -3154,7 +3445,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -3168,7 +3459,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -3181,7 +3472,7 @@
         "label": [
           "anatomical system"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3193,7 +3484,7 @@
         "label": [
           "multicellular organism"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3210,36 +3501,6 @@
           "class",
           "entity"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
@@ -3247,9 +3508,7 @@
       "http://purl.obolibrary.org/obo/BFO_0000051",
       "http://purl.obolibrary.org/obo/UBERON_0000467",
       "http://purl.obolibrary.org/obo/UBERON_0000468",
-      "http://purl.obolibrary.org/obo/UBERON_0001009",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://purl.obolibrary.org/obo/UBERON_0001009"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 1.0,
@@ -3336,7 +3595,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -3350,7 +3609,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -3363,7 +3622,7 @@
         "label": [
           "anatomical system"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3375,7 +3634,7 @@
         "label": [
           "multicellular organism"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3387,7 +3646,7 @@
         "label": [
           "abdomen"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3399,7 +3658,7 @@
         "label": [
           "endocrine system"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3447,7 +3706,7 @@
         "label": [
           "endocrine gland"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3471,7 +3730,7 @@
         "label": [
           "gland"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3488,36 +3747,6 @@
           "class",
           "entity"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
@@ -3533,9 +3762,7 @@
       "http://purl.obolibrary.org/obo/UBERON_0002368",
       "http://purl.obolibrary.org/obo/UBERON_0002423",
       "http://purl.obolibrary.org/obo/UBERON_0002530",
-      "http://purl.obolibrary.org/obo/UBERON_0013702",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://purl.obolibrary.org/obo/UBERON_0013702"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 4.0,
@@ -3690,7 +3917,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -3704,7 +3931,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -3717,7 +3944,7 @@
         "label": [
           "anatomical system"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3729,7 +3956,7 @@
         "label": [
           "multicellular organism"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3741,7 +3968,7 @@
         "label": [
           "abdomen"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3753,7 +3980,7 @@
         "label": [
           "endocrine system"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3825,7 +4052,7 @@
         "label": [
           "endocrine gland"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3849,7 +4076,7 @@
         "label": [
           "gland"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
@@ -3878,36 +4105,6 @@
           "class",
           "entity"
         ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
       }
     },
     "linksTo": [
@@ -3926,9 +4123,7 @@
       "http://purl.obolibrary.org/obo/UBERON_0002423",
       "http://purl.obolibrary.org/obo/UBERON_0002530",
       "http://purl.obolibrary.org/obo/UBERON_0004647",
-      "http://purl.obolibrary.org/obo/UBERON_0013702",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://purl.obolibrary.org/obo/UBERON_0013702"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -4038,7 +4233,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -4052,7 +4247,7 @@
           "has part",
           "has_part"
         ],
-        "numAppearsIn": 4.0,
+        "numAppearsIn": 1.0,
         "type": [
           "entity",
           "objectProperty",
@@ -4065,49 +4260,17 @@
         "label": [
           "multicellular organism"
         ],
-        "numAppearsIn": 2.0,
+        "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
         ]
       }
     },
     "linksTo": [
       "http://purl.obolibrary.org/obo/BFO_0000050",
       "http://purl.obolibrary.org/obo/BFO_0000051",
-      "http://purl.obolibrary.org/obo/UBERON_0000468",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      "http://purl.obolibrary.org/obo/UBERON_0000468"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 8.0,
@@ -4129,936 +4292,6 @@
     ],
     "searchableAnnotationValues": false,
     "shortForm": "UBERON_0013702",
-    "type": [
-      "class",
-      "entity"
-    ]
-  },
-  {
-    "appearsIn": [
-      "efo-hierarchical-properties",
-      "gitissue502"
-    ],
-    "curie": "UBERON:0000467",
-    "hasDirectChildren": true,
-    "hasDirectParents": false,
-    "hasHierarchicalChildren": true,
-    "hasHierarchicalParents": true,
-    "hierarchicalAncestor": [
-      "http://purl.obolibrary.org/obo/UBERON_0000468"
-    ],
-    "hierarchicalParent": [
-      {
-        "axioms": [
-          {
-            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
-          }
-        ],
-        "type": [
-          "reification"
-        ],
-        "value": "http://purl.obolibrary.org/obo/UBERON_0000468"
-      }
-    ],
-    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-    "http://www.w3.org/2000/01/rdf-schema#label": "anatomical system",
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
-      "isObsolete": false
-    },
-    "imported": false,
-    "iri": "http://purl.obolibrary.org/obo/UBERON_0000467",
-    "isDefiningOntology": false,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": [
-      "anatomical system"
-    ],
-    "linkedEntities": {
-      "http://purl.obolibrary.org/obo/BFO_0000050": {
-        "curie": "BFO:0000050",
-        "hasLocalDefinition": true,
-        "label": [
-          "part of"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "entity",
-          "objectProperty",
-          "property"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/BFO_0000051": {
-        "curie": "BFO:0000051",
-        "hasLocalDefinition": true,
-        "label": [
-          "has part",
-          "has_part"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "objectProperty",
-          "property"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/UBERON_0000468": {
-        "curie": "UBERON:0000468",
-        "hasLocalDefinition": true,
-        "label": [
-          "multicellular organism"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://purl.obolibrary.org/obo/BFO_0000051",
-      "http://purl.obolibrary.org/obo/UBERON_0000468",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-    ],
-    "numDescendants": 4.0,
-    "numHierarchicalDescendants": 13.0,
-    "ontologyId": "efo-hierarchical-properties",
-    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
-    "ontologyPreferredPrefix": "efo-hierarchical-properties",
-    "relatedTo": [
-      {
-        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
-        "isObsolete": false,
-        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-        "type": [
-          "related"
-        ],
-        "value": "http://purl.obolibrary.org/obo/UBERON_0000468"
-      }
-    ],
-    "searchableAnnotationValues": false,
-    "shortForm": "UBERON_0000467",
-    "type": [
-      "class",
-      "entity"
-    ]
-  },
-  {
-    "appearsIn": [
-      "efo-hierarchical-properties",
-      "gitissue502"
-    ],
-    "curie": "UBERON:0000468",
-    "hasDirectChildren": false,
-    "hasDirectParents": false,
-    "hasHierarchicalChildren": true,
-    "hasHierarchicalParents": false,
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-    "http://www.w3.org/2000/01/rdf-schema#label": "multicellular organism",
-    "imported": false,
-    "iri": "http://purl.obolibrary.org/obo/UBERON_0000468",
-    "isDefiningOntology": false,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": [
-      "multicellular organism"
-    ],
-    "linkedEntities": {
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://www.w3.org/2000/01/rdf-schema#label"
-    ],
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 19.0,
-    "ontologyId": "efo-hierarchical-properties",
-    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
-    "ontologyPreferredPrefix": "efo-hierarchical-properties",
-    "searchableAnnotationValues": false,
-    "shortForm": "UBERON_0000468",
-    "type": [
-      "class",
-      "entity"
-    ]
-  },
-  {
-    "appearsIn": [
-      "efo-hierarchical-properties",
-      "gitissue502"
-    ],
-    "curie": "UBERON:0000949",
-    "directAncestor": [
-      "http://purl.obolibrary.org/obo/UBERON_0000467"
-    ],
-    "directParent": [
-      "http://purl.obolibrary.org/obo/UBERON_0000467"
-    ],
-    "hasDirectChildren": false,
-    "hasDirectParents": true,
-    "hasHierarchicalChildren": true,
-    "hasHierarchicalParents": true,
-    "hierarchicalAncestor": [
-      "http://purl.obolibrary.org/obo/UBERON_0000467",
-      "http://purl.obolibrary.org/obo/UBERON_0000468"
-    ],
-    "hierarchicalParent": [
-      "http://purl.obolibrary.org/obo/UBERON_0000467"
-    ],
-    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-    "http://www.w3.org/2000/01/rdf-schema#label": "endocrine system",
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/UBERON_0000467",
-    "http://www.w3.org/2002/07/owl#disjointWith": [
-      "http://purl.obolibrary.org/obo/UBERON_0001007",
-      "http://purl.obolibrary.org/obo/UBERON_0001009",
-      "http://purl.obolibrary.org/obo/UBERON_0002423"
-    ],
-    "imported": false,
-    "iri": "http://purl.obolibrary.org/obo/UBERON_0000949",
-    "isDefiningOntology": false,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": [
-      "endocrine system"
-    ],
-    "linkedEntities": {
-      "http://purl.obolibrary.org/obo/UBERON_0000467": {
-        "curie": "UBERON:0000467",
-        "hasLocalDefinition": true,
-        "label": [
-          "anatomical system"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/UBERON_0000468": {
-        "curie": "UBERON:0000468",
-        "hasLocalDefinition": true,
-        "label": [
-          "multicellular organism"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/UBERON_0001007": {
-        "curie": "UBERON:0001007",
-        "hasLocalDefinition": true,
-        "label": [
-          "digestive system"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/UBERON_0001009": {
-        "curie": "UBERON:0001009",
-        "hasLocalDefinition": true,
-        "label": [
-          "circulatory system"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/UBERON_0002423": {
-        "curie": "UBERON:0002423",
-        "hasLocalDefinition": true,
-        "label": [
-          "hepatobiliary system"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://purl.obolibrary.org/obo/UBERON_0000467",
-      "http://purl.obolibrary.org/obo/UBERON_0000468",
-      "http://purl.obolibrary.org/obo/UBERON_0001007",
-      "http://purl.obolibrary.org/obo/UBERON_0001009",
-      "http://purl.obolibrary.org/obo/UBERON_0002423",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-    ],
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 7.0,
-    "ontologyId": "efo-hierarchical-properties",
-    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
-    "ontologyPreferredPrefix": "efo-hierarchical-properties",
-    "searchableAnnotationValues": false,
-    "shortForm": "UBERON_0000949",
-    "type": [
-      "class",
-      "entity"
-    ]
-  },
-  {
-    "appearsIn": [
-      "efo-hierarchical-properties",
-      "gitissue502"
-    ],
-    "curie": "UBERON:0002368",
-    "directAncestor": [
-      "http://purl.obolibrary.org/obo/UBERON_0002530"
-    ],
-    "directParent": [
-      "http://purl.obolibrary.org/obo/UBERON_0002530"
-    ],
-    "hasDirectChildren": true,
-    "hasDirectParents": true,
-    "hasHierarchicalChildren": true,
-    "hasHierarchicalParents": true,
-    "hierarchicalAncestor": [
-      "http://purl.obolibrary.org/obo/UBERON_0000467",
-      "http://purl.obolibrary.org/obo/UBERON_0000468",
-      "http://purl.obolibrary.org/obo/UBERON_0000949",
-      "http://purl.obolibrary.org/obo/UBERON_0002530"
-    ],
-    "hierarchicalParent": [
-      "http://purl.obolibrary.org/obo/UBERON_0002530",
-      {
-        "axioms": [
-          {
-            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
-          }
-        ],
-        "type": [
-          "reification"
-        ],
-        "value": "http://purl.obolibrary.org/obo/UBERON_0000949"
-      }
-    ],
-    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-    "http://www.w3.org/2000/01/rdf-schema#label": "endocrine gland",
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      "http://purl.obolibrary.org/obo/UBERON_0002530",
-      {
-        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
-        "isObsolete": false
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#equivalentClass": {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-      "http://www.w3.org/2002/07/owl#intersectionOf": [
-        "http://purl.obolibrary.org/obo/UBERON_0002530",
-        {
-          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
-          "isObsolete": false
-        }
-      ]
-    },
-    "imported": false,
-    "iri": "http://purl.obolibrary.org/obo/UBERON_0002368",
-    "isDefiningOntology": false,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": [
-      "endocrine gland"
-    ],
-    "linkedEntities": {
-      "http://purl.obolibrary.org/obo/BFO_0000050": {
-        "curie": "BFO:0000050",
-        "hasLocalDefinition": true,
-        "label": [
-          "part of"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "entity",
-          "objectProperty",
-          "property"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/BFO_0000051": {
-        "curie": "BFO:0000051",
-        "hasLocalDefinition": true,
-        "label": [
-          "has part",
-          "has_part"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "objectProperty",
-          "property"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/UBERON_0000467": {
-        "curie": "UBERON:0000467",
-        "hasLocalDefinition": true,
-        "label": [
-          "anatomical system"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/UBERON_0000468": {
-        "curie": "UBERON:0000468",
-        "hasLocalDefinition": true,
-        "label": [
-          "multicellular organism"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/UBERON_0000949": {
-        "curie": "UBERON:0000949",
-        "hasLocalDefinition": true,
-        "label": [
-          "endocrine system"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/UBERON_0002530": {
-        "curie": "UBERON:0002530",
-        "hasLocalDefinition": true,
-        "label": [
-          "gland"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://purl.obolibrary.org/obo/BFO_0000051",
-      "http://purl.obolibrary.org/obo/UBERON_0000467",
-      "http://purl.obolibrary.org/obo/UBERON_0000468",
-      "http://purl.obolibrary.org/obo/UBERON_0000949",
-      "http://purl.obolibrary.org/obo/UBERON_0002530",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-    ],
-    "numDescendants": 1.0,
-    "numHierarchicalDescendants": 6.0,
-    "ontologyId": "efo-hierarchical-properties",
-    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
-    "ontologyPreferredPrefix": "efo-hierarchical-properties",
-    "relatedTo": [
-      {
-        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000949",
-        "isObsolete": false,
-        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-        "type": [
-          "related"
-        ],
-        "value": "http://purl.obolibrary.org/obo/UBERON_0000949"
-      }
-    ],
-    "searchableAnnotationValues": false,
-    "shortForm": "UBERON_0002368",
-    "type": [
-      "class",
-      "entity"
-    ]
-  },
-  {
-    "appearsIn": [
-      "efo-hierarchical-properties",
-      "gitissue502"
-    ],
-    "curie": "UBERON:0002530",
-    "hasDirectChildren": true,
-    "hasDirectParents": false,
-    "hasHierarchicalChildren": true,
-    "hasHierarchicalParents": true,
-    "hierarchicalAncestor": [
-      "http://purl.obolibrary.org/obo/UBERON_0000467",
-      "http://purl.obolibrary.org/obo/UBERON_0000468"
-    ],
-    "hierarchicalParent": [
-      {
-        "axioms": [
-          {
-            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
-          }
-        ],
-        "type": [
-          "reification"
-        ],
-        "value": "http://purl.obolibrary.org/obo/UBERON_0000467"
-      }
-    ],
-    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-    "http://www.w3.org/2000/01/rdf-schema#label": "gland",
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
-      "isObsolete": false
-    },
-    "imported": false,
-    "iri": "http://purl.obolibrary.org/obo/UBERON_0002530",
-    "isDefiningOntology": false,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": [
-      "gland"
-    ],
-    "linkedEntities": {
-      "http://purl.obolibrary.org/obo/BFO_0000050": {
-        "curie": "BFO:0000050",
-        "hasLocalDefinition": true,
-        "label": [
-          "part of"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "entity",
-          "objectProperty",
-          "property"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/BFO_0000051": {
-        "curie": "BFO:0000051",
-        "hasLocalDefinition": true,
-        "label": [
-          "has part",
-          "has_part"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "objectProperty",
-          "property"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/UBERON_0000467": {
-        "curie": "UBERON:0000467",
-        "hasLocalDefinition": true,
-        "label": [
-          "anatomical system"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/UBERON_0000468": {
-        "curie": "UBERON:0000468",
-        "hasLocalDefinition": true,
-        "label": [
-          "multicellular organism"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://purl.obolibrary.org/obo/BFO_0000051",
-      "http://purl.obolibrary.org/obo/UBERON_0000467",
-      "http://purl.obolibrary.org/obo/UBERON_0000468",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-    ],
-    "numDescendants": 2.0,
-    "numHierarchicalDescendants": 7.0,
-    "ontologyId": "efo-hierarchical-properties",
-    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
-    "ontologyPreferredPrefix": "efo-hierarchical-properties",
-    "relatedTo": [
-      {
-        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000467",
-        "isObsolete": false,
-        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-        "type": [
-          "related"
-        ],
-        "value": "http://purl.obolibrary.org/obo/UBERON_0000467"
-      }
-    ],
-    "searchableAnnotationValues": false,
-    "shortForm": "UBERON_0002530",
-    "type": [
-      "class",
-      "entity"
-    ]
-  },
-  {
-    "appearsIn": [
-      "efo-hierarchical-properties",
-      "partof"
-    ],
-    "curie": "UBERON:0000916",
-    "hasDirectChildren": false,
-    "hasDirectParents": false,
-    "hasHierarchicalChildren": true,
-    "hasHierarchicalParents": true,
-    "hierarchicalAncestor": [
-      "http://purl.obolibrary.org/obo/UBERON_0000468",
-      "http://purl.obolibrary.org/obo/UBERON_0002100",
-      "http://purl.obolibrary.org/obo/UBERON_0013702"
-    ],
-    "hierarchicalParent": [
-      {
-        "axioms": [
-          {
-            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
-          }
-        ],
-        "type": [
-          "reification"
-        ],
-        "value": "http://purl.obolibrary.org/obo/UBERON_0000468"
-      },
-      {
-        "axioms": [
-          {
-            "childRelationToParent": "http://purl.obolibrary.org/obo/BFO_0000050",
-            "parentRelationToChild": "http://purl.obolibrary.org/obo/BFO_0000051"
-          }
-        ],
-        "type": [
-          "reification"
-        ],
-        "value": "http://purl.obolibrary.org/obo/UBERON_0002100"
-      }
-    ],
-    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-    "http://www.w3.org/2000/01/rdf-schema#label": "abdomen",
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
-        "isObsolete": false
-      },
-      {
-        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
-        "isObsolete": false
-      }
-    ],
-    "imported": false,
-    "iri": "http://purl.obolibrary.org/obo/UBERON_0000916",
-    "isDefiningOntology": false,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": [
-      "abdomen"
-    ],
-    "linkedEntities": {
-      "http://purl.obolibrary.org/obo/BFO_0000050": {
-        "curie": "BFO:0000050",
-        "hasLocalDefinition": true,
-        "label": [
-          "part of"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "entity",
-          "objectProperty",
-          "property"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/BFO_0000051": {
-        "curie": "BFO:0000051",
-        "hasLocalDefinition": true,
-        "label": [
-          "has part",
-          "has_part"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "objectProperty",
-          "property"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/UBERON_0000468": {
-        "curie": "UBERON:0000468",
-        "hasLocalDefinition": true,
-        "label": [
-          "multicellular organism"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/UBERON_0002100": {
-        "curie": "UBERON:0002100",
-        "hasLocalDefinition": true,
-        "label": [
-          "trunk"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/UBERON_0013702": {
-        "curie": "UBERON:0013702",
-        "hasLocalDefinition": true,
-        "label": [
-          "body proper"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://purl.obolibrary.org/obo/BFO_0000050",
-      "http://purl.obolibrary.org/obo/BFO_0000051",
-      "http://purl.obolibrary.org/obo/UBERON_0000468",
-      "http://purl.obolibrary.org/obo/UBERON_0002100",
-      "http://purl.obolibrary.org/obo/UBERON_0013702",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-    ],
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 6.0,
-    "ontologyId": "efo-hierarchical-properties",
-    "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
-    "ontologyPreferredPrefix": "efo-hierarchical-properties",
-    "relatedTo": [
-      {
-        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000468",
-        "isObsolete": false,
-        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-        "type": [
-          "related"
-        ],
-        "value": "http://purl.obolibrary.org/obo/UBERON_0000468"
-      },
-      {
-        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000050",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0002100",
-        "isObsolete": false,
-        "property": "http://purl.obolibrary.org/obo/BFO_0000050",
-        "type": [
-          "related"
-        ],
-        "value": "http://purl.obolibrary.org/obo/UBERON_0002100"
-      }
-    ],
-    "searchableAnnotationValues": false,
-    "shortForm": "UBERON_0000916",
     "type": [
       "class",
       "entity"

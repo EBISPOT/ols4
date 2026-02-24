@@ -1,0 +1,47 @@
+[
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000003/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000003/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000003/graph"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000003/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000003/hierarchicalDescendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FBFO_0000003?lang=en"
+      }
+    },
+    "annotation": {
+      "IAO_0000116": [
+        "BFO 2 Reference: every occurrent that is not a temporal or spatiotemporal region is s-dependent on some independent continuant that is not a spatial region",
+        "BFO 2 Reference: s-dependence obtains between every process and its participants in the sense that, as a matter of necessity, this process could not have existed unless these or those participants existed also. A process may have a succession of participants at different phases of its unfolding. Thus there may be different players on the field at different times during the course of a football game; but the process which is the entire game s-depends_on all of these players nonetheless. Some temporal parts of this process will s-depend_on on only some of the players."
+      ]
+    },
+    "description": [
+      "An entity that has temporal parts and that happens, unfolds or develops through time."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/BFO_0000003",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "occurrent",
+    "lang": "en",
+    "obo_id": "BFO:0000003",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "BFO_0000003",
+    "synonyms": []
+  }
+]
