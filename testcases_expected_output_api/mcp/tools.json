@@ -1,0 +1,279 @@
+{
+  "tools": [
+    {
+      "description": "Calculate the similarity score between two classes using their embeddings. Returns a value between 0 and 1, where 1 means identical. Any model from listEmbeddingModels can be used (can_embed not required).",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "classIri1": {
+            "description": "The IRI of the first class",
+            "type": "string"
+          },
+          "classIri2": {
+            "description": "The IRI of the second class",
+            "type": "string"
+          },
+          "model": {
+            "description": "The embedding model to use. Any model from listEmbeddingModels works.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "classIri1",
+          "classIri2",
+          "model"
+        ],
+        "type": "object"
+      },
+      "name": "getClassSimilarity"
+    },
+    {
+      "description": "Find classes similar to a given class by IRI using pre-computed embeddings. Unlike searchClassesWithEmbeddingModel, this uses stored embeddings so any model from listEmbeddingModels can be used (can_embed not required).",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "classIri": {
+            "description": "The IRI of the class to find similar classes for",
+            "type": "string"
+          },
+          "lang": {
+            "type": "string"
+          },
+          "model": {
+            "description": "The embedding model to use. Any model from listEmbeddingModels works.",
+            "type": "string"
+          },
+          "pageNum": {
+            "type": "integer"
+          },
+          "pageSize": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "classIri",
+          "model"
+        ],
+        "type": "object"
+      },
+      "name": "getSimilarClasses"
+    },
+    {
+      "description": "Get all ancestors for a class in OLS",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "classIri": {
+            "type": "string"
+          },
+          "lang": {
+            "type": "string"
+          },
+          "ontologyId": {
+            "type": "string"
+          },
+          "pageNum": {
+            "type": "integer"
+          },
+          "pageSize": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "classIri",
+          "ontologyId"
+        ],
+        "type": "object"
+      },
+      "name": "getAncestors"
+    },
+    {
+      "description": "Get all descendants of a class in OLS",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "classIri": {
+            "type": "string"
+          },
+          "lang": {
+            "type": "string"
+          },
+          "ontologyId": {
+            "type": "string"
+          },
+          "pageNum": {
+            "type": "integer"
+          },
+          "pageSize": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "classIri",
+          "ontologyId"
+        ],
+        "type": "object"
+      },
+      "name": "getDescendants"
+    },
+    {
+      "description": "Get all ontologies from OLS",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "lang": {
+            "type": "string"
+          }
+        },
+        "required": [],
+        "type": "object"
+      },
+      "name": "listOntologies"
+    },
+    {
+      "description": "List available embedding models for LLM-based semantic search. Call this first to discover which models can be used with llmSearch and llmSearchClasses. Returns models with their names and whether they support live embedding.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {},
+        "required": [],
+        "type": "object"
+      },
+      "name": "listEmbeddingModels"
+    },
+    {
+      "description": "OpenAI compliant tool to retrieve an entity from OLS by ID returned from the search tool. The ID must be of the format ontologyid+entityIri, e.g. go+http://purl.obolibrary.org/obo/GO_0008150. IDs in this format are returned by the OpenAI compliant 'search' tool.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "type": "object"
+      },
+      "name": "fetch"
+    },
+    {
+      "description": "OpenAI compliant tool to search OLS for a query string",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "includeObsoleteEntities": {
+            "description": "Whether to include obsolete entities in search results. Default is false.",
+            "type": "boolean"
+          },
+          "query": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "type": "object"
+      },
+      "name": "search"
+    },
+    {
+      "description": "Search OLS entities using semantic/embedding-based similarity. Uses vector embeddings to find semantically similar entities, which can find related concepts even when exact terms don't match. IMPORTANT: Call listEmbeddingModels first - only models with can_embed=true can be used for text search.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "model": {
+            "description": "The embedding model to use. Must have can_embed=true from listEmbeddingModels.",
+            "type": "string"
+          },
+          "ontologyId": {
+            "description": "Optional ontology ID to filter results",
+            "type": "string"
+          },
+          "pageNum": {
+            "type": "integer"
+          },
+          "pageSize": {
+            "type": "integer"
+          },
+          "query": {
+            "description": "The natural language query to search for semantically similar entities",
+            "type": "string"
+          }
+        },
+        "required": [
+          "model",
+          "query"
+        ],
+        "type": "object"
+      },
+      "name": "searchWithEmbeddingModel"
+    },
+    {
+      "description": "Search all classes in OLS for a query string",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "includeObsoleteEntities": {
+            "description": "Whether to include obsolete entities in search results. Default is false.",
+            "type": "boolean"
+          },
+          "lang": {
+            "type": "string"
+          },
+          "ontologyId": {
+            "type": "string"
+          },
+          "pageNum": {
+            "type": "integer"
+          },
+          "pageSize": {
+            "type": "integer"
+          },
+          "query": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "type": "object"
+      },
+      "name": "searchClasses"
+    },
+    {
+      "description": "Search classes using semantic/embedding-based similarity. Uses vector embeddings to find semantically similar classes, which can find related concepts even when exact terms don't match. IMPORTANT: Call listEmbeddingModels first - only models with can_embed=true can be used for text search.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "lang": {
+            "type": "string"
+          },
+          "model": {
+            "description": "The embedding model to use. Must have can_embed=true from listEmbeddingModels.",
+            "type": "string"
+          },
+          "ontologyId": {
+            "description": "Optional ontology ID to filter results",
+            "type": "string"
+          },
+          "pageNum": {
+            "type": "integer"
+          },
+          "pageSize": {
+            "type": "integer"
+          },
+          "query": {
+            "description": "The natural language query to search for semantically similar classes",
+            "type": "string"
+          }
+        },
+        "required": [
+          "model",
+          "query"
+        ],
+        "type": "object"
+      },
+      "name": "searchClassesWithEmbeddingModel"
+    }
+  ]
+}
