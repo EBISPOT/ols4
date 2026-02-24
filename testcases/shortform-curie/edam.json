@@ -23,7 +23,7 @@
       ],
       "shortFormExtractionPattern": "^http://edamontology\\.org/((data|topic|operation|format|identifier)_.+)$",
       "oboSlims": false,
-      "ontology_purl": "https://raw.githubusercontent.com/edamontology/edamontology/master/releases/EDAM.owl"
+      "ontology_purl": "./testcases/shortform-curie/edam.owl"
     }
   ]
 }
