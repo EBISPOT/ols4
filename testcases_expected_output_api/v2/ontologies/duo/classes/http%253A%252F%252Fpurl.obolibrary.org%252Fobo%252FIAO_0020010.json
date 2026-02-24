@@ -1,0 +1,276 @@
+{
+  "appearsIn": [
+    "duo"
+  ],
+  "curie": "IAO:0020010",
+  "definition": [
+    "A planned process that provides a reference to an individual entity shared by a group of subscribers to refer to that individual entity."
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000003",
+    "http://purl.obolibrary.org/obo/BFO_0000015",
+    "http://purl.obolibrary.org/obo/OBI_0000011"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/OBI_0000011"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000003",
+    "http://purl.obolibrary.org/obo/BFO_0000015",
+    "http://purl.obolibrary.org/obo/OBI_0000011"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/OBI_0000011"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "A planned process that provides a reference to an individual entity shared by a group of subscribers to refer to that individual entity.",
+  "http://purl.obolibrary.org/obo/IAO_0000117": [
+    "Justin Whorton",
+    "Mathias Brochhausen"
+  ],
+  "http://purl.obolibrary.org/obo/IAO_0000118": [
+    "dubbing process",
+    "naming"
+  ],
+  "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/IAO/issues/237",
+  "http://purl.org/dc/elements/1.1/creator": "Mathias Brochhausen",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "identifier creating process",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/OBI_0000011",
+  "http://www.w3.org/2002/07/owl#equivalentClass": {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2002/07/owl#intersectionOf": [
+      "http://purl.obolibrary.org/obo/OBI_0000011",
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000299",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0020000",
+        "isObsolete": false
+      }
+    ]
+  },
+  "imported": true,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0020010",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "identifier creating process"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000001": {
+      "curie": "BFO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000003": {
+      "curie": "BFO:0000003",
+      "hasLocalDefinition": true,
+      "label": [
+        "occurrent"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000015": {
+      "curie": "BFO:0000015",
+      "hasLocalDefinition": true,
+      "label": [
+        "process"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000117": {
+      "curie": "IAO:0000117",
+      "hasLocalDefinition": true,
+      "label": [
+        "term editor"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000118": {
+      "curie": "IAO:0000118",
+      "hasLocalDefinition": true,
+      "label": [
+        "alternative label"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000233": {
+      "curie": "IAO:0000233",
+      "hasLocalDefinition": true,
+      "label": [
+        "term tracker item"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0020000": {
+      "curie": "IAO:0020000",
+      "hasLocalDefinition": true,
+      "label": [
+        "identifier"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/OBI_0000011": {
+      "curie": "OBI:0000011",
+      "hasLocalDefinition": true,
+      "label": [
+        "planned process"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/OBI_0000299": {
+      "curie": "OBI:0000299",
+      "hasLocalDefinition": true,
+      "label": [
+        "has_specified_output"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.org/dc/elements/1.1/creator": {
+      "curie": "creator",
+      "hasLocalDefinition": true,
+      "label": [
+        "creator"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "https://github.com/information-artifact-ontology/IAO/issues/237": {
+      "curie": "iao.issue:237",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "https://github.com/information-artifact-ontology/IAO/issues/237"
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000003",
+    "http://purl.obolibrary.org/obo/BFO_0000015",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000117",
+    "http://purl.obolibrary.org/obo/IAO_0000118",
+    "http://purl.obolibrary.org/obo/IAO_0000233",
+    "http://purl.obolibrary.org/obo/IAO_0020000",
+    "http://purl.obolibrary.org/obo/OBI_0000011",
+    "http://purl.obolibrary.org/obo/OBI_0000299",
+    "http://purl.org/dc/elements/1.1/creator",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    "A planned process that provides a reference to an individual entity shared by a group of subscribers to refer to that individual entity.",
+    "Justin Whorton",
+    "Mathias Brochhausen",
+    "dubbing process",
+    "https://github.com/information-artifact-ontology/IAO/issues/237",
+    "naming",
+    true
+  ],
+  "shortForm": "IAO_0020010",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

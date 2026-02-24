@@ -1,0 +1,190 @@
+{
+  "appearsIn": [
+    "duo"
+  ],
+  "curie": "OBI:0000471",
+  "definition": [
+    "a planned process that carries out a study design"
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000003",
+    "http://purl.obolibrary.org/obo/BFO_0000015",
+    "http://purl.obolibrary.org/obo/OBI_0000011"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/OBI_0000011"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000003",
+    "http://purl.obolibrary.org/obo/BFO_0000015",
+    "http://purl.obolibrary.org/obo/OBI_0000011"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/OBI_0000011"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/IAO_0000111": "study design execution",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "a planned process that carries out a study design",
+  "http://purl.obolibrary.org/obo/IAO_0000412": "http://purl.obolibrary.org/obo/obi.owl",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "study design execution",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/OBI_0000011",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/OBI_0000471",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "study design execution"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000001": {
+      "curie": "BFO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000003": {
+      "curie": "BFO:0000003",
+      "hasLocalDefinition": true,
+      "label": [
+        "occurrent"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000015": {
+      "curie": "BFO:0000015",
+      "hasLocalDefinition": true,
+      "label": [
+        "process"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000111": {
+      "curie": "IAO:0000111",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor preferred term"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000412": {
+      "curie": "IAO:0000412",
+      "hasLocalDefinition": true,
+      "label": [
+        "imported from"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/OBI_0000011": {
+      "curie": "OBI:0000011",
+      "hasLocalDefinition": true,
+      "label": [
+        "planned process"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000003",
+    "http://purl.obolibrary.org/obo/BFO_0000015",
+    "http://purl.obolibrary.org/obo/IAO_0000111",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000412",
+    "http://purl.obolibrary.org/obo/OBI_0000011",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    false
+  ],
+  "shortForm": "OBI_0000471",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

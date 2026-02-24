@@ -1,0 +1,322 @@
+{
+  "appearsIn": [
+    "duo",
+    "gitissue502"
+  ],
+  "curie": "BFO:0000034",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000016",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/BFO_0000016"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000016",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/BFO_0000016"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/BFO_0000179": "function",
+  "http://purl.obolibrary.org/obo/BFO_0000180": "Function",
+  "http://purl.obolibrary.org/obo/IAO_0000112": [
+    "the function of a hammer to drive in nails",
+    "the function of a heart pacemaker to regulate the beating of a heart through electricity",
+    "the function of amylase in saliva to break down starch into sugar"
+  ],
+  "http://purl.obolibrary.org/obo/IAO_0000116": "BFO 2 Reference: In the past, we have distinguished two varieties of function, artifactual function and biological function. These are not asserted subtypes of BFO:function however, since the same function – for example: to pump, to transport – can exist both in artifacts and in biological entities. The asserted subtypes of function that would be needed in order to yield a separate monoheirarchy are not artifactual function, biological function, etc., but rather transporting function, pumping function, etc.",
+  "http://purl.obolibrary.org/obo/IAO_0000600": {
+    "axioms": [
+      {
+        "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/064-001"
+      }
+    ],
+    "type": [
+      "reification"
+    ],
+    "value": "A function is a disposition that exists in virtue of the bearer’s physical make-up and this physical make-up is something the bearer possesses because it came into being, either through evolution (in the case of natural biological entities) or through intentional design (in the case of artifacts), in order to realize processes of a certain sort. (axiom label in BFO2 Reference: [064-001])"
+  },
+  "http://purl.obolibrary.org/obo/IAO_0000602": {
+    "axioms": [
+      {
+        "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/064-001"
+      }
+    ],
+    "type": [
+      "reification"
+    ],
+    "value": "(forall (x) (if (Function x) (Disposition x))) // axiom label in BFO2 CLIF: [064-001] "
+  },
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://purl.obolibrary.org/obo/bfo.owl",
+  "http://www.w3.org/2000/01/rdf-schema#label": "function",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/BFO_0000016",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/BFO_0000034",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "function"
+  ],
+  "linkedEntities": {
+    "BFO:function": {
+      "curie": "BFO:function",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "http://purl.obolibrary.org/obo/BFO_function"
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000001": {
+      "curie": "BFO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000016": {
+      "curie": "BFO:0000016",
+      "hasLocalDefinition": true,
+      "label": [
+        "disposition"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000017": {
+      "curie": "BFO:0000017",
+      "hasLocalDefinition": true,
+      "label": [
+        "realizable entity"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000020": {
+      "curie": "BFO:0000020",
+      "hasLocalDefinition": true,
+      "label": [
+        "specifically dependent continuant"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000179": {
+      "curie": "BFO:0000179",
+      "hasLocalDefinition": true,
+      "label": [
+        "BFO OWL specification label"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000180": {
+      "curie": "BFO:0000180",
+      "hasLocalDefinition": true,
+      "label": [
+        "BFO CLIF specification label"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000112": {
+      "curie": "IAO:0000112",
+      "hasLocalDefinition": true,
+      "label": [
+        "example of usage"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000116": {
+      "curie": "IAO:0000116",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor note"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000600": {
+      "curie": "IAO:0000600",
+      "hasLocalDefinition": true,
+      "label": [
+        "elucidation"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000602": {
+      "curie": "IAO:0000602",
+      "hasLocalDefinition": true,
+      "label": [
+        "has associated axiom(fol)"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0010000": {
+      "curie": "IAO:0010000",
+      "hasLocalDefinition": true,
+      "label": [
+        "has axiom label"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
+      "curie": "RDFS:isDefinedBy",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "isDefinedBy"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000016",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/BFO_0000179",
+    "http://purl.obolibrary.org/obo/BFO_0000180",
+    "http://purl.obolibrary.org/obo/IAO_0000112",
+    "http://purl.obolibrary.org/obo/IAO_0000116",
+    "http://purl.obolibrary.org/obo/IAO_0000600",
+    "http://purl.obolibrary.org/obo/IAO_0000602",
+    "http://purl.obolibrary.org/obo/IAO_0010000",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    "BFO 2 Reference: In the past, we have distinguished two varieties of function, artifactual function and biological function. These are not asserted subtypes of BFO:function however, since the same function – for example: to pump, to transport – can exist both in artifacts and in biological entities. The asserted subtypes of function that would be needed in order to yield a separate monoheirarchy are not artifactual function, biological function, etc., but rather transporting function, pumping function, etc.",
+    "the function of a hammer to drive in nails",
+    "the function of a heart pacemaker to regulate the beating of a heart through electricity",
+    "the function of amylase in saliva to break down starch into sugar",
+    false,
+    {
+      "axioms": [
+        {
+          "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/064-001"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "A function is a disposition that exists in virtue of the bearer’s physical make-up and this physical make-up is something the bearer possesses because it came into being, either through evolution (in the case of natural biological entities) or through intentional design (in the case of artifacts), in order to realize processes of a certain sort. (axiom label in BFO2 Reference: [064-001])"
+    }
+  ],
+  "shortForm": "BFO_0000034",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

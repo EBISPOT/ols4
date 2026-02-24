@@ -1,0 +1,37 @@
+{
+  "appearsIn": [
+    "duo",
+    "owl",
+    "rdfs"
+  ],
+  "curie": "RDFS:seeAlso",
+  "definedBy": [
+    "rdfs"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+  "imported": true,
+  "iri": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "seeAlso"
+  ],
+  "linkedEntities": {},
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": true,
+  "shortForm": "RDFS_seeAlso",
+  "type": [
+    "annotationProperty",
+    "entity",
+    "property"
+  ]
+}

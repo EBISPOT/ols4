@@ -1,0 +1,416 @@
+{
+  "appearsIn": [
+    "duo"
+  ],
+  "curie": "IAO:0000104",
+  "definition": [
+    "2/3/2009 Comment from OBI review.\n\nAction specification not well enough specified.\nConditional specification not well enough specified.\nQuestion whether all plan specifications have objective specifications.\n\nRequest that IAO either clarify these or change definitions not to use them",
+    "A directive information entity with action specifications and objective specifications as parts, and that may be concretized as a realizable entity that, if realized, is realized in a process in which the bearer tries to achieve the objectives by taking the actions specified."
+  ],
+  "definitionProperty": [
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://www.w3.org/2000/01/rdf-schema#comment"
+  ],
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0000033"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/IAO_0000033"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0000033"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/IAO_0000033"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/IAO_0000111": "plan specification",
+  "http://purl.obolibrary.org/obo/IAO_0000112": "PMID: 18323827.Nat Med. 2008 Mar;14(3):226.New plan proposed to help resolve conflicting medical advice.",
+  "http://purl.obolibrary.org/obo/IAO_0000114": "http://purl.obolibrary.org/obo/IAO_0000122",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "A directive information entity with action specifications and objective specifications as parts, and that may be concretized as a realizable entity that, if realized, is realized in a process in which the bearer tries to achieve the objectives by taking the actions specified.",
+  "http://purl.obolibrary.org/obo/IAO_0000116": [
+    "2009-03-16: provenance: a term a plan was proposed for OBI (OBI_0000344) , edited by the PlanAndPlannedProcess branch. Original definition was \" a plan is a specification of a process that is realized by an actor to achieve the objective specified as part of the plan\". It has been subsequently moved to IAO where the objective for which the original term was defined was satisfied with the definitionof this, different, term.",
+    "2014-03-31: A plan specification can have other parts, such as conditional specifications.",
+    "2022-01-16 Updated definition to that proposed by Clint Dowloand, IAO Issue 231.",
+    "Alternative previous definition: a plan is a set of instructions that specify how an objective should be achieved"
+  ],
+  "http://purl.obolibrary.org/obo/IAO_0000117": [
+    "Alan Ruttenberg",
+    "Clint Dowland"
+  ],
+  "http://purl.obolibrary.org/obo/IAO_0000119": [
+    "OBI Plan and Planned Process branch",
+    "OBI_0000344"
+  ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#comment": "2/3/2009 Comment from OBI review.\n\nAction specification not well enough specified.\nConditional specification not well enough specified.\nQuestion whether all plan specifications have objective specifications.\n\nRequest that IAO either clarify these or change definitions not to use them",
+  "http://www.w3.org/2000/01/rdf-schema#label": "plan specification",
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso": "https://github.com/information-artifact-ontology/IAO/issues/231#issuecomment-1010455131",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+    "http://purl.obolibrary.org/obo/IAO_0000033",
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000005",
+      "isObsolete": false
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000007",
+      "isObsolete": false
+    }
+  ],
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000104",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "plan specification"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000001": {
+      "curie": "BFO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000031": {
+      "curie": "BFO:0000031",
+      "hasLocalDefinition": true,
+      "label": [
+        "generically dependent continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000051": {
+      "curie": "BFO:0000051",
+      "hasLocalDefinition": true,
+      "label": [
+        "has part"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000005": {
+      "curie": "IAO:0000005",
+      "hasLocalDefinition": true,
+      "label": [
+        "objective specification"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000007": {
+      "curie": "IAO:0000007",
+      "hasLocalDefinition": true,
+      "label": [
+        "action specification"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000030": {
+      "curie": "IAO:0000030",
+      "hasLocalDefinition": true,
+      "label": [
+        "information content entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000033": {
+      "curie": "IAO:0000033",
+      "hasLocalDefinition": true,
+      "label": [
+        "directive information entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000111": {
+      "curie": "IAO:0000111",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor preferred term"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000112": {
+      "curie": "IAO:0000112",
+      "hasLocalDefinition": true,
+      "label": [
+        "example of usage"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000114": {
+      "curie": "IAO:0000114",
+      "hasLocalDefinition": true,
+      "label": [
+        "has curation status"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000116": {
+      "curie": "IAO:0000116",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor note"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000117": {
+      "curie": "IAO:0000117",
+      "hasLocalDefinition": true,
+      "label": [
+        "term editor"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000119": {
+      "curie": "IAO:0000119",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition source"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000122": {
+      "curie": "IAO:0000122",
+      "hasLocalDefinition": true,
+      "label": [
+        "ready for release"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "individual"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#comment": {
+      "curie": "RDFS:comment",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "comment"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": {
+      "curie": "RDFS:seeAlso",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "seeAlso"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/BFO_0000051",
+    "http://purl.obolibrary.org/obo/IAO_0000005",
+    "http://purl.obolibrary.org/obo/IAO_0000007",
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0000033",
+    "http://purl.obolibrary.org/obo/IAO_0000111",
+    "http://purl.obolibrary.org/obo/IAO_0000112",
+    "http://purl.obolibrary.org/obo/IAO_0000114",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000116",
+    "http://purl.obolibrary.org/obo/IAO_0000117",
+    "http://purl.obolibrary.org/obo/IAO_0000119",
+    "http://purl.obolibrary.org/obo/IAO_0000122",
+    "http://www.w3.org/2000/01/rdf-schema#comment",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 11.0,
+  "numHierarchicalDescendants": 11.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "relatedTo": [
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000005",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/IAO_0000005"
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000007",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/IAO_0000007"
+    }
+  ],
+  "searchableAnnotationValues": [
+    "2009-03-16: provenance: a term a plan was proposed for OBI (OBI_0000344) , edited by the PlanAndPlannedProcess branch. Original definition was \" a plan is a specification of a process that is realized by an actor to achieve the objective specified as part of the plan\". It has been subsequently moved to IAO where the objective for which the original term was defined was satisfied with the definitionof this, different, term.",
+    "2014-03-31: A plan specification can have other parts, such as conditional specifications.",
+    "2022-01-16 Updated definition to that proposed by Clint Dowloand, IAO Issue 231.",
+    "A directive information entity with action specifications and objective specifications as parts, and that may be concretized as a realizable entity that, if realized, is realized in a process in which the bearer tries to achieve the objectives by taking the actions specified.",
+    "Alan Ruttenberg",
+    "Alternative previous definition: a plan is a set of instructions that specify how an objective should be achieved",
+    "Clint Dowland",
+    "OBI Plan and Planned Process branch",
+    "OBI_0000344",
+    "PMID: 18323827.Nat Med. 2008 Mar;14(3):226.New plan proposed to help resolve conflicting medical advice.",
+    "plan specification",
+    false
+  ],
+  "shortForm": "IAO_0000104",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

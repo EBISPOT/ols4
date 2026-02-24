@@ -1,0 +1,228 @@
+{
+  "appearsIn": [
+    "duo"
+  ],
+  "curie": "IAO:0000221",
+  "definition": [
+    "m is a quality measurement of q at t. When q is a quality, there is a measurement process p that has specified output m, a measurement datum, that is about q"
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/IAO_0000136"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/IAO_0000136"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://purl.obolibrary.org/obo/IAO_0000115": "m is a quality measurement of q at t. When q is a quality, there is a measurement process p that has specified output m, a measurement datum, that is about q",
+  "http://purl.obolibrary.org/obo/IAO_0000116": [
+    "8/6/2009 Alan Ruttenberg: The strategy is to be rather specific with this relationship. There are other kinds of measurements that are not of qualities, such as those that measure time. We will add these as separate properties for the moment and see about generalizing later",
+    "From the second IAO workshop [Alan Ruttenberg 8/6/2009: not completely current, though bringing in comparison is probably important]\n\nThis one is the one we are struggling with at the moment. The issue is what a measurement measures. On the one hand saying that it measures the quality would include it \"measuring\" the bearer = referring to the bearer in the measurement. However this makes comparisons of two different things not possible. On the other hand not having it inhere in the bearer, on the face of it, breaks the audit trail.\n\nWerner suggests a solution based on \"Magnitudes\" a proposal for which we are awaiting details.\n--\nFrom the second IAO workshop, various comments, [commented on by Alan Ruttenberg 8/6/2009]\n\nunit of measure is a quality, e.g. the length of a ruler.\n\n[We decided to hedge on what units of measure are, instead talking about measurement unit labels, which are the information content entities that are about whatever measurement units are. For IAO we need that information entity in any case. See the term measurement unit label]\n\n[Some struggling with the various subflavors of is_about. We subsequently removed the relation represents, and describes until and only when we have a better theory]\n\na represents b means either a denotes b or a describes\n\ndescribe:\na describes b means a is about b and a allows an inference of at least one quality of b\n\nWe have had a long discussion about denotes versus describes.",
+    "From the second IAO workshop: An attempt at tieing the quality to the measurement datum more carefully.\n\na is a magnitude means a is a determinate quality particular inhering in some bearer b existing at a time t that can be represented/denoted by an information content entity e that has parts denoting a unit of measure, a number, and b. The unit of measure is an instance of the determinable quality.",
+    "From the second meeting on IAO:\n\nAn attempt at defining assay using Barry's \"reliability\" wording\n\nassay:\nprocess and has_input some material entity\nand has_output some information content entity \nand which is such that instances of this process type reliably generate \noutputs that describes the input.",
+    "This one is the one we are struggling with at the moment. The issue is what a measurement measures. On the one hand saying that it measures the quality would include it \"measuring\" the bearer = referring to the bearer in the measurement. However this makes comparisons of two different things not possible. On the other hand not having it inhere in the bearer, on the face of it, breaks the audit trail.\n\nWerner suggests a solution based on \"Magnitudes\" a proposal for which we are awaiting details."
+  ],
+  "http://purl.obolibrary.org/obo/IAO_0000117": "Alan Ruttenberg",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+  "http://www.w3.org/2000/01/rdf-schema#domain": "http://purl.obolibrary.org/obo/IAO_0000109",
+  "http://www.w3.org/2000/01/rdf-schema#label": "is quality measurement of",
+  "http://www.w3.org/2000/01/rdf-schema#range": "http://purl.obolibrary.org/obo/BFO_0000019",
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://purl.obolibrary.org/obo/IAO_0000136",
+  "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/IAO_0000417",
+  "imported": true,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000221",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "is quality measurement of"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000019": {
+      "curie": "BFO:0000019",
+      "hasLocalDefinition": true,
+      "label": [
+        "quality"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000109": {
+      "curie": "IAO:0000109",
+      "hasLocalDefinition": true,
+      "label": [
+        "measurement datum"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000116": {
+      "curie": "IAO:0000116",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor note"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000117": {
+      "curie": "IAO:0000117",
+      "hasLocalDefinition": true,
+      "label": [
+        "term editor"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000136": {
+      "curie": "IAO:0000136",
+      "hasLocalDefinition": true,
+      "label": [
+        "is about"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000417": {
+      "curie": "IAO:0000417",
+      "hasLocalDefinition": true,
+      "label": [
+        "is quality measured as"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#domain": {
+      "curie": "RDFS:domain",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "domain"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#range": {
+      "curie": "RDFS:range",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "range"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+      "curie": "RDFS:subPropertyOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subPropertyOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000019",
+    "http://purl.obolibrary.org/obo/IAO_0000109",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000116",
+    "http://purl.obolibrary.org/obo/IAO_0000117",
+    "http://purl.obolibrary.org/obo/IAO_0000136",
+    "http://purl.obolibrary.org/obo/IAO_0000417",
+    "http://www.w3.org/2000/01/rdf-schema#domain",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#range",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    "8/6/2009 Alan Ruttenberg: The strategy is to be rather specific with this relationship. There are other kinds of measurements that are not of qualities, such as those that measure time. We will add these as separate properties for the moment and see about generalizing later",
+    "Alan Ruttenberg",
+    "From the second IAO workshop [Alan Ruttenberg 8/6/2009: not completely current, though bringing in comparison is probably important]\n\nThis one is the one we are struggling with at the moment. The issue is what a measurement measures. On the one hand saying that it measures the quality would include it \"measuring\" the bearer = referring to the bearer in the measurement. However this makes comparisons of two different things not possible. On the other hand not having it inhere in the bearer, on the face of it, breaks the audit trail.\n\nWerner suggests a solution based on \"Magnitudes\" a proposal for which we are awaiting details.\n--\nFrom the second IAO workshop, various comments, [commented on by Alan Ruttenberg 8/6/2009]\n\nunit of measure is a quality, e.g. the length of a ruler.\n\n[We decided to hedge on what units of measure are, instead talking about measurement unit labels, which are the information content entities that are about whatever measurement units are. For IAO we need that information entity in any case. See the term measurement unit label]\n\n[Some struggling with the various subflavors of is_about. We subsequently removed the relation represents, and describes until and only when we have a better theory]\n\na represents b means either a denotes b or a describes\n\ndescribe:\na describes b means a is about b and a allows an inference of at least one quality of b\n\nWe have had a long discussion about denotes versus describes.",
+    "From the second IAO workshop: An attempt at tieing the quality to the measurement datum more carefully.\n\na is a magnitude means a is a determinate quality particular inhering in some bearer b existing at a time t that can be represented/denoted by an information content entity e that has parts denoting a unit of measure, a number, and b. The unit of measure is an instance of the determinable quality.",
+    "From the second meeting on IAO:\n\nAn attempt at defining assay using Barry's \"reliability\" wording\n\nassay:\nprocess and has_input some material entity\nand has_output some information content entity \nand which is such that instances of this process type reliably generate \noutputs that describes the input.",
+    "This one is the one we are struggling with at the moment. The issue is what a measurement measures. On the one hand saying that it measures the quality would include it \"measuring\" the bearer = referring to the bearer in the measurement. However this makes comparisons of two different things not possible. On the other hand not having it inhere in the bearer, on the face of it, breaks the audit trail.\n\nWerner suggests a solution based on \"Magnitudes\" a proposal for which we are awaiting details.",
+    "m is a quality measurement of q at t. When q is a quality, there is a measurement process p that has specified output m, a measurement datum, that is about q",
+    true
+  ],
+  "shortForm": "IAO_0000221",
+  "type": [
+    "entity",
+    "objectProperty",
+    "property"
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "appearsIn": [
+    "skos"
+  ],
+  "curie": "SKOS:narrower",
+  "definedBy": [
+    "skos"
+  ],
+  "definition": [
+    "Narrower concepts are typically rendered as children in a concept hierarchy (tree)."
+  ],
+  "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
+  "directAncestor": [
+    "http://www.w3.org/2004/02/skos/core#narrowerTransitive",
+    "http://www.w3.org/2004/02/skos/core#semanticRelation"
+  ],
+  "directParent": [
+    "http://www.w3.org/2004/02/skos/core#narrowerTransitive"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+    "http://www.w3.org/2002/07/owl#ObjectProperty"
+  ],
+  "http://www.w3.org/2000/01/rdf-schema#comment": "Narrower concepts are typically rendered as children in a concept hierarchy (tree).",
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2004/02/skos/core",
+  "http://www.w3.org/2000/01/rdf-schema#label": "has narrower",
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.w3.org/2004/02/skos/core#narrowerTransitive",
+  "http://www.w3.org/2002/07/owl#inverseOf": "http://www.w3.org/2004/02/skos/core#broader",
+  "http://www.w3.org/2004/02/skos/core#definition": "Relates a concept to a concept that is more specific in meaning.",
+  "http://www.w3.org/2004/02/skos/core#scopeNote": "By convention, skos:broader is only used to assert an immediate (i.e. direct) hierarchical link between two conceptual resources.",
+  "imported": false,
+  "iri": "http://www.w3.org/2004/02/skos/core#narrower",
+  "isDefiningOntology": true,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "has narrower"
+  ],
+  "linkedEntities": {
+    "http://www.w3.org/2000/01/rdf-schema#comment": {
+      "curie": "RDFS:comment",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "comment"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
+      "curie": "RDFS:isDefinedBy",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "isDefinedBy"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+      "curie": "RDFS:subPropertyOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subPropertyOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2004/02/skos/core#broader": {
+      "curie": "SKOS:broader",
+      "definedBy": [
+        "skos"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has broader"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2004/02/skos/core#definition": {
+      "curie": "SKOS:definition",
+      "definedBy": [
+        "skos"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2004/02/skos/core#narrowerTransitive": {
+      "curie": "SKOS:narrowerTransitive",
+      "definedBy": [
+        "skos"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has narrower transitive"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2004/02/skos/core#scopeNote": {
+      "curie": "SKOS:scopeNote",
+      "definedBy": [
+        "skos"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "scope note"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2004/02/skos/core#semanticRelation": {
+      "curie": "SKOS:semanticRelation",
+      "definedBy": [
+        "skos"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "is in semantic relation with"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://www.w3.org/2000/01/rdf-schema#comment",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf",
+    "http://www.w3.org/2004/02/skos/core#broader",
+    "http://www.w3.org/2004/02/skos/core#definition",
+    "http://www.w3.org/2004/02/skos/core#narrowerTransitive",
+    "http://www.w3.org/2004/02/skos/core#scopeNote",
+    "http://www.w3.org/2004/02/skos/core#semanticRelation"
+  ],
+  "numDescendants": 1.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "skos",
+  "ontologyIri": "http://www.w3.org/2004/02/skos/core",
+  "searchableAnnotationValues": [
+    "By convention, skos:broader is only used to assert an immediate (i.e. direct) hierarchical link between two conceptual resources.",
+    "Relates a concept to a concept that is more specific in meaning.",
+    false
+  ],
+  "shortForm": "SKOS_narrower",
+  "type": [
+    "entity",
+    "objectProperty",
+    "property"
+  ]
+}

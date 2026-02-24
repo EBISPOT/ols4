@@ -1,0 +1,72 @@
+{
+  "appearsIn": [
+    "inter-ontology-a",
+    "inter-ontology-b"
+  ],
+  "curie": "inter-ontology-b:ClassB",
+  "definedBy": [
+    "inter-ontology-b"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": false,
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.ebi.ac.uk/testcases/inter-ontology/b",
+  "http://www.w3.org/2000/01/rdf-schema#label": "Class B (imported)",
+  "imported": false,
+  "iri": "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "Class B (imported)"
+  ],
+  "linkedEntities": {
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
+      "curie": "RDFS:isDefinedBy",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "isDefinedBy"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 1.0,
+  "numHierarchicalDescendants": 1.0,
+  "ontologyId": "inter-ontology-a",
+  "ontologyIri": "http://www.ebi.ac.uk/testcases/inter-ontology/a",
+  "ontologyPreferredPrefix": "inter-ontology-a",
+  "searchableAnnotationValues": false,
+  "shortForm": "inter-ontology-b_ClassB",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

@@ -1,0 +1,294 @@
+{
+  "appearsIn": [
+    "duo",
+    "gitissue502"
+  ],
+  "curie": "BFO:0000015",
+  "definition": [
+    {
+      "axioms": [
+        {
+          "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/083-003"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "p is a process = Def. p is an occurrent that has temporal proper parts and for some time t, p s-depends_on some material entity at t. (axiom label in BFO2 Reference: [083-003])"
+    }
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000003"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/BFO_0000003"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000003"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/BFO_0000003"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/BFO_0000179": "process",
+  "http://purl.obolibrary.org/obo/BFO_0000180": "Process",
+  "http://purl.obolibrary.org/obo/IAO_0000112": [
+    "a process of cell-division, \\ a beating of the heart",
+    "a process of meiosis",
+    "a process of sleeping",
+    "the course of a disease",
+    "the flight of a bird",
+    "the life of an organism",
+    "your process of aging."
+  ],
+  "http://purl.obolibrary.org/obo/IAO_0000115": {
+    "axioms": [
+      {
+        "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/083-003"
+      }
+    ],
+    "type": [
+      "reification"
+    ],
+    "value": "p is a process = Def. p is an occurrent that has temporal proper parts and for some time t, p s-depends_on some material entity at t. (axiom label in BFO2 Reference: [083-003])"
+  },
+  "http://purl.obolibrary.org/obo/IAO_0000116": "BFO 2 Reference: The realm of occurrents is less pervasively marked by the presence of natural units than is the case in the realm of independent continuants. Thus there is here no counterpart of ‘object’. In BFO 1.0 ‘process’ served as such a counterpart. In BFO 2.0 ‘process’ is, rather, the occurrent counterpart of ‘material entity’. Those natural – as contrasted with engineered, which here means: deliberately executed – units which do exist in the realm of occurrents are typically either parasitic on the existence of natural units on the continuant side, or they are fiat in nature. Thus we can count lives; we can count football games; we can count chemical reactions performed in experiments or in chemical manufacturing. We cannot count the processes taking place, for instance, in an episode of insect mating behavior.Even where natural units are identifiable, for example cycles in a cyclical process such as the beating of a heart or an organism’s sleep/wake cycle, the processes in question form a sequence with no discontinuities (temporal gaps) of the sort that we find for instance where billiard balls or zebrafish or planets are separated by clear spatial gaps. Lives of organisms are process units, but they too unfold in a continuous series from other, prior processes such as fertilization, and they unfold in turn in continuous series of post-life processes such as post-mortem decay. Clear examples of boundaries of processes are almost always of the fiat sort (midnight, a time of death as declared in an operating theater or on a death certificate, the initiation of a state of war)",
+  "http://purl.obolibrary.org/obo/IAO_0000602": {
+    "axioms": [
+      {
+        "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/083-003"
+      }
+    ],
+    "type": [
+      "reification"
+    ],
+    "value": "(iff (Process a) (and (Occurrent a) (exists (b) (properTemporalPartOf b a)) (exists (c t) (and (MaterialEntity c) (specificallyDependsOnAt a c t))))) // axiom label in BFO2 CLIF: [083-003] "
+  },
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://purl.obolibrary.org/obo/bfo.owl",
+  "http://www.w3.org/2000/01/rdf-schema#label": "process",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/BFO_0000003",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/BFO_0000015",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "process"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000001": {
+      "curie": "BFO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000003": {
+      "curie": "BFO:0000003",
+      "hasLocalDefinition": true,
+      "label": [
+        "occurrent"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000179": {
+      "curie": "BFO:0000179",
+      "hasLocalDefinition": true,
+      "label": [
+        "BFO OWL specification label"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000180": {
+      "curie": "BFO:0000180",
+      "hasLocalDefinition": true,
+      "label": [
+        "BFO CLIF specification label"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000112": {
+      "curie": "IAO:0000112",
+      "hasLocalDefinition": true,
+      "label": [
+        "example of usage"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000116": {
+      "curie": "IAO:0000116",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor note"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000602": {
+      "curie": "IAO:0000602",
+      "hasLocalDefinition": true,
+      "label": [
+        "has associated axiom(fol)"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0010000": {
+      "curie": "IAO:0010000",
+      "hasLocalDefinition": true,
+      "label": [
+        "has axiom label"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
+      "curie": "RDFS:isDefinedBy",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "isDefinedBy"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000003",
+    "http://purl.obolibrary.org/obo/BFO_0000179",
+    "http://purl.obolibrary.org/obo/BFO_0000180",
+    "http://purl.obolibrary.org/obo/IAO_0000112",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000116",
+    "http://purl.obolibrary.org/obo/IAO_0000602",
+    "http://purl.obolibrary.org/obo/IAO_0010000",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 28.0,
+  "numHierarchicalDescendants": 28.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    "BFO 2 Reference: The realm of occurrents is less pervasively marked by the presence of natural units than is the case in the realm of independent continuants. Thus there is here no counterpart of ‘object’. In BFO 1.0 ‘process’ served as such a counterpart. In BFO 2.0 ‘process’ is, rather, the occurrent counterpart of ‘material entity’. Those natural – as contrasted with engineered, which here means: deliberately executed – units which do exist in the realm of occurrents are typically either parasitic on the existence of natural units on the continuant side, or they are fiat in nature. Thus we can count lives; we can count football games; we can count chemical reactions performed in experiments or in chemical manufacturing. We cannot count the processes taking place, for instance, in an episode of insect mating behavior.Even where natural units are identifiable, for example cycles in a cyclical process such as the beating of a heart or an organism’s sleep/wake cycle, the processes in question form a sequence with no discontinuities (temporal gaps) of the sort that we find for instance where billiard balls or zebrafish or planets are separated by clear spatial gaps. Lives of organisms are process units, but they too unfold in a continuous series from other, prior processes such as fertilization, and they unfold in turn in continuous series of post-life processes such as post-mortem decay. Clear examples of boundaries of processes are almost always of the fiat sort (midnight, a time of death as declared in an operating theater or on a death certificate, the initiation of a state of war)",
+    "a process of cell-division, \\ a beating of the heart",
+    "a process of meiosis",
+    "a process of sleeping",
+    "the course of a disease",
+    "the flight of a bird",
+    "the life of an organism",
+    "your process of aging.",
+    false,
+    {
+      "axioms": [
+        {
+          "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/083-003"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "p is a process = Def. p is an occurrent that has temporal proper parts and for some time t, p s-depends_on some material entity at t. (axiom label in BFO2 Reference: [083-003])"
+    }
+  ],
+  "shortForm": "BFO_0000015",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

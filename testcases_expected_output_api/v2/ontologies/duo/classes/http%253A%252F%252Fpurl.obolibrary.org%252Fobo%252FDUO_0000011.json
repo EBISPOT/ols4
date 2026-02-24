@@ -1,0 +1,261 @@
+{
+  "appearsIn": [
+    "duo"
+  ],
+  "curie": "DUO:0000011",
+  "definedBy": [
+    "duo"
+  ],
+  "definition": [
+    "This data use permission indicates that use of the data is limited to the study of population origins or ancestry."
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/DUO_0000001",
+    "http://purl.obolibrary.org/obo/IAO_0000027",
+    "http://purl.obolibrary.org/obo/IAO_0000030"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/DUO_0000001"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/DUO_0000001",
+    "http://purl.obolibrary.org/obo/IAO_0000027",
+    "http://purl.obolibrary.org/obo/IAO_0000030"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/DUO_0000001"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "This data use permission indicates that use of the data is limited to the study of population origins or ancestry.",
+  "http://purl.obolibrary.org/obo/IAO_0000118": "population origins/ancestry research",
+  "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000011",
+  "http://www.geneontology.org/formats/oboInOwl#shorthand": "POA",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "population origins or ancestry research only",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/DUO_0000001",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/DUO_0000011",
+  "isDefiningOntology": true,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "population origins or ancestry research only"
+  ],
+  "linkedEntities": {
+    "DUO:0000011": {
+      "curie": "DUO:0000011",
+      "definedBy": [
+        "duo"
+      ],
+      "hasLocalDefinition": true,
+      "iri": "http://purl.obolibrary.org/obo/DUO_0000011",
+      "label": [
+        "population origins or ancestry research only"
+      ],
+      "numAppearsIn": 1.0,
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "type": [
+        "class",
+        "entity"
+      ],
+      "url": "http://purl.obolibrary.org/obo/DUO_0000011"
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000001": {
+      "curie": "BFO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000031": {
+      "curie": "BFO:0000031",
+      "hasLocalDefinition": true,
+      "label": [
+        "generically dependent continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/DUO_0000001": {
+      "curie": "DUO:0000001",
+      "definedBy": [
+        "duo"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "data use permission"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000027": {
+      "curie": "IAO:0000027",
+      "hasLocalDefinition": true,
+      "label": [
+        "data item"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000030": {
+      "curie": "IAO:0000030",
+      "hasLocalDefinition": true,
+      "label": [
+        "information content entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000118": {
+      "curie": "IAO:0000118",
+      "hasLocalDefinition": true,
+      "label": [
+        "alternative label"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#id": {
+      "curie": "id",
+      "hasLocalDefinition": true,
+      "label": [
+        "id"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#shorthand": {
+      "curie": "shorthand",
+      "hasLocalDefinition": true,
+      "label": [
+        "shorthand"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/DUO_0000001",
+    "http://purl.obolibrary.org/obo/DUO_0000011",
+    "http://purl.obolibrary.org/obo/IAO_0000027",
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000118",
+    "http://www.geneontology.org/formats/oboInOwl#id",
+    "http://www.geneontology.org/formats/oboInOwl#shorthand",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    "This data use permission indicates that use of the data is limited to the study of population origins or ancestry.",
+    false
+  ],
+  "shortForm": "DUO_0000011",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

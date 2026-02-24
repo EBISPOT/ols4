@@ -1,0 +1,159 @@
+{
+  "appearsIn": [
+    "duo"
+  ],
+  "curie": "DUO:0000010",
+  "definedBy": [
+    "duo"
+  ],
+  "definition": [
+    "A is restricted to B iff A is a consent code and B is an investigation and A may only participate in instances of a class C, of which B is an instance."
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "hasDirectChildren": false,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://purl.obolibrary.org/obo/DUO_0000041": "is_restricted_to",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "A is restricted to B iff A is a consent code and B is an investigation and A may only participate in instances of a class C, of which B is an instance.",
+  "http://purl.obolibrary.org/obo/IAO_0000117": "J. Neil Otte",
+  "http://purl.obolibrary.org/obo/IAO_0000232": "E.g. A dataset is restricted to an instance of an investigation for a specific disease or at geographical location.",
+  "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000010",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+  "http://www.w3.org/2000/01/rdf-schema#label": "is restricted to",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/DUO_0000010",
+  "isDefiningOntology": true,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "is restricted to"
+  ],
+  "linkedEntities": {
+    "DUO:0000010": {
+      "curie": "DUO:0000010",
+      "definedBy": [
+        "duo"
+      ],
+      "hasLocalDefinition": true,
+      "iri": "http://purl.obolibrary.org/obo/DUO_0000010",
+      "label": [
+        "is restricted to"
+      ],
+      "numAppearsIn": 1.0,
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ],
+      "url": "http://purl.obolibrary.org/obo/DUO_0000010"
+    },
+    "http://purl.obolibrary.org/obo/DUO_0000041": {
+      "curie": "DUO:0000041",
+      "definedBy": [
+        "duo"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "DUO_preferred_label"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000117": {
+      "curie": "IAO:0000117",
+      "hasLocalDefinition": true,
+      "label": [
+        "term editor"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000232": {
+      "curie": "IAO:0000232",
+      "hasLocalDefinition": true,
+      "label": [
+        "curator note"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#id": {
+      "curie": "id",
+      "hasLocalDefinition": true,
+      "label": [
+        "id"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/DUO_0000010",
+    "http://purl.obolibrary.org/obo/DUO_0000041",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000117",
+    "http://purl.obolibrary.org/obo/IAO_0000232",
+    "http://www.geneontology.org/formats/oboInOwl#id",
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    false
+  ],
+  "shortForm": "DUO_0000010",
+  "type": [
+    "entity",
+    "objectProperty",
+    "property"
+  ]
+}

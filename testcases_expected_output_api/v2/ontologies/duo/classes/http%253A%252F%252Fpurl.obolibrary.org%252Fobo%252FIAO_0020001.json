@@ -1,0 +1,270 @@
+{
+  "appearsIn": [
+    "duo"
+  ],
+  "curie": "IAO:0020001",
+  "definition": [
+    "An information content entity that is a fundamental unit in a written language.",
+    "Grapheme is not about anything and hence is likely to not be an information content entity. If a new subclass of GDC for information structure entities is created it should move there."
+  ],
+  "definitionProperty": [
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://www.w3.org/2000/01/rdf-schema#comment"
+  ],
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/IAO_0000030"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/IAO_0000030"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/IAO_0000030"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/IAO_0000030"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/IAO_0000112": "alphabetic letters, Chinese characters, numerical digits, punctuation marks, and the individual symbols of any of the world's writing systems",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "An information content entity that is a fundamental unit in a written language.",
+  "http://purl.obolibrary.org/obo/IAO_0000117": "Justin Whorton",
+  "http://purl.obolibrary.org/obo/IAO_0000119": "http://en.wikipedia.org/wiki/Grapheme",
+  "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/IAO/issues/237",
+  "http://purl.org/dc/elements/1.1/creator": "Mathias Brochhausen",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#comment": "Grapheme is not about anything and hence is likely to not be an information content entity. If a new subclass of GDC for information structure entities is created it should move there.",
+  "http://www.w3.org/2000/01/rdf-schema#label": "grapheme",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/IAO_0000030",
+  "imported": true,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0020001",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "grapheme"
+  ],
+  "linkedEntities": {
+    "http://en.wikipedia.org/wiki/Grapheme": {
+      "curie": "wikipedia.en:Grapheme",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://en.wikipedia.org/wiki/Grapheme"
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000001": {
+      "curie": "BFO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000031": {
+      "curie": "BFO:0000031",
+      "hasLocalDefinition": true,
+      "label": [
+        "generically dependent continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000030": {
+      "curie": "IAO:0000030",
+      "hasLocalDefinition": true,
+      "label": [
+        "information content entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000112": {
+      "curie": "IAO:0000112",
+      "hasLocalDefinition": true,
+      "label": [
+        "example of usage"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000117": {
+      "curie": "IAO:0000117",
+      "hasLocalDefinition": true,
+      "label": [
+        "term editor"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000119": {
+      "curie": "IAO:0000119",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition source"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000233": {
+      "curie": "IAO:0000233",
+      "hasLocalDefinition": true,
+      "label": [
+        "term tracker item"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.org/dc/elements/1.1/creator": {
+      "curie": "creator",
+      "hasLocalDefinition": true,
+      "label": [
+        "creator"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#comment": {
+      "curie": "RDFS:comment",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "comment"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "https://github.com/information-artifact-ontology/IAO/issues/237": {
+      "curie": "iao.issue:237",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "https://github.com/information-artifact-ontology/IAO/issues/237"
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0000112",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000117",
+    "http://purl.obolibrary.org/obo/IAO_0000119",
+    "http://purl.obolibrary.org/obo/IAO_0000233",
+    "http://purl.org/dc/elements/1.1/creator",
+    "http://www.w3.org/2000/01/rdf-schema#comment",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    "An information content entity that is a fundamental unit in a written language.",
+    "Justin Whorton",
+    "alphabetic letters, Chinese characters, numerical digits, punctuation marks, and the individual symbols of any of the world's writing systems",
+    "https://github.com/information-artifact-ontology/IAO/issues/237",
+    true
+  ],
+  "shortForm": "IAO_0020001",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

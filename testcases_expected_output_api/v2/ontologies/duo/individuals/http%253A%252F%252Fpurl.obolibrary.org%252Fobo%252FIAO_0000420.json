@@ -1,0 +1,226 @@
+{
+  "appearsIn": [
+    "duo"
+  ],
+  "curie": "IAO:0000420",
+  "definition": [
+    "A defined class is a class that is defined by a set of logically necessary and sufficient conditions but is not a universal"
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/IAO_0000027",
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0000102",
+    "http://purl.obolibrary.org/obo/IAO_0000409"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/IAO_0000409"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://purl.obolibrary.org/obo/IAO_0000111": "defined class",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "A defined class is a class that is defined by a set of logically necessary and sufficient conditions but is not a universal",
+  "http://purl.obolibrary.org/obo/IAO_0000116": "\"definitions\", in some readings, always are given by necessary and sufficient conditions. So one must be careful (and this is difficult sometimes) to distinguish between defined classes and universal.",
+  "http://purl.obolibrary.org/obo/IAO_0000117": "Alan Ruttenberg",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+    "http://purl.obolibrary.org/obo/IAO_0000409",
+    "http://www.w3.org/2002/07/owl#NamedIndividual"
+  ],
+  "http://www.w3.org/2000/01/rdf-schema#label": "defined class",
+  "imported": true,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000420",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "label": [
+    "defined class"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000001": {
+      "curie": "BFO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000031": {
+      "curie": "BFO:0000031",
+      "hasLocalDefinition": true,
+      "label": [
+        "generically dependent continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000027": {
+      "curie": "IAO:0000027",
+      "hasLocalDefinition": true,
+      "label": [
+        "data item"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000030": {
+      "curie": "IAO:0000030",
+      "hasLocalDefinition": true,
+      "label": [
+        "information content entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000102": {
+      "curie": "IAO:0000102",
+      "hasLocalDefinition": true,
+      "label": [
+        "data about an ontology part"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000111": {
+      "curie": "IAO:0000111",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor preferred term"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000116": {
+      "curie": "IAO:0000116",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor note"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000117": {
+      "curie": "IAO:0000117",
+      "hasLocalDefinition": true,
+      "label": [
+        "term editor"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000409": {
+      "curie": "IAO:0000409",
+      "hasLocalDefinition": true,
+      "label": [
+        "denotator type"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/IAO_0000027",
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0000102",
+    "http://purl.obolibrary.org/obo/IAO_0000111",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000116",
+    "http://purl.obolibrary.org/obo/IAO_0000117",
+    "http://purl.obolibrary.org/obo/IAO_0000409",
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    "A defined class is a class that is defined by a set of logically necessary and sufficient conditions but is not a universal",
+    "Alan Ruttenberg",
+    "\"definitions\", in some readings, always are given by necessary and sufficient conditions. So one must be careful (and this is difficult sometimes) to distinguish between defined classes and universal.",
+    "defined class",
+    true
+  ],
+  "shortForm": "IAO_0000420",
+  "type": [
+    "entity",
+    "individual"
+  ]
+}

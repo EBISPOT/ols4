@@ -1,0 +1,131 @@
+{
+  "appearsIn": [
+    "duo"
+  ],
+  "curie": "OMO:0002000",
+  "definition": [
+    "Links an annotation property to a SPARQL CONSTRUCT query which is meant to provide semantics for a shortcut relation."
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "hasDirectChildren": false,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://purl.obolibrary.org/obo/IAO_0000112": "'part disjoint with' 'defined by construct' \"\"\"\n    PREFIX owl: <http://www.w3.org/2002/07/owl#>\n    PREFIX : <http://example.org/\n    CONSTRUCT {\n      [\n        a owl:Restriction ;\n        owl:onProperty :part_of ;\n        owl:someValuesFrom ?a ;\n        owl:disjointWith [\n          a owl:Restriction ;\n          owl:onProperty :part_of ;\n          owl:someValuesFrom ?b\n        ]\n      ]\n    }\n    WHERE {\n      ?a :part_disjoint_with ?b .\n    }",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "Links an annotation property to a SPARQL CONSTRUCT query which is meant to provide semantics for a shortcut relation.",
+  "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/ontodev/robot/issues/963",
+  "http://purl.org/dc/elements/1.1/contributor": [
+    "https://orcid.org/0000-0002-7356-1779",
+    "https://orcid.org/0000-0002-8688-6599"
+  ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+  "http://www.w3.org/2000/01/rdf-schema#label": "defined by construct",
+  "imported": true,
+  "iri": "http://purl.obolibrary.org/obo/OMO_0002000",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "defined by construct"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/IAO_0000112": {
+      "curie": "IAO:0000112",
+      "hasLocalDefinition": true,
+      "label": [
+        "example of usage"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000233": {
+      "curie": "IAO:0000233",
+      "hasLocalDefinition": true,
+      "label": [
+        "term tracker item"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.org/dc/elements/1.1/contributor": {
+      "curie": "contributor",
+      "hasLocalDefinition": true,
+      "label": [
+        "contributor"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "https://orcid.org/0000-0002-7356-1779": {
+      "curie": "orcid:0000-0002-7356-1779",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "https://orcid.org/0000-0002-7356-1779"
+    },
+    "https://orcid.org/0000-0002-8688-6599": {
+      "curie": "orcid:0000-0002-8688-6599",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "https://orcid.org/0000-0002-8688-6599"
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/IAO_0000112",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000233",
+    "http://purl.org/dc/elements/1.1/contributor",
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    true
+  ],
+  "shortForm": "OMO_0002000",
+  "type": [
+    "annotationProperty",
+    "entity",
+    "property"
+  ]
+}

@@ -1,0 +1,367 @@
+{
+  "appearsIn": [
+    "duo",
+    "gitissue502"
+  ],
+  "curie": "BFO:0000016",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/BFO_0000017"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/BFO_0000017"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/BFO_0000179": "disposition",
+  "http://purl.obolibrary.org/obo/BFO_0000180": "Disposition",
+  "http://purl.obolibrary.org/obo/IAO_0000112": [
+    "an atom of element X has the disposition to decay to an atom of element Y",
+    "certain people have a predisposition to colon cancer",
+    "children are innately disposed to categorize objects in certain ways.",
+    "the cell wall is disposed to filter chemicals in endocytosis and exocytosis"
+  ],
+  "http://purl.obolibrary.org/obo/IAO_0000116": "BFO 2 Reference: Dispositions exist along a strength continuum. Weaker forms of disposition are realized in only a fraction of triggering cases. These forms occur in a significant number of cases of a similar type.",
+  "http://purl.obolibrary.org/obo/IAO_0000600": {
+    "axioms": [
+      {
+        "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/062-002"
+      }
+    ],
+    "type": [
+      "reification"
+    ],
+    "value": "b is a disposition means: b is a realizable entity & b’s bearer is some material entity & b is such that if it ceases to exist, then its bearer is physically changed, & b’s realization occurs when and because this bearer is in some special physical circumstances, & this realization occurs in virtue of the bearer’s physical make-up. (axiom label in BFO2 Reference: [062-002])"
+  },
+  "http://purl.obolibrary.org/obo/IAO_0000601": {
+    "axioms": [
+      {
+        "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/063-002"
+      }
+    ],
+    "type": [
+      "reification"
+    ],
+    "value": "If b is a realizable entity then for all t at which b exists, b s-depends_on some material entity at t. (axiom label in BFO2 Reference: [063-002])"
+  },
+  "http://purl.obolibrary.org/obo/IAO_0000602": [
+    {
+      "axioms": [
+        {
+          "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/062-002"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "(forall (x) (if (Disposition x) (and (RealizableEntity x) (exists (y) (and (MaterialEntity y) (bearerOfAt x y t)))))) // axiom label in BFO2 CLIF: [062-002] "
+    },
+    {
+      "axioms": [
+        {
+          "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/063-002"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "(forall (x t) (if (and (RealizableEntity x) (existsAt x t)) (exists (y) (and (MaterialEntity y) (specificallyDepends x y t))))) // axiom label in BFO2 CLIF: [063-002] "
+    }
+  ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://purl.obolibrary.org/obo/bfo.owl",
+  "http://www.w3.org/2000/01/rdf-schema#label": "disposition",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/BFO_0000017",
+  "http://www.w3.org/2002/07/owl#disjointWith": "http://purl.obolibrary.org/obo/BFO_0000023",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/BFO_0000016",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "disposition"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000001": {
+      "curie": "BFO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000017": {
+      "curie": "BFO:0000017",
+      "hasLocalDefinition": true,
+      "label": [
+        "realizable entity"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000020": {
+      "curie": "BFO:0000020",
+      "hasLocalDefinition": true,
+      "label": [
+        "specifically dependent continuant"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000023": {
+      "curie": "BFO:0000023",
+      "hasLocalDefinition": true,
+      "label": [
+        "role"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000179": {
+      "curie": "BFO:0000179",
+      "hasLocalDefinition": true,
+      "label": [
+        "BFO OWL specification label"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000180": {
+      "curie": "BFO:0000180",
+      "hasLocalDefinition": true,
+      "label": [
+        "BFO CLIF specification label"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000112": {
+      "curie": "IAO:0000112",
+      "hasLocalDefinition": true,
+      "label": [
+        "example of usage"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000116": {
+      "curie": "IAO:0000116",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor note"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000600": {
+      "curie": "IAO:0000600",
+      "hasLocalDefinition": true,
+      "label": [
+        "elucidation"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000601": {
+      "curie": "IAO:0000601",
+      "hasLocalDefinition": true,
+      "label": [
+        "has associated axiom(nl)"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000602": {
+      "curie": "IAO:0000602",
+      "hasLocalDefinition": true,
+      "label": [
+        "has associated axiom(fol)"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0010000": {
+      "curie": "IAO:0010000",
+      "hasLocalDefinition": true,
+      "label": [
+        "has axiom label"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
+      "curie": "RDFS:isDefinedBy",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "isDefinedBy"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/BFO_0000023",
+    "http://purl.obolibrary.org/obo/BFO_0000179",
+    "http://purl.obolibrary.org/obo/BFO_0000180",
+    "http://purl.obolibrary.org/obo/IAO_0000112",
+    "http://purl.obolibrary.org/obo/IAO_0000116",
+    "http://purl.obolibrary.org/obo/IAO_0000600",
+    "http://purl.obolibrary.org/obo/IAO_0000601",
+    "http://purl.obolibrary.org/obo/IAO_0000602",
+    "http://purl.obolibrary.org/obo/IAO_0010000",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 2.0,
+  "numHierarchicalDescendants": 2.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    "BFO 2 Reference: Dispositions exist along a strength continuum. Weaker forms of disposition are realized in only a fraction of triggering cases. These forms occur in a significant number of cases of a similar type.",
+    "an atom of element X has the disposition to decay to an atom of element Y",
+    "certain people have a predisposition to colon cancer",
+    "children are innately disposed to categorize objects in certain ways.",
+    "the cell wall is disposed to filter chemicals in endocytosis and exocytosis",
+    false,
+    {
+      "axioms": [
+        {
+          "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/062-002"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "b is a disposition means: b is a realizable entity & b’s bearer is some material entity & b is such that if it ceases to exist, then its bearer is physically changed, & b’s realization occurs when and because this bearer is in some special physical circumstances, & this realization occurs in virtue of the bearer’s physical make-up. (axiom label in BFO2 Reference: [062-002])"
+    },
+    {
+      "axioms": [
+        {
+          "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/063-002"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "If b is a realizable entity then for all t at which b exists, b s-depends_on some material entity at t. (axiom label in BFO2 Reference: [063-002])"
+    }
+  ],
+  "shortForm": "BFO_0000016",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

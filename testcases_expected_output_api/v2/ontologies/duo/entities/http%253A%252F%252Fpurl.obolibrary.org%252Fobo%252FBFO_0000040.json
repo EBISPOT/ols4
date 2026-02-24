@@ -1,0 +1,429 @@
+{
+  "appearsIn": [
+    "duo",
+    "gitissue502"
+  ],
+  "curie": "BFO:0000040",
+  "definition": [
+    "An independent continuant that is spatially extended whose identity is independent of that of other entities and can be maintained through time."
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000004"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/BFO_0000004"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000004"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/BFO_0000004"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/BFO_0000179": "material",
+  "http://purl.obolibrary.org/obo/BFO_0000180": "MaterialEntity",
+  "http://purl.obolibrary.org/obo/IAO_0000112": [
+    "a flame",
+    "a forest fire",
+    "a human being",
+    "a hurricane",
+    "a photon",
+    "a puff of smoke",
+    "a sea wave",
+    "a tornado",
+    "an aggregate of human beings.",
+    "an energy wave",
+    "an epidemic",
+    "the undetached arm of a human being"
+  ],
+  "http://purl.obolibrary.org/obo/IAO_0000115": "An independent continuant that is spatially extended whose identity is independent of that of other entities and can be maintained through time.",
+  "http://purl.obolibrary.org/obo/IAO_0000116": [
+    "BFO 2 Reference: Material entities (continuants) can preserve their identity even while gaining and losing material parts. Continuants are contrasted with occurrents, which unfold themselves in successive temporal parts or phases [60",
+    "BFO 2 Reference: Object, Fiat Object Part and Object Aggregate are not intended to be exhaustive of Material Entity. Users are invited to propose new subcategories of Material Entity.",
+    "BFO 2 Reference: ‘Matter’ is intended to encompass both mass and energy (we will address the ontological treatment of portions of energy in a later version of BFO). A portion of matter is anything that includes elementary particles among its proper or improper parts: quarks and leptons, including electrons, as the smallest particles thus far discovered; baryons (including protons and neutrons) at a higher level of granularity; atoms and molecules at still higher levels, forming the cells, organs, organisms and other material entities studied by biologists, the portions of rock studied by geologists, the fossils studied by paleontologists, and so on.Material entities are three-dimensional entities (entities extended in three spatial dimensions), as contrasted with the processes in which they participate, which are four-dimensional entities (entities extended also along the dimension of time).According to the FMA, material entities may have immaterial entities as parts – including the entities identified below as sites; for example the interior (or ‘lumen’) of your small intestine is a part of your body. BFO 2.0 embodies a decision to follow the FMA here."
+  ],
+  "http://purl.obolibrary.org/obo/IAO_0000600": {
+    "axioms": [
+      {
+        "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/019-002"
+      }
+    ],
+    "type": [
+      "reification"
+    ],
+    "value": "A material entity is an independent continuant that has some portion of matter as proper or improper continuant part. (axiom label in BFO2 Reference: [019-002])"
+  },
+  "http://purl.obolibrary.org/obo/IAO_0000601": [
+    {
+      "axioms": [
+        {
+          "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/020-002"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "Every entity which has a material entity as continuant part is a material entity. (axiom label in BFO2 Reference: [020-002])"
+    },
+    {
+      "axioms": [
+        {
+          "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/021-002"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "every entity of which a material entity is continuant part is also a material entity. (axiom label in BFO2 Reference: [021-002])"
+    }
+  ],
+  "http://purl.obolibrary.org/obo/IAO_0000602": [
+    {
+      "axioms": [
+        {
+          "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/019-002"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "(forall (x) (if (MaterialEntity x) (IndependentContinuant x))) // axiom label in BFO2 CLIF: [019-002] "
+    },
+    {
+      "axioms": [
+        {
+          "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/020-002"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "(forall (x) (if (and (Entity x) (exists (y t) (and (MaterialEntity y) (continuantPartOfAt y x t)))) (MaterialEntity x))) // axiom label in BFO2 CLIF: [020-002] "
+    },
+    {
+      "axioms": [
+        {
+          "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/021-002"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "(forall (x) (if (and (Entity x) (exists (y t) (and (MaterialEntity y) (continuantPartOfAt x y t)))) (MaterialEntity x))) // axiom label in BFO2 CLIF: [021-002] "
+    }
+  ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://purl.obolibrary.org/obo/bfo.owl",
+  "http://www.w3.org/2000/01/rdf-schema#label": "material entity",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/BFO_0000004",
+  "http://www.w3.org/2002/07/owl#disjointWith": "http://purl.obolibrary.org/obo/BFO_0000141",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/BFO_0000040",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "material entity"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000001": {
+      "curie": "BFO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000004": {
+      "curie": "BFO:0000004",
+      "hasLocalDefinition": true,
+      "label": [
+        "independent continuant"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000141": {
+      "curie": "BFO:0000141",
+      "hasLocalDefinition": true,
+      "label": [
+        "immaterial entity"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000179": {
+      "curie": "BFO:0000179",
+      "hasLocalDefinition": true,
+      "label": [
+        "BFO OWL specification label"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000180": {
+      "curie": "BFO:0000180",
+      "hasLocalDefinition": true,
+      "label": [
+        "BFO CLIF specification label"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000112": {
+      "curie": "IAO:0000112",
+      "hasLocalDefinition": true,
+      "label": [
+        "example of usage"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000116": {
+      "curie": "IAO:0000116",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor note"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000600": {
+      "curie": "IAO:0000600",
+      "hasLocalDefinition": true,
+      "label": [
+        "elucidation"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000601": {
+      "curie": "IAO:0000601",
+      "hasLocalDefinition": true,
+      "label": [
+        "has associated axiom(nl)"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000602": {
+      "curie": "IAO:0000602",
+      "hasLocalDefinition": true,
+      "label": [
+        "has associated axiom(fol)"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0010000": {
+      "curie": "IAO:0010000",
+      "hasLocalDefinition": true,
+      "label": [
+        "has axiom label"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
+      "curie": "RDFS:isDefinedBy",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "isDefinedBy"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000004",
+    "http://purl.obolibrary.org/obo/BFO_0000141",
+    "http://purl.obolibrary.org/obo/BFO_0000179",
+    "http://purl.obolibrary.org/obo/BFO_0000180",
+    "http://purl.obolibrary.org/obo/IAO_0000112",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000116",
+    "http://purl.obolibrary.org/obo/IAO_0000600",
+    "http://purl.obolibrary.org/obo/IAO_0000601",
+    "http://purl.obolibrary.org/obo/IAO_0000602",
+    "http://purl.obolibrary.org/obo/IAO_0010000",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 5.0,
+  "numHierarchicalDescendants": 5.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    "An independent continuant that is spatially extended whose identity is independent of that of other entities and can be maintained through time.",
+    "BFO 2 Reference: Material entities (continuants) can preserve their identity even while gaining and losing material parts. Continuants are contrasted with occurrents, which unfold themselves in successive temporal parts or phases [60",
+    "BFO 2 Reference: Object, Fiat Object Part and Object Aggregate are not intended to be exhaustive of Material Entity. Users are invited to propose new subcategories of Material Entity.",
+    "BFO 2 Reference: ‘Matter’ is intended to encompass both mass and energy (we will address the ontological treatment of portions of energy in a later version of BFO). A portion of matter is anything that includes elementary particles among its proper or improper parts: quarks and leptons, including electrons, as the smallest particles thus far discovered; baryons (including protons and neutrons) at a higher level of granularity; atoms and molecules at still higher levels, forming the cells, organs, organisms and other material entities studied by biologists, the portions of rock studied by geologists, the fossils studied by paleontologists, and so on.Material entities are three-dimensional entities (entities extended in three spatial dimensions), as contrasted with the processes in which they participate, which are four-dimensional entities (entities extended also along the dimension of time).According to the FMA, material entities may have immaterial entities as parts – including the entities identified below as sites; for example the interior (or ‘lumen’) of your small intestine is a part of your body. BFO 2.0 embodies a decision to follow the FMA here.",
+    "a flame",
+    "a forest fire",
+    "a human being",
+    "a hurricane",
+    "a photon",
+    "a puff of smoke",
+    "a sea wave",
+    "a tornado",
+    "an aggregate of human beings.",
+    "an energy wave",
+    "an epidemic",
+    "the undetached arm of a human being",
+    false,
+    {
+      "axioms": [
+        {
+          "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/019-002"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "A material entity is an independent continuant that has some portion of matter as proper or improper continuant part. (axiom label in BFO2 Reference: [019-002])"
+    },
+    {
+      "axioms": [
+        {
+          "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/020-002"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "Every entity which has a material entity as continuant part is a material entity. (axiom label in BFO2 Reference: [020-002])"
+    },
+    {
+      "axioms": [
+        {
+          "http://purl.obolibrary.org/obo/IAO_0010000": "http://purl.obolibrary.org/obo/bfo/axiom/021-002"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "every entity of which a material entity is continuant part is also a material entity. (axiom label in BFO2 Reference: [021-002])"
+    }
+  ],
+  "shortForm": "BFO_0000040",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

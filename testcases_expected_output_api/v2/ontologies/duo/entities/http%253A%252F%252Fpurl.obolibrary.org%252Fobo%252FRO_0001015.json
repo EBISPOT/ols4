@@ -1,0 +1,180 @@
+{
+  "appearsIn": [
+    "duo"
+  ],
+  "curie": "RO:0001015",
+  "definition": [
+    "a relation between two independent continuants, the location and the target, in which the target is entirely within the location"
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "hasDirectChildren": false,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://purl.obolibrary.org/obo/IAO_0000111": "is location of",
+  "http://purl.obolibrary.org/obo/IAO_0000112": [
+    "my head is the location of my brain",
+    "this cage is the location of this rat"
+  ],
+  "http://purl.obolibrary.org/obo/IAO_0000115": "a relation between two independent continuants, the location and the target, in which the target is entirely within the location",
+  "http://purl.obolibrary.org/obo/IAO_0000116": "Most location relations will only hold at certain times, but this is difficult to specify in OWL. See http://purl.obolibrary.org/obo/ro/docs/temporal-semantics/",
+  "http://purl.obolibrary.org/obo/IAO_0000118": "location_of",
+  "http://purl.obolibrary.org/obo/RO_0001900": "http://purl.obolibrary.org/obo/RO_0001901",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+    "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "http://www.w3.org/2002/07/owl#TransitiveProperty"
+  ],
+  "http://www.w3.org/2000/01/rdf-schema#label": "location of",
+  "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/RO_0001025",
+  "imported": true,
+  "iri": "http://purl.obolibrary.org/obo/RO_0001015",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "location of"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/IAO_0000111": {
+      "curie": "IAO:0000111",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor preferred term"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000112": {
+      "curie": "IAO:0000112",
+      "hasLocalDefinition": true,
+      "label": [
+        "example of usage"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000116": {
+      "curie": "IAO:0000116",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor note"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000118": {
+      "curie": "IAO:0000118",
+      "hasLocalDefinition": true,
+      "label": [
+        "alternative label"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0001025": {
+      "curie": "RO:0001025",
+      "hasLocalDefinition": true,
+      "label": [
+        "located in"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0001900": {
+      "curie": "RO:0001900",
+      "hasLocalDefinition": true,
+      "label": [
+        "temporal interpretation"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0001901": {
+      "curie": "ro:0001901",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "http://purl.obolibrary.org/obo/RO_0001901"
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/IAO_0000111",
+    "http://purl.obolibrary.org/obo/IAO_0000112",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000116",
+    "http://purl.obolibrary.org/obo/IAO_0000118",
+    "http://purl.obolibrary.org/obo/RO_0001025",
+    "http://purl.obolibrary.org/obo/RO_0001900",
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    "Most location relations will only hold at certain times, but this is difficult to specify in OWL. See http://purl.obolibrary.org/obo/ro/docs/temporal-semantics/",
+    "a relation between two independent continuants, the location and the target, in which the target is entirely within the location",
+    "is location of",
+    "location_of",
+    "my head is the location of my brain",
+    "this cage is the location of this rat",
+    true
+  ],
+  "shortForm": "RO_0001015",
+  "type": [
+    "entity",
+    "objectProperty",
+    "property"
+  ]
+}

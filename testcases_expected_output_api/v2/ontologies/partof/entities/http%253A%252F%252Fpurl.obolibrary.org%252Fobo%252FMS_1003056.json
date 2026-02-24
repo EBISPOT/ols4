@@ -1,0 +1,116 @@
+{
+  "appearsIn": [
+    "partof"
+  ],
+  "curie": "MS:1003056",
+  "hasDirectChildren": false,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/MS_1000353"
+  ],
+  "hierarchicalParent": [
+    {
+      "axioms": [
+        {
+          "childRelationToParent": "http://purl.obolibrary.org/obo/ms#part_of"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MS_1000353"
+    }
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "adduct ion property",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+    "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/ms#part_of",
+    "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/MS_1000353",
+    "isObsolete": false
+  },
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/MS_1003056",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "adduct ion property"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/MS_1000353": {
+      "curie": "MS:1000353",
+      "hasLocalDefinition": true,
+      "label": [
+        "adduct ion"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/MS_1000353",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "partof",
+  "ontologyIri": "http://www.ebi.ac.uk/testcases/hierarchical-properties/partof.owl",
+  "ontologyPreferredPrefix": "partof",
+  "relatedTo": [
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/ms#part_of",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/MS_1000353",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/ms#part_of",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MS_1000353"
+    }
+  ],
+  "searchableAnnotationValues": false,
+  "shortForm": "MS_1003056",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

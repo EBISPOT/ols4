@@ -1,0 +1,257 @@
+{
+  "appearsIn": [
+    "duo"
+  ],
+  "curie": "IAO:0000185",
+  "definition": [
+    "A photograph is created by projecting an image onto a photosensitive surface such as a chemically treated plate or film, CCD receptor, etc."
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0000101",
+    "http://purl.obolibrary.org/obo/IAO_0000308"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/IAO_0000101"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0000101",
+    "http://purl.obolibrary.org/obo/IAO_0000308"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/IAO_0000101"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/IAO_0000114": "http://purl.obolibrary.org/obo/IAO_0000122",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "A photograph is created by projecting an image onto a photosensitive surface such as a chemically treated plate or film, CCD receptor, etc.",
+  "http://purl.obolibrary.org/obo/IAO_0000117": [
+    "PERSON:Alan Ruttenberg",
+    "PERSON:Joanne Luciano",
+    "PERSON:Melanie Courtot"
+  ],
+  "http://purl.obolibrary.org/obo/IAO_0000119": "WEB: http://en.wiktionary.org/wiki/photograph",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "photograph",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/IAO_0000101",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000185",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "photograph"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000001": {
+      "curie": "BFO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000031": {
+      "curie": "BFO:0000031",
+      "hasLocalDefinition": true,
+      "label": [
+        "generically dependent continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000030": {
+      "curie": "IAO:0000030",
+      "hasLocalDefinition": true,
+      "label": [
+        "information content entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000101": {
+      "curie": "IAO:0000101",
+      "hasLocalDefinition": true,
+      "label": [
+        "image"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000114": {
+      "curie": "IAO:0000114",
+      "hasLocalDefinition": true,
+      "label": [
+        "has curation status"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000117": {
+      "curie": "IAO:0000117",
+      "hasLocalDefinition": true,
+      "label": [
+        "term editor"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000119": {
+      "curie": "IAO:0000119",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition source"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000122": {
+      "curie": "IAO:0000122",
+      "hasLocalDefinition": true,
+      "label": [
+        "ready for release"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "individual"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000308": {
+      "curie": "IAO:0000308",
+      "hasLocalDefinition": true,
+      "label": [
+        "figure"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0000101",
+    "http://purl.obolibrary.org/obo/IAO_0000114",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000117",
+    "http://purl.obolibrary.org/obo/IAO_0000119",
+    "http://purl.obolibrary.org/obo/IAO_0000122",
+    "http://purl.obolibrary.org/obo/IAO_0000308",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    "A photograph is created by projecting an image onto a photosensitive surface such as a chemically treated plate or film, CCD receptor, etc.",
+    "PERSON:Alan Ruttenberg",
+    "PERSON:Joanne Luciano",
+    "PERSON:Melanie Courtot",
+    "WEB: http://en.wiktionary.org/wiki/photograph",
+    false
+  ],
+  "shortForm": "IAO_0000185",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

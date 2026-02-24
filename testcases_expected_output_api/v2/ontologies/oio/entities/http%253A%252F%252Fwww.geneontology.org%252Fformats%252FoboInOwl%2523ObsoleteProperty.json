@@ -1,0 +1,175 @@
+{
+  "appearsIn": [
+    "duo",
+    "oio"
+  ],
+  "curie": "OIO:ObsoleteProperty",
+  "definedBy": [
+    "oio"
+  ],
+  "definition": [
+    "Note that this is not a metaclass"
+  ],
+  "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
+  "hasDirectChildren": false,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+      "http://www.geneontology.org/formats/oboInOwl#hasURI": "http://purl.org/obo/owl/oboInOwl#oboInOwl_cjm",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#DbXref",
+      "http://www.w3.org/2000/01/rdf-schema#label": "oboInOwl:cjm",
+      "isObsolete": false
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.geneontology.org/formats/oboInOwl#Definition",
+    "http://www.w3.org/2000/01/rdf-schema#label": "pseudo-property. in the oboInOwl translation, all obsolete relations are subProperties of this class",
+    "isObsolete": false
+  },
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+  "http://www.w3.org/2000/01/rdf-schema#comment": "Note that this is not a metaclass",
+  "http://www.w3.org/2000/01/rdf-schema#label": "obsolete_property",
+  "imported": false,
+  "iri": "http://www.geneontology.org/formats/oboInOwl#ObsoleteProperty",
+  "isDefiningOntology": true,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "obsolete_property"
+  ],
+  "linkedEntities": {
+    "http://www.geneontology.org/formats/oboInOwl#DbXref": {
+      "curie": "OIO:DbXref",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "database_cross_reference"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#Definition": {
+      "curie": "OIO:Definition",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+      "curie": "OIO:hasDbXref",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_dbxref"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+      "curie": "OIO:hasDefinition",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_definition"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasURI": {
+      "curie": "OIO:hasURI",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_URI"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#comment": {
+      "curie": "RDFS:comment",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "comment"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "oboInOwl:cjm": {
+      "curie": "oboInOwl:cjm",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://www.geneontology.org/formats/oboInOwl#cjm"
+    }
+  },
+  "linksTo": [
+    "http://www.geneontology.org/formats/oboInOwl#DbXref",
+    "http://www.geneontology.org/formats/oboInOwl#Definition",
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+    "http://www.geneontology.org/formats/oboInOwl#hasDefinition",
+    "http://www.geneontology.org/formats/oboInOwl#hasURI",
+    "http://www.w3.org/2000/01/rdf-schema#comment",
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "oio",
+  "ontologyIri": "http://www.geneontology.org/formats/oboInOwl",
+  "searchableAnnotationValues": false,
+  "shortForm": "OIO_ObsoleteProperty",
+  "type": [
+    "entity",
+    "objectProperty",
+    "property"
+  ]
+}

@@ -1,0 +1,350 @@
+{
+  "appearsIn": [
+    "duo"
+  ],
+  "curie": "IAO:0000572",
+  "definition": [
+    "A planned process in which a document is created or added to by including the specified input in it."
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000003",
+    "http://purl.obolibrary.org/obo/BFO_0000015",
+    "http://purl.obolibrary.org/obo/OBI_0000011"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/OBI_0000011"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000003",
+    "http://purl.obolibrary.org/obo/BFO_0000015",
+    "http://purl.obolibrary.org/obo/OBI_0000011"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/OBI_0000011"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/IAO_0000112": "Recording the current temperature in a laboratory notebook. Writing a journal article. Updating a patient record in a database.",
+  "http://purl.obolibrary.org/obo/IAO_0000114": "http://purl.obolibrary.org/obo/IAO_0000125",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "A planned process in which a document is created or added to by including the specified input in it.",
+  "http://purl.obolibrary.org/obo/IAO_0000116": "6/11/9: Edited at OBI workshop. We need to be able identify a child form of information artifact which corresponds to something enduring (not brain like). This used to be restricted to physical document or digital entity as the output, but that excludes e.g. an audio cassette tape",
+  "http://purl.obolibrary.org/obo/IAO_0000117": "Bjoern Peters",
+  "http://purl.obolibrary.org/obo/IAO_0000119": "wikipedia http://en.wikipedia.org/wiki/Documenting",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "documenting",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+    "http://purl.obolibrary.org/obo/OBI_0000011",
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000293",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000030",
+      "isObsolete": false
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000299",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000310",
+      "isObsolete": false
+    }
+  ],
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000572",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "documenting"
+  ],
+  "linkedEntities": {
+    "http://en.wikipedia.org/wiki/Documenting": {
+      "curie": "wikipedia.en:Documenting",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://en.wikipedia.org/wiki/Documenting"
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000001": {
+      "curie": "BFO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000003": {
+      "curie": "BFO:0000003",
+      "hasLocalDefinition": true,
+      "label": [
+        "occurrent"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000015": {
+      "curie": "BFO:0000015",
+      "hasLocalDefinition": true,
+      "label": [
+        "process"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000030": {
+      "curie": "IAO:0000030",
+      "hasLocalDefinition": true,
+      "label": [
+        "information content entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000112": {
+      "curie": "IAO:0000112",
+      "hasLocalDefinition": true,
+      "label": [
+        "example of usage"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000114": {
+      "curie": "IAO:0000114",
+      "hasLocalDefinition": true,
+      "label": [
+        "has curation status"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000116": {
+      "curie": "IAO:0000116",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor note"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000117": {
+      "curie": "IAO:0000117",
+      "hasLocalDefinition": true,
+      "label": [
+        "term editor"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000119": {
+      "curie": "IAO:0000119",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition source"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000125": {
+      "curie": "IAO:0000125",
+      "hasLocalDefinition": true,
+      "label": [
+        "pending final vetting"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "individual"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000310": {
+      "curie": "IAO:0000310",
+      "hasLocalDefinition": true,
+      "label": [
+        "document"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/OBI_0000011": {
+      "curie": "OBI:0000011",
+      "hasLocalDefinition": true,
+      "label": [
+        "planned process"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/OBI_0000293": {
+      "curie": "OBI:0000293",
+      "hasLocalDefinition": true,
+      "label": [
+        "has_specified_input"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/OBI_0000299": {
+      "curie": "OBI:0000299",
+      "hasLocalDefinition": true,
+      "label": [
+        "has_specified_output"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000003",
+    "http://purl.obolibrary.org/obo/BFO_0000015",
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0000112",
+    "http://purl.obolibrary.org/obo/IAO_0000114",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000116",
+    "http://purl.obolibrary.org/obo/IAO_0000117",
+    "http://purl.obolibrary.org/obo/IAO_0000119",
+    "http://purl.obolibrary.org/obo/IAO_0000125",
+    "http://purl.obolibrary.org/obo/IAO_0000310",
+    "http://purl.obolibrary.org/obo/OBI_0000011",
+    "http://purl.obolibrary.org/obo/OBI_0000293",
+    "http://purl.obolibrary.org/obo/OBI_0000299",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "relatedTo": [
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000293",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000030",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/OBI_0000293",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/IAO_0000030"
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000299",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000310",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/OBI_0000299",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/IAO_0000310"
+    }
+  ],
+  "searchableAnnotationValues": [
+    "6/11/9: Edited at OBI workshop. We need to be able identify a child form of information artifact which corresponds to something enduring (not brain like). This used to be restricted to physical document or digital entity as the output, but that excludes e.g. an audio cassette tape",
+    "A planned process in which a document is created or added to by including the specified input in it.",
+    "Bjoern Peters",
+    "Recording the current temperature in a laboratory notebook. Writing a journal article. Updating a patient record in a database.",
+    "wikipedia http://en.wikipedia.org/wiki/Documenting",
+    false
+  ],
+  "shortForm": "IAO_0000572",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

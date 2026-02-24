@@ -1,0 +1,185 @@
+{
+  "appearsIn": [
+    "duo",
+    "gitissue502"
+  ],
+  "curie": "RO:0000052",
+  "definition": [
+    "a relation between a specifically dependent continuant (the characteristic) and any other entity (the bearer), in which the characteristic depends on the bearer for its existence."
+  ],
+  "definitionProperty": [
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://www.w3.org/2000/01/rdf-schema#comment"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://purl.obolibrary.org/obo/IAO_0000111": "inheres in",
+  "http://purl.obolibrary.org/obo/IAO_0000112": [
+    "this fragility is a characteristic of this vase",
+    "this red color is a characteristic of this apple"
+  ],
+  "http://purl.obolibrary.org/obo/IAO_0000115": "a relation between a specifically dependent continuant (the characteristic) and any other entity (the bearer), in which the characteristic depends on the bearer for its existence.",
+  "http://purl.obolibrary.org/obo/IAO_0000118": "inheres_in",
+  "http://purl.obolibrary.org/obo/RO_0001900": "http://purl.obolibrary.org/obo/RO_0001901",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+    "http://www.w3.org/2002/07/owl#FunctionalProperty",
+    "http://www.w3.org/2002/07/owl#ObjectProperty"
+  ],
+  "http://www.w3.org/2000/01/rdf-schema#comment": "Note that this relation was previously called \"inheres in\", but was changed to be called \"characteristic of\" because BFO2 uses \"inheres in\" in a more restricted fashion. This relation differs from BFO2:inheres_in in two respects: (1) it does not impose a range constraint, and thus it allows qualities of processes, as well as of information entities, whereas BFO2 restricts inheres_in to only apply to independent continuants (2) it is declared functional, i.e. something can only be a characteristic of one thing.",
+  "http://www.w3.org/2000/01/rdf-schema#label": "characteristic of",
+  "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/RO_0000053",
+  "imported": true,
+  "iri": "http://purl.obolibrary.org/obo/RO_0000052",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "characteristic of"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/IAO_0000111": {
+      "curie": "IAO:0000111",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor preferred term"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000112": {
+      "curie": "IAO:0000112",
+      "hasLocalDefinition": true,
+      "label": [
+        "example of usage"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000118": {
+      "curie": "IAO:0000118",
+      "hasLocalDefinition": true,
+      "label": [
+        "alternative label"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0000053": {
+      "curie": "RO:0000053",
+      "hasLocalDefinition": true,
+      "label": [
+        "has characteristic"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0001900": {
+      "curie": "RO:0001900",
+      "hasLocalDefinition": true,
+      "label": [
+        "temporal interpretation"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0001901": {
+      "curie": "ro:0001901",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "http://purl.obolibrary.org/obo/RO_0001901"
+    },
+    "http://www.w3.org/2000/01/rdf-schema#comment": {
+      "curie": "RDFS:comment",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "comment"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/IAO_0000111",
+    "http://purl.obolibrary.org/obo/IAO_0000112",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000118",
+    "http://purl.obolibrary.org/obo/RO_0000053",
+    "http://purl.obolibrary.org/obo/RO_0001900",
+    "http://www.w3.org/2000/01/rdf-schema#comment",
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 4.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    "a relation between a specifically dependent continuant (the characteristic) and any other entity (the bearer), in which the characteristic depends on the bearer for its existence.",
+    "inheres in",
+    "inheres_in",
+    "this fragility is a characteristic of this vase",
+    "this red color is a characteristic of this apple",
+    true
+  ],
+  "shortForm": "RO_0000052",
+  "type": [
+    "entity",
+    "objectProperty",
+    "property"
+  ]
+}

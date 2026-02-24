@@ -1,0 +1,163 @@
+{
+  "appearsIn": [
+    "duo",
+    "efo-hierarchical-properties",
+    "gitissue502",
+    "oio"
+  ],
+  "curie": "OIO:hasRelatedSynonym",
+  "definedBy": [
+    "oio"
+  ],
+  "definition": [
+    "An alternative label for a class or property that has been used synonymously with the primary term name, but the usage is not strictly correct."
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/IAO_0000118"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/IAO_0000118"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://purl.obolibrary.org/obo/IAO_0000115": "An alternative label for a class or property that has been used synonymously with the primary term name, but the usage is not strictly correct.",
+  "http://purl.obolibrary.org/obo/IAO_0000117": "http://orcid.org/0000-0001-5208-3432",
+  "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/21",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+  "http://www.w3.org/2000/01/rdf-schema#label": "has related synonym",
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso": "https://github.com/information-artifact-ontology/ontology-metadata/issues/21",
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://purl.obolibrary.org/obo/IAO_0000118",
+  "imported": true,
+  "iri": "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "has related synonym"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000117": {
+      "curie": "IAO:0000117",
+      "hasLocalDefinition": true,
+      "label": [
+        "term editor"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000118": {
+      "curie": "IAO:0000118",
+      "hasLocalDefinition": true,
+      "label": [
+        "alternative label"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000233": {
+      "curie": "IAO:0000233",
+      "hasLocalDefinition": true,
+      "label": [
+        "term tracker item"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": {
+      "curie": "RDFS:seeAlso",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "seeAlso"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+      "curie": "RDFS:subPropertyOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subPropertyOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000117",
+    "http://purl.obolibrary.org/obo/IAO_0000118",
+    "http://purl.obolibrary.org/obo/IAO_0000233",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    true
+  ],
+  "shortForm": "OIO_hasRelatedSynonym",
+  "type": [
+    "annotationProperty",
+    "entity",
+    "property"
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "appearsIn": [
+    "duo"
+  ],
+  "curie": "IAO:0000598",
+  "definition": [
+    "Relating an ontology used to record id policy to the ontology namespace whose policy it manages"
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "hasDirectChildren": false,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://purl.obolibrary.org/obo/IAO_0000111": "has ID policy for",
+  "http://purl.obolibrary.org/obo/IAO_0000112": "Ontology: <http://purl.obolibrary.org/obo/ro/idrange/>\n  Annotations: \n     'has ID prefix': \"http://purl.obolibrary.org/obo/RO_\"\n     'has ID digit count' : 7,\n     rdfs:label \"RO id policy\"\n     'has ID policy for': \"RO\"",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "Relating an ontology used to record id policy to the ontology namespace whose policy it manages",
+  "http://purl.obolibrary.org/obo/IAO_0000117": "Person:Alan Ruttenberg",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+  "http://www.w3.org/2000/01/rdf-schema#label": "has ID policy for",
+  "imported": true,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000598",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "has ID policy for"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/IAO_0000111": {
+      "curie": "IAO:0000111",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor preferred term"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000112": {
+      "curie": "IAO:0000112",
+      "hasLocalDefinition": true,
+      "label": [
+        "example of usage"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000117": {
+      "curie": "IAO:0000117",
+      "hasLocalDefinition": true,
+      "label": [
+        "term editor"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_\"": {
+      "curie": "ro:\"",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "http://purl.obolibrary.org/obo/RO_\""
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/IAO_0000111",
+    "http://purl.obolibrary.org/obo/IAO_0000112",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000117",
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    "Ontology: <http://purl.obolibrary.org/obo/ro/idrange/>\n  Annotations: \n     'has ID prefix': \"http://purl.obolibrary.org/obo/RO_\"\n     'has ID digit count' : 7,\n     rdfs:label \"RO id policy\"\n     'has ID policy for': \"RO\"",
+    "Person:Alan Ruttenberg",
+    "Relating an ontology used to record id policy to the ontology namespace whose policy it manages",
+    "has ID policy for",
+    true
+  ],
+  "shortForm": "IAO_0000598",
+  "type": [
+    "annotationProperty",
+    "entity",
+    "property"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "appearsIn": [
+    "efo-iri-labels"
+  ],
+  "curie": "GO:0006807",
+  "hasDirectChildren": false,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "nitrogen compound metabolic process",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/GO_0006807",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "nitrogen compound metabolic process"
+  ],
+  "linkedEntities": {
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "efo-iri-labels",
+  "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+  "ontologyPreferredPrefix": "efo-iri-labels",
+  "searchableAnnotationValues": false,
+  "shortForm": "GO_0006807",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

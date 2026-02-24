@@ -1,0 +1,226 @@
+{
+  "appearsIn": [
+    "duo",
+    "gitissue502"
+  ],
+  "curie": "RO:0002002",
+  "definition": [
+    "a relation between a material entity and a 2D immaterial entity (the boundary), in which the boundary delimits the material entity"
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "hasDirectChildren": false,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://purl.obolibrary.org/obo/IAO_0000112": "my body has 2D boundary the surface of my skin",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "a relation between a material entity and a 2D immaterial entity (the boundary), in which the boundary delimits the material entity",
+  "http://purl.obolibrary.org/obo/IAO_0000116": [
+    "A 2D boundary may have holes and gaps, but it must be a single connected entity, not an aggregate of several disconnected parts.",
+    "Although the boundary is two-dimensional, it exists in three-dimensional space and thus has a 3D shape."
+  ],
+  "http://purl.obolibrary.org/obo/IAO_0000118": [
+    "has boundary",
+    "has_2D_boundary"
+  ],
+  "http://purl.obolibrary.org/obo/RO_0001900": "http://purl.obolibrary.org/obo/RO_0001901",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+  "http://www.w3.org/2000/01/rdf-schema#domain": "http://purl.obolibrary.org/obo/BFO_0000040",
+  "http://www.w3.org/2000/01/rdf-schema#label": "has 2D boundary",
+  "http://www.w3.org/2000/01/rdf-schema#range": "http://purl.obolibrary.org/obo/BFO_0000141",
+  "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/RO_0002000",
+  "imported": true,
+  "iri": "http://purl.obolibrary.org/obo/RO_0002002",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "has 2D boundary"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000040": {
+      "curie": "BFO:0000040",
+      "hasLocalDefinition": true,
+      "label": [
+        "material entity"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000141": {
+      "curie": "BFO:0000141",
+      "hasLocalDefinition": true,
+      "label": [
+        "immaterial entity"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000112": {
+      "curie": "IAO:0000112",
+      "hasLocalDefinition": true,
+      "label": [
+        "example of usage"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000116": {
+      "curie": "IAO:0000116",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor note"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000118": {
+      "curie": "IAO:0000118",
+      "hasLocalDefinition": true,
+      "label": [
+        "alternative label"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0001900": {
+      "curie": "RO:0001900",
+      "hasLocalDefinition": true,
+      "label": [
+        "temporal interpretation"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0001901": {
+      "curie": "ro:0001901",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "http://purl.obolibrary.org/obo/RO_0001901"
+    },
+    "http://purl.obolibrary.org/obo/RO_0002000": {
+      "curie": "RO:0002000",
+      "hasLocalDefinition": true,
+      "label": [
+        "2D boundary of"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#domain": {
+      "curie": "RDFS:domain",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "domain"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#range": {
+      "curie": "RDFS:range",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "range"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000040",
+    "http://purl.obolibrary.org/obo/BFO_0000141",
+    "http://purl.obolibrary.org/obo/IAO_0000112",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000116",
+    "http://purl.obolibrary.org/obo/IAO_0000118",
+    "http://purl.obolibrary.org/obo/RO_0001900",
+    "http://purl.obolibrary.org/obo/RO_0002000",
+    "http://www.w3.org/2000/01/rdf-schema#domain",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#range"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "searchableAnnotationValues": [
+    "A 2D boundary may have holes and gaps, but it must be a single connected entity, not an aggregate of several disconnected parts.",
+    "Although the boundary is two-dimensional, it exists in three-dimensional space and thus has a 3D shape.",
+    "a relation between a material entity and a 2D immaterial entity (the boundary), in which the boundary delimits the material entity",
+    "has boundary",
+    "has_2D_boundary",
+    "my body has 2D boundary the surface of my skin",
+    true
+  ],
+  "shortForm": "RO_0002002",
+  "type": [
+    "entity",
+    "objectProperty",
+    "property"
+  ]
+}

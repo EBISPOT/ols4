@@ -1,0 +1,338 @@
+{
+  "appearsIn": [
+    "duo"
+  ],
+  "curie": "APOLLO_SV:00000522",
+  "definition": [
+    "A document that comprises at least one source code module and provenance data about who contributed the set of files making up the module(s), and optionally comprises also multiple versions of files with detailed change history about who committed files and when, a license for the software, readme files, documentation, executables, etc.",
+    "Refers to the stuff that lives on GitHub, not to GitHub or the git software on which it is based"
+  ],
+  "definitionProperty": [
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://www.w3.org/2000/01/rdf-schema#comment"
+  ],
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0000310"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/IAO_0000310"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0000310"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/IAO_0000310"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/IAO_0000111": "software source code version control repository",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "A document that comprises at least one source code module and provenance data about who contributed the set of files making up the module(s), and optionally comprises also multiple versions of files with detailed change history about who committed files and when, a license for the software, readme files, documentation, executables, etc.",
+  "http://purl.obolibrary.org/obo/IAO_0000117": "William R. Hogan",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#comment": "Refers to the stuff that lives on GitHub, not to GitHub or the git software on which it is based",
+  "http://www.w3.org/2000/01/rdf-schema#label": "source code repository",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+    "http://purl.obolibrary.org/obo/IAO_0000310",
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000096",
+      "isObsolete": false
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+        "http://www.w3.org/2002/07/owl#intersectionOf": [
+          "http://purl.obolibrary.org/obo/IAO_0000027",
+          {
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+            "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/IAO_0000136",
+            "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000096",
+            "isObsolete": false
+          }
+        ]
+      },
+      "isObsolete": false
+    }
+  ],
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/APOLLO_SV_00000522",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "source code repository"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000001": {
+      "curie": "BFO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000031": {
+      "curie": "BFO:0000031",
+      "hasLocalDefinition": true,
+      "label": [
+        "generically dependent continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000051": {
+      "curie": "BFO:0000051",
+      "hasLocalDefinition": true,
+      "label": [
+        "has part"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000027": {
+      "curie": "IAO:0000027",
+      "hasLocalDefinition": true,
+      "label": [
+        "data item"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000030": {
+      "curie": "IAO:0000030",
+      "hasLocalDefinition": true,
+      "label": [
+        "information content entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000096": {
+      "curie": "IAO:0000096",
+      "hasLocalDefinition": true,
+      "label": [
+        "source code module"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000111": {
+      "curie": "IAO:0000111",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor preferred term"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000117": {
+      "curie": "IAO:0000117",
+      "hasLocalDefinition": true,
+      "label": [
+        "term editor"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000136": {
+      "curie": "IAO:0000136",
+      "hasLocalDefinition": true,
+      "label": [
+        "is about"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000310": {
+      "curie": "IAO:0000310",
+      "hasLocalDefinition": true,
+      "label": [
+        "document"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#comment": {
+      "curie": "RDFS:comment",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "comment"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/BFO_0000051",
+    "http://purl.obolibrary.org/obo/IAO_0000027",
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0000096",
+    "http://purl.obolibrary.org/obo/IAO_0000111",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000117",
+    "http://purl.obolibrary.org/obo/IAO_0000136",
+    "http://purl.obolibrary.org/obo/IAO_0000310",
+    "http://www.w3.org/2000/01/rdf-schema#comment",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "relatedTo": [
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+      "http://www.w3.org/2002/07/owl#intersectionOf": [
+        "http://purl.obolibrary.org/obo/IAO_0000027",
+        {
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/IAO_0000136",
+          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000096",
+          "isObsolete": false
+        }
+      ],
+      "property": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/IAO_0000027"
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000096",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/IAO_0000096"
+    }
+  ],
+  "searchableAnnotationValues": [
+    "A document that comprises at least one source code module and provenance data about who contributed the set of files making up the module(s), and optionally comprises also multiple versions of files with detailed change history about who committed files and when, a license for the software, readme files, documentation, executables, etc.",
+    "William R. Hogan",
+    "software source code version control repository",
+    false
+  ],
+  "shortForm": "APOLLO_SV_00000522",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

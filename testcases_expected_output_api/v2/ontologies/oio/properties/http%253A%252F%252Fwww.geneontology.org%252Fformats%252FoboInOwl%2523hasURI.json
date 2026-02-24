@@ -1,0 +1,54 @@
+{
+  "appearsIn": [
+    "oio"
+  ],
+  "curie": "OIO:hasURI",
+  "definedBy": [
+    "oio"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+  "http://www.w3.org/2000/01/rdf-schema#label": "has_URI",
+  "imported": false,
+  "iri": "http://www.geneontology.org/formats/oboInOwl#hasURI",
+  "isDefiningOntology": true,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "has_URI"
+  ],
+  "linkedEntities": {
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "oio",
+  "ontologyIri": "http://www.geneontology.org/formats/oboInOwl",
+  "searchableAnnotationValues": false,
+  "shortForm": "OIO_hasURI",
+  "type": [
+    "annotationProperty",
+    "entity",
+    "property"
+  ]
+}

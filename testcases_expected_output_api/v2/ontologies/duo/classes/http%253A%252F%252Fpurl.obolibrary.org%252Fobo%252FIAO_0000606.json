@@ -1,0 +1,354 @@
+{
+  "appearsIn": [
+    "duo"
+  ],
+  "curie": "IAO:0000606",
+  "definition": [
+    "A part of a document where abbreviations and their long-forms used within the document are listed."
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0000314"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/IAO_0000314"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0000310",
+    "http://purl.obolibrary.org/obo/IAO_0000314"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/IAO_0000314"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/IAO_0000111": "abbreviations section",
+  "http://purl.obolibrary.org/obo/IAO_0000112": "The section labelled 'abbreviations' in a typical scientific journal article.",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "A part of a document where abbreviations and their long-forms used within the document are listed.",
+  "http://purl.obolibrary.org/obo/IAO_0000117": "PERSON: Bill Baumgartner",
+  "http://purl.obolibrary.org/obo/IAO_0000118": [
+    "abbreviation and acronyms",
+    "abbreviation list",
+    "abbreviations and acronyms",
+    "abbreviations list",
+    "abbreviations used",
+    "abbreviations",
+    "definitions for abbreviations",
+    "list of abbreviations used",
+    "list of abbreviations",
+    "non-standard abbreviations",
+    "nonstandard abbreviations and acronyms",
+    "nonstandard abbreviations"
+  ],
+  "http://purl.obolibrary.org/obo/IAO_0000233": [
+    "https://github.com/information-artifact-ontology/IAO/issues/183",
+    "https://github.com/information-artifact-ontology/IAO/issues/234"
+  ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "abbreviations section",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+    "http://purl.obolibrary.org/obo/IAO_0000314",
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000605",
+      "isObsolete": false
+    }
+  ],
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/IAO_0000606",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "abbreviations section"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000001": {
+      "curie": "BFO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000031": {
+      "curie": "BFO:0000031",
+      "hasLocalDefinition": true,
+      "label": [
+        "generically dependent continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000051": {
+      "curie": "BFO:0000051",
+      "hasLocalDefinition": true,
+      "label": [
+        "has part"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000030": {
+      "curie": "IAO:0000030",
+      "hasLocalDefinition": true,
+      "label": [
+        "information content entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000111": {
+      "curie": "IAO:0000111",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor preferred term"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000112": {
+      "curie": "IAO:0000112",
+      "hasLocalDefinition": true,
+      "label": [
+        "example of usage"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000117": {
+      "curie": "IAO:0000117",
+      "hasLocalDefinition": true,
+      "label": [
+        "term editor"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000118": {
+      "curie": "IAO:0000118",
+      "hasLocalDefinition": true,
+      "label": [
+        "alternative label"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000233": {
+      "curie": "IAO:0000233",
+      "hasLocalDefinition": true,
+      "label": [
+        "term tracker item"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000310": {
+      "curie": "IAO:0000310",
+      "hasLocalDefinition": true,
+      "label": [
+        "document"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000314": {
+      "curie": "IAO:0000314",
+      "hasLocalDefinition": true,
+      "label": [
+        "document part"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000605": {
+      "curie": "IAO:0000605",
+      "hasLocalDefinition": true,
+      "label": [
+        "abbreviation textual entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "https://github.com/information-artifact-ontology/IAO/issues/183": {
+      "curie": "iao.issue:183",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "https://github.com/information-artifact-ontology/IAO/issues/183"
+    },
+    "https://github.com/information-artifact-ontology/IAO/issues/234": {
+      "curie": "iao.issue:234",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "https://github.com/information-artifact-ontology/IAO/issues/234"
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000001",
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000031",
+    "http://purl.obolibrary.org/obo/BFO_0000051",
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0000111",
+    "http://purl.obolibrary.org/obo/IAO_0000112",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000117",
+    "http://purl.obolibrary.org/obo/IAO_0000118",
+    "http://purl.obolibrary.org/obo/IAO_0000233",
+    "http://purl.obolibrary.org/obo/IAO_0000310",
+    "http://purl.obolibrary.org/obo/IAO_0000314",
+    "http://purl.obolibrary.org/obo/IAO_0000605",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "duo",
+  "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontologyPreferredPrefix": "DUO",
+  "relatedTo": [
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/IAO_0000605",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/IAO_0000605"
+    }
+  ],
+  "searchableAnnotationValues": [
+    "A part of a document where abbreviations and their long-forms used within the document are listed.",
+    "PERSON: Bill Baumgartner",
+    "The section labelled 'abbreviations' in a typical scientific journal article.",
+    "abbreviation and acronyms",
+    "abbreviation list",
+    "abbreviations and acronyms",
+    "abbreviations list",
+    "abbreviations section",
+    "abbreviations used",
+    "abbreviations",
+    "definitions for abbreviations",
+    "list of abbreviations used",
+    "list of abbreviations",
+    "non-standard abbreviations",
+    "nonstandard abbreviations and acronyms",
+    "nonstandard abbreviations",
+    false
+  ],
+  "shortForm": "IAO_0000606",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "appearsIn": [
+    "duo",
+    "efo-hierarchical-properties",
+    "efo-iri-labels",
+    "gitissue502"
+  ],
+  "curie": "BFO:0000051",
+  "hasDirectChildren": false,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://www.ebi.ac.uk/efo/EFO_URI": "http://www.ebi.ac.uk/efo/has_part",
+  "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "BFO:0000051",
+  "http://www.geneontology.org/formats/oboInOwl#shorthand": "has_part",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+    "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "http://www.w3.org/2002/07/owl#TransitiveProperty"
+  ],
+  "http://www.w3.org/2000/01/rdf-schema#label": [
+    "has part",
+    "has_part"
+  ],
+  "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/BFO_0000050",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/BFO_0000051",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "has part",
+    "has_part"
+  ],
+  "linkedEntities": {
+    "BFO:0000051": {
+      "curie": "BFO:0000051",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "http://purl.obolibrary.org/obo/BFO_0000051"
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000050": {
+      "curie": "BFO:0000050",
+      "hasLocalDefinition": true,
+      "label": [
+        "part of"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://www.ebi.ac.uk/efo/EFO_URI": {
+      "curie": "EFO_URI",
+      "hasLocalDefinition": true,
+      "label": [
+        "EFO_URI"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+      "curie": "OIO:hasDbXref",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_dbxref"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#shorthand": {
+      "curie": "shorthand",
+      "hasLocalDefinition": true,
+      "label": [
+        "shorthand"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000050",
+    "http://www.ebi.ac.uk/efo/EFO_URI",
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+    "http://www.geneontology.org/formats/oboInOwl#shorthand",
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "efo-hierarchical-properties",
+  "ontologyIri": "http://www.ebi.ac.uk/efo/efo.owl",
+  "ontologyPreferredPrefix": "efo-hierarchical-properties",
+  "searchableAnnotationValues": [
+    false
+  ],
+  "shortForm": "BFO_0000051",
+  "type": [
+    "entity",
+    "objectProperty",
+    "property"
+  ]
+}

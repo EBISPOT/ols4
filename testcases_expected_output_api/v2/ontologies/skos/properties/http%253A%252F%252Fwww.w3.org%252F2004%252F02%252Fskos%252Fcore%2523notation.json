@@ -1,0 +1,114 @@
+{
+  "appearsIn": [
+    "skos"
+  ],
+  "curie": "SKOS:notation",
+  "definedBy": [
+    "skos"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+    "http://www.w3.org/2002/07/owl#DatatypeProperty"
+  ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.w3.org/2004/02/skos/core",
+  "http://www.w3.org/2000/01/rdf-schema#label": "notation",
+  "http://www.w3.org/2004/02/skos/core#definition": "A notation, also known as classification code, is a string of characters such as \"T58.5\" or \"303.4833\" used to uniquely identify a concept within the scope of a given concept scheme.",
+  "http://www.w3.org/2004/02/skos/core#scopeNote": "By convention, skos:notation is used with a typed literal in the object position of the triple.",
+  "imported": false,
+  "iri": "http://www.w3.org/2004/02/skos/core#notation",
+  "isDefiningOntology": true,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "notation"
+  ],
+  "linkedEntities": {
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
+      "curie": "RDFS:isDefinedBy",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "isDefinedBy"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2004/02/skos/core#definition": {
+      "curie": "SKOS:definition",
+      "definedBy": [
+        "skos"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "definition"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2004/02/skos/core#scopeNote": {
+      "curie": "SKOS:scopeNote",
+      "definedBy": [
+        "skos"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "scope note"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2004/02/skos/core#definition",
+    "http://www.w3.org/2004/02/skos/core#scopeNote"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "skos",
+  "ontologyIri": "http://www.w3.org/2004/02/skos/core",
+  "searchableAnnotationValues": [
+    "A notation, also known as classification code, is a string of characters such as \"T58.5\" or \"303.4833\" used to uniquely identify a concept within the scope of a given concept scheme.",
+    "By convention, skos:notation is used with a typed literal in the object position of the triple.",
+    false
+  ],
+  "shortForm": "SKOS_notation",
+  "type": [
+    "dataProperty",
+    "entity",
+    "property"
+  ]
+}

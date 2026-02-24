@@ -1,0 +1,50 @@
+{
+  "appearsIn": [
+    "edam"
+  ],
+  "curie": "has:topic",
+  "hasDirectChildren": false,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+  "http://www.w3.org/2002/07/owl#inverseOf": "http://edamontology.org/is_topic_of",
+  "imported": false,
+  "iri": "http://edamontology.org/has_topic",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "has_topic"
+  ],
+  "linkedEntities": {
+    "http://edamontology.org/is_topic_of": {
+      "curie": "is:topic_of",
+      "hasLocalDefinition": true,
+      "label": [
+        "is_topic_of"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://edamontology.org/is_topic_of"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "edam",
+  "ontologyIri": "http://edamontology.org",
+  "ontologyPreferredPrefix": "EDAM",
+  "searchableAnnotationValues": false,
+  "shortForm": "has_topic",
+  "type": [
+    "entity",
+    "objectProperty",
+    "property"
+  ]
+}
