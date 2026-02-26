@@ -77,8 +77,7 @@ workflow {
 
     // ── SSSOM (prod only — enabled via params.enable_sssom) ────────────────
     if (params.enable_sssom) {
-        def merged_linked_json = merge_linked_ontologies(all_linked_jsons)
-        extract_sssom(merged_linked_json)
+        extract_sssom(merge_linked_ontologies(all_linked_jsons))
     }
 
     // ── Neo4j data check (prod only — enabled via params.check_neo4j) ──────
