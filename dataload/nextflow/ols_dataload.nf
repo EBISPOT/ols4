@@ -18,6 +18,12 @@ params.max_rows_per_file = "100000"
 params.dataload_args = System.getenv('OLS4_DATALOAD_ARGS') ?: ''
 params.enable_embeddings = false
 
+// Production-only features — disabled by default, enabled via nextflow_prod.config
+params.enable_sssom    = false  // extract SSSOM mappings from linked ontologies
+params.check_neo4j     = false  // verify Neo4j database has data after build
+params.enable_ftp_copy = false  // copy tarballs to FTP (requires datamover partition)
+params.copy_script     = ''     // path to copy_tarballs.sh on the NFS server
+
 workflow {
 
     config_files = Channel.fromPath(params.configs.split(',').collect { it.trim() })
@@ -68,6 +74,22 @@ workflow {
 
     // Generate loading report after all ontologies have been processed
     report = generate_loading_report(merged_config_file, status_files)
+
+    // ── SSSOM (prod only — enabled via params.enable_sssom) ────────────────
+    if (params.enable_sssom) {
+        def merged_linked_json = merge_linked_ontologies(all_linked_jsons)
+        extract_sssom(merged_linked_json)
+    }
+
+    // ── Neo4j data check (prod only — enabled via params.check_neo4j) ──────
+    if (params.check_neo4j) {
+        check_neo4j_data_exists(neo.neo_dir)
+    }
+
+    // ── Copy to FTP (prod only — enabled via params.enable_ftp_copy) ───────
+    if (params.enable_ftp_copy) {
+        copy_tarballs_to_ftp(neo.neo_tgz, solr.solr_tgz)
+    }
 }
 
 
@@ -372,5 +394,130 @@ process build_text_tagger_db {
     #!/usr/bin/env bash
     set -Eeuo pipefail
     ols_text_tagger build --output text_tagger_db.bin < ${terms_tsv}
+    """
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Prod-only processes
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Merges all per-ontology linked JSONs into one ontologies_linked.json.
+// Required by extract_sssom which expects the same monolithic format as Jenkins.
+process merge_linked_ontologies {
+    cache "lenient"
+    memory { 96.GB }
+    time "2h"
+
+    publishDir "${params.out}", overwrite: true
+
+    input:
+    path(linked_jsons, stageAs: '?/*')
+
+    output:
+    path("ontologies_linked.json")
+
+    script:
+    def json_list = (linked_jsons instanceof List) ? linked_jsons : [linked_jsons]
+    """
+    #!/usr/bin/env bash
+    set -Eeuo pipefail
+    python3 -c "
+import json, sys
+merged = {'ontologies': []}
+for f in sys.argv[1:]:
+    with open(f) as fp:
+        data = json.load(fp)
+    merged['ontologies'].extend(data.get('ontologies', []))
+with open('ontologies_linked.json', 'w') as fp:
+    json.dump(merged, fp)
+" ${json_list.collect{ it.toString() }.join(' ')}
+    """
+}
+
+// Extracts SSSOM mappings from the merged ontologies_linked.json.
+// Equivalent to the Jenkins 'Extract SSSOM mappings' stage.
+process extract_sssom {
+    cache "lenient"
+    memory { 96.GB }
+    time "12h"
+
+    publishDir "${params.out}", overwrite: true
+
+    input:
+    path(ontologies_linked_json)
+
+    output:
+    path("sssom"),     emit: sssom_dir
+    path("sssom.tgz"), emit: sssom_tgz
+
+    script:
+    def mem_mb = (task.memory.toMega() * 0.9).intValue()
+    """
+    #!/usr/bin/env bash
+    set -Eeuo pipefail
+    mkdir -p sssom
+    java -Xms${mem_mb}m -Xmx${mem_mb}m \
+        -jar /opt/ols/dataload/extras/json2sssom/target/json2sssom-1.0-SNAPSHOT.jar \
+        --input ${ontologies_linked_json} \
+        --outDir sssom
+    tar --use-compress-program="pigz -f" -cvf sssom.tgz -C sssom .
+    """
+}
+
+// Verifies that the Neo4j database was built and contains data.
+// Equivalent to the Jenkins 'Check Neo4j data exists' stage.
+process check_neo4j_data_exists {
+    cache "lenient"
+    memory { 8.GB }
+    time "30m"
+
+    publishDir "${params.out}", overwrite: true
+
+    input:
+    path(neo_dir)
+
+    output:
+    path("neo4j_check.log")
+
+    script:
+    """
+    #!/usr/bin/env bash
+    set -Eeuo pipefail
+    if [ -d "${neo_dir}/data/databases" ] && [ "\$(ls -A "${neo_dir}/data/databases")" ]; then
+        echo "Neo4j data check: PASSED" | tee neo4j_check.log
+        echo "Databases found:" | tee -a neo4j_check.log
+        ls -lh "${neo_dir}/data/databases/" | tee -a neo4j_check.log
+    else
+        echo "ERROR: Neo4j data is empty or missing at ${neo_dir}/data/databases" | tee neo4j_check.log
+        exit 1
+    fi
+    """
+}
+
+// Copies the final tarballs (Neo4j, Solr) to the FTP server.
+// Runs on the 'datamover' SLURM partition — equivalent to Jenkins '-p datamover'.
+// params.copy_script must point to copy_tarballs.sh on the NFS server.
+process copy_tarballs_to_ftp {
+    cache false
+    memory { 16.GB }
+    time "12h"
+
+    publishDir "${params.out}", overwrite: true
+
+    input:
+    path(neo_tgz)
+    path(solr_tgz)
+
+    output:
+    path("copy_report.log")
+
+    script:
+    """
+    #!/usr/bin/env bash
+    set -Eeuo pipefail
+    bash ${params.copy_script} \
+        ${neo_tgz} \
+        ${solr_tgz} \
+        2>&1 | tee copy_report.log
     """
 }
