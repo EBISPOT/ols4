@@ -422,13 +422,20 @@ process merge_linked_ontologies {
     set -Eeuo pipefail
     python3 -c "
 import json, sys
-merged = {'ontologies': []}
-for f in sys.argv[1:]:
-    with open(f) as fp:
-        data = json.load(fp)
-    merged['ontologies'].extend(data.get('ontologies', []))
-with open('ontologies_linked.json', 'w') as fp:
-    json.dump(merged, fp)
+
+# Stream-based merge: never loads all ontologies into memory at once
+with open('ontologies_linked.json', 'w') as out:
+    out.write('{\\\"ontologies\\\":[')
+    first = True
+    for f in sys.argv[1:]:
+        with open(f) as fp:
+            data = json.load(fp)
+            for ontology in data.get('ontologies', []):
+                if not first:
+                    out.write(',')
+                json.dump(ontology, out)
+                first = False
+    out.write(']}')
 " ${json_list.collect{ it.toString() }.join(' ')}
     """
 }
