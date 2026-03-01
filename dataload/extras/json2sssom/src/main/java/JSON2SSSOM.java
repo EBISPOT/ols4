@@ -34,7 +34,7 @@ public class JSON2SSSOM {
 
         Options options = new Options();
 
-        Option input = new Option(null, "input", true, "pre-linked ontologies JSON input filename");
+        Option input = new Option(null, "input", true, "pre-linked ontologies JSON input file or directory");
         input.setRequired(true);
         options.addOption(input);
 
@@ -56,21 +56,50 @@ public class JSON2SSSOM {
             return;
         }
 
-        String inputFilePath = cmd.getOptionValue("input");
-        String outputFilePath = cmd.getOptionValue("outDir");
+        String inputPath = cmd.getOptionValue("input");
+        String outputPath = cmd.getOptionValue("outDir");
 
+        // Collect input files
+        List<File> inputFiles = new ArrayList<>();
+        File inputFile = new File(inputPath);
 
-//        Map<String,Map<String,JsonElement>> ontologyConfigs = loadOntologyConfigs(inputFilePath); // ~10 min
-        Map<String,Map<String,JsonElement>> ontologyConfigs = Map.of();
+        if (inputFile.isDirectory()) {
+            System.out.println("Input is a directory, processing all JSON files in: " + inputPath);
+            File[] jsonFiles = inputFile.listFiles((dir, name) -> name.toLowerCase().endsWith(".json"));
+            if (jsonFiles != null && jsonFiles.length > 0) {
+                inputFiles.addAll(Arrays.asList(jsonFiles));
+            } else {
+                System.err.println("No JSON files found in directory: " + inputPath);
+                System.exit(1);
+                return;
+            }
+        } else if (inputFile.isFile()) {
+            System.out.println("Input is a file: " + inputPath);
+            inputFiles.add(inputFile);
+        } else {
+            System.err.println("Input path does not exist or is not accessible: " + inputPath);
+            System.exit(1);
+            return;
+        }
 
+        System.out.println("Processing " + inputFiles.size() + " file(s)");
 
+        // Process each input file
+        for (File file : inputFiles) {
+            System.out.println("Processing file: " + file.getName());
+            processOntologyFile(file.getAbsolutePath(), outputPath);
+        }
+
+        System.out.println("SSSOM extraction completed");
+    }
+
+    private static void processOntologyFile(String inputFilePath, String outputFilePath) throws IOException {
 
         DumperOptions yamlOptions = new DumperOptions();
         yamlOptions.setIndent(2);
         yamlOptions.setPrettyFlow(true);
         yamlOptions.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
         Yaml yaml = new Yaml(yamlOptions);
-
 
         JsonReader reader = new JsonReader(new InputStreamReader(new FileInputStream(inputFilePath)));
 
@@ -150,6 +179,7 @@ public class JSON2SSSOM {
             }
         }
         reader.endObject();
+        reader.close();
     }
 
     public static void writeMappingsForEntity(JsonObject entity, CSVPrinter writer, Map<String,JsonElement> ontologyProperties, CurieMap curieMap) throws IOException {

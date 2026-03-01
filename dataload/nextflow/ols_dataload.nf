@@ -77,7 +77,7 @@ workflow {
 
     // ── SSSOM (prod only — enabled via params.enable_sssom) ────────────────
     if (params.enable_sssom) {
-        extract_sssom(merge_linked_ontologies(all_linked_jsons))
+        extract_sssom(all_linked_jsons)
     }
 
     // ── Neo4j data check (prod only — enabled via params.check_neo4j) ──────
@@ -400,46 +400,8 @@ process build_text_tagger_db {
 // Prod-only processes
 // ─────────────────────────────────────────────────────────────────────────────
 
-// Merges all per-ontology linked JSONs into one ontologies_linked.json.
-// Required by extract_sssom which expects the same monolithic format as Jenkins.
-process merge_linked_ontologies {
-    cache "lenient"
-    memory { 500.GB }  // Increased for large ontologies (ncbitaxon, chebi, go, etc.)
-    time "2h"
-
-    publishDir "${params.out}", overwrite: true
-
-    input:
-    path(linked_jsons, stageAs: '?/*')
-
-    output:
-    path("ontologies_linked.json")
-
-    script:
-    def json_list = (linked_jsons instanceof List) ? linked_jsons : [linked_jsons]
-    """
-    #!/usr/bin/env bash
-    set -Eeuo pipefail
-
-    # Use jq for memory-efficient streaming merge of large JSON files
-    echo '{"ontologies":[' > ontologies_linked.json
-
-    first=true
-    for f in ${json_list.collect{ it.toString() }.join(' ')}; do
-        if [ "\$first" = true ]; then
-            first=false
-        else
-            echo ',' >> ontologies_linked.json
-        fi
-        # Stream each ontology from the file without loading the entire file into memory
-        jq -c '.ontologies[]' "\$f" >> ontologies_linked.json
-    done
-
-    echo ']}' >> ontologies_linked.json
-    """
-}
-
-// Extracts SSSOM mappings from the merged ontologies_linked.json.
+// Extracts SSSOM mappings from individual linked ontology JSON files.
+// Processes each ontology file independently without requiring a merge step.
 // Equivalent to the Jenkins 'Extract SSSOM mappings' stage.
 process extract_sssom {
     cache "lenient"
@@ -449,7 +411,7 @@ process extract_sssom {
     publishDir "${params.out}", overwrite: true
 
     input:
-    path(ontologies_linked_json)
+    path(linked_jsons, stageAs: 'input_jsons/*')
 
     output:
     path("sssom"),     emit: sssom_dir
@@ -463,7 +425,7 @@ process extract_sssom {
     mkdir -p sssom
     java -Xms${mem_mb}m -Xmx${mem_mb}m \
         -jar /opt/ols/dataload/extras/json2sssom/target/json2sssom-1.0-SNAPSHOT.jar \
-        --input ${ontologies_linked_json} \
+        --input input_jsons \
         --outDir sssom
     tar --use-compress-program="pigz -f" -cvf sssom.tgz -C sssom .
     """
