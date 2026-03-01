@@ -404,7 +404,7 @@ process build_text_tagger_db {
 // Required by extract_sssom which expects the same monolithic format as Jenkins.
 process merge_linked_ontologies {
     cache "lenient"
-    memory { 96.GB }
+    memory { 500.GB }  // Increased for large ontologies (ncbitaxon, chebi, go, etc.)
     time "2h"
 
     publishDir "${params.out}", overwrite: true
@@ -420,23 +420,22 @@ process merge_linked_ontologies {
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    python3 -c "
-import json, sys
 
-# Stream-based merge: never loads all ontologies into memory at once
-with open('ontologies_linked.json', 'w') as out:
-    out.write('{\\\"ontologies\\\":[')
-    first = True
-    for f in sys.argv[1:]:
-        with open(f) as fp:
-            data = json.load(fp)
-            for ontology in data.get('ontologies', []):
-                if not first:
-                    out.write(',')
-                json.dump(ontology, out)
-                first = False
-    out.write(']}')
-" ${json_list.collect{ it.toString() }.join(' ')}
+    # Use jq for memory-efficient streaming merge of large JSON files
+    echo '{"ontologies":[' > ontologies_linked.json
+
+    first=true
+    for f in ${json_list.collect{ it.toString() }.join(' ')}; do
+        if [ "\$first" = true ]; then
+            first=false
+        else
+            echo ',' >> ontologies_linked.json
+        fi
+        # Stream each ontology from the file without loading the entire file into memory
+        jq -c '.ontologies[]' "\$f" >> ontologies_linked.json
+    done
+
+    echo ']}' >> ontologies_linked.json
     """
 }
 
