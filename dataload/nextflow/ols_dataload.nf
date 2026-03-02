@@ -9,7 +9,7 @@ yamlSlurper = new YamlSlurper()
 
 include { embeddings } from './ols_embeddings.nf'
 
-params.configs = "$OLS4_CONFIG"
+params.config_branch = "stable"  // Branch to fetch configs from (stable or dev)
 params.out = "$OLS_OUT_DIR"
 params.solr_mem = "8g"
 params.neo_mem = "16g"
@@ -24,11 +24,31 @@ params.check_neo4j     = false  // verify Neo4j database has data after build
 params.enable_ftp_copy = false  // copy tarballs to FTP (requires datamover partition)
 params.copy_script     = ''     // path to copy_tarballs.sh on the NFS server
 
+process fetch_configs {
+    cache "lenient"
+    memory { 1.GB }
+    time "10m"
+
+    output:
+    path("*.json")
+
+    script:
+    """
+    #!/usr/bin/env bash
+    set -Eeuo pipefail
+
+    # Run shared get-configs script with branch parameter
+    # Script will download configs to current directory
+    bash /nfs/production/parkinso/spot/ols4/configs/get-configs.sh ${params.config_branch}
+    """
+}
+
 workflow {
 
-    config_files = Channel.fromPath(params.configs.split(',').collect { it.trim() })
+    // Fetch latest configs from specified branch
+    config_files = fetch_configs()
         .collect()
-    
+
     merged_config_file = merge_configs(config_files)
     
     merged_config = merged_config_file.map { Path configFile ->
