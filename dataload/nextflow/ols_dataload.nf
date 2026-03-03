@@ -485,13 +485,35 @@ process check_neo4j_data_exists {
     script:
     """
     #!/usr/bin/env bash
-    set -Eeuo pipefail
-    if [ -d "${neo_dir}/data/databases" ] && [ "\$(ls -A "${neo_dir}/data/databases")" ]; then
-        echo "Neo4j data check: PASSED" | tee neo4j_check.log
-        echo "Databases found:" | tee -a neo4j_check.log
-        ls -lh "${neo_dir}/data/databases/" | tee -a neo4j_check.log
+
+    DB_PATH="${neo_dir}/data/databases/neo4j"
+    TX_PATH="${neo_dir}/data/transactions/neo4j"
+
+    echo "Neo4j Data Check"    | tee neo4j_check.log
+    echo "================" | tee -a neo4j_check.log
+
+    STATUS=0
+
+    if [ -e "\$DB_PATH" ]; then
+        echo "✓ Neo4j database exists at: \$DB_PATH"       | tee -a neo4j_check.log
     else
-        echo "ERROR: Neo4j data is empty or missing at ${neo_dir}/data/databases" | tee neo4j_check.log
+        echo "✗ ERROR: Neo4j database does not exist at: \$DB_PATH" | tee -a neo4j_check.log
+        STATUS=1
+    fi
+
+    if [ -e "\$TX_PATH" ]; then
+        echo "✓ Neo4j transaction data exists at: \$TX_PATH" | tee -a neo4j_check.log
+    else
+        echo "✗ ERROR: Neo4j transaction data does not exist at: \$TX_PATH" | tee -a neo4j_check.log
+        STATUS=1
+    fi
+
+    echo "================" | tee -a neo4j_check.log
+
+    if [ \$STATUS -eq 0 ]; then
+        echo "STATUS: All Neo4j data exists ✓" | tee -a neo4j_check.log
+    else
+        echo "STATUS: Some Neo4j data is missing ✗" | tee -a neo4j_check.log
         exit 1
     fi
     """
