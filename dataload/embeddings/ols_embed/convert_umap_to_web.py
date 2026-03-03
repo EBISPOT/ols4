@@ -141,6 +141,8 @@ def main() -> None:
         cy = (min_y + max_y) / 2
         width = (max_x - min_x) + pad_x * 2
         height = (max_y - min_y) + pad_y * 2
+        if width == 0 and height == 0:
+            continue
         zoom_scale = min(500, max(1, 0.9 / max(width, height)))
         ont_bounds[ont_name] = {
             "cx": round(cx, 6),

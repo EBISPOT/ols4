@@ -104,7 +104,7 @@ export default function EntityAnnotationsSection({
         );
       }
       return (
-        <span>
+        <span className="whitespace-pre-line">
           {addLinksToText(
             value.value.toString(),
             linkedEntities,

@@ -27,7 +27,7 @@ export default function EntityDescriptionSection({
                           key={definition.value.toString().substring(0, 10) + randomString()}
                           className="pb-3 pl-4"
                       >
-                <span>
+                <span className="whitespace-pre-line">
                   {addLinksToText(
                       definition.value,
                       linkedEntities,

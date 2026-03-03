@@ -275,7 +275,7 @@ export default function EntityPage({
                 {entity.getDeprecationReplacement() && (
                   <div>
                     Replaced by&thinsp;
-                    <i>
+                    <i className="whitespace-pre-line">
                       {addLinksToText(
                         entity.getDeprecationReplacement(),
                         linkedEntities,
@@ -295,7 +295,7 @@ export default function EntityPage({
                           .getDeprecationReason()
                           .map((reason: Reified<any>) => {
                             return (
-                              <span key={reason.value.toString()}>
+                              <span key={reason.value.toString()} className="whitespace-pre-line">
                                 {addLinksToText(
                                   reason.value,
                                   linkedEntities,

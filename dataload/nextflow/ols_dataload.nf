@@ -226,6 +226,7 @@ process linker__link_ontologies {
     time "4h"
     errorStrategy 'retry'
     maxRetries 5
+    publishDir "${params.out}/ontology_jsons_linked", overwrite: true
 
     publishDir "${params.out}/ontology_jsons_linked", mode: 'copy', overwrite: true
 
