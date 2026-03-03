@@ -21,9 +21,10 @@ params.dataload_args = System.getenv('OLS4_DATALOAD_ARGS') ?: ''
 params.enable_embeddings = false
 
 // Production-only features — disabled by default, enabled via nextflow_prod.config
-params.enable_sssom    = false  // extract SSSOM mappings from linked ontologies
-params.check_neo4j     = false  // verify Neo4j database has data after build
-params.enable_ftp_copy = false  // copy tarballs to FTP (requires datamover partition)
+params.enable_sssom             = false  // extract SSSOM mappings from linked ontologies
+params.check_neo4j              = false  // verify Neo4j database has data after build
+params.enable_ftp_copy          = false  // copy tarballs to FTP (requires datamover partition)
+params.enable_ontology_tarballs = false  // create ontology_jsons.tgz and ontology_jsons_linked.tgz
 params.copy_script     = ''     // path to copy_tarballs.sh on the NFS server
 
 process fetch_configs {
@@ -100,6 +101,12 @@ workflow {
     // Generate loading report after all ontologies have been processed
     report = generate_loading_report(merged_config_file, status_files)
 
+    // ── Ontology JSON tarballs (prod only — enabled via params.enable_ontology_tarballs) ──
+    if (params.enable_ontology_tarballs) {
+        create_ontology_jsons_tarball(ontology_jsons_by_id.map { it[1] }.collect())
+        create_linked_jsons_tarball(all_linked_jsons)
+    }
+
     // ── SSSOM (prod only — enabled via params.enable_sssom) ────────────────
     if (params.enable_sssom) {
         extract_sssom(all_linked_jsons)
@@ -149,6 +156,7 @@ process rdf2json {
 
     // Save each ontology JSON to last_run_dir after success, so it can be used as fallback next run
     publishDir params.last_run_dir, mode: 'copy', enabled: params.last_run_dir as boolean, saveAs: { fn -> fn.endsWith('.status.json') ? null : fn }
+    publishDir "${params.out}/ontology_jsons", mode: 'copy', overwrite: true, saveAs: { fn -> fn.endsWith('.status.json') ? null : fn }
 
     input:
     path(config_path)
@@ -212,6 +220,8 @@ process linker__link_ontologies {
     time "4h"
     errorStrategy 'retry'
     maxRetries 5
+
+    publishDir "${params.out}/ontology_jsons_linked", mode: 'copy', overwrite: true
 
     input:
     path("linker_manifest.json")
@@ -292,7 +302,7 @@ process create_neo {
     memory { 16.GB }
     time "8h"
 
-    publishDir "${params.out}", overwrite: true
+    publishDir "${params.out}", mode: 'copy', overwrite: true
     
     input:
     path(neo_csvs)
@@ -320,7 +330,7 @@ process create_solr {
     memory { 16.GB }
     time "23h"
 
-    publishDir "${params.out}", overwrite: true
+    publishDir "${params.out}", mode: 'copy', overwrite: true
     
     input:
     path(solr_jsonls, stageAs: '?/*')
@@ -353,7 +363,7 @@ process generate_loading_report {
     memory { 4.GB }
     time "30m"
 
-    publishDir "${params.out}", overwrite: true
+    publishDir "${params.out}", mode: 'copy', overwrite: true
     
     input:
     path(config_path)
@@ -416,7 +426,7 @@ process build_text_tagger_db {
     memory '8 GB'
     time '1h'
 
-    publishDir "${params.out}", overwrite: true
+    publishDir "${params.out}", mode: 'copy', overwrite: true
 
     input:
     path(terms_tsv)
@@ -432,6 +442,54 @@ process build_text_tagger_db {
     """
 }
 
+process create_ontology_jsons_tarball {
+    cache "lenient"
+    memory { 8.GB }
+    time "2h"
+
+    publishDir "${params.out}", mode: 'copy', overwrite: true
+
+    input:
+    path(jsons)
+
+    output:
+    path("ontology_jsons.tgz")
+
+    script:
+    def json_list = (jsons instanceof List) ? jsons : [jsons]
+    """
+    #!/usr/bin/env bash
+    set -Eeuo pipefail
+    mkdir ontology_jsons
+    for f in ${json_list.join(' ')}; do cp "\$f" ontology_jsons/; done
+    tar --use-compress-program="pigz -f" -cvf ontology_jsons.tgz ontology_jsons
+    """
+}
+
+process create_linked_jsons_tarball {
+    cache "lenient"
+    memory { 8.GB }
+    time "2h"
+
+    publishDir "${params.out}", mode: 'copy', overwrite: true
+
+    input:
+    path(linked_jsons)
+
+    output:
+    path("ontology_jsons_linked.tgz")
+
+    script:
+    def json_list = (linked_jsons instanceof List) ? linked_jsons : [linked_jsons]
+    """
+    #!/usr/bin/env bash
+    set -Eeuo pipefail
+    mkdir ontology_jsons_linked
+    for f in ${json_list.join(' ')}; do cp "\$f" ontology_jsons_linked/; done
+    tar --use-compress-program="pigz -f" -cvf ontology_jsons_linked.tgz ontology_jsons_linked
+    """
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Prod-only processes
 // ─────────────────────────────────────────────────────────────────────────────
@@ -444,7 +502,7 @@ process extract_sssom {
     memory { 96.GB }
     time "12h"
 
-    publishDir "${params.out}", overwrite: true
+    publishDir "${params.out}", mode: 'copy', overwrite: true
 
     input:
     path(linked_jsons, stageAs: 'input_jsons/*')
@@ -474,7 +532,7 @@ process check_neo4j_data_exists {
     memory { 8.GB }
     time "30m"
 
-    publishDir "${params.out}", overwrite: true
+    publishDir "${params.out}", mode: 'copy', overwrite: true
 
     input:
     path(neo_dir)
@@ -527,7 +585,7 @@ process copy_tarballs_to_ftp {
     memory { 16.GB }
     time "12h"
 
-    publishDir "${params.out}", overwrite: true
+    publishDir "${params.out}", mode: 'copy', overwrite: true
 
     input:
     path(neo_tgz)
