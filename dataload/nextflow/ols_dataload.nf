@@ -103,13 +103,13 @@ workflow {
 
     // ── Ontology JSON tarballs (prod only — enabled via params.enable_ontology_tarballs) ──
     if (params.enable_ontology_tarballs) {
-        create_ontology_jsons_tarball(ontology_jsons_by_id.map { it[1] }.collect())
-        create_linked_jsons_tarball(all_linked_jsons)
+        ontology_jsons_tgz        = create_ontology_jsons_tarball(ontology_jsons_by_id.map { it[1] }.collect())
+        ontology_jsons_linked_tgz = create_linked_jsons_tarball(all_linked_jsons)
     }
 
     // ── SSSOM (prod only — enabled via params.enable_sssom) ────────────────
     if (params.enable_sssom) {
-        extract_sssom(all_linked_jsons)
+        sssom = extract_sssom(all_linked_jsons)
     }
 
     // ── Neo4j data check (prod only — enabled via params.check_neo4j) ──────
@@ -119,7 +119,13 @@ workflow {
 
     // ── Copy to FTP (prod only — enabled via params.enable_ftp_copy) ───────
     if (params.enable_ftp_copy) {
-        copy_tarballs_to_ftp(neo.neo_tgz, solr.solr_tgz)
+        copy_tarballs_to_ftp(
+            neo.neo_tgz,
+            solr.solr_tgz,
+            sssom.sssom_tgz,
+            ontology_jsons_tgz,
+            ontology_jsons_linked_tgz
+        )
     }
 }
 
@@ -590,6 +596,9 @@ process copy_tarballs_to_ftp {
     input:
     path(neo_tgz)
     path(solr_tgz)
+    path(sssom_tgz)
+    path(ontology_jsons_tgz)
+    path(ontology_jsons_linked_tgz)
 
     output:
     path("copy_report.log")
@@ -601,6 +610,9 @@ process copy_tarballs_to_ftp {
     bash ${params.copy_script} \
         ${neo_tgz} \
         ${solr_tgz} \
+        ${sssom_tgz} \
+        ${ontology_jsons_tgz} \
+        ${ontology_jsons_linked_tgz} \
         2>&1 | tee copy_report.log
     """
 }
