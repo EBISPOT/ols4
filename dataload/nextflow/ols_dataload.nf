@@ -11,6 +11,7 @@ include { embeddings } from './ols_embeddings.nf'
 
 params.config_branch = "stable"  // Branch to fetch configs from (stable or dev)
 params.config_files  = ''         // Comma-separated local config paths; if set, skips NFS fetch (used in CI)
+params.last_run_dir  = ''         // Directory of per-ontology JSONs from last successful run; enables fallback on failure
 params.out = "$OLS_OUT_DIR"
 params.solr_mem = "8g"
 params.neo_mem = "16g"
@@ -145,7 +146,10 @@ process rdf2json {
     time "4h"
     errorStrategy 'retry'
     maxRetries 5
-    
+
+    // Save each ontology JSON to last_run_dir after success, so it can be used as fallback next run
+    publishDir params.last_run_dir, mode: 'copy', enabled: params.last_run_dir as boolean, saveAs: { fn -> fn.endsWith('.status.json') ? null : fn }
+
     input:
     path(config_path)
     val(ontology_id)
@@ -158,9 +162,16 @@ process rdf2json {
     def extra_args = params.dataload_args ?: ''
     def ols_home = System.getenv('OLS_HOME')
     def base_path_arg = ols_home ? "--basePath ${ols_home}" : ''
+    def last_run_dir = params.last_run_dir ?: ''
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
+
+    MERGE_ARG=""
+    if [ -n "${last_run_dir}" ] && [ -f "${last_run_dir}/${ontology_id}.json" ]; then
+        MERGE_ARG="--mergeOutputWith ${last_run_dir}/${ontology_id}.json"
+    fi
+
     java -Xms${mem_mb}m -Xmx${mem_mb}m \
         -DentityExpansionLimit=0 -DtotalEntitySizeLimit=0 \
         -Djdk.xml.totalEntitySizeLimit=0 -Djdk.xml.entityExpansionLimit=0 \
@@ -169,7 +180,8 @@ process rdf2json {
         --ontologyIds ${ontology_id} \
         --output ${ontology_id}.json \
         ${base_path_arg} \
-        ${extra_args}
+        ${extra_args} \
+        \$MERGE_ARG
     """
 }
 
