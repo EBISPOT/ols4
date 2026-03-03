@@ -10,6 +10,7 @@ yamlSlurper = new YamlSlurper()
 include { embeddings } from './ols_embeddings.nf'
 
 params.config_branch = "stable"  // Branch to fetch configs from (stable or dev)
+params.config_files  = ''         // Comma-separated local config paths; if set, skips NFS fetch (used in CI)
 params.out = "$OLS_OUT_DIR"
 params.solr_mem = "8g"
 params.neo_mem = "16g"
@@ -45,9 +46,12 @@ process fetch_configs {
 
 workflow {
 
-    // Fetch latest configs from specified branch
-    config_files = fetch_configs()
-        .collect()
+    // Fetch configs: use local paths when provided (CI/local), otherwise fetch from NFS (prod)
+    if (params.config_files) {
+        config_files = Channel.fromPath(params.config_files.tokenize(',')).collect()
+    } else {
+        config_files = fetch_configs().collect()
+    }
 
     merged_config_file = merge_configs(config_files)
     
