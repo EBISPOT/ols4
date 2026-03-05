@@ -91,9 +91,11 @@ workflow {
             .ifEmpty([file('NO_FILE')])
     } else if (params.embeddings_path && params.embeddings_path != '' && params.embeddings_path != 'NO_DIR') {
         // Only load PCA parquets — exclude umap (visualization-only, no embedding column)
+        // ifEmpty ensures json2neo still runs when the directory exists but has no parquets
         embedding_parquets = Channel.fromPath("${params.embeddings_path}/*_pca*.parquet")
             .filter { !it.name.contains('_umap') }
             .collect()
+            .ifEmpty([file('NO_FILE')])
     } else {
         embedding_parquets = Channel.of(file('NO_FILE'))
     }
