@@ -79,13 +79,21 @@ workflow {
     // Run embeddings pipeline if enabled
     if (params.enable_embeddings) {
         embeddings(terms_tsv)
-        embedding_parquets = embeddings.out.pca_parquets
+        pca_parquets = embeddings.out.pca_parquets
             .map { it[1] }
             .collect()
+        // Auto-copy PCA parquets to embeddings_path so future non-embeddings runs can reuse them
+        if (params.embeddings_path && params.embeddings_path != '' && params.embeddings_path != 'NO_DIR') {
+            update_embeddings_path(pca_parquets)
+        }
+        embedding_parquets = pca_parquets
             .map { list -> list.isEmpty() ? [file('NO_FILE')] : list }
             .ifEmpty([file('NO_FILE')])
     } else if (params.embeddings_path && params.embeddings_path != '' && params.embeddings_path != 'NO_DIR') {
-        embedding_parquets = Channel.fromPath("${params.embeddings_path}/*.parquet").collect()
+        // Only load PCA parquets — exclude umap (visualization-only, no embedding column)
+        embedding_parquets = Channel.fromPath("${params.embeddings_path}/*_pca*.parquet")
+            .filter { !it.name.contains('_umap') }
+            .collect()
     } else {
         embedding_parquets = Channel.of(file('NO_FILE'))
     }
@@ -226,8 +234,6 @@ process linker__link_ontologies {
     time "4h"
     errorStrategy 'retry'
     maxRetries 5
-    publishDir "${params.out}/ontology_jsons_linked", overwrite: true
-
     publishDir "${params.out}/ontology_jsons_linked", mode: 'copy', overwrite: true
 
     input:
@@ -581,6 +587,24 @@ process check_neo4j_data_exists {
         echo "STATUS: Some Neo4j data is missing ✗" | tee -a neo4j_check.log
         exit 1
     fi
+    """
+}
+
+// After an embeddings run, copies PCA parquets to params.embeddings_path so that
+// subsequent runs with enable_embeddings=false can reuse them without manual copying.
+process update_embeddings_path {
+    cache false
+    publishDir params.embeddings_path, mode: 'copy', overwrite: true
+
+    input:
+    path(parquets)
+
+    output:
+    path("*.parquet")
+
+    script:
+    """
+    echo "Syncing PCA parquets to ${params.embeddings_path}"
     """
 }
 
