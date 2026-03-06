@@ -1,5 +1,7 @@
 #!/bin/bash
 
+shopt -s nullglob
+
 for f in $1/*_ontologies.csv
 do
 	echo -n "--nodes=$f "
