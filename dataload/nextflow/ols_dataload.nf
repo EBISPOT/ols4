@@ -27,8 +27,16 @@ params.enable_ftp_copy          = false  // copy tarballs to FTP (requires datam
 params.enable_ontology_tarballs = false  // create ontology_jsons.tgz and ontology_jsons_linked.tgz
 params.copy_script     = ''     // path to copy_tarballs.sh on the NFS server
 
+// Caching strategy:
+// - rdf2json uses cache false — ontology files at their PURLs change without the config changing,
+//   so we must always re-download to ensure we load the latest data.
+// - All other processes use cache "deep" — this hashes actual file content rather than just
+//   timestamps (cache "lenient"), so downstream jobs are only re-run when the content of their
+//   inputs genuinely changes. This avoids re-running expensive steps (linking, neo4j, solr)
+//   when rdf2json re-runs but produces identical output.
+
 process fetch_configs {
-    cache "lenient"
+    cache "deep"
     memory { 1.GB }
     time "10m"
 
@@ -141,7 +149,7 @@ workflow {
 
 
 process merge_configs {
-    cache "lenient"
+    cache "deep"
     memory { 1.GB }
     time "10m"
     
@@ -164,7 +172,9 @@ process merge_configs {
 }
 
 process rdf2json {
-    cache "lenient"
+    // cache false: ontology files at their PURLs change without the config changing,
+    // so we must always re-download to ensure we load the latest data
+    cache false
     memory { 64.GB + 128.GB * (task.attempt-1) }
     time "4h"
     errorStrategy 'retry'
@@ -210,7 +220,7 @@ process rdf2json {
 }
 
 process linker__create_manifest {
-    cache "lenient"
+    cache "deep"
     memory { 16.GB }
     time "4h"
     
@@ -231,7 +241,7 @@ process linker__create_manifest {
 }
 
 process linker__link_ontologies {
-    cache "lenient"
+    cache "deep"
     memory { 128.GB + 128.GB * (task.attempt-1) }
     time "4h"
     errorStrategy 'retry'
@@ -257,7 +267,7 @@ process linker__link_ontologies {
 }
 
 process json2neo {
-    cache "lenient"
+    cache "deep"
     memory { 16.GB + 128.GB * (task.attempt-1) }
     time "8h"
     errorStrategy 'retry'
@@ -288,7 +298,7 @@ process json2neo {
 }
 
 process json2solr {
-    cache "lenient"
+    cache "deep"
     memory { 16.GB + 16.GB * (task.attempt-1) }
     time "8h"
     errorStrategy 'retry'
@@ -313,7 +323,7 @@ process json2solr {
 }
 
 process create_neo {
-    cache "lenient"
+    cache "deep"
     memory { 16.GB }
     time "8h"
 
@@ -341,7 +351,7 @@ process create_neo {
 }
 
 process create_solr {
-    cache "lenient"
+    cache "deep"
     memory { 16.GB }
     time "23h"
 
@@ -374,7 +384,7 @@ process create_solr {
 }
 
 process generate_loading_report {
-    cache "lenient"
+    cache "deep"
     memory { 4.GB }
     time "30m"
 
@@ -418,7 +428,7 @@ def basename(filename) {
 }
 
 process extract_strings_from_terms {
-    cache "lenient"
+    cache "deep"
     memory '8 GB'
     time '1h'
     cpus "4"
@@ -437,7 +447,7 @@ process extract_strings_from_terms {
 }
 
 process build_text_tagger_db {
-    cache "lenient"
+    cache "deep"
     memory '8 GB'
     time '1h'
 
@@ -458,7 +468,7 @@ process build_text_tagger_db {
 }
 
 process create_ontology_jsons_tarball {
-    cache "lenient"
+    cache "deep"
     memory { 8.GB }
     time "2h"
 
@@ -482,7 +492,7 @@ process create_ontology_jsons_tarball {
 }
 
 process create_linked_jsons_tarball {
-    cache "lenient"
+    cache "deep"
     memory { 8.GB }
     time "2h"
 
@@ -513,7 +523,7 @@ process create_linked_jsons_tarball {
 // Processes each ontology file independently without requiring a merge step.
 // Equivalent to the Jenkins 'Extract SSSOM mappings' stage.
 process extract_sssom {
-    cache "lenient"
+    cache "deep"
     memory { 96.GB }
     time "12h"
 
@@ -543,7 +553,7 @@ process extract_sssom {
 // Verifies that the Neo4j database was built and contains data.
 // Equivalent to the Jenkins 'Check Neo4j data exists' stage.
 process check_neo4j_data_exists {
-    cache "lenient"
+    cache "deep"
     memory { 8.GB }
     time "30m"
 
