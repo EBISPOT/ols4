@@ -591,6 +591,8 @@ process check_neo4j_data_exists {
 // subsequent runs with enable_embeddings=false can reuse them without manual copying.
 process update_embeddings_path {
     cache false
+    memory { 4.GB }
+    time '30m'
     publishDir params.embeddings_path, mode: 'copy', overwrite: true
 
     input:
