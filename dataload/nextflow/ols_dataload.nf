@@ -21,22 +21,13 @@ params.dataload_args = System.getenv('OLS4_DATALOAD_ARGS') ?: ''
 params.enable_embeddings = false
 
 // Production-only features — disabled by default, enabled via nextflow_prod.config
-params.enable_sssom             = false  // extract SSSOM mappings from linked ontologies
-params.check_neo4j              = false  // verify Neo4j database has data after build
 params.enable_ftp_copy          = false  // copy tarballs to FTP (requires datamover partition)
 params.enable_ontology_tarballs = false  // create ontology_jsons.tgz and ontology_jsons_linked.tgz
 params.copy_script     = ''     // path to copy_tarballs.sh on the NFS server
 
-// Caching strategy:
-// - rdf2json uses cache false — ontology files at their PURLs change without the config changing,
-//   so we must always re-download to ensure we load the latest data.
-// - All other processes use cache "deep" — this hashes actual file content rather than just
-//   timestamps (cache "lenient"), so downstream jobs are only re-run when the content of their
-//   inputs genuinely changes. This avoids re-running expensive steps (linking, neo4j, solr)
-//   when rdf2json re-runs but produces identical output.
 
 process fetch_configs {
-    cache "deep"
+    cache "lenient"
     memory { 1.GB }
     time "10m"
 
@@ -125,15 +116,11 @@ workflow {
         ontology_jsons_linked_tgz = create_linked_jsons_tarball(all_linked_jsons)
     }
 
-    // ── SSSOM (prod only — enabled via params.enable_sssom) ────────────────
-    if (params.enable_sssom) {
-        sssom = extract_sssom(all_linked_jsons)
-    }
+    // ── SSSOM ───────────────────────────────────────────────────────────────
+    sssom = extract_sssom(all_linked_jsons)
 
-    // ── Neo4j data check (prod only — enabled via params.check_neo4j) ──────
-    if (params.check_neo4j) {
-        check_neo4j_data_exists(neo.neo_dir)
-    }
+    // ── Neo4j data check ────────────────────────────────────────────────────
+    check_neo4j_data_exists(neo.neo_dir)
 
     // ── Copy to FTP (prod only — enabled via params.enable_ftp_copy) ───────
     if (params.enable_ftp_copy) {
@@ -149,7 +136,7 @@ workflow {
 
 
 process merge_configs {
-    cache "deep"
+    cache "lenient"
     memory { 1.GB }
     time "10m"
     
@@ -172,9 +159,7 @@ process merge_configs {
 }
 
 process rdf2json {
-    // cache false: ontology files at their PURLs change without the config changing,
-    // so we must always re-download to ensure we load the latest data
-    cache false
+    cache "lenient"
     memory { 64.GB + 128.GB * (task.attempt-1) }
     time "4h"
     errorStrategy 'retry'
@@ -182,7 +167,7 @@ process rdf2json {
 
     // Save each ontology JSON to last_run_dir after success, so it can be used as fallback next run
     publishDir params.last_run_dir, mode: 'copy', enabled: params.last_run_dir as boolean, saveAs: { fn -> fn.endsWith('.status.json') ? null : fn }
-    publishDir "${params.out}/ontology_jsons", mode: 'copy', overwrite: true, saveAs: { fn -> fn.endsWith('.status.json') ? null : fn }
+    publishDir "${params.out}/ontology_jsons", overwrite: true, saveAs: { fn -> fn.endsWith('.status.json') ? null : fn }
 
     input:
     path(config_path)
@@ -220,7 +205,7 @@ process rdf2json {
 }
 
 process linker__create_manifest {
-    cache "deep"
+    cache "lenient"
     memory { 16.GB }
     time "4h"
     
@@ -241,12 +226,12 @@ process linker__create_manifest {
 }
 
 process linker__link_ontologies {
-    cache "deep"
+    cache "lenient"
     memory { 128.GB + 128.GB * (task.attempt-1) }
     time "4h"
     errorStrategy 'retry'
     maxRetries 5
-    publishDir "${params.out}/ontology_jsons_linked", mode: 'copy', overwrite: true
+    publishDir "${params.out}/ontology_jsons_linked", overwrite: true
 
     input:
     path("linker_manifest.json")
@@ -267,7 +252,7 @@ process linker__link_ontologies {
 }
 
 process json2neo {
-    cache "deep"
+    cache "lenient"
     memory { 16.GB + 128.GB * (task.attempt-1) }
     time "8h"
     errorStrategy 'retry'
@@ -298,7 +283,7 @@ process json2neo {
 }
 
 process json2solr {
-    cache "deep"
+    cache "lenient"
     memory { 16.GB + 16.GB * (task.attempt-1) }
     time "8h"
     errorStrategy 'retry'
@@ -323,12 +308,12 @@ process json2solr {
 }
 
 process create_neo {
-    cache "deep"
+    cache "lenient"
     memory { 16.GB }
     time "8h"
 
-    publishDir "${params.out}", mode: 'copy', overwrite: true
-    
+    publishDir "${params.out}", overwrite: true
+
     input:
     path(neo_csvs)
     path(embedding_parquets)
@@ -351,12 +336,12 @@ process create_neo {
 }
 
 process create_solr {
-    cache "deep"
+    cache "lenient"
     memory { 16.GB }
     time "23h"
 
-    publishDir "${params.out}", mode: 'copy', overwrite: true
-    
+    publishDir "${params.out}", overwrite: true
+
     input:
     path(solr_jsonls, stageAs: '?/*')
     path(manifest)
@@ -384,12 +369,12 @@ process create_solr {
 }
 
 process generate_loading_report {
-    cache "deep"
+    cache "lenient"
     memory { 4.GB }
     time "30m"
 
-    publishDir "${params.out}", mode: 'copy', overwrite: true
-    
+    publishDir "${params.out}", overwrite: true
+
     input:
     path(config_path)
     path(status_files)
@@ -428,7 +413,7 @@ def basename(filename) {
 }
 
 process extract_strings_from_terms {
-    cache "deep"
+    cache "lenient"
     memory '8 GB'
     time '1h'
     cpus "4"
@@ -447,11 +432,11 @@ process extract_strings_from_terms {
 }
 
 process build_text_tagger_db {
-    cache "deep"
+    cache "lenient"
     memory '8 GB'
     time '1h'
 
-    publishDir "${params.out}", mode: 'copy', overwrite: true
+    publishDir "${params.out}", overwrite: true
 
     input:
     path(terms_tsv)
@@ -468,11 +453,11 @@ process build_text_tagger_db {
 }
 
 process create_ontology_jsons_tarball {
-    cache "deep"
+    cache "lenient"
     memory { 8.GB }
     time "2h"
 
-    publishDir "${params.out}", mode: 'copy', overwrite: true
+    publishDir "${params.out}", overwrite: true
 
     input:
     path(jsons)
@@ -492,11 +477,11 @@ process create_ontology_jsons_tarball {
 }
 
 process create_linked_jsons_tarball {
-    cache "deep"
+    cache "lenient"
     memory { 8.GB }
     time "2h"
 
-    publishDir "${params.out}", mode: 'copy', overwrite: true
+    publishDir "${params.out}", overwrite: true
 
     input:
     path(linked_jsons)
@@ -523,11 +508,11 @@ process create_linked_jsons_tarball {
 // Processes each ontology file independently without requiring a merge step.
 // Equivalent to the Jenkins 'Extract SSSOM mappings' stage.
 process extract_sssom {
-    cache "deep"
+    cache "lenient"
     memory { 96.GB }
     time "12h"
 
-    publishDir "${params.out}", mode: 'copy', overwrite: true
+    publishDir "${params.out}", overwrite: true
 
     input:
     path(linked_jsons, stageAs: 'input_jsons/*')
@@ -553,11 +538,11 @@ process extract_sssom {
 // Verifies that the Neo4j database was built and contains data.
 // Equivalent to the Jenkins 'Check Neo4j data exists' stage.
 process check_neo4j_data_exists {
-    cache "deep"
+    cache "lenient"
     memory { 8.GB }
     time "30m"
 
-    publishDir "${params.out}", mode: 'copy', overwrite: true
+    publishDir "${params.out}", overwrite: true
 
     input:
     path(neo_dir)
@@ -628,7 +613,7 @@ process copy_tarballs_to_ftp {
     memory { 16.GB }
     time "12h"
 
-    publishDir "${params.out}", mode: 'copy', overwrite: true
+    publishDir "${params.out}", overwrite: true
 
     input:
     path(neo_tgz)
