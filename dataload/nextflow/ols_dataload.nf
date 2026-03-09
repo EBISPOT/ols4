@@ -81,10 +81,6 @@ workflow {
         pca_parquets = embeddings.out.pca_parquets
             .map { it[1] }
             .collect()
-        // Auto-copy PCA parquets to embeddings_path so future non-embeddings runs can reuse them
-        if (params.embeddings_path && params.embeddings_path != '' && params.embeddings_path != 'NO_DIR') {
-            update_embeddings_path(pca_parquets)
-        }
         embedding_parquets = pca_parquets
             .map { list -> list.isEmpty() ? [file('NO_FILE')] : list }
             .ifEmpty([file('NO_FILE')])
@@ -587,31 +583,6 @@ process check_neo4j_data_exists {
     """
 }
 
-// After an embeddings run, copies PCA parquets to params.embeddings_path so that
-// subsequent runs with enable_embeddings=false can reuse them without manual copying.
-process update_embeddings_path {
-    cache false
-    memory { 4.GB }
-    time '30m'
-    publishDir params.embeddings_path, mode: 'copy', overwrite: true
-
-    input:
-    path(parquets)
-
-    output:
-    path("*.parquet")
-
-    script:
-    """
-    #!/usr/bin/env bash
-    set -Eeuo pipefail
-    # Dereference staged symlinks so publishDir has real files to copy to embeddings_path
-    for f in *.parquet; do
-        cp -L "\$f" "\${f}.real" && mv "\${f}.real" "\$f"
-    done
-    echo "Synced \$(ls *.parquet | wc -l) PCA parquets to ${params.embeddings_path}"
-    """
-}
 
 // Copies the final tarballs (Neo4j, Solr) to the FTP server.
 // Runs on the 'datamover' SLURM partition — equivalent to Jenkins '-p datamover'.
