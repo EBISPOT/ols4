@@ -603,7 +603,13 @@ process update_embeddings_path {
 
     script:
     """
-    echo "Syncing PCA parquets to ${params.embeddings_path}"
+    #!/usr/bin/env bash
+    set -Eeuo pipefail
+    # Dereference staged symlinks so publishDir has real files to copy to embeddings_path
+    for f in *.parquet; do
+        cp -L "\$f" "\${f}.real" && mv "\${f}.real" "\$f"
+    done
+    echo "Synced \$(ls *.parquet | wc -l) PCA parquets to ${params.embeddings_path}"
     """
 }
 
