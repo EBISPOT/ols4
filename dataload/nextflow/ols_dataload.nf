@@ -84,6 +84,10 @@ workflow {
         embedding_parquets = pca_parquets
             .map { list -> list.isEmpty() ? [file('NO_FILE')] : list }
             .ifEmpty([file('NO_FILE')])
+        // Persist PCA parquets to embeddings_path so the next incremental embeddings run can reuse them
+        if (params.embeddings_path && params.embeddings_path != '' && params.embeddings_path != 'NO_DIR') {
+            update_embeddings_path(pca_parquets)
+        }
     } else if (params.embeddings_path && params.embeddings_path != '' && params.embeddings_path != 'NO_DIR') {
         // Exclude umap parquets — they are visualization-only and have no embedding column
         // ifEmpty ensures json2neo still runs when the directory exists but has no parquets
@@ -615,5 +619,32 @@ process copy_tarballs_to_ftp {
         ${ontology_jsons_tgz} \
         ${ontology_jsons_linked_tgz} \
         2>&1 | tee copy_report.log
+    """
+}
+
+// Persists PCA parquets to params.embeddings_path so the next incremental embeddings
+// run can reuse them as a base. Copies to out/ subdir first so Nextflow treats them
+// as fresh outputs (staged input symlinks are excluded from output matching).
+process update_embeddings_path {
+    cache false
+    memory { 4.GB }
+    time '30m'
+    publishDir params.embeddings_path, mode: 'copy', overwrite: true, saveAs: { fn -> fn.replaceFirst('^out/', '') }
+
+    input:
+    path(parquets)
+
+    output:
+    path("out/*.parquet")
+
+    script:
+    """
+    #!/usr/bin/env bash
+    set -Eeuo pipefail
+    mkdir out
+    for f in *.parquet; do
+        cp -L "\$f" "out/\$f"
+    done
+    echo "Persisted \$(ls out/*.parquet | wc -l) PCA parquets to ${params.embeddings_path}"
     """
 }
