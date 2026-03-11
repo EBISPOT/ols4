@@ -8,6 +8,9 @@ export interface TaggedEntity {
   term_label: string;
   term_iri: string;
   ontology_id: string;
+  string_type?: string;
+  source?: string;
+  subject_categories?: string[];
 }
 
 export interface TagTextResponse {
@@ -24,7 +27,8 @@ export async function tagText(
   text: string,
   ontologyIds?: string[],
   minLength: number = 6,
-  includeSubstrings: boolean = true
+  includeSubstrings: boolean = true,
+  sources?: string[]
 ): Promise<TagTextResponse> {
   const baseUrl = process.env.REACT_APP_APIURL || "http://localhost:8080/";
   let url = baseUrl + "api/v2/tag_text";
@@ -33,6 +37,11 @@ export async function tagText(
   if (ontologyIds && ontologyIds.length > 0) {
     for (const id of ontologyIds) {
       params.append("ontologyId", id);
+    }
+  }
+  if (sources && sources.length > 0) {
+    for (const ds of sources) {
+      params.append("source", ds);
     }
   }
   // Sensible defaults: word-boundary delimiters so only whole tokens match
@@ -68,6 +77,20 @@ export async function tagTextAvailable(): Promise<boolean> {
     return data.available === true;
   } catch {
     return false;
+  }
+}
+
+/**
+ * Fetch the list of available curation source names from Solr faceting.
+ */
+export async function getCurationSources(): Promise<string[]> {
+  try {
+    const baseUrl = process.env.REACT_APP_APIURL || "http://localhost:8080/";
+    const res = await fetch(baseUrl + "api/v2/curation_sources");
+    if (!res.ok) return [];
+    return res.json();
+  } catch {
+    return [];
   }
 }
 
@@ -191,7 +214,7 @@ export function getOntologyColor(
 export function deduplicateEntities(entities: TaggedEntity[]): TaggedEntity[] {
   const seen = new Set<string>();
   return entities.filter((e) => {
-    const key = `${e.start}:${e.end}:${e.term_iri}`;
+    const key = `${e.start}:${e.end}:${e.term_iri}:${e.source || ""}`;
     if (seen.has(key)) return false;
     seen.add(key);
     return true;

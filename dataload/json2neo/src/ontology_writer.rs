@@ -492,6 +492,7 @@ impl<'a> OntologyWriter<'a> {
         // Collect all embedding child node data first to avoid borrow conflicts
         struct EmbNodeRow {
             node_id: String,
+            neo4j_label: String,
             /// Index of the model in embedding_model_names
             model_idx: usize,
             embedding_str: String,
@@ -502,16 +503,22 @@ impl<'a> OntologyWriter<'a> {
         
         for (model_idx, model_name) in embedding_model_names.iter().enumerate() {
             if let Some(emb) = self.embeddings.get(model_name) {
-                if let Some(vectors) = emb.get_embeddings(&self.ontology_id, entity_type, iri) {
-                    for (vec_idx, vector) in vectors.iter().enumerate() {
+                if let Some(entries) = emb.get_embeddings(&self.ontology_id, entity_type, iri) {
+                    for (vec_idx, entry) in entries.iter().enumerate() {
                         let node_id = format!("{}+emb+{}+{}+{}+{}", self.ontology_id, model_name, entity_type, iri, vec_idx);
-                        let embedding_str = vector
+                        let embedding_str = entry.vector
                             .iter()
                             .map(|f| f.to_string())
                             .collect::<Vec<_>>()
                             .join("|");
+                        let neo4j_label = if entry.string_type == "CURATION" {
+                            "Embedding;CurationEmbedding".to_string()
+                        } else {
+                            "Embedding;LabelEmbedding".to_string()
+                        };
                         emb_rows.push(EmbNodeRow {
                             node_id,
+                            neo4j_label,
                             model_idx,
                             embedding_str,
                         });
@@ -529,7 +536,7 @@ impl<'a> OntologyWriter<'a> {
                 // Build embedding node row: id, :LABEL, then one column per model (only one filled)
                 let mut row = Vec::with_capacity(2 + num_models);
                 row.push(emb_row.node_id.clone());
-                row.push("Embedding".to_string());
+                row.push(emb_row.neo4j_label.clone());
                 for i in 0..num_models {
                     if i == emb_row.model_idx {
                         row.push(emb_row.embedding_str.clone());

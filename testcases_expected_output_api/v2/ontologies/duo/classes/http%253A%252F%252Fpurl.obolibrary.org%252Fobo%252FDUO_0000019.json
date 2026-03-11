@@ -2,6 +2,18 @@
   "appearsIn": [
     "duo"
   ],
+  "curatedFrom": [
+    {
+      "source": "test-curations",
+      "subjectCategories": [
+        "clinical"
+      ],
+      "text": "clinical trial data"
+    }
+  ],
+  "curatedFromSources": [
+    "test-curations"
+  ],
   "curie": "DUO:0000019",
   "definedBy": [
     "duo"

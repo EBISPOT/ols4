@@ -1,4 +1,5 @@
 use std::collections::BTreeSet;
+use std::collections::HashMap;
 use std::fs::File;
 use std::io::{BufReader, BufWriter, Read, Write};
 
@@ -13,6 +14,7 @@ use crate::copy_json_gathering_strings::{copy_json_gathering_strings, write_valu
 use crate::extract_iri_from_property_name;
 use crate::leveldb::LevelDB;
 use crate::obo_database_url_service::{map_curie, OboDatabaseUrlService};
+use crate::sssom_literal_mappings::CuratedFromEntry;
 use ols_shared::{EntityDefinitionSet, LinkerPass1Result};
 
 /// Run LinkerPass2 on an input JSON file
@@ -21,6 +23,7 @@ pub fn run(
     output_json_filename: &str,
     leveldb: Option<&LevelDB>,
     pass1_result: &LinkerPass1Result,
+    sssom_map: &HashMap<String, Vec<CuratedFromEntry>>,
 ) -> Result<(), Box<dyn std::error::Error>> {
     let input_file = File::open(input_json_filename)?;
     let output_file = File::create(output_json_filename)?;
@@ -111,6 +114,7 @@ pub fn run(
                                 pass1_result,
                                 &db_urls,
                                 &mut bioregistry,
+                                sssom_map,
                             )?;
                         }
                         "properties" => {
@@ -123,6 +127,7 @@ pub fn run(
                                 pass1_result,
                                 &db_urls,
                                 &mut bioregistry,
+                                sssom_map,
                             )?;
                         }
                         "individuals" => {
@@ -135,6 +140,7 @@ pub fn run(
                                 pass1_result,
                                 &db_urls,
                                 &mut bioregistry,
+                                sssom_map,
                             )?;
                         }
                         _ => {
@@ -201,6 +207,7 @@ fn write_entity_array<R: Read, W: Write>(
     pass1_result: &LinkerPass1Result,
     db_urls: &OboDatabaseUrlService,
     bioregistry: &mut Bioregistry,
+    sssom_map: &HashMap<String, Vec<CuratedFromEntry>>,
 ) -> Result<(), Box<dyn std::error::Error>> {
     json_reader.begin_array()?;
     json_writer.begin_array()?;
@@ -258,6 +265,50 @@ fn write_entity_array<R: Read, W: Write>(
                     json_writer.begin_array()?;
                     for def in &def_of_this_entity.definitions {
                         json_writer.string_value(&def.ontology_id)?;
+                    }
+                    json_writer.end_array()?;
+                }
+            }
+        }
+
+        // Write curatedFrom (only for defining entities)
+        if let Some(ref iri) = entity_iri {
+            let is_defining = pass1_result.iri_to_definitions.get(iri)
+                .map(|d| d.defining_ontology_ids.contains(ontology_id))
+                .unwrap_or(false);
+
+            if is_defining {
+                if let Some(curations) = sssom_map.get(iri) {
+                    json_writer.name("curatedFrom")?;
+                    json_writer.begin_array()?;
+                    for entry in curations {
+                        json_writer.begin_object()?;
+
+                        json_writer.name("text")?;
+                        json_writer.string_value(&entry.text)?;
+
+                        json_writer.name("source")?;
+                        json_writer.string_value(&entry.source)?;
+
+                        if !entry.subject_categories.is_empty() {
+                            json_writer.name("subjectCategories")?;
+                            json_writer.begin_array()?;
+                            for cat in &entry.subject_categories {
+                                json_writer.string_value(cat)?;
+                            }
+                            json_writer.end_array()?;
+                        }
+
+                        json_writer.end_object()?;
+                    }
+                    json_writer.end_array()?;
+
+                    // Write curatedFromSources: unique source names for this entity
+                    let sources: BTreeSet<&str> = curations.iter().map(|e| e.source.as_str()).collect();
+                    json_writer.name("curatedFromSources")?;
+                    json_writer.begin_array()?;
+                    for ds in &sources {
+                        json_writer.string_value(ds)?;
                     }
                     json_writer.end_array()?;
                 }

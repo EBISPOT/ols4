@@ -458,6 +458,41 @@ impl SolrConverter {
 
         flatten_properties(entity, &mut flattened_entity);
 
+        // Extract curatedFrom entries into searchable Solr fields
+        if let Some(Value::Array(curated_from)) = entity.get("curatedFrom") {
+            let mut curated_texts: Vec<Value> = Vec::new();
+            let mut curated_categories: Vec<Value> = Vec::new();
+
+            for entry in curated_from {
+                if let Some(obj) = entry.as_object() {
+                    if let Some(text) = obj.get("text").and_then(|v| v.as_str()) {
+                        curated_texts.push(Value::String(text.to_string()));
+                    }
+                    if let Some(cats) = obj.get("subjectCategories").and_then(|v| v.as_array()) {
+                        for cat in cats {
+                            if let Some(c) = cat.as_str() {
+                                curated_categories.push(Value::String(c.to_string()));
+                            }
+                        }
+                    }
+                }
+            }
+
+            if !curated_texts.is_empty() {
+                flattened_entity.insert("curatedFrom".to_string(), Value::Array(curated_texts));
+            }
+            if !curated_categories.is_empty() {
+                flattened_entity.insert("curatedFromSubjectCategories".to_string(), Value::Array(curated_categories));
+            }
+        }
+
+        // Index curatedFromSources for faceting (already a string array from the linker)
+        if let Some(Value::Array(sources)) = entity.get("curatedFromSources") {
+            if !sources.is_empty() {
+                flattened_entity.insert("curatedFromSources".to_string(), Value::Array(sources.clone()));
+            }
+        }
+
         // Store original JSON (without embeddings in it), preserving original key order
         // Java's Gson preserves LinkedHashMap insertion order from JSON parsing
         let entity_for_json: Map<String, Value> = entity

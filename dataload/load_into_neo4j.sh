@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -Eeuo pipefail
 
 if [ $# -lt 3 ]; then
     echo "Usage: $0 <neo4jpath> <csvdir> <mem> [parquet_file ...]"
@@ -46,7 +47,21 @@ cat "$CYPHER_SCRIPT"
 # Start Neo4j, create indexes, then stop
 export NEO4J_AUTH=none
 $NEO4J_PATH/bin/neo4j start --verbose
-sleep 20
+
+# Wait for Neo4j database to be ready (not just HTTP, but bolt queries working)
+echo "Waiting for Neo4j database to become available..."
+for i in $(seq 1 60); do
+    if $NEO4J_PATH/bin/cypher-shell -a neo4j://127.0.0.1:7687 --non-interactive "RETURN 1;" > /dev/null 2>&1; then
+        echo "Neo4j database is ready after ${i} seconds"
+        break
+    fi
+    if [ "$i" -eq 60 ]; then
+        echo "ERROR: Neo4j database did not become available within 60 seconds"
+        $NEO4J_PATH/bin/neo4j stop
+        exit 1
+    fi
+    sleep 1
+done
 
 $NEO4J_PATH/bin/cypher-shell -a neo4j://127.0.0.1:7687 --non-interactive -f "$CYPHER_SCRIPT"
 

@@ -95,6 +95,9 @@ public class V2LLMController {
                 @Parameter(name = "ontologyId",
                         description = "Optional ontology ID to filter results. If specified only returns classes defined in this ontology (not imported classes).",
                         example = "efo") String ontologyId,
+                @RequestParam(value = "includeCurations", required = false, defaultValue = "true")
+                @Parameter(name = "includeCurations",
+                        description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") boolean includeCurations,
                 JsonTransformOptions outputOpts
         ) throws ResourceNotFoundException, IOException {
 
@@ -106,7 +109,7 @@ public class V2LLMController {
 
                 return new ResponseEntity<>(
                         new V2PagedResponse<V2Entity>(
-                        classRepository.searchByVector(model, vectorArray, pageable, lang, ontologyId, outputOpts).map(V2Entity::new)
+                        classRepository.searchByVector(model, vectorArray, pageable, lang, ontologyId, outputOpts, includeCurations).map(V2Entity::new)
                         ),
                         HttpStatus.OK
                 );
@@ -132,6 +135,9 @@ public class V2LLMController {
                 @Parameter(name = "isDefiningOntology",
                         description = "If true, only return classes defined in this ontology. If false (default), include imported classes too.",
                         example = "false") boolean isDefiningOntology,
+                @RequestParam(value = "includeCurations", required = false, defaultValue = "true")
+                @Parameter(name = "includeCurations",
+                        description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") boolean includeCurations,
                 JsonTransformOptions outputOpts
         ) throws ResourceNotFoundException, IOException {
 
@@ -143,7 +149,7 @@ public class V2LLMController {
 
                 return new ResponseEntity<>(
                         new V2PagedResponse<V2Entity>(
-                        classRepository.searchByVectorInOntology(ontologyId, model, vectorArray, pageable, lang, isDefiningOntology, outputOpts).map(V2Entity::new)
+                        classRepository.searchByVectorInOntology(ontologyId, model, vectorArray, pageable, lang, isDefiningOntology, outputOpts, includeCurations).map(V2Entity::new)
                         ),
                         HttpStatus.OK
                 );
@@ -168,6 +174,9 @@ public class V2LLMController {
                 @Parameter(name = "ontologyId",
                         description = "Optional ontology ID to filter results. If specified only returns entities defined in this ontology (not imported).",
                         example = "efo") String ontologyId,
+                @RequestParam(value = "includeCurations", required = false, defaultValue = "true")
+                @Parameter(name = "includeCurations",
+                        description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") boolean includeCurations,
                 JsonTransformOptions outputOpts
         ) throws ResourceNotFoundException, IOException {
 
@@ -183,9 +192,9 @@ public class V2LLMController {
                 // Search all entity types using OntologyEntity (no type filtering)
                 org.springframework.data.domain.Page<com.google.gson.JsonElement> results;
                 if (ontologyId != null && !ontologyId.isEmpty()) {
-                    results = neo4jClient.searchByVectorInOntology("OntologyEntity", vectorList, pageable, model, ontologyId, true);
+                    results = neo4jClient.searchByVectorInOntology("OntologyEntity", vectorList, pageable, model, ontologyId, true, includeCurations);
                 } else {
-                    results = neo4jClient.searchByVector("OntologyEntity", vectorList, pageable, model);
+                    results = neo4jClient.searchByVector("OntologyEntity", vectorList, pageable, model, includeCurations);
                 }
 
                 return new ResponseEntity<>(
@@ -215,6 +224,9 @@ public class V2LLMController {
                 @Parameter(name = "ontologyId",
                         description = "Optional ontology ID to filter results. If specified only returns classes defined in this ontology (not imported classes).",
                         example = "efo") String ontologyId,
+                @RequestParam(value = "includeCurations", required = false, defaultValue = "true")
+                @Parameter(name = "includeCurations",
+                        description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") boolean includeCurations,
                 JsonTransformOptions outputOpts
         ) throws ResourceNotFoundException, IOException {
 
@@ -223,7 +235,7 @@ public class V2LLMController {
 
                 return new ResponseEntity<>(
                         new V2PagedResponse<V2Entity>(
-                        classRepository.searchByVector(model, vectorArray, pageable, lang, ontologyId, outputOpts).map(V2Entity::new)
+                        classRepository.searchByVector(model, vectorArray, pageable, lang, ontologyId, outputOpts, includeCurations).map(V2Entity::new)
                         ),
                         HttpStatus.OK
                 );
@@ -252,6 +264,9 @@ public class V2LLMController {
                 @Parameter(name = "isDefiningOntology",
                         description = "If true, only return classes defined in this ontology. If false (default), include imported classes too.",
                         example = "false") boolean isDefiningOntology,
+                @RequestParam(value = "includeCurations", required = false, defaultValue = "true")
+                @Parameter(name = "includeCurations",
+                        description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") boolean includeCurations,
                 JsonTransformOptions outputOpts
         ) throws ResourceNotFoundException, IOException {
 
@@ -260,7 +275,7 @@ public class V2LLMController {
 
                 return new ResponseEntity<>(
                         new V2PagedResponse<V2Entity>(
-                        classRepository.searchByVectorInOntology(ontologyId, model, vectorArray, pageable, lang, isDefiningOntology, outputOpts).map(V2Entity::new)
+                        classRepository.searchByVectorInOntology(ontologyId, model, vectorArray, pageable, lang, isDefiningOntology, outputOpts, includeCurations).map(V2Entity::new)
                         ),
                         HttpStatus.OK
                 );
@@ -358,6 +373,9 @@ public class V2LLMController {
                 @Parameter(name = "ontologyId",
                         description = "Optional ontology ID to filter results. If specified only returns properties defined in this ontology.",
                         example = "efo") String ontologyId,
+                @RequestParam(value = "includeCurations", required = false, defaultValue = "true")
+                @Parameter(name = "includeCurations",
+                        description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") boolean includeCurations,
                 JsonTransformOptions outputOpts
         ) throws ResourceNotFoundException, IOException {
 
@@ -373,9 +391,9 @@ public class V2LLMController {
                 // Search properties using OntologyProperty type
                 org.springframework.data.domain.Page<com.google.gson.JsonElement> results;
                 if (ontologyId != null && !ontologyId.isEmpty()) {
-                    results = neo4jClient.searchByVectorInOntology("OntologyProperty", vectorList, pageable, model, ontologyId, true);
+                    results = neo4jClient.searchByVectorInOntology("OntologyProperty", vectorList, pageable, model, ontologyId, true, includeCurations);
                 } else {
-                    results = neo4jClient.searchByVector("OntologyProperty", vectorList, pageable, model);
+                    results = neo4jClient.searchByVector("OntologyProperty", vectorList, pageable, model, includeCurations);
                 }
 
                 return new ResponseEntity<>(
@@ -405,6 +423,9 @@ public class V2LLMController {
                 @Parameter(name = "ontologyId",
                         description = "Optional ontology ID to filter results. If specified only returns individuals defined in this ontology.",
                         example = "efo") String ontologyId,
+                @RequestParam(value = "includeCurations", required = false, defaultValue = "true")
+                @Parameter(name = "includeCurations",
+                        description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") boolean includeCurations,
                 JsonTransformOptions outputOpts
         ) throws ResourceNotFoundException, IOException {
 
@@ -420,9 +441,9 @@ public class V2LLMController {
                 // Search individuals using OntologyIndividual type
                 org.springframework.data.domain.Page<com.google.gson.JsonElement> results;
                 if (ontologyId != null && !ontologyId.isEmpty()) {
-                    results = neo4jClient.searchByVectorInOntology("OntologyIndividual", vectorList, pageable, model, ontologyId, true);
+                    results = neo4jClient.searchByVectorInOntology("OntologyIndividual", vectorList, pageable, model, ontologyId, true, includeCurations);
                 } else {
-                    results = neo4jClient.searchByVector("OntologyIndividual", vectorList, pageable, model);
+                    results = neo4jClient.searchByVector("OntologyIndividual", vectorList, pageable, model, includeCurations);
                 }
 
                 return new ResponseEntity<>(

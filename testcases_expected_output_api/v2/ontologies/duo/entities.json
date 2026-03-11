@@ -175,6 +175,911 @@
     "appearsIn": [
       "duo"
     ],
+    "curatedFrom": [
+      {
+        "source": "test-curations",
+        "subjectCategories": [
+          "access_control"
+        ],
+        "text": "restricted access dataset"
+      }
+    ],
+    "curatedFromSources": [
+      "test-curations"
+    ],
+    "curie": "DUO:0000004",
+    "definedBy": [
+      "duo"
+    ],
+    "definition": [
+      "This data use permission indicates there is no restriction on use."
+    ],
+    "definitionProperty": [
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://www.w3.org/2000/01/rdf-schema#comment"
+    ],
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/DUO_0000001",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030"
+    ],
+    "directParent": [
+      "http://purl.obolibrary.org/obo/DUO_0000001"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/DUO_0000001",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030"
+    ],
+    "hierarchicalParent": [
+      "http://purl.obolibrary.org/obo/DUO_0000001"
+    ],
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "This data use permission indicates there is no restriction on use.",
+    "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000004",
+    "http://www.geneontology.org/formats/oboInOwl#shorthand": "NRES",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      "20180907, Meeting Moran Melanie: This is to be thought about more carefully - what is the intent when using 'no restriction' as usually users still need to be researchers.",
+      "Note: the NRES alternative term may be confusing as in the UK it also stands for National Research Ethics Service"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "no restriction",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/DUO_0000001",
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/DUO_0000004",
+    "isDefiningOntology": true,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "no restriction"
+    ],
+    "linkedEntities": {
+      "DUO:0000004": {
+        "curie": "DUO:0000004",
+        "definedBy": [
+          "duo"
+        ],
+        "hasLocalDefinition": true,
+        "iri": "http://purl.obolibrary.org/obo/DUO_0000004",
+        "label": [
+          "no restriction"
+        ],
+        "numAppearsIn": 1.0,
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "type": [
+          "class",
+          "entity"
+        ],
+        "url": "http://purl.obolibrary.org/obo/DUO_0000004"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": [
+          "entity"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": [
+          "continuant"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": [
+          "generically dependent continuant"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/DUO_0000001": {
+        "curie": "DUO:0000001",
+        "definedBy": [
+          "duo"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "data use permission"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": [
+          "data item"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": [
+          "information content entity"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#id": {
+        "curie": "id",
+        "hasLocalDefinition": true,
+        "label": [
+          "id"
+        ],
+        "numAppearsIn": 3.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#shorthand": {
+        "curie": "shorthand",
+        "hasLocalDefinition": true,
+        "label": [
+          "shorthand"
+        ],
+        "numAppearsIn": 3.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#comment": {
+        "curie": "RDFS:comment",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "comment"
+        ],
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+        "curie": "RDFS:subClassOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subClassOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/DUO_0000001",
+      "http://purl.obolibrary.org/obo/DUO_0000004",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://www.geneontology.org/formats/oboInOwl#id",
+      "http://www.geneontology.org/formats/oboInOwl#shorthand",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "This data use permission indicates there is no restriction on use.",
+      false
+    ],
+    "shortForm": "DUO_0000004",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curatedFrom": [
+      {
+        "source": "test-curations",
+        "subjectCategories": [
+          "biomedical"
+        ],
+        "text": "genomic data sharing"
+      }
+    ],
+    "curatedFromSources": [
+      "test-curations"
+    ],
+    "curie": "DUO:0000007",
+    "definedBy": [
+      "duo"
+    ],
+    "definition": [
+      "This data use permission indicates that use is allowed provided it is related to the specified disease.",
+      "This term should be coupled with a term describing a disease from an ontology to specify the disease the restriction applies to. \n\nDUO recommends MONDO be used, to provide the basis for automated evaluation. For more information see https://github.com/EBISPOT/DUO/blob/master/MONDO_Overview.md\n\nOther resources, such as the Disease Ontology, HPO, SNOMED-CT or others, can also be used. When those other resources are being used, this may require an extra mapping step to leverage automated matching algorithms."
+    ],
+    "definitionProperty": [
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://www.w3.org/2000/01/rdf-schema#comment"
+    ],
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/DUO_0000001",
+      "http://purl.obolibrary.org/obo/DUO_0000006",
+      "http://purl.obolibrary.org/obo/DUO_0000042",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030"
+    ],
+    "directParent": [
+      "http://purl.obolibrary.org/obo/DUO_0000006"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/DUO_0000001",
+      "http://purl.obolibrary.org/obo/DUO_0000006",
+      "http://purl.obolibrary.org/obo/DUO_0000042",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030"
+    ],
+    "hierarchicalParent": [
+      "http://purl.obolibrary.org/obo/DUO_0000006"
+    ],
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "This data use permission indicates that use is allowed provided it is related to the specified disease.",
+    "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000007",
+    "http://www.geneontology.org/formats/oboInOwl#shorthand": "DS",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#comment": "This term should be coupled with a term describing a disease from an ontology to specify the disease the restriction applies to. \n\nDUO recommends MONDO be used, to provide the basis for automated evaluation. For more information see https://github.com/EBISPOT/DUO/blob/master/MONDO_Overview.md\n\nOther resources, such as the Disease Ontology, HPO, SNOMED-CT or others, can also be used. When those other resources are being used, this may require an extra mapping step to leverage automated matching algorithms.",
+    "http://www.w3.org/2000/01/rdf-schema#label": "disease specific research",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      "http://purl.obolibrary.org/obo/DUO_0000006",
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/DUO_0000010",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/MONDO_0000001",
+        "isObsolete": false
+      }
+    ],
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/DUO_0000007",
+    "isDefiningOntology": true,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "disease specific research"
+    ],
+    "linkedEntities": {
+      "DUO:0000007": {
+        "curie": "DUO:0000007",
+        "definedBy": [
+          "duo"
+        ],
+        "hasLocalDefinition": true,
+        "iri": "http://purl.obolibrary.org/obo/DUO_0000007",
+        "label": [
+          "disease specific research"
+        ],
+        "numAppearsIn": 1.0,
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "type": [
+          "class",
+          "entity"
+        ],
+        "url": "http://purl.obolibrary.org/obo/DUO_0000007"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": [
+          "entity"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": [
+          "continuant"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": [
+          "generically dependent continuant"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/DUO_0000001": {
+        "curie": "DUO:0000001",
+        "definedBy": [
+          "duo"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "data use permission"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/DUO_0000006": {
+        "curie": "DUO:0000006",
+        "definedBy": [
+          "duo"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "health or medical or biomedical research"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/DUO_0000010": {
+        "curie": "DUO:0000010",
+        "definedBy": [
+          "duo"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "is restricted to"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/DUO_0000042": {
+        "curie": "DUO:0000042",
+        "definedBy": [
+          "duo"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "general research use"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": [
+          "data item"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": [
+          "information content entity"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/MONDO_0000001": {
+        "curie": "MONDO:0000001",
+        "hasLocalDefinition": true,
+        "label": [
+          "disease or disorder"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#id": {
+        "curie": "id",
+        "hasLocalDefinition": true,
+        "label": [
+          "id"
+        ],
+        "numAppearsIn": 3.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#shorthand": {
+        "curie": "shorthand",
+        "hasLocalDefinition": true,
+        "label": [
+          "shorthand"
+        ],
+        "numAppearsIn": 3.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#comment": {
+        "curie": "RDFS:comment",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "comment"
+        ],
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+        "curie": "RDFS:subClassOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subClassOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/DUO_0000001",
+      "http://purl.obolibrary.org/obo/DUO_0000006",
+      "http://purl.obolibrary.org/obo/DUO_0000007",
+      "http://purl.obolibrary.org/obo/DUO_0000010",
+      "http://purl.obolibrary.org/obo/DUO_0000042",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/MONDO_0000001",
+      "http://www.geneontology.org/formats/oboInOwl#id",
+      "http://www.geneontology.org/formats/oboInOwl#shorthand",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "relatedTo": [
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/DUO_0000010",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/MONDO_0000001",
+        "isObsolete": false,
+        "property": "http://purl.obolibrary.org/obo/DUO_0000010",
+        "type": [
+          "related"
+        ],
+        "value": "http://purl.obolibrary.org/obo/MONDO_0000001"
+      }
+    ],
+    "searchableAnnotationValues": [
+      "This data use permission indicates that use is allowed provided it is related to the specified disease.",
+      false
+    ],
+    "shortForm": "DUO_0000007",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curatedFrom": [
+      {
+        "source": "test-curations",
+        "subjectCategories": [
+          "clinical"
+        ],
+        "text": "clinical trial data"
+      }
+    ],
+    "curatedFromSources": [
+      "test-curations"
+    ],
+    "curie": "DUO:0000019",
+    "definedBy": [
+      "duo"
+    ],
+    "definition": [
+      "This data use modifier indicates that requestor agrees to make results of studies using the data available to the larger scientific community."
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/DUO_0000017",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030"
+    ],
+    "directParent": [
+      "http://purl.obolibrary.org/obo/DUO_0000017"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/DUO_0000017",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030"
+    ],
+    "hierarchicalParent": [
+      "http://purl.obolibrary.org/obo/DUO_0000017"
+    ],
+    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "This data use modifier indicates that requestor agrees to make results of studies using the data available to the larger scientific community.",
+    "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000019",
+    "http://www.geneontology.org/formats/oboInOwl#shorthand": "PUB",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2000/01/rdf-schema#label": "publication required",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/DUO_0000017",
+    "imported": false,
+    "iri": "http://purl.obolibrary.org/obo/DUO_0000019",
+    "isDefiningOntology": true,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "publication required"
+    ],
+    "linkedEntities": {
+      "DUO:0000019": {
+        "curie": "DUO:0000019",
+        "definedBy": [
+          "duo"
+        ],
+        "hasLocalDefinition": true,
+        "iri": "http://purl.obolibrary.org/obo/DUO_0000019",
+        "label": [
+          "publication required"
+        ],
+        "numAppearsIn": 1.0,
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "type": [
+          "class",
+          "entity"
+        ],
+        "url": "http://purl.obolibrary.org/obo/DUO_0000019"
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": [
+          "entity"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": [
+          "continuant"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": [
+          "generically dependent continuant"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/DUO_0000017": {
+        "curie": "DUO:0000017",
+        "definedBy": [
+          "duo"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "data use modifier"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": [
+          "data item"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": [
+          "information content entity"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#id": {
+        "curie": "id",
+        "hasLocalDefinition": true,
+        "label": [
+          "id"
+        ],
+        "numAppearsIn": 3.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#shorthand": {
+        "curie": "shorthand",
+        "hasLocalDefinition": true,
+        "label": [
+          "shorthand"
+        ],
+        "numAppearsIn": 3.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+        "curie": "RDFS:subClassOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subClassOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/DUO_0000017",
+      "http://purl.obolibrary.org/obo/DUO_0000019",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://www.geneontology.org/formats/oboInOwl#id",
+      "http://www.geneontology.org/formats/oboInOwl#shorthand",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "This data use modifier indicates that requestor agrees to make results of studies using the data available to the larger scientific community.",
+      false
+    ],
+    "shortForm": "DUO_0000019",
+    "type": [
+      "class",
+      "entity"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
     "curie": "APOLLO_SV:00000008",
     "definition": [
       "A planned process that has specified output a software product and that involves the creation of source code."
@@ -9876,275 +10781,6 @@
     "appearsIn": [
       "duo"
     ],
-    "curie": "DUO:0000004",
-    "definedBy": [
-      "duo"
-    ],
-    "definition": [
-      "This data use permission indicates there is no restriction on use."
-    ],
-    "definitionProperty": [
-      "http://purl.obolibrary.org/obo/IAO_0000115",
-      "http://www.w3.org/2000/01/rdf-schema#comment"
-    ],
-    "directAncestor": [
-      "http://purl.obolibrary.org/obo/BFO_0000001",
-      "http://purl.obolibrary.org/obo/BFO_0000002",
-      "http://purl.obolibrary.org/obo/BFO_0000031",
-      "http://purl.obolibrary.org/obo/DUO_0000001",
-      "http://purl.obolibrary.org/obo/IAO_0000027",
-      "http://purl.obolibrary.org/obo/IAO_0000030"
-    ],
-    "directParent": [
-      "http://purl.obolibrary.org/obo/DUO_0000001"
-    ],
-    "hasDirectChildren": false,
-    "hasDirectParents": true,
-    "hasHierarchicalChildren": false,
-    "hasHierarchicalParents": true,
-    "hierarchicalAncestor": [
-      "http://purl.obolibrary.org/obo/BFO_0000001",
-      "http://purl.obolibrary.org/obo/BFO_0000002",
-      "http://purl.obolibrary.org/obo/BFO_0000031",
-      "http://purl.obolibrary.org/obo/DUO_0000001",
-      "http://purl.obolibrary.org/obo/IAO_0000027",
-      "http://purl.obolibrary.org/obo/IAO_0000030"
-    ],
-    "hierarchicalParent": [
-      "http://purl.obolibrary.org/obo/DUO_0000001"
-    ],
-    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-    "http://purl.obolibrary.org/obo/IAO_0000115": "This data use permission indicates there is no restriction on use.",
-    "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000004",
-    "http://www.geneontology.org/formats/oboInOwl#shorthand": "NRES",
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      "20180907, Meeting Moran Melanie: This is to be thought about more carefully - what is the intent when using 'no restriction' as usually users still need to be researchers.",
-      "Note: the NRES alternative term may be confusing as in the UK it also stands for National Research Ethics Service"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": "no restriction",
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/DUO_0000001",
-    "imported": false,
-    "iri": "http://purl.obolibrary.org/obo/DUO_0000004",
-    "isDefiningOntology": true,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": [
-      "no restriction"
-    ],
-    "linkedEntities": {
-      "DUO:0000004": {
-        "curie": "DUO:0000004",
-        "definedBy": [
-          "duo"
-        ],
-        "hasLocalDefinition": true,
-        "iri": "http://purl.obolibrary.org/obo/DUO_0000004",
-        "label": [
-          "no restriction"
-        ],
-        "numAppearsIn": 1.0,
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "type": [
-          "class",
-          "entity"
-        ],
-        "url": "http://purl.obolibrary.org/obo/DUO_0000004"
-      },
-      "http://purl.obolibrary.org/obo/BFO_0000001": {
-        "curie": "BFO:0000001",
-        "hasLocalDefinition": true,
-        "label": [
-          "entity"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/BFO_0000002": {
-        "curie": "BFO:0000002",
-        "hasLocalDefinition": true,
-        "label": [
-          "continuant"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/BFO_0000031": {
-        "curie": "BFO:0000031",
-        "hasLocalDefinition": true,
-        "label": [
-          "generically dependent continuant"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/DUO_0000001": {
-        "curie": "DUO:0000001",
-        "definedBy": [
-          "duo"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "data use permission"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/IAO_0000027": {
-        "curie": "IAO:0000027",
-        "hasLocalDefinition": true,
-        "label": [
-          "data item"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/IAO_0000030": {
-        "curie": "IAO:0000030",
-        "hasLocalDefinition": true,
-        "label": [
-          "information content entity"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/IAO_0000115": {
-        "curie": "IAO:0000115",
-        "hasLocalDefinition": true,
-        "label": [
-          "definition"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "annotationProperty",
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.geneontology.org/formats/oboInOwl#id": {
-        "curie": "id",
-        "hasLocalDefinition": true,
-        "label": [
-          "id"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "annotationProperty",
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.geneontology.org/formats/oboInOwl#shorthand": {
-        "curie": "shorthand",
-        "hasLocalDefinition": true,
-        "label": [
-          "shorthand"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "annotationProperty",
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "RDFS:comment",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "comment"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://purl.obolibrary.org/obo/BFO_0000001",
-      "http://purl.obolibrary.org/obo/BFO_0000002",
-      "http://purl.obolibrary.org/obo/BFO_0000031",
-      "http://purl.obolibrary.org/obo/DUO_0000001",
-      "http://purl.obolibrary.org/obo/DUO_0000004",
-      "http://purl.obolibrary.org/obo/IAO_0000027",
-      "http://purl.obolibrary.org/obo/IAO_0000030",
-      "http://purl.obolibrary.org/obo/IAO_0000115",
-      "http://www.geneontology.org/formats/oboInOwl#id",
-      "http://www.geneontology.org/formats/oboInOwl#shorthand",
-      "http://www.w3.org/2000/01/rdf-schema#comment",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-    ],
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "ontologyId": "duo",
-    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
-    "ontologyPreferredPrefix": "DUO",
-    "searchableAnnotationValues": [
-      "This data use permission indicates there is no restriction on use.",
-      false
-    ],
-    "shortForm": "DUO_0000004",
-    "type": [
-      "class",
-      "entity"
-    ]
-  },
-  {
-    "appearsIn": [
-      "duo"
-    ],
     "curie": "DUO:00000044",
     "definedBy": [
       "duo"
@@ -10632,360 +11268,6 @@
       false
     ],
     "shortForm": "DUO_0000006",
-    "type": [
-      "class",
-      "entity"
-    ]
-  },
-  {
-    "appearsIn": [
-      "duo"
-    ],
-    "curie": "DUO:0000007",
-    "definedBy": [
-      "duo"
-    ],
-    "definition": [
-      "This data use permission indicates that use is allowed provided it is related to the specified disease.",
-      "This term should be coupled with a term describing a disease from an ontology to specify the disease the restriction applies to. \n\nDUO recommends MONDO be used, to provide the basis for automated evaluation. For more information see https://github.com/EBISPOT/DUO/blob/master/MONDO_Overview.md\n\nOther resources, such as the Disease Ontology, HPO, SNOMED-CT or others, can also be used. When those other resources are being used, this may require an extra mapping step to leverage automated matching algorithms."
-    ],
-    "definitionProperty": [
-      "http://purl.obolibrary.org/obo/IAO_0000115",
-      "http://www.w3.org/2000/01/rdf-schema#comment"
-    ],
-    "directAncestor": [
-      "http://purl.obolibrary.org/obo/BFO_0000001",
-      "http://purl.obolibrary.org/obo/BFO_0000002",
-      "http://purl.obolibrary.org/obo/BFO_0000031",
-      "http://purl.obolibrary.org/obo/DUO_0000001",
-      "http://purl.obolibrary.org/obo/DUO_0000006",
-      "http://purl.obolibrary.org/obo/DUO_0000042",
-      "http://purl.obolibrary.org/obo/IAO_0000027",
-      "http://purl.obolibrary.org/obo/IAO_0000030"
-    ],
-    "directParent": [
-      "http://purl.obolibrary.org/obo/DUO_0000006"
-    ],
-    "hasDirectChildren": false,
-    "hasDirectParents": true,
-    "hasHierarchicalChildren": false,
-    "hasHierarchicalParents": true,
-    "hierarchicalAncestor": [
-      "http://purl.obolibrary.org/obo/BFO_0000001",
-      "http://purl.obolibrary.org/obo/BFO_0000002",
-      "http://purl.obolibrary.org/obo/BFO_0000031",
-      "http://purl.obolibrary.org/obo/DUO_0000001",
-      "http://purl.obolibrary.org/obo/DUO_0000006",
-      "http://purl.obolibrary.org/obo/DUO_0000042",
-      "http://purl.obolibrary.org/obo/IAO_0000027",
-      "http://purl.obolibrary.org/obo/IAO_0000030"
-    ],
-    "hierarchicalParent": [
-      "http://purl.obolibrary.org/obo/DUO_0000006"
-    ],
-    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-    "http://purl.obolibrary.org/obo/IAO_0000115": "This data use permission indicates that use is allowed provided it is related to the specified disease.",
-    "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000007",
-    "http://www.geneontology.org/formats/oboInOwl#shorthand": "DS",
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-    "http://www.w3.org/2000/01/rdf-schema#comment": "This term should be coupled with a term describing a disease from an ontology to specify the disease the restriction applies to. \n\nDUO recommends MONDO be used, to provide the basis for automated evaluation. For more information see https://github.com/EBISPOT/DUO/blob/master/MONDO_Overview.md\n\nOther resources, such as the Disease Ontology, HPO, SNOMED-CT or others, can also be used. When those other resources are being used, this may require an extra mapping step to leverage automated matching algorithms.",
-    "http://www.w3.org/2000/01/rdf-schema#label": "disease specific research",
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      "http://purl.obolibrary.org/obo/DUO_0000006",
-      {
-        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/DUO_0000010",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/MONDO_0000001",
-        "isObsolete": false
-      }
-    ],
-    "imported": false,
-    "iri": "http://purl.obolibrary.org/obo/DUO_0000007",
-    "isDefiningOntology": true,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": [
-      "disease specific research"
-    ],
-    "linkedEntities": {
-      "DUO:0000007": {
-        "curie": "DUO:0000007",
-        "definedBy": [
-          "duo"
-        ],
-        "hasLocalDefinition": true,
-        "iri": "http://purl.obolibrary.org/obo/DUO_0000007",
-        "label": [
-          "disease specific research"
-        ],
-        "numAppearsIn": 1.0,
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "type": [
-          "class",
-          "entity"
-        ],
-        "url": "http://purl.obolibrary.org/obo/DUO_0000007"
-      },
-      "http://purl.obolibrary.org/obo/BFO_0000001": {
-        "curie": "BFO:0000001",
-        "hasLocalDefinition": true,
-        "label": [
-          "entity"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/BFO_0000002": {
-        "curie": "BFO:0000002",
-        "hasLocalDefinition": true,
-        "label": [
-          "continuant"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/BFO_0000031": {
-        "curie": "BFO:0000031",
-        "hasLocalDefinition": true,
-        "label": [
-          "generically dependent continuant"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/DUO_0000001": {
-        "curie": "DUO:0000001",
-        "definedBy": [
-          "duo"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "data use permission"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/DUO_0000006": {
-        "curie": "DUO:0000006",
-        "definedBy": [
-          "duo"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "health or medical or biomedical research"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/DUO_0000010": {
-        "curie": "DUO:0000010",
-        "definedBy": [
-          "duo"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "is restricted to"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "entity",
-          "objectProperty",
-          "property"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/DUO_0000042": {
-        "curie": "DUO:0000042",
-        "definedBy": [
-          "duo"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "general research use"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/IAO_0000027": {
-        "curie": "IAO:0000027",
-        "hasLocalDefinition": true,
-        "label": [
-          "data item"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/IAO_0000030": {
-        "curie": "IAO:0000030",
-        "hasLocalDefinition": true,
-        "label": [
-          "information content entity"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/IAO_0000115": {
-        "curie": "IAO:0000115",
-        "hasLocalDefinition": true,
-        "label": [
-          "definition"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "annotationProperty",
-          "entity",
-          "property"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/MONDO_0000001": {
-        "curie": "MONDO:0000001",
-        "hasLocalDefinition": true,
-        "label": [
-          "disease or disorder"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://www.geneontology.org/formats/oboInOwl#id": {
-        "curie": "id",
-        "hasLocalDefinition": true,
-        "label": [
-          "id"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "annotationProperty",
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.geneontology.org/formats/oboInOwl#shorthand": {
-        "curie": "shorthand",
-        "hasLocalDefinition": true,
-        "label": [
-          "shorthand"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "annotationProperty",
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "curie": "RDFS:comment",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "comment"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://purl.obolibrary.org/obo/BFO_0000001",
-      "http://purl.obolibrary.org/obo/BFO_0000002",
-      "http://purl.obolibrary.org/obo/BFO_0000031",
-      "http://purl.obolibrary.org/obo/DUO_0000001",
-      "http://purl.obolibrary.org/obo/DUO_0000006",
-      "http://purl.obolibrary.org/obo/DUO_0000007",
-      "http://purl.obolibrary.org/obo/DUO_0000010",
-      "http://purl.obolibrary.org/obo/DUO_0000042",
-      "http://purl.obolibrary.org/obo/IAO_0000027",
-      "http://purl.obolibrary.org/obo/IAO_0000030",
-      "http://purl.obolibrary.org/obo/IAO_0000115",
-      "http://purl.obolibrary.org/obo/MONDO_0000001",
-      "http://www.geneontology.org/formats/oboInOwl#id",
-      "http://www.geneontology.org/formats/oboInOwl#shorthand",
-      "http://www.w3.org/2000/01/rdf-schema#comment",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-    ],
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "ontologyId": "duo",
-    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
-    "ontologyPreferredPrefix": "DUO",
-    "relatedTo": [
-      {
-        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/DUO_0000010",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/MONDO_0000001",
-        "isObsolete": false,
-        "property": "http://purl.obolibrary.org/obo/DUO_0000010",
-        "type": [
-          "related"
-        ],
-        "value": "http://purl.obolibrary.org/obo/MONDO_0000001"
-      }
-    ],
-    "searchableAnnotationValues": [
-      "This data use permission indicates that use is allowed provided it is related to the specified disease.",
-      false
-    ],
-    "shortForm": "DUO_0000007",
     "type": [
       "class",
       "entity"
@@ -12654,252 +12936,6 @@
       false
     ],
     "shortForm": "DUO_0000018",
-    "type": [
-      "class",
-      "entity"
-    ]
-  },
-  {
-    "appearsIn": [
-      "duo"
-    ],
-    "curie": "DUO:0000019",
-    "definedBy": [
-      "duo"
-    ],
-    "definition": [
-      "This data use modifier indicates that requestor agrees to make results of studies using the data available to the larger scientific community."
-    ],
-    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
-    "directAncestor": [
-      "http://purl.obolibrary.org/obo/BFO_0000001",
-      "http://purl.obolibrary.org/obo/BFO_0000002",
-      "http://purl.obolibrary.org/obo/BFO_0000031",
-      "http://purl.obolibrary.org/obo/DUO_0000017",
-      "http://purl.obolibrary.org/obo/IAO_0000027",
-      "http://purl.obolibrary.org/obo/IAO_0000030"
-    ],
-    "directParent": [
-      "http://purl.obolibrary.org/obo/DUO_0000017"
-    ],
-    "hasDirectChildren": false,
-    "hasDirectParents": true,
-    "hasHierarchicalChildren": false,
-    "hasHierarchicalParents": true,
-    "hierarchicalAncestor": [
-      "http://purl.obolibrary.org/obo/BFO_0000001",
-      "http://purl.obolibrary.org/obo/BFO_0000002",
-      "http://purl.obolibrary.org/obo/BFO_0000031",
-      "http://purl.obolibrary.org/obo/DUO_0000017",
-      "http://purl.obolibrary.org/obo/IAO_0000027",
-      "http://purl.obolibrary.org/obo/IAO_0000030"
-    ],
-    "hierarchicalParent": [
-      "http://purl.obolibrary.org/obo/DUO_0000017"
-    ],
-    "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-    "http://purl.obolibrary.org/obo/IAO_0000115": "This data use modifier indicates that requestor agrees to make results of studies using the data available to the larger scientific community.",
-    "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000019",
-    "http://www.geneontology.org/formats/oboInOwl#shorthand": "PUB",
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-    "http://www.w3.org/2000/01/rdf-schema#label": "publication required",
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/DUO_0000017",
-    "imported": false,
-    "iri": "http://purl.obolibrary.org/obo/DUO_0000019",
-    "isDefiningOntology": true,
-    "isObsolete": false,
-    "isPreferredRoot": false,
-    "label": [
-      "publication required"
-    ],
-    "linkedEntities": {
-      "DUO:0000019": {
-        "curie": "DUO:0000019",
-        "definedBy": [
-          "duo"
-        ],
-        "hasLocalDefinition": true,
-        "iri": "http://purl.obolibrary.org/obo/DUO_0000019",
-        "label": [
-          "publication required"
-        ],
-        "numAppearsIn": 1.0,
-        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-        "type": [
-          "class",
-          "entity"
-        ],
-        "url": "http://purl.obolibrary.org/obo/DUO_0000019"
-      },
-      "http://purl.obolibrary.org/obo/BFO_0000001": {
-        "curie": "BFO:0000001",
-        "hasLocalDefinition": true,
-        "label": [
-          "entity"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/BFO_0000002": {
-        "curie": "BFO:0000002",
-        "hasLocalDefinition": true,
-        "label": [
-          "continuant"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/BFO_0000031": {
-        "curie": "BFO:0000031",
-        "hasLocalDefinition": true,
-        "label": [
-          "generically dependent continuant"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/DUO_0000017": {
-        "curie": "DUO:0000017",
-        "definedBy": [
-          "duo"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "data use modifier"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/IAO_0000027": {
-        "curie": "IAO:0000027",
-        "hasLocalDefinition": true,
-        "label": [
-          "data item"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/IAO_0000030": {
-        "curie": "IAO:0000030",
-        "hasLocalDefinition": true,
-        "label": [
-          "information content entity"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
-      "http://purl.obolibrary.org/obo/IAO_0000115": {
-        "curie": "IAO:0000115",
-        "hasLocalDefinition": true,
-        "label": [
-          "definition"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "annotationProperty",
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.geneontology.org/formats/oboInOwl#id": {
-        "curie": "id",
-        "hasLocalDefinition": true,
-        "label": [
-          "id"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "annotationProperty",
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.geneontology.org/formats/oboInOwl#shorthand": {
-        "curie": "shorthand",
-        "hasLocalDefinition": true,
-        "label": [
-          "shorthand"
-        ],
-        "numAppearsIn": 3.0,
-        "type": [
-          "annotationProperty",
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "curie": "RDFS:label",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": true,
-        "label": [
-          "label"
-        ],
-        "numAppearsIn": 4.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "curie": "RDFS:subClassOf",
-        "definedBy": [
-          "rdfs"
-        ],
-        "hasLocalDefinition": false,
-        "label": [
-          "subClassOf"
-        ],
-        "numAppearsIn": 2.0,
-        "type": [
-          "entity",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://purl.obolibrary.org/obo/BFO_0000001",
-      "http://purl.obolibrary.org/obo/BFO_0000002",
-      "http://purl.obolibrary.org/obo/BFO_0000031",
-      "http://purl.obolibrary.org/obo/DUO_0000017",
-      "http://purl.obolibrary.org/obo/DUO_0000019",
-      "http://purl.obolibrary.org/obo/IAO_0000027",
-      "http://purl.obolibrary.org/obo/IAO_0000030",
-      "http://purl.obolibrary.org/obo/IAO_0000115",
-      "http://www.geneontology.org/formats/oboInOwl#id",
-      "http://www.geneontology.org/formats/oboInOwl#shorthand",
-      "http://www.w3.org/2000/01/rdf-schema#label",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-    ],
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "ontologyId": "duo",
-    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
-    "ontologyPreferredPrefix": "DUO",
-    "searchableAnnotationValues": [
-      "This data use modifier indicates that requestor agrees to make results of studies using the data available to the larger scientific community.",
-      false
-    ],
-    "shortForm": "DUO_0000019",
     "type": [
       "class",
       "entity"

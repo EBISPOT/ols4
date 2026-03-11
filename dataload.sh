@@ -61,6 +61,11 @@ if [ "$(uname)" != "Darwin" ]; then
   USER_OPT="--user $HOST_UID:$HOST_GID --group-add $(stat -c %g /var/run/docker.sock)"
 fi
 
+# Resolve curations path to absolute (if set)
+if [ -n "${OLS4_CURATIONS_PATH:-}" ]; then
+  OLS4_CURATIONS_PATH="$OLS_HOME/$OLS4_CURATIONS_PATH"
+fi
+
 docker run \
   $USER_OPT \
   -v /var/run/docker.sock:/var/run/docker.sock \
@@ -82,6 +87,7 @@ docker run \
   -e NXF_HOME="$TMP_DIR/NXF_HOME" \
   -e NXF_TEMP="$TMP_DIR/NXF_TEMP" \
   -e NXF_CACHE_DIR="$TMP_DIR/NXF_CACHE_DIR" \
+  -e OLS4_CURATIONS_PATH="${OLS4_CURATIONS_PATH:-}" \
   ghcr.io/ebispot/ols4-nextflow:dev \
   bash -c "cd \"$OLS_HOME\" && nextflow run \"$OLS_HOME/dataload/nextflow/ols_dataload.nf\" \
     -c \"$OLS_NF_CONFIG\" -resume"

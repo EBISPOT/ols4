@@ -303,24 +303,23 @@ public class OlsNeo4jClient {
 
     /**
      * Search by vector globally (all ontologies, defining classes only).
-     * Queries the Embedding child node index for precise matching, then traverses
-     * back to the parent entity node. Deduplicates by entity IRI.
+     * Queries both LabelEmbedding and CurationEmbedding child node indexes,
+     * then traverses back to the parent entity node. Deduplicates by entity IRI.
      */
     public Page<JsonElement> searchByVector(String type, List<Double> vector, Pageable pageable, String modelName) {
+        return searchByVector(type, vector, pageable, modelName, true);
+    }
 
-		// Use Embedding child node index for precise free-text search
-		String index = "embedding_" + modelName.replace("-", "_").replace(".", "_");
+    public Page<JsonElement> searchByVector(String type, List<Double> vector, Pageable pageable, String modelName, boolean includeCurations) {
+
+		String safeModel = modelName.replace("-", "_").replace(".", "_");
 
 		// Over-fetch from vector index since we deduplicate and filter by type
 		int fetchSize = pageable.getPageSize() * 10;
 
-		String query = "CALL db.index.vector.queryNodes('" + index + "', $fetchSize, $vec) "
-			+ "YIELD node AS emb, score "
-			+ "MATCH (entity:" + type + ")-[:HAS_EMBEDDING]->(emb) "
-			+ "WITH entity, max(score) AS score "
-			+ "RETURN entity, score "
-			+ "ORDER BY score DESC "
-			+ "LIMIT $size";
+		String matchClause = "MATCH (entity:" + type + ")-[:HAS_EMBEDDING]->(emb) ";
+		String entityExpr = "entity";
+		String query = buildVectorSearchQuery(safeModel, includeCurations, matchClause, null, entityExpr, "$size");
 
 		ArrayList<JsonElement> res = new ArrayList<>();
 
@@ -349,42 +348,38 @@ public class OlsNeo4jClient {
 
     /**
      * Search by vector within a specific ontology.
-     * Uses Embedding child node index for precise matching, then traverses
-     * back to the parent entity node.
+     * Uses LabelEmbedding and CurationEmbedding child node indexes for matching,
+     * then traverses back to the parent entity node.
      * If isDefiningOntology is true, only returns classes defined in this ontology (simple post-filter).
      * If isDefiningOntology is false, includes imported classes by joining on IRI.
      */
     public Page<JsonElement> searchByVectorInOntology(String type, List<Double> vector, Pageable pageable, String modelName, String ontologyId, boolean isDefiningOntology) {
+        return searchByVectorInOntology(type, vector, pageable, modelName, ontologyId, isDefiningOntology, true);
+    }
 
-		// Use Embedding child node index for precise free-text search
-		String index = "embedding_" + modelName.replace("-", "_").replace(".", "_");
+    public Page<JsonElement> searchByVectorInOntology(String type, List<Double> vector, Pageable pageable, String modelName, String ontologyId, boolean isDefiningOntology, boolean includeCurations) {
+
+		String safeModel = modelName.replace("-", "_").replace(".", "_");
 
 		// Over-fetch from vector index since we're filtering/joining to a subset
 		int fetchSize = pageable.getPageSize() * 10;
 
-		String query;
+		String matchClause;
+		String whereClause;
+		String entityExpr;
+
 		if (isDefiningOntology) {
-			// Post-filter: only entities from this ontology
-			query = "CALL db.index.vector.queryNodes('" + index + "', $fetchSize, $vec) "
-				+ "YIELD node AS emb, score "
-				+ "MATCH (entity:" + type + ")-[:HAS_EMBEDDING]->(emb) "
-				+ "WHERE $ontologyId IN entity.ontologyId "
-				+ "WITH entity, max(score) AS score "
-				+ "RETURN entity, score "
-				+ "ORDER BY score DESC "
-				+ "LIMIT $limit";
+			matchClause = "MATCH (entity:" + type + ")-[:HAS_EMBEDDING]->(emb) ";
+			whereClause = "WHERE $ontologyId IN entity.ontologyId ";
+			entityExpr = "entity";
 		} else {
-			// Join by IRI to find the entity in the target ontology (includes imported)
-			query = "CALL db.index.vector.queryNodes('" + index + "', $fetchSize, $vec) "
-				+ "YIELD node AS emb, score "
-				+ "MATCH (defining:" + type + ")-[:HAS_EMBEDDING]->(emb) "
-				+ "MATCH (target:" + type + " {iri: defining.iri}) "
-				+ "WHERE $ontologyId IN target.ontologyId "
-				+ "WITH target AS entity, max(score) AS score "
-				+ "RETURN entity, score "
-				+ "ORDER BY score DESC "
-				+ "LIMIT $limit";
+			matchClause = "MATCH (defining:" + type + ")-[:HAS_EMBEDDING]->(emb) "
+				+ "MATCH (target:" + type + " {iri: defining.iri}) ";
+			whereClause = "WHERE $ontologyId IN target.ontologyId ";
+			entityExpr = "target AS entity";
 		}
+
+		String query = buildVectorSearchQuery(safeModel, includeCurations, matchClause, whereClause, entityExpr, "$limit");
 
 		ArrayList<JsonElement> res = new ArrayList<>();
 
@@ -410,6 +405,58 @@ public class OlsNeo4jClient {
 		}
 
 		return new PageImpl<JsonElement>(res, pageable, res.size());
+    }
+
+    /**
+     * Build the Cypher query for vector search.
+     *
+     * @param safeModel        sanitized model name (hyphens/dots replaced with underscores)
+     * @param includeCurations if true, UNION ALL across LabelEmbedding and CurationEmbedding indexes
+     * @param matchClause      Cypher MATCH clause(s) that traverse from emb to the entity
+     * @param whereClause      optional WHERE clause (null when not filtering by ontology)
+     * @param entityExpr       expression to project as "entity" (e.g. "entity" or "target AS entity")
+     * @param limitParam       parameter reference for the LIMIT (e.g. "$size" or "$limit")
+     */
+    private String buildVectorSearchQuery(String safeModel, boolean includeCurations,
+            String matchClause, String whereClause, String entityExpr, String limitParam) {
+
+        String labelIndex = "embedding_" + safeModel + "_label";
+        String where = whereClause != null ? whereClause : "";
+
+        // Single-index branch (labels only)
+        String labelBranch = "CALL db.index.vector.queryNodes('" + labelIndex + "', $fetchSize, $vec) "
+                + "YIELD node AS emb, score "
+                + matchClause
+                + where;
+
+        if (!includeCurations) {
+            return labelBranch
+                    + "WITH " + entityExpr + ", max(score) AS score "
+                    + "RETURN entity, score "
+                    + "ORDER BY score DESC "
+                    + "LIMIT " + limitParam;
+        }
+
+        // Dual-index: UNION ALL label + curated inside CALL {}, then deduplicate
+        String curatedIndex = "embedding_" + safeModel + "_curated";
+        String curatedBranch = "CALL db.index.vector.queryNodes('" + curatedIndex + "', $fetchSize, $vec) "
+                + "YIELD node AS emb, score "
+                + matchClause
+                + where;
+
+        return "CALL { "
+                + labelBranch
+                + "WITH " + entityExpr + ", score "
+                + "RETURN entity, score "
+                + "UNION ALL "
+                + curatedBranch
+                + "WITH " + entityExpr + ", score "
+                + "RETURN entity, score "
+                + "} "
+                + "WITH entity, max(score) AS score "
+                + "RETURN entity, score "
+                + "ORDER BY score DESC "
+                + "LIMIT " + limitParam;
     }
 
     public List<String> getEmbeddingModelsInNeo4j() {

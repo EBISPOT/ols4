@@ -82,6 +82,11 @@ public class SolrFieldMapper {
                 newFields.add(prefix + "searchableAnnotationValues" + suffix);
                 continue;
             }
+
+            if (legacyFieldName.equals("curatedFrom")) {
+                newFields.add(prefix + "curatedFrom" + suffix);
+                continue;
+            }
         }
 
         // escape special characters in field names for solr query

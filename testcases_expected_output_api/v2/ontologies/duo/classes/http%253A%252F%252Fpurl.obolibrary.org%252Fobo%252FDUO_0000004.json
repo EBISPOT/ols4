@@ -2,6 +2,18 @@
   "appearsIn": [
     "duo"
   ],
+  "curatedFrom": [
+    {
+      "source": "test-curations",
+      "subjectCategories": [
+        "access_control"
+      ],
+      "text": "restricted access dataset"
+    }
+  ],
+  "curatedFromSources": [
+    "test-curations"
+  ],
   "curie": "DUO:0000004",
   "definedBy": [
     "duo"

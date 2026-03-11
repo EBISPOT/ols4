@@ -55,9 +55,10 @@ def get_embedding_dimension(parquet_path: str) -> int:
 def generate_vector_index_cypher(model_name: str, dimensions: int) -> str:
     """Generate Cypher statements to create vector indexes for a given model.
 
-    Creates two indexes per model:
+    Creates three indexes per model:
     1. OntologyEntity index on the average embedding (for term-term similarity)
-    2. Embedding child node index on individual embeddings (for free-text vector search)
+    2. LabelEmbedding child node index (for free-text vector search against labels/synonyms)
+    3. CurationEmbedding child node index (for free-text vector search against curated mappings)
     """
 
     # Sanitize model name for index name (replace hyphens with underscores)
@@ -74,11 +75,19 @@ FOR (n:OntologyEntity) ON n.`{avg_property_name}` OPTIONS {{ indexConfig: {{
  `vector.similarity_function`: 'cosine'
 }}}};""")
 
-    # 2. Embedding child node index for individual embeddings (free-text search)
+    # 2. LabelEmbedding child node index (labels and synonyms)
     emb_property_name = f"embedding_{model_name}"
-    emb_index_name = f"embedding_{safe_model_name}"
-    statements.append(f"""CREATE VECTOR INDEX {emb_index_name} IF NOT EXISTS
-FOR (n:Embedding) ON n.`{emb_property_name}` OPTIONS {{ indexConfig: {{
+    label_index_name = f"embedding_{safe_model_name}_label"
+    statements.append(f"""CREATE VECTOR INDEX {label_index_name} IF NOT EXISTS
+FOR (n:LabelEmbedding) ON n.`{emb_property_name}` OPTIONS {{ indexConfig: {{
+ `vector.dimensions`: {dimensions},
+ `vector.similarity_function`: 'cosine'
+}}}};""")
+
+    # 3. CurationEmbedding child node index (curated text-to-term mappings)
+    curated_index_name = f"embedding_{safe_model_name}_curated"
+    statements.append(f"""CREATE VECTOR INDEX {curated_index_name} IF NOT EXISTS
+FOR (n:CurationEmbedding) ON n.`{emb_property_name}` OPTIONS {{ indexConfig: {{
  `vector.dimensions`: {dimensions},
  `vector.similarity_function`: 'cosine'
 }}}};""")

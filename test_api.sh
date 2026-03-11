@@ -11,7 +11,8 @@ EXIT_CODE=0
 
 # some mock embeddings for duo we can use in tests
 export OLS_EMBEDDINGS_PATH=./testcases/embeddings
-
+# test curated text-to-term mappings (SSSOM)
+export OLS4_CURATIONS_PATH=./testcases/curations/*.sssom.tsv
 rm -rf tmp out
 ./dataload.sh
 

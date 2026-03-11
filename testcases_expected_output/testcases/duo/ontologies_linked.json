@@ -27585,6 +27585,18 @@
           "appearsIn": [
             "duo"
           ],
+          "curatedFrom": [
+            {
+              "text": "restricted access dataset",
+              "source": "test-curations",
+              "subjectCategories": [
+                "access_control"
+              ]
+            }
+          ],
+          "curatedFromSources": [
+            "test-curations"
+          ],
           "linkedEntities": {
             "DUO:0000004": {
               "iri": "http://purl.obolibrary.org/obo/DUO_0000004",
@@ -29444,6 +29456,18 @@
           ],
           "appearsIn": [
             "duo"
+          ],
+          "curatedFrom": [
+            {
+              "text": "genomic data sharing",
+              "source": "test-curations",
+              "subjectCategories": [
+                "biomedical"
+              ]
+            }
+          ],
+          "curatedFromSources": [
+            "test-curations"
           ],
           "linkedEntities": {
             "DUO:0000007": {
@@ -33101,6 +33125,18 @@
           ],
           "appearsIn": [
             "duo"
+          ],
+          "curatedFrom": [
+            {
+              "text": "clinical trial data",
+              "source": "test-curations",
+              "subjectCategories": [
+                "clinical"
+              ]
+            }
+          ],
+          "curatedFromSources": [
+            "test-curations"
           ],
           "linkedEntities": {
             "DUO:0000019": {

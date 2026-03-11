@@ -10,6 +10,7 @@ mod curie_map_result;
 mod leveldb;
 mod linker_pass2;
 mod obo_database_url_service;
+mod sssom_literal_mappings;
 
 use leveldb::LevelDB;
 use linker_pass2::run;
@@ -35,6 +36,10 @@ struct Args {
     /// Optional path of LevelDB containing extra mappings (for ORCID etc.)
     #[arg(long = "leveldbPath")]
     leveldb_path: Option<String>,
+
+    /// SSSOM files containing curated text-to-term mappings
+    #[arg(long = "sssom")]
+    sssom_files: Vec<String>,
 }
 
 fn main() {
@@ -61,9 +66,17 @@ fn run_main() -> Result<(), Box<dyn std::error::Error>> {
         None
     };
 
+    // Load SSSOM curated mappings if provided
+    let sssom_map = if !args.sssom_files.is_empty() {
+        eprintln!("Loading {} SSSOM file(s)...", args.sssom_files.len());
+        sssom_literal_mappings::load_sssom_files(&args.sssom_files)?
+    } else {
+        std::collections::HashMap::new()
+    };
+
     // Run linking
     eprintln!("Linking ontology from: {}", args.input);
-    run(&args.input, &args.output, leveldb.as_ref(), &pass1_result)?;
+    run(&args.input, &args.output, leveldb.as_ref(), &pass1_result, &sssom_map)?;
 
     eprintln!("Linking complete. Output written to: {}", args.output);
 

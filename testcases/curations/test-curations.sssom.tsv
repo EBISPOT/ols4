@@ -1,0 +1,7 @@
+#curie_map:
+#  DUO: http://purl.obolibrary.org/obo/DUO_
+#mapping_set_id: https://example.com/test-curations.sssom.tsv
+subject_label	object_id	subject_category
+genomic data sharing	DUO:0000007	biomedical
+clinical trial data	DUO:0000019	clinical
+restricted access dataset	DUO:0000004	access_control

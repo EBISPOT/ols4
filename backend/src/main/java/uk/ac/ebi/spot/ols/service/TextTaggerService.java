@@ -41,13 +41,21 @@ public class TextTaggerService {
         public final String termLabel;
         public final String termIri;
         public final String ontologyId;
+        public final String stringType;
+        public final String source;
+        public final List<String> subjectCategories;
 
-        public TaggedEntity(int start, int end, String termLabel, String termIri, String ontologyId) {
+        public TaggedEntity(int start, int end, String termLabel, String termIri, String ontologyId,
+                            String stringType, String source,
+                            List<String> subjectCategories) {
             this.start = start;
             this.end = end;
             this.termLabel = termLabel;
             this.termIri = termIri;
             this.ontologyId = ontologyId;
+            this.stringType = stringType;
+            this.source = source;
+            this.subjectCategories = subjectCategories;
         }
     }
 
@@ -109,6 +117,21 @@ public class TextTaggerService {
      * @return list of entity matches (empty if service unavailable)
      */
     public List<TaggedEntity> tagText(String text, List<String> priorityOntologyIds, String delimiters, int minLength, boolean includeSubstrings) {
+        return tagText(text, priorityOntologyIds, null, delimiters, minLength, includeSubstrings);
+    }
+
+    /**
+     * Tag free text and return matching ontology entities.
+     *
+     * @param text                the input text to annotate
+     * @param priorityOntologyIds ordered list of ontology IDs (highest priority first), or null for all
+     * @param sources             if non-null/non-empty, only keep matches from these sources (entities with null source are always kept)
+     * @param delimiters          optional delimiter characters for word-boundary matching
+     * @param minLength           minimum matched text length (inclusive); matches shorter than this are dropped
+     * @param includeSubstrings   if false, when one match's span is entirely contained within another's, the shorter is removed
+     * @return list of entity matches (empty if service unavailable)
+     */
+    public List<TaggedEntity> tagText(String text, List<String> priorityOntologyIds, List<String> sources, String delimiters, int minLength, boolean includeSubstrings) {
         if (!available) {
             return Collections.emptyList();
         }
@@ -136,6 +159,7 @@ public class TextTaggerService {
             if (!includeSubstrings) {
                 entities = removeSubstrings(entities);
             }
+            entities = applySourceFilter(entities, sources);
             return applyPriority(entities, priorityOntologyIds);
 
         } catch (IOException e) {
@@ -224,15 +248,36 @@ public class TextTaggerService {
         List<TaggedEntity> results = new ArrayList<>(entities.size());
         for (JsonElement el : entities) {
             JsonObject e = el.getAsJsonObject();
+            String stringType = e.has("string_type") ? e.get("string_type").getAsString() : null;
+            String source = e.has("source") ? e.get("source").getAsString() : null;
+            List<String> subjectCategories = jsonArrayToStringList(e, "subject_categories");
             results.add(new TaggedEntity(
                     e.get("start").getAsInt(),
                     e.get("end").getAsInt(),
                     e.has("term_label") ? e.get("term_label").getAsString() : "",
                     e.has("term_iri")   ? e.get("term_iri").getAsString()   : "",
-                    e.has("ontology_id") ? e.get("ontology_id").getAsString() : ""
+                    e.has("ontology_id") ? e.get("ontology_id").getAsString() : "",
+                    stringType,
+                    source,
+                    subjectCategories
             ));
         }
         return results;
+    }
+
+    private List<String> jsonArrayToStringList(JsonObject obj, String key) {
+        if (!obj.has(key) || obj.get(key).isJsonNull()) {
+            return null;
+        }
+        JsonElement val = obj.get(key);
+        if (!val.isJsonArray()) {
+            return null;
+        }
+        List<String> result = new ArrayList<>();
+        for (JsonElement el : val.getAsJsonArray()) {
+            result.add(el.getAsString());
+        }
+        return result.isEmpty() ? null : result;
     }
 
     // ------------------------------------------------------------------
@@ -280,6 +325,26 @@ public class TextTaggerService {
 
     private static long spanKey(int start, int end) {
         return ((long) start << 32) | (end & 0xFFFFFFFFL);
+    }
+
+    // ------------------------------------------------------------------
+    // Source filtering
+    // ------------------------------------------------------------------
+
+    /**
+     * Keep only entities whose source is in the allowed set.
+     * Entities with a null source (OLS labels) are always kept.
+     */
+    private List<TaggedEntity> applySourceFilter(List<TaggedEntity> entities, List<String> sources) {
+        if (sources == null || sources.isEmpty()) return entities;
+        Set<String> allowed = new HashSet<>(sources);
+        List<TaggedEntity> filtered = new ArrayList<>();
+        for (TaggedEntity e : entities) {
+            if (e.source == null || allowed.contains(e.source)) {
+                filtered.add(e);
+            }
+        }
+        return filtered;
     }
 
     // ------------------------------------------------------------------

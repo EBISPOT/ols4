@@ -29,9 +29,15 @@ fn get_string_column<'a>(col: &'a dyn Array, col_name: &str) -> Result<StringCol
     }
 }
 
+/// A single embedding vector with its string type (LABEL or CURATED).
+pub struct EmbeddingEntry {
+    pub vector: Vec<f32>,
+    pub string_type: String,
+}
+
 pub struct Embeddings {
-    /// Cache of embeddings: key -> list of embedding vectors (multiple per entity)
-    pub embeddings_cache: HashMap<String, Vec<Vec<f32>>>,
+    /// Cache of embeddings: key -> list of embedding entries (multiple per entity)
+    pub embeddings_cache: HashMap<String, Vec<EmbeddingEntry>>,
 }
 
 impl Embeddings {
@@ -73,6 +79,10 @@ impl Embeddings {
                 "iri"
             )?;
 
+            // string_type column is optional (backward compat)
+            let string_type_col = batch.column_by_name("string_type")
+                .and_then(|col| get_string_column(col, "string_type").ok());
+
             let embedding_col = batch
                 .column_by_name("embedding")
                 .ok_or("Missing embedding column")?;
@@ -102,6 +112,10 @@ impl Embeddings {
                 let entity_type = entity_type_col.value(i);
                 let iri = iri_col.value(i);
 
+                let string_type = string_type_col.as_ref()
+                    .map(|col| col.value(i).to_string())
+                    .unwrap_or_else(|| "LABEL".to_string());
+
                 // Extract embedding values - handle both f32 and f64
                 let embedding_array = embedding_list(i);
                 let embedding: Vec<f32> = if let Some(float_array) = embedding_array.as_any().downcast_ref::<Float32Array>() {
@@ -113,7 +127,10 @@ impl Embeddings {
                 };
 
                 let key = Self::make_key(ontology_id, entity_type, iri);
-                self.embeddings_cache.entry(key).or_insert_with(Vec::new).push(embedding);
+                self.embeddings_cache.entry(key).or_insert_with(Vec::new).push(EmbeddingEntry {
+                    vector: embedding,
+                    string_type,
+                });
             }
         }
 
@@ -124,24 +141,47 @@ impl Embeddings {
         format!("{}|{}|{}", ontology_id, entity_type, iri)
     }
 
-    /// Get all embedding vectors for a given entity (multiple per entity: label + synonyms)
-    pub fn get_embeddings(&self, ontology_id: &str, entity_type: &str, iri: &str) -> Option<&Vec<Vec<f32>>> {
+    /// Get all embedding entries for a given entity (multiple per entity: label + synonyms + curations)
+    pub fn get_embeddings(&self, ontology_id: &str, entity_type: &str, iri: &str) -> Option<&Vec<EmbeddingEntry>> {
         let key = Self::make_key(ontology_id, entity_type, iri);
         self.embeddings_cache.get(&key)
     }
 
-    /// Get the mean (average) of all embedding vectors for a given entity
+    /// Get the mean (average) of all LABEL embedding vectors for a given entity (excludes CURATION)
     pub fn get_average_embedding(&self, ontology_id: &str, entity_type: &str, iri: &str) -> Option<Vec<f32>> {
-        let vectors = self.get_embeddings(ontology_id, entity_type, iri)?;
-        if vectors.is_empty() {
+        let entries = self.get_embeddings(ontology_id, entity_type, iri)?;
+        let label_vectors: Vec<&Vec<f32>> = entries.iter()
+            .filter(|e| e.string_type != "CURATION")
+            .map(|e| &e.vector)
+            .collect();
+        if label_vectors.is_empty() {
             return None;
         }
-        Some(mean_vector(vectors))
+        Some(mean_vector_refs(&label_vectors))
     }
 }
 
 /// Compute the element-wise mean of a slice of vectors
 pub fn mean_vector(vectors: &[Vec<f32>]) -> Vec<f32> {
+    if vectors.is_empty() {
+        return Vec::new();
+    }
+    let dim = vectors[0].len();
+    let n = vectors.len() as f32;
+    let mut result = vec![0.0f32; dim];
+    for v in vectors {
+        for (i, &val) in v.iter().enumerate() {
+            result[i] += val;
+        }
+    }
+    for val in &mut result {
+        *val /= n;
+    }
+    result
+}
+
+/// Compute the element-wise mean given a slice of vector references
+fn mean_vector_refs(vectors: &[&Vec<f32>]) -> Vec<f32> {
     if vectors.is_empty() {
         return Vec::new();
     }

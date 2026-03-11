@@ -9,6 +9,7 @@ import {
   getOntologyColor,
   deduplicateEntities,
   TextSegment,
+  getCurationSources,
 } from "../app/tagTextApi";
 
 // ─── Debounce delay for auto-tagging (ms) ────────────────────────────────────
@@ -54,6 +55,12 @@ export default function TagTextBox({
   // Track blacklisted ontologies (completely hidden from results)
   const [blacklistedOntologies, setBlacklistedOntologies] = useState<Set<string>>(new Set());
 
+  // Track disabled sources (all enabled by default)
+  const [disabledSources, setDisabledSources] = useState<Set<string>>(new Set());
+
+  // Available sources fetched from the backend (independent of tag results)
+  const [availableSources, setAvailableSources] = useState<string[]>([]);
+
   // Track the "full" result (no filtering) so we always have the complete ontology list
   const [fullEntities, setFullEntities] = useState<TaggedEntity[]>([]);
 
@@ -96,9 +103,25 @@ export default function TagTextBox({
     return labels;
   }, [fullEntities]);
 
+  // ─── Fetch available sources from backend on mount ─────────
+  useEffect(() => {
+    getCurationSources().then((ds) => setAvailableSources(ds));
+  }, []);
+
+  // Build the list of enabled sources to pass to the API
+  const enabledSources = useMemo(() => {
+    if (availableSources.length === 0) return undefined;
+    if (disabledSources.size === 0) return undefined; // all enabled = no filter
+    const enabled = availableSources.filter((ds) => !disabledSources.has(ds));
+    return enabled.length > 0 ? enabled : undefined;
+  }, [availableSources, disabledSources]);
+
   // ─── Filter out blacklisted ontologies ─────────────────────────────
   const visibleEntities = useMemo(
-    () => allEntities.filter((e) => !blacklistedOntologies.has(e.ontology_id)),
+    () => allEntities.filter((e) => {
+      if (blacklistedOntologies.has(e.ontology_id)) return false;
+      return true;
+    }),
     [allEntities, blacklistedOntologies]
   );
 
@@ -123,7 +146,7 @@ export default function TagTextBox({
       try {
         // If we have no full result yet (first tag) or params changed, do an unfiltered call
         if (forceRefresh || fullEntities.length === 0 || priorityIds.length === 0) {
-          const fullRes = await tagText(text, undefined, ml, inclSub);
+          const fullRes = await tagText(text, undefined, ml, inclSub, enabledSources);
           const deduped = deduplicateEntities(fullRes.entities);
           setFullEntities(deduped);
 
@@ -132,7 +155,7 @@ export default function TagTextBox({
             setAllEntities(deduped);
           } else {
             // Also do a filtered call
-            const filteredRes = await tagText(text, priorityIds, ml, inclSub);
+            const filteredRes = await tagText(text, priorityIds, ml, inclSub, enabledSources);
             setTagResult(filteredRes);
             setAllEntities(deduplicateEntities(filteredRes.entities));
           }
@@ -142,7 +165,8 @@ export default function TagTextBox({
             text,
             priorityIds.length > 0 ? priorityIds : undefined,
             ml,
-            inclSub
+            inclSub,
+            enabledSources
           );
           const deduped = deduplicateEntities(res.entities);
           setTagResult(res);
@@ -159,7 +183,7 @@ export default function TagTextBox({
         setLoading(false);
       }
     },
-    [fullEntities.length, minLength, includeSubstrings]
+    [fullEntities.length, minLength, includeSubstrings, enabledSources]
   );
 
   // Debounced trigger on text change
@@ -180,12 +204,12 @@ export default function TagTextBox({
     }
   }, [ontologyPriority]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Re-tag when minLength or includeSubstrings change
+  // Re-tag when minLength, includeSubstrings, or source selection change
   useEffect(() => {
     if (inputText.trim()) {
       performTagging(inputText, ontologyPriority, minLength, includeSubstrings, true);
     }
-  }, [minLength, includeSubstrings]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [minLength, includeSubstrings, enabledSources]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ─── Drag & drop for text files ────────────────────────────────────
   const onDrop = useCallback(
@@ -321,12 +345,15 @@ export default function TagTextBox({
 
   const downloadCSV = () => {
     if (visibleEntities.length === 0) return;
-    const header = "Matched Text,Term IRI,Term Label,Ontology ID\n";
+    const header = "Matched Text,Term IRI,Term Label,Ontology ID,Match Type,Source,Subject Categories\n";
     const rows = visibleEntities
       .filter((e) => !excludedEntityKeys.has(makeEntityKey(e)))
       .map((e) => {
         const matchedText = displayText.slice(e.start, e.end);
-        return `"${matchedText.replace(/"/g, '""')}","${e.term_iri}","${e.term_label.replace(/"/g, '""')}","${e.ontology_id}"`;
+        const matchType = e.string_type || "LABEL";
+        const source = e.source || "";
+        const categories = e.subject_categories?.join("|") || "";
+        return `"${matchedText.replace(/"/g, '""')}","${e.term_iri}","${e.term_label.replace(/"/g, '""')}","${e.ontology_id}","${matchType}","${source}","${categories}"`;
       })
       .join("\n");
     const blob = new Blob([header + rows], { type: "text/csv" });
@@ -430,6 +457,55 @@ export default function TagTextBox({
           <span>Include substrings</span>
         </label>
       </div>
+
+      {/* Source filters */}
+      {availableSources.length > 0 && (
+        <div className="mt-3 p-3 border border-neutral-200 rounded-lg bg-neutral-50">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-sm font-semibold text-neutral-600">Sources</span>
+            <button
+              className="text-xs text-link-default hover:underline"
+              onClick={() => setDisabledSources(new Set())}
+            >
+              Select all
+            </button>
+            <button
+              className="text-xs text-link-default hover:underline"
+              onClick={() => setDisabledSources(new Set(availableSources))}
+            >
+              Select none
+            </button>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {availableSources.map((ds) => {
+              const enabled = !disabledSources.has(ds);
+              return (
+                <button
+                  key={ds}
+                  className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium border transition-colors ${
+                    enabled
+                      ? "bg-link-default text-white border-link-default hover:bg-link-dark"
+                      : "bg-white text-neutral-400 border-neutral-300 hover:border-neutral-400"
+                  }`}
+                  onClick={() => {
+                    setDisabledSources((prev) => {
+                      const next = new Set(prev);
+                      if (next.has(ds)) {
+                        next.delete(ds);
+                      } else {
+                        next.add(ds);
+                      }
+                      return next;
+                    });
+                  }}
+                >
+                  {ds}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Error */}
       {error && (
@@ -732,6 +808,7 @@ export default function TagTextBox({
                   <th className="text-left px-4 py-2 font-semibold">Term IRI</th>
                   <th className="text-left px-4 py-2 font-semibold">Term Label</th>
                   <th className="text-left px-4 py-2 font-semibold">Ontology</th>
+                  <th className="text-left px-4 py-2 font-semibold">Match Type</th>
                   <th className="px-2 py-2 w-8" title="Include in CSV">
                     <input
                       type="checkbox"
@@ -799,6 +876,18 @@ export default function TagTextBox({
                           />
                           <span className="uppercase">{entity.ontology_id}</span>
                         </span>
+                      </td>
+                      <td className="px-4 py-2">
+                        {entity.string_type === "CURATION" ? (
+                          <span className="inline-flex items-center gap-1">
+                            <span className="inline-block px-1.5 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800">CURATION</span>
+                            {entity.source && (
+                              <span className="text-xs text-neutral-500" title={entity.subject_categories?.join(", ") || ""}>{entity.source}</span>
+                            )}
+                          </span>
+                        ) : (
+                          <span className="inline-block px-1.5 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">LABEL</span>
+                        )}
                       </td>
                       <td className="px-2 py-2 text-center">
                         <input

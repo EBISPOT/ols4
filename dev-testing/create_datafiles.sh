@@ -27,8 +27,10 @@ $SCRIPT_PATH/../dataload/target/release/ols_create_manifest \
     --input "$JSON_PATH" --output "$LINKER_MANIFEST_PATH"
 
 echo linker: link
+SSSOM_FILES=$(find $SCRIPT_PATH/../testcases/curations -name '*.sssom.tsv' 2>/dev/null | tr '\n' ' ')
 $SCRIPT_PATH/../dataload/target/release/ols_link \
-    --manifest "$LINKER_MANIFEST_PATH" --input "$JSON_PATH" --output "$JSON_PATH_LINKED"
+    --manifest "$LINKER_MANIFEST_PATH" --input "$JSON_PATH" --output "$JSON_PATH_LINKED" \
+    ${SSSOM_FILES:+--sssom $SSSOM_FILES}
 
 echo json2neo
 EMBEDDING_PARQUETS=$(find $SCRIPT_PATH/../testcases/embeddings -name '*.parquet' 2>/dev/null | tr '\n' ' ')

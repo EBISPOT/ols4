@@ -11,7 +11,7 @@ pub mod linker_pass1_result;
 pub mod streaming;
 
 pub use defined_fields::DefinedFields;
-pub use embeddings::Embeddings;
+pub use embeddings::{Embeddings, EmbeddingEntry};
 pub use entity_definition::EntityDefinition;
 pub use entity_definition_set::EntityDefinitionSet;
 pub use linker_pass1_result::LinkerPass1Result;

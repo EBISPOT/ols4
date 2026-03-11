@@ -288,6 +288,9 @@ process join_embeddings {
         NULL::VARCHAR  AS label,
         NULL::VARCHAR  AS hash,
         NULL::VARCHAR  AS text_to_embed,
+        NULL::VARCHAR  AS string_type,
+        NULL::VARCHAR  AS curated_from_source,
+        NULL::VARCHAR  AS curated_from_subject_categories,
         NULL::FLOAT[]  AS embedding
       WHERE FALSE
       """
@@ -303,7 +306,8 @@ process join_embeddings {
       WITH
       terms AS (
         SELECT
-          pk, ontology_id, entity_type, iri, label, hash, text_to_embed
+          pk, ontology_id, entity_type, iri, label, hash, text_to_embed,
+          string_type, curated_from_source, curated_from_subject_categories
         FROM read_csv_auto('${terms_tsv}', delim='\\t', quote='', header=true)
       ),
       new_emb AS (
@@ -338,6 +342,9 @@ process join_embeddings {
           t.label,
           t.hash,
           t.text_to_embed,
+          t.string_type,
+          t.curated_from_source,
+          t.curated_from_subject_categories,
           COALESCE(n.embedding, p.embedding) AS embedding
         FROM terms t
         LEFT JOIN new_emb  n ON n.hash = t.hash
@@ -352,6 +359,9 @@ process join_embeddings {
           pt.label,
           pt.hash,
           pt.text_to_embed,
+          pt.string_type,
+          pt.curated_from_source,
+          pt.curated_from_subject_categories,
           pt.embedding
         FROM prev_terms pt
         LEFT JOIN terms t USING (pk)

@@ -256,9 +256,13 @@ public class ClassRepository {
      * When ontologyId is provided, only returns classes defined in that ontology.
      */
     public Page<JsonElement> searchByVector(String modelName, float[] vector, Pageable pageable, String lang, String ontologyId, JsonTransformOptions outputOpts) {
+        return searchByVector(modelName, vector, pageable, lang, ontologyId, outputOpts, true);
+    }
+
+    public Page<JsonElement> searchByVector(String modelName, float[] vector, Pageable pageable, String lang, String ontologyId, JsonTransformOptions outputOpts, boolean includeCurations) {
         if (ontologyId != null) {
             // Delegate to ontology-specific search with isDefiningOntology=true
-            return searchByVectorInOntology(ontologyId, modelName, vector, pageable, lang, true, outputOpts);
+            return searchByVectorInOntology(ontologyId, modelName, vector, pageable, lang, true, outputOpts, includeCurations);
         }
         
         Validation.validateLang(lang);
@@ -277,7 +281,7 @@ public class ClassRepository {
             vectorList.add((double) f);
         }
         
-        return this.neo4jClient.searchByVector("OntologyClass", vectorList, pageable, modelName)
+        return this.neo4jClient.searchByVector("OntologyClass", vectorList, pageable, modelName, includeCurations)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -288,6 +292,10 @@ public class ClassRepository {
      * If isDefiningOntology is false, includes imported classes by matching IRI.
      */
     public Page<JsonElement> searchByVectorInOntology(String ontologyId, String modelName, float[] vector, Pageable pageable, String lang, boolean isDefiningOntology, JsonTransformOptions outputOpts) {
+        return searchByVectorInOntology(ontologyId, modelName, vector, pageable, lang, isDefiningOntology, outputOpts, true);
+    }
+
+    public Page<JsonElement> searchByVectorInOntology(String ontologyId, String modelName, float[] vector, Pageable pageable, String lang, boolean isDefiningOntology, JsonTransformOptions outputOpts, boolean includeCurations) {
         Validation.validateLang(lang);
         Validation.validateOntologyId(ontologyId);
 
@@ -305,7 +313,7 @@ public class ClassRepository {
             vectorList.add((double) f);
         }
         
-        return this.neo4jClient.searchByVectorInOntology("OntologyClass", vectorList, pageable, modelName, ontologyId, isDefiningOntology)
+        return this.neo4jClient.searchByVectorInOntology("OntologyClass", vectorList, pageable, modelName, ontologyId, isDefiningOntology, includeCurations)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }

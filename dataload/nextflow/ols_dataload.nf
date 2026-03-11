@@ -19,10 +19,14 @@ params.embeddings_path = "$OLS_EMBEDDINGS_PATH"
 params.max_rows_per_file = "100000"
 params.dataload_args = System.getenv('OLS4_DATALOAD_ARGS') ?: ''
 params.enable_embeddings = false
+params.enable_curations = false
+params.curations_repo_url = 'https://github.com/mapping-commons/ebi-text-mappings/archive/refs/heads/main.tar.gz'
+params.curations_local_path = ''   // If set, use local SSSOM files instead of downloading (glob pattern)
 
 // Production-only features — disabled by default, enabled via nextflow_prod.config
 params.enable_ftp_copy          = false  // copy tarballs to FTP (requires datamover partition)
 params.enable_ontology_tarballs = false  // create ontology_jsons.tgz and ontology_jsons_linked.tgz
+params.publish_ontology_jsons = false  // publish pigz --best compressed linked ontology JSONs
 params.copy_script     = ''     // path to copy_tarballs.sh on the NFS server
 
 
@@ -68,10 +72,23 @@ workflow {
     status_files = ontology_jsons_and_status.map { id, json, status -> status }.collect()
 
     linker_manifest = linker__create_manifest(ontology_jsons_by_id.map { it[1] }.collect())
-    linked_ontologies_by_id = linker__link_ontologies(linker_manifest, ontology_jsons_by_id)
+
+    // Download curated text-to-term mappings (SSSOM) if enabled
+    if (params.curations_local_path) {
+        sssom_files = Channel.fromPath(params.curations_local_path).collect()
+    } else if (params.enable_curations) {
+        sssom_files = download_curations()
+    } else {
+        sssom_files = Channel.empty().collect()
+    }
+
+    linked_ontologies_by_id = linker__link_ontologies(linker_manifest, ontology_jsons_by_id, sssom_files)
 
     // Build text tagger database from linked ontology JSONs
     all_linked_jsons = linked_ontologies_by_id.map { it[1] }.collect()
+    if (params.publish_ontology_jsons) {
+        publish_ontology_jsons(all_linked_jsons)
+    }
     terms_tsv = extract_strings_from_terms(all_linked_jsons)
     text_tagger_db = build_text_tagger_db(terms_tsv)
 
@@ -231,23 +248,42 @@ process linker__link_ontologies {
     time "4h"
     errorStrategy 'retry'
     maxRetries 5
-    publishDir "${params.out}/ontology_jsons_linked", overwrite: true
 
     input:
     path("linker_manifest.json")
     tuple val(ontology_id), path(ontology_json)
+    path(sssom_files)
 
     output:
     tuple val(ontology_id), path("${ontology_json.name.replace('.json', '_linked.json')}")
 
     script:
+    def sssom_list = (sssom_files instanceof List ? sssom_files : [sssom_files]).findAll { it.name != 'NO_FILE' }
+    def sssom_args = sssom_list ? "--sssom ${sssom_list.join(' ')}" : ''
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
     ols_link \
         --input ${ontology_json} \
         --manifest "linker_manifest.json" \
-        --output "${ontology_json.name.replace('.json', '_linked.json')}"
+        --output "${ontology_json.name.replace('.json', '_linked.json')}" \
+        ${sssom_args}
+    """
+}
+
+process download_curations {
+    cache "lenient"
+    memory { 4.GB }
+    time "30m"
+
+    output:
+    path("mappings/**/*.sssom.tsv")
+
+    script:
+    """
+    #!/usr/bin/env bash
+    set -Eeuo pipefail
+    curl -fsSL '${params.curations_repo_url}' | tar xz --strip-components=1 'ebi-text-mappings-main/mappings'
     """
 }
 
@@ -476,6 +512,27 @@ process create_ontology_jsons_tarball {
     """
 }
 
+process publish_ontology_jsons {
+    cache "lenient"
+    memory { 8.GB }
+    time "1h"
+    publishDir "${params.out}/ontology_jsons_linked", overwrite: true
+
+    input:
+    path(linked_jsons)
+
+    output:
+    path("*.gz")
+
+    script:
+    def json_list = (linked_jsons instanceof List) ? linked_jsons : [linked_jsons]
+    """
+    #!/usr/bin/env bash
+    set -Eeuo pipefail
+    pigz --best --keep ${json_list.join(' ')}
+    """
+}
+
 process create_linked_jsons_tarball {
     cache "lenient"
     memory { 8.GB }
@@ -570,7 +627,13 @@ process check_neo4j_data_exists {
     fi
 
     if [ -e "\$TX_PATH" ]; then
-        echo "✓ Neo4j transaction data exists at: \$TX_PATH" | tee -a neo4j_check.log
+        TX_COUNT=\$(find "\$TX_PATH" -type f | wc -l)
+        if [ "\$TX_COUNT" -gt 0 ]; then
+            echo "✓ Neo4j transaction data exists at: \$TX_PATH (\$TX_COUNT files)" | tee -a neo4j_check.log
+        else
+            echo "✗ ERROR: Neo4j transaction directory exists but is empty: \$TX_PATH" | tee -a neo4j_check.log
+            STATUS=1
+        fi
     else
         echo "✗ ERROR: Neo4j transaction data does not exist at: \$TX_PATH" | tee -a neo4j_check.log
         STATUS=1

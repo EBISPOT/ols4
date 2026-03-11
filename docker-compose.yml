@@ -23,6 +23,12 @@ services:
       environment:
         - NEO4J_AUTH=none
         - JAVA_OPTS=--add-modules jdk.incubator.vector
+      healthcheck:
+        test: ["CMD", "wget", "-q", "--spider", "http://localhost:7474"]
+        interval: 5s
+        timeout: 5s
+        retries: 30
+        start_period: 30s
     ols4-backend:
       user: "${HOST_UID:?}:${HOST_GID:?}"
       image: ${OLS4_BACKEND_IMAGE:-ghcr.io/ebispot/ols4-backend:dev}
@@ -39,8 +45,10 @@ services:
       volumes:
         - ./out/text_tagger_db.bin:/mnt/text_tagger_db.bin:ro
       depends_on:
-        - ols4-solr
-        - ols4-neo4j
+        ols4-solr:
+          condition: service_started
+        ols4-neo4j:
+          condition: service_healthy
       links:
         - ols4-solr
         - ols4-neo4j

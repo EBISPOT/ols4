@@ -1,0 +1,41 @@
+{
+  "entities": [
+    {
+      "end": 20,
+      "ontology_id": "duo",
+      "source": "test-curations",
+      "start": 0,
+      "string_type": "CURATION",
+      "subject_categories": [
+        "biomedical"
+      ],
+      "term_iri": "http://purl.obolibrary.org/obo/DUO_0000007",
+      "term_label": "disease specific research"
+    },
+    {
+      "end": 44,
+      "ontology_id": "duo",
+      "source": "test-curations",
+      "start": 25,
+      "string_type": "CURATION",
+      "subject_categories": [
+        "clinical"
+      ],
+      "term_iri": "http://purl.obolibrary.org/obo/DUO_0000019",
+      "term_label": "publication required"
+    },
+    {
+      "end": 75,
+      "ontology_id": "duo",
+      "source": "test-curations",
+      "start": 50,
+      "string_type": "CURATION",
+      "subject_categories": [
+        "access_control"
+      ],
+      "term_iri": "http://purl.obolibrary.org/obo/DUO_0000004",
+      "term_label": "no restriction"
+    }
+  ],
+  "text": "genomic data sharing for clinical trial data with restricted access dataset"
+}

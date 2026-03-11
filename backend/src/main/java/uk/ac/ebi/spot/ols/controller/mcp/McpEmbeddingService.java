@@ -62,6 +62,7 @@ public class McpEmbeddingService {
         @ToolParam(description = "The natural language query to search for semantically similar entities") String query,
         @ToolParam(description = "The embedding model to use. Must have can_embed=true from listEmbeddingModels.") String model,
         @ToolParam(required=false, description = "Optional ontology ID to filter results") String ontologyId,
+        @ToolParam(required=false, description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") Boolean includeCurations,
         @ToolParam(required=false) Integer pageNum,
         @ToolParam(required=false) Integer pageSize
     ) throws IOException {
@@ -85,10 +86,11 @@ public class McpEmbeddingService {
 
         // Search all entity types using Neo4j vector search
         org.springframework.data.domain.Page<com.google.gson.JsonElement> results;
+        boolean curations = includeCurations == null || includeCurations;
         if (ontologyId != null && !ontologyId.isEmpty()) {
-            results = neo4jClient.searchByVectorInOntology("OntologyEntity", vectorList, pageable, model, ontologyId, true);
+            results = neo4jClient.searchByVectorInOntology("OntologyEntity", vectorList, pageable, model, ontologyId, true, curations);
         } else {
-            results = neo4jClient.searchByVector("OntologyEntity", vectorList, pageable, model);
+            results = neo4jClient.searchByVector("OntologyEntity", vectorList, pageable, model, curations);
         }
 
         // Transform and return results

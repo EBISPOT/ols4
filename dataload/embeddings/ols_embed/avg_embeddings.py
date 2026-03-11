@@ -65,12 +65,28 @@ def main():
         print("ERROR: input parquet must contain 'pk' and 'embedding' columns", file=sys.stderr)
         sys.exit(1)
 
+    # --- filter out CURATION rows (only average LABEL embeddings) ---
+    has_string_type = "string_type" in schema
+    if has_string_type:
+        label_df = (
+            pl.scan_parquet(args.input_parquet)
+            .filter(pl.col("string_type") != "CURATION")
+            .collect()
+        )
+        filtered_parquet = args.input_parquet + ".labels_only.parquet"
+        label_df.write_parquet(filtered_parquet, compression="zstd")
+        del label_df
+        gc.collect()
+        input_parquet = filtered_parquet
+    else:
+        input_parquet = args.input_parquet
+
     # --- load embedding matrix (Arrow zero-copy, like pca.py) ---
-    X, N, D = load_embedding_matrix(args.input_parquet)
+    X, N, D = load_embedding_matrix(input_parquet)
 
     if N == 0:
         # Write an empty parquet preserving schema
-        df = pl.scan_parquet(args.input_parquet).collect()
+        df = pl.scan_parquet(input_parquet).collect()
         df.write_parquet(args.output_parquet, compression="zstd")
         print("Input is empty – wrote empty parquet.")
         return
@@ -78,7 +94,7 @@ def main():
     print(f"Loaded {N} embeddings, D={D}")
 
     # --- load pk column only (Arrow-backed, no Python list) ---
-    pk_series = pl.scan_parquet(args.input_parquet).select("pk").collect()["pk"]
+    pk_series = pl.scan_parquet(input_parquet).select("pk").collect()["pk"]
 
     # Sort by pk to group identical pks together; use Polars for the sort
     # to stay vectorized, then get np indices.
@@ -132,9 +148,12 @@ def main():
     # --- build one-row-per-group metadata (first row of each group) ---
     first_row_indices = sort_indices[group_starts]
 
-    meta_cols = [c for c in schema if c not in ("embedding", "hash", "text_to_embed")]
+    # Read schema from filtered parquet for meta columns
+    filtered_schema = pl.read_parquet_schema(input_parquet)
+    meta_cols = [c for c in filtered_schema if c not in ("embedding", "hash", "text_to_embed",
+                 "string_type", "curated_from_source", "curated_from_subject_categories")]
     meta_df = (
-        pl.scan_parquet(args.input_parquet)
+        pl.scan_parquet(input_parquet)
         .select(meta_cols)
         .collect()
     )[first_row_indices.tolist()]
