@@ -259,7 +259,7 @@ process linker__link_ontologies {
 
     script:
     def sssom_list = (sssom_files instanceof List ? sssom_files : [sssom_files]).findAll { it.name != 'NO_FILE' }
-    def sssom_args = sssom_list ? "--sssom ${sssom_list.join(' ')}" : ''
+    def sssom_args = sssom_list ? sssom_list.collect { "--sssom ${it}" }.join(' ') : ''
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
