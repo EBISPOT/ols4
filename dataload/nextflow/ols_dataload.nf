@@ -277,7 +277,7 @@ process download_curations {
     time "30m"
 
     output:
-    path("mappings/**/*.sssom.tsv")
+    path("mappings/*.sssom.tsv")
 
     script:
     """
