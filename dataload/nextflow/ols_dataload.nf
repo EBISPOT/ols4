@@ -26,7 +26,7 @@ params.curations_local_path = ''   // If set, use local SSSOM files instead of d
 // Production-only features — disabled by default, enabled via nextflow_prod.config
 params.enable_ftp_copy          = false  // copy tarballs to FTP (requires datamover partition)
 params.enable_ontology_tarballs = false  // create ontology_jsons.tgz and ontology_jsons_linked.tgz
-params.publish_ontology_jsons = false  // publish pigz --best compressed linked ontology JSONs
+params.publish_ontology_jsons = false  // publish pigz --best compressed ontology JSONs (linked and unlinked)
 params.copy_script     = ''     // path to copy_tarballs.sh on the NFS server
 
 
@@ -87,7 +87,9 @@ workflow {
     // Build text tagger database from linked ontology JSONs
     all_linked_jsons = linked_ontologies_by_id.map { it[1] }.collect()
     if (params.publish_ontology_jsons) {
-        publish_ontology_jsons(all_linked_jsons)
+        all_unlinked_jsons = ontology_jsons_by_id.map { it[1] }.collect()
+        publish_ontology_jsons(all_unlinked_jsons)
+        publish_ontology_jsons_linked(all_linked_jsons)
     }
     terms_tsv = extract_strings_from_terms(all_linked_jsons)
     text_tagger_db = build_text_tagger_db(terms_tsv)
@@ -184,7 +186,6 @@ process rdf2json {
 
     // Save each ontology JSON to last_run_dir after success, so it can be used as fallback next run
     publishDir params.last_run_dir, mode: 'copy', enabled: params.last_run_dir as boolean, saveAs: { fn -> fn.endsWith('.status.json') ? null : fn }
-    publishDir "${params.out}/ontology_jsons", overwrite: true, saveAs: { fn -> fn.endsWith('.status.json') ? null : fn }
 
     input:
     path(config_path)
@@ -514,6 +515,29 @@ process create_ontology_jsons_tarball {
 
 process publish_ontology_jsons {
     cache "lenient"
+    cpus 4
+    memory { 8.GB }
+    time "1h"
+    publishDir "${params.out}/ontology_jsons", overwrite: true
+
+    input:
+    path(jsons)
+
+    output:
+    path("*.gz")
+
+    script:
+    def json_list = (jsons instanceof List) ? jsons : [jsons]
+    """
+    #!/usr/bin/env bash
+    set -Eeuo pipefail
+    pigz --best --keep --force ${json_list.join(' ')}
+    """
+}
+
+process publish_ontology_jsons_linked {
+    cache "lenient"
+    cpus 4
     memory { 8.GB }
     time "1h"
     publishDir "${params.out}/ontology_jsons_linked", overwrite: true
