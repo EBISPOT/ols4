@@ -529,7 +529,7 @@ process publish_ontology_jsons {
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    pigz --best --keep ${json_list.join(' ')}
+    pigz --best --keep --force ${json_list.join(' ')}
     """
 }
 
