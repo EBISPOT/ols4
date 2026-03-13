@@ -91,18 +91,21 @@ workflow embeddings {
         }
     }
 
-    pca_inputs = join_embeddings.out.combine(Channel.from(params.embeddings_pca_components, 16))
+    pca_inputs = join_embeddings.out.embeddings.combine(Channel.from(params.embeddings_pca_components, 16))
     pca(pca_inputs)
 
     // Average embeddings per term for full-dimension and PCA parquets
-    avg_embeddings(join_embeddings.out.concat( pca.out.pca_parquets ))
+    avg_embeddings(join_embeddings.out.embeddings.concat( pca.out.pca_parquets ))
 
     // Visualise using averaged pca16 embeddings (one point per term)
-    visualize_embeddings(avg_embeddings.out.filter { it[0].endsWith('_pca16_avg') })
+    visualize_embeddings(avg_embeddings.out.avg.filter { it[0].endsWith('_pca16_avg') })
 
     // Use averaged embeddings for semsim (one embedding per term), excluding pca16
-    models_and_parquets = avg_embeddings.out.filter { !it[0].endsWith('_pca16_avg') }
+    models_and_parquets = avg_embeddings.out.avg.filter { !it[0].endsWith('_pca16_avg') }
     run_semsim(models_and_parquets.combine(Channel.from(pairs)), config.semsim_thresholds)
+
+    // Publish per-ontology gzipped parquets for full-dimension and PCA variants
+    publish_per_ontology_parquets(join_embeddings.out.embeddings.concat(pca.out.pca_parquets))
 
     emit:
     // Emit the PCA parquet files (for use in json2neo)
@@ -110,7 +113,7 @@ workflow embeddings {
     // Emit the PCA JSON model files (for loading in the backend)
     pca_jsons = pca.out.pca_jsons
     // Emit averaged parquet files
-    avg_parquets = avg_embeddings.out
+    avg_parquets = avg_embeddings.out.avg
 }
 
 
@@ -263,14 +266,15 @@ process join_embeddings {
   time '4h'
   cpus 32
 
-  publishDir "${params.out}/embeddings", overwrite: true
+  publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.parquet.gz'
 
   input:
   tuple val(model), val(has_prev), path(prev_pq, stageAs: 'prev.parquet'), val(has_new_pq), path(new_pq)
   path terms_tsv
 
   output:
-  tuple val(model), path("${model.split('/')[1]}.parquet")
+  tuple val(model), path("${model.split('/')[1]}.parquet"), emit: embeddings
+  path("${model.split('/')[1]}.parquet.gz")
 
   script:
   def model_short = model.split('/')[1]
@@ -374,6 +378,7 @@ process join_embeddings {
     TO '${model_short}.parquet'
     (FORMAT PARQUET, COMPRESSION ZSTD);
   "
+  pigz --best --keep ${model_short}.parquet
   """
 }
 
@@ -385,7 +390,8 @@ process pca {
     time '4h'
     cpus "32"
 
-    publishDir "${params.out}/embeddings", overwrite: true
+    publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.parquet.gz'
+    publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.json'
 
     input:
     tuple val(model), path(parquet), val(n_components)
@@ -393,12 +399,14 @@ process pca {
     output:
     tuple val("${model}_pca${n_components}"), path("${model.split('/')[1]}_pca${n_components}.parquet"), emit: pca_parquets
     path("${model.split('/')[1]}_pca${n_components}.json"), emit: pca_jsons
+    path("${model.split('/')[1]}_pca${n_components}.parquet.gz")
 
     script:
     """
     python3 /opt/ols_embed/pca.py ${parquet} ${model.split('/')[1]}_pca${n_components}.parquet ${n_components} \
         --pca-model-out ${model.split('/')[1]}_pca${n_components}.joblib \
         --pca-json-out ${model.split('/')[1]}_pca${n_components}.json
+    pigz --best --keep ${model.split('/')[1]}_pca${n_components}.parquet
     """
 }
 
@@ -410,18 +418,20 @@ process avg_embeddings {
     time '4h'
     cpus "32"
 
-    publishDir "${params.out}/embeddings", overwrite: true
+    publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.parquet.gz'
 
     input:
     tuple val(model), path(parquet)
 
     output:
-    tuple val("${model}_avg"), path("${model.split('/')[1]}_avg.parquet")
+    tuple val("${model}_avg"), path("${model.split('/')[1]}_avg.parquet"), emit: avg
+    path("${model.split('/')[1]}_avg.parquet.gz")
 
     script:
     def model_short = model.split('/')[1]
     """
     python3 /opt/ols_embed/avg_embeddings.py ${parquet} ${model_short}_avg.parquet
+    pigz --best --keep ${model_short}_avg.parquet
     """
 }
 
@@ -434,13 +444,16 @@ process visualize_embeddings {
     cpus "32"
     clusterOptions = '--gres=gpu:a100:1'
 
-    publishDir "${params.out}/embeddings", overwrite: true
+    publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.parquet.gz'
+    publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.png'
+    publishDir "${params.out}/embeddings", overwrite: true, pattern: '*_umap_web/'
 
     input:
     tuple val(model), path(parquet)
 
     output:
     path("${model.split('/')[1].replaceAll('_avg$', '')}_umap.parquet")
+    path("${model.split('/')[1].replaceAll('_avg$', '')}_umap.parquet.gz")
     path("${model.split('/')[1].replaceAll('_avg$', '')}_umap.png")
     path("${model.split('/')[1].replaceAll('_avg$', '')}_umap_web/")
 
@@ -453,6 +466,8 @@ process visualize_embeddings {
 
     python3 /opt/ols_embed/convert_umap_to_web.py ${model_short}_umap.parquet \\
         --output-dir ${model_short}_umap_web
+
+    pigz --best --keep ${model_short}_umap.parquet
     """
 }
 
@@ -478,5 +493,36 @@ process run_semsim {
     """
     ols_semsim --parquet ${parquet} --a ${ont_a} --b ${ont_b} --threshold ${threshold} \\
         | pigz --best > ${ont_a}_${ont_b}__${model.split('/')[1]}__${threshold}.tsv.gz
+    """
+}
+
+process publish_per_ontology_parquets {
+
+    container params.embed_image
+    cache "lenient"
+    memory '256 GB'
+    time '2h'
+    cpus "16"
+
+    publishDir "${params.out}/embeddings/${model.split('/')[1]}", overwrite: true
+
+    input:
+    tuple val(model), path(parquet)
+
+    output:
+    path("*.parquet.gz")
+
+    script:
+    """
+    duckdb -c "
+      COPY (SELECT DISTINCT ontology_id FROM read_parquet('${parquet}'))
+      TO '/dev/stdout' (HEADER false, DELIMITER '\t');
+    " | while IFS=\$'\\t' read -r ont_id; do
+      duckdb -c "
+        COPY (SELECT * FROM read_parquet('${parquet}') WHERE ontology_id = '\$ont_id')
+        TO '\$ont_id.parquet' (FORMAT PARQUET, COMPRESSION ZSTD);
+      "
+      pigz --best "\$ont_id.parquet"
+    done
     """
 }
