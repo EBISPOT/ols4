@@ -21,9 +21,7 @@ params.dataload_args = System.getenv('OLS4_DATALOAD_ARGS') ?: ''
 params.enable_embeddings = false
 
 // Production-only features — disabled by default, enabled via nextflow_prod.config
-params.enable_ftp_copy          = false  // copy tarballs to FTP (requires datamover partition)
 params.enable_ontology_tarballs = false  // create ontology_jsons.tgz and ontology_jsons_linked.tgz
-params.copy_script     = ''     // path to copy_tarballs.sh on the NFS server
 
 
 process fetch_configs {
@@ -125,17 +123,6 @@ workflow {
 
     // ── Neo4j data check ────────────────────────────────────────────────────
     check_neo4j_data_exists(neo.neo_dir)
-
-    // ── Copy to FTP (prod only — enabled via params.enable_ftp_copy) ───────
-    if (params.enable_ftp_copy) {
-        copy_tarballs_to_ftp(
-            neo.neo_tgz,
-            solr.solr_tgz,
-            sssom.sssom_tgz,
-            ontology_jsons_tgz,
-            ontology_jsons_linked_tgz
-        )
-    }
 }
 
 
@@ -591,40 +578,6 @@ process check_neo4j_data_exists {
     """
 }
 
-
-// Copies the final tarballs (Neo4j, Solr) to the FTP server.
-// Runs on the 'datamover' SLURM partition — equivalent to Jenkins '-p datamover'.
-// params.copy_script must point to copy_tarballs.sh on the NFS server.
-process copy_tarballs_to_ftp {
-    cache false
-    memory { 16.GB }
-    time "12h"
-
-    publishDir "${params.out}", overwrite: true
-
-    input:
-    path(neo_tgz)
-    path(solr_tgz)
-    path(sssom_tgz)
-    path(ontology_jsons_tgz)
-    path(ontology_jsons_linked_tgz)
-
-    output:
-    path("copy_report.log")
-
-    script:
-    """
-    #!/usr/bin/env bash
-    set -Eeuo pipefail
-    bash ${params.copy_script} \
-        ${neo_tgz} \
-        ${solr_tgz} \
-        ${sssom_tgz} \
-        ${ontology_jsons_tgz} \
-        ${ontology_jsons_linked_tgz} \
-        2>&1 | tee copy_report.log
-    """
-}
 
 // Persists PCA parquets to params.embeddings_path so the next incremental embeddings
 // run can reuse them as a base. Copies to out/ subdir first so Nextflow treats them
