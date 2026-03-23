@@ -509,7 +509,7 @@ process publish_ontology_jsons {
     cache "lenient"
     cpus 4
     memory { 8.GB }
-    time "1h"
+    time "8h"
     publishDir "${params.out}/ontology_jsons", overwrite: true
 
     input:
@@ -531,7 +531,7 @@ process publish_ontology_jsons_linked {
     cache "lenient"
     cpus 4
     memory { 8.GB }
-    time "1h"
+    time "8h"
     publishDir "${params.out}/ontology_jsons_linked", overwrite: true
 
     input:
@@ -552,7 +552,7 @@ process publish_ontology_jsons_linked {
 process create_linked_jsons_tarball {
     cache "lenient"
     memory { 8.GB }
-    time "2h"
+    time "8h"
 
     publishDir "${params.out}", overwrite: true
 
