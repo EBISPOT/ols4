@@ -261,7 +261,7 @@
       "id": "slm",
       "title": "SwissLipids",
       "description": "SwissLipids is a curated resource that provides information about known lipids, including lipid structure, metabolism, interactions, and subcellular and tissue localization. Information is curated from peer-reviewed literature and referenced using established ontologies, and provided with full provenance and evidence codes for curated assertions.",
-      "ontology_purl": "file:///mnt/nfs/local_ontologies/swisslipids.ttl",
+      "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/prod-nextflow/local_ontologies/swisslipids.ttl",
       "preferredPrefix": "SLM",
       "base_uri": [
         "https://swisslipids.org/rdf/SLM_"
@@ -368,7 +368,7 @@
       "base_uri": [
         "http://purl.obolibrary.org/obo/PHI_"
       ],
-      "ontology_purl": "file:///mnt/nfs/local_ontologies/phi.owl"
+      "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/prod-nextflow/local_ontologies/phi.owl"
     },
     {
       "id": "msio",
@@ -523,7 +523,7 @@
         "http://identifiers.org/teddy/TEDDY_"
       ],
       "oboSlims": false,
-      "ontology_purl": "file:///mnt/nfs/local_ontologies/teddy-inferred-fixed.owl"
+      "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/prod-nextflow/local_ontologies/teddy-inferred-fixed.owl"
     },
     {
       "id": "edam",
@@ -758,7 +758,7 @@
         "http://www.probonto.org/core"
       ],
       "oboSlims": false,
-      "ontology_purl": "file:///mnt/nfs/local_ontologies/probonto.ttl"
+      "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/prod-nextflow/local_ontologies/probonto.ttl"
     },
     {
       "id": "pride",
@@ -1259,7 +1259,7 @@
       ],
       "reasoner": "EL",
       "oboSlims": false,
-      "ontology_purl": "file:///mnt/nfs/local_ontologies/snomed-inferred.owl",
+      "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/prod-nextflow/local_ontologies/snomed-inferred.owl",
       "allowDownload": false
     },
     {
@@ -1661,7 +1661,7 @@
         "url": "https://creativecommons.org/licenses/by/4.0/"
       },
       "mailing_list": "https://mailman.mcmaster.ca/mailman/listinfo/card-l",
-      "ontology_purl": "file:///mnt/nfs/local_ontologies/aro.owl",
+      "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/prod-nextflow/local_ontologies/aro.owl",
       "preferredPrefix": "ARO",
       "publications": [
         {

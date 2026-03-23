@@ -2,6 +2,7 @@ package uk.ac.ebi.spot.ols.controller.api.v2;
 
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springdoc.core.annotations.ParameterObject;
 
 import org.eclipse.jetty.client.ProxyProtocolClientConnectionFactory.V2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,9 +86,7 @@ public class V2ClassController {
     @RequestMapping(path = "/classes", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<V2PagedAndFacetedResponse<V2Entity>> getClasses(
             @PageableDefault(size = 20, page = 0)
-            @Parameter(name = "pageable",
-                    description = "Specify the size of the result you want to get in the output",
-                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @ParameterObject Pageable pageable,
             @RequestParam(value = "search", required = false)
             @Parameter(name="search",
                     description = "This parameter specify the search query text.",
@@ -114,11 +113,9 @@ public class V2ClassController {
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
             @RequestParam
-            @Parameter(name="searchProperties",
-                    description = "Specify any other search field here which are not specified by searchFields or boostFields.",
-                    example = "{}") MultiValueMap<String,String> searchProperties,
+            @Parameter(hidden = true) MultiValueMap<String,String> searchProperties,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            JsonTransformOptions outputOpts
+            @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
 
 	Map<String, Collection<String>> properties = new HashMap<>();
@@ -138,9 +135,7 @@ public class V2ClassController {
     @RequestMapping(path = "/ontologies/{onto}/classes", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<V2PagedAndFacetedResponse<V2Entity>> getClasses(
             @PageableDefault(size = 20, page = 0)
-            @Parameter(name = "pageable",
-                    description = "Specify the size of the result you want to get in the output",
-                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @ParameterObject Pageable pageable,
             @PathVariable("onto") @NotNull
             @Parameter(name = "onto",
                     description = "Ontology Id to get the information about.",
@@ -171,11 +166,9 @@ public class V2ClassController {
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
             @RequestParam
-            @Parameter(name="searchProperties",
-                    description = "Specify any other search field here which are not specified by searchFields or boostFields.",
-                    example = "{}") MultiValueMap<String,String> searchProperties,
+            @Parameter(hidden = true) MultiValueMap<String,String> searchProperties,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            JsonTransformOptions outputOpts
+            @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
 
         Map<String,Collection<String>> properties = new HashMap<>();
@@ -202,7 +195,7 @@ public class V2ClassController {
                     description = "The IRI of the class, this value must be double URL encoded",
                     example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_1000967") String iri,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            JsonTransformOptions outputOpts
+            @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
 
         iri = UriUtils.decode(iri, "UTF-8");
@@ -215,9 +208,7 @@ public class V2ClassController {
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}/relatedFrom", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<V2PagedAndFacetedResponse<V2Entity>> getClassRelatedFrom(
             @PageableDefault(size = 20, page = 0)
-            @Parameter(name = "pageable",
-                    description = "Specify the size of the result you want to get in the output",
-                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @ParameterObject Pageable pageable,
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "Ontology Id to get the information about.",
@@ -227,7 +218,7 @@ public class V2ClassController {
                     description = "The IRI of the class, this value must be double URL encoded",
                     example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_1000967") String iri,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            JsonTransformOptions outputOpts
+            @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
 
         iri = UriUtils.decode(iri, "UTF-8");
@@ -242,9 +233,7 @@ public class V2ClassController {
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}/children", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<V2PagedResponse<V2Entity>> getChildrenByOntology(
             @PageableDefault(size = 20, page = 0)
-            @Parameter(name = "pageable",
-                    description = "Specify the size of the result you want to get in the output",
-                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @ParameterObject Pageable pageable,
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "Ontology Id to get the information about.",
@@ -261,7 +250,7 @@ public class V2ClassController {
                     description = "This parameter specify the search query text.",
                     example = "liver disease") String searchQuery,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            JsonTransformOptions outputOpts
+            @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
 
         iri = UriUtils.decode(iri, "UTF-8");
@@ -277,9 +266,7 @@ public class V2ClassController {
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}/ancestors", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<V2PagedResponse<V2Entity>> getAncestorsByOntology(
             @PageableDefault(size = 20, page = 0)
-            @Parameter(name = "pageable",
-                    description = "Specify the size of the result you want to get in the output",
-                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @ParameterObject Pageable pageable,
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "Ontology Id to get the information about.",
@@ -292,7 +279,7 @@ public class V2ClassController {
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            JsonTransformOptions outputOpts
+            @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
 
         iri = UriUtils.decode(iri, "UTF-8");
@@ -309,9 +296,7 @@ public class V2ClassController {
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}/descendants", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<V2PagedResponse<V2Entity>> getDescendantsByOntology(
             @PageableDefault(size = 20, page = 0)
-            @Parameter(name = "pageable",
-                    description = "Specify the size of the result you want to get in the output",
-                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @ParameterObject Pageable pageable,
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "Ontology Id to get the information about.",
@@ -324,7 +309,7 @@ public class V2ClassController {
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            JsonTransformOptions outputOpts
+            @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
 
         iri = UriUtils.decode(iri, "UTF-8");
@@ -341,9 +326,7 @@ public class V2ClassController {
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}/hierarchicalDescendants", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<V2PagedResponse<V2Entity>> getHierarchicalDescendantsByOntology(
             @PageableDefault(size = 20, page = 0)
-            @Parameter(name = "pageable",
-                    description = "Specify the size of the result you want to get in the output",
-                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @ParameterObject Pageable pageable,
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "Ontology Id to get the information about.",
@@ -356,7 +339,7 @@ public class V2ClassController {
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            JsonTransformOptions outputOpts
+            @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
 
         iri = UriUtils.decode(iri, "UTF-8");
@@ -373,9 +356,7 @@ public class V2ClassController {
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}/hierarchicalChildren", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<V2PagedResponse<V2Entity>> getHierarchicalChildrenByOntology(
             @PageableDefault(size = 20, page = 0)
-            @Parameter(name = "pageable",
-                    description = "Specify the size of the result you want to get in the output",
-                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @ParameterObject Pageable pageable,
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "Ontology Id to get the information about.",
@@ -388,7 +369,7 @@ public class V2ClassController {
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            JsonTransformOptions outputOpts
+            @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
 
         iri = UriUtils.decode(iri, "UTF-8");
@@ -404,9 +385,7 @@ public class V2ClassController {
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}/hierarchicalAncestors", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<V2PagedResponse<V2Entity>> getHierarchicalAncestorsByOntology(
             @PageableDefault(size = 20, page = 0)
-            @Parameter(name = "pageable",
-                    description = "Specify the size of the result you want to get in the output",
-                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @ParameterObject Pageable pageable,
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "Ontology Id to get the information about.",
@@ -419,7 +398,7 @@ public class V2ClassController {
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            JsonTransformOptions outputOpts
+            @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
 
         iri = UriUtils.decode(iri, "UTF-8");
@@ -438,9 +417,7 @@ public class V2ClassController {
     @RequestMapping(path = "/ontologies/{onto}/individuals/{individual}/ancestors", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<V2PagedResponse<V2Entity>> getIndividualAncestorsByOntology(
             @PageableDefault(size = 20, page = 0)
-            @Parameter(name = "pageable",
-                    description = "Specify the size of the result you want to get in the output",
-                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @ParameterObject Pageable pageable,
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "Ontology Id to get the information about.",
@@ -453,7 +430,7 @@ public class V2ClassController {
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            JsonTransformOptions outputOpts
+            @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
 
         iri = UriUtils.decode(iri, "UTF-8");

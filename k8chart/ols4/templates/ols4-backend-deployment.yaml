@@ -46,7 +46,7 @@ spec:
             - name: OLS_EMBEDDING_SERVICE_URL
               value: http://wwwdev.ebi.ac.uk/spot/embed
             - name: OLS_EMBEDDING_PCA_MODELS_DIR
-              value: /data/pca_models
+              value: /data
             - name: OLS_TEXT_TAGGER_DB
               value: /data/text_tagger_db.bin
             - name: SERVER_SERVLET_CONTEXT_PATH
@@ -62,4 +62,4 @@ spec:
       volumes:
         - name: embeddings
           persistentVolumeClaim:
-            claimName: {{ include "ols4.fullname" . }}-embeddings
+            claimName: {{ .Release.Name }}-import-pvc

@@ -56,18 +56,18 @@ public class V1SelectController {
             @RequestParam(value = "ontology", required = false)
             @Parameter(name = "ontology",
                     description = "Restrict a search to a set of ontologies e.g. ontology=efo,bfo",
-                    example = "efo,bfo") Collection<String> ontologies,
+                    example = "[\"efo\",\"bfo\"]") Collection<String> ontologies,
             @RequestParam(value = "type", required = false)
             @Parameter(name = "type",
                     description = "Restrict a search to an entity type, one of {class,property,individual,ontology}",
-                    example = "class,property") Collection<String> types,
+                    example = "[\"class\",\"property\"]") Collection<String> types,
             @RequestParam(value = "slim", required = false)
             @Parameter(name = "slim",
                     description = "Restrict a search to an particular set of slims by name") Collection<String> slims,
             @RequestParam(value = "fieldList", required = false)
             @Parameter(name = "fieldList",
                     description = "Specifcy the fields to return, the defaults are {iri,label,short_form,obo_id,ontology_name,ontology_prefix,description,type}",
-                    example = "iri,label,short_form,obo_id,ontology_name") Collection<String> fieldList,
+                    example = "[\"iri\",\"label\",\"short_form\",\"obo_id\",\"ontology_name\"]") Collection<String> fieldList,
             @RequestParam(value = "obsoletes", defaultValue = "false")
             @Parameter(name = "obsoletes",
                     description = "Set to true to include obsoleted terms in the results",
@@ -79,11 +79,11 @@ public class V1SelectController {
             @RequestParam(value = "childrenOf", required = false)
             @Parameter(name = "childrenOf",
                     description = "You can restrict a search to children of a given term. Supply a list of IRI for the terms that you want to search under",
-                    example = "http://www.ebi.ac.uk/efo/EFO_0001421, http://www.ebi.ac.uk/efo/EFO_0004228") Collection<String> childrenOf,
+                    example = "[\"http://www.ebi.ac.uk/efo/EFO_0001421\",\"http://www.ebi.ac.uk/efo/EFO_0004228\"]") Collection<String> childrenOf,
             @RequestParam(value = "allChildrenOf", required = false)
             @Parameter(name = "allChildrenOf",
                     description = "You can restrict a search to all children of a given term. Supply a list of IRI for the terms that you want to search under (subclassOf/is-a plus any hierarchical/transitive properties like 'part of' or 'develops from')",
-                    example = "http://www.ebi.ac.uk/efo/EFO_0001421, http://www.ebi.ac.uk/efo/EFO_0004228") Collection<String> allChildrenOf,
+                    example = "[\"http://www.ebi.ac.uk/efo/EFO_0001421\",\"http://www.ebi.ac.uk/efo/EFO_0004228\"]") Collection<String> allChildrenOf,
             @RequestParam(value = "rows", defaultValue = "10") Integer rows,
             @RequestParam(value = "start", defaultValue = "0") Integer start,
             @RequestParam(value = "lang", defaultValue = "en") String lang,

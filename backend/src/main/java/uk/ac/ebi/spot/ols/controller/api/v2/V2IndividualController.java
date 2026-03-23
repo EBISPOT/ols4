@@ -2,6 +2,7 @@ package uk.ac.ebi.spot.ols.controller.api.v2;
 
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import uk.ac.ebi.spot.ols.controller.api.exception.ResourceNotFoundException;
@@ -42,9 +43,7 @@ public class V2IndividualController {
     @RequestMapping(path = "/individuals", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<V2PagedAndFacetedResponse<V2Entity>> getIndividuals(
             @PageableDefault(size = 20, page = 0)
-            @Parameter(name = "pageable",
-                    description = "Specify the size of the result you want to get in the output",
-                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @ParameterObject Pageable pageable,
             @RequestParam(value = "search", required = false)
             @Parameter(name="search",
                     description = "This parameter specify the search query text.",
@@ -71,11 +70,9 @@ public class V2IndividualController {
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
             @RequestParam
-            @Parameter(name="searchProperties",
-                    description = "Specify any other search field here which are not specified by searchFields or boostFields.",
-                    example = "{}") MultiValueMap<String,String> searchProperties,
+            @Parameter(hidden = true) MultiValueMap<String,String> searchProperties,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            JsonTransformOptions outputOpts
+            @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
 
         Map<String, Collection<String>> properties = new HashMap<>();
@@ -93,9 +90,7 @@ public class V2IndividualController {
     @RequestMapping(path = "/ontologies/{onto}/individuals", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<V2PagedAndFacetedResponse<V2Entity>> getIndividuals(
             @PageableDefault(size = 20, page = 0)
-            @Parameter(name = "pageable",
-            description = "Specify the size of the result you want to get in the output",
-            example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @ParameterObject Pageable pageable,
             @PathVariable("onto") @NotNull
             @Parameter(name = "onto",
                     description = "Ontology Id to search individuals in.",
@@ -126,11 +121,9 @@ public class V2IndividualController {
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
             @RequestParam
-            @Parameter(name="searchProperties",
-                    description = "Specify any other search field here which are not specified by searchFields or boostFields.",
-            example = "{}") MultiValueMap<String,String> searchProperties,
+            @Parameter(hidden = true) MultiValueMap<String,String> searchProperties,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            JsonTransformOptions outputOpts
+            @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
 
         Map<String, Collection<String>> properties = new HashMap<>();
@@ -156,7 +149,7 @@ public class V2IndividualController {
                     description = "The IRI of the individual, this value must be double URL encoded",
                     example = "http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIAO_0000002") String iri,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            JsonTransformOptions outputOpts
+            @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
 
         iri = UriUtils.decode(iri, "UTF-8");
@@ -170,9 +163,7 @@ public class V2IndividualController {
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}/individuals", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<V2PagedResponse<V2Entity>> getClassIndividuals(
             @PageableDefault(size = 20, page = 0)
-            @Parameter(name = "pageable",
-                    description = "Specify the size of the result you want to get in the output",
-                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @ParameterObject Pageable pageable,
             @PathVariable("onto")
             @Parameter(name = "onto",
                     description = "Ontology Id to get the information about.") String ontologyId,
@@ -180,7 +171,7 @@ public class V2IndividualController {
             @Parameter(name = "class",
                     description = "The IRI of the class, this value must be double URL encoded") String classIri,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            JsonTransformOptions outputOpts
+            @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
 
         classIri = UriUtils.decode(classIri, "UTF-8");

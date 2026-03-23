@@ -131,6 +131,35 @@
       "name": "listOntologies"
     },
     {
+      "description": "Get direct children of a class in OLS (one level down in the hierarchy)",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "classIri": {
+            "type": "string"
+          },
+          "lang": {
+            "type": "string"
+          },
+          "ontologyId": {
+            "type": "string"
+          },
+          "pageNum": {
+            "type": "integer"
+          },
+          "pageSize": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "classIri",
+          "ontologyId"
+        ],
+        "type": "object"
+      },
+      "name": "getChildren"
+    },
+    {
       "description": "List available embedding models for LLM-based semantic search. Call this first to discover which models can be used with llmSearch and llmSearchClasses. Returns models with their names and whether they support live embedding.",
       "inputSchema": {
         "additionalProperties": false,

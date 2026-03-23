@@ -475,7 +475,7 @@ public class OlsNeo4jClient {
 			String propertyKey = r.get("propertyKey").asString();
 			// Extract model name by removing the "embeddings_" prefix
 			String modelName = propertyKey.substring("embeddings_".length());
-			if (!models.contains(modelName)) {
+			if (!models.contains(modelName) && !modelName.contains("pca16")) {
 				models.add(modelName);
 			}
 		}

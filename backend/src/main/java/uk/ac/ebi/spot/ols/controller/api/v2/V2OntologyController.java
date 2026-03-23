@@ -2,6 +2,7 @@ package uk.ac.ebi.spot.ols.controller.api.v2;
 
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springdoc.core.annotations.ParameterObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,9 +41,7 @@ public class V2OntologyController {
     @RequestMapping(path = "", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<V2PagedAndFacetedResponse<V2Entity>> getOntologies(
             @PageableDefault(size = 20, page = 0)
-            @Parameter(name = "pageable",
-                    description = "Specify the size of the result you want to get in the output",
-                    example = "{\"page\": 0,\"size\": 20}") Pageable pageable,
+            @ParameterObject Pageable pageable,
             @RequestParam(value = "search", required = false)
             @Parameter(name="search",
                     description = "This parameter specify the search query text.",
@@ -69,11 +68,9 @@ public class V2OntologyController {
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
             @RequestParam
-            @Parameter(name="searchProperties",
-                    description = "Specify any other search field here which are not specified by searchFields or boostFields.",
-                    example = "{}") Map<String, Collection<String>> searchProperties,
+            @Parameter(hidden = true) Map<String, Collection<String>> searchProperties,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            JsonTransformOptions outputOpts
+            @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
 
         Map<String,Collection<String>> properties = new HashMap<>();
@@ -92,7 +89,7 @@ public class V2OntologyController {
     @RequestMapping(path = "/by-tag", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<Map<String, List<V2Entity>>> getOntologiesByTag(
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            JsonTransformOptions outputOpts
+            @ParameterObject JsonTransformOptions outputOpts
     ) throws IOException {
         return new ResponseEntity<>(
                 ontologyRepository.getGroupedByField("tags", lang, outputOpts),
@@ -102,7 +99,7 @@ public class V2OntologyController {
     @RequestMapping(path = "/by-domain", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<Map<String, List<V2Entity>>> getOntologiesByDomain(
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            JsonTransformOptions outputOpts
+            @ParameterObject JsonTransformOptions outputOpts
     ) throws IOException {
         return new ResponseEntity<>(
                 ontologyRepository.getGroupedByField("domain", lang, outputOpts),
@@ -116,7 +113,7 @@ public class V2OntologyController {
                     description = "Ontology Id to get the information about.",
                     example = "efo") String ontologyId,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            JsonTransformOptions outputOpts
+            @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
         logger.trace("ontologyId = {}, lang = {}", ontologyId, lang);
         V2Entity entity = ontologyRepository.getById(ontologyId, lang, outputOpts);

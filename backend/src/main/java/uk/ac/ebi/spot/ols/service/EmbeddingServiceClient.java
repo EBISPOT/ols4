@@ -183,10 +183,13 @@ public class EmbeddingServiceClient {
 
             // Only include PCA models whose base model is available in the service
             for (var entry : pcaModels.entrySet()) {
-                if (serviceModels.contains(entry.getValue().baseModelName)) {
+                if (serviceModels.contains(entry.getValue().baseModelName) && !entry.getKey().contains("pca16")) {
                     models.add(entry.getKey());
                 }
             }
+
+            // Filter out any models with pca16 in the name
+            models.removeIf(m -> m.contains("pca16"));
 
             return models;
         } catch (Exception e) {

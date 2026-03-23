@@ -172,5 +172,6 @@ Stage and commit the updated `testcases_expected_output_api`:
 
 OLS is intended to be run as a containerised application. However, for some debugging scenarios it may be useful to run OLS non-containerised (i.e. outside of Docker). Best effort instructions are provided in [RUNNING_LOCALLY.md](docs/RUNNING_LOCALLY.md), though these may not be suitable for all platforms.
 
-
+# Reasoning
+OLS does not do any OWL reasoning on ontologies at all. The assumption is that ontologies loaded into OLS are pre-reasoned. 
 

@@ -70,22 +70,22 @@ public class V1SearchController {
             @RequestParam(value = "ontology", required = false)
             @Parameter(name = "ontology",
                     description = "Restrict a search to a set of ontologies e.g. ontology=efo,bfo",
-                    example = "efo,bfo") Collection<String> ontologies,
+                    example = "[\"efo\",\"bfo\"]") Collection<String> ontologies,
             @RequestParam(value = "type", required = false)
             @Parameter(name = "type",
                     description = "Restrict a search to an entity type, one of {class,property,individual,ontology}",
-                    example = "class,property") Collection<String> types,
+                    example = "[\"class\",\"property\"]") Collection<String> types,
             @RequestParam(value = "slim", required = false)
             @Parameter(name = "slim",
                     description = "Restrict a search to an particular set of slims by name") Collection<String> slims,
             @RequestParam(value = "fieldList", required = false)
             @Parameter(name = "fieldList",
                     description = "Specify the fields to return, the defaults are {iri,label,short_form,obo_id,ontology_name,ontology_prefix,description,type,exact_synonyms,related_synonyms,narrow_synonyms,broad_synonyms}. Additional synonym field available: {synonym} which returns all synonyms in one array",
-                    example = "iri,label,short_form,obo_id,ontology_name,exact_synonyms,related_synonyms") Collection<String> fieldList,
+                    example = "[\"iri\",\"label\",\"short_form\",\"obo_id\",\"ontology_name\"]") Collection<String> fieldList,
             @RequestParam(value = "queryFields", required = false)
             @Parameter(name = "queryFields",
                     description = "Specify the fields to query, the defaults are {label, synonym, description, short_form, obo_id, annotations, logical_description, iri}",
-                    example = "iri,label,short_form,ontology_name") Collection<String> queryFields,
+                    example = "[\"iri\",\"label\",\"short_form\",\"ontology_name\"]") Collection<String> queryFields,
             @RequestParam(value = "exact", required = false)
             @Parameter(name = "exact",
                     description = "Set to true for exact matches",
@@ -105,11 +105,11 @@ public class V1SearchController {
             @RequestParam(value = "childrenOf", required = false)
             @Parameter(name = "childrenOf",
                     description = "You can restrict a search to children of a given term. Supply a list of IRI for the terms that you want to search under",
-                    example = "http://www.ebi.ac.uk/efo/EFO_0001421, http://www.ebi.ac.uk/efo/EFO_0004228") Collection<String> childrenOf,
+                    example = "[\"http://www.ebi.ac.uk/efo/EFO_0001421\",\"http://www.ebi.ac.uk/efo/EFO_0004228\"]") Collection<String> childrenOf,
             @RequestParam(value = "allChildrenOf", required = false)
             @Parameter(name = "allChildrenOf",
                     description = "You can restrict a search to all children of a given term. Supply a list of IRI for the terms that you want to search under (subclassOf/is-a plus any hierarchical/transitive properties like 'part of' or 'develops from')",
-                    example = "http://www.ebi.ac.uk/efo/EFO_0001421, http://www.ebi.ac.uk/efo/EFO_0004228") Collection<String> allChildrenOf,
+                    example = "[\"http://www.ebi.ac.uk/efo/EFO_0001421\",\"http://www.ebi.ac.uk/efo/EFO_0004228\"]") Collection<String> allChildrenOf,
             @RequestParam(value = "inclusive", required = false) boolean inclusive,
             @RequestParam(value = "isLeaf", required = false) boolean isLeaf,
             @RequestParam(value = "rows", defaultValue = "10") Integer rows,
