@@ -512,9 +512,9 @@ impl<'a> OntologyWriter<'a> {
                             .collect::<Vec<_>>()
                             .join("|");
                         let neo4j_label = if entry.string_type == "CURATION" {
-                            "Embedding;CurationEmbedding".to_string()
+                            "Embedding|CurationEmbedding".to_string()
                         } else {
-                            "Embedding;LabelEmbedding".to_string()
+                            "Embedding|LabelEmbedding".to_string()
                         };
                         emb_rows.push(EmbNodeRow {
                             node_id,

@@ -462,7 +462,7 @@ export default function TagTextBox({
       {availableSources.length > 0 && (
         <div className="mt-3 p-3 border border-neutral-200 rounded-lg bg-neutral-50">
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-sm font-semibold text-neutral-600">Sources</span>
+            <span className="text-sm font-semibold text-neutral-600">Use previous curations from</span>
             <button
               className="text-xs text-link-default hover:underline"
               onClick={() => setDisabledSources(new Set())}
