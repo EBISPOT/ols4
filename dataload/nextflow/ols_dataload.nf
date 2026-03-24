@@ -443,8 +443,8 @@ def basename(filename) {
 
 process extract_strings_from_terms {
     cache "lenient"
-    memory '8 GB'
-    time '1h'
+    memory '32 GB'
+    time '8h'
     cpus "4"
 
     input:
