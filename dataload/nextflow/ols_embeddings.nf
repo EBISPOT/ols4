@@ -301,7 +301,7 @@ process join_embeddings {
     : "SELECT * FROM read_parquet('prev.parquet')"
 
   """
-  duckdb /dev/shm/terms_embedded.duckdb -c "
+  duckdb ./terms_embedded.duckdb -c "
     PRAGMA threads=${task.cpus};
     PRAGMA memory_limit='1200GB';
     PRAGMA temp_directory='.';
