@@ -16,10 +16,15 @@ server.use(/^\/api.*/, async (req, res) => {
   let backendUrl = urlJoin(process.env.OLS_DEV_BACKEND_PROXY_URL, req.originalUrl)
   console.log('forwarding api request to: ' + backendUrl)
   try {
+    const headers = {}
+    if (req.headers['content-type']) {
+      headers['content-type'] = req.headers['content-type']
+    }
     let apiResponse = await fetch(backendUrl, {
       redirect: 'follow',
       method: req.method,
-      body: req.body
+      headers,
+      body: req.method !== 'GET' && req.method !== 'HEAD' ? req : undefined
     })
     res.header('content-type', apiResponse.headers.get('content-type'))
     res.status(apiResponse.status)

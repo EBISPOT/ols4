@@ -21,7 +21,7 @@ import java.util.*;
 
 @Tag(
         name = "V2 Text Tagger Controller",
-        description = "Annotate free text with ontology terms using Aho-Corasick matching"
+        description = "Annotate free text with ontology terms using dictionary based matching over labels, synonyms, and previous curations"
 )
 @RestController
 @RequestMapping("/api/v2")

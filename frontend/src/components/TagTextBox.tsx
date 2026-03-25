@@ -52,6 +52,9 @@ export default function TagTextBox({
   // Track excluded entities (unticked in the terms table)
   const [excludedEntityKeys, setExcludedEntityKeys] = useState<Set<string>>(new Set());
 
+  // Track starred table rows (by group key: matchedText_lower:term_iri:ontology_id)
+  const [starredRows, setStarredRows] = useState<Set<string>>(new Set());
+
   // Track blacklisted ontologies (completely hidden from results)
   const [blacklistedOntologies, setBlacklistedOntologies] = useState<Set<string>>(new Set());
 
@@ -113,7 +116,7 @@ export default function TagTextBox({
     if (availableSources.length === 0) return undefined;
     if (disabledSources.size === 0) return undefined; // all enabled = no filter
     const enabled = availableSources.filter((ds) => !disabledSources.has(ds));
-    return enabled.length > 0 ? enabled : undefined;
+    return enabled;
   }, [availableSources, disabledSources]);
 
   // ─── Filter out blacklisted ontologies ─────────────────────────────
@@ -189,6 +192,9 @@ export default function TagTextBox({
   // Debounced trigger on text change
   useEffect(() => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
+    if (inputText.trim()) {
+      setLoading(true);
+    }
     debounceRef.current = setTimeout(() => {
       performTagging(inputText, ontologyPriority);
     }, AUTO_TAG_DELAY);
@@ -313,47 +319,106 @@ export default function TagTextBox({
 
   // ─── CSV download (respects excluded rows & blacklist) ─────────────
 
-  // Group entities by matched text to detect duplicates
-  const matchedTextGroups = useMemo(() => {
-    const groups: Record<string, string[]> = {};
+  // ─── Deduplicated table rows ─────────────────────────────────────
+  // Group all entities by (matched_text_lowercase, term_iri, ontology_id)
+  // so the table shows each unique mapping only once.
+  interface TableRow {
+    matchedText: string;
+    entity: TaggedEntity;
+    entityKeys: string[];
+  }
+
+  const tableRows: TableRow[] = useMemo(() => {
+    const groups = new Map<string, TableRow>();
     for (const e of visibleEntities) {
-      const text = displayText.slice(e.start, e.end).toLowerCase();
-      const key = makeEntityKey(e);
-      if (!groups[text]) groups[text] = [];
-      groups[text].push(key);
+      const text = displayText.slice(e.start, e.end);
+      const groupKey = `${text.toLowerCase()}:${e.term_iri}:${e.ontology_id}`;
+      const eKey = makeEntityKey(e);
+      const existing = groups.get(groupKey);
+      if (existing) {
+        existing.entityKeys.push(eKey);
+        const types = new Set(existing.entity.string_types || [existing.entity.string_type || "LABEL"]);
+        for (const t of (e.string_types || [e.string_type || "LABEL"])) types.add(t);
+        existing.entity = { ...existing.entity, string_types: Array.from(types) };
+        const srcs = new Set(existing.entity.sources || (existing.entity.source ? [existing.entity.source] : []));
+        for (const s of (e.sources || (e.source ? [e.source] : []))) srcs.add(s);
+        existing.entity = { ...existing.entity, sources: Array.from(srcs) };
+      } else {
+        groups.set(groupKey, { matchedText: text, entity: e, entityKeys: [eKey] });
+      }
     }
-    return groups;
+    return Array.from(groups.values());
   }, [visibleEntities, displayText]);
 
-  // Star an entity: include it, exclude all others with the same matched text
-  const starEntity = (entity: TaggedEntity) => {
-    const text = displayText.slice(entity.start, entity.end).toLowerCase();
-    const group = matchedTextGroups[text] || [];
-    const starredKey = makeEntityKey(entity);
-    setExcludedEntityKeys((prev) => {
-      const next = new Set(prev);
-      for (const k of group) {
-        if (k === starredKey) {
-          next.delete(k);
-        } else {
-          next.add(k);
-        }
-      }
-      return next;
+  // Group table rows by matched text to detect duplicates (for star button)
+  const matchedTextGroups = useMemo(() => {
+    const groups: Record<string, number[]> = {};
+    tableRows.forEach((row, idx) => {
+      const textLower = row.matchedText.toLowerCase();
+      if (!groups[textLower]) groups[textLower] = [];
+      groups[textLower].push(idx);
     });
+    return groups;
+  }, [tableRows]);
+
+  // Make a stable key for a table row
+  const makeRowKey = (row: TableRow) =>
+    `${row.matchedText.toLowerCase()}:${row.entity.term_iri}:${row.entity.ontology_id}`;
+
+  // Star/unstar a table row: toggle starring; when starred, exclude all other rows
+  // with the same matched text; when unstarred, restore them.
+  const starRow = (rowIdx: number) => {
+    const row = tableRows[rowIdx];
+    const rowKey = makeRowKey(row);
+    const textLower = row.matchedText.toLowerCase();
+    const group = matchedTextGroups[textLower] || [];
+    const isCurrentlyStarred = starredRows.has(rowKey);
+
+    if (isCurrentlyStarred) {
+      // Unstar: restore all rows in the group
+      setStarredRows((prev) => { const next = new Set(prev); next.delete(rowKey); return next; });
+      setExcludedEntityKeys((prev) => {
+        const next = new Set(prev);
+        for (const gIdx of group) {
+          for (const k of tableRows[gIdx].entityKeys) next.delete(k);
+        }
+        return next;
+      });
+    } else {
+      // Star: include this row, exclude all others in the group
+      setStarredRows((prev) => {
+        const next = new Set(prev);
+        // Clear any other star in the same group
+        for (const gIdx of group) next.delete(makeRowKey(tableRows[gIdx]));
+        next.add(rowKey);
+        return next;
+      });
+      setExcludedEntityKeys((prev) => {
+        const next = new Set(prev);
+        for (const gIdx of group) {
+          const r = tableRows[gIdx];
+          if (gIdx === rowIdx) {
+            for (const k of r.entityKeys) next.delete(k);
+          } else {
+            for (const k of r.entityKeys) next.add(k);
+          }
+        }
+        return next;
+      });
+    }
   };
 
   const downloadCSV = () => {
-    if (visibleEntities.length === 0) return;
+    if (tableRows.length === 0) return;
     const header = "Matched Text,Term IRI,Term Label,Ontology ID,Match Type,Source,Subject Categories\n";
-    const rows = visibleEntities
-      .filter((e) => !excludedEntityKeys.has(makeEntityKey(e)))
-      .map((e) => {
-        const matchedText = displayText.slice(e.start, e.end);
-        const matchType = e.string_type || "LABEL";
-        const source = e.source || "";
+    const rows = tableRows
+      .filter((row) => !row.entityKeys.every((k) => excludedEntityKeys.has(k)))
+      .map((row) => {
+        const e = row.entity;
+        const matchType = (e.string_types || [e.string_type || "LABEL"]).join("|");
+        const source = (e.sources || (e.source ? [e.source] : [])).join("|");
         const categories = e.subject_categories?.join("|") || "";
-        return `"${matchedText.replace(/"/g, '""')}","${e.term_iri}","${e.term_label.replace(/"/g, '""')}","${e.ontology_id}","${matchType}","${source}","${categories}"`;
+        return `"${row.matchedText.replace(/"/g, '""')}","${e.term_iri}","${e.term_label.replace(/"/g, '""')}","${e.ontology_id}","${matchType}","${source}","${categories}"`;
       })
       .join("\n");
     const blob = new Blob([header + rows], { type: "text/csv" });
@@ -462,7 +527,7 @@ export default function TagTextBox({
       {availableSources.length > 0 && (
         <div className="mt-3 p-3 border border-neutral-200 rounded-lg bg-neutral-50">
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-sm font-semibold text-neutral-600">Use previous curations from</span>
+            <span className="text-sm font-semibold text-neutral-600">Include previous curations from</span>
             <button
               className="text-xs text-link-default hover:underline"
               onClick={() => setDisabledSources(new Set())}
@@ -771,6 +836,13 @@ export default function TagTextBox({
         </div>
       )}
 
+      {/* Loading spinner */}
+      {loading && (
+        <div className="mt-6 flex items-center justify-center">
+          <span className="inline-block w-6 h-6 border-2 border-neutral-300 border-t-link-default rounded-full animate-spin" />
+        </div>
+      )}
+
       {/* No results state */}
       {tagResult && visibleEntities.length === 0 && !loading && (
         <div className="mt-4 p-4 bg-neutral-50 border border-neutral-200 rounded-lg text-neutral-500 text-sm text-center">
@@ -818,7 +890,7 @@ export default function TagTextBox({
                         if (e.target.checked) {
                           setExcludedEntityKeys(new Set());
                         } else {
-                          setExcludedEntityKeys(new Set(visibleEntities.map(makeEntityKey)));
+                          setExcludedEntityKeys(new Set(tableRows.flatMap((r) => r.entityKeys)));
                         }
                       }}
                       title={excludedEntityKeys.size === 0 ? "Exclude all" : "Include all"}
@@ -827,11 +899,11 @@ export default function TagTextBox({
                 </tr>
               </thead>
               <tbody>
-                {visibleEntities.map((entity, i) => {
-                  const matchedText = displayText.slice(entity.start, entity.end);
-                  const key = makeEntityKey(entity);
-                  const isHovered = hoveredEntityKey?.split("|").includes(key);
-                  const isExcluded = excludedEntityKeys.has(key);
+                {tableRows.map((row, i) => {
+                  const { matchedText, entity, entityKeys } = row;
+                  const isHovered = hoveredEntityKey !== null &&
+                    entityKeys.some((k) => hoveredEntityKey.split("|").includes(k));
+                  const isExcluded = entityKeys.every((k) => excludedEntityKeys.has(k));
                   const textLower = matchedText.toLowerCase();
                   const hasDuplicates = (matchedTextGroups[textLower]?.length || 0) > 1;
                   return (
@@ -843,7 +915,7 @@ export default function TagTextBox({
                         isHovered ? "bg-yellow-50" : "hover:bg-neutral-50"
                       }`}
                       onMouseEnter={() => {
-                        setHoveredEntityKey(key);
+                        setHoveredEntityKey(entityKeys.join("|"));
                         setHoveredOntologyId(entity.ontology_id);
                       }}
                       onMouseLeave={() => {
@@ -878,16 +950,17 @@ export default function TagTextBox({
                         </span>
                       </td>
                       <td className="px-4 py-2">
-                        {entity.string_type === "CURATION" ? (
-                          <span className="inline-flex items-center gap-1">
-                            <span className="inline-block px-1.5 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800">CURATION</span>
-                            {entity.source && (
-                              <span className="text-xs text-neutral-500" title={entity.subject_categories?.join(", ") || ""}>{entity.source}</span>
-                            )}
-                          </span>
-                        ) : (
-                          <span className="inline-block px-1.5 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">LABEL</span>
-                        )}
+                        <span className="inline-flex items-center gap-1 flex-wrap">
+                          {(entity.string_types || [entity.string_type || "LABEL"]).includes("LABEL") && (
+                            <span className="inline-block px-1.5 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">LABEL</span>
+                          )}
+                          {(entity.string_types || [entity.string_type || "LABEL"]).includes("CURATION") && (
+                            <span
+                              className="inline-block px-1.5 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800 cursor-default"
+                              title={(entity.sources || (entity.source ? [entity.source] : [])).join(", ")}
+                            >CURATION</span>
+                          )}
+                        </span>
                       </td>
                       <td className="px-2 py-2 text-center">
                         <input
@@ -897,10 +970,13 @@ export default function TagTextBox({
                           onChange={() => {
                             setExcludedEntityKeys((prev) => {
                               const next = new Set(prev);
-                              if (next.has(key)) {
-                                next.delete(key);
-                              } else {
-                                next.add(key);
+                              const allExcluded = entityKeys.every((k) => next.has(k));
+                              for (const k of entityKeys) {
+                                if (allExcluded) {
+                                  next.delete(k);
+                                } else {
+                                  next.add(k);
+                                }
                               }
                               return next;
                             });
@@ -910,9 +986,13 @@ export default function TagTextBox({
                       <td className="px-1 py-2 text-center">
                         {hasDuplicates && (
                           <button
-                            className="text-neutral-300 hover:text-amber-500 transition-colors leading-none"
-                            title="Pick this match and exclude others with the same text"
-                            onClick={() => starEntity(entity)}
+                            className={`transition-colors leading-none ${
+                              starredRows.has(makeRowKey(row))
+                                ? "text-amber-500 hover:text-amber-600"
+                                : "text-neutral-300 hover:text-amber-500"
+                            }`}
+                            title={starredRows.has(makeRowKey(row)) ? "Unstar this match" : "Pick this match and exclude others with the same text"}
+                            onClick={() => starRow(i)}
                           >
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
