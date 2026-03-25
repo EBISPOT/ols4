@@ -6,6 +6,11 @@ metadata:
     app: {{ .Release.Name }}-solr
 spec:
   replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
   selector:
     matchLabels:
       app: {{ .Release.Name }}-solr
@@ -49,16 +54,16 @@ spec:
           args: ["echo Downloading data && rm -rf /data/solr && mkdir /data/solr && cat /data_import/solr.tgz | tar -xz --skip-old-files -C /data/ && echo Starting solr && solr-foreground -a -XX:CompileCommand=exclude,com.github.benmanes.caffeine.cache.BoundedLocalCache::put"]
           resources:
             requests:
-              memory: 15Gi
+              memory: 25Gi
               cpu: 3
             limits:
-              memory: 20Gi
+              memory: 38Gi
               cpu: 4
           env:
             - name: SOLR_HOME
               value: /data
             - name: SOLR_JAVA_MEM
-              value: -Xms2g -Xmx8g
+              value: -Xms24g -Xmx24g
             - name: JAVA_OPTS
               value: --add-modules jdk.incubator.vector
           ports:
