@@ -175,3 +175,22 @@ OLS is intended to be run as a containerised application. However, for some debu
 # Reasoning
 OLS does not do any OWL reasoning on ontologies at all. The assumption is that ontologies loaded into OLS are pre-reasoned. 
 
+## Installation
+```bash
+git clone https://github.com/USER/REPO.git
+cd REPO
+pip install -r requirements.txt
+
+### Agregar sección uso
+```md id="2r5j4k"
+## Usage
+```bash
+python main.py
+
+### Arreglar estructura
+```md id="jol41o"
+## Project Structure
+- src/
+- scripts/
+- docs/
+- tests/
