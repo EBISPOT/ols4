@@ -41,8 +41,14 @@ spec:
           env:
             - name: OLS_SOLR_HOST
               value: http://{{ .Release.Name }}-solr:8983
-            - name: OLS_NEO4J_HOST
-              value: bolt://{{ .Release.Name }}-neo4j:7687
+            - name: OLS_POSTGRES_HOST
+              value: {{ .Release.Name }}-postgres
+            - name: OLS_POSTGRES_PORT
+              value: "5432"
+            - name: OLS_POSTGRES_DB
+              value: ols4
+            - name: OLS_POSTGRES_USER
+              value: postgres
             - name: SERVER_SERVLET_CONTEXT_PATH
               value: /ols4
             - name: SPRING_AI_MCP_SERVER_BASE_URL

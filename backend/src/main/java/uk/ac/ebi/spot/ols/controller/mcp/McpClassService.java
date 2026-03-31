@@ -16,7 +16,7 @@ import uk.ac.ebi.spot.ols.model.mcp.McpClass;
 import uk.ac.ebi.spot.ols.model.mcp.McpPage;
 import uk.ac.ebi.spot.ols.repository.ClassRepository;
 import uk.ac.ebi.spot.ols.repository.EntityRepository;
-import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
+import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 import uk.ac.ebi.spot.ols.service.EmbeddingServiceClient;
 
@@ -33,7 +33,7 @@ public class McpClassService {
     EmbeddingServiceClient embeddingServiceClient;
     
     @Autowired
-    OlsNeo4jClient neo4jClient;
+    OlsPostgresClient neo4jClient;
 
     @Tool(description = "Search all classes in OLS for a query string")
     McpPage<McpClass> searchClasses(

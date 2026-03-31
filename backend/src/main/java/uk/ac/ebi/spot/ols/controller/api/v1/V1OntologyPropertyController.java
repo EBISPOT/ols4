@@ -24,7 +24,7 @@ import org.springframework.web.util.UriUtils;
 import uk.ac.ebi.spot.ols.model.v1.V1Property;
 import uk.ac.ebi.spot.ols.repository.v1.V1JsTreeRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1PropertyRepository;
-import uk.ac.ebi.spot.ols.service.Neo4jClient;
+import uk.ac.ebi.spot.ols.service.PostgresClient;
 
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.Arrays;
@@ -45,7 +45,7 @@ public class V1OntologyPropertyController {
     V1JsTreeRepository jsTreeRepository;
 
     @Autowired
-    Neo4jClient neo4jClient;
+    PostgresClient neo4jClient;
 
     @RequestMapping(path = "/{onto}/properties", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Property>> getAllPropertiesByOntology(

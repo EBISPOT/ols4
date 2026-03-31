@@ -98,11 +98,11 @@ const data: any[] = [
   },
   {
     description:
-      "The neo4j database generated from ontologies_linked.json by the OLS json2neo tool, after creating db indexes (Requires Neo4j community 2025.03.0)",
-    downloadLabel: "neo4j.tgz",
+      "The PostgreSQL database generated from ontologies_linked.json by the OLS json2postgres tool (Requires PostgreSQL 17 with pgvector)",
+    downloadLabel: "postgres.tgz",
     downloadLink:
-      "https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/neo4j.tgz",
-    format: "Neo4j database",
+      "https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/postgres.tgz",
+    format: "PostgreSQL database",
   },
   {
     description:

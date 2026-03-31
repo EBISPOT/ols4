@@ -14,7 +14,7 @@ params.config_files  = ''         // Comma-separated local config paths; if set,
 params.last_run_dir  = ''         // Directory of per-ontology JSONs from last successful run; enables fallback on failure
 params.out = "$OLS_OUT_DIR"
 params.solr_mem = "8g"
-params.neo_mem = "16g"
+params.pg_mem = "4g"
 params.embeddings_path = "$OLS_EMBEDDINGS_PATH"
 params.max_rows_per_file = "100000"
 params.dataload_args = System.getenv('OLS4_DATALOAD_ARGS') ?: ''
@@ -112,7 +112,7 @@ workflow {
         }
     } else if (params.embeddings_path && params.embeddings_path != '' && params.embeddings_path != 'NO_DIR') {
         // Exclude umap parquets — they are visualization-only and have no embedding column
-        // ifEmpty ensures json2neo still runs when the directory exists but has no parquets
+        // ifEmpty ensures json2postgres still runs when the directory exists but has no parquets
         embedding_parquets = Channel.fromPath("${params.embeddings_path}/*.parquet")
             .filter { !it.name.contains('_umap') }
             .collect()
@@ -121,10 +121,10 @@ workflow {
         embedding_parquets = Channel.of(file('NO_FILE'))
     }
 
-    neo_csvs = json2neo(linker_manifest, linked_ontologies_by_id, embedding_parquets)
+    postgres_tsvs = json2postgres(linker_manifest, linked_ontologies_by_id, embedding_parquets)
     solr_jsonls = json2solr(linked_ontologies_by_id)
 
-    neo = create_neo(neo_csvs.collect(), embedding_parquets)
+    pg = create_postgres(postgres_tsvs.collect(), embedding_parquets)
     solr = create_solr(solr_jsonls.collect(), linker_manifest)
 
     // check_api_works(neo.neo_dir, solr.solr_dir)
@@ -141,8 +141,8 @@ workflow {
     // ── SSSOM ───────────────────────────────────────────────────────────────
     sssom = extract_sssom(all_linked_jsons)
 
-    // ── Neo4j data check ────────────────────────────────────────────────────
-    check_neo4j_data_exists(neo.neo_dir)
+    // ── PostgreSQL data check ─────────────────────────────────────────────
+    check_postgres_data_exists(pg.pg_dir)
 }
 
 
@@ -280,7 +280,7 @@ process download_curations {
     """
 }
 
-process json2neo {
+process json2postgres {
     cache "lenient"
     memory { 16.GB + 128.GB * (task.attempt-1) }
     time "8h"
@@ -293,7 +293,7 @@ process json2neo {
     path(embedding_parquets)
 
     output:
-    path("*.csv"), optional: true
+    path("*.tsv"), optional: true
 
     script:
     def parquets = (embedding_parquets instanceof List ? embedding_parquets : [embedding_parquets])
@@ -302,7 +302,7 @@ process json2neo {
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    ols_json2neo \
+    ols_json2postgres \
         --input ${ontology_json} \
         --ontology-id ${ontology_id} \
         --outDir . \
@@ -336,7 +336,7 @@ process json2solr {
     """
 }
 
-process create_neo {
+process create_postgres {
     cache "lenient"
     memory { 16.GB }
     time "8h"
@@ -344,12 +344,12 @@ process create_neo {
     publishDir "${params.out}", overwrite: true
 
     input:
-    path(neo_csvs)
+    path(postgres_tsvs)
     path(embedding_parquets)
 
     output:
-    path("neo4j"), emit: neo_dir
-    path("neo4j.tgz"), emit: neo_tgz
+    path("postgres"), emit: pg_dir
+    path("postgres.tgz"), emit: pg_tgz
 
     script:
     def parquets = (embedding_parquets instanceof List ? embedding_parquets : [embedding_parquets])
@@ -358,9 +358,7 @@ process create_neo {
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    cp -r /opt/neo4j .
-    /opt/ols/dataload/load_into_neo4j.sh ./neo4j . ${params.neo_mem} ${parquet_list}
-    tar -chf neo4j.tgz --use-compress-program="pigz --fast" -C neo4j/data databases transactions
+    /opt/ols/dataload/load_into_postgres.sh ./postgres . ${parquet_list}
     """
 }
 
@@ -608,9 +606,8 @@ process extract_sssom {
     """
 }
 
-// Verifies that the Neo4j database was built and contains data.
-// Equivalent to the Jenkins 'Check Neo4j data exists' stage.
-process check_neo4j_data_exists {
+// Verifies that the PostgreSQL database was built and contains data.
+process check_postgres_data_exists {
     cache "lenient"
     memory { 8.GB }
     time "30m"
@@ -618,49 +615,33 @@ process check_neo4j_data_exists {
     publishDir "${params.out}", overwrite: true
 
     input:
-    path(neo_dir)
+    path(pg_dir)
 
     output:
-    path("neo4j_check.log")
+    path("postgres_check.log")
 
     script:
     """
     #!/usr/bin/env bash
 
-    DB_PATH="${neo_dir}/data/databases/neo4j"
-    TX_PATH="${neo_dir}/data/transactions/neo4j"
-
-    echo "Neo4j Data Check"    | tee neo4j_check.log
-    echo "================" | tee -a neo4j_check.log
+    echo "PostgreSQL Data Check"    | tee postgres_check.log
+    echo "=====================" | tee -a postgres_check.log
 
     STATUS=0
 
-    if [ -d "\$DB_PATH" ] && [ -n "\$(ls -A "\$DB_PATH" 2>/dev/null)" ]; then
-        echo "✓ Neo4j database exists and has files at: \$DB_PATH" | tee -a neo4j_check.log
+    if [ -f "${pg_dir}/postgres.tgz" ] || [ -d "${pg_dir}/data" ]; then
+        echo "✓ PostgreSQL data exists at: ${pg_dir}" | tee -a postgres_check.log
     else
-        echo "✗ ERROR: Neo4j database is missing or empty at: \$DB_PATH" | tee -a neo4j_check.log
+        echo "✗ ERROR: PostgreSQL data is missing at: ${pg_dir}" | tee -a postgres_check.log
         STATUS=1
     fi
 
-    if [ -e "\$TX_PATH" ]; then
-        TX_COUNT=\$(find "\$TX_PATH" -type f | wc -l)
-        if [ "\$TX_COUNT" -gt 0 ]; then
-            echo "✓ Neo4j transaction data exists at: \$TX_PATH (\$TX_COUNT files)" | tee -a neo4j_check.log
-        else
-            echo "✗ ERROR: Neo4j transaction directory exists but is empty: \$TX_PATH" | tee -a neo4j_check.log
-            STATUS=1
-        fi
-    else
-        echo "✗ ERROR: Neo4j transaction logs are missing or empty at: \$TX_PATH" | tee -a neo4j_check.log
-        STATUS=1
-    fi
-
-    echo "================" | tee -a neo4j_check.log
+    echo "=====================" | tee -a postgres_check.log
 
     if [ \$STATUS -eq 0 ]; then
-        echo "STATUS: All Neo4j data exists ✓" | tee -a neo4j_check.log
+        echo "STATUS: PostgreSQL data exists ✓" | tee -a postgres_check.log
     else
-        echo "STATUS: Some Neo4j data is missing ✗" | tee -a neo4j_check.log
+        echo "STATUS: PostgreSQL data is missing ✗" | tee -a postgres_check.log
         exit 1
     fi
     """
