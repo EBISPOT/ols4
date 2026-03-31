@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  {{ .Release.Name }}-postgres
+  labels:
+    app: {{ .Release.Name }}-postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-postgres
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-postgres
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - hh-rke-wp-webadmin-56-worker-2.caas.ebi.ac.uk
+      volumes:
+        - name: {{ .Release.Name }}-postgres-storage
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-postgres-pvc
+        - name: {{ .Release.Name }}-import
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-import-pvc
+      containers:
+        - name: postgres
+          image: pgvector/pgvector:0.8.0-pg17
+          volumeMounts:
+            - mountPath: "/var/lib/postgresql/data"
+              name: {{ .Release.Name }}-postgres-storage
+              subPath: pgdata
+            - mountPath: "/data_import"
+              name: {{ .Release.Name }}-import
+          command: ["/bin/bash", "-c"]
+          args: ["rm -rf /var/lib/postgresql/data/pgdata && mkdir -p /var/lib/postgresql/data/pgdata && cat /data_import/postgres.tgz | tar -xz -C /var/lib/postgresql/data/pgdata/ && docker-entrypoint.sh postgres"]
+          resources:
+            requests:
+              memory: 8Gi
+              cpu: 2
+            limits:
+              memory: 8Gi
+              cpu: 2
+          env:
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+            - name: POSTGRES_HOST_AUTH_METHOD
+              value: trust
+          ports:
+            - containerPort: 5432
