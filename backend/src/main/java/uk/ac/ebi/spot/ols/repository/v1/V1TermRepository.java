@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.model.v1.V1Individual;
 import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 import uk.ac.ebi.spot.ols.model.v1.V1Term;
-import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
+import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.solr.SearchType;
@@ -33,7 +33,7 @@ public class V1TermRepository {
     V1PropertyRepository propertyRepository;
 
     @Autowired
-    OlsNeo4jClient neo4jClient;
+    OlsPostgresClient neo4jClient;
 
     @Autowired
     OlsSolrClient solrClient;

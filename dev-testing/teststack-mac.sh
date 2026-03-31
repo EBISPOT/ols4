@@ -59,11 +59,11 @@ function process_config {
   fi
 }
 
-$OLS4_HOME/dev-testing/clean-neo4j.sh
+$OLS4_HOME/dev-testing/clean-postgres.sh
 $OLS4_HOME/dev-testing/clean-solr.sh
 $OLS4_HOME/dev-testing/start-solr.sh
 
 process_config $config_url $out_dir
 
-$OLS4_HOME/dev-testing/load_test_into_neo4j.sh $out_dir
-$OLS4_HOME/dev-testing/start-neo4j.sh
+$OLS4_HOME/dev-testing/load_test_into_postgres.sh $out_dir
+$OLS4_HOME/dev-testing/start-postgres.sh

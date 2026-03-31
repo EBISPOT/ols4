@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import com.google.gson.JsonElement;
 
 import uk.ac.ebi.spot.ols.model.v2.V2Entity;
-import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
+import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
 import uk.ac.ebi.spot.ols.repository.solr.SearchType;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformer;
@@ -35,7 +35,7 @@ public class PropertyRepository {
     OlsSolrClient solrClient;
 
     @Autowired
-    OlsNeo4jClient neo4jClient;
+    OlsPostgresClient neo4jClient;
 
 
     public OlsFacetedResultsPage<JsonElement> find(

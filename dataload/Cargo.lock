@@ -1195,7 +1195,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "ols_json2neo"
+name = "ols_json2postgres"
 version = "1.0.0"
 dependencies = [
  "arrow",

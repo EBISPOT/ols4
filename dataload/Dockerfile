@@ -28,20 +28,21 @@ RUN addgroup --system --gid 1000 ols && adduser --system --uid 1000 --ingroup ol
 #
 RUN curl https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.9/apache-maven-3.9.9-bin.tar.gz | tar -C /usr/local --strip-components=1 -xzf -
 
-# Extract Neo4j and Solr vanilla installs to /opt/neo4j and /opt/solr
+# Extract Solr vanilla install to /opt/solr
 #
-# We use these only as temporary servers for the dataload. The "real" Neo4j 
-# and Solr servers are the standard images specified in docker-compose.yml
+# We use this only as a temporary server for the dataload. The "real"
+# Solr server is the standard image specified in docker-compose.yml.
 # It is important that the versions match!
 #
-RUN mkdir /opt/neo4j && \
-    curl https://ftp.ebi.ac.uk/pub/databases/spot/mirror/neo4j-community-2025.03.0-unix.tar.gz | tar -xz --strip-components=1 -C /opt/neo4j
-
 RUN mkdir /opt/solr && \
     curl https://ftp.ebi.ac.uk/pub/databases/spot/mirror/solr-9.8.1.tgz | tar -xz --strip-components=1 -C /opt/solr
 
-RUN echo "dbms.security.auth_enabled=false" >> /opt/neo4j/conf/neo4j.conf
-RUN echo "server.jvm.additional=-Dorg.neo4j.kernel.impl.index.schema.GenericNativeIndexPopulator.blockBasedPopulation=true" >> /opt/neo4j/conf/neo4j.conf
+# Install PostgreSQL 17 and pgvector for dataload
+RUN apt-get update -y && apt-get install -y wget gnupg lsb-release libnss-wrapper && \
+    echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
+    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
+    apt-get update -y && \
+    apt-get install -y postgresql-17 postgresql-17-pgvector
 
 # Copy all the code for dataload into /opt/dataload and build the JARs
 #
@@ -70,13 +71,13 @@ RUN cd /opt/ols/dataload && cargo build --release
 RUN cd /opt/ols/text_tagger && cargo build --release
 
 # Install Rust binaries
-RUN cp /opt/ols/dataload/target/release/ols_json2neo /usr/local/bin/ && \
+RUN cp /opt/ols/dataload/target/release/ols_json2postgres /usr/local/bin/ && \
     cp /opt/ols/dataload/target/release/ols_create_manifest /usr/local/bin/ && \
     cp /opt/ols/dataload/target/release/ols_link /usr/local/bin/ && \
     cp /opt/ols/dataload/target/release/ols_json2solr /usr/local/bin/ && \
     cp /opt/ols/dataload/target/release/extract_strings_from_terms /usr/local/bin/ && \
     cp /opt/ols/text_tagger/target/release/ols_text_tagger /usr/local/bin/ && \
-    chmod +x /usr/local/bin/ols_json2neo /usr/local/bin/ols_create_manifest /usr/local/bin/ols_link /usr/local/bin/ols_json2solr /usr/local/bin/extract_strings_from_terms /usr/local/bin/ols_text_tagger
+    chmod +x /usr/local/bin/ols_json2postgres /usr/local/bin/ols_create_manifest /usr/local/bin/ols_link /usr/local/bin/ols_json2solr /usr/local/bin/extract_strings_from_terms /usr/local/bin/ols_text_tagger
 
 # COPY ./backend /opt/ols/backend
 # RUN cd /opt/ols/backend && mvn -T 1C package

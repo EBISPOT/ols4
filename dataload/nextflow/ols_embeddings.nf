@@ -108,7 +108,7 @@ workflow embeddings {
     publish_per_ontology_parquets(join_embeddings.out.embeddings.concat(pca.out.pca_parquets))
 
     emit:
-    // Emit the PCA parquet files (for use in json2neo)
+    // Emit the PCA parquet files (for use in json2postgres)
     pca_parquets = pca.out.pca_parquets
     // Emit the PCA JSON model files (for loading in the backend)
     pca_jsons = pca.out.pca_jsons

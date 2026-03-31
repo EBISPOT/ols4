@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import uk.ac.ebi.spot.ols.controller.api.v2.responses.V2PagedAndFacetedResponse;
 import uk.ac.ebi.spot.ols.model.v2.V2Entity;
 import uk.ac.ebi.spot.ols.repository.OntologyRepository;
-import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
+import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 
 import java.util.Map;
@@ -23,7 +23,7 @@ public class HealthCheckController {
     OntologyRepository ontologyRepository;
 
     @Autowired
-    OlsNeo4jClient neo4jClient;
+    OlsPostgresClient neo4jClient;
     private static final Logger logger = LoggerFactory.getLogger(HealthCheckController.class);
 
     @RequestMapping("/health")

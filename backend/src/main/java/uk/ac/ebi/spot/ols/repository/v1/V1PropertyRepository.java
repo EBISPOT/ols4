@@ -11,7 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.model.v1.V1Property;
 import org.springframework.beans.factory.annotation.Autowired;
-import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
+import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
 import uk.ac.ebi.spot.ols.repository.solr.SearchType;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
 import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
@@ -25,7 +25,7 @@ public class V1PropertyRepository {
     OlsSolrClient solrClient;
 
     @Autowired
-    OlsNeo4jClient neo4jClient;
+    OlsPostgresClient neo4jClient;
 
     @Autowired
     V1OntologyRepository ontologyRepository;
