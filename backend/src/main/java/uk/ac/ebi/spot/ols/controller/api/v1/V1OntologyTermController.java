@@ -26,7 +26,7 @@ import uk.ac.ebi.spot.ols.model.v1.V1Term;
 import uk.ac.ebi.spot.ols.repository.v1.V1GraphRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1JsTreeRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1TermRepository;
-import uk.ac.ebi.spot.ols.service.Neo4jClient;
+import uk.ac.ebi.spot.ols.service.PostgresClient;
 
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.Arrays;
@@ -61,7 +61,7 @@ public class V1OntologyTermController {
     V1GraphRepository graphRepository;
 
     @Autowired
-    Neo4jClient neo4jClient;
+    PostgresClient neo4jClient;
 
 
     @RequestMapping(path = "/{onto}/terms", produces = {MediaType.APPLICATION_JSON_VALUE,

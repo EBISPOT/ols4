@@ -26,7 +26,7 @@ import uk.ac.ebi.spot.ols.model.v1.V1Property;
 import uk.ac.ebi.spot.ols.model.v1.V1Term;
 import uk.ac.ebi.spot.ols.repository.v1.V1IndividualRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1JsTreeRepository;
-import uk.ac.ebi.spot.ols.service.Neo4jClient;
+import uk.ac.ebi.spot.ols.service.PostgresClient;
 
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.Arrays;
@@ -52,7 +52,7 @@ public class V1OntologyIndividualController {
     V1TermAssembler termAssembler;
 
     @Autowired
-    Neo4jClient neo4jClient;
+    PostgresClient neo4jClient;
 
     @Autowired
     V1JsTreeRepository jsTreeRepository;

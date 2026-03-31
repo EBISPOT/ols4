@@ -14,10 +14,7 @@ import uk.ac.ebi.spot.ols.controller.mcp.McpEmbeddingService;
 import uk.ac.ebi.spot.ols.controller.mcp.McpOntologyService;
 import uk.ac.ebi.spot.ols.controller.mcp.McpSearchService;
 
-@SpringBootApplication(exclude = {
-    org.springframework.boot.autoconfigure.data.neo4j.Neo4jDataAutoConfiguration.class,
-    org.springframework.boot.autoconfigure.neo4j.Neo4jAutoConfiguration.class
-})
+@SpringBootApplication
 public class Ols4Backend {
 
     public static void main(String[] args) {

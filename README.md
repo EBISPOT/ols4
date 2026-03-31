@@ -25,7 +25,7 @@ First run the OLS dataload (requires Docker):
 
     OLS4_CONFIG=./dataload/configs/efo.json ./dataload.sh
 
-This will create Solr and Neo4j databases in the `out` directory. Now start the OLS stack:
+This will create Solr and PostgreSQL databases in the `out` directory. Now start the OLS stack:
 
     HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose up
 
@@ -42,13 +42,13 @@ utilized. Software requirements are as follows:
 1. Kubernetes command-line tool, _kubectl_
 2. Kubernetes package manager, _helm_
 
-### Create data archives for Solr and Neo4j
+### Create data archives for Solr and PostgreSQL
 
 First run the OLS dataload (requires Docker):
 
     OLS4_CONFIG=./dataload/configs/efo.json ./dataload.sh
 
-This will create Solr and Neo4j databases in the `out` directory.
+This will create Solr and PostgreSQL databases in the `out` directory.
 
 ### Startup OLS4 deployment
 
@@ -63,14 +63,12 @@ use either the `dev` or `stable` image.
 
 # Developing OLS4
 
-OLS is different to most webapps in that its API provides both full text search and recursive graph queries, neither of
-which are possible and/or performant using traditional RDBMS. It therefore uses two specialized database servers: [**Solr**](https://solr.apache.org), a Lucene server similar to ElasticSearch; and [**Neo4j**](https://neo4j.com), a graph
-database which is also used to store embedding vectors.
+OLS is different to most webapps in that its API provides both full text search and recursive graph queries. It uses two database servers: [**Solr**](https://solr.apache.org), a Lucene server similar to ElasticSearch; and [**PostgreSQL**](https://www.postgresql.org) with [pgvector](https://github.com/pgvector/pgvector), for storing entities, hierarchies, and embedding vectors.
 
 * The `dataload` directory contains the code which turns ontologies from RDF (specified using OWL and/or RDFS) into JSON
-  and CSV datasets which can be loaded into Solr and Neo4j, respectively; and some minimal bash scripts which help with
+  and TSV datasets which can be loaded into Solr and PostgreSQL, respectively; and some minimal bash scripts which help with
   loading them.
-* The `backend` directory contains a Spring Boot application which hosts the OLS API over the above Solr and Neo4j
+* The `backend` directory contains a Spring Boot application which hosts the OLS API over the above Solr and PostgreSQL
   instances
 * The `frontend` directory contains the React frontend built upon the `backend` above.
 
@@ -79,26 +77,26 @@ database which is also used to store embedding vectors.
 ## Running OLS4 components using Docker
 
 You can run OLS4, or any combination of its consistuent parts (dataload, backend, frontend) in Docker. When developing,
-it is often useful to run, for example, just Solr and Neo4j in Docker, while running the API server locally; or to run
-Solr, Neo4j, and the backend API server in Docker while running the frontend locally.
+it is often useful to run, for example, just Solr and PostgreSQL in Docker, while running the API server locally; or to run
+Solr, PostgreSQL, and the backend API server in Docker while running the frontend locally.
 
 First install the latest version of Docker Desktop (or compatible, such as Rancher Desktop) if you are on Mac or Windows. This now includes the `docker compose`
 command. If you are on Linux, make sure you have the `docker compose` plugin
 installed (`apt install docker.io docker-compose-plugin` on Ubuntu).
 
-Then, start up the components you would like to run. For example, Solr and Neo4j only (to develop the backend API server
+Then, start up the components you would like to run. For example, Solr and PostgreSQL only (to develop the backend API server
 and/or frontend):
 
-    docker compose up --force-recreate --build --always-recreate-deps --attach-dependencies ols4-solr ols4-neo4j
+    docker compose up --force-recreate --build --always-recreate-deps --attach-dependencies ols4-solr ols4-postgres
 
-This will start up Solr and Neo4j with your new dataset on ports 8983 and 7474,
-respectively. To start Solr and Neo4j **AND** the backend API server (to develop the frontend):
+This will start up Solr and PostgreSQL with your new dataset on ports 8983 and 5432,
+respectively. To start Solr and PostgreSQL **AND** the backend API server (to develop the frontend):
 
-    docker compose up --force-recreate --build --always-recreate-deps --attach-dependencies ols4-solr ols4-neo4j ols4-backend
+    docker compose up --force-recreate --build --always-recreate-deps --attach-dependencies ols4-solr ols4-postgres ols4-backend
 
 To start everything, including the frontend:
 
-    docker compose up --force-recreate --build --always-recreate-deps --attach-dependencies ols4-solr ols4-neo4j ols4-backend ols4-frontend
+    docker compose up --force-recreate --build --always-recreate-deps --attach-dependencies ols4-solr ols4-postgres ols4-backend ols4-frontend
 
 
 ## Making the tests pass

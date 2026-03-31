@@ -23,7 +23,7 @@ import uk.ac.ebi.spot.ols.repository.ClassRepository;
 import uk.ac.ebi.spot.ols.repository.PropertyRepository;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 import uk.ac.ebi.spot.ols.service.EmbeddingServiceClient;
-import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
+import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -52,7 +52,7 @@ public class V2LLMController {
     EmbeddingServiceClient embeddingServiceClient;
     
     @Autowired
-    OlsNeo4jClient neo4jClient;
+    OlsPostgresClient neo4jClient;
 
     @RequestMapping(path = "/llm_models", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     @Parameter(name = "llm_models",

@@ -1,11 +1,11 @@
 [package]
-name = "ols_json2neo"
+name = "ols_json2postgres"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
 
 [[bin]]
-name = "ols_json2neo"
+name = "ols_json2postgres"
 path = "src/main.rs"
 
 [dependencies]

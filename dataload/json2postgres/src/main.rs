@@ -15,10 +15,10 @@ mod ontology_writer;
 use manifest::{LinkerPass1Result, OntologyManifestInfo, NodeType};
 use ontology_writer::OntologyWriter;
 
-/// JSON to Neo4j CSV converter for OLS4
+/// JSON to PostgreSQL TSV converter for OLS4
 #[derive(Parser, Debug)]
-#[command(name = "ols_json2neo")]
-#[command(about = "Convert OLS JSON to Neo4j CSV format")]
+#[command(name = "ols_json2postgres")]
+#[command(about = "Convert OLS JSON to PostgreSQL TSV format")]
 struct Args {
     /// Ontology ID to process (optional, processes all if not specified)
     #[arg(long)]
@@ -28,7 +28,7 @@ struct Args {
     #[arg(long)]
     input: String,
 
-    /// Output CSV directory path
+    /// Output TSV directory path
     #[arg(long = "outDir")]
     out_dir: String,
 
@@ -43,7 +43,7 @@ struct Args {
 
 fn main() {
     if let Err(e) = run() {
-        eprintln!("ERROR: Failed to convert JSON to CSV");
+        eprintln!("ERROR: Failed to convert JSON to TSV");
         eprintln!("{}", e);
         std::process::exit(1);
     }
@@ -95,8 +95,7 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
         eprintln!("No embeddings parquets provided, skipping embeddings load.");
     }
 
-    // Create converter and run
-    let converter = NeoConverter::new(
+    let converter = PostgresConverter::new(
         args.ontology_id,
         args.input,
         args.out_dir,
@@ -108,7 +107,7 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-struct NeoConverter {
+struct PostgresConverter {
     ontology_id: Option<String>,
     input_file_path: String,
     output_file_path: String,
@@ -116,7 +115,7 @@ struct NeoConverter {
     embeddings: HashMap<String, Embeddings>,
 }
 
-impl NeoConverter {
+impl PostgresConverter {
     fn new(
         ontology_id: Option<String>,
         input_file_path: String,
@@ -185,9 +184,9 @@ impl NeoConverter {
         
         let mut ontology_id: Option<String> = None;
         let mut ontology_properties: serde_json::Map<String, Value> = serde_json::Map::new();
-        let mut classes_processed = false;
-        let mut properties_processed = false;
-        let mut individuals_processed = false;
+        let mut _classes_processed = false;
+        let mut _properties_processed = false;
+        let mut _individuals_processed = false;
         let mut writer: Option<OntologyWriter> = None;
         
         while json.has_next()? {
@@ -235,7 +234,7 @@ impl NeoConverter {
                     
                     let w = writer.as_mut().unwrap();
                     self.process_entity_array_streaming(json, w, "classes")?;
-                    classes_processed = true;
+                    _classes_processed = true;
                 }
                 "properties" => {
                     let ont_id = ontology_id.as_ref().ok_or("properties found before ontologyId")?;
@@ -252,7 +251,7 @@ impl NeoConverter {
                     
                     let w = writer.as_mut().unwrap();
                     self.process_entity_array_streaming(json, w, "properties")?;
-                    properties_processed = true;
+                    _properties_processed = true;
                 }
                 "individuals" => {
                     let ont_id = ontology_id.as_ref().ok_or("individuals found before ontologyId")?;
@@ -269,7 +268,7 @@ impl NeoConverter {
                     
                     let w = writer.as_mut().unwrap();
                     self.process_entity_array_streaming(json, w, "individuals")?;
-                    individuals_processed = true;
+                    _individuals_processed = true;
                 }
                 _ => {
                     // Store other ontology properties (they're usually small)
@@ -295,16 +294,6 @@ impl NeoConverter {
             
             let w = writer.as_mut().unwrap();
             
-            if !classes_processed {
-                w.write_empty_entities("classes")?;
-            }
-            if !properties_processed {
-                w.write_empty_entities("properties")?;
-            }
-            if !individuals_processed {
-                w.write_empty_entities("individuals")?;
-            }
-            
             w.write_ontology(&ontology_properties)?;
             w.finish()?;
             
@@ -320,8 +309,6 @@ impl NeoConverter {
         writer: &mut OntologyWriter,
         entity_type: &str,
     ) -> Result<(), Box<dyn std::error::Error>> {
-        writer.begin_entities(entity_type)?;
-        
         json.begin_array()?;
         
         let mut count = 0;
@@ -341,7 +328,6 @@ impl NeoConverter {
         
         json.end_array()?;
         
-        writer.end_entities(entity_type)?;
         eprintln!("  Finished processing {} {}", count, entity_type);
         
         Ok(())
@@ -359,7 +345,7 @@ impl NeoConverter {
             uri_to_types: HashMap::new(),
         };
         
-        // Apply blacklist to remove properties that shouldn't be in Neo4j
+        // Apply blacklist to remove properties that aren't needed as entity properties
         manifest_info.all_ontology_properties = Self::filter_blacklist(
             self.manifest
                 .ontology_id_to_ontology_properties
@@ -440,7 +426,7 @@ impl NeoConverter {
         manifest_info
     }
     
-    /// Filter out blacklisted properties that shouldn't be stored as Neo4j node properties.
+    /// Filter out blacklisted properties that shouldn't be stored as entity properties.
     fn filter_blacklist(properties: HashSet<String>) -> HashSet<String> {
         let blacklist: HashSet<&str> = [
             DefinedFields::AppearsIn.text(),

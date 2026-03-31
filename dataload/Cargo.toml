@@ -3,7 +3,7 @@ resolver = "2"
 
 members = [
     "ols-shared-rs",
-    "json2neo",
+    "json2postgres",
     "json2solr",
     "linker/create_manifest",
     "linker/link",

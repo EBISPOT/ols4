@@ -18,7 +18,7 @@ import com.google.gson.Gson;
 
 import uk.ac.ebi.spot.ols.model.mcp.McpPage;
 import uk.ac.ebi.spot.ols.model.mcp.McpSearchResult;
-import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
+import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 import uk.ac.ebi.spot.ols.service.EmbeddingServiceClient;
 
@@ -29,7 +29,7 @@ public class McpEmbeddingService {
     EmbeddingServiceClient embeddingServiceClient;
     
     @Autowired
-    OlsNeo4jClient neo4jClient;
+    OlsPostgresClient neo4jClient;
 
     Gson gson = new Gson();
 
