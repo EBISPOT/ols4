@@ -38,7 +38,7 @@ RUN mkdir /opt/solr && \
     curl https://ftp.ebi.ac.uk/pub/databases/spot/mirror/solr-9.8.1.tgz | tar -xz --strip-components=1 -C /opt/solr
 
 # Install PostgreSQL 17 and pgvector for dataload
-RUN apt-get update -y && apt-get install -y wget gnupg lsb-release && \
+RUN apt-get update -y && apt-get install -y wget gnupg lsb-release libnss-wrapper && \
     echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
     apt-get update -y && \

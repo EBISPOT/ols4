@@ -37,6 +37,22 @@ export PGHOST="/tmp"
 # Clean any existing data
 rm -rf "$PG_DATA"
 
+# initdb calls getpwuid() and fails if the current UID has no /etc/passwd entry.
+# This happens in containers run with a mapped UID (e.g. GitHub Actions with -u 1001:1001).
+# Use libnss_wrapper to provide a synthetic passwd entry for the current UID.
+if ! getent passwd "$(id -u)" >/dev/null 2>&1; then
+    NSS_WRAPPER_PASSWD="$(mktemp)"
+    NSS_WRAPPER_GROUP="$(mktemp)"
+    cp /etc/passwd "$NSS_WRAPPER_PASSWD"
+    cp /etc/group  "$NSS_WRAPPER_GROUP"
+    printf 'ols:x:%d:%d:OLS:/tmp:/bin/sh\n' "$(id -u)" "$(id -g)" >> "$NSS_WRAPPER_PASSWD"
+    export NSS_WRAPPER_PASSWD NSS_WRAPPER_GROUP
+    NSS_LIB="$(find /usr -name 'libnss_wrapper.so*' -print -quit 2>/dev/null || true)"
+    if [ -n "$NSS_LIB" ]; then
+        export LD_PRELOAD="$NSS_LIB"
+    fi
+fi
+
 echo "=== Initializing PostgreSQL ==="
 "$PGBIN/initdb" -D "$PG_DATA" --auth=trust --username="$PG_USER" --no-locale --encoding=UTF8
 
