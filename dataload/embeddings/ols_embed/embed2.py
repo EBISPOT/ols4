@@ -43,7 +43,18 @@ def main():
         df.write_parquet(output_parquet)
         return
 
-    model = SentenceTransformer(args.model_name, trust_remote_code=True)
+    n_gpus = torch.cuda.device_count()
+    if n_gpus > 1:
+        print(f"Detected {n_gpus} GPUs — loading with device_map='auto'")
+        model = SentenceTransformer(
+            args.model_name, trust_remote_code=True,
+            model_kwargs={"device_map": "auto"},
+        )
+        encode_device = None
+    else:
+        model = SentenceTransformer(args.model_name, trust_remote_code=True)
+        encode_device = args.device
+
     terms = df["text_to_embed"].to_list()
 
     embeddings = model.encode(
@@ -52,7 +63,7 @@ def main():
         convert_to_numpy=True,
         normalize_embeddings=True,
         batch_size=args.batch_size,
-        device=args.device,
+        device=encode_device,
     )
 
     df = df.with_columns([
