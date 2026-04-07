@@ -10,13 +10,12 @@ import random
 import openai
 from openai import OpenAI
 
-# Control characters that cause OpenAI 400 BadRequestError
-_CONTROL_CHARS_RE = re.compile(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f]')
-
+_CONTROL_CHARS_RE = re.compile(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]')
 
 def _sanitize(text: str) -> str:
-    """Strip control characters that OpenAI rejects."""
+    """Strip control characters that would produce invalid JSON."""
     return _CONTROL_CHARS_RE.sub('', text)
+
 
 def _embed_single_batch(
     client: OpenAI,
@@ -28,11 +27,13 @@ def _embed_single_batch(
     jitter_fraction: float,
 ) -> List[List[float]]:
     """
-    Embed a single batch. On 400 BadRequestError, adaptively split the batch
-    in half and recurse to isolate the offending item(s).  When a single item
-    still triggers a 400, raise so we don't silently return wrong-dimension
-    zero vectors.
+    Send one batch to the API with exponential backoff.
+    On a 400 error (e.g. payload too large / invalid JSON from oversized batch),
+    split the batch in half and recurse, down to a minimum of 1 item.
     """
+    if not batch:
+        return []
+
     retries = 0
     backoff = initial_backoff
 
@@ -44,16 +45,7 @@ def _embed_single_batch(
             )
             return [d.embedding for d in resp.data]
 
-        except openai.BadRequestError as e:
-            if len(batch) == 1:
-                raise  # single item is genuinely bad
-            mid = len(batch) // 2
-            print(f"400 BadRequestError on batch of {len(batch)}. Splitting in half and retrying...")
-            left  = _embed_single_batch(client, batch[:mid], model, max_retries, initial_backoff, max_backoff, jitter_fraction)
-            right = _embed_single_batch(client, batch[mid:], model, max_retries, initial_backoff, max_backoff, jitter_fraction)
-            return left + right
-
-        except openai.RateLimitError as e:
+        except openai.RateLimitError:
             if retries >= max_retries:
                 raise
             sleep = backoff * (1.0 + jitter_fraction * random.random())
@@ -61,6 +53,19 @@ def _embed_single_batch(
             time.sleep(sleep)
             backoff = min(backoff * 2.0, max_backoff)
             retries += 1
+
+        except openai.BadRequestError as e:
+            # 400 often means the payload is too large or contains invalid characters.
+            # Split the batch in half and retry each half independently.
+            if len(batch) == 1:
+                # Single item still fails even after sanitization — re-raise so the
+                # job fails loudly rather than silently writing a wrong-dimension vector.
+                raise
+            half = len(batch) // 2
+            print(f"400 BadRequest on batch of {len(batch)}, splitting into {half} + {len(batch)-half} and retrying...")
+            left  = _embed_single_batch(client, batch[:half], model, max_retries, initial_backoff, max_backoff, jitter_fraction)
+            right = _embed_single_batch(client, batch[half:], model, max_retries, initial_backoff, max_backoff, jitter_fraction)
+            return left + right
 
         except openai.APIStatusError as e:
             if e.status_code >= 500 and retries < max_retries:
@@ -86,7 +91,7 @@ def embed_batch(
     client: OpenAI,
     texts: List[str],
     model: str,
-    batch_size: int = 2000,
+    batch_size: int = 2000,      # typical per-request array cap is ~2k items
     max_retries: int = 100,
     initial_backoff: float = 1.0,
     max_backoff: float = 32.0,
@@ -94,15 +99,27 @@ def embed_batch(
 ) -> List[List[float]]:
     """
     Embed texts in batches with exponential backoff and jitter.
-    Delegates each batch to _embed_single_batch which handles adaptive
-    splitting on BadRequestError.
+
+    SDK notes:
+    - We catch `openai.RateLimitError` (HTTP 429) and `openai.APIStatusError` (4xx/5xx),
+      plus connection/timeout classes. The base class is `openai.APIError`.
+    - The SDK already auto-retries some errors twice by default; to avoid "double
+      retrying", this function disables per-request retries via `.with_options(max_retries=0)`.
+    - On 400 errors (payload too large / control characters), the batch is split
+      in half and retried recursively until it succeeds or reaches a single item.
     """
+    # Sanitize all texts upfront to remove control characters that break JSON.
+    # Replace any term that becomes empty after sanitization with a safe placeholder
+    # (the API rejects empty strings).
+    texts = [_sanitize(t) or '[empty]' for t in texts]
+
     all_embeddings: List[List[float]] = []
 
     for i in range(0, len(texts), batch_size):
         batch = texts[i : i + batch_size]
-        result = _embed_single_batch(client, batch, model, max_retries, initial_backoff, max_backoff, jitter_fraction)
-        all_embeddings.extend(result)
+        all_embeddings.extend(
+            _embed_single_batch(client, batch, model, max_retries, initial_backoff, max_backoff, jitter_fraction)
+        )
 
     return all_embeddings
 
@@ -147,10 +164,6 @@ def main():
         return
 
     terms = df["text_to_embed"].to_list()
-
-    # Sanitize: strip control chars, replace empty strings with placeholder
-    terms = [_sanitize(t) for t in terms]
-    terms = [t if t.strip() else '[empty]' for t in terms]
     
     print(f"Embedding {len(terms)} terms using {args.model_name}...")
     

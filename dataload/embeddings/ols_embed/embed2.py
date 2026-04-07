@@ -45,10 +45,20 @@ def main():
 
     n_gpus = torch.cuda.device_count()
     if n_gpus > 1:
-        print(f"Detected {n_gpus} GPUs — loading with device_map='auto'")
+        # Cap each GPU at 75 GiB so the model is split evenly with headroom
+        # for activations, and nothing gets offloaded to disk/meta.
+        per_gpu = "75GiB"
+        max_mem = {i: per_gpu for i in range(n_gpus)}
+        print(f"Detected {n_gpus} GPUs — loading with device_map='auto', max_memory={max_mem}")
+
+        # SentenceTransformer.__init__ calls self.to(device) after loading,
+        # which conflicts with accelerate's device_map dispatch (tries to
+        # consolidate all params onto one GPU).  Similarly, encode() calls
+        # self.to(self.device).  Disable both by making .to() a no-op.
+        SentenceTransformer.to = lambda self, *a, **kw: self
         model = SentenceTransformer(
             args.model_name, trust_remote_code=True,
-            model_kwargs={"device_map": "auto"},
+            model_kwargs={"device_map": "auto", "max_memory": max_mem},
         )
         encode_device = None
     else:
