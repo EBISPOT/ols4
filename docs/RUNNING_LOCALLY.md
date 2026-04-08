@@ -7,8 +7,7 @@ Software requirements are as follows:
 
 1. Java 21. Later versions of Java are probably fine.
 2. Maven 3.x.x
-3. PostgreSQL 17 with pgvector
-4. Solr 9.8.1
+3. PostgreSQL 16 with pgvector
 
 ### Acquire source and build
 
@@ -29,15 +28,13 @@ Build frontend:
 
 The scripts below assume you have the following environment variables set:
 
-`SOLR_HOME`
-
 `OLS4_HOME` - this should point to the root folder where you have the OLS4 code.
 
 Change the directory to $OLS4_HOME.
 
     cd $OLS4_HOME
 
-To load a testcase and start PostgreSQL and Solr, run:
+To load a testcase and start PostgreSQL, run:
 
     ./dev-testing/teststack.sh <rel_json_config_url> <rel_output_dir>
 
@@ -54,7 +51,7 @@ If you need to set the Java heap size, you can set the environment the JAVA_OPTS
 
      export JAVA_OPTS="-Xms5G -Xmx10G"
 
-Once PostgreSQL and Solr is up, to start the backend (REST API) you can run:
+Once PostgreSQL is up, to start the backend (REST API) you can run:
 
     ./dev-testing/start-backend.sh
 
@@ -62,9 +59,9 @@ Once the backend is up, you can start the frontend with:
 
     ./dev-testing/start-frontend.sh
 
-Once you are done testing, to stop everything:
+Once you are done testing, to stop PostgreSQL:
 
-    ./dev-testing/stopPostgresSolr.sh
+    ./dev-testing/stop-postgres.sh
 
 
 ### Running the dataload locally
@@ -120,72 +117,18 @@ Use the `load_into_postgres.sh` script to initialize a PostgreSQL instance and b
 
     ./load_into_postgres.sh <LOCAL_DIR>/postgres_out <LOCAL_DIR>/output_tsv/
 
-#### Convert JSON output to Solr JSON
+#### Create data archive for PostgreSQL
 
-    ols_json2solr \
-    --input <LOCAL_DIR>/output_json/ontologies_linked.json \
-    --outDir <LOCAL_DIR>/output_jsonl/
-
-#### Update Solr indexes
-
-Before running Solr, make sure to copy the configuration (`solr_config`) from inside `dataload` directory to local, e.g., `<SOLR_DIR>/server/solr/`.
-Then, start Solr locally and use the generated JSON files to update. See sample commands below:
-
-    wget \
-    --method POST --no-proxy -O - --server-response --content-on-error=on \
-    --header="Content-Type: application/json" \
-    --body-file <LOCAL_DIR>/output_jsonl/ontologies.jsonl \
-    http://localhost:8983/solr/ols4_entities/update/json/docs?commit=true
-    
-    wget \
-    --method POST --no-proxy -O - --server-response --content-on-error=on \
-    --header="Content-Type: application/json" \
-    --body-file <LOCAL_DIR>/output_jsonl/classes.jsonl \
-    http://localhost:8983/solr/ols4_entities/update/json/docs?commit=true
-    
-    wget --method POST --no-proxy -O - --server-response --content-on-error=on \
-    --header="Content-Type: application/json" \
-    --body-file <LOCAL_DIR>/output_jsonl/properties.jsonl \
-    http://localhost:8983/solr/ols4_entities/update/json/docs?commit=true
-    
-    wget --method POST --no-proxy -O - --server-response --content-on-error=on \
-    --header="Content-Type: application/json" \
-    --body-file <LOCAL_DIR>/output_jsonl/individuals.jsonl \
-    http://localhost:8983/solr/ols4_entities/update/json/docs?commit=true
-    
-    wget --method POST --no-proxy -O - --server-response --content-on-error=on \
-    --header="Content-Type: application/json" \
-    --body-file <LOCAL_DIR>/output_jsonl/autocomplete.jsonl \
-    http://localhost:8983/solr/ols4_autocomplete/update/json/docs?commit=true
-
-Update `ols4_entities` core:
-
-    wget --no-proxy -O - --server-response --content-on-error=on \
-    http://localhost:8983/solr/ols4_entities/update?commit=true
-
-Update `ols4_autocomplete` core:
-
-    wget --no-proxy -O - --server-response --content-on-error=on \
-    http://localhost:8983/solr/ols4_autocomplete/update?commit=true
-
-After updating the indexes, stop Solr as needed.
-
-#### Create data archives for Solr and PostgreSQL
-
-Finally, create archives for both Solr and PostgreSQL data folders.
+Finally, create an archive of the PostgreSQL data folder.
 
     tar --use-compress-program="pigz --fast --recursive" \
     -cf <LOCAL_DIR>/postgres.tgz -C <LOCAL_DIR>/postgres_out/data .
 
-    tar --use-compress-program="pigz --fast --recursive" \
-    -cf <LOCAL_DIR>/solr.tgz -C <LOCAL_DIR>/solr/server solr
-
 ### Running the API server backend locally
 
 The API server Spring Boot application located in `backend`. Set the following environment variables to point it at your
-local (Dockerized) Solr and PostgreSQL servers:
+local (Dockerized) PostgreSQL server:
 
-    OLS_SOLR_HOST=http://localhost:8983
     OLS_POSTGRES_HOST=localhost
     OLS_POSTGRES_PORT=5432
 

@@ -4,7 +4,6 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springdoc.core.annotations.ParameterObject;
 
-import org.eclipse.jetty.client.ProxyProtocolClientConnectionFactory.V2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import uk.ac.ebi.spot.ols.controller.api.exception.ResourceNotFoundException;

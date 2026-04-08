@@ -45,7 +45,7 @@ public class V1OntologyPropertyController {
     V1JsTreeRepository jsTreeRepository;
 
     @Autowired
-    PostgresClient neo4jClient;
+    PostgresClient postgresClient;
 
     @RequestMapping(path = "/{onto}/properties", produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     HttpEntity<PagedModel<V1Property>> getAllPropertiesByOntology(

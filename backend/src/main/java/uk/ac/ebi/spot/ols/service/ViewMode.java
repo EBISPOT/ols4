@@ -10,14 +10,14 @@ public enum ViewMode {
     PREFERRED_ROOTS("PreferredRoots", "PreferredRootTerm", "Preferred root terms");
 
     private final String shortName;
-    private final String neo4jLabel;
+    private final String entityLabel;
     private final String displayString;
 
     private static final Map<String, ViewMode> ENUM_MAP;
 
-    private ViewMode(String shortName, String neo4jLabel, String displayString) {
+    private ViewMode(String shortName, String entityLabel, String displayString) {
         this.shortName = shortName;
-        this.neo4jLabel = neo4jLabel;
+        this.entityLabel = entityLabel;
         this.displayString = displayString;
     }
 
@@ -25,8 +25,8 @@ public enum ViewMode {
         return shortName;
     }
 
-    public String getNeo4jLabel() {
-        return neo4jLabel;
+    public String getEntityLabel() {
+        return entityLabel;
     }
 
     public String getDisplayString() {

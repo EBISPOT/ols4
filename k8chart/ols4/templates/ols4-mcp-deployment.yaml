@@ -39,8 +39,6 @@ spec:
               memory: 50Gi
               cpu: 2
           env:
-            - name: OLS_SOLR_HOST
-              value: http://{{ .Release.Name }}-solr:8983
             - name: OLS_POSTGRES_HOST
               value: {{ .Release.Name }}-postgres
             - name: OLS_POSTGRES_PORT

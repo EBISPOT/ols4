@@ -31,7 +31,7 @@ public class McpSearchService {
     EmbeddingServiceClient embeddingServiceClient;
     
     @Autowired
-    OlsPostgresClient neo4jClient;
+    OlsPostgresClient postgresClient;
 
     Gson gson = new Gson();
 

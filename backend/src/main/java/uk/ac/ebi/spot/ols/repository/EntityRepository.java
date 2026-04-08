@@ -8,12 +8,12 @@ import org.springframework.stereotype.Component;
 
 import com.google.gson.JsonElement;
 
-import uk.ac.ebi.spot.ols.repository.solr.SearchType;
+import uk.ac.ebi.spot.ols.repository.search.SearchType;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformer;
-import uk.ac.ebi.spot.ols.repository.solr.OlsFacetedResultsPage;
-import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
-import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
+import uk.ac.ebi.spot.ols.repository.search.OlsFacetedResultsPage;
+import uk.ac.ebi.spot.ols.repository.search.OlsSearchQuery;
+import uk.ac.ebi.spot.ols.repository.search.OlsSearchClient;
 import uk.ac.ebi.spot.ols.repository.helpers.DynamicFilterParser;
 import uk.ac.ebi.spot.ols.repository.helpers.SearchFieldsParser;
 
@@ -26,7 +26,7 @@ import java.util.Map;
 public class EntityRepository {
 
     @Autowired
-    OlsSolrClient solrClient;
+    OlsSearchClient searchClient;
 
 
     public OlsFacetedResultsPage<JsonElement> find(
@@ -34,7 +34,7 @@ public class EntityRepository {
 
         Validation.validateLang(lang);
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
         query.setSearchText(search);
         query.setExactMatch(exactMatch);
 
@@ -53,7 +53,7 @@ public class EntityRepository {
         SearchFieldsParser.addFacetFieldsToQuery(query, facetFields);
         DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
 
-        return solrClient.searchSolrPaginated(query, pageable)
+        return searchClient.searchPaginated(query, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -73,7 +73,7 @@ public class EntityRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
         query.setSearchText(search);
         query.setExactMatch(exactMatch);
 
@@ -88,7 +88,7 @@ public class EntityRepository {
         SearchFieldsParser.addFacetFieldsToQuery(query, facetFields);
         DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
 
-        return solrClient.searchSolrPaginated(query, pageable)
+        return searchClient.searchPaginated(query, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -98,13 +98,13 @@ public class EntityRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
 
         query.addFilter("type", List.of("entity"), SearchType.WHOLE_FIELD);
         query.addFilter("ontologyId", List.of(ontologyId), SearchType.CASE_INSENSITIVE_TOKENS);
         query.addFilter("iri", List.of(iri), SearchType.WHOLE_FIELD);
 
-        JsonElement result = solrClient.getFirst(query);
+        JsonElement result = searchClient.getFirst(query);
         if (result == null) {
             return null;
         }
@@ -133,14 +133,14 @@ public class EntityRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        // Query Solr for entities that have this entity in their relatedTo field
+        // Query for entities that have this entity in their relatedTo field
         // Since relatedFrom = entities that have relatedTo pointing to this entity
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
         query.addFilter("type", List.of("entity"), SearchType.WHOLE_FIELD);
         query.addFilter("ontologyId", List.of(ontologyId), SearchType.CASE_INSENSITIVE_TOKENS);
         query.addFilter("relatedTo", List.of(iri), SearchType.WHOLE_FIELD);
 
-        return solrClient.searchSolrPaginated(query, pageable)
+        return searchClient.searchPaginated(query, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts));
     }
 

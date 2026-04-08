@@ -1,4 +1,4 @@
-package uk.ac.ebi.spot.ols.repository.solr;
+package uk.ac.ebi.spot.ols.repository.search;
 
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -19,8 +19,5 @@ public class OlsFacetedResultsPage<T> extends PageImpl<T> {
     public <U> OlsFacetedResultsPage<U> map(Function<? super T, ? extends U> converter) {
         return new OlsFacetedResultsPage<U>(getConvertedContent(converter), facetFieldToCounts, getPageable(), getTotalElements());
     }
-
-
-
 
 }

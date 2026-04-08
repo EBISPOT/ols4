@@ -29,6 +29,9 @@ pub struct OntologyWriter<'a> {
     manifest_info: OntologyManifestInfo,
     embeddings: &'a HashMap<String, Embeddings>,
     embedding_model_names: Vec<String>,
+    ontology_iri: String,
+    ontology_preferred_prefix: String,
+    filter_property_names: Vec<String>,
     entities_writer: BufWriter<File>,
     edges_writer: BufWriter<File>,
     embedding_nodes_writer: Option<BufWriter<File>>,
@@ -98,9 +101,9 @@ fn extract_is_obsolete(entity: &Map<String, Value>) -> bool {
     }
 }
 
-/// Extract label strings from entity JSON. Handles both plain strings and localized objects.
-fn extract_label_strings(entity: &Map<String, Value>) -> Vec<String> {
-    match entity.get("label") {
+/// Extract string values from entity JSON. Handles both plain strings and localized objects.
+fn extract_localized_strings(entity: &Map<String, Value>, key: &str) -> Vec<String> {
+    match entity.get(key) {
         Some(Value::Array(arr)) => arr.iter().filter_map(|v| {
             match v {
                 Value::String(s) => Some(s.clone()),
@@ -122,13 +125,47 @@ fn extract_string_array(entity: &Map<String, Value>, key: &str) -> Vec<String> {
     }
 }
 
+/// Extract a single string value from entity JSON.
+fn extract_single_string(entity: &Map<String, Value>, key: &str) -> Option<String> {
+    match entity.get(key) {
+        Some(Value::String(s)) => Some(s.clone()),
+        Some(Value::Array(arr)) => arr.first().and_then(|v| match v {
+            Value::String(s) => Some(s.clone()),
+            Value::Object(obj) => obj.get("value").and_then(|v| v.as_str()).map(String::from),
+            _ => None,
+        }),
+        _ => None,
+    }
+}
+
+/// Extract a boolean value from entity JSON.
+fn extract_bool(entity: &Map<String, Value>, key: &str) -> bool {
+    match entity.get(key) {
+        Some(Value::Bool(b)) => *b,
+        Some(Value::Array(arr)) => arr.iter().any(|v| v.as_str() == Some("true") || v.as_bool() == Some(true)),
+        Some(Value::String(s)) => s == "true",
+        _ => false,
+    }
+}
+
 impl<'a> OntologyWriter<'a> {
     pub fn new(
         output_file_path: &str,
         manifest_info: OntologyManifestInfo,
         embeddings: &'a HashMap<String, Embeddings>,
+        ontology_properties: &Map<String, Value>,
+        filter_property_names: Vec<String>,
     ) -> Result<Self, Box<dyn std::error::Error>> {
         let ontology_id = manifest_info.ontology_id.clone();
+
+        let ontology_iri = ontology_properties.get("iri")
+            .and_then(|v| v.as_str())
+            .unwrap_or("")
+            .to_string();
+        let ontology_preferred_prefix = ontology_properties.get("preferredPrefix")
+            .and_then(|v| v.as_str())
+            .unwrap_or("")
+            .to_string();
 
         let mut embedding_model_names: Vec<String> = embeddings.keys().cloned().collect();
         embedding_model_names.sort();
@@ -155,6 +192,9 @@ impl<'a> OntologyWriter<'a> {
             manifest_info,
             embeddings,
             embedding_model_names,
+            ontology_iri,
+            ontology_preferred_prefix,
+            filter_property_names,
             entities_writer,
             edges_writer,
             embedding_nodes_writer,
@@ -162,7 +202,6 @@ impl<'a> OntologyWriter<'a> {
     }
 
     /// Write a single entity row to the entities TSV.
-    /// Columns: id, type, iri, ontology_id, _json, [embedding columns...]
     pub fn write_entity(
         &mut self,
         entity_type_plural: &str,
@@ -184,7 +223,20 @@ impl<'a> OntologyWriter<'a> {
         let entity_node_id = format!("{}+{}+{}", self.ontology_id, entity_type_str, iri);
         let json_str = serde_json::to_string(entity_value)?;
 
-        // Write entity row: id \t type \t iri \t ontology_id \t _json \t is_obsolete \t label \t direct_ancestors \t hierarchical_ancestors \t [embeddings...]
+        // Extract searchable fields
+        let labels = extract_localized_strings(entity, "label");
+        let direct_ancestors = extract_string_array(entity, "directAncestor");
+        let hierarchical_ancestors = extract_string_array(entity, "hierarchicalAncestor");
+        let short_form = extract_single_string(entity, "shortForm").unwrap_or_default();
+        let curie = extract_single_string(entity, "curie").unwrap_or_default();
+        let synonyms = extract_localized_strings(entity, "synonym");
+        let definitions = extract_localized_strings(entity, "definition");
+        let is_defining = self.is_defining_entity(entity);
+        let subset = extract_string_array(entity, "http://www.geneontology.org/formats/oboInOwl#inSubset");
+        let related_to = extract_string_array(entity, "relatedTo");
+        let curated_from_sources = extract_string_array(entity, "curatedFromSources");
+
+        // Write base columns: id, type, iri, ontology_id, _json, is_obsolete, label, direct_ancestors, hierarchical_ancestors
         write!(self.entities_writer, "{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}",
             escape_tsv(&entity_node_id),
             escape_tsv(pg_type),
@@ -192,10 +244,37 @@ impl<'a> OntologyWriter<'a> {
             escape_tsv(&self.ontology_id),
             escape_tsv(&json_str),
             if extract_is_obsolete(entity) { "t" } else { "f" },
-            escape_tsv(&pg_text_array(&extract_label_strings(entity))),
-            escape_tsv(&pg_text_array(&extract_string_array(entity, "directAncestor"))),
-            escape_tsv(&pg_text_array(&extract_string_array(entity, "hierarchicalAncestor"))),
+            escape_tsv(&pg_text_array(&labels)),
+            escape_tsv(&pg_text_array(&direct_ancestors)),
+            escape_tsv(&pg_text_array(&hierarchical_ancestors)),
         )?;
+
+        // Write search/filter columns
+        write!(self.entities_writer, "\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}",
+            escape_tsv(entity_type_str),
+            escape_tsv(&short_form),
+            escape_tsv(&curie),
+            escape_tsv(&curie),
+            escape_tsv(&pg_text_array(&synonyms)),
+            escape_tsv(&pg_text_array(&definitions)),
+            if is_defining { "t" } else { "f" },
+            if extract_bool(entity, "hasDirectParents") { "t" } else { "f" },
+            if extract_bool(entity, "hasHierarchicalParents") { "t" } else { "f" },
+            if extract_bool(entity, "hasDirectChildren") { "t" } else { "f" },
+            if extract_bool(entity, "hasHierarchicalChildren") { "t" } else { "f" },
+            if extract_bool(entity, "isPreferredRoot") { "t" } else { "f" },
+            escape_tsv(&self.ontology_iri),
+            escape_tsv(&self.ontology_preferred_prefix),
+            escape_tsv(&pg_text_array(&subset)),
+            escape_tsv(&pg_text_array(&related_to)),
+            escape_tsv(&pg_text_array(&curated_from_sources)),
+        )?;
+
+        // Write configurable filter property columns
+        for i in 0..self.filter_property_names.len() {
+            let values = extract_localized_strings(entity, &self.filter_property_names[i]);
+            write!(self.entities_writer, "\t{}", escape_tsv(&pg_text_array(&values)))?;
+        }
 
         // Write one embedding column per model (average embedding on parent entity)
         for model_name in &self.embedding_model_names {
@@ -233,7 +312,13 @@ impl<'a> OntologyWriter<'a> {
         let entity_node_id = format!("{}+ontology+{}", ontology_id, iri);
         let json_str = serde_json::to_string(&Value::Object(ontology_properties.clone()))?;
 
-        // Write entity row: id \t type \t iri \t ontology_id \t _json \t is_obsolete \t label \t direct_ancestors \t hierarchical_ancestors \t [embeddings (empty)...]
+        let definitions = extract_localized_strings(ontology_properties, "definition");
+        let preferred_prefix = ontology_properties
+            .get("preferredPrefix")
+            .and_then(|v| v.as_str())
+            .unwrap_or("");
+
+        // Write base columns: id, type, iri, ontology_id, _json, is_obsolete, label, direct_ancestors, hierarchical_ancestors
         write!(self.entities_writer, "{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}",
             escape_tsv(&entity_node_id),
             "Ontology",
@@ -241,10 +326,36 @@ impl<'a> OntologyWriter<'a> {
             escape_tsv(ontology_id),
             escape_tsv(&json_str),
             "f",
-            escape_tsv(&pg_text_array(&extract_label_strings(ontology_properties))),
+            escape_tsv(&pg_text_array(&extract_localized_strings(ontology_properties, "label"))),
             "{}",
             "{}",
         )?;
+
+        // Write search/filter columns (mostly empty for ontology nodes)
+        write!(self.entities_writer, "\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}",
+            "ontology",
+            "",
+            "",
+            "",
+            "{}",
+            escape_tsv(&pg_text_array(&definitions)),
+            "f",
+            "f",
+            "f",
+            "f",
+            "f",
+            "f",
+            escape_tsv(iri),
+            escape_tsv(preferred_prefix),
+            "{}",
+            "{}",
+            "{}",
+        )?;
+
+        // Write empty filter property columns
+        for _ in &self.filter_property_names {
+            write!(self.entities_writer, "\t{}", "{}")?;
+        }
 
         // Ontology nodes don't have embeddings
         for _ in &self.embedding_model_names {

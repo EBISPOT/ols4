@@ -23,36 +23,36 @@ public class HealthCheckController {
     OntologyRepository ontologyRepository;
 
     @Autowired
-    OlsPostgresClient neo4jClient;
+    OlsPostgresClient postgresClient;
     private static final Logger logger = LoggerFactory.getLogger(HealthCheckController.class);
 
     @RequestMapping("/health")
     public ResponseEntity<String> checkHealth() {
-        if (!checkSolr()) {
-            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("Solr is not initialized.");
+        if (!checkSearch()) {
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("Search is not initialized.");
         }
-        if (!checkNeo4j()) {
-            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("Neo4j is not initialized.");
+        if (!checkPostgres()) {
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("Postgres is not initialized.");
         }
         return ResponseEntity.ok("All systems are operational.");
     }
 
-    private boolean checkNeo4j() {
+    private boolean checkPostgres() {
         try {
-            if (neo4jClient.getDatabaseNodeCount() > 0) {
-                logger.debug("Neo4J is initialized.");
+            if (postgresClient.getDatabaseNodeCount() > 0) {
+                logger.debug("Postgres is initialized.");
                 return true;
             } else {
-                logger.error("Neo4J is not initialized yet as Neo4J node elements were less than 1.");
+                logger.error("Postgres is not initialized yet as entity count was less than 1.");
                 return false;
             }
         } catch (Exception e) {
-            logger.error("Neo4j endpoint returned an error.", e);
+            logger.error("Postgres endpoint returned an error.", e);
             return false;
         }
     }
 
-    private boolean checkSolr() {
+    private boolean checkSearch() {
         Pageable pageable = Pageable.ofSize(20);
         try {
             V2PagedAndFacetedResponse<V2Entity> result = new V2PagedAndFacetedResponse<V2Entity>(
@@ -61,14 +61,14 @@ public class HealthCheckController {
                     .map(V2Entity::new)
                             );
             if (result.totalElements > 0) {
-                logger.debug("Solr is initialized.");
+                logger.debug("Search is initialized.");
                 return true;
             } else {
-                logger.error("Solr is not initialized yet as 'totalElements' in jsonResponse not found or less than 1.");
+                logger.error("Search is not initialized yet as 'totalElements' in response not found or less than 1.");
                 return false;
             }
         } catch (Exception e) {
-            logger.error("Solr health check returned an error.", e);
+            logger.error("Search health check returned an error.", e);
             return false;
         }
     }

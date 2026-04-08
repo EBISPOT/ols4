@@ -28,15 +28,6 @@ RUN addgroup --system --gid 1000 ols && adduser --system --uid 1000 --ingroup ol
 #
 RUN curl https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.9/apache-maven-3.9.9-bin.tar.gz | tar -C /usr/local --strip-components=1 -xzf -
 
-# Extract Solr vanilla install to /opt/solr
-#
-# We use this only as a temporary server for the dataload. The "real"
-# Solr server is the standard image specified in docker-compose.yml.
-# It is important that the versions match!
-#
-RUN mkdir /opt/solr && \
-    curl https://ftp.ebi.ac.uk/pub/databases/spot/mirror/solr-9.8.1.tgz | tar -xz --strip-components=1 -C /opt/solr
-
 # Install PostgreSQL 17 and pgvector for dataload
 RUN apt-get update -y && apt-get install -y wget gnupg lsb-release && \
     echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
@@ -74,10 +65,9 @@ RUN cd /opt/ols/text_tagger && cargo build --release
 RUN cp /opt/ols/dataload/target/release/ols_json2postgres /usr/local/bin/ && \
     cp /opt/ols/dataload/target/release/ols_create_manifest /usr/local/bin/ && \
     cp /opt/ols/dataload/target/release/ols_link /usr/local/bin/ && \
-    cp /opt/ols/dataload/target/release/ols_json2solr /usr/local/bin/ && \
     cp /opt/ols/dataload/target/release/extract_strings_from_terms /usr/local/bin/ && \
     cp /opt/ols/text_tagger/target/release/ols_text_tagger /usr/local/bin/ && \
-    chmod +x /usr/local/bin/ols_json2postgres /usr/local/bin/ols_create_manifest /usr/local/bin/ols_link /usr/local/bin/ols_json2solr /usr/local/bin/extract_strings_from_terms /usr/local/bin/ols_text_tagger
+    chmod +x /usr/local/bin/ols_json2postgres /usr/local/bin/ols_create_manifest /usr/local/bin/ols_link /usr/local/bin/extract_strings_from_terms /usr/local/bin/ols_text_tagger
 
 # COPY ./backend /opt/ols/backend
 # RUN cd /opt/ols/backend && mvn -T 1C package

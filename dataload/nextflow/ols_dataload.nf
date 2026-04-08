@@ -13,7 +13,6 @@ params.config_branch = "stable"  // Branch to fetch configs from (stable or dev)
 params.config_files  = ''         // Comma-separated local config paths; if set, skips NFS fetch (used in CI)
 params.last_run_dir  = ''         // Directory of per-ontology JSONs from last successful run; enables fallback on failure
 params.out = "$OLS_OUT_DIR"
-params.solr_mem = "8g"
 params.pg_mem = "4g"
 params.embeddings_path = "$OLS_EMBEDDINGS_PATH"
 params.max_rows_per_file = "100000"
@@ -70,6 +69,16 @@ workflow {
     ontologies = merged_config.flatMap { it.ontologies }
     ontology_ids = ontologies.map { it.id }
 
+    // Extract filter properties per ontology (from merged config which includes defaults)
+    filter_props_by_id = ontologies.map { ont ->
+        def props = ont.filterProperty ?: []
+        [ont.id, props]
+    }
+    // Collect global union of all filter properties for schema creation
+    all_filter_props = merged_config.map { config ->
+        config.ontologies.collectMany { it.filterProperty ?: [] }.unique()
+    }
+
     ontology_jsons_and_status = rdf2json(merged_config_file, ontology_ids)
     ontology_jsons_by_id = ontology_jsons_and_status.map { id, json, status -> [id, json] }
     status_files = ontology_jsons_and_status.map { id, json, status -> status }.collect()
@@ -82,7 +91,7 @@ workflow {
     } else if (params.enable_curations) {
         sssom_files = download_curations()
     } else {
-        sssom_files = Channel.empty().collect()
+        sssom_files = Channel.value([file('NO_FILE')])
     }
 
     linked_ontologies_by_id = linker__link_ontologies(linker_manifest, ontology_jsons_by_id, sssom_files)
@@ -121,13 +130,12 @@ workflow {
         embedding_parquets = Channel.of(file('NO_FILE'))
     }
 
-    postgres_tsvs = json2postgres(linker_manifest, linked_ontologies_by_id, embedding_parquets)
-    solr_jsonls = json2solr(linked_ontologies_by_id)
+    // Join filter properties with linked ontology JSONs by ontology_id
+    linked_with_filter_props = linked_ontologies_by_id.combine(filter_props_by_id, by: 0)
 
-    pg = create_postgres(postgres_tsvs.collect(), embedding_parquets)
-    solr = create_solr(solr_jsonls.collect(), linker_manifest)
+    postgres_tsvs = json2postgres(linker_manifest, linked_with_filter_props, embedding_parquets)
 
-    // check_api_works(neo.neo_dir, solr.solr_dir)
+    pg = create_postgres(postgres_tsvs.collect(), embedding_parquets, all_filter_props)
 
     // Generate loading report after all ontologies have been processed
     report = generate_loading_report(merged_config_file, status_files)
@@ -289,7 +297,7 @@ process json2postgres {
 
     input:
     path(manifest)
-    tuple val(ontology_id), path(ontology_json)
+    tuple val(ontology_id), path(ontology_json), val(filter_properties)
     path(embedding_parquets)
 
     output:
@@ -299,6 +307,7 @@ process json2postgres {
     def parquets = (embedding_parquets instanceof List ? embedding_parquets : [embedding_parquets])
     def has_embeddings = !parquets.any { it.name == 'NO_FILE' }
     def parquet_args = has_embeddings ? "--embeddingParquets ${parquets.join(' ')}" : ''
+    def filter_args = filter_properties ? filter_properties.collect { "--filterProperty '${it}'" }.join(' ') : ''
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
@@ -307,32 +316,8 @@ process json2postgres {
         --ontology-id ${ontology_id} \
         --outDir . \
         --manifest ${manifest} \
-        ${parquet_args}
-    """
-}
-
-process json2solr {
-    cache "lenient"
-    memory { 16.GB + 16.GB * (task.attempt-1) }
-    time "8h"
-    errorStrategy 'retry'
-    maxRetries 5
-    
-    input:
-    tuple val(ontology_id), path(ontology_json)
-
-    output:
-    path("*.jsonl"), optional: true
-
-    script:
-    """
-    #!/usr/bin/env bash
-    set -Eeuo pipefail
-    ols_json2solr \
-        --input ${ontology_json} \
-        --ontology-id ${ontology_id} \
-        --outDir . \
-        --maxRowsPerFile ${params.max_rows_per_file}
+        ${parquet_args} \
+        ${filter_args}
     """
 }
 
@@ -346,6 +331,7 @@ process create_postgres {
     input:
     path(postgres_tsvs)
     path(embedding_parquets)
+    val(filter_properties)
 
     output:
     path("postgres"), emit: pg_dir
@@ -355,43 +341,11 @@ process create_postgres {
     def parquets = (embedding_parquets instanceof List ? embedding_parquets : [embedding_parquets])
     def has_embeddings = !parquets.any { it.name == 'NO_FILE' }
     def parquet_list = has_embeddings ? parquets.collect { it.toString() }.join(' ') : ''
+    def filter_args = filter_properties ? filter_properties.collect { "--filter-property '${it}'" }.join(' ') : ''
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    /opt/ols/dataload/load_into_postgres.sh ./postgres . ${parquet_list}
-    """
-}
-
-process create_solr {
-    cache "lenient"
-    memory { 16.GB }
-    time "23h"
-
-    publishDir "${params.out}", overwrite: true
-
-    input:
-    path(solr_jsonls, stageAs: '?/*')
-    path(manifest)
-
-    output:
-    path("solr"), emit: solr_dir
-    path("solr.tgz"), emit: solr_tgz
-
-    script:
-    def mem_mb = (task.memory.toMega() * 0.5).intValue()
-    """
-    #!/usr/bin/env bash
-    set -Eeuo pipefail
-    cp -r /opt/solr .
-
-    java -Xms${mem_mb}m -Xmx${mem_mb}m -jar /opt/ols/dataload/solr_config_builder/target/solr_config_builder-1.0-SNAPSHOT.jar \
-        --manifestPath ${manifest} \
-        --solrConfigTemplatePath /opt/ols/dataload/solr_config_template \
-        --outDir solr/server/solr \
-
-    python3 /opt/ols/dataload/solr_import.py ./solr 8983 ${params.solr_mem}
-
-    tar -chf solr.tgz --use-compress-program="pigz --fast" solr 
+    /opt/ols/dataload/load_into_postgres.sh ./postgres . ${filter_args} ${parquet_list}
     """
 }
 

@@ -61,7 +61,7 @@ public class V1OntologyTermController {
     V1GraphRepository graphRepository;
 
     @Autowired
-    PostgresClient neo4jClient;
+    PostgresClient postgresClient;
 
 
     @RequestMapping(path = "/{onto}/terms", produces = {MediaType.APPLICATION_JSON_VALUE,

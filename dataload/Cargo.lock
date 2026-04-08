@@ -1211,21 +1211,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "ols_json2solr"
-version = "1.0.0"
-dependencies = [
- "arrow",
- "clap",
- "indexmap",
- "ols_shared",
- "parquet",
- "serde",
- "serde_json",
- "struson",
- "thiserror 2.0.18",
-]
-
-[[package]]
 name = "ols_link"
 version = "1.0.0"
 dependencies = [

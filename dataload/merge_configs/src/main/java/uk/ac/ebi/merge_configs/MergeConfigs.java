@@ -16,6 +16,15 @@ public class MergeConfigs {
 
     private static final Logger logger = LoggerFactory.getLogger(MergeConfigs.class);
 
+    /**
+     * Default filter properties that are always available for querying,
+     * even if not specified in ontology configs. These are merged with
+     * any user-specified filterProperty values.
+     */
+    private static final List<String> DEFAULT_FILTER_PROPERTIES = List.of(
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    );
+
     public static void main(String[] args) throws IOException {
 
         Options options = new Options();
@@ -94,6 +103,20 @@ public class MergeConfigs {
                     existingConfig.put(key, ontologyConfig.get(key));
                 }
             }
+        }
+
+        // Ensure default filter properties are present in every ontology config
+        for (Map<String, Object> ontologyConfig : mergedConfigs.values()) {
+            Object existing = ontologyConfig.get("filterProperty");
+            Set<String> filterProps = new LinkedHashSet<>(DEFAULT_FILTER_PROPERTIES);
+            if (existing instanceof Collection) {
+                for (Object item : (Collection<?>) existing) {
+                    if (item instanceof String) {
+                        filterProps.add((String) item);
+                    }
+                }
+            }
+            ontologyConfig.put("filterProperty", new ArrayList<>(filterProps));
         }
 
         // Create output JSON structure

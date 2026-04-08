@@ -2,24 +2,14 @@ package uk.ac.ebi.spot.ols.controller.api.v1;
 
 import com.google.gson.Gson;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.apache.solr.client.solrj.SolrQuery;
-import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.impl.HttpSolrClient;
-import org.apache.solr.client.solrj.response.QueryResponse;
-import org.apache.solr.client.solrj.response.Suggestion;
-import org.apache.solr.client.solrj.util.ClientUtils;
-import org.apache.solr.common.SolrDocument;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.server.ExposesResourceFor;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import uk.ac.ebi.spot.ols.repository.Validation;
-import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
-import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
+import uk.ac.ebi.spot.ols.repository.search.OlsSearchClient;
 
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -35,10 +25,7 @@ public class V1SuggestController {
     Gson gson = new Gson();
 
     @Autowired
-    private V1OntologyRepository ontologyRepository;
-
-    @Autowired
-    private OlsSolrClient solrClient;
+    private OlsSearchClient searchClient;
 
     @RequestMapping(path = "/api/suggest", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public void suggest(
@@ -47,68 +34,31 @@ public class V1SuggestController {
             @RequestParam(value = "rows", defaultValue = "10") Integer rows,
             @RequestParam(value = "start", defaultValue = "0") Integer start,
             HttpServletResponse response
-    ) throws IOException, SolrServerException {
+    ) throws IOException {
 
-        final SolrQuery solrQuery = new SolrQuery();
-
-        // Escape special characters but don't force lowercase or add quotes
-        // The field analyzers (edge_label, whitespace_edge_label) already apply LowerCaseFilterFactory
-        String escapedQuery = query.toLowerCase();
-        escapedQuery = ClientUtils.escapeQueryChars(escapedQuery);
-
-        solrQuery.setQuery(escapedQuery);
-        solrQuery.set("defType", "edismax");
-        solrQuery.set("qf", LABEL.getText()+"^10 edge_label^2 whitespace_edge_label^1");
-        solrQuery.set("wt", "json");
-        solrQuery.setFields(LABEL.getText());
-
-        // Sort by relevance score with secondary sort by id for deterministic ordering
-        solrQuery.setSort("score", SolrQuery.ORDER.desc);
-        solrQuery.addSort("id", SolrQuery.ORDER.asc);
-
-        if (ontologies != null && !ontologies.isEmpty()) {
-
-            for(String ontologyId : ontologies)
+        if (ontologies != null) {
+            for (String ontologyId : ontologies)
                 Validation.validateOntologyId(ontologyId);
-
-            solrQuery.addFilterQuery("ontologyId: (" + String.join(" OR ", ontologies) + ")");
         }
 
-
-        solrQuery.setStart(start);
-        solrQuery.setRows(rows);
-        solrQuery.add("group", "true");
-        solrQuery.add("group.field", LABEL.getText());
-        solrQuery.add("group.main", "true");
-
-
-        // broken in OLS3 anyway
-//        solrQuery.setHighlight(true);
-//        solrQuery.add("hl.simple.pre", "<b>");
-//        solrQuery.add("hl.simple.post", "</b>");
-//        solrQuery.addHighlightField("label");
-
-
-        QueryResponse qr = solrClient.dispatchSearch(solrQuery, "ols4_autocomplete");
+        List<String> ontologyIds = ontologies != null ? new ArrayList<>(ontologies) : null;
+        List<String> labels = searchClient.suggestLabels(query.toLowerCase(), ontologyIds, start, rows);
 
         List<Object> docs = new ArrayList<>();
-        for(SolrDocument res : qr.getResults()) {
+        for (String label : labels) {
             Map<String,Object> outDoc = new HashMap<>();
-
-            outDoc.put("autosuggest", res.get(LABEL.getText()));
-
+            outDoc.put("autosuggest", label);
             docs.add(outDoc);
         }
 
         Map<String, Object> responseHeader = new HashMap<>();
         responseHeader.put("status", 0);
-        responseHeader.put("QTime", qr.getQTime());
+        responseHeader.put("QTime", 0);
 
         Map<String, Object> responseBody = new HashMap<>();
-        responseBody.put("numFound", qr.getResults().getNumFound());
+        responseBody.put("numFound", labels.size());
         responseBody.put("start", 0);
         responseBody.put("docs", docs);
-
 
         Map<String, Object> responseObj = new HashMap<>();
         responseObj.put("responseHeader", responseHeader);

@@ -119,12 +119,6 @@
       <version>31.1-jre</version>
     </dependency>
 
-    <dependency>
-      <groupId>org.apache.solr</groupId>
-      <artifactId>solr-solrj</artifactId>
-      <version>8.5.2</version>
-    </dependency>
-
     <!-- REST Docs aligned to Spring 6 / Boot 3 -->
     <dependency>
       <groupId>org.springframework.restdocs</groupId>

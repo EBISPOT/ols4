@@ -1,7 +1,5 @@
 package uk.ac.ebi.spot.ols.repository.v1.mappers;
 
-import org.apache.solr.common.StringUtils;
-
 public class ShortFormExtractor {
 
     public static String extractShortForm(String iri) {

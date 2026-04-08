@@ -38,8 +38,4 @@ $SCRIPT_PATH/../dataload/target/release/ols_json2postgres \
     --manifest "$LINKER_MANIFEST_PATH" --input "$JSON_PATH_LINKED" --outDir $OUTDIR \
     ${EMBEDDING_PARQUETS:+--embeddingParquets $EMBEDDING_PARQUETS}
 
-echo json2solr
-$SCRIPT_PATH/../dataload/target/release/ols_json2solr \
-    --input "$JSON_PATH_LINKED" --outDir $OUTDIR
-
 

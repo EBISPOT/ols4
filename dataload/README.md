@@ -1,4 +1,4 @@
-Converts ontologies represented in OWL RDF/XML to Solr and PostgreSQL databases.
+Converts ontologies represented in OWL RDF/XML to a PostgreSQL database.
 
 # Usage
 
@@ -30,12 +30,6 @@ Now (after 5-10 mins) you should have a directory full of TSV files. These files
     ./load_into_postgres.sh ./postgres_out ./output_tsv
 
 Now you should have a PostgreSQL database ready to start!
-
-## Step 4: JSON to JSON *for Solr*
-
-Similar to how the PostgreSQL TSV was generated, you can also generate JSON files ready for uploading to SOLR using json2solr.
-
-    ols_json2solr --input foundry_out_flat.json --outDir output_csv
 
 ## Loading Reports
 

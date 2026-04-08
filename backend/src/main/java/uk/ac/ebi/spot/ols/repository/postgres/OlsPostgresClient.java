@@ -89,16 +89,9 @@ public class OlsPostgresClient {
         String sql = buildEdgeTraversalSql(id, edgeIRIs, edgeProps, sourceNodeProps, false);
         String countSql = buildEdgeTraversalCountSql(id, edgeIRIs, edgeProps, sourceNodeProps, false);
 
-        // Build params
-        List<Object> paramList = new ArrayList<>();
-        paramList.add(id);
-        paramList.add(edgeIRIs.toArray(String[]::new));
-        for (var entry : edgeProps.entrySet()) {
-            paramList.add(entry.getValue());
-        }
-        for (var entry : sourceNodeProps.entrySet()) {
-            paramList.add(entry.getValue());
-        }
+        // Build params (reuse shared helper for correct type conversion)
+        Object[] baseParams = buildEdgeTraversalParams(id, edgeIRIs, edgeProps, sourceNodeProps);
+        List<Object> paramList = new ArrayList<>(Arrays.asList(baseParams));
 
         // Add search query condition if present
         if (searchQuery != null && !searchQuery.trim().isEmpty()) {
@@ -570,10 +563,6 @@ public class OlsPostgresClient {
     }
 
     public List<String> getEmbeddingModels() {
-        return getEmbeddingModelsInNeo4j();
-    }
-
-    public List<String> getEmbeddingModelsInNeo4j() {
         String sql = "SELECT column_name FROM information_schema.columns "
                 + "WHERE table_name = 'ols_entities' AND column_name LIKE 'embeddings\\_%'";
 

@@ -52,15 +52,12 @@ function process_config {
     echo "absolute_out_dir="$absolute_out_dir
 
     $OLS4_HOME/dev-testing/create_datafiles.sh $config_url $absolute_out_dir --noDates
-    $OLS4_HOME/dev-testing/load_test_into_solr.sh $absolute_out_dir
   else
     echo "$config_url does not exist."
   fi
 }
 
 $OLS4_HOME/dev-testing/clean-postgres.sh
-$OLS4_HOME/dev-testing/clean-solr.sh
-$OLS4_HOME/dev-testing/start-solr.sh
 
 process_config $config_url $out_dir
 

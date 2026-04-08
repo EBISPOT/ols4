@@ -1,6 +1,6 @@
 package uk.ac.ebi.spot.ols.controller.api.v2.responses;
 
-import uk.ac.ebi.spot.ols.repository.solr.OlsFacetedResultsPage;
+import uk.ac.ebi.spot.ols.repository.search.OlsFacetedResultsPage;
 
 import java.util.Map;
 

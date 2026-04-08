@@ -19,7 +19,7 @@ public class SearchableAnnotationValuesAnnotator {
     // A field that contains a list of just the values (no predicates) of all of the "annotations" (which is not a well
     // defined term, so we have to make it up) of an entity.
     //
-    // This field is used for solr searching, so that you can search for the value of any property (regardless of how
+    // This field is used for searching, so that you can search for the value of any property (regardless of how
     // important OLS thinks it is), and still expect a result.
     //
     public static void annotateSearchableAnnotationValues(OntologyGraph graph) {

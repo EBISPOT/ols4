@@ -376,24 +376,21 @@ public class Ols4ApiTester {
 		try {
 			JsonArray allEntries = new JsonArray();
 
-			String reqUrl = url + "?page=0&numElements=100";
+			String separator = url.contains("?") ? "&" : "?";
 
-			for(JsonObject res = get(url).getAsJsonObject();;) {
+			for(int pageNum = 0;;pageNum++) {
 
-				int page = res.get("page").getAsInt();
-				int numElements = res.get("numElements").getAsInt();
-				// int totalPages = res.get("totalPages").getAsInt();
-				// int totalElements = res.get("totalElements").getAsInt();
+				String reqUrl = url + separator + "page=" + pageNum;
+				JsonObject res = get(reqUrl).getAsJsonObject();
+
+				int totalPages = res.get("totalPages").getAsInt();
 				JsonArray elements = res.get("elements").getAsJsonArray();
 
 				allEntries.addAll(elements);
 
-				if(numElements < 100) {
+				if(pageNum >= totalPages - 1) {
 					break;
 				}
-
-				reqUrl = url + "?page=" + page + "&numElements=100";
-				res = get(reqUrl).getAsJsonObject();
 			}
 
 			return allEntries;

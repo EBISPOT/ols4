@@ -38,7 +38,7 @@ public class V1GraphRepository {
         return getGraphForEntity(iri, "individual", "OntologyIndividual", ontologyId, lang);
     }
 
-    private Map<String, Object> getGraphForEntity(String iri, String type, String neo4jType, String ontologyId, String lang) {
+    private Map<String, Object> getGraphForEntity(String iri, String type, String entityType, String ontologyId, String lang) {
 
         String thisEntityId = ontologyId + "+" + type + "+" + iri;
 

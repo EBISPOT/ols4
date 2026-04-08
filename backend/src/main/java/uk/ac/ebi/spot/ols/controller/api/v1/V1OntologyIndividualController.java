@@ -52,7 +52,7 @@ public class V1OntologyIndividualController {
     V1TermAssembler termAssembler;
 
     @Autowired
-    PostgresClient neo4jClient;
+    PostgresClient postgresClient;
 
     @Autowired
     V1JsTreeRepository jsTreeRepository;

@@ -32,7 +32,7 @@ public class WebConfig implements WebMvcConfigurer {
      * @param configurer
      */
 
-    @Value("${ols.solr.max-rows:1000}")
+    @Value("${ols.search.max-rows:1000}")
     private int maxPageSize;
 
     @Override

@@ -39,6 +39,10 @@ struct Args {
     /// Optional list of individual embeddings Parquet files
     #[arg(long = "embeddingParquets", num_args = 1..)]
     embedding_parquets: Option<Vec<String>>,
+
+    /// Optional list of filter property URIs to extract as TEXT[] columns
+    #[arg(long = "filterProperty", num_args = 1..)]
+    filter_properties: Option<Vec<String>>,
 }
 
 fn main() {
@@ -101,6 +105,7 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
         args.out_dir,
         args.manifest,
         embeddings,
+        args.filter_properties.unwrap_or_default(),
     )?;
     converter.convert()?;
 
@@ -113,6 +118,7 @@ struct PostgresConverter {
     output_file_path: String,
     manifest: LinkerPass1Result,
     embeddings: HashMap<String, Embeddings>,
+    filter_property_names: Vec<String>,
 }
 
 impl PostgresConverter {
@@ -122,6 +128,7 @@ impl PostgresConverter {
         output_file_path: String,
         manifest_file_path: String,
         embeddings: HashMap<String, Embeddings>,
+        filter_property_names: Vec<String>,
     ) -> Result<Self, Box<dyn std::error::Error>> {
         // Load the manifest
         eprintln!("Loading manifest from: {}", manifest_file_path);
@@ -134,6 +141,7 @@ impl PostgresConverter {
             output_file_path,
             manifest,
             embeddings,
+            filter_property_names,
         })
     }
 
@@ -229,6 +237,8 @@ impl PostgresConverter {
                             &self.output_file_path,
                             manifest_info,
                             &self.embeddings,
+                            &ontology_properties,
+                            self.filter_property_names.clone(),
                         )?);
                     }
                     
@@ -246,6 +256,8 @@ impl PostgresConverter {
                             &self.output_file_path,
                             manifest_info,
                             &self.embeddings,
+                            &ontology_properties,
+                            self.filter_property_names.clone(),
                         )?);
                     }
                     
@@ -263,6 +275,8 @@ impl PostgresConverter {
                             &self.output_file_path,
                             manifest_info,
                             &self.embeddings,
+                            &ontology_properties,
+                            self.filter_property_names.clone(),
                         )?);
                     }
                     
@@ -289,6 +303,8 @@ impl PostgresConverter {
                     &self.output_file_path,
                     manifest_info,
                     &self.embeddings,
+                    &ontology_properties,
+                    self.filter_property_names.clone(),
                 )?);
             }
             

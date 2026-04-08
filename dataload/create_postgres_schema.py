@@ -3,9 +3,11 @@
 Generates SQL statements to create all PostgreSQL tables, indexes, and
 dynamic embedding vector columns for OLS4.
 
-Usage: python create_postgres_schema.py [parquet_file ...]
+Usage: python create_postgres_schema.py [--filter-property <name> ...] [parquet_file ...]
 
 Any parquet files passed as arguments will have vector columns and HNSW indexes created for them.
+Filter properties (e.g. --filter-property 'http__//www.w3.org/...') create TEXT[] columns for
+ontology-specific filterable fields.
 """
 
 import sys
@@ -13,11 +15,12 @@ from pathlib import Path
 
 
 SCHEMA_SQL = """
--- Create pgvector extension
+-- Create extensions
 CREATE EXTENSION IF NOT EXISTS vector;
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
 -- Entities table: classes, properties, individuals, ontologies
-CREATE UNLOGGED TABLE ols_entities (
+CREATE TABLE ols_entities (
     id TEXT PRIMARY KEY,
     type TEXT NOT NULL,
     iri TEXT NOT NULL,
@@ -26,11 +29,36 @@ CREATE UNLOGGED TABLE ols_entities (
     is_obsolete BOOLEAN DEFAULT FALSE,
     label TEXT[] DEFAULT '{}',
     direct_ancestors TEXT[] DEFAULT '{}',
-    hierarchical_ancestors TEXT[] DEFAULT '{}'
+    hierarchical_ancestors TEXT[] DEFAULT '{}',
+
+    -- Search/filter columns
+    search_type TEXT,
+    short_form TEXT,
+    curie TEXT,
+    obo_id TEXT,
+    synonym TEXT[] DEFAULT '{}',
+    definition TEXT[] DEFAULT '{}',
+    is_defining_ontology BOOLEAN DEFAULT FALSE,
+    has_direct_parents BOOLEAN DEFAULT FALSE,
+    has_hierarchical_parents BOOLEAN DEFAULT FALSE,
+    has_direct_children BOOLEAN DEFAULT FALSE,
+    has_hierarchical_children BOOLEAN DEFAULT FALSE,
+    is_preferred_root BOOLEAN DEFAULT FALSE,
+    ontology_iri TEXT,
+    ontology_preferred_prefix TEXT,
+    subset TEXT[] DEFAULT '{}',
+    related_to TEXT[] DEFAULT '{}',
+    curated_from_sources TEXT[] DEFAULT '{}',
+
+    -- Full-text search vector (populated post-load)
+    ts_search tsvector,
+
+    -- First label for autocomplete grouping / trigram matching
+    label_for_suggest TEXT
 ) WITH (fillfactor=100);
 
 -- Edges table: relationships between entities
-CREATE UNLOGGED TABLE ols_edges (
+CREATE TABLE ols_edges (
     start_id TEXT NOT NULL,
     end_id TEXT NOT NULL,
     type TEXT NOT NULL,
@@ -39,7 +67,7 @@ CREATE UNLOGGED TABLE ols_edges (
 ) WITH (fillfactor=100);
 
 -- Embedding nodes table: individual embedding vectors linked to entities
-CREATE UNLOGGED TABLE ols_embedding_nodes (
+CREATE TABLE ols_embedding_nodes (
     id TEXT PRIMARY KEY,
     type TEXT NOT NULL,
     entity_id TEXT NOT NULL
@@ -58,6 +86,20 @@ CREATE INDEX idx_ent_onto ON ols_entities (ontology_id);
 CREATE INDEX idx_ent_da ON ols_entities USING gin (direct_ancestors);
 CREATE INDEX idx_ent_ha ON ols_entities USING gin (hierarchical_ancestors);
 
+-- Search/filter indexes
+CREATE INDEX idx_ent_search_type ON ols_entities (search_type);
+CREATE INDEX idx_ent_short_form ON ols_entities USING hash (short_form);
+CREATE INDEX idx_ent_curie ON ols_entities USING hash (curie);
+CREATE INDEX idx_ent_is_def ON ols_entities (is_defining_ontology) WHERE is_defining_ontology = true;
+CREATE INDEX idx_ent_pref_root ON ols_entities (is_preferred_root) WHERE is_preferred_root = true;
+CREATE INDEX idx_ent_subset ON ols_entities USING gin (subset);
+
+-- Full-text search index
+CREATE INDEX idx_ent_fts ON ols_entities USING gin (ts_search);
+
+-- Trigram index for autocomplete / prefix matching on labels
+CREATE INDEX idx_ent_trgm_suggest ON ols_entities USING gin (label_for_suggest gin_trgm_ops);
+
 -- Edge indexes
 CREATE INDEX idx_edge_start ON ols_edges USING hash (start_id);
 CREATE INDEX idx_edge_end ON ols_edges USING hash (end_id);
@@ -68,6 +110,25 @@ CREATE INDEX idx_edge_prop ON ols_edges USING gin (property);
 CREATE INDEX idx_emb_entity ON ols_embedding_nodes USING hash (entity_id);
 CREATE INDEX idx_emb_type ON ols_embedding_nodes (type);
 """
+
+
+def generate_filter_property_sql(filter_properties: list) -> str:
+    """Generate ALTER TABLE + CREATE INDEX for configurable filter property columns."""
+    if not filter_properties:
+        return ""
+
+    lines = []
+    lines.append("-- Dynamic filter property columns (TEXT[])")
+    lines.append("")
+
+    for prop_name in filter_properties:
+        col_name = f"filter_{prop_name}"
+        safe_idx = prop_name.replace('/', '_').replace('#', '_').replace('.', '_').replace('-', '_').replace(':', '_')
+        lines.append(f'ALTER TABLE ols_entities ADD COLUMN "{col_name}" TEXT[] DEFAULT \'{{}}\';')
+        lines.append(f'CREATE INDEX idx_ent_fp_{safe_idx} ON ols_entities USING gin ("{col_name}");')
+        lines.append("")
+
+    return '\n'.join(lines)
 
 
 def get_embedding_dimension(parquet_path: str) -> int:
@@ -135,7 +196,20 @@ def generate_embedding_sql(parquet_files: list) -> str:
 
 
 def main():
-    parquet_files = [arg for arg in sys.argv[1:] if arg.endswith('.parquet')]
+    # Parse --filter-property <name> flags and remaining parquet file args
+    filter_properties = []
+    parquet_files = []
+    args = sys.argv[1:]
+    i = 0
+    while i < len(args):
+        if args[i] == '--filter-property' and i + 1 < len(args):
+            filter_properties.append(args[i + 1])
+            i += 2
+        elif args[i].endswith('.parquet'):
+            parquet_files.append(args[i])
+            i += 1
+        else:
+            i += 1
 
     # Output schema
     print("-- OLS4 PostgreSQL Schema")
@@ -147,15 +221,32 @@ def main():
         if embedding_sql:
             print(embedding_sql)
 
+    # Output filter property columns if any specified
+    if filter_properties:
+        filter_sql = generate_filter_property_sql(filter_properties)
+        if filter_sql:
+            print(filter_sql)
+
     # Output standard indexes
     print(INDEX_SQL)
 
-    # Convert UNLOGGED to LOGGED for production
-    print("-- Convert to production mode")
-    print("ALTER TABLE ols_entities SET LOGGED;")
-    print("ALTER TABLE ols_edges SET LOGGED;")
-    print("ALTER TABLE ols_embedding_nodes SET LOGGED;")
+    # Populate computed columns
+    print("-- Populate full-text search tsvector")
+    print("""UPDATE ols_entities SET ts_search =
+    setweight(to_tsvector('english', coalesce(array_to_string(label, ' '), '')), 'A') ||
+    setweight(to_tsvector('english', coalesce(short_form, '') || ' ' || coalesce(curie, '')), 'B') ||
+    setweight(to_tsvector('english', coalesce(array_to_string(synonym, ' '), '')), 'B') ||
+    setweight(to_tsvector('english', coalesce(array_to_string(definition, ' '), '')), 'C') ||
+    setweight(to_tsvector('english', coalesce(iri, '')), 'D');
+""")
+
+    print("-- Populate label_for_suggest from first label")
+    print("UPDATE ols_entities SET label_for_suggest = label[1] WHERE cardinality(label) > 0;")
     print("")
+
+    # has_direct_children and has_hierarchical_children are now loaded directly from rdf2json output
+
+
 
     # Analyze
     print("ANALYZE;")
