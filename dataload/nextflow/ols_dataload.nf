@@ -27,6 +27,10 @@ params.enable_ontology_tarballs = false  // create ontology_jsons.tgz and ontolo
 params.publish_ontology_jsons = false  // publish pigz --best compressed ontology JSONs (linked and unlinked)
 params.copy_script     = ''     // path to copy_tarballs.sh on the NFS server
 
+// External managed PostgreSQL — when true, loads data into an existing database instead of creating a local one.
+// Requires PGHOST, PGDATABASE, PGUSER, and optionally PGPASSWORD to be set as environment variables.
+params.external_postgres = false
+
 
 process fetch_configs {
     cache "lenient"
@@ -135,7 +139,11 @@ workflow {
 
     postgres_tsvs = json2postgres(linker_manifest, linked_with_filter_props, embedding_parquets)
 
-    pg = create_postgres(postgres_tsvs.collect(), embedding_parquets, all_filter_props)
+    if (params.external_postgres) {
+        pg = populate_external_postgres(postgres_tsvs.collect(), embedding_parquets, all_filter_props)
+    } else {
+        pg = create_postgres(postgres_tsvs.collect(), embedding_parquets, all_filter_props)
+    }
 
     // Generate loading report after all ontologies have been processed
     report = generate_loading_report(merged_config_file, status_files)
@@ -346,6 +354,35 @@ process create_postgres {
     #!/usr/bin/env bash
     set -Eeuo pipefail
     /opt/ols/dataload/load_into_postgres.sh ./postgres . ${filter_args} ${parquet_list}
+    """
+}
+
+process populate_external_postgres {
+    cache "lenient"
+    memory { 16.GB }
+    time "8h"
+
+    publishDir "${params.out}", overwrite: true
+
+    input:
+    path(postgres_tsvs)
+    path(embedding_parquets)
+    val(filter_properties)
+
+    output:
+    path("postgres_external_done"), emit: pg_dir
+
+    script:
+    def parquets = (embedding_parquets instanceof List ? embedding_parquets : [embedding_parquets])
+    def has_embeddings = !parquets.any { it.name == 'NO_FILE' }
+    def parquet_list = has_embeddings ? parquets.collect { it.toString() }.join(' ') : ''
+    def filter_args = filter_properties ? filter_properties.collect { "--filter-property '${it}'" }.join(' ') : ''
+    """
+    #!/usr/bin/env bash
+    set -Eeuo pipefail
+    /opt/ols/dataload/populate_external_postgres.sh . ${filter_args} ${parquet_list}
+    mkdir -p postgres_external_done
+    echo "Populated \${PGHOST}:\${PGPORT}/\${PGDATABASE} at \$(date)" > postgres_external_done/status.txt
     """
 }
 
@@ -583,7 +620,7 @@ process check_postgres_data_exists {
 
     STATUS=0
 
-    if [ -f "${pg_dir}/postgres.tgz" ] || [ -d "${pg_dir}/data" ]; then
+    if [ -f "${pg_dir}/postgres.tgz" ] || [ -d "${pg_dir}/data" ] || [ -f "${pg_dir}/status.txt" ]; then
         echo "✓ PostgreSQL data exists at: ${pg_dir}" | tee -a postgres_check.log
     else
         echo "✗ ERROR: PostgreSQL data is missing at: ${pg_dir}" | tee -a postgres_check.log

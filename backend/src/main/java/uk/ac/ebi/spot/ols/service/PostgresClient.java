@@ -36,6 +36,9 @@ public class PostgresClient {
     @org.springframework.beans.factory.annotation.Value("${ols.postgres.user:ols}")
     private String user;
 
+    @org.springframework.beans.factory.annotation.Value("${ols.postgres.password:}")
+    private String password;
+
     private HikariDataSource dataSource;
     private Gson gson = new Gson();
     private static final Logger logger = LoggerFactory.getLogger(PostgresClient.class);
@@ -45,6 +48,9 @@ public class PostgresClient {
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl("jdbc:postgresql://" + host + ":" + port + "/" + database);
         config.setUsername(user);
+        if (password != null && !password.isEmpty()) {
+            config.setPassword(password);
+        }
         config.setMaximumPoolSize(10);
         config.setMinimumIdle(2);
         config.setConnectionTimeout(30000);
