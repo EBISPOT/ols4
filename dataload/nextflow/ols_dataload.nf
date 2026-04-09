@@ -113,7 +113,9 @@ workflow {
     // Run embeddings pipeline if enabled
     if (params.enable_embeddings) {
         embeddings(terms_tsv)
+        // Filter out pca16 parquets — they are visualization-only (UMAP), not for DB storage
         pca_parquets = embeddings.out.pca_parquets
+            .filter { !it[0].contains('pca16') }
             .map { it[1] }
             .collect()
         embedding_parquets = pca_parquets
@@ -124,10 +126,10 @@ workflow {
             update_embeddings_path(pca_parquets)
         }
     } else if (params.embeddings_path && params.embeddings_path != '' && params.embeddings_path != 'NO_DIR') {
-        // Exclude umap parquets — they are visualization-only and have no embedding column
+        // Exclude umap and pca16 parquets — they are visualization-only, not for DB storage
         // ifEmpty ensures json2postgres still runs when the directory exists but has no parquets
         embedding_parquets = Channel.fromPath("${params.embeddings_path}/*.parquet")
-            .filter { !it.name.contains('_umap') }
+            .filter { !it.name.contains('_umap') && !it.name.contains('_pca16') }
             .collect()
             .ifEmpty([file('NO_FILE')])
     } else {
@@ -309,7 +311,7 @@ process json2postgres {
     path(embedding_parquets)
 
     output:
-    path("*.tsv"), optional: true
+    path("*.pgbin"), optional: true
 
     script:
     def parquets = (embedding_parquets instanceof List ? embedding_parquets : [embedding_parquets])

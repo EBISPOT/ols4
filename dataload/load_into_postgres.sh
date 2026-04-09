@@ -101,9 +101,9 @@ INDEX_SQL=$(echo "$SCHEMA_SQL" | sed -n '/^-- Entity lookup indexes/,$p')
 
 echo "$TABLE_SQL" | "$PGBIN/psql" -v ON_ERROR_STOP=1
 
-echo "=== Bulk loading TSV files ==="
+echo "=== Bulk loading binary COPY files ==="
 
-ls -lh "$TSV_DIR"/*.tsv 2>/dev/null || true
+ls -lh "$TSV_DIR"/*.pgbin 2>/dev/null || true
 
 # Base columns: id, type, iri, ontology_id, _json, is_obsolete, label, direct_ancestors, hierarchical_ancestors,
 # search_type, short_form, curie, obo_id, synonym, definition, is_defining_ontology,
@@ -133,32 +133,32 @@ ENTITY_COLS="$BASE_ENTITY_COLS$FILTER_COLS$ENTITY_EMB_COLS"
 EMB_NODE_COLS="$EMB_NODE_BASE_COLS$EMB_NODE_EMB_COLS"
 
 # COPY entities
-ENTITY_FILES=$(find "$TSV_DIR" -name '*_entities.tsv' -size +0c | sort)
+ENTITY_FILES=$(find "$TSV_DIR" -name '*_entities.pgbin' -size +0c | sort)
 if [ -n "$ENTITY_FILES" ]; then
     echo "Loading entities..."
     for f in $ENTITY_FILES; do
         echo "  COPY from $f"
-        "$PGBIN/psql" -v ON_ERROR_STOP=1 -c "\\COPY ols_entities ($ENTITY_COLS) FROM '$f' WITH (FORMAT text)"
+        "$PGBIN/psql" -v ON_ERROR_STOP=1 -c "COPY ols_entities ($ENTITY_COLS) FROM STDIN WITH (FORMAT binary)" < "$f"
     done
 fi
 
 # COPY edges
-EDGE_FILES=$(find "$TSV_DIR" -name '*_edges.tsv' -size +0c | sort)
+EDGE_FILES=$(find "$TSV_DIR" -name '*_edges.pgbin' -size +0c | sort)
 if [ -n "$EDGE_FILES" ]; then
     echo "Loading edges..."
     for f in $EDGE_FILES; do
         echo "  COPY from $f"
-        "$PGBIN/psql" -v ON_ERROR_STOP=1 -c "\\COPY ols_edges ($EDGE_COLS) FROM '$f' WITH (FORMAT text)"
+        "$PGBIN/psql" -v ON_ERROR_STOP=1 -c "COPY ols_edges ($EDGE_COLS) FROM STDIN WITH (FORMAT binary)" < "$f"
     done
 fi
 
 # COPY embedding nodes
-EMB_FILES=$(find "$TSV_DIR" -name '*_embedding_nodes.tsv' -size +0c | sort)
+EMB_FILES=$(find "$TSV_DIR" -name '*_embedding_nodes.pgbin' -size +0c | sort)
 if [ -n "$EMB_FILES" ]; then
     echo "Loading embedding nodes..."
     for f in $EMB_FILES; do
         echo "  COPY from $f"
-        "$PGBIN/psql" -v ON_ERROR_STOP=1 -c "\\COPY ols_embedding_nodes ($EMB_NODE_COLS) FROM '$f' WITH (FORMAT text)"
+        "$PGBIN/psql" -v ON_ERROR_STOP=1 -c "COPY ols_embedding_nodes ($EMB_NODE_COLS) FROM STDIN WITH (FORMAT binary)" < "$f"
     done
 fi
 

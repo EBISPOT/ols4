@@ -47,7 +47,7 @@ struct Args {
 
 fn main() {
     if let Err(e) = run() {
-        eprintln!("ERROR: Failed to convert JSON to TSV");
+        eprintln!("ERROR: Failed to convert JSON to PostgreSQL binary COPY format");
         eprintln!("{}", e);
         std::process::exit(1);
     }

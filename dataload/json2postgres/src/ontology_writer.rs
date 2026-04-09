@@ -22,74 +22,103 @@ const EDGE_BLACKLIST: &[&str] = &[
     "relatedFrom",           // redundant - we already have relatedTo which can be queried both ways
 ];
 
-pub struct OntologyWriter<'a> {
-    #[allow(dead_code)]
-    output_file_path: String,
-    ontology_id: String,
-    manifest_info: OntologyManifestInfo,
-    embeddings: &'a HashMap<String, Embeddings>,
-    embedding_model_names: Vec<String>,
-    ontology_iri: String,
-    ontology_preferred_prefix: String,
-    filter_property_names: Vec<String>,
-    entities_writer: BufWriter<File>,
-    edges_writer: BufWriter<File>,
-    embedding_nodes_writer: Option<BufWriter<File>>,
+// ── PostgreSQL binary COPY writer ──────────────────────────────────────────
+
+/// Writes PostgreSQL binary COPY format (as documented in the COPY section of
+/// the PostgreSQL manual).  All multi-byte integers are big-endian (network
+/// byte order).
+struct BinaryCopyWriter {
+    writer: BufWriter<File>,
 }
 
-/// Escape a string for PostgreSQL COPY TEXT format.
-/// Backslash-escapes: tab → \t, newline → \n, carriage return → \r, backslash → \\
-fn escape_tsv(s: &str) -> String {
-    let mut out = String::with_capacity(s.len());
-    for c in s.chars() {
-        match c {
-            '\t' => out.push_str("\\t"),
-            '\n' => out.push_str("\\n"),
-            '\r' => out.push_str("\\r"),
-            '\\' => out.push_str("\\\\"),
-            _ => out.push(c),
-        }
+impl BinaryCopyWriter {
+    /// Create a new writer and emit the 19-byte file header.
+    fn new(file: File) -> std::io::Result<Self> {
+        let mut writer = BufWriter::with_capacity(256 * 1024, file);
+        // 11-byte signature
+        writer.write_all(b"PGCOPY\n\xff\r\n\0")?;
+        // Flags field: 0 (no OIDs)
+        writer.write_all(&0u32.to_be_bytes())?;
+        // Header extension area length: 0
+        writer.write_all(&0u32.to_be_bytes())?;
+        Ok(Self { writer })
     }
-    out
-}
 
-/// Encode a list of strings as a PostgreSQL text array literal: {val1,val2,...}
-/// Each element is double-quoted with internal quotes and backslashes escaped.
-fn pg_text_array(values: &[String]) -> String {
-    if values.is_empty() {
-        return "{}".to_string();
+    /// Start a new tuple with the given number of fields.
+    #[inline]
+    fn begin_row(&mut self, num_fields: i16) -> std::io::Result<()> {
+        self.writer.write_all(&num_fields.to_be_bytes())
     }
-    let mut out = String::from("{");
-    for (i, v) in values.iter().enumerate() {
-        if i > 0 {
-            out.push(',');
-        }
-        out.push('"');
-        for c in v.chars() {
-            match c {
-                '"' => out.push_str("\\\""),
-                '\\' => out.push_str("\\\\"),
-                _ => out.push(c),
+
+    /// Write a NULL field (-1 length, no data).
+    #[inline]
+    fn write_null(&mut self) -> std::io::Result<()> {
+        self.writer.write_all(&(-1i32).to_be_bytes())
+    }
+
+    /// Write a TEXT field (length-prefixed UTF-8 bytes).
+    #[inline]
+    fn write_text(&mut self, s: &str) -> std::io::Result<()> {
+        let bytes = s.as_bytes();
+        self.writer.write_all(&(bytes.len() as i32).to_be_bytes())?;
+        self.writer.write_all(bytes)
+    }
+
+    /// Write a BOOLEAN field (1 byte: 0 or 1).
+    #[inline]
+    fn write_bool(&mut self, b: bool) -> std::io::Result<()> {
+        self.writer.write_all(&1i32.to_be_bytes())?;
+        self.writer.write_all(&[u8::from(b)])
+    }
+
+    /// Write a TEXT[] (1-D text array) field in PostgreSQL binary array format.
+    fn write_text_array(&mut self, values: &[String]) -> std::io::Result<()> {
+        if values.is_empty() {
+            // Empty array: ndim=0, has_null=0, elem_oid=25  → 12 bytes of data
+            self.writer.write_all(&12i32.to_be_bytes())?;
+            self.writer.write_all(&0i32.to_be_bytes())?;  // ndim
+            self.writer.write_all(&0i32.to_be_bytes())?;  // has_null
+            self.writer.write_all(&25i32.to_be_bytes())?;  // elem oid (TEXT)
+        } else {
+            // data = header(12) + dim_info(8) + elements(4+len each)
+            let elems_len: usize = values.iter().map(|v| 4 + v.as_bytes().len()).sum();
+            let data_len = (12 + 8 + elems_len) as i32;
+            self.writer.write_all(&data_len.to_be_bytes())?;
+            self.writer.write_all(&1i32.to_be_bytes())?;                  // ndim = 1
+            self.writer.write_all(&0i32.to_be_bytes())?;                  // has_null = 0
+            self.writer.write_all(&25i32.to_be_bytes())?;                 // elem oid (TEXT)
+            self.writer.write_all(&(values.len() as i32).to_be_bytes())?; // dim size
+            self.writer.write_all(&1i32.to_be_bytes())?;                  // lower bound = 1
+            for v in values {
+                let bytes = v.as_bytes();
+                self.writer.write_all(&(bytes.len() as i32).to_be_bytes())?;
+                self.writer.write_all(bytes)?;
             }
         }
-        out.push('"');
+        Ok(())
     }
-    out.push('}');
-    out
+
+    /// Write a pgvector `vector(N)` field in its binary transfer format:
+    /// uint16 dim, uint16 unused(0), N × float32.
+    fn write_vector(&mut self, values: &[f32]) -> std::io::Result<()> {
+        let data_len = (4 + values.len() * 4) as i32;
+        self.writer.write_all(&data_len.to_be_bytes())?;
+        self.writer.write_all(&(values.len() as u16).to_be_bytes())?;
+        self.writer.write_all(&0u16.to_be_bytes())?;
+        for v in values {
+            self.writer.write_all(&v.to_be_bytes())?;
+        }
+        Ok(())
+    }
+
+    /// Write the file trailer (-1 as int16) and flush.
+    fn finish(&mut self) -> std::io::Result<()> {
+        self.writer.write_all(&(-1i16).to_be_bytes())?;
+        self.writer.flush()
+    }
 }
 
-/// Encode a float vector as a pgvector literal: [0.1,0.2,0.3]
-fn pg_vector(values: &[f32]) -> String {
-    let mut out = String::from("[");
-    for (i, v) in values.iter().enumerate() {
-        if i > 0 {
-            out.push(',');
-        }
-        out.push_str(&v.to_string());
-    }
-    out.push(']');
-    out
-}
+// ── Helper extraction functions ────────────────────────────────────────────
 
 /// Extract is_obsolete from entity JSON. Returns true if the entity is obsolete.
 fn extract_is_obsolete(entity: &Map<String, Value>) -> bool {
@@ -148,6 +177,26 @@ fn extract_bool(entity: &Map<String, Value>, key: &str) -> bool {
     }
 }
 
+// ── OntologyWriter ─────────────────────────────────────────────────────────
+
+pub struct OntologyWriter<'a> {
+    #[allow(dead_code)]
+    output_file_path: String,
+    ontology_id: String,
+    manifest_info: OntologyManifestInfo,
+    embeddings: &'a HashMap<String, Embeddings>,
+    embedding_model_names: Vec<String>,
+    ontology_iri: String,
+    ontology_preferred_prefix: String,
+    filter_property_names: Vec<String>,
+    entity_field_count: i16,
+    edge_field_count: i16,
+    emb_node_field_count: i16,
+    entities_writer: BinaryCopyWriter,
+    edges_writer: BinaryCopyWriter,
+    embedding_nodes_writer: Option<BinaryCopyWriter>,
+}
+
 impl<'a> OntologyWriter<'a> {
     pub fn new(
         output_file_path: &str,
@@ -170,18 +219,21 @@ impl<'a> OntologyWriter<'a> {
         let mut embedding_model_names: Vec<String> = embeddings.keys().cloned().collect();
         embedding_model_names.sort();
 
-        // Create entities TSV (no header - PostgreSQL COPY doesn't use headers)
-        let entities_file = File::create(format!("{}/{}_entities.tsv", output_file_path, ontology_id))?;
-        let entities_writer = BufWriter::new(entities_file);
+        // Field counts (must match create_postgres_schema.py column order)
+        let entity_field_count = (26 + filter_property_names.len() + embedding_model_names.len()) as i16;
+        let edge_field_count: i16 = 5;
+        let emb_node_field_count = (3 + embedding_model_names.len()) as i16;
 
-        // Create edges TSV
-        let edges_file = File::create(format!("{}/{}_edges.tsv", output_file_path, ontology_id))?;
-        let edges_writer = BufWriter::new(edges_file);
+        // Create binary COPY files
+        let entities_file = File::create(format!("{}/{}_entities.pgbin", output_file_path, ontology_id))?;
+        let entities_writer = BinaryCopyWriter::new(entities_file)?;
 
-        // Create embedding nodes TSV if we have embeddings
+        let edges_file = File::create(format!("{}/{}_edges.pgbin", output_file_path, ontology_id))?;
+        let edges_writer = BinaryCopyWriter::new(edges_file)?;
+
         let embedding_nodes_writer = if !embedding_model_names.is_empty() {
-            let emb_file = File::create(format!("{}/{}_embedding_nodes.tsv", output_file_path, ontology_id))?;
-            Some(BufWriter::new(emb_file))
+            let emb_file = File::create(format!("{}/{}_embedding_nodes.pgbin", output_file_path, ontology_id))?;
+            Some(BinaryCopyWriter::new(emb_file)?)
         } else {
             None
         };
@@ -195,13 +247,16 @@ impl<'a> OntologyWriter<'a> {
             ontology_iri,
             ontology_preferred_prefix,
             filter_property_names,
+            entity_field_count,
+            edge_field_count,
+            emb_node_field_count,
             entities_writer,
             edges_writer,
             embedding_nodes_writer,
         })
     }
 
-    /// Write a single entity row to the entities TSV.
+    /// Write a single entity row in binary COPY format.
     pub fn write_entity(
         &mut self,
         entity_type_plural: &str,
@@ -236,53 +291,51 @@ impl<'a> OntologyWriter<'a> {
         let related_to = extract_string_array(entity, "relatedTo");
         let curated_from_sources = extract_string_array(entity, "curatedFromSources");
 
-        // Write base columns: id, type, iri, ontology_id, _json, is_obsolete, label, direct_ancestors, hierarchical_ancestors
-        write!(self.entities_writer, "{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}",
-            escape_tsv(&entity_node_id),
-            escape_tsv(pg_type),
-            escape_tsv(iri),
-            escape_tsv(&self.ontology_id),
-            escape_tsv(&json_str),
-            if extract_is_obsolete(entity) { "t" } else { "f" },
-            escape_tsv(&pg_text_array(&labels)),
-            escape_tsv(&pg_text_array(&direct_ancestors)),
-            escape_tsv(&pg_text_array(&hierarchical_ancestors)),
-        )?;
+        let w = &mut self.entities_writer;
+        w.begin_row(self.entity_field_count)?;
 
-        // Write search/filter columns
-        write!(self.entities_writer, "\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}",
-            escape_tsv(entity_type_str),
-            escape_tsv(&short_form),
-            escape_tsv(&curie),
-            escape_tsv(&curie),
-            escape_tsv(&pg_text_array(&synonyms)),
-            escape_tsv(&pg_text_array(&definitions)),
-            if is_defining { "t" } else { "f" },
-            if extract_bool(entity, "hasDirectParents") { "t" } else { "f" },
-            if extract_bool(entity, "hasHierarchicalParents") { "t" } else { "f" },
-            if extract_bool(entity, "hasDirectChildren") { "t" } else { "f" },
-            if extract_bool(entity, "hasHierarchicalChildren") { "t" } else { "f" },
-            if extract_bool(entity, "isPreferredRoot") { "t" } else { "f" },
-            escape_tsv(&self.ontology_iri),
-            escape_tsv(&self.ontology_preferred_prefix),
-            escape_tsv(&pg_text_array(&subset)),
-            escape_tsv(&pg_text_array(&related_to)),
-            escape_tsv(&pg_text_array(&curated_from_sources)),
-        )?;
+        // Base columns (26)
+        w.write_text(&entity_node_id)?;                          // id
+        w.write_text(pg_type)?;                                  // type
+        w.write_text(iri)?;                                      // iri
+        w.write_text(&self.ontology_id)?;                        // ontology_id
+        w.write_text(&json_str)?;                                // _json
+        w.write_bool(extract_is_obsolete(entity))?;              // is_obsolete
+        w.write_text_array(&labels)?;                            // label
+        w.write_text_array(&direct_ancestors)?;                  // direct_ancestors
+        w.write_text_array(&hierarchical_ancestors)?;            // hierarchical_ancestors
+        w.write_text(entity_type_str)?;                          // search_type
+        w.write_text(&short_form)?;                              // short_form
+        w.write_text(&curie)?;                                   // curie
+        w.write_text(&curie)?;                                   // obo_id
+        w.write_text_array(&synonyms)?;                          // synonym
+        w.write_text_array(&definitions)?;                       // definition
+        w.write_bool(is_defining)?;                              // is_defining_ontology
+        w.write_bool(extract_bool(entity, "hasDirectParents"))?; // has_direct_parents
+        w.write_bool(extract_bool(entity, "hasHierarchicalParents"))?; // has_hierarchical_parents
+        w.write_bool(extract_bool(entity, "hasDirectChildren"))?;      // has_direct_children
+        w.write_bool(extract_bool(entity, "hasHierarchicalChildren"))?; // has_hierarchical_children
+        w.write_bool(extract_bool(entity, "isPreferredRoot"))?; // is_preferred_root
+        w.write_text(&self.ontology_iri)?;                       // ontology_iri
+        w.write_text(&self.ontology_preferred_prefix)?;          // ontology_preferred_prefix
+        w.write_text_array(&subset)?;                            // subset
+        w.write_text_array(&related_to)?;                        // related_to
+        w.write_text_array(&curated_from_sources)?;              // curated_from_sources
 
-        // Write configurable filter property columns
+        // Configurable filter property columns
         for i in 0..self.filter_property_names.len() {
             let values = extract_localized_strings(entity, &self.filter_property_names[i]);
-            write!(self.entities_writer, "\t{}", escape_tsv(&pg_text_array(&values)))?;
+            w.write_text_array(&values)?;
         }
 
-        // Write one embedding column per model (average embedding on parent entity)
-        for model_name in &self.embedding_model_names {
-            let emb_str = self.serialize_average_embedding(entity, entity_type_str, iri, model_name);
-            write!(self.entities_writer, "\t{}", emb_str)?;
+        // One embedding column per model (average embedding on parent entity)
+        for model_name in &self.embedding_model_names.clone() {
+            if let Some(avg) = self.get_average_embedding(entity, entity_type_str, iri, model_name) {
+                self.entities_writer.write_vector(&avg)?;
+            } else {
+                self.entities_writer.write_null()?;
+            }
         }
-
-        writeln!(self.entities_writer)?;
 
         // Write edges from entity properties
         let entity_map: IndexMap<String, Value> = entity.iter()
@@ -298,7 +351,7 @@ impl<'a> OntologyWriter<'a> {
         Ok(())
     }
 
-    /// Write the ontology node as an entity row.
+    /// Write the ontology node as an entity row (binary).
     pub fn write_ontology(&mut self, ontology_properties: &Map<String, Value>) -> Result<(), Box<dyn std::error::Error>> {
         let ontology_id = ontology_properties
             .get("ontologyId")
@@ -313,66 +366,63 @@ impl<'a> OntologyWriter<'a> {
         let json_str = serde_json::to_string(&Value::Object(ontology_properties.clone()))?;
 
         let definitions = extract_localized_strings(ontology_properties, "definition");
+        let labels = extract_localized_strings(ontology_properties, "label");
         let preferred_prefix = ontology_properties
             .get("preferredPrefix")
             .and_then(|v| v.as_str())
             .unwrap_or("");
 
-        // Write base columns: id, type, iri, ontology_id, _json, is_obsolete, label, direct_ancestors, hierarchical_ancestors
-        write!(self.entities_writer, "{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}",
-            escape_tsv(&entity_node_id),
-            "Ontology",
-            escape_tsv(iri),
-            escape_tsv(ontology_id),
-            escape_tsv(&json_str),
-            "f",
-            escape_tsv(&pg_text_array(&extract_localized_strings(ontology_properties, "label"))),
-            "{}",
-            "{}",
-        )?;
+        let empty: Vec<String> = vec![];
 
-        // Write search/filter columns (mostly empty for ontology nodes)
-        write!(self.entities_writer, "\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}",
-            "ontology",
-            "",
-            "",
-            "",
-            "{}",
-            escape_tsv(&pg_text_array(&definitions)),
-            "f",
-            "f",
-            "f",
-            "f",
-            "f",
-            "f",
-            escape_tsv(iri),
-            escape_tsv(preferred_prefix),
-            "{}",
-            "{}",
-            "{}",
-        )?;
+        self.entities_writer.begin_row(self.entity_field_count)?;
 
-        // Write empty filter property columns
+        // Base columns (26)
+        self.entities_writer.write_text(&entity_node_id)?;       // id
+        self.entities_writer.write_text("Ontology")?;            // type
+        self.entities_writer.write_text(iri)?;                   // iri
+        self.entities_writer.write_text(ontology_id)?;           // ontology_id
+        self.entities_writer.write_text(&json_str)?;             // _json
+        self.entities_writer.write_bool(false)?;                 // is_obsolete
+        self.entities_writer.write_text_array(&labels)?;         // label
+        self.entities_writer.write_text_array(&empty)?;          // direct_ancestors
+        self.entities_writer.write_text_array(&empty)?;          // hierarchical_ancestors
+        self.entities_writer.write_text("ontology")?;            // search_type
+        self.entities_writer.write_text("")?;                    // short_form
+        self.entities_writer.write_text("")?;                    // curie
+        self.entities_writer.write_text("")?;                    // obo_id
+        self.entities_writer.write_text_array(&empty)?;          // synonym
+        self.entities_writer.write_text_array(&definitions)?;    // definition
+        self.entities_writer.write_bool(false)?;                 // is_defining_ontology
+        self.entities_writer.write_bool(false)?;                 // has_direct_parents
+        self.entities_writer.write_bool(false)?;                 // has_hierarchical_parents
+        self.entities_writer.write_bool(false)?;                 // has_direct_children
+        self.entities_writer.write_bool(false)?;                 // has_hierarchical_children
+        self.entities_writer.write_bool(false)?;                 // is_preferred_root
+        self.entities_writer.write_text(iri)?;                   // ontology_iri
+        self.entities_writer.write_text(preferred_prefix)?;      // ontology_preferred_prefix
+        self.entities_writer.write_text_array(&empty)?;          // subset
+        self.entities_writer.write_text_array(&empty)?;          // related_to
+        self.entities_writer.write_text_array(&empty)?;          // curated_from_sources
+
+        // Empty filter property columns
         for _ in &self.filter_property_names {
-            write!(self.entities_writer, "\t{}", "{}")?;
+            self.entities_writer.write_text_array(&empty)?;
         }
 
         // Ontology nodes don't have embeddings
         for _ in &self.embedding_model_names {
-            write!(self.entities_writer, "\t\\N")?;
+            self.entities_writer.write_null()?;
         }
-
-        writeln!(self.entities_writer)?;
 
         Ok(())
     }
 
-    /// Flush all writers.
+    /// Write binary COPY trailers and flush all writers.
     pub fn finish(&mut self) -> Result<(), Box<dyn std::error::Error>> {
-        self.entities_writer.flush()?;
-        self.edges_writer.flush()?;
+        self.entities_writer.finish()?;
+        self.edges_writer.finish()?;
         if let Some(ref mut w) = self.embedding_nodes_writer {
-            w.flush()?;
+            w.finish()?;
         }
         Ok(())
     }
@@ -453,7 +503,6 @@ impl<'a> OntologyWriter<'a> {
                     let end_id = format!("{}+{}+{}", self.ontology_id, b_type.to_string_lowercase(), b_uri);
                     let json_str = serde_json::to_string(edge_props)?;
 
-                    // Extract property values for the property column
                     let prop_values: Vec<String> = edge_props.iter()
                         .filter(|(k, _)| k.as_str() != "type" && k.as_str() != "value")
                         .flat_map(|(_, v)| match v {
@@ -463,14 +512,12 @@ impl<'a> OntologyWriter<'a> {
                         })
                         .collect();
 
-                    // Edge TSV: start_id \t end_id \t type \t _json \t property
-                    writeln!(self.edges_writer, "{}\t{}\t{}\t{}\t{}",
-                        escape_tsv(&start_id),
-                        escape_tsv(&end_id),
-                        escape_tsv(predicate),
-                        escape_tsv(&json_str),
-                        escape_tsv(&pg_text_array(&prop_values)),
-                    )?;
+                    self.edges_writer.begin_row(self.edge_field_count)?;
+                    self.edges_writer.write_text(&start_id)?;
+                    self.edges_writer.write_text(&end_id)?;
+                    self.edges_writer.write_text(predicate)?;
+                    self.edges_writer.write_text(&json_str)?;
+                    self.edges_writer.write_text_array(&prop_values)?;
                 }
             }
         }
@@ -478,21 +525,16 @@ impl<'a> OntologyWriter<'a> {
         Ok(())
     }
 
-    /// Serialize the average embedding for a given model on the parent entity node.
-    fn serialize_average_embedding(&self, entity: &Map<String, Value>, entity_type: &str, iri: &str, model_name: &str) -> String {
+    /// Return the average embedding for a model, or None if unavailable/not defining.
+    fn get_average_embedding(&self, entity: &Map<String, Value>, entity_type: &str, iri: &str, model_name: &str) -> Option<Vec<f32>> {
         if !self.is_defining_entity(entity) {
-            return "\\N".to_string();
+            return None;
         }
-
-        if let Some(emb) = self.embeddings.get(model_name) {
-            if let Some(avg) = emb.get_average_embedding(&self.ontology_id, entity_type, iri) {
-                return pg_vector(&avg);
-            }
-        }
-        "\\N".to_string()
+        self.embeddings.get(model_name)
+            .and_then(|emb| emb.get_average_embedding(&self.ontology_id, entity_type, iri))
     }
 
-    /// Write Embedding child nodes for all models for a given entity.
+    /// Write embedding child nodes for all models for a given entity (binary).
     fn write_embedding_child_nodes(
         &mut self,
         entity_node_id: &str,
@@ -504,7 +546,6 @@ impl<'a> OntologyWriter<'a> {
             return Ok(());
         }
 
-        // Collect rows first to avoid borrow conflicts
         struct EmbRow {
             node_id: String,
             emb_type: String,
@@ -540,20 +581,17 @@ impl<'a> OntologyWriter<'a> {
 
         if let Some(ref mut writer) = self.embedding_nodes_writer {
             for row in &rows {
-                // Embedding node TSV: id \t type \t entity_id \t [embedding columns...]
-                write!(writer, "{}\t{}\t{}",
-                    escape_tsv(&row.node_id),
-                    escape_tsv(&row.emb_type),
-                    escape_tsv(&row.entity_id),
-                )?;
+                writer.begin_row(self.emb_node_field_count)?;
+                writer.write_text(&row.node_id)?;
+                writer.write_text(&row.emb_type)?;
+                writer.write_text(&row.entity_id)?;
                 for i in 0..num_models {
                     if i == row.model_idx {
-                        write!(writer, "\t{}", pg_vector(&row.vector))?;
+                        writer.write_vector(&row.vector)?;
                     } else {
-                        write!(writer, "\t\\N")?;
+                        writer.write_null()?;
                     }
                 }
-                writeln!(writer)?;
             }
         }
 

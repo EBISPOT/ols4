@@ -92,11 +92,11 @@ INDEX_SQL=$(echo "$SCHEMA_SQL" | sed -n '/^-- Entity lookup indexes/,$p')
 
 echo "$TABLE_SQL" | psql -v ON_ERROR_STOP=1
 
-echo "=== Bulk loading TSV files ==="
+echo "=== Bulk loading binary COPY files ==="
 
-ls -lh "$TSV_DIR"/*.tsv 2>/dev/null || true
+ls -lh "$TSV_DIR"/*.pgbin 2>/dev/null || true
 
-# Column lists (must match load_into_postgres.sh)
+# Column lists (must match create_postgres_schema.py column order)
 BASE_ENTITY_COLS="id, type, iri, ontology_id, _json, is_obsolete, label, direct_ancestors, hierarchical_ancestors, search_type, short_form, curie, obo_id, synonym, definition, is_defining_ontology, has_direct_parents, has_hierarchical_parents, has_direct_children, has_hierarchical_children, is_preferred_root, ontology_iri, ontology_preferred_prefix, subset, related_to, curated_from_sources"
 EDGE_COLS="start_id, end_id, type, _json, property"
 EMB_NODE_BASE_COLS="id, type, entity_id"
@@ -106,6 +106,9 @@ FILTER_COLS=""
 for prop in "${FILTER_PROPERTIES[@]}"; do
     FILTER_COLS="${FILTER_COLS}, \"filter_${prop}\""
 done
+
+# Sort embedding parquets to match json2postgres column order (alphabetical)
+IFS=$'\n' EMBEDDING_PARQUETS=($(sort <<<"${EMBEDDING_PARQUETS[*]}")); unset IFS
 
 # Build embedding column list for entities and embedding_nodes
 ENTITY_EMB_COLS=""
@@ -119,34 +122,37 @@ done
 ENTITY_COLS="$BASE_ENTITY_COLS$FILTER_COLS$ENTITY_EMB_COLS"
 EMB_NODE_COLS="$EMB_NODE_BASE_COLS$EMB_NODE_EMB_COLS"
 
-# COPY entities
-ENTITY_FILES=$(find "$TSV_DIR" -name '*_entities.tsv' -size +0c | sort)
+# Number of parallel COPY streams
+PARALLEL_JOBS="${PARALLEL_JOBS:-8}"
+
+copy_binary_file() {
+    local table=$1 cols=$2 f=$3
+    local size_mb=$(( $(stat -L -c "%s" "$f" 2>/dev/null || stat -f "%z" "$f" 2>/dev/null || echo 0) / 1048576 ))
+    echo "  COPY ${table} from $(basename "$f") (${size_mb}MB)"
+    psql -v ON_ERROR_STOP=1 -c "COPY ${table} (${cols}) FROM STDIN WITH (FORMAT binary)" < "$f"
+}
+export -f copy_binary_file
+export PGHOST PGPORT PGDATABASE PGUSER PGPASSWORD
+
+# COPY entities (parallel)
+ENTITY_FILES=$(find "$TSV_DIR" -maxdepth 1 -name '*_entities.pgbin' -size +0c | sort)
 if [ -n "$ENTITY_FILES" ]; then
-    echo "Loading entities..."
-    for f in $ENTITY_FILES; do
-        echo "  COPY from $f"
-        psql -v ON_ERROR_STOP=1 -c "\\COPY ols_entities ($ENTITY_COLS) FROM '$f' WITH (FORMAT text)"
-    done
+    echo "Loading entities (${PARALLEL_JOBS} parallel streams)..."
+    echo "$ENTITY_FILES" | xargs -P "$PARALLEL_JOBS" -I{} bash -c "copy_binary_file ols_entities '$ENTITY_COLS' '{}'"
 fi
 
-# COPY edges
-EDGE_FILES=$(find "$TSV_DIR" -name '*_edges.tsv' -size +0c | sort)
+# COPY edges (parallel)
+EDGE_FILES=$(find "$TSV_DIR" -maxdepth 1 -name '*_edges.pgbin' -size +0c | sort)
 if [ -n "$EDGE_FILES" ]; then
-    echo "Loading edges..."
-    for f in $EDGE_FILES; do
-        echo "  COPY from $f"
-        psql -v ON_ERROR_STOP=1 -c "\\COPY ols_edges ($EDGE_COLS) FROM '$f' WITH (FORMAT text)"
-    done
+    echo "Loading edges (${PARALLEL_JOBS} parallel streams)..."
+    echo "$EDGE_FILES" | xargs -P "$PARALLEL_JOBS" -I{} bash -c "copy_binary_file ols_edges '$EDGE_COLS' '{}'"
 fi
 
-# COPY embedding nodes
-EMB_FILES=$(find "$TSV_DIR" -name '*_embedding_nodes.tsv' -size +0c | sort)
+# COPY embedding nodes (parallel)
+EMB_FILES=$(find "$TSV_DIR" -maxdepth 1 -name '*_embedding_nodes.pgbin' -size +0c | sort)
 if [ -n "$EMB_FILES" ]; then
-    echo "Loading embedding nodes..."
-    for f in $EMB_FILES; do
-        echo "  COPY from $f"
-        psql -v ON_ERROR_STOP=1 -c "\\COPY ols_embedding_nodes ($EMB_NODE_COLS) FROM '$f' WITH (FORMAT text)"
-    done
+    echo "Loading embedding nodes (${PARALLEL_JOBS} parallel streams)..."
+    echo "$EMB_FILES" | xargs -P "$PARALLEL_JOBS" -I{} bash -c "copy_binary_file ols_embedding_nodes '$EMB_NODE_COLS' '{}'"
 fi
 
 echo "=== Creating indexes and finalizing ==="
