@@ -443,6 +443,8 @@ process visualize_embeddings {
     time '1h'
     cpus "32"
     clusterOptions = '--gres=gpu:a100:1'
+    errorStrategy "retry"
+    maxRetries 100
 
     publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.parquet.gz'
     publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.png'
