@@ -15,7 +15,6 @@ Usage:
     python populate_external_postgres.py <datadir> [--filter-property <name> ...] [parquet_file ...]
 """
 
-import argparse
 import os
 import subprocess
 import sys
@@ -153,21 +152,27 @@ def load_table(
 # ---------------------------------------------------------------------------
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Populate a managed PostgreSQL database with OLS4 data."
-    )
-    parser.add_argument("datadir", help="Directory containing .pgbin files")
-    parser.add_argument(
-        "--filter-property", dest="filter_properties", action="append", default=[],
-        help="Filter property column name (repeatable)"
-    )
-    parser.add_argument(
-        "parquets", nargs="*", help="Parquet files for embedding models"
-    )
-    args = parser.parse_args()
+    if len(sys.argv) < 2:
+        print(f"Usage: {sys.argv[0]} <datadir> [--filter-property <name> ...] [parquet_file ...]", file=sys.stderr)
+        sys.exit(1)
 
-    datadir = Path(args.datadir).resolve()
+    datadir = Path(sys.argv[1]).resolve()
     script_dir = Path(__file__).resolve().parent
+
+    # Parse remaining args: --filter-property flags and parquet files
+    filter_properties = []
+    parquets_raw = []
+    args_rest = sys.argv[2:]
+    i = 0
+    while i < len(args_rest):
+        if args_rest[i] == "--filter-property" and i + 1 < len(args_rest):
+            filter_properties.append(args_rest[i + 1])
+            i += 2
+        elif args_rest[i].endswith(".parquet"):
+            parquets_raw.append(args_rest[i])
+            i += 1
+        else:
+            i += 1
 
     # --- Validate env ---
     for var in ("PGHOST", "PGDATABASE", "PGUSER"):
@@ -189,10 +194,10 @@ def main():
     # --- Generate schema ---
     print("=== Generating schema ===")
     schema_extra = []
-    for fp in args.filter_properties:
+    for fp in filter_properties:
         schema_extra += ["--filter-property", fp]
     # Sort parquets alphabetically (must match json2postgres column order)
-    parquets = sorted(args.parquets)
+    parquets = sorted(parquets_raw)
     schema_extra += parquets
 
     sections = generate_schema(script_dir, schema_extra)
@@ -222,7 +227,7 @@ def main():
 
     # --- Build column lists ---
     entity_cols = list(BASE_ENTITY_COLS)
-    for fp in args.filter_properties:
+    for fp in filter_properties:
         entity_cols.append(f'"filter_{fp}"')
 
     emb_node_cols = list(EMB_NODE_BASE_COLS)
