@@ -94,7 +94,7 @@ public class OlsSearchClient {
                 setParams(dataStmt, dataParams);
                 try (ResultSet rs = dataStmt.executeQuery()) {
                     while (rs.next()) {
-                        results.add(JsonParser.parseString(rs.getString(1)));
+                        results.add(JsonParser.parseString(PostgresClient.decompressJson(rs, 1)));
                     }
                 }
             }
@@ -130,7 +130,7 @@ public class OlsSearchClient {
             setParams(stmt, params);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (!rs.next()) return null;
-                return JsonParser.parseString(rs.getString(1));
+                return JsonParser.parseString(PostgresClient.decompressJson(rs, 1));
             }
         } catch (SQLException e) {
             throw new RuntimeException("getFirst query failed", e);
@@ -191,7 +191,7 @@ public class OlsSearchClient {
                 stmt.setLong(4, pageable.getOffset());
                 try (ResultSet rs = stmt.executeQuery()) {
                     while (rs.next()) {
-                        results.add(JsonParser.parseString(rs.getString(1)));
+                        results.add(JsonParser.parseString(PostgresClient.decompressJson(rs, 1)));
                     }
                 }
             }
@@ -367,7 +367,7 @@ public class OlsSearchClient {
                 setParams(dataStmt, dataParams);
                 try (ResultSet rs = dataStmt.executeQuery()) {
                     while (rs.next()) {
-                        jsonStrings.add(rs.getString(1));
+                        jsonStrings.add(PostgresClient.decompressJson(rs, 1));
                     }
                 }
             }

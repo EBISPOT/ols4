@@ -1,8 +1,13 @@
 package uk.ac.ebi.spot.ols.service;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.zip.GZIPInputStream;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -42,6 +47,46 @@ public class PostgresClient {
     private HikariDataSource dataSource;
     private Gson gson = new Gson();
     private static final Logger logger = LoggerFactory.getLogger(PostgresClient.class);
+
+    /**
+     * Decompress a gzip-compressed _json BYTEA column and parse as JSON.
+     */
+    public static String decompressJson(ResultSet rs, String column) throws SQLException {
+        byte[] compressed = rs.getBytes(column);
+        if (compressed == null) return null;
+        try (GZIPInputStream gis = new GZIPInputStream(new ByteArrayInputStream(compressed));
+             Reader reader = new InputStreamReader(gis, StandardCharsets.UTF_8)) {
+            StringBuilder sb = new StringBuilder(compressed.length * 4);
+            char[] buf = new char[8192];
+            int n;
+            while ((n = reader.read(buf)) != -1) {
+                sb.append(buf, 0, n);
+            }
+            return sb.toString();
+        } catch (java.io.IOException e) {
+            throw new SQLException("Failed to decompress _json", e);
+        }
+    }
+
+    /**
+     * Decompress a gzip-compressed BYTEA column by position index.
+     */
+    public static String decompressJson(ResultSet rs, int columnIndex) throws SQLException {
+        byte[] compressed = rs.getBytes(columnIndex);
+        if (compressed == null) return null;
+        try (GZIPInputStream gis = new GZIPInputStream(new ByteArrayInputStream(compressed));
+             Reader reader = new InputStreamReader(gis, StandardCharsets.UTF_8)) {
+            StringBuilder sb = new StringBuilder(compressed.length * 4);
+            char[] buf = new char[8192];
+            int n;
+            while ((n = reader.read(buf)) != -1) {
+                sb.append(buf, 0, n);
+            }
+            return sb.toString();
+        } catch (java.io.IOException e) {
+            throw new SQLException("Failed to decompress _json", e);
+        }
+    }
 
     @PostConstruct
     public void init() {
@@ -105,7 +150,7 @@ public class PostgresClient {
             try (ResultSet rs = stmt.executeQuery()) {
                 List<JsonElement> results = new ArrayList<>();
                 while (rs.next()) {
-                    results.add(JsonParser.parseString(rs.getString("_json")));
+                    results.add(JsonParser.parseString(decompressJson(rs, "_json")));
                 }
                 return results;
             }
@@ -140,7 +185,7 @@ public class PostgresClient {
                 }
                 try (ResultSet rs = dataStmt.executeQuery()) {
                     while (rs.next()) {
-                        results.add(JsonParser.parseString(rs.getString("_json")));
+                        results.add(JsonParser.parseString(decompressJson(rs, "_json")));
                     }
                 }
             }
@@ -161,7 +206,7 @@ public class PostgresClient {
                 if (!rs.next()) {
                     throw new ResourceNotFoundException();
                 }
-                return JsonParser.parseString(rs.getString("_json"));
+                return JsonParser.parseString(decompressJson(rs, "_json"));
             }
         } catch (ResourceNotFoundException e) {
             throw e;

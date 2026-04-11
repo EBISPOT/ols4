@@ -347,7 +347,7 @@ public class OlsPostgresClient {
             List<JsonElement> results = new ArrayList<>();
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    var json = JsonParser.parseString(rs.getString("_json")).getAsJsonObject();
+                    var json = JsonParser.parseString(PostgresClient.decompressJson(rs, "_json")).getAsJsonObject();
                     json.addProperty("score", rs.getDouble("score"));
                     results.add(json);
                 }
@@ -461,7 +461,7 @@ public class OlsPostgresClient {
             List<JsonElement> results = new ArrayList<>();
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    var json = JsonParser.parseString(rs.getString("_json")).getAsJsonObject();
+                    var json = JsonParser.parseString(PostgresClient.decompressJson(rs, "_json")).getAsJsonObject();
                     json.addProperty("score", 1.0 - rs.getDouble("score"));
                     results.add(json);
                 }
@@ -551,7 +551,7 @@ public class OlsPostgresClient {
             List<JsonElement> results = new ArrayList<>();
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    var json = JsonParser.parseString(rs.getString("_json")).getAsJsonObject();
+                    var json = JsonParser.parseString(PostgresClient.decompressJson(rs, "_json")).getAsJsonObject();
                     json.addProperty("score", 1.0 - rs.getDouble("score"));
                     results.add(json);
                 }

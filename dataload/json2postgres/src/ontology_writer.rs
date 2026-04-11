@@ -2,6 +2,8 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::io::{BufWriter, Write};
 
+use flate2::Compression;
+use flate2::write::GzEncoder;
 use indexmap::IndexMap;
 use serde_json::{Map, Value};
 
@@ -62,6 +64,21 @@ impl BinaryCopyWriter {
         let bytes = s.as_bytes();
         self.writer.write_all(&(bytes.len() as i32).to_be_bytes())?;
         self.writer.write_all(bytes)
+    }
+
+    /// Write a BYTEA field (length-prefixed raw bytes).
+    #[inline]
+    fn write_bytea(&mut self, bytes: &[u8]) -> std::io::Result<()> {
+        self.writer.write_all(&(bytes.len() as i32).to_be_bytes())?;
+        self.writer.write_all(bytes)
+    }
+
+    /// Gzip-compress a string at maximum compression and write as BYTEA.
+    fn write_gzipped_text(&mut self, s: &str) -> std::io::Result<()> {
+        let mut encoder = GzEncoder::new(Vec::new(), Compression::best());
+        encoder.write_all(s.as_bytes())?;
+        let compressed = encoder.finish()?;
+        self.write_bytea(&compressed)
     }
 
     /// Write a BOOLEAN field (1 byte: 0 or 1).
@@ -299,7 +316,7 @@ impl<'a> OntologyWriter<'a> {
         w.write_text(pg_type)?;                                  // type
         w.write_text(iri)?;                                      // iri
         w.write_text(&self.ontology_id)?;                        // ontology_id
-        w.write_text(&json_str)?;                                // _json
+        w.write_gzipped_text(&json_str)?;                        // _json (gzip-compressed bytea)
         w.write_bool(extract_is_obsolete(entity))?;              // is_obsolete
         w.write_text_array(&labels)?;                            // label
         w.write_text_array(&direct_ancestors)?;                  // direct_ancestors
@@ -381,7 +398,7 @@ impl<'a> OntologyWriter<'a> {
         self.entities_writer.write_text("Ontology")?;            // type
         self.entities_writer.write_text(iri)?;                   // iri
         self.entities_writer.write_text(ontology_id)?;           // ontology_id
-        self.entities_writer.write_text(&json_str)?;             // _json
+        self.entities_writer.write_gzipped_text(&json_str)?;     // _json (gzip-compressed bytea)
         self.entities_writer.write_bool(false)?;                 // is_obsolete
         self.entities_writer.write_text_array(&labels)?;         // label
         self.entities_writer.write_text_array(&empty)?;          // direct_ancestors
@@ -516,7 +533,7 @@ impl<'a> OntologyWriter<'a> {
                     self.edges_writer.write_text(&start_id)?;
                     self.edges_writer.write_text(&end_id)?;
                     self.edges_writer.write_text(predicate)?;
-                    self.edges_writer.write_text(&json_str)?;
+                    self.edges_writer.write_gzipped_text(&json_str)?;
                     self.edges_writer.write_text_array(&prop_values)?;
                 }
             }

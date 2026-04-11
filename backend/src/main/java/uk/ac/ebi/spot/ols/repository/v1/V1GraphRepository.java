@@ -133,11 +133,11 @@ public class V1GraphRepository {
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    outNodes.add(new GraphNode(rs.getString("node_iri"), rs.getString("node_json")));
+                    outNodes.add(new GraphNode(rs.getString("node_iri"), PostgresClient.decompressJson(rs, "node_json")));
                     outEdges.add(new GraphEdge(
                             rs.getString("source_iri"),
                             rs.getString("target_iri"),
-                            rs.getString("edge_json")
+                            PostgresClient.decompressJson(rs, "edge_json")
                     ));
                 }
             }
@@ -163,11 +163,11 @@ public class V1GraphRepository {
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    outNodes.add(new GraphNode(rs.getString("node_iri"), rs.getString("node_json")));
+                    outNodes.add(new GraphNode(rs.getString("node_iri"), PostgresClient.decompressJson(rs, "node_json")));
                     outEdges.add(new GraphEdge(
                             rs.getString("source_iri"),
                             rs.getString("target_iri"),
-                            rs.getString("edge_json")
+                            PostgresClient.decompressJson(rs, "edge_json")
                     ));
                 }
             }

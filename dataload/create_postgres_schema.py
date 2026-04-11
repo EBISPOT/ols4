@@ -25,7 +25,7 @@ CREATE TABLE ols_entities (
     type TEXT NOT NULL,
     iri TEXT NOT NULL,
     ontology_id TEXT,
-    _json TEXT NOT NULL,
+    _json BYTEA NOT NULL,
     is_obsolete BOOLEAN DEFAULT FALSE,
     label TEXT[] DEFAULT '{}',
     direct_ancestors TEXT[] DEFAULT '{}',
@@ -57,14 +57,20 @@ CREATE TABLE ols_entities (
     label_for_suggest TEXT
 ) WITH (fillfactor=100);
 
+-- Skip TOAST compression on pre-compressed _json BYTEA
+ALTER TABLE ols_entities ALTER COLUMN _json SET STORAGE EXTERNAL;
+
 -- Edges table: relationships between entities
 CREATE TABLE ols_edges (
     start_id TEXT NOT NULL,
     end_id TEXT NOT NULL,
     type TEXT NOT NULL,
-    _json TEXT,
+    _json BYTEA,
     property TEXT[]
 ) WITH (fillfactor=100);
+
+-- Skip TOAST compression on pre-compressed _json BYTEA
+ALTER TABLE ols_edges ALTER COLUMN _json SET STORAGE EXTERNAL;
 
 -- Embedding nodes table: individual embedding vectors linked to entities
 CREATE TABLE ols_embedding_nodes (
