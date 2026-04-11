@@ -355,7 +355,7 @@ process create_postgres {
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    /opt/ols/dataload/load_into_postgres.sh ./postgres . ${filter_args} ${parquet_list}
+    python3 /opt/ols/dataload/load_into_postgres.py ./postgres . ${filter_args} ${parquet_list}
     """
 }
 

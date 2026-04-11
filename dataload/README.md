@@ -25,9 +25,9 @@ You can now convert this huge JSON file to TSV files ready for PostgreSQL, using
 
 ## Step 3: TSV to PostgreSQL
 
-Now (after 5-10 mins) you should have a directory full of TSV files. These files are formatted for bulk loading into PostgreSQL via COPY. Use the `load_into_postgres.sh` script to initialize a PostgreSQL instance and load the data:
+Now (after 5-10 mins) you should have a directory full of `.pgbin` files. These are PostgreSQL binary COPY format files. Use the `load_into_postgres.py` script to initialize a PostgreSQL instance and load the data:
 
-    ./load_into_postgres.sh ./postgres_out ./output_tsv
+    python3 load_into_postgres.py ./postgres_out ./output_tsv
 
 Now you should have a PostgreSQL database ready to start!
 

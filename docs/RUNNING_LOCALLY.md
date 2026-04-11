@@ -111,11 +111,11 @@ First, make sure the configuration files (that determine which ontologies to loa
     --outDir <LOCAL_DIR>/output_tsv/ \
     --manifest <LOCAL_DIR>/output_json/linker_manifest.json
 
-#### Create PostgreSQL database from TSV
+#### Create PostgreSQL database from pgbin files
 
-Use the `load_into_postgres.sh` script to initialize a PostgreSQL instance and bulk-load the TSV files:
+Use the `load_into_postgres.py` script to initialize a PostgreSQL instance and bulk-load the pgbin files:
 
-    ./load_into_postgres.sh <LOCAL_DIR>/postgres_out <LOCAL_DIR>/output_tsv/
+    python3 load_into_postgres.py <LOCAL_DIR>/postgres_out <LOCAL_DIR>/output_tsv/
 
 #### Create data archive for PostgreSQL
 
