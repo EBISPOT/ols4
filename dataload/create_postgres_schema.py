@@ -189,7 +189,9 @@ def generate_embedding_sql(parquet_files: list) -> str:
 
         # Add vector columns
         lines.append(f'ALTER TABLE ols_entities ADD COLUMN "{avg_col}" vector({dimensions});')
+        lines.append(f'ALTER TABLE ols_entities ALTER COLUMN "{avg_col}" SET STORAGE EXTERNAL;')
         lines.append(f'ALTER TABLE ols_embedding_nodes ADD COLUMN "{emb_col}" vector({dimensions});')
+        lines.append(f'ALTER TABLE ols_embedding_nodes ALTER COLUMN "{emb_col}" SET STORAGE EXTERNAL;')
         lines.append("")
 
         # HNSW vector indexes
