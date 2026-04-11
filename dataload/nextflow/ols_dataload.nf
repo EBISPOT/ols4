@@ -382,7 +382,7 @@ process populate_external_postgres {
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    /opt/ols/dataload/populate_external_postgres.sh . ${filter_args} ${parquet_list}
+    python3 /opt/ols/dataload/populate_external_postgres.py . ${filter_args} ${parquet_list}
     mkdir -p postgres_external_done
     echo "Populated \${PGHOST}:\${PGPORT}/\${PGDATABASE} at \$(date)" > postgres_external_done/status.txt
     """

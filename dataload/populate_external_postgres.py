@@ -1,0 +1,262 @@
+#!/usr/bin/env python3
+"""
+Populate an existing (managed) PostgreSQL database with OLS4 data.
+
+Uses COPY ... WITH (FORMAT binary, FREEZE) by running CREATE TABLE and all
+COPY commands for each table in a single transaction.  FREEZE marks rows as
+already frozen, skipping future VACUUM passes.  The three table types
+(entities, edges, embedding_nodes) are loaded in parallel psql sessions.
+
+Connects using standard libpq environment variables (PGHOST, PGDATABASE, etc.).
+The actual COPY is done by piping psql scripts to `psql` subprocesses (no
+Python DB driver needed).
+
+Usage:
+    python populate_external_postgres.py <datadir> [--filter-property <name> ...] [parquet_file ...]
+"""
+
+import argparse
+import os
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+
+# ---------------------------------------------------------------------------
+# Column lists (must match create_postgres_schema.py column order)
+# ---------------------------------------------------------------------------
+
+BASE_ENTITY_COLS = [
+    "id", "type", "iri", "ontology_id", "_json", "is_obsolete",
+    "label", "direct_ancestors", "hierarchical_ancestors",
+    "search_type", "short_form", "curie", "obo_id",
+    "synonym", "definition",
+    "is_defining_ontology", "has_direct_parents", "has_hierarchical_parents",
+    "has_direct_children", "has_hierarchical_children", "is_preferred_root",
+    "ontology_iri", "ontology_preferred_prefix",
+    "subset", "related_to", "curated_from_sources",
+]
+
+EDGE_COLS = ["start_id", "end_id", "type", "_json", "property"]
+
+EMB_NODE_BASE_COLS = ["id", "type", "entity_id"]
+
+
+# ---------------------------------------------------------------------------
+# Schema generation (calls create_postgres_schema.py, parses sections)
+# ---------------------------------------------------------------------------
+
+def generate_schema(script_dir: Path, extra_args: list[str]) -> dict[str, str]:
+    """Run create_postgres_schema.py and return a dict of section_name -> SQL."""
+    cmd = [sys.executable, str(script_dir / "create_postgres_schema.py")] + extra_args
+    result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+
+    sections: dict[str, str] = {}
+    current = None
+    lines: list[str] = []
+
+    for line in result.stdout.splitlines():
+        if line.startswith("-- SECTION: "):
+            if current is not None:
+                sections[current] = "\n".join(lines)
+            current = line.split("-- SECTION: ", 1)[1].strip()
+            lines = []
+        else:
+            lines.append(line)
+
+    if current is not None:
+        sections[current] = "\n".join(lines)
+
+    return sections
+
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
+def run_psql(script: str, label: str = ""):
+    """Pipe a SQL/psql script to psql -v ON_ERROR_STOP=1."""
+    proc = subprocess.run(
+        ["psql", "-v", "ON_ERROR_STOP=1"],
+        input=script, text=True,
+        capture_output=True,
+    )
+    if proc.returncode != 0:
+        msg = proc.stderr.strip() or proc.stdout.strip()
+        raise RuntimeError(f"psql failed ({label}): {msg}")
+    if label:
+        print(f"  {label} done.")
+
+
+def sizeof_fmt(num: float) -> str:
+    for unit in ("B", "KB", "MB", "GB", "TB"):
+        if abs(num) < 1024:
+            return f"{num:.1f}{unit}"
+        num /= 1024
+    return f"{num:.1f}PB"
+
+
+# ---------------------------------------------------------------------------
+# Per-table loader: CREATE + \copy FREEZE in one psql transaction
+# ---------------------------------------------------------------------------
+
+def load_table(
+    table_name: str,
+    create_sql: str,
+    cols: list[str],
+    pgbin_files: list[Path],
+) -> None:
+    """Load a single table: BEGIN, CREATE TABLE, \\copy FREEZE all files, COMMIT."""
+    if not pgbin_files:
+        print(f"  {table_name}: no files, skipping.")
+        return
+
+    total_bytes = sum(f.stat().st_size for f in pgbin_files)
+    print(f"  {table_name}: {len(pgbin_files)} files, {sizeof_fmt(total_bytes)} total")
+
+    t0 = time.time()
+    col_list = ", ".join(cols)
+
+    # Build a psql script: single transaction with CREATE + \copy FREEZE
+    lines = ["BEGIN;", create_sql]
+    for pgbin in pgbin_files:
+        abs_path = str(pgbin.resolve())
+        lines.append(
+            f"\\copy {table_name} ({col_list}) FROM '{abs_path}' WITH (FORMAT binary, FREEZE)"
+        )
+    lines.append("COMMIT;")
+
+    script = "\n".join(lines)
+
+    # Log progress (we can't get per-file progress from psql, but log what we're doing)
+    for i, pgbin in enumerate(pgbin_files, 1):
+        size = sizeof_fmt(pgbin.stat().st_size)
+        print(f"    [{i}/{len(pgbin_files)}] {pgbin.name} ({size})")
+
+    proc = subprocess.run(
+        ["psql", "-v", "ON_ERROR_STOP=1"],
+        input=script, text=True,
+        capture_output=True,
+    )
+    if proc.returncode != 0:
+        msg = proc.stderr.strip() or proc.stdout.strip()
+        raise RuntimeError(f"{table_name} load failed: {msg}")
+
+    elapsed = time.time() - t0
+    rate = total_bytes / elapsed / 1024 / 1024 if elapsed > 0 else 0
+    print(f"  {table_name}: committed in {elapsed:.1f}s ({rate:.1f} MB/s)")
+
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Populate a managed PostgreSQL database with OLS4 data."
+    )
+    parser.add_argument("datadir", help="Directory containing .pgbin files")
+    parser.add_argument(
+        "--filter-property", dest="filter_properties", action="append", default=[],
+        help="Filter property column name (repeatable)"
+    )
+    parser.add_argument(
+        "parquets", nargs="*", help="Parquet files for embedding models"
+    )
+    args = parser.parse_args()
+
+    datadir = Path(args.datadir).resolve()
+    script_dir = Path(__file__).resolve().parent
+
+    # --- Validate env ---
+    for var in ("PGHOST", "PGDATABASE", "PGUSER"):
+        if not os.environ.get(var):
+            sys.exit(f"ERROR: {var} must be set")
+
+    pghost = os.environ["PGHOST"]
+    pgport = os.environ.get("PGPORT", "5432")
+    pgdb = os.environ["PGDATABASE"]
+    pguser = os.environ["PGUSER"]
+
+    print(f"=== Connecting to {pguser}@{pghost}:{pgport}/{pgdb} ===")
+    try:
+        run_psql("SELECT 1;")
+    except Exception as e:
+        sys.exit(f"ERROR: Cannot connect: {e}")
+    print("Connection OK.")
+
+    # --- Generate schema ---
+    print("=== Generating schema ===")
+    schema_extra = []
+    for fp in args.filter_properties:
+        schema_extra += ["--filter-property", fp]
+    # Sort parquets alphabetically (must match json2postgres column order)
+    parquets = sorted(args.parquets)
+    schema_extra += parquets
+
+    sections = generate_schema(script_dir, schema_extra)
+
+    # --- Drop old tables ---
+    print("=== Dropping existing OLS tables ===")
+    run_psql(
+        "DROP TABLE IF EXISTS ols_embedding_nodes CASCADE;\n"
+        "DROP TABLE IF EXISTS ols_edges CASCADE;\n"
+        "DROP TABLE IF EXISTS ols_entities CASCADE;",
+        "drop"
+    )
+
+    # --- Create extensions ---
+    print("=== Creating extensions ===")
+    run_psql(sections["extensions"], "extensions")
+
+    # --- Discover pgbin files ---
+    entity_files = sorted(datadir.glob("*_entities.pgbin"))
+    edge_files = sorted(datadir.glob("*_edges.pgbin"))
+    emb_files = sorted(datadir.glob("*_embedding_nodes.pgbin"))
+
+    # Filter out empty files
+    entity_files = [f for f in entity_files if f.stat().st_size > 0]
+    edge_files = [f for f in edge_files if f.stat().st_size > 0]
+    emb_files = [f for f in emb_files if f.stat().st_size > 0]
+
+    # --- Build column lists ---
+    entity_cols = list(BASE_ENTITY_COLS)
+    for fp in args.filter_properties:
+        entity_cols.append(f'"filter_{fp}"')
+
+    emb_node_cols = list(EMB_NODE_BASE_COLS)
+    for pq_file in parquets:
+        model = Path(pq_file).stem
+        entity_cols.append(f'"embeddings_{model}"')
+        emb_node_cols.append(f'"embedding_{model}"')
+
+    # --- Load tables sequentially ---
+    print("=== Bulk loading with COPY FREEZE ===")
+    t0 = time.time()
+
+    load_table("ols_entities", sections["ols_entities"], entity_cols, entity_files)
+    load_table("ols_edges", sections["ols_edges"], EDGE_COLS, edge_files)
+    load_table("ols_embedding_nodes", sections["ols_embedding_nodes"], emb_node_cols, emb_files)
+
+    elapsed = time.time() - t0
+    print(f"All tables loaded in {elapsed:.1f}s")
+
+    # --- Create indexes ---
+    print("=== Creating indexes ===")
+    run_psql(sections["indexes"], "indexes")
+
+    # --- Post-load updates (tsvector, label_for_suggest, ANALYZE) ---
+    print("=== Post-load updates ===")
+    run_psql(sections["post_load"], "post_load")
+
+    print(f"=== Done ===")
+    print(f"Database {pgdb} on {pghost} has been populated.")
+    print(f"  OLS_POSTGRES_HOST={pghost}")
+    print(f"  OLS_POSTGRES_PORT={pgport}")
+    print(f"  OLS_POSTGRES_DB={pgdb}")
+    print(f"  OLS_POSTGRES_USER={pguser}")
+
+
+if __name__ == "__main__":
+    main()

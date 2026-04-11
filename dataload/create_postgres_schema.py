@@ -3,23 +3,31 @@
 Generates SQL statements to create all PostgreSQL tables, indexes, and
 dynamic embedding vector columns for OLS4.
 
-Usage: python create_postgres_schema.py [--filter-property <name> ...] [parquet_file ...]
+Output is organized into named sections delimited by '-- SECTION: <name>'
+markers so the loading script can extract per-table SQL for transactional
+COPY FREEZE loading.
 
-Any parquet files passed as arguments will have vector columns and HNSW indexes created for them.
-Filter properties (e.g. --filter-property 'http__//www.w3.org/...') create TEXT[] columns for
-ontology-specific filterable fields.
+Sections:
+  extensions         - CREATE EXTENSION statements
+  ols_entities       - CREATE TABLE + ALTER TABLE for entities
+  ols_edges          - CREATE TABLE + ALTER TABLE for edges
+  ols_embedding_nodes - CREATE TABLE + ALTER TABLE for embedding nodes
+  indexes            - All CREATE INDEX statements
+  post_load          - UPDATE statements for computed columns + ANALYZE
+
+Usage: python create_postgres_schema.py [--filter-property <name> ...] [parquet_file ...]
 """
 
 import sys
 from pathlib import Path
 
 
-SCHEMA_SQL = """
--- Create extensions
+EXTENSIONS_SQL = """\
 CREATE EXTENSION IF NOT EXISTS vector;
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
+"""
 
--- Entities table: classes, properties, individuals, ontologies
+ENTITIES_TABLE_SQL = """\
 CREATE TABLE ols_entities (
     id TEXT PRIMARY KEY,
     type TEXT NOT NULL,
@@ -56,11 +64,10 @@ CREATE TABLE ols_entities (
     -- First label for autocomplete grouping / trigram matching
     label_for_suggest TEXT
 ) WITH (fillfactor=100);
-
--- Skip TOAST compression on pre-compressed _json BYTEA
 ALTER TABLE ols_entities ALTER COLUMN _json SET STORAGE EXTERNAL;
+"""
 
--- Edges table: relationships between entities
+EDGES_TABLE_SQL = """\
 CREATE TABLE ols_edges (
     start_id TEXT NOT NULL,
     end_id TEXT NOT NULL,
@@ -68,11 +75,10 @@ CREATE TABLE ols_edges (
     _json BYTEA,
     property TEXT[]
 ) WITH (fillfactor=100);
-
--- Skip TOAST compression on pre-compressed _json BYTEA
 ALTER TABLE ols_edges ALTER COLUMN _json SET STORAGE EXTERNAL;
+"""
 
--- Embedding nodes table: individual embedding vectors linked to entities
+EMBEDDING_NODES_TABLE_SQL = """\
 CREATE TABLE ols_embedding_nodes (
     id TEXT PRIMARY KEY,
     type TEXT NOT NULL,
@@ -80,61 +86,54 @@ CREATE TABLE ols_embedding_nodes (
 ) WITH (fillfactor=100);
 """
 
-
-INDEX_SQL = """
--- Entity lookup indexes
+ENTITY_INDEX_SQL = """\
 CREATE INDEX idx_ent_onto_iri ON ols_entities (ontology_id, iri);
 CREATE INDEX idx_ent_type ON ols_entities (type);
 CREATE INDEX idx_ent_iri ON ols_entities USING hash (iri);
 CREATE INDEX idx_ent_onto ON ols_entities (ontology_id);
-
--- GIN indexes for ancestor array containment (for descendant/children queries)
 CREATE INDEX idx_ent_da ON ols_entities USING gin (direct_ancestors);
 CREATE INDEX idx_ent_ha ON ols_entities USING gin (hierarchical_ancestors);
-
--- Search/filter indexes
 CREATE INDEX idx_ent_search_type ON ols_entities (search_type);
 CREATE INDEX idx_ent_short_form ON ols_entities USING hash (short_form);
 CREATE INDEX idx_ent_curie ON ols_entities USING hash (curie);
 CREATE INDEX idx_ent_is_def ON ols_entities (is_defining_ontology) WHERE is_defining_ontology = true;
 CREATE INDEX idx_ent_pref_root ON ols_entities (is_preferred_root) WHERE is_preferred_root = true;
 CREATE INDEX idx_ent_subset ON ols_entities USING gin (subset);
-
--- Full-text search index
 CREATE INDEX idx_ent_fts ON ols_entities USING gin (ts_search);
-
--- Trigram index for autocomplete / prefix matching on labels
 CREATE INDEX idx_ent_trgm_suggest ON ols_entities USING gin (label_for_suggest gin_trgm_ops);
+"""
 
--- Edge indexes
+EDGE_INDEX_SQL = """\
 CREATE INDEX idx_edge_start ON ols_edges USING hash (start_id);
 CREATE INDEX idx_edge_end ON ols_edges USING hash (end_id);
 CREATE INDEX idx_edge_type ON ols_edges USING hash (type);
 CREATE INDEX idx_edge_prop ON ols_edges USING gin (property);
+"""
 
--- Embedding node indexes
+EMBEDDING_NODE_INDEX_SQL = """\
 CREATE INDEX idx_emb_entity ON ols_embedding_nodes USING hash (entity_id);
 CREATE INDEX idx_emb_type ON ols_embedding_nodes (type);
 """
 
 
-def generate_filter_property_sql(filter_properties: list) -> str:
-    """Generate ALTER TABLE + CREATE INDEX for configurable filter property columns."""
-    if not filter_properties:
-        return ""
+def generate_filter_property_sql(filter_properties: list) -> tuple:
+    """Generate (ALTER TABLE SQL, CREATE INDEX SQL) for filter property columns.
 
-    lines = []
-    lines.append("-- Dynamic filter property columns (TEXT[])")
-    lines.append("")
+    Returns a tuple of (alter_sql, index_sql) so they can go in separate sections.
+    """
+    if not filter_properties:
+        return ("", "")
+
+    alter_lines = []
+    index_lines = []
 
     for prop_name in filter_properties:
         col_name = f"filter_{prop_name}"
         safe_idx = prop_name.replace('/', '_').replace('#', '_').replace('.', '_').replace('-', '_').replace(':', '_')
-        lines.append(f'ALTER TABLE ols_entities ADD COLUMN "{col_name}" TEXT[] DEFAULT \'{{}}\';')
-        lines.append(f'CREATE INDEX idx_ent_fp_{safe_idx} ON ols_entities USING gin ("{col_name}");')
-        lines.append("")
+        alter_lines.append(f'ALTER TABLE ols_entities ADD COLUMN "{col_name}" TEXT[] DEFAULT \'{{}}\';')
+        index_lines.append(f'CREATE INDEX idx_ent_fp_{safe_idx} ON ols_entities USING gin ("{col_name}");')
 
-    return '\n'.join(lines)
+    return ('\n'.join(alter_lines) + '\n', '\n'.join(index_lines) + '\n')
 
 
 def get_embedding_dimension(parquet_path: str) -> int:
@@ -164,14 +163,18 @@ def get_embedding_dimension(parquet_path: str) -> int:
         return 0
 
 
-def generate_embedding_sql(parquet_files: list) -> str:
-    """Generate ALTER TABLE + CREATE INDEX statements for embedding models."""
-    if not parquet_files:
-        return ""
+def generate_embedding_sql(parquet_files: list) -> tuple:
+    """Generate per-table ALTER TABLE and CREATE INDEX statements for embedding models.
 
-    lines = []
-    lines.append("-- Dynamic embedding vector columns and HNSW indexes")
-    lines.append("")
+    Returns a tuple of (entities_alter, emb_nodes_alter, entities_index, emb_nodes_index).
+    """
+    if not parquet_files:
+        return ("", "", "", "")
+
+    ent_alter = []
+    emb_alter = []
+    ent_index = []
+    emb_index = []
 
     for parquet_file in parquet_files:
         model_name = Path(parquet_file).stem
@@ -185,22 +188,23 @@ def generate_embedding_sql(parquet_files: list) -> str:
         avg_col = f"embeddings_{model_name}"
         emb_col = f"embedding_{model_name}"
 
-        lines.append(f"-- Model: {model_name} (dimensions: {dimensions})")
+        ent_alter.append(f'ALTER TABLE ols_entities ADD COLUMN "{avg_col}" vector({dimensions});')
+        ent_alter.append(f'ALTER TABLE ols_entities ALTER COLUMN "{avg_col}" SET STORAGE EXTERNAL;')
 
-        # Add vector columns
-        lines.append(f'ALTER TABLE ols_entities ADD COLUMN "{avg_col}" vector({dimensions});')
-        lines.append(f'ALTER TABLE ols_entities ALTER COLUMN "{avg_col}" SET STORAGE EXTERNAL;')
-        lines.append(f'ALTER TABLE ols_embedding_nodes ADD COLUMN "{emb_col}" vector({dimensions});')
-        lines.append(f'ALTER TABLE ols_embedding_nodes ALTER COLUMN "{emb_col}" SET STORAGE EXTERNAL;')
-        lines.append("")
+        emb_alter.append(f'ALTER TABLE ols_embedding_nodes ADD COLUMN "{emb_col}" vector({dimensions});')
+        emb_alter.append(f'ALTER TABLE ols_embedding_nodes ALTER COLUMN "{emb_col}" SET STORAGE EXTERNAL;')
 
-        # HNSW vector indexes
-        lines.append(f'CREATE INDEX idx_ent_emb_{safe_model_name} ON ols_entities USING hnsw ("{avg_col}" vector_cosine_ops);')
-        lines.append(f"CREATE INDEX idx_emb_{safe_model_name}_label ON ols_embedding_nodes USING hnsw (\"{emb_col}\" vector_cosine_ops) WHERE type = 'LabelEmbedding';")
-        lines.append(f"CREATE INDEX idx_emb_{safe_model_name}_curated ON ols_embedding_nodes USING hnsw (\"{emb_col}\" vector_cosine_ops) WHERE type = 'CurationEmbedding';")
-        lines.append("")
+        ent_index.append(f'CREATE INDEX idx_ent_emb_{safe_model_name} ON ols_entities USING hnsw ("{avg_col}" vector_cosine_ops);')
 
-    return '\n'.join(lines)
+        emb_index.append(f"CREATE INDEX idx_emb_{safe_model_name}_label ON ols_embedding_nodes USING hnsw (\"{emb_col}\" vector_cosine_ops) WHERE type = 'LabelEmbedding';")
+        emb_index.append(f"CREATE INDEX idx_emb_{safe_model_name}_curated ON ols_embedding_nodes USING hnsw (\"{emb_col}\" vector_cosine_ops) WHERE type = 'CurationEmbedding';")
+
+    return (
+        '\n'.join(ent_alter) + '\n' if ent_alter else "",
+        '\n'.join(emb_alter) + '\n' if emb_alter else "",
+        '\n'.join(ent_index) + '\n' if ent_index else "",
+        '\n'.join(emb_index) + '\n' if emb_index else "",
+    )
 
 
 def main():
@@ -219,44 +223,57 @@ def main():
         else:
             i += 1
 
-    # Output schema
-    print("-- OLS4 PostgreSQL Schema")
-    print(SCHEMA_SQL)
+    # Generate dynamic SQL pieces
+    emb_ent_alter, emb_node_alter, emb_ent_index, emb_node_index = \
+        generate_embedding_sql(parquet_files)
+    filter_alter, filter_index = generate_filter_property_sql(filter_properties)
 
-    # Output embedding columns if any parquet files provided
-    if parquet_files:
-        embedding_sql = generate_embedding_sql(parquet_files)
-        if embedding_sql:
-            print(embedding_sql)
+    # -- Extensions --
+    print("-- SECTION: extensions")
+    print(EXTENSIONS_SQL)
 
-    # Output filter property columns if any specified
-    if filter_properties:
-        filter_sql = generate_filter_property_sql(filter_properties)
-        if filter_sql:
-            print(filter_sql)
+    # -- Entities table (CREATE + ALTERs for embeddings and filter properties) --
+    print("-- SECTION: ols_entities")
+    print(ENTITIES_TABLE_SQL)
+    if emb_ent_alter:
+        print(emb_ent_alter)
+    if filter_alter:
+        print(filter_alter)
 
-    # Output standard indexes
-    print(INDEX_SQL)
+    # -- Edges table --
+    print("-- SECTION: ols_edges")
+    print(EDGES_TABLE_SQL)
 
-    # Populate computed columns
-    print("-- Populate full-text search tsvector")
-    print("""UPDATE ols_entities SET ts_search =
+    # -- Embedding nodes table (CREATE + ALTERs for embedding columns) --
+    print("-- SECTION: ols_embedding_nodes")
+    print(EMBEDDING_NODES_TABLE_SQL)
+    if emb_node_alter:
+        print(emb_node_alter)
+
+    # -- Indexes (all tables) --
+    print("-- SECTION: indexes")
+    print(ENTITY_INDEX_SQL)
+    if emb_ent_index:
+        print(emb_ent_index)
+    if filter_index:
+        print(filter_index)
+    print(EDGE_INDEX_SQL)
+    print(EMBEDDING_NODE_INDEX_SQL)
+    if emb_node_index:
+        print(emb_node_index)
+
+    # -- Post-load computed columns + ANALYZE --
+    print("-- SECTION: post_load")
+    print("""\
+UPDATE ols_entities SET ts_search =
     setweight(to_tsvector('english', coalesce(array_to_string(label, ' '), '')), 'A') ||
     setweight(to_tsvector('english', coalesce(short_form, '') || ' ' || coalesce(curie, '')), 'B') ||
     setweight(to_tsvector('english', coalesce(array_to_string(synonym, ' '), '')), 'B') ||
     setweight(to_tsvector('english', coalesce(array_to_string(definition, ' '), '')), 'C') ||
     setweight(to_tsvector('english', coalesce(iri, '')), 'D');
 """)
-
-    print("-- Populate label_for_suggest from first label")
     print("UPDATE ols_entities SET label_for_suggest = label[1] WHERE cardinality(label) > 0;")
     print("")
-
-    # has_direct_children and has_hierarchical_children are now loaded directly from rdf2json output
-
-
-
-    # Analyze
     print("ANALYZE;")
 
 
