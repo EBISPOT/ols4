@@ -61,11 +61,11 @@ CREATE TABLE ols_entities (
 
     -- Full-text search vector (computed automatically on insert)
     ts_search tsvector GENERATED ALWAYS AS (
-        setweight(to_tsvector('english', coalesce(array_to_string(label, ' '), '')), 'A') ||
-        setweight(to_tsvector('english', coalesce(short_form, '') || ' ' || coalesce(curie, '')), 'B') ||
-        setweight(to_tsvector('english', coalesce(array_to_string(synonym, ' '), '')), 'B') ||
-        setweight(to_tsvector('english', coalesce(array_to_string(definition, ' '), '')), 'C') ||
-        setweight(to_tsvector('english', coalesce(iri, '')), 'D')
+        setweight(to_tsvector('pg_catalog.english'::regconfig, coalesce(array_to_string(label, ' '), '')), 'A') ||
+        setweight(to_tsvector('pg_catalog.english'::regconfig, coalesce(short_form, '') || ' ' || coalesce(curie, '')), 'B') ||
+        setweight(to_tsvector('pg_catalog.english'::regconfig, coalesce(array_to_string(synonym, ' '), '')), 'B') ||
+        setweight(to_tsvector('pg_catalog.english'::regconfig, coalesce(array_to_string(definition, ' '), '')), 'C') ||
+        setweight(to_tsvector('pg_catalog.english'::regconfig, coalesce(iri, '')), 'D')
     ) STORED,
 
     -- First label for autocomplete grouping / trigram matching
