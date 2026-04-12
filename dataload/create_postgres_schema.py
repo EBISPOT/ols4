@@ -28,9 +28,9 @@ CREATE EXTENSION IF NOT EXISTS pg_trgm;
 -- Immutable wrapper required for use in GENERATED ALWAYS AS columns.
 -- to_tsvector() is only STABLE in the pg catalog; this wrapper is safe
 -- because we always pass a fixed compile-time regconfig OID.
-CREATE OR REPLACE FUNCTION ols_tsvector(regconfig, text)
-    RETURNS tsvector LANGUAGE sql IMMUTABLE PARALLEL SAFE AS
-    'SELECT to_tsvector($1, $2)';
+CREATE OR REPLACE FUNCTION ols_tsvector(cfg regconfig, txt text)
+    RETURNS tsvector LANGUAGE plpgsql IMMUTABLE PARALLEL SAFE AS
+    $$ BEGIN RETURN to_tsvector(cfg, txt); END $$;
 """
 
 ENTITIES_TABLE_SQL = """\
