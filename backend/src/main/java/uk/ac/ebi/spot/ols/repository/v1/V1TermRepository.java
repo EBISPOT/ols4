@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
-import uk.ac.ebi.spot.ols.model.v1.V1Individual;
-import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 import uk.ac.ebi.spot.ols.model.v1.V1Term;
 import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
 import uk.ac.ebi.spot.ols.repository.search.OlsSearchClient;
@@ -17,7 +15,6 @@ import uk.ac.ebi.spot.ols.repository.search.SearchType;
 import uk.ac.ebi.spot.ols.repository.v1.mappers.V1TermMapper;
 import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -40,82 +37,57 @@ public class V1TermRepository {
 
     public Page<V1Term> getParents(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        return this.postgresClient.traverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), Map.of(), pageable)
+        return this.postgresClient.getDirectParents(ontologyId + "+class+" + iri, Map.of(), pageable)
                 .map(node -> V1TermMapper.mapTerm(node, lang));
     }
 
     public Page<V1Term> getHierarchicalParents(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        List<String> relationIRIs = List.of(HIERARCHICAL_PARENT.getText());
-
-        return this.postgresClient.traverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), Map.of(), pageable)
+        return this.postgresClient.getHierarchicalParents(ontologyId + "+class+" + iri, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
     }
 
     public Page<V1Term> getHierarchicalAncestors(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        List<String> relationIRIs = List.of(HIERARCHICAL_PARENT.getText());
-
-        return this.postgresClient.recursivelyTraverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), Map.of(), pageable)
+        return this.postgresClient.getHierarchicalAncestors(ontologyId + "+class+" + iri, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
-
     }
 
     public Page<V1Term> getChildren(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        return this.postgresClient.traverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), Map.of(), pageable)
+        return this.postgresClient.getDirectChildren(ontologyId + "+class+" + iri, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
     }
 
     public Page<V1Term> getHierarchicalChildren(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        List<String> relationIRIs = List.of(HIERARCHICAL_PARENT.getText());
-
-        return this.postgresClient.traverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), Map.of(), pageable)
+        return this.postgresClient.getHierarchicalChildren(ontologyId + "+class+" + iri, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
-
     }
 
     public Page<V1Term> getHierarchicalDescendants(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        List<String> relationIRIs = List.of(HIERARCHICAL_PARENT.getText());
-
-        return this.postgresClient.recursivelyTraverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri,
-                        relationIRIs, Map.of(), Map.of(), pageable)
+        return this.postgresClient.getHierarchicalDescendants(ontologyId + "+class+" + iri, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
     }
 
 
     public Page<V1Term> getDescendants(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        return this.postgresClient.recursivelyTraverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), Map.of(), pageable)
+        return this.postgresClient.getDescendants(ontologyId + "+class+" + iri, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
-
     }
 
     public Page<V1Term> getAncestors(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
-
-        return this.postgresClient.recursivelyTraverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), Map.of(), pageable)
+        return this.postgresClient.getAncestors(ontologyId + "+class+" + iri, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
-
     }
 
     public Page<V1Term> getRelated(String ontologyId, String iri, String lang, String relation, Pageable pageable) {
 
-        return this.postgresClient.traverseOutgoingEdges(
-                        "OntologyClass", ontologyId + "+class+" + iri,
-                        Arrays.asList(RELATED_TO.getText()),
-                        Map.of("property", relation),
-                        Map.of(),
-                        pageable)
+        return this.postgresClient.getRelatedTo(ontologyId + "+class+" + iri, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
-
     }
 
     public V1Term findByOntologyAndIri(String ontologyId, String iri, String lang) {

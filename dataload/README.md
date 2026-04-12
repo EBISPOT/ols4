@@ -21,7 +21,7 @@ Now (after about 15 min) you should have a huge file called `foundry_out.json` t
 You can now convert this huge JSON file to TSV files ready for PostgreSQL, using ols_json2postgres:
 
     rm -rf output_tsv && mkdir output_tsv
-    ols_json2postgres --input foundry_out_flat.json --outDir output_tsv --manifest linker_manifest.json
+    ols_json2postgres --input foundry_out_flat.json --outDir output_tsv
 
 ## Step 3: TSV to PostgreSQL
 

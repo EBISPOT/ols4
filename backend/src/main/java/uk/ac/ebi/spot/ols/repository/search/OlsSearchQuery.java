@@ -1,12 +1,15 @@
 package uk.ac.ebi.spot.ols.repository.search;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 /**
  * Builds a parameterized PostgreSQL query for entity search/filter operations.
  * Translates OLS field names to Postgres columns.
  */
 public class OlsSearchQuery {
+
+    private static final Pattern SAFE_FIELD_NAME = Pattern.compile("^[a-zA-Z0-9_:/.#-]+$");
 
     String searchText = null;
     boolean exactMatch = false;
@@ -85,8 +88,11 @@ public class OlsSearchQuery {
         String col = COLUMN_MAP.get(field);
         if (col != null) return col;
         // Dynamic filter property: URI with __ for :  → filter_<field> column
-        // Returns null if the column doesn't exist (checked by availableFilterColumns)
-        return "\"filter_" + field.replace("__", ":") + "\"";
+        String resolved = field.replace("__", ":");
+        if (!SAFE_FIELD_NAME.matcher(resolved).matches()) {
+            throw new IllegalArgumentException("Invalid filter field name: " + field);
+        }
+        return "\"filter_" + resolved + "\"";
     }
 
     /**
@@ -141,13 +147,6 @@ public class OlsSearchQuery {
         }
 
         return new WhereClause(where.toString(), params);
-    }
-
-    /**
-     * Build the ORDER BY clause for relevance scoring.
-     */
-    public WhereClause buildWhereClause() {
-        return buildWhereClause(null);
     }
 
     public String buildOrderBy() {

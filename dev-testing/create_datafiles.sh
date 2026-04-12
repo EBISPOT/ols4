@@ -35,7 +35,7 @@ $SCRIPT_PATH/../dataload/target/release/ols_link \
 echo json2postgres
 EMBEDDING_PARQUETS=$(find $SCRIPT_PATH/../testcases/embeddings -name '*.parquet' 2>/dev/null | tr '\n' ' ')
 $SCRIPT_PATH/../dataload/target/release/ols_json2postgres \
-    --manifest "$LINKER_MANIFEST_PATH" --input "$JSON_PATH_LINKED" --outDir $OUTDIR \
+    --input "$JSON_PATH_LINKED" --outDir $OUTDIR \
     ${EMBEDDING_PARQUETS:+--embeddingParquets $EMBEDDING_PARQUETS}
 
 

@@ -4,8 +4,8 @@ Populate an existing (managed) PostgreSQL database with OLS4 data.
 
 Uses COPY ... WITH (FORMAT binary, FREEZE) by running CREATE TABLE and all
 COPY commands for each table in a single transaction.  FREEZE marks rows as
-already frozen, skipping future VACUUM passes.  The three table types
-(entities, edges, embedding_nodes) are loaded in parallel psql sessions.
+already frozen, skipping future VACUUM passes.  The two table types
+(entities, embedding_nodes) are loaded sequentially.
 
 Connects using standard libpq environment variables (PGHOST, PGDATABASE, etc.).
 The actual COPY is done by piping psql scripts to `psql` subprocesses (no
@@ -28,7 +28,8 @@ from pathlib import Path
 
 BASE_ENTITY_COLS = [
     "id", "type", "iri", "ontology_id", "_json", "is_obsolete",
-    "label", "direct_ancestors", "hierarchical_ancestors",
+    "label", "direct_parents", "hierarchical_parents",
+    "direct_ancestors", "hierarchical_ancestors",
     "search_type", "short_form", "curie", "obo_id",
     "synonym", "definition",
     "is_defining_ontology", "has_direct_parents", "has_hierarchical_parents",
@@ -36,8 +37,6 @@ BASE_ENTITY_COLS = [
     "ontology_iri", "ontology_preferred_prefix",
     "subset", "related_to", "curated_from_sources",
 ]
-
-EDGE_COLS = ["start_id", "end_id", "type", "_json", "property"]
 
 EMB_NODE_BASE_COLS = ["id", "type", "entity_id"]
 
@@ -206,7 +205,6 @@ def main():
     print("=== Dropping existing OLS tables ===")
     run_psql(
         "DROP TABLE IF EXISTS ols_embedding_nodes CASCADE;\n"
-        "DROP TABLE IF EXISTS ols_edges CASCADE;\n"
         "DROP TABLE IF EXISTS ols_entities CASCADE;",
         "drop"
     )
@@ -217,12 +215,10 @@ def main():
 
     # --- Discover pgbin files ---
     entity_files = sorted(datadir.glob("*_entities.pgbin"))
-    edge_files = sorted(datadir.glob("*_edges.pgbin"))
     emb_files = sorted(datadir.glob("*_embedding_nodes.pgbin"))
 
     # Filter out empty files
     entity_files = [f for f in entity_files if f.stat().st_size > 0]
-    edge_files = [f for f in edge_files if f.stat().st_size > 0]
     emb_files = [f for f in emb_files if f.stat().st_size > 0]
 
     # --- Build column lists ---
@@ -241,7 +237,6 @@ def main():
     t0 = time.time()
 
     load_table("ols_entities", sections["ols_entities"], entity_cols, entity_files)
-    load_table("ols_edges", sections["ols_edges"], EDGE_COLS, edge_files)
     load_table("ols_embedding_nodes", sections["ols_embedding_nodes"], emb_node_cols, emb_files)
 
     elapsed = time.time() - t0

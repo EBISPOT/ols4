@@ -25,7 +25,8 @@ from pathlib import Path
 
 BASE_ENTITY_COLS = [
     "id", "type", "iri", "ontology_id", "_json", "is_obsolete",
-    "label", "direct_ancestors", "hierarchical_ancestors",
+    "label", "direct_parents", "hierarchical_parents",
+    "direct_ancestors", "hierarchical_ancestors",
     "search_type", "short_form", "curie", "obo_id",
     "synonym", "definition",
     "is_defining_ontology", "has_direct_parents", "has_hierarchical_parents",
@@ -33,8 +34,6 @@ BASE_ENTITY_COLS = [
     "ontology_iri", "ontology_preferred_prefix",
     "subset", "related_to", "curated_from_sources",
 ]
-
-EDGE_COLS = ["start_id", "end_id", "type", "_json", "property"]
 
 EMB_NODE_BASE_COLS = ["id", "type", "entity_id"]
 
@@ -286,7 +285,6 @@ checkpoint_completion_target = 0.9
 
         # --- Discover pgbin files ---
         entity_files = sorted(f for f in datadir.glob("*_entities.pgbin") if f.stat().st_size > 0)
-        edge_files = sorted(f for f in datadir.glob("*_edges.pgbin") if f.stat().st_size > 0)
         emb_files = sorted(f for f in datadir.glob("*_embedding_nodes.pgbin") if f.stat().st_size > 0)
 
         # --- Build column lists ---
@@ -305,7 +303,6 @@ checkpoint_completion_target = 0.9
         t0 = time.time()
 
         load_table("ols_entities", sections["ols_entities"], entity_cols, entity_files, pg_env)
-        load_table("ols_edges", sections["ols_edges"], EDGE_COLS, edge_files, pg_env)
         load_table("ols_embedding_nodes", sections["ols_embedding_nodes"], emb_node_cols, emb_files, pg_env)
 
         elapsed = time.time() - t0

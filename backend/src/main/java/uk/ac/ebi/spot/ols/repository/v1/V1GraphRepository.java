@@ -113,32 +113,47 @@ public class V1GraphRepository {
     }
 
     void getParentsAndRelatedTo(String entityId, List<GraphNode> outNodes, List<GraphEdge> outEdges) {
-        // Get edges where this entity is either start or end, of type relatedTo or directParent
+        // Parents: look up entities referenced in direct_ancestors (same ontology)
+        // RelatedTo (outgoing): look up entities referenced in related_to (same ontology)
         String sql = "SELECT e2._json AS node_json, e2.iri AS node_iri, "
-                + "e.start_id, e.end_id, e._json AS edge_json, "
-                + "s.iri AS source_iri, t.iri AS target_iri "
-                + "FROM ols_edges e "
-                + "JOIN ols_entities e2 ON (e2.id = e.end_id OR e2.id = e.start_id) AND e2.id != ? "
-                + "JOIN ols_entities s ON s.id = e.start_id "
-                + "JOIN ols_entities t ON t.id = e.end_id "
-                + "WHERE (e.start_id = ? OR e.end_id = ?) "
-                + "AND e.type IN ('relatedTo', 'directParent') "
+                + "'parent' AS rel_type, e1.iri AS source_iri "
+                + "FROM ols_entities e1 "
+                + "JOIN ols_entities e2 ON e2.iri = ANY(e1.direct_ancestors) AND e2.ontology_id = e1.ontology_id "
+                + "WHERE e1.id = ? "
+                + "UNION ALL "
+                + "SELECT e2._json AS node_json, e2.iri AS node_iri, "
+                + "'relatedTo' AS rel_type, e1.iri AS source_iri "
+                + "FROM ols_entities e1 "
+                + "JOIN ols_entities e2 ON e2.iri = ANY(e1.related_to) AND e2.ontology_id = e1.ontology_id "
+                + "WHERE e1.id = ? "
                 + "LIMIT 200";
 
         try (Connection conn = postgresClient.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, entityId);
             stmt.setString(2, entityId);
-            stmt.setString(3, entityId);
+
+            // We need the source entity's IRI for edges
+            String sourceIri = null;
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    outNodes.add(new GraphNode(rs.getString("node_iri"), PostgresClient.decompressJson(rs, "node_json")));
-                    outEdges.add(new GraphEdge(
-                            rs.getString("source_iri"),
-                            rs.getString("target_iri"),
-                            PostgresClient.decompressJson(rs, "edge_json")
-                    ));
+                    String nodeIri = rs.getString("node_iri");
+                    sourceIri = rs.getString("source_iri");
+                    String relType = rs.getString("rel_type");
+
+                    outNodes.add(new GraphNode(nodeIri, PostgresClient.decompressJson(rs, "node_json")));
+
+                    if ("parent".equals(relType)) {
+                        // Parent edge: source=me, target=parent, property=subClassOf
+                        String edgeJson = "{\"property\":\"http://www.w3.org/2000/01/rdf-schema#subClassOf\"}";
+                        outEdges.add(new GraphEdge(sourceIri, nodeIri, edgeJson));
+                    } else {
+                        // RelatedTo edge: source=me, target=related
+                        // Property URI will be derived from linkedEntities in the caller
+                        String edgeJson = "{}";
+                        outEdges.add(new GraphEdge(sourceIri, nodeIri, edgeJson));
+                    }
                 }
             }
         } catch (SQLException e) {
@@ -147,14 +162,11 @@ public class V1GraphRepository {
     }
 
     void getRelatedFrom(String entityId, List<GraphNode> outNodes, List<GraphEdge> outEdges) {
-        // Get incoming relatedTo edges (x)-[relatedTo]->(this)
-        String sql = "SELECT e2._json AS node_json, e2.iri AS node_iri, "
-                + "e._json AS edge_json, "
-                + "e2.iri AS source_iri, t.iri AS target_iri "
-                + "FROM ols_edges e "
-                + "JOIN ols_entities e2 ON e2.id = e.start_id "
-                + "JOIN ols_entities t ON t.id = e.end_id "
-                + "WHERE e.end_id = ? AND e.type = 'relatedTo' "
+        // Incoming relatedTo: find entities whose related_to array contains my IRI (same ontology)
+        String sql = "SELECT e2._json AS node_json, e2.iri AS node_iri, e1.iri AS target_iri "
+                + "FROM ols_entities e1 "
+                + "JOIN ols_entities e2 ON e1.iri = ANY(e2.related_to) AND e2.ontology_id = e1.ontology_id "
+                + "WHERE e1.id = ? "
                 + "LIMIT 200";
 
         try (Connection conn = postgresClient.getConnection();
@@ -163,12 +175,11 @@ public class V1GraphRepository {
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    outNodes.add(new GraphNode(rs.getString("node_iri"), PostgresClient.decompressJson(rs, "node_json")));
-                    outEdges.add(new GraphEdge(
-                            rs.getString("source_iri"),
-                            rs.getString("target_iri"),
-                            PostgresClient.decompressJson(rs, "edge_json")
-                    ));
+                    String nodeIri = rs.getString("node_iri");
+                    String targetIri = rs.getString("target_iri");
+
+                    outNodes.add(new GraphNode(nodeIri, PostgresClient.decompressJson(rs, "node_json")));
+                    outEdges.add(new GraphEdge(nodeIri, targetIri, "{}"));
                 }
             }
         } catch (SQLException e) {

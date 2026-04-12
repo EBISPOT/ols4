@@ -108,8 +108,7 @@ First, make sure the configuration files (that determine which ontologies to loa
 
     ols_json2postgres \
     --input <LOCAL_DIR>/output_json/ontologies_linked.json \
-    --outDir <LOCAL_DIR>/output_tsv/ \
-    --manifest <LOCAL_DIR>/output_json/linker_manifest.json
+    --outDir <LOCAL_DIR>/output_tsv/
 
 #### Create PostgreSQL database from pgbin files
 

@@ -10,7 +10,6 @@ COPY FREEZE loading.
 Sections:
   extensions         - CREATE EXTENSION statements
   ols_entities       - CREATE TABLE + ALTER TABLE for entities
-  ols_edges          - CREATE TABLE + ALTER TABLE for edges
   ols_embedding_nodes - CREATE TABLE + ALTER TABLE for embedding nodes
   indexes            - All CREATE INDEX statements
   post_load          - UPDATE statements for computed columns + ANALYZE
@@ -36,6 +35,8 @@ CREATE TABLE ols_entities (
     _json BYTEA NOT NULL,
     is_obsolete BOOLEAN DEFAULT FALSE,
     label TEXT[] DEFAULT '{}',
+    direct_parents TEXT[] DEFAULT '{}',
+    hierarchical_parents TEXT[] DEFAULT '{}',
     direct_ancestors TEXT[] DEFAULT '{}',
     hierarchical_ancestors TEXT[] DEFAULT '{}',
 
@@ -67,17 +68,6 @@ CREATE TABLE ols_entities (
 ALTER TABLE ols_entities ALTER COLUMN _json SET STORAGE EXTERNAL;
 """
 
-EDGES_TABLE_SQL = """\
-CREATE TABLE ols_edges (
-    start_id TEXT NOT NULL,
-    end_id TEXT NOT NULL,
-    type TEXT NOT NULL,
-    _json BYTEA,
-    property TEXT[]
-) WITH (fillfactor=100);
-ALTER TABLE ols_edges ALTER COLUMN _json SET STORAGE EXTERNAL;
-"""
-
 EMBEDDING_NODES_TABLE_SQL = """\
 CREATE TABLE ols_embedding_nodes (
     id TEXT PRIMARY KEY,
@@ -91,6 +81,8 @@ CREATE INDEX idx_ent_onto_iri ON ols_entities (ontology_id, iri);
 CREATE INDEX idx_ent_type ON ols_entities (type);
 CREATE INDEX idx_ent_iri ON ols_entities USING hash (iri);
 CREATE INDEX idx_ent_onto ON ols_entities (ontology_id);
+CREATE INDEX idx_ent_dp ON ols_entities USING gin (direct_parents);
+CREATE INDEX idx_ent_hp ON ols_entities USING gin (hierarchical_parents);
 CREATE INDEX idx_ent_da ON ols_entities USING gin (direct_ancestors);
 CREATE INDEX idx_ent_ha ON ols_entities USING gin (hierarchical_ancestors);
 CREATE INDEX idx_ent_search_type ON ols_entities (search_type);
@@ -99,15 +91,9 @@ CREATE INDEX idx_ent_curie ON ols_entities USING hash (curie);
 CREATE INDEX idx_ent_is_def ON ols_entities (is_defining_ontology) WHERE is_defining_ontology = true;
 CREATE INDEX idx_ent_pref_root ON ols_entities (is_preferred_root) WHERE is_preferred_root = true;
 CREATE INDEX idx_ent_subset ON ols_entities USING gin (subset);
+CREATE INDEX idx_ent_related_to ON ols_entities USING gin (related_to);
 CREATE INDEX idx_ent_fts ON ols_entities USING gin (ts_search);
 CREATE INDEX idx_ent_trgm_suggest ON ols_entities USING gin (label_for_suggest gin_trgm_ops);
-"""
-
-EDGE_INDEX_SQL = """\
-CREATE INDEX idx_edge_start ON ols_edges USING hash (start_id);
-CREATE INDEX idx_edge_end ON ols_edges USING hash (end_id);
-CREATE INDEX idx_edge_type ON ols_edges USING hash (type);
-CREATE INDEX idx_edge_prop ON ols_edges USING gin (property);
 """
 
 EMBEDDING_NODE_INDEX_SQL = """\
@@ -240,10 +226,6 @@ def main():
     if filter_alter:
         print(filter_alter)
 
-    # -- Edges table --
-    print("-- SECTION: ols_edges")
-    print(EDGES_TABLE_SQL)
-
     # -- Embedding nodes table (CREATE + ALTERs for embedding columns) --
     print("-- SECTION: ols_embedding_nodes")
     print(EMBEDDING_NODES_TABLE_SQL)
@@ -257,7 +239,6 @@ def main():
         print(emb_ent_index)
     if filter_index:
         print(filter_index)
-    print(EDGE_INDEX_SQL)
     print(EMBEDDING_NODE_INDEX_SQL)
     if emb_node_index:
         print(emb_node_index)

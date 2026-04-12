@@ -40,7 +40,7 @@ public class V1JsTreeRepository {
         thisEntity = LocalizationTransform.transform(thisEntity, lang);
 
         List<JsonElement> ancestors =
-                postgresClient.recursivelyTraverseOutgoingEdges(entityType, thisEntityId, parentRelationIRIs, Map.of(), Map.of(), PageRequest.ofSize(100))
+                postgresClient.getAncestors(thisEntityId, Map.of(), PageRequest.ofSize(100))
                         .getContent();
         ancestors = ancestors.stream().map(ancestor -> LocalizationTransform.transform(ancestor, lang)).collect(Collectors.toList());
 
@@ -69,7 +69,7 @@ public class V1JsTreeRepository {
         thisEntity = LocalizationTransform.transform(thisEntity, lang);
 
         List<JsonElement> children =
-                postgresClient.traverseIncomingEdges(entityType, thisEntityId, parentRelationIRIs, Map.of(), Map.of(), PageRequest.ofSize(100))
+                postgresClient.getDirectChildren(thisEntityId, Map.of(), PageRequest.ofSize(100))
                         .getContent();
         children = children.stream().map(child -> LocalizationTransform.transform(child, lang)).collect(Collectors.toList());
 

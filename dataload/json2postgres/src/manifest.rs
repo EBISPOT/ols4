@@ -45,10 +45,6 @@ pub struct LinkerPass1Result {
     #[serde(default)]
     pub ontology_id_to_individual_properties: HashMap<String, HashSet<String>>,
 
-    /// ontology id -> set of properties found on edges
-    #[serde(default)]
-    pub ontology_id_to_edge_properties: HashMap<String, HashSet<String>>,
-
     /// ontology id -> URI -> set of node types for that URI in that ontology
     #[serde(default)]
     pub ontology_id_to_uri_to_types: HashMap<String, HashMap<String, HashSet<String>>>,
@@ -57,37 +53,4 @@ pub struct LinkerPass1Result {
 #[derive(Debug, Clone, Deserialize, Serialize, Default)]
 pub struct EntityDefinitionSet {
     // Add fields as needed
-}
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-pub enum NodeType {
-    Ontology,
-    Class,
-    Property,
-    Individual,
-}
-
-impl NodeType {
-    pub fn to_string_lowercase(&self) -> &'static str {
-        match self {
-            NodeType::Ontology => "ontology",
-            NodeType::Class => "class",
-            NodeType::Property => "property",
-            NodeType::Individual => "individual",
-        }
-    }
-}
-
-/// Information about an ontology extracted from the manifest.
-#[derive(Debug, Clone)]
-#[allow(dead_code)]
-pub struct OntologyManifestInfo {
-    pub ontology_id: String,
-    pub ontology_uri: String,
-    pub all_ontology_properties: HashSet<String>,
-    pub all_class_properties: HashSet<String>,
-    pub all_property_properties: HashSet<String>,
-    pub all_individual_properties: HashSet<String>,
-    pub all_edge_properties: HashSet<String>,
-    pub uri_to_types: HashMap<String, HashSet<NodeType>>,
 }

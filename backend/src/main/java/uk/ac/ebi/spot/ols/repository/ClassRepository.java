@@ -120,10 +120,10 @@ public class ClassRepository {
 
         Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
 
-        Page<JsonElement> result = isNullOrEmpty(search) ? this.postgresClient.traverseIncomingEdges(
-                "OntologyClass", id, Arrays.asList(DIRECT_PARENT.getText()), Map.of(), nodeProps, pageable) :
-                this.postgresClient.traverseIncomingEdges("OntologyClass",
-                id, Arrays.asList(DIRECT_PARENT.getText()), Map.of(), nodeProps, pageable, search);
+        Page<JsonElement> result = isNullOrEmpty(search) ? this.postgresClient.getDirectChildren(
+                id, nodeProps, pageable) :
+                this.postgresClient.getDirectChildren(
+                id, nodeProps, pageable, search);
 
         return  result
                     .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
@@ -139,8 +139,7 @@ public class ClassRepository {
 
         Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
 
-        return this.postgresClient.recursivelyTraverseOutgoingEdges("OntologyClass", id,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), nodeProps, pageable)
+        return this.postgresClient.getAncestors(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -154,8 +153,7 @@ public class ClassRepository {
 
         Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
 
-        return this.postgresClient.recursivelyTraverseIncomingEdges("OntologyClass", id,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), nodeProps, pageable)
+        return this.postgresClient.getDescendants(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -168,8 +166,7 @@ public class ClassRepository {
 
         Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
 
-        return this.postgresClient.recursivelyTraverseIncomingEdges("OntologyClass", id,
-                        Arrays.asList(HIERARCHICAL_PARENT.getText()), Map.of(), nodeProps, pageable)
+        return this.postgresClient.getHierarchicalDescendants(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -183,8 +180,7 @@ public class ClassRepository {
 
         Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
 
-        return this.postgresClient.traverseIncomingEdges("OntologyClass", id, Arrays.asList(HIERARCHICAL_PARENT.getText()),
-                        Map.of(), nodeProps, pageable)
+        return this.postgresClient.getHierarchicalChildren(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -198,8 +194,7 @@ public class ClassRepository {
 
         Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
 
-        return this.postgresClient.recursivelyTraverseOutgoingEdges("OntologyClass", id,
-                        Arrays.asList(HIERARCHICAL_PARENT.getText()), Map.of(), nodeProps, pageable)
+        return this.postgresClient.getHierarchicalAncestors(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -213,8 +208,7 @@ public class ClassRepository {
 
         Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
 
-        return this.postgresClient.recursivelyTraverseOutgoingEdges("OntologyEntity", id,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), nodeProps, pageable)
+        return this.postgresClient.getAncestors(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }

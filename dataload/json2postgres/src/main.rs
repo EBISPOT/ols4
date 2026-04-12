@@ -1,18 +1,16 @@
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 use std::fs::File;
 use std::io::BufReader;
 use std::path::Path;
 
 use clap::Parser;
 use ols_shared::streaming::read_value;
-use ols_shared::{DefinedFields, Embeddings};
+use ols_shared::Embeddings;
 use serde_json::Value;
 use struson::reader::{JsonReader, JsonStreamReader};
 
-mod manifest;
 mod ontology_writer;
 
-use manifest::{LinkerPass1Result, OntologyManifestInfo, NodeType};
 use ontology_writer::OntologyWriter;
 
 /// JSON to PostgreSQL TSV converter for OLS4
@@ -31,10 +29,6 @@ struct Args {
     /// Output TSV directory path
     #[arg(long = "outDir")]
     out_dir: String,
-
-    /// Manifest JSON file from create-manifest
-    #[arg(long)]
-    manifest: String,
 
     /// Optional list of individual embeddings Parquet files
     #[arg(long = "embeddingParquets", num_args = 1..)]
@@ -103,7 +97,6 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
         args.ontology_id,
         args.input,
         args.out_dir,
-        args.manifest,
         embeddings,
         args.filter_properties.unwrap_or_default(),
     )?;
@@ -116,7 +109,6 @@ struct PostgresConverter {
     ontology_id: Option<String>,
     input_file_path: String,
     output_file_path: String,
-    manifest: LinkerPass1Result,
     embeddings: HashMap<String, Embeddings>,
     filter_property_names: Vec<String>,
 }
@@ -126,20 +118,13 @@ impl PostgresConverter {
         ontology_id: Option<String>,
         input_file_path: String,
         output_file_path: String,
-        manifest_file_path: String,
         embeddings: HashMap<String, Embeddings>,
         filter_property_names: Vec<String>,
     ) -> Result<Self, Box<dyn std::error::Error>> {
-        // Load the manifest
-        eprintln!("Loading manifest from: {}", manifest_file_path);
-        let manifest_file = File::open(&manifest_file_path)?;
-        let manifest: LinkerPass1Result = serde_json::from_reader(BufReader::new(manifest_file))?;
-
         Ok(Self {
             ontology_id,
             input_file_path,
             output_file_path,
-            manifest,
             embeddings,
             filter_property_names,
         })
@@ -231,11 +216,10 @@ impl PostgresConverter {
                     let ont_id = ontology_id.as_ref().ok_or("classes found before ontologyId")?;
                     
                     if writer.is_none() {
-                        let manifest_info = self.build_manifest_info(ont_id);
                         std::fs::create_dir_all(&self.output_file_path)?;
                         writer = Some(OntologyWriter::new(
                             &self.output_file_path,
-                            manifest_info,
+                            ont_id,
                             &self.embeddings,
                             &ontology_properties,
                             self.filter_property_names.clone(),
@@ -250,11 +234,10 @@ impl PostgresConverter {
                     let ont_id = ontology_id.as_ref().ok_or("properties found before ontologyId")?;
                     
                     if writer.is_none() {
-                        let manifest_info = self.build_manifest_info(ont_id);
                         std::fs::create_dir_all(&self.output_file_path)?;
                         writer = Some(OntologyWriter::new(
                             &self.output_file_path,
-                            manifest_info,
+                            ont_id,
                             &self.embeddings,
                             &ontology_properties,
                             self.filter_property_names.clone(),
@@ -269,11 +252,10 @@ impl PostgresConverter {
                     let ont_id = ontology_id.as_ref().ok_or("individuals found before ontologyId")?;
                     
                     if writer.is_none() {
-                        let manifest_info = self.build_manifest_info(ont_id);
                         std::fs::create_dir_all(&self.output_file_path)?;
                         writer = Some(OntologyWriter::new(
                             &self.output_file_path,
-                            manifest_info,
+                            ont_id,
                             &self.embeddings,
                             &ontology_properties,
                             self.filter_property_names.clone(),
@@ -297,11 +279,10 @@ impl PostgresConverter {
         // Write ontology node if we have a valid ontology
         if let Some(ref ont_id) = ontology_id {
             if writer.is_none() {
-                let manifest_info = self.build_manifest_info(ont_id);
                 std::fs::create_dir_all(&self.output_file_path)?;
                 writer = Some(OntologyWriter::new(
                     &self.output_file_path,
-                    manifest_info,
+                    ont_id,
                     &self.embeddings,
                     &ontology_properties,
                     self.filter_property_names.clone(),
@@ -347,113 +328,5 @@ impl PostgresConverter {
         eprintln!("  Finished processing {} {}", count, entity_type);
         
         Ok(())
-    }
-    
-    fn build_manifest_info(&self, ontology_id: &str) -> OntologyManifestInfo {
-        let mut manifest_info = OntologyManifestInfo {
-            ontology_id: ontology_id.to_string(),
-            ontology_uri: String::new(),
-            all_ontology_properties: HashSet::new(),
-            all_class_properties: HashSet::new(),
-            all_property_properties: HashSet::new(),
-            all_individual_properties: HashSet::new(),
-            all_edge_properties: HashSet::new(),
-            uri_to_types: HashMap::new(),
-        };
-        
-        // Apply blacklist to remove properties that aren't needed as entity properties
-        manifest_info.all_ontology_properties = Self::filter_blacklist(
-            self.manifest
-                .ontology_id_to_ontology_properties
-                .get(ontology_id)
-                .cloned()
-                .unwrap_or_default(),
-        );
-        manifest_info.all_class_properties = Self::filter_blacklist(
-            self.manifest
-                .ontology_id_to_class_properties
-                .get(ontology_id)
-                .cloned()
-                .unwrap_or_default(),
-        );
-        manifest_info.all_property_properties = Self::filter_blacklist(
-            self.manifest
-                .ontology_id_to_property_properties
-                .get(ontology_id)
-                .cloned()
-                .unwrap_or_default(),
-        );
-        manifest_info.all_individual_properties = Self::filter_blacklist(
-            self.manifest
-                .ontology_id_to_individual_properties
-                .get(ontology_id)
-                .cloned()
-                .unwrap_or_default(),
-        );
-        manifest_info.all_edge_properties = self
-            .manifest
-            .ontology_id_to_edge_properties
-            .get(ontology_id)
-            .cloned()
-            .unwrap_or_default();
-        
-        // Add defined fields that are added by LinkerPass2 and won't be in the manifest
-        let linker_added_entity_fields: HashSet<String> = [
-            "linkedEntities".to_string(),
-            DefinedFields::IsDefiningOntology.text().to_string(),
-            DefinedFields::DefinedBy.text().to_string(),
-            DefinedFields::LinksTo.text().to_string(),
-        ]
-        .into_iter()
-        .collect();
-        
-        manifest_info.all_class_properties.extend(linker_added_entity_fields.clone());
-        manifest_info.all_property_properties.extend(linker_added_entity_fields.clone());
-        manifest_info.all_individual_properties.extend(linker_added_entity_fields);
-        
-        manifest_info.all_ontology_properties.extend([
-            "linkedEntities".to_string(),
-            DefinedFields::ImportsFrom.text().to_string(),
-            DefinedFields::ExportsTo.text().to_string(),
-            DefinedFields::LinksTo.text().to_string(),
-        ]);
-        
-        // Convert string type sets to NodeType sets for uri_to_types
-        if let Some(uri_to_type_strings) = self
-            .manifest
-            .ontology_id_to_uri_to_types
-            .get(ontology_id)
-        {
-            for (uri, type_strs) in uri_to_type_strings {
-                let node_types: HashSet<NodeType> = type_strs
-                    .iter()
-                    .filter_map(|s| match s.as_str() {
-                        "ONTOLOGY" => Some(NodeType::Ontology),
-                        "CLASS" => Some(NodeType::Class),
-                        "PROPERTY" => Some(NodeType::Property),
-                        "INDIVIDUAL" => Some(NodeType::Individual),
-                        _ => None,
-                    })
-                    .collect();
-                manifest_info.uri_to_types.insert(uri.clone(), node_types);
-            }
-        }
-        
-        manifest_info
-    }
-    
-    /// Filter out blacklisted properties that shouldn't be stored as entity properties.
-    fn filter_blacklist(properties: HashSet<String>) -> HashSet<String> {
-        let blacklist: HashSet<&str> = [
-            DefinedFields::AppearsIn.text(),
-            "searchableAnnotationValues",
-        ]
-        .into_iter()
-        .collect();
-        
-        properties
-            .into_iter()
-            .filter(|prop| !blacklist.contains(prop.as_str()))
-            .collect()
     }
 }

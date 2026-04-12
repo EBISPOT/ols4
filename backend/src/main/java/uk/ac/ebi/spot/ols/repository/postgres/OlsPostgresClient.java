@@ -17,10 +17,27 @@ import uk.ac.ebi.spot.ols.service.PostgresClient;
 
 import java.sql.*;
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Component
 public class OlsPostgresClient {
+
+    private static final Pattern SAFE_MODEL_NAME = Pattern.compile("^[a-zA-Z0-9_.-]+$");
+
+    private static String sanitizeEmbeddingColumn(String modelName) {
+        if (modelName == null || !SAFE_MODEL_NAME.matcher(modelName).matches()) {
+            throw new IllegalArgumentException("Invalid embedding model name: " + modelName);
+        }
+        return "\"embeddings_" + modelName + "\"";
+    }
+
+    private static String sanitizeEmbeddingNodeColumn(String modelName) {
+        if (modelName == null || !SAFE_MODEL_NAME.matcher(modelName).matches()) {
+            throw new IllegalArgumentException("Invalid embedding model name: " + modelName);
+        }
+        return "\"embedding_" + modelName + "\"";
+    }
 
     @Autowired
     PostgresClient postgresClient;
@@ -28,10 +45,6 @@ public class OlsPostgresClient {
     Gson gson = new Gson();
 
     private static final Logger logger = LoggerFactory.getLogger(OlsPostgresClient.class);
-
-    // Hierarchy edge types that use materialized ancestor arrays
-    private static final Set<String> DIRECT_PARENT_EDGES = Set.of("directParent");
-    private static final Set<String> HIERARCHICAL_PARENT_EDGES = Set.of("hierarchicalParent");
 
     public long getDatabaseNodeCount() {
         return postgresClient.returnNodeCount();
@@ -71,218 +84,94 @@ public class OlsPostgresClient {
         return results.getContent().iterator().next();
     }
 
-    public Page<JsonElement> traverseOutgoingEdges(String type, String id, List<String> edgeIRIs,
-            Map<String, String> edgeProps, Map<String, String> targetNodeProps, Pageable pageable) {
+    // --- Semantic hierarchy queries ---
 
-        // Check if this is a hierarchy traversal using edges table
-        // (directParent/hierarchicalParent edges exist in the edges table)
-        String sql = buildEdgeTraversalSql(id, edgeIRIs, edgeProps, targetNodeProps, true);
-        String countSql = buildEdgeTraversalCountSql(id, edgeIRIs, edgeProps, targetNodeProps, true);
-        Object[] params = buildEdgeTraversalParams(id, edgeIRIs, edgeProps, targetNodeProps);
-
-        return postgresClient.queryPaginated(sql, countSql, params, pageable);
+    public Page<JsonElement> getDirectParents(String id, Map<String, String> nodeProps, Pageable pageable) {
+        return lookupArrayTargets(id, "direct_parents", nodeProps, pageable);
     }
 
-    public Page<JsonElement> traverseIncomingEdges(String type, String id, List<String> edgeIRIs,
-            Map<String, String> edgeProps, Map<String, String> sourceNodeProps, Pageable pageable, String searchQuery) {
-
-        String sql = buildEdgeTraversalSql(id, edgeIRIs, edgeProps, sourceNodeProps, false);
-        String countSql = buildEdgeTraversalCountSql(id, edgeIRIs, edgeProps, sourceNodeProps, false);
-
-        // Build params (reuse shared helper for correct type conversion)
-        Object[] baseParams = buildEdgeTraversalParams(id, edgeIRIs, edgeProps, sourceNodeProps);
-        List<Object> paramList = new ArrayList<>(Arrays.asList(baseParams));
-
-        // Add search query condition if present
-        if (searchQuery != null && !searchQuery.trim().isEmpty()) {
-            sql += " AND EXISTS(SELECT 1 FROM unnest(e2.label) l WHERE lower(l) LIKE '%' || lower(?) || '%')";
-            countSql += " AND EXISTS(SELECT 1 FROM unnest(e2.label) l WHERE lower(?) LIKE '%' || lower(?) || '%')";
-            // Actually, the count and data queries need the same conditions
-            // Let me rebuild properly
-
-            paramList.add(searchQuery);
-        }
-
-        return postgresClient.queryPaginated(sql, countSql, paramList.toArray(), pageable);
+    public Page<JsonElement> getDirectChildren(String id, Map<String, String> nodeProps, Pageable pageable) {
+        return lookupArraySources(id, "direct_parents", nodeProps, pageable, null);
     }
 
-    public Page<JsonElement> traverseIncomingEdges(String type, String id, List<String> edgeIRIs,
-            Map<String, String> edgeProps, Map<String, String> sourceNodeProps, Pageable pageable) {
-        return traverseIncomingEdges(type, id, edgeIRIs, edgeProps, sourceNodeProps, pageable, null);
+    public Page<JsonElement> getDirectChildren(String id, Map<String, String> nodeProps, Pageable pageable, String search) {
+        return lookupArraySources(id, "direct_parents", nodeProps, pageable, search);
     }
 
-    public Page<JsonElement> recursivelyTraverseOutgoingEdges(String type, String id, List<String> edgeIRIs,
-            Map<String, String> edgeProps, Map<String, String> targetNodeProps, Pageable pageable) {
-
-        // For hierarchy edges, use materialized ancestor arrays
-        if (isDirectParentTraversal(edgeIRIs)) {
-            return ancestorQuery(id, "direct_ancestors", targetNodeProps, pageable);
-        } else if (isHierarchicalParentTraversal(edgeIRIs)) {
-            return ancestorQuery(id, "hierarchical_ancestors", targetNodeProps, pageable);
-        }
-
-        // For non-hierarchy edges (e.g. rdf:type + rdfs:subClassOf), use recursive CTE
-        return recursiveEdgeTraversal(id, edgeIRIs, edgeProps, targetNodeProps, true, pageable);
+    public Page<JsonElement> getHierarchicalParents(String id, Map<String, String> nodeProps, Pageable pageable) {
+        return lookupArrayTargets(id, "hierarchical_parents", nodeProps, pageable);
     }
 
-    public Page<JsonElement> recursivelyTraverseIncomingEdges(String type, String id, List<String> edgeIRIs,
-            Map<String, String> edgeProps, Map<String, String> sourceNodeProps, Pageable pageable) {
+    public Page<JsonElement> getHierarchicalChildren(String id, Map<String, String> nodeProps, Pageable pageable) {
+        return lookupArraySources(id, "hierarchical_parents", nodeProps, pageable, null);
+    }
 
-        // For hierarchy edges, use materialized ancestor arrays (reverse direction)
-        if (isDirectParentTraversal(edgeIRIs)) {
-            return descendantQuery(id, "direct_ancestors", sourceNodeProps, pageable);
-        } else if (isHierarchicalParentTraversal(edgeIRIs)) {
-            return descendantQuery(id, "hierarchical_ancestors", sourceNodeProps, pageable);
-        }
+    public Page<JsonElement> getAncestors(String id, Map<String, String> nodeProps, Pageable pageable) {
+        return lookupArrayTargets(id, "direct_ancestors", nodeProps, pageable);
+    }
 
-        // For non-hierarchy edges, use recursive CTE
-        return recursiveEdgeTraversal(id, edgeIRIs, edgeProps, sourceNodeProps, false, pageable);
+    public Page<JsonElement> getDescendants(String id, Map<String, String> nodeProps, Pageable pageable) {
+        return lookupArraySources(id, "direct_ancestors", nodeProps, pageable, null);
+    }
+
+    public Page<JsonElement> getHierarchicalAncestors(String id, Map<String, String> nodeProps, Pageable pageable) {
+        return lookupArrayTargets(id, "hierarchical_ancestors", nodeProps, pageable);
+    }
+
+    public Page<JsonElement> getHierarchicalDescendants(String id, Map<String, String> nodeProps, Pageable pageable) {
+        return lookupArraySources(id, "hierarchical_ancestors", nodeProps, pageable, null);
+    }
+
+    public Page<JsonElement> getRelatedTo(String id, Map<String, String> nodeProps, Pageable pageable) {
+        return lookupArrayTargets(id, "related_to", nodeProps, pageable);
+    }
+
+    public Page<JsonElement> getRelatedFrom(String id, Map<String, String> nodeProps, Pageable pageable) {
+        return lookupArraySources(id, "related_to", nodeProps, pageable, null);
     }
 
 
-    // --- Hierarchy queries using materialized ancestor arrays ---
+    // --- Private helpers ---
 
-    private Page<JsonElement> ancestorQuery(String id, String ancestorColumn,
-            Map<String, String> targetNodeProps, Pageable pageable) {
-        // Get the entity's ancestor IRIs and ontology_id, then look up matching entities
+    private Page<JsonElement> lookupArrayTargets(String id, String column,
+            Map<String, String> nodeProps, Pageable pageable) {
         List<Object> params = new ArrayList<>();
         params.add(id);
 
-        StringBuilder targetFilter = buildNodePropFilter("e2", targetNodeProps, params);
+        StringBuilder filter = buildNodePropFilter("e2", nodeProps, params);
 
         String sql = "SELECT e2._json, e2.iri FROM ols_entities e1 "
-                + "JOIN ols_entities e2 ON e2.iri = ANY(e1." + ancestorColumn + ") AND e2.ontology_id = e1.ontology_id "
-                + "WHERE e1.id = ?" + targetFilter;
+                + "JOIN ols_entities e2 ON e2.iri = ANY(e1." + column + ") AND e2.ontology_id = e1.ontology_id "
+                + "WHERE e1.id = ?" + filter;
         String countSql = "SELECT count(*) FROM ols_entities e1 "
-                + "JOIN ols_entities e2 ON e2.iri = ANY(e1." + ancestorColumn + ") AND e2.ontology_id = e1.ontology_id "
-                + "WHERE e1.id = ?" + targetFilter;
+                + "JOIN ols_entities e2 ON e2.iri = ANY(e1." + column + ") AND e2.ontology_id = e1.ontology_id "
+                + "WHERE e1.id = ?" + filter;
 
         return postgresClient.queryPaginated(sql, countSql, params.toArray(), pageable);
     }
 
-    private Page<JsonElement> descendantQuery(String id, String ancestorColumn,
-            Map<String, String> sourceNodeProps, Pageable pageable) {
-        // Find entities whose ancestor array contains my IRI, in the same ontology
+    private Page<JsonElement> lookupArraySources(String id, String column,
+            Map<String, String> nodeProps, Pageable pageable, String search) {
         List<Object> params = new ArrayList<>();
         params.add(id);
 
-        StringBuilder sourceFilter = buildNodePropFilter("e2", sourceNodeProps, params);
+        StringBuilder filter = buildNodePropFilter("e2", nodeProps, params);
+
+        String searchFilter = "";
+        if (search != null && !search.trim().isEmpty()) {
+            searchFilter = " AND EXISTS(SELECT 1 FROM unnest(e2.label) l WHERE lower(l) LIKE '%' || lower(?) || '%')";
+            params.add(search);
+        }
 
         String sql = "SELECT e2._json, e2.iri FROM ols_entities e1 "
-                + "JOIN ols_entities e2 ON e1.iri = ANY(e2." + ancestorColumn + ") AND e2.ontology_id = e1.ontology_id "
-                + "WHERE e1.id = ?" + sourceFilter;
+                + "JOIN ols_entities e2 ON e1.iri = ANY(e2." + column + ") AND e2.ontology_id = e1.ontology_id "
+                + "WHERE e1.id = ?" + filter + searchFilter;
         String countSql = "SELECT count(*) FROM ols_entities e1 "
-                + "JOIN ols_entities e2 ON e1.iri = ANY(e2." + ancestorColumn + ") AND e2.ontology_id = e1.ontology_id "
-                + "WHERE e1.id = ?" + sourceFilter;
+                + "JOIN ols_entities e2 ON e1.iri = ANY(e2." + column + ") AND e2.ontology_id = e1.ontology_id "
+                + "WHERE e1.id = ?" + filter + searchFilter;
 
         return postgresClient.queryPaginated(sql, countSql, params.toArray(), pageable);
     }
-
-
-    // --- Edge table traversal ---
-
-    private String buildEdgeTraversalSql(String id, List<String> edgeIRIs,
-            Map<String, String> edgeProps, Map<String, String> nodeProps, boolean outgoing) {
-        // outgoing: start_id = me, return end entity
-        // incoming: end_id = me, return start entity
-        String meColumn = outgoing ? "e.start_id" : "e.end_id";
-        String otherColumn = outgoing ? "e.end_id" : "e.start_id";
-
-        StringBuilder sql = new StringBuilder();
-        sql.append("SELECT DISTINCT e2._json, e2.iri FROM ols_edges e ");
-        sql.append("JOIN ols_entities e2 ON ").append(otherColumn).append(" = e2.id ");
-        sql.append("WHERE ").append(meColumn).append(" = ? AND e.type = ANY(?)");
-
-        for (var entry : edgeProps.entrySet()) {
-            sql.append(" AND ? = ANY(e.property)");
-        }
-
-        for (var entry : nodeProps.entrySet()) {
-            if ("isObsolete".equals(entry.getKey())) {
-                sql.append(" AND e2.is_obsolete = ?");
-            }
-        }
-
-        return sql.toString();
-    }
-
-    private String buildEdgeTraversalCountSql(String id, List<String> edgeIRIs,
-            Map<String, String> edgeProps, Map<String, String> nodeProps, boolean outgoing) {
-        String meColumn = outgoing ? "e.start_id" : "e.end_id";
-        String otherColumn = outgoing ? "e.end_id" : "e.start_id";
-
-        StringBuilder sql = new StringBuilder();
-        sql.append("SELECT count(DISTINCT e2.id) FROM ols_edges e ");
-        sql.append("JOIN ols_entities e2 ON ").append(otherColumn).append(" = e2.id ");
-        sql.append("WHERE ").append(meColumn).append(" = ? AND e.type = ANY(?)");
-
-        for (var entry : edgeProps.entrySet()) {
-            sql.append(" AND ? = ANY(e.property)");
-        }
-
-        for (var entry : nodeProps.entrySet()) {
-            if ("isObsolete".equals(entry.getKey())) {
-                sql.append(" AND e2.is_obsolete = ?");
-            }
-        }
-
-        return sql.toString();
-    }
-
-    private Object[] buildEdgeTraversalParams(String id, List<String> edgeIRIs,
-            Map<String, String> edgeProps, Map<String, String> nodeProps) {
-        List<Object> params = new ArrayList<>();
-        params.add(id);
-        params.add(edgeIRIs.toArray(String[]::new));
-
-        for (var entry : edgeProps.entrySet()) {
-            params.add(entry.getValue());
-        }
-
-        for (var entry : nodeProps.entrySet()) {
-            if ("isObsolete".equals(entry.getKey())) {
-                params.add("true".equals(entry.getValue()));
-            }
-        }
-
-        return params.toArray();
-    }
-
-
-    // --- Recursive CTE for non-hierarchy multi-hop edges ---
-
-    private Page<JsonElement> recursiveEdgeTraversal(String id, List<String> edgeIRIs,
-            Map<String, String> edgeProps, Map<String, String> nodeProps, boolean outgoing, Pageable pageable) {
-
-        String sql = "WITH RECURSIVE traverse AS ("
-                + "  SELECT " + (outgoing ? "end_id" : "start_id") + " AS target_id FROM ols_edges "
-                + "  WHERE " + (outgoing ? "start_id" : "end_id") + " = ? AND type = ANY(?)"
-                + "  UNION ALL"
-                + "  SELECT e." + (outgoing ? "end_id" : "start_id") + " FROM traverse t "
-                + "  JOIN ols_edges e ON " + (outgoing ? "e.start_id" : "e.end_id") + " = t.target_id"
-                + "  WHERE e.type = ANY(?)"
-                + ") "
-                + "SELECT DISTINCT e._json, e.iri FROM ols_entities e WHERE e.id IN (SELECT DISTINCT target_id FROM traverse)";
-
-        String countSql = "WITH RECURSIVE traverse AS ("
-                + "  SELECT " + (outgoing ? "end_id" : "start_id") + " AS target_id FROM ols_edges "
-                + "  WHERE " + (outgoing ? "start_id" : "end_id") + " = ? AND type = ANY(?)"
-                + "  UNION ALL"
-                + "  SELECT e." + (outgoing ? "end_id" : "start_id") + " FROM traverse t "
-                + "  JOIN ols_edges e ON " + (outgoing ? "e.start_id" : "e.end_id") + " = t.target_id"
-                + "  WHERE e.type = ANY(?)"
-                + ") "
-                + "SELECT count(DISTINCT target_id) FROM traverse";
-
-        String[] edgeTypes = edgeIRIs.toArray(String[]::new);
-        Object[] params = new Object[]{ id, edgeTypes, edgeTypes };
-        Object[] countParams = new Object[]{ id, edgeTypes, edgeTypes };
-
-        return postgresClient.queryPaginated(sql, countSql, params, pageable);
-    }
-
-
-    // --- Node property filters ---
 
     private StringBuilder buildNodePropFilter(String alias, Map<String, String> nodeProps, List<Object> params) {
         StringBuilder filter = new StringBuilder();
@@ -295,14 +184,6 @@ public class OlsPostgresClient {
         return filter;
     }
 
-    private boolean isDirectParentTraversal(List<String> edgeIRIs) {
-        return edgeIRIs.size() == 1 && DIRECT_PARENT_EDGES.contains(edgeIRIs.get(0));
-    }
-
-    private boolean isHierarchicalParentTraversal(List<String> edgeIRIs) {
-        return edgeIRIs.size() == 1 && HIERARCHICAL_PARENT_EDGES.contains(edgeIRIs.get(0));
-    }
-
 
     // --- Vector search methods ---
 
@@ -312,7 +193,7 @@ public class OlsPostgresClient {
     }
 
     public Page<JsonElement> getSimilar(String type, String iri, Pageable pageable, String modelName) {
-        String embeddingColumn = "\"embeddings_" + modelName + "\"";
+        String embeddingColumn = sanitizeEmbeddingColumn(modelName);
 
         // Find the defining entity's embedding, then search for similar
         String sql = "SELECT e2._json, (1 - (e1." + embeddingColumn + " <=> e2." + embeddingColumn + ")) AS score "
@@ -359,7 +240,7 @@ public class OlsPostgresClient {
     }
 
     public double getSimilarity(String type, String iri, String iri2, String modelName) {
-        String embeddingColumn = "\"embeddings_" + modelName + "\"";
+        String embeddingColumn = sanitizeEmbeddingColumn(modelName);
 
         String sql = "SELECT 1 - (a." + embeddingColumn + " <=> b." + embeddingColumn + ") AS score "
                 + "FROM ols_entities a, ols_entities b "
@@ -386,7 +267,7 @@ public class OlsPostgresClient {
     }
 
     public List<Double> getEmbeddingVector(String type, String iri, String modelName) {
-        String embeddingColumn = "\"embeddings_" + modelName + "\"";
+        String embeddingColumn = sanitizeEmbeddingColumn(modelName);
 
         String sql = "SELECT " + embeddingColumn + "::text AS embeddings FROM ols_entities "
                 + "WHERE iri = ? AND type = ? AND " + embeddingColumn + " IS NOT NULL LIMIT 1";
@@ -420,7 +301,7 @@ public class OlsPostgresClient {
     }
 
     public Page<JsonElement> searchByVector(String type, List<Double> vector, Pageable pageable, String modelName, boolean includeCurations) {
-        String embeddingColumn = "\"embedding_" + modelName + "\"";
+        String embeddingColumn = sanitizeEmbeddingNodeColumn(modelName);
         int limit = pageable.getPageSize();
 
         // Build vector literal
@@ -479,7 +360,7 @@ public class OlsPostgresClient {
 
     public Page<JsonElement> searchByVectorInOntology(String type, List<Double> vector, Pageable pageable,
             String modelName, String ontologyId, boolean isDefiningOntology, boolean includeCurations) {
-        String embeddingColumn = "\"embedding_" + modelName + "\"";
+        String embeddingColumn = sanitizeEmbeddingNodeColumn(modelName);
         int limit = pageable.getPageSize();
         String vecLiteral = "[" + vector.stream().map(String::valueOf).collect(Collectors.joining(",")) + "]";
 

@@ -31,26 +31,22 @@ public class V1PropertyRepository {
     V1OntologyRepository ontologyRepository;
 
     public Page<V1Property> getParents(String ontologyId, String iri, String lang, Pageable pageable) {
-        return postgresClient.traverseOutgoingEdges("OntologyProperty", ontologyId + "+property+" + iri,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), Map.of(), pageable)
+        return postgresClient.getDirectParents(ontologyId + "+property+" + iri, Map.of(), pageable)
                 .map(record -> V1PropertyMapper.mapProperty(record, lang));
     }
 
     public Page<V1Property> getChildren(String ontologyId, String iri, String lang, Pageable pageable) {
-        return this.postgresClient.traverseIncomingEdges("OntologyProperty", ontologyId + "+property+" + iri,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), Map.of(), pageable)
+        return this.postgresClient.getDirectChildren(ontologyId + "+property+" + iri, Map.of(), pageable)
                 .map(record -> V1PropertyMapper.mapProperty(record, lang));
     }
 
     public Page<V1Property> getDescendants(String ontologyId, String iri, String lang, Pageable pageable)  {
-        return this.postgresClient.recursivelyTraverseIncomingEdges("OntologyProperty", ontologyId + "+property+" + iri,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), Map.of(), pageable)
+        return this.postgresClient.getDescendants(ontologyId + "+property+" + iri, Map.of(), pageable)
                 .map(record -> V1PropertyMapper.mapProperty(record, lang));
     }
 
     public Page<V1Property> getAncestors(String ontologyId, String iri, String lang, Pageable pageable)  {
-        return postgresClient.recursivelyTraverseOutgoingEdges("OntologyProperty", ontologyId + "+property+" + iri,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), Map.of(), pageable)
+        return postgresClient.getAncestors(ontologyId + "+property+" + iri, Map.of(), pageable)
                 .map(record -> V1PropertyMapper.mapProperty(record, lang));
     }
 

@@ -4,25 +4,9 @@ use std::io::{BufWriter, Write};
 
 use flate2::Compression;
 use flate2::write::GzEncoder;
-use indexmap::IndexMap;
 use serde_json::{Map, Value};
 
 use ols_shared::Embeddings;
-use crate::manifest::OntologyManifestInfo;
-
-/// Edge blacklist - these shouldn't create edges in the edges table.
-/// Note: directAncestor/hierarchicalAncestor are NOT blacklisted for edges because
-/// we don't create edges from them. But they ARE kept as entity properties (IRI arrays)
-/// so PostgreSQL can use them for hierarchy queries without recursive SQL.
-const EDGE_BLACKLIST: &[&str] = &[
-    "iri",                   // don't create lots of "iri" edges pointing from each node to itself
-    "hierarchicalProperty",  // informational only
-    "definitionProperty",    // informational only
-    "synonymProperty",       // informational only
-    "directAncestor",        // stored as entity column, not as edge
-    "hierarchicalAncestor",  // stored as entity column, not as edge
-    "relatedFrom",           // redundant - we already have relatedTo which can be queried both ways
-];
 
 // ── PostgreSQL binary COPY writer ──────────────────────────────────────────
 
@@ -200,29 +184,26 @@ pub struct OntologyWriter<'a> {
     #[allow(dead_code)]
     output_file_path: String,
     ontology_id: String,
-    manifest_info: OntologyManifestInfo,
     embeddings: &'a HashMap<String, Embeddings>,
     embedding_model_names: Vec<String>,
     ontology_iri: String,
     ontology_preferred_prefix: String,
     filter_property_names: Vec<String>,
     entity_field_count: i16,
-    edge_field_count: i16,
     emb_node_field_count: i16,
     entities_writer: BinaryCopyWriter,
-    edges_writer: BinaryCopyWriter,
     embedding_nodes_writer: Option<BinaryCopyWriter>,
 }
 
 impl<'a> OntologyWriter<'a> {
     pub fn new(
         output_file_path: &str,
-        manifest_info: OntologyManifestInfo,
+        ontology_id: &str,
         embeddings: &'a HashMap<String, Embeddings>,
         ontology_properties: &Map<String, Value>,
         filter_property_names: Vec<String>,
     ) -> Result<Self, Box<dyn std::error::Error>> {
-        let ontology_id = manifest_info.ontology_id.clone();
+        let ontology_id = ontology_id.to_string();
 
         let ontology_iri = ontology_properties.get("iri")
             .and_then(|v| v.as_str())
@@ -237,16 +218,12 @@ impl<'a> OntologyWriter<'a> {
         embedding_model_names.sort();
 
         // Field counts (must match create_postgres_schema.py column order)
-        let entity_field_count = (26 + filter_property_names.len() + embedding_model_names.len()) as i16;
-        let edge_field_count: i16 = 5;
+        let entity_field_count = (28 + filter_property_names.len() + embedding_model_names.len()) as i16;
         let emb_node_field_count = (3 + embedding_model_names.len()) as i16;
 
         // Create binary COPY files
         let entities_file = File::create(format!("{}/{}_entities.pgbin", output_file_path, ontology_id))?;
         let entities_writer = BinaryCopyWriter::new(entities_file)?;
-
-        let edges_file = File::create(format!("{}/{}_edges.pgbin", output_file_path, ontology_id))?;
-        let edges_writer = BinaryCopyWriter::new(edges_file)?;
 
         let embedding_nodes_writer = if !embedding_model_names.is_empty() {
             let emb_file = File::create(format!("{}/{}_embedding_nodes.pgbin", output_file_path, ontology_id))?;
@@ -258,17 +235,14 @@ impl<'a> OntologyWriter<'a> {
         Ok(Self {
             output_file_path: output_file_path.to_string(),
             ontology_id,
-            manifest_info,
             embeddings,
             embedding_model_names,
             ontology_iri,
             ontology_preferred_prefix,
             filter_property_names,
             entity_field_count,
-            edge_field_count,
             emb_node_field_count,
             entities_writer,
-            edges_writer,
             embedding_nodes_writer,
         })
     }
@@ -297,6 +271,8 @@ impl<'a> OntologyWriter<'a> {
 
         // Extract searchable fields
         let labels = extract_localized_strings(entity, "label");
+        let direct_parents = extract_string_array(entity, "directParent");
+        let hierarchical_parents = extract_string_array(entity, "hierarchicalParent");
         let direct_ancestors = extract_string_array(entity, "directAncestor");
         let hierarchical_ancestors = extract_string_array(entity, "hierarchicalAncestor");
         let short_form = extract_single_string(entity, "shortForm").unwrap_or_default();
@@ -311,7 +287,7 @@ impl<'a> OntologyWriter<'a> {
         let w = &mut self.entities_writer;
         w.begin_row(self.entity_field_count)?;
 
-        // Base columns (26)
+        // Base columns (28)
         w.write_text(&entity_node_id)?;                          // id
         w.write_text(pg_type)?;                                  // type
         w.write_text(iri)?;                                      // iri
@@ -319,6 +295,8 @@ impl<'a> OntologyWriter<'a> {
         w.write_gzipped_text(&json_str)?;                        // _json (gzip-compressed bytea)
         w.write_bool(extract_is_obsolete(entity))?;              // is_obsolete
         w.write_text_array(&labels)?;                            // label
+        w.write_text_array(&direct_parents)?;                    // direct_parents
+        w.write_text_array(&hierarchical_parents)?;              // hierarchical_parents
         w.write_text_array(&direct_ancestors)?;                  // direct_ancestors
         w.write_text_array(&hierarchical_ancestors)?;            // hierarchical_ancestors
         w.write_text(entity_type_str)?;                          // search_type
@@ -354,14 +332,6 @@ impl<'a> OntologyWriter<'a> {
             }
         }
 
-        // Write edges from entity properties
-        let entity_map: IndexMap<String, Value> = entity.iter()
-            .map(|(k, v)| (k.clone(), v.clone()))
-            .collect();
-        for (property, value) in &entity_map {
-            self.maybe_write_edges(iri, property, value)?;
-        }
-
         // Write embedding child nodes
         self.write_embedding_child_nodes(&entity_node_id, entity, entity_type_str, iri)?;
 
@@ -393,7 +363,7 @@ impl<'a> OntologyWriter<'a> {
 
         self.entities_writer.begin_row(self.entity_field_count)?;
 
-        // Base columns (26)
+        // Base columns (28)
         self.entities_writer.write_text(&entity_node_id)?;       // id
         self.entities_writer.write_text("Ontology")?;            // type
         self.entities_writer.write_text(iri)?;                   // iri
@@ -401,6 +371,8 @@ impl<'a> OntologyWriter<'a> {
         self.entities_writer.write_gzipped_text(&json_str)?;     // _json (gzip-compressed bytea)
         self.entities_writer.write_bool(false)?;                 // is_obsolete
         self.entities_writer.write_text_array(&labels)?;         // label
+        self.entities_writer.write_text_array(&empty)?;          // direct_parents
+        self.entities_writer.write_text_array(&empty)?;          // hierarchical_parents
         self.entities_writer.write_text_array(&empty)?;          // direct_ancestors
         self.entities_writer.write_text_array(&empty)?;          // hierarchical_ancestors
         self.entities_writer.write_text("ontology")?;            // search_type
@@ -437,108 +409,9 @@ impl<'a> OntologyWriter<'a> {
     /// Write binary COPY trailers and flush all writers.
     pub fn finish(&mut self) -> Result<(), Box<dyn std::error::Error>> {
         self.entities_writer.finish()?;
-        self.edges_writer.finish()?;
         if let Some(ref mut w) = self.embedding_nodes_writer {
             w.finish()?;
         }
-        Ok(())
-    }
-
-    fn maybe_write_edges(&mut self, subject: &str, property: &str, value: &Value) -> Result<(), Box<dyn std::error::Error>> {
-        let values: Vec<&Value> = if value.is_array() {
-            value.as_array().unwrap().iter().collect()
-        } else {
-            vec![value]
-        };
-
-        for v in values {
-            if let Some(map_value) = v.as_object() {
-                if let Some(type_val) = map_value.get("type") {
-                    if let Some(types) = type_val.as_array() {
-                        let type_strs: Vec<&str> = types.iter().filter_map(|t| t.as_str()).collect();
-
-                        if type_strs.contains(&"reification") {
-                            if let Some(reified_value) = map_value.get("value").and_then(|v| v.as_str()) {
-                                if let Some(axioms) = map_value.get("axioms").and_then(|a| a.as_array()) {
-                                    if self.manifest_info.uri_to_types.contains_key(reified_value) {
-                                        for axiom in axioms {
-                                            if let Some(axiom_obj) = axiom.as_object() {
-                                                let axiom_map: IndexMap<String, Value> = axiom_obj.iter()
-                                                    .map(|(k, v)| (k.clone(), v.clone()))
-                                                    .collect();
-                                                self.print_edge(subject, property, reified_value, &axiom_map)?;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        } else if type_strs.contains(&"related") {
-                            if let Some(related_value) = map_value.get("value").and_then(|v| v.as_str()) {
-                                if self.manifest_info.uri_to_types.contains_key(related_value) {
-                                    let edge_props: IndexMap<String, Value> = map_value.iter()
-                                        .map(|(k, v)| (k.clone(), v.clone()))
-                                        .collect();
-                                    self.print_edge(subject, property, related_value, &edge_props)?;
-                                }
-                            }
-                        }
-                    }
-                }
-            } else if let Some(uri) = v.as_str() {
-                if self.manifest_info.uri_to_types.contains_key(uri) {
-                    self.print_edge(subject, property, uri, &IndexMap::new())?;
-                }
-            }
-        }
-
-        Ok(())
-    }
-
-    fn print_edge(
-        &mut self,
-        a_uri: &str,
-        predicate: &str,
-        b_uri: &str,
-        edge_props: &IndexMap<String, Value>,
-    ) -> Result<(), Box<dyn std::error::Error>> {
-        if EDGE_BLACKLIST.contains(&predicate) {
-            return Ok(());
-        }
-
-        let a_types = self.manifest_info.uri_to_types.get(a_uri);
-        let b_types = self.manifest_info.uri_to_types.get(b_uri);
-
-        if let (Some(a_types), Some(b_types)) = (a_types, b_types) {
-            let mut a_types_sorted: Vec<_> = a_types.iter().collect();
-            let mut b_types_sorted: Vec<_> = b_types.iter().collect();
-            a_types_sorted.sort_by_key(|t| t.to_string_lowercase());
-            b_types_sorted.sort_by_key(|t| t.to_string_lowercase());
-
-            for a_type in &a_types_sorted {
-                for b_type in &b_types_sorted {
-                    let start_id = format!("{}+{}+{}", self.ontology_id, a_type.to_string_lowercase(), a_uri);
-                    let end_id = format!("{}+{}+{}", self.ontology_id, b_type.to_string_lowercase(), b_uri);
-                    let json_str = serde_json::to_string(edge_props)?;
-
-                    let prop_values: Vec<String> = edge_props.iter()
-                        .filter(|(k, _)| k.as_str() != "type" && k.as_str() != "value")
-                        .flat_map(|(_, v)| match v {
-                            Value::String(s) => vec![s.clone()],
-                            Value::Array(arr) => arr.iter().filter_map(|x| x.as_str().map(String::from)).collect(),
-                            _ => vec![],
-                        })
-                        .collect();
-
-                    self.edges_writer.begin_row(self.edge_field_count)?;
-                    self.edges_writer.write_text(&start_id)?;
-                    self.edges_writer.write_text(&end_id)?;
-                    self.edges_writer.write_text(predicate)?;
-                    self.edges_writer.write_gzipped_text(&json_str)?;
-                    self.edges_writer.write_text_array(&prop_values)?;
-                }
-            }
-        }
-
         Ok(())
     }
 

@@ -139,7 +139,7 @@ workflow {
     // Join filter properties with linked ontology JSONs by ontology_id
     linked_with_filter_props = linked_ontologies_by_id.combine(filter_props_by_id, by: 0)
 
-    postgres_tsvs = json2postgres(linker_manifest, linked_with_filter_props, embedding_parquets)
+    postgres_tsvs = json2postgres(linked_with_filter_props, embedding_parquets)
 
     if (params.external_postgres) {
         pg = populate_external_postgres(postgres_tsvs.collect(), embedding_parquets, all_filter_props)
@@ -306,7 +306,6 @@ process json2postgres {
     maxRetries 5
 
     input:
-    path(manifest)
     tuple val(ontology_id), path(ontology_json), val(filter_properties)
     path(embedding_parquets)
 
@@ -325,7 +324,6 @@ process json2postgres {
         --input ${ontology_json} \
         --ontology-id ${ontology_id} \
         --outDir . \
-        --manifest ${manifest} \
         ${parquet_args} \
         ${filter_args}
     """

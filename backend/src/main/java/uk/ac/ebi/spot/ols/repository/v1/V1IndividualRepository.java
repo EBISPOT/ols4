@@ -1,6 +1,5 @@
 package uk.ac.ebi.spot.ols.repository.v1;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -39,8 +38,7 @@ public class V1IndividualRepository {
 //            value = "MATCH (n:Individual)-[:INSTANCEOF]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN parent")
     public Page<V1Term> getDirectTypes(String ontologyId, String iri, String lang, Pageable pageable) {
 
-	return this.postgresClient.traverseOutgoingEdges("OntologyIndividual", ontologyId + "+individual+" + iri,
-			Arrays.asList("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"), Map.of(), Map.of(), pageable)
+	return this.postgresClient.getDirectParents(ontologyId + "+individual+" + iri, Map.of(), pageable)
 				.map(node -> V1TermMapper.mapTerm(node, lang));
     }
 
@@ -48,8 +46,7 @@ public class V1IndividualRepository {
 //            value = "MATCH (n:Individual)-[:INSTANCEOF|SUBCLASSOF*]->(parent) WHERE n.ontology_name = {0} AND n.iri = {1} RETURN distinct parent")
     public Page<V1Term> getAllTypes(String ontologyId, String iri, String lang, Pageable pageable) { 
 
-	return this.postgresClient.recursivelyTraverseOutgoingEdges("OntologyIndividual", ontologyId + "+individual+" + iri,
-			Arrays.asList("http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "http://www.w3.org/2000/01/rdf-schema#subClassOf"), Map.of(), Map.of(), pageable)
+	return this.postgresClient.getAncestors(ontologyId + "+individual+" + iri, Map.of(), pageable)
 				.map(node -> V1TermMapper.mapTerm(node, lang));
     }
 

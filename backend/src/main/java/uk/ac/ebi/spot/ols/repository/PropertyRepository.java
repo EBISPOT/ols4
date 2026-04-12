@@ -113,8 +113,7 @@ public class PropertyRepository {
 
         String id = ontologyId + "+property+" + iri;
 
-        return this.postgresClient.traverseIncomingEdges("OntologyProperty", id,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), Map.of(), pageable)
+        return this.postgresClient.getDirectChildren(id, Map.of(), pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -126,8 +125,7 @@ public class PropertyRepository {
 
         String id = ontologyId + "+property+" + iri;
 
-        return this.postgresClient.recursivelyTraverseOutgoingEdges("OntologyProperty", id,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), Map.of(), pageable)
+        return this.postgresClient.getAncestors(id, Map.of(), pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
