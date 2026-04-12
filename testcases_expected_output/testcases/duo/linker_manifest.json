@@ -2914,6 +2914,122 @@
         }
       }
     },
+    "http://purl.obolibrary.org/obo/COB_0000035": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "completely executed planned process",
+              "lang": "en"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "COB:0000035"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "completely executed planned process",
+              "lang": "en"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "COB:0000035"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/COB_0000082": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "planned process",
+              "lang": "en"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "COB:0000082"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "planned process",
+              "lang": "en"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "COB:0000082"
+          },
+          "isObsolete": false
+        }
+      }
+    },
     "http://purl.obolibrary.org/obo/DUO_0000001": {
       "definitions": [
         {
@@ -7000,6 +7116,66 @@
         }
       }
     },
+    "http://purl.obolibrary.org/obo/IAO_0000011": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "is directed towards",
+              "lang": "en"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "IAO:0000011"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "is directed towards",
+              "lang": "en"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "IAO:0000011"
+          },
+          "isObsolete": false
+        }
+      }
+    },
     "http://purl.obolibrary.org/obo/IAO_0000012": {
       "definitions": [
         {
@@ -7471,7 +7647,7 @@
                 "literal"
               ],
               "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "data item",
+              "value": "data entity",
               "lang": "en"
             }
           ],
@@ -7500,7 +7676,7 @@
                 "literal"
               ],
               "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "data item",
+              "value": "data entity",
               "lang": "en"
             }
           ],
@@ -8981,7 +9157,7 @@
                 "literal"
               ],
               "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "data set",
+              "value": "homogenous data collection",
               "lang": "en"
             }
           ],
@@ -9010,7 +9186,7 @@
                 "literal"
               ],
               "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "data set",
+              "value": "homogenous data collection",
               "lang": "en"
             }
           ],
@@ -20512,6 +20688,64 @@
         }
       }
     },
+    "http://purl.obolibrary.org/obo/IAO_0000651": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "title section",
+              "lang": "en"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "IAO:0000651"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "title section",
+              "lang": "en"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "IAO:0000651"
+          },
+          "isObsolete": false
+        }
+      }
+    },
     "http://purl.obolibrary.org/obo/IAO_0000700": {
       "definitions": [
         {
@@ -21031,6 +21265,64 @@
               "literal"
             ],
             "value": "IAO:0000708"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/IAO_0001000": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "data collection",
+              "lang": "en"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "IAO:0001000"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "data collection",
+              "lang": "en"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "IAO:0001000"
           },
           "isObsolete": false
         }
@@ -22954,64 +23246,6 @@
         }
       }
     },
-    "http://purl.obolibrary.org/obo/OBI_0000011": {
-      "definitions": [
-        {
-          "ontologyId": "duo",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "planned process",
-              "lang": "en"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "OBI:0000011"
-          },
-          "isObsolete": false
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "duo": {
-          "ontologyId": "duo",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "planned process",
-              "lang": "en"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "OBI:0000011"
-          },
-          "isObsolete": false
-        }
-      }
-    },
     "http://purl.obolibrary.org/obo/OBI_0000066": {
       "definitions": [
         {
@@ -23086,7 +23320,7 @@
                 "literal"
               ],
               "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "has_specified_input",
+              "value": "has specified input",
               "lang": "en"
             }
           ],
@@ -23116,7 +23350,7 @@
                 "literal"
               ],
               "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "has_specified_input",
+              "value": "has specified input",
               "lang": "en"
             }
           ],
@@ -23146,7 +23380,7 @@
                 "literal"
               ],
               "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "is_specified_input_of",
+              "value": "is specified input of",
               "lang": "en"
             }
           ],
@@ -23176,7 +23410,7 @@
                 "literal"
               ],
               "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "is_specified_input_of",
+              "value": "is specified input of",
               "lang": "en"
             }
           ],
@@ -23206,7 +23440,7 @@
                 "literal"
               ],
               "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "has_specified_output",
+              "value": "has specified output",
               "lang": "en"
             }
           ],
@@ -23236,7 +23470,7 @@
                 "literal"
               ],
               "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "has_specified_output",
+              "value": "has specified output",
               "lang": "en"
             }
           ],
@@ -23266,7 +23500,7 @@
                 "literal"
               ],
               "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "is_specified_output_of",
+              "value": "is specified output of",
               "lang": "en"
             }
           ],
@@ -23296,7 +23530,7 @@
                 "literal"
               ],
               "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "is_specified_output_of",
+              "value": "is specified output of",
               "lang": "en"
             }
           ],
@@ -23590,6 +23824,60 @@
         }
       }
     },
+    "http://purl.obolibrary.org/obo/OMO_0001002": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "domain entity does not exist"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0001002"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "domain entity does not exist"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0001002"
+          },
+          "isObsolete": false
+        }
+      }
+    },
     "http://purl.obolibrary.org/obo/OMO_0002000": {
       "definitions": [
         {
@@ -23641,6 +23929,902 @@
               "literal"
             ],
             "value": "OMO:0002000"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/OMO_0002001": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "preferred label for community"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0002001"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "preferred label for community"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0002001"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/OMO_0003000": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "abbreviation"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003000"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "abbreviation"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003000"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/OMO_0003001": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "ambiguous synonym"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003001"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "ambiguous synonym"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003001"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/OMO_0003002": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "dubious synonym"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003002"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "dubious synonym"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003002"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/OMO_0003003": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "layperson synonym"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003003"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "layperson synonym"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003003"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/OMO_0003004": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "plural form"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003004"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "plural form"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003004"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/OMO_0003005": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UK spelling synonym"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003005"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UK spelling synonym"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003005"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/OMO_0003006": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "misspelling"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003006"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "misspelling"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003006"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/OMO_0003007": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "misnomer"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003007"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "misnomer"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003007"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/OMO_0003008": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "previous name"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003008"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "previous name"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003008"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/OMO_0003009": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "legal name"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003009"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "legal name"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003009"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/OMO_0003010": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "International Nonproprietary Name"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003010"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "International Nonproprietary Name"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003010"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/OMO_0003011": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "latin term"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003011"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "latin term"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003011"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/OMO_0003012": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "acronym"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003012"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "acronym"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003012"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/OMO_0003014": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "has ontology hierarchical property"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003014"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "has ontology hierarchical property"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0003014"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/OMO_0004000": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "has symbol"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0004000"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "has symbol"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "OMO:0004000"
           },
           "isObsolete": false
         }
@@ -25011,9 +26195,7 @@
               "type": [
                 "literal"
               ],
-              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "temporal interpretation",
-              "lang": "en"
+              "value": "temporal interpretation"
             }
           ],
           "curie": {
@@ -25041,9 +26223,7 @@
               "type": [
                 "literal"
               ],
-              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "value": "temporal interpretation",
-              "lang": "en"
+              "value": "temporal interpretation"
             }
           ],
           "curie": {
@@ -26080,6 +27260,62 @@
         }
       }
     },
+    "http://purl.org/dc/elements/1.1/license": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "license"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "license"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "license"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "license"
+          },
+          "isObsolete": false
+        }
+      }
+    },
     "http://purl.org/dc/elements/1.1/member": {
       "definitions": [
         {
@@ -26528,6 +27764,118 @@
         }
       }
     },
+    "http://purl.org/dc/terms/contributor": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "contributor"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "contributor"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "contributor"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "contributor"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.org/dc/terms/created": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "created"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "created"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "created"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "created"
+          },
+          "isObsolete": false
+        }
+      }
+    },
     "http://purl.org/dc/terms/license": {
       "definitions": [
         {
@@ -26579,6 +27927,62 @@
               "literal"
             ],
             "value": "license"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.org/dc/terms/source": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "source"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "source"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "source"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "source"
           },
           "isObsolete": false
         }
@@ -26689,6 +28093,62 @@
               "literal"
             ],
             "value": "ObsoleteProperty"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty": {
+      "definitions": [
+        {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "SynonymTypeProperty"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "SynonymTypeProperty"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "duo": {
+          "ontologyId": "duo",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "SynonymTypeProperty"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "SynonymTypeProperty"
           },
           "isObsolete": false
         }
@@ -26881,7 +28341,7 @@
               "type": [
                 "literal"
               ],
-              "value": "hasDbXref"
+              "value": "has cross-reference"
             }
           ],
           "curie": {
@@ -26909,7 +28369,7 @@
               "type": [
                 "literal"
               ],
-              "value": "hasDbXref"
+              "value": "has cross-reference"
             }
           ],
           "curie": {
@@ -27820,8 +29280,11 @@
       "http://purl.obolibrary.org/obo/RO_0001900",
       "http://purl.org/dc/elements/1.1/contributor",
       "http://purl.org/dc/elements/1.1/date",
-      "http://purl.org/dc/elements/1.1/source",
+      "http://purl.org/dc/terms/contributor",
+      "http://purl.org/dc/terms/created",
+      "http://purl.org/dc/terms/source",
       "http://www.geneontology.org/formats/oboInOwl#created_by",
+      "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
       "http://www.geneontology.org/formats/oboInOwl#id",
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
       "http://www.w3.org/2000/01/rdf-schema#comment",
@@ -27832,7 +29295,6 @@
       "http://www.w3.org/2000/01/rdf-schema#seeAlso",
       "http://www.w3.org/2000/01/rdf-schema#subPropertyOf",
       "http://www.w3.org/2002/07/owl#deprecated",
-      "http://www.w3.org/2002/07/owl#equivalentProperty",
       "http://www.w3.org/2002/07/owl#inverseOf",
       "http://www.w3.org/2002/07/owl#propertyChainAxiom",
       "imported",
@@ -27847,6 +29309,8 @@
       "ontologyPreferredPrefix",
       "searchableAnnotationValues",
       "shortForm",
+      "synonym",
+      "synonymProperty",
       "type"
     ]
   },
@@ -27869,6 +29333,7 @@
       "http://purl.obolibrary.org/obo/IAO_0000231",
       "http://purl.obolibrary.org/obo/IAO_0000233",
       "http://purl.obolibrary.org/obo/IAO_0000234",
+      "http://purl.org/dc/elements/1.1/contributor",
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
       "http://www.w3.org/2000/01/rdf-schema#label",
       "http://www.w3.org/2002/07/owl#deprecated",
@@ -28049,6 +29514,12 @@
       "http://purl.obolibrary.org/obo/BFO_0000182": [
         "CLASS"
       ],
+      "http://purl.obolibrary.org/obo/COB_0000035": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/COB_0000082": [
+        "CLASS"
+      ],
       "http://purl.obolibrary.org/obo/DUO_0000001": [
         "CLASS"
       ],
@@ -28204,6 +29675,9 @@
       ],
       "http://purl.obolibrary.org/obo/IAO_0000010": [
         "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/IAO_0000011": [
+        "PROPERTY"
       ],
       "http://purl.obolibrary.org/obo/IAO_0000012": [
         "CLASS"
@@ -28901,6 +30375,9 @@
       "http://purl.obolibrary.org/obo/IAO_0000650": [
         "CLASS"
       ],
+      "http://purl.obolibrary.org/obo/IAO_0000651": [
+        "CLASS"
+      ],
       "http://purl.obolibrary.org/obo/IAO_0000700": [
         "PROPERTY"
       ],
@@ -28926,6 +30403,9 @@
         "CLASS"
       ],
       "http://purl.obolibrary.org/obo/IAO_0000708": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/IAO_0001000": [
         "CLASS"
       ],
       "http://purl.obolibrary.org/obo/IAO_0006011": [
@@ -29027,9 +30507,6 @@
       "http://purl.obolibrary.org/obo/MONDO_0000001": [
         "CLASS"
       ],
-      "http://purl.obolibrary.org/obo/OBI_0000011": [
-        "CLASS"
-      ],
       "http://purl.obolibrary.org/obo/OBI_0000066": [
         "CLASS"
       ],
@@ -29060,7 +30537,58 @@
       "http://purl.obolibrary.org/obo/OMO_0001001": [
         "PROPERTY"
       ],
+      "http://purl.obolibrary.org/obo/OMO_0001002": [
+        "INDIVIDUAL"
+      ],
       "http://purl.obolibrary.org/obo/OMO_0002000": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/OMO_0002001": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/OMO_0003000": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/OMO_0003001": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/OMO_0003002": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/OMO_0003003": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/OMO_0003004": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/OMO_0003005": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/OMO_0003006": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/OMO_0003007": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/OMO_0003008": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/OMO_0003009": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/OMO_0003010": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/OMO_0003011": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/OMO_0003012": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/OMO_0003014": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/OMO_0004000": [
         "PROPERTY"
       ],
       "http://purl.obolibrary.org/obo/PATO_0000051": [
@@ -29192,6 +30720,9 @@
       "http://purl.org/dc/elements/1.1/language": [
         "PROPERTY"
       ],
+      "http://purl.org/dc/elements/1.1/license": [
+        "PROPERTY"
+      ],
       "http://purl.org/dc/elements/1.1/member": [
         "PROPERTY"
       ],
@@ -29216,13 +30747,25 @@
       "http://purl.org/dc/elements/1.1/type": [
         "PROPERTY"
       ],
+      "http://purl.org/dc/terms/contributor": [
+        "PROPERTY"
+      ],
+      "http://purl.org/dc/terms/created": [
+        "PROPERTY"
+      ],
       "http://purl.org/dc/terms/license": [
+        "PROPERTY"
+      ],
+      "http://purl.org/dc/terms/source": [
         "PROPERTY"
       ],
       "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass": [
         "CLASS"
       ],
       "http://www.geneontology.org/formats/oboInOwl#ObsoleteProperty": [
+        "PROPERTY"
+      ],
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty": [
         "PROPERTY"
       ],
       "http://www.geneontology.org/formats/oboInOwl#created_by": [

@@ -1,0 +1,46 @@
+{
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003003/ancestors"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003003/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003003/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003003?lang=en"
+    }
+  },
+  "annotation": {
+    "contributor": [
+      "https://orcid.org/0000-0003-4423-4370"
+    ],
+    "created": [
+      "2023-03-03"
+    ],
+    "example of usage": [
+      "EFO:0006346 (severe cutaneous adverse reaction) has an exact synonym (scar), which is of the type OMO:0003003 (layperson synonym)"
+    ],
+    "term tracker item": [
+      "https://github.com/information-artifact-ontology/ontology-metadata/issues/122"
+    ]
+  },
+  "description": [
+    "A synonym type for describing layperson or colloquial synonyms"
+  ],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/OMO_0003003",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": false,
+  "label": "layperson synonym",
+  "lang": "en",
+  "obo_id": "OMO:0003003",
+  "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+  "ontology_name": "duo",
+  "ontology_prefix": "DUO",
+  "short_form": "OMO_0003003",
+  "synonyms": []
+}

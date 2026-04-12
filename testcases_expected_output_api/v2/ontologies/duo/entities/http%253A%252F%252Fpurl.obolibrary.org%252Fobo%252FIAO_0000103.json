@@ -4,7 +4,7 @@
   ],
   "curie": "IAO:0000103",
   "definition": [
-    "The term was used in an attempt to structure part of the ontology but in retrospect failed to do a good job"
+    "The term was initially used in an attempt to structure part of the ontology, but in retrospect failed to do a good job."
   ],
   "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
   "directAncestor": [
@@ -24,8 +24,13 @@
   "hasHierarchicalChildren": false,
   "hasHierarchicalParents": false,
   "http://purl.obolibrary.org/obo/IAO_0000111": "failed exploratory term",
-  "http://purl.obolibrary.org/obo/IAO_0000115": "The term was used in an attempt to structure part of the ontology but in retrospect failed to do a good job",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "The term was initially used in an attempt to structure part of the ontology, but in retrospect failed to do a good job.",
+  "http://purl.obolibrary.org/obo/IAO_0000116": "Terms created as placeholders with the expectation of being permanent should instead be deprecated using the \"placeholder removed\" (obo:IAO_0000226) justification.",
   "http://purl.obolibrary.org/obo/IAO_0000117": "Person:Alan Ruttenberg",
+  "http://purl.org/dc/elements/1.1/contributor": [
+    "https://orcid.org/0000-0001-6875-5360",
+    "https://orcid.org/0000-0002-7356-1779"
+  ],
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
     "http://purl.obolibrary.org/obo/IAO_0000225",
     "http://www.w3.org/2002/07/owl#NamedIndividual",
@@ -80,7 +85,7 @@
       "curie": "IAO:0000027",
       "hasLocalDefinition": true,
       "label": [
-        "data item"
+        "data entity"
       ],
       "numAppearsIn": 1.0,
       "type": [
@@ -138,6 +143,19 @@
         "property"
       ]
     },
+    "http://purl.obolibrary.org/obo/IAO_0000116": {
+      "curie": "IAO:0000116",
+      "hasLocalDefinition": true,
+      "label": [
+        "editor note"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
     "http://purl.obolibrary.org/obo/IAO_0000117": {
       "curie": "IAO:0000117",
       "hasLocalDefinition": true,
@@ -163,6 +181,19 @@
         "entity"
       ]
     },
+    "http://purl.org/dc/elements/1.1/contributor": {
+      "curie": "contributor",
+      "hasLocalDefinition": true,
+      "label": [
+        "contributor"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
     "http://www.w3.org/2000/01/rdf-schema#label": {
       "curie": "RDFS:label",
       "definedBy": [
@@ -177,6 +208,16 @@
         "entity",
         "property"
       ]
+    },
+    "https://orcid.org/0000-0001-6875-5360": {
+      "curie": "orcid:0000-0001-6875-5360",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "https://orcid.org/0000-0001-6875-5360"
+    },
+    "https://orcid.org/0000-0002-7356-1779": {
+      "curie": "orcid:0000-0002-7356-1779",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "https://orcid.org/0000-0002-7356-1779"
     }
   },
   "linksTo": [
@@ -188,8 +229,10 @@
     "http://purl.obolibrary.org/obo/IAO_0000102",
     "http://purl.obolibrary.org/obo/IAO_0000111",
     "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000116",
     "http://purl.obolibrary.org/obo/IAO_0000117",
     "http://purl.obolibrary.org/obo/IAO_0000225",
+    "http://purl.org/dc/elements/1.1/contributor",
     "http://www.w3.org/2000/01/rdf-schema#label"
   ],
   "numDescendants": 0.0,
@@ -199,7 +242,8 @@
   "ontologyPreferredPrefix": "DUO",
   "searchableAnnotationValues": [
     "Person:Alan Ruttenberg",
-    "The term was used in an attempt to structure part of the ontology but in retrospect failed to do a good job",
+    "Terms created as placeholders with the expectation of being permanent should instead be deprecated using the \"placeholder removed\" (obo:IAO_0000226) justification.",
+    "The term was initially used in an attempt to structure part of the ontology, but in retrospect failed to do a good job.",
     "failed exploratory term",
     true
   ],

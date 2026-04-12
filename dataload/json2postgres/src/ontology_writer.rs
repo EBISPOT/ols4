@@ -147,9 +147,14 @@ fn extract_localized_strings(entity: &Map<String, Value>, key: &str) -> Vec<Stri
 }
 
 /// Extract a string array property from entity JSON.
+/// Handles both plain strings and objects with a "value" key (e.g. reified hierarchicalParent entries).
 fn extract_string_array(entity: &Map<String, Value>, key: &str) -> Vec<String> {
     match entity.get(key) {
-        Some(Value::Array(arr)) => arr.iter().filter_map(|v| v.as_str().map(String::from)).collect(),
+        Some(Value::Array(arr)) => arr.iter().filter_map(|v| match v {
+            Value::String(s) => Some(s.clone()),
+            Value::Object(obj) => obj.get("value").and_then(|v| v.as_str()).map(String::from),
+            _ => None,
+        }).collect(),
         Some(Value::String(s)) => vec![s.clone()],
         _ => vec![],
     }

@@ -21,7 +21,7 @@
   "http://purl.obolibrary.org/obo/IAO_0000115": "a relation between a process and a continuant, in which the continuant is somehow involved in the process",
   "http://purl.obolibrary.org/obo/IAO_0000116": "Has_participant is a primitive instance-level relation between a process, a continuant, and a time at which the continuant participates in some way in the process. The relation obtains, for example, when this particular process of oxygen exchange across this particular alveolar membrane has_participant this particular sample of hemoglobin at this particular time.",
   "http://purl.obolibrary.org/obo/IAO_0000118": "has_participant",
-  "http://purl.org/dc/elements/1.1/source": "http://www.obofoundry.org/ro/#OBO_REL:has_participant",
+  "http://purl.org/dc/terms/source": "http://www.obofoundry.org/ro/#OBO_REL:has_participant",
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
   "http://www.w3.org/2000/01/rdf-schema#domain": "http://purl.obolibrary.org/obo/BFO_0000003",
   "http://www.w3.org/2000/01/rdf-schema#label": "has participant",
@@ -138,7 +138,7 @@
         "property"
       ]
     },
-    "http://purl.org/dc/elements/1.1/source": {
+    "http://purl.org/dc/terms/source": {
       "curie": "source",
       "hasLocalDefinition": true,
       "label": [
@@ -206,7 +206,7 @@
     "http://purl.obolibrary.org/obo/IAO_0000116",
     "http://purl.obolibrary.org/obo/IAO_0000118",
     "http://purl.obolibrary.org/obo/RO_0000056",
-    "http://purl.org/dc/elements/1.1/source",
+    "http://purl.org/dc/terms/source",
     "http://www.w3.org/2000/01/rdf-schema#domain",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#range"

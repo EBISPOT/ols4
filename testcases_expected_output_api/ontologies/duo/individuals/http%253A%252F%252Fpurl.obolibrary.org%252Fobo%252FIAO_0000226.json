@@ -14,11 +14,20 @@
     }
   },
   "annotation": {
+    "contributor": [
+      "https://orcid.org/0000-0001-6875-5360",
+      "https://orcid.org/0000-0002-7356-1779"
+    ],
+    "editor note": [
+      "This reason is appropriate for a temporary term even if no permanent term is defined; for example if the need for the term no longer exists. If a permanent (replacement) term is defined, the deprecated term should reference the replacement with IAO:0100001. If no replacement is defined, it may be appropriate to reference alternative terms with oboInOwl:consider."
+    ],
     "editor preferred term": [
       "placeholder removed"
     ]
   },
-  "description": [],
+  "description": [
+    "The term was created to temporarily stand in for a semantic purpose, but is no longer needed, typically due to another permanent term being defined."
+  ],
   "has_children": false,
   "iri": "http://purl.obolibrary.org/obo/IAO_0000226",
   "is_defining_ontology": false,

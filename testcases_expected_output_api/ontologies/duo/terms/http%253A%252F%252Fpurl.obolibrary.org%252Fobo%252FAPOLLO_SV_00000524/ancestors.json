@@ -203,6 +203,7 @@
       ]
     },
     "description": [
+      "An occurrent that has temporal proper parts and for some time t, p s-depends_on some material entity at t.",
       "p is a process = Def. p is an occurrent that has temporal proper parts and for some time t, p s-depends_on some material entity at t. (axiom label in BFO2 Reference: [083-003])"
     ],
     "has_children": true,
@@ -223,37 +224,97 @@
   {
     "_links": {
       "ancestors": {
-        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000011/ancestors"
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000035/ancestors"
       },
       "children": {
-        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000011/children"
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000035/children"
       },
       "descendants": {
-        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000011/descendants"
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000035/descendants"
       },
       "graph": {
-        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000011/graph"
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000035/graph"
       },
       "hierarchicalAncestors": {
-        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000011/hierarchicalAncestors"
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000035/hierarchicalAncestors"
       },
       "hierarchicalChildren": {
-        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000011/hierarchicalChildren"
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000035/hierarchicalChildren"
       },
       "hierarchicalDescendants": {
-        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000011/hierarchicalDescendants"
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000035/hierarchicalDescendants"
       },
       "hierarchicalParents": {
-        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000011/hierarchicalParents"
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000035/hierarchicalParents"
       },
       "jstree": {
-        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000011/jstree"
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000035/jstree"
       },
       "parents": {
-        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000011/parents"
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000035/parents"
       },
       "self": {
-        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000011?lang=en"
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000035?lang=en"
+      }
+    },
+    "annotation": {
+      "editor preferred term": [
+        "completely executed planned process"
+      ],
+      "imported from": [
+        "http://purl.obolibrary.org/obo/cob.owl"
+      ]
+    },
+    "description": [],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/COB_0000035",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "completely executed planned process",
+    "lang": "en",
+    "obo_id": "COB:0000035",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "COB_0000035",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000082/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000082/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000082/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000082/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000082/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000082/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000082/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000082/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000082/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000082/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCOB_0000082?lang=en"
       }
     },
     "annotation": {
@@ -261,25 +322,25 @@
         "planned process"
       ],
       "imported from": [
-        "http://purl.obolibrary.org/obo/obi.owl"
+        "http://purl.obolibrary.org/obo/cob.owl"
       ]
     },
     "description": [
-      "A process that realizes a plan which is the concretization of a plan specification."
+      "A process that is initiated by an agent who intends to carry out a plan to achieve an objective through one or more actions as described in a plan specification."
     ],
     "has_children": true,
-    "iri": "http://purl.obolibrary.org/obo/OBI_0000011",
+    "iri": "http://purl.obolibrary.org/obo/COB_0000082",
     "is_defining_ontology": false,
     "is_obsolete": false,
     "is_preferred_root": false,
     "is_root": false,
     "label": "planned process",
     "lang": "en",
-    "obo_id": "OBI:0000011",
+    "obo_id": "COB:0000082",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontology_name": "duo",
     "ontology_prefix": "DUO",
-    "short_form": "OBI_0000011",
+    "short_form": "COB_0000082",
     "synonyms": []
   },
   {

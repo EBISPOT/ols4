@@ -23,7 +23,7 @@
   ],
   "http://purl.obolibrary.org/obo/IAO_0000118": "located_in",
   "http://purl.obolibrary.org/obo/RO_0001900": "http://purl.obolibrary.org/obo/RO_0001901",
-  "http://purl.org/dc/elements/1.1/source": "http://www.obofoundry.org/ro/#OBO_REL:located_in",
+  "http://purl.org/dc/terms/source": "http://www.obofoundry.org/ro/#OBO_REL:located_in",
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
     "http://www.w3.org/2002/07/owl#ObjectProperty",
     "http://www.w3.org/2002/07/owl#TransitiveProperty"
@@ -205,7 +205,7 @@
       "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
       "url": "http://purl.obolibrary.org/obo/RO_0001901"
     },
-    "http://purl.org/dc/elements/1.1/source": {
+    "http://purl.org/dc/terms/source": {
       "curie": "source",
       "hasLocalDefinition": true,
       "label": [
@@ -274,7 +274,7 @@
     "http://purl.obolibrary.org/obo/IAO_0000118",
     "http://purl.obolibrary.org/obo/RO_0001015",
     "http://purl.obolibrary.org/obo/RO_0001900",
-    "http://purl.org/dc/elements/1.1/source",
+    "http://purl.org/dc/terms/source",
     "http://www.w3.org/2000/01/rdf-schema#domain",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#range"

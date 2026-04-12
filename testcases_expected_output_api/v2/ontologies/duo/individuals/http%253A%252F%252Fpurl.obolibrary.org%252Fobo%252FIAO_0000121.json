@@ -4,7 +4,7 @@
   ],
   "curie": "IAO:0000121",
   "definition": [
-    "Term created to ease viewing/sort terms for development purpose, and will not be included in a release"
+    "The term was created to ease viewing/sorting terms for development purposes, but will not be included in a release."
   ],
   "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
   "directAncestor": [
@@ -24,7 +24,7 @@
   "hasHierarchicalChildren": false,
   "hasHierarchicalParents": false,
   "http://purl.obolibrary.org/obo/IAO_0000111": "organizational term",
-  "http://purl.obolibrary.org/obo/IAO_0000115": "Term created to ease viewing/sort terms for development purpose, and will not be included in a release",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "The term was created to ease viewing/sorting terms for development purposes, but will not be included in a release.",
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
     "http://purl.obolibrary.org/obo/IAO_0000078",
     "http://www.w3.org/2002/07/owl#NamedIndividual"
@@ -87,7 +87,7 @@
       "curie": "IAO:0000027",
       "hasLocalDefinition": true,
       "label": [
-        "data item"
+        "data entity"
       ],
       "numAppearsIn": 1.0,
       "type": [
@@ -282,7 +282,7 @@
   "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontologyPreferredPrefix": "DUO",
   "searchableAnnotationValues": [
-    "Term created to ease viewing/sort terms for development purpose, and will not be included in a release",
+    "The term was created to ease viewing/sorting terms for development purposes, but will not be included in a release.",
     "organizational term",
     true
   ],

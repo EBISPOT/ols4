@@ -17,6 +17,8 @@
     "http://purl.obolibrary.org/obo/BFO_0000001",
     "http://purl.obolibrary.org/obo/BFO_0000003",
     "http://purl.obolibrary.org/obo/BFO_0000015",
+    "http://purl.obolibrary.org/obo/COB_0000035",
+    "http://purl.obolibrary.org/obo/COB_0000082",
     "http://purl.obolibrary.org/obo/OBI_0000011"
   ],
   "directParent": [
@@ -31,6 +33,8 @@
     "http://purl.obolibrary.org/obo/BFO_0000001",
     "http://purl.obolibrary.org/obo/BFO_0000003",
     "http://purl.obolibrary.org/obo/BFO_0000015",
+    "http://purl.obolibrary.org/obo/COB_0000035",
+    "http://purl.obolibrary.org/obo/COB_0000082",
     "http://purl.obolibrary.org/obo/OBI_0000011"
   ],
   "hierarchicalParent": [
@@ -129,6 +133,30 @@
         "entity"
       ]
     },
+    "http://purl.obolibrary.org/obo/COB_0000035": {
+      "curie": "COB:0000035",
+      "hasLocalDefinition": true,
+      "label": [
+        "completely executed planned process"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/COB_0000082": {
+      "curie": "COB:0000082",
+      "hasLocalDefinition": true,
+      "label": [
+        "planned process"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
     "http://purl.obolibrary.org/obo/IAO_0000010": {
       "curie": "IAO:0000010",
       "hasLocalDefinition": true,
@@ -193,22 +221,15 @@
       ]
     },
     "http://purl.obolibrary.org/obo/OBI_0000011": {
-      "curie": "OBI:0000011",
-      "hasLocalDefinition": true,
-      "label": [
-        "planned process"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
+      "curie": "obi:0000011",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/OBI_0000011"
     },
     "http://purl.obolibrary.org/obo/OBI_0000293": {
       "curie": "OBI:0000293",
       "hasLocalDefinition": true,
       "label": [
-        "has_specified_input"
+        "has specified input"
       ],
       "numAppearsIn": 1.0,
       "type": [
@@ -221,7 +242,7 @@
       "curie": "OBI:0000299",
       "hasLocalDefinition": true,
       "label": [
-        "has_specified_output"
+        "has specified output"
       ],
       "numAppearsIn": 1.0,
       "type": [
@@ -281,12 +302,13 @@
     "http://purl.obolibrary.org/obo/BFO_0000001",
     "http://purl.obolibrary.org/obo/BFO_0000003",
     "http://purl.obolibrary.org/obo/BFO_0000015",
+    "http://purl.obolibrary.org/obo/COB_0000035",
+    "http://purl.obolibrary.org/obo/COB_0000082",
     "http://purl.obolibrary.org/obo/IAO_0000010",
     "http://purl.obolibrary.org/obo/IAO_0000096",
     "http://purl.obolibrary.org/obo/IAO_0000111",
     "http://purl.obolibrary.org/obo/IAO_0000115",
     "http://purl.obolibrary.org/obo/IAO_0000117",
-    "http://purl.obolibrary.org/obo/OBI_0000011",
     "http://purl.obolibrary.org/obo/OBI_0000293",
     "http://purl.obolibrary.org/obo/OBI_0000299",
     "http://www.w3.org/2000/01/rdf-schema#comment",

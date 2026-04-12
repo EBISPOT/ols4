@@ -74,7 +74,7 @@
         "curie": "IAO:0000027",
         "hasLocalDefinition": true,
         "label": [
-          "data item"
+          "data entity"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -179,7 +179,7 @@
     ],
     "curie": "IAO:0000103",
     "definition": [
-      "The term was used in an attempt to structure part of the ontology but in retrospect failed to do a good job"
+      "The term was initially used in an attempt to structure part of the ontology, but in retrospect failed to do a good job."
     ],
     "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
     "directAncestor": [
@@ -199,8 +199,13 @@
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": false,
     "http://purl.obolibrary.org/obo/IAO_0000111": "failed exploratory term",
-    "http://purl.obolibrary.org/obo/IAO_0000115": "The term was used in an attempt to structure part of the ontology but in retrospect failed to do a good job",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "The term was initially used in an attempt to structure part of the ontology, but in retrospect failed to do a good job.",
+    "http://purl.obolibrary.org/obo/IAO_0000116": "Terms created as placeholders with the expectation of being permanent should instead be deprecated using the \"placeholder removed\" (obo:IAO_0000226) justification.",
     "http://purl.obolibrary.org/obo/IAO_0000117": "Person:Alan Ruttenberg",
+    "http://purl.org/dc/elements/1.1/contributor": [
+      "https://orcid.org/0000-0001-6875-5360",
+      "https://orcid.org/0000-0002-7356-1779"
+    ],
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       "http://purl.obolibrary.org/obo/IAO_0000225",
       "http://www.w3.org/2002/07/owl#NamedIndividual",
@@ -255,7 +260,7 @@
         "curie": "IAO:0000027",
         "hasLocalDefinition": true,
         "label": [
-          "data item"
+          "data entity"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -313,6 +318,19 @@
           "property"
         ]
       },
+      "http://purl.obolibrary.org/obo/IAO_0000116": {
+        "curie": "IAO:0000116",
+        "hasLocalDefinition": true,
+        "label": [
+          "editor note"
+        ],
+        "numAppearsIn": 3.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
       "http://purl.obolibrary.org/obo/IAO_0000117": {
         "curie": "IAO:0000117",
         "hasLocalDefinition": true,
@@ -338,6 +356,19 @@
           "entity"
         ]
       },
+      "http://purl.org/dc/elements/1.1/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
       "http://www.w3.org/2000/01/rdf-schema#label": {
         "curie": "RDFS:label",
         "definedBy": [
@@ -352,6 +383,16 @@
           "entity",
           "property"
         ]
+      },
+      "https://orcid.org/0000-0001-6875-5360": {
+        "curie": "orcid:0000-0001-6875-5360",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0001-6875-5360"
+      },
+      "https://orcid.org/0000-0002-7356-1779": {
+        "curie": "orcid:0000-0002-7356-1779",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0002-7356-1779"
       }
     },
     "linksTo": [
@@ -363,8 +404,10 @@
       "http://purl.obolibrary.org/obo/IAO_0000102",
       "http://purl.obolibrary.org/obo/IAO_0000111",
       "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000116",
       "http://purl.obolibrary.org/obo/IAO_0000117",
       "http://purl.obolibrary.org/obo/IAO_0000225",
+      "http://purl.org/dc/elements/1.1/contributor",
       "http://www.w3.org/2000/01/rdf-schema#label"
     ],
     "numDescendants": 0.0,
@@ -374,7 +417,8 @@
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": [
       "Person:Alan Ruttenberg",
-      "The term was used in an attempt to structure part of the ontology but in retrospect failed to do a good job",
+      "Terms created as placeholders with the expectation of being permanent should instead be deprecated using the \"placeholder removed\" (obo:IAO_0000226) justification.",
+      "The term was initially used in an attempt to structure part of the ontology, but in retrospect failed to do a good job.",
       "failed exploratory term",
       true
     ],
@@ -473,7 +517,7 @@
         "curie": "IAO:0000027",
         "hasLocalDefinition": true,
         "label": [
-          "data item"
+          "data entity"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -684,7 +728,7 @@
     ],
     "curie": "IAO:0000121",
     "definition": [
-      "Term created to ease viewing/sort terms for development purpose, and will not be included in a release"
+      "The term was created to ease viewing/sorting terms for development purposes, but will not be included in a release."
     ],
     "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
     "directAncestor": [
@@ -704,7 +748,7 @@
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": false,
     "http://purl.obolibrary.org/obo/IAO_0000111": "organizational term",
-    "http://purl.obolibrary.org/obo/IAO_0000115": "Term created to ease viewing/sort terms for development purpose, and will not be included in a release",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "The term was created to ease viewing/sorting terms for development purposes, but will not be included in a release.",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       "http://purl.obolibrary.org/obo/IAO_0000078",
       "http://www.w3.org/2002/07/owl#NamedIndividual"
@@ -767,7 +811,7 @@
         "curie": "IAO:0000027",
         "hasLocalDefinition": true,
         "label": [
-          "data item"
+          "data entity"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -962,7 +1006,7 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": [
-      "Term created to ease viewing/sort terms for development purpose, and will not be included in a release",
+      "The term was created to ease viewing/sorting terms for development purposes, but will not be included in a release.",
       "organizational term",
       true
     ],
@@ -1061,7 +1105,7 @@
         "curie": "IAO:0000027",
         "hasLocalDefinition": true,
         "label": [
-          "data item"
+          "data entity"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -1355,7 +1399,7 @@
         "curie": "IAO:0000027",
         "hasLocalDefinition": true,
         "label": [
-          "data item"
+          "data entity"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -1649,7 +1693,7 @@
         "curie": "IAO:0000027",
         "hasLocalDefinition": true,
         "label": [
-          "data item"
+          "data entity"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -1943,7 +1987,7 @@
         "curie": "IAO:0000027",
         "hasLocalDefinition": true,
         "label": [
-          "data item"
+          "data entity"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -2153,6 +2197,10 @@
       "duo"
     ],
     "curie": "IAO:0000226",
+    "definition": [
+      "The term was created to temporarily stand in for a semantic purpose, but is no longer needed, typically due to another permanent term being defined."
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
     "directAncestor": [
       "http://purl.obolibrary.org/obo/BFO_0000001",
       "http://purl.obolibrary.org/obo/BFO_0000002",
@@ -2170,6 +2218,12 @@
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": false,
     "http://purl.obolibrary.org/obo/IAO_0000111": "placeholder removed",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "The term was created to temporarily stand in for a semantic purpose, but is no longer needed, typically due to another permanent term being defined.",
+    "http://purl.obolibrary.org/obo/IAO_0000116": "This reason is appropriate for a temporary term even if no permanent term is defined; for example if the need for the term no longer exists. If a permanent (replacement) term is defined, the deprecated term should reference the replacement with IAO:0100001. If no replacement is defined, it may be appropriate to reference alternative terms with oboInOwl:consider.",
+    "http://purl.org/dc/elements/1.1/contributor": [
+      "https://orcid.org/0000-0001-6875-5360",
+      "https://orcid.org/0000-0002-7356-1779"
+    ],
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       "http://purl.obolibrary.org/obo/IAO_0000225",
       "http://www.w3.org/2002/07/owl#NamedIndividual",
@@ -2189,6 +2243,11 @@
       "placeholder removed"
     ],
     "linkedEntities": {
+      "IAO:0100001": {
+        "curie": "IAO:0100001",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/IAO_0100001"
+      },
       "http://purl.obolibrary.org/obo/BFO_0000001": {
         "curie": "BFO:0000001",
         "hasLocalDefinition": true,
@@ -2229,7 +2288,7 @@
         "curie": "IAO:0000027",
         "hasLocalDefinition": true,
         "label": [
-          "data item"
+          "data entity"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -2268,6 +2327,32 @@
           "editor preferred term"
         ],
         "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000116": {
+        "curie": "IAO:0000116",
+        "hasLocalDefinition": true,
+        "label": [
+          "editor note"
+        ],
+        "numAppearsIn": 3.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -2322,6 +2407,19 @@
           "individual"
         ]
       },
+      "http://purl.org/dc/elements/1.1/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
       "http://www.w3.org/2000/01/rdf-schema#label": {
         "curie": "RDFS:label",
         "definedBy": [
@@ -2336,6 +2434,16 @@
           "entity",
           "property"
         ]
+      },
+      "https://orcid.org/0000-0001-6875-5360": {
+        "curie": "orcid:0000-0001-6875-5360",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0001-6875-5360"
+      },
+      "https://orcid.org/0000-0002-7356-1779": {
+        "curie": "orcid:0000-0002-7356-1779",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0002-7356-1779"
       }
     },
     "linksTo": [
@@ -2346,10 +2454,13 @@
       "http://purl.obolibrary.org/obo/IAO_0000030",
       "http://purl.obolibrary.org/obo/IAO_0000102",
       "http://purl.obolibrary.org/obo/IAO_0000111",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000116",
       "http://purl.obolibrary.org/obo/IAO_0000225",
       "http://purl.obolibrary.org/obo/IAO_0000227",
       "http://purl.obolibrary.org/obo/IAO_0000228",
       "http://purl.obolibrary.org/obo/IAO_0000229",
+      "http://purl.org/dc/elements/1.1/contributor",
       "http://www.w3.org/2000/01/rdf-schema#label"
     ],
     "numDescendants": 0.0,
@@ -2358,6 +2469,8 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": [
+      "The term was created to temporarily stand in for a semantic purpose, but is no longer needed, typically due to another permanent term being defined.",
+      "This reason is appropriate for a temporary term even if no permanent term is defined; for example if the need for the term no longer exists. If a permanent (replacement) term is defined, the deprecated term should reference the replacement with IAO:0100001. If no replacement is defined, it may be appropriate to reference alternative terms with oboInOwl:consider.",
       "placeholder removed",
       true
     ],
@@ -2372,6 +2485,10 @@
       "duo"
     ],
     "curie": "IAO:0000227",
+    "definition": [
+      "The term has been combined with one or more other terms to create a more encompassing (merged) term."
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
     "directAncestor": [
       "http://purl.obolibrary.org/obo/BFO_0000001",
       "http://purl.obolibrary.org/obo/BFO_0000002",
@@ -2389,7 +2506,12 @@
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": false,
     "http://purl.obolibrary.org/obo/IAO_0000111": "terms merged",
-    "http://purl.obolibrary.org/obo/IAO_0000116": "An editor note should explain what were the merged terms and the reason for the merge.",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "The term has been combined with one or more other terms to create a more encompassing (merged) term.",
+    "http://purl.obolibrary.org/obo/IAO_0000116": "The deprecated term should reference the merged term with obo:IAO_0100001. The replacement term should reference the original terms as sources using obo:RO_0001000 (derives_from). An editor note should explain what were the merged terms and the reason for the merge.",
+    "http://purl.org/dc/elements/1.1/contributor": [
+      "https://orcid.org/0000-0001-6875-5360",
+      "https://orcid.org/0000-0002-7356-1779"
+    ],
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       "http://purl.obolibrary.org/obo/IAO_0000225",
       "http://www.w3.org/2002/07/owl#NamedIndividual"
@@ -2448,7 +2570,7 @@
         "curie": "IAO:0000027",
         "hasLocalDefinition": true,
         "label": [
-          "data item"
+          "data entity"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -2487,6 +2609,19 @@
           "editor preferred term"
         ],
         "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -2554,6 +2689,19 @@
           "individual"
         ]
       },
+      "http://purl.org/dc/elements/1.1/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
       "http://www.w3.org/2000/01/rdf-schema#label": {
         "curie": "RDFS:label",
         "definedBy": [
@@ -2568,6 +2716,16 @@
           "entity",
           "property"
         ]
+      },
+      "https://orcid.org/0000-0001-6875-5360": {
+        "curie": "orcid:0000-0001-6875-5360",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0001-6875-5360"
+      },
+      "https://orcid.org/0000-0002-7356-1779": {
+        "curie": "orcid:0000-0002-7356-1779",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0002-7356-1779"
       }
     },
     "linksTo": [
@@ -2578,11 +2736,13 @@
       "http://purl.obolibrary.org/obo/IAO_0000030",
       "http://purl.obolibrary.org/obo/IAO_0000102",
       "http://purl.obolibrary.org/obo/IAO_0000111",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
       "http://purl.obolibrary.org/obo/IAO_0000116",
       "http://purl.obolibrary.org/obo/IAO_0000225",
       "http://purl.obolibrary.org/obo/IAO_0000226",
       "http://purl.obolibrary.org/obo/IAO_0000228",
       "http://purl.obolibrary.org/obo/IAO_0000229",
+      "http://purl.org/dc/elements/1.1/contributor",
       "http://www.w3.org/2000/01/rdf-schema#label"
     ],
     "numDescendants": 0.0,
@@ -2591,7 +2751,8 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": [
-      "An editor note should explain what were the merged terms and the reason for the merge.",
+      "The deprecated term should reference the merged term with obo:IAO_0100001. The replacement term should reference the original terms as sources using obo:RO_0001000 (derives_from). An editor note should explain what were the merged terms and the reason for the merge.",
+      "The term has been combined with one or more other terms to create a more encompassing (merged) term.",
       "terms merged",
       true
     ],
@@ -2606,6 +2767,10 @@
       "duo"
     ],
     "curie": "IAO:0000228",
+    "definition": [
+      "The term has been replaced by a term imported from another ontology."
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
     "directAncestor": [
       "http://purl.obolibrary.org/obo/BFO_0000001",
       "http://purl.obolibrary.org/obo/BFO_0000002",
@@ -2623,7 +2788,12 @@
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": false,
     "http://purl.obolibrary.org/obo/IAO_0000111": "term imported",
-    "http://purl.obolibrary.org/obo/IAO_0000116": "This is to be used when the original term has been replaced by a term imported from an other ontology. An editor note should indicate what is the URI of the new term to use.",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "The term has been replaced by a term imported from another ontology.",
+    "http://purl.obolibrary.org/obo/IAO_0000116": "This is to be used when the original term has been replaced by a term imported from an other ontology. The deprecated term should reference the imported term with obo:IAO_0100001.",
+    "http://purl.org/dc/elements/1.1/contributor": [
+      "https://orcid.org/0000-0001-6875-5360",
+      "https://orcid.org/0000-0002-7356-1779"
+    ],
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       "http://purl.obolibrary.org/obo/IAO_0000225",
       "http://www.w3.org/2002/07/owl#NamedIndividual"
@@ -2682,7 +2852,7 @@
         "curie": "IAO:0000027",
         "hasLocalDefinition": true,
         "label": [
-          "data item"
+          "data entity"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -2721,6 +2891,19 @@
           "editor preferred term"
         ],
         "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -2788,6 +2971,19 @@
           "individual"
         ]
       },
+      "http://purl.org/dc/elements/1.1/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
       "http://www.w3.org/2000/01/rdf-schema#label": {
         "curie": "RDFS:label",
         "definedBy": [
@@ -2802,6 +2998,16 @@
           "entity",
           "property"
         ]
+      },
+      "https://orcid.org/0000-0001-6875-5360": {
+        "curie": "orcid:0000-0001-6875-5360",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0001-6875-5360"
+      },
+      "https://orcid.org/0000-0002-7356-1779": {
+        "curie": "orcid:0000-0002-7356-1779",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0002-7356-1779"
       }
     },
     "linksTo": [
@@ -2812,11 +3018,13 @@
       "http://purl.obolibrary.org/obo/IAO_0000030",
       "http://purl.obolibrary.org/obo/IAO_0000102",
       "http://purl.obolibrary.org/obo/IAO_0000111",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
       "http://purl.obolibrary.org/obo/IAO_0000116",
       "http://purl.obolibrary.org/obo/IAO_0000225",
       "http://purl.obolibrary.org/obo/IAO_0000226",
       "http://purl.obolibrary.org/obo/IAO_0000227",
       "http://purl.obolibrary.org/obo/IAO_0000229",
+      "http://purl.org/dc/elements/1.1/contributor",
       "http://www.w3.org/2000/01/rdf-schema#label"
     ],
     "numDescendants": 0.0,
@@ -2825,7 +3033,8 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": [
-      "This is to be used when the original term has been replaced by a term imported from an other ontology. An editor note should indicate what is the URI of the new term to use.",
+      "The term has been replaced by a term imported from another ontology.",
+      "This is to be used when the original term has been replaced by a term imported from an other ontology. The deprecated term should reference the imported term with obo:IAO_0100001.",
       "term imported",
       true
     ],
@@ -2840,6 +3049,10 @@
       "duo"
     ],
     "curie": "IAO:0000229",
+    "definition": [
+      "The term has been split into two or more new terms."
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
     "directAncestor": [
       "http://purl.obolibrary.org/obo/BFO_0000001",
       "http://purl.obolibrary.org/obo/BFO_0000002",
@@ -2857,7 +3070,12 @@
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": false,
     "http://purl.obolibrary.org/obo/IAO_0000111": "term split",
-    "http://purl.obolibrary.org/obo/IAO_0000116": "This is to be used when a term has been split in two or more new terms. An editor note should indicate the reason for the split and indicate the URIs of the new terms created.",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "The term has been split into two or more new terms.",
+    "http://purl.obolibrary.org/obo/IAO_0000116": "This is to be used when a term has been split in two or more new terms. An editor note should indicate the reason for the split. The deprecated term should reference the replacement terms with obo:IAO_0100001.",
+    "http://purl.org/dc/elements/1.1/contributor": [
+      "https://orcid.org/0000-0001-6875-5360",
+      "https://orcid.org/0000-0002-7356-1779"
+    ],
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       "http://purl.obolibrary.org/obo/IAO_0000225",
       "http://www.w3.org/2002/07/owl#NamedIndividual"
@@ -2916,7 +3134,7 @@
         "curie": "IAO:0000027",
         "hasLocalDefinition": true,
         "label": [
-          "data item"
+          "data entity"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -2955,6 +3173,19 @@
           "editor preferred term"
         ],
         "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -3022,6 +3253,19 @@
           "individual"
         ]
       },
+      "http://purl.org/dc/elements/1.1/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
       "http://www.w3.org/2000/01/rdf-schema#label": {
         "curie": "RDFS:label",
         "definedBy": [
@@ -3036,6 +3280,16 @@
           "entity",
           "property"
         ]
+      },
+      "https://orcid.org/0000-0001-6875-5360": {
+        "curie": "orcid:0000-0001-6875-5360",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0001-6875-5360"
+      },
+      "https://orcid.org/0000-0002-7356-1779": {
+        "curie": "orcid:0000-0002-7356-1779",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0002-7356-1779"
       }
     },
     "linksTo": [
@@ -3046,11 +3300,13 @@
       "http://purl.obolibrary.org/obo/IAO_0000030",
       "http://purl.obolibrary.org/obo/IAO_0000102",
       "http://purl.obolibrary.org/obo/IAO_0000111",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
       "http://purl.obolibrary.org/obo/IAO_0000116",
       "http://purl.obolibrary.org/obo/IAO_0000225",
       "http://purl.obolibrary.org/obo/IAO_0000226",
       "http://purl.obolibrary.org/obo/IAO_0000227",
       "http://purl.obolibrary.org/obo/IAO_0000228",
+      "http://purl.org/dc/elements/1.1/contributor",
       "http://www.w3.org/2000/01/rdf-schema#label"
     ],
     "numDescendants": 0.0,
@@ -3059,7 +3315,8 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": [
-      "This is to be used when a term has been split in two or more new terms. An editor note should indicate the reason for the split and indicate the URIs of the new terms created.",
+      "The term has been split into two or more new terms.",
+      "This is to be used when a term has been split in two or more new terms. An editor note should indicate the reason for the split. The deprecated term should reference the replacement terms with obo:IAO_0100001.",
       "term split",
       true
     ],
@@ -3147,7 +3404,7 @@
         "curie": "IAO:0000027",
         "hasLocalDefinition": true,
         "label": [
-          "data item"
+          "data entity"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -3373,7 +3630,7 @@
         "curie": "IAO:0000027",
         "hasLocalDefinition": true,
         "label": [
-          "data item"
+          "data entity"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -3599,7 +3856,7 @@
         "curie": "IAO:0000027",
         "hasLocalDefinition": true,
         "label": [
-          "data item"
+          "data entity"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -3834,7 +4091,7 @@
         "curie": "IAO:0000027",
         "hasLocalDefinition": true,
         "label": [
-          "data item"
+          "data entity"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -4160,7 +4417,7 @@
         "curie": "IAO:0000027",
         "hasLocalDefinition": true,
         "label": [
-          "data item"
+          "data entity"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -4421,10 +4678,14 @@
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": false,
     "http://purl.obolibrary.org/obo/IAO_0000115": "The term was added to the ontology on the assumption it was in scope, but it turned out later that it was not.",
-    "http://purl.obolibrary.org/obo/IAO_0000116": "This obsolesence reason should be used conservatively. Typical valid examples are: un-necessary grouping classes in disease ontologies, a phenotype term added on the assumption it was a disease.",
+    "http://purl.obolibrary.org/obo/IAO_0000116": "This obsolesence reason should be used conservatively. Typical valid examples in disease ontologies are: unnecessary class grouping; mistaked creation of a disease associated to a phenotype.",
     "http://purl.obolibrary.org/obo/IAO_0000117": "http://orcid.org/0000-0001-5208-3432",
     "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/77",
     "http://purl.obolibrary.org/obo/IAO_0000234": "https://orcid.org/0000-0001-5208-3432",
+    "http://purl.org/dc/elements/1.1/contributor": [
+      "https://orcid.org/0000-0001-6875-5360",
+      "https://orcid.org/0000-0002-7356-1779"
+    ],
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       "http://purl.obolibrary.org/obo/IAO_0000225",
       "http://www.w3.org/2002/07/owl#NamedIndividual"
@@ -4478,7 +4739,275 @@
         "curie": "IAO:0000027",
         "hasLocalDefinition": true,
         "label": [
-          "data item"
+          "data entity"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000030": {
+        "curie": "IAO:0000030",
+        "hasLocalDefinition": true,
+        "label": [
+          "information content entity"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000102": {
+        "curie": "IAO:0000102",
+        "hasLocalDefinition": true,
+        "label": [
+          "data about an ontology part"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000116": {
+        "curie": "IAO:0000116",
+        "hasLocalDefinition": true,
+        "label": [
+          "editor note"
+        ],
+        "numAppearsIn": 3.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000117": {
+        "curie": "IAO:0000117",
+        "hasLocalDefinition": true,
+        "label": [
+          "term editor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000225": {
+        "curie": "IAO:0000225",
+        "hasLocalDefinition": true,
+        "label": [
+          "obsolescence reason specification"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000233": {
+        "curie": "IAO:0000233",
+        "hasLocalDefinition": true,
+        "label": [
+          "term tracker item"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000234": {
+        "curie": "IAO:0000234",
+        "hasLocalDefinition": true,
+        "label": [
+          "ontology term requester"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/elements/1.1/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "https://orcid.org/0000-0001-5208-3432": {
+        "curie": "orcid:0000-0001-5208-3432",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0001-5208-3432"
+      },
+      "https://orcid.org/0000-0001-6875-5360": {
+        "curie": "orcid:0000-0001-6875-5360",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0001-6875-5360"
+      },
+      "https://orcid.org/0000-0002-7356-1779": {
+        "curie": "orcid:0000-0002-7356-1779",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0002-7356-1779"
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000102",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000116",
+      "http://purl.obolibrary.org/obo/IAO_0000117",
+      "http://purl.obolibrary.org/obo/IAO_0000225",
+      "http://purl.obolibrary.org/obo/IAO_0000233",
+      "http://purl.obolibrary.org/obo/IAO_0000234",
+      "http://purl.org/dc/elements/1.1/contributor",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "The term was added to the ontology on the assumption it was in scope, but it turned out later that it was not.",
+      "This obsolesence reason should be used conservatively. Typical valid examples in disease ontologies are: unnecessary class grouping; mistaked creation of a disease associated to a phenotype.",
+      true
+    ],
+    "shortForm": "OMO_0001000",
+    "type": [
+      "entity",
+      "individual"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "OMO:0001002",
+    "definition": [
+      "The term was added to the ontology on the assumption it was a valid domain entity, but it turns out the entity does not exist in reality."
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://purl.obolibrary.org/obo/BFO_0000001",
+      "http://purl.obolibrary.org/obo/BFO_0000002",
+      "http://purl.obolibrary.org/obo/BFO_0000031",
+      "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://purl.obolibrary.org/obo/IAO_0000102",
+      "http://purl.obolibrary.org/obo/IAO_0000225"
+    ],
+    "directParent": [
+      "http://purl.obolibrary.org/obo/IAO_0000225"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000115": "The term was added to the ontology on the assumption it was a valid domain entity, but it turns out the entity does not exist in reality.",
+    "http://purl.obolibrary.org/obo/IAO_0000116": "This obsolesence reason should be used conservatively. For example: Obsoleting class that describes a breed of cow based on a record in an existing database, that was later retracted as faulty (breed does not exist). Do not use this term to obsolete a historic concept (that was once valid, but not anymore). ",
+    "http://purl.obolibrary.org/obo/IAO_0000117": "http://orcid.org/0000-0002-4142-7153",
+    "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/136",
+    "http://purl.obolibrary.org/obo/IAO_0000234": "https://orcid.org/0000-0002-4142-7153",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://purl.obolibrary.org/obo/IAO_0000225",
+      "http://www.w3.org/2002/07/owl#NamedIndividual"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": "domain entity does not exist",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0001002",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "label": [
+      "domain entity does not exist"
+    ],
+    "linkedEntities": {
+      "http://purl.obolibrary.org/obo/BFO_0000001": {
+        "curie": "BFO:0000001",
+        "hasLocalDefinition": true,
+        "label": [
+          "entity"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000002": {
+        "curie": "BFO:0000002",
+        "hasLocalDefinition": true,
+        "label": [
+          "continuant"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/BFO_0000031": {
+        "curie": "BFO:0000031",
+        "hasLocalDefinition": true,
+        "label": [
+          "generically dependent continuant"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000027": {
+        "curie": "IAO:0000027",
+        "hasLocalDefinition": true,
+        "label": [
+          "data entity"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -4602,10 +5131,10 @@
           "property"
         ]
       },
-      "https://orcid.org/0000-0001-5208-3432": {
-        "curie": "orcid:0000-0001-5208-3432",
+      "https://orcid.org/0000-0002-4142-7153": {
+        "curie": "orcid:0000-0002-4142-7153",
         "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-        "url": "https://orcid.org/0000-0001-5208-3432"
+        "url": "https://orcid.org/0000-0002-4142-7153"
       }
     },
     "linksTo": [
@@ -4629,11 +5158,11 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": [
-      "The term was added to the ontology on the assumption it was in scope, but it turned out later that it was not.",
-      "This obsolesence reason should be used conservatively. Typical valid examples are: un-necessary grouping classes in disease ontologies, a phenotype term added on the assumption it was a disease.",
+      "The term was added to the ontology on the assumption it was a valid domain entity, but it turns out the entity does not exist in reality.",
+      "This obsolesence reason should be used conservatively. For example: Obsoleting class that describes a breed of cow based on a record in an existing database, that was later retracted as faulty (breed does not exist). Do not use this term to obsolete a historic concept (that was once valid, but not anymore). ",
       true
     ],
-    "shortForm": "OMO_0001000",
+    "shortForm": "OMO_0001002",
     "type": [
       "entity",
       "individual"

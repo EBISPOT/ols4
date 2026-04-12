@@ -11,10 +11,11 @@
     "http://purl.obolibrary.org/obo/BFO_0000001",
     "http://purl.obolibrary.org/obo/BFO_0000003",
     "http://purl.obolibrary.org/obo/BFO_0000015",
-    "http://purl.obolibrary.org/obo/OBI_0000011"
+    "http://purl.obolibrary.org/obo/COB_0000035",
+    "http://purl.obolibrary.org/obo/COB_0000082"
   ],
   "directParent": [
-    "http://purl.obolibrary.org/obo/OBI_0000011"
+    "http://purl.obolibrary.org/obo/COB_0000035"
   ],
   "hasDirectChildren": false,
   "hasDirectParents": true,
@@ -24,10 +25,11 @@
     "http://purl.obolibrary.org/obo/BFO_0000001",
     "http://purl.obolibrary.org/obo/BFO_0000003",
     "http://purl.obolibrary.org/obo/BFO_0000015",
-    "http://purl.obolibrary.org/obo/OBI_0000011"
+    "http://purl.obolibrary.org/obo/COB_0000035",
+    "http://purl.obolibrary.org/obo/COB_0000082"
   ],
   "hierarchicalParent": [
-    "http://purl.obolibrary.org/obo/OBI_0000011"
+    "http://purl.obolibrary.org/obo/COB_0000035"
   ],
   "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
   "http://purl.obolibrary.org/obo/IAO_0000115": "A planned process that provides a reference to an individual entity shared by a group of subscribers to refer to that individual entity.",
@@ -43,11 +45,11 @@
   "http://purl.org/dc/elements/1.1/creator": "Mathias Brochhausen",
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
   "http://www.w3.org/2000/01/rdf-schema#label": "identifier creating process",
-  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/OBI_0000011",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/COB_0000035",
   "http://www.w3.org/2002/07/owl#equivalentClass": {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2002/07/owl#intersectionOf": [
-      "http://purl.obolibrary.org/obo/OBI_0000011",
+      "http://purl.obolibrary.org/obo/COB_0000035",
       {
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
         "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000299",
@@ -96,6 +98,30 @@
         "process"
       ],
       "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/COB_0000035": {
+      "curie": "COB:0000035",
+      "hasLocalDefinition": true,
+      "label": [
+        "completely executed planned process"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/COB_0000082": {
+      "curie": "COB:0000082",
+      "hasLocalDefinition": true,
+      "label": [
+        "planned process"
+      ],
+      "numAppearsIn": 1.0,
       "type": [
         "class",
         "entity"
@@ -165,23 +191,11 @@
         "entity"
       ]
     },
-    "http://purl.obolibrary.org/obo/OBI_0000011": {
-      "curie": "OBI:0000011",
-      "hasLocalDefinition": true,
-      "label": [
-        "planned process"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
     "http://purl.obolibrary.org/obo/OBI_0000299": {
       "curie": "OBI:0000299",
       "hasLocalDefinition": true,
       "label": [
-        "has_specified_output"
+        "has specified output"
       ],
       "numAppearsIn": 1.0,
       "type": [
@@ -243,12 +257,13 @@
     "http://purl.obolibrary.org/obo/BFO_0000001",
     "http://purl.obolibrary.org/obo/BFO_0000003",
     "http://purl.obolibrary.org/obo/BFO_0000015",
+    "http://purl.obolibrary.org/obo/COB_0000035",
+    "http://purl.obolibrary.org/obo/COB_0000082",
     "http://purl.obolibrary.org/obo/IAO_0000115",
     "http://purl.obolibrary.org/obo/IAO_0000117",
     "http://purl.obolibrary.org/obo/IAO_0000118",
     "http://purl.obolibrary.org/obo/IAO_0000233",
     "http://purl.obolibrary.org/obo/IAO_0020000",
-    "http://purl.obolibrary.org/obo/OBI_0000011",
     "http://purl.obolibrary.org/obo/OBI_0000299",
     "http://purl.org/dc/elements/1.1/creator",
     "http://www.w3.org/2000/01/rdf-schema#label",

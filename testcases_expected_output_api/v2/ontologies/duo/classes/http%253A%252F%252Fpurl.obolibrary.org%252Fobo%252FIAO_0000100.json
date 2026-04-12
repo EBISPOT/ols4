@@ -12,10 +12,12 @@
     "http://purl.obolibrary.org/obo/BFO_0000002",
     "http://purl.obolibrary.org/obo/BFO_0000031",
     "http://purl.obolibrary.org/obo/IAO_0000027",
-    "http://purl.obolibrary.org/obo/IAO_0000030"
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0001000"
   ],
   "directParent": [
-    "http://purl.obolibrary.org/obo/IAO_0000027"
+    "http://purl.obolibrary.org/obo/IAO_0000027",
+    "http://purl.obolibrary.org/obo/IAO_0001000"
   ],
   "hasDirectChildren": true,
   "hasDirectParents": true,
@@ -26,13 +28,15 @@
     "http://purl.obolibrary.org/obo/BFO_0000002",
     "http://purl.obolibrary.org/obo/BFO_0000031",
     "http://purl.obolibrary.org/obo/IAO_0000027",
-    "http://purl.obolibrary.org/obo/IAO_0000030"
+    "http://purl.obolibrary.org/obo/IAO_0000030",
+    "http://purl.obolibrary.org/obo/IAO_0001000"
   ],
   "hierarchicalParent": [
-    "http://purl.obolibrary.org/obo/IAO_0000027"
+    "http://purl.obolibrary.org/obo/IAO_0000027",
+    "http://purl.obolibrary.org/obo/IAO_0001000"
   ],
   "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-  "http://purl.obolibrary.org/obo/IAO_0000111": "data set",
+  "http://purl.obolibrary.org/obo/IAO_0000111": "homogenous data collection",
   "http://purl.obolibrary.org/obo/IAO_0000112": "Intensity values in a CEL file or from multiple CEL files comprise a data set (as opposed to the CEL files themselves).",
   "http://purl.obolibrary.org/obo/IAO_0000114": "http://purl.obolibrary.org/obo/IAO_0000125",
   "http://purl.obolibrary.org/obo/IAO_0000115": "A data item that is an aggregate of other data items of the same type that have something in common. Averages and distributions can be determined for data sets.",
@@ -43,20 +47,21 @@
     "person:Allyson Lister",
     "person:Chris Stoeckert"
   ],
-  "http://purl.obolibrary.org/obo/IAO_0000119": [
-    "OBI_0000042",
-    "group:OBI"
-  ],
+  "http://purl.obolibrary.org/obo/IAO_0000118": "data set",
+  "http://purl.obolibrary.org/obo/IAO_0000119": "group:OBI",
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-  "http://www.w3.org/2000/01/rdf-schema#label": "data set",
-  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/IAO_0000027",
+  "http://www.w3.org/2000/01/rdf-schema#label": "homogenous data collection",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+    "http://purl.obolibrary.org/obo/IAO_0000027",
+    "http://purl.obolibrary.org/obo/IAO_0001000"
+  ],
   "imported": false,
   "iri": "http://purl.obolibrary.org/obo/IAO_0000100",
   "isDefiningOntology": false,
   "isObsolete": false,
   "isPreferredRoot": false,
   "label": [
-    "data set"
+    "homogenous data collection"
   ],
   "linkedEntities": {
     "http://purl.obolibrary.org/obo/BFO_0000001": {
@@ -99,7 +104,7 @@
       "curie": "IAO:0000027",
       "hasLocalDefinition": true,
       "label": [
-        "data item"
+        "data entity"
       ],
       "numAppearsIn": 1.0,
       "type": [
@@ -197,6 +202,19 @@
         "property"
       ]
     },
+    "http://purl.obolibrary.org/obo/IAO_0000118": {
+      "curie": "IAO:0000118",
+      "hasLocalDefinition": true,
+      "label": [
+        "alternative label"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
     "http://purl.obolibrary.org/obo/IAO_0000119": {
       "curie": "IAO:0000119",
       "hasLocalDefinition": true,
@@ -220,6 +238,18 @@
       "type": [
         "entity",
         "individual"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0001000": {
+      "curie": "IAO:0001000",
+      "hasLocalDefinition": true,
+      "label": [
+        "data collection"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
       ]
     },
     "http://www.w3.org/2000/01/rdf-schema#label": {
@@ -265,8 +295,10 @@
     "http://purl.obolibrary.org/obo/IAO_0000115",
     "http://purl.obolibrary.org/obo/IAO_0000116",
     "http://purl.obolibrary.org/obo/IAO_0000117",
+    "http://purl.obolibrary.org/obo/IAO_0000118",
     "http://purl.obolibrary.org/obo/IAO_0000119",
     "http://purl.obolibrary.org/obo/IAO_0000125",
+    "http://purl.obolibrary.org/obo/IAO_0001000",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf"
   ],
@@ -279,9 +311,9 @@
     "2009/10/23 Alan Ruttenberg. The intention is that this term represent collections of like data. So this isn't for, e.g. the whole contents of a cel file, which includes parameters, metadata etc. This is more like java arrays of a certain rather specific type",
     "A data item that is an aggregate of other data items of the same type that have something in common. Averages and distributions can be determined for data sets.",
     "Intensity values in a CEL file or from multiple CEL files comprise a data set (as opposed to the CEL files themselves).",
-    "OBI_0000042",
     "data set",
     "group:OBI",
+    "homogenous data collection",
     "person:Allyson Lister",
     "person:Chris Stoeckert",
     false

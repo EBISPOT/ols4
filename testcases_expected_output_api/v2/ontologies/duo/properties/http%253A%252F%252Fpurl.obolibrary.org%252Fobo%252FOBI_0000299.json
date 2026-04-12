@@ -4,7 +4,7 @@
   ],
   "curie": "OBI:0000299",
   "definition": [
-    "The inverse property of is_specified_output_of"
+    "The inverse property of is specified output of"
   ],
   "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
   "directAncestor": [
@@ -17,32 +17,39 @@
   "hasDirectParents": true,
   "hasHierarchicalChildren": false,
   "hasHierarchicalParents": false,
-  "http://purl.obolibrary.org/obo/IAO_0000111": [
-    "has_specified_output"
-  ],
+  "http://purl.obolibrary.org/obo/IAO_0000111": "has specified output",
   "http://purl.obolibrary.org/obo/IAO_0000114": "http://purl.obolibrary.org/obo/IAO_0000122",
-  "http://purl.obolibrary.org/obo/IAO_0000115": "The inverse property of is_specified_output_of",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "The inverse property of is specified output of",
   "http://purl.obolibrary.org/obo/IAO_0000117": [
     "PERSON: Alan Ruttenberg"
   ],
   "http://purl.obolibrary.org/obo/IAO_0000412": "http://purl.obolibrary.org/obo/obi.owl",
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-  "http://www.w3.org/2000/01/rdf-schema#domain": "http://purl.obolibrary.org/obo/OBI_0000011",
-  "http://www.w3.org/2000/01/rdf-schema#label": "has_specified_output",
+  "http://www.w3.org/2000/01/rdf-schema#domain": "http://purl.obolibrary.org/obo/COB_0000035",
+  "http://www.w3.org/2000/01/rdf-schema#label": "has specified output",
   "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://purl.obolibrary.org/obo/RO_0000057",
-  "http://www.w3.org/2002/07/owl#equivalentProperty": {
-    "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/OBI_0000312",
-    "isObsolete": false
-  },
+  "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/OBI_0000312",
   "imported": true,
   "iri": "http://purl.obolibrary.org/obo/OBI_0000299",
   "isDefiningOntology": false,
   "isObsolete": false,
   "isPreferredRoot": false,
   "label": [
-    "has_specified_output"
+    "has specified output"
   ],
   "linkedEntities": {
+    "http://purl.obolibrary.org/obo/COB_0000035": {
+      "curie": "COB:0000035",
+      "hasLocalDefinition": true,
+      "label": [
+        "completely executed planned process"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
     "http://purl.obolibrary.org/obo/IAO_0000111": {
       "curie": "IAO:0000111",
       "hasLocalDefinition": true,
@@ -120,23 +127,11 @@
         "property"
       ]
     },
-    "http://purl.obolibrary.org/obo/OBI_0000011": {
-      "curie": "OBI:0000011",
-      "hasLocalDefinition": true,
-      "label": [
-        "planned process"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
     "http://purl.obolibrary.org/obo/OBI_0000312": {
       "curie": "OBI:0000312",
       "hasLocalDefinition": true,
       "label": [
-        "is_specified_output_of"
+        "is specified output of"
       ],
       "numAppearsIn": 1.0,
       "type": [
@@ -205,13 +200,13 @@
     }
   },
   "linksTo": [
+    "http://purl.obolibrary.org/obo/COB_0000035",
     "http://purl.obolibrary.org/obo/IAO_0000111",
     "http://purl.obolibrary.org/obo/IAO_0000114",
     "http://purl.obolibrary.org/obo/IAO_0000115",
     "http://purl.obolibrary.org/obo/IAO_0000117",
     "http://purl.obolibrary.org/obo/IAO_0000122",
     "http://purl.obolibrary.org/obo/IAO_0000412",
-    "http://purl.obolibrary.org/obo/OBI_0000011",
     "http://purl.obolibrary.org/obo/OBI_0000312",
     "http://purl.obolibrary.org/obo/RO_0000057",
     "http://www.w3.org/2000/01/rdf-schema#domain",
@@ -225,8 +220,6 @@
   "ontologyPreferredPrefix": "DUO",
   "searchableAnnotationValues": [
     "PERSON: Alan Ruttenberg",
-    "The inverse property of is_specified_output_of",
-    "has_specified_output",
     true
   ],
   "shortForm": "OBI_0000299",

@@ -24,10 +24,14 @@
   "hasHierarchicalChildren": false,
   "hasHierarchicalParents": false,
   "http://purl.obolibrary.org/obo/IAO_0000115": "The term was added to the ontology on the assumption it was in scope, but it turned out later that it was not.",
-  "http://purl.obolibrary.org/obo/IAO_0000116": "This obsolesence reason should be used conservatively. Typical valid examples are: un-necessary grouping classes in disease ontologies, a phenotype term added on the assumption it was a disease.",
+  "http://purl.obolibrary.org/obo/IAO_0000116": "This obsolesence reason should be used conservatively. Typical valid examples in disease ontologies are: unnecessary class grouping; mistaked creation of a disease associated to a phenotype.",
   "http://purl.obolibrary.org/obo/IAO_0000117": "http://orcid.org/0000-0001-5208-3432",
   "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/77",
   "http://purl.obolibrary.org/obo/IAO_0000234": "https://orcid.org/0000-0001-5208-3432",
+  "http://purl.org/dc/elements/1.1/contributor": [
+    "https://orcid.org/0000-0001-6875-5360",
+    "https://orcid.org/0000-0002-7356-1779"
+  ],
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
     "http://purl.obolibrary.org/obo/IAO_0000225",
     "http://www.w3.org/2002/07/owl#NamedIndividual"
@@ -81,7 +85,7 @@
       "curie": "IAO:0000027",
       "hasLocalDefinition": true,
       "label": [
-        "data item"
+        "data entity"
       ],
       "numAppearsIn": 1.0,
       "type": [
@@ -190,6 +194,19 @@
         "property"
       ]
     },
+    "http://purl.org/dc/elements/1.1/contributor": {
+      "curie": "contributor",
+      "hasLocalDefinition": true,
+      "label": [
+        "contributor"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
     "http://www.w3.org/2000/01/rdf-schema#label": {
       "curie": "RDFS:label",
       "definedBy": [
@@ -209,6 +226,16 @@
       "curie": "orcid:0000-0001-5208-3432",
       "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
       "url": "https://orcid.org/0000-0001-5208-3432"
+    },
+    "https://orcid.org/0000-0001-6875-5360": {
+      "curie": "orcid:0000-0001-6875-5360",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "https://orcid.org/0000-0001-6875-5360"
+    },
+    "https://orcid.org/0000-0002-7356-1779": {
+      "curie": "orcid:0000-0002-7356-1779",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "https://orcid.org/0000-0002-7356-1779"
     }
   },
   "linksTo": [
@@ -224,6 +251,7 @@
     "http://purl.obolibrary.org/obo/IAO_0000225",
     "http://purl.obolibrary.org/obo/IAO_0000233",
     "http://purl.obolibrary.org/obo/IAO_0000234",
+    "http://purl.org/dc/elements/1.1/contributor",
     "http://www.w3.org/2000/01/rdf-schema#label"
   ],
   "numDescendants": 0.0,
@@ -233,7 +261,7 @@
   "ontologyPreferredPrefix": "DUO",
   "searchableAnnotationValues": [
     "The term was added to the ontology on the assumption it was in scope, but it turned out later that it was not.",
-    "This obsolesence reason should be used conservatively. Typical valid examples are: un-necessary grouping classes in disease ontologies, a phenotype term added on the assumption it was a disease.",
+    "This obsolesence reason should be used conservatively. Typical valid examples in disease ontologies are: unnecessary class grouping; mistaked creation of a disease associated to a phenotype.",
     true
   ],
   "shortForm": "OMO_0001000",

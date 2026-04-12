@@ -36,15 +36,17 @@
       }
     },
     "annotation": {
+      "alternative label": [
+        "data set"
+      ],
       "definition source": [
-        "OBI_0000042",
         "group:OBI"
       ],
       "editor note": [
         "2009/10/23 Alan Ruttenberg. The intention is that this term represent collections of like data. So this isn't for, e.g. the whole contents of a cel file, which includes parameters, metadata etc. This is more like java arrays of a certain rather specific type"
       ],
       "editor preferred term": [
-        "data set"
+        "homogenous data collection"
       ],
       "example of usage": [
         "Intensity values in a CEL file or from multiple CEL files comprise a data set (as opposed to the CEL files themselves)."
@@ -66,7 +68,7 @@
     "is_obsolete": false,
     "is_preferred_root": false,
     "is_root": false,
-    "label": "data set",
+    "label": "homogenous data collection",
     "lang": "en",
     "obo_id": "IAO:0000100",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",

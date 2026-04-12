@@ -4,7 +4,7 @@
   ],
   "curie": "OBI:0000293",
   "definition": [
-    "The inverse property of is_specified_input_of"
+    "The inverse property of is specified input of"
   ],
   "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
   "directAncestor": [
@@ -17,34 +17,41 @@
   "hasDirectParents": true,
   "hasHierarchicalChildren": false,
   "hasHierarchicalParents": false,
-  "http://purl.obolibrary.org/obo/IAO_0000111": [
-    "has_specified_input"
-  ],
+  "http://purl.obolibrary.org/obo/IAO_0000111": "has specified input",
   "http://purl.obolibrary.org/obo/IAO_0000112": "see is_input_of example_of_usage",
   "http://purl.obolibrary.org/obo/IAO_0000114": "http://purl.obolibrary.org/obo/IAO_0000122",
-  "http://purl.obolibrary.org/obo/IAO_0000115": "The inverse property of is_specified_input_of",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "The inverse property of is specified input of",
   "http://purl.obolibrary.org/obo/IAO_0000116": "8/17/09: specified inputs of one process are not necessarily specified inputs of a larger process that it is part of. This is in contrast to how 'has participant' works.",
   "http://purl.obolibrary.org/obo/IAO_0000117": [
     "PERSON: Alan Ruttenberg"
   ],
   "http://purl.obolibrary.org/obo/IAO_0000412": "http://purl.obolibrary.org/obo/obi.owl",
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-  "http://www.w3.org/2000/01/rdf-schema#domain": "http://purl.obolibrary.org/obo/OBI_0000011",
-  "http://www.w3.org/2000/01/rdf-schema#label": "has_specified_input",
+  "http://www.w3.org/2000/01/rdf-schema#domain": "http://purl.obolibrary.org/obo/COB_0000035",
+  "http://www.w3.org/2000/01/rdf-schema#label": "has specified input",
   "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://purl.obolibrary.org/obo/RO_0000057",
-  "http://www.w3.org/2002/07/owl#equivalentProperty": {
-    "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/OBI_0000295",
-    "isObsolete": false
-  },
+  "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/OBI_0000295",
   "imported": true,
   "iri": "http://purl.obolibrary.org/obo/OBI_0000293",
   "isDefiningOntology": false,
   "isObsolete": false,
   "isPreferredRoot": false,
   "label": [
-    "has_specified_input"
+    "has specified input"
   ],
   "linkedEntities": {
+    "http://purl.obolibrary.org/obo/COB_0000035": {
+      "curie": "COB:0000035",
+      "hasLocalDefinition": true,
+      "label": [
+        "completely executed planned process"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
     "http://purl.obolibrary.org/obo/IAO_0000111": {
       "curie": "IAO:0000111",
       "hasLocalDefinition": true,
@@ -148,23 +155,11 @@
         "property"
       ]
     },
-    "http://purl.obolibrary.org/obo/OBI_0000011": {
-      "curie": "OBI:0000011",
-      "hasLocalDefinition": true,
-      "label": [
-        "planned process"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
     "http://purl.obolibrary.org/obo/OBI_0000295": {
       "curie": "OBI:0000295",
       "hasLocalDefinition": true,
       "label": [
-        "is_specified_input_of"
+        "is specified input of"
       ],
       "numAppearsIn": 1.0,
       "type": [
@@ -233,6 +228,7 @@
     }
   },
   "linksTo": [
+    "http://purl.obolibrary.org/obo/COB_0000035",
     "http://purl.obolibrary.org/obo/IAO_0000111",
     "http://purl.obolibrary.org/obo/IAO_0000112",
     "http://purl.obolibrary.org/obo/IAO_0000114",
@@ -241,7 +237,6 @@
     "http://purl.obolibrary.org/obo/IAO_0000117",
     "http://purl.obolibrary.org/obo/IAO_0000122",
     "http://purl.obolibrary.org/obo/IAO_0000412",
-    "http://purl.obolibrary.org/obo/OBI_0000011",
     "http://purl.obolibrary.org/obo/OBI_0000295",
     "http://purl.obolibrary.org/obo/RO_0000057",
     "http://www.w3.org/2000/01/rdf-schema#domain",
@@ -255,8 +250,6 @@
   "ontologyPreferredPrefix": "DUO",
   "searchableAnnotationValues": [
     "PERSON: Alan Ruttenberg",
-    "The inverse property of is_specified_input_of",
-    "has_specified_input",
     "see is_input_of example_of_usage",
     true
   ],

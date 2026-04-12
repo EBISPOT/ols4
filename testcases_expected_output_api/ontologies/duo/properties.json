@@ -661,7 +661,7 @@
         "8/17/09: specified inputs of one process are not necessarily specified inputs of a larger process that it is part of. This is in contrast to how 'has participant' works."
       ],
       "editor preferred term": [
-        "has_specified_input"
+        "has specified input"
       ],
       "example of usage": [
         "see is_input_of example_of_usage"
@@ -677,14 +677,14 @@
       ]
     },
     "description": [
-      "The inverse property of is_specified_input_of"
+      "The inverse property of is specified input of"
     ],
     "has_children": false,
     "iri": "http://purl.obolibrary.org/obo/OBI_0000293",
     "is_defining_ontology": false,
     "is_obsolete": false,
     "is_root": false,
-    "label": "has_specified_input",
+    "label": "has specified input",
     "lang": "en",
     "obo_id": "OBI:0000293",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
@@ -710,7 +710,7 @@
     },
     "annotation": {
       "editor preferred term": [
-        "has_specified_output"
+        "has specified output"
       ],
       "has curation status": [
         "http://purl.obolibrary.org/obo/IAO_0000122"
@@ -723,14 +723,14 @@
       ]
     },
     "description": [
-      "The inverse property of is_specified_output_of"
+      "The inverse property of is specified output of"
     ],
     "has_children": false,
     "iri": "http://purl.obolibrary.org/obo/OBI_0000299",
     "is_defining_ontology": false,
     "is_obsolete": false,
     "is_root": false,
-    "label": "has_specified_output",
+    "label": "has specified output",
     "lang": "en",
     "obo_id": "OBI:0000299",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
@@ -756,7 +756,7 @@
     },
     "annotation": {
       "editor preferred term": [
-        "is_specified_output_of"
+        "is specified output of"
       ],
       "has curation status": [
         "http://purl.obolibrary.org/obo/IAO_0000122"
@@ -769,20 +769,608 @@
       ]
     },
     "description": [
-      "A relation between a planned process and a continuant participating in that process. The presence of the continuant at the end of the process is explicitly specified in the objective specification which the process realizes the concretization of."
+      "A relation between a completely executed planned process and a continuant participating in that process. The presence of the continuant at the end of the process is explicitly specified in the objective specification which the process realizes the concretization of."
     ],
     "has_children": false,
     "iri": "http://purl.obolibrary.org/obo/OBI_0000312",
     "is_defining_ontology": false,
     "is_obsolete": false,
     "is_root": false,
-    "label": "is_specified_output_of",
+    "label": "is specified output of",
     "lang": "en",
     "obo_id": "OBI:0000312",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontology_name": "duo",
     "ontology_prefix": "DUO",
     "short_form": "OBI_0000312",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003000/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003000/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003000/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003000?lang=en"
+      }
+    },
+    "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0003-4423-4370"
+      ],
+      "created": [
+        "2023-03-03"
+      ],
+      "example of usage": [
+        "CHEBI:26523 (reactive oxygen species) has an exact synonym (ROS), which is of type OMO:0003000 (abbreviation)"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/122"
+      ]
+    },
+    "description": [
+      "A synonym type for describing abbreviations or initialisms"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003000",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "abbreviation",
+    "lang": "en",
+    "obo_id": "OMO:0003000",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OMO_0003000",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003001/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003001/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003001/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003001?lang=en"
+      }
+    },
+    "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0003-4423-4370"
+      ],
+      "created": [
+        "2023-03-03"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/122"
+      ]
+    },
+    "description": [
+      "A synonym type for describing ambiguous synonyms"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003001",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "ambiguous synonym",
+    "lang": "en",
+    "obo_id": "OMO:0003001",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OMO_0003001",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003002/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003002/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003002/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003002?lang=en"
+      }
+    },
+    "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0003-4423-4370"
+      ],
+      "created": [
+        "2023-03-03"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/122"
+      ]
+    },
+    "description": [
+      "A synonym type for describing dubious synonyms"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003002",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "dubious synonym",
+    "lang": "en",
+    "obo_id": "OMO:0003002",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OMO_0003002",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003003/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003003/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003003/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003003?lang=en"
+      }
+    },
+    "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0003-4423-4370"
+      ],
+      "created": [
+        "2023-03-03"
+      ],
+      "example of usage": [
+        "EFO:0006346 (severe cutaneous adverse reaction) has an exact synonym (scar), which is of the type OMO:0003003 (layperson synonym)"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/122"
+      ]
+    },
+    "description": [
+      "A synonym type for describing layperson or colloquial synonyms"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003003",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "layperson synonym",
+    "lang": "en",
+    "obo_id": "OMO:0003003",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OMO_0003003",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003004/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003004/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003004/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003004?lang=en"
+      }
+    },
+    "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0003-4423-4370"
+      ],
+      "created": [
+        "2023-03-03"
+      ],
+      "example of usage": [
+        "CHEBI:23367 (molecular entity) has an exact synonym (molecular entities), which is of the type OMO:0003004 (plural form)"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/122"
+      ]
+    },
+    "description": [
+      "A synonym type for describing pluralization synonyms"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003004",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "plural form",
+    "lang": "en",
+    "obo_id": "OMO:0003004",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OMO_0003004",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003005/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003005/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003005/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003005?lang=en"
+      }
+    },
+    "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0003-4423-4370"
+      ],
+      "created": [
+        "2023-03-03"
+      ],
+      "example of usage": [
+        "CHEBI:16189 (sulfate) has an exact synonym (sulphate), which is of the type OMO:0003005 (UK spelling synonym)"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/122"
+      ]
+    },
+    "description": [
+      "A synonym type for describing UK spelling variants"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003005",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "UK spelling synonym",
+    "lang": "en",
+    "obo_id": "OMO:0003005",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OMO_0003005",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003006/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003006/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003006/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003006?lang=en"
+      }
+    },
+    "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0003-4423-4370"
+      ],
+      "created": [
+        "2023-03-03"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/132"
+      ]
+    },
+    "description": [
+      "A synonym type for common misspellings"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003006",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "misspelling",
+    "lang": "en",
+    "obo_id": "OMO:0003006",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OMO_0003006",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003007/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003007/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003007/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003007?lang=en"
+      }
+    },
+    "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0003-4423-4370"
+      ],
+      "created": [
+        "2023-03-03"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/133"
+      ]
+    },
+    "description": [
+      "A synonym type for misnomers, i.e., a synonym that is not technically correct but is commonly used anyway"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003007",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "misnomer",
+    "lang": "en",
+    "obo_id": "OMO:0003007",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OMO_0003007",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003008/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003008/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003008/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003008?lang=en"
+      }
+    },
+    "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0003-4423-4370"
+      ],
+      "created": [
+        "2023-07-25"
+      ],
+      "example of usage": [
+        "MAPT, the gene that encodes the Tau protein, has a previous name DDPAC. Note: in this case, the name type is more specifically the gene symbol."
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/139"
+      ]
+    },
+    "description": [
+      "A synonym type for names that have been used as primary labels in the past."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003008",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "previous name",
+    "lang": "en",
+    "obo_id": "OMO:0003008",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OMO_0003008",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003009/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003009/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003009/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003009?lang=en"
+      }
+    },
+    "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0003-4423-4370"
+      ],
+      "created": [
+        "2023-07-27"
+      ],
+      "example of usage": [
+        "The legal name for Harvard University (https://ror.org/03vek6s52) is President and Fellows of Harvard College"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/141"
+      ]
+    },
+    "description": [
+      "A synonym type for the legal entity name"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003009",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "legal name",
+    "lang": "en",
+    "obo_id": "OMO:0003009",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OMO_0003009",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003010/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003010/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003010/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003010?lang=en"
+      }
+    },
+    "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0003-4423-4370"
+      ],
+      "created": [
+        "2023-09-30"
+      ],
+      "example of usage": [
+        "CHEBI:46195 has been assigned the english International Nonproproprietary Name (INN) \"paracetamol\". In some cases such as this one, the INN might be the same as the ontology's primary label"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/149"
+      ]
+    },
+    "description": [
+      "The International Nonproprietary Name (INN) is a standardize name for a pharmaceutical drug or active ingredient issued by the World Health Organization (WHO) meant to address the issues with country- or language-specific brand names. These are issued in several languages, including English, Latin, French, Russian, Spanish, Arabic, and Chinese."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003010",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "International Nonproprietary Name",
+    "lang": "en",
+    "obo_id": "OMO:0003010",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OMO_0003010",
+    "synonyms": [
+      "INN"
+    ]
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003011/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003011/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003011/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003011?lang=en"
+      }
+    },
+    "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0002-1773-2692"
+      ],
+      "created": [
+        "2023-10-12"
+      ],
+      "example of usage": [
+        "nasopharynx (UBERON:0001728) has the latin name \"pars nasalis pharyngis"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/146"
+      ]
+    },
+    "description": [
+      "A synonym type for describing Latin term synonyms."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003011",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "latin term",
+    "lang": "en",
+    "obo_id": "OMO:0003011",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OMO_0003011",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003012/ancestors"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003012/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003012/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003012?lang=en"
+      }
+    },
+    "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0003-4423-4370"
+      ],
+      "created": [
+        "2023-11-01"
+      ],
+      "example of usage": [
+        "NASA is an word acronym for the US National Aeronautics and Space Administration because the acronym is pronounced. FBI is an initialism (also known as alphabetism) for the US Federal Bureau of Investigation since the letters are pronounced one at a time. JPEG is an acronym for Joint Photographic Experts Group but does not count as a word acronym nor an initialism since it is mixed how it is pronounced."
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/135"
+      ]
+    },
+    "description": [
+      "A synonym type for describing abbreviations that are a part of the full name's words, such as initialisms or alphabetisms."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003012",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "acronym",
+    "lang": "en",
+    "obo_id": "OMO:0003012",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OMO_0003012",
     "synonyms": []
   },
   {
@@ -1813,6 +2401,34 @@
   {
     "_links": {
       "children": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523SynonymTypeProperty/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523SynonymTypeProperty/descendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523SynonymTypeProperty?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": true,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "SynonymTypeProperty",
+    "lang": "en",
+    "obo_id": "OIO:SynonymTypeProperty",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OIO_SynonymTypeProperty",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
         "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.w3.org%252F2000%252F01%252Frdf-schema%2523label/children"
       },
       "descendants": {
@@ -2081,6 +2697,47 @@
   {
     "_links": {
       "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000011?lang=en"
+      }
+    },
+    "annotation": {
+      "definition source": [
+        "https://ceur-ws.org/Vol-1515/regular10.pdf"
+      ],
+      "example of usage": [
+        "One of my mental representations is directed towards the Pacific Ocean."
+      ],
+      "has curation status": [
+        "http://purl.obolibrary.org/obo/IAO_0000125"
+      ],
+      "term editor": [
+        "person: William Hogan"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/IAO/issues/285"
+      ]
+    },
+    "description": [
+      "A relationship between a quality and a portion of reality such that the quality refers to or is cognitively directed towards the portion of reality.",
+      "In the definition source, the relation is called 'is_about'. To avoid confusion with the existing \"is about\" relation in IAO, we called it 'is directed towards' per Alan Ruttenberg's suggestion."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000011",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "is directed towards",
+    "lang": "en",
+    "obo_id": "IAO:0000011",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000011",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
         "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000111?lang=en"
       }
     },
@@ -2228,7 +2885,7 @@
         "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"
       ],
       "editor note": [
-        "2012-04-05: \nBarry Smith\n\nThe official OBI definition, explaining the meaning of a class or property: 'Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions'  is terrible.\n\nCan you fix to something like:\n\nA statement of necessary and sufficient conditions explaining the meaning of an expression referring to a class or property.\n\nAlan Ruttenberg\n\nYour proposed definition is a reasonable candidate, except that it is very common that necessary and sufficient conditions are not given. Mostly they are necessary, occasionally they are necessary and sufficient or just sufficient. Often they use terms that are not themselves defined and so they effectively can't be evaluated by those criteria. \n\nOn the specifics of the proposed definition:\n\nWe don't have definitions of 'meaning' or 'expression' or 'property'. For 'reference' in the intended sense I think we use the term 'denotation'. For 'expression', I think we you mean symbol, or identifier. For 'meaning' it differs for class and property. For class we want documentation that let's the intended reader determine whether an entity is instance of the class, or not. For property we want documentation that let's the intended reader determine, given a pair of potential relata, whether the assertion that the relation holds is true. The 'intended reader' part suggests that we also specify who, we expect, would be able to understand the definition, and also generalizes over human and computer reader to include textual and logical definition. \n\nPersonally, I am more comfortable weakening definition to documentation, with instructions as to what is desirable. \n\nWe also have the outstanding issue of how to aim different definitions to different audiences. A clinical audience reading chebi wants a different sort of definition documentation/definition from a chemistry trained audience, and similarly there is a need for a definition that is adequate for an ontologist to work with.  "
+        "2012-04-05: \nBarry Smith\n\nThe official OBI definition, explaining the meaning of a class or property: 'Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions'  is terrible.\n\nCan you fix to something like:\n\nA statement of necessary and sufficient conditions explaining the meaning of an expression referring to a class or property.\n\nAlan Ruttenberg\n\nYour proposed definition is a reasonable candidate, except that it is very common that necessary and sufficient conditions are not given. Mostly they are necessary, occasionally they are necessary and sufficient or just sufficient. Often they use terms that are not themselves defined and so they effectively can't be evaluated by those criteria. \n\nOn the specifics of the proposed definition:\n\nWe don't have definitions of 'meaning' or 'expression' or 'property'. For 'reference' in the intended sense I think we use the term 'denotation'. For 'expression', I think we you mean symbol, or identifier. For 'meaning' it differs for class and property. For class we want documentation that let's the intended reader determine whether an entity is instance of the class, or not. For property we want documentation that let's the intended reader determine, given a pair of potential relata, whether the assertion that the relation holds is true. The 'intended reader' part suggests that we also specify who, we expect, would be able to understand the definition, and also generalizes over human and computer reader to include textual and logical definition. \n\nPersonally, I am more comfortable weakening definition to documentation, with instructions as to what is desirable. \n\nWe also have the outstanding issue of how to aim different definitions to different audiences. A clinical audience reading chebi wants a different sort of definition documentation/definition from a chemistry trained audience, and similarly there is a need for a definition that is adequate for an ontologist to work with."
       ],
       "editor preferred term": [
         "definition"
@@ -2486,7 +3143,7 @@
         "term tracker item"
       ],
       "example of usage": [
-        "the URI for an OBI Terms ticket at sourceforge, such as https://sourceforge.net/p/obi/obi-terms/772/"
+        "the URL for an ontology term tracker issue, such as https://github.com/monarch-initiative/mondo/issues/7588"
       ],
       "has curation status": [
         "http://purl.obolibrary.org/obo/IAO_0000125"
@@ -2496,7 +3153,7 @@
       ]
     },
     "description": [
-      "An IRI or similar locator for a request or discussion of an ontology term.",
+      "A URL for a request or discussion of an ontology term.",
       "The 'tracker item' can associate a tracker with a specific ontology term."
     ],
     "has_children": false,
@@ -3428,7 +4085,7 @@
     "is_defining_ontology": false,
     "is_obsolete": false,
     "is_root": true,
-    "label": "is_specified_input_of",
+    "label": "is specified input of",
     "lang": "en",
     "obo_id": "OBI:0000295",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
@@ -3475,6 +4132,117 @@
   {
     "_links": {
       "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0002001?lang=en"
+      }
+    },
+    "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0002-7356-1779"
+      ],
+      "created": [
+        "2025-06-02"
+      ],
+      "example of usage": [
+        "The property is intended to be used exclusively on synonym assertions, to express that the synonym in question is the preference of a specific community. For example, one community may prefer to say call a disease \"A\" and another one \"B\" (but they are the same thing)."
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/185"
+      ]
+    },
+    "description": [
+      "A provenance property that denotes a synonym to be the preferred one for a specific community."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0002001",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "preferred label for community",
+    "lang": "en",
+    "obo_id": "OMO:0002001",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OMO_0002001",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0003014?lang=en"
+      }
+    },
+    "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0003-4423-4370"
+      ],
+      "created": [
+        "2025-09-17"
+      ],
+      "example of usage": [
+        "The Developing Mouse Brain Atlas Ontology (DBMA) ontology uses part-of in its hierarchy, so this would correspond to the following turtle: `<https://purl.brain-bican.org/ontology/dmbao/dmbao.owl> a owl:Ontology; OMO:0003014 rdfs:subClassOf, BFO:0000050`."
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/IAO/issues/292"
+      ]
+    },
+    "description": [
+      "Relates an ontology to predicates/properties that should be used by user interfaces to render the hierarchical structure of the ontology. Typically, this is rdfs:subClassOf, but in ontologies that are partonomies, this might also include BFO:0000050 (part of). Tools like OLS can use predicates annotated with this property for rendering the ontology class hierarchy. There can be more than one hierarchical property. In the absence of any, it should be assumed that it is rdfs:subClassOf."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003014",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has ontology hierarchical property",
+    "lang": "en",
+    "obo_id": "OMO:0003014",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OMO_0003014",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0004000?lang=en"
+      }
+    },
+    "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0002-6523-4866"
+      ],
+      "created": [
+        "2024-03-25"
+      ],
+      "example of usage": [
+        "A serial number such as \"12324X\"; a stop sign; a written proper name such as \"OBI"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/144"
+      ]
+    },
+    "description": [
+      "An information content entity that is a mark(s) or character(s) used as a conventional representation of another entity."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0004000",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has symbol",
+    "lang": "en",
+    "obo_id": "OMO:0004000",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OMO_0004000",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
         "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000058?lang=en"
       }
     },
@@ -3485,7 +4253,7 @@
       ]
     },
     "description": [
-      "A relationship between a generically dependent continuant and a specifically dependent continuant, in which the generically dependent continuant depends on some independent continuant in virtue of the fact that the specifically dependent continuant also depends on that same independent continuant. A generically dependent continuant may be concretized as multiple specifically dependent continuants."
+      "A relationship between a generically dependent continuant and a specifically dependent continuant or process, in which the generically dependent continuant depends on some independent continuant or process in virtue of the fact that the specifically dependent continuant or process also depends on that same independent continuant. A generically dependent continuant may be concretized as multiple specifically dependent continuants or processes."
     ],
     "has_children": false,
     "iri": "http://purl.obolibrary.org/obo/RO_0000058",
@@ -3514,7 +4282,7 @@
       ]
     },
     "description": [
-      "A relationship between a specifically dependent continuant and a generically dependent continuant, in which the generically dependent continuant depends on some independent continuant in virtue of the fact that the specifically dependent continuant also depends on that same independent continuant. Multiple specifically dependent continuants can concretize the same generically dependent continuant."
+      "A relationship between a specifically dependent continuant or process and a generically dependent continuant, in which the generically dependent continuant depends on some independent continuant in virtue of the fact that the specifically dependent continuant or process also depends on that same independent continuant. Multiple specifically dependent continuants or processes can concretize the same generically dependent continuant."
     ],
     "has_children": false,
     "iri": "http://purl.obolibrary.org/obo/RO_0000059",
@@ -4021,6 +4789,28 @@
   {
     "_links": {
       "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Felements%252F1.1%252Flicense?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/elements/1.1/license",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "license",
+    "lang": "en",
+    "obo_id": "license",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "license",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
         "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Felements%252F1.1%252Fmember?lang=en"
       }
     },
@@ -4197,6 +4987,50 @@
   {
     "_links": {
       "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Fterms%252Fcontributor?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/terms/contributor",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "contributor",
+    "lang": "en",
+    "obo_id": "contributor",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "contributor",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Fterms%252Fcreated?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/terms/created",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "created",
+    "lang": "en",
+    "obo_id": "created",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "created",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
         "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Fterms%252Flicense?lang=en"
       }
     },
@@ -4214,6 +5048,28 @@
     "ontology_name": "duo",
     "ontology_prefix": "DUO",
     "short_form": "license",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fpurl.org%252Fdc%252Fterms%252Fsource?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.org/dc/terms/source",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "source",
+    "lang": "en",
+    "obo_id": "source",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "source",
     "synonyms": []
   },
   {
@@ -4266,14 +5122,29 @@
         "href": "<base>/api/ontologies/duo/properties/http%253A%252F%252Fwww.geneontology.org%252Fformats%252FoboInOwl%2523hasDbXref?lang=en"
       }
     },
-    "annotation": {},
-    "description": [],
+    "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0002-7356-1779"
+      ],
+      "created": [
+        "2024-03-18"
+      ],
+      "example of usage": [
+        "disease characteristic (MONDO:0021125) has cross-reference (http://www.geneontology.org/formats/oboInOwl#hasDbXref) \"NCIT:C41009\"^^xsd:string"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/123"
+      ]
+    },
+    "description": [
+      "An annotation property that links an ontology entity or a statement to a prefixed identifier or URI."
+    ],
     "has_children": false,
     "iri": "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
     "is_defining_ontology": false,
     "is_obsolete": false,
     "is_root": true,
-    "label": "hasDbXref",
+    "label": "has cross-reference",
     "lang": "en",
     "obo_id": "OIO:hasDbXref",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",

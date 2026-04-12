@@ -18,7 +18,7 @@
     "http://purl.obolibrary.org/obo/IAO_0000111": "definition",
     "http://purl.obolibrary.org/obo/IAO_0000114": "http://purl.obolibrary.org/obo/IAO_0000122",
     "http://purl.obolibrary.org/obo/IAO_0000115": "The official definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions.",
-    "http://purl.obolibrary.org/obo/IAO_0000116": "2012-04-05: \nBarry Smith\n\nThe official OBI definition, explaining the meaning of a class or property: 'Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions'  is terrible.\n\nCan you fix to something like:\n\nA statement of necessary and sufficient conditions explaining the meaning of an expression referring to a class or property.\n\nAlan Ruttenberg\n\nYour proposed definition is a reasonable candidate, except that it is very common that necessary and sufficient conditions are not given. Mostly they are necessary, occasionally they are necessary and sufficient or just sufficient. Often they use terms that are not themselves defined and so they effectively can't be evaluated by those criteria. \n\nOn the specifics of the proposed definition:\n\nWe don't have definitions of 'meaning' or 'expression' or 'property'. For 'reference' in the intended sense I think we use the term 'denotation'. For 'expression', I think we you mean symbol, or identifier. For 'meaning' it differs for class and property. For class we want documentation that let's the intended reader determine whether an entity is instance of the class, or not. For property we want documentation that let's the intended reader determine, given a pair of potential relata, whether the assertion that the relation holds is true. The 'intended reader' part suggests that we also specify who, we expect, would be able to understand the definition, and also generalizes over human and computer reader to include textual and logical definition. \n\nPersonally, I am more comfortable weakening definition to documentation, with instructions as to what is desirable. \n\nWe also have the outstanding issue of how to aim different definitions to different audiences. A clinical audience reading chebi wants a different sort of definition documentation/definition from a chemistry trained audience, and similarly there is a need for a definition that is adequate for an ontologist to work with.  ",
+    "http://purl.obolibrary.org/obo/IAO_0000116": "2012-04-05: \nBarry Smith\n\nThe official OBI definition, explaining the meaning of a class or property: 'Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions'  is terrible.\n\nCan you fix to something like:\n\nA statement of necessary and sufficient conditions explaining the meaning of an expression referring to a class or property.\n\nAlan Ruttenberg\n\nYour proposed definition is a reasonable candidate, except that it is very common that necessary and sufficient conditions are not given. Mostly they are necessary, occasionally they are necessary and sufficient or just sufficient. Often they use terms that are not themselves defined and so they effectively can't be evaluated by those criteria. \n\nOn the specifics of the proposed definition:\n\nWe don't have definitions of 'meaning' or 'expression' or 'property'. For 'reference' in the intended sense I think we use the term 'denotation'. For 'expression', I think we you mean symbol, or identifier. For 'meaning' it differs for class and property. For class we want documentation that let's the intended reader determine whether an entity is instance of the class, or not. For property we want documentation that let's the intended reader determine, given a pair of potential relata, whether the assertion that the relation holds is true. The 'intended reader' part suggests that we also specify who, we expect, would be able to understand the definition, and also generalizes over human and computer reader to include textual and logical definition. \n\nPersonally, I am more comfortable weakening definition to documentation, with instructions as to what is desirable. \n\nWe also have the outstanding issue of how to aim different definitions to different audiences. A clinical audience reading chebi wants a different sort of definition documentation/definition from a chemistry trained audience, and similarly there is a need for a definition that is adequate for an ontologist to work with.",
     "http://purl.obolibrary.org/obo/IAO_0000117": "PERSON:Daniel Schober",
     "http://purl.obolibrary.org/obo/IAO_0000119": "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
@@ -157,7 +157,7 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": [
-      "2012-04-05: \nBarry Smith\n\nThe official OBI definition, explaining the meaning of a class or property: 'Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions'  is terrible.\n\nCan you fix to something like:\n\nA statement of necessary and sufficient conditions explaining the meaning of an expression referring to a class or property.\n\nAlan Ruttenberg\n\nYour proposed definition is a reasonable candidate, except that it is very common that necessary and sufficient conditions are not given. Mostly they are necessary, occasionally they are necessary and sufficient or just sufficient. Often they use terms that are not themselves defined and so they effectively can't be evaluated by those criteria. \n\nOn the specifics of the proposed definition:\n\nWe don't have definitions of 'meaning' or 'expression' or 'property'. For 'reference' in the intended sense I think we use the term 'denotation'. For 'expression', I think we you mean symbol, or identifier. For 'meaning' it differs for class and property. For class we want documentation that let's the intended reader determine whether an entity is instance of the class, or not. For property we want documentation that let's the intended reader determine, given a pair of potential relata, whether the assertion that the relation holds is true. The 'intended reader' part suggests that we also specify who, we expect, would be able to understand the definition, and also generalizes over human and computer reader to include textual and logical definition. \n\nPersonally, I am more comfortable weakening definition to documentation, with instructions as to what is desirable. \n\nWe also have the outstanding issue of how to aim different definitions to different audiences. A clinical audience reading chebi wants a different sort of definition documentation/definition from a chemistry trained audience, and similarly there is a need for a definition that is adequate for an ontologist to work with.  ",
+      "2012-04-05: \nBarry Smith\n\nThe official OBI definition, explaining the meaning of a class or property: 'Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions'  is terrible.\n\nCan you fix to something like:\n\nA statement of necessary and sufficient conditions explaining the meaning of an expression referring to a class or property.\n\nAlan Ruttenberg\n\nYour proposed definition is a reasonable candidate, except that it is very common that necessary and sufficient conditions are not given. Mostly they are necessary, occasionally they are necessary and sufficient or just sufficient. Often they use terms that are not themselves defined and so they effectively can't be evaluated by those criteria. \n\nOn the specifics of the proposed definition:\n\nWe don't have definitions of 'meaning' or 'expression' or 'property'. For 'reference' in the intended sense I think we use the term 'denotation'. For 'expression', I think we you mean symbol, or identifier. For 'meaning' it differs for class and property. For class we want documentation that let's the intended reader determine whether an entity is instance of the class, or not. For property we want documentation that let's the intended reader determine, given a pair of potential relata, whether the assertion that the relation holds is true. The 'intended reader' part suggests that we also specify who, we expect, would be able to understand the definition, and also generalizes over human and computer reader to include textual and logical definition. \n\nPersonally, I am more comfortable weakening definition to documentation, with instructions as to what is desirable. \n\nWe also have the outstanding issue of how to aim different definitions to different audiences. A clinical audience reading chebi wants a different sort of definition documentation/definition from a chemistry trained audience, and similarly there is a need for a definition that is adequate for an ontologist to work with.",
       "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>",
       "PERSON:Daniel Schober",
       "The official definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions.",
@@ -946,6 +946,196 @@
     "type": [
       "dataProperty",
       "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "IAO:0000011",
+    "definition": [
+      "A relationship between a quality and a portion of reality such that the quality refers to or is cognitively directed towards the portion of reality.",
+      "In the definition source, the relation is called 'is_about'. To avoid confusion with the existing \"is about\" relation in IAO, we called it 'is directed towards' per Alan Ruttenberg's suggestion."
+    ],
+    "definitionProperty": [
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://www.w3.org/2000/01/rdf-schema#comment"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000112": "One of my mental representations is directed towards the Pacific Ocean.",
+    "http://purl.obolibrary.org/obo/IAO_0000114": "http://purl.obolibrary.org/obo/IAO_0000125",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A relationship between a quality and a portion of reality such that the quality refers to or is cognitively directed towards the portion of reality.",
+    "http://purl.obolibrary.org/obo/IAO_0000117": "person: William Hogan",
+    "http://purl.obolibrary.org/obo/IAO_0000119": "https://ceur-ws.org/Vol-1515/regular10.pdf",
+    "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/IAO/issues/285",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#comment": "In the definition source, the relation is called 'is_about'. To avoid confusion with the existing \"is about\" relation in IAO, we called it 'is directed towards' per Alan Ruttenberg's suggestion.",
+    "http://www.w3.org/2000/01/rdf-schema#label": "is directed towards",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000011",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "is directed towards"
+    ],
+    "linkedEntities": {
+      "http://purl.obolibrary.org/obo/IAO_0000112": {
+        "curie": "IAO:0000112",
+        "hasLocalDefinition": true,
+        "label": [
+          "example of usage"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000114": {
+        "curie": "IAO:0000114",
+        "hasLocalDefinition": true,
+        "label": [
+          "has curation status"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000117": {
+        "curie": "IAO:0000117",
+        "hasLocalDefinition": true,
+        "label": [
+          "term editor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000119": {
+        "curie": "IAO:0000119",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition source"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000125": {
+        "curie": "IAO:0000125",
+        "hasLocalDefinition": true,
+        "label": [
+          "pending final vetting"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "individual"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000233": {
+        "curie": "IAO:0000233",
+        "hasLocalDefinition": true,
+        "label": [
+          "term tracker item"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#comment": {
+        "curie": "RDFS:comment",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "comment"
+        ],
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "https://github.com/information-artifact-ontology/IAO/issues/285": {
+        "curie": "iao.issue:285",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "https://github.com/information-artifact-ontology/IAO/issues/285"
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/IAO_0000112",
+      "http://purl.obolibrary.org/obo/IAO_0000114",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000117",
+      "http://purl.obolibrary.org/obo/IAO_0000119",
+      "http://purl.obolibrary.org/obo/IAO_0000125",
+      "http://purl.obolibrary.org/obo/IAO_0000233",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      "A relationship between a quality and a portion of reality such that the quality refers to or is cognitively directed towards the portion of reality.",
+      "One of my mental representations is directed towards the Pacific Ocean.",
+      "person: William Hogan",
+      true
+    ],
+    "shortForm": "IAO_0000011",
+    "type": [
+      "entity",
+      "objectProperty",
       "property"
     ]
   },
@@ -7427,7 +7617,7 @@
     ],
     "curie": "OBI:0000293",
     "definition": [
-      "The inverse property of is_specified_input_of"
+      "The inverse property of is specified input of"
     ],
     "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
     "directAncestor": [
@@ -7440,34 +7630,41 @@
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": false,
-    "http://purl.obolibrary.org/obo/IAO_0000111": [
-      "has_specified_input"
-    ],
+    "http://purl.obolibrary.org/obo/IAO_0000111": "has specified input",
     "http://purl.obolibrary.org/obo/IAO_0000112": "see is_input_of example_of_usage",
     "http://purl.obolibrary.org/obo/IAO_0000114": "http://purl.obolibrary.org/obo/IAO_0000122",
-    "http://purl.obolibrary.org/obo/IAO_0000115": "The inverse property of is_specified_input_of",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "The inverse property of is specified input of",
     "http://purl.obolibrary.org/obo/IAO_0000116": "8/17/09: specified inputs of one process are not necessarily specified inputs of a larger process that it is part of. This is in contrast to how 'has participant' works.",
     "http://purl.obolibrary.org/obo/IAO_0000117": [
       "PERSON: Alan Ruttenberg"
     ],
     "http://purl.obolibrary.org/obo/IAO_0000412": "http://purl.obolibrary.org/obo/obi.owl",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-    "http://www.w3.org/2000/01/rdf-schema#domain": "http://purl.obolibrary.org/obo/OBI_0000011",
-    "http://www.w3.org/2000/01/rdf-schema#label": "has_specified_input",
+    "http://www.w3.org/2000/01/rdf-schema#domain": "http://purl.obolibrary.org/obo/COB_0000035",
+    "http://www.w3.org/2000/01/rdf-schema#label": "has specified input",
     "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://purl.obolibrary.org/obo/RO_0000057",
-    "http://www.w3.org/2002/07/owl#equivalentProperty": {
-      "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/OBI_0000295",
-      "isObsolete": false
-    },
+    "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/OBI_0000295",
     "imported": true,
     "iri": "http://purl.obolibrary.org/obo/OBI_0000293",
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
     "label": [
-      "has_specified_input"
+      "has specified input"
     ],
     "linkedEntities": {
+      "http://purl.obolibrary.org/obo/COB_0000035": {
+        "curie": "COB:0000035",
+        "hasLocalDefinition": true,
+        "label": [
+          "completely executed planned process"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -7571,23 +7768,11 @@
           "property"
         ]
       },
-      "http://purl.obolibrary.org/obo/OBI_0000011": {
-        "curie": "OBI:0000011",
-        "hasLocalDefinition": true,
-        "label": [
-          "planned process"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
       "http://purl.obolibrary.org/obo/OBI_0000295": {
         "curie": "OBI:0000295",
         "hasLocalDefinition": true,
         "label": [
-          "is_specified_input_of"
+          "is specified input of"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -7656,6 +7841,7 @@
       }
     },
     "linksTo": [
+      "http://purl.obolibrary.org/obo/COB_0000035",
       "http://purl.obolibrary.org/obo/IAO_0000111",
       "http://purl.obolibrary.org/obo/IAO_0000112",
       "http://purl.obolibrary.org/obo/IAO_0000114",
@@ -7664,7 +7850,6 @@
       "http://purl.obolibrary.org/obo/IAO_0000117",
       "http://purl.obolibrary.org/obo/IAO_0000122",
       "http://purl.obolibrary.org/obo/IAO_0000412",
-      "http://purl.obolibrary.org/obo/OBI_0000011",
       "http://purl.obolibrary.org/obo/OBI_0000295",
       "http://purl.obolibrary.org/obo/RO_0000057",
       "http://www.w3.org/2000/01/rdf-schema#domain",
@@ -7678,8 +7863,6 @@
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": [
       "PERSON: Alan Ruttenberg",
-      "The inverse property of is_specified_input_of",
-      "has_specified_input",
       "see is_input_of example_of_usage",
       true
     ],
@@ -7700,16 +7883,30 @@
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": false,
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-    "http://www.w3.org/2000/01/rdf-schema#label": "is_specified_input_of",
+    "http://www.w3.org/2000/01/rdf-schema#label": "is specified input of",
+    "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/OBI_0000293",
     "imported": true,
     "iri": "http://purl.obolibrary.org/obo/OBI_0000295",
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
     "label": [
-      "is_specified_input_of"
+      "is specified input of"
     ],
     "linkedEntities": {
+      "http://purl.obolibrary.org/obo/OBI_0000293": {
+        "curie": "OBI:0000293",
+        "hasLocalDefinition": true,
+        "label": [
+          "has specified input"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      },
       "http://www.w3.org/2000/01/rdf-schema#label": {
         "curie": "RDFS:label",
         "definedBy": [
@@ -7727,6 +7924,7 @@
       }
     },
     "linksTo": [
+      "http://purl.obolibrary.org/obo/OBI_0000293",
       "http://www.w3.org/2000/01/rdf-schema#label"
     ],
     "numDescendants": 0.0,
@@ -7748,7 +7946,7 @@
     ],
     "curie": "OBI:0000299",
     "definition": [
-      "The inverse property of is_specified_output_of"
+      "The inverse property of is specified output of"
     ],
     "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
     "directAncestor": [
@@ -7761,32 +7959,39 @@
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": false,
-    "http://purl.obolibrary.org/obo/IAO_0000111": [
-      "has_specified_output"
-    ],
+    "http://purl.obolibrary.org/obo/IAO_0000111": "has specified output",
     "http://purl.obolibrary.org/obo/IAO_0000114": "http://purl.obolibrary.org/obo/IAO_0000122",
-    "http://purl.obolibrary.org/obo/IAO_0000115": "The inverse property of is_specified_output_of",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "The inverse property of is specified output of",
     "http://purl.obolibrary.org/obo/IAO_0000117": [
       "PERSON: Alan Ruttenberg"
     ],
     "http://purl.obolibrary.org/obo/IAO_0000412": "http://purl.obolibrary.org/obo/obi.owl",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-    "http://www.w3.org/2000/01/rdf-schema#domain": "http://purl.obolibrary.org/obo/OBI_0000011",
-    "http://www.w3.org/2000/01/rdf-schema#label": "has_specified_output",
+    "http://www.w3.org/2000/01/rdf-schema#domain": "http://purl.obolibrary.org/obo/COB_0000035",
+    "http://www.w3.org/2000/01/rdf-schema#label": "has specified output",
     "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://purl.obolibrary.org/obo/RO_0000057",
-    "http://www.w3.org/2002/07/owl#equivalentProperty": {
-      "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/OBI_0000312",
-      "isObsolete": false
-    },
+    "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/OBI_0000312",
     "imported": true,
     "iri": "http://purl.obolibrary.org/obo/OBI_0000299",
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
     "label": [
-      "has_specified_output"
+      "has specified output"
     ],
     "linkedEntities": {
+      "http://purl.obolibrary.org/obo/COB_0000035": {
+        "curie": "COB:0000035",
+        "hasLocalDefinition": true,
+        "label": [
+          "completely executed planned process"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -7864,23 +8069,11 @@
           "property"
         ]
       },
-      "http://purl.obolibrary.org/obo/OBI_0000011": {
-        "curie": "OBI:0000011",
-        "hasLocalDefinition": true,
-        "label": [
-          "planned process"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
       "http://purl.obolibrary.org/obo/OBI_0000312": {
         "curie": "OBI:0000312",
         "hasLocalDefinition": true,
         "label": [
-          "is_specified_output_of"
+          "is specified output of"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -7949,13 +8142,13 @@
       }
     },
     "linksTo": [
+      "http://purl.obolibrary.org/obo/COB_0000035",
       "http://purl.obolibrary.org/obo/IAO_0000111",
       "http://purl.obolibrary.org/obo/IAO_0000114",
       "http://purl.obolibrary.org/obo/IAO_0000115",
       "http://purl.obolibrary.org/obo/IAO_0000117",
       "http://purl.obolibrary.org/obo/IAO_0000122",
       "http://purl.obolibrary.org/obo/IAO_0000412",
-      "http://purl.obolibrary.org/obo/OBI_0000011",
       "http://purl.obolibrary.org/obo/OBI_0000312",
       "http://purl.obolibrary.org/obo/RO_0000057",
       "http://www.w3.org/2000/01/rdf-schema#domain",
@@ -7969,8 +8162,6 @@
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": [
       "PERSON: Alan Ruttenberg",
-      "The inverse property of is_specified_output_of",
-      "has_specified_output",
       true
     ],
     "shortForm": "OBI_0000299",
@@ -7986,7 +8177,7 @@
     ],
     "curie": "OBI:0000312",
     "definition": [
-      "A relation between a planned process and a continuant participating in that process. The presence of the continuant at the end of the process is explicitly specified in the objective specification which the process realizes the concretization of."
+      "A relation between a completely executed planned process and a continuant participating in that process. The presence of the continuant at the end of the process is explicitly specified in the objective specification which the process realizes the concretization of."
     ],
     "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
     "directAncestor": [
@@ -7999,32 +8190,39 @@
     "hasDirectParents": true,
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": false,
-    "http://purl.obolibrary.org/obo/IAO_0000111": [
-      "is_specified_output_of"
-    ],
+    "http://purl.obolibrary.org/obo/IAO_0000111": "is specified output of",
     "http://purl.obolibrary.org/obo/IAO_0000114": "http://purl.obolibrary.org/obo/IAO_0000122",
-    "http://purl.obolibrary.org/obo/IAO_0000115": "A relation between a planned process and a continuant participating in that process. The presence of the continuant at the end of the process is explicitly specified in the objective specification which the process realizes the concretization of.",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A relation between a completely executed planned process and a continuant participating in that process. The presence of the continuant at the end of the process is explicitly specified in the objective specification which the process realizes the concretization of.",
     "http://purl.obolibrary.org/obo/IAO_0000117": [
       "Alan Ruttenberg"
     ],
     "http://purl.obolibrary.org/obo/IAO_0000412": "http://purl.obolibrary.org/obo/obi.owl",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-    "http://www.w3.org/2000/01/rdf-schema#label": "is_specified_output_of",
-    "http://www.w3.org/2000/01/rdf-schema#range": "http://purl.obolibrary.org/obo/OBI_0000011",
+    "http://www.w3.org/2000/01/rdf-schema#label": "is specified output of",
+    "http://www.w3.org/2000/01/rdf-schema#range": "http://purl.obolibrary.org/obo/COB_0000035",
     "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://purl.obolibrary.org/obo/RO_0000056",
-    "http://www.w3.org/2002/07/owl#equivalentProperty": {
-      "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/OBI_0000299",
-      "isObsolete": false
-    },
+    "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/OBI_0000299",
     "imported": true,
     "iri": "http://purl.obolibrary.org/obo/OBI_0000312",
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
     "label": [
-      "is_specified_output_of"
+      "is specified output of"
     ],
     "linkedEntities": {
+      "http://purl.obolibrary.org/obo/COB_0000035": {
+        "curie": "COB:0000035",
+        "hasLocalDefinition": true,
+        "label": [
+          "completely executed planned process"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
       "http://purl.obolibrary.org/obo/IAO_0000111": {
         "curie": "IAO:0000111",
         "hasLocalDefinition": true,
@@ -8102,23 +8300,11 @@
           "property"
         ]
       },
-      "http://purl.obolibrary.org/obo/OBI_0000011": {
-        "curie": "OBI:0000011",
-        "hasLocalDefinition": true,
-        "label": [
-          "planned process"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "class",
-          "entity"
-        ]
-      },
       "http://purl.obolibrary.org/obo/OBI_0000299": {
         "curie": "OBI:0000299",
         "hasLocalDefinition": true,
         "label": [
-          "has_specified_output"
+          "has specified output"
         ],
         "numAppearsIn": 1.0,
         "type": [
@@ -8187,13 +8373,13 @@
       }
     },
     "linksTo": [
+      "http://purl.obolibrary.org/obo/COB_0000035",
       "http://purl.obolibrary.org/obo/IAO_0000111",
       "http://purl.obolibrary.org/obo/IAO_0000114",
       "http://purl.obolibrary.org/obo/IAO_0000115",
       "http://purl.obolibrary.org/obo/IAO_0000117",
       "http://purl.obolibrary.org/obo/IAO_0000122",
       "http://purl.obolibrary.org/obo/IAO_0000412",
-      "http://purl.obolibrary.org/obo/OBI_0000011",
       "http://purl.obolibrary.org/obo/OBI_0000299",
       "http://purl.obolibrary.org/obo/RO_0000056",
       "http://www.w3.org/2000/01/rdf-schema#label",
@@ -8206,9 +8392,8 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": [
-      "A relation between a planned process and a continuant participating in that process. The presence of the continuant at the end of the process is explicitly specified in the objective specification which the process realizes the concretization of.",
+      "A relation between a completely executed planned process and a continuant participating in that process. The presence of the continuant at the end of the process is explicitly specified in the objective specification which the process realizes the concretization of.",
       "Alan Ruttenberg",
-      "is_specified_output_of",
       true
     ],
     "shortForm": "OBI_0000312",
@@ -8456,9 +8641,2771 @@
     "appearsIn": [
       "duo"
     ],
+    "curie": "OMO:0002001",
+    "definition": [
+      "A provenance property that denotes a synonym to be the preferred one for a specific community."
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000112": "The property is intended to be used exclusively on synonym assertions, to express that the synonym in question is the preference of a specific community. For example, one community may prefer to say call a disease \"A\" and another one \"B\" (but they are the same thing).",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A provenance property that denotes a synonym to be the preferred one for a specific community.",
+    "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/185",
+    "http://purl.org/dc/terms/contributor": "https://orcid.org/0000-0002-7356-1779",
+    "http://purl.org/dc/terms/created": "2025-06-02",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": "preferred label for community",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0002001",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "preferred label for community"
+    ],
+    "linkedEntities": {
+      "http://purl.obolibrary.org/obo/IAO_0000112": {
+        "curie": "IAO:0000112",
+        "hasLocalDefinition": true,
+        "label": [
+          "example of usage"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000233": {
+        "curie": "IAO:0000233",
+        "hasLocalDefinition": true,
+        "label": [
+          "term tracker item"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/created": {
+        "curie": "created",
+        "hasLocalDefinition": true,
+        "label": [
+          "created"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "https://orcid.org/0000-0002-7356-1779": {
+        "curie": "orcid:0000-0002-7356-1779",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0002-7356-1779"
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/IAO_0000112",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000233",
+      "http://purl.org/dc/terms/contributor",
+      "http://purl.org/dc/terms/created",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      true
+    ],
+    "shortForm": "OMO_0002001",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "OMO:0003000",
+    "definition": [
+      "A synonym type for describing abbreviations or initialisms"
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "directParent": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000112": "CHEBI:26523 (reactive oxygen species) has an exact synonym (ROS), which is of type OMO:0003000 (abbreviation)",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A synonym type for describing abbreviations or initialisms",
+    "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/122",
+    "http://purl.org/dc/terms/contributor": "https://orcid.org/0000-0003-4423-4370",
+    "http://purl.org/dc/terms/created": "2023-03-03",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": "abbreviation",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003000",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "abbreviation"
+    ],
+    "linkedEntities": {
+      "CHEBI:26523": {
+        "curie": "CHEBI:26523",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:26523"
+      },
+      "OMO:0003000": {
+        "curie": "OMO:0003000",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/OMO_0003000"
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000112": {
+        "curie": "IAO:0000112",
+        "hasLocalDefinition": true,
+        "label": [
+          "example of usage"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000233": {
+        "curie": "IAO:0000233",
+        "hasLocalDefinition": true,
+        "label": [
+          "term tracker item"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/created": {
+        "curie": "created",
+        "hasLocalDefinition": true,
+        "label": [
+          "created"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty": {
+        "curie": "OIO:SynonymTypeProperty",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "synonym_type_property"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+        "curie": "RDFS:subPropertyOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subPropertyOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "https://orcid.org/0000-0003-4423-4370": {
+        "curie": "orcid:0000-0003-4423-4370",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0003-4423-4370"
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/IAO_0000112",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000233",
+      "http://purl.org/dc/terms/contributor",
+      "http://purl.org/dc/terms/created",
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      true
+    ],
+    "shortForm": "OMO_0003000",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "OMO:0003001",
+    "definition": [
+      "A synonym type for describing ambiguous synonyms"
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "directParent": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A synonym type for describing ambiguous synonyms",
+    "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/122",
+    "http://purl.org/dc/terms/contributor": "https://orcid.org/0000-0003-4423-4370",
+    "http://purl.org/dc/terms/created": "2023-03-03",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": "ambiguous synonym",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003001",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "ambiguous synonym"
+    ],
+    "linkedEntities": {
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000233": {
+        "curie": "IAO:0000233",
+        "hasLocalDefinition": true,
+        "label": [
+          "term tracker item"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/created": {
+        "curie": "created",
+        "hasLocalDefinition": true,
+        "label": [
+          "created"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty": {
+        "curie": "OIO:SynonymTypeProperty",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "synonym_type_property"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+        "curie": "RDFS:subPropertyOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subPropertyOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "https://orcid.org/0000-0003-4423-4370": {
+        "curie": "orcid:0000-0003-4423-4370",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0003-4423-4370"
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000233",
+      "http://purl.org/dc/terms/contributor",
+      "http://purl.org/dc/terms/created",
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      true
+    ],
+    "shortForm": "OMO_0003001",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "OMO:0003002",
+    "definition": [
+      "A synonym type for describing dubious synonyms"
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "directParent": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A synonym type for describing dubious synonyms",
+    "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/122",
+    "http://purl.org/dc/terms/contributor": "https://orcid.org/0000-0003-4423-4370",
+    "http://purl.org/dc/terms/created": "2023-03-03",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": "dubious synonym",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003002",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "dubious synonym"
+    ],
+    "linkedEntities": {
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000233": {
+        "curie": "IAO:0000233",
+        "hasLocalDefinition": true,
+        "label": [
+          "term tracker item"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/created": {
+        "curie": "created",
+        "hasLocalDefinition": true,
+        "label": [
+          "created"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty": {
+        "curie": "OIO:SynonymTypeProperty",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "synonym_type_property"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+        "curie": "RDFS:subPropertyOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subPropertyOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "https://orcid.org/0000-0003-4423-4370": {
+        "curie": "orcid:0000-0003-4423-4370",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0003-4423-4370"
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000233",
+      "http://purl.org/dc/terms/contributor",
+      "http://purl.org/dc/terms/created",
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      true
+    ],
+    "shortForm": "OMO_0003002",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "OMO:0003003",
+    "definition": [
+      "A synonym type for describing layperson or colloquial synonyms"
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "directParent": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000112": "EFO:0006346 (severe cutaneous adverse reaction) has an exact synonym (scar), which is of the type OMO:0003003 (layperson synonym)",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A synonym type for describing layperson or colloquial synonyms",
+    "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/122",
+    "http://purl.org/dc/terms/contributor": "https://orcid.org/0000-0003-4423-4370",
+    "http://purl.org/dc/terms/created": "2023-03-03",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": "layperson synonym",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003003",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "layperson synonym"
+    ],
+    "linkedEntities": {
+      "EFO:0006346": {
+        "curie": "EFO:0006346",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://www.ebi.ac.uk/efo/EFO_0006346"
+      },
+      "OMO:0003003": {
+        "curie": "OMO:0003003",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/OMO_0003003"
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000112": {
+        "curie": "IAO:0000112",
+        "hasLocalDefinition": true,
+        "label": [
+          "example of usage"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000233": {
+        "curie": "IAO:0000233",
+        "hasLocalDefinition": true,
+        "label": [
+          "term tracker item"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/created": {
+        "curie": "created",
+        "hasLocalDefinition": true,
+        "label": [
+          "created"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty": {
+        "curie": "OIO:SynonymTypeProperty",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "synonym_type_property"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+        "curie": "RDFS:subPropertyOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subPropertyOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "https://orcid.org/0000-0003-4423-4370": {
+        "curie": "orcid:0000-0003-4423-4370",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0003-4423-4370"
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/IAO_0000112",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000233",
+      "http://purl.org/dc/terms/contributor",
+      "http://purl.org/dc/terms/created",
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      true
+    ],
+    "shortForm": "OMO_0003003",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "OMO:0003004",
+    "definition": [
+      "A synonym type for describing pluralization synonyms"
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "directParent": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000112": "CHEBI:23367 (molecular entity) has an exact synonym (molecular entities), which is of the type OMO:0003004 (plural form)",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A synonym type for describing pluralization synonyms",
+    "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/122",
+    "http://purl.org/dc/terms/contributor": "https://orcid.org/0000-0003-4423-4370",
+    "http://purl.org/dc/terms/created": "2023-03-03",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": "plural form",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003004",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "plural form"
+    ],
+    "linkedEntities": {
+      "CHEBI:23367": {
+        "curie": "CHEBI:23367",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:23367"
+      },
+      "OMO:0003004": {
+        "curie": "OMO:0003004",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/OMO_0003004"
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000112": {
+        "curie": "IAO:0000112",
+        "hasLocalDefinition": true,
+        "label": [
+          "example of usage"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000233": {
+        "curie": "IAO:0000233",
+        "hasLocalDefinition": true,
+        "label": [
+          "term tracker item"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/created": {
+        "curie": "created",
+        "hasLocalDefinition": true,
+        "label": [
+          "created"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty": {
+        "curie": "OIO:SynonymTypeProperty",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "synonym_type_property"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+        "curie": "RDFS:subPropertyOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subPropertyOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "https://orcid.org/0000-0003-4423-4370": {
+        "curie": "orcid:0000-0003-4423-4370",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0003-4423-4370"
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/IAO_0000112",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000233",
+      "http://purl.org/dc/terms/contributor",
+      "http://purl.org/dc/terms/created",
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      true
+    ],
+    "shortForm": "OMO_0003004",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "OMO:0003005",
+    "definition": [
+      "A synonym type for describing UK spelling variants"
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "directParent": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000112": "CHEBI:16189 (sulfate) has an exact synonym (sulphate), which is of the type OMO:0003005 (UK spelling synonym)",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A synonym type for describing UK spelling variants",
+    "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/122",
+    "http://purl.org/dc/terms/contributor": "https://orcid.org/0000-0003-4423-4370",
+    "http://purl.org/dc/terms/created": "2023-03-03",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": "UK spelling synonym",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003005",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "UK spelling synonym"
+    ],
+    "linkedEntities": {
+      "CHEBI:16189": {
+        "curie": "CHEBI:16189",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:16189"
+      },
+      "OMO:0003005": {
+        "curie": "OMO:0003005",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/OMO_0003005"
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000112": {
+        "curie": "IAO:0000112",
+        "hasLocalDefinition": true,
+        "label": [
+          "example of usage"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000233": {
+        "curie": "IAO:0000233",
+        "hasLocalDefinition": true,
+        "label": [
+          "term tracker item"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/created": {
+        "curie": "created",
+        "hasLocalDefinition": true,
+        "label": [
+          "created"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty": {
+        "curie": "OIO:SynonymTypeProperty",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "synonym_type_property"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+        "curie": "RDFS:subPropertyOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subPropertyOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "https://orcid.org/0000-0003-4423-4370": {
+        "curie": "orcid:0000-0003-4423-4370",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0003-4423-4370"
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/IAO_0000112",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000233",
+      "http://purl.org/dc/terms/contributor",
+      "http://purl.org/dc/terms/created",
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      true
+    ],
+    "shortForm": "OMO_0003005",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "OMO:0003006",
+    "definition": [
+      "A synonym type for common misspellings"
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "directParent": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A synonym type for common misspellings",
+    "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/132",
+    "http://purl.org/dc/terms/contributor": "https://orcid.org/0000-0003-4423-4370",
+    "http://purl.org/dc/terms/created": "2023-03-03",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": "misspelling",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003006",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "misspelling"
+    ],
+    "linkedEntities": {
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000233": {
+        "curie": "IAO:0000233",
+        "hasLocalDefinition": true,
+        "label": [
+          "term tracker item"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/created": {
+        "curie": "created",
+        "hasLocalDefinition": true,
+        "label": [
+          "created"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty": {
+        "curie": "OIO:SynonymTypeProperty",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "synonym_type_property"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+        "curie": "RDFS:subPropertyOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subPropertyOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "https://orcid.org/0000-0003-4423-4370": {
+        "curie": "orcid:0000-0003-4423-4370",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0003-4423-4370"
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000233",
+      "http://purl.org/dc/terms/contributor",
+      "http://purl.org/dc/terms/created",
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      true
+    ],
+    "shortForm": "OMO_0003006",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "OMO:0003007",
+    "definition": [
+      "A synonym type for misnomers, i.e., a synonym that is not technically correct but is commonly used anyway"
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "directParent": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A synonym type for misnomers, i.e., a synonym that is not technically correct but is commonly used anyway",
+    "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/133",
+    "http://purl.org/dc/terms/contributor": "https://orcid.org/0000-0003-4423-4370",
+    "http://purl.org/dc/terms/created": "2023-03-03",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": "misnomer",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003007",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "misnomer"
+    ],
+    "linkedEntities": {
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000233": {
+        "curie": "IAO:0000233",
+        "hasLocalDefinition": true,
+        "label": [
+          "term tracker item"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/created": {
+        "curie": "created",
+        "hasLocalDefinition": true,
+        "label": [
+          "created"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty": {
+        "curie": "OIO:SynonymTypeProperty",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "synonym_type_property"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+        "curie": "RDFS:subPropertyOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subPropertyOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "https://orcid.org/0000-0003-4423-4370": {
+        "curie": "orcid:0000-0003-4423-4370",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0003-4423-4370"
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000233",
+      "http://purl.org/dc/terms/contributor",
+      "http://purl.org/dc/terms/created",
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      true
+    ],
+    "shortForm": "OMO_0003007",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "OMO:0003008",
+    "definition": [
+      "A synonym type for names that have been used as primary labels in the past."
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "directParent": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000112": "MAPT, the gene that encodes the Tau protein, has a previous name DDPAC. Note: in this case, the name type is more specifically the gene symbol.",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A synonym type for names that have been used as primary labels in the past.",
+    "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/139",
+    "http://purl.org/dc/terms/contributor": "https://orcid.org/0000-0003-4423-4370",
+    "http://purl.org/dc/terms/created": "2023-07-25",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": "previous name",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003008",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "previous name"
+    ],
+    "linkedEntities": {
+      "http://purl.obolibrary.org/obo/IAO_0000112": {
+        "curie": "IAO:0000112",
+        "hasLocalDefinition": true,
+        "label": [
+          "example of usage"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000233": {
+        "curie": "IAO:0000233",
+        "hasLocalDefinition": true,
+        "label": [
+          "term tracker item"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/created": {
+        "curie": "created",
+        "hasLocalDefinition": true,
+        "label": [
+          "created"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty": {
+        "curie": "OIO:SynonymTypeProperty",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "synonym_type_property"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+        "curie": "RDFS:subPropertyOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subPropertyOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "https://orcid.org/0000-0003-4423-4370": {
+        "curie": "orcid:0000-0003-4423-4370",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0003-4423-4370"
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/IAO_0000112",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000233",
+      "http://purl.org/dc/terms/contributor",
+      "http://purl.org/dc/terms/created",
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      true
+    ],
+    "shortForm": "OMO_0003008",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "OMO:0003009",
+    "definition": [
+      "A synonym type for the legal entity name"
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "directParent": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000112": "The legal name for Harvard University (https://ror.org/03vek6s52) is President and Fellows of Harvard College",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A synonym type for the legal entity name",
+    "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/141",
+    "http://purl.org/dc/terms/contributor": "https://orcid.org/0000-0003-4423-4370",
+    "http://purl.org/dc/terms/created": "2023-07-27",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": "legal name",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003009",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "legal name"
+    ],
+    "linkedEntities": {
+      "http://purl.obolibrary.org/obo/IAO_0000112": {
+        "curie": "IAO:0000112",
+        "hasLocalDefinition": true,
+        "label": [
+          "example of usage"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000233": {
+        "curie": "IAO:0000233",
+        "hasLocalDefinition": true,
+        "label": [
+          "term tracker item"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/created": {
+        "curie": "created",
+        "hasLocalDefinition": true,
+        "label": [
+          "created"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty": {
+        "curie": "OIO:SynonymTypeProperty",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "synonym_type_property"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+        "curie": "RDFS:subPropertyOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subPropertyOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "https://orcid.org/0000-0003-4423-4370": {
+        "curie": "orcid:0000-0003-4423-4370",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0003-4423-4370"
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/IAO_0000112",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000233",
+      "http://purl.org/dc/terms/contributor",
+      "http://purl.org/dc/terms/created",
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      true
+    ],
+    "shortForm": "OMO_0003009",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "OMO:0003010",
+    "definition": [
+      "The International Nonproprietary Name (INN) is a standardize name for a pharmaceutical drug or active ingredient issued by the World Health Organization (WHO) meant to address the issues with country- or language-specific brand names. These are issued in several languages, including English, Latin, French, Russian, Spanish, Arabic, and Chinese."
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "directParent": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000112": "CHEBI:46195 has been assigned the english International Nonproproprietary Name (INN) \"paracetamol\". In some cases such as this one, the INN might be the same as the ontology's primary label",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "The International Nonproprietary Name (INN) is a standardize name for a pharmaceutical drug or active ingredient issued by the World Health Organization (WHO) meant to address the issues with country- or language-specific brand names. These are issued in several languages, including English, Latin, French, Russian, Spanish, Arabic, and Chinese.",
+    "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/149",
+    "http://purl.org/dc/terms/contributor": "https://orcid.org/0000-0003-4423-4370",
+    "http://purl.org/dc/terms/created": "2023-09-30",
+    "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym": [
+      "INN"
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": "International Nonproprietary Name",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003010",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "International Nonproprietary Name"
+    ],
+    "linkedEntities": {
+      "CHEBI:46195": {
+        "curie": "CHEBI:46195",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:46195"
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000112": {
+        "curie": "IAO:0000112",
+        "hasLocalDefinition": true,
+        "label": [
+          "example of usage"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000233": {
+        "curie": "IAO:0000233",
+        "hasLocalDefinition": true,
+        "label": [
+          "term tracker item"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/created": {
+        "curie": "created",
+        "hasLocalDefinition": true,
+        "label": [
+          "created"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty": {
+        "curie": "OIO:SynonymTypeProperty",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "synonym_type_property"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym": {
+        "curie": "OIO:hasExactSynonym",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "has_exact_synonym"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+        "curie": "RDFS:subPropertyOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subPropertyOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "https://orcid.org/0000-0003-4423-4370": {
+        "curie": "orcid:0000-0003-4423-4370",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0003-4423-4370"
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/IAO_0000112",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000233",
+      "http://purl.org/dc/terms/contributor",
+      "http://purl.org/dc/terms/created",
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+      "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      true
+    ],
+    "shortForm": "OMO_0003010",
+    "synonym": [
+      "INN"
+    ],
+    "synonymProperty": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "OMO:0003011",
+    "definition": [
+      "A synonym type for describing Latin term synonyms."
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "directParent": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000112": "nasopharynx (UBERON:0001728) has the latin name \"pars nasalis pharyngis",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A synonym type for describing Latin term synonyms.",
+    "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/146",
+    "http://purl.org/dc/terms/contributor": "https://orcid.org/0000-0002-1773-2692",
+    "http://purl.org/dc/terms/created": "2023-10-12",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": "latin term",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003011",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "latin term"
+    ],
+    "linkedEntities": {
+      "UBERON:0001728": {
+        "curie": "UBERON:0001728",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/UBERON_0001728"
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000112": {
+        "curie": "IAO:0000112",
+        "hasLocalDefinition": true,
+        "label": [
+          "example of usage"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000233": {
+        "curie": "IAO:0000233",
+        "hasLocalDefinition": true,
+        "label": [
+          "term tracker item"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/created": {
+        "curie": "created",
+        "hasLocalDefinition": true,
+        "label": [
+          "created"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty": {
+        "curie": "OIO:SynonymTypeProperty",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "synonym_type_property"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+        "curie": "RDFS:subPropertyOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subPropertyOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "https://orcid.org/0000-0002-1773-2692": {
+        "curie": "orcid:0000-0002-1773-2692",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0002-1773-2692"
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/IAO_0000112",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000233",
+      "http://purl.org/dc/terms/contributor",
+      "http://purl.org/dc/terms/created",
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      true
+    ],
+    "shortForm": "OMO_0003011",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "OMO:0003012",
+    "definition": [
+      "A synonym type for describing abbreviations that are a part of the full name's words, such as initialisms or alphabetisms."
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "directAncestor": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "directParent": [
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": true,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000112": "NASA is an word acronym for the US National Aeronautics and Space Administration because the acronym is pronounced. FBI is an initialism (also known as alphabetism) for the US Federal Bureau of Investigation since the letters are pronounced one at a time. JPEG is an acronym for Joint Photographic Experts Group but does not count as a word acronym nor an initialism since it is mixed how it is pronounced.",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A synonym type for describing abbreviations that are a part of the full name's words, such as initialisms or alphabetisms.",
+    "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/135",
+    "http://purl.org/dc/terms/contributor": "https://orcid.org/0000-0003-4423-4370",
+    "http://purl.org/dc/terms/created": "2023-11-01",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": "acronym",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003012",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "acronym"
+    ],
+    "linkedEntities": {
+      "http://purl.obolibrary.org/obo/IAO_0000112": {
+        "curie": "IAO:0000112",
+        "hasLocalDefinition": true,
+        "label": [
+          "example of usage"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000233": {
+        "curie": "IAO:0000233",
+        "hasLocalDefinition": true,
+        "label": [
+          "term tracker item"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/created": {
+        "curie": "created",
+        "hasLocalDefinition": true,
+        "label": [
+          "created"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty": {
+        "curie": "OIO:SynonymTypeProperty",
+        "definedBy": [
+          "oio"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "synonym_type_property"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+        "curie": "RDFS:subPropertyOf",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "subPropertyOf"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "https://orcid.org/0000-0003-4423-4370": {
+        "curie": "orcid:0000-0003-4423-4370",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0003-4423-4370"
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/IAO_0000112",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000233",
+      "http://purl.org/dc/terms/contributor",
+      "http://purl.org/dc/terms/created",
+      "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      true
+    ],
+    "shortForm": "OMO_0003012",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "OMO:0003014",
+    "definition": [
+      "Relates an ontology to predicates/properties that should be used by user interfaces to render the hierarchical structure of the ontology. Typically, this is rdfs:subClassOf, but in ontologies that are partonomies, this might also include BFO:0000050 (part of). Tools like OLS can use predicates annotated with this property for rendering the ontology class hierarchy. There can be more than one hierarchical property. In the absence of any, it should be assumed that it is rdfs:subClassOf."
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000112": "The Developing Mouse Brain Atlas Ontology (DBMA) ontology uses part-of in its hierarchy, so this would correspond to the following turtle: `<https://purl.brain-bican.org/ontology/dmbao/dmbao.owl> a owl:Ontology; OMO:0003014 rdfs:subClassOf, BFO:0000050`.",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "Relates an ontology to predicates/properties that should be used by user interfaces to render the hierarchical structure of the ontology. Typically, this is rdfs:subClassOf, but in ontologies that are partonomies, this might also include BFO:0000050 (part of). Tools like OLS can use predicates annotated with this property for rendering the ontology class hierarchy. There can be more than one hierarchical property. In the absence of any, it should be assumed that it is rdfs:subClassOf.",
+    "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/IAO/issues/292",
+    "http://purl.org/dc/terms/contributor": "https://orcid.org/0000-0003-4423-4370",
+    "http://purl.org/dc/terms/created": "2025-09-17",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": "has ontology hierarchical property",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0003014",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "has ontology hierarchical property"
+    ],
+    "linkedEntities": {
+      "BFO:0000050": {
+        "curie": "BFO:0000050",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/BFO_0000050"
+      },
+      "BFO:0000050`": {
+        "curie": "BFO:0000050`",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "http://purl.obolibrary.org/obo/BFO_0000050`"
+      },
+      "OMO:0003014": {
+        "curie": "OMO:0003014",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/OMO_0003014"
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000112": {
+        "curie": "IAO:0000112",
+        "hasLocalDefinition": true,
+        "label": [
+          "example of usage"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000233": {
+        "curie": "IAO:0000233",
+        "hasLocalDefinition": true,
+        "label": [
+          "term tracker item"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/created": {
+        "curie": "created",
+        "hasLocalDefinition": true,
+        "label": [
+          "created"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "https://github.com/information-artifact-ontology/IAO/issues/292": {
+        "curie": "iao.issue:292",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "https://github.com/information-artifact-ontology/IAO/issues/292"
+      },
+      "https://orcid.org/0000-0003-4423-4370": {
+        "curie": "orcid:0000-0003-4423-4370",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0003-4423-4370"
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/IAO_0000112",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000233",
+      "http://purl.org/dc/terms/contributor",
+      "http://purl.org/dc/terms/created",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      true
+    ],
+    "shortForm": "OMO_0003014",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "OMO:0004000",
+    "definition": [
+      "An information content entity that is a mark(s) or character(s) used as a conventional representation of another entity."
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000112": "A serial number such as \"12324X\"; a stop sign; a written proper name such as \"OBI",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "An information content entity that is a mark(s) or character(s) used as a conventional representation of another entity.",
+    "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/144",
+    "http://purl.org/dc/terms/contributor": "https://orcid.org/0000-0002-6523-4866",
+    "http://purl.org/dc/terms/created": "2024-03-25",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": "has symbol",
+    "imported": true,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0004000",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "has symbol"
+    ],
+    "linkedEntities": {
+      "http://purl.obolibrary.org/obo/IAO_0000112": {
+        "curie": "IAO:0000112",
+        "hasLocalDefinition": true,
+        "label": [
+          "example of usage"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000233": {
+        "curie": "IAO:0000233",
+        "hasLocalDefinition": true,
+        "label": [
+          "term tracker item"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/created": {
+        "curie": "created",
+        "hasLocalDefinition": true,
+        "label": [
+          "created"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "https://orcid.org/0000-0002-6523-4866": {
+        "curie": "orcid:0000-0002-6523-4866",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0002-6523-4866"
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/IAO_0000112",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000233",
+      "http://purl.org/dc/terms/contributor",
+      "http://purl.org/dc/terms/created",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": [
+      true
+    ],
+    "shortForm": "OMO_0004000",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
     "curie": "RO:0000058",
     "definition": [
-      "A relationship between a generically dependent continuant and a specifically dependent continuant, in which the generically dependent continuant depends on some independent continuant in virtue of the fact that the specifically dependent continuant also depends on that same independent continuant. A generically dependent continuant may be concretized as multiple specifically dependent continuants."
+      "A relationship between a generically dependent continuant and a specifically dependent continuant or process, in which the generically dependent continuant depends on some independent continuant or process in virtue of the fact that the specifically dependent continuant or process also depends on that same independent continuant. A generically dependent continuant may be concretized as multiple specifically dependent continuants or processes."
     ],
     "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
     "hasDirectChildren": false,
@@ -8469,11 +11416,17 @@
       "A journal article is an information artifact that inheres in some number of printed journals. For each copy of the printed journal there is some quality that carries the journal article, such as a pattern of ink. The journal article (a generically dependent continuant) is concretized as the quality (a specifically dependent continuant), and both depend on that copy of the printed journal (an independent continuant).",
       "An investigator reads a protocol and forms a plan to carry out an assay. The plan is a realizable entity (a specifically dependent continuant) that concretizes the protocol (a generically dependent continuant), and both depend on the investigator (an independent continuant). The plan is then realized by the assay (a process)."
     ],
-    "http://purl.obolibrary.org/obo/IAO_0000115": "A relationship between a generically dependent continuant and a specifically dependent continuant, in which the generically dependent continuant depends on some independent continuant in virtue of the fact that the specifically dependent continuant also depends on that same independent continuant. A generically dependent continuant may be concretized as multiple specifically dependent continuants.",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A relationship between a generically dependent continuant and a specifically dependent continuant or process, in which the generically dependent continuant depends on some independent continuant or process in virtue of the fact that the specifically dependent continuant or process also depends on that same independent continuant. A generically dependent continuant may be concretized as multiple specifically dependent continuants or processes.",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
     "http://www.w3.org/2000/01/rdf-schema#domain": "http://purl.obolibrary.org/obo/BFO_0000031",
     "http://www.w3.org/2000/01/rdf-schema#label": "is concretized as",
-    "http://www.w3.org/2000/01/rdf-schema#range": "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://www.w3.org/2000/01/rdf-schema#range": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+      "http://www.w3.org/2002/07/owl#unionOf": [
+        "http://purl.obolibrary.org/obo/BFO_0000015",
+        "http://purl.obolibrary.org/obo/BFO_0000020"
+      ]
+    },
     "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/RO_0000059",
     "imported": true,
     "iri": "http://purl.obolibrary.org/obo/RO_0000058",
@@ -8484,6 +11437,18 @@
       "is concretized as"
     ],
     "linkedEntities": {
+      "http://purl.obolibrary.org/obo/BFO_0000015": {
+        "curie": "BFO:0000015",
+        "hasLocalDefinition": true,
+        "label": [
+          "process"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
       "http://purl.obolibrary.org/obo/BFO_0000020": {
         "curie": "BFO:0000020",
         "hasLocalDefinition": true,
@@ -8594,6 +11559,7 @@
       }
     },
     "linksTo": [
+      "http://purl.obolibrary.org/obo/BFO_0000015",
       "http://purl.obolibrary.org/obo/BFO_0000020",
       "http://purl.obolibrary.org/obo/BFO_0000031",
       "http://purl.obolibrary.org/obo/IAO_0000112",
@@ -8610,7 +11576,7 @@
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": [
       "A journal article is an information artifact that inheres in some number of printed journals. For each copy of the printed journal there is some quality that carries the journal article, such as a pattern of ink. The journal article (a generically dependent continuant) is concretized as the quality (a specifically dependent continuant), and both depend on that copy of the printed journal (an independent continuant).",
-      "A relationship between a generically dependent continuant and a specifically dependent continuant, in which the generically dependent continuant depends on some independent continuant in virtue of the fact that the specifically dependent continuant also depends on that same independent continuant. A generically dependent continuant may be concretized as multiple specifically dependent continuants.",
+      "A relationship between a generically dependent continuant and a specifically dependent continuant or process, in which the generically dependent continuant depends on some independent continuant or process in virtue of the fact that the specifically dependent continuant or process also depends on that same independent continuant. A generically dependent continuant may be concretized as multiple specifically dependent continuants or processes.",
       "An investigator reads a protocol and forms a plan to carry out an assay. The plan is a realizable entity (a specifically dependent continuant) that concretizes the protocol (a generically dependent continuant), and both depend on the investigator (an independent continuant). The plan is then realized by the assay (a process).",
       true
     ],
@@ -8627,7 +11593,7 @@
     ],
     "curie": "RO:0000059",
     "definition": [
-      "A relationship between a specifically dependent continuant and a generically dependent continuant, in which the generically dependent continuant depends on some independent continuant in virtue of the fact that the specifically dependent continuant also depends on that same independent continuant. Multiple specifically dependent continuants can concretize the same generically dependent continuant."
+      "A relationship between a specifically dependent continuant or process and a generically dependent continuant, in which the generically dependent continuant depends on some independent continuant in virtue of the fact that the specifically dependent continuant or process also depends on that same independent continuant. Multiple specifically dependent continuants or processes can concretize the same generically dependent continuant."
     ],
     "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
     "hasDirectChildren": false,
@@ -8638,9 +11604,15 @@
       "A journal article is an information artifact that inheres in some number of printed journals. For each copy of the printed journal there is some quality that carries the journal article, such as a pattern of ink. The quality (a specifically dependent continuant) concretizes the journal article (a generically dependent continuant), and both depend on that copy of the printed journal (an independent continuant).",
       "An investigator reads a protocol and forms a plan to carry out an assay. The plan is a realizable entity (a specifically dependent continuant) that concretizes the protocol (a generically dependent continuant), and both depend on the investigator (an independent continuant). The plan is then realized by the assay (a process)."
     ],
-    "http://purl.obolibrary.org/obo/IAO_0000115": "A relationship between a specifically dependent continuant and a generically dependent continuant, in which the generically dependent continuant depends on some independent continuant in virtue of the fact that the specifically dependent continuant also depends on that same independent continuant. Multiple specifically dependent continuants can concretize the same generically dependent continuant.",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A relationship between a specifically dependent continuant or process and a generically dependent continuant, in which the generically dependent continuant depends on some independent continuant in virtue of the fact that the specifically dependent continuant or process also depends on that same independent continuant. Multiple specifically dependent continuants or processes can concretize the same generically dependent continuant.",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-    "http://www.w3.org/2000/01/rdf-schema#domain": "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://www.w3.org/2000/01/rdf-schema#domain": {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+      "http://www.w3.org/2002/07/owl#unionOf": [
+        "http://purl.obolibrary.org/obo/BFO_0000015",
+        "http://purl.obolibrary.org/obo/BFO_0000020"
+      ]
+    },
     "http://www.w3.org/2000/01/rdf-schema#label": "concretizes",
     "http://www.w3.org/2000/01/rdf-schema#range": "http://purl.obolibrary.org/obo/BFO_0000031",
     "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/RO_0000058",
@@ -8653,6 +11625,18 @@
       "concretizes"
     ],
     "linkedEntities": {
+      "http://purl.obolibrary.org/obo/BFO_0000015": {
+        "curie": "BFO:0000015",
+        "hasLocalDefinition": true,
+        "label": [
+          "process"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "class",
+          "entity"
+        ]
+      },
       "http://purl.obolibrary.org/obo/BFO_0000020": {
         "curie": "BFO:0000020",
         "hasLocalDefinition": true,
@@ -8763,6 +11747,7 @@
       }
     },
     "linksTo": [
+      "http://purl.obolibrary.org/obo/BFO_0000015",
       "http://purl.obolibrary.org/obo/BFO_0000020",
       "http://purl.obolibrary.org/obo/BFO_0000031",
       "http://purl.obolibrary.org/obo/IAO_0000112",
@@ -8779,7 +11764,7 @@
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": [
       "A journal article is an information artifact that inheres in some number of printed journals. For each copy of the printed journal there is some quality that carries the journal article, such as a pattern of ink. The quality (a specifically dependent continuant) concretizes the journal article (a generically dependent continuant), and both depend on that copy of the printed journal (an independent continuant).",
-      "A relationship between a specifically dependent continuant and a generically dependent continuant, in which the generically dependent continuant depends on some independent continuant in virtue of the fact that the specifically dependent continuant also depends on that same independent continuant. Multiple specifically dependent continuants can concretize the same generically dependent continuant.",
+      "A relationship between a specifically dependent continuant or process and a generically dependent continuant, in which the generically dependent continuant depends on some independent continuant in virtue of the fact that the specifically dependent continuant or process also depends on that same independent continuant. Multiple specifically dependent continuants or processes can concretize the same generically dependent continuant.",
       "An investigator reads a protocol and forms a plan to carry out an assay. The plan is a realizable entity (a specifically dependent continuant) that concretizes the protocol (a generically dependent continuant), and both depend on the investigator (an independent continuant). The plan is then realized by the assay (a process).",
       true
     ],
@@ -9333,7 +12318,7 @@
     ],
     "http://purl.obolibrary.org/obo/IAO_0000118": "located_in",
     "http://purl.obolibrary.org/obo/RO_0001900": "http://purl.obolibrary.org/obo/RO_0001901",
-    "http://purl.org/dc/elements/1.1/source": "http://www.obofoundry.org/ro/#OBO_REL:located_in",
+    "http://purl.org/dc/terms/source": "http://www.obofoundry.org/ro/#OBO_REL:located_in",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
       "http://www.w3.org/2002/07/owl#ObjectProperty",
       "http://www.w3.org/2002/07/owl#TransitiveProperty"
@@ -9515,7 +12500,7 @@
         "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
         "url": "http://purl.obolibrary.org/obo/RO_0001901"
       },
-      "http://purl.org/dc/elements/1.1/source": {
+      "http://purl.org/dc/terms/source": {
         "curie": "source",
         "hasLocalDefinition": true,
         "label": [
@@ -9584,7 +12569,7 @@
       "http://purl.obolibrary.org/obo/IAO_0000118",
       "http://purl.obolibrary.org/obo/RO_0001015",
       "http://purl.obolibrary.org/obo/RO_0001900",
-      "http://purl.org/dc/elements/1.1/source",
+      "http://purl.org/dc/terms/source",
       "http://www.w3.org/2000/01/rdf-schema#domain",
       "http://www.w3.org/2000/01/rdf-schema#label",
       "http://www.w3.org/2000/01/rdf-schema#range"
@@ -10003,6 +12988,38 @@
     "appearsIn": [
       "duo"
     ],
+    "curie": "contributor",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "imported": true,
+    "iri": "http://purl.org/dc/terms/contributor",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "contributor"
+    ],
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": true,
+    "shortForm": "contributor",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
     "curie": "coverage",
     "hasDirectChildren": false,
     "hasDirectParents": false,
@@ -10025,6 +13042,38 @@
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": true,
     "shortForm": "coverage",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "created",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "imported": true,
+    "iri": "http://purl.org/dc/terms/created",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "created"
+    ],
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": true,
+    "shortForm": "created",
     "type": [
       "annotationProperty",
       "entity",
@@ -10330,6 +13379,38 @@
     "hasHierarchicalParents": false,
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
     "imported": true,
+    "iri": "http://purl.org/dc/elements/1.1/license",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "license"
+    ],
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": true,
+    "shortForm": "license",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "license",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "imported": true,
     "iri": "http://purl.org/dc/terms/license",
     "isDefiningOntology": false,
     "isObsolete": false,
@@ -10555,6 +13636,38 @@
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
     "imported": true,
     "iri": "http://purl.org/dc/elements/1.1/source",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "source"
+    ],
+    "linkedEntities": {},
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": true,
+    "shortForm": "source",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo"
+    ],
+    "curie": "source",
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "imported": true,
+    "iri": "http://purl.org/dc/terms/source",
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
@@ -11019,6 +14132,7 @@
     "http://purl.obolibrary.org/obo/IAO_0000119": "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
     "http://www.w3.org/2000/01/rdf-schema#comment": "Consider re-defing to: An alternative name for a class or property which can mean the same thing as the preferred name (semantically equivalent, narrow, broad or related).",
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://purl.obolibrary.org/obo/iao.owl",
     "http://www.w3.org/2000/01/rdf-schema#label": "alternative label",
     "imported": true,
     "iri": "http://purl.obolibrary.org/obo/IAO_0000118",
@@ -11121,6 +14235,21 @@
           "property"
         ]
       },
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
+        "curie": "RDFS:isDefinedBy",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "isDefinedBy"
+        ],
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
       "http://www.w3.org/2000/01/rdf-schema#label": {
         "curie": "RDFS:label",
         "definedBy": [
@@ -11145,6 +14274,7 @@
       "http://purl.obolibrary.org/obo/IAO_0000119",
       "http://purl.obolibrary.org/obo/IAO_0000125",
       "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
       "http://www.w3.org/2000/01/rdf-schema#label"
     ],
     "numDescendants": 4.0,
@@ -12201,26 +15331,142 @@
     "definedBy": [
       "oio"
     ],
+    "definition": [
+      "An annotation property that links an ontology entity or a statement to a prefixed identifier or URI."
+    ],
+    "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
     "hasDirectChildren": false,
     "hasDirectParents": false,
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": false,
+    "http://purl.obolibrary.org/obo/IAO_0000112": "disease characteristic (MONDO:0021125) has cross-reference (http://www.geneontology.org/formats/oboInOwl#hasDbXref) \"NCIT:C41009\"^^xsd:string",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "An annotation property that links an ontology entity or a statement to a prefixed identifier or URI.",
+    "http://purl.obolibrary.org/obo/IAO_0000233": "https://github.com/information-artifact-ontology/ontology-metadata/issues/123",
+    "http://purl.org/dc/terms/contributor": "https://orcid.org/0000-0002-7356-1779",
+    "http://purl.org/dc/terms/created": "2024-03-18",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": "has cross-reference",
     "imported": false,
     "iri": "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
     "isDefiningOntology": false,
     "isObsolete": false,
     "isPreferredRoot": false,
     "label": [
-      "hasDbXref"
+      "has cross-reference"
     ],
-    "linkedEntities": {},
+    "linkedEntities": {
+      "MONDO:0021125": {
+        "curie": "MONDO:0021125",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/MONDO_0021125"
+      },
+      "NCIT:C41009": {
+        "curie": "NCIT:C41009",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "http://purl.obolibrary.org/obo/NCIT_C41009"
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000112": {
+        "curie": "IAO:0000112",
+        "hasLocalDefinition": true,
+        "label": [
+          "example of usage"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000115": {
+        "curie": "IAO:0000115",
+        "hasLocalDefinition": true,
+        "label": [
+          "definition"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.obolibrary.org/obo/IAO_0000233": {
+        "curie": "IAO:0000233",
+        "hasLocalDefinition": true,
+        "label": [
+          "term tracker item"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/contributor": {
+        "curie": "contributor",
+        "hasLocalDefinition": true,
+        "label": [
+          "contributor"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://purl.org/dc/terms/created": {
+        "curie": "created",
+        "hasLocalDefinition": true,
+        "label": [
+          "created"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "annotationProperty",
+          "entity",
+          "property"
+        ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 4.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "https://orcid.org/0000-0002-7356-1779": {
+        "curie": "orcid:0000-0002-7356-1779",
+        "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+        "url": "https://orcid.org/0000-0002-7356-1779"
+      }
+    },
+    "linksTo": [
+      "http://purl.obolibrary.org/obo/IAO_0000112",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000233",
+      "http://purl.org/dc/terms/contributor",
+      "http://purl.org/dc/terms/created",
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
     "ontologyId": "duo",
     "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontologyPreferredPrefix": "DUO",
-    "searchableAnnotationValues": false,
+    "searchableAnnotationValues": [
+      false
+    ],
     "shortForm": "OIO_hasDbXref",
     "type": [
       "annotationProperty",
@@ -13195,7 +16441,7 @@
     ],
     "curie": "IAO:0000233",
     "definition": [
-      "An IRI or similar locator for a request or discussion of an ontology term.",
+      "A URL for a request or discussion of an ontology term.",
       "The 'tracker item' can associate a tracker with a specific ontology term."
     ],
     "definitionProperty": [
@@ -13207,14 +16453,15 @@
     "hasHierarchicalChildren": false,
     "hasHierarchicalParents": false,
     "http://purl.obolibrary.org/obo/IAO_0000111": "term tracker item",
-    "http://purl.obolibrary.org/obo/IAO_0000112": "the URI for an OBI Terms ticket at sourceforge, such as https://sourceforge.net/p/obi/obi-terms/772/",
+    "http://purl.obolibrary.org/obo/IAO_0000112": "the URL for an ontology term tracker issue, such as https://github.com/monarch-initiative/mondo/issues/7588",
     "http://purl.obolibrary.org/obo/IAO_0000114": "http://purl.obolibrary.org/obo/IAO_0000125",
-    "http://purl.obolibrary.org/obo/IAO_0000115": "An IRI or similar locator for a request or discussion of an ontology term.",
+    "http://purl.obolibrary.org/obo/IAO_0000115": "A URL for a request or discussion of an ontology term.",
     "http://purl.obolibrary.org/obo/IAO_0000117": "Person: Jie Zheng, Chris Stoeckert, Alan Ruttenberg",
     "http://purl.obolibrary.org/obo/IAO_0000119": "Person: Jie Zheng, Chris Stoeckert, Alan Ruttenberg",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
     "http://www.w3.org/2000/01/rdf-schema#comment": "The 'tracker item' can associate a tracker with a specific ontology term.",
     "http://www.w3.org/2000/01/rdf-schema#label": "term tracker item",
+    "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#anyURI",
     "imported": true,
     "iri": "http://purl.obolibrary.org/obo/IAO_0000233",
     "isDefiningOntology": false,
@@ -13343,6 +16590,26 @@
           "entity",
           "property"
         ]
+      },
+      "http://www.w3.org/2000/01/rdf-schema#range": {
+        "curie": "RDFS:range",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "range"
+        ],
+        "numAppearsIn": 2.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      },
+      "https://github.com/monarch-initiative/mondo/issues/7588": {
+        "curie": "mondo.issue:7588",
+        "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+        "url": "https://github.com/monarch-initiative/mondo/issues/7588"
       }
     },
     "linksTo": [
@@ -13354,7 +16621,8 @@
       "http://purl.obolibrary.org/obo/IAO_0000119",
       "http://purl.obolibrary.org/obo/IAO_0000125",
       "http://www.w3.org/2000/01/rdf-schema#comment",
-      "http://www.w3.org/2000/01/rdf-schema#label"
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#range"
     ],
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
@@ -13362,10 +16630,10 @@
     "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
     "ontologyPreferredPrefix": "DUO",
     "searchableAnnotationValues": [
-      "An IRI or similar locator for a request or discussion of an ontology term.",
+      "A URL for a request or discussion of an ontology term.",
       "Person: Jie Zheng, Chris Stoeckert, Alan Ruttenberg",
       "term tracker item",
-      "the URI for an OBI Terms ticket at sourceforge, such as https://sourceforge.net/p/obi/obi-terms/772/",
+      "the URL for an ontology term tracker issue, such as https://github.com/monarch-initiative/mondo/issues/7588",
       true
     ],
     "shortForm": "IAO_0000233",
@@ -14167,7 +17435,7 @@
     "http://purl.obolibrary.org/obo/IAO_0000115": "a relation between a process and a continuant, in which the continuant is somehow involved in the process",
     "http://purl.obolibrary.org/obo/IAO_0000116": "Has_participant is a primitive instance-level relation between a process, a continuant, and a time at which the continuant participates in some way in the process. The relation obtains, for example, when this particular process of oxygen exchange across this particular alveolar membrane has_participant this particular sample of hemoglobin at this particular time.",
     "http://purl.obolibrary.org/obo/IAO_0000118": "has_participant",
-    "http://purl.org/dc/elements/1.1/source": "http://www.obofoundry.org/ro/#OBO_REL:has_participant",
+    "http://purl.org/dc/terms/source": "http://www.obofoundry.org/ro/#OBO_REL:has_participant",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
     "http://www.w3.org/2000/01/rdf-schema#domain": "http://purl.obolibrary.org/obo/BFO_0000003",
     "http://www.w3.org/2000/01/rdf-schema#label": "has participant",
@@ -14284,7 +17552,7 @@
           "property"
         ]
       },
-      "http://purl.org/dc/elements/1.1/source": {
+      "http://purl.org/dc/terms/source": {
         "curie": "source",
         "hasLocalDefinition": true,
         "label": [
@@ -14352,7 +17620,7 @@
       "http://purl.obolibrary.org/obo/IAO_0000116",
       "http://purl.obolibrary.org/obo/IAO_0000118",
       "http://purl.obolibrary.org/obo/RO_0000056",
-      "http://purl.org/dc/elements/1.1/source",
+      "http://purl.org/dc/terms/source",
       "http://www.w3.org/2000/01/rdf-schema#domain",
       "http://www.w3.org/2000/01/rdf-schema#label",
       "http://www.w3.org/2000/01/rdf-schema#range"
@@ -16693,6 +19961,42 @@
     "type": [
       "entity",
       "objectProperty",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "duo",
+      "oio"
+    ],
+    "curie": "OIO:SynonymTypeProperty",
+    "definedBy": [
+      "oio"
+    ],
+    "hasDirectChildren": true,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "imported": true,
+    "iri": "http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty",
+    "isDefiningOntology": false,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "SynonymTypeProperty"
+    ],
+    "linkedEntities": {},
+    "numDescendants": 13.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "duo",
+    "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPreferredPrefix": "DUO",
+    "searchableAnnotationValues": true,
+    "shortForm": "OIO_SynonymTypeProperty",
+    "type": [
+      "annotationProperty",
+      "entity",
       "property"
     ]
   },

@@ -169,6 +169,7 @@
       ]
     },
     "description": [
+      "A continuant that is a bearer of quality and realizable entity entities, in which other entities inhere and which itself cannot inhere in anything.",
       "b is an independent continuant = Def. b is a continuant which is such that there is no c and no t such that b s-depends_on c at t. (axiom label in BFO2 Reference: [017-002])"
     ],
     "has_children": true,
@@ -672,6 +673,7 @@
       ]
     },
     "description": [
+      "A continuant that inheres in or is borne by other entities. Every instance of A requires some specific instance of B which must always be the same.",
       "b is a specifically dependent continuant = Def. b is a continuant & there is some independent continuant c which is not a spatial region and which is such that b s-depends_on c at every time t during the course of b’s existence. (axiom label in BFO2 Reference: [050-003])"
     ],
     "has_children": true,
@@ -1232,6 +1234,7 @@
       ]
     },
     "description": [
+      "A continuant that is dependent on one or other independent continuant bearers. For every instance of A requires some instance of (an independent continuant type) B but which instance of B serves can change from time to time.",
       "b is a generically dependent continuant = Def. b is a continuant that g-depends_on one or more other entities. (axiom label in BFO2 Reference: [074-001])"
     ],
     "has_children": true,
@@ -3953,6 +3956,7 @@
     },
     "annotation": {
       "alternative label": [
+        "data item",
         "data"
       ],
       "editor note": [
@@ -3962,7 +3966,7 @@
         "JAR: datum     -- well, this will be very tricky to define, but maybe some \ninformation-like stuff that might be put into a computer and that is \nmeant, by someone, to denote and/or to be interpreted by some \nprocess... I would include lists, tables, sentences... I think I might \ndefer to Barry, or to Brian Cantwell Smith\n\nJAR: A data item is an approximately justified approximately true approximate belief"
       ],
       "editor preferred term": [
-        "data item"
+        "data entity"
       ],
       "example of usage": [
         "Data items include counts of things, analyte concentrations, and statistical summaries."
@@ -3977,7 +3981,7 @@
       ]
     },
     "description": [
-      "An information content entity that is intended to be a truthful statement about something (modulo, e.g., measurement precision or other systematic errors) and is constructed/acquired by a method which reliably tends to produce (approximately) truthful statements."
+      "An information content entity that is intended to be one or more truthful statement(s) about something (modulo, e.g., measurement precision or other systematic errors) and is constructed/acquired by a method which reliably tends to produce (approximately) truthful statements."
     ],
     "has_children": true,
     "iri": "http://purl.obolibrary.org/obo/IAO_0000027",
@@ -3985,7 +3989,7 @@
     "is_obsolete": false,
     "is_preferred_root": false,
     "is_root": false,
-    "label": "data item",
+    "label": "data entity",
     "lang": "en",
     "obo_id": "IAO:0000027",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
@@ -5171,6 +5175,9 @@
       "term editor": [
         "PERSON: Alan Ruttenberg",
         "PlanAndPlannedProcess Branch"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/IAO/issues/172"
       ]
     },
     "description": [
@@ -5228,15 +5235,17 @@
       }
     },
     "annotation": {
+      "alternative label": [
+        "data set"
+      ],
       "definition source": [
-        "OBI_0000042",
         "group:OBI"
       ],
       "editor note": [
         "2009/10/23 Alan Ruttenberg. The intention is that this term represent collections of like data. So this isn't for, e.g. the whole contents of a cel file, which includes parameters, metadata etc. This is more like java arrays of a certain rather specific type"
       ],
       "editor preferred term": [
-        "data set"
+        "homogenous data collection"
       ],
       "example of usage": [
         "Intensity values in a CEL file or from multiple CEL files comprise a data set (as opposed to the CEL files themselves)."
@@ -5258,7 +5267,7 @@
     "is_obsolete": false,
     "is_preferred_root": false,
     "is_root": false,
-    "label": "data set",
+    "label": "homogenous data collection",
     "lang": "en",
     "obo_id": "IAO:0000100",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
@@ -5425,6 +5434,13 @@
       }
     },
     "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0001-6875-5360",
+        "https://orcid.org/0000-0002-7356-1779"
+      ],
+      "editor note": [
+        "Terms created as placeholders with the expectation of being permanent should instead be deprecated using the \"placeholder removed\" (obo:IAO_0000226) justification."
+      ],
       "editor preferred term": [
         "failed exploratory term"
       ],
@@ -5433,7 +5449,7 @@
       ]
     },
     "description": [
-      "The term was used in an attempt to structure part of the ontology but in retrospect failed to do a good job"
+      "The term was initially used in an attempt to structure part of the ontology, but in retrospect failed to do a good job."
     ],
     "has_children": false,
     "iri": "http://purl.obolibrary.org/obo/IAO_0000103",
@@ -5688,7 +5704,7 @@
       ]
     },
     "description": [
-      "Term created to ease viewing/sort terms for development purpose, and will not be included in a release"
+      "The term was created to ease viewing/sorting terms for development purposes, but will not be included in a release."
     ],
     "has_children": false,
     "iri": "http://purl.obolibrary.org/obo/IAO_0000121",
@@ -6744,11 +6760,20 @@
       }
     },
     "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0001-6875-5360",
+        "https://orcid.org/0000-0002-7356-1779"
+      ],
+      "editor note": [
+        "This reason is appropriate for a temporary term even if no permanent term is defined; for example if the need for the term no longer exists. If a permanent (replacement) term is defined, the deprecated term should reference the replacement with IAO:0100001. If no replacement is defined, it may be appropriate to reference alternative terms with oboInOwl:consider."
+      ],
       "editor preferred term": [
         "placeholder removed"
       ]
     },
-    "description": [],
+    "description": [
+      "The term was created to temporarily stand in for a semantic purpose, but is no longer needed, typically due to another permanent term being defined."
+    ],
     "has_children": false,
     "iri": "http://purl.obolibrary.org/obo/IAO_0000226",
     "is_defining_ontology": false,
@@ -6789,14 +6814,20 @@
       }
     },
     "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0001-6875-5360",
+        "https://orcid.org/0000-0002-7356-1779"
+      ],
       "editor note": [
-        "An editor note should explain what were the merged terms and the reason for the merge."
+        "The deprecated term should reference the merged term with obo:IAO_0100001. The replacement term should reference the original terms as sources using obo:RO_0001000 (derives_from). An editor note should explain what were the merged terms and the reason for the merge."
       ],
       "editor preferred term": [
         "terms merged"
       ]
     },
-    "description": [],
+    "description": [
+      "The term has been combined with one or more other terms to create a more encompassing (merged) term."
+    ],
     "has_children": false,
     "iri": "http://purl.obolibrary.org/obo/IAO_0000227",
     "is_defining_ontology": false,
@@ -6837,14 +6868,20 @@
       }
     },
     "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0001-6875-5360",
+        "https://orcid.org/0000-0002-7356-1779"
+      ],
       "editor note": [
-        "This is to be used when the original term has been replaced by a term imported from an other ontology. An editor note should indicate what is the URI of the new term to use."
+        "This is to be used when the original term has been replaced by a term imported from an other ontology. The deprecated term should reference the imported term with obo:IAO_0100001."
       ],
       "editor preferred term": [
         "term imported"
       ]
     },
-    "description": [],
+    "description": [
+      "The term has been replaced by a term imported from another ontology."
+    ],
     "has_children": false,
     "iri": "http://purl.obolibrary.org/obo/IAO_0000228",
     "is_defining_ontology": false,
@@ -6885,14 +6922,20 @@
       }
     },
     "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0001-6875-5360",
+        "https://orcid.org/0000-0002-7356-1779"
+      ],
       "editor note": [
-        "This is to be used when a term has been split in two or more new terms. An editor note should indicate the reason for the split and indicate the URIs of the new terms created."
+        "This is to be used when a term has been split in two or more new terms. An editor note should indicate the reason for the split. The deprecated term should reference the replacement terms with obo:IAO_0100001."
       ],
       "editor preferred term": [
         "term split"
       ]
     },
-    "description": [],
+    "description": [
+      "The term has been split into two or more new terms."
+    ],
     "has_children": false,
     "iri": "http://purl.obolibrary.org/obo/IAO_0000229",
     "is_defining_ontology": false,
@@ -13328,6 +13371,59 @@
   {
     "_links": {
       "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000651/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000651/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000651/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000651/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000651/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000651/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000651?lang=en"
+      }
+    },
+    "annotation": {
+      "editor note": [
+        "This term should not be confused with dc:title - this term represents the component of the document where the title appears, and not the value of the title itself."
+      ],
+      "term editor": [
+        "Charles Tapley Hoyt"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/IAO/issues/286"
+      ]
+    },
+    "description": [
+      "the section of the document where the title appears"
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000651",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "title section",
+    "lang": "en",
+    "obo_id": "IAO:0000651",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0000651",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
         "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0000701/ancestors"
       },
       "graph": {
@@ -13837,6 +13933,75 @@
     "ontology_name": "duo",
     "ontology_prefix": "DUO",
     "short_form": "IAO_0000708",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0001000/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0001000/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0001000/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0001000/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0001000/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0001000/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0001000/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0001000/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0001000/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0001000/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FIAO_0001000?lang=en"
+      }
+    },
+    "annotation": {
+      "alternative label": [
+        "data set"
+      ],
+      "editor preferred term": [
+        "data collection"
+      ],
+      "term editor": [
+        "Sebastian Duesing"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/IAO/issues/283",
+        "https://github.com/obi-ontology/obi/issues/1877"
+      ]
+    },
+    "description": [
+      "A data entity that consists of multiple data entities."
+    ],
+    "has_children": true,
+    "iri": "http://purl.obolibrary.org/obo/IAO_0001000",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "data collection",
+    "lang": "en",
+    "obo_id": "IAO:0001000",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "IAO_0001000",
     "synonyms": []
   },
   {
@@ -15577,8 +15742,12 @@
       }
     },
     "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0001-6875-5360",
+        "https://orcid.org/0000-0002-7356-1779"
+      ],
       "editor note": [
-        "This obsolesence reason should be used conservatively. Typical valid examples are: un-necessary grouping classes in disease ontologies, a phenotype term added on the assumption it was a disease."
+        "This obsolesence reason should be used conservatively. Typical valid examples in disease ontologies are: unnecessary class grouping; mistaked creation of a disease associated to a phenotype."
       ],
       "ontology term requester": [
         "https://orcid.org/0000-0001-5208-3432"
@@ -15606,6 +15775,62 @@
     "ontology_name": "duo",
     "ontology_prefix": "DUO",
     "short_form": "OMO_0001000",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001002/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001002/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001002/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001002/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001002/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001002/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001002?lang=en"
+      }
+    },
+    "annotation": {
+      "editor note": [
+        "This obsolesence reason should be used conservatively. For example: Obsoleting class that describes a breed of cow based on a record in an existing database, that was later retracted as faulty (breed does not exist). Do not use this term to obsolete a historic concept (that was once valid, but not anymore). "
+      ],
+      "ontology term requester": [
+        "https://orcid.org/0000-0002-4142-7153"
+      ],
+      "term editor": [
+        "http://orcid.org/0000-0002-4142-7153"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/136"
+      ]
+    },
+    "description": [
+      "The term was added to the ontology on the assumption it was a valid domain entity, but it turns out the entity does not exist in reality."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0001002",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "domain entity does not exist",
+    "lang": "en",
+    "obo_id": "OMO:0001002",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OMO_0001002",
     "synonyms": []
   },
   {
@@ -15926,7 +16151,9 @@
         "http://purl.obolibrary.org/obo/uo.owl"
       ]
     },
-    "description": [],
+    "description": [
+      "A unit which is a standard measure of the distance between two points."
+    ],
     "has_children": false,
     "iri": "http://purl.obolibrary.org/obo/UO_0000001",
     "is_defining_ontology": false,
@@ -15974,7 +16201,9 @@
         "http://purl.obolibrary.org/obo/uo.owl"
       ]
     },
-    "description": [],
+    "description": [
+      "A unit which is a standard measure of the amount of matter/energy of a physical object."
+    ],
     "has_children": false,
     "iri": "http://purl.obolibrary.org/obo/UO_0000002",
     "is_defining_ontology": false,
@@ -16022,7 +16251,9 @@
         "http://purl.obolibrary.org/obo/uo.owl"
       ]
     },
-    "description": [],
+    "description": [
+      "A unit which is a standard measure of the dimension in which events occur in sequence."
+    ],
     "has_children": false,
     "iri": "http://purl.obolibrary.org/obo/UO_0000003",
     "is_defining_ontology": false,
