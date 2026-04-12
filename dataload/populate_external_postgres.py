@@ -133,14 +133,24 @@ def load_table(
         size = sizeof_fmt(pgbin.stat().st_size)
         print(f"    [{i}/{len(pgbin_files)}] {pgbin.name} ({size})")
 
+    # Verify ols_tsvector exists and is immutable before attempting CREATE TABLE
+    check = subprocess.run(
+        ["psql", "-v", "ON_ERROR_STOP=1", "-t", "-A", "-c",
+         "SELECT provolatile FROM pg_proc JOIN pg_namespace ON pronamespace=pg_namespace.oid "
+         "WHERE proname='ols_tsvector' ORDER BY nspname;"],
+        text=True, capture_output=True,
+    )
+    print(f"  ols_tsvector provolatile check: rc={check.returncode} out={check.stdout.strip()!r} err={check.stderr.strip()!r}")
+
     proc = subprocess.run(
         ["psql", "-v", "ON_ERROR_STOP=1"],
         input=script, text=True,
         capture_output=True,
     )
     if proc.returncode != 0:
-        msg = proc.stderr.strip() or proc.stdout.strip()
-        raise RuntimeError(f"{table_name} load failed: {msg}")
+        print(f"  FULL STDOUT:\n{proc.stdout}")
+        print(f"  FULL STDERR:\n{proc.stderr}")
+        raise RuntimeError(f"{table_name} load failed: {proc.stderr.strip() or proc.stdout.strip()}")
 
     elapsed = time.time() - t0
     rate = total_bytes / elapsed / 1024 / 1024 if elapsed > 0 else 0
