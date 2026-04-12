@@ -24,6 +24,13 @@ from pathlib import Path
 EXTENSIONS_SQL = """\
 CREATE EXTENSION IF NOT EXISTS vector;
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
+
+-- Immutable wrapper required for use in GENERATED ALWAYS AS columns.
+-- to_tsvector() is only STABLE in the pg catalog; this wrapper is safe
+-- because we always pass a fixed compile-time regconfig OID.
+CREATE OR REPLACE FUNCTION ols_tsvector(regconfig, text)
+    RETURNS tsvector LANGUAGE sql IMMUTABLE PARALLEL SAFE AS
+    'SELECT to_tsvector($1, $2)';
 """
 
 ENTITIES_TABLE_SQL = """\
@@ -61,11 +68,11 @@ CREATE TABLE ols_entities (
 
     -- Full-text search vector (computed automatically on insert)
     ts_search tsvector GENERATED ALWAYS AS (
-        setweight(to_tsvector('pg_catalog.english'::regconfig, coalesce(array_to_string(label, ' '), '')), 'A') ||
-        setweight(to_tsvector('pg_catalog.english'::regconfig, coalesce(short_form, '') || ' ' || coalesce(curie, '')), 'B') ||
-        setweight(to_tsvector('pg_catalog.english'::regconfig, coalesce(array_to_string(synonym, ' '), '')), 'B') ||
-        setweight(to_tsvector('pg_catalog.english'::regconfig, coalesce(array_to_string(definition, ' '), '')), 'C') ||
-        setweight(to_tsvector('pg_catalog.english'::regconfig, coalesce(iri, '')), 'D')
+        setweight(ols_tsvector('pg_catalog.english'::regconfig, coalesce(array_to_string(label, ' '), '')), 'A') ||
+        setweight(ols_tsvector('pg_catalog.english'::regconfig, coalesce(short_form, '') || ' ' || coalesce(curie, '')), 'B') ||
+        setweight(ols_tsvector('pg_catalog.english'::regconfig, coalesce(array_to_string(synonym, ' '), '')), 'B') ||
+        setweight(ols_tsvector('pg_catalog.english'::regconfig, coalesce(array_to_string(definition, ' '), '')), 'C') ||
+        setweight(ols_tsvector('pg_catalog.english'::regconfig, coalesce(iri, '')), 'D')
     ) STORED,
 
     -- First label for autocomplete grouping / trigram matching
