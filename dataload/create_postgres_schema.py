@@ -59,8 +59,14 @@ CREATE TABLE ols_entities (
     related_to TEXT[] DEFAULT '{}',
     curated_from_sources TEXT[] DEFAULT '{}',
 
-    -- Full-text search vector (populated post-load)
-    ts_search tsvector,
+    -- Full-text search vector (computed automatically on insert)
+    ts_search tsvector GENERATED ALWAYS AS (
+        setweight(to_tsvector('english', coalesce(array_to_string(label, ' '), '')), 'A') ||
+        setweight(to_tsvector('english', coalesce(short_form, '') || ' ' || coalesce(curie, '')), 'B') ||
+        setweight(to_tsvector('english', coalesce(array_to_string(synonym, ' '), '')), 'B') ||
+        setweight(to_tsvector('english', coalesce(array_to_string(definition, ' '), '')), 'C') ||
+        setweight(to_tsvector('english', coalesce(iri, '')), 'D')
+    ) STORED,
 
     -- First label for autocomplete grouping / trigram matching
     label_for_suggest TEXT
@@ -261,14 +267,6 @@ def main():
 
     # -- Post-load computed columns + ANALYZE --
     print("-- SECTION: post_load")
-    print("""\
-UPDATE ols_entities SET ts_search =
-    setweight(to_tsvector('english', coalesce(array_to_string(label, ' '), '')), 'A') ||
-    setweight(to_tsvector('english', coalesce(short_form, '') || ' ' || coalesce(curie, '')), 'B') ||
-    setweight(to_tsvector('english', coalesce(array_to_string(synonym, ' '), '')), 'B') ||
-    setweight(to_tsvector('english', coalesce(array_to_string(definition, ' '), '')), 'C') ||
-    setweight(to_tsvector('english', coalesce(iri, '')), 'D');
-""")
     print("ANALYZE;")
 
 

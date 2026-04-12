@@ -316,7 +316,7 @@ checkpoint_completion_target = 0.9
         print("=== Creating indexes ===")
         run_psql(sections["indexes"], "indexes", env=pg_env)
 
-        # --- Post-load (tsvector, ANALYZE) ---
+        # --- Post-load (ANALYZE) ---
         print("=== Post-load updates ===")
         run_psql(sections["post_load"], "post_load", env=pg_env)
 

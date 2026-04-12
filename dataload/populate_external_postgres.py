@@ -251,7 +251,7 @@ def main():
     print("=== Creating indexes ===")
     run_psql(sections["indexes"], "indexes")
 
-    # --- Post-load updates (tsvector, label_for_suggest, ANALYZE) ---
+    # --- Post-load (ANALYZE) ---
     print("=== Post-load updates ===")
     run_psql(sections["post_load"], "post_load")
 
