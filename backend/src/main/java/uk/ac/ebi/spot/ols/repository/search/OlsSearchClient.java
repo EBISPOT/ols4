@@ -389,7 +389,7 @@ public class OlsSearchClient {
      * Suggest with ontology filtering.
      */
     public List<String> suggestLabels(String prefix, List<String> ontologyIds, int start, int rows) {
-        StringBuilder where = new StringBuilder(" WHERE label_for_suggest % ?");
+        StringBuilder where = new StringBuilder(" WHERE string % ?");
         List<Object> params = new ArrayList<>();
         params.add(prefix);
 
@@ -398,10 +398,9 @@ public class OlsSearchClient {
             params.add(ontologyIds.toArray(new String[0]));
         }
 
-        String sql = "SELECT label_for_suggest, similarity(label_for_suggest, ?) AS sim"
-                + " FROM ols_entities" + where
-                + " GROUP BY label_for_suggest, sim"
-                + " ORDER BY sim DESC, label_for_suggest ASC"
+        String sql = "SELECT DISTINCT string, similarity(string, ?) AS sim"
+                + " FROM ols_autosuggest" + where
+                + " ORDER BY sim DESC, string ASC"
                 + " OFFSET ? LIMIT ?";
 
         List<Object> allParams = new ArrayList<>();
@@ -409,8 +408,6 @@ public class OlsSearchClient {
         allParams.addAll(params);
         allParams.add((long) start);
         allParams.add(rows);
-
-        String countSql = "SELECT COUNT(DISTINCT label_for_suggest) FROM ols_entities" + where;
 
         try (Connection conn = postgresClient.getConnection()) {
             List<String> labels = new ArrayList<>();

@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::fs::File;
 use std::io::{BufWriter, Write};
 
@@ -198,6 +198,8 @@ pub struct OntologyWriter<'a> {
     emb_node_field_count: i16,
     entities_writer: BinaryCopyWriter,
     embedding_nodes_writer: Option<BinaryCopyWriter>,
+    autosuggest_writer: BinaryCopyWriter,
+    autosuggest_seen: HashSet<String>,
 }
 
 impl<'a> OntologyWriter<'a> {
@@ -223,7 +225,7 @@ impl<'a> OntologyWriter<'a> {
         embedding_model_names.sort();
 
         // Field counts (must match create_postgres_schema.py column order)
-        let entity_field_count = (28 + filter_property_names.len() + embedding_model_names.len()) as i16;
+        let entity_field_count = (29 + filter_property_names.len() + embedding_model_names.len()) as i16;
         let emb_node_field_count = (3 + embedding_model_names.len()) as i16;
 
         // Create binary COPY files
@@ -237,6 +239,9 @@ impl<'a> OntologyWriter<'a> {
             None
         };
 
+        let autosuggest_file = File::create(format!("{}/{}_autosuggest.pgbin", output_file_path, ontology_id))?;
+        let autosuggest_writer = BinaryCopyWriter::new(autosuggest_file)?;
+
         Ok(Self {
             output_file_path: output_file_path.to_string(),
             ontology_id,
@@ -249,6 +254,8 @@ impl<'a> OntologyWriter<'a> {
             emb_node_field_count,
             entities_writer,
             embedding_nodes_writer,
+            autosuggest_writer,
+            autosuggest_seen: HashSet::new(),
         })
     }
 
@@ -321,6 +328,10 @@ impl<'a> OntologyWriter<'a> {
         w.write_text_array(&subset)?;                            // subset
         w.write_text_array(&related_to)?;                        // related_to
         w.write_text_array(&curated_from_sources)?;              // curated_from_sources
+        match labels.first() {
+            Some(s) => w.write_text(s)?,
+            None    => w.write_null()?,
+        }                                                        // label_for_suggest
 
         // Configurable filter property columns
         for i in 0..self.filter_property_names.len() {
@@ -339,6 +350,19 @@ impl<'a> OntologyWriter<'a> {
 
         // Write embedding child nodes
         self.write_embedding_child_nodes(&entity_node_id, entity, entity_type_str, iri)?;
+
+        // Write autosuggest strings (labels + all synonyms) for defining entities only
+        if is_defining {
+            let ontology_id = self.ontology_id.clone();
+            for s in labels.iter().chain(synonyms.iter()) {
+                if s.is_empty() { continue; }
+                if self.autosuggest_seen.insert(s.clone()) {
+                    self.autosuggest_writer.begin_row(2)?;
+                    self.autosuggest_writer.write_text(&ontology_id)?;
+                    self.autosuggest_writer.write_text(s)?;
+                }
+            }
+        }
 
         Ok(())
     }
@@ -397,6 +421,7 @@ impl<'a> OntologyWriter<'a> {
         self.entities_writer.write_text_array(&empty)?;          // subset
         self.entities_writer.write_text_array(&empty)?;          // related_to
         self.entities_writer.write_text_array(&empty)?;          // curated_from_sources
+        self.entities_writer.write_null()?;                      // label_for_suggest
 
         // Empty filter property columns
         for _ in &self.filter_property_names {
@@ -414,6 +439,7 @@ impl<'a> OntologyWriter<'a> {
     /// Write binary COPY trailers and flush all writers.
     pub fn finish(&mut self) -> Result<(), Box<dyn std::error::Error>> {
         self.entities_writer.finish()?;
+        self.autosuggest_writer.finish()?;
         if let Some(ref mut w) = self.embedding_nodes_writer {
             w.finish()?;
         }

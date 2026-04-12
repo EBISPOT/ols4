@@ -80,7 +80,6 @@ ENTITY_INDEX_SQL = """\
 CREATE INDEX idx_ent_onto_iri ON ols_entities (ontology_id, iri);
 CREATE INDEX idx_ent_type ON ols_entities (type);
 CREATE INDEX idx_ent_iri ON ols_entities USING hash (iri);
-CREATE INDEX idx_ent_onto ON ols_entities (ontology_id);
 CREATE INDEX idx_ent_dp ON ols_entities USING gin (direct_parents);
 CREATE INDEX idx_ent_hp ON ols_entities USING gin (hierarchical_parents);
 CREATE INDEX idx_ent_da ON ols_entities USING gin (direct_ancestors);
@@ -101,6 +100,18 @@ CREATE INDEX idx_emb_entity ON ols_embedding_nodes USING hash (entity_id);
 CREATE INDEX idx_emb_type ON ols_embedding_nodes (type);
 """
 
+
+AUTOSUGGEST_TABLE_SQL = """\
+CREATE TABLE ols_autosuggest (
+    ontology_id TEXT NOT NULL,
+    string TEXT NOT NULL
+) WITH (fillfactor=100);
+"""
+
+AUTOSUGGEST_INDEX_SQL = """\
+CREATE INDEX idx_autosuggest_trgm ON ols_autosuggest USING gin (string gin_trgm_ops);
+CREATE INDEX idx_autosuggest_onto ON ols_autosuggest (ontology_id);
+"""
 
 def generate_filter_property_sql(filter_properties: list) -> tuple:
     """Generate (ALTER TABLE SQL, CREATE INDEX SQL) for filter property columns.
@@ -226,6 +237,10 @@ def main():
     if filter_alter:
         print(filter_alter)
 
+    # -- Autosuggest table --
+    print("-- SECTION: ols_autosuggest")
+    print(AUTOSUGGEST_TABLE_SQL)
+
     # -- Embedding nodes table (CREATE + ALTERs for embedding columns) --
     print("-- SECTION: ols_embedding_nodes")
     print(EMBEDDING_NODES_TABLE_SQL)
@@ -242,6 +257,7 @@ def main():
     print(EMBEDDING_NODE_INDEX_SQL)
     if emb_node_index:
         print(emb_node_index)
+    print(AUTOSUGGEST_INDEX_SQL)
 
     # -- Post-load computed columns + ANALYZE --
     print("-- SECTION: post_load")
@@ -253,8 +269,6 @@ UPDATE ols_entities SET ts_search =
     setweight(to_tsvector('english', coalesce(array_to_string(definition, ' '), '')), 'C') ||
     setweight(to_tsvector('english', coalesce(iri, '')), 'D');
 """)
-    print("UPDATE ols_entities SET label_for_suggest = label[1] WHERE cardinality(label) > 0;")
-    print("")
     print("ANALYZE;")
 
 

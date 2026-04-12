@@ -36,6 +36,7 @@ BASE_ENTITY_COLS = [
     "has_direct_children", "has_hierarchical_children", "is_preferred_root",
     "ontology_iri", "ontology_preferred_prefix",
     "subset", "related_to", "curated_from_sources",
+    "label_for_suggest",
 ]
 
 EMB_NODE_BASE_COLS = ["id", "type", "entity_id"]
@@ -205,7 +206,8 @@ def main():
     print("=== Dropping existing OLS tables ===")
     run_psql(
         "DROP TABLE IF EXISTS ols_embedding_nodes CASCADE;\n"
-        "DROP TABLE IF EXISTS ols_entities CASCADE;",
+        "DROP TABLE IF EXISTS ols_entities CASCADE;\n"
+        "DROP TABLE IF EXISTS ols_autosuggest CASCADE;",
         "drop"
     )
 
@@ -216,10 +218,12 @@ def main():
     # --- Discover pgbin files ---
     entity_files = sorted(datadir.glob("*_entities.pgbin"))
     emb_files = sorted(datadir.glob("*_embedding_nodes.pgbin"))
+    suggest_files = sorted(datadir.glob("*_autosuggest.pgbin"))
 
     # Filter out empty files
     entity_files = [f for f in entity_files if f.stat().st_size > 0]
     emb_files = [f for f in emb_files if f.stat().st_size > 0]
+    suggest_files = [f for f in suggest_files if f.stat().st_size > 0]
 
     # --- Build column lists ---
     entity_cols = list(BASE_ENTITY_COLS)
@@ -238,6 +242,7 @@ def main():
 
     load_table("ols_entities", sections["ols_entities"], entity_cols, entity_files)
     load_table("ols_embedding_nodes", sections["ols_embedding_nodes"], emb_node_cols, emb_files)
+    load_table("ols_autosuggest", sections["ols_autosuggest"], ["ontology_id", "string"], suggest_files)
 
     elapsed = time.time() - t0
     print(f"All tables loaded in {elapsed:.1f}s")
