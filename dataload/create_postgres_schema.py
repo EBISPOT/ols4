@@ -25,12 +25,23 @@ EXTENSIONS_SQL = """\
 CREATE EXTENSION IF NOT EXISTS vector;
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
--- Immutable wrapper required for use in GENERATED ALWAYS AS columns.
--- to_tsvector() is only STABLE in the pg catalog; this wrapper is safe
--- because we always pass a fixed compile-time regconfig OID.
-CREATE OR REPLACE FUNCTION ols_tsvector(cfg regconfig, txt text)
+-- Immutable wrappers for use in GENERATED ALWAYS AS columns.
+-- to_tsvector() and array_to_string() are STABLE in the pg catalog.
+-- plpgsql function bodies are opaque: PostgreSQL trusts the declared
+-- IMMUTABLE volatility without inspecting the body. Both STABLE calls
+-- are hidden inside these wrappers so the generated column expression
+-- contains only IMMUTABLE function calls and column references.
+--
+-- text overload: for scalar columns (iri, short_form, curie).
+CREATE OR REPLACE FUNCTION ols_tsvector(txt text)
     RETURNS tsvector LANGUAGE plpgsql IMMUTABLE PARALLEL SAFE AS
-    $$ BEGIN RETURN to_tsvector(cfg, txt); END $$;
+    $$ BEGIN RETURN to_tsvector('pg_catalog.english', coalesce(txt, '')); END $$;
+
+-- text[] overload: for array columns (label, synonym, definition).
+-- array_to_string is STABLE, so it must live inside the plpgsql body.
+CREATE OR REPLACE FUNCTION ols_tsvector(arr text[])
+    RETURNS tsvector LANGUAGE plpgsql IMMUTABLE PARALLEL SAFE AS
+    $$ BEGIN RETURN to_tsvector('pg_catalog.english', coalesce(array_to_string(arr, ' '), '')); END $$;
 """
 
 ENTITIES_TABLE_SQL = """\
@@ -68,11 +79,11 @@ CREATE TABLE ols_entities (
 
     -- Full-text search vector (computed automatically on insert)
     ts_search tsvector GENERATED ALWAYS AS (
-        setweight(ols_tsvector('pg_catalog.english'::regconfig, coalesce(array_to_string(label, ' '), '')), 'A') ||
-        setweight(ols_tsvector('pg_catalog.english'::regconfig, coalesce(short_form, '') || ' ' || coalesce(curie, '')), 'B') ||
-        setweight(ols_tsvector('pg_catalog.english'::regconfig, coalesce(array_to_string(synonym, ' '), '')), 'B') ||
-        setweight(ols_tsvector('pg_catalog.english'::regconfig, coalesce(array_to_string(definition, ' '), '')), 'C') ||
-        setweight(ols_tsvector('pg_catalog.english'::regconfig, coalesce(iri, '')), 'D')
+        setweight(ols_tsvector(label), 'A') ||
+        setweight(ols_tsvector(coalesce(short_form, '') || ' ' || coalesce(curie, '')), 'B') ||
+        setweight(ols_tsvector(synonym), 'B') ||
+        setweight(ols_tsvector(definition), 'C') ||
+        setweight(ols_tsvector(coalesce(iri, '')), 'D')
     ) STORED,
 
     -- First label for autocomplete grouping / trigram matching
