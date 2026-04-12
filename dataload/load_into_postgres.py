@@ -95,7 +95,7 @@ def run_cmd(args: list[str], label: str = "", **kwargs):
     return proc
 
 
-def run_psql(script: str, label: str = "", env: dict | None = None):
+def run_psql(script: str, label: str = "", env=None):
     """Pipe a SQL/psql script to psql -v ON_ERROR_STOP=1."""
     proc = subprocess.run(
         ["psql", "-v", "ON_ERROR_STOP=1"],
@@ -131,7 +131,8 @@ def load_table(
 ) -> None:
     """Load a single table: BEGIN; CREATE TABLE; \\copy FREEZE; COMMIT."""
     if not pgbin_files:
-        print(f"  {table_name}: no files, skipping.")
+        print(f"  {table_name}: no files, creating empty table.")
+        run_psql(create_sql, f"{table_name} (empty)", env=env)
         return
 
     total_bytes = sum(f.stat().st_size for f in pgbin_files)
@@ -338,7 +339,7 @@ shared_buffers = 256MB
 
     # --- Package ---
     print("=== Packaging PostgreSQL data ===")
-    tgz_path = datadir.parent / "postgres.tgz"
+    tgz_path = output_dir.parent / "postgres.tgz"
     run_cmd(
         ["tar", "-czf", str(tgz_path), "-C", str(output_dir), "data"],
         label="tar",

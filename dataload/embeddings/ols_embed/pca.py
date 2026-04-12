@@ -13,6 +13,12 @@ def load_embedding_matrix(parquet_path: str):
     """
     Load the 'embedding' column using Polars/Arrow without going through Python
     list-of-lists. Returns a dense NumPy array (N, D) in float64, ready for full PCA.
+
+    Rows with NULL embeddings are filtered out. Returns:
+      X: (N, D) float64
+      N: number of valid rows
+      D: embedding dimension
+      valid_mask: boolean Polars Series (True for rows that were kept), or None if all rows valid
     """
 
     # Load just the embedding column into Polars (Arrow-backed)
@@ -22,9 +28,22 @@ def load_embedding_matrix(parquet_path: str):
         raise KeyError("'embedding' column not found in Parquet file.")
 
     emb_series = df["embedding"]
+    N_total = len(emb_series)
+    if N_total == 0:
+        raise ValueError("No rows in embedding column.")
+
+    # Filter out NULL embeddings
+    null_mask = emb_series.is_null()
+    n_nulls = null_mask.sum()
+    valid_mask = None
+    if n_nulls > 0:
+        print(f"WARNING: {n_nulls} of {N_total} rows have NULL embeddings; filtering them out.")
+        valid_mask = ~null_mask
+        emb_series = emb_series.filter(valid_mask)
+
     N = len(emb_series)
     if N == 0:
-        raise ValueError("No rows in embedding column.")
+        raise ValueError("All embeddings are NULL.")
 
     # Infer dimension from first row (cheap Python access only for this row)
     first = emb_series[0]
@@ -63,7 +82,7 @@ def load_embedding_matrix(parquet_path: str):
     del df, emb_series, emb_arrow, values, values_np
     gc.collect()
 
-    return X, N, D
+    return X, N, D, valid_mask
 
 
 def load_metadata_columns(parquet_path: str):
@@ -178,10 +197,12 @@ def main():
     args = parser.parse_args()
 
     # ---- Load embeddings (float64) ----
-    X, N, D = load_embedding_matrix(args.input_parquet)
+    X, N, D, valid_mask = load_embedding_matrix(args.input_parquet)
 
     # ---- Load metadata ----
     meta_df, meta_cols = load_metadata_columns(args.input_parquet)
+    if valid_mask is not None:
+        meta_df = meta_df.filter(valid_mask)
 
     k = args.n_components
 
