@@ -30,6 +30,7 @@ params.copy_script     = ''     // path to copy_tarballs.sh on the NFS server
 // External managed PostgreSQL — when true, loads data into an existing database instead of creating a local one.
 // Requires PGHOST, PGDATABASE, PGUSER, and optionally PGPASSWORD to be set as environment variables.
 params.external_postgres = false
+params.pg_parallel_workers = 2  // Number of parallel workers per index build (0 = PostgreSQL default)
 
 
 process fetch_configs {
@@ -353,7 +354,7 @@ process create_postgres {
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    python3 /opt/ols/dataload/load_into_postgres.py ./postgres . ${filter_args} ${parquet_list}
+    python3 /opt/ols/dataload/load_into_postgres.py ./postgres . --parallel-workers ${params.pg_parallel_workers} ${filter_args} ${parquet_list}
     """
 }
 
@@ -380,7 +381,7 @@ process populate_external_postgres {
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    python3 /opt/ols/dataload/populate_external_postgres.py . ${filter_args} ${parquet_list}
+    python3 /opt/ols/dataload/populate_external_postgres.py . --parallel-workers ${params.pg_parallel_workers} ${filter_args} ${parquet_list}
     mkdir -p postgres_external_done
     echo "Populated \${PGHOST}:\${PGPORT}/\${PGDATABASE} at \$(date)" > postgres_external_done/status.txt
     """

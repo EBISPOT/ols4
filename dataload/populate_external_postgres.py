@@ -12,7 +12,7 @@ The actual COPY is done by piping psql scripts to `psql` subprocesses (no
 Python DB driver needed).
 
 Usage:
-    python populate_external_postgres.py <datadir> [--filter-property <name> ...] [parquet_file ...]
+    python populate_external_postgres.py <datadir> [--parallel-workers N] [--filter-property <name> ...] [parquet_file ...]
 """
 
 import os
@@ -160,13 +160,17 @@ def main():
     datadir = Path(sys.argv[1]).resolve()
     script_dir = Path(__file__).resolve().parent
 
-    # Parse remaining args: --filter-property flags and parquet files
+    # Parse remaining args: --parallel-workers, --filter-property flags, and parquet files
     filter_properties = []
     parquets_raw = []
+    parallel_workers = 0
     args_rest = sys.argv[2:]
     i = 0
     while i < len(args_rest):
-        if args_rest[i] == "--filter-property" and i + 1 < len(args_rest):
+        if args_rest[i] == "--parallel-workers" and i + 1 < len(args_rest):
+            parallel_workers = int(args_rest[i + 1])
+            i += 2
+        elif args_rest[i] == "--filter-property" and i + 1 < len(args_rest):
             filter_properties.append(args_rest[i + 1])
             i += 2
         elif args_rest[i].endswith(".parquet"):
@@ -250,7 +254,27 @@ def main():
 
     # --- Create indexes ---
     print("=== Creating indexes ===")
-    run_psql(sections["indexes"], "indexes")
+    tables = ["ols_entities", "ols_embedding_nodes", "ols_autosuggest"]
+    if parallel_workers > 0:
+        print(f"  Setting parallel_workers={parallel_workers} on all tables")
+        for tbl in tables:
+            run_psql(f"ALTER TABLE {tbl} SET (parallel_workers = {parallel_workers});")
+
+    index_stmts = [
+        stmt.strip() for stmt in sections["indexes"].split(";")
+        if stmt.strip() and not stmt.strip().startswith("--")
+    ]
+    total = len(index_stmts)
+    for idx_i, stmt in enumerate(index_stmts, 1):
+        short = stmt.split("(")[0].strip() if "(" in stmt else stmt.strip()
+        print(f"  [{idx_i}/{total}] {short} ...", flush=True)
+        t_idx = time.time()
+        run_psql(stmt + ";")
+        print(f"  [{idx_i}/{total}] done ({time.time() - t_idx:.1f}s)")
+
+    if parallel_workers > 0:
+        for tbl in tables:
+            run_psql(f"ALTER TABLE {tbl} RESET (parallel_workers);")
 
     # --- Post-load (ANALYZE) ---
     print("=== Post-load updates ===")

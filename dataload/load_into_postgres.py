@@ -8,7 +8,7 @@ WAL disabled for maximum bulk-load speed.  COPY FREEZE is used so that rows
 are pre-frozen and skip future VACUUM passes.
 
 Usage:
-    python load_into_postgres.py <output_dir> <datadir> [--filter-property <name> ...] [parquet_file ...]
+    python load_into_postgres.py <output_dir> <datadir> [--parallel-workers N] [--filter-property <name> ...] [parquet_file ...]
 """
 
 import os
@@ -189,10 +189,14 @@ def main():
     # Parse remaining args
     filter_properties: list[str] = []
     parquets_raw: list[str] = []
+    parallel_workers = 0
     args_rest = sys.argv[3:]
     i = 0
     while i < len(args_rest):
-        if args_rest[i] == "--filter-property" and i + 1 < len(args_rest):
+        if args_rest[i] == "--parallel-workers" and i + 1 < len(args_rest):
+            parallel_workers = int(args_rest[i + 1])
+            i += 2
+        elif args_rest[i] == "--filter-property" and i + 1 < len(args_rest):
             filter_properties.append(args_rest[i + 1])
             i += 2
         elif args_rest[i].endswith(".parquet"):
@@ -314,7 +318,27 @@ checkpoint_completion_target = 0.9
 
         # --- Create indexes ---
         print("=== Creating indexes ===")
-        run_psql(sections["indexes"], "indexes", env=pg_env)
+        tables = ["ols_entities", "ols_embedding_nodes", "ols_autosuggest"]
+        if parallel_workers > 0:
+            print(f"  Setting parallel_workers={parallel_workers} on all tables")
+            for tbl in tables:
+                run_psql(f"ALTER TABLE {tbl} SET (parallel_workers = {parallel_workers});", env=pg_env)
+
+        index_stmts = [
+            stmt.strip() for stmt in sections["indexes"].split(";")
+            if stmt.strip() and not stmt.strip().startswith("--")
+        ]
+        total = len(index_stmts)
+        for idx_i, stmt in enumerate(index_stmts, 1):
+            short = stmt.split("(")[0].strip() if "(" in stmt else stmt.strip()
+            print(f"  [{idx_i}/{total}] {short} ...", flush=True)
+            t_idx = time.time()
+            run_psql(stmt + ";", env=pg_env)
+            print(f"  [{idx_i}/{total}] done ({time.time() - t_idx:.1f}s)")
+
+        if parallel_workers > 0:
+            for tbl in tables:
+                run_psql(f"ALTER TABLE {tbl} RESET (parallel_workers);", env=pg_env)
 
         # --- Post-load (ANALYZE) ---
         print("=== Post-load updates ===")
