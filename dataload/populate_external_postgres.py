@@ -18,6 +18,8 @@ Usage:
 import os
 import subprocess
 import sys
+
+sys.stdout.reconfigure(line_buffering=True)
 import time
 from pathlib import Path
 
