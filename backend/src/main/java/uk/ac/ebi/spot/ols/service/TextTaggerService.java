@@ -153,7 +153,6 @@ public class TextTaggerService {
             System.err.println("TextTaggerService: downloaded and decompressed tagger db to " + tmp);
 
             return tmp;
-            return tmp;
         } catch (Exception e) {
             System.err.println("TextTaggerService: failed to download tagger db from postgres \u2013 " + e.getMessage());
             return null;
