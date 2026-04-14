@@ -39,6 +39,8 @@
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/BFO_0000147","label":"zero-dimensional continuant fiat boundary"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/BFO_0000148","label":"zero-dimensional temporal region"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/BFO_0000182","label":"history"}
+{"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/COB_0000035","label":"completely executed planned process"}
+{"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/COB_0000082","label":"planned process"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/DUO_0000001","label":"data use permission"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/DUO_0000002","label":"obsolete consent code primary category"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/DUO_0000003","label":"obsolete consent code secondary category"}
@@ -95,7 +97,7 @@
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000019","label":"obsolete2_binary digital entity"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000024","label":"obsolete_unit of measure"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000025","label":"programming language"}
-{"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000027","label":"data item"}
+{"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000027","label":"data entity"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000028","label":"symbol"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000029","label":"numeral"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000030","label":"information content entity"}
@@ -120,7 +122,7 @@
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000096","label":"source code module"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000097","label":"obsolete_report table"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000098","label":"data format specification"}
-{"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000100","label":"data set"}
+{"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000100","label":"homogenous data collection"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000101","label":"image"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000102","label":"data about an ontology part"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000104","label":"plan specification"}
@@ -251,6 +253,7 @@
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000647","label":"Postal delivery route"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000648","label":"zone improvement plan code"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000650","label":"database extract, transform, and load process"}
+{"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000651","label":"title section"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000701","label":"descriptive data section"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000702","label":"additional results section"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000703","label":"research participants section"}
@@ -259,6 +262,7 @@
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000706","label":"study bias section"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000707","label":"graphical abstract"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0000708","label":"ORCID identifier"}
+{"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0001000","label":"data collection"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0020000","label":"identifier"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0020001","label":"grapheme"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/IAO_0020010","label":"identifier creating process"}
@@ -298,7 +302,6 @@
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/MONDO_0000001","label":"disorders"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/MONDO_0000001","label":"medical condition"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/MONDO_0000001","label":"other disease"}
-{"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/OBI_0000011","label":"planned process"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/OBI_0000066","label":"investigation"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/OBI_0000471","label":"study design execution"}
 {"ontologyId":"duo","id":"duo+class+http://purl.obolibrary.org/obo/OBI_0200000","label":"data transformation"}
@@ -325,6 +328,7 @@
 {"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/DUO_0000010","label":"is restricted to"}
 {"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/DUO_0000041","label":"DUO_preferred_label"}
 {"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/IAO_0000004","label":"has measurement value"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/IAO_0000011","label":"is directed towards"}
 {"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/IAO_0000039","label":"has measurement unit label"}
 {"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/IAO_0000111","label":"editor preferred term"}
 {"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/IAO_0000112","label":"example of usage"}
@@ -380,12 +384,29 @@
 {"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/IAO_0006012","label":"scheduled for obsoletion on or after"}
 {"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/IAO_0010000","label":"has axiom label"}
 {"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/IAO_0100001","label":"term replaced by"}
-{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OBI_0000293","label":"has_specified_input"}
-{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OBI_0000295","label":"is_specified_input_of"}
-{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OBI_0000299","label":"has_specified_output"}
-{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OBI_0000312","label":"is_specified_output_of"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OBI_0000293","label":"has specified input"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OBI_0000295","label":"is specified input of"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OBI_0000299","label":"has specified output"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OBI_0000312","label":"is specified output of"}
 {"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OMO_0001001","label":"logical characteristic of object property"}
 {"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OMO_0002000","label":"defined by construct"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OMO_0002001","label":"preferred label for community"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OMO_0003000","label":"abbreviation"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OMO_0003001","label":"ambiguous synonym"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OMO_0003002","label":"dubious synonym"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OMO_0003003","label":"layperson synonym"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OMO_0003004","label":"plural form"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OMO_0003005","label":"UK spelling synonym"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OMO_0003006","label":"misspelling"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OMO_0003007","label":"misnomer"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OMO_0003008","label":"previous name"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OMO_0003009","label":"legal name"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OMO_0003010","label":"International Nonproprietary Name"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OMO_0003010","label":"INN"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OMO_0003011","label":"latin term"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OMO_0003012","label":"acronym"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OMO_0003014","label":"has ontology hierarchical property"}
+{"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/OMO_0004000","label":"has symbol"}
 {"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/RO_0000052","label":"characteristic of"}
 {"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/RO_0000053","label":"has characteristic"}
 {"ontologyId":"duo","id":"duo+property+http://purl.obolibrary.org/obo/RO_0000056","label":"participates in"}
@@ -419,6 +440,7 @@
 {"ontologyId":"duo","id":"duo+property+http://purl.org/dc/elements/1.1/format","label":"format"}
 {"ontologyId":"duo","id":"duo+property+http://purl.org/dc/elements/1.1/identifier","label":"identifier"}
 {"ontologyId":"duo","id":"duo+property+http://purl.org/dc/elements/1.1/language","label":"language"}
+{"ontologyId":"duo","id":"duo+property+http://purl.org/dc/elements/1.1/license","label":"license"}
 {"ontologyId":"duo","id":"duo+property+http://purl.org/dc/elements/1.1/member","label":"member"}
 {"ontologyId":"duo","id":"duo+property+http://purl.org/dc/elements/1.1/publisher","label":"publisher"}
 {"ontologyId":"duo","id":"duo+property+http://purl.org/dc/elements/1.1/relation","label":"relation"}
@@ -427,12 +449,16 @@
 {"ontologyId":"duo","id":"duo+property+http://purl.org/dc/elements/1.1/subject","label":"subject"}
 {"ontologyId":"duo","id":"duo+property+http://purl.org/dc/elements/1.1/title","label":"title"}
 {"ontologyId":"duo","id":"duo+property+http://purl.org/dc/elements/1.1/type","label":"type"}
+{"ontologyId":"duo","id":"duo+property+http://purl.org/dc/terms/contributor","label":"contributor"}
+{"ontologyId":"duo","id":"duo+property+http://purl.org/dc/terms/created","label":"created"}
 {"ontologyId":"duo","id":"duo+property+http://purl.org/dc/terms/license","label":"license"}
+{"ontologyId":"duo","id":"duo+property+http://purl.org/dc/terms/source","label":"source"}
 {"ontologyId":"duo","id":"duo+property+http://www.geneontology.org/formats/oboInOwl#ObsoleteProperty","label":"ObsoleteProperty"}
+{"ontologyId":"duo","id":"duo+property+http://www.geneontology.org/formats/oboInOwl#SynonymTypeProperty","label":"SynonymTypeProperty"}
 {"ontologyId":"duo","id":"duo+property+http://www.geneontology.org/formats/oboInOwl#created_by","label":"created_by"}
 {"ontologyId":"duo","id":"duo+property+http://www.geneontology.org/formats/oboInOwl#creation_date","label":"creation_date"}
 {"ontologyId":"duo","id":"duo+property+http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym","label":"has broad synonym"}
-{"ontologyId":"duo","id":"duo+property+http://www.geneontology.org/formats/oboInOwl#hasDbXref","label":"hasDbXref"}
+{"ontologyId":"duo","id":"duo+property+http://www.geneontology.org/formats/oboInOwl#hasDbXref","label":"has cross-reference"}
 {"ontologyId":"duo","id":"duo+property+http://www.geneontology.org/formats/oboInOwl#hasExactSynonym","label":"has exact synonym"}
 {"ontologyId":"duo","id":"duo+property+http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym","label":"has narrow synonym"}
 {"ontologyId":"duo","id":"duo+property+http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym","label":"has related synonym"}
@@ -466,3 +492,4 @@
 {"ontologyId":"duo","id":"duo+individual+http://purl.obolibrary.org/obo/IAO_0000423","label":"to be replaced with external ontology term"}
 {"ontologyId":"duo","id":"duo+individual+http://purl.obolibrary.org/obo/IAO_0000428","label":"requires discussion"}
 {"ontologyId":"duo","id":"duo+individual+http://purl.obolibrary.org/obo/OMO_0001000","label":"out of scope"}
+{"ontologyId":"duo","id":"duo+individual+http://purl.obolibrary.org/obo/OMO_0001002","label":"domain entity does not exist"}
