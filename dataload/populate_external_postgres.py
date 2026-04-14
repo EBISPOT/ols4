@@ -12,7 +12,7 @@ The actual COPY is done by piping psql scripts to `psql` subprocesses (no
 Python DB driver needed).
 
 Usage:
-    python populate_external_postgres.py <datadir> [--parallel-workers N] [--filter-property <name> ...] [parquet_file ...]
+    python populate_external_postgres.py <datadir> [--parallel-workers N] [--filter-property <name> ...] [--artifacts-dir <path>] [parquet_file ...]
 """
 
 import os
@@ -149,6 +149,49 @@ def load_table(
 
 
 # ---------------------------------------------------------------------------
+# Artifact upload (PCA models + text tagger binary)
+# ---------------------------------------------------------------------------
+
+def upload_artifacts(artifacts_path: Path, sections: dict) -> None:
+    """Upload PCA model JSONs and text_tagger_db.bin to postgres via psql."""
+    print("=== Uploading artifacts ===")
+
+    # Create the artifact tables (idempotent)
+    run_psql(sections.get("ols_pca_models", ""), "ols_pca_models table")
+    run_psql(sections.get("ols_text_tagger", ""), "ols_text_tagger table")
+
+    pca_files = sorted(artifacts_path.glob("*_pca*.json"))
+    for pca_file in pca_files:
+        if "_pca16" in pca_file.name:
+            continue
+        name = pca_file.stem
+        size = sizeof_fmt(pca_file.stat().st_size)
+        print(f"  Uploading PCA model: {name} ({size})")
+        # Use \lo_import + INSERT via bytea hex encoding
+        data_hex = pca_file.read_bytes().hex()
+        sql = (
+            f"DELETE FROM ols_pca_models WHERE name = '{name}';\n"
+            f"INSERT INTO ols_pca_models (name, model) VALUES ('{name}', '\\x{data_hex}');\n"
+        )
+        run_psql(sql, f"pca:{name}")
+
+    tagger_path = artifacts_path / "text_tagger_db.bin.gz"
+    if tagger_path.exists():
+        size = sizeof_fmt(tagger_path.stat().st_size)
+        print(f"  Uploading text_tagger_db.bin.gz ({size}) as Large Object")
+        # Clean up old large objects, then use \lo_import
+        sql = (
+            "SELECT lo_unlink(tagger_db_oid) FROM ols_text_tagger;\n"
+            "DELETE FROM ols_text_tagger;\n"
+            f"\\lo_import '{tagger_path}'\n"
+            "INSERT INTO ols_text_tagger (tagger_db_oid) VALUES (:LASTOID);\n"
+        )
+        run_psql(sql, "text_tagger")
+    else:
+        print("  text_tagger_db.bin.gz not found, skipping")
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
@@ -164,14 +207,22 @@ def main():
     filter_properties = []
     parquets_raw = []
     parallel_workers = 0
+    maintenance_work_mem = ""
+    artifacts_dir = ""
     args_rest = sys.argv[2:]
     i = 0
     while i < len(args_rest):
         if args_rest[i] == "--parallel-workers" and i + 1 < len(args_rest):
             parallel_workers = int(args_rest[i + 1])
             i += 2
+        elif args_rest[i] == "--maintenance-work-mem" and i + 1 < len(args_rest):
+            maintenance_work_mem = args_rest[i + 1]
+            i += 2
         elif args_rest[i] == "--filter-property" and i + 1 < len(args_rest):
             filter_properties.append(args_rest[i + 1])
+            i += 2
+        elif args_rest[i] == "--artifacts-dir" and i + 1 < len(args_rest):
+            artifacts_dir = args_rest[i + 1]
             i += 2
         elif args_rest[i].endswith(".parquet"):
             parquets_raw.append(args_rest[i])
@@ -260,6 +311,15 @@ def main():
         for tbl in tables:
             run_psql(f"ALTER TABLE {tbl} SET (parallel_workers = {parallel_workers});")
 
+    # Session-level SET commands to prepend to each index build
+    set_prefix = ""
+    if maintenance_work_mem:
+        set_prefix += f"SET maintenance_work_mem = '{maintenance_work_mem}';\n"
+        print(f"  Setting maintenance_work_mem={maintenance_work_mem} per session")
+    if parallel_workers > 0:
+        set_prefix += f"SET max_parallel_maintenance_workers = {parallel_workers};\n"
+        print(f"  Setting max_parallel_maintenance_workers={parallel_workers} per session")
+
     index_stmts = [
         stmt.strip() for stmt in sections["indexes"].split(";")
         if stmt.strip() and not stmt.strip().startswith("--")
@@ -269,7 +329,7 @@ def main():
         short = stmt.split("(")[0].strip() if "(" in stmt else stmt.strip()
         print(f"  [{idx_i}/{total}] {short} ...", flush=True)
         t_idx = time.time()
-        run_psql(stmt + ";")
+        run_psql(set_prefix + stmt + ";")
         print(f"  [{idx_i}/{total}] done ({time.time() - t_idx:.1f}s)")
 
     if parallel_workers > 0:
@@ -279,6 +339,10 @@ def main():
     # --- Post-load (ANALYZE) ---
     print("=== Post-load updates ===")
     run_psql(sections["post_load"], "post_load")
+
+    # --- Upload artifacts (PCA models + text tagger db) ---
+    if artifacts_dir:
+        upload_artifacts(Path(artifacts_dir).resolve(), sections)
 
     print(f"=== Done ===")
     print(f"Database {pgdb} on {pghost} has been populated.")

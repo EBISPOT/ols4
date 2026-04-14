@@ -103,14 +103,14 @@ CREATE TABLE ols_embedding_nodes (
 ENTITY_INDEX_SQL = """\
 CREATE INDEX idx_ent_onto_iri ON ols_entities (ontology_id, iri);
 CREATE INDEX idx_ent_type ON ols_entities (type);
-CREATE INDEX idx_ent_iri ON ols_entities USING hash (iri);
+CREATE INDEX idx_ent_iri ON ols_entities (iri);
 CREATE INDEX idx_ent_dp ON ols_entities USING gin (direct_parents);
 CREATE INDEX idx_ent_hp ON ols_entities USING gin (hierarchical_parents);
 CREATE INDEX idx_ent_da ON ols_entities USING gin (direct_ancestors);
 CREATE INDEX idx_ent_ha ON ols_entities USING gin (hierarchical_ancestors);
 CREATE INDEX idx_ent_search_type ON ols_entities (search_type);
-CREATE INDEX idx_ent_short_form ON ols_entities USING hash (short_form);
-CREATE INDEX idx_ent_curie ON ols_entities USING hash (curie);
+CREATE INDEX idx_ent_short_form ON ols_entities (short_form);
+CREATE INDEX idx_ent_curie ON ols_entities (curie);
 CREATE INDEX idx_ent_is_def ON ols_entities (is_defining_ontology) WHERE is_defining_ontology = true;
 CREATE INDEX idx_ent_pref_root ON ols_entities (is_preferred_root) WHERE is_preferred_root = true;
 CREATE INDEX idx_ent_subset ON ols_entities USING gin (subset);
@@ -120,7 +120,7 @@ CREATE INDEX idx_ent_trgm_suggest ON ols_entities USING gin (label_for_suggest g
 """
 
 EMBEDDING_NODE_INDEX_SQL = """\
-CREATE INDEX idx_emb_entity ON ols_embedding_nodes USING hash (entity_id);
+CREATE INDEX idx_emb_entity ON ols_embedding_nodes (entity_id);
 CREATE INDEX idx_emb_type ON ols_embedding_nodes (type);
 """
 
@@ -135,6 +135,19 @@ CREATE TABLE ols_autosuggest (
 AUTOSUGGEST_INDEX_SQL = """\
 CREATE INDEX idx_autosuggest_trgm ON ols_autosuggest USING gin (string gin_trgm_ops);
 CREATE INDEX idx_autosuggest_onto ON ols_autosuggest (ontology_id);
+"""
+
+PCA_MODELS_TABLE_SQL = """\
+CREATE TABLE ols_pca_models (
+    name TEXT PRIMARY KEY,
+    model BYTEA NOT NULL
+);
+"""
+
+TEXT_TAGGER_TABLE_SQL = """\
+CREATE TABLE ols_text_tagger (
+    tagger_db_oid OID NOT NULL
+);
 """
 
 def generate_filter_property_sql(filter_properties: list) -> tuple:
@@ -282,6 +295,14 @@ def main():
     if emb_node_index:
         print(emb_node_index)
     print(AUTOSUGGEST_INDEX_SQL)
+
+    # -- PCA models table --
+    print("-- SECTION: ols_pca_models")
+    print(PCA_MODELS_TABLE_SQL)
+
+    # -- Text tagger table --
+    print("-- SECTION: ols_text_tagger")
+    print(TEXT_TAGGER_TABLE_SQL)
 
     # -- Post-load computed columns + ANALYZE --
     print("-- SECTION: post_load")

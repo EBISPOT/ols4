@@ -31,6 +31,7 @@ params.copy_script     = ''     // path to copy_tarballs.sh on the NFS server
 // Requires PGHOST, PGDATABASE, PGUSER, and optionally PGPASSWORD to be set as environment variables.
 params.external_postgres = false
 params.pg_parallel_workers = 2  // Number of parallel workers per index build (0 = PostgreSQL default)
+params.pg_maintenance_work_mem = ''  // maintenance_work_mem per session for index builds (e.g. '4GB', '' = server default)
 
 
 process fetch_configs {
@@ -122,6 +123,11 @@ workflow {
         embedding_parquets = pca_parquets
             .map { list -> list.isEmpty() ? [file('NO_FILE')] : list }
             .ifEmpty([file('NO_FILE')])
+        // Collect PCA JSON model files for upload to postgres
+        pca_json_files = embeddings.out.pca_jsons
+            .filter { !it.name.contains('_pca16') }
+            .collect()
+            .ifEmpty([file('NO_FILE')])
         // Persist PCA parquets to embeddings_path so the next incremental embeddings run can reuse them
         if (params.embeddings_path && params.embeddings_path != '' && params.embeddings_path != 'NO_DIR') {
             update_embeddings_path(pca_parquets)
@@ -133,8 +139,14 @@ workflow {
             .filter { !it.name.contains('_umap') && !it.name.contains('_pca16') }
             .collect()
             .ifEmpty([file('NO_FILE')])
+        // Look for PCA JSON files alongside the parquets
+        pca_json_files = Channel.fromPath("${params.embeddings_path}/*_pca*.json")
+            .filter { !it.name.contains('_pca16') }
+            .collect()
+            .ifEmpty([file('NO_FILE')])
     } else {
         embedding_parquets = Channel.of(file('NO_FILE'))
+        pca_json_files = Channel.of(file('NO_FILE'))
     }
 
     // Join filter properties with linked ontology JSONs by ontology_id
@@ -143,9 +155,9 @@ workflow {
     postgres_tsvs = json2postgres(linked_with_filter_props, embedding_parquets)
 
     if (params.external_postgres) {
-        pg = populate_external_postgres(postgres_tsvs.collect(), embedding_parquets, all_filter_props)
+        pg = populate_external_postgres(postgres_tsvs.collect(), embedding_parquets, all_filter_props, pca_json_files, text_tagger_db)
     } else {
-        pg = create_postgres(postgres_tsvs.collect(), embedding_parquets, all_filter_props)
+        pg = create_postgres(postgres_tsvs.collect(), embedding_parquets, all_filter_props, pca_json_files, text_tagger_db)
     }
 
     // Generate loading report after all ontologies have been processed
@@ -341,6 +353,8 @@ process create_postgres {
     path(postgres_tsvs)
     path(embedding_parquets)
     val(filter_properties)
+    path(pca_jsons)
+    path(text_tagger_db)
 
     output:
     path("postgres"), emit: pg_dir
@@ -351,10 +365,17 @@ process create_postgres {
     def has_embeddings = !parquets.any { it.name == 'NO_FILE' }
     def parquet_list = has_embeddings ? parquets.collect { it.toString() }.join(' ') : ''
     def filter_args = filter_properties ? filter_properties.collect { "--filter-property '${it}'" }.join(' ') : ''
+    def pca_list = (pca_jsons instanceof List ? pca_jsons : [pca_jsons])
+    def has_pca = !pca_list.any { it.name == 'NO_FILE' }
+    def has_tagger = text_tagger_db.name != 'NO_FILE'
+    def artifact_args = ''
+    if (has_pca || has_tagger) {
+        artifact_args = '--artifacts-dir .'
+    }
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    python3 /opt/ols/dataload/load_into_postgres.py ./postgres . --parallel-workers ${params.pg_parallel_workers} ${filter_args} ${parquet_list}
+    python3 /opt/ols/dataload/load_into_postgres.py ./postgres . --parallel-workers ${params.pg_parallel_workers} ${params.pg_maintenance_work_mem ? '--maintenance-work-mem ' + params.pg_maintenance_work_mem : ''} ${filter_args} ${artifact_args} ${parquet_list}
     """
 }
 
@@ -369,6 +390,8 @@ process populate_external_postgres {
     path(postgres_tsvs)
     path(embedding_parquets)
     val(filter_properties)
+    path(pca_jsons)
+    path(text_tagger_db)
 
     output:
     path("postgres_external_done"), emit: pg_dir
@@ -378,10 +401,17 @@ process populate_external_postgres {
     def has_embeddings = !parquets.any { it.name == 'NO_FILE' }
     def parquet_list = has_embeddings ? parquets.collect { it.toString() }.join(' ') : ''
     def filter_args = filter_properties ? filter_properties.collect { "--filter-property '${it}'" }.join(' ') : ''
+    def pca_list = (pca_jsons instanceof List ? pca_jsons : [pca_jsons])
+    def has_pca = !pca_list.any { it.name == 'NO_FILE' }
+    def has_tagger = text_tagger_db.name != 'NO_FILE'
+    def artifact_args = ''
+    if (has_pca || has_tagger) {
+        artifact_args = '--artifacts-dir .'
+    }
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    python3 /opt/ols/dataload/populate_external_postgres.py . --parallel-workers ${params.pg_parallel_workers} ${filter_args} ${parquet_list}
+    python3 /opt/ols/dataload/populate_external_postgres.py . --parallel-workers ${params.pg_parallel_workers} ${params.pg_maintenance_work_mem ? '--maintenance-work-mem ' + params.pg_maintenance_work_mem : ''} ${filter_args} ${parquet_list} ${artifact_args}
     mkdir -p postgres_external_done
     echo "Populated \${PGHOST}:\${PGPORT}/\${PGDATABASE} at \$(date)" > postgres_external_done/status.txt
     """
@@ -461,13 +491,14 @@ process build_text_tagger_db {
     path(terms_tsv)
 
     output:
-    path("text_tagger_db.bin")
+    path("text_tagger_db.bin.gz")
 
     script:
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
     ols_text_tagger build --output text_tagger_db.bin < ${terms_tsv}
+    pigz --best text_tagger_db.bin
     """
 }
 

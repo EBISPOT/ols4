@@ -4,14 +4,23 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
+
+import org.postgresql.PGConnection;
+import org.postgresql.largeobject.LargeObject;
+import org.postgresql.largeobject.LargeObjectManager;
 
 /**
  * Service that wraps the ols_text_tagger CLI binary.
@@ -63,8 +72,11 @@ public class TextTaggerService {
 
     private static final String BINARY_NAME = "ols_text_tagger";
 
-    @Value("${ols.text.tagger.db:#{null}}")
+    @Autowired
+    private PostgresClient postgresClient;
+
     private String dbPath;
+    private Path tempDbFile;
 
     private Process process;
     private BufferedWriter processStdin;
@@ -79,20 +91,73 @@ public class TextTaggerService {
 
     @PostConstruct
     public void init() {
-        if (dbPath == null || dbPath.isEmpty()) {
-            System.err.println("TextTaggerService: no database path configured (ols.text_tagger.db) \u2013 disabled");
-            return;
-        }
-        try {
-            startProcess(null);
-        } catch (Exception e) {
-            System.err.println("TextTaggerService: failed to start \u2013 " + e.getMessage());
-        }
+        Thread thread = new Thread(() -> {
+            try {
+                System.err.println("TextTaggerService: downloading tagger db from postgres in background...");
+                tempDbFile = downloadTextTaggerDb();
+                if (tempDbFile == null) {
+                    System.err.println("TextTaggerService: no tagger database in ols_text_tagger table \u2013 disabled");
+                    return;
+                }
+                dbPath = tempDbFile.toString();
+                startProcess(null);
+            } catch (Exception e) {
+                System.err.println("TextTaggerService: failed to start \u2013 " + e.getMessage());
+            }
+        }, "text-tagger-init");
+        thread.setDaemon(true);
+        thread.start();
     }
 
     @PreDestroy
     public void destroy() {
         stopProcess();
+        if (tempDbFile != null) {
+            try {
+                Files.deleteIfExists(tempDbFile);
+            } catch (IOException ignored) {}
+        }
+    }
+
+    private Path downloadTextTaggerDb() {
+        try (Connection conn = postgresClient.getConnection()) {
+            conn.setAutoCommit(false); // required for Large Object API
+
+            long oid;
+            try (Statement stmt = conn.createStatement();
+                 ResultSet rs = stmt.executeQuery("SELECT tagger_db_oid FROM ols_text_tagger LIMIT 1")) {
+                if (!rs.next()) {
+                    return null;
+                }
+                oid = rs.getLong("tagger_db_oid");
+                if (oid == 0) {
+                    return null;
+                }
+            }
+
+            LargeObjectManager lom = conn.unwrap(PGConnection.class).getLargeObjectAPI();
+            LargeObject lobj = lom.open(oid, LargeObjectManager.READ);
+
+            Path tmp = Files.createTempFile("ols_text_tagger_", ".bin");
+            try (InputStream gzIn = new java.util.zip.GZIPInputStream(
+                    new BufferedInputStream(lobj.getInputStream(), 8 * 1024 * 1024));
+                 OutputStream out = new BufferedOutputStream(Files.newOutputStream(tmp))) {
+                byte[] buf = new byte[8 * 1024 * 1024];
+                int n;
+                while ((n = gzIn.read(buf)) > 0) {
+                    out.write(buf, 0, n);
+                }
+            }
+            lobj.close();
+            conn.commit();
+            System.err.println("TextTaggerService: downloaded and decompressed tagger db to " + tmp);
+
+            return tmp;
+            return tmp;
+        } catch (Exception e) {
+            System.err.println("TextTaggerService: failed to download tagger db from postgres \u2013 " + e.getMessage());
+            return null;
+        }
     }
 
     // ------------------------------------------------------------------
