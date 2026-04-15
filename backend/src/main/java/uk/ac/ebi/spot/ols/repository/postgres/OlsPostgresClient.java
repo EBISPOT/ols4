@@ -308,7 +308,7 @@ public class OlsPostgresClient {
         String vecLiteral = "[" + vector.stream().map(String::valueOf).collect(Collectors.joining(",")) + "]";
 
         StringBuilder sql = new StringBuilder();
-        sql.append("SELECT en._json, min_dist AS score FROM (");
+        sql.append("SELECT sub._json, MIN(sub.min_dist) AS score FROM (");
 
         // Label embeddings
         sql.append("  SELECT en.id, en._json, emb.").append(embeddingColumn).append(" <=> ?::vector AS min_dist ");
@@ -326,7 +326,7 @@ public class OlsPostgresClient {
             sql.append("  AND en.type = ? ");
         }
 
-        sql.append(") sub GROUP BY sub.id, sub._json ORDER BY MIN(min_dist) ASC LIMIT ?");
+        sql.append(") sub GROUP BY sub.id, sub._json ORDER BY MIN(sub.min_dist) ASC LIMIT ?");
 
         try (Connection conn = postgresClient.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql.toString())) {
