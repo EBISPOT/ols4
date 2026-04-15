@@ -165,6 +165,10 @@ public class OlsSearchClient {
      * Results are grouped by label to deduplicate.
      */
     public OlsFacetedResultsPage<JsonElement> suggest(String prefix, Pageable pageable) {
+        if (prefix == null || prefix.isBlank()) {
+            return new OlsFacetedResultsPage<>(List.of(), Map.of(), pageable, 0);
+        }
+
         String sql = "SELECT DISTINCT ON (label_for_suggest) _json, similarity(label_for_suggest, ?) AS sim"
                 + " FROM ols_entities"
                 + " WHERE label_for_suggest % ?"
@@ -389,6 +393,10 @@ public class OlsSearchClient {
      * Suggest with ontology filtering.
      */
     public List<String> suggestLabels(String prefix, List<String> ontologyIds, int start, int rows) {
+        if (prefix == null || prefix.isBlank()) {
+            return List.of();
+        }
+
         StringBuilder where = new StringBuilder(" WHERE string % ?");
         List<Object> params = new ArrayList<>();
         params.add(prefix);

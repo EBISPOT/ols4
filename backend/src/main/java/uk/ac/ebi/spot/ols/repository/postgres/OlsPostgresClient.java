@@ -195,45 +195,51 @@ public class OlsPostgresClient {
     public Page<JsonElement> getSimilar(String type, String iri, Pageable pageable, String modelName) {
         String embeddingColumn = sanitizeEmbeddingColumn(modelName);
 
-        // Find the defining entity's embedding, then search for similar
-        String sql = "SELECT e2._json, (1 - (e1." + embeddingColumn + " <=> e2." + embeddingColumn + ")) AS score "
-                + "FROM ols_entities e1, ols_entities e2 "
-                + "WHERE e1.iri = ? AND e1.type = ? AND e1.is_obsolete = false "
-                + "AND ARRAY['true'] <@ e1.\"isDefiningOntology\" IS NOT TRUE "  // skip this check, use the column
-                + "AND e1." + embeddingColumn + " IS NOT NULL "
-                + "AND e2.type = ? AND e2." + embeddingColumn + " IS NOT NULL "
-                + "AND e2.id != e1.id "
-                + "ORDER BY e1." + embeddingColumn + " <=> e2." + embeddingColumn + " "
-                + "LIMIT ?";
+        String sourceSql = "SELECT id, " + embeddingColumn + "::text AS embedding "
+                + "FROM ols_entities "
+                + "WHERE iri = ? AND type = ? AND is_obsolete = false "
+                + "AND " + embeddingColumn + " IS NOT NULL "
+                + "ORDER BY is_defining_ontology DESC NULLS LAST, id "
+                + "LIMIT 1";
 
-        // Simplified: use HNSW index for nearest neighbor
-        String nnSql = "WITH source AS ("
-                + "  SELECT " + embeddingColumn + " AS vec FROM ols_entities "
-                + "  WHERE iri = ? AND type = ? AND " + embeddingColumn + " IS NOT NULL "
-                + "  LIMIT 1"
-                + ") "
-                + "SELECT e._json, (1 - (e." + embeddingColumn + " <=> s.vec)) AS score "
-                + "FROM ols_entities e, source s "
-                + "WHERE e.type = ? AND e." + embeddingColumn + " IS NOT NULL "
-                + "ORDER BY e." + embeddingColumn + " <=> s.vec "
+        String nnSql = "SELECT e._json, (1 - (e." + embeddingColumn + " <=> ?::vector)) AS score "
+                + "FROM ols_entities e "
+                + "WHERE e.type = ? AND e." + embeddingColumn + " IS NOT NULL AND e.id <> ? "
+                + "ORDER BY e." + embeddingColumn + " <=> ?::vector "
                 + "LIMIT ?";
 
         try (Connection conn = postgresClient.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(nnSql)) {
-            stmt.setString(1, iri);
-            stmt.setString(2, type);
-            stmt.setString(3, type);
-            stmt.setInt(4, pageable.getPageSize());
+             PreparedStatement sourceStmt = conn.prepareStatement(sourceSql)) {
+            sourceStmt.setString(1, iri);
+            sourceStmt.setString(2, type);
 
-            List<JsonElement> results = new ArrayList<>();
-            try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
-                    var json = JsonParser.parseString(PostgresClient.decompressJson(rs, "_json")).getAsJsonObject();
-                    json.addProperty("score", rs.getDouble("score"));
-                    results.add(json);
+            long sourceId;
+            String sourceVector;
+            try (ResultSet rs = sourceStmt.executeQuery()) {
+                if (!rs.next()) {
+                    throw new ResourceNotFoundException("entity not found");
                 }
+                sourceId = rs.getLong("id");
+                sourceVector = rs.getString("embedding");
             }
-            return new PageImpl<>(results, pageable, results.size());
+
+            try (PreparedStatement stmt = conn.prepareStatement(nnSql)) {
+                stmt.setObject(1, sourceVector, Types.OTHER);
+                stmt.setString(2, type);
+                stmt.setLong(3, sourceId);
+                stmt.setObject(4, sourceVector, Types.OTHER);
+                stmt.setInt(5, pageable.getPageSize());
+
+                List<JsonElement> results = new ArrayList<>();
+                try (ResultSet rs = stmt.executeQuery()) {
+                    while (rs.next()) {
+                        var json = JsonParser.parseString(PostgresClient.decompressJson(rs, "_json")).getAsJsonObject();
+                        json.addProperty("score", rs.getDouble("score"));
+                        results.add(json);
+                    }
+                }
+                return new PageImpl<>(results, pageable, results.size());
+            }
         } catch (SQLException e) {
             throw new RuntimeException("getSimilar failed", e);
         }
@@ -303,6 +309,8 @@ public class OlsPostgresClient {
     public Page<JsonElement> searchByVector(String type, List<Double> vector, Pageable pageable, String modelName, boolean includeCurations) {
         String embeddingColumn = sanitizeEmbeddingNodeColumn(modelName);
         int limit = pageable.getPageSize();
+        boolean filterByType = hasConcreteEntityType(type);
+        int candidateLimit = nearestNeighborCandidateLimit(limit, filterByType, false);
 
         // Build vector literal
         String vecLiteral = "[" + vector.stream().map(String::valueOf).collect(Collectors.joining(",")) + "]";
@@ -311,19 +319,33 @@ public class OlsPostgresClient {
         sql.append("SELECT sub._json, MIN(sub.min_dist) AS score FROM (");
 
         // Label embeddings
-        sql.append("  SELECT en.id, en._json, emb.").append(embeddingColumn).append(" <=> ?::vector AS min_dist ");
-        sql.append("  FROM ols_embedding_nodes emb ");
-        sql.append("  JOIN ols_entities en ON emb.entity_id = en.id ");
-        sql.append("  WHERE emb.type = 'LabelEmbedding' AND emb.").append(embeddingColumn).append(" IS NOT NULL ");
-        sql.append("  AND en.type = ? ");
+        sql.append("  SELECT en.id, en._json, cand.min_dist ");
+        sql.append("  FROM (");
+        sql.append("    SELECT emb.entity_id, emb.").append(embeddingColumn).append(" <=> ?::vector AS min_dist ");
+        sql.append("    FROM ols_embedding_nodes emb ");
+        sql.append("    WHERE emb.type = 'LabelEmbedding' AND emb.").append(embeddingColumn).append(" IS NOT NULL ");
+        sql.append("    ORDER BY emb.").append(embeddingColumn).append(" <=> ?::vector ");
+        sql.append("    LIMIT ? ");
+        sql.append("  ) cand ");
+        sql.append("  JOIN ols_entities en ON en.id = cand.entity_id ");
+        if (filterByType) {
+            sql.append("  WHERE en.type = ? ");
+        }
 
         if (includeCurations) {
             sql.append("  UNION ALL ");
-            sql.append("  SELECT en.id, en._json, emb.").append(embeddingColumn).append(" <=> ?::vector AS min_dist ");
-            sql.append("  FROM ols_embedding_nodes emb ");
-            sql.append("  JOIN ols_entities en ON emb.entity_id = en.id ");
-            sql.append("  WHERE emb.type = 'CurationEmbedding' AND emb.").append(embeddingColumn).append(" IS NOT NULL ");
-            sql.append("  AND en.type = ? ");
+            sql.append("  SELECT en.id, en._json, cand.min_dist ");
+            sql.append("  FROM (");
+            sql.append("    SELECT emb.entity_id, emb.").append(embeddingColumn).append(" <=> ?::vector AS min_dist ");
+            sql.append("    FROM ols_embedding_nodes emb ");
+            sql.append("    WHERE emb.type = 'CurationEmbedding' AND emb.").append(embeddingColumn).append(" IS NOT NULL ");
+            sql.append("    ORDER BY emb.").append(embeddingColumn).append(" <=> ?::vector ");
+            sql.append("    LIMIT ? ");
+            sql.append("  ) cand ");
+            sql.append("  JOIN ols_entities en ON en.id = cand.entity_id ");
+            if (filterByType) {
+                sql.append("  WHERE en.type = ? ");
+            }
         }
 
         sql.append(") sub GROUP BY sub.id, sub._json ORDER BY MIN(sub.min_dist) ASC LIMIT ?");
@@ -332,10 +354,18 @@ public class OlsPostgresClient {
              PreparedStatement stmt = conn.prepareStatement(sql.toString())) {
             int idx = 1;
             stmt.setObject(idx++, vecLiteral, Types.OTHER);
-            stmt.setString(idx++, type);
+            stmt.setObject(idx++, vecLiteral, Types.OTHER);
+            stmt.setInt(idx++, candidateLimit);
+            if (filterByType) {
+                stmt.setString(idx++, type);
+            }
             if (includeCurations) {
                 stmt.setObject(idx++, vecLiteral, Types.OTHER);
-                stmt.setString(idx++, type);
+                stmt.setObject(idx++, vecLiteral, Types.OTHER);
+                stmt.setInt(idx++, candidateLimit);
+                if (filterByType) {
+                    stmt.setString(idx++, type);
+                }
             }
             stmt.setInt(idx++, limit);
 
@@ -363,44 +393,83 @@ public class OlsPostgresClient {
         String embeddingColumn = sanitizeEmbeddingNodeColumn(modelName);
         int limit = pageable.getPageSize();
         String vecLiteral = "[" + vector.stream().map(String::valueOf).collect(Collectors.joining(",")) + "]";
+        boolean filterByType = hasConcreteEntityType(type);
+        int candidateLimit = nearestNeighborCandidateLimit(limit, filterByType, true);
+        String normalizedOntologyId = ontologyId.toLowerCase();
 
         StringBuilder sql = new StringBuilder();
 
         if (isDefiningOntology) {
             sql.append("SELECT sub._json, MIN(sub.dist) AS score FROM (");
-            sql.append("  SELECT en._json, en.id, emb.").append(embeddingColumn).append(" <=> ?::vector AS dist ");
-            sql.append("  FROM ols_embedding_nodes emb ");
-            sql.append("  JOIN ols_entities en ON emb.entity_id = en.id ");
-            sql.append("  WHERE emb.type = 'LabelEmbedding' AND emb.").append(embeddingColumn).append(" IS NOT NULL ");
-            sql.append("  AND en.type = ? AND en.ontology_id = ? ");
+            sql.append("  SELECT en._json, en.id, cand.dist ");
+            sql.append("  FROM (");
+            sql.append("    SELECT emb.entity_id, emb.").append(embeddingColumn).append(" <=> ?::vector AS dist ");
+            sql.append("    FROM ols_embedding_nodes emb ");
+            sql.append("    WHERE emb.type = 'LabelEmbedding' AND emb.").append(embeddingColumn).append(" IS NOT NULL ");
+            sql.append("    ORDER BY emb.").append(embeddingColumn).append(" <=> ?::vector ");
+            sql.append("    LIMIT ? ");
+            sql.append("  ) cand ");
+            sql.append("  JOIN ols_entities en ON en.id = cand.entity_id ");
+            sql.append("  WHERE 1 = 1 ");
+            if (filterByType) {
+                sql.append("  AND en.type = ? ");
+            }
+            sql.append("  AND en.ontology_id = ? ");
 
             if (includeCurations) {
                 sql.append("  UNION ALL ");
-                sql.append("  SELECT en._json, en.id, emb.").append(embeddingColumn).append(" <=> ?::vector AS dist ");
-                sql.append("  FROM ols_embedding_nodes emb ");
-                sql.append("  JOIN ols_entities en ON emb.entity_id = en.id ");
-                sql.append("  WHERE emb.type = 'CurationEmbedding' AND emb.").append(embeddingColumn).append(" IS NOT NULL ");
-                sql.append("  AND en.type = ? AND en.ontology_id = ? ");
+                sql.append("  SELECT en._json, en.id, cand.dist ");
+                sql.append("  FROM (");
+                sql.append("    SELECT emb.entity_id, emb.").append(embeddingColumn).append(" <=> ?::vector AS dist ");
+                sql.append("    FROM ols_embedding_nodes emb ");
+                sql.append("    WHERE emb.type = 'CurationEmbedding' AND emb.").append(embeddingColumn).append(" IS NOT NULL ");
+                sql.append("    ORDER BY emb.").append(embeddingColumn).append(" <=> ?::vector ");
+                sql.append("    LIMIT ? ");
+                sql.append("  ) cand ");
+                sql.append("  JOIN ols_entities en ON en.id = cand.entity_id ");
+                sql.append("  WHERE 1 = 1 ");
+                if (filterByType) {
+                    sql.append("  AND en.type = ? ");
+                }
+                sql.append("  AND en.ontology_id = ? ");
             }
 
             sql.append(") sub GROUP BY sub.id, sub._json ORDER BY MIN(sub.dist) ASC LIMIT ?");
         } else {
             // Non-defining: find defining entity, then match target entity by IRI in the target ontology
             sql.append("SELECT sub._json, MIN(sub.dist) AS score FROM (");
-            sql.append("  SELECT target._json, target.id, emb.").append(embeddingColumn).append(" <=> ?::vector AS dist ");
-            sql.append("  FROM ols_embedding_nodes emb ");
-            sql.append("  JOIN ols_entities defining ON emb.entity_id = defining.id ");
+            sql.append("  SELECT target._json, target.id, cand.dist ");
+            sql.append("  FROM (");
+            sql.append("    SELECT emb.entity_id, emb.").append(embeddingColumn).append(" <=> ?::vector AS dist ");
+            sql.append("    FROM ols_embedding_nodes emb ");
+            sql.append("    WHERE emb.type = 'LabelEmbedding' AND emb.").append(embeddingColumn).append(" IS NOT NULL ");
+            sql.append("    ORDER BY emb.").append(embeddingColumn).append(" <=> ?::vector ");
+            sql.append("    LIMIT ? ");
+            sql.append("  ) cand ");
+            sql.append("  JOIN ols_entities defining ON defining.id = cand.entity_id ");
             sql.append("  JOIN ols_entities target ON target.iri = defining.iri AND target.type = defining.type ");
-            sql.append("  WHERE emb.type = 'LabelEmbedding' AND emb.").append(embeddingColumn).append(" IS NOT NULL ");
+            sql.append("  WHERE 1 = 1 ");
+            if (filterByType) {
+                sql.append("  AND target.type = ? ");
+            }
             sql.append("  AND target.ontology_id = ? ");
 
             if (includeCurations) {
                 sql.append("  UNION ALL ");
-                sql.append("  SELECT target._json, target.id, emb.").append(embeddingColumn).append(" <=> ?::vector AS dist ");
-                sql.append("  FROM ols_embedding_nodes emb ");
-                sql.append("  JOIN ols_entities defining ON emb.entity_id = defining.id ");
+                sql.append("  SELECT target._json, target.id, cand.dist ");
+                sql.append("  FROM (");
+                sql.append("    SELECT emb.entity_id, emb.").append(embeddingColumn).append(" <=> ?::vector AS dist ");
+                sql.append("    FROM ols_embedding_nodes emb ");
+                sql.append("    WHERE emb.type = 'CurationEmbedding' AND emb.").append(embeddingColumn).append(" IS NOT NULL ");
+                sql.append("    ORDER BY emb.").append(embeddingColumn).append(" <=> ?::vector ");
+                sql.append("    LIMIT ? ");
+                sql.append("  ) cand ");
+                sql.append("  JOIN ols_entities defining ON defining.id = cand.entity_id ");
                 sql.append("  JOIN ols_entities target ON target.iri = defining.iri AND target.type = defining.type ");
-                sql.append("  WHERE emb.type = 'CurationEmbedding' AND emb.").append(embeddingColumn).append(" IS NOT NULL ");
+                sql.append("  WHERE 1 = 1 ");
+                if (filterByType) {
+                    sql.append("  AND target.type = ? ");
+                }
                 sql.append("  AND target.ontology_id = ? ");
             }
 
@@ -412,19 +481,37 @@ public class OlsPostgresClient {
             int idx = 1;
             if (isDefiningOntology) {
                 stmt.setObject(idx++, vecLiteral, Types.OTHER);
-                stmt.setString(idx++, type);
-                stmt.setString(idx++, ontologyId.toLowerCase());
+                stmt.setObject(idx++, vecLiteral, Types.OTHER);
+                stmt.setInt(idx++, candidateLimit);
+                if (filterByType) {
+                    stmt.setString(idx++, type);
+                }
+                stmt.setString(idx++, normalizedOntologyId);
                 if (includeCurations) {
                     stmt.setObject(idx++, vecLiteral, Types.OTHER);
-                    stmt.setString(idx++, type);
-                    stmt.setString(idx++, ontologyId.toLowerCase());
+                    stmt.setObject(idx++, vecLiteral, Types.OTHER);
+                    stmt.setInt(idx++, candidateLimit);
+                    if (filterByType) {
+                        stmt.setString(idx++, type);
+                    }
+                    stmt.setString(idx++, normalizedOntologyId);
                 }
             } else {
                 stmt.setObject(idx++, vecLiteral, Types.OTHER);
-                stmt.setString(idx++, ontologyId.toLowerCase());
+                stmt.setObject(idx++, vecLiteral, Types.OTHER);
+                stmt.setInt(idx++, candidateLimit);
+                if (filterByType) {
+                    stmt.setString(idx++, type);
+                }
+                stmt.setString(idx++, normalizedOntologyId);
                 if (includeCurations) {
                     stmt.setObject(idx++, vecLiteral, Types.OTHER);
-                    stmt.setString(idx++, ontologyId.toLowerCase());
+                    stmt.setObject(idx++, vecLiteral, Types.OTHER);
+                    stmt.setInt(idx++, candidateLimit);
+                    if (filterByType) {
+                        stmt.setString(idx++, type);
+                    }
+                    stmt.setString(idx++, normalizedOntologyId);
                 }
             }
             stmt.setInt(idx++, limit);
@@ -441,6 +528,21 @@ public class OlsPostgresClient {
         } catch (SQLException e) {
             throw new RuntimeException("searchByVectorInOntology failed", e);
         }
+    }
+
+    private boolean hasConcreteEntityType(String type) {
+        return type != null && !type.isBlank() && !"OntologyEntity".equals(type);
+    }
+
+    private int nearestNeighborCandidateLimit(int requestedLimit, boolean filterByType, boolean filterByOntology) {
+        int candidateLimit = Math.max(requestedLimit * 20, 100);
+        if (filterByType) {
+            candidateLimit = Math.max(candidateLimit, requestedLimit * 100);
+        }
+        if (filterByOntology) {
+            candidateLimit = Math.max(candidateLimit, requestedLimit * 500);
+        }
+        return Math.min(candidateLimit, 20_000);
     }
 
     public List<String> getEmbeddingModels() {
