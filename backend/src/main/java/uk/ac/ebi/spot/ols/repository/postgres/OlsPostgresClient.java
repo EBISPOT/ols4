@@ -213,20 +213,20 @@ public class OlsPostgresClient {
             sourceStmt.setString(1, iri);
             sourceStmt.setString(2, type);
 
-            long sourceId;
+            String sourceId;
             String sourceVector;
             try (ResultSet rs = sourceStmt.executeQuery()) {
                 if (!rs.next()) {
                     throw new ResourceNotFoundException("entity not found");
                 }
-                sourceId = rs.getLong("id");
+                sourceId = rs.getString("id");
                 sourceVector = rs.getString("embedding");
             }
 
             try (PreparedStatement stmt = conn.prepareStatement(nnSql)) {
                 stmt.setObject(1, sourceVector, Types.OTHER);
                 stmt.setString(2, type);
-                stmt.setLong(3, sourceId);
+                stmt.setString(3, sourceId);
                 stmt.setObject(4, sourceVector, Types.OTHER);
                 stmt.setInt(5, pageable.getPageSize());
 
