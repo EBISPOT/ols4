@@ -40,12 +40,12 @@
         "logo": "http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png",
         "url": "http://creativecommons.org/licenses/by/4.0/"
       },
-      "ontologyPurl": "http://purl.obolibrary.org/obo/duo.owl",
+      "ontologyPurl": "./testcases/duo/duo.owl",
       "preferredPrefix": "DUO",
       "products": [
         {
           "id": "duo.owl",
-          "ontology_purl": "http://purl.obolibrary.org/obo/duo.owl"
+          "ontology_purl": "./testcases/duo/duo.owl"
         }
       ],
       "repository": "https://github.com/EBISPOT/DUO",
