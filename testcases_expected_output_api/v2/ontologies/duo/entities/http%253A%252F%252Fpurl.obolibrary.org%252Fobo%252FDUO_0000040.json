@@ -11,11 +11,6 @@
   ],
   "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
   "directAncestor": [
-    "http://purl.obolibrary.org/obo/BFO_0000001",
-    "http://purl.obolibrary.org/obo/BFO_0000003",
-    "http://purl.obolibrary.org/obo/BFO_0000015",
-    "http://purl.obolibrary.org/obo/COB_0000035",
-    "http://purl.obolibrary.org/obo/COB_0000082",
     "http://purl.obolibrary.org/obo/DUO_0000037",
     "http://purl.obolibrary.org/obo/OBI_0000011",
     "http://purl.obolibrary.org/obo/OBI_0000066"
@@ -28,11 +23,6 @@
   "hasHierarchicalChildren": false,
   "hasHierarchicalParents": true,
   "hierarchicalAncestor": [
-    "http://purl.obolibrary.org/obo/BFO_0000001",
-    "http://purl.obolibrary.org/obo/BFO_0000003",
-    "http://purl.obolibrary.org/obo/BFO_0000015",
-    "http://purl.obolibrary.org/obo/COB_0000035",
-    "http://purl.obolibrary.org/obo/COB_0000082",
     "http://purl.obolibrary.org/obo/DUO_0000037",
     "http://purl.obolibrary.org/obo/OBI_0000011",
     "http://purl.obolibrary.org/obo/OBI_0000066"
@@ -75,66 +65,6 @@
       ],
       "url": "http://purl.obolibrary.org/obo/DUO_0000040"
     },
-    "http://purl.obolibrary.org/obo/BFO_0000001": {
-      "curie": "BFO:0000001",
-      "hasLocalDefinition": true,
-      "label": [
-        "entity"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/BFO_0000003": {
-      "curie": "BFO:0000003",
-      "hasLocalDefinition": true,
-      "label": [
-        "occurrent"
-      ],
-      "numAppearsIn": 2.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/BFO_0000015": {
-      "curie": "BFO:0000015",
-      "hasLocalDefinition": true,
-      "label": [
-        "process"
-      ],
-      "numAppearsIn": 2.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/COB_0000035": {
-      "curie": "COB:0000035",
-      "hasLocalDefinition": true,
-      "label": [
-        "completely executed planned process"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/COB_0000082": {
-      "curie": "COB:0000082",
-      "hasLocalDefinition": true,
-      "label": [
-        "planned process"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
     "http://purl.obolibrary.org/obo/DUO_0000037": {
       "curie": "DUO:0000037",
       "definedBy": [
@@ -168,11 +98,11 @@
     },
     "http://purl.obolibrary.org/obo/IAO_0000115": {
       "curie": "IAO:0000115",
-      "hasLocalDefinition": true,
+      "hasLocalDefinition": false,
       "label": [
-        "definition"
+        "IAO_0000115"
       ],
-      "numAppearsIn": 4.0,
+      "numAppearsIn": 3.0,
       "type": [
         "annotationProperty",
         "entity",
@@ -181,11 +111,11 @@
     },
     "http://purl.obolibrary.org/obo/IAO_0000232": {
       "curie": "IAO:0000232",
-      "hasLocalDefinition": true,
+      "hasLocalDefinition": false,
       "label": [
-        "curator note"
+        "IAO_0000232"
       ],
-      "numAppearsIn": 2.0,
+      "numAppearsIn": 1.0,
       "type": [
         "annotationProperty",
         "entity",
@@ -201,7 +131,7 @@
       "curie": "OBI:0000066",
       "hasLocalDefinition": true,
       "label": [
-        "investigation"
+        "OBI_0000066"
       ],
       "numAppearsIn": 1.0,
       "type": [
@@ -227,11 +157,11 @@
       "definedBy": [
         "rdfs"
       ],
-      "hasLocalDefinition": true,
+      "hasLocalDefinition": false,
       "label": [
         "label"
       ],
-      "numAppearsIn": 4.0,
+      "numAppearsIn": 3.0,
       "type": [
         "entity",
         "property"
@@ -254,11 +184,6 @@
     }
   },
   "linksTo": [
-    "http://purl.obolibrary.org/obo/BFO_0000001",
-    "http://purl.obolibrary.org/obo/BFO_0000003",
-    "http://purl.obolibrary.org/obo/BFO_0000015",
-    "http://purl.obolibrary.org/obo/COB_0000035",
-    "http://purl.obolibrary.org/obo/COB_0000082",
     "http://purl.obolibrary.org/obo/DUO_0000037",
     "http://purl.obolibrary.org/obo/DUO_0000040",
     "http://purl.obolibrary.org/obo/DUO_0000041",

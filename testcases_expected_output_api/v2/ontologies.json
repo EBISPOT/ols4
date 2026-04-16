@@ -27,12 +27,10 @@
     "http://purl.org/dc/elements/1.1/creator": "Melanie Courtot",
     "http://purl.org/dc/terms/license": "http://creativecommons.org/licenses/by/4.0/",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "http://www.w3.org/2002/07/owl#imports": "http://purl.obolibrary.org/obo/iao.owl",
     "http://www.w3.org/2002/07/owl#versionIRI": "http://purl.obolibrary.org/obo/duo/releases/2021-02-23/duo.owl",
     "imported": false,
     "importsFrom": [
       "oio",
-      "rdfs",
       "skos"
     ],
     "iri": "http://purl.obolibrary.org/obo/duo.owl",
@@ -87,51 +85,12 @@
         "curie": "OBI:0000066",
         "hasLocalDefinition": true,
         "label": [
-          "investigation"
+          "OBI_0000066"
         ],
         "numAppearsIn": 1.0,
         "type": [
           "class",
           "entity"
-        ]
-      },
-      "http://purl.org/dc/elements/1.1/contributor": {
-        "curie": "contributor",
-        "hasLocalDefinition": true,
-        "label": [
-          "contributor"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "annotationProperty",
-          "entity",
-          "property"
-        ]
-      },
-      "http://purl.org/dc/elements/1.1/creator": {
-        "curie": "creator",
-        "hasLocalDefinition": true,
-        "label": [
-          "creator"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "annotationProperty",
-          "entity",
-          "property"
-        ]
-      },
-      "http://purl.org/dc/terms/license": {
-        "curie": "license",
-        "hasLocalDefinition": true,
-        "label": [
-          "license"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "annotationProperty",
-          "entity",
-          "property"
         ]
       },
       "https://github.com/EBISPOT/DUO": {
@@ -143,18 +102,15 @@
     "linksTo": [
       "http://purl.obolibrary.org/obo/DUO_0000001",
       "http://purl.obolibrary.org/obo/DUO_0000017",
-      "http://purl.obolibrary.org/obo/OBI_0000066",
-      "http://purl.org/dc/elements/1.1/contributor",
-      "http://purl.org/dc/elements/1.1/creator",
-      "http://purl.org/dc/terms/license"
+      "http://purl.obolibrary.org/obo/OBI_0000066"
     ],
     "loaded": "<loaded>",
     "numDescendants": 0.0,
     "numHierarchicalDescendants": 0.0,
-    "numberOfClasses": "311",
-    "numberOfEntities": "489",
-    "numberOfIndividuals": "21",
-    "numberOfProperties": "157",
+    "numberOfClasses": "45",
+    "numberOfEntities": "52",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "7",
     "ontologyId": "duo",
     "ontologyPurl": "./testcases/duo/duo.owl",
     "preferredPrefix": "DUO",
@@ -242,7 +198,7 @@
         "label": [
           "has_narrow_synonym"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "annotationProperty",
           "entity",
@@ -406,7 +362,7 @@
     "searchableAnnotationValues": [
       "0",
       "1",
-      "2026-04-16T14:38:32.451969",
+      "2026-04-16T17:56:36.540477",
       "Thu Dec 12 15:26:47 GMT 2024"
     ],
     "sourceFileTimestamp": "<sourceFileTimestamp>",
@@ -455,45 +411,6 @@
       "en"
     ],
     "linkedEntities": {
-      "http://purl.org/dc/elements/1.1/creator": {
-        "curie": "creator",
-        "hasLocalDefinition": false,
-        "label": [
-          "creator"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "annotationProperty",
-          "entity",
-          "property"
-        ]
-      },
-      "http://purl.org/dc/elements/1.1/rights": {
-        "curie": "rights",
-        "hasLocalDefinition": false,
-        "label": [
-          "rights"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "annotationProperty",
-          "entity",
-          "property"
-        ]
-      },
-      "http://purl.org/dc/terms/license": {
-        "curie": "license",
-        "hasLocalDefinition": false,
-        "label": [
-          "license"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "annotationProperty",
-          "entity",
-          "property"
-        ]
-      },
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "curie": "RDFS:comment",
         "definedBy": [
@@ -503,7 +420,7 @@
         "label": [
           "comment"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "property"
@@ -511,9 +428,6 @@
       }
     },
     "linksTo": [
-      "http://purl.org/dc/elements/1.1/creator",
-      "http://purl.org/dc/elements/1.1/rights",
-      "http://purl.org/dc/terms/license",
       "http://www.w3.org/2000/01/rdf-schema#comment"
     ],
     "loaded": "<loaded>",
@@ -556,7 +470,7 @@
         "label": [
           "part of"
         ],
-        "numAppearsIn": 3.0,
+        "numAppearsIn": 2.0,
         "type": [
           "entity",
           "objectProperty",

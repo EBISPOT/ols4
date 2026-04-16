@@ -15,7 +15,6 @@
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
     <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/duo.owl">
         <owl:versionIRI rdf:resource="http://purl.obolibrary.org/obo/duo/releases/2021-02-23/duo.owl"/>
-        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
         <dc:contributor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Contributors to the GA4GH Data Use Ontology workstream are listed at https://github.com/EBISPOT/DUO/blob/master/README.md#contributions</dc:contributor>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Melanie Courtot</dc:creator>
         <terms:license>http://creativecommons.org/licenses/by/4.0/</terms:license>
