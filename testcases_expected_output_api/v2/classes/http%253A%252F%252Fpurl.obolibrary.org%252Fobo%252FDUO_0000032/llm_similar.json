@@ -20,6 +20,8 @@
         "http://purl.obolibrary.org/obo/BFO_0000001",
         "http://purl.obolibrary.org/obo/BFO_0000003",
         "http://purl.obolibrary.org/obo/BFO_0000015",
+        "http://purl.obolibrary.org/obo/COB_0000035",
+        "http://purl.obolibrary.org/obo/COB_0000082",
         "http://purl.obolibrary.org/obo/OBI_0000011",
         "http://purl.obolibrary.org/obo/OBI_0000066"
       ],
@@ -34,6 +36,8 @@
         "http://purl.obolibrary.org/obo/BFO_0000001",
         "http://purl.obolibrary.org/obo/BFO_0000003",
         "http://purl.obolibrary.org/obo/BFO_0000015",
+        "http://purl.obolibrary.org/obo/COB_0000035",
+        "http://purl.obolibrary.org/obo/COB_0000082",
         "http://purl.obolibrary.org/obo/OBI_0000011",
         "http://purl.obolibrary.org/obo/OBI_0000066"
       ],
@@ -112,6 +116,30 @@
             "entity"
           ]
         },
+        "http://purl.obolibrary.org/obo/COB_0000035": {
+          "curie": "COB:0000035",
+          "hasLocalDefinition": true,
+          "label": [
+            "completely executed planned process"
+          ],
+          "numAppearsIn": 1.0,
+          "type": [
+            "class",
+            "entity"
+          ]
+        },
+        "http://purl.obolibrary.org/obo/COB_0000082": {
+          "curie": "COB:0000082",
+          "hasLocalDefinition": true,
+          "label": [
+            "planned process"
+          ],
+          "numAppearsIn": 1.0,
+          "type": [
+            "class",
+            "entity"
+          ]
+        },
         "http://purl.obolibrary.org/obo/DUO_0000041": {
           "curie": "DUO:0000041",
           "definedBy": [
@@ -155,16 +183,9 @@
           ]
         },
         "http://purl.obolibrary.org/obo/OBI_0000011": {
-          "curie": "OBI:0000011",
-          "hasLocalDefinition": true,
-          "label": [
-            "planned process"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "class",
-            "entity"
-          ]
+          "curie": "obi:0000011",
+          "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+          "url": "http://purl.obolibrary.org/obo/OBI_0000011"
         },
         "http://purl.obolibrary.org/obo/OBI_0000066": {
           "curie": "OBI:0000066",
@@ -241,11 +262,12 @@
         "http://purl.obolibrary.org/obo/BFO_0000001",
         "http://purl.obolibrary.org/obo/BFO_0000003",
         "http://purl.obolibrary.org/obo/BFO_0000015",
+        "http://purl.obolibrary.org/obo/COB_0000035",
+        "http://purl.obolibrary.org/obo/COB_0000082",
         "http://purl.obolibrary.org/obo/DUO_0000032",
         "http://purl.obolibrary.org/obo/DUO_0000041",
         "http://purl.obolibrary.org/obo/IAO_0000115",
         "http://purl.obolibrary.org/obo/IAO_0000232",
-        "http://purl.obolibrary.org/obo/OBI_0000011",
         "http://purl.obolibrary.org/obo/OBI_0000066",
         "http://www.geneontology.org/formats/oboInOwl#id",
         "http://www.w3.org/2000/01/rdf-schema#comment",

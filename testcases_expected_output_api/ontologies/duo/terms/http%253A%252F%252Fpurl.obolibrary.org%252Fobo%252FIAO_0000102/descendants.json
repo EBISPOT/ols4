@@ -141,6 +141,13 @@
       }
     },
     "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0001-6875-5360",
+        "https://orcid.org/0000-0002-7356-1779"
+      ],
+      "editor note": [
+        "Terms created as placeholders with the expectation of being permanent should instead be deprecated using the \"placeholder removed\" (obo:IAO_0000226) justification."
+      ],
       "editor preferred term": [
         "failed exploratory term"
       ],
@@ -149,7 +156,7 @@
       ]
     },
     "description": [
-      "The term was used in an attempt to structure part of the ontology but in retrospect failed to do a good job"
+      "The term was initially used in an attempt to structure part of the ontology, but in retrospect failed to do a good job."
     ],
     "has_children": false,
     "iri": "http://purl.obolibrary.org/obo/IAO_0000103",
@@ -243,7 +250,7 @@
       ]
     },
     "description": [
-      "Term created to ease viewing/sort terms for development purpose, and will not be included in a release"
+      "The term was created to ease viewing/sorting terms for development purposes, but will not be included in a release."
     ],
     "has_children": false,
     "iri": "http://purl.obolibrary.org/obo/IAO_0000121",
@@ -542,11 +549,20 @@
       }
     },
     "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0001-6875-5360",
+        "https://orcid.org/0000-0002-7356-1779"
+      ],
+      "editor note": [
+        "This reason is appropriate for a temporary term even if no permanent term is defined; for example if the need for the term no longer exists. If a permanent (replacement) term is defined, the deprecated term should reference the replacement with IAO:0100001. If no replacement is defined, it may be appropriate to reference alternative terms with oboInOwl:consider."
+      ],
       "editor preferred term": [
         "placeholder removed"
       ]
     },
-    "description": [],
+    "description": [
+      "The term was created to temporarily stand in for a semantic purpose, but is no longer needed, typically due to another permanent term being defined."
+    ],
     "has_children": false,
     "iri": "http://purl.obolibrary.org/obo/IAO_0000226",
     "is_defining_ontology": false,
@@ -587,14 +603,20 @@
       }
     },
     "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0001-6875-5360",
+        "https://orcid.org/0000-0002-7356-1779"
+      ],
       "editor note": [
-        "An editor note should explain what were the merged terms and the reason for the merge."
+        "The deprecated term should reference the merged term with obo:IAO_0100001. The replacement term should reference the original terms as sources using obo:RO_0001000 (derives_from). An editor note should explain what were the merged terms and the reason for the merge."
       ],
       "editor preferred term": [
         "terms merged"
       ]
     },
-    "description": [],
+    "description": [
+      "The term has been combined with one or more other terms to create a more encompassing (merged) term."
+    ],
     "has_children": false,
     "iri": "http://purl.obolibrary.org/obo/IAO_0000227",
     "is_defining_ontology": false,
@@ -635,14 +657,20 @@
       }
     },
     "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0001-6875-5360",
+        "https://orcid.org/0000-0002-7356-1779"
+      ],
       "editor note": [
-        "This is to be used when the original term has been replaced by a term imported from an other ontology. An editor note should indicate what is the URI of the new term to use."
+        "This is to be used when the original term has been replaced by a term imported from an other ontology. The deprecated term should reference the imported term with obo:IAO_0100001."
       ],
       "editor preferred term": [
         "term imported"
       ]
     },
-    "description": [],
+    "description": [
+      "The term has been replaced by a term imported from another ontology."
+    ],
     "has_children": false,
     "iri": "http://purl.obolibrary.org/obo/IAO_0000228",
     "is_defining_ontology": false,
@@ -683,14 +711,20 @@
       }
     },
     "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0001-6875-5360",
+        "https://orcid.org/0000-0002-7356-1779"
+      ],
       "editor note": [
-        "This is to be used when a term has been split in two or more new terms. An editor note should indicate the reason for the split and indicate the URIs of the new terms created."
+        "This is to be used when a term has been split in two or more new terms. An editor note should indicate the reason for the split. The deprecated term should reference the replacement terms with obo:IAO_0100001."
       ],
       "editor preferred term": [
         "term split"
       ]
     },
-    "description": [],
+    "description": [
+      "The term has been split into two or more new terms."
+    ],
     "has_children": false,
     "iri": "http://purl.obolibrary.org/obo/IAO_0000229",
     "is_defining_ontology": false,
@@ -2193,8 +2227,12 @@
       }
     },
     "annotation": {
+      "contributor": [
+        "https://orcid.org/0000-0001-6875-5360",
+        "https://orcid.org/0000-0002-7356-1779"
+      ],
       "editor note": [
-        "This obsolesence reason should be used conservatively. Typical valid examples are: un-necessary grouping classes in disease ontologies, a phenotype term added on the assumption it was a disease."
+        "This obsolesence reason should be used conservatively. Typical valid examples in disease ontologies are: unnecessary class grouping; mistaked creation of a disease associated to a phenotype."
       ],
       "ontology term requester": [
         "https://orcid.org/0000-0001-5208-3432"
@@ -2222,6 +2260,62 @@
     "ontology_name": "duo",
     "ontology_prefix": "DUO",
     "short_form": "OMO_0001000",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001002/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001002/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001002/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001002/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001002/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001002/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/duo/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOMO_0001002?lang=en"
+      }
+    },
+    "annotation": {
+      "editor note": [
+        "This obsolesence reason should be used conservatively. For example: Obsoleting class that describes a breed of cow based on a record in an existing database, that was later retracted as faulty (breed does not exist). Do not use this term to obsolete a historic concept (that was once valid, but not anymore). "
+      ],
+      "ontology term requester": [
+        "https://orcid.org/0000-0002-4142-7153"
+      ],
+      "term editor": [
+        "http://orcid.org/0000-0002-4142-7153"
+      ],
+      "term tracker item": [
+        "https://github.com/information-artifact-ontology/ontology-metadata/issues/136"
+      ]
+    },
+    "description": [
+      "The term was added to the ontology on the assumption it was a valid domain entity, but it turns out the entity does not exist in reality."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/OMO_0001002",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "domain entity does not exist",
+    "lang": "en",
+    "obo_id": "OMO:0001002",
+    "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontology_name": "duo",
+    "ontology_prefix": "DUO",
+    "short_form": "OMO_0001002",
     "synonyms": []
   }
 ]

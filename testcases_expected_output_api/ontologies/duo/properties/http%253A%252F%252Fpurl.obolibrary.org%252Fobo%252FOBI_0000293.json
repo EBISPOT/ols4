@@ -18,7 +18,7 @@
       "8/17/09: specified inputs of one process are not necessarily specified inputs of a larger process that it is part of. This is in contrast to how 'has participant' works."
     ],
     "editor preferred term": [
-      "has_specified_input"
+      "has specified input"
     ],
     "example of usage": [
       "see is_input_of example_of_usage"
@@ -34,14 +34,14 @@
     ]
   },
   "description": [
-    "The inverse property of is_specified_input_of"
+    "The inverse property of is specified input of"
   ],
   "has_children": false,
   "iri": "http://purl.obolibrary.org/obo/OBI_0000293",
   "is_defining_ontology": false,
   "is_obsolete": false,
   "is_root": false,
-  "label": "has_specified_input",
+  "label": "has specified input",
   "lang": "en",
   "obo_id": "OBI:0000293",
   "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",

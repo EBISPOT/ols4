@@ -5,6 +5,7 @@
   ],
   "curie": "BFO:0000015",
   "definition": [
+    "An occurrent that has temporal proper parts and for some time t, p s-depends_on some material entity at t.",
     {
       "axioms": [
         {
@@ -17,7 +18,10 @@
       "value": "p is a process = Def. p is an occurrent that has temporal proper parts and for some time t, p s-depends_on some material entity at t. (axiom label in BFO2 Reference: [083-003])"
     }
   ],
-  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "definitionProperty": [
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://www.w3.org/2000/01/rdf-schema#comment"
+  ],
   "directAncestor": [
     "http://purl.obolibrary.org/obo/BFO_0000001",
     "http://purl.obolibrary.org/obo/BFO_0000003"
@@ -72,6 +76,7 @@
     "value": "(iff (Process a) (and (Occurrent a) (exists (b) (properTemporalPartOf b a)) (exists (c t) (and (MaterialEntity c) (specificallyDependsOnAt a c t))))) // axiom label in BFO2 CLIF: [083-003] "
   },
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#comment": "An occurrent that has temporal proper parts and for some time t, p s-depends_on some material entity at t.",
   "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://purl.obolibrary.org/obo/bfo.owl",
   "http://www.w3.org/2000/01/rdf-schema#label": "process",
   "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/BFO_0000003",
@@ -199,6 +204,21 @@
         "property"
       ]
     },
+    "http://www.w3.org/2000/01/rdf-schema#comment": {
+      "curie": "RDFS:comment",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "comment"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
     "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": {
       "curie": "RDFS:isDefinedBy",
       "definedBy": [
@@ -255,12 +275,13 @@
     "http://purl.obolibrary.org/obo/IAO_0000116",
     "http://purl.obolibrary.org/obo/IAO_0000602",
     "http://purl.obolibrary.org/obo/IAO_0010000",
+    "http://www.w3.org/2000/01/rdf-schema#comment",
     "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf"
   ],
-  "numDescendants": 28.0,
-  "numHierarchicalDescendants": 28.0,
+  "numDescendants": 29.0,
+  "numHierarchicalDescendants": 29.0,
   "ontologyId": "duo",
   "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontologyPreferredPrefix": "DUO",

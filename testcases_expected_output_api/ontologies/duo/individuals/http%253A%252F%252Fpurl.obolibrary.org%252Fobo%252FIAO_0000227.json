@@ -14,14 +14,20 @@
     }
   },
   "annotation": {
+    "contributor": [
+      "https://orcid.org/0000-0001-6875-5360",
+      "https://orcid.org/0000-0002-7356-1779"
+    ],
     "editor note": [
-      "An editor note should explain what were the merged terms and the reason for the merge."
+      "The deprecated term should reference the merged term with obo:IAO_0100001. The replacement term should reference the original terms as sources using obo:RO_0001000 (derives_from). An editor note should explain what were the merged terms and the reason for the merge."
     ],
     "editor preferred term": [
       "terms merged"
     ]
   },
-  "description": [],
+  "description": [
+    "The term has been combined with one or more other terms to create a more encompassing (merged) term."
+  ],
   "has_children": false,
   "iri": "http://purl.obolibrary.org/obo/IAO_0000227",
   "is_defining_ontology": false,

@@ -132,6 +132,7 @@
       ]
     },
     "description": [
+      "A continuant that is dependent on one or other independent continuant bearers. For every instance of A requires some instance of (an independent continuant type) B but which instance of B serves can change from time to time.",
       "b is a generically dependent continuant = Def. b is a continuant that g-depends_on one or more other entities. (axiom label in BFO2 Reference: [074-001])"
     ],
     "has_children": true,
@@ -249,6 +250,7 @@
     },
     "annotation": {
       "alternative label": [
+        "data item",
         "data"
       ],
       "editor note": [
@@ -258,7 +260,7 @@
         "JAR: datum     -- well, this will be very tricky to define, but maybe some \ninformation-like stuff that might be put into a computer and that is \nmeant, by someone, to denote and/or to be interpreted by some \nprocess... I would include lists, tables, sentences... I think I might \ndefer to Barry, or to Brian Cantwell Smith\n\nJAR: A data item is an approximately justified approximately true approximate belief"
       ],
       "editor preferred term": [
-        "data item"
+        "data entity"
       ],
       "example of usage": [
         "Data items include counts of things, analyte concentrations, and statistical summaries."
@@ -273,7 +275,7 @@
       ]
     },
     "description": [
-      "An information content entity that is intended to be a truthful statement about something (modulo, e.g., measurement precision or other systematic errors) and is constructed/acquired by a method which reliably tends to produce (approximately) truthful statements."
+      "An information content entity that is intended to be one or more truthful statement(s) about something (modulo, e.g., measurement precision or other systematic errors) and is constructed/acquired by a method which reliably tends to produce (approximately) truthful statements."
     ],
     "has_children": true,
     "iri": "http://purl.obolibrary.org/obo/IAO_0000027",
@@ -281,7 +283,7 @@
     "is_obsolete": false,
     "is_preferred_root": false,
     "is_root": false,
-    "label": "data item",
+    "label": "data entity",
     "lang": "en",
     "obo_id": "IAO:0000027",
     "ontology_iri": "http://purl.obolibrary.org/obo/duo.owl",

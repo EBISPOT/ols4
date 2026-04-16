@@ -11,9 +11,12 @@
     "http://purl.obolibrary.org/obo/BFO_0000001",
     "http://purl.obolibrary.org/obo/BFO_0000003",
     "http://purl.obolibrary.org/obo/BFO_0000015",
+    "http://purl.obolibrary.org/obo/COB_0000035",
+    "http://purl.obolibrary.org/obo/COB_0000082",
     "http://purl.obolibrary.org/obo/OBI_0000011"
   ],
   "directParent": [
+    "http://purl.obolibrary.org/obo/COB_0000035",
     "http://purl.obolibrary.org/obo/OBI_0000011"
   ],
   "hasDirectChildren": true,
@@ -24,9 +27,12 @@
     "http://purl.obolibrary.org/obo/BFO_0000001",
     "http://purl.obolibrary.org/obo/BFO_0000003",
     "http://purl.obolibrary.org/obo/BFO_0000015",
+    "http://purl.obolibrary.org/obo/COB_0000035",
+    "http://purl.obolibrary.org/obo/COB_0000082",
     "http://purl.obolibrary.org/obo/OBI_0000011"
   ],
   "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/COB_0000035",
     "http://purl.obolibrary.org/obo/OBI_0000011"
   ],
   "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
@@ -39,11 +45,14 @@
   "http://purl.obolibrary.org/obo/IAO_0000600": "A planned process resulting in a software product involving the creation of source code.",
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
   "http://www.w3.org/2000/01/rdf-schema#label": "software development",
-  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/OBI_0000011",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+    "http://purl.obolibrary.org/obo/COB_0000035",
+    "http://purl.obolibrary.org/obo/OBI_0000011"
+  ],
   "http://www.w3.org/2002/07/owl#equivalentClass": {
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
     "http://www.w3.org/2002/07/owl#intersectionOf": [
-      "http://purl.obolibrary.org/obo/OBI_0000011",
+      "http://purl.obolibrary.org/obo/COB_0000035",
       {
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
         "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/OBI_0000299",
@@ -103,6 +112,30 @@
         "process"
       ],
       "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/COB_0000035": {
+      "curie": "COB:0000035",
+      "hasLocalDefinition": true,
+      "label": [
+        "completely executed planned process"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/COB_0000082": {
+      "curie": "COB:0000082",
+      "hasLocalDefinition": true,
+      "label": [
+        "planned process"
+      ],
+      "numAppearsIn": 1.0,
       "type": [
         "class",
         "entity"
@@ -185,22 +218,15 @@
       ]
     },
     "http://purl.obolibrary.org/obo/OBI_0000011": {
-      "curie": "OBI:0000011",
-      "hasLocalDefinition": true,
-      "label": [
-        "planned process"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
+      "curie": "obi:0000011",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/OBI_0000011"
     },
     "http://purl.obolibrary.org/obo/OBI_0000299": {
       "curie": "OBI:0000299",
       "hasLocalDefinition": true,
       "label": [
-        "has_specified_output"
+        "has specified output"
       ],
       "numAppearsIn": 1.0,
       "type": [
@@ -244,13 +270,14 @@
     "http://purl.obolibrary.org/obo/BFO_0000001",
     "http://purl.obolibrary.org/obo/BFO_0000003",
     "http://purl.obolibrary.org/obo/BFO_0000015",
+    "http://purl.obolibrary.org/obo/COB_0000035",
+    "http://purl.obolibrary.org/obo/COB_0000082",
     "http://purl.obolibrary.org/obo/IAO_0000010",
     "http://purl.obolibrary.org/obo/IAO_0000096",
     "http://purl.obolibrary.org/obo/IAO_0000115",
     "http://purl.obolibrary.org/obo/IAO_0000117",
     "http://purl.obolibrary.org/obo/IAO_0000119",
     "http://purl.obolibrary.org/obo/IAO_0000600",
-    "http://purl.obolibrary.org/obo/OBI_0000011",
     "http://purl.obolibrary.org/obo/OBI_0000299",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf"

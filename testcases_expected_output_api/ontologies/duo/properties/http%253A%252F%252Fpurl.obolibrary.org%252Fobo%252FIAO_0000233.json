@@ -12,7 +12,7 @@
       "term tracker item"
     ],
     "example of usage": [
-      "the URI for an OBI Terms ticket at sourceforge, such as https://sourceforge.net/p/obi/obi-terms/772/"
+      "the URL for an ontology term tracker issue, such as https://github.com/monarch-initiative/mondo/issues/7588"
     ],
     "has curation status": [
       "http://purl.obolibrary.org/obo/IAO_0000125"
@@ -22,7 +22,7 @@
     ]
   },
   "description": [
-    "An IRI or similar locator for a request or discussion of an ontology term.",
+    "A URL for a request or discussion of an ontology term.",
     "The 'tracker item' can associate a tracker with a specific ontology term."
   ],
   "has_children": false,

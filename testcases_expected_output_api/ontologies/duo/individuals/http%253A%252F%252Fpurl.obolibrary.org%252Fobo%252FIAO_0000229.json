@@ -14,14 +14,20 @@
     }
   },
   "annotation": {
+    "contributor": [
+      "https://orcid.org/0000-0001-6875-5360",
+      "https://orcid.org/0000-0002-7356-1779"
+    ],
     "editor note": [
-      "This is to be used when a term has been split in two or more new terms. An editor note should indicate the reason for the split and indicate the URIs of the new terms created."
+      "This is to be used when a term has been split in two or more new terms. An editor note should indicate the reason for the split. The deprecated term should reference the replacement terms with obo:IAO_0100001."
     ],
     "editor preferred term": [
       "term split"
     ]
   },
-  "description": [],
+  "description": [
+    "The term has been split into two or more new terms."
+  ],
   "has_children": false,
   "iri": "http://purl.obolibrary.org/obo/IAO_0000229",
   "is_defining_ontology": false,

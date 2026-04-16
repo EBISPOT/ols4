@@ -5,7 +5,7 @@
   ],
   "curie": "IAO:0000233",
   "definition": [
-    "An IRI or similar locator for a request or discussion of an ontology term.",
+    "A URL for a request or discussion of an ontology term.",
     "The 'tracker item' can associate a tracker with a specific ontology term."
   ],
   "definitionProperty": [
@@ -17,14 +17,15 @@
   "hasHierarchicalChildren": false,
   "hasHierarchicalParents": false,
   "http://purl.obolibrary.org/obo/IAO_0000111": "term tracker item",
-  "http://purl.obolibrary.org/obo/IAO_0000112": "the URI for an OBI Terms ticket at sourceforge, such as https://sourceforge.net/p/obi/obi-terms/772/",
+  "http://purl.obolibrary.org/obo/IAO_0000112": "the URL for an ontology term tracker issue, such as https://github.com/monarch-initiative/mondo/issues/7588",
   "http://purl.obolibrary.org/obo/IAO_0000114": "http://purl.obolibrary.org/obo/IAO_0000125",
-  "http://purl.obolibrary.org/obo/IAO_0000115": "An IRI or similar locator for a request or discussion of an ontology term.",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "A URL for a request or discussion of an ontology term.",
   "http://purl.obolibrary.org/obo/IAO_0000117": "Person: Jie Zheng, Chris Stoeckert, Alan Ruttenberg",
   "http://purl.obolibrary.org/obo/IAO_0000119": "Person: Jie Zheng, Chris Stoeckert, Alan Ruttenberg",
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
   "http://www.w3.org/2000/01/rdf-schema#comment": "The 'tracker item' can associate a tracker with a specific ontology term.",
   "http://www.w3.org/2000/01/rdf-schema#label": "term tracker item",
+  "http://www.w3.org/2000/01/rdf-schema#range": "http://www.w3.org/2001/XMLSchema#anyURI",
   "imported": true,
   "iri": "http://purl.obolibrary.org/obo/IAO_0000233",
   "isDefiningOntology": false,
@@ -153,6 +154,26 @@
         "entity",
         "property"
       ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#range": {
+      "curie": "RDFS:range",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "range"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "https://github.com/monarch-initiative/mondo/issues/7588": {
+      "curie": "mondo.issue:7588",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "https://github.com/monarch-initiative/mondo/issues/7588"
     }
   },
   "linksTo": [
@@ -164,7 +185,8 @@
     "http://purl.obolibrary.org/obo/IAO_0000119",
     "http://purl.obolibrary.org/obo/IAO_0000125",
     "http://www.w3.org/2000/01/rdf-schema#comment",
-    "http://www.w3.org/2000/01/rdf-schema#label"
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#range"
   ],
   "numDescendants": 0.0,
   "numHierarchicalDescendants": 0.0,
@@ -172,10 +194,10 @@
   "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontologyPreferredPrefix": "DUO",
   "searchableAnnotationValues": [
-    "An IRI or similar locator for a request or discussion of an ontology term.",
+    "A URL for a request or discussion of an ontology term.",
     "Person: Jie Zheng, Chris Stoeckert, Alan Ruttenberg",
     "term tracker item",
-    "the URI for an OBI Terms ticket at sourceforge, such as https://sourceforge.net/p/obi/obi-terms/772/",
+    "the URL for an ontology term tracker issue, such as https://github.com/monarch-initiative/mondo/issues/7588",
     true
   ],
   "shortForm": "IAO_0000233",

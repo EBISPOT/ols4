@@ -14,6 +14,7 @@
     "http://purl.obolibrary.org/obo/IAO_0000027",
     "http://purl.obolibrary.org/obo/IAO_0000030",
     "http://purl.obolibrary.org/obo/IAO_0000100",
+    "http://purl.obolibrary.org/obo/IAO_0001000",
     "http://purl.obolibrary.org/obo/IAO_0020020"
   ],
   "directParent": [
@@ -31,6 +32,7 @@
     "http://purl.obolibrary.org/obo/IAO_0000027",
     "http://purl.obolibrary.org/obo/IAO_0000030",
     "http://purl.obolibrary.org/obo/IAO_0000100",
+    "http://purl.obolibrary.org/obo/IAO_0001000",
     "http://purl.obolibrary.org/obo/IAO_0020020"
   ],
   "hierarchicalParent": [
@@ -106,7 +108,7 @@
       "curie": "IAO:0000027",
       "hasLocalDefinition": true,
       "label": [
-        "data item"
+        "data entity"
       ],
       "numAppearsIn": 1.0,
       "type": [
@@ -130,7 +132,7 @@
       "curie": "IAO:0000100",
       "hasLocalDefinition": true,
       "label": [
-        "data set"
+        "homogenous data collection"
       ],
       "numAppearsIn": 1.0,
       "type": [
@@ -241,6 +243,18 @@
         "property"
       ]
     },
+    "http://purl.obolibrary.org/obo/IAO_0001000": {
+      "curie": "IAO:0001000",
+      "hasLocalDefinition": true,
+      "label": [
+        "data collection"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
     "http://purl.obolibrary.org/obo/IAO_0020020": {
       "curie": "IAO:0020020",
       "hasLocalDefinition": true,
@@ -304,6 +318,7 @@
     "http://purl.obolibrary.org/obo/IAO_0000119",
     "http://purl.obolibrary.org/obo/IAO_0000120",
     "http://purl.obolibrary.org/obo/IAO_0000233",
+    "http://purl.obolibrary.org/obo/IAO_0001000",
     "http://purl.obolibrary.org/obo/IAO_0020020",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf"

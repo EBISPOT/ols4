@@ -4,7 +4,7 @@
   ],
   "curie": "OBI:0000312",
   "definition": [
-    "A relation between a planned process and a continuant participating in that process. The presence of the continuant at the end of the process is explicitly specified in the objective specification which the process realizes the concretization of."
+    "A relation between a completely executed planned process and a continuant participating in that process. The presence of the continuant at the end of the process is explicitly specified in the objective specification which the process realizes the concretization of."
   ],
   "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
   "directAncestor": [
@@ -17,32 +17,39 @@
   "hasDirectParents": true,
   "hasHierarchicalChildren": false,
   "hasHierarchicalParents": false,
-  "http://purl.obolibrary.org/obo/IAO_0000111": [
-    "is_specified_output_of"
-  ],
+  "http://purl.obolibrary.org/obo/IAO_0000111": "is specified output of",
   "http://purl.obolibrary.org/obo/IAO_0000114": "http://purl.obolibrary.org/obo/IAO_0000122",
-  "http://purl.obolibrary.org/obo/IAO_0000115": "A relation between a planned process and a continuant participating in that process. The presence of the continuant at the end of the process is explicitly specified in the objective specification which the process realizes the concretization of.",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "A relation between a completely executed planned process and a continuant participating in that process. The presence of the continuant at the end of the process is explicitly specified in the objective specification which the process realizes the concretization of.",
   "http://purl.obolibrary.org/obo/IAO_0000117": [
     "Alan Ruttenberg"
   ],
   "http://purl.obolibrary.org/obo/IAO_0000412": "http://purl.obolibrary.org/obo/obi.owl",
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-  "http://www.w3.org/2000/01/rdf-schema#label": "is_specified_output_of",
-  "http://www.w3.org/2000/01/rdf-schema#range": "http://purl.obolibrary.org/obo/OBI_0000011",
+  "http://www.w3.org/2000/01/rdf-schema#label": "is specified output of",
+  "http://www.w3.org/2000/01/rdf-schema#range": "http://purl.obolibrary.org/obo/COB_0000035",
   "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://purl.obolibrary.org/obo/RO_0000056",
-  "http://www.w3.org/2002/07/owl#equivalentProperty": {
-    "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/OBI_0000299",
-    "isObsolete": false
-  },
+  "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/OBI_0000299",
   "imported": true,
   "iri": "http://purl.obolibrary.org/obo/OBI_0000312",
   "isDefiningOntology": false,
   "isObsolete": false,
   "isPreferredRoot": false,
   "label": [
-    "is_specified_output_of"
+    "is specified output of"
   ],
   "linkedEntities": {
+    "http://purl.obolibrary.org/obo/COB_0000035": {
+      "curie": "COB:0000035",
+      "hasLocalDefinition": true,
+      "label": [
+        "completely executed planned process"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
     "http://purl.obolibrary.org/obo/IAO_0000111": {
       "curie": "IAO:0000111",
       "hasLocalDefinition": true,
@@ -120,23 +127,11 @@
         "property"
       ]
     },
-    "http://purl.obolibrary.org/obo/OBI_0000011": {
-      "curie": "OBI:0000011",
-      "hasLocalDefinition": true,
-      "label": [
-        "planned process"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
     "http://purl.obolibrary.org/obo/OBI_0000299": {
       "curie": "OBI:0000299",
       "hasLocalDefinition": true,
       "label": [
-        "has_specified_output"
+        "has specified output"
       ],
       "numAppearsIn": 1.0,
       "type": [
@@ -205,13 +200,13 @@
     }
   },
   "linksTo": [
+    "http://purl.obolibrary.org/obo/COB_0000035",
     "http://purl.obolibrary.org/obo/IAO_0000111",
     "http://purl.obolibrary.org/obo/IAO_0000114",
     "http://purl.obolibrary.org/obo/IAO_0000115",
     "http://purl.obolibrary.org/obo/IAO_0000117",
     "http://purl.obolibrary.org/obo/IAO_0000122",
     "http://purl.obolibrary.org/obo/IAO_0000412",
-    "http://purl.obolibrary.org/obo/OBI_0000011",
     "http://purl.obolibrary.org/obo/OBI_0000299",
     "http://purl.obolibrary.org/obo/RO_0000056",
     "http://www.w3.org/2000/01/rdf-schema#label",
@@ -224,9 +219,8 @@
   "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
   "ontologyPreferredPrefix": "DUO",
   "searchableAnnotationValues": [
-    "A relation between a planned process and a continuant participating in that process. The presence of the continuant at the end of the process is explicitly specified in the objective specification which the process realizes the concretization of.",
+    "A relation between a completely executed planned process and a continuant participating in that process. The presence of the continuant at the end of the process is explicitly specified in the objective specification which the process realizes the concretization of.",
     "Alan Ruttenberg",
-    "is_specified_output_of",
     true
   ],
   "shortForm": "OBI_0000312",
