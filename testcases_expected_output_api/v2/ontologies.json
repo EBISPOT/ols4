@@ -156,7 +156,7 @@
     "numberOfIndividuals": "21",
     "numberOfProperties": "157",
     "ontologyId": "duo",
-    "ontologyPurl": "http://purl.obolibrary.org/obo/duo.owl",
+    "ontologyPurl": "./testcases/duo/duo.owl",
     "preferredPrefix": "DUO",
     "preferredRoot": [
       "http://purl.obolibrary.org/obo/DUO_0000001",
@@ -166,7 +166,7 @@
     "products": [
       {
         "id": "duo.owl",
-        "ontology_purl": "http://purl.obolibrary.org/obo/duo.owl"
+        "ontology_purl": "./testcases/duo/duo.owl"
       }
     ],
     "repository": "https://github.com/EBISPOT/DUO",
@@ -406,7 +406,7 @@
     "searchableAnnotationValues": [
       "0",
       "1",
-      "2026-04-16T13:29:22.183849",
+      "2026-04-16T14:38:32.451969",
       "Thu Dec 12 15:26:47 GMT 2024"
     ],
     "sourceFileTimestamp": "<sourceFileTimestamp>",
