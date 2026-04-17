@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-export OLS4_CONFIG=$(find testcases | grep json | paste -sd, -)
+export OLS4_CONFIG=$(find testcases -name "*.json" | sort | paste -sd, -)
+echo "Found $(echo $OLS4_CONFIG | tr ',' '\n' | wc -l) testcase config files"
 export OLS4_DATALOAD_ARGS="--loadLocalFiles --noDates"
 export BUILDKIT_PROGRESS=plain
 

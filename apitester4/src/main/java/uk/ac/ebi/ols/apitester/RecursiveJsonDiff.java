@@ -1,6 +1,7 @@
 package uk.ac.ebi.ols.apitester;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
@@ -19,7 +20,7 @@ public class RecursiveJsonDiff {
 
 
     String inputDir, expectedDir;
-    Gson gson = new Gson();
+    Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
     public RecursiveJsonDiff(String inputDir, String expectedDir) {
         this.inputDir = inputDir;

@@ -22,6 +22,7 @@ public class McpTester {
     private final String baseUrl;
     private final String outDir;
     private final Gson gson;
+    private final Gson sortGson = new GsonBuilder().disableHtmlEscaping().create();
 
     public McpTester(String baseUrl, String outDir) {
         this.baseUrl = baseUrl.endsWith("/") ? baseUrl.substring(0, baseUrl.length() - 1) : baseUrl;
@@ -463,7 +464,7 @@ public class McpTester {
             JsonArray arr = element.getAsJsonArray();
             JsonElement[] elems = new JsonElement[arr.size()];
             for (int i = 0; i < arr.size(); i++) elems[i] = deepSort(arr.get(i));
-            Arrays.sort(elems, Comparator.comparing(elem -> gson.toJson(elem)));
+            Arrays.sort(elems, Comparator.comparing(elem -> sortGson.toJson(elem)));
             JsonArray res = new JsonArray();
             for (JsonElement elem : elems) res.add(elem);
             return res;
