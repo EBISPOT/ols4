@@ -15,7 +15,9 @@ export OLS_EMBEDDINGS_PATH=./testcases/embeddings
 # test curated text-to-term mappings (SSSOM)
 export OLS4_CURATIONS_PATH=./testcases/curations/*.sssom.tsv
 rm -rf tmp out
-./dataload.sh
+
+# Use the CI-specific sequential dataload instead of Nextflow
+./dev-testing/dataload-ci.sh
 
 if [[ "$?" != "0" ]]
 then
@@ -24,6 +26,48 @@ then
     exit $EXIT_CODE
 fi
 
+# ─── 3. Start services and index Solr ─────────────────────────────────────────
+
+# We start only solr first to perform the indexing
+HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose up -d ols4-solr
+
+echo "Waiting for Solr to be ready..."
+for i in {1..30}; do
+    if curl -sf "http://localhost:8983/solr/ols4_entities/admin/ping" &>/dev/null; then
+        echo "Solr is ready."
+        break
+    fi
+    sleep 2
+done
+
+echo "Indexing JSONL files into Solr..."
+for f in tmp/solr-data/*.jsonl; do
+    if [[ "$f" == *autocomplete* ]]; then
+        core="ols4_autocomplete"
+    else
+        core="ols4_entities"
+    fi
+    echo "  Uploading $f to $core..."
+    curl -s -X POST -H "Content-Type: application/json" \
+        --data-binary "@$f" \
+        "http://localhost:8983/solr/$core/update/json/docs?commit=true"
+done
+
+echo "Starting remaining backend services..."
+HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose --profile run-api-tests \
+    up -d ols4-backend
+
+# Wait for backend
+echo "Waiting for backend..."
+for i in {1..30}; do
+    if curl -sf "http://localhost:8080/api/ontologies?size=1" &>/dev/null; then
+        echo "Backend is ready."
+        break
+    fi
+    sleep 3
+done
+
+# Now run the apitester container
 HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose --profile run-api-tests \
     up \
 --force-recreate \
