@@ -2,7 +2,128 @@
   "result": {
     "content": [
       {
-        "text": "[{\"id\":\"reified-bnode+http://example.com/reified-bnode#cell_part\",\"title\":\"cell_part cell_part\",\"url\":\"http://example.com/reified-bnode#cell_part\",\"isObsolete\":false},{\"id\":\"reified-bnode+http://example.com/reified-bnode#cell\",\"title\":\"cell cell\",\"url\":\"http://example.com/reified-bnode#cell\",\"isObsolete\":false},{\"id\":\"gitissue502+http://purl.obolibrary.org/obo/CL_0000000\",\"title\":\"CL:0000000 cell\",\"url\":\"http://purl.obolibrary.org/obo/CL_0000000\",\"isObsolete\":false},{\"id\":\"gitissue502+http://purl.obolibrary.org/obo/GO_0007267\",\"title\":\"GO:0007267 cell-cell signaling\",\"url\":\"http://purl.obolibrary.org/obo/GO_0007267\",\"isObsolete\":false},{\"id\":\"gitissue502+http://purl.obolibrary.org/obo/GO_0007154\",\"title\":\"GO:0007154 cell communication\",\"url\":\"http://purl.obolibrary.org/obo/GO_0007154\",\"isObsolete\":false},{\"id\":\"gitissue502+http://purl.obolibrary.org/obo/GO_0009987\",\"title\":\"GO:0009987 cellular process\",\"url\":\"http://purl.obolibrary.org/obo/GO_0009987\",\"isObsolete\":false},{\"id\":\"gitissue502+http://purl.obolibrary.org/obo/GO_0051301\",\"title\":\"GO:0051301 cell division\",\"url\":\"http://purl.obolibrary.org/obo/GO_0051301\",\"isObsolete\":false},{\"id\":\"gitissue502+http://purl.obolibrary.org/obo/NCBITaxon_131567\",\"title\":\"NCBITaxon:131567 cellular organisms\",\"url\":\"http://purl.obolibrary.org/obo/NCBITaxon_131567\",\"isObsolete\":false},{\"id\":\"gitissue502+http://purl.obolibrary.org/obo/GO_0051716\",\"title\":\"GO:0051716 cellular response to stimulus\",\"url\":\"http://purl.obolibrary.org/obo/GO_0051716\",\"isObsolete\":false},{\"id\":\"gitissue502+http://purl.obolibrary.org/obo/PATO_0001992\",\"title\":\"PATO:0001992 cellularity\",\"url\":\"http://purl.obolibrary.org/obo/PATO_0001992\",\"isObsolete\":false},{\"id\":\"gitissue502+http://purl.obolibrary.org/obo/CL_0000548\",\"title\":\"CL:0000548 animal cell\",\"url\":\"http://purl.obolibrary.org/obo/CL_0000548\",\"isObsolete\":false},{\"id\":\"gitissue502+http://purl.obolibrary.org/obo/CL_0000003\",\"title\":\"CL:0000003 native cell\",\"url\":\"http://purl.obolibrary.org/obo/CL_0000003\",\"isObsolete\":false},{\"id\":\"gitissue502+http://purl.obolibrary.org/obo/CL_0000255\",\"title\":\"CL:0000255 eukaryotic cell\",\"url\":\"http://purl.obolibrary.org/obo/CL_0000255\",\"isObsolete\":false},{\"id\":\"gitissue502+http://purl.obolibrary.org/obo/CL_0000586\",\"title\":\"CL:0000586 germ cell\",\"url\":\"http://purl.obolibrary.org/obo/CL_0000586\",\"isObsolete\":false},{\"id\":\"gitissue502+http://purl.obolibrary.org/obo/CL_0002319\",\"title\":\"CL:0002319 neural cell\",\"url\":\"http://purl.obolibrary.org/obo/CL_0002319\",\"isObsolete\":false},{\"id\":\"gitissue502+http://purl.obolibrary.org/obo/CL_0002371\",\"title\":\"CL:0002371 somatic cell\",\"url\":\"http://purl.obolibrary.org/obo/CL_0002371\",\"isObsolete\":false},{\"id\":\"gitissue502+http://purl.obolibrary.org/obo/CL_0000039\",\"title\":\"CL:0000039 germ line cell\",\"url\":\"http://purl.obolibrary.org/obo/CL_0000039\",\"isObsolete\":false},{\"id\":\"gitissue502+http://purl.obolibrary.org/obo/CL_0000211\",\"title\":\"CL:0000211 electrically active cell\",\"url\":\"http://purl.obolibrary.org/obo/CL_0000211\",\"isObsolete\":false},{\"id\":\"gitissue502+http://purl.obolibrary.org/obo/CL_0000393\",\"title\":\"CL:0000393 electrically responsive cell\",\"url\":\"http://purl.obolibrary.org/obo/CL_0000393\",\"isObsolete\":false},{\"id\":\"gitissue502+http://purl.obolibrary.org/obo/CL_0000404\",\"title\":\"CL:0000404 electrically signaling cell\",\"url\":\"http://purl.obolibrary.org/obo/CL_0000404\",\"isObsolete\":false}]",
+        "text": [
+          {
+            "id": "gitissue502+http://purl.obolibrary.org/obo/CL_0000000",
+            "isObsolete": false,
+            "title": "CL:0000000 cell",
+            "url": "http://purl.obolibrary.org/obo/CL_0000000"
+          },
+          {
+            "id": "gitissue502+http://purl.obolibrary.org/obo/CL_0000003",
+            "isObsolete": false,
+            "title": "CL:0000003 native cell",
+            "url": "http://purl.obolibrary.org/obo/CL_0000003"
+          },
+          {
+            "id": "gitissue502+http://purl.obolibrary.org/obo/CL_0000039",
+            "isObsolete": false,
+            "title": "CL:0000039 germ line cell",
+            "url": "http://purl.obolibrary.org/obo/CL_0000039"
+          },
+          {
+            "id": "gitissue502+http://purl.obolibrary.org/obo/CL_0000211",
+            "isObsolete": false,
+            "title": "CL:0000211 electrically active cell",
+            "url": "http://purl.obolibrary.org/obo/CL_0000211"
+          },
+          {
+            "id": "gitissue502+http://purl.obolibrary.org/obo/CL_0000255",
+            "isObsolete": false,
+            "title": "CL:0000255 eukaryotic cell",
+            "url": "http://purl.obolibrary.org/obo/CL_0000255"
+          },
+          {
+            "id": "gitissue502+http://purl.obolibrary.org/obo/CL_0000393",
+            "isObsolete": false,
+            "title": "CL:0000393 electrically responsive cell",
+            "url": "http://purl.obolibrary.org/obo/CL_0000393"
+          },
+          {
+            "id": "gitissue502+http://purl.obolibrary.org/obo/CL_0000404",
+            "isObsolete": false,
+            "title": "CL:0000404 electrically signaling cell",
+            "url": "http://purl.obolibrary.org/obo/CL_0000404"
+          },
+          {
+            "id": "gitissue502+http://purl.obolibrary.org/obo/CL_0000548",
+            "isObsolete": false,
+            "title": "CL:0000548 animal cell",
+            "url": "http://purl.obolibrary.org/obo/CL_0000548"
+          },
+          {
+            "id": "gitissue502+http://purl.obolibrary.org/obo/CL_0000586",
+            "isObsolete": false,
+            "title": "CL:0000586 germ cell",
+            "url": "http://purl.obolibrary.org/obo/CL_0000586"
+          },
+          {
+            "id": "gitissue502+http://purl.obolibrary.org/obo/CL_0002319",
+            "isObsolete": false,
+            "title": "CL:0002319 neural cell",
+            "url": "http://purl.obolibrary.org/obo/CL_0002319"
+          },
+          {
+            "id": "gitissue502+http://purl.obolibrary.org/obo/CL_0002371",
+            "isObsolete": false,
+            "title": "CL:0002371 somatic cell",
+            "url": "http://purl.obolibrary.org/obo/CL_0002371"
+          },
+          {
+            "id": "gitissue502+http://purl.obolibrary.org/obo/GO_0007154",
+            "isObsolete": false,
+            "title": "GO:0007154 cell communication",
+            "url": "http://purl.obolibrary.org/obo/GO_0007154"
+          },
+          {
+            "id": "gitissue502+http://purl.obolibrary.org/obo/GO_0007267",
+            "isObsolete": false,
+            "title": "GO:0007267 cell-cell signaling",
+            "url": "http://purl.obolibrary.org/obo/GO_0007267"
+          },
+          {
+            "id": "gitissue502+http://purl.obolibrary.org/obo/GO_0009987",
+            "isObsolete": false,
+            "title": "GO:0009987 cellular process",
+            "url": "http://purl.obolibrary.org/obo/GO_0009987"
+          },
+          {
+            "id": "gitissue502+http://purl.obolibrary.org/obo/GO_0051301",
+            "isObsolete": false,
+            "title": "GO:0051301 cell division",
+            "url": "http://purl.obolibrary.org/obo/GO_0051301"
+          },
+          {
+            "id": "gitissue502+http://purl.obolibrary.org/obo/GO_0051716",
+            "isObsolete": false,
+            "title": "GO:0051716 cellular response to stimulus",
+            "url": "http://purl.obolibrary.org/obo/GO_0051716"
+          },
+          {
+            "id": "gitissue502+http://purl.obolibrary.org/obo/NCBITaxon_131567",
+            "isObsolete": false,
+            "title": "NCBITaxon:131567 cellular organisms",
+            "url": "http://purl.obolibrary.org/obo/NCBITaxon_131567"
+          },
+          {
+            "id": "gitissue502+http://purl.obolibrary.org/obo/PATO_0001992",
+            "isObsolete": false,
+            "title": "PATO:0001992 cellularity",
+            "url": "http://purl.obolibrary.org/obo/PATO_0001992"
+          },
+          {
+            "id": "reified-bnode+http://example.com/reified-bnode#cell",
+            "isObsolete": false,
+            "title": "cell cell",
+            "url": "http://example.com/reified-bnode#cell"
+          },
+          {
+            "id": "reified-bnode+http://example.com/reified-bnode#cell_part",
+            "isObsolete": false,
+            "title": "cell_part cell_part",
+            "url": "http://example.com/reified-bnode#cell_part"
+          }
+        ],
         "type": "text"
       }
     ]

@@ -292,7 +292,11 @@ public class McpTester {
                     JsonObject contentObj = new JsonObject();
                     if (content instanceof McpSchema.TextContent tc) {
                         contentObj.addProperty("type", "text");
-                        contentObj.addProperty("text", tc.text());
+                        try {
+                            contentObj.add("text", JsonParser.parseString(tc.text()));
+                        } catch (Exception e) {
+                            contentObj.addProperty("text", tc.text());
+                        }
                     } else if (content instanceof McpSchema.ImageContent ic) {
                         contentObj.addProperty("type", "image");
                         contentObj.addProperty("data", ic.data());
