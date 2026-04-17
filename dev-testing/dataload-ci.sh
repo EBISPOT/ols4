@@ -1,11 +1,18 @@
 #!/usr/bin/env bash
-# dataload-ci.sh — Sequential dataload for CI environment (GitHub Actions)
-# Bypasses Nextflow to fit in 7GB RAM by running tasks one-by-one on the host.
+# dataload-ci.sh — Sequential dataload for CI (GitHub Actions).
+#
+# Runs INSIDE the ols4-dataload Docker container, which provides:
+#   - Java 21 (Amazon Corretto), Maven 3.9.9, Rust 1.90.0 (pre-built binaries)
+#   - /opt/neo4j  (Neo4j 2025.03.0 — same version as docker-compose)
+#   - /opt/solr   (Solr 9.8.1      — same version as docker-compose)
+#
+# Invoked by test_api.sh via:
+#   docker run --rm -v ./out:/opt/ols/out -v ./tmp:/opt/ols/tmp ols4-dataload:local \
+#       bash -c "cd /opt/ols && ./dev-testing/dataload-ci.sh"
 
 set -Eeuo pipefail
 
-# ─── Colours ──────────────────────────────────────────────────────────────────
-GREEN='\033[0;32m'; YELLOW='\033[1;33m'; RED='\033[0;31m'; NC='\033[0m'
+GREEN='\033[0;32m'; RED='\033[0;31m'; NC='\033[0m'
 log()  { echo -e "${GREEN}[dataload-ci]${NC} $*"; }
 err()  { echo -e "${RED}[ERROR]${NC} $*" >&2; exit 1; }
 
@@ -31,11 +38,28 @@ LINKER_MANIFEST="$TMP_DIR/linker_manifest.json"
 ONTOLOGIES_LINKED="$TMP_DIR/ontologies_linked.json"
 NEO_CSVS="$TMP_DIR/neo-csvs"
 SOLR_DATA="$TMP_DIR/solr-data"
-SOLR_HOME_DIR="$TMP_DIR/solr-home"
 
-mkdir -p "$NEO_CSVS" "$SOLR_DATA" "$SOLR_HOME_DIR"
+mkdir -p "$NEO_CSVS" "$SOLR_DATA"
 
-# ─── 1. Merge all testcase configs ─────────────────────────────────────────
+# ─── Build artifacts (skipped when pre-built binaries exist in the container) ─
+build_all() {
+    if [ -f "$RDF2JSON_JAR" ] && [ -f "$RUST_BINS/ols_json2neo" ]; then
+        log "Pre-built binaries found — skipping build step"
+        return
+    fi
+    log "Building Java artifacts..."
+    mvn -B -ntp install -f "$OLS4_HOME/ols-shared/pom.xml" -DskipTests -q
+    mvn -B -ntp package -f "$DATALOAD/rdf2json/pom.xml" -DskipTests -q
+    mvn -B -ntp package -f "$DATALOAD/solr_config_builder/pom.xml" -DskipTests -q
+    mvn -B -ntp package -f "$DATALOAD/merge_configs/pom.xml" -DskipTests -q
+    log "Building Rust artifacts..."
+    (cd "$DATALOAD" && cargo build --release -q)
+    (cd "$OLS4_HOME/text_tagger" && cargo build --release -q)
+}
+
+build_all
+
+# ─── 1. Merge all testcase configs ────────────────────────────────────────────
 log "Merging all testcase configs..."
 # OLS4_CONFIG should already be set by test_api.sh
 if [ -z "${OLS4_CONFIG:-}" ]; then
@@ -84,32 +108,35 @@ log "Running json2solr..."
 log "Building text tagger database..."
 "$RUST_BINS/extract_strings_from_terms" "$ONTOLOGIES_LINKED" > "$TMP_DIR/terms.tsv"
 "$TEXT_TAGGER_BIN" build --output "$TMP_DIR/text_tagger_db.bin" < "$TMP_DIR/terms.tsv"
-# Move to expected location for backend
-mkdir -p "$OLS4_HOME/testcases_api_pipeline_out"
-cp "$TMP_DIR/text_tagger_db.bin" "$OLS4_HOME/testcases_api_pipeline_out/text_tagger_db.bin"
+cp "$TMP_DIR/text_tagger_db.bin" "$OUT_DIR/text_tagger_db.bin"
 
-# ─── 3. Set up Solr ─────────────────────────────
-log "Building Solr config..."
+# ─── 3. Set up Solr ───────────────────────────────────────────────────────────
+# Copy the full Solr installation from /opt/solr (bundled in the container),
+# configure cores, then pre-index all JSONL data so docker-compose can start
+# Solr with data already loaded (no separate indexing step needed).
+log "Copying Solr installation from /opt/solr..."
+rm -rf "$OUT_DIR/solr"
+cp -r /opt/solr "$OUT_DIR/solr"
+mkdir -p "$OUT_DIR/solr/logs"
+
+log "Building Solr core configs..."
 java -jar "$SOLR_CFG_BUILDER_JAR" \
     --manifestPath           "$LINKER_MANIFEST" \
     --solrConfigTemplatePath "$SOLR_CFG_TEMPLATE" \
-    --outDir                 "$SOLR_HOME_DIR"
+    --outDir                 "$OUT_DIR/solr/server/solr"
 
-log "Preparing final Solr directory..."
-mkdir -p "$OUT_DIR/solr"
-cp -r "$SOLR_HOME_DIR"/* "$OUT_DIR/solr/"
+log "Pre-indexing Solr (temporary server on port 8983)..."
+(cd "$TMP_DIR" && python3 "$DATALOAD/solr_import.py" "$OUT_DIR/solr" 8983 4g)
 
-# ─── 4. Preparing Neo4j ───────────────────────────────────────────────────
-log "Preparing Neo4j data (neo4j-admin import)..."
+# ─── 4. Set up Neo4j ──────────────────────────────────────────────────────────
+# Use Neo4j 2025.03.0 bundled in the container — the same version as
+# docker-compose — so data format is guaranteed compatible.
+log "Importing CSVs into Neo4j (using /opt/neo4j)..."
+"$DATALOAD/load_into_neo4j.sh" /opt/neo4j "$NEO_CSVS" 4g
+
+log "Copying Neo4j data to output..."
 mkdir -p "$OUT_DIR/neo4j/data"
-
-# The container has neo4j installed at /opt/neo4j
-# We can use the existing load_into_neo4j.sh script
-/opt/ols/dataload/load_into_neo4j.sh /opt/neo4j "$NEO_CSVS" 4g
-
-# Move the imported data to our mapped output directory
 cp -r /opt/neo4j/data/databases "$OUT_DIR/neo4j/data/"
-cp -r /opt/neo4j/data/transactions "$OUT_DIR/neo4j/data/"
+cp -r /opt/neo4j/data/transactions "$OUT_DIR/neo4j/data/" 2>/dev/null || true
 
-log "Dataload CI preparation complete."
-log "JSONL files are in $SOLR_DATA and will be indexed after Solr starts in docker-compose."
+log "Dataload CI complete."

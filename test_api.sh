@@ -16,18 +16,22 @@ export OLS_EMBEDDINGS_PATH=./testcases/embeddings
 export OLS4_CURATIONS_PATH=./testcases/curations/*.sssom.tsv
 rm -rf tmp out
 
-# Use the CI-specific sequential dataload inside the pre-built Docker container
-# Mount only the necessary directories to avoid overwriting the compiled artifacts
-mkdir -p tmp out testcases_api_pipeline_out
+# Run the full dataload pipeline inside the pre-built ols4-dataload container.
+# The container provides Java 21, Rust, Neo4j 2025.03.0, and Solr 9.8.1 —
+# no host toolchain or Docker-in-Docker needed.
+# Outputs mounted to host for docker-compose:
+#   ./out/solr           — full Solr install with data pre-indexed
+#   ./out/neo4j/data     — Neo4j database (imported + indexes created)
+#   ./out/text_tagger_db.bin
+mkdir -p tmp out
 
 docker run --rm \
     -u $(id -u):$(id -g) \
     -v "$PWD/tmp:/opt/ols/tmp" \
     -v "$PWD/out:/opt/ols/out" \
-    -v "$PWD/testcases_api_pipeline_out:/opt/ols/testcases_api_pipeline_out" \
     -v "$PWD/dev-testing/dataload-ci.sh:/opt/ols/dev-testing/dataload-ci.sh:ro" \
     -e OLS4_CONFIG="$OLS4_CONFIG" \
-    ols4-dataload:local \
+    "${OLS4_DATALOAD_IMAGE:-ols4-dataload:local}" \
     bash -c "cd /opt/ols && ./dev-testing/dataload-ci.sh"
 
 if [[ "$?" != "0" ]]
@@ -37,9 +41,7 @@ then
     exit $EXIT_CODE
 fi
 
-# ─── 3. Start services and index Solr ─────────────────────────────────────────
-
-# We start only solr first to perform the indexing
+# Solr data was pre-indexed inside the container above — just start the service.
 HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose up -d ols4-solr
 
 echo "Waiting for Solr to be ready..."
@@ -49,19 +51,6 @@ for i in {1..30}; do
         break
     fi
     sleep 2
-done
-
-echo "Indexing JSONL files into Solr..."
-for f in tmp/solr-data/*.jsonl; do
-    if [[ "$f" == *autocomplete* ]]; then
-        core="ols4_autocomplete"
-    else
-        core="ols4_entities"
-    fi
-    echo "  Uploading $f to $core..."
-    curl -s -X POST -H "Content-Type: application/json" \
-        --data-binary "@$f" \
-        "http://localhost:8983/solr/$core/update/json/docs?commit=true"
 done
 
 echo "Starting remaining backend services..."
