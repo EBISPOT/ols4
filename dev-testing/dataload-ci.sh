@@ -35,6 +35,22 @@ SOLR_HOME_DIR="$TMP_DIR/solr-home"
 
 mkdir -p "$NEO_CSVS" "$SOLR_DATA" "$SOLR_HOME_DIR"
 
+# ─── Build artifacts ──────────────────────────────────────────────────────────
+build_all() {
+    log "Building Java artifacts..."
+    mvn -B -ntp install -f "$OLS4_HOME/ols-shared/pom.xml" -DskipTests -q
+    mvn -B -ntp package -f "$DATALOAD/rdf2json/pom.xml" -DskipTests -q
+    mvn -B -ntp package -f "$DATALOAD/solr_config_builder/pom.xml" -DskipTests -q
+    mvn -B -ntp package -f "$DATALOAD/merge_configs/pom.xml" -DskipTests -q
+
+    log "Building Rust artifacts..."
+    (cd "$DATALOAD" && cargo build --release -q)
+    (cd "$OLS4_HOME/text_tagger" && cargo build --release -q)
+}
+
+# ─── Main ─────────────────────────────────────────────────────────────────────
+build_all
+
 # ─── 1. Merge all testcase configs ─────────────────────────────────────────
 log "Merging all testcase configs..."
 # OLS4_CONFIG should already be set by test_api.sh
