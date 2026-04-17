@@ -55,10 +55,6 @@ jobs:
           echo "OLS4_FRONTEND_IMAGE=ols4-frontend:local" >> $GITHUB_ENV
           echo "OLS4_APITESTER_IMAGE=ols4-apitester4:local" >> $GITHUB_ENV
 
-      - name: Update nextflow config to use local dataload image
-        run: |
-          sed -i "s|process.container = '.*'|process.container = 'ols4-dataload:local'|" dataload/nextflow/local_nextflow.config
-
-      - name: Run full Nextflow dataload and API tests
+      - name: Run dataload and API tests
         run: |
           ./test_api.sh

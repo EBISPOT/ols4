@@ -126,7 +126,59 @@ java -jar "$SOLR_CFG_BUILDER_JAR" \
     --outDir                 "$OUT_DIR/solr/server/solr"
 
 log "Pre-indexing Solr (temporary server on port 8983)..."
-(cd "$TMP_DIR" && python3 "$DATALOAD/solr_import.py" "$OUT_DIR/solr" 8983 4g)
+export SOLR_ENABLE_REMOTE_STREAMING="true"
+export SOLR_SECURITY_MANAGER_ENABLED="false"
+export JAVA_TOOL_OPTIONS="-Djava.net.useSystemProxies=false"
+
+/opt/solr/bin/solr start -m 4g -p 8983 -noprompt -force --solr-home "$OUT_DIR/solr"
+
+log "Waiting for Solr to start..."
+for i in {1..60}; do
+    if curl -sf "http://localhost:8983/solr/admin/info/system" &>/dev/null; then
+        log "Solr is ready."
+        break
+    fi
+    sleep 2
+done
+
+log "Indexing JSONL files into Solr..."
+while IFS= read -r -d '' f; do
+    if [[ "$f" == *autocomplete* ]]; then
+        core="ols4_autocomplete"
+    else
+        core="ols4_entities"
+    fi
+    
+    # Retry loop for each file
+    success=false
+    for attempt in {1..3}; do
+        response=$(curl -s -w "\n%{http_code}" -X POST -H "Content-Type: application/json" \
+            --data-binary "@$f" \
+            "http://127.0.0.1:8983/solr/$core/update/json/docs")
+        
+        http_code="${response##*$'\n'}"
+        body="${response%$'\n'*}"
+        
+        if [[ "$http_code" == "200" ]]; then
+            log "Uploaded $f to $core"
+            success=true
+            break
+        else
+            log "Attempt $attempt: Error uploading $f to $core (HTTP $http_code)"
+            sleep 5
+        fi
+    done
+    
+    if [ "$success" = false ]; then
+        err "Failed to upload $f to $core after 3 attempts."
+    fi
+done < <(find "$SOLR_DATA" -name "*.jsonl" -print0)
+
+log "Committing Solr..."
+curl -sf "http://127.0.0.1:8983/solr/ols4_entities/update?commit=true" >/dev/null || err "Failed to commit ols4_entities"
+curl -sf "http://127.0.0.1:8983/solr/ols4_autocomplete/update?commit=true" >/dev/null || err "Failed to commit ols4_autocomplete"
+
+/opt/solr/bin/solr stop -p 8983
 
 # ─── 4. Set up Neo4j ──────────────────────────────────────────────────────────
 # Use Neo4j 2025.03.0 bundled in the container — the same version as
