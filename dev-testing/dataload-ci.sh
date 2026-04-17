@@ -88,63 +88,28 @@ log "Building text tagger database..."
 mkdir -p "$OLS4_HOME/testcases_api_pipeline_out"
 cp "$TMP_DIR/text_tagger_db.bin" "$OLS4_HOME/testcases_api_pipeline_out/text_tagger_db.bin"
 
-# ─── 3. Set up Solr (using Docker for import) ─────────────────────────────
+# ─── 3. Set up Solr ─────────────────────────────
 log "Building Solr config..."
 java -jar "$SOLR_CFG_BUILDER_JAR" \
     --manifestPath           "$LINKER_MANIFEST" \
     --solrConfigTemplatePath "$SOLR_CFG_TEMPLATE" \
     --outDir                 "$SOLR_HOME_DIR"
 
-# Import into Solr using a one-off container to avoid local installation
-log "Loading Solr using docker container..."
-# We use the official Solr image to run the import
-docker run --rm \
-    -v "$SOLR_HOME_DIR":/mnt/solr-home \
-    -v "$SOLR_DATA":/mnt/solr-data \
-    -v "$DATALOAD/solr_import.py":/opt/solr_import.py \
-    -v /opt/solr:/opt/solr-bin \
-    --entrypoint python3 \
-    python:3.9-slim \
-    -c "
-pip install requests; 
-mkdir -p /mnt/solr-home/server/solr;
-cp -r /opt/solr-bin/* /tmp/solr;
-# This is a bit complex for a one-liner, we'll assume the dataload container is better
-" || true
-
-# Simplification: Let's just prepare the directories so the docker-compose can start them.
-# The actual loading of Solr/Neo4j in the 'ols_dataload.nf' happens inside 'create_solr' / 'create_neo'
-# which generates a .tgz that is then unzipped into ./out.
-# We will mirror that structure.
-
 log "Preparing final Solr directory..."
 mkdir -p "$OUT_DIR/solr"
 cp -r "$SOLR_HOME_DIR"/* "$OUT_DIR/solr/"
 
-# Since we aren't using Nextflow's solr_import.py (which starts/stops a temporary solr),
-# we need a way to index the JSONL files.
-# For CI, the easiest way is to let the backend's docker-compose start Solr,
-# and then we run a small script to post the JSONL files.
-
 # ─── 4. Preparing Neo4j ───────────────────────────────────────────────────
-log "Preparing Neo4j data via Docker (neo4j-admin import)..."
+log "Preparing Neo4j data (neo4j-admin import)..."
 mkdir -p "$OUT_DIR/neo4j/data"
-docker run --rm \
-    -v "$NEO_CSVS":/mnt/neo-csvs \
-    -v "$OUT_DIR/neo4j/data":/data \
-    neo4j:5.26.0 \
-    bash -c "
-        neo4j-admin database import full neo4j \
-        --overwrite-destination \
-        --ignore-empty-strings=true \
-        --multiline-fields=true \
-        --array-delimiter='|' \
-        $(for f in /mnt/neo-csvs/*_ontologies.csv; do echo -n '--nodes='$f' '; done) \
-        $(for f in /mnt/neo-csvs/*_classes.csv; do echo -n '--nodes='$f' '; done) \
-        $(for f in /mnt/neo-csvs/*_properties.csv; do echo -n '--nodes='$f' '; done) \
-        $(for f in /mnt/neo-csvs/*_individuals.csv; do echo -n '--nodes='$f' '; done) \
-        $(for f in /mnt/neo-csvs/*_edges.csv; do echo -n '--relationships='$f' '; done)
-    "
+
+# The container has neo4j installed at /opt/neo4j
+# We can use the existing load_into_neo4j.sh script
+/opt/ols/dataload/load_into_neo4j.sh /opt/neo4j "$NEO_CSVS" 4g
+
+# Move the imported data to our mapped output directory
+cp -r /opt/neo4j/data/databases "$OUT_DIR/neo4j/data/"
+cp -r /opt/neo4j/data/transactions "$OUT_DIR/neo4j/data/"
 
 log "Dataload CI preparation complete."
 log "JSONL files are in $SOLR_DATA and will be indexed after Solr starts in docker-compose."
