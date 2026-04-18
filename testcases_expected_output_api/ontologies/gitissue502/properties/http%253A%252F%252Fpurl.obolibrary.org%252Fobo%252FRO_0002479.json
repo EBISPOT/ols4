@@ -1,0 +1,30 @@
+{
+  "_links": {
+    "children": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002479/children"
+    },
+    "descendants": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002479/descendants"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002479?lang=en"
+    }
+  },
+  "annotation": {},
+  "description": [
+    "p has part that occurs in c if and only if there exists some p1, such that p has_part p1, and p1 occurs in c."
+  ],
+  "has_children": true,
+  "iri": "http://purl.obolibrary.org/obo/RO_0002479",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": true,
+  "label": "has part that occurs in",
+  "lang": "en",
+  "obo_id": "RO:0002479",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "short_form": "RO_0002479",
+  "synonyms": []
+}

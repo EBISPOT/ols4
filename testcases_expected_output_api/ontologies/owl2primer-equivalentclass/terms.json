@@ -1,0 +1,54 @@
+[
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/owl2primer-equivalentclass/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FequivalentClass%2523Human/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-equivalentclass/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FequivalentClass%2523Human?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Human",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "Human",
+    "lang": "en",
+    "obo_id": "Human",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass.owl",
+    "ontology_name": "owl2primer-equivalentclass",
+    "ontology_prefix": "owl2primer-equivalentClass",
+    "short_form": "Human",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/owl2primer-equivalentclass/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FequivalentClass%2523Person/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-equivalentclass/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FequivalentClass%2523Person?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass#Person",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "Person",
+    "lang": "en",
+    "obo_id": "Person",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentClass.owl",
+    "ontology_name": "owl2primer-equivalentclass",
+    "ontology_prefix": "owl2primer-equivalentClass",
+    "short_form": "Person",
+    "synonyms": []
+  }
+]

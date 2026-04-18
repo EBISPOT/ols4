@@ -1,0 +1,49 @@
+{
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004024/ancestors"
+    },
+    "children": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004024/children"
+    },
+    "descendants": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004024/descendants"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004024/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004024/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004024?lang=en"
+    }
+  },
+  "annotation": {
+    "has_dbxref": [
+      "RO:0004024"
+    ],
+    "id": [
+      "disease_disrupts"
+    ],
+    "shorthand": [
+      "disease_disrupts"
+    ]
+  },
+  "description": [
+    "A relationship between a disease and a process where the disease process disrupts the execution of the process."
+  ],
+  "has_children": true,
+  "iri": "http://purl.obolibrary.org/obo/RO_0004024",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": false,
+  "label": "disease causes disruption of",
+  "lang": "en",
+  "obo_id": "RO:0004024",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "short_form": "RO_0004024",
+  "synonyms": []
+}

@@ -1,0 +1,172 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "GO:0042391",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/GO_0008150",
+    "http://purl.obolibrary.org/obo/GO_0065007",
+    "http://purl.obolibrary.org/obo/GO_0065008"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/GO_0065008"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/GO_0008150",
+    "http://purl.obolibrary.org/obo/GO_0065007",
+    "http://purl.obolibrary.org/obo/GO_0065008"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/GO_0065008"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "regulation of membrane potential",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+    "http://purl.obolibrary.org/obo/GO_0065008",
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0034220",
+      "isObsolete": false
+    }
+  ],
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/GO_0042391",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "regulation of membrane potential"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000051": {
+      "curie": "BFO:0000051",
+      "hasLocalDefinition": true,
+      "label": [
+        "has part"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0008150": {
+      "curie": "GO:0008150",
+      "hasLocalDefinition": true,
+      "label": [
+        "biological_process"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0034220": {
+      "curie": "GO:0034220",
+      "hasLocalDefinition": true,
+      "label": [
+        "monoatomic ion transmembrane transport"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0065007": {
+      "curie": "GO:0065007",
+      "hasLocalDefinition": true,
+      "label": [
+        "biological regulation"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0065008": {
+      "curie": "GO:0065008",
+      "hasLocalDefinition": true,
+      "label": [
+        "regulation of biological quality"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000051",
+    "http://purl.obolibrary.org/obo/GO_0008150",
+    "http://purl.obolibrary.org/obo/GO_0034220",
+    "http://purl.obolibrary.org/obo/GO_0065007",
+    "http://purl.obolibrary.org/obo/GO_0065008",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 1.0,
+  "numHierarchicalDescendants": 1.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "relatedTo": [
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0034220",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/GO_0034220"
+    }
+  ],
+  "searchableAnnotationValues": false,
+  "shortForm": "GO_0042391",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

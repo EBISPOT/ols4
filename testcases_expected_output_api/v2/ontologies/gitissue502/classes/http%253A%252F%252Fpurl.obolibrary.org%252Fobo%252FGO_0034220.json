@@ -1,0 +1,189 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "GO:0034220",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/GO_0006810",
+    "http://purl.obolibrary.org/obo/GO_0006811",
+    "http://purl.obolibrary.org/obo/GO_0008150",
+    "http://purl.obolibrary.org/obo/GO_0009987",
+    "http://purl.obolibrary.org/obo/GO_0051179",
+    "http://purl.obolibrary.org/obo/GO_0051234",
+    "http://purl.obolibrary.org/obo/GO_0055085"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/GO_0006811",
+    "http://purl.obolibrary.org/obo/GO_0055085"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/GO_0006810",
+    "http://purl.obolibrary.org/obo/GO_0006811",
+    "http://purl.obolibrary.org/obo/GO_0008150",
+    "http://purl.obolibrary.org/obo/GO_0009987",
+    "http://purl.obolibrary.org/obo/GO_0051179",
+    "http://purl.obolibrary.org/obo/GO_0051234",
+    "http://purl.obolibrary.org/obo/GO_0055085"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/GO_0006811",
+    "http://purl.obolibrary.org/obo/GO_0055085"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "monoatomic ion transmembrane transport",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+    "http://purl.obolibrary.org/obo/GO_0006811",
+    "http://purl.obolibrary.org/obo/GO_0055085"
+  ],
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/GO_0034220",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "monoatomic ion transmembrane transport"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/GO_0006810": {
+      "curie": "GO:0006810",
+      "hasLocalDefinition": true,
+      "label": [
+        "transport"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0006811": {
+      "curie": "GO:0006811",
+      "hasLocalDefinition": true,
+      "label": [
+        "monoatomic ion transport"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0008150": {
+      "curie": "GO:0008150",
+      "hasLocalDefinition": true,
+      "label": [
+        "biological_process"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0009987": {
+      "curie": "GO:0009987",
+      "hasLocalDefinition": true,
+      "label": [
+        "cellular process"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0051179": {
+      "curie": "GO:0051179",
+      "hasLocalDefinition": true,
+      "label": [
+        "localization"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0051234": {
+      "curie": "GO:0051234",
+      "hasLocalDefinition": true,
+      "label": [
+        "establishment of localization"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0055085": {
+      "curie": "GO:0055085",
+      "hasLocalDefinition": true,
+      "label": [
+        "transmembrane transport"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/GO_0006810",
+    "http://purl.obolibrary.org/obo/GO_0006811",
+    "http://purl.obolibrary.org/obo/GO_0008150",
+    "http://purl.obolibrary.org/obo/GO_0009987",
+    "http://purl.obolibrary.org/obo/GO_0051179",
+    "http://purl.obolibrary.org/obo/GO_0051234",
+    "http://purl.obolibrary.org/obo/GO_0055085",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "searchableAnnotationValues": false,
+  "shortForm": "GO_0034220",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

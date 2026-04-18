@@ -1,0 +1,268 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "RO:0002448",
+  "definition": [
+    "The entity A, immediately upstream of the entity B, has an activity that regulates an activity performed by B. For example, A and B may be gene products and binding of B by A regulates the kinase activity of B.\n\nA and B can be physically interacting but not necessarily. Immediately upstream means there are no intermediate entity between A and B."
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/RO_0002434",
+    "http://purl.obolibrary.org/obo/RO_0002436",
+    "http://purl.obolibrary.org/obo/RO_0002506",
+    "http://purl.obolibrary.org/obo/RO_0002566",
+    "http://purl.obolibrary.org/obo/RO_0011002"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/RO_0002436",
+    "http://purl.obolibrary.org/obo/RO_0011002"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://purl.obolibrary.org/obo/IAO_0000115": "The entity A, immediately upstream of the entity B, has an activity that regulates an activity performed by B. For example, A and B may be gene products and binding of B by A regulates the kinase activity of B.\n\nA and B can be physically interacting but not necessarily. Immediately upstream means there are no intermediate entity between A and B.",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+  "http://www.w3.org/2000/01/rdf-schema#domain": "http://purl.obolibrary.org/obo/BFO_0000040",
+  "http://www.w3.org/2000/01/rdf-schema#label": "directly regulates activity of",
+  "http://www.w3.org/2000/01/rdf-schema#range": "http://purl.obolibrary.org/obo/BFO_0000040",
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+    "http://purl.obolibrary.org/obo/RO_0002436",
+    "http://purl.obolibrary.org/obo/RO_0011002"
+  ],
+  "http://www.w3.org/2002/07/owl#propertyChainAxiom": [
+    "http://purl.obolibrary.org/obo/RO_0002211",
+    "http://purl.obolibrary.org/obo/RO_0002327",
+    "http://purl.obolibrary.org/obo/RO_0002333"
+  ],
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/RO_0002448",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "directly regulates activity of"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000040": {
+      "curie": "BFO:0000040",
+      "hasLocalDefinition": true,
+      "label": [
+        "material entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "IAO_0000115"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002211": {
+      "curie": "RO:0002211",
+      "hasLocalDefinition": true,
+      "label": [
+        "regulates"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002327": {
+      "curie": "RO:0002327",
+      "hasLocalDefinition": true,
+      "label": [
+        "enables"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002333": {
+      "curie": "RO:0002333",
+      "hasLocalDefinition": true,
+      "label": [
+        "enabled by"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002434": {
+      "curie": "RO:0002434",
+      "hasLocalDefinition": true,
+      "label": [
+        "interacts with"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002436": {
+      "curie": "RO:0002436",
+      "hasLocalDefinition": true,
+      "label": [
+        "molecularly interacts with"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002506": {
+      "curie": "RO:0002506",
+      "hasLocalDefinition": true,
+      "label": [
+        "causal relation between entities"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002566": {
+      "curie": "RO:0002566",
+      "hasLocalDefinition": true,
+      "label": [
+        "causally influences"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0011002": {
+      "curie": "RO:0011002",
+      "hasLocalDefinition": true,
+      "label": [
+        "regulates activity of"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#domain": {
+      "curie": "RDFS:domain",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "domain"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#range": {
+      "curie": "RDFS:range",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "range"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+      "curie": "RDFS:subPropertyOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subPropertyOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000040",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/RO_0002211",
+    "http://purl.obolibrary.org/obo/RO_0002327",
+    "http://purl.obolibrary.org/obo/RO_0002333",
+    "http://purl.obolibrary.org/obo/RO_0002434",
+    "http://purl.obolibrary.org/obo/RO_0002436",
+    "http://purl.obolibrary.org/obo/RO_0002506",
+    "http://purl.obolibrary.org/obo/RO_0002566",
+    "http://purl.obolibrary.org/obo/RO_0011002",
+    "http://www.w3.org/2000/01/rdf-schema#domain",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#range",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+  ],
+  "numDescendants": 2.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "searchableAnnotationValues": [
+    false
+  ],
+  "shortForm": "RO_0002448",
+  "type": [
+    "entity",
+    "objectProperty",
+    "property"
+  ]
+}

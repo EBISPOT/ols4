@@ -1,0 +1,553 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "UBERON:0001016",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000004",
+    "http://purl.obolibrary.org/obo/BFO_0000040",
+    "http://purl.obolibrary.org/obo/UBERON_0000061",
+    "http://purl.obolibrary.org/obo/UBERON_0000465",
+    "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "http://purl.obolibrary.org/obo/UBERON_0001062"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/UBERON_0000467"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000004",
+    "http://purl.obolibrary.org/obo/BFO_0000040",
+    "http://purl.obolibrary.org/obo/UBERON_0000061",
+    "http://purl.obolibrary.org/obo/UBERON_0000465",
+    "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "http://purl.obolibrary.org/obo/UBERON_0000468",
+    "http://purl.obolibrary.org/obo/UBERON_0001062",
+    "http://purl.obolibrary.org/obo/UBERON_0010000"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/UBERON_0000467"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "nervous system",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+    "http://purl.obolibrary.org/obo/UBERON_0000467",
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/CL_0000540",
+      "isObsolete": false
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0002160",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/NCBITaxon_6072",
+      "isObsolete": false
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0002162",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+        "http://www.w3.org/2002/07/owl#complementOf": "http://purl.obolibrary.org/obo/NCBITaxon_6040"
+      },
+      "isObsolete": false
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0002202",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0016880",
+      "isObsolete": false
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0002215",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0050877",
+      "isObsolete": false
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0002473",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/CL_0002319",
+      "isObsolete": false
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0002492",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000066",
+      "isObsolete": false
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0002495",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0016880",
+      "isObsolete": false
+    }
+  ],
+  "http://www.w3.org/2002/07/owl#disjointWith": {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+    "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0002162",
+    "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/NCBITaxon_6040",
+    "isObsolete": false
+  },
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/UBERON_0001016",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "nervous system"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000004": {
+      "curie": "BFO:0000004",
+      "hasLocalDefinition": true,
+      "label": [
+        "independent continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000040": {
+      "curie": "BFO:0000040",
+      "hasLocalDefinition": true,
+      "label": [
+        "material entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000051": {
+      "curie": "BFO:0000051",
+      "hasLocalDefinition": true,
+      "label": [
+        "has part"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/CL_0000540": {
+      "curie": "CL:0000540",
+      "hasLocalDefinition": true,
+      "label": [
+        "neuron"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/CL_0002319": {
+      "curie": "CL:0002319",
+      "hasLocalDefinition": true,
+      "label": [
+        "neural cell"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0050877": {
+      "curie": "GO:0050877",
+      "hasLocalDefinition": true,
+      "label": [
+        "nervous system process"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_6040": {
+      "curie": "NCBITaxon:6040",
+      "hasLocalDefinition": true,
+      "label": [
+        "Porifera"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_6072": {
+      "curie": "NCBITaxon:6072",
+      "hasLocalDefinition": true,
+      "label": [
+        "Eumetazoa"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002160": {
+      "curie": "RO:0002160",
+      "hasLocalDefinition": true,
+      "label": [
+        "only in taxon"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002162": {
+      "curie": "RO:0002162",
+      "hasLocalDefinition": true,
+      "label": [
+        "in taxon"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002202": {
+      "curie": "RO:0002202",
+      "hasLocalDefinition": true,
+      "label": [
+        "develops from"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002215": {
+      "curie": "RO:0002215",
+      "hasLocalDefinition": true,
+      "label": [
+        "capable of"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002473": {
+      "curie": "RO:0002473",
+      "hasLocalDefinition": true,
+      "label": [
+        "composed primarily of"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002492": {
+      "curie": "RO:0002492",
+      "hasLocalDefinition": true,
+      "label": [
+        "existence ends during"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002495": {
+      "curie": "RO:0002495",
+      "hasLocalDefinition": true,
+      "label": [
+        "immediate transformation of"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0000061": {
+      "curie": "UBERON:0000061",
+      "hasLocalDefinition": true,
+      "label": [
+        "anatomical structure"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0000066": {
+      "curie": "UBERON:0000066",
+      "hasLocalDefinition": true,
+      "label": [
+        "fully formed stage"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0000465": {
+      "curie": "UBERON:0000465",
+      "hasLocalDefinition": true,
+      "label": [
+        "material anatomical entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0000467": {
+      "curie": "UBERON:0000467",
+      "hasLocalDefinition": true,
+      "label": [
+        "anatomical system"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0000468": {
+      "curie": "UBERON:0000468",
+      "hasLocalDefinition": true,
+      "label": [
+        "multicellular organism"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0001062": {
+      "curie": "UBERON:0001062",
+      "hasLocalDefinition": true,
+      "label": [
+        "anatomical entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0010000": {
+      "curie": "UBERON:0010000",
+      "hasLocalDefinition": true,
+      "label": [
+        "multicellular anatomical structure"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0016880": {
+      "curie": "UBERON:0016880",
+      "hasLocalDefinition": true,
+      "label": [
+        "future nervous system"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000004",
+    "http://purl.obolibrary.org/obo/BFO_0000040",
+    "http://purl.obolibrary.org/obo/BFO_0000051",
+    "http://purl.obolibrary.org/obo/CL_0000540",
+    "http://purl.obolibrary.org/obo/CL_0002319",
+    "http://purl.obolibrary.org/obo/GO_0050877",
+    "http://purl.obolibrary.org/obo/NCBITaxon_6040",
+    "http://purl.obolibrary.org/obo/NCBITaxon_6072",
+    "http://purl.obolibrary.org/obo/RO_0002160",
+    "http://purl.obolibrary.org/obo/RO_0002162",
+    "http://purl.obolibrary.org/obo/RO_0002202",
+    "http://purl.obolibrary.org/obo/RO_0002215",
+    "http://purl.obolibrary.org/obo/RO_0002473",
+    "http://purl.obolibrary.org/obo/RO_0002492",
+    "http://purl.obolibrary.org/obo/RO_0002495",
+    "http://purl.obolibrary.org/obo/UBERON_0000061",
+    "http://purl.obolibrary.org/obo/UBERON_0000066",
+    "http://purl.obolibrary.org/obo/UBERON_0000465",
+    "http://purl.obolibrary.org/obo/UBERON_0000467",
+    "http://purl.obolibrary.org/obo/UBERON_0000468",
+    "http://purl.obolibrary.org/obo/UBERON_0001062",
+    "http://purl.obolibrary.org/obo/UBERON_0010000",
+    "http://purl.obolibrary.org/obo/UBERON_0016880",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 2.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "relatedTo": [
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/CL_0000540",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/CL_0000540"
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0002160",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/NCBITaxon_6072",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/RO_0002160",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/NCBITaxon_6072"
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0002202",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0016880",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/RO_0002202",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0016880"
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0002215",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0050877",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/RO_0002215",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/GO_0050877"
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0002473",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/CL_0002319",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/RO_0002473",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/CL_0002319"
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0002492",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000066",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/RO_0002492",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0000066"
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0002495",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0016880",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/RO_0002495",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0016880"
+    }
+  ],
+  "searchableAnnotationValues": false,
+  "shortForm": "UBERON_0001016",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

@@ -1,0 +1,713 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "MONDO:0011122",
+  "definition": [
+    "Obesity is a complex disease that may involve multiple environmental and genetic causes. See the subclass monogenic disease for genetic subtypes",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": [
+            "https://www.ama-assn.org/sites/default/files/media-browser/public/about-ama/councils/Council%20Reports/council-on-science-public-health/a13csaph3.pdf",
+            "https://www.mayoclinic.org/diseases-conditions/obesity/symptoms-causes/syc-20375742"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "A disorder involving an excessive amount of body fat."
+    }
+  ],
+  "definitionProperty": [
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://www.w3.org/2000/01/rdf-schema#comment"
+  ],
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000016",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/MONDO_0000001",
+    "http://purl.obolibrary.org/obo/MONDO_0003916",
+    "http://purl.obolibrary.org/obo/MONDO_0005137",
+    "http://purl.obolibrary.org/obo/MONDO_0700096",
+    "http://purl.obolibrary.org/obo/OGMS_0000031"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/OGMS_0000031",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "DOID:9970"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0003916"
+    }
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000016",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/MONDO_0000001",
+    "http://purl.obolibrary.org/obo/MONDO_0003916",
+    "http://purl.obolibrary.org/obo/MONDO_0005137",
+    "http://purl.obolibrary.org/obo/MONDO_0700096",
+    "http://purl.obolibrary.org/obo/OGMS_0000031"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/OGMS_0000031",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "DOID:9970"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0003916"
+    }
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/IAO_0000115": {
+    "axioms": [
+      {
+        "http://www.geneontology.org/formats/oboInOwl#hasDbXref": [
+          "https://www.ama-assn.org/sites/default/files/media-browser/public/about-ama/councils/Council%20Reports/council-on-science-public-health/a13csaph3.pdf",
+          "https://www.mayoclinic.org/diseases-conditions/obesity/symptoms-causes/syc-20375742"
+        ]
+      }
+    ],
+    "type": [
+      "reification"
+    ],
+    "value": "A disorder involving an excessive amount of body fat."
+  },
+  "http://www.geneontology.org/formats/oboInOwl#hasDbXref": [
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "EFO:0001073"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "NIFSTD:nlx_dys_20090302"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "MONDO:equivalentObsolete"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "Orphanet:521399"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "MONDO:otherHierarchy"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "HP:0001513"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "DOID:9970",
+            "EFO:0001073",
+            "MONDO:equivalentTo"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "SCTID:414916001"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "DOID:9970",
+            "EFO:0001073",
+            "MONDO:equivalentTo",
+            "MONDO:i2s"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "ICD9:278.00"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "DOID:9970",
+            "EFO:0001073",
+            "MONDO:equivalentTo",
+            "MONDO:otherHierarchy"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "NCIT:C3283"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "DOID:9970",
+            "MONDO:equivalentTo"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "EFO:0001073"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "DOID:9970",
+            "MONDO:equivalentTo",
+            "MONDO:ncbi_mim2gene_medline",
+            "OMIM:601665"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "UMLS:C0028754"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "EFO:0001073",
+            "MONDO:equivalentTo"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "DOID:9970"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "EFO:0001073",
+            "MONDO:equivalentTo",
+            "MONDO:i2s"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "ICD9:278.0"
+    }
+  ],
+  "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym": [
+    "obesity disease",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": [
+            "MONDO:ambiguous",
+            "OMIM:601665"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "obesity"
+    }
+  ],
+  "http://www.geneontology.org/formats/oboInOwl#id": "MONDO:0011122",
+  "http://www.geneontology.org/formats/oboInOwl#inSubset": [
+    "http://purl.obolibrary.org/obo/mondo#orphanet_rare",
+    "http://purl.obolibrary.org/obo/mondo#rare"
+  ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#comment": "Obesity is a complex disease that may involve multiple environmental and genetic causes. See the subclass monogenic disease for genetic subtypes",
+  "http://www.w3.org/2000/01/rdf-schema#label": "obesity disorder",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+    "http://purl.obolibrary.org/obo/OGMS_0000031",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "DOID:9970"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0003916"
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0004029",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/HP_0001513",
+      "isObsolete": false
+    }
+  ],
+  "http://www.w3.org/2002/07/owl#equivalentClass": {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2002/07/owl#intersectionOf": [
+      "http://purl.obolibrary.org/obo/MONDO_0000001",
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0004029",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/HP_0001513",
+        "isObsolete": false
+      }
+    ]
+  },
+  "http://www.w3.org/2004/02/skos/core#exactMatch": [
+    "http://identifiers.org/snomedct/414916001",
+    "http://linkedlifedata.com/resource/umls/id/C0028754",
+    "http://purl.obolibrary.org/obo/DOID_9970",
+    "http://purl.obolibrary.org/obo/NCIT_C3283"
+  ],
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0011122",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "obesity disorder"
+  ],
+  "linkedEntities": {
+    "DOID:9970": {
+      "curie": "DOID:9970",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/DOID_9970"
+    },
+    "EFO:0001073": {
+      "curie": "EFO:0001073",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://www.ebi.ac.uk/efo/EFO_0001073"
+    },
+    "HP:0001513": {
+      "curie": "HP:0001513",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/HP_0001513"
+    },
+    "MONDO:0011122": {
+      "curie": "MONDO:0011122",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/MONDO_0011122"
+    },
+    "NCIT:C3283": {
+      "curie": "NCIT:C3283",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C3283"
+    },
+    "OMIM:601665": {
+      "curie": "OMIM:601665",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "https://omim.org/entry/601665"
+    },
+    "Orphanet:521399": {
+      "curie": "Orphanet:521399",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://www.orpha.net/ORDO/Orphanet_521399"
+    },
+    "SCTID:414916001": {
+      "curie": "SCTID:414916001",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.bioontology.org/ontology/SNOMEDCT/414916001"
+    },
+    "UMLS:C0028754": {
+      "curie": "UMLS:C0028754",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0028754"
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000016": {
+      "curie": "BFO:0000016",
+      "hasLocalDefinition": true,
+      "label": [
+        "disposition"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000017": {
+      "curie": "BFO:0000017",
+      "hasLocalDefinition": true,
+      "label": [
+        "realizable entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000020": {
+      "curie": "BFO:0000020",
+      "hasLocalDefinition": true,
+      "label": [
+        "specifically dependent continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/DOID_9970": {
+      "curie": "doid:9970",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/DOID_9970"
+    },
+    "http://purl.obolibrary.org/obo/HP_0001513": {
+      "curie": "HP:0001513",
+      "hasLocalDefinition": true,
+      "label": [
+        "Obesity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "IAO_0000115"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0000001": {
+      "curie": "MONDO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "disease"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0003916": {
+      "curie": "MONDO:0003916",
+      "hasLocalDefinition": true,
+      "label": [
+        "overnutrition"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0005137": {
+      "curie": "MONDO:0005137",
+      "hasLocalDefinition": true,
+      "label": [
+        "nutritional disorder"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0700096": {
+      "curie": "MONDO:0700096",
+      "hasLocalDefinition": true,
+      "label": [
+        "human disease"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCIT_C3283": {
+      "curie": "ncit:C3283",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C3283"
+    },
+    "http://purl.obolibrary.org/obo/OGMS_0000031": {
+      "curie": "OGMS:0000031",
+      "hasLocalDefinition": true,
+      "label": [
+        "disease"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0004029": {
+      "curie": "RO:0004029",
+      "hasLocalDefinition": true,
+      "label": [
+        "disease has feature"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+      "curie": "OIO:hasDbXref",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_dbxref"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym": {
+      "curie": "OIO:hasExactSynonym",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_exact_synonym"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#id": {
+      "curie": "id",
+      "hasLocalDefinition": true,
+      "label": [
+        "id"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#inSubset": {
+      "curie": "OIO:inSubset",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "in_subset"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#source": {
+      "curie": "source",
+      "hasLocalDefinition": true,
+      "label": [
+        "source"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#comment": {
+      "curie": "RDFS:comment",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "comment"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2004/02/skos/core#exactMatch": {
+      "curie": "SKOS:exactMatch",
+      "definedBy": [
+        "skos"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has exact match"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000016",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/HP_0001513",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/MONDO_0000001",
+    "http://purl.obolibrary.org/obo/MONDO_0003916",
+    "http://purl.obolibrary.org/obo/MONDO_0005137",
+    "http://purl.obolibrary.org/obo/MONDO_0700096",
+    "http://purl.obolibrary.org/obo/OGMS_0000031",
+    "http://purl.obolibrary.org/obo/RO_0004029",
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+    "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+    "http://www.geneontology.org/formats/oboInOwl#id",
+    "http://www.geneontology.org/formats/oboInOwl#inSubset",
+    "http://www.geneontology.org/formats/oboInOwl#source",
+    "http://www.w3.org/2000/01/rdf-schema#comment",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/2004/02/skos/core#exactMatch"
+  ],
+  "numDescendants": 3.0,
+  "numHierarchicalDescendants": 3.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "relatedTo": [
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0004029",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/HP_0001513",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/RO_0004029",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/HP_0001513"
+    }
+  ],
+  "searchableAnnotationValues": [
+    false
+  ],
+  "shortForm": "MONDO_0011122",
+  "synonym": [
+    "obesity disease",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": [
+            "MONDO:ambiguous",
+            "OMIM:601665"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "obesity"
+    }
+  ],
+  "synonymProperty": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

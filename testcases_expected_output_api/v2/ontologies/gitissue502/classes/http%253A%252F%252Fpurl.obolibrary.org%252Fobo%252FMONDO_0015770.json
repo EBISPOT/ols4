@@ -1,0 +1,721 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "MONDO:0015770",
+  "definition": [
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "Orphanet:174590"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "Congenital hypogonadotropic hypogonadism (CHH) is a rare disorder of sexual maturation characterized by gonadotropin (Gn) deficiency with low sex steroid levels associated with low levels of follicle stimulating hormone (FSH) and luteinizing hormone (LH)."
+    }
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000016",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/MONDO_0000001",
+    "http://purl.obolibrary.org/obo/MONDO_0002146",
+    "http://purl.obolibrary.org/obo/MONDO_0002259",
+    "http://purl.obolibrary.org/obo/MONDO_0002263",
+    "http://purl.obolibrary.org/obo/MONDO_0003847",
+    "http://purl.obolibrary.org/obo/MONDO_0005039",
+    "http://purl.obolibrary.org/obo/MONDO_0005151",
+    "http://purl.obolibrary.org/obo/MONDO_0015127",
+    "http://purl.obolibrary.org/obo/MONDO_0015514",
+    "http://purl.obolibrary.org/obo/MONDO_0015860",
+    "http://purl.obolibrary.org/obo/MONDO_0016072",
+    "http://purl.obolibrary.org/obo/MONDO_0018555",
+    "http://purl.obolibrary.org/obo/MONDO_0019824",
+    "http://purl.obolibrary.org/obo/MONDO_0700096",
+    "http://purl.obolibrary.org/obo/OGMS_0000031"
+  ],
+  "directParent": [
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "NCIT:C120162"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0018555"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "Orphanet:174590"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0019824"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "MONDO:Redundant",
+            "Orphanet:174590"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0016072"
+    }
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000016",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/MONDO_0000001",
+    "http://purl.obolibrary.org/obo/MONDO_0002146",
+    "http://purl.obolibrary.org/obo/MONDO_0002259",
+    "http://purl.obolibrary.org/obo/MONDO_0002263",
+    "http://purl.obolibrary.org/obo/MONDO_0003847",
+    "http://purl.obolibrary.org/obo/MONDO_0005039",
+    "http://purl.obolibrary.org/obo/MONDO_0005151",
+    "http://purl.obolibrary.org/obo/MONDO_0015127",
+    "http://purl.obolibrary.org/obo/MONDO_0015514",
+    "http://purl.obolibrary.org/obo/MONDO_0015860",
+    "http://purl.obolibrary.org/obo/MONDO_0016072",
+    "http://purl.obolibrary.org/obo/MONDO_0018555",
+    "http://purl.obolibrary.org/obo/MONDO_0019824",
+    "http://purl.obolibrary.org/obo/MONDO_0700096",
+    "http://purl.obolibrary.org/obo/OGMS_0000031"
+  ],
+  "hierarchicalParent": [
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "NCIT:C120162"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0018555"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "Orphanet:174590"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0019824"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "MONDO:Redundant",
+            "Orphanet:174590"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0016072"
+    }
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/IAO_0000115": {
+    "axioms": [
+      {
+        "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "Orphanet:174590"
+      }
+    ],
+    "type": [
+      "reification"
+    ],
+    "value": "Congenital hypogonadotropic hypogonadism (CHH) is a rare disorder of sexual maturation characterized by gonadotropin (Gn) deficiency with low sex steroid levels associated with low levels of follicle stimulating hormone (FSH) and luteinizing hormone (LH)."
+  },
+  "http://www.geneontology.org/formats/oboInOwl#hasDbXref": [
+    "GARD:20135",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "MONDO:equivalentTo"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "NCIT:C120162"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "MONDO:equivalentTo"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "Orphanet:174590"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "MONDO:equivalentTo"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "SCTID:722944006"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "MONDO:equivalentTo",
+            "NCIT:C120162"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "UMLS:C3899503"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "MONDO:relatedTo",
+            "Orphanet:174590",
+            "Orphanet:174590/attributed",
+            "Orphanet:174590/ntbt"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "ICD10CM:E23.0"
+    }
+  ],
+  "http://www.geneontology.org/formats/oboInOwl#id": "MONDO:0015770",
+  "http://www.geneontology.org/formats/oboInOwl#inSubset": [
+    "http://purl.obolibrary.org/obo/mondo#disease_grouping",
+    "http://purl.obolibrary.org/obo/mondo#gard_rare",
+    "http://purl.obolibrary.org/obo/mondo#orphanet_rare",
+    "http://purl.obolibrary.org/obo/mondo#rare",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "Orphanet:174590"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/mondo#ordo_group_of_disorders"
+    }
+  ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "congenital hypogonadotropic hypogonadism",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "NCIT:C120162"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0018555"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "Orphanet:174590"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0019824"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "MONDO:Redundant",
+            "Orphanet:174590"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0016072"
+    }
+  ],
+  "http://www.w3.org/2004/02/skos/core#exactMatch": [
+    "http://identifiers.org/snomedct/722944006",
+    "http://linkedlifedata.com/resource/umls/id/C3899503",
+    "http://purl.obolibrary.org/obo/NCIT_C120162",
+    "http://www.orpha.net/ORDO/Orphanet_174590"
+  ],
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0015770",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "congenital hypogonadotropic hypogonadism"
+  ],
+  "linkedEntities": {
+    "GARD:20135": {
+      "curie": "GARD:20135",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "https://rarediseases.info.nih.gov/diseases/20135/index"
+    },
+    "MONDO:0015770": {
+      "curie": "MONDO:0015770",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/MONDO_0015770"
+    },
+    "NCIT:C120162": {
+      "curie": "NCIT:C120162",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C120162"
+    },
+    "Orphanet:174590": {
+      "curie": "Orphanet:174590",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://www.orpha.net/ORDO/Orphanet_174590"
+    },
+    "SCTID:722944006": {
+      "curie": "SCTID:722944006",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.bioontology.org/ontology/SNOMEDCT/722944006"
+    },
+    "UMLS:C3899503": {
+      "curie": "UMLS:C3899503",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "https://uts.nlm.nih.gov/uts/umls/concept/C3899503"
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000016": {
+      "curie": "BFO:0000016",
+      "hasLocalDefinition": true,
+      "label": [
+        "disposition"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000017": {
+      "curie": "BFO:0000017",
+      "hasLocalDefinition": true,
+      "label": [
+        "realizable entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000020": {
+      "curie": "BFO:0000020",
+      "hasLocalDefinition": true,
+      "label": [
+        "specifically dependent continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "IAO_0000115"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0000001": {
+      "curie": "MONDO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "disease"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0002146": {
+      "curie": "MONDO:0002146",
+      "hasLocalDefinition": true,
+      "label": [
+        "hypogonadism"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0002259": {
+      "curie": "MONDO:0002259",
+      "hasLocalDefinition": true,
+      "label": [
+        "gonadal disorder"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0002263": {
+      "curie": "MONDO:0002263",
+      "hasLocalDefinition": true,
+      "label": [
+        "female reproductive system disorder"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0003847": {
+      "curie": "MONDO:0003847",
+      "hasLocalDefinition": true,
+      "label": [
+        "hereditary disease"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0005039": {
+      "curie": "MONDO:0005039",
+      "hasLocalDefinition": true,
+      "label": [
+        "reproductive system disorder"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0005151": {
+      "curie": "MONDO:0005151",
+      "hasLocalDefinition": true,
+      "label": [
+        "endocrine system disorder"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0015127": {
+      "curie": "MONDO:0015127",
+      "hasLocalDefinition": true,
+      "label": [
+        "pituitary deficiency"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0015514": {
+      "curie": "MONDO:0015514",
+      "hasLocalDefinition": true,
+      "label": [
+        "hereditary endocrine growth disease"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0015860": {
+      "curie": "MONDO:0015860",
+      "hasLocalDefinition": true,
+      "label": [
+        "anomaly of puberty or/and menstrual cycle"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0016072": {
+      "curie": "MONDO:0016072",
+      "hasLocalDefinition": true,
+      "label": [
+        "anomaly of puberty or/and menstrual cycle of genetic origin"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0018555": {
+      "curie": "MONDO:0018555",
+      "hasLocalDefinition": true,
+      "label": [
+        "hypogonadotropic hypogonadism"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0019824": {
+      "curie": "MONDO:0019824",
+      "hasLocalDefinition": true,
+      "label": [
+        "non-acquired pituitary hormone deficiency"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0700096": {
+      "curie": "MONDO:0700096",
+      "hasLocalDefinition": true,
+      "label": [
+        "human disease"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCIT_C120162": {
+      "curie": "ncit:C120162",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C120162"
+    },
+    "http://purl.obolibrary.org/obo/OGMS_0000031": {
+      "curie": "OGMS:0000031",
+      "hasLocalDefinition": true,
+      "label": [
+        "disease"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+      "curie": "OIO:hasDbXref",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_dbxref"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#id": {
+      "curie": "id",
+      "hasLocalDefinition": true,
+      "label": [
+        "id"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#inSubset": {
+      "curie": "OIO:inSubset",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "in_subset"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#source": {
+      "curie": "source",
+      "hasLocalDefinition": true,
+      "label": [
+        "source"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.orpha.net/ORDO/Orphanet_174590": {
+      "curie": "orphanet.ordo:174590",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://www.orpha.net/ORDO/Orphanet_174590"
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2004/02/skos/core#exactMatch": {
+      "curie": "SKOS:exactMatch",
+      "definedBy": [
+        "skos"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has exact match"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000016",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/MONDO_0000001",
+    "http://purl.obolibrary.org/obo/MONDO_0002146",
+    "http://purl.obolibrary.org/obo/MONDO_0002259",
+    "http://purl.obolibrary.org/obo/MONDO_0002263",
+    "http://purl.obolibrary.org/obo/MONDO_0003847",
+    "http://purl.obolibrary.org/obo/MONDO_0005039",
+    "http://purl.obolibrary.org/obo/MONDO_0005151",
+    "http://purl.obolibrary.org/obo/MONDO_0015127",
+    "http://purl.obolibrary.org/obo/MONDO_0015514",
+    "http://purl.obolibrary.org/obo/MONDO_0015860",
+    "http://purl.obolibrary.org/obo/MONDO_0016072",
+    "http://purl.obolibrary.org/obo/MONDO_0018555",
+    "http://purl.obolibrary.org/obo/MONDO_0019824",
+    "http://purl.obolibrary.org/obo/MONDO_0700096",
+    "http://purl.obolibrary.org/obo/OGMS_0000031",
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+    "http://www.geneontology.org/formats/oboInOwl#id",
+    "http://www.geneontology.org/formats/oboInOwl#inSubset",
+    "http://www.geneontology.org/formats/oboInOwl#source",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/2004/02/skos/core#exactMatch"
+  ],
+  "numDescendants": 1.0,
+  "numHierarchicalDescendants": 1.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "searchableAnnotationValues": [
+    false
+  ],
+  "shortForm": "MONDO_0015770",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

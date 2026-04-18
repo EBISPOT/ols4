@@ -1,0 +1,37 @@
+{
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000079/ancestors"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000079/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000079/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000079?lang=en"
+    }
+  },
+  "annotation": {
+    "IAO_0000116": [
+      "A function inheres in its bearer at all times for which the function exists, however the function need not be realized at all the times that the function exists."
+    ]
+  },
+  "description": [
+    "a relation between a function and an independent continuant (the bearer), in which the function specifically depends on the bearer for its existence"
+  ],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/RO_0000079",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": false,
+  "label": "function of",
+  "lang": "en",
+  "obo_id": "RO:0000079",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "short_form": "RO_0000079",
+  "synonyms": []
+}

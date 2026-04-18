@@ -1,0 +1,77 @@
+{
+  "appearsIn": [
+    "owl2primer-subclassof"
+  ],
+  "curie": "Woman",
+  "directAncestor": [
+    "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person"
+  ],
+  "directParent": [
+    "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person"
+  ],
+  "hierarchicalParent": [
+    "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
+  "imported": false,
+  "iri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Woman",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "Woman"
+  ],
+  "linkedEntities": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person": {
+      "curie": "Person",
+      "hasLocalDefinition": true,
+      "label": [
+        "Person"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf#Person",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 1.0,
+  "numHierarchicalDescendants": 1.0,
+  "ontologyId": "owl2primer-subclassof",
+  "ontologyIri": "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf.owl",
+  "ontologyPreferredPrefix": "owl2primer-subClassOf",
+  "searchableAnnotationValues": false,
+  "shortForm": "Woman",
+  "type": [
+    "class",
+    "entity"
+  ]
+}
