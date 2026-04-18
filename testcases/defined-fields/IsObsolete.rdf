@@ -89,9 +89,9 @@
     
 
 
-    <!-- http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTRUE -->
+    <!-- http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithStringValue -->
 
-    <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTRUE">
+    <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithStringValue">
         <owl:deprecated xml:lang="en">TRUE</owl:deprecated>
     </owl:Class>
     

@@ -121,6 +121,67 @@
           }
         },
         {
+          "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithStringValue",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedClassWithStringValue"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "hierarchicalAncestor": [],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2002/07/owl#deprecated": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "TRUE",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": true,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"DeprecatedClassWithStringValue"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "isobsolete"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "IsObsolete"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedClassWithStringValue"
+          }
+        },
+        {
           "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValue1",
           "type": [
             "class",
@@ -172,67 +233,6 @@
               "literal"
             ],
             "value": "DeprecatedClassWithValue1"
-          }
-        },
-        {
-          "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTRUE",
-          "type": [
-            "class",
-            "entity"
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "DeprecatedClassWithValueTRUE"
-          },
-          "directAncestor": [],
-          "hasDirectChildren": false,
-          "hasDirectParents": false,
-          "hasHierarchicalChildren": false,
-          "hasHierarchicalParents": false,
-          "hierarchicalAncestor": [],
-          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-          "http://www.w3.org/2002/07/owl#deprecated": {
-            "type": [
-              "literal"
-            ],
-            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-            "value": "TRUE",
-            "lang": "en"
-          },
-          "imported": false,
-          "isObsolete": true,
-          "isPreferredRoot": false,
-          "label": [
-            {"type":["literal"],"value":"DeprecatedClassWithValueTRUE"}
-          ],
-          "numDescendants": 0,
-          "numHierarchicalDescendants": 0,
-          "ontologyId": {
-            "type": [
-              "literal"
-            ],
-            "value": "isobsolete"
-          },
-          "ontologyIri": {
-            "type": [
-              "literal"
-            ],
-            "value": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf"
-          },
-          "ontologyPreferredPrefix": {
-            "type": [
-              "literal"
-            ],
-            "value": "IsObsolete"
-          },
-          "searchableAnnotationValues": false,
-          "shortForm": {
-            "type": [
-              "literal"
-            ],
-            "value": "DeprecatedClassWithValueTRUE"
           }
         },
         {

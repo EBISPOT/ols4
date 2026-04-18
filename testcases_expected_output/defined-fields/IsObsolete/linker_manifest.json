@@ -54,6 +54,60 @@
         }
       }
     },
+    "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithStringValue": {
+      "definitions": [
+        {
+          "ontologyId": "isobsolete",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "DeprecatedClassWithStringValue"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedClassWithStringValue"
+          },
+          "isObsolete": true
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "isobsolete": {
+          "ontologyId": "isobsolete",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "DeprecatedClassWithStringValue"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedClassWithStringValue"
+          },
+          "isObsolete": true
+        }
+      }
+    },
     "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValue1": {
       "definitions": [
         {
@@ -103,60 +157,6 @@
               "literal"
             ],
             "value": "DeprecatedClassWithValue1"
-          },
-          "isObsolete": true
-        }
-      }
-    },
-    "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTRUE": {
-      "definitions": [
-        {
-          "ontologyId": "isobsolete",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "DeprecatedClassWithValueTRUE"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "DeprecatedClassWithValueTRUE"
-          },
-          "isObsolete": true
-        }
-      ],
-      "definingDefinitions": [],
-      "definingOntologyIds": [],
-      "ontologyIdToDefinitions": {
-        "isobsolete": {
-          "ontologyId": "isobsolete",
-          "entityTypes": [
-            "class",
-            "entity"
-          ],
-          "isDefiningOntology": false,
-          "label": [
-            {
-              "type": [
-                "literal"
-              ],
-              "value": "DeprecatedClassWithValueTRUE"
-            }
-          ],
-          "curie": {
-            "type": [
-              "literal"
-            ],
-            "value": "DeprecatedClassWithValueTRUE"
           },
           "isObsolete": true
         }
@@ -786,10 +786,10 @@
       "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#AnGODefinedObsoleteClass": [
         "CLASS"
       ],
-      "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValue1": [
+      "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithStringValue": [
         "CLASS"
       ],
-      "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTRUE": [
+      "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValue1": [
         "CLASS"
       ],
       "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedClassWithValueTrue": [
