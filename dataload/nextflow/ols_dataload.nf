@@ -64,7 +64,9 @@ workflow {
     merged_config_file = merge_configs(config_files)
     
     merged_config = merged_config_file.map { Path configFile ->
-        new JsonSlurper().parse(configFile)
+        def config = new JsonSlurper().parse(configFile)
+        println "Detected ${config.ontologies.size()} ontologies in merged config"
+        return config
     }   
 
     ontologies = merged_config.flatMap { it.ontologies }

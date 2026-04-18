@@ -1,0 +1,199 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "NCBITaxon:89593",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/NCBITaxon_131567",
+    "http://purl.obolibrary.org/obo/NCBITaxon_2759",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33154",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33208",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33213",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33511",
+    "http://purl.obolibrary.org/obo/NCBITaxon_6072",
+    "http://purl.obolibrary.org/obo/NCBITaxon_7711"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/NCBITaxon_7711"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/NCBITaxon_131567",
+    "http://purl.obolibrary.org/obo/NCBITaxon_2759",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33154",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33208",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33213",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33511",
+    "http://purl.obolibrary.org/obo/NCBITaxon_6072",
+    "http://purl.obolibrary.org/obo/NCBITaxon_7711"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/NCBITaxon_7711"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "Craniata <chordates>",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_7711",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/NCBITaxon_89593",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "Craniata <chordates>"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/NCBITaxon_131567": {
+      "curie": "NCBITaxon:131567",
+      "hasLocalDefinition": true,
+      "label": [
+        "cellular organisms"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_2759": {
+      "curie": "NCBITaxon:2759",
+      "hasLocalDefinition": true,
+      "label": [
+        "Eukaryota"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_33154": {
+      "curie": "NCBITaxon:33154",
+      "hasLocalDefinition": true,
+      "label": [
+        "Opisthokonta"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_33208": {
+      "curie": "NCBITaxon:33208",
+      "hasLocalDefinition": true,
+      "label": [
+        "Metazoa"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_33213": {
+      "curie": "NCBITaxon:33213",
+      "hasLocalDefinition": true,
+      "label": [
+        "Bilateria"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_33511": {
+      "curie": "NCBITaxon:33511",
+      "hasLocalDefinition": true,
+      "label": [
+        "Deuterostomia"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_6072": {
+      "curie": "NCBITaxon:6072",
+      "hasLocalDefinition": true,
+      "label": [
+        "Eumetazoa"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_7711": {
+      "curie": "NCBITaxon:7711",
+      "hasLocalDefinition": true,
+      "label": [
+        "Chordata"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/NCBITaxon_131567",
+    "http://purl.obolibrary.org/obo/NCBITaxon_2759",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33154",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33208",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33213",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33511",
+    "http://purl.obolibrary.org/obo/NCBITaxon_6072",
+    "http://purl.obolibrary.org/obo/NCBITaxon_7711",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 22.0,
+  "numHierarchicalDescendants": 22.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "searchableAnnotationValues": false,
+  "shortForm": "NCBITaxon_89593",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

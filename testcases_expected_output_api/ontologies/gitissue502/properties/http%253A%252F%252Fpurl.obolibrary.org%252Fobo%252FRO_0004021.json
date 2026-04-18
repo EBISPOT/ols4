@@ -1,0 +1,44 @@
+{
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004021/ancestors"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004021/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004021/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004021?lang=en"
+    }
+  },
+  "annotation": {
+    "has_dbxref": [
+      "RO:0004021"
+    ],
+    "id": [
+      "disease_has_basis_in_disruption_of"
+    ],
+    "shorthand": [
+      "disease_has_basis_in_disruption_of"
+    ]
+  },
+  "description": [
+    "A relation that holds between the disease and a process where the physical basis of the disease disrupts execution of a key biological process.",
+    "Editor note: TODO property chain: disease_has_location <- dhbido o occurs_in"
+  ],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/RO_0004021",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": false,
+  "label": "disease caused by disruption of",
+  "lang": "en",
+  "obo_id": "RO:0004021",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "short_form": "RO_0004021",
+  "synonyms": []
+}

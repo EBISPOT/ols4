@@ -1,0 +1,28 @@
+[
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/labelsingle/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fols4%252Ftestcase%252Flabel%2523noLangClass/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/labelsingle/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Fols4%252Ftestcase%252Flabel%2523noLangClass?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/ols4/testcase/label#noLangClass",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "simple label",
+    "lang": "en",
+    "obo_id": "noLangClass",
+    "ontology_iri": "http://www.ebi.ac.uk/ols4/testcase/label",
+    "ontology_name": "labelsingle",
+    "ontology_prefix": "labelSingle",
+    "short_form": "noLangClass",
+    "synonyms": []
+  }
+]

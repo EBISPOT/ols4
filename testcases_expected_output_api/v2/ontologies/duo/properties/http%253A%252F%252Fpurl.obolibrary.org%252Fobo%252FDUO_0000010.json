@@ -67,11 +67,11 @@
     },
     "http://purl.obolibrary.org/obo/IAO_0000115": {
       "curie": "IAO:0000115",
-      "hasLocalDefinition": true,
+      "hasLocalDefinition": false,
       "label": [
-        "definition"
+        "IAO_0000115"
       ],
-      "numAppearsIn": 4.0,
+      "numAppearsIn": 3.0,
       "type": [
         "annotationProperty",
         "entity",
@@ -79,25 +79,17 @@
       ]
     },
     "http://purl.obolibrary.org/obo/IAO_0000117": {
-      "curie": "IAO:0000117",
-      "hasLocalDefinition": true,
-      "label": [
-        "term editor"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "annotationProperty",
-        "entity",
-        "property"
-      ]
+      "curie": "iao:0000117",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/IAO_0000117"
     },
     "http://purl.obolibrary.org/obo/IAO_0000232": {
       "curie": "IAO:0000232",
-      "hasLocalDefinition": true,
+      "hasLocalDefinition": false,
       "label": [
-        "curator note"
+        "IAO_0000232"
       ],
-      "numAppearsIn": 2.0,
+      "numAppearsIn": 1.0,
       "type": [
         "annotationProperty",
         "entity",
@@ -122,11 +114,11 @@
       "definedBy": [
         "rdfs"
       ],
-      "hasLocalDefinition": true,
+      "hasLocalDefinition": false,
       "label": [
         "label"
       ],
-      "numAppearsIn": 4.0,
+      "numAppearsIn": 3.0,
       "type": [
         "entity",
         "property"
@@ -137,7 +129,6 @@
     "http://purl.obolibrary.org/obo/DUO_0000010",
     "http://purl.obolibrary.org/obo/DUO_0000041",
     "http://purl.obolibrary.org/obo/IAO_0000115",
-    "http://purl.obolibrary.org/obo/IAO_0000117",
     "http://purl.obolibrary.org/obo/IAO_0000232",
     "http://www.geneontology.org/formats/oboInOwl#id",
     "http://www.w3.org/2000/01/rdf-schema#label"

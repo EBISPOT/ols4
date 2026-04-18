@@ -1,0 +1,139 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "NCBITaxon:6040",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/NCBITaxon_131567",
+    "http://purl.obolibrary.org/obo/NCBITaxon_2759",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33154",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33208"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/NCBITaxon_33208"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/NCBITaxon_131567",
+    "http://purl.obolibrary.org/obo/NCBITaxon_2759",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33154",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33208"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/NCBITaxon_33208"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "Porifera",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_33208",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/NCBITaxon_6040",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "Porifera"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/NCBITaxon_131567": {
+      "curie": "NCBITaxon:131567",
+      "hasLocalDefinition": true,
+      "label": [
+        "cellular organisms"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_2759": {
+      "curie": "NCBITaxon:2759",
+      "hasLocalDefinition": true,
+      "label": [
+        "Eukaryota"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_33154": {
+      "curie": "NCBITaxon:33154",
+      "hasLocalDefinition": true,
+      "label": [
+        "Opisthokonta"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_33208": {
+      "curie": "NCBITaxon:33208",
+      "hasLocalDefinition": true,
+      "label": [
+        "Metazoa"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/NCBITaxon_131567",
+    "http://purl.obolibrary.org/obo/NCBITaxon_2759",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33154",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33208",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "searchableAnnotationValues": false,
+  "shortForm": "NCBITaxon_6040",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

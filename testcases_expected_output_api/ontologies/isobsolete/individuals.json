@@ -1,0 +1,64 @@
+[
+  {
+    "_links": {
+      "alltypes": {
+        "href": "<base>/api/ontologies/isobsolete/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523DeprecatedIndividual/alltypes"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/isobsolete/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523DeprecatedIndividual/jstree"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/isobsolete/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523DeprecatedIndividual?lang=en"
+      },
+      "types": {
+        "href": "<base>/api/ontologies/isobsolete/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523DeprecatedIndividual/types"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#DeprecatedIndividual",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "DeprecatedIndividual",
+    "lang": "en",
+    "obo_id": "DeprecatedIndividual",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf",
+    "ontology_name": "isobsolete",
+    "ontology_prefix": "IsObsolete",
+    "short_form": "DeprecatedIndividual",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "alltypes": {
+        "href": "<base>/api/ontologies/isobsolete/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523NonDeprecatedIndividual/alltypes"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/isobsolete/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523NonDeprecatedIndividual/jstree"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/isobsolete/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523NonDeprecatedIndividual?lang=en"
+      },
+      "types": {
+        "href": "<base>/api/ontologies/isobsolete/individuals/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefined-fields%252FisObsolete.rdf%2523NonDeprecatedIndividual/types"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf#NonDeprecatedIndividual",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": false,
+    "label": "NonDeprecatedIndividual",
+    "lang": "en",
+    "obo_id": "NonDeprecatedIndividual",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/defined-fields/isObsolete.rdf",
+    "ontology_name": "isobsolete",
+    "ontology_prefix": "IsObsolete",
+    "short_form": "NonDeprecatedIndividual",
+    "synonyms": []
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "_links": {
+    "children": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002162/children"
+    },
+    "descendants": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002162/descendants"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002162?lang=en"
+    }
+  },
+  "annotation": {
+    "has_dbxref": [
+      "RO:0002162"
+    ],
+    "id": [
+      "in_taxon"
+    ],
+    "shorthand": [
+      "in_taxon"
+    ]
+  },
+  "description": [
+    "x is in taxon y if an only if y is an organism, and the relationship between x and y is one of: part of (reflexive), developmentally preceded by, derives from, secreted by, expressed."
+  ],
+  "has_children": true,
+  "iri": "http://purl.obolibrary.org/obo/RO_0002162",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": true,
+  "label": "in taxon",
+  "lang": "en",
+  "obo_id": "RO:0002162",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "short_form": "RO_0002162",
+  "synonyms": []
+}

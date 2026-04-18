@@ -1,0 +1,46 @@
+[
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-inverse/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FobjectProperty-inverse.owl%2523hasChild?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasChild",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "hasChild",
+    "lang": "en",
+    "obo_id": "hasChild",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl",
+    "ontology_name": "owl2primer-objectproperty-inverse",
+    "ontology_prefix": "owl2primer-objectProperty-inverse",
+    "short_form": "hasChild",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-objectproperty-inverse/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FobjectProperty-inverse.owl%2523hasParent?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl#hasParent",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "hasParent",
+    "lang": "en",
+    "obo_id": "hasParent",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/objectProperty-inverse.owl",
+    "ontology_name": "owl2primer-objectproperty-inverse",
+    "ontology_prefix": "owl2primer-objectProperty-inverse",
+    "short_form": "hasParent",
+    "synonyms": []
+  }
+]

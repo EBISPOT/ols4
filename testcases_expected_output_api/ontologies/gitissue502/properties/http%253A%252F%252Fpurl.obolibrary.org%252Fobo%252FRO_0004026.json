@@ -1,0 +1,37 @@
+{
+  "_links": {
+    "self": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0004026?lang=en"
+    }
+  },
+  "annotation": {
+    "IAO_0000116": [
+      "TODO: complete range axiom once more of CARO has been mireoted in to this ontology"
+    ],
+    "has_dbxref": [
+      "RO:0004026"
+    ],
+    "id": [
+      "disease_has_location"
+    ],
+    "shorthand": [
+      "disease_has_location"
+    ]
+  },
+  "description": [
+    "A relationship between a disease and an anatomical entity where the disease has one or more features that are located in that entity."
+  ],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/RO_0004026",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": true,
+  "label": "disease has location",
+  "lang": "en",
+  "obo_id": "RO:0004026",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "short_form": "RO_0004026",
+  "synonyms": []
+}

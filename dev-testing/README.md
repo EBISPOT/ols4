@@ -1,5 +1,41 @@
 # Dev Testing
 
+## Running testcases without Docker
+
+`dev-testing/run-testcases-local.sh` runs the full OLS4 test suite (mock dataload and/or API tests) without Docker.
+
+```bash
+./dev-testing/run-testcases-local.sh [dataload|api|all]
+```
+
+| Mode | What it does |
+|---|---|
+| `dataload` | Part 1 only: mock dataload test (mirrors `test_dataload.sh`) |
+| `api` | Part 2 only: full API test against a live local backend (mirrors `test_api.sh`) |
+| `all` | Both tests (default) |
+
+The script:
+1. Builds all Maven JARs (`ols-shared`, `rdf2json`, `solr_config_builder`, `backend`, `apitester4`) and Rust binaries
+2. **Part 1** — For each of the 110+ testcase configs, runs the data pipeline and diffs output against `testcases_expected_output/`
+3. **Part 2** — Merges all testcase configs, runs the full pipeline, loads into local Solr + Neo4j, starts the backend, runs `apitester4.jar` against `http://localhost:8080`, diffs against `testcases_expected_output_api/`
+
+For `api` and `all` modes, the same prerequisites as `dev-local.sh` apply (NEO4J_HOME, SOLR_HOME).
+
+To update expected output after intentional changes:
+```bash
+# Mock dataload
+./dev-testing/run-testcases-local.sh dataload
+rm -rf testcases_expected_output/*
+cp -r testcases_output/* testcases_expected_output/
+
+# API test
+./dev-testing/run-testcases-local.sh api
+rm -rf testcases_expected_output_api
+mv testcases_output_api testcases_expected_output_api
+```
+
+---
+
 ## Running OLS4 locally without Docker
 
 `dev-testing/dev-local.sh` loads one ontology config into local Solr and Neo4j instances, leaving both running so you can start the backend and frontend against real data.

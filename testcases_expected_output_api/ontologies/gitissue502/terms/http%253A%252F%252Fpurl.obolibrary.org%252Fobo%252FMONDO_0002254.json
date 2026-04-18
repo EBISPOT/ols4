@@ -1,0 +1,239 @@
+{
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/ancestors"
+    },
+    "children": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/children"
+    },
+    "descendants": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/descendants"
+    },
+    "graph": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/graph"
+    },
+    "has_characteristic": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0000053"
+    },
+    "hierarchicalAncestors": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/hierarchicalAncestors"
+    },
+    "hierarchicalChildren": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/hierarchicalDescendants"
+    },
+    "hierarchicalParents": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/hierarchicalParents"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0002254?lang=en"
+    }
+  },
+  "annotation": {
+    "conformsTo": [
+      "http://purl.obolibrary.org/obo/mondo/patterns/syndromic.yaml"
+    ],
+    "has exact match": [
+      "http://identifiers.org/mesh/D013577",
+      "http://linkedlifedata.com/resource/umls/id/C0039082",
+      "http://purl.obolibrary.org/obo/DOID_225",
+      "http://purl.obolibrary.org/obo/NCIT_C28193"
+    ],
+    "has_dbxref": [
+      "DOID:225",
+      "MESH:D013577",
+      "NCIT:C28193",
+      "OGMS:0000086",
+      "UMLS:C0039082"
+    ],
+    "id": [
+      "MONDO:0002254"
+    ]
+  },
+  "description": [
+    "A group of signs, symptoms, and clinicopathological characteristics that may or may not have a genetic basis and collectively define an abnormal condition."
+  ],
+  "has_children": true,
+  "in_subset": [
+    "harrisons_view",
+    "rare_grouping"
+  ],
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0002254",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_preferred_root": false,
+  "is_root": false,
+  "label": "syndromic disease",
+  "lang": "en",
+  "obo_definition_citation": [
+    {
+      "definition": "A group of signs, symptoms, and clinicopathological characteristics that may or may not have a genetic basis and collectively define an abnormal condition.",
+      "oboXrefs": [
+        {
+          "database": "NCIT",
+          "id": "C28193",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C28193"
+        }
+      ]
+    }
+  ],
+  "obo_id": "MONDO:0002254",
+  "obo_synonym": [
+    {
+      "name": "cluster, symptom",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MESH",
+          "id": "D013577",
+          "url": "http://id.nlm.nih.gov/mesh/D013577"
+        }
+      ]
+    },
+    {
+      "name": "clusters, symptom",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MESH",
+          "id": "D013577",
+          "url": "http://id.nlm.nih.gov/mesh/D013577"
+        }
+      ]
+    },
+    {
+      "name": "symptom cluster",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MESH",
+          "id": "D013577",
+          "url": "http://id.nlm.nih.gov/mesh/D013577"
+        }
+      ]
+    },
+    {
+      "name": "symptom clusters",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MESH",
+          "id": "D013577",
+          "url": "http://id.nlm.nih.gov/mesh/D013577"
+        }
+      ]
+    },
+    {
+      "name": "syndrome associated with disease or disorder",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "patterns/syndromic"
+        }
+      ]
+    },
+    {
+      "name": "syndrome",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "NCIT",
+          "id": "C28193",
+          "url": "http://purl.obolibrary.org/obo/NCIT_C28193"
+        },
+        {
+          "database": "OGMS",
+          "id": "0000086",
+          "url": "http://purl.obolibrary.org/obo/OGMS_0000086"
+        }
+      ]
+    },
+    {
+      "name": "syndromes",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MESH",
+          "id": "D013577",
+          "url": "http://id.nlm.nih.gov/mesh/D013577"
+        }
+      ]
+    },
+    {
+      "name": "syndromic disease or disorder",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "patterns/syndromic"
+        }
+      ]
+    },
+    {
+      "name": "syndromic disease",
+      "scope": "hasExactSynonym",
+      "xrefs": [
+        {
+          "database": "MONDO",
+          "id": "patterns/syndromic"
+        }
+      ]
+    }
+  ],
+  "obo_xref": [
+    {
+      "database": "DOID",
+      "description": "MONDO:equivalentTo",
+      "id": "225",
+      "url": "http://purl.obolibrary.org/obo/DOID_225"
+    },
+    {
+      "database": "MESH",
+      "description": "MONDO:equivalentTo",
+      "id": "D013577",
+      "url": "http://id.nlm.nih.gov/mesh/D013577"
+    },
+    {
+      "database": "NCIT",
+      "description": "MONDO:equivalentTo",
+      "id": "C28193",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C28193"
+    },
+    {
+      "database": "OGMS",
+      "description": "MONDO:cjm",
+      "id": "0000086",
+      "url": "http://purl.obolibrary.org/obo/OGMS_0000086"
+    },
+    {
+      "database": "UMLS",
+      "description": "NCIT:C28193",
+      "id": "C0039082",
+      "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0039082"
+    }
+  ],
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "short_form": "MONDO_0002254",
+  "synonyms": [
+    "cluster, symptom",
+    "clusters, symptom",
+    "symptom cluster",
+    "symptom clusters",
+    "syndrome associated with disease or disorder",
+    "syndrome",
+    "syndromes",
+    "syndromic disease or disorder",
+    "syndromic disease"
+  ]
+}

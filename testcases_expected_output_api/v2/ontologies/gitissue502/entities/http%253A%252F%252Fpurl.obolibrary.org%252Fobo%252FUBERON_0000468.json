@@ -1,0 +1,244 @@
+{
+  "appearsIn": [
+    "efo-hierarchical-properties",
+    "gitissue502"
+  ],
+  "curie": "UBERON:0000468",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000004",
+    "http://purl.obolibrary.org/obo/BFO_0000040",
+    "http://purl.obolibrary.org/obo/UBERON_0000061",
+    "http://purl.obolibrary.org/obo/UBERON_0000465",
+    "http://purl.obolibrary.org/obo/UBERON_0001062",
+    "http://purl.obolibrary.org/obo/UBERON_0010000"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/UBERON_0010000"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000004",
+    "http://purl.obolibrary.org/obo/BFO_0000040",
+    "http://purl.obolibrary.org/obo/UBERON_0000061",
+    "http://purl.obolibrary.org/obo/UBERON_0000465",
+    "http://purl.obolibrary.org/obo/UBERON_0001062",
+    "http://purl.obolibrary.org/obo/UBERON_0010000"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/UBERON_0010000"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/IAO_0000116": "TODO - split body and mc organism? body continues after death stage",
+  "http://purl.obolibrary.org/obo/RO_0002175": [
+    "http://purl.obolibrary.org/obo/NCBITaxon_33090",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33208",
+    "http://purl.obolibrary.org/obo/NCBITaxon_4751"
+  ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "multicellular organism",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/UBERON_0010000",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/UBERON_0000468",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "multicellular organism"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000004": {
+      "curie": "BFO:0000004",
+      "hasLocalDefinition": true,
+      "label": [
+        "independent continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000040": {
+      "curie": "BFO:0000040",
+      "hasLocalDefinition": true,
+      "label": [
+        "material entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000116": {
+      "curie": "IAO:0000116",
+      "hasLocalDefinition": true,
+      "label": [
+        "IAO_0000116"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_33090": {
+      "curie": "ncbitaxon:33090",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=33090"
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_33208": {
+      "curie": "NCBITaxon:33208",
+      "hasLocalDefinition": true,
+      "label": [
+        "Metazoa"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_4751": {
+      "curie": "ncbitaxon:4751",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=4751"
+    },
+    "http://purl.obolibrary.org/obo/RO_0002175": {
+      "curie": "RO:0002175",
+      "hasLocalDefinition": true,
+      "label": [
+        "RO_0002175"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0000061": {
+      "curie": "UBERON:0000061",
+      "hasLocalDefinition": true,
+      "label": [
+        "anatomical structure"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0000465": {
+      "curie": "UBERON:0000465",
+      "hasLocalDefinition": true,
+      "label": [
+        "material anatomical entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0001062": {
+      "curie": "UBERON:0001062",
+      "hasLocalDefinition": true,
+      "label": [
+        "anatomical entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0010000": {
+      "curie": "UBERON:0010000",
+      "hasLocalDefinition": true,
+      "label": [
+        "multicellular anatomical structure"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000004",
+    "http://purl.obolibrary.org/obo/BFO_0000040",
+    "http://purl.obolibrary.org/obo/IAO_0000116",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33208",
+    "http://purl.obolibrary.org/obo/RO_0002175",
+    "http://purl.obolibrary.org/obo/UBERON_0000061",
+    "http://purl.obolibrary.org/obo/UBERON_0000465",
+    "http://purl.obolibrary.org/obo/UBERON_0001062",
+    "http://purl.obolibrary.org/obo/UBERON_0010000",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 2.0,
+  "numHierarchicalDescendants": 20.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "searchableAnnotationValues": [
+    false
+  ],
+  "shortForm": "UBERON_0000468",
+  "type": [
+    "class",
+    "entity"
+  ]
+}
