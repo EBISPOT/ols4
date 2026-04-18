@@ -95,10 +95,21 @@ fi
     "${SSSOM_OPTS[@]}"
 
 log "Running json2neo..."
+EMBED_ARGS=()
+while IFS= read -r -d '' f; do
+    EMBED_ARGS+=("$f")
+done < <(find "$OLS4_HOME/testcases/embeddings" -name "*.parquet" -print0 2>/dev/null)
+
+EMBED_OPTS=()
+if [ "${#EMBED_ARGS[@]}" -gt 0 ]; then
+    EMBED_OPTS=(--embeddingParquets "${EMBED_ARGS[@]}")
+fi
+
 "$RUST_BINS/ols_json2neo" \
     --manifest "$LINKER_MANIFEST" \
     --input    "$ONTOLOGIES_LINKED" \
-    --outDir   "$NEO_CSVS"
+    --outDir   "$NEO_CSVS" \
+    "${EMBED_OPTS[@]}"
 
 log "Running json2solr..."
 "$RUST_BINS/ols_json2solr" \
@@ -130,7 +141,9 @@ export SOLR_ENABLE_REMOTE_STREAMING="true"
 export SOLR_SECURITY_MANAGER_ENABLED="false"
 export JAVA_TOOL_OPTIONS="-Djava.net.useSystemProxies=false"
 
-/opt/solr/bin/solr start -m 4g -p 8983 -noprompt -force --solr-home "$OUT_DIR/solr"
+# Use the COPIED binary (not /opt/solr/bin/solr) so Solr defaults its home to
+# $OUT_DIR/solr/server/solr — exactly where solr_config_builder wrote the cores.
+"$OUT_DIR/solr/bin/solr" start -m 4g -p 8983 -noprompt -force
 
 log "Waiting for Solr to start..."
 for i in {1..60}; do
@@ -178,13 +191,13 @@ log "Committing Solr..."
 curl -sf "http://127.0.0.1:8983/solr/ols4_entities/update?commit=true" >/dev/null || err "Failed to commit ols4_entities"
 curl -sf "http://127.0.0.1:8983/solr/ols4_autocomplete/update?commit=true" >/dev/null || err "Failed to commit ols4_autocomplete"
 
-/opt/solr/bin/solr stop -p 8983
+"$OUT_DIR/solr/bin/solr" stop -p 8983
 
 # ─── 4. Set up Neo4j ──────────────────────────────────────────────────────────
 # Use Neo4j 2025.03.0 bundled in the container — the same version as
 # docker-compose — so data format is guaranteed compatible.
 log "Importing CSVs into Neo4j (using /opt/neo4j)..."
-"$DATALOAD/load_into_neo4j.sh" /opt/neo4j "$NEO_CSVS" 4g
+"$DATALOAD/load_into_neo4j.sh" /opt/neo4j "$NEO_CSVS" 4g "${EMBED_ARGS[@]}"
 
 log "Copying Neo4j data to output..."
 mkdir -p "$OUT_DIR/neo4j/data"
