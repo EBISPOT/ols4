@@ -158,8 +158,9 @@ public class V1SearchController {
             } else {
 
                 solrQuery.set("defType", "edismax");
-                solrQuery.setQuery(query.toLowerCase());
-                solrQuery.set("qf", String.join(" ", SolrFieldMapper.mapFieldsList(queryFields)));
+                solrQuery.setQuery(query);
+                solrQuery.set("qf", String.join(" ", SolrFieldMapper.mapFieldsList(
+                        queryFields.stream().map(qf -> qf + "_w").collect(Collectors.toList()))));
             }
         }
 
