@@ -43,7 +43,7 @@ workflow embeddings {
     local_tsvs  = tsvs.filter { it[0] && !it[0].toString().startsWith('openai/') }
     openai_tsvs = tsvs.filter { it[0] &&  it[0].toString().startsWith('openai/') }
 
-    local_embeddings  = embed(local_tsvs)
+    local_embeddings  = embed(local_tsvs, config.batch_sizes ?: [:], config.num_gpus ?: [:])
     openai_embeddings = embed_openai(openai_tsvs)
 
     // Collect all new embedding parquets.  .ifEmpty([]) ensures that when
@@ -206,28 +206,31 @@ process embed {
 
     container params.embed_image
     cache "lenient"
-    memory '32 GB'
+    memory '128 GB'
     time '1h'
     cpus "8"
-    clusterOptions = '--gres=gpu:a100:1'
+    clusterOptions { "--gres=gpu:a100:${num_gpus[model] ?: 1}" }
     errorStrategy "retry"
     maxRetries 100
 
     input:
     tuple val(model), path(split_tsv)
+    val(batch_sizes)
+    val(num_gpus)
 
     output:
     tuple val(model), path("embedded_${model.split('/')[1]}_${task.index}.parquet")
 
     script:
     def model_short = model.split('/')[1]
+    def batchSize = batch_sizes[model] ?: 200
 
     """
     python3 /opt/ols_embed/embed2.py \
        --input-tsv ${split_tsv} \
        --output-parquet embedded_${model_short}_${task.index}.parquet \
        --model-name ${model} \
-       --batch-size 200 \
+       --batch-size ${batchSize} \
        --device cuda
     """
 }

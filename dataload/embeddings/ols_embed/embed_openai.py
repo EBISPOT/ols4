@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import os
+import re
 from pathlib import Path
 from typing import List
 import polars as pl
@@ -8,6 +9,83 @@ import time
 import random
 import openai
 from openai import OpenAI
+
+_CONTROL_CHARS_RE = re.compile(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]')
+
+def _sanitize(text: str) -> str:
+    """Strip control characters that would produce invalid JSON."""
+    return _CONTROL_CHARS_RE.sub('', text)
+
+
+def _embed_single_batch(
+    client: OpenAI,
+    batch: List[str],
+    model: str,
+    max_retries: int,
+    initial_backoff: float,
+    max_backoff: float,
+    jitter_fraction: float,
+) -> List[List[float]]:
+    """
+    Send one batch to the API with exponential backoff.
+    On a 400 error (e.g. payload too large / invalid JSON from oversized batch),
+    split the batch in half and recurse, down to a minimum of 1 item.
+    """
+    if not batch:
+        return []
+
+    retries = 0
+    backoff = initial_backoff
+
+    while True:
+        try:
+            resp = client.with_options(max_retries=0).embeddings.create(
+                model=model,
+                input=batch,
+            )
+            return [d.embedding for d in resp.data]
+
+        except openai.RateLimitError:
+            if retries >= max_retries:
+                raise
+            sleep = backoff * (1.0 + jitter_fraction * random.random())
+            print(f"429 rate limit. Retrying in {sleep:.1f}s... (attempt {retries+1}/{max_retries})")
+            time.sleep(sleep)
+            backoff = min(backoff * 2.0, max_backoff)
+            retries += 1
+
+        except openai.BadRequestError as e:
+            # 400 often means the payload is too large or contains invalid characters.
+            # Split the batch in half and retry each half independently.
+            if len(batch) == 1:
+                # Single item still fails even after sanitization — re-raise so the
+                # job fails loudly rather than silently writing a wrong-dimension vector.
+                raise
+            half = len(batch) // 2
+            print(f"400 BadRequest on batch of {len(batch)}, splitting into {half} + {len(batch)-half} and retrying...")
+            left  = _embed_single_batch(client, batch[:half], model, max_retries, initial_backoff, max_backoff, jitter_fraction)
+            right = _embed_single_batch(client, batch[half:], model, max_retries, initial_backoff, max_backoff, jitter_fraction)
+            return left + right
+
+        except openai.APIStatusError as e:
+            if e.status_code >= 500 and retries < max_retries:
+                sleep = backoff * (1.0 + jitter_fraction * random.random())
+                print(f"Server {e.status_code}. Retrying in {sleep:.1f}s... (attempt {retries+1}/{max_retries})")
+                time.sleep(sleep)
+                backoff = min(backoff * 2.0, max_backoff)
+                retries += 1
+            else:
+                raise
+
+        except (openai.APIConnectionError, openai.APITimeoutError) as e:
+            if retries >= max_retries:
+                raise
+            sleep = backoff * (1.0 + jitter_fraction * random.random())
+            print(f"{e.__class__.__name__}. Retrying in {sleep:.1f}s... (attempt {retries+1}/{max_retries})")
+            time.sleep(sleep)
+            backoff = min(backoff * 2.0, max_backoff)
+            retries += 1
+
 
 def embed_batch(
     client: OpenAI,
@@ -27,55 +105,21 @@ def embed_batch(
       plus connection/timeout classes. The base class is `openai.APIError`.
     - The SDK already auto-retries some errors twice by default; to avoid "double
       retrying", this function disables per-request retries via `.with_options(max_retries=0)`.
+    - On 400 errors (payload too large / control characters), the batch is split
+      in half and retried recursively until it succeeds or reaches a single item.
     """
+    # Sanitize all texts upfront to remove control characters that break JSON.
+    # Replace any term that becomes empty after sanitization with a safe placeholder
+    # (the API rejects empty strings).
+    texts = [_sanitize(t) or '[empty]' for t in texts]
+
     all_embeddings: List[List[float]] = []
 
     for i in range(0, len(texts), batch_size):
         batch = texts[i : i + batch_size]
-
-        retries = 0
-        backoff = initial_backoff
-
-        while True:
-            try:
-                # turn off the SDK's built-in retries so our loop controls them
-                resp = client.with_options(max_retries=0).embeddings.create(
-                    model=model,
-                    input=batch,
-                )
-                all_embeddings.extend([d.embedding for d in resp.data])
-                break  # success
-
-            except openai.RateLimitError as e:
-                # 429 — back off and retry
-                if retries >= max_retries:
-                    raise
-                sleep = backoff * (1.0 + jitter_fraction * random.random())
-                print(f"429 rate limit. Retrying in {sleep:.1f}s... (attempt {retries+1}/{max_retries})")
-                time.sleep(sleep)
-                backoff = min(backoff * 2.0, max_backoff)
-                retries += 1
-
-            except openai.APIStatusError as e:
-                # Non-2xx; retry only on transient 5xx
-                if e.status_code >= 500 and retries < max_retries:
-                    sleep = backoff * (1.0 + jitter_fraction * random.random())
-                    print(f"Server {e.status_code}. Retrying in {sleep:.1f}s... (attempt {retries+1}/{max_retries})")
-                    time.sleep(sleep)
-                    backoff = min(backoff * 2.0, max_backoff)
-                    retries += 1
-                else:
-                    raise
-
-            except (openai.APIConnectionError, openai.APITimeoutError) as e:
-                # Network hiccups / timeouts: retry like transient errors
-                if retries >= max_retries:
-                    raise
-                sleep = backoff * (1.0 + jitter_fraction * random.random())
-                print(f"{e.__class__.__name__}. Retrying in {sleep:.1f}s... (attempt {retries+1}/{max_retries})")
-                time.sleep(sleep)
-                backoff = min(backoff * 2.0, max_backoff)
-                retries += 1
+        all_embeddings.extend(
+            _embed_single_batch(client, batch, model, max_retries, initial_backoff, max_backoff, jitter_fraction)
+        )
 
     return all_embeddings
 
