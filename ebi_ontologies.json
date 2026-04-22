@@ -902,6 +902,7 @@
       "base_uri": [
         "http://purl.allotrope.org/ontologies"
       ],
+      "shortFormExtractionPattern": "^http://purl\\.allotrope\\.org/ontologies/(.+)$",
       "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
       "synonym_property": [
         "http://www.w3.org/2004/02/skos/core#altLabel"
