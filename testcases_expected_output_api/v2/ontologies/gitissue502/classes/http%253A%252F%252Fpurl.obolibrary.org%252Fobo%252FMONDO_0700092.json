@@ -438,14 +438,10 @@
       "url": "https://github.com/monarch-initiative/mondo/issues/3410"
     },
     "https://orcid.org/0000-0002-1780-5230": {
-      "curie": "orcid:0000-0002-1780-5230",
-      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-      "url": "https://orcid.org/0000-0002-1780-5230"
+      "label": "Ada Hamosh"
     },
     "https://orcid.org/0000-0002-4142-7153": {
-      "curie": "orcid:0000-0002-4142-7153",
-      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-      "url": "https://orcid.org/0000-0002-4142-7153"
+      "label": "Sabrina Toro"
     }
   },
   "linksTo": [
@@ -465,7 +461,9 @@
     "http://www.geneontology.org/formats/oboInOwl#source",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-    "http://www.w3.org/2004/02/skos/core#exactMatch"
+    "http://www.w3.org/2004/02/skos/core#exactMatch",
+    "https://orcid.org/0000-0002-1780-5230",
+    "https://orcid.org/0000-0002-4142-7153"
   ],
   "numDescendants": 3.0,
   "numHierarchicalDescendants": 3.0,
