@@ -39,6 +39,18 @@ public class OlsPostgresClient {
         return "\"embedding_" + modelName + "\"";
     }
 
+    static double normalizeCosineSimilarity(double similarity) {
+        return clampUnitInterval((similarity + 1.0) / 2.0);
+    }
+
+    static double normalizeCosineDistance(double distance) {
+        return clampUnitInterval(1.0 - (distance / 2.0));
+    }
+
+    private static double clampUnitInterval(double score) {
+        return Math.max(0.0, Math.min(1.0, score));
+    }
+
     @Autowired
     PostgresClient postgresClient;
 
@@ -234,7 +246,7 @@ public class OlsPostgresClient {
                 try (ResultSet rs = stmt.executeQuery()) {
                     while (rs.next()) {
                         var json = JsonParser.parseString(PostgresClient.decompressJson(rs, "_json")).getAsJsonObject();
-                        json.addProperty("score", rs.getDouble("score"));
+                        json.addProperty("score", normalizeCosineSimilarity(rs.getDouble("score")));
                         results.add(json);
                     }
                 }
@@ -263,7 +275,7 @@ public class OlsPostgresClient {
 
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    return rs.getDouble("score");
+                    return normalizeCosineSimilarity(rs.getDouble("score"));
                 }
             }
         } catch (SQLException e) {
@@ -373,7 +385,7 @@ public class OlsPostgresClient {
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     var json = JsonParser.parseString(PostgresClient.decompressJson(rs, "_json")).getAsJsonObject();
-                    json.addProperty("score", 1.0 - rs.getDouble("score"));
+                    json.addProperty("score", normalizeCosineDistance(rs.getDouble("score")));
                     results.add(json);
                 }
             }
@@ -520,7 +532,7 @@ public class OlsPostgresClient {
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     var json = JsonParser.parseString(PostgresClient.decompressJson(rs, "_json")).getAsJsonObject();
-                    json.addProperty("score", 1.0 - rs.getDouble("score"));
+                    json.addProperty("score", normalizeCosineDistance(rs.getDouble("score")));
                     results.add(json);
                 }
             }
