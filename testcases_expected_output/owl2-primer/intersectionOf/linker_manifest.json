@@ -1,0 +1,256 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Mother": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-intersectionof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Mother"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Mother"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-intersectionof": {
+          "ontologyId": "owl2primer-intersectionof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Mother"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Mother"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-intersectionof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Parent"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Parent"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-intersectionof": {
+          "ontologyId": "owl2primer-intersectionof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Parent"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Parent"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-intersectionof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Woman"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Woman"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-intersectionof": {
+          "ontologyId": "owl2primer-intersectionof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Woman"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Woman"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf.owl": [
+      "owl2primer-intersectionof"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-intersectionOf": [
+      "owl2primer-intersectionof"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-intersectionof": [
+      "http://purl.obolibrary.org/obo/owl2primer-intersectionOf_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-intersectionof": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-intersectionof": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#equivalentClass",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-intersectionof": []
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-intersectionof": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-intersectionof": []
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-intersectionof": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Mother": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Parent": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf#Woman": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/intersectionOf.owl": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}

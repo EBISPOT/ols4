@@ -1,0 +1,220 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf#Jack": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-negative-data-property-assertion",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Jack"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Jack"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-negative-data-property-assertion": {
+          "ontologyId": "owl2primer-negative-data-property-assertion",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Jack"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Jack"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf#hasAge": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-negative-data-property-assertion",
+          "entityTypes": [
+            "dataProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasAge"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasAge"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-negative-data-property-assertion": {
+          "ontologyId": "owl2primer-negative-data-property-assertion",
+          "entityTypes": [
+            "dataProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasAge"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasAge"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf": [
+      "owl2primer-negative-data-property-assertion"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-negative-data-property-assertion": [
+      "owl2primer-negative-data-property-assertion"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-negative-data-property-assertion": [
+      "http://purl.obolibrary.org/obo/owl2primer-negative-data-property-assertion_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-negative-data-property-assertion": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-negative-data-property-assertion": []
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-negative-data-property-assertion": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-negative-data-property-assertion": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
+      "isObsolete",
+      "label",
+      "negativePropertyAssertion+http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf#hasAge",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-negative-data-property-assertion": []
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-negative-data-property-assertion": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf": [
+        "ONTOLOGY"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf#Jack": [
+        "INDIVIDUAL"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/negative-data-property-assertion.rdf#hasAge": [
+        "PROPERTY"
+      ]
+    }
+  }
+}

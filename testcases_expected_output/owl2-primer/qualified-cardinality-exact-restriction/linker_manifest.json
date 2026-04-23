@@ -1,0 +1,298 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/qualified-cardinality-exact-restriction.rdf#Parent": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-qualified-cardinality-exact-restriction",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Parent"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Parent"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-qualified-cardinality-exact-restriction": {
+          "ontologyId": "owl2primer-qualified-cardinality-exact-restriction",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Parent"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Parent"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/qualified-cardinality-exact-restriction.rdf#hasChild": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-qualified-cardinality-exact-restriction",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasChild"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasChild"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-qualified-cardinality-exact-restriction": {
+          "ontologyId": "owl2primer-qualified-cardinality-exact-restriction",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasChild"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasChild"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/qualified-cardinality-exact-restriction.rdf#john": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-qualified-cardinality-exact-restriction",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "john"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "john"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-qualified-cardinality-exact-restriction": {
+          "ontologyId": "owl2primer-qualified-cardinality-exact-restriction",
+          "entityTypes": [
+            "entity",
+            "individual"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "john"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "john"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/qualified-cardinality-exact-restriction.rdf": [
+      "owl2primer-qualified-cardinality-exact-restriction"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-qualified-cardinality-exact-restriction": [
+      "owl2primer-qualified-cardinality-exact-restriction"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-qualified-cardinality-exact-restriction": [
+      "http://purl.obolibrary.org/obo/owl2primer-qualified-cardinality-exact-restriction_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-qualified-cardinality-exact-restriction": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-qualified-cardinality-exact-restriction": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-qualified-cardinality-exact-restriction": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-qualified-cardinality-exact-restriction": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
+      "isObsolete",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-qualified-cardinality-exact-restriction": []
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-qualified-cardinality-exact-restriction": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/qualified-cardinality-exact-restriction.rdf": [
+        "ONTOLOGY"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/qualified-cardinality-exact-restriction.rdf#Parent": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/qualified-cardinality-exact-restriction.rdf#hasChild": [
+        "PROPERTY"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/qualified-cardinality-exact-restriction.rdf#john": [
+        "INDIVIDUAL"
+      ]
+    }
+  }
+}

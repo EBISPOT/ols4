@@ -1,0 +1,307 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "inter-ontology-a",
+      "iri": "http://www.ebi.ac.uk/testcases/inter-ontology/a",
+      "preferredPrefix": "inter-ontology-a",
+      "baseUri": [
+        "http://www.ebi.ac.uk/testcases/inter-ontology/a#"
+      ],
+      "ontologyPurl": "./testcases/imports/inter-ontology-a.owl",
+      "type": [
+        "ontology"
+      ],
+      "directAncestor": [],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "imported": false,
+      "isObsolete": false,
+      "language": [
+        {"type":["literal"],"value":"en"}
+      ],
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
+      "numberOfClasses": {
+        "type": [
+          "literal"
+        ],
+        "value": "2"
+      },
+      "numberOfEntities": {
+        "type": [
+          "literal"
+        ],
+        "value": "2"
+      },
+      "numberOfIndividuals": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numberOfProperties": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "searchableAnnotationValues": [
+        false,
+        {"type":["literal"],"value":"0"},
+        {"type":["literal"],"value":"2"}
+      ],
+      "classes": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/inter-ontology/a#ClassA",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "inter-ontology-a:ClassA"
+          },
+          "directAncestor": [
+            "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB"
+          ],
+          "directParent": [
+            "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB"
+          ],
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": true,
+          "hierarchicalAncestor": [
+            "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB"
+          ],
+          "hierarchicalParent": [
+            "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB"
+          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Class A"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"Class A"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "inter-ontology-a"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/inter-ontology/a"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "inter-ontology-a"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "inter-ontology-a_ClassA"
+          }
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ClassB"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": true,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": true,
+          "hasHierarchicalParents": false,
+          "hierarchicalAncestor": [],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": "http://www.ebi.ac.uk/testcases/inter-ontology/b",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Class B (imported)"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"Class B (imported)"}
+          ],
+          "numDescendants": 1,
+          "numHierarchicalDescendants": 1,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "inter-ontology-a"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/inter-ontology/a"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "inter-ontology-a"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "ClassB"
+          }
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    },
+    {
+      "ontologyId": "inter-ontology-b",
+      "iri": "http://www.ebi.ac.uk/testcases/inter-ontology/b",
+      "preferredPrefix": "inter-ontology-b",
+      "baseUri": [
+        "http://www.ebi.ac.uk/testcases/inter-ontology/b#"
+      ],
+      "ontologyPurl": "./testcases/imports/inter-ontology-b.owl",
+      "type": [
+        "ontology"
+      ],
+      "directAncestor": [],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "imported": false,
+      "isObsolete": false,
+      "language": [
+        {"type":["literal"],"value":"en"}
+      ],
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
+      "numberOfClasses": {
+        "type": [
+          "literal"
+        ],
+        "value": "1"
+      },
+      "numberOfEntities": {
+        "type": [
+          "literal"
+        ],
+        "value": "1"
+      },
+      "numberOfIndividuals": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numberOfProperties": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "searchableAnnotationValues": [
+        false,
+        {"type":["literal"],"value":"0"},
+        {"type":["literal"],"value":"1"}
+      ],
+      "classes": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "inter-ontology-b:ClassB"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "hierarchicalAncestor": [],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Class B"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"Class B"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "inter-ontology-b"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/inter-ontology/b"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "inter-ontology-b"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "inter-ontology-b_ClassB"
+          }
+        }
+      ],
+      "properties": [],
+      "individuals": []
+    }
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "edam",
+      "importsFrom": [],
+      "exportsTo": [],
+      "iri": "http://edamontology.org",
+      "preferredPrefix": "EDAM",
+      "title": "Ontology of bioinformatics topics, operations, identifiers, and formats",
+      "uri": "http://edamontology.org",
+      "description": "EDAM is a simple ontology of well established, familiar concepts that are prevalent within bioinformatics, including types of data and data identifiers, data formats, operations and topics. EDAM provides a set of terms with synonyms and definitions - organised into an intuitive hierarchy for convenient use.",
+      "homepage": "http://edamontology.org",
+      "mailingList": "edam@elixir-dk.org",
+      "definition_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasDefinition"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym"
+      ],
+      "baseUri": [
+        "http://edamontology.org/data_",
+        "http://edamontology.org/topic_",
+        "http://edamontology.org/format_",
+        "http://edamontology.org/identifier_"
+      ],
+      "shortFormExtractionPattern": "^http://edamontology\\.org/((data|topic|operation|format|identifier)_.+)$",
+      "oboSlims": false,
+      "ontologyPurl": "./testcases/shortform-curie/edam.owl",
+      "type": [
+        "ontology"
+      ],
+      "directAncestor": [],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "http://www.w3.org/2002/07/owl#versionIRI": "http://edamontology.org/1.25-20251112T1620Z-unstable(1.26)",
+      "imported": false,
+      "isObsolete": false,
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
+      "numberOfClasses": {
+        "type": [
+          "literal"
+        ],
+        "value": "3"
+      },
+      "numberOfEntities": {
+        "type": [
+          "literal"
+        ],
+        "value": "3"
+      },
+      "numberOfIndividuals": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numberOfProperties": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "searchableAnnotationValues": [
+        false,
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "0"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "3"
+        }
+      ],
+      "classes": [
+        {
+          "iri": "http://edamontology.org/data_1390",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "EDAM:data_1390"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "hierarchicalAncestor": [],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "EDAM_data_1390"
+            }
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "edam"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://edamontology.org"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "EDAM"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "EDAM_data_1390"
+          },
+          "isDefiningOntology": true,
+          "definedBy": [
+            "edam"
+          ],
+          "appearsIn": [
+            "edam"
+          ],
+          "linkedEntities": {},
+          "linksTo": []
+        },
+        {
+          "iri": "http://edamontology.org/format_2329",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "EDAM:format_2329"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "hierarchicalAncestor": [],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "EDAM_format_2329"
+            }
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "edam"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://edamontology.org"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "EDAM"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "EDAM_format_2329"
+          },
+          "isDefiningOntology": true,
+          "definedBy": [
+            "edam"
+          ],
+          "appearsIn": [
+            "edam"
+          ],
+          "linkedEntities": {},
+          "linksTo": []
+        },
+        {
+          "iri": "http://edamontology.org/topic_2839",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "EDAM:topic_2839"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "hierarchicalAncestor": [],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "EDAM_topic_2839"
+            }
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "edam"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://edamontology.org"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "EDAM"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "EDAM_topic_2839"
+          },
+          "isDefiningOntology": true,
+          "definedBy": [
+            "edam"
+          ],
+          "appearsIn": [
+            "edam"
+          ],
+          "linkedEntities": {},
+          "linksTo": []
+        }
+      ],
+      "properties": [],
+      "individuals": [],
+      "linkedEntities": {
+        "http://www.geneontology.org/formats/oboInOwl#hasDefinition": {
+          "url": "http://www.geneontology.org/formats/oboInOwl#hasDefinition",
+          "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+          "curie": "oboinowl:hasDefinition"
+        },
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym": {
+          "url": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+          "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+          "curie": "oboinowl:hasExactSynonym"
+        },
+        "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym": {
+          "url": "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym",
+          "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+          "curie": "oboinowl:hasNarrowSynonym"
+        }
+      },
+      "linksTo": []
+    }
+  ]
+}

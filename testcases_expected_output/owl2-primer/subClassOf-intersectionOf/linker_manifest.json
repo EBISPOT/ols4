@@ -1,0 +1,261 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-subclassof-intersectionof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Grandfather"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Grandfather"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-subclassof-intersectionof": {
+          "ontologyId": "owl2primer-subclassof-intersectionof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Grandfather"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Grandfather"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-subclassof-intersectionof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Man"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Man"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-subclassof-intersectionof": {
+          "ontologyId": "owl2primer-subclassof-intersectionof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Man"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Man"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-subclassof-intersectionof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Parent"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Parent"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-subclassof-intersectionof": {
+          "ontologyId": "owl2primer-subclassof-intersectionof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Parent"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Parent"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf.owl": [
+      "owl2primer-subclassof-intersectionof"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-subClassOf-intersectionOf": [
+      "owl2primer-subclassof-intersectionof"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-subclassof-intersectionof": [
+      "http://purl.obolibrary.org/obo/owl2primer-subClassOf-intersectionOf_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-subclassof-intersectionof": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-subclassof-intersectionof": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "hierarchicalParent",
+      "hierarchicalProperty",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "relatedTo",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-subclassof-intersectionof": []
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-subclassof-intersectionof": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-subclassof-intersectionof": [
+      "childRelationToParent"
+    ]
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-subclassof-intersectionof": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Grandfather": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Man": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf#Parent": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/subClassOf-intersectionOf.owl": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}

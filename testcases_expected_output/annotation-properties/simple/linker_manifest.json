@@ -1,0 +1,146 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/annotation-properties/simple.owl#MyAnnotationProperty": {
+      "definitions": [
+        {
+          "ontologyId": "annotation-properties-simple",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "special annotation property"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "MyAnnotationProperty"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "annotation-properties-simple": {
+          "ontologyId": "annotation-properties-simple",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "special annotation property"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "MyAnnotationProperty"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/annotation-properties/simple.owl": [
+      "annotation-properties-simple"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "annotation-properties-simple": [
+      "annotation-properties-simple"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "annotation-properties-simple": [
+      "http://purl.obolibrary.org/obo/annotation-properties-simple_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "annotation-properties-simple": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "annotation-properties-simple": []
+  },
+  "ontologyIdToPropertyProperties": {
+    "annotation-properties-simple": [
+      "curie",
+      "definition",
+      "definitionProperty",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "annotation-properties-simple": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "annotation-properties-simple": []
+  },
+  "ontologyIdToUriToTypes": {
+    "annotation-properties-simple": {
+      "http://www.ebi.ac.uk/testcases/annotation-properties/simple.owl": [
+        "ONTOLOGY"
+      ],
+      "http://www.ebi.ac.uk/testcases/annotation-properties/simple.owl#MyAnnotationProperty": [
+        "PROPERTY"
+      ]
+    }
+  }
+}

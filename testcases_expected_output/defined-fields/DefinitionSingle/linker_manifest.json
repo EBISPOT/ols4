@@ -1,0 +1,171 @@
+{
+  "iriToDefinitions": {
+    "http://www.w3.org/2002/07/owl#Thing": {
+      "definitions": [
+        {
+          "ontologyId": "definition-single",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Thing"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Definition-Single:Thing"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [
+        {
+          "ontologyId": "definition-single",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Thing"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Definition-Single:Thing"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingOntologyIds": [
+        "definition-single"
+      ],
+      "ontologyIdToDefinitions": {
+        "definition-single": {
+          "ontologyId": "definition-single",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Thing"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Definition-Single:Thing"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.w3.org/2002/07/owl#": [
+      "definition-single"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "Definition-Single": [
+      "definition-single"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "definition-single": [
+      "http://purl.obolibrary.org/obo/Definition-Single_",
+      "http://www.w3.org/2002/07/owl#"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "definition-single": [
+      "baseUri",
+      "directAncestor",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "definition-single": [
+      "curie",
+      "definition",
+      "definitionProperty",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "definition-single": []
+  },
+  "ontologyIdToIndividualProperties": {
+    "definition-single": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "definition-single": []
+  },
+  "ontologyIdToUriToTypes": {
+    "definition-single": {
+      "http://www.w3.org/2002/07/owl#": [
+        "ONTOLOGY"
+      ],
+      "http://www.w3.org/2002/07/owl#Thing": [
+        "CLASS"
+      ]
+    }
+  }
+}

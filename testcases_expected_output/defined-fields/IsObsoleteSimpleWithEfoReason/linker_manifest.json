@@ -1,0 +1,144 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/defined-fields/IsObsoleteSimpleWithEfoReason.rdf#DeprecatedClass": {
+      "definitions": [
+        {
+          "ontologyId": "isobsoletesimplewitheforeason",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "DeprecatedClass"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedClass"
+          },
+          "isObsolete": true
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "isobsoletesimplewitheforeason": {
+          "ontologyId": "isobsoletesimplewitheforeason",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "DeprecatedClass"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DeprecatedClass"
+          },
+          "isObsolete": true
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/defined-fields/IsObsoleteSimpleWithEfoReason.rdf": [
+      "isobsoletesimplewitheforeason"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "IsObsoleteSimpleWithEfoReason": [
+      "isobsoletesimplewitheforeason"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "isobsoletesimplewitheforeason": [
+      "http://purl.obolibrary.org/obo/IsObsoleteSimpleWithEfoReason_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "isobsoletesimplewitheforeason": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "isobsoletesimplewitheforeason": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "http://www.ebi.ac.uk/efo/obsoleted_in_version",
+      "http://www.ebi.ac.uk/efo/reason_for_obsolescence",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#deprecated",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "isobsoletesimplewitheforeason": []
+  },
+  "ontologyIdToIndividualProperties": {
+    "isobsoletesimplewitheforeason": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "isobsoletesimplewitheforeason": []
+  },
+  "ontologyIdToUriToTypes": {
+    "isobsoletesimplewitheforeason": {
+      "http://www.ebi.ac.uk/testcases/defined-fields/IsObsoleteSimpleWithEfoReason.rdf": [
+        "ONTOLOGY"
+      ],
+      "http://www.ebi.ac.uk/testcases/defined-fields/IsObsoleteSimpleWithEfoReason.rdf#DeprecatedClass": [
+        "CLASS"
+      ]
+    }
+  }
+}

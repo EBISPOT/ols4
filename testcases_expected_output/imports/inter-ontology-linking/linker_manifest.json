@@ -1,0 +1,376 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/inter-ontology/a#ClassA": {
+      "definitions": [
+        {
+          "ontologyId": "inter-ontology-a",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Class A"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "inter-ontology-a:ClassA"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [
+        {
+          "ontologyId": "inter-ontology-a",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Class A"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "inter-ontology-a:ClassA"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingOntologyIds": [
+        "inter-ontology-a"
+      ],
+      "ontologyIdToDefinitions": {
+        "inter-ontology-a": {
+          "ontologyId": "inter-ontology-a",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Class A"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "inter-ontology-a:ClassA"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB": {
+      "definitions": [
+        {
+          "ontologyId": "inter-ontology-a",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Class B (imported)"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "inter-ontology-b:ClassB"
+          },
+          "isObsolete": false
+        },
+        {
+          "ontologyId": "inter-ontology-b",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Class B"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "inter-ontology-b:ClassB"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [
+        {
+          "ontologyId": "inter-ontology-b",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Class B"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "inter-ontology-b:ClassB"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingOntologyIds": [
+        "inter-ontology-b"
+      ],
+      "ontologyIdToDefinitions": {
+        "inter-ontology-a": {
+          "ontologyId": "inter-ontology-a",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Class B (imported)"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "inter-ontology-b:ClassB"
+          },
+          "isObsolete": false
+        },
+        "inter-ontology-b": {
+          "ontologyId": "inter-ontology-b",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Class B"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "inter-ontology-b:ClassB"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/inter-ontology/a": [
+      "inter-ontology-a"
+    ],
+    "http://www.ebi.ac.uk/testcases/inter-ontology/b": [
+      "inter-ontology-b"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "inter-ontology-a": [
+      "inter-ontology-a"
+    ],
+    "inter-ontology-b": [
+      "inter-ontology-b"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "inter-ontology-a": [
+      "http://purl.obolibrary.org/obo/inter-ontology-a_",
+      "http://www.ebi.ac.uk/testcases/inter-ontology/a#"
+    ],
+    "inter-ontology-b": [
+      "http://purl.obolibrary.org/obo/inter-ontology-b_",
+      "http://www.ebi.ac.uk/testcases/inter-ontology/b#"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {
+    "inter-ontology-b": [
+      "inter-ontology-a"
+    ]
+  },
+  "ontologyIdToImportedOntologyIds": {
+    "inter-ontology-a": [
+      "inter-ontology-b"
+    ]
+  },
+  "ontologyIdToOntologyProperties": {
+    "inter-ontology-a": [
+      "baseUri",
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ],
+    "inter-ontology-b": [
+      "baseUri",
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "inter-ontology-a": [
+      "curie",
+      "directAncestor",
+      "directParent",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "hierarchicalParent",
+      "hierarchicalProperty",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ],
+    "inter-ontology-b": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "inter-ontology-a": [],
+    "inter-ontology-b": []
+  },
+  "ontologyIdToIndividualProperties": {
+    "inter-ontology-a": [],
+    "inter-ontology-b": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "inter-ontology-a": [],
+    "inter-ontology-b": []
+  },
+  "ontologyIdToUriToTypes": {
+    "inter-ontology-a": {
+      "http://www.ebi.ac.uk/testcases/inter-ontology/a": [
+        "ONTOLOGY"
+      ],
+      "http://www.ebi.ac.uk/testcases/inter-ontology/a#ClassA": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB": [
+        "CLASS"
+      ]
+    },
+    "inter-ontology-b": {
+      "http://www.ebi.ac.uk/testcases/inter-ontology/b": [
+        "ONTOLOGY"
+      ],
+      "http://www.ebi.ac.uk/testcases/inter-ontology/b#ClassB": [
+        "CLASS"
+      ]
+    }
+  }
+}

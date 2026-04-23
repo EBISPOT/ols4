@@ -1,0 +1,261 @@
+{
+  "iriToDefinitions": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#ChildlessPerson": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-equivalent-intersectionof-complementof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "ChildlessPerson"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ChildlessPerson"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-equivalent-intersectionof-complementof": {
+          "ontologyId": "owl2primer-equivalent-intersectionof-complementof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "ChildlessPerson"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ChildlessPerson"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-equivalent-intersectionof-complementof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Parent"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Parent"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-equivalent-intersectionof-complementof": {
+          "ontologyId": "owl2primer-equivalent-intersectionof-complementof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Parent"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Parent"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person": {
+      "definitions": [
+        {
+          "ontologyId": "owl2primer-equivalent-intersectionof-complementof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Person"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Person"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "owl2primer-equivalent-intersectionof-complementof": {
+          "ontologyId": "owl2primer-equivalent-intersectionof-complementof",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "Person"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Person"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf.owl": [
+      "owl2primer-equivalent-intersectionof-complementof"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "owl2primer-equivalent-intersectionOf-complementOf": [
+      "owl2primer-equivalent-intersectionof-complementof"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "owl2primer-equivalent-intersectionof-complementof": [
+      "http://purl.obolibrary.org/obo/owl2primer-equivalent-intersectionOf-complementOf_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "owl2primer-equivalent-intersectionof-complementof": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "owl2primer-equivalent-intersectionof-complementof": [
+      "curie",
+      "directAncestor",
+      "directParent",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "hierarchicalParent",
+      "hierarchicalProperty",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "http://www.w3.org/2002/07/owl#disjointWith",
+      "http://www.w3.org/2002/07/owl#equivalentClass",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "owl2primer-equivalent-intersectionof-complementof": []
+  },
+  "ontologyIdToIndividualProperties": {
+    "owl2primer-equivalent-intersectionof-complementof": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "owl2primer-equivalent-intersectionof-complementof": []
+  },
+  "ontologyIdToUriToTypes": {
+    "owl2primer-equivalent-intersectionof-complementof": {
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#ChildlessPerson": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Parent": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf#Person": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/owl2primer/equivalent-intersectionOf-complementOf.owl": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}

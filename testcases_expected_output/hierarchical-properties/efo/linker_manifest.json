@@ -1,0 +1,3850 @@
+{
+  "iriToDefinitions": {
+    "http://purl.obolibrary.org/obo/BFO_0000050": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "part of",
+              "lang": "en"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "part of"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "part_of"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "BFO:0000050"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "part of",
+              "lang": "en"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "part of"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "part_of"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "BFO:0000050"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000051": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "has part"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "has_part"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "BFO:0000051"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "has part"
+            },
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "has_part"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "BFO:0000051"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000111": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "IAO_0000111"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "IAO:0000111"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "IAO_0000111"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "IAO:0000111"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000112": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "IAO_0000112"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "IAO:0000112"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "IAO_0000112"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "IAO:0000112"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "IAO_0000115"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "IAO:0000115"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "IAO_0000115"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "IAO:0000115"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000116": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "IAO_0000116"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "IAO:0000116"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "IAO_0000116"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "IAO:0000116"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000118": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "IAO_0000118"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "IAO:0000118"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "IAO_0000118"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "IAO:0000118"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000232": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "IAO_0000232"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "IAO:0000232"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "IAO_0000232"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "IAO:0000232"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/RO_0001900": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "RO_0001900"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "RO:0001900"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "RO_0001900"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "RO:0001900"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/RO_0002174": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "RO_0002174"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "RO:0002174"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "RO_0002174"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "RO:0002174"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/RO_0040042": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "RO_0040042"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "RO:0040042"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "RO_0040042"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "RO:0040042"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0000467": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "anatomical system"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0000467"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "anatomical system"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0000467"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0000468": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "multicellular organism"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0000468"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "multicellular organism"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0000468"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0000483": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "epithelium"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0000483"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "epithelium"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0000483"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0000916": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "abdomen"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0000916"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "abdomen"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0000916"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0000949": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "endocrine system"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0000949"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "endocrine system"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0000949"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0001007": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "digestive system"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0001007"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "digestive system"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0001007"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0001009": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "circulatory system"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0001009"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "circulatory system"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0001009"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0001193": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hepatic artery"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0001193"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hepatic artery"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0001193"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0001281": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hepatic sinusoid"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0001281"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hepatic sinusoid"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0001281"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0001637": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "artery"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0001637"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "artery"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0001637"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0001638": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "vein"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0001638"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "vein"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0001638"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0001639": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hepatic portal vein"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0001639"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hepatic portal vein"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0001639"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0001981": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "blood vessel"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0001981"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "blood vessel"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0001981"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0001982": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "capillary"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0001982"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "capillary"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0001982"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0001986": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "endothelium"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0001986"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "endothelium"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0001986"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0002049": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "vasculature"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0002049"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "vasculature"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0002049"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0002100": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "trunk"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0002100"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "trunk"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0002100"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0002107": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "liver"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0002107"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "liver"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0002107"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0002368": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "endocrine gland"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0002368"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "endocrine gland"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0002368"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0002423": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hepatobiliary system"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0002423"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hepatobiliary system"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0002423"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0002530": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "gland"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0002530"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "gland"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0002530"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0004535": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "cardiovascular system"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0004535"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "cardiovascular system"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0004535"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0004647": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "liver lobule"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0004647"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "liver lobule"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0004647"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0006841": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "central vein of liver"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0006841"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "central vein of liver"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0006841"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0013702": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "body proper"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0013702"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "body proper"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0013702"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBPROP_0000001": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000001"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBPROP:0000001"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000001"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBPROP:0000001"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBPROP_0000002": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000002"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBPROP:0000002"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000002"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBPROP:0000002"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBPROP_0000003": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000003"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBPROP:0000003"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000003"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBPROP:0000003"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBPROP_0000007": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000007"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBPROP:0000007"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000007"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBPROP:0000007"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBPROP_0000008": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000008"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBPROP:0000008"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000008"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBPROP:0000008"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBPROP_0000009": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000009"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBPROP:0000009"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000009"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBPROP:0000009"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBPROP_0000010": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000010"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBPROP:0000010"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000010"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBPROP:0000010"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBPROP_0000012": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000012"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBPROP:0000012"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000012"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBPROP:0000012"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://purl.obolibrary.org/obo/UBPROP_0000202": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000202"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBPROP:0000202"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "UBPROP_0000202"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBPROP:0000202"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/efo/EFO_URI": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "EFO_URI"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "EFO_URI"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "EFO_URI"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "EFO_URI"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.geneontology.org/formats/oboInOwl#date_retrieved": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "date_retrieved"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "date_retrieved"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "date_retrieved"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "date_retrieved"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.geneontology.org/formats/oboInOwl#external_class": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "external_class"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "external_class"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "external_class"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "external_class"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.geneontology.org/formats/oboInOwl#external_ontology": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "external_ontology"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "external_ontology"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "external_ontology"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "external_ontology"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasAlternativeId": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasAlternativeId"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasAlternativeId"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasAlternativeId"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasAlternativeId"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasBroadSynonym"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasBroadSynonym"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasBroadSynonym"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasBroadSynonym"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasDbXref"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasDbXref"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasDbXref"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasDbXref"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasExactSynonym"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasExactSynonym"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasExactSynonym"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasExactSynonym"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasOBONamespace": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasOBONamespace"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasOBONamespace"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasOBONamespace"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasOBONamespace"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasRelatedSynonym"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasRelatedSynonym"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasRelatedSynonym"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasRelatedSynonym"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasSynonymType": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasSynonymType"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasSynonymType"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "hasSynonymType"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasSynonymType"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.geneontology.org/formats/oboInOwl#id": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "id"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "id"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "id"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "id"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.geneontology.org/formats/oboInOwl#inSubset": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "inSubset"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "inSubset"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "inSubset"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "inSubset"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.geneontology.org/formats/oboInOwl#notes": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "notes"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "notes"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "notes"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "notes"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.geneontology.org/formats/oboInOwl#ontology": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "ontology"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ontology"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "ontology"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ontology"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.geneontology.org/formats/oboInOwl#shorthand": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "shorthand"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "shorthand"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "shorthand"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "shorthand"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.geneontology.org/formats/oboInOwl#source": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "source"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "source"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "source"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "source"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://xmlns.com/foaf/0.1/depicted_by": {
+      "definitions": [
+        {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "depicted_by"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "depicted_by"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "efo-hierarchical-properties": {
+          "ontologyId": "efo-hierarchical-properties",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "depicted_by"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "depicted_by"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/efo/efo.owl": [
+      "efo-hierarchical-properties"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "efo-hierarchical-properties": [
+      "efo-hierarchical-properties"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "efo-hierarchical-properties": [
+      "http://purl.obolibrary.org/obo/efo-hierarchical-properties_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "efo-hierarchical-properties": [
+      "description",
+      "directAncestor",
+      "hierarchical_property",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "oboSlims",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "reasoner",
+      "searchableAnnotationValues",
+      "title",
+      "type",
+      "uri"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "efo-hierarchical-properties": [
+      "curie",
+      "directAncestor",
+      "directParent",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "hierarchicalParent",
+      "hierarchicalProperty",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "http://www.w3.org/2002/07/owl#disjointWith",
+      "http://www.w3.org/2002/07/owl#equivalentClass",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "relatedTo",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "efo-hierarchical-properties": [
+      "curie",
+      "definition",
+      "definitionProperty",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://purl.obolibrary.org/obo/IAO_0000111",
+      "http://purl.obolibrary.org/obo/IAO_0000112",
+      "http://purl.obolibrary.org/obo/IAO_0000115",
+      "http://purl.obolibrary.org/obo/IAO_0000116",
+      "http://purl.obolibrary.org/obo/IAO_0000118",
+      "http://purl.obolibrary.org/obo/RO_0001900",
+      "http://purl.obolibrary.org/obo/RO_0040042",
+      "http://www.ebi.ac.uk/efo/EFO_URI",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+      "http://www.geneontology.org/formats/oboInOwl#hasOBONamespace",
+      "http://www.geneontology.org/formats/oboInOwl#id",
+      "http://www.geneontology.org/formats/oboInOwl#inSubset",
+      "http://www.geneontology.org/formats/oboInOwl#shorthand",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#comment",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+      "http://www.w3.org/2002/07/owl#inverseOf",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "synonym",
+      "synonymProperty",
+      "type"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "efo-hierarchical-properties": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "efo-hierarchical-properties": [
+      "childRelationToParent",
+      "parentRelationToChild"
+    ]
+  },
+  "ontologyIdToUriToTypes": {
+    "efo-hierarchical-properties": {
+      "http://purl.obolibrary.org/obo/BFO_0000050": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/BFO_0000051": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/IAO_0000111": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/IAO_0000112": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/IAO_0000115": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/IAO_0000116": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/IAO_0000118": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/IAO_0000232": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/RO_0001900": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/RO_0002174": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/RO_0040042": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0000467": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0000468": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0000483": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0000916": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0000949": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0001007": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0001009": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0001193": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0001281": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0001637": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0001638": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0001639": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0001981": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0001982": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0001986": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0002049": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0002100": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0002107": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0002368": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0002423": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0002530": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0004535": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0004647": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0006841": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBERON_0013702": [
+        "CLASS"
+      ],
+      "http://purl.obolibrary.org/obo/UBPROP_0000001": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/UBPROP_0000002": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/UBPROP_0000003": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/UBPROP_0000007": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/UBPROP_0000008": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/UBPROP_0000009": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/UBPROP_0000010": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/UBPROP_0000012": [
+        "PROPERTY"
+      ],
+      "http://purl.obolibrary.org/obo/UBPROP_0000202": [
+        "PROPERTY"
+      ],
+      "http://www.ebi.ac.uk/efo/EFO_URI": [
+        "PROPERTY"
+      ],
+      "http://www.ebi.ac.uk/efo/efo.owl": [
+        "ONTOLOGY"
+      ],
+      "http://www.geneontology.org/formats/oboInOwl#date_retrieved": [
+        "PROPERTY"
+      ],
+      "http://www.geneontology.org/formats/oboInOwl#external_class": [
+        "PROPERTY"
+      ],
+      "http://www.geneontology.org/formats/oboInOwl#external_ontology": [
+        "PROPERTY"
+      ],
+      "http://www.geneontology.org/formats/oboInOwl#hasAlternativeId": [
+        "PROPERTY"
+      ],
+      "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym": [
+        "PROPERTY"
+      ],
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref": [
+        "PROPERTY"
+      ],
+      "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym": [
+        "PROPERTY"
+      ],
+      "http://www.geneontology.org/formats/oboInOwl#hasOBONamespace": [
+        "PROPERTY"
+      ],
+      "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym": [
+        "PROPERTY"
+      ],
+      "http://www.geneontology.org/formats/oboInOwl#hasSynonymType": [
+        "PROPERTY"
+      ],
+      "http://www.geneontology.org/formats/oboInOwl#id": [
+        "PROPERTY"
+      ],
+      "http://www.geneontology.org/formats/oboInOwl#inSubset": [
+        "PROPERTY"
+      ],
+      "http://www.geneontology.org/formats/oboInOwl#notes": [
+        "PROPERTY"
+      ],
+      "http://www.geneontology.org/formats/oboInOwl#ontology": [
+        "PROPERTY"
+      ],
+      "http://www.geneontology.org/formats/oboInOwl#shorthand": [
+        "PROPERTY"
+      ],
+      "http://www.geneontology.org/formats/oboInOwl#source": [
+        "PROPERTY"
+      ],
+      "http://xmlns.com/foaf/0.1/depicted_by": [
+        "PROPERTY"
+      ]
+    }
+  }
+}

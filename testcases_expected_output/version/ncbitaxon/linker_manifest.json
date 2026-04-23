@@ -1,0 +1,61 @@
+{
+  "iriToDefinitions": {},
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/ontology-annotations/version/ncbitaxon.owl": [
+      "ontology-annotations-version-ncbitaxon"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "ontology-annotations-version-ncbitaxon": [
+      "ontology-annotations-version-ncbitaxon"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "ontology-annotations-version-ncbitaxon": [
+      "http://purl.obolibrary.org/obo/ontology-annotations-version-ncbitaxon_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "ontology-annotations-version-ncbitaxon": [
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2002/07/owl#versionIRI",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "ontology-annotations-version-ncbitaxon": []
+  },
+  "ontologyIdToPropertyProperties": {
+    "ontology-annotations-version-ncbitaxon": []
+  },
+  "ontologyIdToIndividualProperties": {
+    "ontology-annotations-version-ncbitaxon": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "ontology-annotations-version-ncbitaxon": []
+  },
+  "ontologyIdToUriToTypes": {
+    "ontology-annotations-version-ncbitaxon": {
+      "http://www.ebi.ac.uk/testcases/ontology-annotations/version/ncbitaxon.owl": [
+        "ONTOLOGY"
+      ]
+    }
+  }
+}
