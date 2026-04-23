@@ -4,6 +4,11 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.jooq.DSLContext;
+import org.jooq.Field;
+import org.jooq.Record;
+import org.jooq.Table;
+import org.jooq.impl.DSL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,8 +18,12 @@ import uk.ac.ebi.spot.ols.repository.transforms.RemoveLiteralDatatypesTransform;
 import uk.ac.ebi.spot.ols.service.PostgresClient;
 
 import static uk.ac.ebi.ols.shared.DefinedFields.*;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_ENTITIES;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContains;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.field;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -113,47 +122,49 @@ public class V1GraphRepository {
     }
 
     void getParentsAndRelatedTo(String entityId, List<GraphNode> outNodes, List<GraphEdge> outEdges) {
-        // Parents: look up entities referenced in direct_ancestors (same ontology)
-        // RelatedTo (outgoing): look up entities referenced in related_to (same ontology)
-        String sql = "SELECT e2._json AS node_json, e2.iri AS node_iri, "
-                + "'parent' AS rel_type, e1.iri AS source_iri "
-                + "FROM ols_entities e1 "
-                + "JOIN ols_entities e2 ON e2.iri = ANY(e1.direct_ancestors) AND e2.ontology_id = e1.ontology_id "
-                + "WHERE e1.id = ? "
-                + "UNION ALL "
-                + "SELECT e2._json AS node_json, e2.iri AS node_iri, "
-                + "'relatedTo' AS rel_type, e1.iri AS source_iri "
-                + "FROM ols_entities e1 "
-                + "JOIN ols_entities e2 ON e2.iri = ANY(e1.related_to) AND e2.ontology_id = e1.ontology_id "
-                + "WHERE e1.id = ? "
-                + "LIMIT 200";
+        try (Connection conn = postgresClient.getConnection()) {
+            DSLContext dsl = postgresClient.dsl(conn);
+            Table<?> e1 = OLS_ENTITIES.as("e1");
+            Table<?> e2 = OLS_ENTITIES.as("e2");
+            Field<byte[]> nodeJson = field("node_json", byte[].class);
+            Field<String> nodeIri = field("node_iri", String.class);
+            Field<String> relType = field("rel_type", String.class);
+            Field<String> sourceIri = field("source_iri", String.class);
 
-        try (Connection conn = postgresClient.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, entityId);
-            stmt.setString(2, entityId);
+            var records = dsl.select(
+                            field("e2", "_json", byte[].class).as("node_json"),
+                            field("e2", "iri", String.class).as("node_iri"),
+                            DSL.inline("parent").as("rel_type"),
+                            field("e1", "iri", String.class).as("source_iri"))
+                    .from(e1)
+                    .join(e2).on(arrayContains(field("e1", "direct_ancestors", String[].class), field("e2", "iri", String.class))
+                            .and(field("e2", "ontology_id", String.class).eq(field("e1", "ontology_id", String.class))))
+                    .where(field("e1", "id", String.class).eq(entityId))
+                    .unionAll(
+                            dsl.select(
+                                            field("e2", "_json", byte[].class).as("node_json"),
+                                            field("e2", "iri", String.class).as("node_iri"),
+                                            DSL.inline("relatedTo").as("rel_type"),
+                                            field("e1", "iri", String.class).as("source_iri"))
+                                    .from(e1)
+                                    .join(e2).on(arrayContains(field("e1", "related_to", String[].class), field("e2", "iri", String.class))
+                                            .and(field("e2", "ontology_id", String.class).eq(field("e1", "ontology_id", String.class))))
+                                    .where(field("e1", "id", String.class).eq(entityId)))
+                    .limit(200)
+                    .fetch();
 
-            // We need the source entity's IRI for edges
-            String sourceIri = null;
+            for (Record record : records) {
+                String currentNodeIri = record.get(nodeIri);
+                String currentSourceIri = record.get(sourceIri);
+                String currentRelType = record.get(relType);
 
-            try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
-                    String nodeIri = rs.getString("node_iri");
-                    sourceIri = rs.getString("source_iri");
-                    String relType = rs.getString("rel_type");
+                outNodes.add(new GraphNode(currentNodeIri, PostgresClient.decompressJson(record.get(nodeJson))));
 
-                    outNodes.add(new GraphNode(nodeIri, PostgresClient.decompressJson(rs, "node_json")));
-
-                    if ("parent".equals(relType)) {
-                        // Parent edge: source=me, target=parent, property=subClassOf
-                        String edgeJson = "{\"property\":\"http://www.w3.org/2000/01/rdf-schema#subClassOf\"}";
-                        outEdges.add(new GraphEdge(sourceIri, nodeIri, edgeJson));
-                    } else {
-                        // RelatedTo edge: source=me, target=related
-                        // Property URI will be derived from linkedEntities in the caller
-                        String edgeJson = "{}";
-                        outEdges.add(new GraphEdge(sourceIri, nodeIri, edgeJson));
-                    }
+                if ("parent".equals(currentRelType)) {
+                    outEdges.add(new GraphEdge(currentSourceIri, currentNodeIri,
+                            "{\"property\":\"http://www.w3.org/2000/01/rdf-schema#subClassOf\"}"));
+                } else {
+                    outEdges.add(new GraphEdge(currentSourceIri, currentNodeIri, "{}"));
                 }
             }
         } catch (SQLException e) {
@@ -162,25 +173,31 @@ public class V1GraphRepository {
     }
 
     void getRelatedFrom(String entityId, List<GraphNode> outNodes, List<GraphEdge> outEdges) {
-        // Incoming relatedTo: find entities whose related_to array contains my IRI (same ontology)
-        String sql = "SELECT e2._json AS node_json, e2.iri AS node_iri, e1.iri AS target_iri "
-                + "FROM ols_entities e1 "
-                + "JOIN ols_entities e2 ON e1.iri = ANY(e2.related_to) AND e2.ontology_id = e1.ontology_id "
-                + "WHERE e1.id = ? "
-                + "LIMIT 200";
+        try (Connection conn = postgresClient.getConnection()) {
+            DSLContext dsl = postgresClient.dsl(conn);
+            Table<?> e1 = OLS_ENTITIES.as("e1");
+            Table<?> e2 = OLS_ENTITIES.as("e2");
+            Field<byte[]> nodeJson = field("node_json", byte[].class);
+            Field<String> nodeIri = field("node_iri", String.class);
+            Field<String> targetIri = field("target_iri", String.class);
 
-        try (Connection conn = postgresClient.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, entityId);
+            var records = dsl.select(
+                            field("e2", "_json", byte[].class).as("node_json"),
+                            field("e2", "iri", String.class).as("node_iri"),
+                            field("e1", "iri", String.class).as("target_iri"))
+                    .from(e1)
+                    .join(e2).on(arrayContains(field("e2", "related_to", String[].class), field("e1", "iri", String.class))
+                            .and(field("e2", "ontology_id", String.class).eq(field("e1", "ontology_id", String.class))))
+                    .where(field("e1", "id", String.class).eq(entityId))
+                    .limit(200)
+                    .fetch();
 
-            try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
-                    String nodeIri = rs.getString("node_iri");
-                    String targetIri = rs.getString("target_iri");
+            for (Record record : records) {
+                String currentNodeIri = record.get(nodeIri);
+                String currentTargetIri = record.get(targetIri);
 
-                    outNodes.add(new GraphNode(nodeIri, PostgresClient.decompressJson(rs, "node_json")));
-                    outEdges.add(new GraphEdge(nodeIri, targetIri, "{}"));
-                }
+                outNodes.add(new GraphNode(currentNodeIri, PostgresClient.decompressJson(record.get(nodeJson))));
+                outEdges.add(new GraphEdge(currentNodeIri, currentTargetIri, "{}"));
             }
         } catch (SQLException e) {
             throw new RuntimeException("getRelatedFrom failed", e);
@@ -212,4 +229,3 @@ public class V1GraphRepository {
     }
 
 }
-

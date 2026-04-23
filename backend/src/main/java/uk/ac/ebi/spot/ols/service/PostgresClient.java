@@ -4,23 +4,18 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
-import java.sql.*;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.zip.GZIPInputStream;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import org.jooq.DSLContext;
+import org.jooq.SQLDialect;
+import org.jooq.impl.DSL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -45,34 +40,23 @@ public class PostgresClient {
     private String password;
 
     private HikariDataSource dataSource;
-    private Gson gson = new Gson();
     private static final Logger logger = LoggerFactory.getLogger(PostgresClient.class);
 
     /**
      * Decompress a gzip-compressed _json BYTEA column and parse as JSON.
      */
     public static String decompressJson(ResultSet rs, String column) throws SQLException {
-        byte[] compressed = rs.getBytes(column);
-        if (compressed == null) return null;
-        try (GZIPInputStream gis = new GZIPInputStream(new ByteArrayInputStream(compressed));
-             Reader reader = new InputStreamReader(gis, StandardCharsets.UTF_8)) {
-            StringBuilder sb = new StringBuilder(compressed.length * 4);
-            char[] buf = new char[8192];
-            int n;
-            while ((n = reader.read(buf)) != -1) {
-                sb.append(buf, 0, n);
-            }
-            return sb.toString();
-        } catch (java.io.IOException e) {
-            throw new SQLException("Failed to decompress _json", e);
-        }
+        return decompressJson(rs.getBytes(column));
     }
 
     /**
      * Decompress a gzip-compressed BYTEA column by position index.
      */
     public static String decompressJson(ResultSet rs, int columnIndex) throws SQLException {
-        byte[] compressed = rs.getBytes(columnIndex);
+        return decompressJson(rs.getBytes(columnIndex));
+    }
+
+    public static String decompressJson(byte[] compressed) throws SQLException {
         if (compressed == null) return null;
         try (GZIPInputStream gis = new GZIPInputStream(new ByteArrayInputStream(compressed));
              Reader reader = new InputStreamReader(gis, StandardCharsets.UTF_8)) {
@@ -116,136 +100,19 @@ public class PostgresClient {
         return dataSource.getConnection();
     }
 
+    public DSLContext dsl(Connection conn) {
+        return DSL.using(conn, SQLDialect.POSTGRES);
+    }
+
     public long returnNodeCount() {
-        try (Connection conn = getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT count(*) FROM ols_entities")) {
-            rs.next();
-            return rs.getLong(1);
+        try (Connection conn = getConnection()) {
+            Long count = dsl(conn)
+                    .selectCount()
+                    .from(DSL.table(DSL.name("ols_entities")))
+                    .fetchOne(0, Long.class);
+            return count == null ? 0 : count;
         } catch (SQLException e) {
             throw new RuntimeException("Failed to count nodes", e);
         }
-    }
-
-    public List<Map<String, Object>> rawQuery(String sql, Object... params) {
-        try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            for (int i = 0; i < params.length; i++) {
-                setParam(stmt, i + 1, params[i]);
-            }
-            try (ResultSet rs = stmt.executeQuery()) {
-                return resultSetToList(rs);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Raw query failed: " + sql, e);
-        }
-    }
-
-    public List<JsonElement> query(String sql, Object... params) {
-        try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            for (int i = 0; i < params.length; i++) {
-                setParam(stmt, i + 1, params[i]);
-            }
-            try (ResultSet rs = stmt.executeQuery()) {
-                List<JsonElement> results = new ArrayList<>();
-                while (rs.next()) {
-                    results.add(JsonParser.parseString(decompressJson(rs, "_json")));
-                }
-                return results;
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Query failed: " + sql, e);
-        }
-    }
-
-    public Page<JsonElement> queryPaginated(String sql, String countSql, Object[] params, Pageable pageable) {
-        String paginatedSql = sql + " ORDER BY iri ASC OFFSET " + pageable.getOffset() + " LIMIT " + pageable.getPageSize();
-
-        logger.debug(paginatedSql);
-
-        try (Connection conn = getConnection()) {
-            // Run count query
-            int count;
-            try (PreparedStatement countStmt = conn.prepareStatement(countSql)) {
-                for (int i = 0; i < params.length; i++) {
-                    setParam(countStmt, i + 1, params[i]);
-                }
-                try (ResultSet rs = countStmt.executeQuery()) {
-                    rs.next();
-                    count = rs.getInt(1);
-                }
-            }
-
-            // Run data query
-            List<JsonElement> results = new ArrayList<>();
-            try (PreparedStatement dataStmt = conn.prepareStatement(paginatedSql)) {
-                for (int i = 0; i < params.length; i++) {
-                    setParam(dataStmt, i + 1, params[i]);
-                }
-                try (ResultSet rs = dataStmt.executeQuery()) {
-                    while (rs.next()) {
-                        results.add(JsonParser.parseString(decompressJson(rs, "_json")));
-                    }
-                }
-            }
-
-            return new PageImpl<>(results, pageable, count);
-        } catch (SQLException e) {
-            throw new RuntimeException("Paginated query failed: " + sql, e);
-        }
-    }
-
-    public JsonElement queryOne(String sql, Object... params) {
-        try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            for (int i = 0; i < params.length; i++) {
-                setParam(stmt, i + 1, params[i]);
-            }
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (!rs.next()) {
-                    throw new ResourceNotFoundException();
-                }
-                return JsonParser.parseString(decompressJson(rs, "_json"));
-            }
-        } catch (ResourceNotFoundException e) {
-            throw e;
-        } catch (SQLException e) {
-            throw new RuntimeException("QueryOne failed: " + sql, e);
-        }
-    }
-
-    private void setParam(PreparedStatement stmt, int index, Object value) throws SQLException {
-        if (value == null) {
-            stmt.setNull(index, Types.VARCHAR);
-        } else if (value instanceof String) {
-            stmt.setString(index, (String) value);
-        } else if (value instanceof Integer) {
-            stmt.setInt(index, (Integer) value);
-        } else if (value instanceof Long) {
-            stmt.setLong(index, (Long) value);
-        } else if (value instanceof Boolean) {
-            stmt.setBoolean(index, (Boolean) value);
-        } else if (value instanceof String[]) {
-            stmt.setArray(index, stmt.getConnection().createArrayOf("text", (String[]) value));
-        } else if (value instanceof Double) {
-            stmt.setDouble(index, (Double) value);
-        } else {
-            stmt.setObject(index, value);
-        }
-    }
-
-    private List<Map<String, Object>> resultSetToList(ResultSet rs) throws SQLException {
-        List<Map<String, Object>> results = new ArrayList<>();
-        ResultSetMetaData meta = rs.getMetaData();
-        int cols = meta.getColumnCount();
-        while (rs.next()) {
-            Map<String, Object> row = new LinkedHashMap<>();
-            for (int i = 1; i <= cols; i++) {
-                row.put(meta.getColumnLabel(i), rs.getObject(i));
-            }
-            results.add(row);
-        }
-        return results;
     }
 }

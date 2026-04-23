@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +18,6 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +25,9 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_PCA_MODELS;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.field;
 
 /**
  * Client for the OLS embedding service.
@@ -75,13 +77,14 @@ public class EmbeddingServiceClient {
     }
 
     private void loadPcaModels() {
-        try (Connection conn = postgresClient.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT name, model FROM ols_pca_models")) {
+        try (Connection conn = postgresClient.getConnection()) {
+            DSLContext dsl = postgresClient.dsl(conn);
 
-            while (rs.next()) {
-                String name = rs.getString("name");
-                byte[] modelBytes = rs.getBytes("model");
+            for (var record : dsl.select(field("name", String.class), field("model", byte[].class))
+                    .from(OLS_PCA_MODELS)
+                    .fetch()) {
+                String name = record.get(field("name", String.class));
+                byte[] modelBytes = record.get(field("model", byte[].class));
 
                 Matcher m = PCA_PATTERN.matcher(name);
                 if (!m.matches()) continue;

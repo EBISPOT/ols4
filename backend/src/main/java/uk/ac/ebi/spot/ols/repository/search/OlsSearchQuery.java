@@ -1,11 +1,23 @@
 package uk.ac.ebi.spot.ols.repository.search;
 
+import org.jooq.Condition;
+import org.jooq.Field;
+import org.jooq.SortField;
+import org.jooq.impl.DSL;
+import org.jooq.impl.SQLDataType;
+
 import java.util.*;
 import java.util.regex.Pattern;
 
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContains;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.field;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.matchesTsQuery;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.phraseToTsQuery;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.websearchToTsQuery;
+
 /**
- * Builds a parameterized PostgreSQL query for entity search/filter operations.
- * Translates OLS field names to Postgres columns.
+ * Builds jOOQ conditions and ordering for entity search/filter operations.
+ * Translates OLS field names to PostgreSQL columns.
  */
 public class OlsSearchQuery {
 
@@ -37,7 +49,7 @@ public class OlsSearchQuery {
         cols.put("hasDirectParents", "has_direct_parents");      types.put("hasDirectParents", ColumnType.BOOLEAN);
         cols.put("hasHierarchicalParents", "has_hierarchical_parents"); types.put("hasHierarchicalParents", ColumnType.BOOLEAN);
         cols.put("hasDirectChildren", "has_direct_children");    types.put("hasDirectChildren", ColumnType.BOOLEAN);
-        cols.put("hasChildren", "has_direct_children");              types.put("hasChildren", ColumnType.BOOLEAN);
+        cols.put("hasChildren", "has_direct_children");          types.put("hasChildren", ColumnType.BOOLEAN);
         cols.put("hasHierarchicalChildren", "has_hierarchical_children"); types.put("hasHierarchicalChildren", ColumnType.BOOLEAN);
         cols.put("isPreferredRoot", "is_preferred_root");        types.put("isPreferredRoot", ColumnType.BOOLEAN);
         cols.put("ontologyPreferredPrefix", "ontology_preferred_prefix"); types.put("ontologyPreferredPrefix", ColumnType.TEXT);
@@ -80,19 +92,18 @@ public class OlsSearchQuery {
     }
 
     /**
-     * Resolve an OLS field name to a Postgres column name.
+     * Resolve an OLS field name to a PostgreSQL column name.
      * Handles known fields via COLUMN_MAP and dynamic filter properties
      * (property URIs with : replaced by __) via the filter_ column prefix.
      */
     static String resolveColumn(String field) {
         String col = COLUMN_MAP.get(field);
         if (col != null) return col;
-        // Dynamic filter property: URI with __ for :  → filter_<field> column
         String resolved = field.replace("__", ":");
         if (!SAFE_FIELD_NAME.matcher(resolved).matches()) {
             throw new IllegalArgumentException("Invalid filter field name: " + field);
         }
-        return "\"filter_" + resolved + "\"";
+        return "filter_" + resolved;
     }
 
     /**
@@ -105,123 +116,113 @@ public class OlsSearchQuery {
     static ColumnType resolveColumnType(String field) {
         ColumnType ct = COLUMN_TYPES.get(field);
         if (ct != null) return ct;
-        // Dynamic filter columns are TEXT[]
         return ColumnType.TEXT_ARRAY;
     }
 
-    /**
-     * Build the WHERE clause and parameters for this query.
-     * Returns a WhereClause with SQL fragment and parameter list.
-     * @param availableFilterColumns set of quoted column names for dynamic filter_ columns in the DB, or null to allow all
-     */
-    public WhereClause buildWhereClause(Set<String> availableFilterColumns) {
-        StringBuilder where = new StringBuilder();
-        List<Object> params = new ArrayList<>();
+    public Condition buildCondition(Set<String> availableFilterColumns) {
+        return buildCondition(availableFilterColumns, null, null);
+    }
 
-        // Full-text search
+    public Condition buildCondition(Set<String> availableFilterColumns, String qualifier) {
+        return buildCondition(availableFilterColumns, qualifier, null);
+    }
+
+    public Condition buildCondition(Set<String> availableFilterColumns, String qualifier, String excludedFacetField) {
+        Condition condition = DSL.trueCondition();
+
         if (searchText != null && !searchText.isBlank()) {
-            if (exactMatch) {
-                where.append(" AND ts_search @@ phraseto_tsquery('english', ?)");
-            } else {
-                where.append(" AND ts_search @@ websearch_to_tsquery('english', ?)");
-            }
-            params.add(searchText);
+            Field<Object> tsQuery = exactMatch ? phraseToTsQuery(searchText) : websearchToTsQuery(searchText);
+            condition = condition.and(matchesTsQuery(field(qualifier, "ts_search", Object.class), tsQuery));
         }
 
-        // Positive filters (skip dynamic filter columns that may not exist)
         for (SearchFilter f : filters) {
-            if (!isKnownColumn(f.field) && availableFilterColumns != null
-                    && !availableFilterColumns.contains(resolveColumn(f.field))) {
+            if (excludedFacetField != null && excludedFacetField.equals(f.field)) {
                 continue;
             }
-            appendFilterCondition(where, params, f, false);
+            if (!isFilterAvailable(availableFilterColumns, f.field)) {
+                continue;
+            }
+            condition = condition.and(buildFilterCondition(qualifier, f, false));
         }
 
-        // Exclude filters (skip dynamic filter columns that may not exist)
         for (SearchFilter f : excludeFilters) {
-            if (!isKnownColumn(f.field) && availableFilterColumns != null
-                    && !availableFilterColumns.contains(resolveColumn(f.field))) {
+            if (!isFilterAvailable(availableFilterColumns, f.field)) {
                 continue;
             }
-            appendFilterCondition(where, params, f, true);
+            condition = condition.and(buildFilterCondition(qualifier, f, true));
         }
 
-        return new WhereClause(where.toString(), params);
+        return condition;
     }
 
-    public String buildOrderBy() {
+    public List<SortField<?>> buildOrderBy() {
+        return buildOrderBy(null);
+    }
+
+    public List<SortField<?>> buildOrderBy(String qualifier) {
         if (searchText != null && !searchText.isBlank()) {
-            // Relevance scoring: ts_rank + is_defining boost + ontology type boost + exact label boost
-            return " ORDER BY "
-                + "ts_rank_cd(ts_search, websearch_to_tsquery('english', ?), 32)"
-                + " + CASE WHEN is_defining_ontology THEN 100.0 ELSE 0 END"
-                + " + CASE WHEN search_type = 'ontology' THEN 1.0 ELSE 0 END"
-                + " + CASE WHEN ? = ANY(label) THEN 1000.0 ELSE 0 END"
-                + " DESC, id ASC";
+            Field<Double> rank = DSL.function(
+                    "ts_rank_cd",
+                    SQLDataType.DOUBLE,
+                    field(qualifier, "ts_search", Object.class),
+                    websearchToTsQuery(searchText),
+                    DSL.inline(32))
+                    .plus(DSL.when(field(qualifier, "is_defining_ontology", Boolean.class).isTrue(), 100.0).otherwise(0.0))
+                    .plus(DSL.when(field(qualifier, "search_type", String.class).eq("ontology"), 1.0).otherwise(0.0))
+                    .plus(DSL.when(arrayContains(field(qualifier, "label", String[].class), searchText), 1000.0).otherwise(0.0));
+
+            return List.of(rank.desc(), field(qualifier, "id", String.class).asc());
         }
-        return " ORDER BY id ASC";
+        return List.of(field(qualifier, "id", String.class).asc());
     }
 
-    /**
-     * Return the parameters needed for the ORDER BY clause.
-     */
-    public List<Object> buildOrderByParams() {
-        if (searchText != null && !searchText.isBlank()) {
-            return List.of(searchText, searchText);
-        }
-        return List.of();
+    private boolean isFilterAvailable(Set<String> availableFilterColumns, String fieldName) {
+        return isKnownColumn(fieldName)
+                || availableFilterColumns == null
+                || availableFilterColumns.contains(resolveColumn(fieldName));
     }
 
-    private void appendFilterCondition(StringBuilder where, List<Object> params, SearchFilter f, boolean negate) {
+    private Condition buildFilterCondition(String qualifier, SearchFilter f, boolean negate) {
         String column = resolveColumn(f.field);
         ColumnType colType = resolveColumnType(f.field);
-        String prefix = negate ? " AND NOT (" : " AND (";
-        String suffix = ")";
+        Collection<String> values = expandFilterValues(f);
 
-        // Expand type=entity to class/property/individual.
-        // The API accepts "entity" as a type filter, but search_type stores
-        // only the specific type (class/property/individual).
-        Collection<String> values = f.values;
-        if ("type".equals(f.field)) {
-            List<String> expanded = new ArrayList<>();
-            for (String v : values) {
-                if ("entity".equals(v)) {
-                    expanded.add("class");
-                    expanded.add("property");
-                    expanded.add("individual");
-                } else {
-                    expanded.add(v);
-                }
-            }
-            values = expanded;
-        }
-
+        Condition condition;
         if (colType == ColumnType.BOOLEAN) {
-            // Boolean filter: only first value matters
-            String val = values.iterator().next();
-            boolean boolVal = "true".equalsIgnoreCase(val);
-            where.append(prefix).append(column).append(" = ?").append(suffix);
-            params.add(boolVal);
+            boolean boolVal = "true".equalsIgnoreCase(values.iterator().next());
+            condition = field(qualifier, column, Boolean.class).eq(boolVal);
         } else if (colType == ColumnType.TEXT_ARRAY) {
-            // Array containment: any value must be in the array
-            where.append(prefix);
-            int i = 0;
+            Condition anyValue = DSL.falseCondition();
+            Field<String[]> arrayField = field(qualifier, column, String[].class);
             for (String val : values) {
-                if (i++ > 0) where.append(" OR ");
-                where.append("? = ANY(").append(column).append(")");
-                params.add(val);
+                anyValue = anyValue.or(arrayContains(arrayField, val));
             }
-            where.append(suffix);
+            condition = anyValue;
+        } else if (values.size() == 1) {
+            condition = field(qualifier, column, String.class).eq(values.iterator().next());
         } else {
-            // Text column: exact match, OR for multiple values
-            if (values.size() == 1) {
-                where.append(prefix).append(column).append(" = ?").append(suffix);
-                params.add(values.iterator().next());
+            condition = field(qualifier, column, String.class).in(values);
+        }
+
+        return negate ? condition.not() : condition;
+    }
+
+    private Collection<String> expandFilterValues(SearchFilter filter) {
+        if (!"type".equals(filter.field)) {
+            return filter.values;
+        }
+
+        List<String> expanded = new ArrayList<>();
+        for (String value : filter.values) {
+            if ("entity".equals(value)) {
+                expanded.add("class");
+                expanded.add("property");
+                expanded.add("individual");
             } else {
-                where.append(prefix).append(column).append(" = ANY(?)").append(suffix);
-                params.add(values.toArray(new String[0]));
+                expanded.add(value);
             }
         }
+        return expanded;
     }
 
     static class SearchFilter {
@@ -233,16 +234,6 @@ public class OlsSearchQuery {
             this.field = field;
             this.values = values;
             this.negate = negate;
-        }
-    }
-
-    public static class WhereClause {
-        public final String sql;
-        public final List<Object> params;
-
-        WhereClause(String sql, List<Object> params) {
-            this.sql = sql;
-            this.params = params;
         }
     }
 

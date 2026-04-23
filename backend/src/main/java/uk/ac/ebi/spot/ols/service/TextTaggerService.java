@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,14 +14,15 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.postgresql.PGConnection;
 import org.postgresql.largeobject.LargeObject;
 import org.postgresql.largeobject.LargeObjectManager;
+
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_TEXT_TAGGER;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.field;
 
 /**
  * Service that wraps the ols_text_tagger CLI binary.
@@ -123,16 +125,13 @@ public class TextTaggerService {
         try (Connection conn = postgresClient.getConnection()) {
             conn.setAutoCommit(false); // required for Large Object API
 
-            long oid;
-            try (Statement stmt = conn.createStatement();
-                 ResultSet rs = stmt.executeQuery("SELECT tagger_db_oid FROM ols_text_tagger LIMIT 1")) {
-                if (!rs.next()) {
-                    return null;
-                }
-                oid = rs.getLong("tagger_db_oid");
-                if (oid == 0) {
-                    return null;
-                }
+            DSLContext dsl = postgresClient.dsl(conn);
+            Long oid = dsl.select(field("tagger_db_oid", Long.class))
+                    .from(OLS_TEXT_TAGGER)
+                    .limit(1)
+                    .fetchOne(0, Long.class);
+            if (oid == null || oid == 0) {
+                return null;
             }
 
             LargeObjectManager lom = conn.unwrap(PGConnection.class).getLargeObjectAPI();
