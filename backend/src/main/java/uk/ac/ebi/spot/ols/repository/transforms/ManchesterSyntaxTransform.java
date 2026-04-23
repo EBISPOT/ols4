@@ -20,8 +20,10 @@ public class ManchesterSyntaxTransform {
         if (element.isJsonObject()) {
             JsonObject obj = element.getAsJsonObject();
 
-            if (isClassExpressionObject(obj)) {
-                // Convert class-expression objects to a Manchester string primitive.
+            // Preserve named entities, even if they carry OWL axiom fields like
+            // owl:inverseOf or owl:intersectionOf. Only anonymous expressions
+            // should collapse into a Manchester syntax string.
+            if (isClassExpressionObject(obj) && !isNamedEntityObject(obj)) {
                 String ms = toManchester(obj);
                 return new JsonPrimitive(ms);
             }
@@ -59,6 +61,31 @@ public class ManchesterSyntaxTransform {
         }
 
         // If an object has exactly a boolean "value" or such, we don't treat it as class expression.
+        return false;
+    }
+
+    private static boolean isNamedEntityObject(JsonObject obj) {
+        if (obj.has("iri") || obj.has("ontologyId") || obj.has("ontologyIri")
+                || obj.has("curie") || obj.has("shortForm")) {
+            return true;
+        }
+
+        if (!obj.has("type")) {
+            return false;
+        }
+
+        JsonArray types = safeArray(obj.get("type"));
+        String[] entityTypes = {
+                "entity", "class", "property", "individual", "ontology",
+                "annotationProperty", "dataProperty", "objectProperty"
+        };
+
+        for (String entityType : entityTypes) {
+            if (containsString(types, entityType)) {
+                return true;
+            }
+        }
+
         return false;
     }
 
