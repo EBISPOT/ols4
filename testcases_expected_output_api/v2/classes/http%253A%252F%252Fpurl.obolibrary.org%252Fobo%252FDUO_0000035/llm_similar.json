@@ -4,12 +4,12 @@
       "appearsIn": [
         "duo"
       ],
-      "curie": "DUO:0000034",
+      "curie": "DUO:0000035",
       "definedBy": [
         "duo"
       ],
       "definition": [
-        "An investigation concerning specific age categories.",
+        "An investigation concerning specific gender categories.",
         "Should be paired with the an ontology term representing this population (e.g., xxx)."
       ],
       "definitionProperty": [
@@ -35,32 +35,32 @@
         "http://purl.obolibrary.org/obo/OBI_0000066"
       ],
       "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "http://purl.obolibrary.org/obo/DUO_0000041": "age category research",
-      "http://purl.obolibrary.org/obo/IAO_0000115": "An investigation concerning specific age categories.",
+      "http://purl.obolibrary.org/obo/DUO_0000041": "gender category research",
+      "http://purl.obolibrary.org/obo/IAO_0000115": "An investigation concerning specific gender categories.",
       "http://purl.obolibrary.org/obo/IAO_0000232": "This definition is a placeholder as a result of meetings at ICBO2018.",
-      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000034",
+      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000035",
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
       "http://www.w3.org/2000/01/rdf-schema#comment": "Should be paired with the an ontology term representing this population (e.g., xxx).",
-      "http://www.w3.org/2000/01/rdf-schema#label": "age category research",
+      "http://www.w3.org/2000/01/rdf-schema#label": "gender category research",
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/OBI_0000066",
       "imported": false,
-      "iri": "http://purl.obolibrary.org/obo/DUO_0000034",
+      "iri": "http://purl.obolibrary.org/obo/DUO_0000035",
       "isDefiningOntology": true,
       "isObsolete": false,
       "isPreferredRoot": false,
       "label": [
-        "age category research"
+        "gender category research"
       ],
       "linkedEntities": {
-        "DUO:0000034": {
-          "curie": "DUO:0000034",
+        "DUO:0000035": {
+          "curie": "DUO:0000035",
           "definedBy": [
             "duo"
           ],
           "hasLocalDefinition": true,
-          "iri": "http://purl.obolibrary.org/obo/DUO_0000034",
+          "iri": "http://purl.obolibrary.org/obo/DUO_0000035",
           "label": [
-            "age category research"
+            "gender category research"
           ],
           "numAppearsIn": 1.0,
           "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
@@ -68,7 +68,7 @@
             "class",
             "entity"
           ],
-          "url": "http://purl.obolibrary.org/obo/DUO_0000034"
+          "url": "http://purl.obolibrary.org/obo/DUO_0000035"
         },
         "http://purl.obolibrary.org/obo/DUO_0000041": {
           "curie": "DUO:0000041",
@@ -189,7 +189,7 @@
         }
       },
       "linksTo": [
-        "http://purl.obolibrary.org/obo/DUO_0000034",
+        "http://purl.obolibrary.org/obo/DUO_0000035",
         "http://purl.obolibrary.org/obo/DUO_0000041",
         "http://purl.obolibrary.org/obo/IAO_0000115",
         "http://purl.obolibrary.org/obo/IAO_0000232",
@@ -208,7 +208,7 @@
       "searchableAnnotationValues": [
         false
       ],
-      "shortForm": "DUO_0000034",
+      "shortForm": "DUO_0000035",
       "type": [
         "class",
         "entity"

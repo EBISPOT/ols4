@@ -1,0 +1,225 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "BFO:0000062",
+  "definition": [
+    "x is preceded by y if and only if the time point at which y ends is before or equivalent to the time point at which x starts. Formally: x preceded by y iff ω(y) <= α(x), where α is a function that maps a process to a start point, and ω is a function that maps a process to an end point."
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/RO_0002086",
+    "http://purl.obolibrary.org/obo/RO_0002222"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/RO_0002086"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://purl.obolibrary.org/obo/IAO_0000115": "x is preceded by y if and only if the time point at which y ends is before or equivalent to the time point at which x starts. Formally: x preceded by y iff ω(y) <= α(x), where α is a function that maps a process to a start point, and ω is a function that maps a process to an end point.",
+  "http://purl.obolibrary.org/obo/IAO_0000116": "An example is: translation preceded_by transcription; aging preceded_by development (not however death preceded_by aging). Where derives_from links classes of continuants, preceded_by links classes of processes. Clearly, however, these two relations are not independent of each other. Thus if cells of type C1 derive_from cells of type C, then any cell division involving an instance of C1 in a given lineage is preceded_by cellular processes involving an instance of C.    The assertion P preceded_by P1 tells us something about Ps in general: that is, it tells us something about what happened earlier, given what we know about what happened later. Thus it does not provide information pointing in the opposite direction, concerning instances of P1 in general; that is, that each is such as to be succeeded by some instance of P. Note that an assertion to the effect that P preceded_by P1 is rather weak; it tells us little about the relations between the underlying instances in virtue of which the preceded_by relation obtains. Typically we will be interested in stronger relations, for example in the relation immediately_preceded_by, or in relations which combine preceded_by with a condition to the effect that the corresponding instances of P and P1 share participants, or that their participants are connected by relations of derivation, or (as a first step along the road to a treatment of causality) that the one process in some way affects (for example, initiates or regulates) the other.",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+    "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "http://www.w3.org/2002/07/owl#TransitiveProperty"
+  ],
+  "http://www.w3.org/2000/01/rdf-schema#domain": "http://purl.obolibrary.org/obo/BFO_0000003",
+  "http://www.w3.org/2000/01/rdf-schema#label": "preceded by",
+  "http://www.w3.org/2000/01/rdf-schema#range": "http://purl.obolibrary.org/obo/BFO_0000003",
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://purl.obolibrary.org/obo/RO_0002086",
+  "http://www.w3.org/2002/07/owl#inverseOf": "http://purl.obolibrary.org/obo/BFO_0000063",
+  "http://www.w3.org/2002/07/owl#propertyChainAxiom": [
+    "http://purl.obolibrary.org/obo/BFO_0000050",
+    "http://purl.obolibrary.org/obo/BFO_0000062"
+  ],
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/BFO_0000062",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "preceded by"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000003": {
+      "curie": "BFO:0000003",
+      "hasLocalDefinition": true,
+      "label": [
+        "occurrent"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000050": {
+      "curie": "BFO:0000050",
+      "hasLocalDefinition": true,
+      "label": [
+        "part of"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000063": {
+      "curie": "BFO:0000063",
+      "hasLocalDefinition": true,
+      "label": [
+        "precedes"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "IAO_0000115"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000116": {
+      "curie": "IAO:0000116",
+      "hasLocalDefinition": true,
+      "label": [
+        "IAO_0000116"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002086": {
+      "curie": "RO:0002086",
+      "hasLocalDefinition": true,
+      "label": [
+        "ends after"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002222": {
+      "curie": "RO:0002222",
+      "hasLocalDefinition": true,
+      "label": [
+        "temporally related to"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#domain": {
+      "curie": "RDFS:domain",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "domain"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#range": {
+      "curie": "RDFS:range",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "range"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+      "curie": "RDFS:subPropertyOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subPropertyOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000003",
+    "http://purl.obolibrary.org/obo/BFO_0000050",
+    "http://purl.obolibrary.org/obo/BFO_0000063",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/IAO_0000116",
+    "http://purl.obolibrary.org/obo/RO_0002086",
+    "http://purl.obolibrary.org/obo/RO_0002222",
+    "http://www.w3.org/2000/01/rdf-schema#domain",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#range",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+  ],
+  "numDescendants": 3.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "searchableAnnotationValues": [
+    "An example is: translation preceded_by transcription; aging preceded_by development (not however death preceded_by aging). Where derives_from links classes of continuants, preceded_by links classes of processes. Clearly, however, these two relations are not independent of each other. Thus if cells of type C1 derive_from cells of type C, then any cell division involving an instance of C1 in a given lineage is preceded_by cellular processes involving an instance of C.    The assertion P preceded_by P1 tells us something about Ps in general: that is, it tells us something about what happened earlier, given what we know about what happened later. Thus it does not provide information pointing in the opposite direction, concerning instances of P1 in general; that is, that each is such as to be succeeded by some instance of P. Note that an assertion to the effect that P preceded_by P1 is rather weak; it tells us little about the relations between the underlying instances in virtue of which the preceded_by relation obtains. Typically we will be interested in stronger relations, for example in the relation immediately_preceded_by, or in relations which combine preceded_by with a condition to the effect that the corresponding instances of P and P1 share participants, or that their participants are connected by relations of derivation, or (as a first step along the road to a treatment of causality) that the one process in some way affects (for example, initiates or regulates) the other.",
+    "x is preceded by y if and only if the time point at which y ends is before or equivalent to the time point at which x starts. Formally: x preceded by y iff ω(y) <= α(x), where α is a function that maps a process to a start point, and ω is a function that maps a process to an end point.",
+    false
+  ],
+  "shortForm": "BFO_0000062",
+  "type": [
+    "entity",
+    "objectProperty",
+    "property"
+  ]
+}

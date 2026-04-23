@@ -1,0 +1,199 @@
+{
+  "appearsIn": [
+    "direct-parent-with-annotation-axiom",
+    "gitissue502"
+  ],
+  "curie": "MONDO:0002259",
+  "definition": [
+    "A non-neoplastic or neoplastic disorder that affects the testis or the ovary."
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/MONDO_0005039",
+    "http://purl.obolibrary.org/obo/MONDO_0005151"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/MONDO_0005039",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "DOID:2277",
+            "MESH:D006058"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0005151"
+    }
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/MONDO_0005039",
+    "http://purl.obolibrary.org/obo/MONDO_0005151"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/MONDO_0005039",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "DOID:2277",
+            "MESH:D006058"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0005151"
+    }
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/IAO_0000115": "A non-neoplastic or neoplastic disorder that affects the testis or the ovary.",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "gonadal disorder",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+    "http://purl.obolibrary.org/obo/MONDO_0005039",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "DOID:2277",
+            "MESH:D006058"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0005151"
+    }
+  ],
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0002259",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "gonadal disorder"
+  ],
+  "linkedEntities": {
+    "DOID:2277": {
+      "curie": "DOID:2277",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/DOID_2277"
+    },
+    "MESH:D006058": {
+      "curie": "MESH:D006058",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "http://id.nlm.nih.gov/mesh/D006058"
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "IAO_0000115"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0005039": {
+      "curie": "MONDO:0005039",
+      "hasLocalDefinition": true,
+      "label": [
+        "reproductive system disorder"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0005151": {
+      "curie": "MONDO:0005151",
+      "hasLocalDefinition": true,
+      "label": [
+        "endocrine system disorder"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#source": {
+      "curie": "source",
+      "hasLocalDefinition": true,
+      "label": [
+        "source"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/MONDO_0005039",
+    "http://purl.obolibrary.org/obo/MONDO_0005151",
+    "http://www.geneontology.org/formats/oboInOwl#source",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "direct-parent-with-annotation-axiom",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "Direct-Parent-With-Annotation-Axiom",
+  "searchableAnnotationValues": [
+    false
+  ],
+  "shortForm": "MONDO_0002259",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

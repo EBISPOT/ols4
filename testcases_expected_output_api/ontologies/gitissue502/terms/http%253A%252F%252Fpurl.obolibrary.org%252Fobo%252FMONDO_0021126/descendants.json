@@ -1,0 +1,60 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021127/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021127/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021127/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021127/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021127/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021127/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0021127?lang=en"
+      }
+    },
+    "annotation": {
+      "id": [
+        "MONDO:0021127"
+      ]
+    },
+    "description": [
+      "An characteristic of a disease in which the disease is not manifested as an isolated feature but has multiple distinct features."
+    ],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/MONDO_0021127",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "has a syndromic presentation",
+    "lang": "en",
+    "obo_definition_citation": [
+      {
+        "definition": "An characteristic of a disease in which the disease is not manifested as an isolated feature but has multiple distinct features.",
+        "oboXrefs": [
+          {
+            "database": "MONDO",
+            "id": "cjm"
+          }
+        ]
+      }
+    ],
+    "obo_id": "MONDO:0021127",
+    "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+    "ontology_name": "gitissue502",
+    "ontology_prefix": "gitIssue502",
+    "short_form": "MONDO_0021127",
+    "synonyms": []
+  }
+]

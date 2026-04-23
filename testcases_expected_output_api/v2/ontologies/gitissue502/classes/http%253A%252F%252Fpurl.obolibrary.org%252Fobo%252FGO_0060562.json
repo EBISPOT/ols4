@@ -1,0 +1,258 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "GO:0060562",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/GO_0002009",
+    "http://purl.obolibrary.org/obo/GO_0008150",
+    "http://purl.obolibrary.org/obo/GO_0009653",
+    "http://purl.obolibrary.org/obo/GO_0032502",
+    "http://purl.obolibrary.org/obo/GO_0035239",
+    "http://purl.obolibrary.org/obo/GO_0048729"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/GO_0002009",
+    "http://purl.obolibrary.org/obo/GO_0035239"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/GO_0002009",
+    "http://purl.obolibrary.org/obo/GO_0007275",
+    "http://purl.obolibrary.org/obo/GO_0008150",
+    "http://purl.obolibrary.org/obo/GO_0009653",
+    "http://purl.obolibrary.org/obo/GO_0009888",
+    "http://purl.obolibrary.org/obo/GO_0032501",
+    "http://purl.obolibrary.org/obo/GO_0032502",
+    "http://purl.obolibrary.org/obo/GO_0035239",
+    "http://purl.obolibrary.org/obo/GO_0035295",
+    "http://purl.obolibrary.org/obo/GO_0048729",
+    "http://purl.obolibrary.org/obo/GO_0048856",
+    "http://purl.obolibrary.org/obo/GO_0060429"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/GO_0002009",
+    "http://purl.obolibrary.org/obo/GO_0035239"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "epithelial tube morphogenesis",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+    "http://purl.obolibrary.org/obo/GO_0002009",
+    "http://purl.obolibrary.org/obo/GO_0035239"
+  ],
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/GO_0060562",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "epithelial tube morphogenesis"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/GO_0002009": {
+      "curie": "GO:0002009",
+      "hasLocalDefinition": true,
+      "label": [
+        "morphogenesis of an epithelium"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0007275": {
+      "curie": "GO:0007275",
+      "hasLocalDefinition": true,
+      "label": [
+        "multicellular organism development"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0008150": {
+      "curie": "GO:0008150",
+      "hasLocalDefinition": true,
+      "label": [
+        "biological_process"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0009653": {
+      "curie": "GO:0009653",
+      "hasLocalDefinition": true,
+      "label": [
+        "anatomical structure morphogenesis"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0009888": {
+      "curie": "GO:0009888",
+      "hasLocalDefinition": true,
+      "label": [
+        "tissue development"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0032501": {
+      "curie": "GO:0032501",
+      "hasLocalDefinition": true,
+      "label": [
+        "multicellular organismal process"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0032502": {
+      "curie": "GO:0032502",
+      "hasLocalDefinition": true,
+      "label": [
+        "developmental process"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0035239": {
+      "curie": "GO:0035239",
+      "hasLocalDefinition": true,
+      "label": [
+        "tube morphogenesis"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0035295": {
+      "curie": "GO:0035295",
+      "hasLocalDefinition": true,
+      "label": [
+        "tube development"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0048729": {
+      "curie": "GO:0048729",
+      "hasLocalDefinition": true,
+      "label": [
+        "tissue morphogenesis"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0048856": {
+      "curie": "GO:0048856",
+      "hasLocalDefinition": true,
+      "label": [
+        "anatomical structure development"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0060429": {
+      "curie": "GO:0060429",
+      "hasLocalDefinition": true,
+      "label": [
+        "epithelium development"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/GO_0002009",
+    "http://purl.obolibrary.org/obo/GO_0007275",
+    "http://purl.obolibrary.org/obo/GO_0008150",
+    "http://purl.obolibrary.org/obo/GO_0009653",
+    "http://purl.obolibrary.org/obo/GO_0009888",
+    "http://purl.obolibrary.org/obo/GO_0032501",
+    "http://purl.obolibrary.org/obo/GO_0032502",
+    "http://purl.obolibrary.org/obo/GO_0035239",
+    "http://purl.obolibrary.org/obo/GO_0035295",
+    "http://purl.obolibrary.org/obo/GO_0048729",
+    "http://purl.obolibrary.org/obo/GO_0048856",
+    "http://purl.obolibrary.org/obo/GO_0060429",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 3.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "searchableAnnotationValues": false,
+  "shortForm": "GO_0060562",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

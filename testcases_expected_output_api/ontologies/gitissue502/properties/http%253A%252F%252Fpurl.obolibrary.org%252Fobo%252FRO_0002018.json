@@ -1,0 +1,39 @@
+{
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002018/ancestors"
+    },
+    "children": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002018/children"
+    },
+    "descendants": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002018/descendants"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002018/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002018/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002018?lang=en"
+    }
+  },
+  "annotation": {},
+  "description": [
+    "w 'has process component' p if p and w are processes,  w 'has part' p and w is such that it can be directly disassembled into into n parts p, p2, p3, ..., pn, where these parts are of similar type."
+  ],
+  "has_children": true,
+  "iri": "http://purl.obolibrary.org/obo/RO_0002018",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": false,
+  "label": "has component process",
+  "lang": "en",
+  "obo_id": "RO:0002018",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "short_form": "RO_0002018",
+  "synonyms": []
+}

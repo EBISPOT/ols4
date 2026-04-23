@@ -1,0 +1,454 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "MONDO:0015127",
+  "definition": [
+    "Editor note: in ORDO, Orphanet:101957 is classified as genetic, yet has acquired subtypes"
+  ],
+  "definitionProperty": "http://www.w3.org/2000/01/rdf-schema#comment",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000016",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/MONDO_0000001",
+    "http://purl.obolibrary.org/obo/MONDO_0005151",
+    "http://purl.obolibrary.org/obo/MONDO_0700096",
+    "http://purl.obolibrary.org/obo/OGMS_0000031"
+  ],
+  "directParent": [
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "MONDO:0015889-obsoleted"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0005151"
+    }
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000016",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/MONDO_0000001",
+    "http://purl.obolibrary.org/obo/MONDO_0005151",
+    "http://purl.obolibrary.org/obo/MONDO_0700096",
+    "http://purl.obolibrary.org/obo/OGMS_0000031"
+  ],
+  "hierarchicalParent": [
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "MONDO:0015889-obsoleted"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0005151"
+    }
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/mondo#excluded_subClassOf": {
+    "axioms": [
+      {
+        "http://www.geneontology.org/formats/oboInOwl#source": "Orphanet:101957"
+      }
+    ],
+    "type": [
+      "reification"
+    ],
+    "value": "http://purl.obolibrary.org/obo/MONDO_0015968"
+  },
+  "http://www.geneontology.org/formats/oboInOwl#hasDbXref": [
+    "GARD:19801",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "MONDO:equivalentTo"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "Orphanet:101957"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "MONDO:relatedTo",
+            "Orphanet:101957"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "UMLS:C0020635"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "MONDO:relatedTo",
+            "Orphanet:101957",
+            "Orphanet:101957/e",
+            "Orphanet:101957/specific"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "ICD10CM:E23.0"
+    }
+  ],
+  "http://www.geneontology.org/formats/oboInOwl#id": "MONDO:0015127",
+  "http://www.geneontology.org/formats/oboInOwl#inSubset": [
+    "http://purl.obolibrary.org/obo/mondo#disease_grouping",
+    "http://purl.obolibrary.org/obo/mondo#gard_rare",
+    "http://purl.obolibrary.org/obo/mondo#orphanet_rare",
+    "http://purl.obolibrary.org/obo/mondo#rare",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "Orphanet:101957"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/mondo#ordo_group_of_disorders"
+    }
+  ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#comment": "Editor note: in ORDO, Orphanet:101957 is classified as genetic, yet has acquired subtypes",
+  "http://www.w3.org/2000/01/rdf-schema#label": "pituitary deficiency",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+    "axioms": [
+      {
+        "http://www.geneontology.org/formats/oboInOwl#source": "MONDO:0015889-obsoleted"
+      }
+    ],
+    "type": [
+      "reification"
+    ],
+    "value": "http://purl.obolibrary.org/obo/MONDO_0005151"
+  },
+  "http://www.w3.org/2004/02/skos/core#exactMatch": "http://www.orpha.net/ORDO/Orphanet_101957",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0015127",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "pituitary deficiency"
+  ],
+  "linkedEntities": {
+    "GARD:19801": {
+      "curie": "GARD:19801",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "https://rarediseases.info.nih.gov/diseases/19801/index"
+    },
+    "MONDO:0015127": {
+      "curie": "MONDO:0015127",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/MONDO_0015127"
+    },
+    "MONDO:0015889": {
+      "curie": "MONDO:0015889",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/MONDO_0015889"
+    },
+    "Orphanet:101957": {
+      "curie": "Orphanet:101957",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://www.orpha.net/ORDO/Orphanet_101957"
+    },
+    "UMLS:C0020635": {
+      "curie": "UMLS:C0020635",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0020635"
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000016": {
+      "curie": "BFO:0000016",
+      "hasLocalDefinition": true,
+      "label": [
+        "disposition"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000017": {
+      "curie": "BFO:0000017",
+      "hasLocalDefinition": true,
+      "label": [
+        "realizable entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000020": {
+      "curie": "BFO:0000020",
+      "hasLocalDefinition": true,
+      "label": [
+        "specifically dependent continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0000001": {
+      "curie": "MONDO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "disease"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0005151": {
+      "curie": "MONDO:0005151",
+      "hasLocalDefinition": true,
+      "label": [
+        "endocrine system disorder"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0015968": {
+      "curie": "mondo:0015968",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/MONDO_0015968"
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0700096": {
+      "curie": "MONDO:0700096",
+      "hasLocalDefinition": true,
+      "label": [
+        "human disease"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/OGMS_0000031": {
+      "curie": "OGMS:0000031",
+      "hasLocalDefinition": true,
+      "label": [
+        "disease"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/mondo#excluded_subClassOf": {
+      "curie": "excluded_subClassOf",
+      "hasLocalDefinition": true,
+      "label": [
+        "excluded_subClassOf"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+      "curie": "OIO:hasDbXref",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_dbxref"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#id": {
+      "curie": "id",
+      "hasLocalDefinition": true,
+      "label": [
+        "id"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#inSubset": {
+      "curie": "OIO:inSubset",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "in_subset"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#source": {
+      "curie": "source",
+      "hasLocalDefinition": true,
+      "label": [
+        "source"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.orpha.net/ORDO/Orphanet_101957": {
+      "curie": "orphanet.ordo:101957",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://www.orpha.net/ORDO/Orphanet_101957"
+    },
+    "http://www.w3.org/2000/01/rdf-schema#comment": {
+      "curie": "RDFS:comment",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "comment"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2004/02/skos/core#exactMatch": {
+      "curie": "SKOS:exactMatch",
+      "definedBy": [
+        "skos"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has exact match"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000016",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/MONDO_0000001",
+    "http://purl.obolibrary.org/obo/MONDO_0005151",
+    "http://purl.obolibrary.org/obo/MONDO_0700096",
+    "http://purl.obolibrary.org/obo/OGMS_0000031",
+    "http://purl.obolibrary.org/obo/mondo#excluded_subClassOf",
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+    "http://www.geneontology.org/formats/oboInOwl#id",
+    "http://www.geneontology.org/formats/oboInOwl#inSubset",
+    "http://www.geneontology.org/formats/oboInOwl#source",
+    "http://www.w3.org/2000/01/rdf-schema#comment",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/2004/02/skos/core#exactMatch"
+  ],
+  "numDescendants": 3.0,
+  "numHierarchicalDescendants": 3.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "searchableAnnotationValues": [
+    false
+  ],
+  "shortForm": "MONDO_0015127",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

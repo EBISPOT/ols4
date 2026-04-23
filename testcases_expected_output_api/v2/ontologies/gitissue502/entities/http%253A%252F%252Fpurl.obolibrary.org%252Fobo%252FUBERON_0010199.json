@@ -1,0 +1,154 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "UBERON:0010199",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000004",
+    "http://purl.obolibrary.org/obo/BFO_0000141",
+    "http://purl.obolibrary.org/obo/UBERON_0000466",
+    "http://purl.obolibrary.org/obo/UBERON_0001062"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/UBERON_0000466"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000004",
+    "http://purl.obolibrary.org/obo/BFO_0000141",
+    "http://purl.obolibrary.org/obo/UBERON_0000466",
+    "http://purl.obolibrary.org/obo/UBERON_0001062"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/UBERON_0000466"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "bona-fide anatomical boundary",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/UBERON_0000466",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/UBERON_0010199",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "bona-fide anatomical boundary"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000004": {
+      "curie": "BFO:0000004",
+      "hasLocalDefinition": true,
+      "label": [
+        "independent continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000141": {
+      "curie": "BFO:0000141",
+      "hasLocalDefinition": true,
+      "label": [
+        "immaterial entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0000466": {
+      "curie": "UBERON:0000466",
+      "hasLocalDefinition": true,
+      "label": [
+        "immaterial anatomical entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0001062": {
+      "curie": "UBERON:0001062",
+      "hasLocalDefinition": true,
+      "label": [
+        "anatomical entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000004",
+    "http://purl.obolibrary.org/obo/BFO_0000141",
+    "http://purl.obolibrary.org/obo/UBERON_0000466",
+    "http://purl.obolibrary.org/obo/UBERON_0001062",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 1.0,
+  "numHierarchicalDescendants": 1.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "searchableAnnotationValues": false,
+  "shortForm": "UBERON_0010199",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

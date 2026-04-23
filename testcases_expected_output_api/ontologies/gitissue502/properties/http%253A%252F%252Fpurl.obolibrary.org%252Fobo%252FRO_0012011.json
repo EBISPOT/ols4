@@ -1,0 +1,39 @@
+{
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0012011/ancestors"
+    },
+    "children": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0012011/children"
+    },
+    "descendants": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0012011/descendants"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0012011/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0012011/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0012011?lang=en"
+    }
+  },
+  "annotation": {},
+  "description": [
+    "p is indirectly causally upstream of q iff p is causally upstream of q and there exists some process r such that p is causally upstream of r and r is causally upstream of q."
+  ],
+  "has_children": true,
+  "iri": "http://purl.obolibrary.org/obo/RO_0012011",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": false,
+  "label": "indirectly causally upstream of",
+  "lang": "en",
+  "obo_id": "RO:0012011",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "short_form": "RO_0012011",
+  "synonyms": []
+}

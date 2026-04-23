@@ -1,0 +1,33 @@
+{
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002493/ancestors"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002493/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002493/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002493?lang=en"
+    }
+  },
+  "annotation": {},
+  "description": [
+    "x existence ends with y if and only if the time point at which x ends is equivalent to the time point at which y ends. Formally: x existence ends with y iff ω(x) = ω(y)."
+  ],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/RO_0002493",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": false,
+  "label": "existence ends with",
+  "lang": "en",
+  "obo_id": "RO:0002493",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "short_form": "RO_0002493",
+  "synonyms": []
+}

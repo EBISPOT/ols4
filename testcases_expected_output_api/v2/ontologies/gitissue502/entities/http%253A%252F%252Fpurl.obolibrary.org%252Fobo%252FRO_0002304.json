@@ -1,0 +1,189 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "RO:0002304",
+  "definition": [
+    "p is causally upstream of, positive effect q iff p is casually upstream of q, and the execution of p is required for the execution of q."
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000063",
+    "http://purl.obolibrary.org/obo/RO_0002222",
+    "http://purl.obolibrary.org/obo/RO_0002411",
+    "http://purl.obolibrary.org/obo/RO_0002418",
+    "http://purl.obolibrary.org/obo/RO_0002501",
+    "http://purl.obolibrary.org/obo/RO_0004047"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/RO_0002411",
+    "http://purl.obolibrary.org/obo/RO_0004047"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://purl.obolibrary.org/obo/IAO_0000115": "p is causally upstream of, positive effect q iff p is casually upstream of q, and the execution of p is required for the execution of q.",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+  "http://www.w3.org/2000/01/rdf-schema#label": "causally upstream of, positive effect",
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+    "http://purl.obolibrary.org/obo/RO_0002411",
+    "http://purl.obolibrary.org/obo/RO_0004047"
+  ],
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/RO_0002304",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "causally upstream of, positive effect"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000063": {
+      "curie": "BFO:0000063",
+      "hasLocalDefinition": true,
+      "label": [
+        "precedes"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "IAO_0000115"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002222": {
+      "curie": "RO:0002222",
+      "hasLocalDefinition": true,
+      "label": [
+        "temporally related to"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002411": {
+      "curie": "RO:0002411",
+      "hasLocalDefinition": true,
+      "label": [
+        "causally upstream of"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002418": {
+      "curie": "RO:0002418",
+      "hasLocalDefinition": true,
+      "label": [
+        "causally upstream of or within"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002501": {
+      "curie": "RO:0002501",
+      "hasLocalDefinition": true,
+      "label": [
+        "causal relation between processes"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0004047": {
+      "curie": "RO:0004047",
+      "hasLocalDefinition": true,
+      "label": [
+        "causally upstream of or within, positive effect"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+      "curie": "RDFS:subPropertyOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subPropertyOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000063",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/RO_0002222",
+    "http://purl.obolibrary.org/obo/RO_0002411",
+    "http://purl.obolibrary.org/obo/RO_0002418",
+    "http://purl.obolibrary.org/obo/RO_0002501",
+    "http://purl.obolibrary.org/obo/RO_0004047",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+  ],
+  "numDescendants": 3.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "searchableAnnotationValues": [
+    false
+  ],
+  "shortForm": "RO_0002304",
+  "type": [
+    "entity",
+    "objectProperty",
+    "property"
+  ]
+}

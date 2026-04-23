@@ -1,0 +1,249 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "RO:0002014",
+  "definition": [
+    "A relationship that holds between a GO molecular function and a component of that molecular function that negatively regulates the activity of the whole.  More formally, A 'has regulatory component activity' B iff :A and B are GO molecular functions (GO_0003674), A has_component B and A is negatively regulated by B."
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000051",
+    "http://purl.obolibrary.org/obo/RO_0002013",
+    "http://purl.obolibrary.org/obo/RO_0002017",
+    "http://purl.obolibrary.org/obo/RO_0002018",
+    "http://purl.obolibrary.org/obo/RO_0002131",
+    "http://purl.obolibrary.org/obo/RO_0002180",
+    "http://purl.obolibrary.org/obo/RO_0002334",
+    "http://purl.obolibrary.org/obo/RO_0002335",
+    "http://purl.obolibrary.org/obo/RO_0002427",
+    "http://purl.obolibrary.org/obo/RO_0002501"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/RO_0002013",
+    "http://purl.obolibrary.org/obo/RO_0002335"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://purl.obolibrary.org/obo/IAO_0000115": "A relationship that holds between a GO molecular function and a component of that molecular function that negatively regulates the activity of the whole.  More formally, A 'has regulatory component activity' B iff :A and B are GO molecular functions (GO_0003674), A has_component B and A is negatively regulated by B.",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+  "http://www.w3.org/2000/01/rdf-schema#label": "has negative regulatory component activity",
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+    "http://purl.obolibrary.org/obo/RO_0002013",
+    "http://purl.obolibrary.org/obo/RO_0002335"
+  ],
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/RO_0002014",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "has negative regulatory component activity"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000051": {
+      "curie": "BFO:0000051",
+      "hasLocalDefinition": true,
+      "label": [
+        "has part"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "IAO_0000115"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002013": {
+      "curie": "RO:0002013",
+      "hasLocalDefinition": true,
+      "label": [
+        "has regulatory component activity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002017": {
+      "curie": "RO:0002017",
+      "hasLocalDefinition": true,
+      "label": [
+        "has component activity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002018": {
+      "curie": "RO:0002018",
+      "hasLocalDefinition": true,
+      "label": [
+        "has component process"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002131": {
+      "curie": "RO:0002131",
+      "hasLocalDefinition": true,
+      "label": [
+        "overlaps"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002180": {
+      "curie": "RO:0002180",
+      "hasLocalDefinition": true,
+      "label": [
+        "has component"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002334": {
+      "curie": "RO:0002334",
+      "hasLocalDefinition": true,
+      "label": [
+        "regulated by"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002335": {
+      "curie": "RO:0002335",
+      "hasLocalDefinition": true,
+      "label": [
+        "negatively regulated by"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002427": {
+      "curie": "RO:0002427",
+      "hasLocalDefinition": true,
+      "label": [
+        "causally downstream of or within"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0002501": {
+      "curie": "RO:0002501",
+      "hasLocalDefinition": true,
+      "label": [
+        "causal relation between processes"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+      "curie": "RDFS:subPropertyOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subPropertyOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000051",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/RO_0002013",
+    "http://purl.obolibrary.org/obo/RO_0002017",
+    "http://purl.obolibrary.org/obo/RO_0002018",
+    "http://purl.obolibrary.org/obo/RO_0002131",
+    "http://purl.obolibrary.org/obo/RO_0002180",
+    "http://purl.obolibrary.org/obo/RO_0002334",
+    "http://purl.obolibrary.org/obo/RO_0002335",
+    "http://purl.obolibrary.org/obo/RO_0002427",
+    "http://purl.obolibrary.org/obo/RO_0002501",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "searchableAnnotationValues": [
+    false
+  ],
+  "shortForm": "RO_0002014",
+  "type": [
+    "entity",
+    "objectProperty",
+    "property"
+  ]
+}

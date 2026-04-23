@@ -2,22 +2,10 @@
   "result": {
     "content": [
       {
-        "text": [
-          {
-            "id": "reified-bnode+http://example.com/reified-bnode#cell",
-            "isObsolete": false,
-            "title": "cell cell",
-            "url": "http://example.com/reified-bnode#cell"
-          },
-          {
-            "id": "reified-bnode+http://example.com/reified-bnode#cell_part",
-            "isObsolete": false,
-            "title": "cell_part cell_part",
-            "url": "http://example.com/reified-bnode#cell_part"
-          }
-        ],
+        "text": "Not a JSON Object: \"'produces'\"",
         "type": "text"
       }
-    ]
+    ],
+    "isError": true
   }
 }

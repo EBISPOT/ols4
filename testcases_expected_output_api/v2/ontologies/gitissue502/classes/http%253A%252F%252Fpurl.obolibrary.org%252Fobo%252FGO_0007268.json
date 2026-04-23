@@ -1,0 +1,229 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "GO:0007268",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/GO_0007154",
+    "http://purl.obolibrary.org/obo/GO_0007267",
+    "http://purl.obolibrary.org/obo/GO_0008150",
+    "http://purl.obolibrary.org/obo/GO_0009987",
+    "http://purl.obolibrary.org/obo/GO_0023052",
+    "http://purl.obolibrary.org/obo/GO_0050789",
+    "http://purl.obolibrary.org/obo/GO_0065007",
+    "http://purl.obolibrary.org/obo/GO_0098916",
+    "http://purl.obolibrary.org/obo/GO_0099536",
+    "http://purl.obolibrary.org/obo/GO_0099537"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/GO_0098916"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/GO_0007154",
+    "http://purl.obolibrary.org/obo/GO_0007267",
+    "http://purl.obolibrary.org/obo/GO_0008150",
+    "http://purl.obolibrary.org/obo/GO_0009987",
+    "http://purl.obolibrary.org/obo/GO_0023052",
+    "http://purl.obolibrary.org/obo/GO_0050789",
+    "http://purl.obolibrary.org/obo/GO_0065007",
+    "http://purl.obolibrary.org/obo/GO_0098916",
+    "http://purl.obolibrary.org/obo/GO_0099536",
+    "http://purl.obolibrary.org/obo/GO_0099537"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/GO_0098916"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "chemical synaptic transmission",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/GO_0098916",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/GO_0007268",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "chemical synaptic transmission"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/GO_0007154": {
+      "curie": "GO:0007154",
+      "hasLocalDefinition": true,
+      "label": [
+        "cell communication"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0007267": {
+      "curie": "GO:0007267",
+      "hasLocalDefinition": true,
+      "label": [
+        "cell-cell signaling"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0008150": {
+      "curie": "GO:0008150",
+      "hasLocalDefinition": true,
+      "label": [
+        "biological_process"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0009987": {
+      "curie": "GO:0009987",
+      "hasLocalDefinition": true,
+      "label": [
+        "cellular process"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0023052": {
+      "curie": "GO:0023052",
+      "hasLocalDefinition": true,
+      "label": [
+        "signaling"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0050789": {
+      "curie": "GO:0050789",
+      "hasLocalDefinition": true,
+      "label": [
+        "regulation of biological process"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0065007": {
+      "curie": "GO:0065007",
+      "hasLocalDefinition": true,
+      "label": [
+        "biological regulation"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0098916": {
+      "curie": "GO:0098916",
+      "hasLocalDefinition": true,
+      "label": [
+        "anterograde trans-synaptic signaling"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0099536": {
+      "curie": "GO:0099536",
+      "hasLocalDefinition": true,
+      "label": [
+        "synaptic signaling"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/GO_0099537": {
+      "curie": "GO:0099537",
+      "hasLocalDefinition": true,
+      "label": [
+        "trans-synaptic signaling"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/GO_0007154",
+    "http://purl.obolibrary.org/obo/GO_0007267",
+    "http://purl.obolibrary.org/obo/GO_0008150",
+    "http://purl.obolibrary.org/obo/GO_0009987",
+    "http://purl.obolibrary.org/obo/GO_0023052",
+    "http://purl.obolibrary.org/obo/GO_0050789",
+    "http://purl.obolibrary.org/obo/GO_0065007",
+    "http://purl.obolibrary.org/obo/GO_0098916",
+    "http://purl.obolibrary.org/obo/GO_0099536",
+    "http://purl.obolibrary.org/obo/GO_0099537",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "searchableAnnotationValues": false,
+  "shortForm": "GO_0007268",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

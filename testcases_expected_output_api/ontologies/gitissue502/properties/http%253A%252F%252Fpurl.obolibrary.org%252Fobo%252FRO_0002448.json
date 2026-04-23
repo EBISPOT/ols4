@@ -1,0 +1,39 @@
+{
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002448/ancestors"
+    },
+    "children": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002448/children"
+    },
+    "descendants": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002448/descendants"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002448/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002448/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002448?lang=en"
+    }
+  },
+  "annotation": {},
+  "description": [
+    "The entity A, immediately upstream of the entity B, has an activity that regulates an activity performed by B. For example, A and B may be gene products and binding of B by A regulates the kinase activity of B.\n\nA and B can be physically interacting but not necessarily. Immediately upstream means there are no intermediate entity between A and B."
+  ],
+  "has_children": true,
+  "iri": "http://purl.obolibrary.org/obo/RO_0002448",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": false,
+  "label": "directly regulates activity of",
+  "lang": "en",
+  "obo_id": "RO:0002448",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "short_form": "RO_0002448",
+  "synonyms": []
+}

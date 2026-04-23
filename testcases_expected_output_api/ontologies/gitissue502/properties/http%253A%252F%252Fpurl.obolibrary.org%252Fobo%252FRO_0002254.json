@@ -1,0 +1,33 @@
+{
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002254/ancestors"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002254/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002254/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/gitissue502/properties/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FRO_0002254?lang=en"
+    }
+  },
+  "annotation": {},
+  "description": [
+    "x has developmental contribution from y iff x has some part z such that z develops from y"
+  ],
+  "has_children": false,
+  "iri": "http://purl.obolibrary.org/obo/RO_0002254",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": false,
+  "label": "has developmental contribution from",
+  "lang": "en",
+  "obo_id": "RO:0002254",
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "short_form": "RO_0002254",
+  "synonyms": []
+}

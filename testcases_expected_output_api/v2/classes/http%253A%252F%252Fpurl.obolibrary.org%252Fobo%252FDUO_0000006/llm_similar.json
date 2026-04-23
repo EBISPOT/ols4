@@ -4,63 +4,63 @@
       "appearsIn": [
         "duo"
       ],
-      "curie": "DUO:0000005",
+      "curie": "DUO:0000006",
       "definedBy": [
         "duo"
       ],
       "definition": [
-        "This data use limitation indicates that use is allowed for health/medical/biomedical purposes and other biological research, including the study of population origins or ancestry.",
-        "This term was made obsolete as per https://github.com/EBISPOT/DUO/issues/45"
+        "This data use permission indicates that use is allowed for health/medical/biomedical purposes; does not include the study of population origins or ancestry."
       ],
-      "definitionProperty": [
-        "http://purl.obolibrary.org/obo/IAO_0000115",
-        "http://www.w3.org/2000/01/rdf-schema#comment"
-      ],
+      "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
       "directAncestor": [
-        "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"
+        "http://purl.obolibrary.org/obo/BFO_0000031",
+        "http://purl.obolibrary.org/obo/DUO_0000001",
+        "http://purl.obolibrary.org/obo/DUO_0000042",
+        "http://purl.obolibrary.org/obo/IAO_0000027",
+        "http://purl.obolibrary.org/obo/IAO_0000030"
       ],
       "directParent": [
-        "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"
+        "http://purl.obolibrary.org/obo/DUO_0000042"
       ],
-      "hasDirectChildren": false,
+      "hasDirectChildren": true,
       "hasDirectParents": true,
-      "hasHierarchicalChildren": false,
+      "hasHierarchicalChildren": true,
       "hasHierarchicalParents": true,
       "hierarchicalAncestor": [
-        "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"
+        "http://purl.obolibrary.org/obo/BFO_0000031",
+        "http://purl.obolibrary.org/obo/DUO_0000001",
+        "http://purl.obolibrary.org/obo/DUO_0000042",
+        "http://purl.obolibrary.org/obo/IAO_0000027",
+        "http://purl.obolibrary.org/obo/IAO_0000030"
       ],
       "hierarchicalParent": [
-        "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"
+        "http://purl.obolibrary.org/obo/DUO_0000042"
       ],
       "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "http://purl.obolibrary.org/obo/IAO_0000115": "This data use limitation indicates that use is allowed for health/medical/biomedical purposes and other biological research, including the study of population origins or ancestry.",
-      "http://purl.obolibrary.org/obo/IAO_0100001": "General Research Use, DUO_0000042\nClinical Care USe, DUO_0000043",
-      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000005",
-      "http://www.geneontology.org/formats/oboInOwl#shorthand": "GRU-CC",
+      "http://purl.obolibrary.org/obo/IAO_0000115": "This data use permission indicates that use is allowed for health/medical/biomedical purposes; does not include the study of population origins or ancestry.",
+      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000006",
+      "http://www.geneontology.org/formats/oboInOwl#shorthand": "HMB",
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-      "http://www.w3.org/2000/01/rdf-schema#comment": [
-        "This term was made obsolete as per https://github.com/EBISPOT/DUO/issues/45"
-      ],
-      "http://www.w3.org/2000/01/rdf-schema#label": "obsolete general research use and clinical care",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
+      "http://www.w3.org/2000/01/rdf-schema#label": "health or medical or biomedical research",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/DUO_0000042",
       "imported": false,
-      "iri": "http://purl.obolibrary.org/obo/DUO_0000005",
+      "iri": "http://purl.obolibrary.org/obo/DUO_0000006",
       "isDefiningOntology": true,
-      "isObsolete": true,
+      "isObsolete": false,
       "isPreferredRoot": false,
       "label": [
-        "obsolete general research use and clinical care"
+        "health or medical or biomedical research"
       ],
       "linkedEntities": {
-        "DUO:0000005": {
-          "curie": "DUO:0000005",
+        "DUO:0000006": {
+          "curie": "DUO:0000006",
           "definedBy": [
             "duo"
           ],
           "hasLocalDefinition": true,
-          "iri": "http://purl.obolibrary.org/obo/DUO_0000005",
+          "iri": "http://purl.obolibrary.org/obo/DUO_0000006",
           "label": [
-            "obsolete general research use and clinical care"
+            "health or medical or biomedical research"
           ],
           "numAppearsIn": 1.0,
           "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
@@ -68,25 +68,66 @@
             "class",
             "entity"
           ],
-          "url": "http://purl.obolibrary.org/obo/DUO_0000005"
+          "url": "http://purl.obolibrary.org/obo/DUO_0000006"
         },
-        "DUO:0000042": {
+        "http://purl.obolibrary.org/obo/BFO_0000031": {
+          "curie": "bfo:0000031",
+          "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+          "url": "http://purl.obolibrary.org/obo/BFO_0000031"
+        },
+        "http://purl.obolibrary.org/obo/DUO_0000001": {
+          "curie": "DUO:0000001",
+          "definedBy": [
+            "duo"
+          ],
+          "hasLocalDefinition": true,
+          "label": [
+            "data use permission"
+          ],
+          "numAppearsIn": 1.0,
+          "type": [
+            "class",
+            "entity"
+          ]
+        },
+        "http://purl.obolibrary.org/obo/DUO_0000042": {
           "curie": "DUO:0000042",
           "definedBy": [
             "duo"
           ],
           "hasLocalDefinition": true,
-          "iri": "http://purl.obolibrary.org/obo/DUO_0000042",
           "label": [
             "general research use"
           ],
           "numAppearsIn": 1.0,
-          "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
           "type": [
             "class",
             "entity"
+          ]
+        },
+        "http://purl.obolibrary.org/obo/IAO_0000027": {
+          "curie": "IAO:0000027",
+          "hasLocalDefinition": true,
+          "label": [
+            "IAO_0000027"
           ],
-          "url": "http://purl.obolibrary.org/obo/DUO_0000042"
+          "numAppearsIn": 1.0,
+          "type": [
+            "class",
+            "entity"
+          ]
+        },
+        "http://purl.obolibrary.org/obo/IAO_0000030": {
+          "curie": "IAO:0000030",
+          "hasLocalDefinition": true,
+          "label": [
+            "IAO_0000030"
+          ],
+          "numAppearsIn": 1.0,
+          "type": [
+            "class",
+            "entity"
+          ]
         },
         "http://purl.obolibrary.org/obo/IAO_0000115": {
           "curie": "IAO:0000115",
@@ -99,26 +140,6 @@
             "annotationProperty",
             "entity",
             "property"
-          ]
-        },
-        "http://purl.obolibrary.org/obo/IAO_0100001": {
-          "curie": "iao:0100001",
-          "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-          "url": "http://purl.obolibrary.org/obo/IAO_0100001"
-        },
-        "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass": {
-          "curie": "OIO:ObsoleteClass",
-          "definedBy": [
-            "oio"
-          ],
-          "hasLocalDefinition": false,
-          "label": [
-            "obsolete_class"
-          ],
-          "numAppearsIn": 2.0,
-          "type": [
-            "class",
-            "entity"
           ]
         },
         "http://www.geneontology.org/formats/oboInOwl#id": {
@@ -143,21 +164,6 @@
           "numAppearsIn": 3.0,
           "type": [
             "annotationProperty",
-            "entity",
-            "property"
-          ]
-        },
-        "http://www.w3.org/2000/01/rdf-schema#comment": {
-          "curie": "RDFS:comment",
-          "definedBy": [
-            "rdfs"
-          ],
-          "hasLocalDefinition": false,
-          "label": [
-            "comment"
-          ],
-          "numAppearsIn": 2.0,
-          "type": [
             "entity",
             "property"
           ]
@@ -194,28 +200,28 @@
         }
       },
       "linksTo": [
-        "http://purl.obolibrary.org/obo/DUO_0000005",
+        "http://purl.obolibrary.org/obo/DUO_0000001",
+        "http://purl.obolibrary.org/obo/DUO_0000006",
         "http://purl.obolibrary.org/obo/DUO_0000042",
+        "http://purl.obolibrary.org/obo/IAO_0000027",
+        "http://purl.obolibrary.org/obo/IAO_0000030",
         "http://purl.obolibrary.org/obo/IAO_0000115",
-        "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
         "http://www.geneontology.org/formats/oboInOwl#id",
         "http://www.geneontology.org/formats/oboInOwl#shorthand",
-        "http://www.w3.org/2000/01/rdf-schema#comment",
         "http://www.w3.org/2000/01/rdf-schema#label",
         "http://www.w3.org/2000/01/rdf-schema#subClassOf"
       ],
-      "numDescendants": 0.0,
-      "numHierarchicalDescendants": 0.0,
+      "numDescendants": 1.0,
+      "numHierarchicalDescendants": 1.0,
       "ontologyId": "duo",
       "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
       "ontologyPreferredPrefix": "DUO",
       "score": "<score>",
       "searchableAnnotationValues": [
-        "General Research Use, DUO_0000042\nClinical Care USe, DUO_0000043",
-        "This data use limitation indicates that use is allowed for health/medical/biomedical purposes and other biological research, including the study of population origins or ancestry.",
+        "This data use permission indicates that use is allowed for health/medical/biomedical purposes; does not include the study of population origins or ancestry.",
         false
       ],
-      "shortForm": "DUO_0000005",
+      "shortForm": "DUO_0000006",
       "type": [
         "class",
         "entity"

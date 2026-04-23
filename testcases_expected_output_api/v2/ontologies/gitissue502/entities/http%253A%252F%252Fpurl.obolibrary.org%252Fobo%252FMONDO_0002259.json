@@ -1,0 +1,724 @@
+{
+  "appearsIn": [
+    "direct-parent-with-annotation-axiom",
+    "gitissue502"
+  ],
+  "curie": "MONDO:0002259",
+  "definition": [
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "NCIT:P378"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "A non-neoplastic or neoplastic disorder that affects the testis or the ovary."
+    }
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000016",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/MONDO_0000001",
+    "http://purl.obolibrary.org/obo/MONDO_0005039",
+    "http://purl.obolibrary.org/obo/MONDO_0005151",
+    "http://purl.obolibrary.org/obo/MONDO_0700096",
+    "http://purl.obolibrary.org/obo/OGMS_0000031"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/MONDO_0005039",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "DOID:2277",
+            "MESH:D006058"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0005151"
+    }
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000016",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/MONDO_0000001",
+    "http://purl.obolibrary.org/obo/MONDO_0005039",
+    "http://purl.obolibrary.org/obo/MONDO_0005151",
+    "http://purl.obolibrary.org/obo/MONDO_0700096",
+    "http://purl.obolibrary.org/obo/OGMS_0000031"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/MONDO_0005039",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "DOID:2277",
+            "MESH:D006058"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0005151"
+    }
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/IAO_0000115": {
+    "axioms": [
+      {
+        "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "NCIT:P378"
+      }
+    ],
+    "type": [
+      "reification"
+    ],
+    "value": "A non-neoplastic or neoplastic disorder that affects the testis or the ovary."
+  },
+  "http://purl.org/dc/terms/conformsTo": [
+    "http://purl.obolibrary.org/obo/mondo/patterns/location.yaml",
+    "http://purl.obolibrary.org/obo/mondo/patterns/location_top.yaml"
+  ],
+  "http://www.geneontology.org/formats/oboInOwl#hasDbXref": [
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "MONDO:equivalentTo"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "DOID:2277"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "DOID:2277",
+            "MONDO:equivalentTo"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "MESH:D006058"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "DOID:2277",
+            "MONDO:equivalentTo"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "NCIT:C26786"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "DOID:2277",
+            "MONDO:equivalentTo"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "UMLS:C0018050"
+    }
+  ],
+  "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym": [
+    "disease or disorder of gonad",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "MONDO:patterns/location"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "gonad disease"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "MONDO:patterns/location_top"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "disease of gonad"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "MONDO:patterns/location_top"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "disorder of gonad"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "NCIT:C26786"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "disorder of gonads"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "NCIT:C26786"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "gonadal disorder"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "NCIT:C26786"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "gonadal disorders"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": [
+            "MONDO:design_pattern",
+            "MONDO:patterns/location"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "gonad disease or disorder"
+    }
+  ],
+  "http://www.geneontology.org/formats/oboInOwl#id": "MONDO:0002259",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "gonadal disorder",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+    "http://purl.obolibrary.org/obo/MONDO_0005039",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "DOID:2277",
+            "MESH:D006058"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0005151"
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0004026",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000991",
+      "isObsolete": false
+    }
+  ],
+  "http://www.w3.org/2002/07/owl#equivalentClass": {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2002/07/owl#intersectionOf": [
+      "http://purl.obolibrary.org/obo/MONDO_0000001",
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0004026",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000991",
+        "isObsolete": false
+      }
+    ]
+  },
+  "http://www.w3.org/2004/02/skos/core#exactMatch": [
+    "http://identifiers.org/mesh/D006058",
+    "http://linkedlifedata.com/resource/umls/id/C0018050",
+    "http://purl.obolibrary.org/obo/DOID_2277",
+    "http://purl.obolibrary.org/obo/NCIT_C26786"
+  ],
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0002259",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "gonadal disorder"
+  ],
+  "linkedEntities": {
+    "DOID:2277": {
+      "curie": "DOID:2277",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/DOID_2277"
+    },
+    "MESH:D006058": {
+      "curie": "MESH:D006058",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "http://id.nlm.nih.gov/mesh/D006058"
+    },
+    "MONDO:0002259": {
+      "curie": "MONDO:0002259",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/MONDO_0002259"
+    },
+    "NCIT:C26786": {
+      "curie": "NCIT:C26786",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C26786"
+    },
+    "NCIT:P378": {
+      "curie": "NCIT:P378",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/NCIT_P378"
+    },
+    "UMLS:C0018050": {
+      "curie": "UMLS:C0018050",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0018050"
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000016": {
+      "curie": "BFO:0000016",
+      "hasLocalDefinition": true,
+      "label": [
+        "disposition"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000017": {
+      "curie": "BFO:0000017",
+      "hasLocalDefinition": true,
+      "label": [
+        "realizable entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000020": {
+      "curie": "BFO:0000020",
+      "hasLocalDefinition": true,
+      "label": [
+        "specifically dependent continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/DOID_2277": {
+      "curie": "doid:2277",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/DOID_2277"
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "IAO_0000115"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0000001": {
+      "curie": "MONDO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "disease"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0005039": {
+      "curie": "MONDO:0005039",
+      "hasLocalDefinition": true,
+      "label": [
+        "reproductive system disorder"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0005151": {
+      "curie": "MONDO:0005151",
+      "hasLocalDefinition": true,
+      "label": [
+        "endocrine system disorder"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0700096": {
+      "curie": "MONDO:0700096",
+      "hasLocalDefinition": true,
+      "label": [
+        "human disease"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCIT_C26786": {
+      "curie": "ncit:C26786",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C26786"
+    },
+    "http://purl.obolibrary.org/obo/OGMS_0000031": {
+      "curie": "OGMS:0000031",
+      "hasLocalDefinition": true,
+      "label": [
+        "disease"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0004026": {
+      "curie": "RO:0004026",
+      "hasLocalDefinition": true,
+      "label": [
+        "disease has location"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/UBERON_0000991": {
+      "curie": "UBERON:0000991",
+      "hasLocalDefinition": true,
+      "label": [
+        "gonad"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.org/dc/terms/conformsTo": {
+      "curie": "conformsTo",
+      "hasLocalDefinition": true,
+      "label": [
+        "conformsTo"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+      "curie": "OIO:hasDbXref",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_dbxref"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym": {
+      "curie": "OIO:hasExactSynonym",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_exact_synonym"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#id": {
+      "curie": "id",
+      "hasLocalDefinition": true,
+      "label": [
+        "id"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#source": {
+      "curie": "source",
+      "hasLocalDefinition": true,
+      "label": [
+        "source"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2004/02/skos/core#exactMatch": {
+      "curie": "SKOS:exactMatch",
+      "definedBy": [
+        "skos"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has exact match"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000016",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/MONDO_0000001",
+    "http://purl.obolibrary.org/obo/MONDO_0005039",
+    "http://purl.obolibrary.org/obo/MONDO_0005151",
+    "http://purl.obolibrary.org/obo/MONDO_0700096",
+    "http://purl.obolibrary.org/obo/OGMS_0000031",
+    "http://purl.obolibrary.org/obo/RO_0004026",
+    "http://purl.obolibrary.org/obo/UBERON_0000991",
+    "http://purl.org/dc/terms/conformsTo",
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+    "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+    "http://www.geneontology.org/formats/oboInOwl#id",
+    "http://www.geneontology.org/formats/oboInOwl#source",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/2004/02/skos/core#exactMatch"
+  ],
+  "numDescendants": 4.0,
+  "numHierarchicalDescendants": 4.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "relatedTo": [
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0004026",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/UBERON_0000991",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/RO_0004026",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/UBERON_0000991"
+    }
+  ],
+  "searchableAnnotationValues": [
+    false
+  ],
+  "shortForm": "MONDO_0002259",
+  "synonym": [
+    "disease or disorder of gonad",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "MONDO:patterns/location"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "gonad disease"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "MONDO:patterns/location_top"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "disease of gonad"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "MONDO:patterns/location_top"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "disorder of gonad"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "NCIT:C26786"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "disorder of gonads"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "NCIT:C26786"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "gonadal disorder"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "NCIT:C26786"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "gonadal disorders"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": [
+            "MONDO:design_pattern",
+            "MONDO:patterns/location"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "gonad disease or disorder"
+    }
+  ],
+  "synonymProperty": "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-equivalentobjectproperty/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FequivalentObjectProperty%2523hasLifePartner?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasLifePartner",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "hasLifePartner",
+    "lang": "en",
+    "obo_id": "hasLifePartner",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
+    "ontology_name": "owl2primer-equivalentobjectproperty",
+    "ontology_prefix": "owl2primer-equivalentObjectProperty",
+    "short_form": "hasLifePartner",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/owl2primer-equivalentobjectproperty/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fowl2primer%252FequivalentObjectProperty%2523hasSpouse?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty#hasSpouse",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "hasSpouse",
+    "lang": "en",
+    "obo_id": "hasSpouse",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/owl2primer/equivalentObjectProperty.owl",
+    "ontology_name": "owl2primer-equivalentobjectproperty",
+    "ontology_prefix": "owl2primer-equivalentObjectProperty",
+    "short_form": "hasSpouse",
+    "synonyms": []
+  }
+]

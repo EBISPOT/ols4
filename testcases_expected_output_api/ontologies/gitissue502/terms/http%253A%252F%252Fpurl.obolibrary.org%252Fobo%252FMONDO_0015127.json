@@ -1,0 +1,102 @@
+{
+  "_links": {
+    "ancestors": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127/ancestors"
+    },
+    "children": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127/children"
+    },
+    "descendants": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127/descendants"
+    },
+    "graph": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127/graph"
+    },
+    "hierarchicalAncestors": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127/hierarchicalAncestors"
+    },
+    "hierarchicalChildren": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127/hierarchicalDescendants"
+    },
+    "hierarchicalParents": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127/hierarchicalParents"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127/jstree"
+    },
+    "parents": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127/parents"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/gitissue502/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMONDO_0015127?lang=en"
+    }
+  },
+  "annotation": {
+    "excluded_subClassOf": [
+      "http://purl.obolibrary.org/obo/MONDO_0015968"
+    ],
+    "has exact match": [
+      "http://www.orpha.net/ORDO/Orphanet_101957"
+    ],
+    "has_dbxref": [
+      "GARD:19801",
+      "ICD10CM:E23.0",
+      "Orphanet:101957",
+      "UMLS:C0020635"
+    ],
+    "id": [
+      "MONDO:0015127"
+    ]
+  },
+  "description": [
+    "Editor note: in ORDO, Orphanet:101957 is classified as genetic, yet has acquired subtypes"
+  ],
+  "has_children": true,
+  "in_subset": [
+    "disease_grouping",
+    "gard_rare",
+    "ordo_group_of_disorders",
+    "orphanet_rare",
+    "rare"
+  ],
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0015127",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_preferred_root": false,
+  "is_root": false,
+  "label": "pituitary deficiency",
+  "lang": "en",
+  "obo_id": "MONDO:0015127",
+  "obo_xref": [
+    {
+      "database": "GARD",
+      "id": "19801",
+      "url": "https://rarediseases.info.nih.gov/diseases/19801/index"
+    },
+    {
+      "database": "ICD10CM",
+      "description": "Orphanet:101957/specific",
+      "id": "E23.0"
+    },
+    {
+      "database": "Orphanet",
+      "description": "MONDO:equivalentTo",
+      "id": "101957",
+      "url": "http://www.orpha.net/ORDO/Orphanet_101957"
+    },
+    {
+      "database": "UMLS",
+      "description": "Orphanet:101957",
+      "id": "C0020635",
+      "url": "https://uts.nlm.nih.gov/uts/umls/concept/C0020635"
+    }
+  ],
+  "ontology_iri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontology_name": "gitissue502",
+  "ontology_prefix": "gitIssue502",
+  "short_form": "MONDO_0015127",
+  "synonyms": []
+}

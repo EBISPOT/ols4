@@ -1,0 +1,334 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "NCBITaxon:40674",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/NCBITaxon_117570",
+    "http://purl.obolibrary.org/obo/NCBITaxon_117571",
+    "http://purl.obolibrary.org/obo/NCBITaxon_131567",
+    "http://purl.obolibrary.org/obo/NCBITaxon_1338369",
+    "http://purl.obolibrary.org/obo/NCBITaxon_2759",
+    "http://purl.obolibrary.org/obo/NCBITaxon_32523",
+    "http://purl.obolibrary.org/obo/NCBITaxon_32524",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33154",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33208",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33213",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33511",
+    "http://purl.obolibrary.org/obo/NCBITaxon_6072",
+    "http://purl.obolibrary.org/obo/NCBITaxon_7711",
+    "http://purl.obolibrary.org/obo/NCBITaxon_7742",
+    "http://purl.obolibrary.org/obo/NCBITaxon_7776",
+    "http://purl.obolibrary.org/obo/NCBITaxon_8287",
+    "http://purl.obolibrary.org/obo/NCBITaxon_89593"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/NCBITaxon_32524"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/NCBITaxon_117570",
+    "http://purl.obolibrary.org/obo/NCBITaxon_117571",
+    "http://purl.obolibrary.org/obo/NCBITaxon_131567",
+    "http://purl.obolibrary.org/obo/NCBITaxon_1338369",
+    "http://purl.obolibrary.org/obo/NCBITaxon_2759",
+    "http://purl.obolibrary.org/obo/NCBITaxon_32523",
+    "http://purl.obolibrary.org/obo/NCBITaxon_32524",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33154",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33208",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33213",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33511",
+    "http://purl.obolibrary.org/obo/NCBITaxon_6072",
+    "http://purl.obolibrary.org/obo/NCBITaxon_7711",
+    "http://purl.obolibrary.org/obo/NCBITaxon_7742",
+    "http://purl.obolibrary.org/obo/NCBITaxon_7776",
+    "http://purl.obolibrary.org/obo/NCBITaxon_8287",
+    "http://purl.obolibrary.org/obo/NCBITaxon_89593"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/NCBITaxon_32524"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "Mammalia",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/NCBITaxon_32524",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/NCBITaxon_40674",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "Mammalia"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/NCBITaxon_117570": {
+      "curie": "NCBITaxon:117570",
+      "hasLocalDefinition": true,
+      "label": [
+        "Teleostomi"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_117571": {
+      "curie": "NCBITaxon:117571",
+      "hasLocalDefinition": true,
+      "label": [
+        "Euteleostomi"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_131567": {
+      "curie": "NCBITaxon:131567",
+      "hasLocalDefinition": true,
+      "label": [
+        "cellular organisms"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_1338369": {
+      "curie": "NCBITaxon:1338369",
+      "hasLocalDefinition": true,
+      "label": [
+        "Dipnotetrapodomorpha"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_2759": {
+      "curie": "NCBITaxon:2759",
+      "hasLocalDefinition": true,
+      "label": [
+        "Eukaryota"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_32523": {
+      "curie": "NCBITaxon:32523",
+      "hasLocalDefinition": true,
+      "label": [
+        "Tetrapoda"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_32524": {
+      "curie": "NCBITaxon:32524",
+      "hasLocalDefinition": true,
+      "label": [
+        "Amniota"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_33154": {
+      "curie": "NCBITaxon:33154",
+      "hasLocalDefinition": true,
+      "label": [
+        "Opisthokonta"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_33208": {
+      "curie": "NCBITaxon:33208",
+      "hasLocalDefinition": true,
+      "label": [
+        "Metazoa"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_33213": {
+      "curie": "NCBITaxon:33213",
+      "hasLocalDefinition": true,
+      "label": [
+        "Bilateria"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_33511": {
+      "curie": "NCBITaxon:33511",
+      "hasLocalDefinition": true,
+      "label": [
+        "Deuterostomia"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_6072": {
+      "curie": "NCBITaxon:6072",
+      "hasLocalDefinition": true,
+      "label": [
+        "Eumetazoa"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_7711": {
+      "curie": "NCBITaxon:7711",
+      "hasLocalDefinition": true,
+      "label": [
+        "Chordata"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_7742": {
+      "curie": "NCBITaxon:7742",
+      "hasLocalDefinition": true,
+      "label": [
+        "Vertebrata <vertebrates>"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_7776": {
+      "curie": "NCBITaxon:7776",
+      "hasLocalDefinition": true,
+      "label": [
+        "Gnathostomata <vertebrates>"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_8287": {
+      "curie": "NCBITaxon:8287",
+      "hasLocalDefinition": true,
+      "label": [
+        "Sarcopterygii"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCBITaxon_89593": {
+      "curie": "NCBITaxon:89593",
+      "hasLocalDefinition": true,
+      "label": [
+        "Craniata <chordates>"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/NCBITaxon_117570",
+    "http://purl.obolibrary.org/obo/NCBITaxon_117571",
+    "http://purl.obolibrary.org/obo/NCBITaxon_131567",
+    "http://purl.obolibrary.org/obo/NCBITaxon_1338369",
+    "http://purl.obolibrary.org/obo/NCBITaxon_2759",
+    "http://purl.obolibrary.org/obo/NCBITaxon_32523",
+    "http://purl.obolibrary.org/obo/NCBITaxon_32524",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33154",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33208",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33213",
+    "http://purl.obolibrary.org/obo/NCBITaxon_33511",
+    "http://purl.obolibrary.org/obo/NCBITaxon_6072",
+    "http://purl.obolibrary.org/obo/NCBITaxon_7711",
+    "http://purl.obolibrary.org/obo/NCBITaxon_7742",
+    "http://purl.obolibrary.org/obo/NCBITaxon_7776",
+    "http://purl.obolibrary.org/obo/NCBITaxon_8287",
+    "http://purl.obolibrary.org/obo/NCBITaxon_89593",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 13.0,
+  "numHierarchicalDescendants": 13.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "searchableAnnotationValues": false,
+  "shortForm": "NCBITaxon_40674",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

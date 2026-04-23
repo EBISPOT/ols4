@@ -1,0 +1,174 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "RO:0004029",
+  "definition": [
+    "A relationship between a disease and some feature of that disease, where the feature is either a phenotype or an isolated disease."
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "hasDirectChildren": false,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://purl.obolibrary.org/obo/IAO_0000115": "A relationship between a disease and some feature of that disease, where the feature is either a phenotype or an isolated disease.",
+  "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "RO:0004029",
+  "http://www.geneontology.org/formats/oboInOwl#id": "disease_has_feature",
+  "http://www.geneontology.org/formats/oboInOwl#shorthand": "disease_has_feature",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+  "http://www.w3.org/2000/01/rdf-schema#domain": "http://purl.obolibrary.org/obo/OGMS_0000031",
+  "http://www.w3.org/2000/01/rdf-schema#label": "disease has feature",
+  "http://www.w3.org/2002/07/owl#propertyChainAxiom": [
+    "http://purl.obolibrary.org/obo/BFO_0000051",
+    "http://purl.obolibrary.org/obo/RO_0004029"
+  ],
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/RO_0004029",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "disease has feature"
+  ],
+  "linkedEntities": {
+    "RO:0004029": {
+      "curie": "RO:0004029",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "http://purl.obolibrary.org/obo/RO_0004029"
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000051": {
+      "curie": "BFO:0000051",
+      "hasLocalDefinition": true,
+      "label": [
+        "has part"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "IAO_0000115"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/OGMS_0000031": {
+      "curie": "OGMS:0000031",
+      "hasLocalDefinition": true,
+      "label": [
+        "disease"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+      "curie": "OIO:hasDbXref",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_dbxref"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#id": {
+      "curie": "id",
+      "hasLocalDefinition": true,
+      "label": [
+        "id"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#shorthand": {
+      "curie": "shorthand",
+      "hasLocalDefinition": true,
+      "label": [
+        "shorthand"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#domain": {
+      "curie": "RDFS:domain",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "domain"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000051",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/OGMS_0000031",
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+    "http://www.geneontology.org/formats/oboInOwl#id",
+    "http://www.geneontology.org/formats/oboInOwl#shorthand",
+    "http://www.w3.org/2000/01/rdf-schema#domain",
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "searchableAnnotationValues": [
+    false
+  ],
+  "shortForm": "RO_0004029",
+  "type": [
+    "entity",
+    "objectProperty",
+    "property"
+  ]
+}

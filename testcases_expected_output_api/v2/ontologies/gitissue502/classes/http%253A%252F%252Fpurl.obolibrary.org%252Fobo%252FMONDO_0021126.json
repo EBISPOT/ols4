@@ -1,0 +1,217 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "MONDO:0021126",
+  "definition": [
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "MONDO:cjm"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "An characteristic of a disease that varies depending on whether the disease appears as an isolated feature or whether the disease is a syndrome consisting of multiple features."
+    }
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/MONDO_0021125",
+    "http://purl.obolibrary.org/obo/PATO_0000001"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/MONDO_0021125"
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/MONDO_0021125",
+    "http://purl.obolibrary.org/obo/PATO_0000001"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/MONDO_0021125"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/IAO_0000115": {
+    "axioms": [
+      {
+        "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "MONDO:cjm"
+      }
+    ],
+    "type": [
+      "reification"
+    ],
+    "value": "An characteristic of a disease that varies depending on whether the disease appears as an isolated feature or whether the disease is a syndrome consisting of multiple features."
+  },
+  "http://www.geneontology.org/formats/oboInOwl#id": "MONDO:0021126",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "syndromic or isolated",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/MONDO_0021125",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0021126",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "syndromic or isolated"
+  ],
+  "linkedEntities": {
+    "MONDO:0021126": {
+      "curie": "MONDO:0021126",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/MONDO_0021126"
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000020": {
+      "curie": "BFO:0000020",
+      "hasLocalDefinition": true,
+      "label": [
+        "specifically dependent continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "IAO_0000115"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0021125": {
+      "curie": "MONDO:0021125",
+      "hasLocalDefinition": true,
+      "label": [
+        "disease characteristic"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/PATO_0000001": {
+      "curie": "PATO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "quality"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+      "curie": "OIO:hasDbXref",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_dbxref"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#id": {
+      "curie": "id",
+      "hasLocalDefinition": true,
+      "label": [
+        "id"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/MONDO_0021125",
+    "http://purl.obolibrary.org/obo/PATO_0000001",
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+    "http://www.geneontology.org/formats/oboInOwl#id",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 1.0,
+  "numHierarchicalDescendants": 1.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "searchableAnnotationValues": [
+    false
+  ],
+  "shortForm": "MONDO_0021126",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

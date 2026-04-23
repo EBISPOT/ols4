@@ -1,0 +1,294 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "MONDO:0021152",
+  "definition": [
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "MONDO:cjm"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "A characteristic of a disease in which the cause of the disease is a genetic problem inherited from either or both parents."
+    }
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/MONDO_0021125",
+    "http://purl.obolibrary.org/obo/MONDO_0021149",
+    "http://purl.obolibrary.org/obo/PATO_0000001"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/MONDO_0021149"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/MONDO_0021125",
+    "http://purl.obolibrary.org/obo/MONDO_0021149",
+    "http://purl.obolibrary.org/obo/PATO_0000001"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/MONDO_0021149"
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/IAO_0000115": {
+    "axioms": [
+      {
+        "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "MONDO:cjm"
+      }
+    ],
+    "type": [
+      "reification"
+    ],
+    "value": "A characteristic of a disease in which the cause of the disease is a genetic problem inherited from either or both parents."
+  },
+  "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+    "axioms": [
+      {
+        "http://www.geneontology.org/formats/oboInOwl#source": "MONDO:equivalentTo"
+      }
+    ],
+    "type": [
+      "reification"
+    ],
+    "value": "EFO:0004420"
+  },
+  "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym": [
+    "constitutitional genetic",
+    "familial",
+    "genetic",
+    "hereditary",
+    "inherited genetic"
+  ],
+  "http://www.geneontology.org/formats/oboInOwl#id": "MONDO:0021152",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "inherited",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/MONDO_0021149",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0021152",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "inherited"
+  ],
+  "linkedEntities": {
+    "EFO:0004420": {
+      "curie": "EFO:0004420",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://www.ebi.ac.uk/efo/EFO_0004420"
+    },
+    "MONDO:0021152": {
+      "curie": "MONDO:0021152",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/MONDO_0021152"
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000020": {
+      "curie": "BFO:0000020",
+      "hasLocalDefinition": true,
+      "label": [
+        "specifically dependent continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "IAO_0000115"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0021125": {
+      "curie": "MONDO:0021125",
+      "hasLocalDefinition": true,
+      "label": [
+        "disease characteristic"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0021149": {
+      "curie": "MONDO:0021149",
+      "hasLocalDefinition": true,
+      "label": [
+        "hereditary vs non-hereditary etiology"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/PATO_0000001": {
+      "curie": "PATO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "quality"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+      "curie": "OIO:hasDbXref",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_dbxref"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym": {
+      "curie": "OIO:hasRelatedSynonym",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_related_synonym"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#id": {
+      "curie": "id",
+      "hasLocalDefinition": true,
+      "label": [
+        "id"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#source": {
+      "curie": "source",
+      "hasLocalDefinition": true,
+      "label": [
+        "source"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/MONDO_0021125",
+    "http://purl.obolibrary.org/obo/MONDO_0021149",
+    "http://purl.obolibrary.org/obo/PATO_0000001",
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+    "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
+    "http://www.geneontology.org/formats/oboInOwl#id",
+    "http://www.geneontology.org/formats/oboInOwl#source",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "searchableAnnotationValues": [
+    false
+  ],
+  "shortForm": "MONDO_0021152",
+  "synonym": [
+    "constitutitional genetic",
+    "familial",
+    "genetic",
+    "hereditary",
+    "inherited genetic"
+  ],
+  "synonymProperty": "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

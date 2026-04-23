@@ -4,12 +4,12 @@
       "appearsIn": [
         "duo"
       ],
-      "curie": "DUO:0000016",
+      "curie": "DUO:0000026",
       "definedBy": [
         "duo"
       ],
       "definition": [
-        "This data use modifier indicates that use is limited to genetic studies only (i.e., studies that include genotype research alone or both genotype and phenotype research, but not phenotype research exclusively)"
+        "This data use modifier indicates that use is limited to use by approved users."
       ],
       "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
       "directAncestor": [
@@ -35,30 +35,30 @@
         "http://purl.obolibrary.org/obo/DUO_0000017"
       ],
       "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "http://purl.obolibrary.org/obo/IAO_0000115": "This data use modifier indicates that use is limited to genetic studies only (i.e., studies that include genotype research alone or both genotype and phenotype research, but not phenotype research exclusively)",
-      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000016",
-      "http://www.geneontology.org/formats/oboInOwl#shorthand": "GSO",
+      "http://purl.obolibrary.org/obo/IAO_0000115": "This data use modifier indicates that use is limited to use by approved users.",
+      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000026",
+      "http://www.geneontology.org/formats/oboInOwl#shorthand": "US",
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-      "http://www.w3.org/2000/01/rdf-schema#label": "genetic studies only",
+      "http://www.w3.org/2000/01/rdf-schema#label": "user specific restriction",
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/DUO_0000017",
       "imported": false,
-      "iri": "http://purl.obolibrary.org/obo/DUO_0000016",
+      "iri": "http://purl.obolibrary.org/obo/DUO_0000026",
       "isDefiningOntology": true,
       "isObsolete": false,
       "isPreferredRoot": false,
       "label": [
-        "genetic studies only"
+        "user specific restriction"
       ],
       "linkedEntities": {
-        "DUO:0000016": {
-          "curie": "DUO:0000016",
+        "DUO:0000026": {
+          "curie": "DUO:0000026",
           "definedBy": [
             "duo"
           ],
           "hasLocalDefinition": true,
-          "iri": "http://purl.obolibrary.org/obo/DUO_0000016",
+          "iri": "http://purl.obolibrary.org/obo/DUO_0000026",
           "label": [
-            "genetic studies only"
+            "user specific restriction"
           ],
           "numAppearsIn": 1.0,
           "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
@@ -66,7 +66,7 @@
             "class",
             "entity"
           ],
-          "url": "http://purl.obolibrary.org/obo/DUO_0000016"
+          "url": "http://purl.obolibrary.org/obo/DUO_0000026"
         },
         "http://purl.obolibrary.org/obo/BFO_0000031": {
           "curie": "bfo:0000031",
@@ -183,8 +183,8 @@
         }
       },
       "linksTo": [
-        "http://purl.obolibrary.org/obo/DUO_0000016",
         "http://purl.obolibrary.org/obo/DUO_0000017",
+        "http://purl.obolibrary.org/obo/DUO_0000026",
         "http://purl.obolibrary.org/obo/IAO_0000027",
         "http://purl.obolibrary.org/obo/IAO_0000030",
         "http://purl.obolibrary.org/obo/IAO_0000115",
@@ -200,10 +200,10 @@
       "ontologyPreferredPrefix": "DUO",
       "score": "<score>",
       "searchableAnnotationValues": [
-        "This data use modifier indicates that use is limited to genetic studies only (i.e., studies that include genotype research alone or both genotype and phenotype research, but not phenotype research exclusively)",
+        "This data use modifier indicates that use is limited to use by approved users.",
         false
       ],
-      "shortForm": "DUO_0000016",
+      "shortForm": "DUO_0000026",
       "type": [
         "class",
         "entity"

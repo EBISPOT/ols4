@@ -1,0 +1,112 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "RO:0002487",
+  "hasDirectChildren": true,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+  "http://www.w3.org/2000/01/rdf-schema#domain": "http://purl.obolibrary.org/obo/BFO_0000004",
+  "http://www.w3.org/2000/01/rdf-schema#label": "relation between physical entity and a process or stage",
+  "http://www.w3.org/2000/01/rdf-schema#range": "http://purl.obolibrary.org/obo/BFO_0000003",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/RO_0002487",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "relation between physical entity and a process or stage"
+  ],
+  "linkedEntities": {
+    "http://purl.obolibrary.org/obo/BFO_0000003": {
+      "curie": "BFO:0000003",
+      "hasLocalDefinition": true,
+      "label": [
+        "occurrent"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000004": {
+      "curie": "BFO:0000004",
+      "hasLocalDefinition": true,
+      "label": [
+        "independent continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#domain": {
+      "curie": "RDFS:domain",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "domain"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#range": {
+      "curie": "RDFS:range",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "range"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000003",
+    "http://purl.obolibrary.org/obo/BFO_0000004",
+    "http://www.w3.org/2000/01/rdf-schema#domain",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#range"
+  ],
+  "numDescendants": 7.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "searchableAnnotationValues": false,
+  "shortForm": "RO_0002487",
+  "type": [
+    "entity",
+    "objectProperty",
+    "property"
+  ]
+}

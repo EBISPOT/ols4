@@ -1,0 +1,271 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "RO:0004021",
+  "definition": [
+    "A relation that holds between the disease and a process where the physical basis of the disease disrupts execution of a key biological process.",
+    "Editor note: TODO property chain: disease_has_location <- dhbido o occurs_in"
+  ],
+  "definitionProperty": [
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://www.w3.org/2000/01/rdf-schema#comment"
+  ],
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/RO_0004019",
+    "http://purl.obolibrary.org/obo/RO_0004023",
+    "http://purl.obolibrary.org/obo/RO_0004024"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/RO_0004019",
+    "http://purl.obolibrary.org/obo/RO_0004024"
+  ],
+  "hasDirectChildren": false,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://purl.obolibrary.org/obo/IAO_0000115": "A relation that holds between the disease and a process where the physical basis of the disease disrupts execution of a key biological process.",
+  "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "RO:0004021",
+  "http://www.geneontology.org/formats/oboInOwl#id": "disease_has_basis_in_disruption_of",
+  "http://www.geneontology.org/formats/oboInOwl#shorthand": "disease_has_basis_in_disruption_of",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+  "http://www.w3.org/2000/01/rdf-schema#comment": "Editor note: TODO property chain: disease_has_location <- dhbido o occurs_in",
+  "http://www.w3.org/2000/01/rdf-schema#label": [
+    "disease caused by disruption of",
+    "disease has basis in disruption of"
+  ],
+  "http://www.w3.org/2000/01/rdf-schema#range": "http://purl.obolibrary.org/obo/BFO_0000015",
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+    "http://purl.obolibrary.org/obo/RO_0004019",
+    "http://purl.obolibrary.org/obo/RO_0004024"
+  ],
+  "http://www.w3.org/2002/07/owl#propertyChainAxiom": [
+    "http://purl.obolibrary.org/obo/BFO_0000050",
+    "http://purl.obolibrary.org/obo/RO_0004021"
+  ],
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/RO_0004021",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "disease caused by disruption of",
+    "disease has basis in disruption of"
+  ],
+  "linkedEntities": {
+    "RO:0004021": {
+      "curie": "RO:0004021",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "http://purl.obolibrary.org/obo/RO_0004021"
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000015": {
+      "curie": "BFO:0000015",
+      "hasLocalDefinition": true,
+      "label": [
+        "process"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000050": {
+      "curie": "BFO:0000050",
+      "hasLocalDefinition": true,
+      "label": [
+        "part of"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "IAO_0000115"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0004019": {
+      "curie": "RO:0004019",
+      "hasLocalDefinition": true,
+      "label": [
+        "disease has basis in"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0004023": {
+      "curie": "RO:0004023",
+      "hasLocalDefinition": true,
+      "label": [
+        "causal relationship with disease as subject"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0004024": {
+      "curie": "RO:0004024",
+      "hasLocalDefinition": true,
+      "label": [
+        "disease causes disruption of",
+        "disease disrupts"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+      "curie": "OIO:hasDbXref",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_dbxref"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#id": {
+      "curie": "id",
+      "hasLocalDefinition": true,
+      "label": [
+        "id"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#shorthand": {
+      "curie": "shorthand",
+      "hasLocalDefinition": true,
+      "label": [
+        "shorthand"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#comment": {
+      "curie": "RDFS:comment",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "comment"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#range": {
+      "curie": "RDFS:range",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "range"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": {
+      "curie": "RDFS:subPropertyOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subPropertyOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000015",
+    "http://purl.obolibrary.org/obo/BFO_0000050",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/RO_0004019",
+    "http://purl.obolibrary.org/obo/RO_0004023",
+    "http://purl.obolibrary.org/obo/RO_0004024",
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+    "http://www.geneontology.org/formats/oboInOwl#id",
+    "http://www.geneontology.org/formats/oboInOwl#shorthand",
+    "http://www.w3.org/2000/01/rdf-schema#comment",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#range",
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "searchableAnnotationValues": [
+    false
+  ],
+  "shortForm": "RO_0004021",
+  "type": [
+    "entity",
+    "objectProperty",
+    "property"
+  ]
+}

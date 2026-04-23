@@ -1,0 +1,1031 @@
+{
+  "appearsIn": [
+    "gitissue502"
+  ],
+  "curie": "MONDO:0018555",
+  "definition": [
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "NCIT:C113347"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "Abnormal ovarian or testicular function due to insufficient hormonal stimulation from the hypothalamic-pituitary axis."
+    }
+  ],
+  "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+  "directAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000016",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/MONDO_0000001",
+    "http://purl.obolibrary.org/obo/MONDO_0002146",
+    "http://purl.obolibrary.org/obo/MONDO_0002259",
+    "http://purl.obolibrary.org/obo/MONDO_0003847",
+    "http://purl.obolibrary.org/obo/MONDO_0005039",
+    "http://purl.obolibrary.org/obo/MONDO_0005151",
+    "http://purl.obolibrary.org/obo/MONDO_0700096",
+    "http://purl.obolibrary.org/obo/OGMS_0000031"
+  ],
+  "directParent": [
+    "http://purl.obolibrary.org/obo/MONDO_0003847",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "DOID:0090070",
+            "MONDO:Redundant",
+            "NCIT:C113347"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0002146"
+    }
+  ],
+  "hasDirectChildren": true,
+  "hasDirectParents": true,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": true,
+  "hierarchicalAncestor": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000016",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/MONDO_0000001",
+    "http://purl.obolibrary.org/obo/MONDO_0002146",
+    "http://purl.obolibrary.org/obo/MONDO_0002259",
+    "http://purl.obolibrary.org/obo/MONDO_0003847",
+    "http://purl.obolibrary.org/obo/MONDO_0005039",
+    "http://purl.obolibrary.org/obo/MONDO_0005151",
+    "http://purl.obolibrary.org/obo/MONDO_0700096",
+    "http://purl.obolibrary.org/obo/OGMS_0000031"
+  ],
+  "hierarchicalParent": [
+    "http://purl.obolibrary.org/obo/MONDO_0003847",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "DOID:0090070",
+            "MONDO:Redundant",
+            "NCIT:C113347"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0002146"
+    }
+  ],
+  "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+  "http://purl.obolibrary.org/obo/IAO_0000115": {
+    "axioms": [
+      {
+        "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "NCIT:C113347"
+      }
+    ],
+    "type": [
+      "reification"
+    ],
+    "value": "Abnormal ovarian or testicular function due to insufficient hormonal stimulation from the hypothalamic-pituitary axis."
+  },
+  "http://purl.obolibrary.org/obo/mondo#should_conform_to": "http://purl.obolibrary.org/obo/mondo/patterns/OMIM_phenotypic_series.yaml",
+  "http://www.geneontology.org/formats/oboInOwl#hasDbXref": [
+    "GARD:16533",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "MONDO:equivalentObsolete"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "DOID:7455"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "MONDO:equivalentTo"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "DOID:0090070"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "MONDO:equivalentTo"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "NCIT:C113347"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "MONDO:equivalentTo"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "SCTID:33927004"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "MONDO:equivalentTo"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "UMLS:CN235466"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "MONDO:otherHierarchy"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "HP:0000044"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "DOID:0090070",
+            "MONDO:equivalentTo"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "OMIMPS:147950"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "DOID:0090070",
+            "MONDO:equivalentTo"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "Orphanet:432"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "DOID:0090070",
+            "MONDO:relatedTo",
+            "Orphanet:432",
+            "Orphanet:432/inclusion",
+            "Orphanet:432/ntbt"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "ICD10CM:E23.0"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "MONDO:i2s",
+            "MONDO:relatedTo"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "ICD9:253.4"
+    }
+  ],
+  "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym": [
+    "hypogonadism, hypogonadotropic",
+    "low gonadotropins (secondary hypogonadism)",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "NCIT:C113347"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "central hypogonadism"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "NCIT:C113347"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "hypogonadotropic hypogonadism"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "NCIT:C113347"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "secondary hypogonadism"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "OMIMPS:147950"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "hypogonadotropic hypogonadism with or without anosmia"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "Orphanet:432"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "Normosmic idiopathic hypogonadotropic hypogonadism"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "Orphanet:432"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "gonadotropic deficiency"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "Orphanet:432"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "nIHH"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "Orphanet:432"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "normosmic congenital hypogonadotropic hypogonadism"
+    }
+  ],
+  "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym": [
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "DOID:0090070"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "congenital idiopathic hypogonadotropic hypogonadism"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "DOID:0090070"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "isolated congenital gonadotropin deficiency"
+    }
+  ],
+  "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym": [
+    "isolated hypogonadotropic hypogonadism",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "MONDO:0004228"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "hypogonadotropism"
+    }
+  ],
+  "http://www.geneontology.org/formats/oboInOwl#id": "MONDO:0018555",
+  "http://www.geneontology.org/formats/oboInOwl#inSubset": [
+    "http://purl.obolibrary.org/obo/mondo#gard_rare",
+    "http://purl.obolibrary.org/obo/mondo#nord_rare",
+    "http://purl.obolibrary.org/obo/mondo#orphanet_rare",
+    "http://purl.obolibrary.org/obo/mondo#rare",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": "Orphanet:432"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/mondo#ordo_disease"
+    }
+  ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "hypogonadotropic hypogonadism",
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+    "http://purl.obolibrary.org/obo/MONDO_0003847",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#source": [
+            "DOID:0090070",
+            "MONDO:Redundant",
+            "NCIT:C113347"
+          ]
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "http://purl.obolibrary.org/obo/MONDO_0002146"
+    },
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0004021",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0005183",
+      "isObsolete": false
+    }
+  ],
+  "http://www.w3.org/2002/07/owl#equivalentClass": {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+    "http://www.w3.org/2002/07/owl#intersectionOf": [
+      "http://purl.obolibrary.org/obo/MONDO_0002146",
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0004021",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0005183",
+        "isObsolete": false
+      }
+    ]
+  },
+  "http://www.w3.org/2004/02/skos/core#exactMatch": [
+    "http://identifiers.org/snomedct/33927004",
+    "http://linkedlifedata.com/resource/umls/id/CN235466",
+    "http://purl.obolibrary.org/obo/DOID_0090070",
+    "http://purl.obolibrary.org/obo/NCIT_C113347",
+    "http://www.orpha.net/ORDO/Orphanet_432",
+    "https://omim.org/phenotypicSeries/PS147950"
+  ],
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/MONDO_0018555",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "hypogonadotropic hypogonadism"
+  ],
+  "linkedEntities": {
+    "DOID:0090070": {
+      "curie": "DOID:0090070",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/DOID_0090070"
+    },
+    "DOID:7455": {
+      "curie": "DOID:7455",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/DOID_7455"
+    },
+    "GARD:16533": {
+      "curie": "GARD:16533",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "https://rarediseases.info.nih.gov/diseases/16533/index"
+    },
+    "HP:0000044": {
+      "curie": "HP:0000044",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/HP_0000044"
+    },
+    "MONDO:0004228": {
+      "curie": "MONDO:0004228",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/MONDO_0004228"
+    },
+    "MONDO:0018555": {
+      "curie": "MONDO:0018555",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/MONDO_0018555"
+    },
+    "NCIT:C113347": {
+      "curie": "NCIT:C113347",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C113347"
+    },
+    "OMIMPS:147950": {
+      "curie": "OMIMPS:147950",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "https://omim.org/MIM:PS147950"
+    },
+    "Orphanet:432": {
+      "curie": "Orphanet:432",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://www.orpha.net/ORDO/Orphanet_432"
+    },
+    "SCTID:33927004": {
+      "curie": "SCTID:33927004",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.bioontology.org/ontology/SNOMEDCT/33927004"
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000002": {
+      "curie": "BFO:0000002",
+      "hasLocalDefinition": true,
+      "label": [
+        "continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000016": {
+      "curie": "BFO:0000016",
+      "hasLocalDefinition": true,
+      "label": [
+        "disposition"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000017": {
+      "curie": "BFO:0000017",
+      "hasLocalDefinition": true,
+      "label": [
+        "realizable entity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/BFO_0000020": {
+      "curie": "BFO:0000020",
+      "hasLocalDefinition": true,
+      "label": [
+        "specifically dependent continuant"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/DOID_0090070": {
+      "curie": "doid:0090070",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/DOID_0090070"
+    },
+    "http://purl.obolibrary.org/obo/GO_0005183": {
+      "curie": "GO:0005183",
+      "hasLocalDefinition": true,
+      "label": [
+        "gonadotropin hormone-releasing hormone activity"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/IAO_0000115": {
+      "curie": "IAO:0000115",
+      "hasLocalDefinition": true,
+      "label": [
+        "IAO_0000115"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0000001": {
+      "curie": "MONDO:0000001",
+      "hasLocalDefinition": true,
+      "label": [
+        "disease"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0002146": {
+      "curie": "MONDO:0002146",
+      "hasLocalDefinition": true,
+      "label": [
+        "hypogonadism"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0002259": {
+      "curie": "MONDO:0002259",
+      "hasLocalDefinition": true,
+      "label": [
+        "gonadal disorder"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0003847": {
+      "curie": "MONDO:0003847",
+      "hasLocalDefinition": true,
+      "label": [
+        "hereditary disease"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0005039": {
+      "curie": "MONDO:0005039",
+      "hasLocalDefinition": true,
+      "label": [
+        "reproductive system disorder"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0005151": {
+      "curie": "MONDO:0005151",
+      "hasLocalDefinition": true,
+      "label": [
+        "endocrine system disorder"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/MONDO_0700096": {
+      "curie": "MONDO:0700096",
+      "hasLocalDefinition": true,
+      "label": [
+        "human disease"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/NCIT_C113347": {
+      "curie": "ncit:C113347",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://purl.obolibrary.org/obo/NCIT_C113347"
+    },
+    "http://purl.obolibrary.org/obo/OGMS_0000031": {
+      "curie": "OGMS:0000031",
+      "hasLocalDefinition": true,
+      "label": [
+        "disease"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "class",
+        "entity"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/RO_0004021": {
+      "curie": "RO:0004021",
+      "hasLocalDefinition": true,
+      "label": [
+        "disease caused by disruption of",
+        "disease has basis in disruption of"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    },
+    "http://purl.obolibrary.org/obo/mondo#should_conform_to": {
+      "curie": "should_conform_to",
+      "hasLocalDefinition": true,
+      "label": [
+        "should_conform_to"
+      ],
+      "numAppearsIn": 1.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+      "curie": "OIO:hasDbXref",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_dbxref"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym": {
+      "curie": "OIO:hasExactSynonym",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_exact_synonym"
+      ],
+      "numAppearsIn": 4.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym": {
+      "curie": "OIO:hasNarrowSynonym",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_narrow_synonym"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym": {
+      "curie": "OIO:hasRelatedSynonym",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has_related_synonym"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#id": {
+      "curie": "id",
+      "hasLocalDefinition": true,
+      "label": [
+        "id"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#inSubset": {
+      "curie": "OIO:inSubset",
+      "definedBy": [
+        "oio"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "in_subset"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.geneontology.org/formats/oboInOwl#source": {
+      "curie": "source",
+      "hasLocalDefinition": true,
+      "label": [
+        "source"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "annotationProperty",
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.orpha.net/ORDO/Orphanet_432": {
+      "curie": "orphanet.ordo:432",
+      "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+      "url": "http://www.orpha.net/ORDO/Orphanet_432"
+    },
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "curie": "RDFS:subClassOf",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "subClassOf"
+      ],
+      "numAppearsIn": 2.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    },
+    "http://www.w3.org/2004/02/skos/core#exactMatch": {
+      "curie": "SKOS:exactMatch",
+      "definedBy": [
+        "skos"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "has exact match"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "objectProperty",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://purl.obolibrary.org/obo/BFO_0000002",
+    "http://purl.obolibrary.org/obo/BFO_0000016",
+    "http://purl.obolibrary.org/obo/BFO_0000017",
+    "http://purl.obolibrary.org/obo/BFO_0000020",
+    "http://purl.obolibrary.org/obo/GO_0005183",
+    "http://purl.obolibrary.org/obo/IAO_0000115",
+    "http://purl.obolibrary.org/obo/MONDO_0000001",
+    "http://purl.obolibrary.org/obo/MONDO_0002146",
+    "http://purl.obolibrary.org/obo/MONDO_0002259",
+    "http://purl.obolibrary.org/obo/MONDO_0003847",
+    "http://purl.obolibrary.org/obo/MONDO_0005039",
+    "http://purl.obolibrary.org/obo/MONDO_0005151",
+    "http://purl.obolibrary.org/obo/MONDO_0700096",
+    "http://purl.obolibrary.org/obo/OGMS_0000031",
+    "http://purl.obolibrary.org/obo/RO_0004021",
+    "http://purl.obolibrary.org/obo/mondo#should_conform_to",
+    "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+    "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+    "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym",
+    "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
+    "http://www.geneontology.org/formats/oboInOwl#id",
+    "http://www.geneontology.org/formats/oboInOwl#inSubset",
+    "http://www.geneontology.org/formats/oboInOwl#source",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "http://www.w3.org/2004/02/skos/core#exactMatch"
+  ],
+  "numDescendants": 2.0,
+  "numHierarchicalDescendants": 2.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "relatedTo": [
+    {
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+      "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/RO_0004021",
+      "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GO_0005183",
+      "isObsolete": false,
+      "property": "http://purl.obolibrary.org/obo/RO_0004021",
+      "type": [
+        "related"
+      ],
+      "value": "http://purl.obolibrary.org/obo/GO_0005183"
+    }
+  ],
+  "searchableAnnotationValues": [
+    false
+  ],
+  "shortForm": "MONDO_0018555",
+  "synonym": [
+    "hypogonadism, hypogonadotropic",
+    "isolated hypogonadotropic hypogonadism",
+    "low gonadotropins (secondary hypogonadism)",
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "DOID:0090070"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "congenital idiopathic hypogonadotropic hypogonadism"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "DOID:0090070"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "isolated congenital gonadotropin deficiency"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "MONDO:0004228"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "hypogonadotropism"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "NCIT:C113347"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "central hypogonadism"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "NCIT:C113347"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "hypogonadotropic hypogonadism"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "NCIT:C113347"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "secondary hypogonadism"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "OMIMPS:147950"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "hypogonadotropic hypogonadism with or without anosmia"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "Orphanet:432"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "Normosmic idiopathic hypogonadotropic hypogonadism"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "Orphanet:432"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "gonadotropic deficiency"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "Orphanet:432"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "nIHH"
+    },
+    {
+      "axioms": [
+        {
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": "Orphanet:432"
+        }
+      ],
+      "type": [
+        "reification"
+      ],
+      "value": "normosmic congenital hypogonadotropic hypogonadism"
+    }
+  ],
+  "synonymProperty": [
+    "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+    "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym",
+    "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"
+  ],
+  "type": [
+    "class",
+    "entity"
+  ]
+}

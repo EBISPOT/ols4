@@ -1,0 +1,52 @@
+{
+  "appearsIn": [
+    "efo-iri-labels",
+    "gitissue502"
+  ],
+  "curie": "GO:0008150",
+  "hasDirectChildren": true,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": true,
+  "hasHierarchicalParents": false,
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "biological_process",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/GO_0008150",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "biological_process"
+  ],
+  "linkedEntities": {
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": true,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 78.0,
+  "numHierarchicalDescendants": 81.0,
+  "ontologyId": "gitissue502",
+  "ontologyIri": "http://purl.obolibrary.org/obo/mondo.owl",
+  "ontologyPreferredPrefix": "gitIssue502",
+  "searchableAnnotationValues": false,
+  "shortForm": "GO_0008150",
+  "type": [
+    "class",
+    "entity"
+  ]
+}
