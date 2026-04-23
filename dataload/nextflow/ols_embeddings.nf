@@ -104,7 +104,7 @@ workflow embeddings {
     models_and_parquets = avg_embeddings.out.avg.filter { !it[0].endsWith('_pca16_avg') }
     run_semsim(models_and_parquets.combine(Channel.from(pairs)), config.semsim_thresholds)
 
-    // Publish per-ontology gzipped parquets for full-dimension and PCA variants
+    // Publish per-ontology parquets for full-dimension and PCA variants
     publish_per_ontology_parquets(join_embeddings.out.embeddings.concat(pca.out.pca_parquets))
 
     emit:
@@ -269,7 +269,7 @@ process join_embeddings {
   time '4h'
   cpus 32
 
-  publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.parquet.gz'
+  publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.parquet'
 
   input:
   tuple val(model), val(has_prev), path(prev_pq, stageAs: 'prev.parquet'), val(has_new_pq), path(new_pq)
@@ -277,7 +277,6 @@ process join_embeddings {
 
   output:
   tuple val(model), path("${model.split('/')[1]}.parquet"), emit: embeddings
-  path("${model.split('/')[1]}.parquet.gz")
 
   script:
   def model_short = model.split('/')[1]
@@ -381,7 +380,6 @@ process join_embeddings {
     TO '${model_short}.parquet'
     (FORMAT PARQUET, COMPRESSION ZSTD);
   "
-  pigz --best --keep ${model_short}.parquet
   """
 }
 
@@ -393,7 +391,7 @@ process pca {
     time '4h'
     cpus "32"
 
-    publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.parquet.gz'
+    publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.parquet'
     publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.json'
 
     input:
@@ -402,14 +400,12 @@ process pca {
     output:
     tuple val("${model}_pca${n_components}"), path("${model.split('/')[1]}_pca${n_components}.parquet"), emit: pca_parquets
     path("${model.split('/')[1]}_pca${n_components}.json"), emit: pca_jsons
-    path("${model.split('/')[1]}_pca${n_components}.parquet.gz")
 
     script:
     """
     python3 /opt/ols_embed/pca.py ${parquet} ${model.split('/')[1]}_pca${n_components}.parquet ${n_components} \
         --pca-model-out ${model.split('/')[1]}_pca${n_components}.joblib \
         --pca-json-out ${model.split('/')[1]}_pca${n_components}.json
-    pigz --best --keep ${model.split('/')[1]}_pca${n_components}.parquet
     """
 }
 
@@ -421,20 +417,18 @@ process avg_embeddings {
     time '4h'
     cpus "32"
 
-    publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.parquet.gz'
+    publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.parquet'
 
     input:
     tuple val(model), path(parquet)
 
     output:
     tuple val("${model}_avg"), path("${model.split('/')[1]}_avg.parquet"), emit: avg
-    path("${model.split('/')[1]}_avg.parquet.gz")
 
     script:
     def model_short = model.split('/')[1]
     """
     python3 /opt/ols_embed/avg_embeddings.py ${parquet} ${model_short}_avg.parquet
-    pigz --best --keep ${model_short}_avg.parquet
     """
 }
 
@@ -449,7 +443,7 @@ process visualize_embeddings {
     errorStrategy "retry"
     maxRetries 100
 
-    publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.parquet.gz'
+    publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.parquet'
     publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.png'
     publishDir "${params.out}/embeddings", overwrite: true, pattern: '*_umap_web/'
 
@@ -458,7 +452,6 @@ process visualize_embeddings {
 
     output:
     path("${model.split('/')[1].replaceAll('_avg$', '')}_umap.parquet")
-    path("${model.split('/')[1].replaceAll('_avg$', '')}_umap.parquet.gz")
     path("${model.split('/')[1].replaceAll('_avg$', '')}_umap.png")
     path("${model.split('/')[1].replaceAll('_avg$', '')}_umap_web/")
 
@@ -471,8 +464,6 @@ process visualize_embeddings {
 
     python3 /opt/ols_embed/convert_umap_to_web.py ${model_short}_umap.parquet \\
         --output-dir ${model_short}_umap_web
-
-    pigz --best --keep ${model_short}_umap.parquet
     """
 }
 
@@ -515,7 +506,7 @@ process publish_per_ontology_parquets {
     tuple val(model), path(parquet)
 
     output:
-    path("*.parquet.gz")
+    path("*.parquet")
 
     script:
     """
@@ -527,7 +518,6 @@ process publish_per_ontology_parquets {
         COPY (SELECT * FROM read_parquet('${parquet}') WHERE ontology_id = '\$ont_id')
         TO '\$ont_id.parquet' (FORMAT PARQUET, COMPRESSION ZSTD);
       "
-      pigz --best "\$ont_id.parquet"
     done
     """
 }
