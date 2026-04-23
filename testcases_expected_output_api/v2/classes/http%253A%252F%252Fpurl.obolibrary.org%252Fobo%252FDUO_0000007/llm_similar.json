@@ -4,94 +4,63 @@
       "appearsIn": [
         "duo"
       ],
-      "curatedFrom": [
-        {
-          "source": "test-curations",
-          "subjectCategories": [
-            "biomedical"
-          ],
-          "text": "genomic data sharing"
-        }
-      ],
-      "curatedFromSources": [
-        "test-curations"
-      ],
-      "curie": "DUO:0000007",
+      "curie": "DUO:0000005",
       "definedBy": [
         "duo"
       ],
       "definition": [
-        "This data use permission indicates that use is allowed provided it is related to the specified disease.",
-        "This term should be coupled with a term describing a disease from an ontology to specify the disease the restriction applies to. \n\nDUO recommends MONDO be used, to provide the basis for automated evaluation. For more information see https://github.com/EBISPOT/DUO/blob/master/MONDO_Overview.md\n\nOther resources, such as the Disease Ontology, HPO, SNOMED-CT or others, can also be used. When those other resources are being used, this may require an extra mapping step to leverage automated matching algorithms."
+        "This data use limitation indicates that use is allowed for health/medical/biomedical purposes and other biological research, including the study of population origins or ancestry.",
+        "This term was made obsolete as per https://github.com/EBISPOT/DUO/issues/45"
       ],
       "definitionProperty": [
         "http://purl.obolibrary.org/obo/IAO_0000115",
         "http://www.w3.org/2000/01/rdf-schema#comment"
       ],
       "directAncestor": [
-        "http://purl.obolibrary.org/obo/BFO_0000001",
-        "http://purl.obolibrary.org/obo/BFO_0000002",
-        "http://purl.obolibrary.org/obo/BFO_0000031",
-        "http://purl.obolibrary.org/obo/DUO_0000001",
-        "http://purl.obolibrary.org/obo/DUO_0000006",
-        "http://purl.obolibrary.org/obo/DUO_0000042",
-        "http://purl.obolibrary.org/obo/IAO_0000027",
-        "http://purl.obolibrary.org/obo/IAO_0000030"
+        "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"
       ],
       "directParent": [
-        "http://purl.obolibrary.org/obo/DUO_0000006"
+        "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"
       ],
       "hasDirectChildren": false,
       "hasDirectParents": true,
       "hasHierarchicalChildren": false,
       "hasHierarchicalParents": true,
       "hierarchicalAncestor": [
-        "http://purl.obolibrary.org/obo/BFO_0000001",
-        "http://purl.obolibrary.org/obo/BFO_0000002",
-        "http://purl.obolibrary.org/obo/BFO_0000031",
-        "http://purl.obolibrary.org/obo/DUO_0000001",
-        "http://purl.obolibrary.org/obo/DUO_0000006",
-        "http://purl.obolibrary.org/obo/DUO_0000042",
-        "http://purl.obolibrary.org/obo/IAO_0000027",
-        "http://purl.obolibrary.org/obo/IAO_0000030"
+        "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"
       ],
       "hierarchicalParent": [
-        "http://purl.obolibrary.org/obo/DUO_0000006"
+        "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"
       ],
       "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "http://purl.obolibrary.org/obo/IAO_0000115": "This data use permission indicates that use is allowed provided it is related to the specified disease.",
-      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000007",
-      "http://www.geneontology.org/formats/oboInOwl#shorthand": "DS",
+      "http://purl.obolibrary.org/obo/IAO_0000115": "This data use limitation indicates that use is allowed for health/medical/biomedical purposes and other biological research, including the study of population origins or ancestry.",
+      "http://purl.obolibrary.org/obo/IAO_0100001": "General Research Use, DUO_0000042\nClinical Care USe, DUO_0000043",
+      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000005",
+      "http://www.geneontology.org/formats/oboInOwl#shorthand": "GRU-CC",
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-      "http://www.w3.org/2000/01/rdf-schema#comment": "This term should be coupled with a term describing a disease from an ontology to specify the disease the restriction applies to. \n\nDUO recommends MONDO be used, to provide the basis for automated evaluation. For more information see https://github.com/EBISPOT/DUO/blob/master/MONDO_Overview.md\n\nOther resources, such as the Disease Ontology, HPO, SNOMED-CT or others, can also be used. When those other resources are being used, this may require an extra mapping step to leverage automated matching algorithms.",
-      "http://www.w3.org/2000/01/rdf-schema#label": "disease specific research",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-        "http://purl.obolibrary.org/obo/DUO_0000006",
-        {
-          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/DUO_0000010",
-          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/MONDO_0000001",
-          "isObsolete": false
-        }
+      "http://www.w3.org/2000/01/rdf-schema#comment": [
+        "This term was made obsolete as per https://github.com/EBISPOT/DUO/issues/45"
       ],
+      "http://www.w3.org/2000/01/rdf-schema#label": "obsolete general research use and clinical care",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
       "imported": false,
-      "iri": "http://purl.obolibrary.org/obo/DUO_0000007",
+      "iri": "http://purl.obolibrary.org/obo/DUO_0000005",
       "isDefiningOntology": true,
-      "isObsolete": false,
+      "isObsolete": true,
       "isPreferredRoot": false,
       "label": [
-        "disease specific research"
+        "obsolete general research use and clinical care"
       ],
       "linkedEntities": {
-        "DUO:0000007": {
-          "curie": "DUO:0000007",
+        "DUO:0000005": {
+          "curie": "DUO:0000005",
           "definedBy": [
             "duo"
           ],
           "hasLocalDefinition": true,
-          "iri": "http://purl.obolibrary.org/obo/DUO_0000007",
+          "iri": "http://purl.obolibrary.org/obo/DUO_0000005",
           "label": [
-            "disease specific research"
+            "obsolete general research use and clinical care"
           ],
           "numAppearsIn": 1.0,
           "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
@@ -99,147 +68,52 @@
             "class",
             "entity"
           ],
-          "url": "http://purl.obolibrary.org/obo/DUO_0000007"
+          "url": "http://purl.obolibrary.org/obo/DUO_0000005"
         },
-        "http://purl.obolibrary.org/obo/BFO_0000001": {
-          "curie": "BFO:0000001",
-          "hasLocalDefinition": true,
-          "label": [
-            "entity"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "class",
-            "entity"
-          ]
-        },
-        "http://purl.obolibrary.org/obo/BFO_0000002": {
-          "curie": "BFO:0000002",
-          "hasLocalDefinition": true,
-          "label": [
-            "continuant"
-          ],
-          "numAppearsIn": 2.0,
-          "type": [
-            "class",
-            "entity"
-          ]
-        },
-        "http://purl.obolibrary.org/obo/BFO_0000031": {
-          "curie": "BFO:0000031",
-          "hasLocalDefinition": true,
-          "label": [
-            "generically dependent continuant"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "class",
-            "entity"
-          ]
-        },
-        "http://purl.obolibrary.org/obo/DUO_0000001": {
-          "curie": "DUO:0000001",
-          "definedBy": [
-            "duo"
-          ],
-          "hasLocalDefinition": true,
-          "label": [
-            "data use permission"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "class",
-            "entity"
-          ]
-        },
-        "http://purl.obolibrary.org/obo/DUO_0000006": {
-          "curie": "DUO:0000006",
-          "definedBy": [
-            "duo"
-          ],
-          "hasLocalDefinition": true,
-          "label": [
-            "health or medical or biomedical research"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "class",
-            "entity"
-          ]
-        },
-        "http://purl.obolibrary.org/obo/DUO_0000010": {
-          "curie": "DUO:0000010",
-          "definedBy": [
-            "duo"
-          ],
-          "hasLocalDefinition": true,
-          "label": [
-            "is restricted to"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "entity",
-            "objectProperty",
-            "property"
-          ]
-        },
-        "http://purl.obolibrary.org/obo/DUO_0000042": {
+        "DUO:0000042": {
           "curie": "DUO:0000042",
           "definedBy": [
             "duo"
           ],
           "hasLocalDefinition": true,
+          "iri": "http://purl.obolibrary.org/obo/DUO_0000042",
           "label": [
             "general research use"
           ],
           "numAppearsIn": 1.0,
+          "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
           "type": [
             "class",
             "entity"
-          ]
-        },
-        "http://purl.obolibrary.org/obo/IAO_0000027": {
-          "curie": "IAO:0000027",
-          "hasLocalDefinition": true,
-          "label": [
-            "data entity"
           ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "class",
-            "entity"
-          ]
-        },
-        "http://purl.obolibrary.org/obo/IAO_0000030": {
-          "curie": "IAO:0000030",
-          "hasLocalDefinition": true,
-          "label": [
-            "information content entity"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "class",
-            "entity"
-          ]
+          "url": "http://purl.obolibrary.org/obo/DUO_0000042"
         },
         "http://purl.obolibrary.org/obo/IAO_0000115": {
           "curie": "IAO:0000115",
-          "hasLocalDefinition": true,
+          "hasLocalDefinition": false,
           "label": [
-            "definition"
+            "IAO_0000115"
           ],
-          "numAppearsIn": 4.0,
+          "numAppearsIn": 3.0,
           "type": [
             "annotationProperty",
             "entity",
             "property"
           ]
         },
-        "http://purl.obolibrary.org/obo/MONDO_0000001": {
-          "curie": "MONDO:0000001",
-          "hasLocalDefinition": true,
+        "http://purl.obolibrary.org/obo/IAO_0100001": {
+          "curie": "iao:0100001",
+          "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+          "url": "http://purl.obolibrary.org/obo/IAO_0100001"
+        },
+        "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass": {
+          "curie": "OIO:ObsoleteClass",
+          "definedBy": [
+            "oio"
+          ],
+          "hasLocalDefinition": false,
           "label": [
-            "disease or disorder"
+            "obsolete_class"
           ],
           "numAppearsIn": 2.0,
           "type": [
@@ -278,11 +152,11 @@
           "definedBy": [
             "rdfs"
           ],
-          "hasLocalDefinition": true,
+          "hasLocalDefinition": false,
           "label": [
             "comment"
           ],
-          "numAppearsIn": 3.0,
+          "numAppearsIn": 2.0,
           "type": [
             "entity",
             "property"
@@ -293,11 +167,11 @@
           "definedBy": [
             "rdfs"
           ],
-          "hasLocalDefinition": true,
+          "hasLocalDefinition": false,
           "label": [
             "label"
           ],
-          "numAppearsIn": 4.0,
+          "numAppearsIn": 3.0,
           "type": [
             "entity",
             "property"
@@ -320,18 +194,10 @@
         }
       },
       "linksTo": [
-        "http://purl.obolibrary.org/obo/BFO_0000001",
-        "http://purl.obolibrary.org/obo/BFO_0000002",
-        "http://purl.obolibrary.org/obo/BFO_0000031",
-        "http://purl.obolibrary.org/obo/DUO_0000001",
-        "http://purl.obolibrary.org/obo/DUO_0000006",
-        "http://purl.obolibrary.org/obo/DUO_0000007",
-        "http://purl.obolibrary.org/obo/DUO_0000010",
+        "http://purl.obolibrary.org/obo/DUO_0000005",
         "http://purl.obolibrary.org/obo/DUO_0000042",
-        "http://purl.obolibrary.org/obo/IAO_0000027",
-        "http://purl.obolibrary.org/obo/IAO_0000030",
         "http://purl.obolibrary.org/obo/IAO_0000115",
-        "http://purl.obolibrary.org/obo/MONDO_0000001",
+        "http://www.geneontology.org/formats/oboInOwl#ObsoleteClass",
         "http://www.geneontology.org/formats/oboInOwl#id",
         "http://www.geneontology.org/formats/oboInOwl#shorthand",
         "http://www.w3.org/2000/01/rdf-schema#comment",
@@ -343,25 +209,13 @@
       "ontologyId": "duo",
       "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
       "ontologyPreferredPrefix": "DUO",
-      "relatedTo": [
-        {
-          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
-          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/DUO_0000010",
-          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/MONDO_0000001",
-          "isObsolete": false,
-          "property": "http://purl.obolibrary.org/obo/DUO_0000010",
-          "type": [
-            "related"
-          ],
-          "value": "http://purl.obolibrary.org/obo/MONDO_0000001"
-        }
-      ],
       "score": "<score>",
       "searchableAnnotationValues": [
-        "This data use permission indicates that use is allowed provided it is related to the specified disease.",
+        "General Research Use, DUO_0000042\nClinical Care USe, DUO_0000043",
+        "This data use limitation indicates that use is allowed for health/medical/biomedical purposes and other biological research, including the study of population origins or ancestry.",
         false
       ],
-      "shortForm": "DUO_0000007",
+      "shortForm": "DUO_0000005",
       "type": [
         "class",
         "entity"

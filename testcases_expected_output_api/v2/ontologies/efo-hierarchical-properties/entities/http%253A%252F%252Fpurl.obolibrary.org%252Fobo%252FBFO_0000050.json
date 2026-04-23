@@ -1,6 +1,5 @@
 {
   "appearsIn": [
-    "duo",
     "efo-hierarchical-properties",
     "gitissue502"
   ],
@@ -103,7 +102,7 @@
       "label": [
         "continuant"
       ],
-      "numAppearsIn": 2.0,
+      "numAppearsIn": 1.0,
       "type": [
         "class",
         "entity"
@@ -115,7 +114,7 @@
       "label": [
         "occurrent"
       ],
-      "numAppearsIn": 2.0,
+      "numAppearsIn": 1.0,
       "type": [
         "class",
         "entity"
@@ -127,7 +126,7 @@
       "label": [
         "independent continuant"
       ],
-      "numAppearsIn": 2.0,
+      "numAppearsIn": 1.0,
       "type": [
         "class",
         "entity"
@@ -139,7 +138,7 @@
       "label": [
         "realizable entity"
       ],
-      "numAppearsIn": 2.0,
+      "numAppearsIn": 1.0,
       "type": [
         "class",
         "entity"
@@ -151,7 +150,7 @@
       "label": [
         "quality"
       ],
-      "numAppearsIn": 2.0,
+      "numAppearsIn": 1.0,
       "type": [
         "class",
         "entity"
@@ -163,23 +162,16 @@
       "label": [
         "specifically dependent continuant"
       ],
-      "numAppearsIn": 2.0,
+      "numAppearsIn": 1.0,
       "type": [
         "class",
         "entity"
       ]
     },
     "http://purl.obolibrary.org/obo/BFO_0000031": {
-      "curie": "BFO:0000031",
-      "hasLocalDefinition": false,
-      "label": [
-        "generically dependent continuant"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
+      "curie": "bfo:0000031",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "http://purl.obolibrary.org/obo/BFO_0000031"
     },
     "http://purl.obolibrary.org/obo/BFO_0000051": {
       "curie": "BFO:0000051",
@@ -188,7 +180,7 @@
         "has part",
         "has_part"
       ],
-      "numAppearsIn": 4.0,
+      "numAppearsIn": 3.0,
       "type": [
         "entity",
         "objectProperty",
@@ -201,7 +193,7 @@
       "label": [
         "IAO_0000111"
       ],
-      "numAppearsIn": 2.0,
+      "numAppearsIn": 1.0,
       "type": [
         "annotationProperty",
         "entity",
@@ -214,7 +206,7 @@
       "label": [
         "IAO_0000112"
       ],
-      "numAppearsIn": 2.0,
+      "numAppearsIn": 1.0,
       "type": [
         "annotationProperty",
         "entity",
@@ -227,7 +219,7 @@
       "label": [
         "IAO_0000115"
       ],
-      "numAppearsIn": 4.0,
+      "numAppearsIn": 3.0,
       "type": [
         "annotationProperty",
         "entity",
@@ -240,7 +232,7 @@
       "label": [
         "IAO_0000116"
       ],
-      "numAppearsIn": 3.0,
+      "numAppearsIn": 2.0,
       "type": [
         "annotationProperty",
         "entity",
@@ -253,7 +245,7 @@
       "label": [
         "IAO_0000118"
       ],
-      "numAppearsIn": 2.0,
+      "numAppearsIn": 1.0,
       "type": [
         "annotationProperty",
         "entity",
@@ -266,7 +258,7 @@
       "label": [
         "RO_0001900"
       ],
-      "numAppearsIn": 2.0,
+      "numAppearsIn": 1.0,
       "type": [
         "annotationProperty",
         "entity",
@@ -403,7 +395,7 @@
       "label": [
         "comment"
       ],
-      "numAppearsIn": 3.0,
+      "numAppearsIn": 2.0,
       "type": [
         "entity",
         "property"
@@ -418,7 +410,7 @@
       "label": [
         "label"
       ],
-      "numAppearsIn": 4.0,
+      "numAppearsIn": 3.0,
       "type": [
         "entity",
         "property"
@@ -433,7 +425,7 @@
       "label": [
         "seeAlso"
       ],
-      "numAppearsIn": 3.0,
+      "numAppearsIn": 2.0,
       "type": [
         "entity",
         "property"
@@ -447,7 +439,6 @@
     "http://purl.obolibrary.org/obo/BFO_0000017",
     "http://purl.obolibrary.org/obo/BFO_0000019",
     "http://purl.obolibrary.org/obo/BFO_0000020",
-    "http://purl.obolibrary.org/obo/BFO_0000031",
     "http://purl.obolibrary.org/obo/BFO_0000051",
     "http://purl.obolibrary.org/obo/IAO_0000111",
     "http://purl.obolibrary.org/obo/IAO_0000112",

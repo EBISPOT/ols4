@@ -11,8 +11,6 @@
   ],
   "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
   "directAncestor": [
-    "http://purl.obolibrary.org/obo/BFO_0000001",
-    "http://purl.obolibrary.org/obo/BFO_0000002",
     "http://purl.obolibrary.org/obo/BFO_0000031",
     "http://purl.obolibrary.org/obo/DUO_0000017",
     "http://purl.obolibrary.org/obo/IAO_0000027",
@@ -26,8 +24,6 @@
   "hasHierarchicalChildren": false,
   "hasHierarchicalParents": true,
   "hierarchicalAncestor": [
-    "http://purl.obolibrary.org/obo/BFO_0000001",
-    "http://purl.obolibrary.org/obo/BFO_0000002",
     "http://purl.obolibrary.org/obo/BFO_0000031",
     "http://purl.obolibrary.org/obo/DUO_0000017",
     "http://purl.obolibrary.org/obo/IAO_0000027",
@@ -70,41 +66,10 @@
       ],
       "url": "http://purl.obolibrary.org/obo/DUO_0000015"
     },
-    "http://purl.obolibrary.org/obo/BFO_0000001": {
-      "curie": "BFO:0000001",
-      "hasLocalDefinition": true,
-      "label": [
-        "entity"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
-    "http://purl.obolibrary.org/obo/BFO_0000002": {
-      "curie": "BFO:0000002",
-      "hasLocalDefinition": true,
-      "label": [
-        "continuant"
-      ],
-      "numAppearsIn": 2.0,
-      "type": [
-        "class",
-        "entity"
-      ]
-    },
     "http://purl.obolibrary.org/obo/BFO_0000031": {
-      "curie": "BFO:0000031",
-      "hasLocalDefinition": true,
-      "label": [
-        "generically dependent continuant"
-      ],
-      "numAppearsIn": 1.0,
-      "type": [
-        "class",
-        "entity"
-      ]
+      "curie": "bfo:0000031",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "http://purl.obolibrary.org/obo/BFO_0000031"
     },
     "http://purl.obolibrary.org/obo/DUO_0000017": {
       "curie": "DUO:0000017",
@@ -125,7 +90,7 @@
       "curie": "IAO:0000027",
       "hasLocalDefinition": true,
       "label": [
-        "data entity"
+        "IAO_0000027"
       ],
       "numAppearsIn": 1.0,
       "type": [
@@ -137,7 +102,7 @@
       "curie": "IAO:0000030",
       "hasLocalDefinition": true,
       "label": [
-        "information content entity"
+        "IAO_0000030"
       ],
       "numAppearsIn": 1.0,
       "type": [
@@ -147,11 +112,11 @@
     },
     "http://purl.obolibrary.org/obo/IAO_0000115": {
       "curie": "IAO:0000115",
-      "hasLocalDefinition": true,
+      "hasLocalDefinition": false,
       "label": [
-        "definition"
+        "IAO_0000115"
       ],
-      "numAppearsIn": 4.0,
+      "numAppearsIn": 3.0,
       "type": [
         "annotationProperty",
         "entity",
@@ -189,11 +154,11 @@
       "definedBy": [
         "rdfs"
       ],
-      "hasLocalDefinition": true,
+      "hasLocalDefinition": false,
       "label": [
         "label"
       ],
-      "numAppearsIn": 4.0,
+      "numAppearsIn": 3.0,
       "type": [
         "entity",
         "property"
@@ -216,9 +181,6 @@
     }
   },
   "linksTo": [
-    "http://purl.obolibrary.org/obo/BFO_0000001",
-    "http://purl.obolibrary.org/obo/BFO_0000002",
-    "http://purl.obolibrary.org/obo/BFO_0000031",
     "http://purl.obolibrary.org/obo/DUO_0000015",
     "http://purl.obolibrary.org/obo/DUO_0000017",
     "http://purl.obolibrary.org/obo/IAO_0000027",

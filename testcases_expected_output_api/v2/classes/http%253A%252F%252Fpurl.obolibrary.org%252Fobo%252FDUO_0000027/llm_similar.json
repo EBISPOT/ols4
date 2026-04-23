@@ -4,17 +4,15 @@
       "appearsIn": [
         "duo"
       ],
-      "curie": "DUO:0000027",
+      "curie": "DUO:0000016",
       "definedBy": [
         "duo"
       ],
       "definition": [
-        "This data use modifier indicates that use is limited to use within an approved project."
+        "This data use modifier indicates that use is limited to genetic studies only (i.e., studies that include genotype research alone or both genotype and phenotype research, but not phenotype research exclusively)"
       ],
       "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
       "directAncestor": [
-        "http://purl.obolibrary.org/obo/BFO_0000001",
-        "http://purl.obolibrary.org/obo/BFO_0000002",
         "http://purl.obolibrary.org/obo/BFO_0000031",
         "http://purl.obolibrary.org/obo/DUO_0000017",
         "http://purl.obolibrary.org/obo/IAO_0000027",
@@ -28,8 +26,6 @@
       "hasHierarchicalChildren": false,
       "hasHierarchicalParents": true,
       "hierarchicalAncestor": [
-        "http://purl.obolibrary.org/obo/BFO_0000001",
-        "http://purl.obolibrary.org/obo/BFO_0000002",
         "http://purl.obolibrary.org/obo/BFO_0000031",
         "http://purl.obolibrary.org/obo/DUO_0000017",
         "http://purl.obolibrary.org/obo/IAO_0000027",
@@ -39,30 +35,30 @@
         "http://purl.obolibrary.org/obo/DUO_0000017"
       ],
       "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "http://purl.obolibrary.org/obo/IAO_0000115": "This data use modifier indicates that use is limited to use within an approved project.",
-      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000027",
-      "http://www.geneontology.org/formats/oboInOwl#shorthand": "PS",
+      "http://purl.obolibrary.org/obo/IAO_0000115": "This data use modifier indicates that use is limited to genetic studies only (i.e., studies that include genotype research alone or both genotype and phenotype research, but not phenotype research exclusively)",
+      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000016",
+      "http://www.geneontology.org/formats/oboInOwl#shorthand": "GSO",
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-      "http://www.w3.org/2000/01/rdf-schema#label": "project specific restriction",
+      "http://www.w3.org/2000/01/rdf-schema#label": "genetic studies only",
       "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/DUO_0000017",
       "imported": false,
-      "iri": "http://purl.obolibrary.org/obo/DUO_0000027",
+      "iri": "http://purl.obolibrary.org/obo/DUO_0000016",
       "isDefiningOntology": true,
       "isObsolete": false,
       "isPreferredRoot": false,
       "label": [
-        "project specific restriction"
+        "genetic studies only"
       ],
       "linkedEntities": {
-        "DUO:0000027": {
-          "curie": "DUO:0000027",
+        "DUO:0000016": {
+          "curie": "DUO:0000016",
           "definedBy": [
             "duo"
           ],
           "hasLocalDefinition": true,
-          "iri": "http://purl.obolibrary.org/obo/DUO_0000027",
+          "iri": "http://purl.obolibrary.org/obo/DUO_0000016",
           "label": [
-            "project specific restriction"
+            "genetic studies only"
           ],
           "numAppearsIn": 1.0,
           "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
@@ -70,43 +66,12 @@
             "class",
             "entity"
           ],
-          "url": "http://purl.obolibrary.org/obo/DUO_0000027"
-        },
-        "http://purl.obolibrary.org/obo/BFO_0000001": {
-          "curie": "BFO:0000001",
-          "hasLocalDefinition": true,
-          "label": [
-            "entity"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "class",
-            "entity"
-          ]
-        },
-        "http://purl.obolibrary.org/obo/BFO_0000002": {
-          "curie": "BFO:0000002",
-          "hasLocalDefinition": true,
-          "label": [
-            "continuant"
-          ],
-          "numAppearsIn": 2.0,
-          "type": [
-            "class",
-            "entity"
-          ]
+          "url": "http://purl.obolibrary.org/obo/DUO_0000016"
         },
         "http://purl.obolibrary.org/obo/BFO_0000031": {
-          "curie": "BFO:0000031",
-          "hasLocalDefinition": true,
-          "label": [
-            "generically dependent continuant"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "class",
-            "entity"
-          ]
+          "curie": "bfo:0000031",
+          "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+          "url": "http://purl.obolibrary.org/obo/BFO_0000031"
         },
         "http://purl.obolibrary.org/obo/DUO_0000017": {
           "curie": "DUO:0000017",
@@ -127,7 +92,7 @@
           "curie": "IAO:0000027",
           "hasLocalDefinition": true,
           "label": [
-            "data entity"
+            "IAO_0000027"
           ],
           "numAppearsIn": 1.0,
           "type": [
@@ -139,7 +104,7 @@
           "curie": "IAO:0000030",
           "hasLocalDefinition": true,
           "label": [
-            "information content entity"
+            "IAO_0000030"
           ],
           "numAppearsIn": 1.0,
           "type": [
@@ -149,11 +114,11 @@
         },
         "http://purl.obolibrary.org/obo/IAO_0000115": {
           "curie": "IAO:0000115",
-          "hasLocalDefinition": true,
+          "hasLocalDefinition": false,
           "label": [
-            "definition"
+            "IAO_0000115"
           ],
-          "numAppearsIn": 4.0,
+          "numAppearsIn": 3.0,
           "type": [
             "annotationProperty",
             "entity",
@@ -191,11 +156,11 @@
           "definedBy": [
             "rdfs"
           ],
-          "hasLocalDefinition": true,
+          "hasLocalDefinition": false,
           "label": [
             "label"
           ],
-          "numAppearsIn": 4.0,
+          "numAppearsIn": 3.0,
           "type": [
             "entity",
             "property"
@@ -218,11 +183,8 @@
         }
       },
       "linksTo": [
-        "http://purl.obolibrary.org/obo/BFO_0000001",
-        "http://purl.obolibrary.org/obo/BFO_0000002",
-        "http://purl.obolibrary.org/obo/BFO_0000031",
+        "http://purl.obolibrary.org/obo/DUO_0000016",
         "http://purl.obolibrary.org/obo/DUO_0000017",
-        "http://purl.obolibrary.org/obo/DUO_0000027",
         "http://purl.obolibrary.org/obo/IAO_0000027",
         "http://purl.obolibrary.org/obo/IAO_0000030",
         "http://purl.obolibrary.org/obo/IAO_0000115",
@@ -238,10 +200,10 @@
       "ontologyPreferredPrefix": "DUO",
       "score": "<score>",
       "searchableAnnotationValues": [
-        "This data use modifier indicates that use is limited to use within an approved project.",
+        "This data use modifier indicates that use is limited to genetic studies only (i.e., studies that include genotype research alone or both genotype and phenotype research, but not phenotype research exclusively)",
         false
       ],
-      "shortForm": "DUO_0000027",
+      "shortForm": "DUO_0000016",
       "type": [
         "class",
         "entity"

@@ -1,6 +1,7 @@
 package uk.ac.ebi.ols.apitester;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
@@ -19,7 +20,7 @@ public class RecursiveJsonDiff {
 
 
     String inputDir, expectedDir;
-    Gson gson = new Gson();
+    Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
     public RecursiveJsonDiff(String inputDir, String expectedDir) {
         this.inputDir = inputDir;
@@ -65,6 +66,11 @@ public class RecursiveJsonDiff {
 
             if(!jsonA.equals(jsonB)) {
                 System.out.println(inputDir + filename + " differed from " + expectedDir + filename);
+                System.out.println("--- ACTUAL (from " + inputDir + filename + ") ---");
+                System.out.println(gson.toJson(jsonA));
+                System.out.println("--- EXPECTED (from " + expectedDir + filename + ") ---");
+                System.out.println(gson.toJson(jsonB));
+                System.out.println("--------------------------------------------------");
                 success = false;
             }
         }

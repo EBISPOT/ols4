@@ -21,4 +21,4 @@ dependencies = [
 
 [project.optional-dependencies]
 cpu = ["faiss-cpu>=1.7.0"]
-gpu = ["faiss-gpu-cu12>=1.7.0"]
+gpu = ["faiss-gpu-cu12>=1.7.0", "accelerate>=1.0.0"]

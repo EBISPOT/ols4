@@ -4,84 +4,74 @@
       "appearsIn": [
         "duo"
       ],
-      "curatedFrom": [
-        {
-          "source": "test-curations",
-          "subjectCategories": [
-            "access_control"
-          ],
-          "text": "restricted access dataset"
-        }
-      ],
-      "curatedFromSources": [
-        "test-curations"
-      ],
-      "curie": "DUO:0000004",
+      "curie": "DUO:0000022",
       "definedBy": [
         "duo"
       ],
       "definition": [
-        "This data use permission indicates there is no restriction on use."
+        "This data use modifier indicates that use is limited to within a specific geographic region.",
+        "This should be coupled with an ontology term describing the geographical location the restriction applies to."
       ],
       "definitionProperty": [
         "http://purl.obolibrary.org/obo/IAO_0000115",
         "http://www.w3.org/2000/01/rdf-schema#comment"
       ],
       "directAncestor": [
-        "http://purl.obolibrary.org/obo/BFO_0000001",
-        "http://purl.obolibrary.org/obo/BFO_0000002",
         "http://purl.obolibrary.org/obo/BFO_0000031",
-        "http://purl.obolibrary.org/obo/DUO_0000001",
+        "http://purl.obolibrary.org/obo/DUO_0000017",
         "http://purl.obolibrary.org/obo/IAO_0000027",
         "http://purl.obolibrary.org/obo/IAO_0000030"
       ],
       "directParent": [
-        "http://purl.obolibrary.org/obo/DUO_0000001"
+        "http://purl.obolibrary.org/obo/DUO_0000017"
       ],
       "hasDirectChildren": false,
       "hasDirectParents": true,
       "hasHierarchicalChildren": false,
       "hasHierarchicalParents": true,
       "hierarchicalAncestor": [
-        "http://purl.obolibrary.org/obo/BFO_0000001",
-        "http://purl.obolibrary.org/obo/BFO_0000002",
         "http://purl.obolibrary.org/obo/BFO_0000031",
-        "http://purl.obolibrary.org/obo/DUO_0000001",
+        "http://purl.obolibrary.org/obo/DUO_0000017",
         "http://purl.obolibrary.org/obo/IAO_0000027",
         "http://purl.obolibrary.org/obo/IAO_0000030"
       ],
       "hierarchicalParent": [
-        "http://purl.obolibrary.org/obo/DUO_0000001"
+        "http://purl.obolibrary.org/obo/DUO_0000017"
       ],
       "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "http://purl.obolibrary.org/obo/IAO_0000115": "This data use permission indicates there is no restriction on use.",
-      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000004",
-      "http://www.geneontology.org/formats/oboInOwl#shorthand": "NRES",
+      "http://purl.obolibrary.org/obo/IAO_0000115": "This data use modifier indicates that use is limited to within a specific geographic region.",
+      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000022",
+      "http://www.geneontology.org/formats/oboInOwl#shorthand": "GS",
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-      "http://www.w3.org/2000/01/rdf-schema#comment": [
-        "20180907, Meeting Moran Melanie: This is to be thought about more carefully - what is the intent when using 'no restriction' as usually users still need to be researchers.",
-        "Note: the NRES alternative term may be confusing as in the UK it also stands for National Research Ethics Service"
+      "http://www.w3.org/2000/01/rdf-schema#comment": "This should be coupled with an ontology term describing the geographical location the restriction applies to.",
+      "http://www.w3.org/2000/01/rdf-schema#label": "geographical restriction",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+        "http://purl.obolibrary.org/obo/DUO_0000017",
+        {
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/DUO_0000010",
+          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GAZ_00000448",
+          "isObsolete": false
+        }
       ],
-      "http://www.w3.org/2000/01/rdf-schema#label": "no restriction",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/DUO_0000001",
       "imported": false,
-      "iri": "http://purl.obolibrary.org/obo/DUO_0000004",
+      "iri": "http://purl.obolibrary.org/obo/DUO_0000022",
       "isDefiningOntology": true,
       "isObsolete": false,
       "isPreferredRoot": false,
       "label": [
-        "no restriction"
+        "geographical restriction"
       ],
       "linkedEntities": {
-        "DUO:0000004": {
-          "curie": "DUO:0000004",
+        "DUO:0000022": {
+          "curie": "DUO:0000022",
           "definedBy": [
             "duo"
           ],
           "hasLocalDefinition": true,
-          "iri": "http://purl.obolibrary.org/obo/DUO_0000004",
+          "iri": "http://purl.obolibrary.org/obo/DUO_0000022",
           "label": [
-            "no restriction"
+            "geographical restriction"
           ],
           "numAppearsIn": 1.0,
           "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
@@ -89,52 +79,49 @@
             "class",
             "entity"
           ],
-          "url": "http://purl.obolibrary.org/obo/DUO_0000004"
-        },
-        "http://purl.obolibrary.org/obo/BFO_0000001": {
-          "curie": "BFO:0000001",
-          "hasLocalDefinition": true,
-          "label": [
-            "entity"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "class",
-            "entity"
-          ]
-        },
-        "http://purl.obolibrary.org/obo/BFO_0000002": {
-          "curie": "BFO:0000002",
-          "hasLocalDefinition": true,
-          "label": [
-            "continuant"
-          ],
-          "numAppearsIn": 2.0,
-          "type": [
-            "class",
-            "entity"
-          ]
+          "url": "http://purl.obolibrary.org/obo/DUO_0000022"
         },
         "http://purl.obolibrary.org/obo/BFO_0000031": {
-          "curie": "BFO:0000031",
-          "hasLocalDefinition": true,
-          "label": [
-            "generically dependent continuant"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "class",
-            "entity"
-          ]
+          "curie": "bfo:0000031",
+          "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+          "url": "http://purl.obolibrary.org/obo/BFO_0000031"
         },
-        "http://purl.obolibrary.org/obo/DUO_0000001": {
-          "curie": "DUO:0000001",
+        "http://purl.obolibrary.org/obo/DUO_0000010": {
+          "curie": "DUO:0000010",
           "definedBy": [
             "duo"
           ],
           "hasLocalDefinition": true,
           "label": [
-            "data use permission"
+            "is restricted to"
+          ],
+          "numAppearsIn": 1.0,
+          "type": [
+            "entity",
+            "objectProperty",
+            "property"
+          ]
+        },
+        "http://purl.obolibrary.org/obo/DUO_0000017": {
+          "curie": "DUO:0000017",
+          "definedBy": [
+            "duo"
+          ],
+          "hasLocalDefinition": true,
+          "label": [
+            "data use modifier"
+          ],
+          "numAppearsIn": 1.0,
+          "type": [
+            "class",
+            "entity"
+          ]
+        },
+        "http://purl.obolibrary.org/obo/GAZ_00000448": {
+          "curie": "GAZ:00000448",
+          "hasLocalDefinition": true,
+          "label": [
+            "geographic location"
           ],
           "numAppearsIn": 1.0,
           "type": [
@@ -146,7 +133,7 @@
           "curie": "IAO:0000027",
           "hasLocalDefinition": true,
           "label": [
-            "data entity"
+            "IAO_0000027"
           ],
           "numAppearsIn": 1.0,
           "type": [
@@ -158,7 +145,7 @@
           "curie": "IAO:0000030",
           "hasLocalDefinition": true,
           "label": [
-            "information content entity"
+            "IAO_0000030"
           ],
           "numAppearsIn": 1.0,
           "type": [
@@ -168,11 +155,11 @@
         },
         "http://purl.obolibrary.org/obo/IAO_0000115": {
           "curie": "IAO:0000115",
-          "hasLocalDefinition": true,
+          "hasLocalDefinition": false,
           "label": [
-            "definition"
+            "IAO_0000115"
           ],
-          "numAppearsIn": 4.0,
+          "numAppearsIn": 3.0,
           "type": [
             "annotationProperty",
             "entity",
@@ -210,11 +197,11 @@
           "definedBy": [
             "rdfs"
           ],
-          "hasLocalDefinition": true,
+          "hasLocalDefinition": false,
           "label": [
             "comment"
           ],
-          "numAppearsIn": 3.0,
+          "numAppearsIn": 2.0,
           "type": [
             "entity",
             "property"
@@ -225,11 +212,11 @@
           "definedBy": [
             "rdfs"
           ],
-          "hasLocalDefinition": true,
+          "hasLocalDefinition": false,
           "label": [
             "label"
           ],
-          "numAppearsIn": 4.0,
+          "numAppearsIn": 3.0,
           "type": [
             "entity",
             "property"
@@ -252,11 +239,10 @@
         }
       },
       "linksTo": [
-        "http://purl.obolibrary.org/obo/BFO_0000001",
-        "http://purl.obolibrary.org/obo/BFO_0000002",
-        "http://purl.obolibrary.org/obo/BFO_0000031",
-        "http://purl.obolibrary.org/obo/DUO_0000001",
-        "http://purl.obolibrary.org/obo/DUO_0000004",
+        "http://purl.obolibrary.org/obo/DUO_0000010",
+        "http://purl.obolibrary.org/obo/DUO_0000017",
+        "http://purl.obolibrary.org/obo/DUO_0000022",
+        "http://purl.obolibrary.org/obo/GAZ_00000448",
         "http://purl.obolibrary.org/obo/IAO_0000027",
         "http://purl.obolibrary.org/obo/IAO_0000030",
         "http://purl.obolibrary.org/obo/IAO_0000115",
@@ -271,12 +257,25 @@
       "ontologyId": "duo",
       "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
       "ontologyPreferredPrefix": "DUO",
+      "relatedTo": [
+        {
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+          "http://www.w3.org/2002/07/owl#onProperty": "http://purl.obolibrary.org/obo/DUO_0000010",
+          "http://www.w3.org/2002/07/owl#someValuesFrom": "http://purl.obolibrary.org/obo/GAZ_00000448",
+          "isObsolete": false,
+          "property": "http://purl.obolibrary.org/obo/DUO_0000010",
+          "type": [
+            "related"
+          ],
+          "value": "http://purl.obolibrary.org/obo/GAZ_00000448"
+        }
+      ],
       "score": "<score>",
       "searchableAnnotationValues": [
-        "This data use permission indicates there is no restriction on use.",
+        "This data use modifier indicates that use is limited to within a specific geographic region.",
         false
       ],
-      "shortForm": "DUO_0000004",
+      "shortForm": "DUO_0000022",
       "type": [
         "class",
         "entity"

@@ -505,7 +505,7 @@
       ],
       "reasoner": "OWL2",
       "oboSlims": false,
-      "ontology_purl": "http://www.orphadata.org/data/ORDO/ordo_orphanet.owl"
+      "ontology_purl": "https://www.orphadata.com/data/ontologies/ordo/last_version/ordo_orphanet.owl"
     },
     {
       "id": "teddy",
@@ -1789,6 +1789,55 @@
       "reasoner": "EL",
       "oboSlims": false,
       "ontology_purl": "https://github.com/Multiomics-Analytics-Group/prefer_ontology/releases/latest/download/prefer.owl"
+    },
+    {
+      "id": "tfo",
+      "creator": [
+        "Patrice Buche",
+        "Julien Cufi",
+        "Stéphane Dervaux",
+        "Magalie Weber"
+      ],
+      "is_foundary": false,
+      "preferredPrefix": "TFO",
+      "title": "TransformON",
+      "uri": "http://opendata.inrae.fr/PO2/Ontology/TransformON/",
+      "description": "A domain ontology on food and bioproduct processing and characterization that is a specialization of the PO2 ontology (Process and Observation Ontology).",
+      "homepage": "https://forge.inrae.fr/PO2-Tools/TransformON/",
+      "mailing_list": "stephane.dervaux@inrae.fr",
+      "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "definition_property": "http://www.w3.org/2004/02/skos/core#definition",
+      "synonym_property": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "hierarchical_property": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "base_uri": "http://opendata.inrae.fr/PO2/Ontology/TransformON/",
+      "reasoner": "OWL2",
+      "oboSlims": false,
+      "ontology_purl": "http://opendata.inrae.fr/PO2/Ontology/transformON.rdf"
+    },
+    {
+      "id": "gmho",
+      "creator": [
+        "Micaela Santilli",
+        "Paulina Schenk",
+        "Björn Gehrke",
+        "Susan Michie",
+        "Janna Hastings"
+      ],
+      "is_foundary": true,
+      "preferredPrefix": "gmho",
+      "title": "GALENOS Mental Health Ontology",
+      "uri": "https://galenos.org.uk/ontologies/gmho.owl",
+      "description": "The GALENOS Mental Health Ontology (GMHO) is being developed to represent the full range of concepts relevant to mental health. It forms a core component of the Global Alliance for Living Evidence on aNxiety, depressiOn and pSychosis (GALENOS) project, which aims to build a living evidence base for anxiety, depression, and psychosis.\nThe GMHO is designed to structure and organise evidence drawn from multiple living systematic reviews, supporting the creation of a structured data repository that enables clearer synthesis, integration, and retrieval of research findings. Its upper-level framework is intentionally designed for reuse, providing a general foundation for organising evidence across the broader mental health domain.",
+      "homepage": "https://github.com/galenos-project/mental-health-ontology",
+      "mailing_list": "micaela.santilli.21@ucl.ac.uk",
+      "label_property": "http://www.w3.org/2000/01/rdf-schema#label",
+      "definition_property": "http://purl.obolibrary.org/obo/IAO_0000115",
+      "synonym_property": "http://purl.obolibrary.org/obo/IAO_0000118",
+      "hierarchical_property": "http://purl.obolibrary.org/obo/BFO_0000050",
+      "base_uri": "https://galenos.org.uk/ontologies/GMHO_",
+      "reasoner": null,
+      "oboSlims": false,
+      "ontology_purl": "https://galenos.org.uk/ontologies/gmho.owl"
     },
     {
       "id": "aero",
