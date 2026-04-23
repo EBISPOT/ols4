@@ -73,6 +73,10 @@ fn load_parquet_file(
 
 fn run() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
+    // rdf2json normalizes ontology IDs to lowercase in the generated JSON.
+    // Normalize any requested ID here as well so per-ontology exports still
+    // match testcases whose config IDs contain uppercase/camelCase.
+    let normalized_ontology_id = args.ontology_id.as_ref().map(|s| s.to_lowercase());
 
     // Load embeddings from individual parquet files or from a directory
     let mut embeddings: HashMap<String, Embeddings> = HashMap::new();
@@ -82,7 +86,7 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
             let path = Path::new(parquet_path);
             if path.exists() {
                 let (model_name, emb) =
-                    load_parquet_file(path, args.ontology_id.as_deref())?;
+                    load_parquet_file(path, normalized_ontology_id.as_deref())?;
                 embeddings.insert(model_name, emb);
             } else {
                 eprintln!("Warning: embeddings parquet not found: {}", parquet_path);
@@ -94,7 +98,7 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     let converter = PostgresConverter::new(
-        args.ontology_id,
+        normalized_ontology_id,
         args.input,
         args.out_dir,
         embeddings,
@@ -194,7 +198,11 @@ impl PostgresConverter {
                     
                     // Check if we should skip this ontology
                     if let Some(ref filter_id) = self.ontology_id {
-                        if !filter_id.is_empty() && ontology_id.as_ref() != Some(filter_id) {
+                        let matches_filter = ontology_id
+                            .as_ref()
+                            .map(|id| id.eq_ignore_ascii_case(filter_id))
+                            .unwrap_or(false);
+                        if !filter_id.is_empty() && !matches_filter {
                             eprintln!("Skipping ontology: {}", ontology_id.as_ref().unwrap());
                             // Skip remaining fields
                             while json.has_next()? {
