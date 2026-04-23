@@ -20,6 +20,7 @@ import ctypes.util
 import grp
 import pwd
 from pathlib import Path
+from typing import Optional
 
 
 # ---------------------------------------------------------------------------
@@ -58,7 +59,7 @@ def find_pg_bin() -> Path:
     sys.exit("ERROR: Cannot find PostgreSQL binaries (initdb)")
 
 
-def find_nss_wrapper_library() -> str | None:
+def find_nss_wrapper_library() -> Optional[str]:
     """Return a usable libnss_wrapper path/soname if available."""
     lib = ctypes.util.find_library("nss_wrapper")
     if lib:
