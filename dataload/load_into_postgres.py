@@ -16,6 +16,9 @@ import shutil
 import subprocess
 import sys
 import time
+import ctypes.util
+import grp
+import pwd
 from pathlib import Path
 
 
@@ -53,6 +56,95 @@ def find_pg_bin() -> Path:
     if (candidate / "initdb").exists():
         return candidate
     sys.exit("ERROR: Cannot find PostgreSQL binaries (initdb)")
+
+
+def find_nss_wrapper_library() -> str | None:
+    """Return a usable libnss_wrapper path/soname if available."""
+    lib = ctypes.util.find_library("nss_wrapper")
+    if lib:
+        return lib
+
+    for candidate in (
+        "/usr/lib/x86_64-linux-gnu/libnss_wrapper.so",
+        "/usr/lib/aarch64-linux-gnu/libnss_wrapper.so",
+        "/usr/lib64/libnss_wrapper.so",
+        "/usr/lib/libnss_wrapper.so",
+    ):
+        if Path(candidate).exists():
+            return candidate
+
+    return None
+
+
+def build_runtime_user_env(base_env: dict[str, str], work_dir: Path) -> dict[str, str]:
+    """Ensure subprocesses can resolve the current UID/GID even in uid-mapped containers."""
+    env = dict(base_env)
+    uid = os.geteuid()
+    gid = os.getegid()
+
+    try:
+        pwd.getpwuid(uid)
+        user_missing = False
+    except KeyError:
+        user_missing = True
+
+    try:
+        grp.getgrgid(gid)
+        group_missing = False
+    except KeyError:
+        group_missing = True
+
+    if not user_missing and not group_missing:
+        return env
+
+    lib = find_nss_wrapper_library()
+    if not lib:
+        raise RuntimeError(
+            f"Current UID:GID {uid}:{gid} is not present in passwd/group, and libnss_wrapper is unavailable"
+        )
+
+    wrapper_dir = work_dir / ".nss-wrapper"
+    runtime_home = wrapper_dir / "home"
+    wrapper_dir.mkdir(parents=True, exist_ok=True)
+    runtime_home.mkdir(parents=True, exist_ok=True)
+
+    passwd_path = wrapper_dir / "passwd"
+    group_path = wrapper_dir / "group"
+
+    passwd_contents = Path("/etc/passwd").read_text() if Path("/etc/passwd").exists() else ""
+    group_contents = Path("/etc/group").read_text() if Path("/etc/group").exists() else ""
+
+    if passwd_contents and not passwd_contents.endswith("\n"):
+        passwd_contents += "\n"
+    if group_contents and not group_contents.endswith("\n"):
+        group_contents += "\n"
+
+    if group_missing:
+        group_name = env.get("GROUP") or f"gid{gid}"
+        group_contents += f"{group_name}:x:{gid}:\n"
+
+    if user_missing:
+        username = env.get("USER") or env.get("LOGNAME") or f"uid{uid}"
+        shell = env.get("SHELL") or "/bin/sh"
+        passwd_contents += f"{username}:x:{uid}:{gid}:OLS runtime user:{runtime_home}:{shell}\n"
+        env["USER"] = username
+        env["LOGNAME"] = username
+
+    passwd_path.write_text(passwd_contents)
+    group_path.write_text(group_contents)
+
+    existing_preload = env.get("LD_PRELOAD", "")
+    preload_parts = [part for part in existing_preload.split(":") if part]
+    if lib not in preload_parts:
+        preload_parts.insert(0, lib)
+
+    env["LD_PRELOAD"] = ":".join(preload_parts)
+    env["NSS_WRAPPER_PASSWD"] = str(passwd_path)
+    env["NSS_WRAPPER_GROUP"] = str(group_path)
+    env["HOME"] = str(runtime_home)
+
+    print(f"Using nss_wrapper for runtime UID:GID {uid}:{gid}")
+    return env
 
 
 # ---------------------------------------------------------------------------
@@ -261,8 +353,10 @@ def main():
     pg_user = "postgres"
     pg_db = "ols4"
 
+    runtime_env = build_runtime_user_env(os.environ, output_dir)
+
     # Environment for all psql/pg_ctl calls
-    pg_env = {**os.environ,
+    pg_env = {**runtime_env,
         "PGDATA": str(pg_data),
         "PGPORT": pg_port,
         "PGUSER": pg_user,
@@ -280,6 +374,7 @@ def main():
         [str(pgbin / "initdb"), "-D", str(pg_data),
          "--auth=trust", f"--username={pg_user}", "--no-locale", "--encoding=UTF8"],
         label="initdb",
+        env=pg_env,
     )
 
     # Allow network connections (for Docker containers)

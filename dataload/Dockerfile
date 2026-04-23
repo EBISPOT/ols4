@@ -33,7 +33,7 @@ RUN apt-get update -y && apt-get install -y wget gnupg lsb-release && \
     echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
     apt-get update -y && \
-    apt-get install -y postgresql-17 postgresql-17-pgvector
+    apt-get install -y postgresql-17 postgresql-17-pgvector libnss-wrapper
 
 # Copy all the code for dataload into /opt/dataload and build the JARs
 #
@@ -84,6 +84,5 @@ USER ols
 WORKDIR /opt/ols/dataload
 
 CMD ./dataload.dockersh
-
 
 
