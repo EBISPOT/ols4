@@ -4,58 +4,66 @@
       "appearsIn": [
         "duo"
       ],
-      "curie": "DUO:0000017",
+      "curie": "DUO:0000025",
       "definedBy": [
         "duo"
       ],
       "definition": [
-        "Data use modifiers indicate additional conditions for use."
+        "This data use modifier indicates that use is approved for a specific number of months.",
+        "This should be coupled with an integer value indicating the number of months."
       ],
-      "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
+      "definitionProperty": [
+        "http://purl.obolibrary.org/obo/IAO_0000115",
+        "http://www.w3.org/2000/01/rdf-schema#comment"
+      ],
       "directAncestor": [
         "http://purl.obolibrary.org/obo/BFO_0000031",
+        "http://purl.obolibrary.org/obo/DUO_0000017",
         "http://purl.obolibrary.org/obo/IAO_0000027",
         "http://purl.obolibrary.org/obo/IAO_0000030"
       ],
       "directParent": [
-        "http://purl.obolibrary.org/obo/IAO_0000027"
+        "http://purl.obolibrary.org/obo/DUO_0000017"
       ],
-      "hasDirectChildren": true,
+      "hasDirectChildren": false,
       "hasDirectParents": true,
-      "hasHierarchicalChildren": true,
+      "hasHierarchicalChildren": false,
       "hasHierarchicalParents": true,
       "hierarchicalAncestor": [
         "http://purl.obolibrary.org/obo/BFO_0000031",
+        "http://purl.obolibrary.org/obo/DUO_0000017",
         "http://purl.obolibrary.org/obo/IAO_0000027",
         "http://purl.obolibrary.org/obo/IAO_0000030"
       ],
       "hierarchicalParent": [
-        "http://purl.obolibrary.org/obo/IAO_0000027"
+        "http://purl.obolibrary.org/obo/DUO_0000017"
       ],
       "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "http://purl.obolibrary.org/obo/IAO_0000115": "Data use modifiers indicate additional conditions for use.",
-      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000017",
+      "http://purl.obolibrary.org/obo/IAO_0000115": "This data use modifier indicates that use is approved for a specific number of months.",
+      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000025",
+      "http://www.geneontology.org/formats/oboInOwl#shorthand": "TS",
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-      "http://www.w3.org/2000/01/rdf-schema#label": "data use modifier",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://www.w3.org/2000/01/rdf-schema#comment": "This should be coupled with an integer value indicating the number of months.",
+      "http://www.w3.org/2000/01/rdf-schema#label": "time limit on use",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/DUO_0000017",
       "imported": false,
-      "iri": "http://purl.obolibrary.org/obo/DUO_0000017",
+      "iri": "http://purl.obolibrary.org/obo/DUO_0000025",
       "isDefiningOntology": true,
       "isObsolete": false,
-      "isPreferredRoot": true,
+      "isPreferredRoot": false,
       "label": [
-        "data use modifier"
+        "time limit on use"
       ],
       "linkedEntities": {
-        "DUO:0000017": {
-          "curie": "DUO:0000017",
+        "DUO:0000025": {
+          "curie": "DUO:0000025",
           "definedBy": [
             "duo"
           ],
           "hasLocalDefinition": true,
-          "iri": "http://purl.obolibrary.org/obo/DUO_0000017",
+          "iri": "http://purl.obolibrary.org/obo/DUO_0000025",
           "label": [
-            "data use modifier"
+            "time limit on use"
           ],
           "numAppearsIn": 1.0,
           "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
@@ -63,12 +71,27 @@
             "class",
             "entity"
           ],
-          "url": "http://purl.obolibrary.org/obo/DUO_0000017"
+          "url": "http://purl.obolibrary.org/obo/DUO_0000025"
         },
         "http://purl.obolibrary.org/obo/BFO_0000031": {
           "curie": "bfo:0000031",
           "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
           "url": "http://purl.obolibrary.org/obo/BFO_0000031"
+        },
+        "http://purl.obolibrary.org/obo/DUO_0000017": {
+          "curie": "DUO:0000017",
+          "definedBy": [
+            "duo"
+          ],
+          "hasLocalDefinition": true,
+          "label": [
+            "data use modifier"
+          ],
+          "numAppearsIn": 1.0,
+          "type": [
+            "class",
+            "entity"
+          ]
         },
         "http://purl.obolibrary.org/obo/IAO_0000027": {
           "curie": "IAO:0000027",
@@ -120,6 +143,34 @@
             "property"
           ]
         },
+        "http://www.geneontology.org/formats/oboInOwl#shorthand": {
+          "curie": "shorthand",
+          "hasLocalDefinition": true,
+          "label": [
+            "shorthand"
+          ],
+          "numAppearsIn": 3.0,
+          "type": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ]
+        },
+        "http://www.w3.org/2000/01/rdf-schema#comment": {
+          "curie": "RDFS:comment",
+          "definedBy": [
+            "rdfs"
+          ],
+          "hasLocalDefinition": false,
+          "label": [
+            "comment"
+          ],
+          "numAppearsIn": 2.0,
+          "type": [
+            "entity",
+            "property"
+          ]
+        },
         "http://www.w3.org/2000/01/rdf-schema#label": {
           "curie": "RDFS:label",
           "definedBy": [
@@ -153,24 +204,27 @@
       },
       "linksTo": [
         "http://purl.obolibrary.org/obo/DUO_0000017",
+        "http://purl.obolibrary.org/obo/DUO_0000025",
         "http://purl.obolibrary.org/obo/IAO_0000027",
         "http://purl.obolibrary.org/obo/IAO_0000030",
         "http://purl.obolibrary.org/obo/IAO_0000115",
         "http://www.geneontology.org/formats/oboInOwl#id",
+        "http://www.geneontology.org/formats/oboInOwl#shorthand",
+        "http://www.w3.org/2000/01/rdf-schema#comment",
         "http://www.w3.org/2000/01/rdf-schema#label",
         "http://www.w3.org/2000/01/rdf-schema#subClassOf"
       ],
-      "numDescendants": 18.0,
-      "numHierarchicalDescendants": 18.0,
+      "numDescendants": 0.0,
+      "numHierarchicalDescendants": 0.0,
       "ontologyId": "duo",
       "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
       "ontologyPreferredPrefix": "DUO",
       "score": "<score>",
       "searchableAnnotationValues": [
-        "Data use modifiers indicate additional conditions for use.",
+        "This data use modifier indicates that use is approved for a specific number of months.",
         false
       ],
-      "shortForm": "DUO_0000017",
+      "shortForm": "DUO_0000025",
       "type": [
         "class",
         "entity"

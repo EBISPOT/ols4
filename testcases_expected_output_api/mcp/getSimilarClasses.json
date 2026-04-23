@@ -2,7 +2,82 @@
   "result": {
     "content": [
       {
-        "text": "{\"items\":[{\"ontologyId\":\"duo\",\"type\":[\"class\",\"entity\"],\"iri\":\"http://purl.obolibrary.org/obo/DUO_0000001\",\"curie\":\"DUO:0000001\",\"label\":[\"data use permission\"],\"definition\":[\"A data item that is used to indicate consent permissions for datasets and/or materials, and relates to the purposes for which datasets and/or material might be removed, stored or used.\"],\"isObsolete\":false,\"directAncestor\":[{\"iri\":\"http://purl.obolibrary.org/obo/BFO_0000031\",\"definedBy\":[],\"label\":[]},{\"iri\":\"http://purl.obolibrary.org/obo/IAO_0000027\",\"definedBy\":[],\"label\":[\"IAO_0000027\"]},{\"iri\":\"http://purl.obolibrary.org/obo/IAO_0000030\",\"definedBy\":[],\"label\":[\"IAO_0000030\"]}],\"directParent\":[{\"iri\":\"http://purl.obolibrary.org/obo/IAO_0000027\",\"definedBy\":[],\"label\":[\"IAO_0000027\"]}],\"hierarchicalParent\":[{\"iri\":\"http://purl.obolibrary.org/obo/IAO_0000027\",\"definedBy\":[],\"label\":[\"IAO_0000027\"]}]}],\"pageNum\":0,\"pageSize\":1,\"totalElements\":1,\"totalPages\":1}",
+        "text": {
+          "items": [
+            {
+              "curie": "DUO:0000019",
+              "definition": [
+                "This data use modifier indicates that requestor agrees to make results of studies using the data available to the larger scientific community."
+              ],
+              "directAncestor": [
+                {
+                  "definedBy": [
+                    "duo"
+                  ],
+                  "iri": "http://purl.obolibrary.org/obo/DUO_0000017",
+                  "label": [
+                    "data use modifier"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000031",
+                  "label": []
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/IAO_0000027",
+                  "label": [
+                    "IAO_0000027"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/IAO_0000030",
+                  "label": [
+                    "IAO_0000030"
+                  ]
+                }
+              ],
+              "directParent": [
+                {
+                  "definedBy": [
+                    "duo"
+                  ],
+                  "iri": "http://purl.obolibrary.org/obo/DUO_0000017",
+                  "label": [
+                    "data use modifier"
+                  ]
+                }
+              ],
+              "hierarchicalParent": [
+                {
+                  "definedBy": [
+                    "duo"
+                  ],
+                  "iri": "http://purl.obolibrary.org/obo/DUO_0000017",
+                  "label": [
+                    "data use modifier"
+                  ]
+                }
+              ],
+              "iri": "http://purl.obolibrary.org/obo/DUO_0000019",
+              "isObsolete": false,
+              "label": [
+                "publication required"
+              ],
+              "ontologyId": "duo",
+              "type": [
+                "class",
+                "entity"
+              ]
+            }
+          ],
+          "pageNum": 0,
+          "pageSize": 1,
+          "totalElements": 1,
+          "totalPages": 1
+        },
         "type": "text"
       }
     ]

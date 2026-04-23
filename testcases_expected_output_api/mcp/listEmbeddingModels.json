@@ -2,7 +2,12 @@
   "result": {
     "content": [
       {
-        "text": "[{\"model\":\"mock\",\"can_embed\":false}]",
+        "text": [
+          {
+            "can_embed": false,
+            "model": "mock"
+          }
+        ],
         "type": "text"
       }
     ]

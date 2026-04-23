@@ -4,59 +4,73 @@
       "appearsIn": [
         "duo"
       ],
-      "curie": "DUO:0000001",
+      "curatedFrom": [
+        {
+          "source": "test-curations",
+          "subjectCategories": [
+            "clinical"
+          ],
+          "text": "clinical trial data"
+        }
+      ],
+      "curatedFromSources": [
+        "test-curations"
+      ],
+      "curie": "DUO:0000019",
       "definedBy": [
         "duo"
       ],
       "definition": [
-        "A data item that is used to indicate consent permissions for datasets and/or materials, and relates to the purposes for which datasets and/or material might be removed, stored or used."
+        "This data use modifier indicates that requestor agrees to make results of studies using the data available to the larger scientific community."
       ],
       "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
       "directAncestor": [
         "http://purl.obolibrary.org/obo/BFO_0000031",
+        "http://purl.obolibrary.org/obo/DUO_0000017",
         "http://purl.obolibrary.org/obo/IAO_0000027",
         "http://purl.obolibrary.org/obo/IAO_0000030"
       ],
       "directParent": [
-        "http://purl.obolibrary.org/obo/IAO_0000027"
+        "http://purl.obolibrary.org/obo/DUO_0000017"
       ],
-      "hasDirectChildren": true,
+      "hasDirectChildren": false,
       "hasDirectParents": true,
-      "hasHierarchicalChildren": true,
+      "hasHierarchicalChildren": false,
       "hasHierarchicalParents": true,
       "hierarchicalAncestor": [
         "http://purl.obolibrary.org/obo/BFO_0000031",
+        "http://purl.obolibrary.org/obo/DUO_0000017",
         "http://purl.obolibrary.org/obo/IAO_0000027",
         "http://purl.obolibrary.org/obo/IAO_0000030"
       ],
       "hierarchicalParent": [
-        "http://purl.obolibrary.org/obo/IAO_0000027"
+        "http://purl.obolibrary.org/obo/DUO_0000017"
       ],
       "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "http://purl.obolibrary.org/obo/IAO_0000115": "A data item that is used to indicate consent permissions for datasets and/or materials, and relates to the purposes for which datasets and/or material might be removed, stored or used.",
-      "http://purl.obolibrary.org/obo/IAO_0000118": "consent code",
-      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000001",
+      "http://purl.obolibrary.org/obo/IAO_0000115": "This data use modifier indicates that requestor agrees to make results of studies using the data available to the larger scientific community.",
+      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000019",
+      "http://www.geneontology.org/formats/oboInOwl#shorthand": "PUB",
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-      "http://www.w3.org/2000/01/rdf-schema#label": "data use permission",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/IAO_0000027",
+      "http://www.w3.org/2000/01/rdf-schema#label": "publication required",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/DUO_0000017",
       "imported": false,
-      "iri": "http://purl.obolibrary.org/obo/DUO_0000001",
+      "iri": "http://purl.obolibrary.org/obo/DUO_0000019",
       "isDefiningOntology": true,
       "isObsolete": false,
-      "isPreferredRoot": true,
+      "isPreferredRoot": false,
       "label": [
-        "data use permission"
+        "publication required"
       ],
       "linkedEntities": {
-        "DUO:0000001": {
-          "curie": "DUO:0000001",
+        "DUO:0000019": {
+          "curie": "DUO:0000019",
           "definedBy": [
             "duo"
           ],
           "hasLocalDefinition": true,
-          "iri": "http://purl.obolibrary.org/obo/DUO_0000001",
+          "iri": "http://purl.obolibrary.org/obo/DUO_0000019",
           "label": [
-            "data use permission"
+            "publication required"
           ],
           "numAppearsIn": 1.0,
           "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
@@ -64,12 +78,27 @@
             "class",
             "entity"
           ],
-          "url": "http://purl.obolibrary.org/obo/DUO_0000001"
+          "url": "http://purl.obolibrary.org/obo/DUO_0000019"
         },
         "http://purl.obolibrary.org/obo/BFO_0000031": {
           "curie": "bfo:0000031",
           "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
           "url": "http://purl.obolibrary.org/obo/BFO_0000031"
+        },
+        "http://purl.obolibrary.org/obo/DUO_0000017": {
+          "curie": "DUO:0000017",
+          "definedBy": [
+            "duo"
+          ],
+          "hasLocalDefinition": true,
+          "label": [
+            "data use modifier"
+          ],
+          "numAppearsIn": 1.0,
+          "type": [
+            "class",
+            "entity"
+          ]
         },
         "http://purl.obolibrary.org/obo/IAO_0000027": {
           "curie": "IAO:0000027",
@@ -108,24 +137,24 @@
             "property"
           ]
         },
-        "http://purl.obolibrary.org/obo/IAO_0000118": {
-          "curie": "IAO:0000118",
-          "hasLocalDefinition": false,
+        "http://www.geneontology.org/formats/oboInOwl#id": {
+          "curie": "id",
+          "hasLocalDefinition": true,
           "label": [
-            "IAO_0000118"
+            "id"
           ],
-          "numAppearsIn": 1.0,
+          "numAppearsIn": 3.0,
           "type": [
             "annotationProperty",
             "entity",
             "property"
           ]
         },
-        "http://www.geneontology.org/formats/oboInOwl#id": {
-          "curie": "id",
+        "http://www.geneontology.org/formats/oboInOwl#shorthand": {
+          "curie": "shorthand",
           "hasLocalDefinition": true,
           "label": [
-            "id"
+            "shorthand"
           ],
           "numAppearsIn": 3.0,
           "type": [
@@ -166,26 +195,27 @@
         }
       },
       "linksTo": [
-        "http://purl.obolibrary.org/obo/DUO_0000001",
+        "http://purl.obolibrary.org/obo/DUO_0000017",
+        "http://purl.obolibrary.org/obo/DUO_0000019",
         "http://purl.obolibrary.org/obo/IAO_0000027",
         "http://purl.obolibrary.org/obo/IAO_0000030",
         "http://purl.obolibrary.org/obo/IAO_0000115",
-        "http://purl.obolibrary.org/obo/IAO_0000118",
         "http://www.geneontology.org/formats/oboInOwl#id",
+        "http://www.geneontology.org/formats/oboInOwl#shorthand",
         "http://www.w3.org/2000/01/rdf-schema#label",
         "http://www.w3.org/2000/01/rdf-schema#subClassOf"
       ],
-      "numDescendants": 5.0,
-      "numHierarchicalDescendants": 5.0,
+      "numDescendants": 0.0,
+      "numHierarchicalDescendants": 0.0,
       "ontologyId": "duo",
       "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
       "ontologyPreferredPrefix": "DUO",
       "score": "<score>",
       "searchableAnnotationValues": [
-        "A data item that is used to indicate consent permissions for datasets and/or materials, and relates to the purposes for which datasets and/or material might be removed, stored or used.",
+        "This data use modifier indicates that requestor agrees to make results of studies using the data available to the larger scientific community.",
         false
       ],
-      "shortForm": "DUO_0000001",
+      "shortForm": "DUO_0000019",
       "type": [
         "class",
         "entity"

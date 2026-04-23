@@ -4,63 +4,60 @@
       "appearsIn": [
         "duo"
       ],
-      "curie": "DUO:0000032",
+      "curie": "DUO:0000038",
       "definedBy": [
         "duo"
       ],
       "definition": [
-        "An investigation concerning a specific population group.",
-        "Should be paired with the an ontology term representing this population (e.g., xxx)."
+        "Biomedical research concerning genetics (i.e., the study of genes, genetic variations and heredity)."
       ],
-      "definitionProperty": [
-        "http://purl.obolibrary.org/obo/IAO_0000115",
-        "http://www.w3.org/2000/01/rdf-schema#comment"
-      ],
+      "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
       "directAncestor": [
+        "http://purl.obolibrary.org/obo/DUO_0000037",
         "http://purl.obolibrary.org/obo/OBI_0000011",
         "http://purl.obolibrary.org/obo/OBI_0000066"
       ],
       "directParent": [
-        "http://purl.obolibrary.org/obo/OBI_0000066"
+        "http://purl.obolibrary.org/obo/DUO_0000037"
       ],
       "hasDirectChildren": false,
       "hasDirectParents": true,
       "hasHierarchicalChildren": false,
       "hasHierarchicalParents": true,
       "hierarchicalAncestor": [
+        "http://purl.obolibrary.org/obo/DUO_0000037",
         "http://purl.obolibrary.org/obo/OBI_0000011",
         "http://purl.obolibrary.org/obo/OBI_0000066"
       ],
       "hierarchicalParent": [
-        "http://purl.obolibrary.org/obo/OBI_0000066"
+        "http://purl.obolibrary.org/obo/DUO_0000037"
       ],
       "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "http://purl.obolibrary.org/obo/DUO_0000041": "population research",
-      "http://purl.obolibrary.org/obo/IAO_0000115": "An investigation concerning a specific population group.",
+      "http://purl.obolibrary.org/obo/DUO_0000041": "genetic research",
+      "http://purl.obolibrary.org/obo/IAO_0000115": "Biomedical research concerning genetics (i.e., the study of genes, genetic variations and heredity).",
       "http://purl.obolibrary.org/obo/IAO_0000232": "This definition is a placeholder as a result of meetings at ICBO2018.",
-      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000032",
+      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000038",
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-      "http://www.w3.org/2000/01/rdf-schema#comment": "Should be paired with the an ontology term representing this population (e.g., xxx).",
-      "http://www.w3.org/2000/01/rdf-schema#label": "population research",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/OBI_0000066",
+      "http://www.w3.org/2000/01/rdf-schema#label": "genetic research",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/DUO_0000037",
       "imported": false,
-      "iri": "http://purl.obolibrary.org/obo/DUO_0000032",
+      "iri": "http://purl.obolibrary.org/obo/DUO_0000038",
       "isDefiningOntology": true,
       "isObsolete": false,
       "isPreferredRoot": false,
       "label": [
-        "population research"
+        "genetic research"
       ],
       "linkedEntities": {
-        "DUO:0000032": {
-          "curie": "DUO:0000032",
+        "DUO:0000038": {
+          "curie": "DUO:0000038",
           "definedBy": [
             "duo"
           ],
           "hasLocalDefinition": true,
-          "iri": "http://purl.obolibrary.org/obo/DUO_0000032",
+          "iri": "http://purl.obolibrary.org/obo/DUO_0000038",
           "label": [
-            "population research"
+            "genetic research"
           ],
           "numAppearsIn": 1.0,
           "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
@@ -68,7 +65,22 @@
             "class",
             "entity"
           ],
-          "url": "http://purl.obolibrary.org/obo/DUO_0000032"
+          "url": "http://purl.obolibrary.org/obo/DUO_0000038"
+        },
+        "http://purl.obolibrary.org/obo/DUO_0000037": {
+          "curie": "DUO:0000037",
+          "definedBy": [
+            "duo"
+          ],
+          "hasLocalDefinition": true,
+          "label": [
+            "biomedical research"
+          ],
+          "numAppearsIn": 1.0,
+          "type": [
+            "class",
+            "entity"
+          ]
         },
         "http://purl.obolibrary.org/obo/DUO_0000041": {
           "curie": "DUO:0000041",
@@ -142,21 +154,6 @@
             "property"
           ]
         },
-        "http://www.w3.org/2000/01/rdf-schema#comment": {
-          "curie": "RDFS:comment",
-          "definedBy": [
-            "rdfs"
-          ],
-          "hasLocalDefinition": false,
-          "label": [
-            "comment"
-          ],
-          "numAppearsIn": 2.0,
-          "type": [
-            "entity",
-            "property"
-          ]
-        },
         "http://www.w3.org/2000/01/rdf-schema#label": {
           "curie": "RDFS:label",
           "definedBy": [
@@ -189,13 +186,13 @@
         }
       },
       "linksTo": [
-        "http://purl.obolibrary.org/obo/DUO_0000032",
+        "http://purl.obolibrary.org/obo/DUO_0000037",
+        "http://purl.obolibrary.org/obo/DUO_0000038",
         "http://purl.obolibrary.org/obo/DUO_0000041",
         "http://purl.obolibrary.org/obo/IAO_0000115",
         "http://purl.obolibrary.org/obo/IAO_0000232",
         "http://purl.obolibrary.org/obo/OBI_0000066",
         "http://www.geneontology.org/formats/oboInOwl#id",
-        "http://www.w3.org/2000/01/rdf-schema#comment",
         "http://www.w3.org/2000/01/rdf-schema#label",
         "http://www.w3.org/2000/01/rdf-schema#subClassOf"
       ],
@@ -208,7 +205,7 @@
       "searchableAnnotationValues": [
         false
       ],
-      "shortForm": "DUO_0000032",
+      "shortForm": "DUO_0000038",
       "type": [
         "class",
         "entity"

@@ -1,4 +1,22 @@
 {
-  "entities": [],
+  "entities": [
+    {
+      "end": 32,
+      "is_obsolete": true,
+      "ontology_id": "xmpl",
+      "start": 12,
+      "string_type": "LABEL",
+      "term_iri": "http://exmpl.org/xmpl/XMPL000004",
+      "term_label": "obsolete xmpl entity"
+    },
+    {
+      "end": 38,
+      "ontology_id": "rdfs",
+      "start": 33,
+      "string_type": "LABEL",
+      "term_iri": "http://www.w3.org/2000/01/rdf-schema#label",
+      "term_label": "label"
+    }
+  ],
   "text": "testing the obsolete xmpl entity label"
 }
