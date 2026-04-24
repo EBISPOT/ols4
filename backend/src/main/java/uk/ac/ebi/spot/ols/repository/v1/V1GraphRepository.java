@@ -50,6 +50,7 @@ public class V1GraphRepository {
     private Map<String, Object> getGraphForEntity(String iri, String type, String entityType, String ontologyId, String lang) {
 
         String thisEntityId = ontologyId + "+" + type + "+" + iri;
+        GraphNode thisNode = getNode(thisEntityId);
 
         List<GraphNode> parentsAndRelatedToNodes = new ArrayList<>();
         List<GraphEdge> parentsAndRelatedToEdges = new ArrayList<>();
@@ -61,6 +62,9 @@ public class V1GraphRepository {
 
         // Deduplicate nodes by IRI
         Map<String, GraphNode> nodeMap = new LinkedHashMap<>();
+        if (thisNode != null) {
+            nodeMap.putIfAbsent(thisNode.iri, thisNode);
+        }
         for (GraphNode n : parentsAndRelatedToNodes) nodeMap.putIfAbsent(n.iri, n);
         for (GraphNode n : relatedFromNodes) nodeMap.putIfAbsent(n.iri, n);
 
@@ -73,15 +77,7 @@ public class V1GraphRepository {
         List<Map<String, Object>> nodes = nodeMap.values().stream().map(node -> {
 
             JsonObject ontologyNodeObject = transformJson(node.json, lang);
-
-            JsonObject linkedEntities = ontologyNodeObject.getAsJsonObject("linkedEntities");
-            if (linkedEntities != null) {
-                for (String referencedIri : linkedEntities.keySet()) {
-                    JsonObject reference = linkedEntities.getAsJsonObject(referencedIri);
-                    if (!iriToLabel.containsKey(referencedIri))
-                        iriToLabel.put(referencedIri, JsonHelper.getString(reference, LABEL.getText()));
-                }
-            }
+            collectLinkedEntityLabels(ontologyNodeObject, iriToLabel);
 
             Map<String, Object> nodeRes = new LinkedHashMap<>();
             nodeRes.put("iri", JsonHelper.getString(ontologyNodeObject, "iri"));
@@ -97,19 +93,26 @@ public class V1GraphRepository {
             edgeRes.put("source", edge.sourceIri);
             edgeRes.put("target", edge.targetIri);
 
-            JsonObject ontologyEdgeObject = transformJson(edge.json, lang);
-
-            String uri = JsonHelper.getString(ontologyEdgeObject, "property");
+            String uri = edge.propertyUri;
             if (uri == null) {
-                uri = "http://www.w3.org/2000/01/rdf-schema#subClassOf";
+                GraphNode sourceNode = nodeMap.get(edge.sourceIri);
+                if (sourceNode != null) {
+                    uri = findRelatedPropertyUri(sourceNode.json, edge.targetIri);
+                }
             }
 
-            String propertyLabel = iriToLabel.get(uri);
-            if (propertyLabel == null)
-                propertyLabel = "is a";
+            String propertyLabel;
+            if (uri == null) {
+                propertyLabel = "related to";
+            } else {
+                propertyLabel = iriToLabel.get(uri);
+                if (propertyLabel == null) {
+                    propertyLabel = "is a";
+                }
+                edgeRes.put("uri", uri);
+            }
 
             edgeRes.put(LABEL.getText(), propertyLabel);
-            edgeRes.put("uri", uri);
 
             return edgeRes;
 
@@ -119,6 +122,29 @@ public class V1GraphRepository {
         resGraph.put("nodes", nodes);
         resGraph.put("edges", edges);
         return resGraph;
+    }
+
+    GraphNode getNode(String entityId) {
+        try (Connection conn = postgresClient.getConnection()) {
+            DSLContext dsl = postgresClient.dsl(conn);
+            Record record = dsl.select(
+                            field("e", "_json", byte[].class).as("node_json"),
+                            field("e", "iri", String.class).as("node_iri"))
+                    .from(OLS_ENTITIES.as("e"))
+                    .where(field("e", "id", String.class).eq(entityId))
+                    .fetchOne();
+
+            if (record == null) {
+                return null;
+            }
+
+            return new GraphNode(
+                    record.get("node_iri", String.class),
+                    PostgresClient.decompressJson(record.get("node_json", byte[].class))
+            );
+        } catch (SQLException e) {
+            throw new RuntimeException("getNode failed", e);
+        }
     }
 
     void getParentsAndRelatedTo(String entityId, List<GraphNode> outNodes, List<GraphEdge> outEdges) {
@@ -137,9 +163,19 @@ public class V1GraphRepository {
                             DSL.inline("parent").as("rel_type"),
                             field("e1", "iri", String.class).as("source_iri"))
                     .from(e1)
-                    .join(e2).on(arrayContains(field("e1", "direct_ancestors", String[].class), field("e2", "iri", String.class))
+                    .join(e2).on(arrayContains(field("e1", "direct_parents", String[].class), field("e2", "iri", String.class))
                             .and(field("e2", "ontology_id", String.class).eq(field("e1", "ontology_id", String.class))))
                     .where(field("e1", "id", String.class).eq(entityId))
+                    .unionAll(
+                            dsl.select(
+                                            field("e2", "_json", byte[].class).as("node_json"),
+                                            field("e2", "iri", String.class).as("node_iri"),
+                                            DSL.inline("child").as("rel_type"),
+                                            field("e1", "iri", String.class).as("source_iri"))
+                                    .from(e1)
+                                    .join(e2).on(arrayContains(field("e2", "direct_parents", String[].class), field("e1", "iri", String.class))
+                                            .and(field("e2", "ontology_id", String.class).eq(field("e1", "ontology_id", String.class))))
+                                    .where(field("e1", "id", String.class).eq(entityId)))
                     .unionAll(
                             dsl.select(
                                             field("e2", "_json", byte[].class).as("node_json"),
@@ -162,9 +198,12 @@ public class V1GraphRepository {
 
                 if ("parent".equals(currentRelType)) {
                     outEdges.add(new GraphEdge(currentSourceIri, currentNodeIri,
-                            "{\"property\":\"http://www.w3.org/2000/01/rdf-schema#subClassOf\"}"));
+                            "http://www.w3.org/2000/01/rdf-schema#subClassOf"));
+                } else if ("child".equals(currentRelType)) {
+                    outEdges.add(new GraphEdge(currentNodeIri, currentSourceIri,
+                            "http://www.w3.org/2000/01/rdf-schema#subClassOf"));
                 } else {
-                    outEdges.add(new GraphEdge(currentSourceIri, currentNodeIri, "{}"));
+                    outEdges.add(new GraphEdge(currentSourceIri, currentNodeIri, null));
                 }
             }
         } catch (SQLException e) {
@@ -197,11 +236,52 @@ public class V1GraphRepository {
                 String currentTargetIri = record.get(targetIri);
 
                 outNodes.add(new GraphNode(currentNodeIri, PostgresClient.decompressJson(record.get(nodeJson))));
-                outEdges.add(new GraphEdge(currentNodeIri, currentTargetIri, "{}"));
+                outEdges.add(new GraphEdge(currentNodeIri, currentTargetIri, null));
             }
         } catch (SQLException e) {
             throw new RuntimeException("getRelatedFrom failed", e);
         }
+    }
+
+    static void collectLinkedEntityLabels(JsonObject ontologyNodeObject, Map<String, String> iriToLabel) {
+        JsonObject linkedEntities = ontologyNodeObject.getAsJsonObject("linkedEntities");
+        if (linkedEntities == null) {
+            return;
+        }
+
+        for (String referencedIri : linkedEntities.keySet()) {
+            JsonObject reference = linkedEntities.getAsJsonObject(referencedIri);
+            if (reference == null || iriToLabel.containsKey(referencedIri)) {
+                continue;
+            }
+
+            String label = JsonHelper.getString(reference, LABEL.getText());
+            if (label != null) {
+                iriToLabel.put(referencedIri, label);
+            }
+        }
+    }
+
+    static String findRelatedPropertyUri(String sourceNodeJson, String targetIri) {
+        JsonObject sourceNodeObject = JsonParser.parseString(sourceNodeJson).getAsJsonObject();
+        JsonElement relatedTo = sourceNodeObject.get("relatedTo");
+        if (relatedTo == null || !relatedTo.isJsonArray()) {
+            return null;
+        }
+
+        for (JsonElement relatedValue : relatedTo.getAsJsonArray()) {
+            if (!relatedValue.isJsonObject()) {
+                continue;
+            }
+
+            JsonObject relatedObj = relatedValue.getAsJsonObject();
+            String relatedTargetIri = JsonHelper.getString(relatedObj, "value");
+            if (targetIri.equals(relatedTargetIri)) {
+                return JsonHelper.getString(relatedObj, "property");
+            }
+        }
+
+        return null;
     }
 
     JsonObject transformJson(String json, String lang) {
@@ -220,11 +300,11 @@ public class V1GraphRepository {
     private static class GraphEdge {
         final String sourceIri;
         final String targetIri;
-        final String json;
-        GraphEdge(String sourceIri, String targetIri, String json) {
+        final String propertyUri;
+        GraphEdge(String sourceIri, String targetIri, String propertyUri) {
             this.sourceIri = sourceIri;
             this.targetIri = targetIri;
-            this.json = json;
+            this.propertyUri = propertyUri;
         }
     }
 
