@@ -802,6 +802,7 @@ public class OntologyGraph implements StreamRDF {
                         writeValue(writer, propertyValue);
                     }
                     writer.endArray();
+                    break;
                 default:
                     writer.value("?");
                     break;
