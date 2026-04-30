@@ -195,7 +195,7 @@ process rdf2json {
     def last_run_dir = params.last_run_dir ?: ''
     """
     #!/usr/bin/env bash
-    set -Euo pipefail
+    set -Eeuo pipefail
 
     MERGE_ARG=""
     if [ -n "${last_run_dir}" ] && [ -f "${last_run_dir}/${ontology_id}.json" ]; then
@@ -212,13 +212,6 @@ process rdf2json {
         ${base_path_arg} \
         ${extra_args} \
         \$MERGE_ARG
-
-    if [ ! -f "${ontology_id}.json" ]; then
-        echo "{}" > ${ontology_id}.json
-    fi
-    if [ ! -f "${ontology_id}.status.json" ]; then
-        echo '{"status":"FAILED","ontologyId":"${ontology_id}"}' > ${ontology_id}.status.json
-    fi
     """
 }
 
