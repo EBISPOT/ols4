@@ -602,10 +602,12 @@ process extract_sssom {
     #!/usr/bin/env bash
     set -Eeuo pipefail
     mkdir -p sssom
+    MAPPING_DATE=\$(date -u +%F)
     java -Xms${mem_mb}m -Xmx${mem_mb}m \
         -jar /opt/ols/dataload/extras/json2sssom/target/json2sssom-1.0-SNAPSHOT.jar \
         --input input_jsons \
-        --outDir sssom
+        --outDir sssom \
+        --mappingDate "\$MAPPING_DATE"
     tar --use-compress-program="pigz -f" -cvf sssom.tgz -C sssom .
     """
 }

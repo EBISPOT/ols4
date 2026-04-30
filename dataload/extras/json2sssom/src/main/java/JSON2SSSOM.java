@@ -9,6 +9,9 @@ import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeParseException;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -19,6 +22,8 @@ public class JSON2SSSOM {
 
     static Gson gson = new Gson();
     static JsonParser jsonParser = new JsonParser();
+
+    static final String OLS_BASE_URL = "https://www.ebi.ac.uk/ols4";
 
     static final List<String> tsvHeader = List.of(
             "subject_id",
@@ -42,6 +47,10 @@ public class JSON2SSSOM {
         output.setRequired(true);
         options.addOption(output);
 
+        Option mappingDate = new Option(null, "mappingDate", true, "mapping date for SSSOM metadata (YYYY-MM-DD)");
+        mappingDate.setRequired(false);
+        options.addOption(mappingDate);
+
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
         CommandLine cmd;
@@ -58,6 +67,17 @@ public class JSON2SSSOM {
 
         String inputPath = cmd.getOptionValue("input");
         String outputPath = cmd.getOptionValue("outDir");
+        String mappingDateValue;
+
+        try {
+            mappingDateValue = getMappingDate(cmd);
+        } catch(IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+            formatter.printHelp("json2sssom", options);
+
+            System.exit(1);
+            return;
+        }
 
         // Collect input files
         List<File> inputFiles = new ArrayList<>();
@@ -87,16 +107,51 @@ public class JSON2SSSOM {
         // Process each input file
         for (File file : inputFiles) {
             System.out.println("Processing file: " + file.getName());
-            processOntologyFile(file.getAbsolutePath(), outputPath);
+            processOntologyFile(file.getAbsolutePath(), outputPath, mappingDateValue);
         }
 
         System.out.println("SSSOM extraction completed");
     }
 
-    private static void processOntologyFile(String inputFilePath, String outputFilePath) throws IOException {
+    static String getMappingDate(CommandLine cmd) {
+        String mappingDate = cmd.getOptionValue("mappingDate");
+
+        if(mappingDate == null) {
+            return LocalDate.now(ZoneOffset.UTC).toString();
+        }
+
+        try {
+            return LocalDate.parse(mappingDate).toString();
+        } catch(DateTimeParseException e) {
+            throw new IllegalArgumentException("--mappingDate must use ISO date format YYYY-MM-DD: " + mappingDate, e);
+        }
+    }
+
+    private static String getStringProperty(Map<String, JsonElement> ontologyProperties, String propertyName) {
+        JsonElement value = ontologyProperties.get(propertyName);
+
+        if(value == null || value.isJsonNull()) {
+            return null;
+        }
+
+        return JsonHelper.getFirstStringValue(value);
+    }
+
+    private static String getMappingSetOntologyName(Map<String, JsonElement> ontologyProperties, String ontologyId) {
+        String preferredPrefix = getStringProperty(ontologyProperties, "preferredPrefix");
+
+        if(preferredPrefix == null || preferredPrefix.isBlank()) {
+            return ontologyId.toUpperCase(Locale.ROOT);
+        }
+
+        return preferredPrefix;
+    }
+
+    private static void processOntologyFile(String inputFilePath, String outputFilePath, String mappingDate) throws IOException {
 
         DumperOptions yamlOptions = new DumperOptions();
         yamlOptions.setIndent(2);
+        yamlOptions.setWidth(4096);
         yamlOptions.setPrettyFlow(true);
         yamlOptions.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
         Yaml yaml = new Yaml(yamlOptions);
@@ -147,21 +202,28 @@ public class JSON2SSSOM {
                         }
                     }
 
+                    String ontologyId = ontologyProperties.get("ontologyId").getAsString();
+                    String mappingSetOntologyName = getMappingSetOntologyName(ontologyProperties, ontologyId);
+
                     Map<String, Object> yamlHeader = new LinkedHashMap<>();
-                    yamlHeader.put("mapping_set_id", "https://w3id.org/commons/ols/mappings/" + ontologyProperties.get("ontologyId").getAsString() + ".ols.sssom.tsv");
+                    yamlHeader.put("mapping_set_id", "https://w3id.org/commons/ols/mappings/" + ontologyId + ".ols.sssom.tsv");
                     yamlHeader.put("mapping_set_group", "ols_sssom_extracts");
                     yamlHeader.put("mapping_set_confidence", "0.7");
+                    yamlHeader.put("mapping_provider", OLS_BASE_URL + "/ontologies/" + ontologyId);
+                    yamlHeader.put("mapping_tool", OLS_BASE_URL);
+                    yamlHeader.put("mapping_set_title", "OLS extracted " + mappingSetOntologyName + " mappings");
+                    yamlHeader.put("mapping_set_description", "These mappings were extracted during the OLS dataload from " + mappingSetOntologyName);
+                    yamlHeader.put("mapping_date", mappingDate);
                     Map<String, Object> yamlHeaderOther = new LinkedHashMap<>();
-                    yamlHeaderOther.put("mapping_set_source", "https://www.ebi.ac.uk/ols4/ontologies/" + ontologyProperties.get("ontologyId").getAsString());
-                    yamlHeaderOther.put("local_id", ontologyProperties.get("ontologyId").getAsString() + ".ols");
+                    yamlHeaderOther.put("local_id", ontologyId + ".ols");
                     yamlHeader.put("other", yamlHeaderOther);
-                    yamlHeader.put("local_name", ontologyProperties.get("ontologyId").getAsString() + ".ols.sssom.tsv");
+                    yamlHeader.put("local_name", ontologyId + ".ols.sssom.tsv");
                     yamlHeader.put("curie_map", curieMap.curiePrefixToNamespace);
 
                     String yamlStr = yaml.dump(yamlHeader);
                     yamlStr = Stream.of(yamlStr.split("\\n")).map(line -> "# " + line).collect(Collectors.joining("\r\n"));
 
-                    FileOutputStream fos = new FileOutputStream( outputFilePath + "/" + ontologyProperties.get("ontologyId").getAsString() + ".ols.sssom.tsv");
+                    FileOutputStream fos = new FileOutputStream( outputFilePath + "/" + ontologyId + ".ols.sssom.tsv");
                     fos.write(yamlStr.getBytes(StandardCharsets.UTF_8));
                     fos.write('\r');
                     fos.write('\n');
@@ -437,5 +499,3 @@ public class JSON2SSSOM {
 //    }
 
 }
-
-
