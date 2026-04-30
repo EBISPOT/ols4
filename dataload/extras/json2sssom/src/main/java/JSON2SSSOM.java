@@ -223,15 +223,16 @@ public class JSON2SSSOM {
                     String yamlStr = yaml.dump(yamlHeader);
                     yamlStr = Stream.of(yamlStr.split("\\n")).map(line -> "# " + line).collect(Collectors.joining("\r\n"));
 
-                    FileOutputStream fos = new FileOutputStream( outputFilePath + "/" + ontologyId + ".ols.sssom.tsv");
-                    fos.write(yamlStr.getBytes(StandardCharsets.UTF_8));
-                    fos.write('\r');
-                    fos.write('\n');
+                    try (FileOutputStream fos = new FileOutputStream(outputFilePath + "/" + ontologyId + ".ols.sssom.tsv")) {
+                        fos.write(yamlStr.getBytes(StandardCharsets.UTF_8));
+                        fos.write('\r');
+                        fos.write('\n');
 
-                    if(csvPrinter != null) {
-                        csvPrinter.close(true);
-                        fos.write(tsv.toByteArray());
-                        tsv.close();
+                        if(csvPrinter != null) {
+                            csvPrinter.close(true);
+                            fos.write(tsv.toByteArray());
+                            tsv.close();
+                        }
                     }
 
                     reader.endObject();
