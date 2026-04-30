@@ -173,10 +173,9 @@ process merge_configs {
 
 process rdf2json {
     cache "lenient"
-    memory { 64.GB + 128.GB * (task.attempt-1) }
+    memory 256.GB
     time "4h"
-    errorStrategy 'retry'
-    maxRetries 5
+    errorStrategy 'ignore'
 
     // Save each ontology JSON to last_run_dir after success, so it can be used as fallback next run
     publishDir params.last_run_dir, mode: 'copy', enabled: params.last_run_dir as boolean, saveAs: { fn -> fn.endsWith('.status.json') ? null : fn }
@@ -196,7 +195,7 @@ process rdf2json {
     def last_run_dir = params.last_run_dir ?: ''
     """
     #!/usr/bin/env bash
-    set -Eeuo pipefail
+    set -Euo pipefail
 
     MERGE_ARG=""
     if [ -n "${last_run_dir}" ] && [ -f "${last_run_dir}/${ontology_id}.json" ]; then
@@ -213,6 +212,13 @@ process rdf2json {
         ${base_path_arg} \
         ${extra_args} \
         \$MERGE_ARG
+
+    if [ ! -f "${ontology_id}.json" ]; then
+        echo "{}" > ${ontology_id}.json
+    fi
+    if [ ! -f "${ontology_id}.status.json" ]; then
+        echo '{"status":"FAILED","ontologyId":"${ontology_id}"}' > ${ontology_id}.status.json
+    fi
     """
 }
 
