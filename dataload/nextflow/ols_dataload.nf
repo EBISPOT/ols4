@@ -177,9 +177,6 @@ process rdf2json {
     time "4h"
     errorStrategy 'ignore'
 
-    // Save each ontology JSON to last_run_dir after success, so it can be used as fallback next run
-    publishDir params.last_run_dir, mode: 'copy', enabled: params.last_run_dir as boolean, saveAs: { fn -> fn.endsWith('.status.json') ? null : fn }
-
     input:
     path(config_path)
     val(ontology_id)
@@ -212,6 +209,10 @@ process rdf2json {
         ${base_path_arg} \
         ${extra_args} \
         \$MERGE_ARG
+
+    if [ -n "${last_run_dir}" ] && grep -qE '"status":"(SUCCESS|FALLBACK)"' "${ontology_id}.status.json" 2>/dev/null; then
+        cp "${ontology_id}.json" "${last_run_dir}/${ontology_id}.json"
+    fi
     """
 }
 
