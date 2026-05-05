@@ -173,13 +173,9 @@ process merge_configs {
 
 process rdf2json {
     cache "lenient"
-    memory { 64.GB + 128.GB * (task.attempt-1) }
+    memory 256.GB
     time "4h"
-    errorStrategy 'retry'
-    maxRetries 5
-
-    // Save each ontology JSON to last_run_dir after success, so it can be used as fallback next run
-    publishDir params.last_run_dir, mode: 'copy', enabled: params.last_run_dir as boolean, saveAs: { fn -> fn.endsWith('.status.json') ? null : fn }
+    errorStrategy 'ignore'
 
     input:
     path(config_path)
@@ -213,6 +209,10 @@ process rdf2json {
         ${base_path_arg} \
         ${extra_args} \
         \$MERGE_ARG
+
+    if [ -n "${last_run_dir}" ] && grep -qE '"status":"(SUCCESS|FALLBACK)"' "${ontology_id}.status.json" 2>/dev/null; then
+        cp "${ontology_id}.json" "${last_run_dir}/${ontology_id}.json"
+    fi
     """
 }
 
@@ -602,10 +602,12 @@ process extract_sssom {
     #!/usr/bin/env bash
     set -Eeuo pipefail
     mkdir -p sssom
+    MAPPING_DATE=\$(date -u +%F)
     java -Xms${mem_mb}m -Xmx${mem_mb}m \
         -jar /opt/ols/dataload/extras/json2sssom/target/json2sssom-1.0-SNAPSHOT.jar \
         --input input_jsons \
-        --outDir sssom
+        --outDir sssom \
+        --mappingDate "\$MAPPING_DATE"
     tar --use-compress-program="pigz -f" -cvf sssom.tgz -C sssom .
     """
 }
