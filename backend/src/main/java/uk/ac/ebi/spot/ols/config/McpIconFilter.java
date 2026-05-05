@@ -28,7 +28,12 @@ public class McpIconFilter implements Filter {
     private static final Logger logger = LoggerFactory.getLogger(McpIconFilter.class);
     
     private static final String ICON_PATH = "static/icon-small.png";
-    
+
+    // MCP SDK 0.17.0 advertises 2025-06-18 which requires OAuth per spec.
+    // Cap to 2025-03-26 where OAuth is optional for public servers.
+    private static final String VERSION_REQUIRING_OAUTH = "2025-06-18";
+    private static final String VERSION_CAP = "2025-03-26";
+
     private String iconDataUri;
 
     @Override
@@ -79,9 +84,10 @@ public class McpIconFilter implements Filter {
                 // Get the response content
                 byte[] content = responseWrapper.getContentAsByteArray();
                 String responseBody = new String(content, StandardCharsets.UTF_8);
-                
-                // Inject icon into initialize response
+
+                // Cap protocol version then inject icon into initialize response
                 if (responseBody.contains("\"serverInfo\"") && responseBody.contains("\"protocolVersion\"")) {
+                    responseBody = capProtocolVersion(responseBody);
                     responseBody = injectIconsIntoResponse(responseBody);
                 }
                 
@@ -143,6 +149,22 @@ public class McpIconFilter implements Filter {
         public BufferedReader getReader() {
             return new BufferedReader(new InputStreamReader(getInputStream(), StandardCharsets.UTF_8));
         }
+    }
+
+    /**
+     * Rewrites the protocol version in the initialize response to cap at 2025-03-26.
+     * MCP SDK 0.17.0 negotiates up to 2025-06-18 which requires OAuth per spec,
+     * breaking connections to public unauthenticated servers like OLS.
+     */
+    private String capProtocolVersion(String responseBody) {
+        String capped = responseBody.replaceAll(
+            "\"protocolVersion\"\\s*:\\s*\"" + VERSION_REQUIRING_OAUTH + "\"",
+            "\"protocolVersion\" : \"" + VERSION_CAP + "\""
+        );
+        if (!capped.equals(responseBody)) {
+            logger.info("Capped MCP protocol version from {} to {}", VERSION_REQUIRING_OAUTH, VERSION_CAP);
+        }
+        return capped;
     }
 
     /**
