@@ -173,13 +173,9 @@ process merge_configs {
 
 process rdf2json {
     cache "lenient"
-    memory { 64.GB + 128.GB * (task.attempt-1) }
+    memory 256.GB
     time "4h"
-    errorStrategy 'retry'
-    maxRetries 5
-
-    // Save each ontology JSON to last_run_dir after success, so it can be used as fallback next run
-    publishDir params.last_run_dir, mode: 'copy', enabled: params.last_run_dir as boolean, saveAs: { fn -> fn.endsWith('.status.json') ? null : fn }
+    errorStrategy 'ignore'
 
     input:
     path(config_path)
@@ -213,6 +209,10 @@ process rdf2json {
         ${base_path_arg} \
         ${extra_args} \
         \$MERGE_ARG
+
+    if [ -n "${last_run_dir}" ] && grep -qE '"status":"(SUCCESS|FALLBACK)"' "${ontology_id}.status.json" 2>/dev/null; then
+        cp "${ontology_id}.json" "${last_run_dir}/${ontology_id}.json"
+    fi
     """
 }
 
