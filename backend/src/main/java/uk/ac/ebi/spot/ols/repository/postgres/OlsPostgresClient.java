@@ -63,6 +63,13 @@ public class OlsPostgresClient {
         return "embedding_" + modelName;
     }
 
+    private static String sanitizeCentroidColumnName(String modelName) {
+        if (modelName == null || !SAFE_MODEL_NAME.matcher(modelName).matches()) {
+            throw new IllegalArgumentException("Invalid embedding model name: " + modelName);
+        }
+        return "descendants_centroid_" + modelName;
+    }
+
     static double normalizeCosineSimilarity(double similarity) {
         return clampUnitInterval((similarity + 1.0) / 2.0);
     }
@@ -389,6 +396,111 @@ public class OlsPostgresClient {
             throw new RuntimeException("getEmbeddingVector failed", e);
         }
         throw new ResourceNotFoundException("entity not found");
+    }
+
+    public List<Double> getCentroidVector(String type, String iri, String modelName) {
+        String centroidColumn = sanitizeCentroidColumnName(modelName);
+
+        try (Connection conn = postgresClient.getConnection()) {
+            DSLContext dsl = postgresClient.dsl(conn);
+            Field<Object> centroidField = field(centroidColumn, Object.class);
+            Record record = dsl.select(castAsText(centroidField).as("centroid"))
+                    .from(OLS_ENTITIES)
+                    .where(ENTITY_IRI.eq(iri))
+                    .and(ENTITY_TYPE.eq(type))
+                    .and(centroidField.isNotNull())
+                    .limit(1)
+                    .fetchOne();
+
+            if (record != null) {
+                String vecStr = record.get("centroid", String.class).trim();
+                if (vecStr.startsWith("[")) vecStr = vecStr.substring(1);
+                if (vecStr.endsWith("]")) vecStr = vecStr.substring(0, vecStr.length() - 1);
+                return Arrays.stream(vecStr.split(","))
+                        .map(String::trim)
+                        .map(Double::parseDouble)
+                        .collect(Collectors.toList());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("getCentroidVector failed", e);
+        }
+        throw new ResourceNotFoundException("entity not found");
+    }
+
+    public Page<JsonElement> searchByCentroidVector(String type, List<Double> vector, Pageable pageable, String modelName) {
+        String centroidColumn = sanitizeCentroidColumnName(modelName);
+        int limit = pageable.getPageSize();
+        boolean filterByType = hasConcreteEntityType(type);
+        String vecLiteral = vectorLiteral(vector);
+
+        try (Connection conn = postgresClient.getConnection()) {
+            DSLContext dsl = postgresClient.dsl(conn);
+            Field<Object> centroidField = field(centroidColumn, Object.class);
+            Field<Double> distance = vectorDistance(centroidField, vecLiteral).as("dist");
+
+            Condition where = centroidField.isNotNull();
+            if (filterByType) {
+                where = where.and(ENTITY_TYPE.eq(type));
+            }
+
+            var records = dsl.select(ENTITY_JSON, distance)
+                    .from(OLS_ENTITIES)
+                    .where(where)
+                    .orderBy(distance.asc())
+                    .limit(limit)
+                    .fetch();
+
+            List<JsonElement> results = new ArrayList<>();
+            for (Record record : records) {
+                JsonObject json = JsonParser.parseString(PostgresClient.decompressJson(record.get(ENTITY_JSON))).getAsJsonObject();
+                json.addProperty("score", normalizeCosineDistance(record.get("dist", Double.class)));
+                results.add(json);
+            }
+            return new PageImpl<>(results, pageable, results.size());
+        } catch (SQLException e) {
+            throw new RuntimeException("searchByCentroidVector failed", e);
+        }
+    }
+
+    public Page<JsonElement> searchByCentroidVectorInOntology(String type, List<Double> vector, Pageable pageable,
+            String modelName, String ontologyId, boolean isDefiningOntology) {
+        String centroidColumn = sanitizeCentroidColumnName(modelName);
+        int limit = pageable.getPageSize();
+        boolean filterByType = hasConcreteEntityType(type);
+        String normalizedOntologyId = ontologyId.toLowerCase();
+        String vecLiteral = vectorLiteral(vector);
+
+        try (Connection conn = postgresClient.getConnection()) {
+            DSLContext dsl = postgresClient.dsl(conn);
+            Field<Object> centroidField = field(centroidColumn, Object.class);
+            Field<Double> distance = vectorDistance(centroidField, vecLiteral).as("dist");
+
+            Condition where = centroidField.isNotNull()
+                    .and(ENTITY_ONTOLOGY_ID.eq(normalizedOntologyId));
+            if (filterByType) {
+                where = where.and(ENTITY_TYPE.eq(type));
+            }
+            if (isDefiningOntology) {
+                where = where.and(ENTITY_IS_DEFINING_ONTOLOGY.isTrue());
+            }
+
+            var records = dsl.select(ENTITY_JSON, distance)
+                    .from(OLS_ENTITIES)
+                    .where(where)
+                    .orderBy(distance.asc())
+                    .limit(limit)
+                    .fetch();
+
+            List<JsonElement> results = new ArrayList<>();
+            for (Record record : records) {
+                JsonObject json = JsonParser.parseString(PostgresClient.decompressJson(record.get(ENTITY_JSON))).getAsJsonObject();
+                json.addProperty("score", normalizeCosineDistance(record.get("dist", Double.class)));
+                results.add(json);
+            }
+            return new PageImpl<>(results, pageable, results.size());
+        } catch (SQLException e) {
+            throw new RuntimeException("searchByCentroidVectorInOntology failed", e);
+        }
     }
 
     public Page<JsonElement> searchByVector(String type, List<Double> vector, Pageable pageable, String modelName) {

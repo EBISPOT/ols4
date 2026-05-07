@@ -138,7 +138,7 @@ workflow {
         // Exclude umap and pca16 parquets — they are visualization-only, not for DB storage
         // ifEmpty ensures json2postgres still runs when the directory exists but has no parquets
         embedding_parquets = Channel.fromPath("${params.embeddings_path}/*.parquet")
-            .filter { !it.name.contains('_umap') && !it.name.contains('_pca16') }
+            .filter { !it.name.contains('_umap') && !it.name.contains('_pca16') && !it.name.contains('_descendants_centroid') }
             .collect()
             .ifEmpty([file('NO_FILE')])
         // Look for PCA JSON files alongside the parquets
@@ -154,12 +154,19 @@ workflow {
     // Join filter properties with linked ontology JSONs by ontology_id
     linked_with_filter_props = linked_ontologies_by_id.combine(filter_props_by_id, by: 0)
 
-    postgres_tsvs = json2postgres(linked_with_filter_props, embedding_parquets)
+    // Compute avg-of-descendants embeddings from the same PCA parquets that go
+    // into postgres.  Runs whenever embedding models are present (no separate flag).
+    // The binary handles both raw multi-row parquets and pre-averaged parquets.
+    centroid_parquets = compute_descendants_centroid(embedding_parquets, all_linked_jsons)
+        .collect()
+        .ifEmpty([file('NO_FILE')])
+
+    postgres_tsvs = json2postgres(linked_with_filter_props, embedding_parquets, centroid_parquets)
 
     if (params.external_postgres) {
-        pg = populate_external_postgres(postgres_tsvs.collect(), embedding_parquets, all_filter_props, pca_json_files, text_tagger_db)
+        pg = populate_external_postgres(postgres_tsvs.collect(), embedding_parquets, all_filter_props, pca_json_files, text_tagger_db, centroid_parquets)
     } else {
-        pg = create_postgres(postgres_tsvs.collect(), embedding_parquets, all_filter_props, pca_json_files, text_tagger_db)
+        pg = create_postgres(postgres_tsvs.collect(), embedding_parquets, all_filter_props, pca_json_files, text_tagger_db, centroid_parquets)
     }
 
     // Generate loading report after all ontologies have been processed
@@ -323,6 +330,7 @@ process json2postgres {
     input:
     tuple val(ontology_id), path(ontology_json), val(filter_properties)
     path(embedding_parquets)
+    path(centroid_parquets)
 
     output:
     path("*.pgbin"), optional: true
@@ -332,6 +340,9 @@ process json2postgres {
     def has_embeddings = !parquets.any { it.name == 'NO_FILE' }
     def parquet_args = has_embeddings ? "--embeddingParquets ${parquets.join(' ')}" : ''
     def filter_args = filter_properties ? filter_properties.collect { "--filterProperty '${it}'" }.join(' ') : ''
+    def centroid_list = (centroid_parquets instanceof List ? centroid_parquets : [centroid_parquets])
+    def has_centroid = !centroid_list.any { it.name == 'NO_FILE' }
+    def centroid_args = has_centroid ? "--descendantsCentroidParquets ${centroid_list.join(' ')}" : ''
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
@@ -340,6 +351,7 @@ process json2postgres {
         --ontology-id ${ontology_id} \
         --outDir . \
         ${parquet_args} \
+        ${centroid_args} \
         ${filter_args}
     """
 }
@@ -357,6 +369,7 @@ process create_postgres {
     val(filter_properties)
     path(pca_jsons)
     path(text_tagger_db)
+    path(centroid_parquets)
 
     output:
     path("postgres"), emit: pg_dir
@@ -374,10 +387,13 @@ process create_postgres {
     if (has_pca || has_tagger) {
         artifact_args = '--artifacts-dir .'
     }
+    def centroid_list = (centroid_parquets instanceof List ? centroid_parquets : [centroid_parquets])
+    def has_centroid = !centroid_list.any { it.name == 'NO_FILE' }
+    def centroid_args = has_centroid ? centroid_list.collect { "--descendants-centroid-parquet ${it}" }.join(' ') : ''
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    python3 /opt/ols/dataload/load_into_postgres.py ./postgres . --parallel-workers ${params.pg_parallel_workers} ${params.pg_maintenance_work_mem ? '--maintenance-work-mem ' + params.pg_maintenance_work_mem : ''} ${filter_args} ${artifact_args} ${parquet_list}
+    python3 /opt/ols/dataload/load_into_postgres.py ./postgres . --parallel-workers ${params.pg_parallel_workers} ${params.pg_maintenance_work_mem ? '--maintenance-work-mem ' + params.pg_maintenance_work_mem : ''} ${filter_args} ${artifact_args} ${centroid_args} ${parquet_list}
     """
 }
 
@@ -394,6 +410,7 @@ process populate_external_postgres {
     val(filter_properties)
     path(pca_jsons)
     path(text_tagger_db)
+    path(centroid_parquets)
 
     output:
     path("postgres_external_done"), emit: pg_dir
@@ -410,10 +427,13 @@ process populate_external_postgres {
     if (has_pca || has_tagger) {
         artifact_args = '--artifacts-dir .'
     }
+    def centroid_list = (centroid_parquets instanceof List ? centroid_parquets : [centroid_parquets])
+    def has_centroid = !centroid_list.any { it.name == 'NO_FILE' }
+    def centroid_args = has_centroid ? centroid_list.collect { "--descendants-centroid-parquet ${it}" }.join(' ') : ''
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    python3 /opt/ols/dataload/populate_external_postgres.py . --parallel-workers ${params.pg_parallel_workers} ${params.pg_maintenance_work_mem ? '--maintenance-work-mem ' + params.pg_maintenance_work_mem : ''} ${filter_args} ${parquet_list} ${artifact_args}
+    python3 /opt/ols/dataload/populate_external_postgres.py . --parallel-workers ${params.pg_parallel_workers} ${params.pg_maintenance_work_mem ? '--maintenance-work-mem ' + params.pg_maintenance_work_mem : ''} ${filter_args} ${parquet_list} ${centroid_args} ${artifact_args}
     mkdir -p postgres_external_done
     echo "Populated \${PGHOST}:\${PGPORT}/\${PGDATABASE} at \$(date)" > postgres_external_done/status.txt
     """
@@ -670,6 +690,42 @@ process check_postgres_data_exists {
         exit 1
     fi
     """
+}
+
+
+// Computes the centroid of all descendants for every term and an aggregate
+// vector per ontology.  Accepts both raw PCA parquets (multiple rows per term,
+// has string_type column) and pre-averaged parquets (one row per term).
+// Runs once for all models; one *_descendants_centroid.parquet is written per model.
+process compute_descendants_centroid {
+    cache "lenient"
+    memory { 64.GB }
+    time "4h"
+
+    input:
+    path(parquets)
+    path(ontology_jsons)
+
+    output:
+    path("*_descendants_centroid.parquet"), optional: true
+
+    script:
+    def pq_list   = (parquets       instanceof List ? parquets       : [parquets])
+    def json_list = (ontology_jsons instanceof List ? ontology_jsons : [ontology_jsons])
+    def has_parquets = !pq_list.any { it.name == 'NO_FILE' }
+    if (has_parquets)
+        """
+        #!/usr/bin/env bash
+        set -Eeuo pipefail
+        descendants_centroid \\
+            --embedding-parquets ${pq_list.join(' ')} \\
+            --ontology-jsons ${json_list.join(' ')} \\
+            --out-dir .
+        """
+    else
+        """
+        : # No embedding parquets — skipping descendants_centroid
+        """
 }
 
 

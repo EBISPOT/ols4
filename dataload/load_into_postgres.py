@@ -321,6 +321,7 @@ def main():
     # Parse remaining args
     filter_properties: list[str] = []
     parquets_raw: list[str] = []
+    centroid_parquets_raw: list[str] = []
     parallel_workers = 0
     maintenance_work_mem = ""
     artifacts_dir = ""
@@ -338,6 +339,9 @@ def main():
             i += 2
         elif args_rest[i] == "--artifacts-dir" and i + 1 < len(args_rest):
             artifacts_dir = args_rest[i + 1]
+            i += 2
+        elif args_rest[i] == "--descendants-centroid-parquet" and i + 1 < len(args_rest):
+            centroid_parquets_raw.append(args_rest[i + 1])
             i += 2
         elif args_rest[i].endswith(".parquet"):
             parquets_raw.append(args_rest[i])
@@ -425,6 +429,9 @@ checkpoint_completion_target = 0.9
             schema_extra += ["--filter-property", fp]
         parquets = sorted(parquets_raw)
         schema_extra += parquets
+        centroid_parquets = sorted(centroid_parquets_raw)
+        for pq in centroid_parquets:
+            schema_extra += ["--descendants-centroid-parquet", pq]
 
         sections = generate_schema(script_dir, schema_extra)
 
@@ -447,6 +454,12 @@ checkpoint_completion_target = 0.9
             model = Path(pq_file).stem
             entity_cols.append(f'"embeddings_{model}"')
             emb_node_cols.append(f'"embedding_{model}"')
+
+        # descendants_centroid columns go to ols_entities only (not ols_embedding_nodes)
+        for pq_file in centroid_parquets:
+            stem = Path(pq_file).stem
+            model_name = stem.removesuffix("_descendants_centroid")
+            entity_cols.append(f'"descendants_centroid_{model_name}"')
 
         # --- Load tables with COPY FREEZE ---
         print("=== Bulk loading with COPY FREEZE ===")

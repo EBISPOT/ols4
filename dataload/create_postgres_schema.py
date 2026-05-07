@@ -241,15 +241,58 @@ def generate_embedding_sql(parquet_files: list) -> tuple:
     )
 
 
+def generate_descendants_centroid_sql(parquet_files: list) -> tuple:
+    """Generate ALTER TABLE and CREATE INDEX statements for descendants_centroid columns.
+
+    These columns are added to ols_entities only (not ols_embedding_nodes).
+    Returns a tuple of (entities_alter, entities_index).
+    """
+    if not parquet_files:
+        return ("", "")
+
+    ent_alter = []
+    ent_index = []
+
+    for parquet_file in parquet_files:
+        stem = Path(parquet_file).stem
+        model_name = stem.removesuffix("_descendants_centroid")
+        dimensions = get_embedding_dimension(str(parquet_file))
+
+        if dimensions == 0:
+            print(f"-- Skipping descendants_centroid {model_name}: could not determine dimensions", file=sys.stderr)
+            continue
+
+        safe_model_name = model_name.replace('-', '_').replace('.', '_')
+        col = f"descendants_centroid_{model_name}"
+
+        ent_alter.append(f'ALTER TABLE ols_entities ADD COLUMN "{col}" vector({dimensions});')
+        ent_alter.append(f'ALTER TABLE ols_entities ALTER COLUMN "{col}" SET STORAGE EXTERNAL;')
+
+        ent_index.append(
+            f'CREATE INDEX idx_ent_centroid_{safe_model_name} ON ols_entities '
+            f'USING hnsw ("{col}" vector_cosine_ops);'
+        )
+
+    return (
+        '\n'.join(ent_alter) + '\n' if ent_alter else "",
+        '\n'.join(ent_index) + '\n' if ent_index else "",
+    )
+
+
 def main():
-    # Parse --filter-property <name> flags and remaining parquet file args
+    # Parse --filter-property <name> flags, --descendants-centroid-parquet <file> flags,
+    # and remaining parquet file args
     filter_properties = []
     parquet_files = []
+    centroid_parquet_files = []
     args = sys.argv[1:]
     i = 0
     while i < len(args):
         if args[i] == '--filter-property' and i + 1 < len(args):
             filter_properties.append(args[i + 1])
+            i += 2
+        elif args[i] == '--descendants-centroid-parquet' and i + 1 < len(args):
+            centroid_parquet_files.append(args[i + 1])
             i += 2
         elif args[i].endswith('.parquet'):
             parquet_files.append(args[i])
@@ -261,6 +304,8 @@ def main():
     emb_ent_alter, emb_node_alter, emb_ent_index, emb_node_index = \
         generate_embedding_sql(parquet_files)
     filter_alter, filter_index = generate_filter_property_sql(filter_properties)
+    avg_desc_ent_alter, avg_desc_ent_index = \
+        generate_descendants_centroid_sql(centroid_parquet_files)
 
     # -- Extensions --
     print("-- SECTION: extensions")
@@ -271,6 +316,8 @@ def main():
     print(ENTITIES_TABLE_SQL)
     if emb_ent_alter:
         print(emb_ent_alter)
+    if avg_desc_ent_alter:
+        print(avg_desc_ent_alter)
     if filter_alter:
         print(filter_alter)
 
@@ -289,6 +336,8 @@ def main():
     print(ENTITY_INDEX_SQL)
     if emb_ent_index:
         print(emb_ent_index)
+    if avg_desc_ent_index:
+        print(avg_desc_ent_index)
     if filter_index:
         print(filter_index)
     print(EMBEDDING_NODE_INDEX_SQL)

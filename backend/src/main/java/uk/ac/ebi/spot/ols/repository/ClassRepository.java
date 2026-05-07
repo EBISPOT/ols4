@@ -245,6 +245,15 @@ public class ClassRepository {
         return this.postgresClient.getEmbeddingVector("OntologyClass", iri, modelName);
     }
 
+    public List<Double> getCentroidVector(String iri, String modelName) {
+
+        if (modelName == null || modelName.isEmpty()) {
+            modelName = "text-embedding-3-small"; // Default model
+        }
+
+        return this.postgresClient.getCentroidVector("OntologyClass", iri, modelName);
+    }
+
     /**
      * Search by vector globally (all ontologies, defining classes only) or filtered by ontology.
      * When ontologyId is provided, only returns classes defined in that ontology.
@@ -310,6 +319,51 @@ public class ClassRepository {
         return this.postgresClient.searchByVectorInOntology("OntologyClass", vectorList, pageable, modelName, ontologyId, isDefiningOntology, includeCurations)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
+    }
+
+    public Page<JsonElement> searchByCentroidVector(String modelName, float[] vector, Pageable pageable, String lang, String ontologyId, JsonTransformOptions outputOpts) {
+        if (ontologyId != null) {
+            return searchByCentroidVectorInOntology(ontologyId, modelName, vector, pageable, lang, true, outputOpts);
+        }
+
+        Validation.validateLang(lang);
+
+        if (vector == null || vector.length == 0) {
+            throw new IllegalArgumentException("Vector cannot be null or empty");
+        }
+
+        if (modelName == null || modelName.isEmpty()) {
+            modelName = "text-embedding-3-small"; // Default model
+        }
+
+        List<Double> vectorList = new java.util.ArrayList<>(vector.length);
+        for (float f : vector) {
+            vectorList.add((double) f);
+        }
+
+        return this.postgresClient.searchByCentroidVector("OntologyClass", vectorList, pageable, modelName)
+                .map(e -> JsonTransformer.transformJson(e, lang, outputOpts));
+    }
+
+    public Page<JsonElement> searchByCentroidVectorInOntology(String ontologyId, String modelName, float[] vector, Pageable pageable, String lang, boolean isDefiningOntology, JsonTransformOptions outputOpts) {
+        Validation.validateLang(lang);
+        Validation.validateOntologyId(ontologyId);
+
+        if (vector == null || vector.length == 0) {
+            throw new IllegalArgumentException("Vector cannot be null or empty");
+        }
+
+        if (modelName == null || modelName.isEmpty()) {
+            modelName = "text-embedding-3-small"; // Default model
+        }
+
+        List<Double> vectorList = new java.util.ArrayList<>(vector.length);
+        for (float f : vector) {
+            vectorList.add((double) f);
+        }
+
+        return this.postgresClient.searchByCentroidVectorInOntology("OntologyClass", vectorList, pageable, modelName, ontologyId, isDefiningOntology)
+                .map(e -> JsonTransformer.transformJson(e, lang, outputOpts));
     }
 
     /**

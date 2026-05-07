@@ -191,6 +191,8 @@ pub struct OntologyWriter<'a> {
     ontology_id: String,
     embeddings: &'a HashMap<String, Embeddings>,
     embedding_model_names: Vec<String>,
+    descendants_centroid: &'a HashMap<String, Embeddings>,
+    descendants_centroid_model_names: Vec<String>,
     ontology_iri: String,
     ontology_preferred_prefix: String,
     filter_property_names: Vec<String>,
@@ -207,6 +209,7 @@ impl<'a> OntologyWriter<'a> {
         output_file_path: &str,
         ontology_id: &str,
         embeddings: &'a HashMap<String, Embeddings>,
+        descendants_centroid: &'a HashMap<String, Embeddings>,
         ontology_properties: &Map<String, Value>,
         filter_property_names: Vec<String>,
     ) -> Result<Self, Box<dyn std::error::Error>> {
@@ -224,8 +227,11 @@ impl<'a> OntologyWriter<'a> {
         let mut embedding_model_names: Vec<String> = embeddings.keys().cloned().collect();
         embedding_model_names.sort();
 
+        let mut descendants_centroid_model_names: Vec<String> = descendants_centroid.keys().cloned().collect();
+        descendants_centroid_model_names.sort();
+
         // Field counts (must match create_postgres_schema.py column order)
-        let entity_field_count = (29 + filter_property_names.len() + embedding_model_names.len()) as i16;
+        let entity_field_count = (29 + filter_property_names.len() + embedding_model_names.len() + descendants_centroid_model_names.len()) as i16;
         let emb_node_field_count = (3 + embedding_model_names.len()) as i16;
 
         // Create binary COPY files
@@ -247,6 +253,8 @@ impl<'a> OntologyWriter<'a> {
             ontology_id,
             embeddings,
             embedding_model_names,
+            descendants_centroid,
+            descendants_centroid_model_names,
             ontology_iri,
             ontology_preferred_prefix,
             filter_property_names,
@@ -348,6 +356,17 @@ impl<'a> OntologyWriter<'a> {
             }
         }
 
+        // One descendants_centroid column per model
+        for model_name in &self.descendants_centroid_model_names.clone() {
+            let lookup = self.descendants_centroid.get(model_name)
+                .and_then(|emb| emb.get_average_embedding(&self.ontology_id, entity_type_str, iri));
+            if let Some(avg) = lookup {
+                self.entities_writer.write_vector(&avg)?;
+            } else {
+                self.entities_writer.write_null()?;
+            }
+        }
+
         // Write embedding child nodes
         self.write_embedding_child_nodes(&entity_node_id, entity, entity_type_str, iri)?;
 
@@ -428,9 +447,21 @@ impl<'a> OntologyWriter<'a> {
             self.entities_writer.write_text_array(&empty)?;
         }
 
-        // Ontology nodes don't have embeddings
+        // Ontology nodes don't have label-level embeddings
         for _ in &self.embedding_model_names {
             self.entities_writer.write_null()?;
+        }
+
+        // descendants_centroid: look up by ontology_id as the IRI
+        // The binary writes the ontology-level centroid with key make_key(ontology_id, "ontology", ontology_id)
+        for model_name in &self.descendants_centroid_model_names.clone() {
+            let lookup = self.descendants_centroid.get(model_name)
+                .and_then(|emb| emb.get_average_embedding(ontology_id, "ontology", ontology_id));
+            if let Some(avg) = lookup {
+                self.entities_writer.write_vector(&avg)?;
+            } else {
+                self.entities_writer.write_null()?;
+            }
         }
 
         Ok(())

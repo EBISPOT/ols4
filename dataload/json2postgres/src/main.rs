@@ -34,6 +34,10 @@ struct Args {
     #[arg(long = "embeddingParquets", num_args = 1..)]
     embedding_parquets: Option<Vec<String>>,
 
+    /// Optional list of descendants-centroid Parquet files (output of descendants_centroid binary)
+    #[arg(long = "descendantsCentroidParquets", num_args = 1..)]
+    descendants_centroid_parquets: Option<Vec<String>>,
+
     /// Optional list of filter property URIs to extract as TEXT[] columns
     #[arg(long = "filterProperty", num_args = 1..)]
     filter_properties: Option<Vec<String>>,
@@ -97,11 +101,27 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
         eprintln!("No embeddings parquets provided, skipping embeddings load.");
     }
 
+    let mut descendants_centroid: HashMap<String, Embeddings> = HashMap::new();
+    if let Some(ref parquet_files) = args.descendants_centroid_parquets {
+        for parquet_path in parquet_files {
+            let path = Path::new(parquet_path);
+            if path.exists() {
+                let (model_name, emb) =
+                    load_parquet_file(path, normalized_ontology_id.as_deref())?;
+                descendants_centroid.insert(model_name, emb);
+            } else {
+                eprintln!("Warning: descendants_centroid parquet not found: {}", parquet_path);
+            }
+        }
+        eprintln!("Loaded {} descendants_centroid from parquet files", descendants_centroid.len());
+    }
+
     let converter = PostgresConverter::new(
         normalized_ontology_id,
         args.input,
         args.out_dir,
         embeddings,
+        descendants_centroid,
         args.filter_properties.unwrap_or_default(),
     )?;
     converter.convert()?;
@@ -114,6 +134,7 @@ struct PostgresConverter {
     input_file_path: String,
     output_file_path: String,
     embeddings: HashMap<String, Embeddings>,
+    descendants_centroid: HashMap<String, Embeddings>,
     filter_property_names: Vec<String>,
 }
 
@@ -123,6 +144,7 @@ impl PostgresConverter {
         input_file_path: String,
         output_file_path: String,
         embeddings: HashMap<String, Embeddings>,
+        descendants_centroid: HashMap<String, Embeddings>,
         filter_property_names: Vec<String>,
     ) -> Result<Self, Box<dyn std::error::Error>> {
         Ok(Self {
@@ -130,6 +152,7 @@ impl PostgresConverter {
             input_file_path,
             output_file_path,
             embeddings,
+            descendants_centroid,
             filter_property_names,
         })
     }
@@ -229,6 +252,7 @@ impl PostgresConverter {
                             &self.output_file_path,
                             ont_id,
                             &self.embeddings,
+                            &self.descendants_centroid,
                             &ontology_properties,
                             self.filter_property_names.clone(),
                         )?);
@@ -247,6 +271,7 @@ impl PostgresConverter {
                             &self.output_file_path,
                             ont_id,
                             &self.embeddings,
+                            &self.descendants_centroid,
                             &ontology_properties,
                             self.filter_property_names.clone(),
                         )?);
@@ -265,6 +290,7 @@ impl PostgresConverter {
                             &self.output_file_path,
                             ont_id,
                             &self.embeddings,
+                            &self.descendants_centroid,
                             &ontology_properties,
                             self.filter_property_names.clone(),
                         )?);
@@ -292,6 +318,7 @@ impl PostgresConverter {
                     &self.output_file_path,
                     ont_id,
                     &self.embeddings,
+                    &self.descendants_centroid,
                     &ontology_properties,
                     self.filter_property_names.clone(),
                 )?);

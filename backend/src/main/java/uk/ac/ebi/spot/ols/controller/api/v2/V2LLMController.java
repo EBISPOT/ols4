@@ -64,7 +64,7 @@ public class V2LLMController {
         
         // Get models from Postgres (only these are usable for similarity search)
         List<String> embeddingModels = postgresClient.getEmbeddingModels();
-        
+
         // Build response - only include models that exist in Postgres
         List<Map<String, Object>> result = new ArrayList<>();
         for (String model : embeddingModels) {
@@ -172,6 +172,10 @@ public class V2LLMController {
                 @RequestParam(value = "includeCurations", required = false, defaultValue = "true")
                 @Parameter(name = "includeCurations",
                         description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") boolean includeCurations,
+                @RequestParam(value = "vector", required = false)
+                @Parameter(name = "vector",
+                        description = "Optional. Set to 'centroid' to search by descendant centroid vectors instead of label/synonym embeddings.",
+                        example = "centroid") String vector,
                 @ParameterObject JsonTransformOptions outputOpts
         ) throws ResourceNotFoundException, IOException {
 
@@ -186,7 +190,13 @@ public class V2LLMController {
 
                 // Search all entity types using OntologyEntity (no type filtering)
                 org.springframework.data.domain.Page<com.google.gson.JsonElement> results;
-                if (ontologyId != null && !ontologyId.isEmpty()) {
+                if ("centroid".equals(vector)) {
+                    if (ontologyId != null && !ontologyId.isEmpty()) {
+                        results = postgresClient.searchByCentroidVectorInOntology("OntologyEntity", vectorList, pageable, model, ontologyId, true);
+                    } else {
+                        results = postgresClient.searchByCentroidVector("OntologyEntity", vectorList, pageable, model);
+                    }
+                } else if (ontologyId != null && !ontologyId.isEmpty()) {
                     results = postgresClient.searchByVectorInOntology("OntologyEntity", vectorList, pageable, model, ontologyId, true, includeCurations);
                 } else {
                     results = postgresClient.searchByVector("OntologyEntity", vectorList, pageable, model, includeCurations);
@@ -220,16 +230,25 @@ public class V2LLMController {
                 @RequestParam(value = "includeCurations", required = false, defaultValue = "true")
                 @Parameter(name = "includeCurations",
                         description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") boolean includeCurations,
+                @RequestParam(value = "vector", required = false)
+                @Parameter(name = "vector",
+                        description = "Optional. Set to 'centroid' to search by descendant centroid vectors instead of label/synonym embeddings.",
+                        example = "centroid") String vector,
                 @ParameterObject JsonTransformOptions outputOpts
         ) throws ResourceNotFoundException, IOException {
 
                 // Embed the query text using the embedding service
                 float[] vectorArray = embeddingServiceClient.embedText(model, query);
 
+                org.springframework.data.domain.Page<com.google.gson.JsonElement> results;
+                if ("centroid".equals(vector)) {
+                    results = classRepository.searchByCentroidVector(model, vectorArray, pageable, lang, ontologyId, outputOpts);
+                } else {
+                    results = classRepository.searchByVector(model, vectorArray, pageable, lang, ontologyId, outputOpts, includeCurations);
+                }
+
                 return new ResponseEntity<>(
-                        new V2PagedResponse<V2Entity>(
-                        classRepository.searchByVector(model, vectorArray, pageable, lang, ontologyId, outputOpts, includeCurations).map(V2Entity::new)
-                        ),
+                        new V2PagedResponse<V2Entity>(results.map(V2Entity::new)),
                         HttpStatus.OK
                 );
         }
@@ -258,16 +277,25 @@ public class V2LLMController {
                 @RequestParam(value = "includeCurations", required = false, defaultValue = "true")
                 @Parameter(name = "includeCurations",
                         description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") boolean includeCurations,
+                @RequestParam(value = "vector", required = false)
+                @Parameter(name = "vector",
+                        description = "Optional. Set to 'centroid' to search by descendant centroid vectors instead of label/synonym embeddings.",
+                        example = "centroid") String vector,
                 @ParameterObject JsonTransformOptions outputOpts
         ) throws ResourceNotFoundException, IOException {
 
                 // Embed the query text using the embedding service
                 float[] vectorArray = embeddingServiceClient.embedText(model, query);
 
+                org.springframework.data.domain.Page<com.google.gson.JsonElement> results;
+                if ("centroid".equals(vector)) {
+                    results = classRepository.searchByCentroidVectorInOntology(ontologyId, model, vectorArray, pageable, lang, isDefiningOntology, outputOpts);
+                } else {
+                    results = classRepository.searchByVectorInOntology(ontologyId, model, vectorArray, pageable, lang, isDefiningOntology, outputOpts, includeCurations);
+                }
+
                 return new ResponseEntity<>(
-                        new V2PagedResponse<V2Entity>(
-                        classRepository.searchByVectorInOntology(ontologyId, model, vectorArray, pageable, lang, isDefiningOntology, outputOpts, includeCurations).map(V2Entity::new)
-                        ),
+                        new V2PagedResponse<V2Entity>(results.map(V2Entity::new)),
                         HttpStatus.OK
                 );
         }
@@ -318,6 +346,26 @@ public class V2LLMController {
         );
     }
 
+    @RequestMapping(path = "/classes/{class}/llm_centroid", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
+    public HttpEntity<String> getClassCentroid(
+            @PathVariable("class")
+            @Parameter(name = "class",
+                    description = "The IRI of the class, this value must be double URL encoded",
+                    example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_1000967") String iri,
+            @RequestParam(value = "model", required = false, defaultValue = "text-embedding-3-small") 
+            @Parameter(name = "model",
+                    description = "The embedding model name to use. Defaults to text-embedding-3-small.",
+                    example = "text-embedding-3-small") String model
+    ) throws ResourceNotFoundException {
+
+        iri = UriUtils.decode(iri, "UTF-8");
+
+        return new ResponseEntity<>(
+                gson.toJson( classRepository.getCentroidVector(iri, model) ),
+                HttpStatus.OK
+        );
+    }
+
     @RequestMapping(path = "/classes/{class}/llm_similarity/{otherclass}", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<String> getClassSimilarity(
             @PathVariable("class")
@@ -363,6 +411,10 @@ public class V2LLMController {
                 @RequestParam(value = "includeCurations", required = false, defaultValue = "true")
                 @Parameter(name = "includeCurations",
                         description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") boolean includeCurations,
+                @RequestParam(value = "vector", required = false)
+                @Parameter(name = "vector",
+                        description = "Optional. Set to 'centroid' to search by descendant centroid vectors instead of label/synonym embeddings.",
+                        example = "centroid") String vector,
                 @ParameterObject JsonTransformOptions outputOpts
         ) throws ResourceNotFoundException, IOException {
 
@@ -377,7 +429,13 @@ public class V2LLMController {
 
                 // Search properties using OntologyProperty type
                 org.springframework.data.domain.Page<com.google.gson.JsonElement> results;
-                if (ontologyId != null && !ontologyId.isEmpty()) {
+                if ("centroid".equals(vector)) {
+                    if (ontologyId != null && !ontologyId.isEmpty()) {
+                        results = postgresClient.searchByCentroidVectorInOntology("OntologyProperty", vectorList, pageable, model, ontologyId, true);
+                    } else {
+                        results = postgresClient.searchByCentroidVector("OntologyProperty", vectorList, pageable, model);
+                    }
+                } else if (ontologyId != null && !ontologyId.isEmpty()) {
                     results = postgresClient.searchByVectorInOntology("OntologyProperty", vectorList, pageable, model, ontologyId, true, includeCurations);
                 } else {
                     results = postgresClient.searchByVector("OntologyProperty", vectorList, pageable, model, includeCurations);
@@ -411,6 +469,10 @@ public class V2LLMController {
                 @RequestParam(value = "includeCurations", required = false, defaultValue = "true")
                 @Parameter(name = "includeCurations",
                         description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") boolean includeCurations,
+                @RequestParam(value = "vector", required = false)
+                @Parameter(name = "vector",
+                        description = "Optional. Set to 'centroid' to search by descendant centroid vectors instead of label/synonym embeddings.",
+                        example = "centroid") String vector,
                 @ParameterObject JsonTransformOptions outputOpts
         ) throws ResourceNotFoundException, IOException {
 
@@ -425,7 +487,13 @@ public class V2LLMController {
 
                 // Search individuals using OntologyIndividual type
                 org.springframework.data.domain.Page<com.google.gson.JsonElement> results;
-                if (ontologyId != null && !ontologyId.isEmpty()) {
+                if ("centroid".equals(vector)) {
+                    if (ontologyId != null && !ontologyId.isEmpty()) {
+                        results = postgresClient.searchByCentroidVectorInOntology("OntologyIndividual", vectorList, pageable, model, ontologyId, true);
+                    } else {
+                        results = postgresClient.searchByCentroidVector("OntologyIndividual", vectorList, pageable, model);
+                    }
+                } else if (ontologyId != null && !ontologyId.isEmpty()) {
                     results = postgresClient.searchByVectorInOntology("OntologyIndividual", vectorList, pageable, model, ontologyId, true, includeCurations);
                 } else {
                     results = postgresClient.searchByVector("OntologyIndividual", vectorList, pageable, model, includeCurations);

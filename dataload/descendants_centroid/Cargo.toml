@@ -1,0 +1,17 @@
+[package]
+name = "descendants_centroid"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "descendants_centroid"
+path = "src/main.rs"
+
+[dependencies]
+ols_shared = { path = "../ols-shared-rs" }
+clap.workspace = true
+serde_json.workspace = true
+struson.workspace = true
+parquet.workspace = true
+arrow.workspace = true

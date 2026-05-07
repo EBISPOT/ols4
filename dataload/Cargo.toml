@@ -4,6 +4,7 @@ resolver = "2"
 members = [
     "ols-shared-rs",
     "json2postgres",
+    "descendants_centroid",
     "linker/create_manifest",
     "linker/link",
     "extract_strings_from_terms",

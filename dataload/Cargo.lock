@@ -626,6 +626,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "descendants_centroid"
+version = "1.0.0"
+dependencies = [
+ "arrow",
+ "clap",
+ "ols_shared",
+ "parquet",
+ "serde_json",
+ "struson",
+]
+
+[[package]]
 name = "digest"
 version = "0.10.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
