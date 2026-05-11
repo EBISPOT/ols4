@@ -1,6 +1,10 @@
 {
   "ontologies": [
     {
+      "id": "medgen",
+      "ontology_purl": "https://github.com/monarch-initiative/medgen/releases/latest/download/medgen.ttl.gz"
+    },
+    {
       "id": "fma",
       "ontology_purl": "http://purl.org/sig/ont/fma.owl"
     },
