@@ -452,7 +452,7 @@ fn write_linked_entities_from_gathered_strings<W: Write>(
             }
         }
 
-        // Resolve ORCID IRIs to person names via the public ORCID API
+        // Resolve ORCID IRIs to person names via the Europe PMC ORCID lookup endpoint
         if s.starts_with("https://orcid.org/") {
             let name = orcid_cache.entry(s.clone()).or_insert_with(|| {
                 fetch_orcid_name(s)
@@ -669,27 +669,26 @@ fn get_processed_curie_value(pass1_result: &LinkerPass1Result, entity_iri: Optio
     String::new()
 }
 
-/// Fetch a person's display name from the public ORCID API.
-/// Returns "Family, Given" on success, None on any error or missing data.
-fn fetch_orcid_name(orcid_uri: &str) -> Option<String> {
-    let orcid_id = orcid_uri.trim_start_matches("https://orcid.org/");
-    let url = format!("https://pub.orcid.org/v3.0/{}/person", orcid_id);
+const EUROPE_PMC_ORCID_LOOKUP_BASE_URL: &str =
+    "https://www.ebi.ac.uk/europepmc/thor/api/orcid/findorcid/";
 
-    let response = ureq::get(&url)
-        .set("Accept", "application/json")
-        .call()
-        .ok()?;
+fn europe_pmc_orcid_lookup_url(orcid_uri: &str) -> String {
+    let orcid_id = orcid_uri
+        .trim_start_matches("https://orcid.org/")
+        .trim_end_matches('/');
 
-    let json: Value = response.into_json().ok()?;
+    format!("{}{}", EUROPE_PMC_ORCID_LOOKUP_BASE_URL, orcid_id)
+}
 
+fn extract_orcid_name_from_europe_pmc_profile(json: &Value) -> Option<String> {
     let given = json
-        .pointer("/name/given-names/value")
+        .pointer("/orcid-profile/orcid-bio/personal-details/given-names/value")
         .and_then(|v| v.as_str())
         .unwrap_or("")
         .trim();
 
     let family = json
-        .pointer("/name/family-name/value")
+        .pointer("/orcid-profile/orcid-bio/personal-details/family-name/value")
         .and_then(|v| v.as_str())
         .unwrap_or("")
         .trim();
@@ -699,4 +698,19 @@ fn fetch_orcid_name(orcid_uri: &str) -> Option<String> {
     }
 
     Some(format!("{} {}", given, family).trim().to_string())
+}
+
+/// Fetch a person's display name from the Europe PMC ORCID lookup endpoint.
+/// Returns "Given Family" on success, None on any error or missing data.
+fn fetch_orcid_name(orcid_uri: &str) -> Option<String> {
+    let url = europe_pmc_orcid_lookup_url(orcid_uri);
+
+    let response = ureq::get(&url)
+        .set("Accept", "application/json")
+        .call()
+        .ok()?;
+
+    let json: Value = response.into_json().ok()?;
+
+    extract_orcid_name_from_europe_pmc_profile(&json)
 }
