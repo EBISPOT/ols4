@@ -404,19 +404,13 @@
       "url": "https://github.com/monarch-initiative/mondo/issues/3680"
     },
     "https://orcid.org/0000-0001-5208-3432": {
-      "curie": "orcid:0000-0001-5208-3432",
-      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-      "url": "https://orcid.org/0000-0001-5208-3432"
+      "label": "Nicole Vasilevsky"
     },
     "https://orcid.org/0000-0002-4142-7153": {
-      "curie": "orcid:0000-0002-4142-7153",
-      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-      "url": "https://orcid.org/0000-0002-4142-7153"
+      "label": "Sabrina Toro"
     },
     "https://orcid.org/0000-0002-6733-369X": {
-      "curie": "orcid:0000-0002-6733-369X",
-      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-      "url": "https://orcid.org/0000-0002-6733-369X"
+      "label": "Courtney Thaxton"
     }
   },
   "linksTo": [
@@ -439,7 +433,10 @@
     "http://www.geneontology.org/formats/oboInOwl#id",
     "http://www.geneontology.org/formats/oboInOwl#source",
     "http://www.w3.org/2000/01/rdf-schema#label",
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "https://orcid.org/0000-0001-5208-3432",
+    "https://orcid.org/0000-0002-4142-7153",
+    "https://orcid.org/0000-0002-6733-369X"
   ],
   "numDescendants": 1.0,
   "numHierarchicalDescendants": 1.0,
