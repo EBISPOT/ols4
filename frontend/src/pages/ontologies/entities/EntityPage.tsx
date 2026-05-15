@@ -10,7 +10,6 @@ import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { copyToClipboard } from "../../../app/util";
 import ApiLinks from "../../../components/ApiLinks";
 import { Banner } from "../../../components/Banner";
-import FallbackWarning from "../../../components/FallbackWarning";
 import Header from "../../../components/Header";
 import LanguagePicker from "../../../components/LanguagePicker";
 import LoadingOverlay from "../../../components/LoadingOverlay";
@@ -177,7 +176,6 @@ export default function EntityPage({
           {pageDesc && <meta name="description" content={pageDesc}/>}
         </Helmet>
       <main className="container mx-auto px-4">
-        <FallbackWarning ontology={ontology} />
         {ontology && ontology.isDeprecated() && (
             <Banner type="error">
               <div>
