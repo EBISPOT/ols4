@@ -701,7 +701,7 @@ process check_postgres_data_exists {
 // Runs once for all models; one *_descendants_centroid.parquet is written per model.
 process compute_descendants_centroid {
     cache "lenient"
-    memory { 64.GB }
+    memory { 320.GB }
     time "4h"
 
     input:
