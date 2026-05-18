@@ -85,6 +85,33 @@ fn make_key(ontology_id: &str, entity_type: &str, iri: &str) -> String {
     format!("{}|{}|{}", ontology_id, entity_type, iri)
 }
 
+/// Parse a key back into (ontology_id, entity_type, iri).
+/// Splits on the first two '|' separators (IRIs containing '|' are preserved).
+fn split_key(key: &str) -> Option<(&str, &str, &str)> {
+    let p1 = key.find('|')?;
+    let rest = &key[p1 + 1..];
+    let p2 = rest.find('|')?;
+    Some((&key[..p1], &rest[..p2], &rest[p2 + 1..]))
+}
+
+/// Build an index `(entity_type, iri) -> defining_key`.
+/// Since `extract_strings_from_terms` only emits embeddings for
+/// isDefiningOntology=true entities, every key in `all_embeddings` is already
+/// a defining key.  This index lets us look up the defining key for an IRI
+/// referenced from an importing ontology's JSON.
+fn build_defining_key_index(
+    all_embeddings: &HashMap<String, Vec<f32>>,
+) -> HashMap<(String, String), String> {
+    let mut idx: HashMap<(String, String), String> = HashMap::new();
+    for key in all_embeddings.keys() {
+        if let Some((_onto, et, iri)) = split_key(key) {
+            idx.entry((et.to_string(), iri.to_string()))
+                .or_insert_with(|| key.clone());
+        }
+    }
+    idx
+}
+
 // ── Parquet loading ────────────────────────────────────────────────────────
 
 /// Read a string column value by row index, supporting both StringArray and LargeStringArray.
@@ -215,6 +242,12 @@ fn build_child_map(
     let mut child_map: HashMap<String, Vec<String>> = HashMap::new();
     let mut ontology_terms: HashMap<String, Vec<String>> = HashMap::new();
 
+    // Index of (entity_type, iri) -> defining_key.  Used to resolve imported
+    // entities (referenced in another ontology's JSON) back to the defining
+    // ontology's embedding key, since only defining entities have embeddings.
+    let defining_key_index = build_defining_key_index(all_embeddings);
+    eprintln!("Defining-key index: {} unique (entity_type, iri) entries", defining_key_index.len());
+
     for json_path in ontology_jsons {
         eprintln!("Streaming ontology JSON for hierarchy: {}", json_path);
 
@@ -235,6 +268,7 @@ fn build_child_map(
                 process_ontology_object(
                     &mut json,
                     all_embeddings,
+                    &defining_key_index,
                     &mut child_map,
                     &mut ontology_terms,
                 )?;
@@ -257,6 +291,7 @@ fn build_child_map(
 fn process_ontology_object(
     json: &mut JsonStreamReader<BufReader<File>>,
     all_embeddings: &HashMap<String, Vec<f32>>,
+    defining_key_index: &HashMap<(String, String), String>,
     child_map: &mut HashMap<String, Vec<String>>,
     ontology_terms: &mut HashMap<String, Vec<String>>,
 ) -> Result<(), Box<dyn std::error::Error>> {
@@ -294,20 +329,39 @@ fn process_ontology_object(
     // Now process the collected entities
     for (entity_type, entities) in deferred_entities {
         for (iri, parent_iris) in entities {
-            let child_key = make_key(&ontology_id, &entity_type, &iri);
+            // Resolve the child to its defining-ontology embedding key.
+            // If this ontology is the defining one for `iri`, the key will be
+            // (ontology_id, entity_type, iri) directly.  Otherwise (imported
+            // entity), fall back to the defining ontology's key so imported
+            // classes still contribute to their parent's descendants.
+            let local_key = make_key(&ontology_id, &entity_type, &iri);
+            let child_key = if all_embeddings.contains_key(&local_key) {
+                local_key
+            } else if let Some(k) = defining_key_index.get(&(entity_type.clone(), iri.clone())) {
+                k.clone()
+            } else {
+                continue;
+            };
 
             // Track this term under its ontology (only if it has an embedding in any model)
-            if all_embeddings.contains_key(&child_key) {
-                ontology_terms
-                    .entry(ontology_id.clone())
-                    .or_default()
-                    .push(child_key.clone());
-            }
+            ontology_terms
+                .entry(ontology_id.clone())
+                .or_default()
+                .push(child_key.clone());
 
-            // Build parent -> [child] edges (only for parents that have embeddings)
+            // Build parent -> [child] edges
             for parent_iri in parent_iris {
-                // Try all entity types for the parent in the same ontology
-                let parent_key = find_parent_key(&ontology_id, &parent_iri, all_embeddings);
+                // Try this ontology first (covers native parents); fall back to
+                // the defining ontology of the parent IRI.
+                let parent_key = find_parent_key(&ontology_id, &parent_iri, all_embeddings)
+                    .or_else(|| {
+                        for et in &["class", "property", "individual"] {
+                            if let Some(k) = defining_key_index.get(&((*et).to_string(), parent_iri.clone())) {
+                                return Some(k.clone());
+                            }
+                        }
+                        None
+                    });
                 if let Some(pk) = parent_key {
                     let children = child_map.entry(pk).or_default();
                     if !children.contains(&child_key) {
