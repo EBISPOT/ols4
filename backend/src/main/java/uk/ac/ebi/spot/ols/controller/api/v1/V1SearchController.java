@@ -127,15 +127,34 @@ public class V1SearchController {
         if (queryFields == null) {
             // if exact just search the supplied fields for exact matches
             if (exact) {
-                solrQuery.set("defType", "edismax");
-                solrQuery.setQuery(query.toLowerCase());
-                // Specify the query fields with boosting
-                String[] fields = {LABEL.getText()+"_s^5", SYNONYM.getText()+"_s^3", "short_form_s^2", "obo_id_s^2", "iri_s", "annotations_trimmed"};
-                solrQuery.set("qf", String.join(" ", SolrFieldMapper.mapFieldsList(List.of(fields))));
-                // Boost exact phrase matches in label and synonym fields
-                solrQuery.set("pf", "lowercase_label^10 lowercase_synonym^5");
-                // Set minimum match to require all terms in the phrase to match
-                solrQuery.set("mm", "100%");
+                // Use term queries for exact matching to prevent partial matches
+                // Create a disjunction (OR) of exact term matches across different fields
+                StringBuilder exactQuery = new StringBuilder();
+                String queryLower = query.toLowerCase();
+                
+                // Define the fields to search for exact matches
+                // Use the same field pattern as the original code but with term queries
+                String[] exactFieldMappings = {
+                    LABEL.getText()+"_s",
+                    SYNONYM.getText()+"_s", 
+                    "short_form_s",
+                    "obo_id_s",
+                    "iri_s"
+                };
+                
+                // Map the fields using the existing SolrFieldMapper
+                List<String> mappedFields = SolrFieldMapper.mapFieldsList(List.of(exactFieldMappings));
+                
+                for (int i = 0; i < mappedFields.size(); i++) {
+                    if (i > 0) {
+                        exactQuery.append(" OR ");
+                    }
+                    // Use term query syntax for exact matching
+                    exactQuery.append("{!term f=").append(mappedFields.get(i)).append("}").append(queryLower);
+                }
+                
+                solrQuery.setQuery("(" + exactQuery.toString() + ")");
+                
                 // Add boost query to prioritize defining ontologies
                 solrQuery.set("bq", IS_DEFINING_ONTOLOGY.getText() + ":\"true\"^100");
             } else {
@@ -152,9 +171,25 @@ public class V1SearchController {
             }
         } else {
             if (exact) {
-                String[] fields = SolrFieldMapper.mapFieldsList(queryFields.stream().map(queryField -> queryField + "_s")
-                        .collect(Collectors.toList())).toArray(new String[0]);
-                solrQuery.setQuery(createUnionQuery(query.toLowerCase(), fields, true));
+                // Use term queries for exact matching when custom queryFields are specified
+                StringBuilder exactQuery = new StringBuilder();
+                String queryLower = query.toLowerCase();
+                
+                // Add _s suffix for exact matching and map through SolrFieldMapper
+                List<String> exactFieldMappings = queryFields.stream()
+                    .map(queryField -> queryField + "_s")
+                    .collect(Collectors.toList());
+                List<String> mappedFields = SolrFieldMapper.mapFieldsList(exactFieldMappings);
+                
+                for (int i = 0; i < mappedFields.size(); i++) {
+                    if (i > 0) {
+                        exactQuery.append(" OR ");
+                    }
+                    // Use term query syntax for exact matching
+                    exactQuery.append("{!term f=").append(mappedFields.get(i)).append("}").append(queryLower);
+                }
+                
+                solrQuery.setQuery("(" + exactQuery.toString() + ")");
             } else {
 
                 solrQuery.set("defType", "edismax");
