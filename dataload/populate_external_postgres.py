@@ -156,7 +156,7 @@ def upload_artifacts(artifacts_path: Path, sections: dict) -> None:
     """Upload PCA model JSONs and text_tagger_db.bin to postgres via psql."""
     print("=== Uploading artifacts ===")
 
-    # Create the artifact tables (idempotent)
+    # Create the artifact tables (already dropped at start of run)
     run_psql(sections.get("ols_pca_models", ""), "ols_pca_models table")
     run_psql(sections.get("ols_text_tagger", ""), "ols_text_tagger table")
 
@@ -170,7 +170,6 @@ def upload_artifacts(artifacts_path: Path, sections: dict) -> None:
         # Use \lo_import + INSERT via bytea hex encoding
         data_hex = pca_file.read_bytes().hex()
         sql = (
-            f"DELETE FROM ols_pca_models WHERE name = '{name}';\n"
             f"INSERT INTO ols_pca_models (name, model) VALUES ('{name}', '\\x{data_hex}');\n"
         )
         run_psql(sql, f"pca:{name}")
@@ -179,10 +178,9 @@ def upload_artifacts(artifacts_path: Path, sections: dict) -> None:
     if tagger_path.exists():
         size = sizeof_fmt(tagger_path.stat().st_size)
         print(f"  Uploading text_tagger_db.bin.gz ({size}) as Large Object")
-        # Clean up old large objects, then use \lo_import
+        # ols_text_tagger has already been TRUNCATEd (and any prior LOs unlinked)
+        # at the top of upload_artifacts, so just import and insert.
         sql = (
-            "SELECT lo_unlink(tagger_db_oid) FROM ols_text_tagger;\n"
-            "DELETE FROM ols_text_tagger;\n"
             f"\\lo_import '{tagger_path}'\n"
             "INSERT INTO ols_text_tagger (tagger_db_oid) VALUES (:LASTOID);\n"
         )
@@ -267,10 +265,19 @@ def main():
 
     # --- Drop old tables ---
     print("=== Dropping existing OLS tables ===")
+    # Unlink any existing text_tagger large objects before dropping the table,
+    # otherwise they leak into pg_largeobject and eat disk forever.
     run_psql(
+        "DO $$ BEGIN\n"
+        "  IF EXISTS (SELECT 1 FROM pg_class WHERE relname = 'ols_text_tagger' AND relkind = 'r') THEN\n"
+        "    PERFORM lo_unlink(tagger_db_oid) FROM ols_text_tagger;\n"
+        "  END IF;\n"
+        "END $$;\n"
         "DROP TABLE IF EXISTS ols_embedding_nodes CASCADE;\n"
         "DROP TABLE IF EXISTS ols_entities CASCADE;\n"
-        "DROP TABLE IF EXISTS ols_autosuggest CASCADE;",
+        "DROP TABLE IF EXISTS ols_autosuggest CASCADE;\n"
+        "DROP TABLE IF EXISTS ols_pca_models CASCADE;\n"
+        "DROP TABLE IF EXISTS ols_text_tagger CASCADE;",
         "drop"
     )
 
