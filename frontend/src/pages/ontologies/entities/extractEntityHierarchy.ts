@@ -16,7 +16,7 @@ import Entity from "../../../model/Entity";
 	childRelationToParent:string|null
  }
 
-export default function extractEntityHierarchy(entities: Entity[]): {
+export default function extractEntityHierarchy(entities: Entity[], showRedundant: boolean = false): {
   rootEntities: Entity[];
   parentToChildRelations: Multimap<string, ParentChildRelation>;
 } {
@@ -106,16 +106,18 @@ export default function extractEntityHierarchy(entities: Entity[]): {
   }
 
   // Remove "practically redundant" hierarchical parent edges from the tree
-  // view. These edges are not OWL-redundant (removing them changes
-  // entailment), so we do NOT remove them from the underlying data / API —
-  // only from the rendered tree. Concretely: for a child c with hierarchical
-  // parents P, an edge (c -> p) is redundant if p is reachable from another
-  // parent q in P via the hierarchical-parent graph (and the converse is not
-  // also true, so cycles between p and q are left intact). This matches the
-  // canonical example from the issue: given `c is_a a`, `c part_of b`,
-  // `b is_a a`, the edge `c -> a` is hidden from the tree because c already
-  // appears under a via b.
-  removeRedundantHierarchicalParents(childToParentRelations);
+  // view unless the user has opted to show them. These edges are not
+  // OWL-redundant (removing them changes entailment), so we do NOT remove
+  // them from the underlying data / API — only from the rendered tree.
+  // Concretely: for a child c with hierarchical parents P, an edge (c -> p)
+  // is redundant if p is reachable from another parent q in P via the
+  // hierarchical-parent graph (and the converse is not also true, so cycles
+  // between p and q are left intact). This matches the canonical example
+  // from the issue: given `c is_a a`, `c part_of b`, `b is_a a`, the edge
+  // `c -> a` is hidden from the tree because c already appears under a via b.
+  if (!showRedundant) {
+    removeRedundantHierarchicalParents(childToParentRelations);
+  }
 
   let parentToChildRelations: Multimap<string, ParentChildRelation> = new Multimap();
 

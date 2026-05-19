@@ -31,6 +31,8 @@ import {
   showCounts,
   showObsolete,
   showSiblings,
+  showRedundant,
+  hideRedundant,
   setSpecificRootIri,
   getEntity,
   getDirectChildrenCount,
@@ -86,6 +88,9 @@ export default function EntityTree({
   const showCountsEnabled = useAppSelector(
     (state) => state.ontologies.displayCounts
   );
+  const showRedundantEnabled = useAppSelector(
+    (state) => state.ontologies.displayRedundant
+  );
 
   const toggleNode = useCallback(
     (node: any) => {
@@ -135,7 +140,7 @@ export default function EntityTree({
     selectedEntity?.getIri(),
   ]);
 
-  // If the ontology, entity type, selected entity, lang OR the showObsoleteEnabled/preferredRoots change, reset the tree content but not the settings
+  // If the ontology, entity type, selected entity, lang OR the showObsoleteEnabled/preferredRoots/showRedundantEnabled change, reset the tree content but not the settings
   useEffect(() => {
     dispatch(resetTreeContent());
   }, [
@@ -146,6 +151,7 @@ export default function EntityTree({
     showObsoleteEnabled,
     preferredRoots,
     lang,
+    showRedundantEnabled,
   ]);
 
   useEffect(() => {
@@ -198,6 +204,7 @@ export default function EntityTree({
     lang,
     showObsoleteEnabled,
     specifiedRootIri,
+    showRedundantEnabled,
   ]);
 
     useEffect(() => {
@@ -298,6 +305,11 @@ export default function EntityTree({
     if (showCountsEnabled) dispatch(hideCounts());
     else dispatch(showCounts());
   }, [dispatch, showCountsEnabled]);
+
+  let toggleShowRedundant = useCallback(() => {
+    if (showRedundantEnabled) dispatch(hideRedundant());
+    else dispatch(showRedundant());
+  }, [dispatch, showRedundantEnabled]);
 
   function renderNodeChildren(
     children: TreeNode[],
@@ -488,6 +500,15 @@ export default function EntityTree({
               label="Show all siblings"
             />
           )}
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={showRedundantEnabled}
+                onClick={toggleShowRedundant}
+              />
+            }
+            label="Show redundant"
+          />
         </div>
       </div>
     </ThemeProvider>
