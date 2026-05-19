@@ -58,6 +58,7 @@ public class OlsSearchQuery {
         cols.put("directAncestor", "direct_ancestors");          types.put("directAncestor", ColumnType.TEXT_ARRAY);
         cols.put("relatedTo", "related_to");                     types.put("relatedTo", ColumnType.TEXT_ARRAY);
         cols.put("curatedFromSources", "curated_from_sources");  types.put("curatedFromSources", ColumnType.TEXT_ARRAY);
+        cols.put("definedBy", "defined_by");                     types.put("definedBy", ColumnType.TEXT_ARRAY);
         cols.put("label", "label");                              types.put("label", ColumnType.TEXT_ARRAY);
         cols.put("synonym", "synonym");                          types.put("synonym", ColumnType.TEXT_ARRAY);
         cols.put("definition", "definition");                    types.put("definition", ColumnType.TEXT_ARRAY);

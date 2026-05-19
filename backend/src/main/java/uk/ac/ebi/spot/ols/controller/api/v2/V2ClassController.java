@@ -164,6 +164,9 @@ public class V2ClassController {
             @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
+            @RequestParam(value = "facetFields", required = false)
+            @Parameter(name = "facetFields",
+                    description = "This parameter is a white space separated list of fields to facet data by.") String facetFields,
             @RequestParam
             @Parameter(hidden = true) MultiValueMap<String,String> searchProperties,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
@@ -177,7 +180,7 @@ public class V2ClassController {
 
         return new ResponseEntity<>(
                 new V2PagedAndFacetedResponse<V2Entity>(
-                    classRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, boostFields, exactMatch,  DynamicQueryHelper.filterProperties(properties), outputOpts)
+                    classRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, boostFields, facetFields, exactMatch,  DynamicQueryHelper.filterProperties(properties), outputOpts)
                     .map(V2Entity::new)
                 ),
                 HttpStatus.OK);

@@ -37,7 +37,7 @@ BASE_ENTITY_COLS = [
     "is_defining_ontology", "has_direct_parents", "has_hierarchical_parents",
     "has_direct_children", "has_hierarchical_children", "is_preferred_root",
     "ontology_iri", "ontology_preferred_prefix",
-    "subset", "related_to", "curated_from_sources",
+    "subset", "related_to", "curated_from_sources", "defined_by",
     "label_for_suggest",
 ]
 

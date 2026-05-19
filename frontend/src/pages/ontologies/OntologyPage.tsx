@@ -29,6 +29,7 @@ import EntityTree from "./entities/EntityTree";
 import MetadataTooltip from "./entities/entityPageSections/MetadataTooltip";
 import addLinksToText from "./entities/entityPageSections/addLinksToText";
 import { getOntology } from "./ontologiesSlice";
+import OntologyImportsBreakdownModal from "./OntologyImportsBreakdownModal";
 import {Helmet} from 'react-helmet';
 import {Banner} from "../../components/Banner";
 
@@ -479,6 +480,7 @@ function OntologyAnnotationsSection({ ontology }: { ontology: Ontology }) {
 
 function OntologyImportsSection({ ontology }: { ontology: Ontology }) {
   let [expanded, setExpanded] = useState<boolean>(false);
+  let [showBreakdown, setShowBreakdown] = useState<boolean>(false);
   const MAX_UNEXPANDED = 5;
 
   let imports = ontology.getImportsFrom();
@@ -489,7 +491,14 @@ function OntologyImportsSection({ ontology }: { ontology: Ontology }) {
     <Fragment>
       {imports && imports.length > 0 && (
         <div className="mb-2" style={{ maxWidth: "100%", inlineSize: "100%" }}>
-          <span className="font-bold mr-2">Imports from</span>
+          <button
+            type="button"
+            className="font-bold mr-2 text-black cursor-pointer hover:underline"
+            onClick={() => setShowBreakdown(true)}
+            title="Show breakdown of terms by source ontology"
+          >
+            Imports from
+          </button>
           {imports.length <= MAX_UNEXPANDED || expanded ? (
             imports.map(renderOntId)
           ) : (
@@ -505,6 +514,12 @@ function OntologyImportsSection({ ontology }: { ontology: Ontology }) {
             </Fragment>
           )}
         </div>
+      )}
+      {showBreakdown && (
+        <OntologyImportsBreakdownModal
+          ontology={ontology}
+          onClose={() => setShowBreakdown(false)}
+        />
       )}
     </Fragment>
   );

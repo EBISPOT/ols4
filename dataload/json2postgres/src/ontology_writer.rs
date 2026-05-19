@@ -231,7 +231,7 @@ impl<'a> OntologyWriter<'a> {
         descendants_centroid_model_names.sort();
 
         // Field counts (must match create_postgres_schema.py column order)
-        let entity_field_count = (29 + filter_property_names.len() + embedding_model_names.len() + descendants_centroid_model_names.len()) as i16;
+        let entity_field_count = (30 + filter_property_names.len() + embedding_model_names.len() + descendants_centroid_model_names.len()) as i16;
         let emb_node_field_count = (3 + embedding_model_names.len()) as i16;
 
         // Create binary COPY files
@@ -303,6 +303,7 @@ impl<'a> OntologyWriter<'a> {
         let subset = extract_string_array(entity, "http://www.geneontology.org/formats/oboInOwl#inSubset");
         let related_to = extract_string_array(entity, "relatedTo");
         let curated_from_sources = extract_string_array(entity, "curatedFromSources");
+        let defined_by = extract_string_array(entity, "definedBy");
 
         let w = &mut self.entities_writer;
         w.begin_row(self.entity_field_count)?;
@@ -336,6 +337,7 @@ impl<'a> OntologyWriter<'a> {
         w.write_text_array(&subset)?;                            // subset
         w.write_text_array(&related_to)?;                        // related_to
         w.write_text_array(&curated_from_sources)?;              // curated_from_sources
+        w.write_text_array(&defined_by)?;                        // defined_by
         match labels.first() {
             Some(s) => w.write_text(s)?,
             None    => w.write_null()?,
@@ -440,6 +442,7 @@ impl<'a> OntologyWriter<'a> {
         self.entities_writer.write_text_array(&empty)?;          // subset
         self.entities_writer.write_text_array(&empty)?;          // related_to
         self.entities_writer.write_text_array(&empty)?;          // curated_from_sources
+        self.entities_writer.write_text_array(&empty)?;          // defined_by
         self.entities_writer.write_null()?;                      // label_for_suggest
 
         // Empty filter property columns

@@ -76,6 +76,7 @@ CREATE TABLE ols_entities (
     subset TEXT[] DEFAULT '{}',
     related_to TEXT[] DEFAULT '{}',
     curated_from_sources TEXT[] DEFAULT '{}',
+    defined_by TEXT[] DEFAULT '{}',
 
     -- Full-text search vector (computed automatically on insert)
     ts_search tsvector GENERATED ALWAYS AS (
@@ -115,6 +116,7 @@ CREATE INDEX idx_ent_is_def ON ols_entities (is_defining_ontology) WHERE is_defi
 CREATE INDEX idx_ent_pref_root ON ols_entities (is_preferred_root) WHERE is_preferred_root = true;
 CREATE INDEX idx_ent_subset ON ols_entities USING gin (subset);
 CREATE INDEX idx_ent_related_to ON ols_entities USING gin (related_to);
+CREATE INDEX idx_ent_defined_by ON ols_entities USING gin (defined_by);
 CREATE INDEX idx_ent_fts ON ols_entities USING gin (ts_search);
 CREATE INDEX idx_ent_trgm_suggest ON ols_entities USING gin (label_for_suggest gin_trgm_ops);
 """

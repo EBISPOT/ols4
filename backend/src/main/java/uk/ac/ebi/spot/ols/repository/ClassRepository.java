@@ -65,7 +65,7 @@ public class ClassRepository {
     }
 
     public OlsFacetedResultsPage<JsonElement> findByOntologyId(
-            String ontologyId, Pageable pageable, String lang, String search, String searchFields, String boostFields, boolean exactMatch, Map<String, Collection<String>> properties, JsonTransformOptions outputOpts) throws IOException {
+            String ontologyId, Pageable pageable, String lang, String search, String searchFields, String boostFields, String facetFields, boolean exactMatch, Map<String, Collection<String>> properties, JsonTransformOptions outputOpts) throws IOException {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -82,6 +82,7 @@ public class ClassRepository {
         query.addFilter("ontologyId", List.of(ontologyId), SearchType.CASE_INSENSITIVE_TOKENS);
         SearchFieldsParser.addSearchFieldsToQuery(query, searchFields);
         SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
+        SearchFieldsParser.addFacetFieldsToQuery(query, facetFields);
         DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
 
         return searchClient.searchPaginated(query, pageable)
