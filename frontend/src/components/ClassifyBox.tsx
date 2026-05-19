@@ -79,13 +79,22 @@ export default function ClassifyBox({ compact = false }: { compact?: boolean }) 
     setParents(null);
     try {
       const params = new URLSearchParams({ q, model, size: "10" });
-      const centroidParams = new URLSearchParams({ q, model, size: "10", vector: "centroid" });
+      const centroidParams = new URLSearchParams({ q, model, size: "50", vector: "centroid" });
       const [ontPage, parentPage] = await Promise.all([
         getPaginated<ClassifyEntity>(`api/v2/ontologies/llm_search?${params}`),
         getPaginated<ClassifyEntity>(`api/v2/classes/llm_search?${centroidParams}`),
       ]);
       setOntologies(ontPage.elements);
-      setParents(parentPage.elements);
+      // Only show parents with >=3 descendants
+      const filtered = parentPage.elements.filter((e) => {
+        const n = Number(
+          Array.isArray((e as any).numDescendants)
+            ? (e as any).numDescendants[0]
+            : (e as any).numDescendants
+        );
+        return Number.isFinite(n) && n >= 3;
+      });
+      setParents(filtered.slice(0, 10));
     } catch (e: any) {
       setError(e.message || "Classification failed");
     } finally {
@@ -184,7 +193,7 @@ export default function ClassifyBox({ compact = false }: { compact?: boolean }) 
 
 function ScoreCell({ score }: { score?: number }) {
   if (score === undefined || score === null) return <span>-</span>;
-  return <span>{score.toFixed(3)}</span>;
+  return <span>{(score * 100).toFixed(1)}%</span>;
 }
 
 function OntologyResultsTable({
