@@ -6,6 +6,7 @@ import { Banner } from "../../components/Banner";
 import Header from "../../components/Header";
 import SearchBox from "../../components/SearchBox";
 import TagTextBox from "../../components/TagTextBox";
+import ClassifyBox from "../../components/ClassifyBox";
 import UMAPViewer from "../../components/UMAPViewer";
 import { getBannerText, getStats } from "./homeSlice";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -248,7 +249,7 @@ export default function Home() {
 }
 
 function HomeSearchTabs() {
-  const [activeTab, setActiveTab] = useState<"search" | "tag">("search");
+  const [activeTab, setActiveTab] = useState<"search" | "tag" | "classify">("search");
 
   return (
     <div>
@@ -272,6 +273,17 @@ function HomeSearchTabs() {
           onClick={() => setActiveTab("tag")}
         >
           Tag Text
+        </button>
+        <button
+          className={`px-4 py-2 text-sm font-semibold transition-colors ${
+            activeTab === "classify"
+              ? "text-link-default border-b-2 border-link-default"
+              : "text-neutral-500 hover:text-neutral-700"
+          }`}
+          onClick={() => setActiveTab("classify")}
+        >
+          Classify{" "}
+          <span className="ml-1 text-xs font-bold text-white bg-neutral-400 rounded px-1 py-0.5 inline-flex items-center">BETA</span>
         </button>
       </div>
 
@@ -300,8 +312,10 @@ function HomeSearchTabs() {
             </div>
           </div>
         </div>
-      ) : (
+      ) : activeTab === "tag" ? (
         <TagTextBox compact={true} />
+      ) : (
+        <ClassifyBox compact={true} />
       )}
     </div>
   );

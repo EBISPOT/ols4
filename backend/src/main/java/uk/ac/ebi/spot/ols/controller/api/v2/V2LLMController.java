@@ -449,6 +449,48 @@ public class V2LLMController {
                 );
         }
 
+    @RequestMapping(path = "/ontologies/llm_search", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
+    @Parameter(name = "ontologies/llm_search",
+            description = "Rank ontologies by semantic similarity to the query text using the per-ontology descendants centroid vector. Useful for predicting which ontologies are most relevant to a piece of text.")
+    public HttpEntity<V2PagedResponse<V2Entity>> searchOntologiesByText(
+                @RequestParam(value = "q", required = true)
+                @Parameter(name = "q",
+                        description = "The text query to classify",
+                        example = "type 2 diabetes mellitus") String query,
+                @PageableDefault(size = 20, page = 0)
+                @ParameterObject Pageable pageable,
+                @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+                @RequestParam(value = "model", required = true)
+                @Parameter(name = "model",
+                        description = "The embedding model name to use for vector search",
+                        example = "text-embedding-3-small") String model,
+                @ParameterObject JsonTransformOptions outputOpts
+        ) throws ResourceNotFoundException, IOException {
+
+                // Embed the query text using the embedding service
+                float[] vectorArray = embeddingServiceClient.embedText(model, query);
+
+                // Convert float[] to List<Double> for Postgres
+                List<Double> vectorList = new java.util.ArrayList<>(vectorArray.length);
+                for (float f : vectorArray) {
+                    vectorList.add((double) f);
+                }
+
+                // Ontology rows in ols_entities have type="Ontology" and carry a
+                // descendants_centroid vector that is the mean of all term embeddings
+                // in the ontology. Ranking by this gives a coarse "which ontology
+                // does this text belong to?" prediction.
+                org.springframework.data.domain.Page<com.google.gson.JsonElement> results =
+                        postgresClient.searchByCentroidVector("Ontology", vectorList, pageable, model);
+
+                return new ResponseEntity<>(
+                        new V2PagedResponse<V2Entity>(
+                        results.map(e -> uk.ac.ebi.spot.ols.repository.transforms.JsonTransformer.transformJson(e, lang, outputOpts)).map(V2Entity::new)
+                        ),
+                        HttpStatus.OK
+                );
+        }
+
     @RequestMapping(path = "/individuals/llm_search", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<V2PagedResponse<V2Entity>> searchIndividualsByText(
                 @RequestParam(value = "q", required = true)
