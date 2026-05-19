@@ -335,19 +335,25 @@ fn process_ontology_object(
             // entity), fall back to the defining ontology's key so imported
             // classes still contribute to their parent's descendants.
             let local_key = make_key(&ontology_id, &entity_type, &iri);
-            let child_key = if all_embeddings.contains_key(&local_key) {
-                local_key
+            let is_defining = all_embeddings.contains_key(&local_key);
+            let child_key = if is_defining {
+                local_key.clone()
             } else if let Some(k) = defining_key_index.get(&(entity_type.clone(), iri.clone())) {
                 k.clone()
             } else {
                 continue;
             };
 
-            // Track this term under its ontology (only if it has an embedding in any model)
-            ontology_terms
-                .entry(ontology_id.clone())
-                .or_default()
-                .push(child_key.clone());
+            // Track this term under its ontology for the ontology-level centroid
+            // ONLY if this ontology is the defining one (i.e. isDefiningOntology=true).
+            // Imported entities should not contribute to an importing ontology's centroid,
+            // but they DO still contribute as descendants in child_map below.
+            if is_defining {
+                ontology_terms
+                    .entry(ontology_id.clone())
+                    .or_default()
+                    .push(child_key.clone());
+            }
 
             // Build parent -> [child] edges
             for parent_iri in parent_iris {
