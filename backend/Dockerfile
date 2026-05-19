@@ -1,8 +1,31 @@
 
-FROM rust:1.90.0-bullseye AS rust-builder
+FROM --platform=$BUILDPLATFORM rust:1.90.0-bullseye AS rust-builder
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
+
+# Install cross-compilation toolchain when build != target
+RUN set -eux; \
+    case "$TARGETPLATFORM" in \
+        "linux/amd64") RUST_TARGET=x86_64-unknown-linux-gnu; DPKG_ARCH=amd64; GCC_PKG="gcc-x86-64-linux-gnu libc6-dev-amd64-cross" ;; \
+        "linux/arm64") RUST_TARGET=aarch64-unknown-linux-gnu; DPKG_ARCH=arm64; GCC_PKG="gcc-aarch64-linux-gnu libc6-dev-arm64-cross" ;; \
+        *) echo "Unsupported TARGETPLATFORM: $TARGETPLATFORM" >&2; exit 1 ;; \
+    esac; \
+    echo "$RUST_TARGET" > /tmp/rust_target; \
+    if [ "$TARGETPLATFORM" != "$BUILDPLATFORM" ]; then \
+        apt-get update && apt-get install -y --no-install-recommends $GCC_PKG && rm -rf /var/lib/apt/lists/*; \
+    fi; \
+    rustup target add "$RUST_TARGET"
 
 COPY ./text_tagger /opt/text_tagger
-RUN cd /opt/text_tagger && cargo build --release
+RUN set -eux; \
+    RUST_TARGET="$(cat /tmp/rust_target)"; \
+    case "$RUST_TARGET" in \
+        x86_64-unknown-linux-gnu) export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=x86_64-linux-gnu-gcc ;; \
+        aarch64-unknown-linux-gnu) export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-linux-gnu-gcc ;; \
+    esac; \
+    cd /opt/text_tagger && cargo build --release --target "$RUST_TARGET"; \
+    mkdir -p /opt/text_tagger/target/release; \
+    cp "/opt/text_tagger/target/$RUST_TARGET/release/ols_text_tagger" /opt/text_tagger/target/release/ols_text_tagger
 
 FROM maven:3.9.10-eclipse-temurin-24
 
