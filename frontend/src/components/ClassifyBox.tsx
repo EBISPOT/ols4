@@ -50,6 +50,7 @@ export default function ClassifyBox({ compact = false }: { compact?: boolean }) 
   const [selectedModel, setSelectedModel] = useState<string>("");
   const [ontologies, setOntologies] = useState<ClassifyEntity[] | null>(null);
   const [parents, setParents] = useState<ClassifyEntity[] | null>(null);
+  const [similarTerms, setSimilarTerms] = useState<ClassifyEntity[] | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -77,12 +78,15 @@ export default function ClassifyBox({ compact = false }: { compact?: boolean }) 
     setError(null);
     setOntologies(null);
     setParents(null);
+    setSimilarTerms(null);
     try {
       const params = new URLSearchParams({ q, model, size: "10" });
       const centroidParams = new URLSearchParams({ q, model, size: "50", vector: "centroid" });
-      const [ontPage, parentPage] = await Promise.all([
+      const termParams = new URLSearchParams({ q, model, size: "10" });
+      const [ontPage, parentPage, termPage] = await Promise.all([
         getPaginated<ClassifyEntity>(`api/v2/ontologies/llm_search?${params}`),
         getPaginated<ClassifyEntity>(`api/v2/classes/llm_search?${centroidParams}`),
+        getPaginated<ClassifyEntity>(`api/v2/classes/llm_search?${termParams}`),
       ]);
       setOntologies(ontPage.elements);
       // Only show parents with >=3 descendants
@@ -95,6 +99,7 @@ export default function ClassifyBox({ compact = false }: { compact?: boolean }) 
         return Number.isFinite(n) && n >= 3;
       });
       setParents(filtered.slice(0, 10));
+      setSimilarTerms(termPage.elements);
     } catch (e: any) {
       setError(e.message || "Classification failed");
     } finally {
@@ -107,6 +112,7 @@ export default function ClassifyBox({ compact = false }: { compact?: boolean }) 
     if (!text.trim() || !model) {
       setOntologies(null);
       setParents(null);
+      setSimilarTerms(null);
       setError(null);
       return;
     }
@@ -175,15 +181,25 @@ export default function ClassifyBox({ compact = false }: { compact?: boolean }) 
         </div>
       )}
 
+      {(similarTerms || loading) && (
+        <div className="mt-4 mb-6">
+          <div className="text-2xl font-bold mb-3">Existing similar terms</div>
+          <TermResultsTable rows={similarTerms} loading={loading} />
+        </div>
+      )}
+
       {(ontologies || parents || loading) && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <div className="text-xl font-bold mb-2">Predicted ontologies</div>
-            <OntologyResultsTable rows={ontologies} loading={loading} />
-          </div>
-          <div>
-            <div className="text-xl font-bold mb-2">Predicted parents</div>
-            <TermResultsTable rows={parents} loading={loading} />
+        <div className="mb-6">
+          <div className="text-2xl font-bold mb-3">Predicted classification</div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <div className="text-lg font-semibold mb-2">Ontologies</div>
+              <OntologyResultsTable rows={ontologies} loading={loading} />
+            </div>
+            <div>
+              <div className="text-lg font-semibold mb-2">Parent terms</div>
+              <TermResultsTable rows={parents} loading={loading} />
+            </div>
           </div>
         </div>
       )}
