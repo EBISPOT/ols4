@@ -261,6 +261,8 @@ def main():
     # --- Drop old tables ---
     print("=== Dropping existing OLS tables ===")
     run_psql(
+        "DROP TABLE IF EXISTS ols_text_tagger CASCADE;\n"
+        "DROP TABLE IF EXISTS ols_pca_models CASCADE;\n"
         "DROP TABLE IF EXISTS ols_embedding_nodes CASCADE;\n"
         "DROP TABLE IF EXISTS ols_entities CASCADE;\n"
         "DROP TABLE IF EXISTS ols_autosuggest CASCADE;",
