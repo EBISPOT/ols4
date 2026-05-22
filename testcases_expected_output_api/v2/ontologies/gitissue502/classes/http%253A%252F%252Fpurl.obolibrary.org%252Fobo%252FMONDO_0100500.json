@@ -401,19 +401,13 @@
       "url": "https://github.com/monarch-initiative/mondo/issues/4789"
     },
     "https://orcid.org/0000-0001-5208-3432": {
-      "curie": "orcid:0000-0001-5208-3432",
-      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-      "url": "https://orcid.org/0000-0001-5208-3432"
+      "label": "Nicole Vasilevsky"
     },
     "https://orcid.org/0000-0002-0736-9199": {
-      "curie": "orcid:0000-0002-0736-9199",
-      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-      "url": "https://orcid.org/0000-0002-0736-9199"
+      "label": "Peter Robinson"
     },
     "https://orcid.org/0000-0002-1780-5230": {
-      "curie": "orcid:0000-0002-1780-5230",
-      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-      "url": "https://orcid.org/0000-0002-1780-5230"
+      "label": "Ada Hamosh"
     }
   },
   "linksTo": [
@@ -436,7 +430,10 @@
     "http://www.geneontology.org/formats/oboInOwl#id",
     "http://www.geneontology.org/formats/oboInOwl#source",
     "http://www.w3.org/2000/01/rdf-schema#label",
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "https://orcid.org/0000-0001-5208-3432",
+    "https://orcid.org/0000-0002-0736-9199",
+    "https://orcid.org/0000-0002-1780-5230"
   ],
   "numDescendants": 1.0,
   "numHierarchicalDescendants": 1.0,

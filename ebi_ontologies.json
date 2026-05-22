@@ -1,6 +1,10 @@
 {
   "ontologies": [
     {
+      "id": "medgen",
+      "ontology_purl": "https://github.com/monarch-initiative/medgen/releases/latest/download/medgen.ttl.gz"
+    },
+    {
       "id": "fma",
       "ontology_purl": "http://purl.org/sig/ont/fma.owl"
     },
@@ -902,6 +906,7 @@
       "base_uri": [
         "http://purl.allotrope.org/ontologies"
       ],
+      "shortFormExtractionPattern": "^http://purl\\.allotrope\\.org/ontologies/(.+)$",
       "label_property": "http://www.w3.org/2004/02/skos/core#prefLabel",
       "synonym_property": [
         "http://www.w3.org/2004/02/skos/core#altLabel"

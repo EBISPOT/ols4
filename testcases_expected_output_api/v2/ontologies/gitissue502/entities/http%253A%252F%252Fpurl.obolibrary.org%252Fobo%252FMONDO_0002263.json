@@ -623,9 +623,7 @@
       ]
     },
     "https://orcid.org/0000-0002-6601-2165": {
-      "curie": "orcid:0000-0002-6601-2165",
-      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-      "url": "https://orcid.org/0000-0002-6601-2165"
+      "label": "Christopher Mungall"
     }
   },
   "linksTo": [
@@ -649,7 +647,8 @@
     "http://www.geneontology.org/formats/oboInOwl#source",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-    "http://www.w3.org/2004/02/skos/core#exactMatch"
+    "http://www.w3.org/2004/02/skos/core#exactMatch",
+    "https://orcid.org/0000-0002-6601-2165"
   ],
   "numDescendants": 4.0,
   "numHierarchicalDescendants": 4.0,

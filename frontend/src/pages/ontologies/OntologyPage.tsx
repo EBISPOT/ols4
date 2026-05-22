@@ -17,7 +17,6 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { randomString, sortByKeys } from "../../app/util";
 import ApiLinks from "../../components/ApiLinks";
 import EntityLink from "../../components/EntityLink";
-import FallbackWarning from "../../components/FallbackWarning";
 import Header from "../../components/Header";
 import LanguagePicker from "../../components/LanguagePicker";
 import LoadingOverlay from "../../components/LoadingOverlay";
@@ -107,7 +106,6 @@ export default function OntologyPage() {
           {pageDesc && <meta name="description" content={ontology?.getDescription()}/>}
         </Helmet>
       <main className="container mx-auto px-4">
-        <FallbackWarning ontology={ontology} />
         {ontology && ontology.isDeprecated() && (
             <Banner type="error">
               <div>

@@ -12,7 +12,6 @@ use struson::writer::{JsonStreamWriter, JsonWriter, WriterSettings};
 use crate::bioregistry::{is_curie, Bioregistry};
 use crate::copy_json_gathering_strings::{copy_json_gathering_strings, write_value};
 use crate::extract_iri_from_property_name;
-use crate::leveldb::LevelDB;
 use crate::obo_database_url_service::{map_curie, OboDatabaseUrlService};
 use crate::sssom_literal_mappings::CuratedFromEntry;
 use ols_shared::{EntityDefinitionSet, LinkerPass1Result};
@@ -21,7 +20,6 @@ use ols_shared::{EntityDefinitionSet, LinkerPass1Result};
 pub fn run(
     input_json_filename: &str,
     output_json_filename: &str,
-    leveldb: Option<&LevelDB>,
     pass1_result: &LinkerPass1Result,
     sssom_map: &HashMap<String, Vec<CuratedFromEntry>>,
 ) -> Result<(), Box<dyn std::error::Error>> {
@@ -44,6 +42,7 @@ pub fn run(
     let mut bioregistry = Bioregistry::new()?;
     eprintln!("Loading OBO database URLs...");
     let db_urls = OboDatabaseUrlService::new()?;
+    let mut orcid_cache: HashMap<String, Option<String>> = HashMap::new();
 
     eprintln!("--- Linker Pass 2: Processing {}", input_json_filename);
     let mut n_ontologies = 0;
@@ -110,11 +109,11 @@ pub fn run(
                                 &mut json_writer,
                                 "class",
                                 &ontology_id,
-                                leveldb,
                                 pass1_result,
                                 &db_urls,
                                 &mut bioregistry,
                                 sssom_map,
+                                &mut orcid_cache,
                             )?;
                         }
                         "properties" => {
@@ -123,11 +122,11 @@ pub fn run(
                                 &mut json_writer,
                                 "property",
                                 &ontology_id,
-                                leveldb,
                                 pass1_result,
                                 &db_urls,
                                 &mut bioregistry,
                                 sssom_map,
+                                &mut orcid_cache,
                             )?;
                         }
                         "individuals" => {
@@ -136,11 +135,11 @@ pub fn run(
                                 &mut json_writer,
                                 "individual",
                                 &ontology_id,
-                                leveldb,
                                 pass1_result,
                                 &db_urls,
                                 &mut bioregistry,
                                 sssom_map,
+                                &mut orcid_cache,
                             )?;
                         }
                         _ => {
@@ -163,10 +162,10 @@ pub fn run(
                     &ontology_gathered_strings,
                     &ontology_id,
                     None,
-                    leveldb,
                     pass1_result,
                     &db_urls,
                     &mut bioregistry,
+                    &mut orcid_cache,
                 )?;
 
                 // Write linksTo
@@ -203,11 +202,11 @@ fn write_entity_array<R: Read, W: Write>(
     json_writer: &mut JsonStreamWriter<W>,
     _entity_type: &str,
     ontology_id: &str,
-    leveldb: Option<&LevelDB>,
     pass1_result: &LinkerPass1Result,
     db_urls: &OboDatabaseUrlService,
     bioregistry: &mut Bioregistry,
     sssom_map: &HashMap<String, Vec<CuratedFromEntry>>,
+    orcid_cache: &mut HashMap<String, Option<String>>,
 ) -> Result<(), Box<dyn std::error::Error>> {
     json_reader.begin_array()?;
     json_writer.begin_array()?;
@@ -322,10 +321,10 @@ fn write_entity_array<R: Read, W: Write>(
             &strings_in_entity,
             ontology_id,
             entity_iri.as_deref(),
-            leveldb,
             pass1_result,
             db_urls,
             bioregistry,
+            orcid_cache,
         )?;
 
         // Write linksTo
@@ -350,10 +349,10 @@ fn write_linked_entities_from_gathered_strings<W: Write>(
     strings: &BTreeSet<String>,
     ontology_id: &str,
     entity_iri: Option<&str>,
-    _leveldb: Option<&LevelDB>,
     pass1_result: &LinkerPass1Result,
     db_urls: &OboDatabaseUrlService,
     bioregistry: &mut Bioregistry,
+    orcid_cache: &mut HashMap<String, Option<String>>,
 ) -> Result<BTreeSet<String>, Box<dyn std::error::Error>> {
     let mut links_to_iris: BTreeSet<String> = BTreeSet::new();
 
@@ -453,8 +452,27 @@ fn write_linked_entities_from_gathered_strings<W: Write>(
             }
         }
 
-        // TODO: LevelDB lookup for ORCIDs etc. - currently disabled as LevelDB
-        // support needs proper mutable access patterns
+        // Resolve ORCID IRIs to person names via the Europe PMC ORCID lookup endpoint
+        if s.starts_with("https://orcid.org/") {
+            let name = orcid_cache.entry(s.clone()).or_insert_with(|| {
+                fetch_orcid_name(s)
+            });
+            if let Some(ref person_name) = name.clone() {
+                json_writer.name(s)?;
+                json_writer.begin_object()?;
+                json_writer.name("label")?;
+                json_writer.begin_object()?;
+                json_writer.name("type")?;
+                json_writer.begin_array()?;
+                json_writer.string_value("literal")?;
+                json_writer.end_array()?;
+                json_writer.name("value")?;
+                json_writer.string_value(person_name)?;
+                json_writer.end_object()?;
+                json_writer.end_object()?;
+                links_to_iris.insert(s.clone());
+            }
+        }
     }
 
     json_writer.end_object()?;
@@ -649,4 +667,50 @@ fn get_processed_curie_value(pass1_result: &LinkerPass1Result, entity_iri: Optio
     }
 
     String::new()
+}
+
+const EUROPE_PMC_ORCID_LOOKUP_BASE_URL: &str =
+    "https://www.ebi.ac.uk/europepmc/thor/api/orcid/findorcid/";
+
+fn europe_pmc_orcid_lookup_url(orcid_uri: &str) -> String {
+    let orcid_id = orcid_uri
+        .trim_start_matches("https://orcid.org/")
+        .trim_end_matches('/');
+
+    format!("{}{}", EUROPE_PMC_ORCID_LOOKUP_BASE_URL, orcid_id)
+}
+
+fn extract_orcid_name_from_europe_pmc_profile(json: &Value) -> Option<String> {
+    let given = json
+        .pointer("/orcid-profile/orcid-bio/personal-details/given-names/value")
+        .and_then(|v| v.as_str())
+        .unwrap_or("")
+        .trim();
+
+    let family = json
+        .pointer("/orcid-profile/orcid-bio/personal-details/family-name/value")
+        .and_then(|v| v.as_str())
+        .unwrap_or("")
+        .trim();
+
+    if given.is_empty() && family.is_empty() {
+        return None;
+    }
+
+    Some(format!("{} {}", given, family).trim().to_string())
+}
+
+/// Fetch a person's display name from the Europe PMC ORCID lookup endpoint.
+/// Returns "Given Family" on success, None on any error or missing data.
+fn fetch_orcid_name(orcid_uri: &str) -> Option<String> {
+    let url = europe_pmc_orcid_lookup_url(orcid_uri);
+
+    let response = ureq::get(&url)
+        .set("Accept", "application/json")
+        .call()
+        .ok()?;
+
+    let json: Value = response.into_json().ok()?;
+
+    extract_orcid_name_from_europe_pmc_profile(&json)
 }
