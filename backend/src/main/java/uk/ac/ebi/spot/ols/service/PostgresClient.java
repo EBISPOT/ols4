@@ -39,6 +39,9 @@ public class PostgresClient {
     @org.springframework.beans.factory.annotation.Value("${ols.postgres.password:}")
     private String password;
 
+    @org.springframework.beans.factory.annotation.Value("${ols.postgres.schema:}")
+    private String schema;
+
     private HikariDataSource dataSource;
     private static final Logger logger = LoggerFactory.getLogger(PostgresClient.class);
 
@@ -75,7 +78,11 @@ public class PostgresClient {
     @PostConstruct
     public void init() {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:postgresql://" + host + ":" + port + "/" + database);
+        String url = "jdbc:postgresql://" + host + ":" + port + "/" + database;
+        if (schema != null && !schema.isEmpty()) {
+            url += "?currentSchema=" + schema;
+        }
+        config.setJdbcUrl(url);
         config.setUsername(user);
         if (password != null && !password.isEmpty()) {
             config.setPassword(password);

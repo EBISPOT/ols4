@@ -6,6 +6,7 @@ postgres:
   port: "5432"
   db: "spotolspro"
   user: "spot"
+  schema: ""
   secretName: "ols4-postgres-secret"
   secretKey: "password"
 
