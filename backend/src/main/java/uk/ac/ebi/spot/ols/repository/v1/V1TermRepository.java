@@ -8,16 +8,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.model.v1.V1Individual;
-import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
 import uk.ac.ebi.spot.ols.model.v1.V1Term;
-import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
-import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
-import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
-import uk.ac.ebi.spot.ols.repository.solr.SearchType;
+import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
+import uk.ac.ebi.spot.ols.repository.search.OlsSearchClient;
+import uk.ac.ebi.spot.ols.repository.search.OlsSearchQuery;
+import uk.ac.ebi.spot.ols.repository.search.SearchType;
 import uk.ac.ebi.spot.ols.repository.v1.mappers.V1TermMapper;
 import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -33,101 +31,76 @@ public class V1TermRepository {
     V1PropertyRepository propertyRepository;
 
     @Autowired
-    OlsNeo4jClient neo4jClient;
+    OlsPostgresClient postgresClient;
 
     @Autowired
-    OlsSolrClient solrClient;
+    OlsSearchClient searchClient;
 
     public Page<V1Term> getParents(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        return this.neo4jClient.traverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), Map.of(), pageable)
+        return this.postgresClient.getDirectParents(ontologyId + "+class+" + iri, Map.of(), pageable)
                 .map(node -> V1TermMapper.mapTerm(node, lang));
     }
 
     public Page<V1Term> getHierarchicalParents(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        List<String> relationIRIs = List.of(HIERARCHICAL_PARENT.getText());
-
-        return this.neo4jClient.traverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), Map.of(), pageable)
+        return this.postgresClient.getHierarchicalParents(ontologyId + "+class+" + iri, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
     }
 
     public Page<V1Term> getHierarchicalAncestors(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        List<String> relationIRIs = List.of(HIERARCHICAL_PARENT.getText());
-
-        return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), Map.of(), pageable)
+        return this.postgresClient.getHierarchicalAncestors(ontologyId + "+class+" + iri, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
-
     }
 
     public Page<V1Term> getChildren(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        return this.neo4jClient.traverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), Map.of(), pageable)
+        return this.postgresClient.getDirectChildren(ontologyId + "+class+" + iri, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
     }
 
     public Page<V1Term> getHierarchicalChildren(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        List<String> relationIRIs = List.of(HIERARCHICAL_PARENT.getText());
-
-        return this.neo4jClient.traverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri, relationIRIs, Map.of(), Map.of(), pageable)
+        return this.postgresClient.getHierarchicalChildren(ontologyId + "+class+" + iri, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
-
     }
 
     public Page<V1Term> getHierarchicalDescendants(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        List<String> relationIRIs = List.of(HIERARCHICAL_PARENT.getText());
-
-        return this.neo4jClient.recursivelyTraverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri,
-                        relationIRIs, Map.of(), Map.of(), pageable)
+        return this.postgresClient.getHierarchicalDescendants(ontologyId + "+class+" + iri, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
     }
 
 
     public Page<V1Term> getDescendants(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        return this.neo4jClient.recursivelyTraverseIncomingEdges("OntologyClass", ontologyId + "+class+" + iri,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), Map.of(), pageable)
+        return this.postgresClient.getDescendants(ontologyId + "+class+" + iri, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
-
     }
 
     public Page<V1Term> getAncestors(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        V1Ontology ontology = ontologyRepository.get(ontologyId, lang);
-
-        return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", ontologyId + "+class+" + iri,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), Map.of(), pageable)
+        return this.postgresClient.getAncestors(ontologyId + "+class+" + iri, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
-
     }
 
     public Page<V1Term> getRelated(String ontologyId, String iri, String lang, String relation, Pageable pageable) {
 
-        return this.neo4jClient.traverseOutgoingEdges(
-                        "OntologyClass", ontologyId + "+class+" + iri,
-                        Arrays.asList(RELATED_TO.getText()),
-                        Map.of("property", relation),
-                        Map.of(),
-                        pageable)
+        return this.postgresClient.getRelatedTo(ontologyId + "+class+" + iri, Map.of(), pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
-
     }
 
     public V1Term findByOntologyAndIri(String ontologyId, String iri, String lang) {
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
         query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
         query.addFilter("iri", List.of(iri), SearchType.WHOLE_FIELD);
 
         JsonElement first;
         try {
-            first = solrClient.getFirst(query);
+            first = searchClient.getFirst(query);
         } catch (Exception e) {
             log.error(e.getMessage());
             return null;
@@ -141,25 +114,25 @@ public class V1TermRepository {
 
     public Page<V1Term> findAllByOntology(String ontologyId, Boolean obsoletes, String lang, Pageable pageable) {
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
         query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
         if (obsoletes != null) query.addFilter(IS_OBSOLETE.getText(), List.of(Boolean.toString(obsoletes)), SearchType.WHOLE_FIELD);
 
-        return solrClient.searchSolrPaginated(query, pageable)
+        return searchClient.searchPaginated(query, pageable)
                 .map(result -> V1TermMapper.mapTerm(result, lang));
     }
 
     public V1Term findByOntologyAndShortForm(String ontologyId, String shortForm, String lang) {
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
         query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
         query.addFilter("shortForm", List.of(shortForm), SearchType.WHOLE_FIELD);
 
         JsonElement first;
         try {
-            first = solrClient.getFirst(query);
+            first = searchClient.getFirst(query);
         } catch (Exception e) {
             log.error(e.getMessage());
             return null;
@@ -172,14 +145,14 @@ public class V1TermRepository {
 
     public V1Term findByOntologyAndOboId(String ontologyId, String oboId, String lang) {
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
         query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
         query.addFilter("curie", List.of(oboId), SearchType.WHOLE_FIELD);
 
         JsonElement first;
         try {
-            first = solrClient.getFirst(query);
+            first = searchClient.getFirst(query);
         } catch (Exception e) {
             log.error(e.getMessage());
             return null;
@@ -193,7 +166,7 @@ public class V1TermRepository {
 
     public Page<V1Term> getRoots(String ontologyId, boolean obsolete, String lang, Pageable pageable) {
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
         query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
         query.addFilter(HAS_DIRECT_PARENTS.getText(), List.of("false"), SearchType.WHOLE_FIELD);
@@ -202,7 +175,7 @@ public class V1TermRepository {
         if (!obsolete)
             query.addFilter(IS_OBSOLETE.getText(), List.of("false"), SearchType.WHOLE_FIELD);
 
-        return solrClient.searchSolrPaginated(query, pageable)
+        return searchClient.searchPaginated(query, pageable)
                 .map(result -> V1TermMapper.mapTerm(result, lang));
     }
 
@@ -210,7 +183,7 @@ public class V1TermRepository {
     //            value = "MATCH (n:PreferredRootTerm) WHERE n.ontology_name = {0} AND n.is_obsolete = {1} RETURN n")
     public Page<V1Term> getPreferredRootTerms(String ontologyId, boolean obsolete, String lang, Pageable pageable) {
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
         query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
         query.addFilter("isPreferredRoot", List.of("true"), SearchType.WHOLE_FIELD);
@@ -218,7 +191,7 @@ public class V1TermRepository {
         if (!obsolete)
             query.addFilter(IS_OBSOLETE.getText(), List.of(Boolean.toString(obsolete)), SearchType.WHOLE_FIELD);
 
-        return solrClient.searchSolrPaginated(query, pageable)
+        return searchClient.searchPaginated(query, pageable)
                 .map(result -> V1TermMapper.mapTerm(result, lang));
     }
 
@@ -229,85 +202,85 @@ public class V1TermRepository {
 
     public Page<V1Term> findAll(String lang, Pageable pageable) {
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
 
-        return solrClient.searchSolrPaginated(query, pageable)
+        return searchClient.searchPaginated(query, pageable)
                 .map(result -> V1TermMapper.mapTerm(result, lang));
     }
 
     public Page<V1Term> findAllByIsDefiningOntology(String lang, Pageable pageable) {
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
         query.addFilter(IS_DEFINING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
 
-        return solrClient.searchSolrPaginated(query, pageable)
+        return searchClient.searchPaginated(query, pageable)
                 .map(result -> V1TermMapper.mapTerm(result, lang));
 
     }
 
     public Page<V1Term> findAllByIri(String iri, String lang, Pageable pageable) {
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
         query.addFilter("iri", List.of(iri), SearchType.WHOLE_FIELD);
 
-        return solrClient.searchSolrPaginated(query, pageable)
+        return searchClient.searchPaginated(query, pageable)
                 .map(result -> V1TermMapper.mapTerm(result, lang));
     }
 
     public Page<V1Term> findAllByIriAndIsDefiningOntology(String iri, String lang, Pageable pageable) {
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
         query.addFilter(IS_DEFINING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
         query.addFilter("iri", List.of(iri), SearchType.WHOLE_FIELD);
 
-        return solrClient.searchSolrPaginated(query, pageable)
+        return searchClient.searchPaginated(query, pageable)
                 .map(result -> V1TermMapper.mapTerm(result, lang));
     }
 
     public Page<V1Term> findAllByShortForm(String shortForm, String lang, Pageable pageable) {
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
         query.addFilter("shortForm", List.of(shortForm), SearchType.WHOLE_FIELD);
 
-        return solrClient.searchSolrPaginated(query, pageable)
+        return searchClient.searchPaginated(query, pageable)
                 .map(result -> V1TermMapper.mapTerm(result, lang));
     }
 
     public Page<V1Term> findAllByShortFormAndIsDefiningOntology(String shortForm, String lang, Pageable pageable) {
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
         query.addFilter(IS_DEFINING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
         query.addFilter("shortForm", List.of(shortForm), SearchType.WHOLE_FIELD);
 
-        return solrClient.searchSolrPaginated(query, pageable)
+        return searchClient.searchPaginated(query, pageable)
                 .map(result -> V1TermMapper.mapTerm(result, lang));
     }
 
     public Page<V1Term> findAllByOboId(String oboId, String lang, Pageable pageable) {
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
         query.addFilter("curie", List.of(oboId), SearchType.WHOLE_FIELD);
 
-        return solrClient.searchSolrPaginated(query, pageable)
+        return searchClient.searchPaginated(query, pageable)
                 .map(result -> V1TermMapper.mapTerm(result, lang));
 
     }
 
     public Page<V1Term> findAllByOboIdAndIsDefiningOntology(String oboId, String lang, Pageable pageable) {
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
         query.addFilter(IS_DEFINING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
         query.addFilter("curie", List.of(oboId), SearchType.WHOLE_FIELD);
 
-        return solrClient.searchSolrPaginated(query, pageable)
+        return searchClient.searchPaginated(query, pageable)
                 .map(result -> V1TermMapper.mapTerm(result, lang));
     }
 

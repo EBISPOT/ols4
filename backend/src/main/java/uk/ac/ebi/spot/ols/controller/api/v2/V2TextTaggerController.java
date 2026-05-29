@@ -3,9 +3,6 @@ package uk.ac.ebi.spot.ols.controller.api.v2;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-import org.apache.solr.client.solrj.SolrQuery;
-import org.apache.solr.client.solrj.response.FacetField;
-import org.apache.solr.client.solrj.response.QueryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -13,7 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
+import uk.ac.ebi.spot.ols.repository.search.OlsSearchClient;
 import uk.ac.ebi.spot.ols.service.TextTaggerService;
 import uk.ac.ebi.spot.ols.service.TextTaggerService.TaggedEntity;
 
@@ -31,7 +28,7 @@ public class V2TextTaggerController {
     TextTaggerService textTaggerService;
 
     @Autowired
-    OlsSolrClient solrClient;
+    OlsSearchClient searchClient;
 
     @RequestMapping(path = "/tag_text", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.POST)
     @Parameter(name = "tag_text", description = "Annotate free text with matching ontology terms")
@@ -99,24 +96,7 @@ public class V2TextTaggerController {
     @RequestMapping(path = "/curation_sources", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     @Parameter(name = "curation_sources", description = "List available curation source names (from SSSOM curated mappings)")
     public HttpEntity<List<String>> getCurationSources() {
-        SolrQuery query = new SolrQuery();
-        query.setQuery("curatedFromSources:[* TO *]");
-        query.setFacet(true);
-        query.addFacetField("curatedFromSources");
-        query.setFacetMinCount(1);
-        query.setFacetLimit(-1);
-        query.setRows(0);
-
-        QueryResponse qr = solrClient.runSolrQuery(query, null);
-
-        List<String> sources = new ArrayList<>();
-        FacetField facet = qr.getFacetField("curatedFromSources");
-        if (facet != null) {
-            for (FacetField.Count count : facet.getValues()) {
-                sources.add(count.getName());
-            }
-        }
-        Collections.sort(sources);
+        List<String> sources = searchClient.getDistinctCuratedSources();
         return new ResponseEntity<>(sources, HttpStatus.OK);
     }
 }

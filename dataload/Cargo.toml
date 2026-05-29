@@ -3,8 +3,7 @@ resolver = "2"
 
 members = [
     "ols-shared-rs",
-    "json2neo",
-    "json2solr",
+    "json2postgres",
     "linker/create_manifest",
     "linker/link",
     "extract_strings_from_terms",
@@ -24,6 +23,7 @@ thiserror = "2.0"
 struson = "0.6"
 indexmap = { version = "2.7", features = ["serde"] }
 rayon = "1.10"
+flate2 = "1.0"
 
 # Parquet/Arrow for Neo4j embeddings import
 parquet = "54.1"

@@ -1,7 +1,7 @@
 package uk.ac.ebi.spot.ols.repository.helpers;
 
-import uk.ac.ebi.spot.ols.repository.solr.SearchType;
-import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
+import uk.ac.ebi.spot.ols.repository.search.SearchType;
+import uk.ac.ebi.spot.ols.repository.search.OlsSearchQuery;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class DynamicFilterParser {
 
-    public static void addDynamicFiltersToQuery(OlsSolrQuery query, Map<String, Collection<String>> properties) {
+    public static void addDynamicFiltersToQuery(OlsSearchQuery query, Map<String, Collection<String>> properties) {
         if(properties == null) {
             return;
         }
@@ -18,8 +18,8 @@ public class DynamicFilterParser {
                 continue;
             }
             for(String v : properties.get(k)) {
-                String solrKey = k.replace(":", "__");
-                query.addFilter(solrKey, Arrays.asList( v.split(",") ), SearchType.CASE_INSENSITIVE_TOKENS);
+                String filterKey = k.replace(":", "__");
+                query.addFilter(filterKey, Arrays.asList( v.split(",") ), SearchType.CASE_INSENSITIVE_TOKENS);
             }
         }
     }

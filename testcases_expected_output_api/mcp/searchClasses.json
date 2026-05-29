@@ -81,46 +81,644 @@
               ]
             },
             {
-              "curie": "GO:0007154",
+              "curie": "CL:0000003",
               "definition": [],
               "directAncestor": [
                 {
                   "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/GO_0008150",
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000002",
                   "label": [
-                    "biological_process"
+                    "continuant"
                   ]
                 },
                 {
                   "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/GO_0009987",
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000004",
                   "label": [
-                    "cellular process"
+                    "independent continuant"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000040",
+                  "label": [
+                    "material entity"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000000",
+                  "label": [
+                    "cell"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0000061",
+                  "label": [
+                    "anatomical structure"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0000465",
+                  "label": [
+                    "material anatomical entity"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0001062",
+                  "label": [
+                    "anatomical entity"
                   ]
                 }
               ],
               "directParent": [
                 {
                   "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/GO_0009987",
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000000",
                   "label": [
-                    "cellular process"
+                    "cell"
                   ]
                 }
               ],
               "hierarchicalParent": [
                 {
                   "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/GO_0009987",
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000000",
                   "label": [
-                    "cellular process"
+                    "cell"
                   ]
                 }
               ],
-              "iri": "http://purl.obolibrary.org/obo/GO_0007154",
+              "iri": "http://purl.obolibrary.org/obo/CL_0000003",
               "isObsolete": false,
               "label": [
-                "cell communication"
+                "native cell"
+              ],
+              "ontologyId": "gitissue502",
+              "type": [
+                "class",
+                "entity"
+              ]
+            },
+            {
+              "curie": "CL:0000039",
+              "definition": [],
+              "directAncestor": [
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000002",
+                  "label": [
+                    "continuant"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000004",
+                  "label": [
+                    "independent continuant"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000040",
+                  "label": [
+                    "material entity"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000000",
+                  "label": [
+                    "cell"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000003",
+                  "label": [
+                    "native cell"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0000061",
+                  "label": [
+                    "anatomical structure"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0000465",
+                  "label": [
+                    "material anatomical entity"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0001062",
+                  "label": [
+                    "anatomical entity"
+                  ]
+                }
+              ],
+              "directParent": [
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000003",
+                  "label": [
+                    "native cell"
+                  ]
+                }
+              ],
+              "hierarchicalParent": [
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000003",
+                  "label": [
+                    "native cell"
+                  ]
+                }
+              ],
+              "iri": "http://purl.obolibrary.org/obo/CL_0000039",
+              "isObsolete": false,
+              "label": [
+                "germ line cell"
+              ],
+              "ontologyId": "gitissue502",
+              "type": [
+                "class",
+                "entity"
+              ]
+            },
+            {
+              "curie": "CL:0000211",
+              "definition": [],
+              "directAncestor": [
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000002",
+                  "label": [
+                    "continuant"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000004",
+                  "label": [
+                    "independent continuant"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000040",
+                  "label": [
+                    "material entity"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000000",
+                  "label": [
+                    "cell"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000003",
+                  "label": [
+                    "native cell"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0000061",
+                  "label": [
+                    "anatomical structure"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0000465",
+                  "label": [
+                    "material anatomical entity"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0001062",
+                  "label": [
+                    "anatomical entity"
+                  ]
+                }
+              ],
+              "directParent": [
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000003",
+                  "label": [
+                    "native cell"
+                  ]
+                }
+              ],
+              "hierarchicalParent": [
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000003",
+                  "label": [
+                    "native cell"
+                  ]
+                }
+              ],
+              "iri": "http://purl.obolibrary.org/obo/CL_0000211",
+              "isObsolete": false,
+              "label": [
+                "electrically active cell"
+              ],
+              "ontologyId": "gitissue502",
+              "type": [
+                "class",
+                "entity"
+              ]
+            },
+            {
+              "curie": "CL:0000255",
+              "definition": [],
+              "directAncestor": [
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000002",
+                  "label": [
+                    "continuant"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000004",
+                  "label": [
+                    "independent continuant"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000040",
+                  "label": [
+                    "material entity"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000000",
+                  "label": [
+                    "cell"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000003",
+                  "label": [
+                    "native cell"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0000061",
+                  "label": [
+                    "anatomical structure"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0000465",
+                  "label": [
+                    "material anatomical entity"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0001062",
+                  "label": [
+                    "anatomical entity"
+                  ]
+                }
+              ],
+              "directParent": [
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000003",
+                  "label": [
+                    "native cell"
+                  ]
+                }
+              ],
+              "hierarchicalParent": [
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000003",
+                  "label": [
+                    "native cell"
+                  ]
+                }
+              ],
+              "iri": "http://purl.obolibrary.org/obo/CL_0000255",
+              "isObsolete": false,
+              "label": [
+                "eukaryotic cell"
+              ],
+              "ontologyId": "gitissue502",
+              "type": [
+                "class",
+                "entity"
+              ]
+            },
+            {
+              "curie": "CL:0000393",
+              "definition": [],
+              "directAncestor": [
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000002",
+                  "label": [
+                    "continuant"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000004",
+                  "label": [
+                    "independent continuant"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000040",
+                  "label": [
+                    "material entity"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000000",
+                  "label": [
+                    "cell"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000003",
+                  "label": [
+                    "native cell"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000211",
+                  "label": [
+                    "electrically active cell"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0000061",
+                  "label": [
+                    "anatomical structure"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0000465",
+                  "label": [
+                    "material anatomical entity"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0001062",
+                  "label": [
+                    "anatomical entity"
+                  ]
+                }
+              ],
+              "directParent": [
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000211",
+                  "label": [
+                    "electrically active cell"
+                  ]
+                }
+              ],
+              "hierarchicalParent": [
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000211",
+                  "label": [
+                    "electrically active cell"
+                  ]
+                }
+              ],
+              "iri": "http://purl.obolibrary.org/obo/CL_0000393",
+              "isObsolete": false,
+              "label": [
+                "electrically responsive cell"
+              ],
+              "ontologyId": "gitissue502",
+              "type": [
+                "class",
+                "entity"
+              ]
+            },
+            {
+              "curie": "CL:0000404",
+              "definition": [],
+              "directAncestor": [
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000002",
+                  "label": [
+                    "continuant"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000004",
+                  "label": [
+                    "independent continuant"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000040",
+                  "label": [
+                    "material entity"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000000",
+                  "label": [
+                    "cell"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000003",
+                  "label": [
+                    "native cell"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000211",
+                  "label": [
+                    "electrically active cell"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0000061",
+                  "label": [
+                    "anatomical structure"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0000465",
+                  "label": [
+                    "material anatomical entity"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0001062",
+                  "label": [
+                    "anatomical entity"
+                  ]
+                }
+              ],
+              "directParent": [
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000211",
+                  "label": [
+                    "electrically active cell"
+                  ]
+                }
+              ],
+              "hierarchicalParent": [
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000211",
+                  "label": [
+                    "electrically active cell"
+                  ]
+                }
+              ],
+              "iri": "http://purl.obolibrary.org/obo/CL_0000404",
+              "isObsolete": false,
+              "label": [
+                "electrically signaling cell"
+              ],
+              "ontologyId": "gitissue502",
+              "type": [
+                "class",
+                "entity"
+              ]
+            },
+            {
+              "curie": "CL:0000548",
+              "definition": [
+                "A native cell that is part of some Metazoa."
+              ],
+              "directAncestor": [
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000002",
+                  "label": [
+                    "continuant"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000004",
+                  "label": [
+                    "independent continuant"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000040",
+                  "label": [
+                    "material entity"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000000",
+                  "label": [
+                    "cell"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000003",
+                  "label": [
+                    "native cell"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000255",
+                  "label": [
+                    "eukaryotic cell"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0000061",
+                  "label": [
+                    "anatomical structure"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0000465",
+                  "label": [
+                    "material anatomical entity"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/UBERON_0001062",
+                  "label": [
+                    "anatomical entity"
+                  ]
+                }
+              ],
+              "directParent": [
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000255",
+                  "label": [
+                    "eukaryotic cell"
+                  ]
+                }
+              ],
+              "hierarchicalParent": [
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/CL_0000255",
+                  "label": [
+                    "eukaryotic cell"
+                  ]
+                }
+              ],
+              "iri": "http://purl.obolibrary.org/obo/CL_0000548",
+              "isObsolete": false,
+              "label": [
+                "animal cell"
               ],
               "ontologyId": "gitissue502",
               "type": [
@@ -219,250 +817,6 @@
               ]
             },
             {
-              "curie": "GO:0009987",
-              "definition": [],
-              "directAncestor": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/GO_0008150",
-                  "label": [
-                    "biological_process"
-                  ]
-                }
-              ],
-              "directParent": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/GO_0008150",
-                  "label": [
-                    "biological_process"
-                  ]
-                }
-              ],
-              "hierarchicalParent": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/GO_0008150",
-                  "label": [
-                    "biological_process"
-                  ]
-                }
-              ],
-              "iri": "http://purl.obolibrary.org/obo/GO_0009987",
-              "isObsolete": false,
-              "label": [
-                "cellular process"
-              ],
-              "ontologyId": "gitissue502",
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
-            {
-              "curie": "GO:0051301",
-              "definition": [],
-              "directAncestor": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/GO_0008150",
-                  "label": [
-                    "biological_process"
-                  ]
-                },
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/GO_0009987",
-                  "label": [
-                    "cellular process"
-                  ]
-                }
-              ],
-              "directParent": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/GO_0009987",
-                  "label": [
-                    "cellular process"
-                  ]
-                }
-              ],
-              "hierarchicalParent": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/GO_0009987",
-                  "label": [
-                    "cellular process"
-                  ]
-                }
-              ],
-              "iri": "http://purl.obolibrary.org/obo/GO_0051301",
-              "isObsolete": false,
-              "label": [
-                "cell division"
-              ],
-              "ontologyId": "gitissue502",
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
-            {
-              "curie": "GO:0051716",
-              "definition": [],
-              "directAncestor": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/GO_0008150",
-                  "label": [
-                    "biological_process"
-                  ]
-                },
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/GO_0009987",
-                  "label": [
-                    "cellular process"
-                  ]
-                },
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/GO_0050896",
-                  "label": [
-                    "response to stimulus"
-                  ]
-                }
-              ],
-              "directParent": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/GO_0009987",
-                  "label": [
-                    "cellular process"
-                  ]
-                },
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/GO_0050896",
-                  "label": [
-                    "response to stimulus"
-                  ]
-                }
-              ],
-              "hierarchicalParent": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/GO_0009987",
-                  "label": [
-                    "cellular process"
-                  ]
-                },
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/GO_0050896",
-                  "label": [
-                    "response to stimulus"
-                  ]
-                }
-              ],
-              "iri": "http://purl.obolibrary.org/obo/GO_0051716",
-              "isObsolete": false,
-              "label": [
-                "cellular response to stimulus"
-              ],
-              "ontologyId": "gitissue502",
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
-            {
-              "curie": "NCBITaxon:131567",
-              "definition": [],
-              "directAncestor": [],
-              "directParent": [],
-              "hierarchicalParent": [],
-              "iri": "http://purl.obolibrary.org/obo/NCBITaxon_131567",
-              "isObsolete": false,
-              "label": [
-                "cellular organisms"
-              ],
-              "ontologyId": "gitissue502",
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
-            {
-              "curie": "PATO:0001992",
-              "definition": [],
-              "directAncestor": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/BFO_0000002",
-                  "label": [
-                    "continuant"
-                  ]
-                },
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/BFO_0000020",
-                  "label": [
-                    "specifically dependent continuant"
-                  ]
-                },
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/PATO_0000001",
-                  "label": [
-                    "quality"
-                  ]
-                },
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/PATO_0001241",
-                  "label": [
-                    "physical object quality"
-                  ]
-                },
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/PATO_0001995",
-                  "label": [
-                    "organismal quality"
-                  ]
-                }
-              ],
-              "directParent": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/PATO_0001995",
-                  "label": [
-                    "organismal quality"
-                  ]
-                }
-              ],
-              "hierarchicalParent": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/PATO_0001995",
-                  "label": [
-                    "organismal quality"
-                  ]
-                }
-              ],
-              "iri": "http://purl.obolibrary.org/obo/PATO_0001992",
-              "isObsolete": false,
-              "label": [
-                "cellularity"
-              ],
-              "ontologyId": "gitissue502",
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
-            {
               "curie": "cell",
               "definition": [],
               "directAncestor": [],
@@ -478,29 +832,12 @@
                 "class",
                 "entity"
               ]
-            },
-            {
-              "curie": "cell_part",
-              "definition": [],
-              "directAncestor": [],
-              "directParent": [],
-              "hierarchicalParent": [],
-              "iri": "http://example.com/reified-bnode#cell_part",
-              "isObsolete": false,
-              "label": [
-                "cell_part"
-              ],
-              "ontologyId": "reified-bnode",
-              "type": [
-                "class",
-                "entity"
-              ]
             }
           ],
           "pageNum": 0,
           "pageSize": 10,
-          "totalElements": 24,
-          "totalPages": 3
+          "totalElements": 18,
+          "totalPages": 2
         },
         "type": "text"
       }

@@ -5,11 +5,20 @@
         "text": {
           "items": [
             {
-              "curie": "DUO:0000001",
+              "curie": "DUO:0000019",
               "definition": [
-                "A data item that is used to indicate consent permissions for datasets and/or materials, and relates to the purposes for which datasets and/or material might be removed, stored or used."
+                "This data use modifier indicates that requestor agrees to make results of studies using the data available to the larger scientific community."
               ],
               "directAncestor": [
+                {
+                  "definedBy": [
+                    "duo"
+                  ],
+                  "iri": "http://purl.obolibrary.org/obo/DUO_0000017",
+                  "label": [
+                    "data use modifier"
+                  ]
+                },
                 {
                   "definedBy": [],
                   "iri": "http://purl.obolibrary.org/obo/BFO_0000031",
@@ -32,26 +41,30 @@
               ],
               "directParent": [
                 {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/IAO_0000027",
+                  "definedBy": [
+                    "duo"
+                  ],
+                  "iri": "http://purl.obolibrary.org/obo/DUO_0000017",
                   "label": [
-                    "IAO_0000027"
+                    "data use modifier"
                   ]
                 }
               ],
               "hierarchicalParent": [
                 {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/IAO_0000027",
+                  "definedBy": [
+                    "duo"
+                  ],
+                  "iri": "http://purl.obolibrary.org/obo/DUO_0000017",
                   "label": [
-                    "IAO_0000027"
+                    "data use modifier"
                   ]
                 }
               ],
-              "iri": "http://purl.obolibrary.org/obo/DUO_0000001",
+              "iri": "http://purl.obolibrary.org/obo/DUO_0000019",
               "isObsolete": false,
               "label": [
-                "data use permission"
+                "publication required"
               ],
               "ontologyId": "duo",
               "type": [

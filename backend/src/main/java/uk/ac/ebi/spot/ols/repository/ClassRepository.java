@@ -11,13 +11,13 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
 
 import uk.ac.ebi.spot.ols.model.v2.V2Entity;
-import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
-import uk.ac.ebi.spot.ols.repository.solr.SearchType;
+import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
+import uk.ac.ebi.spot.ols.repository.search.SearchType;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformer;
-import uk.ac.ebi.spot.ols.repository.solr.OlsFacetedResultsPage;
-import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
-import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
+import uk.ac.ebi.spot.ols.repository.search.OlsFacetedResultsPage;
+import uk.ac.ebi.spot.ols.repository.search.OlsSearchQuery;
+import uk.ac.ebi.spot.ols.repository.search.OlsSearchClient;
 import uk.ac.ebi.spot.ols.repository.helpers.DynamicFilterParser;
 import uk.ac.ebi.spot.ols.repository.helpers.SearchFieldsParser;
 
@@ -34,10 +34,10 @@ import java.util.Map;
 public class ClassRepository {
 
     @Autowired
-    OlsSolrClient solrClient;
+    OlsSearchClient searchClient;
 
     @Autowired
-    OlsNeo4jClient neo4jClient;
+    OlsPostgresClient postgresClient;
 
     public OlsFacetedResultsPage<JsonElement> find(
             Pageable pageable, String lang, String search, String searchFields, String boostFields, boolean exactMatch, Map<String,Collection<String>> properties,
@@ -51,7 +51,7 @@ public class ClassRepository {
             searchFields = LABEL.getText()+"^100 definition";
         }
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
         query.setSearchText(search);
         query.setExactMatch(exactMatch);
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
@@ -59,7 +59,7 @@ public class ClassRepository {
         SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
 
-        return solrClient.searchSolrPaginated(query, pageable)
+        return searchClient.searchPaginated(query, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -74,7 +74,7 @@ public class ClassRepository {
             searchFields = LABEL.getText()+"^100 definition";
         }
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
 
         query.setSearchText(search);
         query.setExactMatch(exactMatch);
@@ -84,7 +84,7 @@ public class ClassRepository {
         SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
 
-        return solrClient.searchSolrPaginated(query, pageable)
+        return searchClient.searchPaginated(query, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -94,13 +94,13 @@ public class ClassRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
 
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
         query.addFilter("ontologyId", List.of(ontologyId), SearchType.CASE_INSENSITIVE_TOKENS);
         query.addFilter("iri", List.of(iri), SearchType.WHOLE_FIELD);
 
-        JsonElement result = solrClient.getFirst(query);
+        JsonElement result = searchClient.getFirst(query);
         if (result == null) {
             return null;
         }
@@ -120,10 +120,10 @@ public class ClassRepository {
 
         Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
 
-        Page<JsonElement> result = isNullOrEmpty(search) ? this.neo4jClient.traverseIncomingEdges(
-                "OntologyClass", id, Arrays.asList(DIRECT_PARENT.getText()), Map.of(), nodeProps, pageable) :
-                this.neo4jClient.traverseIncomingEdges("OntologyClass",
-                id, Arrays.asList(DIRECT_PARENT.getText()), Map.of(), nodeProps, pageable, search);
+        Page<JsonElement> result = isNullOrEmpty(search) ? this.postgresClient.getDirectChildren(
+                id, nodeProps, pageable) :
+                this.postgresClient.getDirectChildren(
+                id, nodeProps, pageable, search);
 
         return  result
                     .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
@@ -139,8 +139,7 @@ public class ClassRepository {
 
         Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
 
-        return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", id,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), nodeProps, pageable)
+        return this.postgresClient.getAncestors(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -154,8 +153,7 @@ public class ClassRepository {
 
         Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
 
-        return this.neo4jClient.recursivelyTraverseIncomingEdges("OntologyClass", id,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), nodeProps, pageable)
+        return this.postgresClient.getDescendants(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -168,8 +166,7 @@ public class ClassRepository {
 
         Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
 
-        return this.neo4jClient.recursivelyTraverseIncomingEdges("OntologyClass", id,
-                        Arrays.asList(HIERARCHICAL_PARENT.getText()), Map.of(), nodeProps, pageable)
+        return this.postgresClient.getHierarchicalDescendants(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -183,8 +180,7 @@ public class ClassRepository {
 
         Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
 
-        return this.neo4jClient.traverseIncomingEdges("OntologyClass", id, Arrays.asList(HIERARCHICAL_PARENT.getText()),
-                        Map.of(), nodeProps, pageable)
+        return this.postgresClient.getHierarchicalChildren(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -198,8 +194,7 @@ public class ClassRepository {
 
         Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
 
-        return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyClass", id,
-                        Arrays.asList(HIERARCHICAL_PARENT.getText()), Map.of(), nodeProps, pageable)
+        return this.postgresClient.getHierarchicalAncestors(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -213,8 +208,7 @@ public class ClassRepository {
 
         Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
 
-        return this.neo4jClient.recursivelyTraverseOutgoingEdges("OntologyEntity", id,
-                        Arrays.asList(DIRECT_PARENT.getText()), Map.of(), nodeProps, pageable)
+        return this.postgresClient.getAncestors(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -228,7 +222,7 @@ public class ClassRepository {
             modelName = "text-embedding-3-small"; // Default model
         }
 
-        return this.neo4jClient.getSimilar("OntologyClass", iri, pageable, modelName)
+        return this.postgresClient.getSimilar("OntologyClass", iri, pageable, modelName)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -239,7 +233,7 @@ public class ClassRepository {
             modelName = "text-embedding-3-small"; // Default model
         }
 
-        return this.neo4jClient.getSimilarity("OntologyClass", iri, iri2, modelName);
+        return this.postgresClient.getSimilarity("OntologyClass", iri, iri2, modelName);
     }
 
     public List<Double> getEmbeddingVector(String iri, String modelName) {
@@ -248,7 +242,7 @@ public class ClassRepository {
             modelName = "text-embedding-3-small"; // Default model
         }
 
-        return this.neo4jClient.getEmbeddingVector("OntologyClass", iri, modelName);
+        return this.postgresClient.getEmbeddingVector("OntologyClass", iri, modelName);
     }
 
     /**
@@ -275,13 +269,13 @@ public class ClassRepository {
             modelName = "text-embedding-3-small"; // Default model
         }
         
-        // Convert float[] to List<Double> for Neo4j
+        // Convert float[] to List<Double> for Postgres
         List<Double> vectorList = new java.util.ArrayList<>(vector.length);
         for (float f : vector) {
             vectorList.add((double) f);
         }
         
-        return this.neo4jClient.searchByVector("OntologyClass", vectorList, pageable, modelName, includeCurations)
+        return this.postgresClient.searchByVector("OntologyClass", vectorList, pageable, modelName, includeCurations)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -307,13 +301,13 @@ public class ClassRepository {
             modelName = "text-embedding-3-small"; // Default model
         }
         
-        // Convert float[] to List<Double> for Neo4j
+        // Convert float[] to List<Double> for Postgres
         List<Double> vectorList = new java.util.ArrayList<>(vector.length);
         for (float f : vector) {
             vectorList.add((double) f);
         }
         
-        return this.neo4jClient.searchByVectorInOntology("OntologyClass", vectorList, pageable, modelName, ontologyId, isDefiningOntology, includeCurations)
+        return this.postgresClient.searchByVectorInOntology("OntologyClass", vectorList, pageable, modelName, ontologyId, isDefiningOntology, includeCurations)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -336,13 +330,13 @@ public class ClassRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        // Query Solr for classes that have this class in their relatedTo field
-        OlsSolrQuery query = new OlsSolrQuery();
+        // Query for classes that have this class in their relatedTo field
+        OlsSearchQuery query = new OlsSearchQuery();
         query.addFilter("type", List.of("class"), SearchType.WHOLE_FIELD);
         query.addFilter("ontologyId", List.of(ontologyId), SearchType.CASE_INSENSITIVE_TOKENS);
         query.addFilter("relatedTo", List.of(iri), SearchType.WHOLE_FIELD);
 
-        return solrClient.searchSolrPaginated(query, pageable)
+        return searchClient.searchPaginated(query, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts));
     }
 }

@@ -1,7 +1,7 @@
 package uk.ac.ebi.spot.ols.repository.helpers;
 
-import uk.ac.ebi.spot.ols.repository.solr.SearchType;
-import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
+import uk.ac.ebi.spot.ols.repository.search.SearchType;
+import uk.ac.ebi.spot.ols.repository.search.OlsSearchQuery;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,7 +10,7 @@ import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 public class SearchFieldsParser {
 
-    public static void addSearchFieldsToQuery(OlsSolrQuery query, String searchFields) {
+    public static void addSearchFieldsToQuery(OlsSearchQuery query, String searchFields) {
 
         if(searchFields == null) {
             query.addSearchField("iri", 1, SearchType.WHITESPACE_EDGES);
@@ -29,7 +29,7 @@ public class SearchFieldsParser {
         }
     }
 
-    public static void addBoostFieldsToQuery(OlsSolrQuery query, String boostFields) {
+    public static void addBoostFieldsToQuery(OlsSearchQuery query, String boostFields) {
 
         if(boostFields == null) {
             query.addBoostField("type", "ontology", 10, SearchType.WHOLE_FIELD);
@@ -47,7 +47,7 @@ public class SearchFieldsParser {
         }
     }
 
-    public static void addFacetFieldsToQuery(OlsSolrQuery query, String facetFields) {
+    public static void addFacetFieldsToQuery(OlsSearchQuery query, String facetFields) {
 
         if(facetFields != null) {
             for(ParsedField field : parseFieldsString(facetFields)) {

@@ -4,66 +4,63 @@
       "appearsIn": [
         "duo"
       ],
-      "curie": "DUO:0000043",
+      "curie": "DUO:0000032",
       "definedBy": [
         "duo"
       ],
       "definition": [
-        "Clinical Care is defined as Health care or services provided at home, in a healthcare facility or hospital. Data may be used for clinical decision making.",
-        "This data use modifier indicates that use is allowed for clinical use and care."
+        "An investigation concerning a specific population group.",
+        "Should be paired with the an ontology term representing this population (e.g., xxx)."
       ],
       "definitionProperty": [
         "http://purl.obolibrary.org/obo/IAO_0000115",
         "http://www.w3.org/2000/01/rdf-schema#comment"
       ],
       "directAncestor": [
-        "http://purl.obolibrary.org/obo/BFO_0000031",
-        "http://purl.obolibrary.org/obo/DUO_0000017",
-        "http://purl.obolibrary.org/obo/IAO_0000027",
-        "http://purl.obolibrary.org/obo/IAO_0000030"
+        "http://purl.obolibrary.org/obo/OBI_0000011",
+        "http://purl.obolibrary.org/obo/OBI_0000066"
       ],
       "directParent": [
-        "http://purl.obolibrary.org/obo/DUO_0000017"
+        "http://purl.obolibrary.org/obo/OBI_0000066"
       ],
       "hasDirectChildren": false,
       "hasDirectParents": true,
       "hasHierarchicalChildren": false,
       "hasHierarchicalParents": true,
       "hierarchicalAncestor": [
-        "http://purl.obolibrary.org/obo/BFO_0000031",
-        "http://purl.obolibrary.org/obo/DUO_0000017",
-        "http://purl.obolibrary.org/obo/IAO_0000027",
-        "http://purl.obolibrary.org/obo/IAO_0000030"
+        "http://purl.obolibrary.org/obo/OBI_0000011",
+        "http://purl.obolibrary.org/obo/OBI_0000066"
       ],
       "hierarchicalParent": [
-        "http://purl.obolibrary.org/obo/DUO_0000017"
+        "http://purl.obolibrary.org/obo/OBI_0000066"
       ],
       "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "http://purl.obolibrary.org/obo/IAO_0000115": "This data use modifier indicates that use is allowed for clinical use and care.",
-      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000043",
-      "http://www.geneontology.org/formats/oboInOwl#shorthand": "CC",
+      "http://purl.obolibrary.org/obo/DUO_0000041": "population research",
+      "http://purl.obolibrary.org/obo/IAO_0000115": "An investigation concerning a specific population group.",
+      "http://purl.obolibrary.org/obo/IAO_0000232": "This definition is a placeholder as a result of meetings at ICBO2018.",
+      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000032",
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-      "http://www.w3.org/2000/01/rdf-schema#comment": "Clinical Care is defined as Health care or services provided at home, in a healthcare facility or hospital. Data may be used for clinical decision making.",
-      "http://www.w3.org/2000/01/rdf-schema#label": "clinical care use",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/DUO_0000017",
+      "http://www.w3.org/2000/01/rdf-schema#comment": "Should be paired with the an ontology term representing this population (e.g., xxx).",
+      "http://www.w3.org/2000/01/rdf-schema#label": "population research",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/OBI_0000066",
       "imported": false,
-      "iri": "http://purl.obolibrary.org/obo/DUO_0000043",
+      "iri": "http://purl.obolibrary.org/obo/DUO_0000032",
       "isDefiningOntology": true,
       "isObsolete": false,
       "isPreferredRoot": false,
       "label": [
-        "clinical care use"
+        "population research"
       ],
       "linkedEntities": {
-        "DUO:0000043": {
-          "curie": "DUO:0000043",
+        "DUO:0000032": {
+          "curie": "DUO:0000032",
           "definedBy": [
             "duo"
           ],
           "hasLocalDefinition": true,
-          "iri": "http://purl.obolibrary.org/obo/DUO_0000043",
+          "iri": "http://purl.obolibrary.org/obo/DUO_0000032",
           "label": [
-            "clinical care use"
+            "population research"
           ],
           "numAppearsIn": 1.0,
           "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
@@ -71,50 +68,22 @@
             "class",
             "entity"
           ],
-          "url": "http://purl.obolibrary.org/obo/DUO_0000043"
+          "url": "http://purl.obolibrary.org/obo/DUO_0000032"
         },
-        "http://purl.obolibrary.org/obo/BFO_0000031": {
-          "curie": "bfo:0000031",
-          "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
-          "url": "http://purl.obolibrary.org/obo/BFO_0000031"
-        },
-        "http://purl.obolibrary.org/obo/DUO_0000017": {
-          "curie": "DUO:0000017",
+        "http://purl.obolibrary.org/obo/DUO_0000041": {
+          "curie": "DUO:0000041",
           "definedBy": [
             "duo"
           ],
           "hasLocalDefinition": true,
           "label": [
-            "data use modifier"
+            "DUO_preferred_label"
           ],
           "numAppearsIn": 1.0,
           "type": [
-            "class",
-            "entity"
-          ]
-        },
-        "http://purl.obolibrary.org/obo/IAO_0000027": {
-          "curie": "IAO:0000027",
-          "hasLocalDefinition": true,
-          "label": [
-            "IAO_0000027"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "class",
-            "entity"
-          ]
-        },
-        "http://purl.obolibrary.org/obo/IAO_0000030": {
-          "curie": "IAO:0000030",
-          "hasLocalDefinition": true,
-          "label": [
-            "IAO_0000030"
-          ],
-          "numAppearsIn": 1.0,
-          "type": [
-            "class",
-            "entity"
+            "annotationProperty",
+            "entity",
+            "property"
           ]
         },
         "http://purl.obolibrary.org/obo/IAO_0000115": {
@@ -130,24 +99,41 @@
             "property"
           ]
         },
-        "http://www.geneontology.org/formats/oboInOwl#id": {
-          "curie": "id",
-          "hasLocalDefinition": true,
+        "http://purl.obolibrary.org/obo/IAO_0000232": {
+          "curie": "IAO:0000232",
+          "hasLocalDefinition": false,
           "label": [
-            "id"
+            "IAO_0000232"
           ],
-          "numAppearsIn": 3.0,
+          "numAppearsIn": 1.0,
           "type": [
             "annotationProperty",
             "entity",
             "property"
           ]
         },
-        "http://www.geneontology.org/formats/oboInOwl#shorthand": {
-          "curie": "shorthand",
+        "http://purl.obolibrary.org/obo/OBI_0000011": {
+          "curie": "obi:0000011",
+          "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
+          "url": "http://purl.obolibrary.org/obo/OBI_0000011"
+        },
+        "http://purl.obolibrary.org/obo/OBI_0000066": {
+          "curie": "OBI:0000066",
           "hasLocalDefinition": true,
           "label": [
-            "shorthand"
+            "OBI_0000066"
+          ],
+          "numAppearsIn": 1.0,
+          "type": [
+            "class",
+            "entity"
+          ]
+        },
+        "http://www.geneontology.org/formats/oboInOwl#id": {
+          "curie": "id",
+          "hasLocalDefinition": true,
+          "label": [
+            "id"
           ],
           "numAppearsIn": 3.0,
           "type": [
@@ -203,13 +189,12 @@
         }
       },
       "linksTo": [
-        "http://purl.obolibrary.org/obo/DUO_0000017",
-        "http://purl.obolibrary.org/obo/DUO_0000043",
-        "http://purl.obolibrary.org/obo/IAO_0000027",
-        "http://purl.obolibrary.org/obo/IAO_0000030",
+        "http://purl.obolibrary.org/obo/DUO_0000032",
+        "http://purl.obolibrary.org/obo/DUO_0000041",
         "http://purl.obolibrary.org/obo/IAO_0000115",
+        "http://purl.obolibrary.org/obo/IAO_0000232",
+        "http://purl.obolibrary.org/obo/OBI_0000066",
         "http://www.geneontology.org/formats/oboInOwl#id",
-        "http://www.geneontology.org/formats/oboInOwl#shorthand",
         "http://www.w3.org/2000/01/rdf-schema#comment",
         "http://www.w3.org/2000/01/rdf-schema#label",
         "http://www.w3.org/2000/01/rdf-schema#subClassOf"
@@ -221,10 +206,9 @@
       "ontologyPreferredPrefix": "DUO",
       "score": "<score>",
       "searchableAnnotationValues": [
-        "This data use modifier indicates that use is allowed for clinical use and care.",
         false
       ],
-      "shortForm": "DUO_0000043",
+      "shortForm": "DUO_0000032",
       "type": [
         "class",
         "entity"

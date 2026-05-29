@@ -23,7 +23,7 @@ import uk.ac.ebi.spot.ols.repository.ClassRepository;
 import uk.ac.ebi.spot.ols.repository.PropertyRepository;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 import uk.ac.ebi.spot.ols.service.EmbeddingServiceClient;
-import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
+import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -52,22 +52,22 @@ public class V2LLMController {
     EmbeddingServiceClient embeddingServiceClient;
     
     @Autowired
-    OlsNeo4jClient neo4jClient;
+    OlsPostgresClient postgresClient;
 
     @RequestMapping(path = "/llm_models", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     @Parameter(name = "llm_models",
-            description = "Returns a list of embedding models, indicating which can be used for embedding (via the embedding service) and which only have pre-computed embeddings stored in Solr")
+            description = "Returns a list of embedding models, indicating which can be used for embedding (via the embedding service) and which only have pre-computed embeddings stored in the database")
     public HttpEntity<List<Map<String, Object>>> getLLMModels() throws IOException {
         // Get models from embedding service (for determining which can do live embedding)
         List<String> embeddingServiceModels = embeddingServiceClient.getAvailableModels();
         Set<String> canEmbedModels = new HashSet<>(embeddingServiceModels);
         
-        // Get models from Neo4j (only these are usable for similarity search)
-        List<String> neo4jModels = neo4jClient.getEmbeddingModelsInNeo4j();
+        // Get models from Postgres (only these are usable for similarity search)
+        List<String> embeddingModels = postgresClient.getEmbeddingModels();
         
-        // Build response - only include models that exist in Neo4j
+        // Build response - only include models that exist in Postgres
         List<Map<String, Object>> result = new ArrayList<>();
-        for (String model : neo4jModels) {
+        for (String model : embeddingModels) {
             Map<String, Object> modelInfo = new HashMap<>();
             modelInfo.put("model", model);
             modelInfo.put("can_embed", canEmbedModels.contains(model));
@@ -178,7 +178,7 @@ public class V2LLMController {
                 // Embed the query text using the embedding service
                 float[] vectorArray = embeddingServiceClient.embedText(model, query);
                 
-                // Convert float[] to List<Double> for Neo4j
+                // Convert float[] to List<Double> for Postgres
                 List<Double> vectorList = new java.util.ArrayList<>(vectorArray.length);
                 for (float f : vectorArray) {
                     vectorList.add((double) f);
@@ -187,9 +187,9 @@ public class V2LLMController {
                 // Search all entity types using OntologyEntity (no type filtering)
                 org.springframework.data.domain.Page<com.google.gson.JsonElement> results;
                 if (ontologyId != null && !ontologyId.isEmpty()) {
-                    results = neo4jClient.searchByVectorInOntology("OntologyEntity", vectorList, pageable, model, ontologyId, true, includeCurations);
+                    results = postgresClient.searchByVectorInOntology("OntologyEntity", vectorList, pageable, model, ontologyId, true, includeCurations);
                 } else {
-                    results = neo4jClient.searchByVector("OntologyEntity", vectorList, pageable, model, includeCurations);
+                    results = postgresClient.searchByVector("OntologyEntity", vectorList, pageable, model, includeCurations);
                 }
 
                 return new ResponseEntity<>(
@@ -369,7 +369,7 @@ public class V2LLMController {
                 // Embed the query text using the embedding service
                 float[] vectorArray = embeddingServiceClient.embedText(model, query);
                 
-                // Convert float[] to List<Double> for Neo4j
+                // Convert float[] to List<Double> for Postgres
                 List<Double> vectorList = new java.util.ArrayList<>(vectorArray.length);
                 for (float f : vectorArray) {
                     vectorList.add((double) f);
@@ -378,9 +378,9 @@ public class V2LLMController {
                 // Search properties using OntologyProperty type
                 org.springframework.data.domain.Page<com.google.gson.JsonElement> results;
                 if (ontologyId != null && !ontologyId.isEmpty()) {
-                    results = neo4jClient.searchByVectorInOntology("OntologyProperty", vectorList, pageable, model, ontologyId, true, includeCurations);
+                    results = postgresClient.searchByVectorInOntology("OntologyProperty", vectorList, pageable, model, ontologyId, true, includeCurations);
                 } else {
-                    results = neo4jClient.searchByVector("OntologyProperty", vectorList, pageable, model, includeCurations);
+                    results = postgresClient.searchByVector("OntologyProperty", vectorList, pageable, model, includeCurations);
                 }
 
                 return new ResponseEntity<>(
@@ -417,7 +417,7 @@ public class V2LLMController {
                 // Embed the query text using the embedding service
                 float[] vectorArray = embeddingServiceClient.embedText(model, query);
                 
-                // Convert float[] to List<Double> for Neo4j
+                // Convert float[] to List<Double> for Postgres
                 List<Double> vectorList = new java.util.ArrayList<>(vectorArray.length);
                 for (float f : vectorArray) {
                     vectorList.add((double) f);
@@ -426,9 +426,9 @@ public class V2LLMController {
                 // Search individuals using OntologyIndividual type
                 org.springframework.data.domain.Page<com.google.gson.JsonElement> results;
                 if (ontologyId != null && !ontologyId.isEmpty()) {
-                    results = neo4jClient.searchByVectorInOntology("OntologyIndividual", vectorList, pageable, model, ontologyId, true, includeCurations);
+                    results = postgresClient.searchByVectorInOntology("OntologyIndividual", vectorList, pageable, model, ontologyId, true, includeCurations);
                 } else {
-                    results = neo4jClient.searchByVector("OntologyIndividual", vectorList, pageable, model, includeCurations);
+                    results = postgresClient.searchByVector("OntologyIndividual", vectorList, pageable, model, includeCurations);
                 }
 
                 return new ResponseEntity<>(

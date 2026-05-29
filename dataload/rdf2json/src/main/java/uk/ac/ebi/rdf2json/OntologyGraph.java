@@ -438,7 +438,7 @@ public class OntologyGraph implements StreamRDF {
                 Object configVal = config.get(configKey);
 
                 // we include this (lowercased) as "ontologyId" rather than "id",
-                // so that the name "id" doesn't clash with downstream id fields in neo4j/solr
+                // so that the name "id" doesn't clash with downstream id fields
                 //
                 if (configKey.equals("id"))
                     continue;

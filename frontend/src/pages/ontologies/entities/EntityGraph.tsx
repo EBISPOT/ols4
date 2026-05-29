@@ -141,7 +141,7 @@ const EntityGraph: React.FC<EntityGraphProps> = ({
       if (!relationTypes[label]) {
         relationTypes[label] = {
           count: 1,
-          // By default, no relationships are selected
+          // Match stable/prod behavior: new relationship types start hidden
           visible: relationshipFilters[label]?.visible ?? false,
           color: relationshipFilters[label]?.color || ''
         };

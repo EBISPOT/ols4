@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component;
 import com.google.gson.JsonElement;
 
 import uk.ac.ebi.spot.ols.model.v2.V2Entity;
-import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
-import uk.ac.ebi.spot.ols.repository.solr.SearchType;
+import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
+import uk.ac.ebi.spot.ols.repository.search.SearchType;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformer;
-import uk.ac.ebi.spot.ols.repository.solr.OlsFacetedResultsPage;
-import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
-import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
+import uk.ac.ebi.spot.ols.repository.search.OlsFacetedResultsPage;
+import uk.ac.ebi.spot.ols.repository.search.OlsSearchQuery;
+import uk.ac.ebi.spot.ols.repository.search.OlsSearchClient;
 import uk.ac.ebi.spot.ols.repository.helpers.DynamicFilterParser;
 import uk.ac.ebi.spot.ols.repository.helpers.SearchFieldsParser;
 
@@ -36,10 +36,10 @@ import static uk.ac.ebi.ols.shared.DefinedFields.*;
 public class OntologyRepository {
 
     @Autowired
-    OlsSolrClient solrClient;
+    OlsSearchClient searchClient;
 
     @Autowired
-    OlsNeo4jClient neo4jClient;
+    OlsPostgresClient postgresClient;
 
 
     public OlsFacetedResultsPage<JsonElement> find(
@@ -52,7 +52,7 @@ public class OntologyRepository {
             searchFields = LABEL.getText() + "^100 ontologyId^100 " + DEFINITION.getText();
         }
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
 
         query.setSearchText(search);
         query.setExactMatch(exactMatch);
@@ -61,7 +61,7 @@ public class OntologyRepository {
         SearchFieldsParser.addBoostFieldsToQuery(query, boostFields);
         DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
 
-        return solrClient.searchSolrPaginated(query, pageable)
+        return searchClient.searchPaginated(query, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -71,12 +71,12 @@ public class OntologyRepository {
 
         Validation.validateLang(lang);
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
         query.addFilter("type", List.of("ontology"), SearchType.WHOLE_FIELD);
         query.addFacetField(fieldName);
 
         // Fetch all ontologies
-        OlsFacetedResultsPage<JsonElement> page = solrClient.searchSolrPaginated(
+        OlsFacetedResultsPage<JsonElement> page = searchClient.searchPaginated(
                 query, org.springframework.data.domain.PageRequest.of(0, 1000));
 
         // Group ontologies by the field values
@@ -118,12 +118,12 @@ public class OntologyRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
 
         query.addFilter("type", List.of("ontology"), SearchType.WHOLE_FIELD);
         query.addFilter("ontologyId", List.of(ontologyId), SearchType.CASE_INSENSITIVE_TOKENS);
 
-        JsonElement result = solrClient.getFirst(query);
+        JsonElement result = searchClient.getFirst(query);
         if (result == null) {
             return null;
         }

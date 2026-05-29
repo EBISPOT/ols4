@@ -32,7 +32,7 @@ export default function SearchBox({
 
   const [autocomplete, setAutocomplete] = useState<Suggest | null>(null);
   const [jumpTo, setJumpTo] = useState<Thing[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const [query, setQuery] = useState<string>(initialQuery || "");
   const [isFocused, setIsFocused] = useState(false);
   const [arrowKeySelectedN, setArrowKeySelectedN] = useState<
@@ -138,6 +138,12 @@ export default function SearchBox({
     // Clear previous results immediately when search params change
     setJumpTo([]);
     setAutocomplete(null);
+
+    if (!query.trim()) {
+      setLoading(false);
+      setArrowKeySelectedN(undefined);
+      return;
+    }
     
     async function loadSuggestions() {
       setLoading(true);

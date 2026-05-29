@@ -13,8 +13,7 @@ params.config_branch = "stable"  // Branch to fetch configs from (stable or dev)
 params.config_files  = ''         // Comma-separated local config paths; if set, skips NFS fetch (used in CI)
 params.last_run_dir  = ''         // Directory of per-ontology JSONs from last successful run; enables fallback on failure
 params.out = "$OLS_OUT_DIR"
-params.solr_mem = "8g"
-params.neo_mem = "16g"
+params.pg_mem = "4g"
 params.embeddings_path = "$OLS_EMBEDDINGS_PATH"
 params.max_rows_per_file = "100000"
 params.dataload_args = System.getenv('OLS4_DATALOAD_ARGS') ?: ''
@@ -27,6 +26,12 @@ params.curations_local_path = ''   // If set, use local SSSOM files instead of d
 params.enable_ontology_tarballs = false  // create ontology_jsons.tgz and ontology_jsons_linked.tgz
 params.publish_ontology_jsons = false  // publish pigz --best compressed ontology JSONs (linked and unlinked)
 params.copy_script     = ''     // path to copy_tarballs.sh on the NFS server
+
+// External managed PostgreSQL — when true, loads data into an existing database instead of creating a local one.
+// Requires PGHOST, PGDATABASE, PGUSER, and optionally PGPASSWORD to be set as environment variables.
+params.external_postgres = false
+params.pg_parallel_workers = 2  // Number of parallel workers per index build (0 = PostgreSQL default)
+params.pg_maintenance_work_mem = ''  // maintenance_work_mem per session for index builds (e.g. '4GB', '' = server default)
 
 
 process fetch_configs {
@@ -72,6 +77,16 @@ workflow {
     ontologies = merged_config.flatMap { it.ontologies }
     ontology_ids = ontologies.map { it.id }
 
+    // Extract filter properties per ontology (from merged config which includes defaults)
+    filter_props_by_id = ontologies.map { ont ->
+        def props = ont.filterProperty ?: []
+        [ont.id, props]
+    }
+    // Collect global union of all filter properties for schema creation
+    all_filter_props = merged_config.map { config ->
+        config.ontologies.collectMany { it.filterProperty ?: [] }.unique()
+    }
+
     ontology_jsons_and_status = rdf2json(merged_config_file, ontology_ids)
     ontology_jsons_by_id = ontology_jsons_and_status.map { id, json, status -> [id, json] }
     status_files = ontology_jsons_and_status.map { id, json, status -> status }.collect()
@@ -84,7 +99,7 @@ workflow {
     } else if (params.enable_curations) {
         sssom_files = download_curations()
     } else {
-        sssom_files = Channel.empty().collect()
+        sssom_files = Channel.value([file('NO_FILE')])
     }
 
     linked_ontologies_by_id = linker__link_ontologies(linker_manifest, ontology_jsons_by_id, sssom_files)
@@ -102,34 +117,50 @@ workflow {
     // Run embeddings pipeline if enabled
     if (params.enable_embeddings) {
         embeddings(terms_tsv)
+        // Filter out pca16 parquets — they are visualization-only (UMAP), not for DB storage
         pca_parquets = embeddings.out.pca_parquets
+            .filter { !it[0].contains('pca16') }
             .map { it[1] }
             .collect()
         embedding_parquets = pca_parquets
             .map { list -> list.isEmpty() ? [file('NO_FILE')] : list }
+            .ifEmpty([file('NO_FILE')])
+        // Collect PCA JSON model files for upload to postgres
+        pca_json_files = embeddings.out.pca_jsons
+            .filter { !it.name.contains('_pca16') }
+            .collect()
             .ifEmpty([file('NO_FILE')])
         // Persist PCA parquets to embeddings_path so the next incremental embeddings run can reuse them
         if (params.embeddings_path && params.embeddings_path != '' && params.embeddings_path != 'NO_DIR') {
             update_embeddings_path(pca_parquets)
         }
     } else if (params.embeddings_path && params.embeddings_path != '' && params.embeddings_path != 'NO_DIR') {
-        // Exclude umap parquets — they are visualization-only and have no embedding column
-        // ifEmpty ensures json2neo still runs when the directory exists but has no parquets
+        // Exclude umap and pca16 parquets — they are visualization-only, not for DB storage
+        // ifEmpty ensures json2postgres still runs when the directory exists but has no parquets
         embedding_parquets = Channel.fromPath("${params.embeddings_path}/*.parquet")
-            .filter { !it.name.contains('_umap') }
+            .filter { !it.name.contains('_umap') && !it.name.contains('_pca16') }
+            .collect()
+            .ifEmpty([file('NO_FILE')])
+        // Look for PCA JSON files alongside the parquets
+        pca_json_files = Channel.fromPath("${params.embeddings_path}/*_pca*.json")
+            .filter { !it.name.contains('_pca16') }
             .collect()
             .ifEmpty([file('NO_FILE')])
     } else {
         embedding_parquets = Channel.of(file('NO_FILE'))
+        pca_json_files = Channel.of(file('NO_FILE'))
     }
 
-    neo_csvs = json2neo(linker_manifest, linked_ontologies_by_id, embedding_parquets)
-    solr_jsonls = json2solr(linked_ontologies_by_id)
+    // Join filter properties with linked ontology JSONs by ontology_id
+    linked_with_filter_props = linked_ontologies_by_id.combine(filter_props_by_id, by: 0)
 
-    neo = create_neo(neo_csvs.collect(), embedding_parquets)
-    solr = create_solr(solr_jsonls.collect(), linker_manifest)
+    postgres_tsvs = json2postgres(linked_with_filter_props, embedding_parquets)
 
-    // check_api_works(neo.neo_dir, solr.solr_dir)
+    if (params.external_postgres) {
+        pg = populate_external_postgres(postgres_tsvs.collect(), embedding_parquets, all_filter_props, pca_json_files, text_tagger_db)
+    } else {
+        pg = create_postgres(postgres_tsvs.collect(), embedding_parquets, all_filter_props, pca_json_files, text_tagger_db)
+    }
 
     // Generate loading report after all ontologies have been processed
     report = generate_loading_report(merged_config_file, status_files)
@@ -143,8 +174,8 @@ workflow {
     // ── SSSOM ───────────────────────────────────────────────────────────────
     sssom = extract_sssom(all_linked_jsons)
 
-    // ── Neo4j data check ────────────────────────────────────────────────────
-    check_neo4j_data_exists(neo.neo_dir)
+    // ── PostgreSQL data check ─────────────────────────────────────────────
+    check_postgres_data_exists(pg.pg_dir)
 }
 
 
@@ -282,7 +313,7 @@ process download_curations {
     """
 }
 
-process json2neo {
+process json2postgres {
     cache "lenient"
     memory { 16.GB + 128.GB * (task.attempt-1) }
     time "8h"
@@ -290,55 +321,30 @@ process json2neo {
     maxRetries 5
 
     input:
-    path(manifest)
-    tuple val(ontology_id), path(ontology_json)
+    tuple val(ontology_id), path(ontology_json), val(filter_properties)
     path(embedding_parquets)
 
     output:
-    path("*.csv"), optional: true
+    path("*.pgbin"), optional: true
 
     script:
     def parquets = (embedding_parquets instanceof List ? embedding_parquets : [embedding_parquets])
     def has_embeddings = !parquets.any { it.name == 'NO_FILE' }
     def parquet_args = has_embeddings ? "--embeddingParquets ${parquets.join(' ')}" : ''
+    def filter_args = filter_properties ? filter_properties.collect { "--filterProperty '${it}'" }.join(' ') : ''
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    ols_json2neo \
+    ols_json2postgres \
         --input ${ontology_json} \
         --ontology-id ${ontology_id} \
         --outDir . \
-        --manifest ${manifest} \
-        ${parquet_args}
+        ${parquet_args} \
+        ${filter_args}
     """
 }
 
-process json2solr {
-    cache "lenient"
-    memory { 16.GB + 16.GB * (task.attempt-1) }
-    time "8h"
-    errorStrategy 'retry'
-    maxRetries 5
-    
-    input:
-    tuple val(ontology_id), path(ontology_json)
-
-    output:
-    path("*.jsonl"), optional: true
-
-    script:
-    """
-    #!/usr/bin/env bash
-    set -Eeuo pipefail
-    ols_json2solr \
-        --input ${ontology_json} \
-        --ontology-id ${ontology_id} \
-        --outDir . \
-        --maxRowsPerFile ${params.max_rows_per_file}
-    """
-}
-
-process create_neo {
+process create_postgres {
     cache "lenient"
     memory { 16.GB }
     time "8h"
@@ -346,56 +352,70 @@ process create_neo {
     publishDir "${params.out}", overwrite: true
 
     input:
-    path(neo_csvs)
+    path(postgres_tsvs)
     path(embedding_parquets)
+    val(filter_properties)
+    path(pca_jsons)
+    path(text_tagger_db)
 
     output:
-    path("neo4j"), emit: neo_dir
-    path("neo4j.tgz"), emit: neo_tgz
+    path("postgres"), emit: pg_dir
+    path("postgres.tgz"), emit: pg_tgz
 
     script:
     def parquets = (embedding_parquets instanceof List ? embedding_parquets : [embedding_parquets])
     def has_embeddings = !parquets.any { it.name == 'NO_FILE' }
     def parquet_list = has_embeddings ? parquets.collect { it.toString() }.join(' ') : ''
+    def filter_args = filter_properties ? filter_properties.collect { "--filter-property '${it}'" }.join(' ') : ''
+    def pca_list = (pca_jsons instanceof List ? pca_jsons : [pca_jsons])
+    def has_pca = !pca_list.any { it.name == 'NO_FILE' }
+    def has_tagger = text_tagger_db.name != 'NO_FILE'
+    def artifact_args = ''
+    if (has_pca || has_tagger) {
+        artifact_args = '--artifacts-dir .'
+    }
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    cp -r /opt/neo4j .
-    /opt/ols/dataload/load_into_neo4j.sh ./neo4j . ${params.neo_mem} ${parquet_list}
-    tar -chf neo4j.tgz --use-compress-program="pigz --fast" -C neo4j/data databases transactions
+    python3 /opt/ols/dataload/load_into_postgres.py ./postgres . --parallel-workers ${params.pg_parallel_workers} ${params.pg_maintenance_work_mem ? '--maintenance-work-mem ' + params.pg_maintenance_work_mem : ''} ${filter_args} ${artifact_args} ${parquet_list}
     """
 }
 
-process create_solr {
+process populate_external_postgres {
     cache "lenient"
     memory { 16.GB }
-    time "23h"
+    time "8h"
 
     publishDir "${params.out}", overwrite: true
 
     input:
-    path(solr_jsonls, stageAs: '?/*')
-    path(manifest)
+    path(postgres_tsvs)
+    path(embedding_parquets)
+    val(filter_properties)
+    path(pca_jsons)
+    path(text_tagger_db)
 
     output:
-    path("solr"), emit: solr_dir
-    path("solr.tgz"), emit: solr_tgz
+    path("postgres_external_done"), emit: pg_dir
 
     script:
-    def mem_mb = (task.memory.toMega() * 0.5).intValue()
+    def parquets = (embedding_parquets instanceof List ? embedding_parquets : [embedding_parquets])
+    def has_embeddings = !parquets.any { it.name == 'NO_FILE' }
+    def parquet_list = has_embeddings ? parquets.collect { it.toString() }.join(' ') : ''
+    def filter_args = filter_properties ? filter_properties.collect { "--filter-property '${it}'" }.join(' ') : ''
+    def pca_list = (pca_jsons instanceof List ? pca_jsons : [pca_jsons])
+    def has_pca = !pca_list.any { it.name == 'NO_FILE' }
+    def has_tagger = text_tagger_db.name != 'NO_FILE'
+    def artifact_args = ''
+    if (has_pca || has_tagger) {
+        artifact_args = '--artifacts-dir .'
+    }
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
-    cp -r /opt/solr .
-
-    java -Xms${mem_mb}m -Xmx${mem_mb}m -jar /opt/ols/dataload/solr_config_builder/target/solr_config_builder-1.0-SNAPSHOT.jar \
-        --manifestPath ${manifest} \
-        --solrConfigTemplatePath /opt/ols/dataload/solr_config_template \
-        --outDir solr/server/solr \
-
-    python3 /opt/ols/dataload/solr_import.py ./solr 8983 ${params.solr_mem}
-
-    tar -chf solr.tgz --use-compress-program="pigz --fast" solr 
+    python3 /opt/ols/dataload/populate_external_postgres.py . --parallel-workers ${params.pg_parallel_workers} ${params.pg_maintenance_work_mem ? '--maintenance-work-mem ' + params.pg_maintenance_work_mem : ''} ${filter_args} ${parquet_list} ${artifact_args}
+    mkdir -p postgres_external_done
+    echo "Populated \${PGHOST}:\${PGPORT}/\${PGDATABASE} at \$(date)" > postgres_external_done/status.txt
     """
 }
 
@@ -473,13 +493,14 @@ process build_text_tagger_db {
     path(terms_tsv)
 
     output:
-    path("text_tagger_db.bin")
+    path("text_tagger_db.bin.gz")
 
     script:
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
     ols_text_tagger build --output text_tagger_db.bin < ${terms_tsv}
+    pigz --best text_tagger_db.bin
     """
 }
 
@@ -612,9 +633,8 @@ process extract_sssom {
     """
 }
 
-// Verifies that the Neo4j database was built and contains data.
-// Equivalent to the Jenkins 'Check Neo4j data exists' stage.
-process check_neo4j_data_exists {
+// Verifies that the PostgreSQL database was built and contains data.
+process check_postgres_data_exists {
     cache "lenient"
     memory { 8.GB }
     time "30m"
@@ -622,49 +642,33 @@ process check_neo4j_data_exists {
     publishDir "${params.out}", overwrite: true
 
     input:
-    path(neo_dir)
+    path(pg_dir)
 
     output:
-    path("neo4j_check.log")
+    path("postgres_check.log")
 
     script:
     """
     #!/usr/bin/env bash
 
-    DB_PATH="${neo_dir}/data/databases/neo4j"
-    TX_PATH="${neo_dir}/data/transactions/neo4j"
-
-    echo "Neo4j Data Check"    | tee neo4j_check.log
-    echo "================" | tee -a neo4j_check.log
+    echo "PostgreSQL Data Check"    | tee postgres_check.log
+    echo "=====================" | tee -a postgres_check.log
 
     STATUS=0
 
-    if [ -d "\$DB_PATH" ] && [ -n "\$(ls -A "\$DB_PATH" 2>/dev/null)" ]; then
-        echo "✓ Neo4j database exists and has files at: \$DB_PATH" | tee -a neo4j_check.log
+    if [ -f "${pg_dir}/postgres.tgz" ] || [ -d "${pg_dir}/data" ] || [ -f "${pg_dir}/status.txt" ]; then
+        echo "✓ PostgreSQL data exists at: ${pg_dir}" | tee -a postgres_check.log
     else
-        echo "✗ ERROR: Neo4j database is missing or empty at: \$DB_PATH" | tee -a neo4j_check.log
+        echo "✗ ERROR: PostgreSQL data is missing at: ${pg_dir}" | tee -a postgres_check.log
         STATUS=1
     fi
 
-    if [ -e "\$TX_PATH" ]; then
-        TX_COUNT=\$(find "\$TX_PATH" -type f | wc -l)
-        if [ "\$TX_COUNT" -gt 0 ]; then
-            echo "✓ Neo4j transaction data exists at: \$TX_PATH (\$TX_COUNT files)" | tee -a neo4j_check.log
-        else
-            echo "✗ ERROR: Neo4j transaction directory exists but is empty: \$TX_PATH" | tee -a neo4j_check.log
-            STATUS=1
-        fi
-    else
-        echo "✗ ERROR: Neo4j transaction logs are missing or empty at: \$TX_PATH" | tee -a neo4j_check.log
-        STATUS=1
-    fi
-
-    echo "================" | tee -a neo4j_check.log
+    echo "=====================" | tee -a postgres_check.log
 
     if [ \$STATUS -eq 0 ]; then
-        echo "STATUS: All Neo4j data exists ✓" | tee -a neo4j_check.log
+        echo "STATUS: PostgreSQL data exists ✓" | tee -a postgres_check.log
     else
-        echo "STATUS: Some Neo4j data is missing ✗" | tee -a neo4j_check.log
+        echo "STATUS: PostgreSQL data is missing ✗" | tee -a postgres_check.log
         exit 1
     fi
     """

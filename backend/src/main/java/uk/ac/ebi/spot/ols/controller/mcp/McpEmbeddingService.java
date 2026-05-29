@@ -18,7 +18,7 @@ import com.google.gson.Gson;
 
 import uk.ac.ebi.spot.ols.model.mcp.McpPage;
 import uk.ac.ebi.spot.ols.model.mcp.McpSearchResult;
-import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
+import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 import uk.ac.ebi.spot.ols.service.EmbeddingServiceClient;
 
@@ -29,7 +29,7 @@ public class McpEmbeddingService {
     EmbeddingServiceClient embeddingServiceClient;
     
     @Autowired
-    OlsNeo4jClient neo4jClient;
+    OlsPostgresClient postgresClient;
 
     Gson gson = new Gson();
 
@@ -39,12 +39,12 @@ public class McpEmbeddingService {
         List<String> embeddingServiceModels = embeddingServiceClient.getAvailableModels();
         Set<String> canEmbedModels = new HashSet<>(embeddingServiceModels);
         
-        // Get models from Neo4j (only these are usable for similarity search)
-        List<String> neo4jModels = neo4jClient.getEmbeddingModelsInNeo4j();
+        // Get models from Postgres (only these are usable for similarity search)
+        List<String> embeddingModels = postgresClient.getEmbeddingModels();
         
-        // Build response - only include models that exist in Neo4j
+        // Build response - only include models that exist in Postgres
         List<Map<String, Object>> result = new ArrayList<>();
-        for (String model : neo4jModels) {
+        for (String model : embeddingModels) {
             Map<String, Object> modelInfo = new HashMap<>();
             modelInfo.put("model", model);
             modelInfo.put("can_embed", canEmbedModels.contains(model));
@@ -78,19 +78,19 @@ public class McpEmbeddingService {
         // Embed the query text using the embedding service
         float[] vectorArray = embeddingServiceClient.embedText(model, query);
         
-        // Convert float[] to List<Double> for Neo4j
+        // Convert float[] to List<Double> for Postgres
         List<Double> vectorList = new ArrayList<>(vectorArray.length);
         for (float f : vectorArray) {
             vectorList.add((double) f);
         }
 
-        // Search all entity types using Neo4j vector search
+        // Search all entity types using Postgres vector search
         org.springframework.data.domain.Page<com.google.gson.JsonElement> results;
         boolean curations = includeCurations == null || includeCurations;
         if (ontologyId != null && !ontologyId.isEmpty()) {
-            results = neo4jClient.searchByVectorInOntology("OntologyEntity", vectorList, pageable, model, ontologyId, true, curations);
+            results = postgresClient.searchByVectorInOntology("OntologyEntity", vectorList, pageable, model, ontologyId, true, curations);
         } else {
-            results = neo4jClient.searchByVector("OntologyEntity", vectorList, pageable, model, curations);
+            results = postgresClient.searchByVector("OntologyEntity", vectorList, pageable, model, curations);
         }
 
         // Transform and return results

@@ -1,6 +1,15 @@
 
 imageTag: dev
 
+postgres:
+  host: ""
+  port: "5432"
+  db: "spotolspro"
+  user: "spot"
+  schema: ""
+  secretName: "ols4-postgres-secret"
+  secretKey: "password"
+
 embeddingService:
   image:
     repository: ols4-embed

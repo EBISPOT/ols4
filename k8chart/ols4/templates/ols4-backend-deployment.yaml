@@ -39,27 +39,26 @@ spec:
               memory: 50Gi
               cpu: 2
           env:
-            - name: OLS_SOLR_HOST
-              value: http://{{ .Release.Name }}-solr:8983
-            - name: OLS_NEO4J_HOST
-              value: bolt://{{ .Release.Name }}-neo4j:7687
+            - name: OLS_POSTGRES_HOST
+              value: {{ required "postgres.host is required" .Values.postgres.host | quote }}
+            - name: OLS_POSTGRES_PORT
+              value: {{ .Values.postgres.port | quote }}
+            - name: OLS_POSTGRES_DB
+              value: {{ .Values.postgres.db | quote }}
+            - name: OLS_POSTGRES_USER
+              value: {{ .Values.postgres.user | quote }}
+            - name: OLS_POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.postgres.secretName | quote }}
+                  key: {{ .Values.postgres.secretKey | quote }}
+            - name: OLS_POSTGRES_SCHEMA
+              value: {{ .Values.postgres.schema | quote }}
             - name: OLS_EMBEDDING_SERVICE_URL
               value: http://wwwdev.ebi.ac.uk/spot/embed
-            - name: OLS_EMBEDDING_PCA_MODELS_DIR
-              value: /data
-            - name: OLS_TEXT_TAGGER_DB
-              value: /data/text_tagger_db.bin
             - name: SERVER_SERVLET_CONTEXT_PATH
               value: /ols4
             - name: SPRING_AI_MCP_SERVER_BASE_URL
               value: /ols4
             - name: JDK_JAVA_OPTIONS
               value: "-XX:InitialRAMPercentage=60.0 -XX:MinRAMPercentage=60.0 -XX:MaxRAMPercentage=80.0 -Dhttp.proxyHost=hx-wwwcache.ebi.ac.uk -Dhttp.proxyPort=3128"
-          volumeMounts:
-            - mountPath: "/data"
-              name: embeddings
-              readOnly: true
-      volumes:
-        - name: embeddings
-          persistentVolumeClaim:
-            claimName: {{ .Release.Name }}-import-pvc

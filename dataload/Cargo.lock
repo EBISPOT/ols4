@@ -1149,27 +1149,13 @@ dependencies = [
 ]
 
 [[package]]
-name = "ols_json2neo"
+name = "ols_json2postgres"
 version = "1.0.0"
 dependencies = [
  "arrow",
  "clap",
  "csv",
- "indexmap",
- "ols_shared",
- "parquet",
- "serde",
- "serde_json",
- "struson",
- "thiserror 2.0.18",
-]
-
-[[package]]
-name = "ols_json2solr"
-version = "1.0.0"
-dependencies = [
- "arrow",
- "clap",
+ "flate2",
  "indexmap",
  "ols_shared",
  "parquet",

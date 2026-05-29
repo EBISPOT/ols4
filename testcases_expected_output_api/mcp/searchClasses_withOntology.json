@@ -5,6 +5,151 @@
         "text": {
           "items": [
             {
+              "curie": "DUO:00000044",
+              "definition": [
+                "This data use modifier indicates use for purposes of population, origin, or ancestry research is prohibited."
+              ],
+              "directAncestor": [
+                {
+                  "definedBy": [
+                    "duo"
+                  ],
+                  "iri": "http://purl.obolibrary.org/obo/DUO_0000017",
+                  "label": [
+                    "data use modifier"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000031",
+                  "label": []
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/IAO_0000027",
+                  "label": [
+                    "IAO_0000027"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/IAO_0000030",
+                  "label": [
+                    "IAO_0000030"
+                  ]
+                }
+              ],
+              "directParent": [
+                {
+                  "definedBy": [
+                    "duo"
+                  ],
+                  "iri": "http://purl.obolibrary.org/obo/DUO_0000017",
+                  "label": [
+                    "data use modifier"
+                  ]
+                }
+              ],
+              "hierarchicalParent": [
+                {
+                  "definedBy": [
+                    "duo"
+                  ],
+                  "iri": "http://purl.obolibrary.org/obo/DUO_0000017",
+                  "label": [
+                    "data use modifier"
+                  ]
+                }
+              ],
+              "iri": "http://purl.obolibrary.org/obo/DUO_00000044",
+              "isObsolete": false,
+              "label": [
+                "population origins or ancestry research prohibited"
+              ],
+              "ontologyId": "duo",
+              "type": [
+                "class",
+                "entity"
+              ]
+            },
+            {
+              "curie": "DUO:0000006",
+              "definition": [
+                "This data use permission indicates that use is allowed for health/medical/biomedical purposes; does not include the study of population origins or ancestry."
+              ],
+              "directAncestor": [
+                {
+                  "definedBy": [
+                    "duo"
+                  ],
+                  "iri": "http://purl.obolibrary.org/obo/DUO_0000001",
+                  "label": [
+                    "data use permission"
+                  ]
+                },
+                {
+                  "definedBy": [
+                    "duo"
+                  ],
+                  "iri": "http://purl.obolibrary.org/obo/DUO_0000042",
+                  "label": [
+                    "general research use"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000031",
+                  "label": []
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/IAO_0000027",
+                  "label": [
+                    "IAO_0000027"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/IAO_0000030",
+                  "label": [
+                    "IAO_0000030"
+                  ]
+                }
+              ],
+              "directParent": [
+                {
+                  "definedBy": [
+                    "duo"
+                  ],
+                  "iri": "http://purl.obolibrary.org/obo/DUO_0000042",
+                  "label": [
+                    "general research use"
+                  ]
+                }
+              ],
+              "hierarchicalParent": [
+                {
+                  "definedBy": [
+                    "duo"
+                  ],
+                  "iri": "http://purl.obolibrary.org/obo/DUO_0000042",
+                  "label": [
+                    "general research use"
+                  ]
+                }
+              ],
+              "iri": "http://purl.obolibrary.org/obo/DUO_0000006",
+              "isObsolete": false,
+              "label": [
+                "health or medical or biomedical research"
+              ],
+              "ontologyId": "duo",
+              "type": [
+                "class",
+                "entity"
+              ]
+            },
+            {
               "curie": "DUO:0000007",
               "definition": [
                 "This data use permission indicates that use is allowed provided it is related to the specified disease.",
@@ -160,143 +305,66 @@
               ]
             },
             {
-              "curie": "DUO:0000032",
+              "curie": "DUO:0000015",
               "definition": [
-                "An investigation concerning a specific population group.",
-                "Should be paired with the an ontology term representing this population (e.g., xxx)."
+                "This data use modifier indicates that use does not allow methods development research (e.g., development of software or algorithms)."
               ],
               "directAncestor": [
                 {
+                  "definedBy": [
+                    "duo"
+                  ],
+                  "iri": "http://purl.obolibrary.org/obo/DUO_0000017",
+                  "label": [
+                    "data use modifier"
+                  ]
+                },
+                {
                   "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/OBI_0000011",
+                  "iri": "http://purl.obolibrary.org/obo/BFO_0000031",
                   "label": []
                 },
                 {
                   "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/OBI_0000066",
+                  "iri": "http://purl.obolibrary.org/obo/IAO_0000027",
                   "label": [
-                    "OBI_0000066"
+                    "IAO_0000027"
+                  ]
+                },
+                {
+                  "definedBy": [],
+                  "iri": "http://purl.obolibrary.org/obo/IAO_0000030",
+                  "label": [
+                    "IAO_0000030"
                   ]
                 }
               ],
               "directParent": [
                 {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/OBI_0000066",
+                  "definedBy": [
+                    "duo"
+                  ],
+                  "iri": "http://purl.obolibrary.org/obo/DUO_0000017",
                   "label": [
-                    "OBI_0000066"
+                    "data use modifier"
                   ]
                 }
               ],
               "hierarchicalParent": [
                 {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/OBI_0000066",
+                  "definedBy": [
+                    "duo"
+                  ],
+                  "iri": "http://purl.obolibrary.org/obo/DUO_0000017",
                   "label": [
-                    "OBI_0000066"
+                    "data use modifier"
                   ]
                 }
               ],
-              "iri": "http://purl.obolibrary.org/obo/DUO_0000032",
+              "iri": "http://purl.obolibrary.org/obo/DUO_0000015",
               "isObsolete": false,
               "label": [
-                "population research"
-              ],
-              "ontologyId": "duo",
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
-            {
-              "curie": "DUO:0000033",
-              "definition": [
-                "An investigation concerning ancestry or population origins."
-              ],
-              "directAncestor": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/OBI_0000011",
-                  "label": []
-                },
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/OBI_0000066",
-                  "label": [
-                    "OBI_0000066"
-                  ]
-                }
-              ],
-              "directParent": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/OBI_0000066",
-                  "label": [
-                    "OBI_0000066"
-                  ]
-                }
-              ],
-              "hierarchicalParent": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/OBI_0000066",
-                  "label": [
-                    "OBI_0000066"
-                  ]
-                }
-              ],
-              "iri": "http://purl.obolibrary.org/obo/DUO_0000033",
-              "isObsolete": false,
-              "label": [
-                "ancestry research"
-              ],
-              "ontologyId": "duo",
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
-            {
-              "curie": "DUO:0000036",
-              "definition": [
-                "An investigation concerning use of data as reference or control material."
-              ],
-              "directAncestor": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/OBI_0000011",
-                  "label": []
-                },
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/OBI_0000066",
-                  "label": [
-                    "OBI_0000066"
-                  ]
-                }
-              ],
-              "directParent": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/OBI_0000066",
-                  "label": [
-                    "OBI_0000066"
-                  ]
-                }
-              ],
-              "hierarchicalParent": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/OBI_0000066",
-                  "label": [
-                    "OBI_0000066"
-                  ]
-                }
-              ],
-              "iri": "http://purl.obolibrary.org/obo/DUO_0000036",
-              "isObsolete": false,
-              "label": [
-                "research control"
+                "no general methods research"
               ],
               "ontologyId": "duo",
               "type": [
@@ -607,7 +675,7 @@
           ],
           "pageNum": 0,
           "pageSize": 10,
-          "totalElements": 17,
+          "totalElements": 19,
           "totalPages": 2
         },
         "type": "text"

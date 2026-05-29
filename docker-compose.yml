@@ -1,34 +1,21 @@
 services:
-    ols4-solr:
-      image: solr:9.8.1
+    ols4-postgres:
+      image: pgvector/pgvector:0.8.0-pg17
       user: "${HOST_UID:?}:${HOST_GID:?}"
-      environment:
-        - SOLR_HOME=/mnt/solr/server/solr
-        - SOLR_LOGS_DIR=/mnt/solr/logs
-        - JAVA_OPTS=--add-modules jdk.incubator.vector
+      shm_size: '2g'
       ports:
-        - 8983:8983
+        - 5432:5432
       volumes:
-        - ./out/solr:/mnt/solr
-      entrypoint: []
-      command: ["bash", "-c", "echo hi && cd /mnt/solr && bin/solr start -f"]
-    ols4-neo4j:
-      image: neo4j:2025.03.0-community
-      user: "${HOST_UID:?}:${HOST_GID:?}"
-      ports:
-        - 7474:7474
-        - 7687:7687
-      volumes:
-        - ./out/neo4j/data:/data
+        - ./out/postgres/data:/var/lib/postgresql/data
       environment:
-        - NEO4J_AUTH=none
-        - JAVA_OPTS=--add-modules jdk.incubator.vector
+        - POSTGRES_HOST_AUTH_METHOD=trust
+        - PGDATA=/var/lib/postgresql/data
       healthcheck:
-        test: ["CMD", "wget", "-q", "--spider", "http://localhost:7474"]
+        test: ["CMD-SHELL", "pg_isready -h /tmp -U postgres"]
         interval: 5s
         timeout: 5s
         retries: 30
-        start_period: 30s
+        start_period: 10s
     ols4-backend:
       user: "${HOST_UID:?}:${HOST_GID:?}"
       image: ${OLS4_BACKEND_IMAGE:-ghcr.io/ebispot/ols4-backend:dev}
@@ -38,20 +25,19 @@ services:
       ports:
         - 8080:8080
       environment:
-        - OLS_SOLR_HOST=http://ols4-solr:8983
-        - OLS_NEO4J_HOST=bolt://ols4-neo4j:7687
+        - OLS_POSTGRES_HOST=ols4-postgres
+        - OLS_POSTGRES_PORT=5432
+        - OLS_POSTGRES_DB=ols4
+        - OLS_POSTGRES_USER=postgres
         - OLS_TEXT_TAGGER_DB=/mnt/text_tagger_db.bin
 
       volumes:
         - ./out/text_tagger_db.bin:/mnt/text_tagger_db.bin:ro
       depends_on:
-        ols4-solr:
-          condition: service_started
-        ols4-neo4j:
+        ols4-postgres:
           condition: service_healthy
       links:
-        - ols4-solr
-        - ols4-neo4j
+        - ols4-postgres
     ols4-frontend:
       user: "${HOST_UID:?}:${HOST_GID:?}"
       image: ${OLS4_FRONTEND_IMAGE:-ghcr.io/ebispot/ols4-frontend:dev}

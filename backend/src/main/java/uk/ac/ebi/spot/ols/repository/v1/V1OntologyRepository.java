@@ -7,9 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
-import uk.ac.ebi.spot.ols.repository.solr.SearchType;
-import uk.ac.ebi.spot.ols.repository.solr.OlsSolrQuery;
-import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
+import uk.ac.ebi.spot.ols.repository.search.SearchType;
+import uk.ac.ebi.spot.ols.repository.search.OlsSearchQuery;
+import uk.ac.ebi.spot.ols.repository.search.OlsSearchClient;
 import uk.ac.ebi.spot.ols.repository.Validation;
 import uk.ac.ebi.spot.ols.repository.v1.mappers.V1OntologyMapper;
 
@@ -19,18 +19,18 @@ import java.util.List;
 public class V1OntologyRepository {
 
     @Autowired
-    OlsSolrClient solrClient;
+    OlsSearchClient searchClient;
 
     public V1Ontology get(String ontologyId, String lang) {
 
         Validation.validateLang(lang);
         Validation.validateOntologyId(ontologyId);
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
 	query.addFilter("type", List.of("ontology"), SearchType.WHOLE_FIELD);
 	query.addFilter("ontologyId", List.of(ontologyId), SearchType.WHOLE_FIELD);
 
-        JsonElement result = solrClient.getFirst(query);
+        JsonElement result = searchClient.getFirst(query);
         if (result == null) {
             return null;
         }
@@ -41,10 +41,10 @@ public class V1OntologyRepository {
 
         Validation.validateLang(lang);
 
-        OlsSolrQuery query = new OlsSolrQuery();
+        OlsSearchQuery query = new OlsSearchQuery();
 	query.addFilter("type", List.of("ontology"), SearchType.WHOLE_FIELD);
 
-        return solrClient.searchSolrPaginated(query, pageable)
+        return searchClient.searchPaginated(query, pageable)
                 .map(result -> V1OntologyMapper.mapOntology(result, lang));
     }
 }

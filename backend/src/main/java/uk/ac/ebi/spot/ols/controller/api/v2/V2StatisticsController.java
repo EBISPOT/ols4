@@ -1,9 +1,6 @@
 package uk.ac.ebi.spot.ols.controller.api.v2;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.apache.solr.client.solrj.SolrQuery;
-import org.apache.solr.client.solrj.response.FacetField;
-import org.apache.solr.client.solrj.response.QueryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import uk.ac.ebi.spot.ols.controller.api.exception.ResourceNotFoundException;
 import org.springframework.hateoas.MediaTypes;
@@ -11,15 +8,13 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import uk.ac.ebi.spot.ols.model.v2.V2Statistics;
-import uk.ac.ebi.spot.ols.repository.solr.OlsSolrClient;
+import uk.ac.ebi.spot.ols.repository.search.OlsSearchClient;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 @Tag(name = "V2 Stats Controller", description = "This endpoint provides statistics about the current state of the ontology index. It includes the number of ontologies, classes, individuals and properties indexed, and the last time the index was modified.")
 @RestController
@@ -27,36 +22,21 @@ import java.util.Map;
 public class V2StatisticsController {
 
     @Autowired
-    OlsSolrClient solrClient;
+    OlsSearchClient searchClient;
 
     @RequestMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypes.HAL_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<V2Statistics> getStatistics() throws ResourceNotFoundException, IOException {
 
-        Map<String,Object> coreStatus = solrClient.getCoreStatus();
-        Map<String,Object> indexStatus = (Map<String,Object>) coreStatus.get("index");
-        String lastModified = (String) indexStatus.get("lastModified");
+        String lastModified = searchClient.getLastModified();
 
-        SolrQuery query = new SolrQuery();
-
-        query.setQuery("*:*");
-        query.setFacet(true);
-        query.addFacetField("type");
-        query.setRows(0);
-
-        QueryResponse qr = solrClient.runSolrQuery(query, null);
-
-        Map<String,Integer> counts = new HashMap<>();
-
-        for(FacetField.Count count : qr.getFacetField("type").getValues()) {
-            counts.put(count.getName(), (int)count.getCount());
-        }
+        Map<String, Long> counts = searchClient.getCountsByField("type");
 
         V2Statistics stats = new V2Statistics();
         stats.lastModified = lastModified;
-        stats.numberOfOntologies = counts.containsKey("ontology") ? counts.get("ontology") : 0;
-        stats.numberOfClasses = counts.containsKey("class") ? counts.get("class") : 0;
-        stats.numberOfIndividuals = counts.containsKey("individual") ? counts.get("individual") : 0;
-        stats.numberOfProperties = counts.containsKey("property") ? counts.get("property") : 0;
+        stats.numberOfOntologies = counts.getOrDefault("ontology", 0L).intValue();
+        stats.numberOfClasses = counts.getOrDefault("class", 0L).intValue();
+        stats.numberOfIndividuals = counts.getOrDefault("individual", 0L).intValue();
+        stats.numberOfProperties = counts.getOrDefault("property", 0L).intValue();
 
         return new ResponseEntity<>( stats, HttpStatus.OK);
     }

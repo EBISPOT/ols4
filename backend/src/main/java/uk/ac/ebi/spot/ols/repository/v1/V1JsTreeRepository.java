@@ -4,7 +4,7 @@ import com.google.gson.JsonElement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
-import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
+import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 
 import static uk.ac.ebi.ols.shared.DefinedFields.*;
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class V1JsTreeRepository {
 
     @Autowired
-    OlsNeo4jClient neo4jClient;
+    OlsPostgresClient postgresClient;
 
     public List<Map<String,Object>> getJsTreeForClass(String iri, String ontologyId, String lang) {
         return getJsTreeForEntity(iri, "class", "OntologyClass", ontologyId, lang);
@@ -30,17 +30,17 @@ public class V1JsTreeRepository {
         return getJsTreeForEntity(iri, "individual", "OntologyIndividual", ontologyId, lang);
     }
 
-    private List<Map<String,Object>> getJsTreeForEntity(String iri, String type, String neo4jType, String ontologyId, String lang) {
+    private List<Map<String,Object>> getJsTreeForEntity(String iri, String type, String entityType, String ontologyId, String lang) {
 
         List<String> parentRelationIRIs = List.of(DIRECT_PARENT.getText());
 
         String thisEntityId = ontologyId + "+" + type + "+" + iri;
 
-        JsonElement thisEntity = neo4jClient.getOne(neo4jType, Map.of("id", thisEntityId));
+        JsonElement thisEntity = postgresClient.getOne(entityType, Map.of("id", thisEntityId));
         thisEntity = LocalizationTransform.transform(thisEntity, lang);
 
         List<JsonElement> ancestors =
-                neo4jClient.recursivelyTraverseOutgoingEdges(neo4jType, thisEntityId, parentRelationIRIs, Map.of(), Map.of(), PageRequest.ofSize(100))
+                postgresClient.getAncestors(thisEntityId, Map.of(), PageRequest.ofSize(100))
                         .getContent();
         ancestors = ancestors.stream().map(ancestor -> LocalizationTransform.transform(ancestor, lang)).collect(Collectors.toList());
 
@@ -59,17 +59,17 @@ public class V1JsTreeRepository {
         return getJsTreeChildrenForEntity(individualIri, jstreeId, "individual", "OntologyIndividual", ontologyId, lang);
     }
 
-    private List<Map<String,Object>> getJsTreeChildrenForEntity(String iri, String jstreeId, String type, String neo4jType, String ontologyId, String lang) {
+    private List<Map<String,Object>> getJsTreeChildrenForEntity(String iri, String jstreeId, String type, String entityType, String ontologyId, String lang) {
 
         List<String> parentRelationIRIs = List.of(DIRECT_PARENT.getText());
 
         String thisEntityId = ontologyId + "+" + type + "+" + iri;
 
-        JsonElement thisEntity = neo4jClient.getOne(neo4jType, Map.of("id", thisEntityId));
+        JsonElement thisEntity = postgresClient.getOne(entityType, Map.of("id", thisEntityId));
         thisEntity = LocalizationTransform.transform(thisEntity, lang);
 
         List<JsonElement> children =
-                neo4jClient.traverseIncomingEdges(neo4jType, thisEntityId, parentRelationIRIs, Map.of(), Map.of(), PageRequest.ofSize(100))
+                postgresClient.getDirectChildren(thisEntityId, Map.of(), PageRequest.ofSize(100))
                         .getContent();
         children = children.stream().map(child -> LocalizationTransform.transform(child, lang)).collect(Collectors.toList());
 

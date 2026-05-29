@@ -1,4 +1,4 @@
-Converts ontologies represented in OWL RDF/XML to Solr and Neo4j databases.
+Converts ontologies represented in OWL RDF/XML to a PostgreSQL database.
 
 # Usage
 
@@ -16,31 +16,20 @@ Use rdf2json to download all the OWL files, resolve imports, and export JSON fil
      
 Now (after about 15 min) you should have a huge file called `foundry_out.json` that contains not only the original config for each ontology loaded from `foundry.json`, but also the ontologies themselves represented in an intermediate JSON format! (Note: the intermediate JSON format is a non-standardised application format totally specific to this tool and is subject to change.)
 
-## Step 2: JSON to CSV *for Neo4j*
+## Step 2: JSON to TSV *for PostgreSQL*
 
-You can now convert this huge JSON file to a CSV file ready for Neo4j, using ols_json2neo:
+You can now convert this huge JSON file to TSV files ready for PostgreSQL, using ols_json2postgres:
 
-    rm -rf output_csv && mkdir output_csv
-    ols_json2neo --input foundry_out_flat.json --outDir output_csv --manifest linker_manifest.json
+    rm -rf output_tsv && mkdir output_tsv
+    ols_json2postgres --input foundry_out_flat.json --outDir output_tsv
 
-## Step 3: CSV to Neo4j
+## Step 3: TSV to PostgreSQL
 
-Now (after 5-10 mins) you should have a directory full of CSV files. These files are formatted especially for Neo4j. You can load them using `neo4j-admin database import full`, but you'll need to provide the filename of every single CSV file on the command line, which is boring, so included in this repo is a script called `make_csv_import_cmd.sh` that generates the command line for you.
+Now (after 5-10 mins) you should have a directory full of `.pgbin` files. These are PostgreSQL binary COPY format files. Use the `load_into_postgres.py` script to initialize a PostgreSQL instance and load the data:
 
-    neo4j-admin database import full \
-	    --ignore-empty-strings=true \
-	    --legacy-style-quoting=false \
-	    --multiline-fields=true \
-	    --array-delimiter="|" \
-	    $(./make_csv_import_cmd.sh)
+    python3 load_into_postgres.py ./postgres_out ./output_tsv
 
-Now you should have a Neo4j database ready to start!
-
-## Step 4: JSON to JSON *for Solr*
-
-Similar to how the Neo4j CSV was generated, you can also generate JSON files ready for uploading to SOLR using json2solr.
-
-    ols_json2solr --input foundry_out_flat.json --outDir output_csv
+Now you should have a PostgreSQL database ready to start!
 
 ## Loading Reports
 

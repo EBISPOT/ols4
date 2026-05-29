@@ -4,61 +4,63 @@
       "appearsIn": [
         "duo"
       ],
-      "curie": "DUO:0000018",
+      "curie": "DUO:0000045",
       "definedBy": [
         "duo"
       ],
       "definition": [
-        "This data use modifier indicates that use of the data is limited to not-for-profit organizations and not-for-profit use, non-commercial use."
+        "This data use modifier indicates that use of the data is limited to not-for-profit organizations."
       ],
       "definitionProperty": "http://purl.obolibrary.org/obo/IAO_0000115",
       "directAncestor": [
         "http://purl.obolibrary.org/obo/BFO_0000031",
         "http://purl.obolibrary.org/obo/DUO_0000017",
+        "http://purl.obolibrary.org/obo/DUO_0000018",
         "http://purl.obolibrary.org/obo/IAO_0000027",
         "http://purl.obolibrary.org/obo/IAO_0000030"
       ],
       "directParent": [
-        "http://purl.obolibrary.org/obo/DUO_0000017"
+        "http://purl.obolibrary.org/obo/DUO_0000018"
       ],
-      "hasDirectChildren": true,
+      "hasDirectChildren": false,
       "hasDirectParents": true,
-      "hasHierarchicalChildren": true,
+      "hasHierarchicalChildren": false,
       "hasHierarchicalParents": true,
       "hierarchicalAncestor": [
         "http://purl.obolibrary.org/obo/BFO_0000031",
         "http://purl.obolibrary.org/obo/DUO_0000017",
+        "http://purl.obolibrary.org/obo/DUO_0000018",
         "http://purl.obolibrary.org/obo/IAO_0000027",
         "http://purl.obolibrary.org/obo/IAO_0000030"
       ],
       "hierarchicalParent": [
-        "http://purl.obolibrary.org/obo/DUO_0000017"
+        "http://purl.obolibrary.org/obo/DUO_0000018"
       ],
       "hierarchicalProperty": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-      "http://purl.obolibrary.org/obo/IAO_0000115": "This data use modifier indicates that use of the data is limited to not-for-profit organizations and not-for-profit use, non-commercial use.",
-      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000018",
-      "http://www.geneontology.org/formats/oboInOwl#shorthand": "NPUNCU",
+      "http://purl.obolibrary.org/obo/IAO_0000115": "This data use modifier indicates that use of the data is limited to not-for-profit organizations.",
+      "http://www.geneontology.org/formats/oboInOwl#id": "DUO:0000045",
+      "http://www.geneontology.org/formats/oboInOwl#shorthand": "NPU",
       "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
-      "http://www.w3.org/2000/01/rdf-schema#label": "not for profit, non commercial use only",
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/DUO_0000017",
+      "http://www.w3.org/2000/01/rdf-schema#label": "not for profit organisation use only",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://purl.obolibrary.org/obo/DUO_0000018",
       "imported": false,
-      "iri": "http://purl.obolibrary.org/obo/DUO_0000018",
+      "iri": "http://purl.obolibrary.org/obo/DUO_0000045",
       "isDefiningOntology": true,
       "isObsolete": false,
       "isPreferredRoot": false,
       "label": [
-        "not for profit, non commercial use only"
+        "not for profit organisation use only"
       ],
       "linkedEntities": {
-        "DUO:0000018": {
-          "curie": "DUO:0000018",
+        "DUO:0000045": {
+          "curie": "DUO:0000045",
           "definedBy": [
             "duo"
           ],
           "hasLocalDefinition": true,
-          "iri": "http://purl.obolibrary.org/obo/DUO_0000018",
+          "iri": "http://purl.obolibrary.org/obo/DUO_0000045",
           "label": [
-            "not for profit, non commercial use only"
+            "not for profit organisation use only"
           ],
           "numAppearsIn": 1.0,
           "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
@@ -66,7 +68,7 @@
             "class",
             "entity"
           ],
-          "url": "http://purl.obolibrary.org/obo/DUO_0000018"
+          "url": "http://purl.obolibrary.org/obo/DUO_0000045"
         },
         "http://purl.obolibrary.org/obo/BFO_0000031": {
           "curie": "bfo:0000031",
@@ -81,6 +83,21 @@
           "hasLocalDefinition": true,
           "label": [
             "data use modifier"
+          ],
+          "numAppearsIn": 1.0,
+          "type": [
+            "class",
+            "entity"
+          ]
+        },
+        "http://purl.obolibrary.org/obo/DUO_0000018": {
+          "curie": "DUO:0000018",
+          "definedBy": [
+            "duo"
+          ],
+          "hasLocalDefinition": true,
+          "label": [
+            "not for profit, non commercial use only"
           ],
           "numAppearsIn": 1.0,
           "type": [
@@ -185,6 +202,7 @@
       "linksTo": [
         "http://purl.obolibrary.org/obo/DUO_0000017",
         "http://purl.obolibrary.org/obo/DUO_0000018",
+        "http://purl.obolibrary.org/obo/DUO_0000045",
         "http://purl.obolibrary.org/obo/IAO_0000027",
         "http://purl.obolibrary.org/obo/IAO_0000030",
         "http://purl.obolibrary.org/obo/IAO_0000115",
@@ -193,17 +211,17 @@
         "http://www.w3.org/2000/01/rdf-schema#label",
         "http://www.w3.org/2000/01/rdf-schema#subClassOf"
       ],
-      "numDescendants": 2.0,
-      "numHierarchicalDescendants": 2.0,
+      "numDescendants": 0.0,
+      "numHierarchicalDescendants": 0.0,
       "ontologyId": "duo",
       "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
       "ontologyPreferredPrefix": "DUO",
       "score": "<score>",
       "searchableAnnotationValues": [
-        "This data use modifier indicates that use of the data is limited to not-for-profit organizations and not-for-profit use, non-commercial use.",
+        "This data use modifier indicates that use of the data is limited to not-for-profit organizations.",
         false
       ],
-      "shortForm": "DUO_0000018",
+      "shortForm": "DUO_0000045",
       "type": [
         "class",
         "entity"

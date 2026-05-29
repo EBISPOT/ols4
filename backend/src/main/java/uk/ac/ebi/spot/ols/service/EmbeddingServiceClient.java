@@ -4,20 +4,20 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.PostConstruct;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.charset.StandardCharsets;
+import java.sql.Connection;
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
@@ -26,13 +26,16 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_PCA_MODELS;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.field;
+
 /**
  * Client for the OLS embedding service.
  * 
  * Handles PCA transformations locally: when a PCA model name is requested
  * (e.g. "model_pca512"), the client calls the embedding service with the
- * base model name ("model") and applies the PCA transform using a JSON
- * file loaded from the configured PCA models directory.
+ * base model name ("model") and applies the PCA transform using models
+ * loaded from the ols_pca_models table in PostgreSQL.
  */
 @Service
 public class EmbeddingServiceClient {
@@ -40,8 +43,8 @@ public class EmbeddingServiceClient {
     @Value("${ols.embedding.service.url:#{null}}")
     private String embeddingServiceUrl;
 
-    @Value("${ols.embedding.pca.models.dir:#{null}}")
-    private String pcaModelsDir;
+    @org.springframework.beans.factory.annotation.Autowired
+    private PostgresClient postgresClient;
     
     private final HttpClient httpClient = HttpClient.newBuilder()
         .version(HttpClient.Version.HTTP_1_1)
@@ -74,43 +77,36 @@ public class EmbeddingServiceClient {
     }
 
     private void loadPcaModels() {
-        if (pcaModelsDir == null || pcaModelsDir.isEmpty()) {
-            return;
-        }
-        Path dir = Paths.get(pcaModelsDir);
-        if (!Files.isDirectory(dir)) {
-            System.err.println("PCA models directory does not exist: " + pcaModelsDir);
-            return;
-        }
+        try (Connection conn = postgresClient.getConnection()) {
+            DSLContext dsl = postgresClient.dsl(conn);
 
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*_pca*.json")) {
-            for (Path file : stream) {
-                String filename = file.getFileName().toString();
-                // Expected format: {base_model}_pca{n}.json
-                String stem = filename.replaceFirst("\\.json$", "");
-                Matcher m = PCA_PATTERN.matcher(stem);
+            for (var record : dsl.select(field("name", String.class), field("model", byte[].class))
+                    .from(OLS_PCA_MODELS)
+                    .fetch()) {
+                String name = record.get(field("name", String.class));
+                byte[] modelBytes = record.get(field("model", byte[].class));
+
+                Matcher m = PCA_PATTERN.matcher(name);
                 if (!m.matches()) continue;
 
                 String baseModelName = m.group(1);
                 int nComponents = Integer.parseInt(m.group(2));
-                String pcaModelName = stem;
 
-                System.err.println("Loading PCA model: " + pcaModelName + " from " + file);
+                System.err.println("Loading PCA model from postgres: " + name);
 
-                try (Reader reader = Files.newBufferedReader(file)) {
-                    JsonObject json = gson.fromJson(reader, JsonObject.class);
+                String jsonStr = new String(modelBytes, StandardCharsets.UTF_8);
+                JsonObject json = gson.fromJson(jsonStr, JsonObject.class);
 
-                    double[] mean = toDoubleArray(json.getAsJsonArray("mean"));
-                    double[][] components = toDoubleArray2D(json.getAsJsonArray("components"));
+                double[] mean = toDoubleArray(json.getAsJsonArray("mean"));
+                double[][] components = toDoubleArray2D(json.getAsJsonArray("components"));
 
-                    pcaModels.put(pcaModelName, new PcaModel(baseModelName, nComponents, mean, components));
-                    System.err.println("Loaded PCA model: " + pcaModelName +
-                            " (base=" + baseModelName + ", components=" + nComponents +
-                            ", features=" + mean.length + ")");
-                }
+                pcaModels.put(name, new PcaModel(baseModelName, nComponents, mean, components));
+                System.err.println("Loaded PCA model: " + name +
+                        " (base=" + baseModelName + ", components=" + nComponents +
+                        ", features=" + mean.length + ")");
             }
-        } catch (IOException e) {
-            System.err.println("Error loading PCA models from " + pcaModelsDir + ": " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Error loading PCA models from postgres: " + e.getMessage());
         }
     }
 

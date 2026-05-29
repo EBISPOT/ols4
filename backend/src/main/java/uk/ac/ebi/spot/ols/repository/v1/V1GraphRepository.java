@@ -4,18 +4,26 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import org.neo4j.driver.types.Node;
-import org.neo4j.driver.types.Relationship;
+import org.jooq.DSLContext;
+import org.jooq.Field;
+import org.jooq.Record;
+import org.jooq.Table;
+import org.jooq.impl.DSL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import uk.ac.ebi.spot.ols.JsonHelper;
 import uk.ac.ebi.spot.ols.repository.transforms.LocalizationTransform;
 import uk.ac.ebi.spot.ols.repository.transforms.RemoveLiteralDatatypesTransform;
-import uk.ac.ebi.spot.ols.service.Neo4jClient;
+import uk.ac.ebi.spot.ols.service.PostgresClient;
 
 import static uk.ac.ebi.ols.shared.DefinedFields.*;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_ENTITIES;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContains;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.field;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -24,13 +32,8 @@ public class V1GraphRepository {
 
     Gson gson = new Gson();
 
-
-    // Note this is the raw Neo4jClient, NOT the OlsNeo4jClient abstraction we use everywhere else.
-    // This is because the OLS3 graph API has a very specific Neo4j query we need to run, and it's
-    // not worth abstracting over (at least until OLS4 needs something similar.)
-    //
     @Autowired
-    Neo4jClient neo4jClient;
+    PostgresClient postgresClient;
 
     public Map<String, Object> getGraphForClass(String iri, String ontologyId, String lang) {
         return getGraphForEntity(iri, "class", "OntologyClass", ontologyId, lang);
@@ -44,45 +47,37 @@ public class V1GraphRepository {
         return getGraphForEntity(iri, "individual", "OntologyIndividual", ontologyId, lang);
     }
 
-    private Map<String, Object> getGraphForEntity(String iri, String type, String neo4jType, String ontologyId, String lang) {
+    private Map<String, Object> getGraphForEntity(String iri, String type, String entityType, String ontologyId, String lang) {
 
         String thisEntityId = ontologyId + "+" + type + "+" + iri;
+        GraphNode thisNode = getNode(thisEntityId);
 
-//        String parentsQuery =
-//                "MATCH path = (n:OntologyClass)-[r:directParent|relatedTo]-(parent)\n"
-//                        + "WHERE n.id=\"" + thisEntityId + "\"\n"
-//                        + "UNWIND nodes(path) as p\n"
-//                        + "UNWIND relationships(path) as r1\n"
-//                        + "RETURN {nodes: collect( distinct {iri: p.iri, label: head(p.label)})[0..200],\n"
-//                        + "edges: collect (distinct {source: startNode(r1).iri, target: endNode(r1).iri, relationship: r1 }  )[0..200]} as result\n";
+        List<GraphNode> parentsAndRelatedToNodes = new ArrayList<>();
+        List<GraphEdge> parentsAndRelatedToEdges = new ArrayList<>();
+        getParentsAndRelatedTo(thisEntityId, parentsAndRelatedToNodes, parentsAndRelatedToEdges);
 
-        Map<String,Object> parentsAndRelatedTo = getParentsAndRelatedTo(thisEntityId);
-        Map<String,Object> relatedFrom = getRelatedFrom(thisEntityId);
+        List<GraphNode> relatedFromNodes = new ArrayList<>();
+        List<GraphEdge> relatedFromEdges = new ArrayList<>();
+        getRelatedFrom(thisEntityId, relatedFromNodes, relatedFromEdges);
 
-        Set<Node> allNodes = new LinkedHashSet<>();
-//        allNodes.add( (Node) parentsAndRelatedTo.get("startNode") );
-        allNodes.addAll( (List<Node>) parentsAndRelatedTo.get("nodes") );
-//        allNodes.add( (Node) relatedFrom.get("startNode") );
-        allNodes.addAll( (List<Node>) relatedFrom.get("nodes") );
+        // Deduplicate nodes by IRI
+        Map<String, GraphNode> nodeMap = new LinkedHashMap<>();
+        if (thisNode != null) {
+            nodeMap.putIfAbsent(thisNode.iri, thisNode);
+        }
+        for (GraphNode n : parentsAndRelatedToNodes) nodeMap.putIfAbsent(n.iri, n);
+        for (GraphNode n : relatedFromNodes) nodeMap.putIfAbsent(n.iri, n);
 
-        List<Map<String,Object>> allEdges = new ArrayList<>();
-        allEdges.addAll( (List<Map<String,Object>>) parentsAndRelatedTo.get("edges") );
-        allEdges.addAll( (List<Map<String,Object>>) relatedFrom.get("edges") );
+        List<GraphEdge> allEdges = new ArrayList<>();
+        allEdges.addAll(parentsAndRelatedToEdges);
+        allEdges.addAll(relatedFromEdges);
 
-        Map<String,String> iriToLabel = new HashMap<>();
+        Map<String, String> iriToLabel = new HashMap<>();
 
-        List<Map<String,Object>> nodes = allNodes.stream().map(node -> {
+        List<Map<String, Object>> nodes = nodeMap.values().stream().map(node -> {
 
-            JsonObject ontologyNodeObject = getOntologyNodeJson(node, lang);
-
-            JsonObject linkedEntities = ontologyNodeObject.getAsJsonObject("linkedEntities");
-            if(linkedEntities != null) {
-                for(String referencedIri : linkedEntities.keySet()) {
-                    JsonObject reference = linkedEntities.getAsJsonObject(referencedIri);
-                    if(!iriToLabel.containsKey(referencedIri))
-                        iriToLabel.put(referencedIri, JsonHelper.getString(reference, LABEL.getText()));
-                }
-            }
+            JsonObject ontologyNodeObject = transformJson(node.json, lang);
+            collectLinkedEntityLabels(ontologyNodeObject, iriToLabel);
 
             Map<String, Object> nodeRes = new LinkedHashMap<>();
             nodeRes.put("iri", JsonHelper.getString(ontologyNodeObject, "iri"));
@@ -92,27 +87,32 @@ public class V1GraphRepository {
         }).collect(Collectors.toList());
 
 
-        List<Map<String,Object>> edges = allEdges.stream().map(result -> {
-
-            Relationship relationship = (Relationship) result.get("relationship");
+        List<Map<String, Object>> edges = allEdges.stream().map(edge -> {
 
             Map<String, Object> edgeRes = new LinkedHashMap<>();
-            edgeRes.put("source", result.get("source"));
-            edgeRes.put("target", result.get("target"));
+            edgeRes.put("source", edge.sourceIri);
+            edgeRes.put("target", edge.targetIri);
 
-            JsonObject ontologyEdgeObject = getOntologyEdgeJson(relationship, lang);
-
-            String uri = JsonHelper.getString(ontologyEdgeObject, "property");
+            String uri = edge.propertyUri;
             if (uri == null) {
-                uri = "http://www.w3.org/2000/01/rdf-schema#subClassOf";
+                GraphNode sourceNode = nodeMap.get(edge.sourceIri);
+                if (sourceNode != null) {
+                    uri = findRelatedPropertyUri(sourceNode.json, edge.targetIri);
+                }
             }
 
-            String propertyLabel = iriToLabel.get(uri);
-            if(propertyLabel == null)
-                propertyLabel = "is a";
+            String propertyLabel;
+            if (uri == null) {
+                propertyLabel = "related to";
+            } else {
+                propertyLabel = iriToLabel.get(uri);
+                if (propertyLabel == null) {
+                    propertyLabel = "is a";
+                }
+                edgeRes.put("uri", uri);
+            }
 
             edgeRes.put(LABEL.getText(), propertyLabel);
-            edgeRes.put("uri", uri);
 
             return edgeRes;
 
@@ -124,52 +124,188 @@ public class V1GraphRepository {
         return resGraph;
     }
 
-    Map<String,Object> getParentsAndRelatedTo(String entityId) {
+    GraphNode getNode(String entityId) {
+        try (Connection conn = postgresClient.getConnection()) {
+            DSLContext dsl = postgresClient.dsl(conn);
+            Record record = dsl.select(
+                            field("e", "_json", byte[].class).as("node_json"),
+                            field("e", "iri", String.class).as("node_iri"))
+                    .from(OLS_ENTITIES.as("e"))
+                    .where(field("e", "id", String.class).eq(entityId))
+                    .fetchOne();
 
-        String query =
-                "MATCH path = (n:OntologyClass)-[r:relatedTo|directParent]-(x)\n"
-                        + "WHERE n.id=\"" + entityId + "\"\n"
-                        + "UNWIND nodes(path) as p\n"
-                        + "UNWIND relationships(path) as r1\n"
-                        + "RETURN { nodes: collect(distinct p),\n"
-                        + "edges: collect(distinct { source: startNode(r1).iri, target: endNode(r1).iri, relationship: r1 })\n"
-                        + "} AS result";
+            if (record == null) {
+                return null;
+            }
 
-        List<Map<String,Object>> results = neo4jClient.rawQuery(query, Map.of());
-        return (Map<String,Object>) results.get(0).get("result");
+            return new GraphNode(
+                    record.get("node_iri", String.class),
+                    PostgresClient.decompressJson(record.get("node_json", byte[].class))
+            );
+        } catch (SQLException e) {
+            throw new RuntimeException("getNode failed", e);
+        }
     }
 
-    Map<String,Object> getRelatedFrom(String entityId) {
+    void getParentsAndRelatedTo(String entityId, List<GraphNode> outNodes, List<GraphEdge> outEdges) {
+        try (Connection conn = postgresClient.getConnection()) {
+            DSLContext dsl = postgresClient.dsl(conn);
+            Table<?> e1 = OLS_ENTITIES.as("e1");
+            Table<?> e2 = OLS_ENTITIES.as("e2");
+            Field<byte[]> nodeJson = field("node_json", byte[].class);
+            Field<String> nodeIri = field("node_iri", String.class);
+            Field<String> relType = field("rel_type", String.class);
+            Field<String> sourceIri = field("source_iri", String.class);
 
-        String query =
-                "MATCH path = (x)-[r:relatedTo]->(n:OntologyClass)\n"
-                        + "WHERE n.id=\"" + entityId + "\"\n"
-                        + "RETURN { nodes: collect(distinct x),\n"
-                        + "edges: collect({ source: startNode(r).iri, target: endNode(r).iri, relationship: r })\n"
-                        + "} AS result";
+            var records = dsl.select(
+                            field("e2", "_json", byte[].class).as("node_json"),
+                            field("e2", "iri", String.class).as("node_iri"),
+                            DSL.inline("parent").as("rel_type"),
+                            field("e1", "iri", String.class).as("source_iri"))
+                    .from(e1)
+                    .join(e2).on(arrayContains(field("e1", "direct_parents", String[].class), field("e2", "iri", String.class))
+                            .and(field("e2", "ontology_id", String.class).eq(field("e1", "ontology_id", String.class))))
+                    .where(field("e1", "id", String.class).eq(entityId))
+                    .unionAll(
+                            dsl.select(
+                                            field("e2", "_json", byte[].class).as("node_json"),
+                                            field("e2", "iri", String.class).as("node_iri"),
+                                            DSL.inline("child").as("rel_type"),
+                                            field("e1", "iri", String.class).as("source_iri"))
+                                    .from(e1)
+                                    .join(e2).on(arrayContains(field("e2", "direct_parents", String[].class), field("e1", "iri", String.class))
+                                            .and(field("e2", "ontology_id", String.class).eq(field("e1", "ontology_id", String.class))))
+                                    .where(field("e1", "id", String.class).eq(entityId)))
+                    .unionAll(
+                            dsl.select(
+                                            field("e2", "_json", byte[].class).as("node_json"),
+                                            field("e2", "iri", String.class).as("node_iri"),
+                                            DSL.inline("relatedTo").as("rel_type"),
+                                            field("e1", "iri", String.class).as("source_iri"))
+                                    .from(e1)
+                                    .join(e2).on(arrayContains(field("e1", "related_to", String[].class), field("e2", "iri", String.class))
+                                            .and(field("e2", "ontology_id", String.class).eq(field("e1", "ontology_id", String.class))))
+                                    .where(field("e1", "id", String.class).eq(entityId)))
+                    .limit(200)
+                    .fetch();
 
-        List<Map<String,Object>> results = neo4jClient.rawQuery(query, Map.of());
-        return (Map<String,Object>) results.get(0).get("result");
+            for (Record record : records) {
+                String currentNodeIri = record.get(nodeIri);
+                String currentSourceIri = record.get(sourceIri);
+                String currentRelType = record.get(relType);
+
+                outNodes.add(new GraphNode(currentNodeIri, PostgresClient.decompressJson(record.get(nodeJson))));
+
+                if ("parent".equals(currentRelType)) {
+                    outEdges.add(new GraphEdge(currentSourceIri, currentNodeIri,
+                            "http://www.w3.org/2000/01/rdf-schema#subClassOf"));
+                } else if ("child".equals(currentRelType)) {
+                    outEdges.add(new GraphEdge(currentNodeIri, currentSourceIri,
+                            "http://www.w3.org/2000/01/rdf-schema#subClassOf"));
+                } else {
+                    outEdges.add(new GraphEdge(currentSourceIri, currentNodeIri, null));
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("getParentsAndRelatedTo failed", e);
+        }
     }
 
+    void getRelatedFrom(String entityId, List<GraphNode> outNodes, List<GraphEdge> outEdges) {
+        try (Connection conn = postgresClient.getConnection()) {
+            DSLContext dsl = postgresClient.dsl(conn);
+            Table<?> e1 = OLS_ENTITIES.as("e1");
+            Table<?> e2 = OLS_ENTITIES.as("e2");
+            Field<byte[]> nodeJson = field("node_json", byte[].class);
+            Field<String> nodeIri = field("node_iri", String.class);
+            Field<String> targetIri = field("target_iri", String.class);
 
-    JsonObject getOntologyNodeJson(Node node, String lang) {
+            var records = dsl.select(
+                            field("e2", "_json", byte[].class).as("node_json"),
+                            field("e2", "iri", String.class).as("node_iri"),
+                            field("e1", "iri", String.class).as("target_iri"))
+                    .from(e1)
+                    .join(e2).on(arrayContains(field("e2", "related_to", String[].class), field("e1", "iri", String.class))
+                            .and(field("e2", "ontology_id", String.class).eq(field("e1", "ontology_id", String.class))))
+                    .where(field("e1", "id", String.class).eq(entityId))
+                    .limit(200)
+                    .fetch();
 
-        JsonElement ontologyNodeObject = JsonParser.parseString((String) node.asMap().get("_json"));
+            for (Record record : records) {
+                String currentNodeIri = record.get(nodeIri);
+                String currentTargetIri = record.get(targetIri);
 
+                outNodes.add(new GraphNode(currentNodeIri, PostgresClient.decompressJson(record.get(nodeJson))));
+                outEdges.add(new GraphEdge(currentNodeIri, currentTargetIri, null));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("getRelatedFrom failed", e);
+        }
+    }
+
+    static void collectLinkedEntityLabels(JsonObject ontologyNodeObject, Map<String, String> iriToLabel) {
+        JsonObject linkedEntities = ontologyNodeObject.getAsJsonObject("linkedEntities");
+        if (linkedEntities == null) {
+            return;
+        }
+
+        for (String referencedIri : linkedEntities.keySet()) {
+            JsonObject reference = linkedEntities.getAsJsonObject(referencedIri);
+            if (reference == null || iriToLabel.containsKey(referencedIri)) {
+                continue;
+            }
+
+            String label = JsonHelper.getString(reference, LABEL.getText());
+            if (label != null) {
+                iriToLabel.put(referencedIri, label);
+            }
+        }
+    }
+
+    static String findRelatedPropertyUri(String sourceNodeJson, String targetIri) {
+        JsonObject sourceNodeObject = JsonParser.parseString(sourceNodeJson).getAsJsonObject();
+        JsonElement relatedTo = sourceNodeObject.get("relatedTo");
+        if (relatedTo == null || !relatedTo.isJsonArray()) {
+            return null;
+        }
+
+        for (JsonElement relatedValue : relatedTo.getAsJsonArray()) {
+            if (!relatedValue.isJsonObject()) {
+                continue;
+            }
+
+            JsonObject relatedObj = relatedValue.getAsJsonObject();
+            String relatedTargetIri = JsonHelper.getString(relatedObj, "value");
+            if (targetIri.equals(relatedTargetIri)) {
+                return JsonHelper.getString(relatedObj, "property");
+            }
+        }
+
+        return null;
+    }
+
+    JsonObject transformJson(String json, String lang) {
+        JsonElement element = JsonParser.parseString(json);
         return RemoveLiteralDatatypesTransform.transform(
-                LocalizationTransform.transform(ontologyNodeObject, lang)
+                LocalizationTransform.transform(element, lang)
         ).getAsJsonObject();
     }
 
-    JsonObject getOntologyEdgeJson(Relationship r, String lang) {
+    private static class GraphNode {
+        final String iri;
+        final String json;
+        GraphNode(String iri, String json) { this.iri = iri; this.json = json; }
+    }
 
-        JsonElement ontologyEdgeObject = JsonParser.parseString((String) r.asMap().get("_json"));
-
-        return RemoveLiteralDatatypesTransform.transform(
-                LocalizationTransform.transform(ontologyEdgeObject, lang)
-        ).getAsJsonObject();
+    private static class GraphEdge {
+        final String sourceIri;
+        final String targetIri;
+        final String propertyUri;
+        GraphEdge(String sourceIri, String targetIri, String propertyUri) {
+            this.sourceIri = sourceIri;
+            this.targetIri = targetIri;
+            this.propertyUri = propertyUri;
+        }
     }
 
 }
-

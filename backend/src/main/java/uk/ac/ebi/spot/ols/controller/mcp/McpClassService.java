@@ -16,7 +16,7 @@ import uk.ac.ebi.spot.ols.model.mcp.McpClass;
 import uk.ac.ebi.spot.ols.model.mcp.McpPage;
 import uk.ac.ebi.spot.ols.repository.ClassRepository;
 import uk.ac.ebi.spot.ols.repository.EntityRepository;
-import uk.ac.ebi.spot.ols.repository.neo4j.OlsNeo4jClient;
+import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 import uk.ac.ebi.spot.ols.service.EmbeddingServiceClient;
 
@@ -33,7 +33,7 @@ public class McpClassService {
     EmbeddingServiceClient embeddingServiceClient;
     
     @Autowired
-    OlsNeo4jClient neo4jClient;
+    OlsPostgresClient postgresClient;
 
     @Tool(description = "Search all classes in OLS for a query string")
     McpPage<McpClass> searchClasses(
@@ -213,19 +213,19 @@ public class McpClassService {
         // Embed the query text using the embedding service
         float[] vectorArray = embeddingServiceClient.embedText(model, query);
         
-        // Convert float[] to List<Double> for Neo4j
+        // Convert float[] to List<Double> for Postgres
         List<Double> vectorList = new java.util.ArrayList<>(vectorArray.length);
         for (float f : vectorArray) {
             vectorList.add((double) f);
         }
 
-        // Search classes using Neo4j vector search
+        // Search classes using Postgres vector search
         org.springframework.data.domain.Page<com.google.gson.JsonElement> results;
         boolean curations = includeCurations == null || includeCurations;
         if (ontologyId != null && !ontologyId.isEmpty()) {
-            results = neo4jClient.searchByVectorInOntology("OntologyClass", vectorList, pageable, model, ontologyId, true, curations);
+            results = postgresClient.searchByVectorInOntology("OntologyClass", vectorList, pageable, model, ontologyId, true, curations);
         } else {
-            results = neo4jClient.searchByVector("OntologyClass", vectorList, pageable, model, curations);
+            results = postgresClient.searchByVector("OntologyClass", vectorList, pageable, model, curations);
         }
 
         // Transform results
