@@ -40,7 +40,7 @@ spec:
               cpu: 2
           env:
             - name: OLS_POSTGRES_HOST
-              value: {{ .Release.Name }}-postgres
+              value: {{ required "postgres.host is required" .Values.postgres.host | quote }}
             - name: OLS_POSTGRES_PORT
               value: {{ .Values.postgres.port | quote }}
             - name: OLS_POSTGRES_DB
@@ -52,6 +52,8 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.postgres.secretName | quote }}
                   key: {{ .Values.postgres.secretKey | quote }}
+            - name: OLS_POSTGRES_SCHEMA
+              value: {{ .Values.postgres.schema | quote }}
             - name: OLS_EMBEDDING_SERVICE_URL
               value: http://wwwdev.ebi.ac.uk/spot/embed
             - name: SERVER_SERVLET_CONTEXT_PATH
