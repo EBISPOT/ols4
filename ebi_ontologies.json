@@ -1684,23 +1684,22 @@
         "The Genomic Standards Consortium."
       ],
       "is_foundary": false,
-      "preferredPrefix": "gscmixs",
+      "preferredPrefix": "MIXS",
       "title": "Minimum Information about any (x) Sequence (MIxS) standard",
       "uri": "https://w3id.org/mixs",
       "description": "An OWL representation of the Minimum Information for any (x) Standard (MIxS), managed by the Genomic Standards Consortium. This file is released by the Genomic Standards Consortium (GSC; https://www.gensc.org/) for use by anyone handling data or information about biological sequences.",
       "homepage": "https://w3id.org/mixs",
       "mailing_list": "gensc-cig@googlegroups.com",
       "label_property": [
-        "owl:DatatypeProperty",
-        "rdfs:label",
-        "dcterms:title",
-        "schema1:keywords"
+        "http://www.w3.org/2000/01/rdf-schema#label",
+        "http://purl.org/dc/terms/title",
+        "http://schema.org/keywords"
       ],
       "definition_property": [
-        "skos:definition"
+        "http://www.w3.org/2004/02/skos/core#definition"
       ],
       "base_uri": [
-        "MIXS:"
+        "https://w3id.org/mixs/"
       ],
       "reasoner": "OWL2",
       "oboSlims": false,
