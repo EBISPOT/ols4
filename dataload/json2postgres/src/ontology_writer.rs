@@ -164,6 +164,7 @@ fn extract_string_array(entity: &Map<String, Value>, key: &str) -> Vec<String> {
 fn extract_single_string(entity: &Map<String, Value>, key: &str) -> Option<String> {
     match entity.get(key) {
         Some(Value::String(s)) => Some(s.clone()),
+        Some(Value::Object(obj)) => obj.get("value").and_then(|v| v.as_str()).map(String::from),
         Some(Value::Array(arr)) => arr.first().and_then(|v| match v {
             Value::String(s) => Some(s.clone()),
             Value::Object(obj) => obj.get("value").and_then(|v| v.as_str()).map(String::from),
