@@ -13,7 +13,7 @@ import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContains;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.field;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.matchesTsQuery;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.phraseToTsQuery;
-import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.websearchToTsQuery;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.toTsQuery;
 
 /**
  * Builds jOOQ conditions and ordering for entity search/filter operations.
@@ -131,8 +131,7 @@ public class OlsSearchQuery {
         Condition condition = DSL.trueCondition();
 
         if (searchText != null && !searchText.isBlank()) {
-            Field<Object> tsQuery = exactMatch ? phraseToTsQuery(searchText) : websearchToTsQuery(searchText);
-            condition = condition.and(matchesTsQuery(field(qualifier, "ts_search", Object.class), tsQuery));
+            condition = condition.and(matchesTsQuery(field(qualifier, "ts_search", Object.class), buildTsQuery()));
         }
 
         for (SearchFilter f : filters) {
@@ -165,7 +164,7 @@ public class OlsSearchQuery {
                     "ts_rank_cd",
                     SQLDataType.DOUBLE,
                     field(qualifier, "ts_search", Object.class),
-                    websearchToTsQuery(searchText),
+                    buildTsQuery(),
                     DSL.inline(32))
                     .plus(DSL.when(field(qualifier, "is_defining_ontology", Boolean.class).isTrue(), 100.0).otherwise(0.0))
                     .plus(DSL.when(field(qualifier, "search_type", String.class).eq("ontology"), 1.0).otherwise(0.0))
@@ -174,6 +173,46 @@ public class OlsSearchQuery {
             return List.of(rank.desc(), field(qualifier, "id", String.class).asc());
         }
         return List.of(field(qualifier, "id", String.class).asc());
+    }
+
+    /**
+     * Build the tsquery used for both matching and ranking.
+     *
+     * <p>For exact matches we keep phrase semantics. For normal (non-exact) searches we build a
+     * prefix tsquery (each token suffixed with {@code :*}) so that partial words match — e.g.
+     * "micro" matches "microscopy". This restores the partial-match behaviour that existed before
+     * the move to PostgreSQL full text search (see GitHub issue #1267). Prefix matching works
+     * against the stemmed lexemes stored in the {@code ts_search} tsvector, so "micro" matches the
+     * stored lexeme "microscopi".
+     */
+    private Field<Object> buildTsQuery() {
+        if (exactMatch) {
+            return phraseToTsQuery(searchText);
+        }
+        return toTsQuery(buildPrefixTsQueryString(searchText));
+    }
+
+    /**
+     * Turn free-text search input into a prefix tsquery string of the form
+     * {@code "tok1:* & tok2:*"}. Tokens are split on any non-alphanumeric character, which strips
+     * tsquery operator characters ({@code & | ! ( ) : * ' \}) that would otherwise break parsing.
+     * Stop-word removal and stemming are left to {@code to_tsquery('english', ...)}. Returns an
+     * empty string when there are no usable tokens; {@code to_tsquery('english', '')} yields an
+     * empty tsquery that matches nothing, which is the desired behaviour.
+     */
+    static String buildPrefixTsQueryString(String searchText) {
+        StringBuilder sb = new StringBuilder();
+        // Split on anything that is not a Unicode letter or digit; to_tsquery normalises case.
+        for (String token : searchText.trim().split("[^\\p{L}\\p{N}]+")) {
+            if (token.isEmpty()) {
+                continue;
+            }
+            if (sb.length() > 0) {
+                sb.append(" & ");
+            }
+            sb.append(token).append(":*");
+        }
+        return sb.toString();
     }
 
     private boolean isFilterAvailable(Set<String> availableFilterColumns, String fieldName) {

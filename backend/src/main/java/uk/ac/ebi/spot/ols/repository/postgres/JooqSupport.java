@@ -69,6 +69,14 @@ public final class JooqSupport {
         return DSL.function("phraseto_tsquery", SQLDataType.OTHER, DSL.inline("english"), DSL.val(searchText));
     }
 
+    /**
+     * Builds a tsquery from an already-formatted tsquery string (e.g. "micro:* &amp; scop:*").
+     * Used for prefix matching so that, for example, "micro" matches "microscopy".
+     */
+    public static Field<Object> toTsQuery(String tsQueryString) {
+        return DSL.function("to_tsquery", SQLDataType.OTHER, DSL.inline("english"), DSL.val(tsQueryString));
+    }
+
     public static Condition matchesTsQuery(Field<?> tsVector, Field<?> tsQuery) {
         return DSL.condition("{0} @@ {1}", tsVector, tsQuery);
     }
