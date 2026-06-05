@@ -64,11 +64,11 @@ public class OlsPostgresClient {
     }
 
     static double normalizeCosineSimilarity(double similarity) {
-        return clampUnitInterval((similarity + 1.0) / 2.0);
+        return Math.round(clampUnitInterval((similarity + 1.0) / 2.0) * 1_000_000.0) / 1_000_000.0;
     }
 
     static double normalizeCosineDistance(double distance) {
-        return clampUnitInterval(1.0 - (distance / 2.0));
+        return Math.round(clampUnitInterval(1.0 - (distance / 2.0)) * 1_000_000.0) / 1_000_000.0;
     }
 
     private static double clampUnitInterval(double score) {
