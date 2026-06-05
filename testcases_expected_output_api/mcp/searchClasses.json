@@ -531,103 +531,6 @@
               ]
             },
             {
-              "curie": "CL:0000404",
-              "definition": [],
-              "directAncestor": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/BFO_0000002",
-                  "label": [
-                    "continuant"
-                  ]
-                },
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/BFO_0000004",
-                  "label": [
-                    "independent continuant"
-                  ]
-                },
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/BFO_0000040",
-                  "label": [
-                    "material entity"
-                  ]
-                },
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/CL_0000000",
-                  "label": [
-                    "cell"
-                  ]
-                },
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/CL_0000003",
-                  "label": [
-                    "native cell"
-                  ]
-                },
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/CL_0000211",
-                  "label": [
-                    "electrically active cell"
-                  ]
-                },
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/UBERON_0000061",
-                  "label": [
-                    "anatomical structure"
-                  ]
-                },
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/UBERON_0000465",
-                  "label": [
-                    "material anatomical entity"
-                  ]
-                },
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/UBERON_0001062",
-                  "label": [
-                    "anatomical entity"
-                  ]
-                }
-              ],
-              "directParent": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/CL_0000211",
-                  "label": [
-                    "electrically active cell"
-                  ]
-                }
-              ],
-              "hierarchicalParent": [
-                {
-                  "definedBy": [],
-                  "iri": "http://purl.obolibrary.org/obo/CL_0000211",
-                  "label": [
-                    "electrically active cell"
-                  ]
-                }
-              ],
-              "iri": "http://purl.obolibrary.org/obo/CL_0000404",
-              "isObsolete": false,
-              "label": [
-                "electrically signaling cell"
-              ],
-              "ontologyId": "gitissue502",
-              "type": [
-                "class",
-                "entity"
-              ]
-            },
-            {
               "curie": "CL:0000548",
               "definition": [
                 "A native cell that is part of some Metazoa."
@@ -826,6 +729,23 @@
               "isObsolete": false,
               "label": [
                 "cell"
+              ],
+              "ontologyId": "reified-bnode",
+              "type": [
+                "class",
+                "entity"
+              ]
+            },
+            {
+              "curie": "cell_part",
+              "definition": [],
+              "directAncestor": [],
+              "directParent": [],
+              "hierarchicalParent": [],
+              "iri": "http://example.com/reified-bnode#cell_part",
+              "isObsolete": false,
+              "label": [
+                "cell_part"
               ],
               "ontologyId": "reified-bnode",
               "type": [
