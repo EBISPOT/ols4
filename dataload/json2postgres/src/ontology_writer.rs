@@ -164,6 +164,7 @@ fn extract_string_array(entity: &Map<String, Value>, key: &str) -> Vec<String> {
 fn extract_single_string(entity: &Map<String, Value>, key: &str) -> Option<String> {
     match entity.get(key) {
         Some(Value::String(s)) => Some(s.clone()),
+        Some(Value::Object(obj)) => obj.get("value").and_then(|v| v.as_str()).map(String::from),
         Some(Value::Array(arr)) => arr.first().and_then(|v| match v {
             Value::String(s) => Some(s.clone()),
             Value::Object(obj) => obj.get("value").and_then(|v| v.as_str()).map(String::from),
@@ -351,16 +352,14 @@ impl<'a> OntologyWriter<'a> {
         // Write embedding child nodes
         self.write_embedding_child_nodes(&entity_node_id, entity, entity_type_str, iri)?;
 
-        // Write autosuggest strings (labels + all synonyms) for defining entities only
-        if is_defining {
-            let ontology_id = self.ontology_id.clone();
-            for s in labels.iter().chain(synonyms.iter()) {
-                if s.is_empty() { continue; }
-                if self.autosuggest_seen.insert(s.clone()) {
-                    self.autosuggest_writer.begin_row(2)?;
-                    self.autosuggest_writer.write_text(&ontology_id)?;
-                    self.autosuggest_writer.write_text(s)?;
-                }
+        // Write autosuggest strings (labels + all synonyms) for all entities in this ontology
+        let ontology_id = self.ontology_id.clone();
+        for s in labels.iter().chain(synonyms.iter()) {
+            if s.is_empty() { continue; }
+            if self.autosuggest_seen.insert(s.clone()) {
+                self.autosuggest_writer.begin_row(2)?;
+                self.autosuggest_writer.write_text(&ontology_id)?;
+                self.autosuggest_writer.write_text(s)?;
             }
         }
 
