@@ -18,7 +18,6 @@ import uk.ac.ebi.spot.ols.service.PostgresClient;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.time.OffsetDateTime;
 import java.util.*;
 
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.INFORMATION_SCHEMA_COLUMNS;
@@ -342,17 +341,52 @@ public class OlsSearchClient {
     }
 
     /**
-     * Get last modification time from the database.
-     * Uses the transaction timestamp of the current connection as a proxy.
+     * Get the most recent data load date from the database.
+     * Reads the "loaded" field from each ontology's JSON to find when data was last released,
+     * rather than using the current timestamp (which would reflect deployment time, not data time).
      */
     public String getLastModified() {
         try (Connection conn = postgresClient.getConnection()) {
             DSLContext dsl = postgresClient.dsl(conn);
-            OffsetDateTime ts = dsl.select(DSL.currentOffsetDateTime()).fetchOne(0, OffsetDateTime.class);
-            return ts != null ? ts.toInstant().toString() : null;
+            Field<String> typeField = field("type", String.class);
+            var records = dsl.select(ENTITY_JSON)
+                    .from(OLS_ENTITIES)
+                    .where(typeField.eq("Ontology"))
+                    .fetch();
+
+            String maxLoaded = null;
+            for (Record record : records) {
+                try {
+                    String json = PostgresClient.decompressJson(record.get(ENTITY_JSON));
+                    JsonElement loadedEl = JsonParser.parseString(json).getAsJsonObject().get("loaded");
+                    if (loadedEl != null && !loadedEl.isJsonNull()) {
+                        String loaded = extractLoadedValue(loadedEl);
+                        if (loaded != null && (maxLoaded == null || loaded.compareTo(maxLoaded) > 0)) {
+                            maxLoaded = loaded;
+                        }
+                    }
+                } catch (Exception e) {
+                    logger.warn("Failed to extract loaded date from ontology JSON: {}", e.getMessage());
+                }
+            }
+            return maxLoaded;
         } catch (SQLException e) {
             throw new RuntimeException("getLastModified failed", e);
         }
+    }
+
+    private static String extractLoadedValue(JsonElement el) {
+        if (el.isJsonObject()) {
+            JsonElement value = el.getAsJsonObject().get("value");
+            return value != null && !value.isJsonNull() ? value.getAsString() : null;
+        } else if (el.isJsonArray()) {
+            if (!el.getAsJsonArray().isEmpty()) {
+                return extractLoadedValue(el.getAsJsonArray().get(0));
+            }
+        } else if (el.isJsonPrimitive()) {
+            return el.getAsString();
+        }
+        return null;
     }
 
     /**
