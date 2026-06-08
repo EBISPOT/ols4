@@ -7,7 +7,9 @@ import org.jooq.impl.DSL;
 import org.jooq.impl.SQLDataType;
 
 import java.util.*;
+import java.util.Locale;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContains;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.field;
@@ -80,11 +82,11 @@ public class OlsSearchQuery {
     }
 
     public void addFilter(String propertyName, Collection<String> propertyValues, SearchType searchType) {
-        this.filters.add(new SearchFilter(propertyName, propertyValues, false));
+        this.filters.add(new SearchFilter(propertyName, propertyValues, false, searchType));
     }
 
     public void addExcludeFilter(String propertyName, Collection<String> propertyValues, SearchType searchType) {
-        this.excludeFilters.add(new SearchFilter(propertyName, propertyValues, true));
+        this.excludeFilters.add(new SearchFilter(propertyName, propertyValues, true, searchType));
     }
 
     public void addFacetField(String propertyName) {
@@ -237,6 +239,15 @@ public class OlsSearchQuery {
                 anyValue = anyValue.or(arrayContains(arrayField, val));
             }
             condition = anyValue;
+        } else if (f.searchType == SearchType.CASE_INSENSITIVE_TOKENS) {
+            List<String> lowered = values.stream()
+                .map(v -> v.toLowerCase(Locale.ROOT))
+                .collect(Collectors.toList());
+            if (lowered.size() == 1) {
+                condition = DSL.lower(field(qualifier, column, String.class)).eq(lowered.get(0));
+            } else {
+                condition = DSL.lower(field(qualifier, column, String.class)).in(lowered);
+            }
         } else if (values.size() == 1) {
             condition = field(qualifier, column, String.class).eq(values.iterator().next());
         } else {
@@ -268,11 +279,13 @@ public class OlsSearchQuery {
         String field;
         Collection<String> values;
         boolean negate;
+        SearchType searchType;
 
-        SearchFilter(String field, Collection<String> values, boolean negate) {
+        SearchFilter(String field, Collection<String> values, boolean negate, SearchType searchType) {
             this.field = field;
             this.values = values;
             this.negate = negate;
+            this.searchType = searchType;
         }
     }
 
