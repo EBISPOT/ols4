@@ -38,7 +38,7 @@ public class GlobalExceptionHandler {
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
         if (ex instanceof ResourceNotFoundException) {
             status = HttpStatus.NOT_FOUND;
-        } else if (ex instanceof BadRequestException) {
+        } else if (ex instanceof BadRequestException || ex instanceof IllegalArgumentException) {
             status = HttpStatus.BAD_REQUEST;
         }
 
