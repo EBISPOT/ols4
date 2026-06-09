@@ -1,6 +1,11 @@
 {
   "ontologies": [
     {
+      "id": "coho",
+      "preferredPrefix": "COHO",
+      "ontology_purl": "https://raw.githubusercontent.com/EBISPOT/cohort-ontology/refs/heads/main/coho.owl"
+    },
+    {
       "id": "medgen",
       "ontology_purl": "https://github.com/monarch-initiative/medgen/releases/latest/download/medgen.ttl.gz"
     },
