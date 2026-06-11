@@ -239,10 +239,19 @@ public class OlsSearchQuery {
                 anyValue = anyValue.or(arrayContains(arrayField, val));
             }
             condition = anyValue;
-        } else if (f.searchType == SearchType.CASE_INSENSITIVE_TOKENS || "ontology_id".equals(column)) {
-            // ontology_id is always stored lowercase by rdf2json, so the filter must be
-            // case-insensitive regardless of the SearchType passed by the call site
-            // (v1/select call sites pass WHOLE_FIELD). See GitHub issue #1265.
+        } else if ("ontology_id".equals(column)) {
+            // ontology_id is always stored lowercase by rdf2json. Lowercase only the *input* and
+            // compare against the bare column. This keeps the filter case-insensitive for every
+            // call site regardless of SearchType — v1/select pass WHOLE_FIELD (GitHub issue #1265)
+            // — while staying sargable against idx_ent_onto_iri. Wrapping the column in LOWER()
+            // defeats that index and forces a full table scan (GitHub issue #1276).
+            List<String> lowered = values.stream()
+                .map(v -> v.toLowerCase(Locale.ROOT))
+                .collect(Collectors.toList());
+            Field<String> col = field(qualifier, column, String.class);
+            condition = lowered.size() == 1 ? col.eq(lowered.get(0)) : col.in(lowered);
+        } else if (f.searchType == SearchType.CASE_INSENSITIVE_TOKENS) {
+            // Generic case-insensitive match for columns whose stored values are not normalised.
             List<String> lowered = values.stream()
                 .map(v -> v.toLowerCase(Locale.ROOT))
                 .collect(Collectors.toList());
