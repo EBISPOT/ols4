@@ -204,8 +204,8 @@ process merge_configs {
 
 process rdf2json {
     cache "lenient"
-    memory 256.GB
-    time "4h"
+    memory 500.GB
+    time "10h"
     errorStrategy 'ignore'
 
     input:
