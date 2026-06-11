@@ -131,30 +131,36 @@ fn extract_is_obsolete(entity: &Map<String, Value>) -> bool {
     }
 }
 
-/// Extract string values from entity JSON. Handles both plain strings and localized objects.
+/// Extract the underlying string from a JSON value, unwrapping reification objects.
+///
+/// Plain literals look like `{"type":["literal"],"value":"foo"}` where `value` is a string.
+/// Reified values (synonyms or labels carrying axioms such as a synonym type or versionInfo)
+/// nest another object: `{"type":["reification"],"value":{"type":["literal"],"value":"foo"},
+/// "axioms":[...]}`. Following the `value` key recursively until we reach a string yields "foo"
+/// for both forms. Without this, reified synonyms were silently dropped from the flattened
+/// columns (and therefore from full-text search). See GitHub issue #1276.
+fn value_to_string(v: &Value) -> Option<String> {
+    match v {
+        Value::String(s) => Some(s.clone()),
+        Value::Object(obj) => obj.get("value").and_then(value_to_string),
+        _ => None,
+    }
+}
+
+/// Extract string values from entity JSON. Handles plain strings, localized/reified objects.
 fn extract_localized_strings(entity: &Map<String, Value>, key: &str) -> Vec<String> {
     match entity.get(key) {
-        Some(Value::Array(arr)) => arr.iter().filter_map(|v| {
-            match v {
-                Value::String(s) => Some(s.clone()),
-                Value::Object(obj) => obj.get("value").and_then(|v| v.as_str()).map(String::from),
-                _ => None,
-            }
-        }).collect(),
+        Some(Value::Array(arr)) => arr.iter().filter_map(value_to_string).collect(),
         Some(Value::String(s)) => vec![s.clone()],
         _ => vec![],
     }
 }
 
 /// Extract a string array property from entity JSON.
-/// Handles both plain strings and objects with a "value" key (e.g. reified hierarchicalParent entries).
+/// Handles plain strings and objects with a "value" key (e.g. reified hierarchicalParent entries).
 fn extract_string_array(entity: &Map<String, Value>, key: &str) -> Vec<String> {
     match entity.get(key) {
-        Some(Value::Array(arr)) => arr.iter().filter_map(|v| match v {
-            Value::String(s) => Some(s.clone()),
-            Value::Object(obj) => obj.get("value").and_then(|v| v.as_str()).map(String::from),
-            _ => None,
-        }).collect(),
+        Some(Value::Array(arr)) => arr.iter().filter_map(value_to_string).collect(),
         Some(Value::String(s)) => vec![s.clone()],
         _ => vec![],
     }
@@ -164,12 +170,8 @@ fn extract_string_array(entity: &Map<String, Value>, key: &str) -> Vec<String> {
 fn extract_single_string(entity: &Map<String, Value>, key: &str) -> Option<String> {
     match entity.get(key) {
         Some(Value::String(s)) => Some(s.clone()),
-        Some(Value::Object(obj)) => obj.get("value").and_then(|v| v.as_str()).map(String::from),
-        Some(Value::Array(arr)) => arr.first().and_then(|v| match v {
-            Value::String(s) => Some(s.clone()),
-            Value::Object(obj) => obj.get("value").and_then(|v| v.as_str()).map(String::from),
-            _ => None,
-        }),
+        Some(v @ Value::Object(_)) => value_to_string(v),
+        Some(Value::Array(arr)) => arr.first().and_then(value_to_string),
         _ => None,
     }
 }
@@ -531,5 +533,57 @@ impl<'a> OntologyWriter<'a> {
                 }
             })
             .unwrap_or(false)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use serde_json::json;
+
+    fn entity(value: Value) -> Map<String, Value> {
+        let mut m = Map::new();
+        m.insert("synonym".to_string(), value);
+        m
+    }
+
+    #[test]
+    fn extracts_plain_literal_synonyms() {
+        let e = entity(json!([{"type": ["literal"], "value": "Zika virus"}]));
+        assert_eq!(extract_localized_strings(&e, "synonym"), vec!["Zika virus"]);
+    }
+
+    #[test]
+    fn extracts_reified_synonyms() {
+        // Reified synonym carrying axioms (e.g. synonym type "previous name"); the literal is
+        // nested one level deeper under "value". Regression test for GitHub issue #1276.
+        let e = entity(json!([{
+            "type": ["reification"],
+            "value": {"type": ["literal"], "value": "Monkeypox virus"},
+            "axioms": [{"oboSynonymTypeName": {"type": ["literal"], "value": "previous name"}}]
+        }]));
+        assert_eq!(extract_localized_strings(&e, "synonym"), vec!["Monkeypox virus"]);
+    }
+
+    #[test]
+    fn extracts_mixed_and_bare_string_synonyms() {
+        let e = entity(json!([
+            "bare string",
+            {"type": ["literal"], "value": "plain literal"},
+            {"type": ["reification"], "value": {"type": ["literal"], "value": "reified"}}
+        ]));
+        assert_eq!(
+            extract_localized_strings(&e, "synonym"),
+            vec!["bare string", "plain literal", "reified"]
+        );
+    }
+
+    #[test]
+    fn single_string_unwraps_reification() {
+        let e = entity(json!({
+            "type": ["reification"],
+            "value": {"type": ["literal"], "value": "deep"}
+        }));
+        assert_eq!(extract_single_string(&e, "synonym").as_deref(), Some("deep"));
     }
 }
