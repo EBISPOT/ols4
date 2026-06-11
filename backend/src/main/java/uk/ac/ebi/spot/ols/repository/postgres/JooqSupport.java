@@ -30,7 +30,11 @@ public final class JooqSupport {
     }
 
     public static Condition arrayContains(Field<String[]> arrayField, String value) {
-        return DSL.condition("{0} = ANY({1})", DSL.val(value), arrayField);
+        // Use array containment (@>) rather than `value = ANY(array)`: the latter cannot use a GIN
+        // index and forces a sequential scan, while `array @> ARRAY[value]` is semantically
+        // identical and GIN-accelerated. The ::text[] cast keeps the operand types aligned when
+        // the value is supplied as a bind parameter. See GitHub issue #1276.
+        return DSL.condition("{0} @> ARRAY[{1}]::text[]", arrayField, DSL.val(value));
     }
 
     public static Condition arrayContains(Field<String[]> arrayField, Field<String> valueField) {
