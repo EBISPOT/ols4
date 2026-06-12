@@ -38,7 +38,17 @@ public final class JooqSupport {
     }
 
     public static Condition arrayContains(Field<String[]> arrayField, Field<String> valueField) {
+        // `value = ANY(array)` form: only useful when the *value* side is the scanned column
+        // (e.g. e2.iri = ANY(e1.direct_parents) in a nested loop, served by a btree index on
+        // e2.iri). When the *array* side is the scanned column, use arrayContainsField instead.
         return DSL.condition("{0} = ANY({1})", valueField, arrayField);
+    }
+
+    public static Condition arrayContainsField(Field<String[]> arrayField, Field<String> valueField) {
+        // GIN-accelerated containment for joins where the array column is on the scanned side
+        // (e.g. e2.direct_parents @> ARRAY[e1.iri]). The `= ANY` form cannot use the GIN index
+        // and scans every row of the ontology per lookup. See GitHub issue #1276.
+        return DSL.condition("{0} @> ARRAY[{1}]", arrayField, valueField);
     }
 
     public static Field<String> castAsText(Field<?> field) {

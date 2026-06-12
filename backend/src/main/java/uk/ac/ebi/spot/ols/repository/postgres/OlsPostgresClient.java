@@ -31,6 +31,7 @@ import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.INFORMATION_SCH
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_EMBEDDING_NODES;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_ENTITIES;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContains;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContainsField;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.castAsText;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.field;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.unnest;
@@ -229,7 +230,7 @@ public class OlsPostgresClient {
             Field<byte[]> e2Json = field("e2", "_json", byte[].class);
 
             Condition where = e1Id.eq(id)
-                    .and(arrayContains(e2Sources, e1Iri))
+                    .and(arrayContainsField(e2Sources, e1Iri))
                     .and(e2OntologyId.eq(e1OntologyId))
                     .and(buildNodePropCondition("e2", nodeProps));
 
@@ -246,14 +247,14 @@ public class OlsPostgresClient {
 
             long count = Optional.ofNullable(dsl.selectCount()
                             .from(e1)
-                            .join(e2).on(arrayContains(e2Sources, e1Iri).and(e2OntologyId.eq(e1OntologyId)))
+                            .join(e2).on(arrayContainsField(e2Sources, e1Iri).and(e2OntologyId.eq(e1OntologyId)))
                             .where(where)
                             .fetchOne(0, Long.class))
                     .orElse(0L);
 
             var records = dsl.select(e2Json)
                     .from(e1)
-                    .join(e2).on(arrayContains(e2Sources, e1Iri).and(e2OntologyId.eq(e1OntologyId)))
+                    .join(e2).on(arrayContainsField(e2Sources, e1Iri).and(e2OntologyId.eq(e1OntologyId)))
                     .where(where)
                     .orderBy(e2Iri.asc())
                     .offset(pageable.getOffset())
