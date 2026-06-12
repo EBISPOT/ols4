@@ -204,8 +204,8 @@ process merge_configs {
 
 process rdf2json {
     cache "lenient"
-    memory 500.GB
-    time "10h"
+    memory 256.GB
+    time "4h"
     errorStrategy 'ignore'
 
     input:
@@ -353,9 +353,9 @@ process create_postgres {
 
     input:
     path(postgres_tsvs)
-    path(embedding_parquets)
+    path(embedding_parquets, stageAs: 'embeddings_in/*')
     val(filter_properties)
-    path(pca_jsons)
+    path(pca_jsons, stageAs: 'pca_in/*')
     path(text_tagger_db)
 
     output:
@@ -390,9 +390,9 @@ process populate_external_postgres {
 
     input:
     path(postgres_tsvs)
-    path(embedding_parquets)
+    path(embedding_parquets, stageAs: 'embeddings_in/*')
     val(filter_properties)
-    path(pca_jsons)
+    path(pca_jsons, stageAs: 'pca_in/*')
     path(text_tagger_db)
 
     output:

@@ -1942,7 +1942,7 @@
       "id": "metpo",
       "preferredPrefix": "METPO",
       "title": "Microbial Ecophysiological Trait and Phenotype Ontology (METPO)",
-      "description": "An ontology of ecophysiological traits of microbes, including preferred and tolerated growth conditions (temperature, pH, salinity, oxygen, etc.), harmonizing terminology across major trait databases (BacDive, BactoTraits, Madin bacteria_archaea_traits, MetaTraits). Developed for use in KG-Microbe.",
+      "description": "An ontology of ecophysiological traits of microbes, including preferred and tolerated growth conditions (temperature, pH, salinity, oxygen, etc.). It harmonizes terminology across four microbial trait databases: BacDive (https://bacdive.dsmz.de/), BactoTraits (https://ordar.otelo.univ-lorraine.fr/files/ORDAR-53/BactoTraits_databaseV2_Jun2022.csv), the Madin et al. bacteria and archaea traits compilation (https://github.com/jmadin/bacteria_archaea_traits), and MetaTraits (https://metatraits.embl.de/). Developed for use in KG-Microbe.",
       "uri": "https://w3id.org/metpo/metpo.owl",
       "ontology_purl": "https://w3id.org/metpo/metpo.owl",
       "base_uri": [
@@ -1964,7 +1964,6 @@
         "orcid": "0000-0001-9076-6066"
       },
       "license": "https://creativecommons.org/licenses/by/4.0/",
-      "is_foundary": false,
       "reasoner": "EL",
       "oboSlims": false,
       "label_property": "http://www.w3.org/2000/01/rdf-schema#label",
