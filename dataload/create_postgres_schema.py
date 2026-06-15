@@ -118,6 +118,17 @@ CREATE INDEX idx_ent_synonym ON ols_entities USING gin (synonym);
 CREATE INDEX idx_ent_related_to ON ols_entities USING gin (related_to);
 CREATE INDEX idx_ent_fts ON ols_entities USING gin (ts_search);
 CREATE INDEX idx_ent_trgm_suggest ON ols_entities USING gin (label_for_suggest gin_trgm_ops);
+-- Composite indexes ending in id: paginated listings ORDER BY id LIMIT n. Without an index
+-- providing (filter equality + id order) the planner walks the whole primary key expecting an
+-- early match, which scans the entire table when matches are rare (e.g. tree roots). These also
+-- enable index-only-scan counts since COPY FREEZE leaves all pages visible.
+CREATE INDEX idx_ent_st_obs_id ON ols_entities (search_type, is_obsolete, id);
+CREATE INDEX idx_ent_onto_st_obs_id ON ols_entities (ontology_id, search_type, is_obsolete, id);
+-- Expression indexes for case-insensitive dynamic filters (?iri=, ?shortForm=, ?curie=),
+-- which compare lower(column) = lower(value) and otherwise force a full table scan.
+CREATE INDEX idx_ent_lower_iri ON ols_entities (lower(iri));
+CREATE INDEX idx_ent_lower_short_form ON ols_entities (lower(short_form));
+CREATE INDEX idx_ent_lower_curie ON ols_entities (lower(curie));
 """
 
 EMBEDDING_NODE_INDEX_SQL = """\

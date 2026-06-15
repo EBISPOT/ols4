@@ -20,6 +20,7 @@ import uk.ac.ebi.spot.ols.service.PostgresClient;
 import static uk.ac.ebi.ols.shared.DefinedFields.*;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_ENTITIES;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContains;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContainsField;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.field;
 
 import java.sql.Connection;
@@ -173,7 +174,7 @@ public class V1GraphRepository {
                                             DSL.inline("child").as("rel_type"),
                                             field("e1", "iri", String.class).as("source_iri"))
                                     .from(e1)
-                                    .join(e2).on(arrayContains(field("e2", "direct_parents", String[].class), field("e1", "iri", String.class))
+                                    .join(e2).on(arrayContainsField(field("e2", "direct_parents", String[].class), field("e1", "iri", String.class))
                                             .and(field("e2", "ontology_id", String.class).eq(field("e1", "ontology_id", String.class))))
                                     .where(field("e1", "id", String.class).eq(entityId)))
                     .unionAll(
@@ -225,7 +226,7 @@ public class V1GraphRepository {
                             field("e2", "iri", String.class).as("node_iri"),
                             field("e1", "iri", String.class).as("target_iri"))
                     .from(e1)
-                    .join(e2).on(arrayContains(field("e2", "related_to", String[].class), field("e1", "iri", String.class))
+                    .join(e2).on(arrayContainsField(field("e2", "related_to", String[].class), field("e1", "iri", String.class))
                             .and(field("e2", "ontology_id", String.class).eq(field("e1", "ontology_id", String.class))))
                     .where(field("e1", "id", String.class).eq(entityId))
                     .limit(200)
