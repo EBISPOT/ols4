@@ -30,6 +30,7 @@ public class OlsSearchQuery {
     List<SearchFilter> filters = new ArrayList<>();
     List<SearchFilter> excludeFilters = new ArrayList<>();
     List<String> facetFields = new ArrayList<>();
+    List<String> searchFields = null;
 
     enum ColumnType { TEXT, BOOLEAN, TEXT_ARRAY }
 
@@ -93,6 +94,10 @@ public class OlsSearchQuery {
         this.facetFields.add(propertyName);
     }
 
+    public void setSearchFields(Collection<String> fields) {
+        this.searchFields = (fields != null && !fields.isEmpty()) ? new ArrayList<>(fields) : null;
+    }
+
     /**
      * Resolve an OLS field name to a PostgreSQL column name.
      * Handles known fields via COLUMN_MAP and dynamic filter properties
@@ -133,7 +138,11 @@ public class OlsSearchQuery {
         Condition condition = DSL.trueCondition();
 
         if (searchText != null && !searchText.isBlank()) {
-            condition = condition.and(matchesTsQuery(field(qualifier, "ts_search", Object.class), buildTsQuery()));
+            if (exactMatch && searchFields != null && !searchFields.isEmpty()) {
+                condition = condition.and(buildExactFieldCondition(qualifier));
+            } else {
+                condition = condition.and(matchesTsQuery(field(qualifier, "ts_search", Object.class), buildTsQuery()));
+            }
         }
 
         for (SearchFilter f : filters) {
@@ -175,6 +184,37 @@ public class OlsSearchQuery {
             return List.of(rank.desc(), field(qualifier, "id", String.class).asc());
         }
         return List.of(field(qualifier, "id", String.class).asc());
+    }
+
+    /**
+     * For exact-match queries with explicit queryFields, restrict the match to those specific
+     * columns rather than the combined ts_search tsvector.
+     *
+     * Array columns use GIN-compatible @> containment (idx_ent_synonym, idx_ent_label) so the
+     * planner can do a fast bitmap index scan instead of a full table scan. This is case-sensitive,
+     * which is appropriate for exact=true since ontology labels have consistent casing.
+     * Scalar columns use lower()=lower() for case-insensitive equality.
+     * Falls back to ts_search if none of the specified fields map to a known column.
+     */
+    private Condition buildExactFieldCondition(String qualifier) {
+        String lowerSearch = searchText.toLowerCase(Locale.ROOT);
+        Condition anyField = DSL.falseCondition();
+        boolean anyValid = false;
+        for (String qf : searchFields) {
+            if (!COLUMN_MAP.containsKey(qf)) continue;
+            String col = resolveColumn(qf);
+            ColumnType ct = resolveColumnType(qf);
+            anyValid = true;
+            if (ct == ColumnType.TEXT_ARRAY) {
+                anyField = anyField.or(arrayContains(field(qualifier, col, String[].class), searchText));
+            } else {
+                anyField = anyField.or(DSL.lower(field(qualifier, col, String.class)).eq(lowerSearch));
+            }
+        }
+        if (!anyValid) {
+            return matchesTsQuery(field(qualifier, "ts_search", Object.class), buildTsQuery());
+        }
+        return anyField;
     }
 
     /**
