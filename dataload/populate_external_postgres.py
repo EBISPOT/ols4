@@ -190,6 +190,15 @@ def upload_artifacts(artifacts_path: Path, sections: dict) -> None:
     else:
         print("  text_tagger_db.bin.gz not found, skipping")
 
+    # Grant read access on the large object so the API can fetch it
+    run_psql(
+        "DO $$ DECLARE v OID; BEGIN "
+        "SELECT tagger_db_oid INTO v FROM ols_text_tagger; "
+        "EXECUTE 'GRANT SELECT ON LARGE OBJECT ' || v || ' TO PUBLIC'; "
+        "END $$;\n",
+        "text_tagger grant"
+    )
+
 
 # ---------------------------------------------------------------------------
 # Main
