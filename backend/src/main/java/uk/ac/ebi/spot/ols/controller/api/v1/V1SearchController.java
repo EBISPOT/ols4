@@ -3,12 +3,17 @@ package uk.ac.ebi.spot.ols.controller.api.v1;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import uk.ac.ebi.ols.shared.DefinedFields;
 
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -119,6 +124,17 @@ public class V1SearchController {
         OlsSearchQuery searchQuery = new OlsSearchQuery();
         searchQuery.setSearchText(query);
         searchQuery.setExactMatch(exact);
+
+        if (queryFields != null && !queryFields.isEmpty()) {
+            List<String> parsedFields = queryFields.stream()
+                    .flatMap(f -> Arrays.stream(f.split("[,\\s]+")))
+                    .map(String::trim)
+                    .filter(f -> !f.isEmpty())
+                    .map(V1SearchController::translateV1QueryFieldName)
+                    .distinct()
+                    .collect(Collectors.toList());
+            searchQuery.setSearchFields(parsedFields);
+        }
 
         if (ontologies != null && !ontologies.isEmpty()) {
             for (String ontologyId : ontologies)
@@ -296,5 +312,23 @@ public class V1SearchController {
         response.setCharacterEncoding(StandardCharsets.UTF_8.name());
         response.getOutputStream().write(gson.toJson(responseObj).getBytes(StandardCharsets.UTF_8));
         response.flushBuffer();
+    }
+
+    // Built from DefinedFields enum (ols3Text → text) plus a few non-enum V1 aliases.
+    private static final Map<String, String> V1_QUERY_FIELD_TRANSLATIONS;
+    static {
+        Map<String, String> map = new HashMap<>();
+        for (DefinedFields f : DefinedFields.values()) {
+            if (!f.getOls3Text().isEmpty()) {
+                map.put(f.getOls3Text(), f.getText());
+            }
+        }
+        map.put("short_form", "shortForm");
+        map.put("obo_id", "oboId");
+        V1_QUERY_FIELD_TRANSLATIONS = Collections.unmodifiableMap(map);
+    }
+
+    private static String translateV1QueryFieldName(String v1Field) {
+        return V1_QUERY_FIELD_TRANSLATIONS.getOrDefault(v1Field, v1Field);
     }
 }

@@ -114,6 +114,7 @@ CREATE INDEX idx_ent_curie ON ols_entities (curie);
 CREATE INDEX idx_ent_is_def ON ols_entities (is_defining_ontology) WHERE is_defining_ontology = true;
 CREATE INDEX idx_ent_pref_root ON ols_entities (is_preferred_root) WHERE is_preferred_root = true;
 CREATE INDEX idx_ent_subset ON ols_entities USING gin (subset);
+CREATE INDEX idx_ent_label ON ols_entities USING gin (label);
 CREATE INDEX idx_ent_synonym ON ols_entities USING gin (synonym);
 CREATE INDEX idx_ent_related_to ON ols_entities USING gin (related_to);
 CREATE INDEX idx_ent_fts ON ols_entities USING gin (ts_search);
