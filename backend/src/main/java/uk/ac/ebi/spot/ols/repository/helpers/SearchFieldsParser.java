@@ -23,9 +23,12 @@ public class SearchFieldsParser {
             query.addSearchField(SYNONYM.getText(), 1, SearchType.WHITESPACE_EDGES);
             query.addSearchField("searchableAnnotationValues", 1, SearchType.WHITESPACE_EDGES);
         } else {
+            List<String> fieldNames = new ArrayList<>();
             for (ParsedField field : parseFieldsString(searchFields)) {
                 query.addSearchField(field.property, field.weight, SearchType.CASE_INSENSITIVE_TOKENS);
+                fieldNames.add(field.property);
             }
+            query.setSearchFields(fieldNames);
         }
     }
 
