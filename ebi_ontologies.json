@@ -1937,6 +1937,50 @@
       "ontology_purl": "http://purl.obolibrary.org/obo/vsao.owl",
       "is_obsolete": false,
       "is_deprecated": true
+    },
+    {
+      "id": "metpo",
+      "preferredPrefix": "METPO",
+      "title": "Microbial Ecophysiological Trait and Phenotype Ontology (METPO)",
+      "description": "An ontology of ecophysiological traits of microbes, including preferred and tolerated growth conditions (temperature, pH, salinity, oxygen, etc.). It harmonizes terminology across four microbial trait databases: BacDive (https://bacdive.dsmz.de/), BactoTraits (https://ordar.otelo.univ-lorraine.fr/files/ORDAR-53/BactoTraits_databaseV2_Jun2022.csv), the Madin et al. bacteria and archaea traits compilation (https://github.com/jmadin/bacteria_archaea_traits), and MetaTraits (https://metatraits.embl.de/). Developed for use in KG-Microbe.",
+      "uri": "https://w3id.org/metpo/metpo.owl",
+      "ontology_purl": "https://w3id.org/metpo/metpo.owl",
+      "base_uri": [
+        "https://w3id.org/metpo/"
+      ],
+      "homepage": "https://github.com/berkeleybop/metpo",
+      "repository": "https://github.com/berkeleybop/metpo",
+      "tracker": "https://github.com/berkeleybop/metpo/issues",
+      "creator": [
+        "Mark Andrew Miller",
+        "Marcin P. Joachimiak",
+        "Chris Mungall",
+        "Sujay Patil"
+      ],
+      "contact": {
+        "label": "Mark Andrew Miller",
+        "email": "MAM@lbl.gov",
+        "github": "turbomam",
+        "orcid": "0000-0001-9076-6066"
+      },
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "reasoner": "EL",
+      "oboSlims": false,
+      "label_property": "http://www.w3.org/2000/01/rdf-schema#label",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym"
+      ],
+      "preferred_root_term": [
+        "https://w3id.org/metpo/1000630",
+        "https://w3id.org/metpo/1000186",
+        "https://w3id.org/metpo/1000188"
+      ]
     }
   ]
 }
