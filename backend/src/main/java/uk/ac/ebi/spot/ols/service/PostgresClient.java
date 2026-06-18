@@ -42,6 +42,12 @@ public class PostgresClient {
     @org.springframework.beans.factory.annotation.Value("${ols.postgres.schema:}")
     private String schema;
 
+    @org.springframework.beans.factory.annotation.Value("${ols.postgres.max-pool-size:30}")
+    private int maxPoolSize;
+
+    @org.springframework.beans.factory.annotation.Value("${ols.postgres.min-idle:5}")
+    private int minIdle;
+
     private HikariDataSource dataSource;
     private static final Logger logger = LoggerFactory.getLogger(PostgresClient.class);
 
@@ -87,13 +93,14 @@ public class PostgresClient {
         if (password != null && !password.isEmpty()) {
             config.setPassword(password);
         }
-        config.setMaximumPoolSize(10);
-        config.setMinimumIdle(2);
+        config.setMaximumPoolSize(maxPoolSize);
+        config.setMinimumIdle(minIdle);
         config.setConnectionTimeout(30000);
         config.setIdleTimeout(600000);
         config.setMaxLifetime(1800000);
         dataSource = new HikariDataSource(config);
-        logger.info("PostgreSQL connection pool initialized: {}:{}/{}", host, port, database);
+        logger.info("PostgreSQL connection pool initialized: {}:{}/{} (maxPoolSize={}, minIdle={})",
+                host, port, database, maxPoolSize, minIdle);
     }
 
     @PreDestroy
