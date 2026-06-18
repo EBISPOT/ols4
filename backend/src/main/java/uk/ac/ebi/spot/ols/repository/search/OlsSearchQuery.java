@@ -150,6 +150,7 @@ public class OlsSearchQuery {
                 continue;
             }
             if (!isFilterAvailable(availableFilterColumns, f.field)) {
+                condition = condition.and(DSL.falseCondition());
                 continue;
             }
             condition = condition.and(buildFilterCondition(qualifier, f, false));
