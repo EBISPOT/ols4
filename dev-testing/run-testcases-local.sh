@@ -3,7 +3,7 @@
 #
 # Usage: ./dev-testing/run-testcases-local.sh
 #
-# Prerequisites: Java 17+, Maven, Rust/Cargo
+# Prerequisites: Rust/Cargo
 
 set -Eeuo pipefail
 
@@ -18,21 +18,13 @@ DATALOAD="$OLS4_HOME/dataload"
 RUST_BINS="$DATALOAD/target/release"
 
 # ─── Prereq checks ────────────────────────────────────────────────────────────
-command -v java  &>/dev/null || err "java not found on PATH"
-command -v mvn   &>/dev/null || err "mvn not found on PATH"
 command -v cargo &>/dev/null || err "cargo not found on PATH"
 
 # ─── Build ────────────────────────────────────────────────────────────────────
-log "Building ols-shared..."
-mvn -B -ntp install -f "$OLS4_HOME/ols-shared/pom.xml" -DskipTests -q
-
-log "Building rdf2json..."
-mvn -B -ntp package -f "$DATALOAD/rdf2json/pom.xml" -DskipTests -q
-
-log "Building Rust workspace..."
+log "Building Rust workspace (rdf2json, linker, json2postgres)..."
 (cd "$DATALOAD" && cargo build --release -q)
 
-for bin in ols_create_manifest ols_link ols_json2postgres; do
+for bin in rdf2json ols_create_manifest ols_link ols_json2postgres; do
     [ -f "$RUST_BINS/$bin" ] || err "Rust binary missing after build: $RUST_BINS/$bin"
 done
 
