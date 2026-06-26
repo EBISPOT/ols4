@@ -12,7 +12,7 @@ Start with a config JSON file that lists the ontologies you want to load. You ca
 
 Use rdf2json to download all the OWL files, resolve imports, and export JSON files:
 
-     java -jar rdf2json/target/rdf2json-1.0-SNAPSHOT.jar --config file://$(pwd)/foundry.json --output foundry_out.json
+     rdf2json --config file://$(pwd)/foundry.json --output foundry_out.json
      
 Now (after about 15 min) you should have a huge file called `foundry_out.json` that contains not only the original config for each ontology loaded from `foundry.json`, but also the ontologies themselves represented in an intermediate JSON format! (Note: the intermediate JSON format is a non-standardised application format totally specific to this tool and is subject to change.)
 

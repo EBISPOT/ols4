@@ -216,7 +216,6 @@ process rdf2json {
     tuple val(ontology_id), path("${ontology_id}.json"), path("${ontology_id}.status.json")
 
     script:
-    def mem_mb = (task.memory.toMega() * 0.9).intValue()
     def extra_args = params.dataload_args ?: ''
     def ols_home = System.getenv('OLS_HOME')
     def base_path_arg = ols_home ? "--basePath ${ols_home}" : ''
@@ -230,10 +229,7 @@ process rdf2json {
         MERGE_ARG="--mergeOutputWith ${last_run_dir}/${ontology_id}.json"
     fi
 
-    java -Xms${mem_mb}m -Xmx${mem_mb}m \
-        -DentityExpansionLimit=0 -DtotalEntitySizeLimit=0 \
-        -Djdk.xml.totalEntitySizeLimit=0 -Djdk.xml.entityExpansionLimit=0 \
-        -jar /opt/ols/dataload/rdf2json/target/rdf2json-1.0-SNAPSHOT.jar \
+    rdf2json \
         --config ${config_path} \
         --ontologyIds ${ontology_id} \
         --output ${ontology_id}.json \
@@ -241,7 +237,7 @@ process rdf2json {
         ${extra_args} \
         \$MERGE_ARG
 
-    if [ -n "${last_run_dir}" ] && grep -qE '"status":"(SUCCESS|FALLBACK)"' "${ontology_id}.status.json" 2>/dev/null; then
+    if [ -n "${last_run_dir}" ] && grep -qE '"status": *"(SUCCESS|FALLBACK)"' "${ontology_id}.status.json" 2>/dev/null; then
         cp "${ontology_id}.json" "${last_run_dir}/${ontology_id}.json"
     fi
     """
