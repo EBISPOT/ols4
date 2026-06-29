@@ -139,7 +139,7 @@ public class OlsSearchQuery {
 
         if (searchText != null && !searchText.isBlank()) {
             if (exactMatch && searchFields != null && !searchFields.isEmpty()) {
-                condition = condition.and(buildExactFieldCondition(qualifier));
+                condition = condition.and(buildExactFieldCondition(qualifier, availableFilterColumns));
             } else {
                 condition = condition.and(matchesTsQuery(field(qualifier, "ts_search", Object.class), buildTsQuery()));
             }
@@ -188,32 +188,40 @@ public class OlsSearchQuery {
     }
 
     /**
-     * For exact-match queries with explicit queryFields, restrict the match to those specific
-     * columns rather than the combined ts_search tsvector.
+     * For exact-match queries with explicit searchFields, restrict the match to those specific
+     * indexed columns.
      *
-     * Array columns use GIN-compatible @> containment (idx_ent_synonym, idx_ent_label) so the
-     * planner can do a fast bitmap index scan instead of a full table scan. This is case-sensitive,
-     * which is appropriate for exact=true since ontology labels have consistent casing.
+     * Checks known columns (COLUMN_MAP) first, then dynamically-indexed filter_ columns so that
+     * ontology property URIs work when the property has been declared as filterProperty in the
+     * ontology config (e.g. owl:versionInfo, TAXRANK_1000000).
+     *
+     * If none of the requested searchFields resolve to an indexed column, returns falseCondition
+     * (zero results) rather than falling back to ts_search. Falling back to ts_search would give
+     * results from completely unrelated fields, which is misleading — the caller explicitly asked
+     * for a specific field and should get zero results if that field is not indexed.
+     *
+     * Array columns use GIN @> containment for fast bitmap index scans.
      * Scalar columns use lower()=lower() for case-insensitive equality.
-     * Falls back to ts_search if none of the specified fields map to a known column.
      */
-    private Condition buildExactFieldCondition(String qualifier) {
+    private Condition buildExactFieldCondition(String qualifier, Set<String> availableFilterColumns) {
         String lowerSearch = searchText.toLowerCase(Locale.ROOT);
         Condition anyField = DSL.falseCondition();
-        boolean anyValid = false;
         for (String qf : searchFields) {
-            if (!COLUMN_MAP.containsKey(qf)) continue;
-            String col = resolveColumn(qf);
-            ColumnType ct = resolveColumnType(qf);
-            anyValid = true;
+            boolean knownCol = COLUMN_MAP.containsKey(qf);
+            String col;
+            try {
+                col = resolveColumn(qf);
+            } catch (IllegalArgumentException e) {
+                continue;
+            }
+            boolean filterCol = !knownCol && availableFilterColumns != null && availableFilterColumns.contains(col);
+            if (!knownCol && !filterCol) continue;
+            ColumnType ct = knownCol ? resolveColumnType(qf) : ColumnType.TEXT_ARRAY;
             if (ct == ColumnType.TEXT_ARRAY) {
                 anyField = anyField.or(arrayContains(field(qualifier, col, String[].class), searchText));
             } else {
                 anyField = anyField.or(DSL.lower(field(qualifier, col, String.class)).eq(lowerSearch));
             }
-        }
-        if (!anyValid) {
-            return matchesTsQuery(field(qualifier, "ts_search", Object.class), buildTsQuery());
         }
         return anyField;
     }
