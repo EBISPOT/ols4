@@ -42,6 +42,14 @@
       "ontology_purl": "https://github.com/EVORA-project/ictv-ontology/releases/latest/download/ictv_all_versions.owl.ttl.gz",
       "preferred_root_term": [
         "http://purl.obolibrary.org/obo/NCBITaxon_10239"
+      ],
+      "filterProperty": [
+        "http://purl.org/dc/terms/identifier",
+        "http://www.w3.org/2002/07/owl#versionInfo",
+        "http://purl.obolibrary.org/obo/TAXRANK_1000000",
+        "http://purl.obolibrary.org/obo/IAO_0100001",
+        "http://www.w3.org/ns/prov#wasRevisionOf",
+        "http://www.w3.org/2004/02/skos/core#narrowMatch"
       ]
     },
     {
