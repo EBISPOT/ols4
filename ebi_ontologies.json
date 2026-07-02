@@ -1705,11 +1705,21 @@
       "mailing_list": "gensc-cig@googlegroups.com",
       "label_property": [
         "http://www.w3.org/2000/01/rdf-schema#label",
-        "http://purl.org/dc/terms/title",
-        "http://schema.org/keywords"
+        "http://purl.org/dc/terms/title"
       ],
       "definition_property": [
         "http://www.w3.org/2004/02/skos/core#definition"
+      ],
+      "synonym_property": [
+        "http://www.w3.org/2004/02/skos/core#altLabel",
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"
+      ],
+      "preferred_root_term": [
+        "https://w3id.org/mixs/Checklist",
+        "https://w3id.org/mixs/Extension",
+        "https://w3id.org/linkml/EnumDefinition",
+        "https://w3id.org/linkml/PermissibleValue"
       ],
       "base_uri": [
         "https://w3id.org/mixs/"
