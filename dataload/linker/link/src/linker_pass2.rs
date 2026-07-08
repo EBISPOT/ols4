@@ -1,7 +1,10 @@
 use std::collections::BTreeSet;
 use std::collections::HashMap;
+use std::env;
+use std::fs;
 use std::fs::File;
 use std::io::{BufReader, BufWriter, Read, Write};
+use std::path::Path;
 
 use ols_shared::streaming::skip_value;
 use ols_shared::DefinedFields;
@@ -671,6 +674,7 @@ fn get_processed_curie_value(pass1_result: &LinkerPass1Result, entity_iri: Optio
 
 const EUROPE_PMC_ORCID_LOOKUP_BASE_URL: &str =
     "https://www.ebi.ac.uk/europepmc/thor/api/orcid/findorcid/";
+const ORCID_NAME_FIXTURE_ENV_VAR: &str = "OLS_ORCID_NAME_FIXTURE";
 
 fn europe_pmc_orcid_lookup_url(orcid_uri: &str) -> String {
     let orcid_id = orcid_uri
@@ -703,6 +707,14 @@ fn extract_orcid_name_from_europe_pmc_profile(json: &Value) -> Option<String> {
 /// Fetch a person's display name from the Europe PMC ORCID lookup endpoint.
 /// Returns "Given Family" on success, None on any error or missing data.
 fn fetch_orcid_name(orcid_uri: &str) -> Option<String> {
+    if let Some(fixture_path) = env::var_os(ORCID_NAME_FIXTURE_ENV_VAR) {
+        return fetch_orcid_name_from_fixture_path(Path::new(&fixture_path), orcid_uri);
+    }
+
+    fetch_orcid_name_from_europe_pmc(orcid_uri)
+}
+
+fn fetch_orcid_name_from_europe_pmc(orcid_uri: &str) -> Option<String> {
     let url = europe_pmc_orcid_lookup_url(orcid_uri);
 
     let response = ureq::get(&url)
@@ -713,4 +725,54 @@ fn fetch_orcid_name(orcid_uri: &str) -> Option<String> {
     let json: Value = response.into_json().ok()?;
 
     extract_orcid_name_from_europe_pmc_profile(&json)
+}
+
+fn fetch_orcid_name_from_fixture_path(fixture_path: &Path, orcid_uri: &str) -> Option<String> {
+    let fixture = fs::read_to_string(fixture_path).ok()?;
+    let names: HashMap<String, String> = serde_json::from_str(&fixture).ok()?;
+    let orcid_id = orcid_uri
+        .trim_start_matches("https://orcid.org/")
+        .trim_end_matches('/');
+
+    names.get(orcid_uri)
+        .or_else(|| names.get(orcid_id))
+        .cloned()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::fs;
+
+    #[test]
+    fn fetches_orcid_name_from_local_fixture_without_network() {
+        let fixture_path = std::env::temp_dir().join(format!(
+            "ols-orcid-fixture-{}.json",
+            std::process::id()
+        ));
+        fs::write(
+            &fixture_path,
+            r#"{
+                "https://orcid.org/0000-0002-6601-2165": "Christopher Mungall"
+            }"#,
+        )
+        .unwrap();
+
+        assert_eq!(
+            fetch_orcid_name_from_fixture_path(
+                &fixture_path,
+                "https://orcid.org/0000-0002-6601-2165"
+            ),
+            Some("Christopher Mungall".to_string())
+        );
+        assert_eq!(
+            fetch_orcid_name_from_fixture_path(
+                &fixture_path,
+                "https://orcid.org/0000-0000-0000-0000"
+            ),
+            None
+        );
+
+        fs::remove_file(fixture_path).unwrap();
+    }
 }

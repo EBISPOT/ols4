@@ -5,6 +5,8 @@ TEST_CONFIGS=$(find testcases | grep json)
 rm -rf testcases_output/*
 mkdir testcases_output
 
+export OLS_ORCID_NAME_FIXTURE="${OLS_ORCID_NAME_FIXTURE:-$(pwd)/dev-testing/orcid-name-fixture.json}"
+
 for f in $TEST_CONFIGS
 do
 
@@ -19,7 +21,6 @@ mkdir -p ./testcases_output/$TEST_FOLDER
 done
 
 diff --recursive --exclude=.gitkeep testcases_output testcases_expected_output/
-
 
 
 
