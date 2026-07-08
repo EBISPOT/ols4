@@ -69,7 +69,28 @@ jobs:
         run: |
           docker pull ghcr.io/ebispot/${{ matrix.image }}:${{ steps.tag.outputs.tag }}
 
-      - name: Run Trivy vulnerability scanner
+      - name: Generate full Trivy vulnerability report
+        uses: aquasecurity/trivy-action@master
+        env:
+          TMPDIR: ${{ runner.temp }}
+        with:
+          image-ref: ghcr.io/ebispot/${{ matrix.image }}:${{ steps.tag.outputs.tag }}
+          format: 'json'
+          output: 'trivy-full-${{ matrix.image }}.json'
+          scanners: 'vuln'
+          vuln-type: 'os,library'
+          timeout: '10m'
+
+      - name: Upload full Trivy vulnerability report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: 'trivy-full-${{ matrix.image }}'
+          path: 'trivy-full-${{ matrix.image }}.json'
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Generate Code Scanning Trivy results
         uses: aquasecurity/trivy-action@master
         env:
           TMPDIR: ${{ runner.temp }}
@@ -77,7 +98,9 @@ jobs:
           image-ref: ghcr.io/ebispot/${{ matrix.image }}:${{ steps.tag.outputs.tag }}
           format: 'sarif'
           output: 'trivy-results-${{ matrix.image }}.sarif'
-          severity: 'CRITICAL,HIGH,MEDIUM'
+          severity: 'CRITICAL,HIGH'
+          limit-severities-for-sarif: true
+          ignore-unfixed: true
           scanners: 'vuln'
           vuln-type: 'os,library'
           timeout: '10m'
