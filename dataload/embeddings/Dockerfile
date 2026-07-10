@@ -5,6 +5,15 @@ COPY ols_semsim /opt/ols_semsim/
 WORKDIR /opt
 RUN cargo build --release
 
+FROM debian:bookworm-slim AS duckdb-builder
+
+RUN apt-get update -y && \
+    apt-get install -y --no-install-recommends bash ca-certificates curl && \
+    rm -rf /var/lib/apt/lists/*
+RUN curl -fsSL https://install.duckdb.org -o /tmp/install-duckdb.sh && \
+    bash /tmp/install-duckdb.sh && \
+    rm /tmp/install-duckdb.sh
+
 FROM python:3.13-slim-bookworm AS python-builder
 
 WORKDIR /opt/ols_embed
@@ -25,6 +34,7 @@ ENV MODELS_DIR="/data/models"
 
 COPY --from=python-builder /opt/ols_embed/.venv /opt/ols_embed/.venv
 COPY --from=rust-builder /opt/target/release/ols_semsim /usr/local/bin/ols_semsim
+COPY --from=duckdb-builder /root/.duckdb/cli/latest/duckdb /usr/local/bin/duckdb
 COPY ols_embed/embed2.py ols_embed/embed_openai.py ols_embed/pca.py \
     ols_embed/avg_embeddings.py ols_embed/server.py \
     ols_embed/visualize_embeddings.py ols_embed/convert_umap_to_web.py ./
