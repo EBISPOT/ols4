@@ -8,3 +8,16 @@
 /testcases_expected_output_api_backup/
 /output/
 /google-cloud-sdk/
+
+# Initial architecture graph: keep the primary application modules only.
+/apitester4/
+/dev-testing/
+/ebi-search-file-generator/
+/embeddings/
+/k8chart-dev/
+/k8chart-embed-service/
+/k8chart/
+/legacy-plugins-test/
+/notebooks/
+/testcases/
+/text_tagger/
