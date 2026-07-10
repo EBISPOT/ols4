@@ -48,7 +48,5 @@ spec:
               value: /ols4/
             - name: OLS_MINIFY
               value: 'true'
-          command: ["/bin/bash", "-c"]
-          args: ["/opt/ols4-frontend/entrypoint.dockersh"]
-
+          command: ["/opt/ols4-frontend/entrypoint.dockersh"]
 

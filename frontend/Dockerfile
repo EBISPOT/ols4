@@ -1,25 +1,28 @@
 
 
-FROM node:25-bookworm
-
-RUN apt-get update && apt-get install -y curl gpg && rm -rf /var/lib/apt/lists/*
-
-# caddy
-RUN curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
-RUN curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | tee /etc/apt/sources.list.d/caddy-stable.list
-RUN apt-get update && apt-get install -y caddy && rm -rf /var/lib/apt/lists/*
-
-RUN mkdir /opt/ols4-frontend
+FROM node:25-bookworm AS frontend-builder
 
 WORKDIR /opt/ols4-frontend
 
-COPY package.json package-lock.json /opt/ols4-frontend/
-RUN npm install
+COPY package.json package-lock.json ./
+RUN npm ci
 
-COPY . /opt/ols4-frontend/
+COPY . ./
+
+# Runtime configuration is injected by the serving container, so build a
+# portable, production-minified bundle without loading frontend/.env here.
+RUN mkdir -p dist && PATH="/opt/ols4-frontend/node_modules/.bin:$PATH" OLS_MINIFY=true PUBLIC_URL=/ node build.mjs
+
+FROM caddy:2-alpine
+
+COPY Caddyfile /etc/caddy/Caddyfile
+COPY .env /opt/ols4-frontend/default.env
+COPY entrypoint.dockersh /opt/ols4-frontend/entrypoint.dockersh
+COPY --from=frontend-builder /opt/ols4-frontend/dist /opt/ols4-frontend/dist
 
 RUN chmod +x /opt/ols4-frontend/entrypoint.dockersh
 RUN chmod -R 777 /opt/ols4-frontend/dist
 
-CMD ["/opt/ols4-frontend/entrypoint.dockersh"]
+EXPOSE 8080
 
+CMD ["/opt/ols4-frontend/entrypoint.dockersh"]
