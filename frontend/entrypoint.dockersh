@@ -1,11 +1,69 @@
-#!/bin/bash
+#!/bin/sh
+
+set -eu
 
 cd /opt/ols4-frontend
 
-echo Building frontend. REACT_APP_ENV: $REACT_APP_ENV
+runtime_env_keys="
+PUBLIC_URL
+REACT_APP_APIURL
+REACT_APP_EBI_HOME
+REACT_APP_EBI_LICENSING
+REACT_APP_OBO_FOUNDRY_REPO_RAW
+REACT_APP_SPOT_HOME
+REACT_APP_SPOT_OLS4_REPO
+REACT_APP_SPOT_OLS_ANNOUNCE
+REACT_APP_SPOT_ONTOTOOLS
+REACT_APP_SPOT_OXO
+REACT_APP_SPOT_ZOOMA
+REACT_APP_UMAP_URL
+"
 
-npm run build
+default_value() {
+    awk -F= -v key="$1" '$1 == key { sub(/^[^=]*=/, ""); print; exit }' default.env
+}
 
-caddy run --config ./Caddyfile
+runtime_value() {
+    if printenv "$1" >/dev/null; then
+        printenv "$1"
+    else
+        default_value "$1"
+    fi
+}
 
+json_escape() {
+    printf '%s' "$1" | sed -e 's/\\/\\\\/g' -e 's/"/\\"/g' -e 's/	/\\t/g' -e 's//\\r/g'
+}
 
+public_url="$(runtime_value PUBLIC_URL)"
+[ -n "$public_url" ] || public_url="/"
+case "$public_url" in
+    /*) ;;
+    *)
+        echo "PUBLIC_URL must start with /" >&2
+        exit 64
+        ;;
+esac
+case "$public_url" in
+    */) ;;
+    *) public_url="$public_url/" ;;
+esac
+export PUBLIC_URL="$public_url"
+
+escaped_public_url="$(printf '%s' "$public_url" | sed -e 's/[\\&|]/\\&/g')"
+sed "s|__OLS_PUBLIC_URL__|$escaped_public_url|g" dist/index.html.template > dist/index.html
+
+{
+    printf 'window.__OLS_RUNTIME_CONFIG__ = Object.freeze({\n'
+    for key in $runtime_env_keys; do
+        if [ "$key" = "PUBLIC_URL" ]; then
+            value="$public_url"
+        else
+            value="$(runtime_value "$key")"
+        fi
+        printf '  "%s": "%s",\n' "$key" "$(json_escape "$value")"
+    done
+    printf '});\n'
+} > dist/runtime-config.js
+
+exec caddy run --config /etc/caddy/Caddyfile
