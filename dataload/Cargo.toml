@@ -7,6 +7,7 @@ members = [
     "linker/create_manifest",
     "linker/link",
     "extract_strings_from_terms",
+    "rdf2json-rs",
 ]
 
 [workspace.package]
@@ -42,6 +43,13 @@ tiktoken-rs = "0.7"
 
 # Internal crate
 ols_shared = { path = "ols-shared-rs" }
+
+# rdf2json (Rust port) dependencies: a faithful RDF-triple -> OLS JSON projector.
+# OWL-level normalisation (and IC-score injection) is handled upstream by
+# owlmake, so rdf2json depends only on the oxrdf/oxrdfio triple reader — no
+# horned-owl / OWL axiom model.
+oxrdf = "0.3"
+oxrdfio = "0.2"
 
 [profile.release]
 lto = true

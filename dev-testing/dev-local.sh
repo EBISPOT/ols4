@@ -30,7 +30,7 @@ CONFIG=$(realpath "$CONFIG")
 [[ "$OUT" = /* ]] || OUT="$PWD/$OUT"
 
 DATALOAD="$OLS4_HOME/dataload"
-RDF2JSON_JAR="$DATALOAD/rdf2json/target/rdf2json-1.0-SNAPSHOT.jar"
+RDF2JSON="$DATALOAD/target/release/rdf2json"
 SOLR_CFG_BUILDER_JAR="$DATALOAD/solr_config_builder/target/solr_config_builder-1.0-SNAPSHOT.jar"
 SOLR_CFG_TEMPLATE="$DATALOAD/solr_config_template"
 NEO4J_INDEXES_PY="$DATALOAD/create_neo4j_indexes.py"
@@ -50,8 +50,6 @@ SOLR_HOME_DIR="$OUT/solr-home"
 command -v mvn &>/dev/null || err "mvn not found on PATH (install Maven)"
 log "Building ols-shared (Maven)..."
 mvn -B -ntp install -f "$OLS4_HOME/ols-shared/pom.xml" -DskipTests
-log "Building rdf2json (Maven)..."
-mvn -B -ntp package -f "$DATALOAD/rdf2json/pom.xml" -DskipTests
 log "Building solr_config_builder (Maven)..."
 mvn -B -ntp package -f "$DATALOAD/solr_config_builder/pom.xml" -DskipTests
 
@@ -77,10 +75,7 @@ mkdir -p "$NEO_CSVS" "$SOLR_DATA" "$SOLR_HOME_DIR"
 
 # ─── Step 3: rdf2json ─────────────────────────────────────────────────────────
 log "Running rdf2json..."
-java ${JAVA_OPTS:-} \
-    -DentityExpansionLimit=0 -DtotalEntitySizeLimit=0 \
-    -Djdk.xml.totalEntitySizeLimit=0 -Djdk.xml.entityExpansionLimit=0 \
-    -jar "$RDF2JSON_JAR" \
+"$RDF2JSON" \
     --config "$CONFIG" \
     --output "$OUT/ontologies.json"
 [ -f "$OUT/ontologies.json" ] || err "rdf2json produced no output"

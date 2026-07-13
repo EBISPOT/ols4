@@ -16,11 +16,8 @@ JSON_PATH_LINKED=$OUTDIR/ontologies_linked.json
 
 rm -f $OUTDIR/*
 
-echo JAVA_OPTS=$JAVA_OPTS
-
 echo rdf2json
-java $JAVA_OPTS -DentityExpansionLimit=0 -DtotalEntitySizeLimit=0 -Djdk.xml.totalEntitySizeLimit=0 -Djdk.xml.entityExpansionLimit=0 \
-    -jar $SCRIPT_PATH/../dataload/rdf2json/target/rdf2json-1.0-SNAPSHOT.jar --config "$CONFIG_URL" --output "$JSON_PATH" "${@:3}"
+$SCRIPT_PATH/../dataload/target/release/rdf2json --config "$CONFIG_URL" --output "$JSON_PATH" "${@:3}"
 
 echo linker: create manifest
 $SCRIPT_PATH/../dataload/target/release/ols_create_manifest \
