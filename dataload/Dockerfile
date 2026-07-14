@@ -20,7 +20,7 @@ RUN cd /opt/ols/ols-shared && mvn -B -ntp -Dorg.slf4j.simpleLogger.log.org.apach
 RUN mvn -B -ntp -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn install:install-file -DcreateChecksum=true -Dpackaging=jar -Dfile=/opt/ols/ols-shared/target/ols4-shared-1.0.0-SNAPSHOT.jar -DgroupId=uk.ac.ebi.spot.ols -DartifactId=ols4-shared -Dversion=1.0.0-SNAPSHOT
 RUN cd /opt/ols/dataload && mvn -B -ntp -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn -T 1C package
 
-FROM eclipse-temurin:21-jre-noble
+FROM eclipse-temurin:21-jre-noble AS runtime
 
 # PostgreSQL 17 + pgvector: the Nextflow pipeline runs a local PG cluster inside
 # this image (load_into_postgres.py) unless --external_postgres is set.
@@ -69,3 +69,17 @@ USER ols
 WORKDIR /opt/ols/dataload
 
 CMD ./dataload.dockersh
+
+# Test-only stage: adds the raw cargo output layout and test fixtures that
+# dev-testing/create_datafiles.sh and test_dataload.sh expect. Not part of the
+# published runtime image (docker-publish.yml builds --target runtime).
+FROM runtime AS test
+
+COPY --from=rust-builder --chown=ols:ols /opt/ols/dataload/target/release /opt/ols/dataload/target/release
+
+COPY --chown=ols:ols ./test_dataload.sh /opt/ols/
+COPY --chown=ols:ols ./dev-testing /opt/ols/dev-testing
+COPY --chown=ols:ols ./testcases /opt/ols/testcases
+COPY --chown=ols:ols ./testcases_expected_output /opt/ols/testcases_expected_output
+
+WORKDIR /opt/ols

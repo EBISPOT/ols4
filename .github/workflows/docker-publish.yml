@@ -24,18 +24,22 @@ jobs:
           - component: dataload
             context: .
             dockerfile: ./dataload/Dockerfile
+            target: runtime
             build-args: ""
           - component: backend
             context: .
             dockerfile: ./backend/Dockerfile
+            target: ""
             build-args: ""
           - component: frontend
             context: ./frontend
             dockerfile: ./frontend/Dockerfile
+            target: ""
             build-args: ""
           - component: apitester4
             context: ./apitester4
             dockerfile: ./apitester4/Dockerfile
+            target: ""
             build-args: ""
 
     steps:
@@ -69,6 +73,7 @@ jobs:
         with:
           context: ${{ matrix.context }}
           file: ${{ matrix.dockerfile }}
+          target: ${{ matrix.target }}
           platforms: linux/amd64,linux/arm64
           push: true
           build-args: ${{ matrix.build-args }}
