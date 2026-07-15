@@ -511,10 +511,16 @@ process publish_per_ontology_parquets {
     script:
     """
     duckdb -c "
+      PRAGMA threads=${task.cpus};
+      PRAGMA memory_limit='200GB';
+      PRAGMA temp_directory='.';
       COPY (SELECT DISTINCT ontology_id FROM read_parquet('${parquet}'))
       TO '/dev/stdout' (HEADER false, DELIMITER '\t');
     " | while IFS=\$'\\t' read -r ont_id; do
       duckdb -c "
+        PRAGMA threads=${task.cpus};
+        PRAGMA memory_limit='200GB';
+        PRAGMA temp_directory='.';
         COPY (SELECT * FROM read_parquet('${parquet}') WHERE ontology_id = '\$ont_id')
         TO '\$ont_id.parquet' (FORMAT PARQUET, COMPRESSION ZSTD);
       "
