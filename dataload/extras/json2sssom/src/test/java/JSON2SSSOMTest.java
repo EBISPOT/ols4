@@ -28,6 +28,7 @@ public class JSON2SSSOMTest {
                 "    {\n" +
                 "      \"ontologyId\": \"apo\",\n" +
                 "      \"preferredPrefix\": \"APO\",\n" +
+                "      \"title\": \"Ascomycete Phenotype Ontology\",\n" +
                 "      \"classes\": [],\n" +
                 "      \"properties\": [],\n" +
                 "      \"individuals\": [],\n" +
@@ -51,8 +52,38 @@ public class JSON2SSSOMTest {
         assertTrue(sssom.contains("# mapping_set_title: OLS extracted APO mappings\n"));
         assertTrue(sssom.contains("# mapping_set_description: These mappings were extracted during the OLS dataload from APO\n"));
         assertTrue(sssom.contains("# mapping_date: '2026-04-30'\n") || sssom.contains("# mapping_date: 2026-04-30\n"));
-        assertTrue(sssom.contains("# other:\n#   local_id: apo.ols\n# local_name: apo.ols.sssom.tsv\n"));
+        assertTrue(sssom.contains("# other:\n#   local_id: apo.ols\n#   prefix: APO\n#   ontology: Ascomycete Phenotype Ontology (APO)\n# local_name: apo.ols.sssom.tsv\n"));
         assertFalse(sssom.contains("mapping_set_source"));
+    }
+
+    @Test
+    public void fallsBackToPrefixForOntologyFieldWhenTitleMissing() throws Exception {
+        File input = temporaryFolder.newFile("notitle.json");
+        File outputDir = temporaryFolder.newFolder("sssom-notitle");
+
+        Files.writeString(input.toPath(), "{\n" +
+                "  \"ontologies\": [\n" +
+                "    {\n" +
+                "      \"ontologyId\": \"nt\",\n" +
+                "      \"preferredPrefix\": \"NT\",\n" +
+                "      \"classes\": [],\n" +
+                "      \"properties\": [],\n" +
+                "      \"individuals\": [],\n" +
+                "      \"linkedEntities\": {}\n" +
+                "    }\n" +
+                "  ]\n" +
+                "}\n", StandardCharsets.UTF_8);
+
+        JSON2SSSOM.main(new String[] {
+                "--input", input.getAbsolutePath(),
+                "--outDir", outputDir.getAbsolutePath(),
+                "--mappingDate", "2026-04-30"
+        });
+
+        Path output = outputDir.toPath().resolve("nt.ols.sssom.tsv");
+        String sssom = Files.readString(output, StandardCharsets.UTF_8).replace("\r\n", "\n");
+
+        assertTrue(sssom.contains("# other:\n#   local_id: nt.ols\n#   prefix: NT\n#   ontology: NT\n# local_name: nt.ols.sssom.tsv\n"));
     }
 
     @Test
