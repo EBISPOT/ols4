@@ -77,12 +77,12 @@ workflow {
     ontologies = merged_config.flatMap { it.ontologies }
     ontology_ids = ontologies.map { it.id }
 
-    // Extract filter properties per ontology (from merged config which includes defaults)
-    filter_props_by_id = ontologies.map { ont ->
-        def props = ont.filterProperty ?: []
-        [ont.id, props]
-    }
-    // Collect global union of all filter properties for schema creation
+    // Collect global union of all filter properties for schema creation.
+    // Every ontology's json2postgres invocation gets this same global list (not just
+    // its own filterProperty subset) so every *_entities.pgbin file has the same column
+    // count/order — populate_external_postgres.py builds one fixed schema from this union
+    // and COPYs every file against it, so a narrower per-ontology list breaks binary COPY
+    // with a "row field count" mismatch.
     all_filter_props = merged_config.map { config ->
         config.ontologies.collectMany { it.filterProperty ?: [] }.unique()
     }
@@ -151,8 +151,12 @@ workflow {
         pca_json_files = Channel.of(file('NO_FILE'))
     }
 
-    // Join filter properties with linked ontology JSONs by ontology_id
-    linked_with_filter_props = linked_ontologies_by_id.combine(filter_props_by_id, by: 0)
+    // Broadcast the global filter-property union to every ontology (not each ontology's own
+    // subset) so json2postgres writes the same column count for every *_entities.pgbin file.
+    // combine() flattens list-typed items into the resulting tuple, so the property list must
+    // be wrapped in an outer list here — otherwise each URI gets spliced in as its own tuple
+    // position instead of arriving at json2postgres as a single nested list value.
+    linked_with_filter_props = linked_ontologies_by_id.combine(all_filter_props.map { [it] })
 
     postgres_tsvs = json2postgres(linked_with_filter_props, embedding_parquets)
 
