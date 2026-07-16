@@ -214,8 +214,15 @@ public class JSON2SSSOM {
                     yamlHeader.put("mapping_set_title", "OLS extracted " + mappingSetOntologyName + " mappings");
                     yamlHeader.put("mapping_set_description", "These mappings were extracted during the OLS dataload from " + mappingSetOntologyName);
                     yamlHeader.put("mapping_date", mappingDate);
+                    String mappingSetOntologyTitle = getStringProperty(ontologyProperties, "title");
+                    String mappingSetOntologyFullName = mappingSetOntologyTitle == null || mappingSetOntologyTitle.isBlank()
+                            ? mappingSetOntologyName
+                            : mappingSetOntologyTitle + " (" + mappingSetOntologyName + ")";
+
                     Map<String, Object> yamlHeaderOther = new LinkedHashMap<>();
                     yamlHeaderOther.put("local_id", ontologyId + ".ols");
+                    yamlHeaderOther.put("prefix", mappingSetOntologyName);
+                    yamlHeaderOther.put("ontology", mappingSetOntologyFullName);
                     yamlHeader.put("other", yamlHeaderOther);
                     yamlHeader.put("local_name", ontologyId + ".ols.sssom.tsv");
                     yamlHeader.put("curie_map", curieMap.curiePrefixToNamespace);
