@@ -153,7 +153,10 @@ workflow {
 
     // Broadcast the global filter-property union to every ontology (not each ontology's own
     // subset) so json2postgres writes the same column count for every *_entities.pgbin file.
-    linked_with_filter_props = linked_ontologies_by_id.combine(all_filter_props)
+    // combine() flattens list-typed items into the resulting tuple, so the property list must
+    // be wrapped in an outer list here — otherwise each URI gets spliced in as its own tuple
+    // position instead of arriving at json2postgres as a single nested list value.
+    linked_with_filter_props = linked_ontologies_by_id.combine(all_filter_props.map { [it] })
 
     postgres_tsvs = json2postgres(linked_with_filter_props, embedding_parquets)
 
