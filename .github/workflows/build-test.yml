@@ -33,7 +33,7 @@ jobs:
           echo "HOST_GID=$(id -g)" >> $GITHUB_ENV
 
       - name: Build dataload image
-        run: docker build -t ols4-dataload:local -f ./dataload/Dockerfile .
+        run: docker build --target test -t ols4-dataload:local -f ./dataload/Dockerfile .
 
       - name: Run mock dataload and dataload tests
         run: |
