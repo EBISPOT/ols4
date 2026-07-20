@@ -254,6 +254,12 @@ public class JSON2SSSOM {
 
     public static void writeMappingsForEntity(JsonObject entity, CSVPrinter writer, Map<String,JsonElement> ontologyProperties, CurieMap curieMap) throws IOException {
 
+        JsonElement isObsolete = entity.get(IS_OBSOLETE.getText());
+        if(isObsolete != null && isObsolete.getAsBoolean()) {
+            // don't extract mappings for obsolete terms, see https://github.com/EBISPOT/ols4/issues/1243
+            return;
+        }
+
         JsonElement exactMatch = entity.get("http://www.w3.org/2004/02/skos/core#exactMatch");
         if(exactMatch != null) {
             writeMappingsForEntity(entity, "skos:exactMatch", exactMatch, null, null, ontologyProperties, writer, curieMap);
