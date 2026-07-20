@@ -86,3 +86,6 @@ exec("tailwind -i ./src/index.css -o ./dist/styles.css");
 ///
 console.log("### Copying misc files");
 exec("cp ./src/banner.txt ./dist"); // home page banner text
+
+console.log("### Copying static assets");
+fs.cpSync("public", "dist", { recursive: true });
