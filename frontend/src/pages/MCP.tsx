@@ -40,6 +40,18 @@ export default function MCP() {
             <p className="mb-4">
             Please note that the type of this endpoint is <b>Streamable HTTP</b> and not legacy SSE.
             </p>
+            <p className="mb-4">
+            For documentation on the OLS MCP server, see the{" "}
+            <a
+              className="link-default"
+              href="https://github.com/EBISPOT/ols4#readme"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              OLS4 GitHub repository
+            </a>
+            .
+            </p>
       </main>
     </Fragment>
   );
