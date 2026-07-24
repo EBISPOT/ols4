@@ -618,8 +618,9 @@ process extract_sssom {
     path(linked_jsons, stageAs: 'input_jsons/*')
 
     output:
-    path("sssom"),     emit: sssom_dir
-    path("sssom.tgz"), emit: sssom_tgz
+    path("sssom"),              emit: sssom_dir
+    path("sssom.tgz"),          emit: sssom_tgz
+    path("sssom-obsolete.tgz"), emit: sssom_obsolete_tgz
 
     script:
     def mem_mb = (task.memory.toMega() * 0.9).intValue()
@@ -633,7 +634,15 @@ process extract_sssom {
         --input input_jsons \
         --outDir sssom \
         --mappingDate "\$MAPPING_DATE"
-    tar --use-compress-program="pigz -f" -cvf sssom.tgz -C sssom .
+
+    # obsolete-term mappings are extracted alongside current-term mappings into the
+    # same directory (distinguished by the .obsolete.sssom.tsv suffix), but published
+    # as two separate tarballs, see https://github.com/EBISPOT/ols4/issues/1243
+    find sssom -maxdepth 1 -type f -name '*.obsolete.sssom.tsv' -printf '%P\\n' > obsolete_files.txt
+    find sssom -maxdepth 1 -type f -name '*.sssom.tsv' ! -name '*.obsolete.sssom.tsv' -printf '%P\\n' > current_files.txt
+
+    tar --use-compress-program="pigz -f" -cvf sssom.tgz -C sssom -T current_files.txt
+    tar --use-compress-program="pigz -f" -cvf sssom-obsolete.tgz -C sssom -T obsolete_files.txt
     """
 }
 
