@@ -147,6 +147,21 @@ public class JSON2SSSOM {
         return preferredPrefix;
     }
 
+    private static class SssomExtract {
+        ByteArrayOutputStream tsv;
+        OutputStreamWriter writer;
+        CSVPrinter csvPrinter;
+        final CurieMap curieMap = new CurieMap();
+
+        void ensureWriter() throws IOException {
+            if(csvPrinter == null) {
+                tsv = new ByteArrayOutputStream();
+                writer = new OutputStreamWriter(tsv);
+                csvPrinter = new CSVPrinter(writer, CSVFormat.MONGODB_TSV.withHeader(tsvHeader.toArray(new String[0])));
+            }
+        }
+    }
+
     private static void processOntologyFile(String inputFilePath, String outputFilePath, String mappingDate) throws IOException {
 
         DumperOptions yamlOptions = new DumperOptions();
@@ -169,10 +184,9 @@ public class JSON2SSSOM {
                     reader.beginObject();
 
                     Map<String, JsonElement> ontologyProperties = new LinkedHashMap<>();
-                    ByteArrayOutputStream tsv = null;
-                    OutputStreamWriter writer = null;
-                    CSVPrinter csvPrinter = null;
-                    CurieMap curieMap = new CurieMap();
+                    SssomExtract current = new SssomExtract();
+                    SssomExtract obsolete = new SssomExtract();
+                    boolean printedOntologyMessage = false;
 
                     while(reader.peek() != JsonToken.END_OBJECT) {
 
@@ -180,20 +194,24 @@ public class JSON2SSSOM {
 
                         if(propName.equals("classes") || propName.equals("properties") || propName.equals("individuals")) {
 
-                            if(tsv == null) {
-
+                            if(!printedOntologyMessage) {
                                 System.out.println("Writing mappings for ontology: " + ontologyProperties.get("ontologyId").getAsString());
-
-                                tsv = new ByteArrayOutputStream();
-                                writer = new OutputStreamWriter(tsv);
-                                csvPrinter = new CSVPrinter(writer, CSVFormat.MONGODB_TSV.withHeader(tsvHeader.toArray(new String[0])));
+                                printedOntologyMessage = true;
                             }
+
+                            current.ensureWriter();
+                            obsolete.ensureWriter();
 
                             reader.beginArray();
 
                             while(reader.peek() != JsonToken.END_ARRAY) {
                                 JsonElement entity = jsonParser.parse(reader);
-                                writeMappingsForEntity(entity.getAsJsonObject(), csvPrinter, ontologyProperties, curieMap);
+                                JsonObject entityObj = entity.getAsJsonObject();
+
+                                JsonElement isObsolete = entityObj.get(IS_OBSOLETE.getText());
+                                SssomExtract target = (isObsolete != null && isObsolete.getAsBoolean()) ? obsolete : current;
+
+                                writeMappingsForEntity(entityObj, target.csvPrinter, ontologyProperties, target.curieMap);
                             }
 
                             reader.endArray();
@@ -204,43 +222,13 @@ public class JSON2SSSOM {
 
                     String ontologyId = ontologyProperties.get("ontologyId").getAsString();
                     String mappingSetOntologyName = getMappingSetOntologyName(ontologyProperties, ontologyId);
-
-                    Map<String, Object> yamlHeader = new LinkedHashMap<>();
-                    yamlHeader.put("mapping_set_id", "https://w3id.org/commons/ols/mappings/" + ontologyId + ".ols.sssom.tsv");
-                    yamlHeader.put("mapping_set_group", "ols_sssom_extracts");
-                    yamlHeader.put("mapping_set_confidence", "0.7");
-                    yamlHeader.put("mapping_provider", OLS_BASE_URL + "/ontologies/" + ontologyId);
-                    yamlHeader.put("mapping_tool", OLS_BASE_URL);
-                    yamlHeader.put("mapping_set_title", "OLS extracted " + mappingSetOntologyName + " mappings");
-                    yamlHeader.put("mapping_set_description", "These mappings were extracted during the OLS dataload from " + mappingSetOntologyName);
-                    yamlHeader.put("mapping_date", mappingDate);
                     String mappingSetOntologyTitle = getStringProperty(ontologyProperties, "title");
                     String mappingSetOntologyFullName = mappingSetOntologyTitle == null || mappingSetOntologyTitle.isBlank()
                             ? mappingSetOntologyName
                             : mappingSetOntologyTitle + " (" + mappingSetOntologyName + ")";
 
-                    Map<String, Object> yamlHeaderOther = new LinkedHashMap<>();
-                    yamlHeaderOther.put("local_id", ontologyId + ".ols");
-                    yamlHeaderOther.put("prefix", mappingSetOntologyName);
-                    yamlHeaderOther.put("ontology", mappingSetOntologyFullName);
-                    yamlHeader.put("other", yamlHeaderOther);
-                    yamlHeader.put("local_name", ontologyId + ".ols.sssom.tsv");
-                    yamlHeader.put("curie_map", curieMap.curiePrefixToNamespace);
-
-                    String yamlStr = yaml.dump(yamlHeader);
-                    yamlStr = Stream.of(yamlStr.split("\\n")).map(line -> "# " + line).collect(Collectors.joining("\r\n"));
-
-                    try (FileOutputStream fos = new FileOutputStream(outputFilePath + "/" + ontologyId + ".ols.sssom.tsv")) {
-                        fos.write(yamlStr.getBytes(StandardCharsets.UTF_8));
-                        fos.write('\r');
-                        fos.write('\n');
-
-                        if(csvPrinter != null) {
-                            csvPrinter.close(true);
-                            fos.write(tsv.toByteArray());
-                            tsv.close();
-                        }
-                    }
+                    writeExtractFile(yaml, outputFilePath, ontologyId, mappingSetOntologyName, mappingSetOntologyFullName, mappingDate, false, current);
+                    writeExtractFile(yaml, outputFilePath, ontologyId, mappingSetOntologyName, mappingSetOntologyFullName, mappingDate, true, obsolete);
 
                     reader.endObject();
                 }
@@ -250,6 +238,54 @@ public class JSON2SSSOM {
         }
         reader.endObject();
         reader.close();
+    }
+
+    private static void writeExtractFile(
+            Yaml yaml,
+            String outputFilePath,
+            String ontologyId,
+            String mappingSetOntologyName,
+            String mappingSetOntologyFullName,
+            String mappingDate,
+            boolean obsolete,
+            SssomExtract extract) throws IOException {
+
+        String localId = ontologyId + ".ols" + (obsolete ? ".obsolete" : "");
+        String localName = localId + ".sssom.tsv";
+
+        Map<String, Object> yamlHeader = new LinkedHashMap<>();
+        yamlHeader.put("mapping_set_id", "https://w3id.org/commons/ols/mappings/" + localName);
+        yamlHeader.put("mapping_set_group", "ols_sssom_extracts");
+        yamlHeader.put("mapping_set_confidence", "0.7");
+        yamlHeader.put("mapping_provider", OLS_BASE_URL + "/ontologies/" + ontologyId);
+        yamlHeader.put("mapping_tool", OLS_BASE_URL);
+        yamlHeader.put("mapping_set_title", "OLS extracted " + mappingSetOntologyName + " mappings" + (obsolete ? " (obsolete terms)" : ""));
+        yamlHeader.put("mapping_set_description", "These mappings were extracted during the OLS dataload from " + mappingSetOntologyName
+                + (obsolete ? " for obsolete terms" : ""));
+        yamlHeader.put("mapping_date", mappingDate);
+
+        Map<String, Object> yamlHeaderOther = new LinkedHashMap<>();
+        yamlHeaderOther.put("local_id", localId);
+        yamlHeaderOther.put("prefix", mappingSetOntologyName);
+        yamlHeaderOther.put("ontology", mappingSetOntologyFullName);
+        yamlHeader.put("other", yamlHeaderOther);
+        yamlHeader.put("local_name", localName);
+        yamlHeader.put("curie_map", extract.curieMap.curiePrefixToNamespace);
+
+        String yamlStr = yaml.dump(yamlHeader);
+        yamlStr = Stream.of(yamlStr.split("\\n")).map(line -> "# " + line).collect(Collectors.joining("\r\n"));
+
+        try (FileOutputStream fos = new FileOutputStream(outputFilePath + "/" + localName)) {
+            fos.write(yamlStr.getBytes(StandardCharsets.UTF_8));
+            fos.write('\r');
+            fos.write('\n');
+
+            if(extract.csvPrinter != null) {
+                extract.csvPrinter.close(true);
+                fos.write(extract.tsv.toByteArray());
+                extract.tsv.close();
+            }
+        }
     }
 
     public static void writeMappingsForEntity(JsonObject entity, CSVPrinter writer, Map<String,JsonElement> ontologyProperties, CurieMap curieMap) throws IOException {

@@ -87,6 +87,68 @@ public class JSON2SSSOMTest {
     }
 
     @Test
+    public void splitsObsoleteAndCurrentTermsIntoSeparateExtracts() throws Exception {
+        File input = temporaryFolder.newFile("obs.json");
+        File outputDir = temporaryFolder.newFolder("sssom-obs");
+
+        Files.writeString(input.toPath(), "{\n" +
+                "  \"ontologies\": [\n" +
+                "    {\n" +
+                "      \"ontologyId\": \"obs\",\n" +
+                "      \"preferredPrefix\": \"OBS\",\n" +
+                "      \"classes\": [\n" +
+                "        {\n" +
+                "          \"iri\": \"http://example.org/OBS_0000001\",\n" +
+                "          \"label\": \"obsolete term\",\n" +
+                "          \"isObsolete\": true,\n" +
+                "          \"isDefiningOntology\": true,\n" +
+                "          \"http://www.geneontology.org/formats/oboInOwl#hasDbXref\": \"http://example.org/OTHER_1\",\n" +
+                "          \"linkedEntities\": {\n" +
+                "            \"http://example.org/OTHER_1\": { \"iri\": \"http://example.org/OTHER_1\", \"label\": \"Other 1\" }\n" +
+                "          }\n" +
+                "        },\n" +
+                "        {\n" +
+                "          \"iri\": \"http://example.org/OBS_0000002\",\n" +
+                "          \"label\": \"current term\",\n" +
+                "          \"isObsolete\": false,\n" +
+                "          \"isDefiningOntology\": true,\n" +
+                "          \"http://www.geneontology.org/formats/oboInOwl#hasDbXref\": \"http://example.org/OTHER_2\",\n" +
+                "          \"linkedEntities\": {\n" +
+                "            \"http://example.org/OTHER_2\": { \"iri\": \"http://example.org/OTHER_2\", \"label\": \"Other 2\" }\n" +
+                "          }\n" +
+                "        }\n" +
+                "      ],\n" +
+                "      \"properties\": [],\n" +
+                "      \"individuals\": [],\n" +
+                "      \"linkedEntities\": {}\n" +
+                "    }\n" +
+                "  ]\n" +
+                "}\n", StandardCharsets.UTF_8);
+
+        JSON2SSSOM.main(new String[] {
+                "--input", input.getAbsolutePath(),
+                "--outDir", outputDir.getAbsolutePath(),
+                "--mappingDate", "2026-04-30"
+        });
+
+        Path currentOutput = outputDir.toPath().resolve("obs.ols.sssom.tsv");
+        Path obsoleteOutput = outputDir.toPath().resolve("obs.ols.obsolete.sssom.tsv");
+
+        String current = Files.readString(currentOutput, StandardCharsets.UTF_8).replace("\r\n", "\n");
+        String obsolete = Files.readString(obsoleteOutput, StandardCharsets.UTF_8).replace("\r\n", "\n");
+
+        assertFalse(current.contains("OBS_0000001"));
+        assertTrue(current.contains("OBS_0000002"));
+
+        assertTrue(obsolete.contains("OBS_0000001"));
+        assertFalse(obsolete.contains("OBS_0000002"));
+
+        assertTrue(obsolete.contains("# mapping_set_id: https://w3id.org/commons/ols/mappings/obs.ols.obsolete.sssom.tsv\n"));
+        assertTrue(obsolete.contains("# mapping_set_title: OLS extracted OBS mappings (obsolete terms)\n"));
+        assertTrue(obsolete.contains("# other:\n#   local_id: obs.ols.obsolete\n#   prefix: OBS\n#   ontology: OBS\n# local_name: obs.ols.obsolete.sssom.tsv\n"));
+    }
+
+    @Test
     public void rejectsNonIsoMappingDate() throws Exception {
         Options options = new Options();
         options.addOption(new Option(null, "mappingDate", true, "mapping date"));
