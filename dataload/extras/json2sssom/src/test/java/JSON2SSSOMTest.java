@@ -87,7 +87,7 @@ public class JSON2SSSOMTest {
     }
 
     @Test
-    public void excludesObsoleteEntitiesFromExtract() throws Exception {
+    public void splitsObsoleteAndCurrentTermsIntoSeparateExtracts() throws Exception {
         File input = temporaryFolder.newFile("obs.json");
         File outputDir = temporaryFolder.newFolder("sssom-obs");
 
@@ -131,11 +131,21 @@ public class JSON2SSSOMTest {
                 "--mappingDate", "2026-04-30"
         });
 
-        Path output = outputDir.toPath().resolve("obs.ols.sssom.tsv");
-        String sssom = Files.readString(output, StandardCharsets.UTF_8).replace("\r\n", "\n");
+        Path currentOutput = outputDir.toPath().resolve("obs.ols.sssom.tsv");
+        Path obsoleteOutput = outputDir.toPath().resolve("obs.ols.obsolete.sssom.tsv");
 
-        assertFalse(sssom.contains("OBS_0000001"));
-        assertTrue(sssom.contains("OBS_0000002"));
+        String current = Files.readString(currentOutput, StandardCharsets.UTF_8).replace("\r\n", "\n");
+        String obsolete = Files.readString(obsoleteOutput, StandardCharsets.UTF_8).replace("\r\n", "\n");
+
+        assertFalse(current.contains("OBS_0000001"));
+        assertTrue(current.contains("OBS_0000002"));
+
+        assertTrue(obsolete.contains("OBS_0000001"));
+        assertFalse(obsolete.contains("OBS_0000002"));
+
+        assertTrue(obsolete.contains("# mapping_set_id: https://w3id.org/commons/ols/mappings/obs.ols.obsolete.sssom.tsv\n"));
+        assertTrue(obsolete.contains("# mapping_set_title: OLS extracted OBS mappings (obsolete terms)\n"));
+        assertTrue(obsolete.contains("# other:\n#   local_id: obs.ols.obsolete\n#   prefix: OBS\n#   ontology: OBS\n# local_name: obs.ols.obsolete.sssom.tsv\n"));
     }
 
     @Test
