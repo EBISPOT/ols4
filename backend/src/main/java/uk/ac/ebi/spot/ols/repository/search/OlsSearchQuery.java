@@ -171,20 +171,33 @@ public class OlsSearchQuery {
     }
 
     public List<SortField<?>> buildOrderBy(String qualifier) {
-        if (searchText != null && !searchText.isBlank()) {
-            Field<Double> rank = DSL.function(
-                    "ts_rank_cd",
-                    SQLDataType.DOUBLE,
-                    field(qualifier, "ts_search", Object.class),
-                    buildTsQuery(),
-                    DSL.inline(32))
-                    .plus(DSL.when(field(qualifier, "is_defining_ontology", Boolean.class).isTrue(), 100.0).otherwise(0.0))
-                    .plus(DSL.when(field(qualifier, "search_type", String.class).eq("ontology"), 1.0).otherwise(0.0))
-                    .plus(DSL.when(arrayContains(field(qualifier, "label", String[].class), searchText), 1000.0).otherwise(0.0));
-
+        Field<Double> rank = buildRankExpression(qualifier);
+        if (rank != null) {
             return List.of(rank.desc(), field(qualifier, "id", String.class).asc());
         }
         return List.of(field(qualifier, "id", String.class).asc());
+    }
+
+    /**
+     * The relevance score results are ordered by, or null when there is no search text to rank
+     * (filter-only queries are ordered by id alone).
+     *
+     * <p>Exposed separately from {@link #buildOrderBy} so callers can select the score as a column
+     * — needed when ordering has to happen in a subquery rather than on the base table.
+     */
+    public Field<Double> buildRankExpression(String qualifier) {
+        if (searchText == null || searchText.isBlank()) {
+            return null;
+        }
+        return DSL.function(
+                "ts_rank_cd",
+                SQLDataType.DOUBLE,
+                field(qualifier, "ts_search", Object.class),
+                buildTsQuery(),
+                DSL.inline(32))
+                .plus(DSL.when(field(qualifier, "is_defining_ontology", Boolean.class).isTrue(), 100.0).otherwise(0.0))
+                .plus(DSL.when(field(qualifier, "search_type", String.class).eq("ontology"), 1.0).otherwise(0.0))
+                .plus(DSL.when(arrayContains(field(qualifier, "label", String[].class), searchText), 1000.0).otherwise(0.0));
     }
 
     /**
