@@ -91,8 +91,10 @@ public class V1SearchController {
                     example = "false") boolean exact,
             @RequestParam(value = "groupField", required = false)
             @Parameter(name = "groupField",
-                    description = "Group results by unique id (IRI)",
-                    example = "http://www.ebi.ac.uk/efo/EFO_0001421") String groupField,
+                    description = "Set to true to group results by unique id (IRI), returning only the "
+                            + "best match for each IRI instead of one result per ontology containing it. "
+                            + "Any value other than false enables grouping.",
+                    example = "true") String groupField,
             @RequestParam(value = "obsoletes", defaultValue = "false")
             @Parameter(name = "obsoletes",
                     description = "Set to true to include obsoleted terms in the results",
@@ -182,9 +184,11 @@ public class V1SearchController {
         searchQuery.addFacetField(IS_DEFINING_ONTOLOGY.getText());
         searchQuery.addFacetField(IS_OBSOLETE.getText());
 
-        logger.debug("V1 SEARCH QUERY: searchText={}", query);
+        boolean groupByIri = isGroupingEnabled(groupField);
 
-        OlsSearchClient.RawSearchResult result = searchClient.searchRaw(searchQuery, start, rows);
+        logger.debug("V1 SEARCH QUERY: searchText={} groupByIri={}", query, groupByIri);
+
+        OlsSearchClient.RawSearchResult result = searchClient.searchRaw(searchQuery, start, rows, groupByIri);
 
         List<Object> docs = new ArrayList<>();
         for (String _json : result.jsonStrings) {
@@ -312,6 +316,19 @@ public class V1SearchController {
         response.setCharacterEncoding(StandardCharsets.UTF_8.name());
         response.getOutputStream().write(gson.toJson(responseObj).getBytes(StandardCharsets.UTF_8));
         response.flushBuffer();
+    }
+
+    /**
+     * The v1 API has always collapsed on IRI regardless of the value passed to groupField: the
+     * Solr implementation applied {@code {!collapse field=uri}} whenever the parameter was present,
+     * so clients in the wild send both {@code groupField=true} and an IRI (which the old
+     * documentation gave as the example). Both are honoured; only an absent, blank or explicitly
+     * false value turns grouping off.
+     */
+    private static boolean isGroupingEnabled(String groupField) {
+        return groupField != null
+                && !groupField.isBlank()
+                && !groupField.equalsIgnoreCase("false");
     }
 
     // Built from DefinedFields enum (ols3Text → text) plus a few non-enum V1 aliases.

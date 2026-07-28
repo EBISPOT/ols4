@@ -40,6 +40,10 @@ public class OlsSearchClient {
     private static final Field<String> COLUMN_NAME = field("column_name", String.class);
     private static final Field<String> ENTITY_ID = field("id", String.class);
     private static final Field<byte[]> ENTITY_JSON = field("_json", byte[].class);
+    private static final Field<String> ENTITY_IRI = field("iri", String.class);
+    private static final String GROUP_HEAD_ID = "group_head_id";
+    private static final String GROUP_SCORE = "group_score";
+    private static final String GROUP_TOTAL = "group_total";
     private static final Field<String> LABEL_FOR_SUGGEST = field("label_for_suggest", String.class);
     private static final Field<String> STRING_VALUE = field("string", String.class);
     private static final Field<String> ONTOLOGY_ID = field("ontology_id", String.class);
@@ -273,24 +277,55 @@ public class OlsSearchClient {
      * Used by V1 controllers that build their own response format.
      */
     public RawSearchResult searchRaw(OlsSearchQuery query, int start, int rows) {
+        return searchRaw(query, start, rows, false);
+    }
+
+    /**
+     * Raw paginated search, optionally collapsing results so that only one entity per distinct IRI
+     * is returned.
+     *
+     * <p>The same term is usually present in many ontologies (a defining ontology plus every
+     * ontology that imports it), all sharing one IRI. Collapsing keeps the best-ranked entity of
+     * each IRI group — which, because {@link OlsSearchQuery#buildOrderBy} boosts defining
+     * ontologies, is normally the entity from the ontology that defines the term. {@code numFound}
+     * becomes the number of distinct IRIs rather than the number of entities. This backs the v1
+     * {@code groupField} search parameter (GitHub issue #1333).
+     *
+     * <p>Facet counts stay entity-level even when collapsing, so the ontology facet still answers
+     * "which ontologies contain this term" for a grouped result.
+     */
+    public RawSearchResult searchRaw(OlsSearchQuery query, int start, int rows, boolean collapseByIri) {
         try (Connection conn = postgresClient.getConnection()) {
             DSLContext dsl = postgresClient.dsl(conn);
             Condition where = query.buildCondition(getAvailableFilterColumns());
             List<SortField<?>> orderBy = query.buildOrderBy();
 
-            long count = Optional.ofNullable(dsl.selectCount()
-                            .from(OLS_ENTITIES)
-                            .where(where)
-                            .fetchOne(0, Long.class))
-                    .orElse(0L);
+            long count;
+            org.jooq.Result<? extends Record> records;
 
-            var records = dsl.select(ENTITY_JSON)
-                    .from(OLS_ENTITIES)
-                    .where(where)
-                    .orderBy(orderBy)
-                    .offset(start)
-                    .limit(rows)
-                    .fetch();
+            if (collapseByIri) {
+                records = fetchCollapsedByIri(dsl, query, where, orderBy, start, rows);
+                // The number of IRI groups is carried out of the page query itself; it is only
+                // unavailable when the page came back empty, which is the one case cheap enough
+                // to count separately.
+                count = records.isEmpty()
+                        ? countDistinctIris(dsl, where)
+                        : records.get(0).get(GROUP_TOTAL, Long.class);
+            } else {
+                count = Optional.ofNullable(dsl.selectCount()
+                                .from(OLS_ENTITIES)
+                                .where(where)
+                                .fetchOne(0, Long.class))
+                        .orElse(0L);
+
+                records = dsl.select(ENTITY_JSON)
+                        .from(OLS_ENTITIES)
+                        .where(where)
+                        .orderBy(orderBy)
+                        .offset(start)
+                        .limit(rows)
+                        .fetch();
+            }
 
             List<String> jsonStrings = readJsonStrings(records);
 
@@ -303,6 +338,90 @@ public class OlsSearchClient {
         } catch (SQLException e) {
             throw new RuntimeException("Raw search query failed", e);
         }
+    }
+
+    /**
+     * Fetch one row per distinct IRI: rank the matches within each IRI group using the query's own
+     * ordering, keep the first of each group, page over those group heads, and only then join the
+     * compressed {@code _json} payload back on.
+     *
+     * <p>Ordering and paging happen on id/iri/score alone so that the {@code LIMIT} is applied
+     * before the payload lookup — otherwise PostgreSQL joins {@code _json} for every group head in
+     * the result set (hundreds of thousands of primary key lookups for a broad query) just to
+     * return ten rows.
+     *
+     * <p>Entities from a defining ontology win their group: the query ordering already boosts them
+     * when there is search text to rank, and the explicit tiebreak keeps that true for filter-only
+     * queries, which are ordered by id alone.
+     */
+    private org.jooq.Result<? extends Record> fetchCollapsedByIri(DSLContext dsl, OlsSearchQuery query,
+                                                                 Condition where,
+                                                                 List<SortField<?>> orderBy,
+                                                                 int start, int rows) {
+        List<SortField<?>> groupHeadOrder = new ArrayList<>();
+        groupHeadOrder.add(field("is_defining_ontology", Boolean.class).desc());
+        groupHeadOrder.addAll(orderBy);
+
+        Field<Double> rank = query.buildRankExpression(null);
+        Field<Integer> rn = DSL.rowNumber()
+                .over(DSL.partitionBy(ENTITY_IRI).orderBy(groupHeadOrder))
+                .as("rn");
+
+        List<Field<?>> rankedFields = new ArrayList<>();
+        rankedFields.add(ENTITY_ID.as(GROUP_HEAD_ID));
+        if (rank != null) {
+            rankedFields.add(rank.as(GROUP_SCORE));
+        }
+        rankedFields.add(rn);
+
+        Table<?> ranked = dsl.select(rankedFields)
+                .from(OLS_ENTITIES)
+                .where(where)
+                .asTable("ranked");
+
+        List<Field<?>> headFields = new ArrayList<>();
+        headFields.add(field("ranked", GROUP_HEAD_ID, String.class));
+        if (rank != null) {
+            headFields.add(field("ranked", GROUP_SCORE, Double.class));
+        }
+        // Counted over the group heads before the LIMIT applies, so the page query also yields the
+        // total number of IRI groups without a second pass over the matches.
+        headFields.add(DSL.count().over().cast(Long.class).as(GROUP_TOTAL));
+
+        Table<?> groupHeads = dsl.select(headFields)
+                .from(ranked)
+                .where(field("ranked", "rn", Integer.class).eq(1))
+                .orderBy(collapsedOrderBy("ranked", rank != null))
+                .offset(start)
+                .limit(rows)
+                .asTable("group_heads");
+
+        return dsl.select(ENTITY_JSON, field("group_heads", GROUP_TOTAL, Long.class))
+                .from(OLS_ENTITIES)
+                .join(groupHeads)
+                .on(field("group_heads", GROUP_HEAD_ID, String.class).eq(ENTITY_ID))
+                .orderBy(collapsedOrderBy("group_heads", rank != null))
+                .fetch();
+    }
+
+    private long countDistinctIris(DSLContext dsl, Condition where) {
+        return Optional.ofNullable(dsl.select(DSL.countDistinct(ENTITY_IRI))
+                        .from(OLS_ENTITIES)
+                        .where(where)
+                        .fetchOne(0, Long.class))
+                .orElse(0L);
+    }
+
+    /**
+     * Ordering over already-collapsed group heads: by the score column carried out of the ranking
+     * subquery, falling back to id for filter-only queries that have no score.
+     */
+    private static List<SortField<?>> collapsedOrderBy(String qualifier, boolean hasScore) {
+        Field<String> id = field(qualifier, GROUP_HEAD_ID, String.class);
+        if (!hasScore) {
+            return List.of(id.asc());
+        }
+        return List.of(field(qualifier, GROUP_SCORE, Double.class).desc(), id.asc());
     }
 
     /**
