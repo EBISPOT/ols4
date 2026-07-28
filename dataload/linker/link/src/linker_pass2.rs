@@ -17,7 +17,7 @@ use crate::copy_json_gathering_strings::{copy_json_gathering_strings, write_valu
 use crate::extract_iri_from_property_name;
 use crate::obo_database_url_service::{map_curie, OboDatabaseUrlService};
 use crate::sssom_literal_mappings::CuratedFromEntry;
-use ols_shared::{EntityDefinitionSet, LinkerPass1Result};
+use ols_shared::{EntityDefinition, EntityDefinitionSet, LinkerPass1Result};
 
 /// Run LinkerPass2 on an input JSON file
 pub fn run(
@@ -661,8 +661,16 @@ fn get_processed_curie_value(pass1_result: &LinkerPass1Result, entity_iri: Optio
         None => return String::new(),
     };
 
-    if let Some(first_def) = def.definitions.iter().next() {
-        if let Some(Value::Object(ref curie_obj)) = first_def.curie {
+    // Prefer the defining ontology's curie so a shared IRI resolves consistently
+    // regardless of which ontology's copy is being rendered. `definitions` is
+    // ordered alphabetically by ontology_id, so falling back to it directly (as
+    // this used to do) picks whichever unrelated ontology happens to sort first
+    // if it merely references the IRI without being its defining ontology.
+    let candidate = def.defining_definitions.iter().next()
+        .or_else(|| def.definitions.iter().next());
+
+    if let Some(chosen_def) = candidate {
+        if let Some(Value::Object(ref curie_obj)) = chosen_def.curie {
             if let Some(Value::String(value)) = curie_obj.get("value") {
                 return value.clone();
             }
@@ -774,5 +782,54 @@ mod tests {
         );
 
         fs::remove_file(fixture_path).unwrap();
+    }
+
+    fn make_curie_def(ontology_id: &str, curie: &str, is_defining_ontology: bool) -> EntityDefinition {
+        EntityDefinition {
+            ontology_id: ontology_id.to_string(),
+            entity_types: BTreeSet::from(["class".to_string()]),
+            is_defining_ontology,
+            label: None,
+            curie: Some(serde_json::json!({
+                "type": ["xsd:string"],
+                "value": curie,
+            })),
+            is_obsolete: false,
+        }
+    }
+
+    #[test]
+    fn picks_defining_ontologys_curie_not_the_alphabetically_first_one() {
+        // Regression test for https://github.com/EBISPOT/ols4/issues/1334:
+        // a shared IRI (e.g. an ontology's root class, reused/referenced by an
+        // unrelated ontology) must resolve to the *defining* ontology's curie,
+        // not whichever ontology_id happens to sort first alphabetically.
+        let iri = "http://purl.obolibrary.org/obo/MONDO_0000001".to_string();
+
+        let mondo_def = make_curie_def("mondo", "MONDO:0000001", true);
+        let afo_o_def = make_curie_def("afo_o", "AFO_O:0000001", false);
+
+        let mut def_set = EntityDefinitionSet::default();
+        def_set.definitions.insert(mondo_def.clone());
+        def_set.definitions.insert(afo_o_def.clone());
+        def_set.defining_definitions.insert(mondo_def.clone());
+        def_set.defining_ontology_ids.insert("mondo".to_string());
+        def_set.ontology_id_to_definitions.insert("mondo".to_string(), mondo_def);
+        def_set.ontology_id_to_definitions.insert("afo_o".to_string(), afo_o_def);
+
+        // Sanity check: "afo_o" does sort before "mondo", which is exactly what
+        // made the old `.definitions.iter().next()` logic pick the wrong one.
+        assert_eq!(
+            def_set.definitions.iter().next().unwrap().ontology_id,
+            "afo_o"
+        );
+
+        let mut pass1_result = LinkerPass1Result::new();
+        pass1_result.iri_to_definitions.insert(iri.clone(), def_set);
+
+        assert_eq!(
+            get_processed_curie_value(&pass1_result, Some(&iri)),
+            "MONDO:0000001"
+        );
     }
 }
