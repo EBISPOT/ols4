@@ -17,6 +17,7 @@ import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.field;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.matchesTsQuery;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.phraseToTsQuery;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.toTsQuery;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.tsvectorMatches;
 
 /**
  * Builds jOOQ conditions and ordering for entity search/filter operations.
@@ -139,8 +140,10 @@ public class OlsSearchQuery {
         Condition condition = DSL.trueCondition();
 
         if (searchText != null && !searchText.isBlank()) {
-            if (exactMatch && searchFields != null && !searchFields.isEmpty()) {
-                condition = condition.and(buildExactFieldCondition(qualifier, availableFilterColumns));
+            if (searchFields != null && !searchFields.isEmpty()) {
+                condition = condition.and(exactMatch
+                        ? buildExactFieldCondition(qualifier, availableFilterColumns)
+                        : buildFieldRestrictedTsCondition(qualifier, availableFilterColumns));
             } else {
                 condition = condition.and(matchesTsQuery(field(qualifier, "ts_search", Object.class), buildTsQuery()));
             }
@@ -237,6 +240,39 @@ public class OlsSearchQuery {
             } else {
                 anyField = anyField.or(DSL.lower(field(qualifier, col, String.class)).eq(lowerSearch));
             }
+        }
+        return anyField;
+    }
+
+    /**
+     * For non-exact queries with explicit searchFields, restrict full-text matching to those
+     * specific fields instead of the blanket ts_search column.
+     *
+     * ts_search is a single generated tsvector spanning every searchable column (label, short_form,
+     * curie, synonym, definition, iri), so matching against it ignores which fields the caller
+     * asked for — a query restricted to queryFields=label,synonym would still match on hits inside
+     * definition. This builds an ad-hoc ols_tsvector(column) @@ tsquery per requested field instead,
+     * OR'd together, mirroring buildExactFieldCondition()'s column resolution. See GitHub issue #1308.
+     *
+     * Backed by per-field GIN expression indexes (idx_ent_label_fts, idx_ent_synonym_fts) so the
+     * restricted match stays index-accelerated for the fields callers actually request in practice.
+     * Fields without such an index still match correctly, just via a slower scan.
+     */
+    private Condition buildFieldRestrictedTsCondition(String qualifier, Set<String> availableFilterColumns) {
+        Field<Object> tsQuery = buildTsQuery();
+        Condition anyField = DSL.falseCondition();
+        for (String qf : searchFields) {
+            boolean knownCol = COLUMN_MAP.containsKey(qf);
+            String col;
+            try {
+                col = resolveColumn(qf);
+            } catch (IllegalArgumentException e) {
+                continue;
+            }
+            boolean filterCol = !knownCol && availableFilterColumns != null && availableFilterColumns.contains(col);
+            if (!knownCol && !filterCol) continue;
+            if (knownCol && resolveColumnType(qf) == ColumnType.BOOLEAN) continue;
+            anyField = anyField.or(tsvectorMatches(field(qualifier, col, Object.class), tsQuery));
         }
         return anyField;
     }

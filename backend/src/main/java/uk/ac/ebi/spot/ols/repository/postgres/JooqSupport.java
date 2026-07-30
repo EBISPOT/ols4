@@ -102,4 +102,12 @@ public final class JooqSupport {
     public static Condition matchesTsQuery(Field<?> tsVector, Field<?> tsQuery) {
         return DSL.condition("{0} @@ {1}", tsVector, tsQuery);
     }
+
+    public static Condition tsvectorMatches(Field<?> textOrArrayField, Field<?> tsQuery) {
+        // ols_tsvector() has both a text and text[] overload (see create_postgres_schema.py);
+        // Postgres resolves the right one from the column's runtime type. Used to restrict
+        // non-exact search to specific searchFields/queryFields instead of the blanket ts_search
+        // column, which spans every field regardless of what was requested. See GitHub issue #1308.
+        return DSL.condition("ols_tsvector({0}) @@ {1}", textOrArrayField, tsQuery);
+    }
 }
