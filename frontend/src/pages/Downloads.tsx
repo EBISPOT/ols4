@@ -83,47 +83,48 @@ const data: any[] = [
   {
     description:
       "OLS internal data representation of all loaded ontologies (~50 GB uncompressed)",
-    downloadLabel: "ontologies.json.gz",
+    downloadLabel: "ontology_jsons.tgz",
     downloadLink:
-      "https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/ontologies.json.gz",
+      "https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/ontology_jsons.tgz",
     format: "GZIP JSON",
   },
   {
     description:
-      "As ontologies.json.gz but after running through the OLS linker to add references between ontologies and to external databases (~150 GB uncompressed)",
-    downloadLabel: "ontologies_linked.json.gz",
+      "As ontology_jsons.tgz but after running through the OLS linker to add references between ontologies and to external databases (~150 GB uncompressed)",
+    downloadLabel: "ontology_jsons_linked.tgz",
     downloadLink:
-      "https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/ontologies_linked.json.gz",
+      "https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/ontology_jsons_linked.tgz",
     format: "GZIP JSON",
-  },
-  {
-    description:
-      "The PostgreSQL database generated from ontologies_linked.json by the OLS json2postgres tool (Requires PostgreSQL 17 with pgvector)",
-    downloadLabel: "postgres.tgz",
-    downloadLink:
-      "https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/postgres.tgz",
-    format: "PostgreSQL database",
-  },
-  {
-    description:
-      "The solr database generated from ontologies_linked.json by the OLS json2solr tool (Requires Solr 9.0.0)",
-    downloadLabel: "solr.tgz",
-    downloadLink:
-      "https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/solr.tgz",
-    format: "Solr core",
   },
   {
     description: "Mappings extracted from all ontologies in SSSOM TSV format",
-    downloadLabel: "mappings_sssom.tsv.gz",
+    downloadLabel: "sssom.tgz",
     downloadLink:
-      "https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/mappings_sssom.tgz",
+      "https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/sssom.tgz",
     format: "tab separated file",
   },
   {
-    description: "Embeddings db of all ontologies in OLS",
-    downloadLabel: "embeddings.db.gz",
+    description:
+      "Mappings to obsolete terms extracted from all ontologies in SSSOM TSV format",
+    downloadLabel: "sssom-obsolete.tgz",
     downloadLink:
-        "https://ftp.ebi.ac.uk/pub/databases/spot/ols/embeddings.db.gz",
-    format: "SQLite database",
+      "https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/sssom-obsolete.tgz",
+    format: "tab separated file",
+  },
+  {
+    description:
+      "Database used by the OLS text tagger service for annotating free text with ontology terms",
+    downloadLabel: "text_tagger_db.bin.gz",
+    downloadLink:
+      "https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/text_tagger_db.bin.gz",
+    format: "GZIP binary",
+  },
+  {
+    description:
+      "Embeddings of all ontologies in OLS, generated using multiple embedding models",
+    downloadLabel: "embeddings/",
+    downloadLink:
+      "https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/embeddings/",
+    format: "Directory (Parquet)",
   },
 ];
