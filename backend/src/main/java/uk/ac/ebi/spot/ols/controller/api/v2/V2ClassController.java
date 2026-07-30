@@ -96,7 +96,7 @@ public class V2ClassController {
                             "The fields are weighted equally. The fields are defined in the schema. " +
                             "The default fields are label and definition. " +
                             "The fields weights can be boosted by appending a caret ^ and a positive integer to the field name. " +
-                            "For example, label^3 synonyms^2 description^1 logical_definition^1",
+                            "For example, label^3 synonym^2 description^1 logical_definition^1",
                     example = "label^100 description") String searchFields,
             @RequestParam(value = "boostFields", required = false)
             @Parameter(name = "boostFields",
@@ -149,7 +149,7 @@ public class V2ClassController {
                             "The fields are weighted equally. The fields are defined in the schema. " +
                             "The default fields are label and definition. " +
                             "The fields weights can be boosted by appending a caret ^ and a positive integer to the field name. " +
-                            "For example, label^3 synonyms^2 description^1 logical_definition^1",
+                            "For example, label^3 synonym^2 description^1 logical_definition^1",
                     example = "label^100 description") String searchFields,
             @RequestParam(value = "boostFields", required = false)
             @Parameter(name = "boostFields",
