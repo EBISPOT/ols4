@@ -130,7 +130,7 @@ CREATE INDEX idx_ent_synonym_lower ON ols_entities USING gin (ols_lower_array(sy
 -- Per-field full-text indexes, used by buildFieldRestrictedTsCondition() (JooqSupport.tsvectorMatches)
 -- to keep non-exact searchFields/queryFields-restricted queries index-accelerated instead of matching
 -- against the blanket ts_search column, which spans every field regardless of what was requested.
--- Scoped to label/synonym for now (the reported case); extend to other fields if they see real
+-- Scoped to label/synonym for now (the reported case) -- extend to other fields if they see real
 -- queryFields usage. See GitHub issue #1308.
 CREATE INDEX idx_ent_label_fts ON ols_entities USING gin (ols_tsvector(label));
 CREATE INDEX idx_ent_synonym_fts ON ols_entities USING gin (ols_tsvector(synonym));
