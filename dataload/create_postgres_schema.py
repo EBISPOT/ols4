@@ -42,6 +42,12 @@ CREATE OR REPLACE FUNCTION ols_tsvector(txt text)
 CREATE OR REPLACE FUNCTION ols_tsvector(arr text[])
     RETURNS tsvector LANGUAGE plpgsql IMMUTABLE PARALLEL SAFE AS
     $$ BEGIN RETURN to_tsvector('pg_catalog.english', coalesce(array_to_string(arr, ' '), '')); END $$;
+
+-- Lowercases every element of a text[] so exact-match array containment (label @>, synonym @>)
+-- can be done case-insensitively while still using a GIN expression index. See GitHub issue #1309.
+CREATE OR REPLACE FUNCTION ols_lower_array(arr text[])
+    RETURNS text[] LANGUAGE sql IMMUTABLE PARALLEL SAFE AS
+    $$ SELECT array_agg(lower(x)) FROM unnest(arr) AS x $$;
 """
 
 ENTITIES_TABLE_SQL = """\
@@ -116,6 +122,18 @@ CREATE INDEX idx_ent_pref_root ON ols_entities (is_preferred_root) WHERE is_pref
 CREATE INDEX idx_ent_subset ON ols_entities USING gin (subset);
 CREATE INDEX idx_ent_label ON ols_entities USING gin (label);
 CREATE INDEX idx_ent_synonym ON ols_entities USING gin (synonym);
+-- Case-insensitive counterparts, used by exact-match array containment (see arrayContainsCaseInsensitive
+-- in JooqSupport.java / GitHub issue #1309). Without these the case-insensitive query falls back to an
+-- unindexed unnest() scan of the whole table.
+CREATE INDEX idx_ent_label_lower ON ols_entities USING gin (ols_lower_array(label));
+CREATE INDEX idx_ent_synonym_lower ON ols_entities USING gin (ols_lower_array(synonym));
+-- Per-field full-text indexes, used by buildFieldRestrictedTsCondition() (JooqSupport.tsvectorMatches)
+-- to keep non-exact searchFields/queryFields-restricted queries index-accelerated instead of matching
+-- against the blanket ts_search column, which spans every field regardless of what was requested.
+-- Scoped to label/synonym for now (the reported case) -- extend to other fields if they see real
+-- queryFields usage. See GitHub issue #1308.
+CREATE INDEX idx_ent_label_fts ON ols_entities USING gin (ols_tsvector(label));
+CREATE INDEX idx_ent_synonym_fts ON ols_entities USING gin (ols_tsvector(synonym));
 CREATE INDEX idx_ent_related_to ON ols_entities USING gin (related_to);
 CREATE INDEX idx_ent_fts ON ols_entities USING gin (ts_search);
 CREATE INDEX idx_ent_trgm_suggest ON ols_entities USING gin (label_for_suggest gin_trgm_ops);

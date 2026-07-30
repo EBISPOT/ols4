@@ -12,10 +12,12 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContains;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContainsCaseInsensitive;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.field;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.matchesTsQuery;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.phraseToTsQuery;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.toTsQuery;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.tsvectorMatches;
 
 /**
  * Builds jOOQ conditions and ordering for entity search/filter operations.
@@ -138,8 +140,10 @@ public class OlsSearchQuery {
         Condition condition = DSL.trueCondition();
 
         if (searchText != null && !searchText.isBlank()) {
-            if (exactMatch && searchFields != null && !searchFields.isEmpty()) {
-                condition = condition.and(buildExactFieldCondition(qualifier, availableFilterColumns));
+            if (searchFields != null && !searchFields.isEmpty()) {
+                condition = condition.and(exactMatch
+                        ? buildExactFieldCondition(qualifier, availableFilterColumns)
+                        : buildFieldRestrictedTsCondition(qualifier, availableFilterColumns));
             } else {
                 condition = condition.and(matchesTsQuery(field(qualifier, "ts_search", Object.class), buildTsQuery()));
             }
@@ -197,7 +201,12 @@ public class OlsSearchQuery {
                 DSL.inline(32))
                 .plus(DSL.when(field(qualifier, "is_defining_ontology", Boolean.class).isTrue(), 100.0).otherwise(0.0))
                 .plus(DSL.when(field(qualifier, "search_type", String.class).eq("ontology"), 1.0).otherwise(0.0))
-                .plus(DSL.when(arrayContains(field(qualifier, "label", String[].class), searchText), 1000.0).otherwise(0.0));
+                // Case-insensitive so an exact-label hit still gets the ranking bonus regardless of
+                // input casing (e.g. "mus musculus" vs stored "Mus musculus") — matches the
+                // case-insensitive semantics buildExactFieldCondition() already uses. Without this,
+                // exact matches whose case differs from the query rank purely on ts_rank_cd and can
+                // end up buried many pages deep. See GitHub issue #1312.
+                .plus(DSL.when(arrayContainsCaseInsensitive(field(qualifier, "label", String[].class), searchText.toLowerCase(Locale.ROOT)), 1000.0).otherwise(0.0));
     }
 
     /**
@@ -213,7 +222,8 @@ public class OlsSearchQuery {
      * results from completely unrelated fields, which is misleading — the caller explicitly asked
      * for a specific field and should get zero results if that field is not indexed.
      *
-     * Array columns use GIN @> containment for fast bitmap index scans.
+     * Array columns use case-insensitive GIN @> containment against ols_lower_array(column)
+     * (idx_ent_label_lower / idx_ent_synonym_lower) for fast bitmap index scans.
      * Scalar columns use lower()=lower() for case-insensitive equality.
      */
     private Condition buildExactFieldCondition(String qualifier, Set<String> availableFilterColumns) {
@@ -231,10 +241,43 @@ public class OlsSearchQuery {
             if (!knownCol && !filterCol) continue;
             ColumnType ct = knownCol ? resolveColumnType(qf) : ColumnType.TEXT_ARRAY;
             if (ct == ColumnType.TEXT_ARRAY) {
-                anyField = anyField.or(arrayContains(field(qualifier, col, String[].class), searchText));
+                anyField = anyField.or(arrayContainsCaseInsensitive(field(qualifier, col, String[].class), lowerSearch));
             } else {
                 anyField = anyField.or(DSL.lower(field(qualifier, col, String.class)).eq(lowerSearch));
             }
+        }
+        return anyField;
+    }
+
+    /**
+     * For non-exact queries with explicit searchFields, restrict full-text matching to those
+     * specific fields instead of the blanket ts_search column.
+     *
+     * ts_search is a single generated tsvector spanning every searchable column (label, short_form,
+     * curie, synonym, definition, iri), so matching against it ignores which fields the caller
+     * asked for — a query restricted to queryFields=label,synonym would still match on hits inside
+     * definition. This builds an ad-hoc ols_tsvector(column) @@ tsquery per requested field instead,
+     * OR'd together, mirroring buildExactFieldCondition()'s column resolution. See GitHub issue #1308.
+     *
+     * Backed by per-field GIN expression indexes (idx_ent_label_fts, idx_ent_synonym_fts) so the
+     * restricted match stays index-accelerated for the fields callers actually request in practice.
+     * Fields without such an index still match correctly, just via a slower scan.
+     */
+    private Condition buildFieldRestrictedTsCondition(String qualifier, Set<String> availableFilterColumns) {
+        Field<Object> tsQuery = buildTsQuery();
+        Condition anyField = DSL.falseCondition();
+        for (String qf : searchFields) {
+            boolean knownCol = COLUMN_MAP.containsKey(qf);
+            String col;
+            try {
+                col = resolveColumn(qf);
+            } catch (IllegalArgumentException e) {
+                continue;
+            }
+            boolean filterCol = !knownCol && availableFilterColumns != null && availableFilterColumns.contains(col);
+            if (!knownCol && !filterCol) continue;
+            if (knownCol && resolveColumnType(qf) == ColumnType.BOOLEAN) continue;
+            anyField = anyField.or(tsvectorMatches(field(qualifier, col, Object.class), tsQuery));
         }
         return anyField;
     }

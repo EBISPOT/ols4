@@ -37,6 +37,14 @@ public final class JooqSupport {
         return DSL.condition("{0} @> ARRAY[{1}]::text[]", arrayField, DSL.val(value));
     }
 
+    public static Condition arrayContainsCaseInsensitive(Field<String[]> arrayField, String lowerValue) {
+        // Case-insensitive counterpart to arrayContains(): matches against the ols_lower_array()
+        // expression (see idx_ent_label_lower / idx_ent_synonym_lower) instead of the raw column,
+        // so the comparison stays GIN-accelerated. Caller must lowercase `lowerValue` already.
+        // See GitHub issue #1309.
+        return DSL.condition("ols_lower_array({0}) @> ARRAY[{1}]::text[]", arrayField, DSL.val(lowerValue));
+    }
+
     public static Condition arrayContains(Field<String[]> arrayField, Field<String> valueField) {
         // `value = ANY(array)` form: only useful when the *value* side is the scanned column
         // (e.g. e2.iri = ANY(e1.direct_parents) in a nested loop, served by a btree index on
@@ -93,5 +101,13 @@ public final class JooqSupport {
 
     public static Condition matchesTsQuery(Field<?> tsVector, Field<?> tsQuery) {
         return DSL.condition("{0} @@ {1}", tsVector, tsQuery);
+    }
+
+    public static Condition tsvectorMatches(Field<?> textOrArrayField, Field<?> tsQuery) {
+        // ols_tsvector() has both a text and text[] overload (see create_postgres_schema.py);
+        // Postgres resolves the right one from the column's runtime type. Used to restrict
+        // non-exact search to specific searchFields/queryFields instead of the blanket ts_search
+        // column, which spans every field regardless of what was requested. See GitHub issue #1308.
+        return DSL.condition("ols_tsvector({0}) @@ {1}", textOrArrayField, tsQuery);
     }
 }
