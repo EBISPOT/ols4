@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContains;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContainsCaseInsensitive;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.field;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.matchesTsQuery;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.phraseToTsQuery;
@@ -213,7 +214,8 @@ public class OlsSearchQuery {
      * results from completely unrelated fields, which is misleading — the caller explicitly asked
      * for a specific field and should get zero results if that field is not indexed.
      *
-     * Array columns use GIN @> containment for fast bitmap index scans.
+     * Array columns use case-insensitive GIN @> containment against ols_lower_array(column)
+     * (idx_ent_label_lower / idx_ent_synonym_lower) for fast bitmap index scans.
      * Scalar columns use lower()=lower() for case-insensitive equality.
      */
     private Condition buildExactFieldCondition(String qualifier, Set<String> availableFilterColumns) {
@@ -231,7 +233,7 @@ public class OlsSearchQuery {
             if (!knownCol && !filterCol) continue;
             ColumnType ct = knownCol ? resolveColumnType(qf) : ColumnType.TEXT_ARRAY;
             if (ct == ColumnType.TEXT_ARRAY) {
-                anyField = anyField.or(arrayContains(field(qualifier, col, String[].class), searchText));
+                anyField = anyField.or(arrayContainsCaseInsensitive(field(qualifier, col, String[].class), lowerSearch));
             } else {
                 anyField = anyField.or(DSL.lower(field(qualifier, col, String.class)).eq(lowerSearch));
             }
