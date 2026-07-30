@@ -201,7 +201,12 @@ public class OlsSearchQuery {
                 DSL.inline(32))
                 .plus(DSL.when(field(qualifier, "is_defining_ontology", Boolean.class).isTrue(), 100.0).otherwise(0.0))
                 .plus(DSL.when(field(qualifier, "search_type", String.class).eq("ontology"), 1.0).otherwise(0.0))
-                .plus(DSL.when(arrayContains(field(qualifier, "label", String[].class), searchText), 1000.0).otherwise(0.0));
+                // Case-insensitive so an exact-label hit still gets the ranking bonus regardless of
+                // input casing (e.g. "mus musculus" vs stored "Mus musculus") — matches the
+                // case-insensitive semantics buildExactFieldCondition() already uses. Without this,
+                // exact matches whose case differs from the query rank purely on ts_rank_cd and can
+                // end up buried many pages deep. See GitHub issue #1312.
+                .plus(DSL.when(arrayContainsCaseInsensitive(field(qualifier, "label", String[].class), searchText.toLowerCase(Locale.ROOT)), 1000.0).otherwise(0.0));
     }
 
     /**
