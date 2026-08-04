@@ -142,6 +142,28 @@ class LocalizationTransformTest {
     }
 
     @Test
+    void nonStringInvariantValuesDoNotTriggerMixedStringArrayFallback() {
+        JsonElement entity = json("""
+                {
+                  "type": ["entity", "individual"],
+                  "searchableAnnotationValues": [
+                    {"type": ["literal"], "value": "1234"},
+                    false
+                  ]
+                }
+                """);
+
+        JsonElement expected = json("""
+                {
+                  "type": ["entity", "individual"],
+                  "searchableAnnotationValues": [false]
+                }
+                """);
+
+        assertEquals(expected, LocalizationTransform.transform(entity, "en"));
+    }
+
+    @Test
     void allLanguagesStillBypassesLocalization() {
         JsonElement ontology = json("""
                 {
