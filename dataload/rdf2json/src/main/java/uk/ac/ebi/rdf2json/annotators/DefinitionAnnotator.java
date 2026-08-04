@@ -11,25 +11,29 @@ import java.util.*;
 import static uk.ac.ebi.ols.shared.DefinedFields.DEFINITION;
 
 public class DefinitionAnnotator {
+	private static final List<String> DEFAULT_DEFINITION_PROPERTIES = List.of(
+			"http://www.w3.org/2000/01/rdf-schema#comment",
+			"http://purl.obolibrary.org/obo/IAO_0000115",
+			"http://purl.org/dc/terms/description",
+			"http://purl.org/dc/elements/1.1/description"
+	);
 
 	public static Set<String> getDefinitionProperties(OntologyGraph graph) {
-
-		Set<String> definitionProperties = new TreeSet<>(
-				List.of(
-						"http://www.w3.org/2000/01/rdf-schema#comment",
-						"http://purl.obolibrary.org/obo/IAO_0000115",
-						"http://purl.org/dc/terms/description",
-						"http://purl.org/dc/elements/1.1/description"
-				)
-		);
-
 		Object configDefinitionProperties = graph.config.get("definition_property");
 
+		// An explicit ontology configuration is authoritative. The defaults are only
+		// a backward-compatible fallback for ontologies that omit the setting.
 		if(configDefinitionProperties instanceof Collection<?>) {
-			definitionProperties.addAll((Collection<String>) configDefinitionProperties);
+			Set<String> definitionProperties = new TreeSet<>();
+			for(Object property : (Collection<?>) configDefinitionProperties) {
+				if(property instanceof String) {
+					definitionProperties.add((String) property);
+				}
+			}
+			return definitionProperties;
 		}
 
-		return definitionProperties;
+		return new TreeSet<>(DEFAULT_DEFINITION_PROPERTIES);
 	}
 
 	public static void annotateDefinitions(OntologyGraph graph) {
