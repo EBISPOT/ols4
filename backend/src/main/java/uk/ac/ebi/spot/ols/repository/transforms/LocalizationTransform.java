@@ -53,13 +53,16 @@ public class LocalizationTransform {
         // Attempt to localize all of the keys into the requested language.
 
         JsonObject res = new JsonObject();
+        List<String> types = JsonHelper.getStrings(obj, "type");
+        boolean localizeMixedStringArrays = types.contains("ontology");
 
         for (String k : obj.keySet()) {
 
             if(k.equals("linkedEntities")) {
                 res.add(k, localizeLinkedEntities(obj.get(k).getAsJsonObject(), lang));
             } else {
-                JsonElement localized = localizeValueWithFallbacks( obj.get(k), lang );
+                JsonElement localized = localizeValueWithFallbacks(
+                        obj.get(k), lang, localizeMixedStringArrays);
 
                 if(localized != null)
                     res.add(k, localized);
@@ -162,8 +165,17 @@ public class LocalizationTransform {
     }
 
     public static JsonElement localizeValueWithFallbacks(JsonElement v, String lang) {
+        return localizeValueWithFallbacks(v, lang, false);
+    }
 
-        if(v.isJsonArray() && requiresMixedStringArrayFallback(v.getAsJsonArray())) {
+    private static JsonElement localizeValueWithFallbacks(
+            JsonElement v,
+            String lang,
+            boolean localizeMixedStringArrays) {
+
+        if(localizeMixedStringArrays
+                && v.isJsonArray()
+                && requiresMixedStringArrayFallback(v.getAsJsonArray())) {
             return localizeArrayWithFallbacks(v.getAsJsonArray(), lang);
         }
 

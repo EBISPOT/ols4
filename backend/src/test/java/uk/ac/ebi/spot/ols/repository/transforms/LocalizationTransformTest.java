@@ -164,6 +164,32 @@ class LocalizationTransformTest {
     }
 
     @Test
+    void entityMixedStringArraysKeepExistingFallbackBehavior() {
+        JsonElement entity = json("""
+                {
+                  "type": ["entity", "property"],
+                  "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+                    "http://example.org/resource-one",
+                    "http://example.org/resource-two",
+                    {"type": ["literal"], "value": "http://example.org/default-literal"}
+                  ]
+                }
+                """);
+
+        JsonElement expected = json("""
+                {
+                  "type": ["entity", "property"],
+                  "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+                    "http://example.org/resource-one",
+                    "http://example.org/resource-two"
+                  ]
+                }
+                """);
+
+        assertEquals(expected, LocalizationTransform.transform(entity, "en"));
+    }
+
+    @Test
     void allLanguagesStillBypassesLocalization() {
         JsonElement ontology = json("""
                 {
