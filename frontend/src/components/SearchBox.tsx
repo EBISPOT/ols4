@@ -3,14 +3,15 @@ import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { get, getPaginated } from "../app/api";
 import { theme } from "../app/mui";
-import { randomString, thingFromJsonProperties, highlightMatch } from "../app/util";
+import { thingFromJsonProperties, highlightMatch } from "../app/util";
 import Entity from "../model/Entity";
 import Ontology from "../model/Ontology";
 import { Suggest } from "../model/Suggest";
 import Thing from "../model/Thing";
 import Model from "../model/Model";
 
-let curSearchToken: any = null;
+const AUTOCOMPLETE_MIN_QUERY_LENGTH = 3;
+const AUTOCOMPLETE_DEBOUNCE_MS = 300;
 
 interface SearchBoxEntry {
   linkUrl: string;
@@ -120,7 +121,7 @@ export default function SearchBox({
     return () => {
       mounted.current = false;
     };
-  });
+  }, []);
 
   useEffect(() => {
 
@@ -133,90 +134,109 @@ export default function SearchBox({
   }, []);
     
 
-  const cancelPromisesRef = useRef(false);
   useEffect(() => {
     // Clear previous results immediately when search params change
     setJumpTo([]);
     setAutocomplete(null);
 
-    if (!query.trim()) {
+    const trimmedQuery = query.trim();
+    if (trimmedQuery.length < AUTOCOMPLETE_MIN_QUERY_LENGTH) {
       setLoading(false);
       setArrowKeySelectedN(undefined);
       return;
     }
-    
+
+    const abortController = new AbortController();
+    const requestInit = { signal: abortController.signal };
+
     async function loadSuggestions() {
       setLoading(true);
       setArrowKeySelectedN(undefined);
 
-      const searchToken = randomString();
-      curSearchToken = searchToken;
-
       // Use llm_search endpoint if embedding model is selected
       const isEmbeddingSearch = selectedModel && selectedModel !== 'lexical';
-      
-      const entitiesPromise = isEmbeddingSearch
-        ? getPaginated<any>(
-            `api/v2/entities/llm_search?${new URLSearchParams({
-              q: query,
-              size: "5",
-              model: selectedModel,
-              ...(ontologyId ? { ontologyId } : {}),
-            })}`
-          )
-        : getPaginated<any>(
-            `api/v2/entities?${new URLSearchParams({
-              search: query,
-              size: "5",
-              lang: "en",
-              exactMatch: exact.toString(),
-              includeObsoleteEntities: obsolete.toString(),
-              ...(ontologyId ? { ontologyId } : {}),
-              ...((canonical ? { isDefiningOntology: true } : {}) as any),
-            })}`
-          );
 
-      const [entities, ontologies, autocomplete] = await Promise.all([
-        entitiesPromise,
-        searchForOntologies && !isEmbeddingSearch
+      try {
+        const entitiesPromise = isEmbeddingSearch
           ? getPaginated<any>(
-              `api/v2/ontologies?${new URLSearchParams({
-                search: query,
+              `api/v2/entities/llm_search?${new URLSearchParams({
+                q: trimmedQuery,
+                size: "5",
+                model: selectedModel,
+                ...(ontologyId ? { ontologyId } : {}),
+              })}`,
+              undefined,
+              undefined,
+              requestInit
+            )
+          : getPaginated<any>(
+              `api/v2/entities?${new URLSearchParams({
+                search: trimmedQuery,
                 size: "5",
                 lang: "en",
                 exactMatch: exact.toString(),
-                includeObsoleteEntities: obsolete.toString()
-              })}`
-            )
-          : null,
-        showSuggestions && !isEmbeddingSearch
-          ? get<Suggest>(
-              `api/suggest?${new URLSearchParams({
-                q: query,
-                exactMatch: exact.toString(),
                 includeObsoleteEntities: obsolete.toString(),
-              })}`
-            )
-          : null,
-      ]);
-      if (cancelPromisesRef.current && !mounted.current) return;
+                includeTotal: "false",
+                ...(ontologyId ? { ontologyId } : {}),
+                ...((canonical ? { isDefiningOntology: true } : {}) as any),
+              })}`,
+              undefined,
+              undefined,
+              requestInit
+            );
 
-      if (searchToken === curSearchToken) {
+        const [entities, ontologies, autocomplete] = await Promise.all([
+          entitiesPromise,
+          searchForOntologies && !isEmbeddingSearch
+            ? getPaginated<any>(
+                `api/v2/ontologies?${new URLSearchParams({
+                  search: trimmedQuery,
+                  size: "5",
+                  lang: "en",
+                  exactMatch: exact.toString(),
+                  includeObsoleteEntities: obsolete.toString()
+                })}`,
+                undefined,
+                undefined,
+                requestInit
+              )
+            : null,
+          showSuggestions && !isEmbeddingSearch
+            ? get<Suggest>(
+                `api/suggest?${new URLSearchParams({
+                  q: trimmedQuery,
+                  exactMatch: exact.toString(),
+                  includeObsoleteEntities: obsolete.toString(),
+                })}`,
+                undefined,
+                undefined,
+                requestInit
+              )
+            : null,
+        ]);
+
+        if (abortController.signal.aborted || !mounted.current) return;
+
         setJumpTo([
           ...entities.elements.map((obj) => thingFromJsonProperties(obj)),
           ...(ontologies?.elements.map((obj) => new Ontology(obj)) || []),
         ]);
         setAutocomplete(autocomplete);
         setLoading(false);
+      } catch (error) {
+        if (abortController.signal.aborted) return;
+        console.error("Failed to load search suggestions", error);
+        if (mounted.current) setLoading(false);
       }
     }
 
-    loadSuggestions();
+    const debounceTimer = window.setTimeout(loadSuggestions, AUTOCOMPLETE_DEBOUNCE_MS);
 
     return () => {
-      cancelPromisesRef.current = true;
+      window.clearTimeout(debounceTimer);
+      abortController.abort();
     };
-  }, [query, exact, obsolete, canonical, selectedModel]);
+  }, [query, exact, obsolete, canonical, selectedModel, ontologyId, searchForOntologies, showSuggestions]);
 
   let autocompleteToShow = autocomplete?.response.docs.slice(0, 5) || [];
   let autocompleteElements = autocompleteToShow.map(
@@ -268,7 +288,7 @@ export default function SearchBox({
             linkUrl,
             li: (
               <li
-                key={randomString()}
+                key={jumpToEntry.getIri()}
                 className={
                   "py-1 px-3 leading-7 hover:bg-link-light hover:cursor-pointer" +
                   (arrowKeySelectedN === i + autocompleteElements.length

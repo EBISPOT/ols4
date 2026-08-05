@@ -259,9 +259,9 @@ public class OlsSearchQuery {
      * definition. This builds an ad-hoc ols_tsvector(column) @@ tsquery per requested field instead,
      * OR'd together, mirroring buildExactFieldCondition()'s column resolution. See GitHub issue #1308.
      *
-     * Backed by per-field GIN expression indexes (idx_ent_label_fts, idx_ent_synonym_fts) so the
-     * restricted match stays index-accelerated for the fields callers actually request in practice.
-     * Fields without such an index still match correctly, just via a slower scan.
+     * Backed by per-field GIN expression indexes for label, synonym, curie, short_form, and iri so
+     * the default field-restricted query stays index-accelerated. Dynamic fields without such an
+     * index still match correctly, just via a slower scan.
      */
     private Condition buildFieldRestrictedTsCondition(String qualifier, Set<String> availableFilterColumns) {
         Field<Object> tsQuery = buildTsQuery();

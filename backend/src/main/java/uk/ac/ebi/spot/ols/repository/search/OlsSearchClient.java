@@ -87,16 +87,28 @@ public class OlsSearchClient {
      * Paginated search with faceting support.
      */
     public OlsFacetedResultsPage<JsonElement> searchPaginated(OlsSearchQuery query, Pageable pageable) {
+        return searchPaginated(query, pageable, true);
+    }
+
+    /**
+     * Paginated search with optional total counting. When totals are omitted, the returned total is
+     * limited to the current page boundary; this mode is intended for clients such as autocomplete
+     * that only consume the result elements.
+     */
+    public OlsFacetedResultsPage<JsonElement> searchPaginated(
+            OlsSearchQuery query, Pageable pageable, boolean includeTotal) {
         try (Connection conn = postgresClient.getConnection()) {
             DSLContext dsl = postgresClient.dsl(conn);
             Condition where = query.buildCondition(getAvailableFilterColumns());
             List<SortField<?>> orderBy = query.buildOrderBy();
 
-            long count = Optional.ofNullable(dsl.selectCount()
+            Long count = includeTotal
+                    ? Optional.ofNullable(dsl.selectCount()
                             .from(OLS_ENTITIES)
                             .where(where)
                             .fetchOne(0, Long.class))
-                    .orElse(0L);
+                            .orElse(0L)
+                    : null;
 
             logger.debug("search condition: {}", where);
 
@@ -110,12 +122,14 @@ public class OlsSearchClient {
 
             List<JsonElement> results = readJsonResults(records);
 
+            long total = count != null ? count : pageable.getOffset() + results.size();
+
             Map<String, Map<String, Long>> facetFieldToCounts = new LinkedHashMap<>();
             for (String facetField : query.facetFields) {
                 facetFieldToCounts.put(facetField, executeFacetQuery(dsl, facetField, query));
             }
 
-            return new OlsFacetedResultsPage<>(results, facetFieldToCounts, pageable, count);
+            return new OlsFacetedResultsPage<>(results, facetFieldToCounts, pageable, total);
         } catch (SQLException e) {
             throw new RuntimeException("Search query failed", e);
         }
