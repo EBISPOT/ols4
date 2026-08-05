@@ -3,6 +3,7 @@
 export OLS4_CONFIG=$(find testcases | grep json | paste -sd, -)
 export OLS4_DATALOAD_ARGS="--loadLocalFiles"
 export BUILDKIT_PROGRESS=plain
+export OLS_ORCID_NAME_FIXTURE="${OLS_ORCID_NAME_FIXTURE:-$(pwd)/dev-testing/orcid-name-fixture.json}"
 
 rm -rf testcases_output_api/*
 mkdir -p testcases_output_api
@@ -43,5 +44,4 @@ HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose down -t 120 -v
 
 echo API test exit code: $EXIT_CODE
 exit $EXIT_CODE
-
 
