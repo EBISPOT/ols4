@@ -79,6 +79,10 @@ public class V2EntityController {
             @Parameter(name = "excludeOntologyId",
                     description = "Exclude entities from specific ontologies. Provide a comma-separated list of ontology IDs.",
                     example = "ncit,snomed") String excludeOntologyIds,
+            @RequestParam(value = "includeTotal", required = false, defaultValue = "true")
+            @Parameter(name = "includeTotal",
+                    description = "Whether to calculate the exact total number of matching entities. " +
+                            "Set to false for result-only clients such as autocomplete; totalElements then only covers the returned page boundary.") boolean includeTotal,
             @RequestParam
             @Parameter(hidden = true) MultiValueMap<String,String> searchProperties,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
@@ -96,7 +100,9 @@ public class V2EntityController {
 
         return new ResponseEntity<>(
                 new V2PagedAndFacetedResponse<V2Entity>(
-                    entityRepository.find(pageable, lang, search, searchFields, boostFields, facetFields, exactMatch, excludeOntologyIdsList, DynamicQueryHelper.filterProperties(properties), outputOpts) .map(V2Entity::new)
+                    entityRepository.find(pageable, lang, search, searchFields, boostFields, facetFields,
+                            exactMatch, excludeOntologyIdsList, DynamicQueryHelper.filterProperties(properties),
+                            outputOpts, includeTotal).map(V2Entity::new)
                         ),
                     HttpStatus.OK);
     }
@@ -205,5 +211,4 @@ public class V2EntityController {
                 HttpStatus.OK);
     }
 }
-
 
