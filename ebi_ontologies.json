@@ -30,6 +30,12 @@
       "ontology_purl": "https://purl.obolibrary.org/obo/mondo/mondo-international.owl"
     },
     {
+      "id": "iao",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ]
+    },
+    {
       "id": "evorao",
       "definition_property": [
         "http://www.w3.org/2004/02/skos/core#definition"
