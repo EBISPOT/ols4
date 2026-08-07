@@ -23,6 +23,7 @@ public class DynamicQueryHelper {
                         || k.equals("resolveReferences")
                         || k.equals("manchesterSyntax")
                         || k.equals("model")
+                        || k.equals("includeTotal")
                         )
                 continue;
 

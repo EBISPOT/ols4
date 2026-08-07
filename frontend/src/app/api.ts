@@ -46,9 +46,10 @@ export class Page<T> {
 export async function getPaginated<ResType>(
   path: string,
   reqParams?: ReqParams,
-  apiUrl?: string
+  apiUrl?: string,
+  init?: RequestInit
 ): Promise<Page<ResType>> {
-  const res = await get<any>(path, reqParams, apiUrl);
+  const res = await get<any>(path, reqParams, apiUrl, init);
 
   return new Page<ResType>(
 	res.page || 0,
@@ -60,8 +61,13 @@ export async function getPaginated<ResType>(
   );
 }
 
-export async function get<ResType>(path: string, reqParams?:ReqParams, apiUrl?: string): Promise<ResType> {
-  return request(path, reqParams, undefined, apiUrl);
+export async function get<ResType>(
+  path: string,
+  reqParams?: ReqParams,
+  apiUrl?: string,
+  init?: RequestInit
+): Promise<ResType> {
+  return request(path, reqParams, init, apiUrl);
 }
 
 export async function post<ReqType, ResType = any>(

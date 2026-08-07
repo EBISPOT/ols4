@@ -32,6 +32,16 @@ public class EntityRepository {
     public OlsFacetedResultsPage<JsonElement> find(
             Pageable pageable, String lang, String search, String searchFields, String boostFields, String facetFields, boolean exactMatch, Collection<String> excludeOntologyIds, Map<String, Collection<String>> properties, JsonTransformOptions outputOpts) throws IOException {
 
+        return find(pageable, lang, search, searchFields, boostFields, facetFields, exactMatch,
+                excludeOntologyIds, properties, outputOpts, true);
+    }
+
+    public OlsFacetedResultsPage<JsonElement> find(
+            Pageable pageable, String lang, String search, String searchFields, String boostFields,
+            String facetFields, boolean exactMatch, Collection<String> excludeOntologyIds,
+            Map<String, Collection<String>> properties, JsonTransformOptions outputOpts,
+            boolean includeTotal) throws IOException {
+
         Validation.validateLang(lang);
 
         OlsSearchQuery query = new OlsSearchQuery();
@@ -53,7 +63,7 @@ public class EntityRepository {
         SearchFieldsParser.addFacetFieldsToQuery(query, facetFields);
         DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
 
-        return searchClient.searchPaginated(query, pageable)
+        return searchClient.searchPaginated(query, pageable, includeTotal)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -148,5 +158,4 @@ public class EntityRepository {
 
 
 }
-
 

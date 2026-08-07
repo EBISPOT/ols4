@@ -53,13 +53,16 @@ public class LocalizationTransform {
         // Attempt to localize all of the keys into the requested language.
 
         JsonObject res = new JsonObject();
+        List<String> types = JsonHelper.getStrings(obj, "type");
+        boolean localizeMixedStringArrays = types.contains("ontology");
 
         for (String k : obj.keySet()) {
 
             if(k.equals("linkedEntities")) {
                 res.add(k, localizeLinkedEntities(obj.get(k).getAsJsonObject(), lang));
             } else {
-                JsonElement localized = localizeValueWithFallbacks( obj.get(k), lang );
+                JsonElement localized = localizeValueWithFallbacks(
+                        obj.get(k), lang, localizeMixedStringArrays);
 
                 if(localized != null)
                     res.add(k, localized);
@@ -162,6 +165,19 @@ public class LocalizationTransform {
     }
 
     public static JsonElement localizeValueWithFallbacks(JsonElement v, String lang) {
+        return localizeValueWithFallbacks(v, lang, false);
+    }
+
+    private static JsonElement localizeValueWithFallbacks(
+            JsonElement v,
+            String lang,
+            boolean localizeMixedStringArrays) {
+
+        if(localizeMixedStringArrays
+                && v.isJsonArray()
+                && requiresMixedStringArrayFallback(v.getAsJsonArray())) {
+            return localizeArrayWithFallbacks(v.getAsJsonArray(), lang);
+        }
 
         // 1. First try the explicitly requested language
         JsonElement localized = transform(v, lang);
@@ -183,6 +199,88 @@ public class LocalizationTransform {
         return localized;
     }
 
+    private static boolean requiresMixedStringArrayFallback(JsonArray arr) {
+        boolean hasLanguageDependentValue = false;
+        boolean hasLanguageIndependentStringValue = false;
+
+        for(JsonElement element : arr) {
+            hasLanguageDependentValue |= isLanguageDependentValue(element);
+            hasLanguageIndependentStringValue |= isLanguageIndependentStringValue(element);
+        }
+
+        return hasLanguageDependentValue && hasLanguageIndependentStringValue;
+    }
+
+    private static JsonElement localizeArrayWithFallbacks(JsonArray arr, String lang) {
+
+        // Language-independent values (for example URI strings) must not make a
+        // language lookup appear successful and prevent literal fallback.
+        String selectedLanguage = lang;
+        JsonArray localizedValues = localizeLanguageDependentValues(arr, selectedLanguage);
+
+        if(localizedValues.size() == 0) {
+            selectedLanguage = "";
+            localizedValues = localizeLanguageDependentValues(arr, selectedLanguage);
+        }
+
+        if(localizedValues.size() == 0) {
+            selectedLanguage = "en";
+        }
+
+        JsonArray res = new JsonArray(arr.size());
+        for(JsonElement element : arr) {
+            JsonElement localized = isLanguageDependentValue(element)
+                    ? transform(element, selectedLanguage)
+                    : transform(element, lang);
+
+            if(localized != null) {
+                res.add(localized);
+            }
+        }
+
+        return res.size() > 0 ? res : null;
+    }
+
+    private static JsonArray localizeLanguageDependentValues(JsonArray arr, String lang) {
+        return JsonCollectionHelper.map(
+                arr,
+                element -> isLanguageDependentValue(element) ? transform(element, lang) : null);
+    }
+
+    private static boolean isLanguageDependentValue(JsonElement value) {
+        if(!value.isJsonObject()) {
+            return false;
+        }
+
+        JsonObject obj = value.getAsJsonObject();
+        List<String> types = JsonHelper.getStrings(obj, "type");
+
+        if(types.contains("literal")) {
+            return true;
+        }
+
+        return types.contains("reification")
+                && obj.has("value")
+                && isLanguageDependentValue(obj.get("value"));
+    }
+
+    private static boolean isLanguageIndependentStringValue(JsonElement value) {
+        if(value.isJsonPrimitive()) {
+            return value.getAsJsonPrimitive().isString();
+        }
+
+        if(!value.isJsonObject()) {
+            return false;
+        }
+
+        JsonObject obj = value.getAsJsonObject();
+        List<String> types = JsonHelper.getStrings(obj, "type");
+
+        return types.contains("reification")
+                && obj.has("value")
+                && isLanguageIndependentStringValue(obj.get("value"));
+    }
+
     public static JsonObject localizeLinkedEntities(JsonObject linkedEntities, String lang) {
         JsonObject res = new JsonObject();
         for(String entityIri : linkedEntities.keySet()) {
@@ -199,10 +297,3 @@ public class LocalizationTransform {
     }
 
 }
-
-
-
-
-
-
-
