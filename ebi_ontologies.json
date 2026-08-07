@@ -1995,6 +1995,55 @@
         "https://w3id.org/metpo/1000186",
         "https://w3id.org/metpo/1000188"
       ]
+    },
+    {
+      "id": "aio",
+      "preferredPrefix": "AIO",
+      "title": "Artificial Intelligence Ontology (AIO)",
+      "description": "The Artificial Intelligence Ontology (AIO) is a systematization of artificial intelligence concepts, methodologies, and their interrelations, spanning networks, layers, functions, large language models, preprocessing, and bias.",
+      "uri": "https://w3id.org/aio/aio.owl",
+      "ontology_purl": "https://w3id.org/aio/aio.owl",
+      "base_uri": [
+        "https://w3id.org/aio/"
+      ],
+      "homepage": "https://github.com/berkeleybop/artificial-intelligence-ontology",
+      "repository": "https://github.com/berkeleybop/artificial-intelligence-ontology",
+      "tracker": "https://github.com/berkeleybop/artificial-intelligence-ontology/issues",
+      "creator": [
+        "Mark A. Miller",
+        "Marcin P. Joachimiak",
+        "J. Harry Caufield",
+        "Christopher J. Mungall"
+      ],
+      "contact": {
+        "label": "Mark Andrew Miller",
+        "email": "MAM@lbl.gov",
+        "github": "turbomam",
+        "orcid": "0000-0001-9076-6066"
+      },
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "reasoner": "EL",
+      "oboSlims": false,
+      "label_property": "http://www.w3.org/2000/01/rdf-schema#label",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym"
+      ],
+      "preferred_root_term": [
+        "https://w3id.org/aio/Bias",
+        "https://w3id.org/aio/Layer",
+        "https://w3id.org/aio/MachineLearningTask",
+        "https://w3id.org/aio/MathematicalFunction",
+        "https://w3id.org/aio/Model",
+        "https://w3id.org/aio/Network",
+        "https://w3id.org/aio/Preprocessing",
+        "https://w3id.org/aio/TrainingStrategy"
+      ]
     }
   ]
 }
