@@ -1,5 +1,8 @@
 package uk.ac.ebi.spot.ols.repository.search;
 
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.Weigher;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import org.jooq.Condition;
@@ -19,6 +22,7 @@ import uk.ac.ebi.spot.ols.service.PostgresClient;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
 
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.INFORMATION_SCHEMA_COLUMNS;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_AUTOSUGGEST;
@@ -53,6 +57,26 @@ public class OlsSearchClient {
     private PostgresClient postgresClient;
 
     private volatile Set<String> availableFilterColumns;
+
+    /**
+     * No TTL: autosuggest data only changes via a full dataload + redeploy (new pod, fresh empty
+     * cache), so there's no live-reload path a time-based expiry would need to catch. A TTL here
+     * would only evict still-valid hot entries and force them back through the slow fuzzy query.
+     *
+     * <p>Bounded by weight (total cached label rows), not entry count: {@code rows} is caller-
+     * controlled up to {@code ols.search.max-rows} (1000), so a raw entry-count cap doesn't bound
+     * memory — a client requesting rows=1000 across many distinct prefixes/ontology filters could
+     * otherwise inflate a large maximumSize toward gigabytes. 3,000,000 rows at ~100 bytes/label is
+     * a ~300MB ceiling regardless of how requests are shaped, negligible against the backend pod's
+     * 10Gi/50Gi memory request/limit (see k8chart/ols4/templates/ols4-backend-deployment.yaml), and
+     * covers well over 100k distinct-prefix entries at the realistic rows≈10 traffic shape.
+     * recordStats() so this can be tuned from real hit-rate data instead of guessed.
+     */
+    private final Cache<SuggestCacheKey, List<String>> suggestCache = CacheBuilder.newBuilder()
+            .maximumWeight(3_000_000)
+            .weigher((Weigher<SuggestCacheKey, List<String>>) (key, value) -> value.size())
+            .recordStats()
+            .build();
 
     private Set<String> getAvailableFilterColumns() {
         if (availableFilterColumns == null) {
@@ -439,13 +463,36 @@ public class OlsSearchClient {
     }
 
     /**
-     * Suggest with ontology filtering.
+     * Suggest with optional ontology filtering. Results are cached (see {@link #suggestCache}):
+     * autocomplete traffic is progressive-typing-shaped, so short/common prefixes like "can" are
+     * requested by every user who goes on to type "cancer", and are the most expensive queries to
+     * run cold (large fuzzy trigram candidate sets). Benchmarking against the dev DB (9.5M rows)
+     * found no index tuning (GiST, siglen, gin_fuzzy_search_limit) that beats the plain GIN trigram
+     * index without either changing match semantics or risking incorrect/approximate results, so
+     * this stays an exact query and leans on caching for latency instead.
      */
     public List<String> suggestLabels(String prefix, List<String> ontologyIds, int start, int rows) {
         if (prefix == null || prefix.isBlank()) {
             return List.of();
         }
 
+        SuggestCacheKey key = new SuggestCacheKey(
+                prefix.toLowerCase(Locale.ROOT), normalizeOntologyIds(ontologyIds), start, rows);
+        try {
+            return suggestCache.get(key, () -> suggestLabelsUncached(prefix, ontologyIds, start, rows));
+        } catch (ExecutionException e) {
+            throw new RuntimeException("suggestLabels query failed", e.getCause());
+        }
+    }
+
+    private static List<String> normalizeOntologyIds(List<String> ontologyIds) {
+        if (ontologyIds == null || ontologyIds.isEmpty()) {
+            return List.of();
+        }
+        return ontologyIds.stream().sorted().distinct().toList();
+    }
+
+    private List<String> suggestLabelsUncached(String prefix, List<String> ontologyIds, int start, int rows) {
         Condition where = trigramMatch(STRING_VALUE, prefix);
         if (ontologyIds != null && !ontologyIds.isEmpty()) {
             where = where.and(ONTOLOGY_ID.in(ontologyIds));
@@ -471,6 +518,9 @@ public class OlsSearchClient {
         } catch (SQLException e) {
             throw new RuntimeException("suggestLabels query failed", e);
         }
+    }
+
+    private record SuggestCacheKey(String prefix, List<String> ontologyIds, int start, int rows) {
     }
 
     /**

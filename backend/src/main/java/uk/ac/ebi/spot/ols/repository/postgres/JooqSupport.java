@@ -64,11 +64,11 @@ public final class JooqSupport {
     }
 
     public static Field<Double> similarity(Field<String> field, String value) {
-        return DSL.function("similarity", SQLDataType.DOUBLE, field, DSL.val(value));
+        return DSL.function("similarity", SQLDataType.DOUBLE, field, castAsText(DSL.val(value)));
     }
 
     public static Condition trigramMatch(Field<String> field, String value) {
-        return DSL.condition("{0} % {1}", field, DSL.val(value));
+        return DSL.condition("{0} % {1}", field, castAsText(DSL.val(value)));
     }
 
     public static Table<?> unnest(Field<String[]> arrayField, String tableAlias, String columnAlias) {
