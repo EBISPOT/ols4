@@ -86,7 +86,11 @@ public class PostgresClient {
         HikariConfig config = new HikariConfig();
         String url = "jdbc:postgresql://" + host + ":" + port + "/" + database;
         if (schema != null && !schema.isEmpty()) {
-            url += "?currentSchema=" + schema;
+            // currentSchema replaces search_path outright (it doesn't append to the default), so a
+            // non-public schema must list public explicitly or extension functions installed there
+            // by default (pg_trgm's similarity()/%, pgvector's <=>) stop resolving unqualified.
+            String searchPath = "public".equals(schema) ? schema : schema + ",public";
+            url += "?currentSchema=" + searchPath;
         }
         config.setJdbcUrl(url);
         config.setUsername(user);
