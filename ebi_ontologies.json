@@ -2061,6 +2061,36 @@
         "http://purl.obolibrary.org/obo/IAO_0000115"
       ],
       "ontology_purl": "https://github.com/mcwdsi/rehabo/releases/latest/download/rehabo.owl"
+    },
+    {
+      "id": "valuesets",
+      "creator": [
+        "Chris Mungall"
+      ],
+      "is_foundary": false,
+      "preferredPrefix": "valuesets",
+      "title": "Value Sets",
+      "uri": "https://w3id.org/linkml/valuesets/",
+      "description": "Comprehensive value sets across multiple domains including biological entities, data formats, geographic locations, chemical entities, anatomical structures, investigation metadata, clinical information, and specialized scientific domains. This is derived from the LinkML representation, with each value set represented as a class, with permissible values as subclasses",
+      "homepage": "https://github.com/linkml/valuesets",
+      "mailing_list": "cjmungall@lbl.gov",
+      "label_property": [
+        "http://www.w3.org/2000/01/rdf-schema#label",
+        "http://purl.org/dc/terms/title"
+      ],
+      "definition_property": [
+        "http://www.w3.org/2004/02/skos/core#definition"
+      ],
+      "synonym_property": [
+        "http://www.w3.org/2004/02/skos/core#altLabel"
+      ],
+      "hierarchical_property": [
+        "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+      ],
+      "base_uri": "https://w3id.org/linkml/valuesets/",
+      "reasoner": "EL",
+      "oboSlims": false,
+      "ontology_purl": "https://w3id.org/valuesets/valuesets.owl.ttl"
     }
   ]
 }
