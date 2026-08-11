@@ -2044,6 +2044,23 @@
         "https://w3id.org/aio/Preprocessing",
         "https://w3id.org/aio/TrainingStrategy"
       ]
+    },
+    {
+      "id": "rehabo",
+      "creator": [
+        "William R. Hogan",
+        "Manoj Purohit",
+        "Maxwell Pena"
+      ],
+      "is_foundary": false,
+      "preferredPrefix": "rehabo",
+      "title": "The Rehabilitation Ontology",
+      "uri": "http://purl.obolibrary.org/obo/rehabo.owl",
+      "homepage": "https://github.com/mcwdsi/rehabo",
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "ontology_purl": "https://github.com/mcwdsi/rehabo/releases/latest/download/rehabo.owl"
     }
   ]
 }
