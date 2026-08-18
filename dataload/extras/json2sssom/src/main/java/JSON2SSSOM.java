@@ -226,9 +226,10 @@ public class JSON2SSSOM {
                     String mappingSetOntologyFullName = mappingSetOntologyTitle == null || mappingSetOntologyTitle.isBlank()
                             ? mappingSetOntologyName
                             : mappingSetOntologyTitle + " (" + mappingSetOntologyName + ")";
+                    String ontologyIri = getStringProperty(ontologyProperties, "iri");
 
-                    writeExtractFile(yaml, outputFilePath, ontologyId, mappingSetOntologyName, mappingSetOntologyFullName, mappingDate, false, current);
-                    writeExtractFile(yaml, outputFilePath, ontologyId, mappingSetOntologyName, mappingSetOntologyFullName, mappingDate, true, obsolete);
+                    writeExtractFile(yaml, outputFilePath, ontologyId, mappingSetOntologyName, mappingSetOntologyFullName, ontologyIri, mappingDate, false, current);
+                    writeExtractFile(yaml, outputFilePath, ontologyId, mappingSetOntologyName, mappingSetOntologyFullName, ontologyIri, mappingDate, true, obsolete);
 
                     reader.endObject();
                 }
@@ -246,6 +247,7 @@ public class JSON2SSSOM {
             String ontologyId,
             String mappingSetOntologyName,
             String mappingSetOntologyFullName,
+            String ontologyIri,
             String mappingDate,
             boolean obsolete,
             SssomExtract extract) throws IOException {
@@ -268,6 +270,9 @@ public class JSON2SSSOM {
         yamlHeaderOther.put("local_id", localId);
         yamlHeaderOther.put("prefix", mappingSetOntologyName);
         yamlHeaderOther.put("ontology", mappingSetOntologyFullName);
+        if (ontologyIri != null && !ontologyIri.isBlank()) {
+            yamlHeaderOther.put("ontology_iri", ontologyIri);
+        }
         yamlHeader.put("other", yamlHeaderOther);
         yamlHeader.put("local_name", localName);
         yamlHeader.put("curie_map", extract.curieMap.curiePrefixToNamespace);
