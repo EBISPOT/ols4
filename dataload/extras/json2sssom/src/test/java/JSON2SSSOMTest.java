@@ -27,6 +27,7 @@ public class JSON2SSSOMTest {
                 "  \"ontologies\": [\n" +
                 "    {\n" +
                 "      \"ontologyId\": \"apo\",\n" +
+                "      \"iri\": \"http://purl.obolibrary.org/obo/apo.owl\",\n" +
                 "      \"preferredPrefix\": \"APO\",\n" +
                 "      \"title\": \"Ascomycete Phenotype Ontology\",\n" +
                 "      \"classes\": [],\n" +
@@ -52,7 +53,7 @@ public class JSON2SSSOMTest {
         assertTrue(sssom.contains("# mapping_set_title: OLS extracted APO mappings\n"));
         assertTrue(sssom.contains("# mapping_set_description: These mappings were extracted during the OLS dataload from APO\n"));
         assertTrue(sssom.contains("# mapping_date: '2026-04-30'\n") || sssom.contains("# mapping_date: 2026-04-30\n"));
-        assertTrue(sssom.contains("# other:\n#   local_id: apo.ols\n#   prefix: APO\n#   ontology: Ascomycete Phenotype Ontology (APO)\n# local_name: apo.ols.sssom.tsv\n"));
+        assertTrue(sssom.contains("# other:\n#   local_id: apo.ols\n#   prefix: APO\n#   ontology: Ascomycete Phenotype Ontology (APO)\n#   ontology_iri: http://purl.obolibrary.org/obo/apo.owl\n# local_name: apo.ols.sssom.tsv\n"));
         assertFalse(sssom.contains("mapping_set_source"));
     }
 
