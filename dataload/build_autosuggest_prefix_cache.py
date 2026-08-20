@@ -41,16 +41,37 @@ matching and ranking from scratch (a correctness-risk that isn't worth
 taking for a caching layer). Per-prefix cost is heavy-tailed: common
 letters (measured: "s" 16.3s, "a" 15.3s) cost far more than rare ones
 ("q" 0.6s, "x" 0.4s), because cost tracks how UNselective the prefix's
-trigrams are, not its length. Measured against the fallback cluster:
-length-1 prefixes (~3,100 distinct) took under 10 minutes total; a 44-
-prefix stress sample of length 1-3 averaged 4.9s/prefix, which would put
-the full ~104,000 distinct length-1..3 prefix set at multiple hours-to-days
-of sustained heavy scanning of the base table if run against the same
-data after it's already live and being queried by other consumers. That's
-why --max-len defaults to a conservative value and is left as an explicit,
-measured decision at each dataload -- not a hardcoded "cover everything"
-assumption. Extend it once real build-time data at higher lengths exists
-for the target hardware/dataset size.
+trigrams are, not its length.
+
+Full length-1 build measured against the fallback cluster (16.5M-row
+ols_autosuggest, 2026-08-20): 3,133 distinct prefixes, 40m35s total. But
+51 of those prefixes -- all zero-width/control/format Unicode characters
+(U+200B, U+FEFF, C1 controls, etc.) that leaked into the corpus as
+encoding artifacts, not real label text -- accounted for 2,144s of that
+(88% of total build time) while matching zero rows each: their near-
+absence of real trigrams means the GIN index can't narrow the candidate
+set at all, so each one degenerates into a near-full-table scan (~42.5s,
+suspiciously uniform across all 51 -- that's what a full-table recheck
+looks like). No real user will ever type a zero-width joiner as their
+first character, so PER_PREFIX_TIMEOUT_MS below skips any prefix that
+can't produce a result within a few seconds rather than letting a handful
+of degenerate inputs dominate the build -- excluding those 51, the
+remaining 3,082 real prefixes took 280s total (91ms/prefix average).
+NOTE: this same pathology exists in the *live* query path today,
+independent of this cache -- a real request for one of these leaked
+characters would take ~42s cold there too. That's a separate, pre-
+existing issue worth its own look; this script works around it for the
+build, not for live traffic.
+
+A 44-prefix stress sample of length 1-3 (deliberately biased toward
+common real letters) averaged 4.9s/prefix, which would put the full
+~104,000 distinct length-1..3 prefix set at multiple hours of sustained
+scanning if naively run against a live table other consumers are also
+querying. That's why --max-len defaults to a conservative value and is
+left as an explicit, measured decision at each dataload -- not a
+hardcoded "cover everything" assumption. Extend it once real build-time
+data (now cheaper to gather thanks to PER_PREFIX_TIMEOUT_MS) justifies
+covering length 2 or 3 too.
 
 Usage:
     python build_autosuggest_prefix_cache.py [--max-len N] [--limit-per-prefix N] [pg_env...]
@@ -66,6 +87,15 @@ import time
 
 DEFAULT_MAX_LEN = 1
 DEFAULT_LIMIT_PER_PREFIX = 2000
+
+# See the module docstring: a handful of leaked zero-width/control-character
+# "prefixes" degenerate into a near-full-table scan (measured ~42.5s each,
+# zero rows). No real user types these as a first character, so any prefix
+# that can't produce a result within this budget is skipped rather than
+# left to dominate the build -- it just falls through to the live query if
+# ever actually requested (OlsSearchClient.tryServeFromCache treats a
+# missing prefix as a cache miss, same as one that was never enumerated).
+PER_PREFIX_TIMEOUT_MS = 5000
 
 
 def run_psql(sql: str, env: dict) -> str:
@@ -103,6 +133,7 @@ def build_cache(max_len: int, limit_per_prefix: int, env: dict) -> None:
     run_psql("TRUNCATE ols_autosuggest_prefix_cache;", env)
 
     t0 = time.time()
+    skipped: list[str] = []
     # One prefix per statement (not one giant transaction): keeps any single
     # slow/failed prefix from holding a long-lived transaction open against
     # a table other consumers may be reading, and lets progress be visible
@@ -110,6 +141,7 @@ def build_cache(max_len: int, limit_per_prefix: int, env: dict) -> None:
     for i, prefix in enumerate(prefixes, 1):
         escaped = prefix.replace("'", "''")
         sql = f"""
+            SET statement_timeout = '{PER_PREFIX_TIMEOUT_MS}';
             INSERT INTO ols_autosuggest_prefix_cache (prefix, rank, string, sim)
             SELECT '{escaped}', row_number() OVER (ORDER BY sim DESC, string ASC), string, sim
             FROM (
@@ -120,13 +152,25 @@ def build_cache(max_len: int, limit_per_prefix: int, env: dict) -> None:
                 LIMIT {limit_per_prefix}
             ) sub;
         """
-        run_psql(sql, env)
+        try:
+            run_psql(sql, env)
+        except RuntimeError as e:
+            # Almost always "canceling statement due to statement timeout" on one of the
+            # leaked zero-width/control-character prefixes (see module docstring). Left
+            # out of the cache: the backend falls back to the live query for it, same as
+            # any prefix that was never built.
+            print(f"  [{i}/{total}] SKIPPED {prefix!r}: {e}", flush=True)
+            skipped.append(prefix)
         if i % 100 == 0 or i == total:
             elapsed = time.time() - t0
             rate = i / elapsed if elapsed > 0 else 0
             eta = (total - i) / rate if rate > 0 else 0
             print(f"  [{i}/{total}] {elapsed:.0f}s elapsed, {rate:.2f} prefix/s, "
                   f"eta {eta:.0f}s", flush=True)
+
+    if skipped:
+        print(f"  {len(skipped)} prefix(es) skipped (timed out at {PER_PREFIX_TIMEOUT_MS}ms): "
+              f"{skipped}")
 
     run_psql(f"TRUNCATE ols_autosuggest_prefix_cache_meta; "
               f"INSERT INTO ols_autosuggest_prefix_cache_meta (max_prefix_len) VALUES ({max_len});", env)
