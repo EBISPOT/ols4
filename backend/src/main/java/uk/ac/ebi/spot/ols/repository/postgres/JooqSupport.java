@@ -9,6 +9,8 @@ import org.jooq.impl.SQLDataType;
 public final class JooqSupport {
 
     public static final Table<?> OLS_AUTOSUGGEST = DSL.table(DSL.name("ols_autosuggest"));
+    public static final Table<?> OLS_AUTOSUGGEST_PREFIX_CACHE = DSL.table(DSL.name("ols_autosuggest_prefix_cache"));
+    public static final Table<?> OLS_AUTOSUGGEST_PREFIX_CACHE_META = DSL.table(DSL.name("ols_autosuggest_prefix_cache_meta"));
     public static final Table<?> OLS_EMBEDDING_NODES = DSL.table(DSL.name("ols_embedding_nodes"));
     public static final Table<?> OLS_ENTITIES = DSL.table(DSL.name("ols_entities"));
     public static final Table<?> OLS_PCA_MODELS = DSL.table(DSL.name("ols_pca_models"));

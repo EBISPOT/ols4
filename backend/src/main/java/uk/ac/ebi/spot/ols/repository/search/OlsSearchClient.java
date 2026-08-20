@@ -26,6 +26,8 @@ import java.util.concurrent.ExecutionException;
 
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.INFORMATION_SCHEMA_COLUMNS;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_AUTOSUGGEST;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_AUTOSUGGEST_PREFIX_CACHE;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_AUTOSUGGEST_PREFIX_CACHE_META;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_ENTITIES;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContains;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.castAsText;
@@ -52,11 +54,32 @@ public class OlsSearchClient {
     private static final Field<String> STRING_VALUE = field("string", String.class);
     private static final Field<String> ONTOLOGY_ID = field("ontology_id", String.class);
     private static final Field<String[]> CURATED_FROM_SOURCES = field("curated_from_sources", String[].class);
+    private static final Field<String> CACHE_PREFIX = field("prefix", String.class);
+    private static final Field<Integer> CACHE_RANK = field("rank", Integer.class);
+    private static final Field<Integer> CACHE_MAX_PREFIX_LEN = field("max_prefix_len", Integer.class);
+
+    /**
+     * Must match --limit-per-prefix in dataload/build_autosuggest_prefix_cache.py (default there:
+     * {@link #PREFIX_CACHE_LIMIT_PER_PREFIX}). Only matters for {@link #isCacheWindowTrustworthy}:
+     * a cached row count below this is a guarantee the build captured every match for that prefix
+     * (not just the top N), which is what lets a short/empty result be trusted as final rather than
+     * falling back to the live query.
+     */
+    private static final int PREFIX_CACHE_LIMIT_PER_PREFIX = 2000;
 
     @Autowired
     private PostgresClient postgresClient;
 
     private volatile Set<String> availableFilterColumns;
+
+    /**
+     * Length (in characters) up to which {@link #suggestLabelsUncached} will try
+     * ols_autosuggest_prefix_cache before falling back to the live query. -1 means "not loaded
+     * yet"; loaded lazily so a dataload that hasn't run build_autosuggest_prefix_cache.py (or an
+     * older DB snapshot without the table at all) degrades to "cache disabled" rather than failing
+     * requests. 0 means the cache is present but empty/disabled for this dataload.
+     */
+    private volatile int cachedMaxPrefixLen = -1;
 
     /**
      * No TTL: autosuggest data only changes via a full dataload + redeploy (new pod, fresh empty
@@ -77,6 +100,34 @@ public class OlsSearchClient {
             .weigher((Weigher<SuggestCacheKey, List<String>>) (key, value) -> value.size())
             .recordStats()
             .build();
+
+    private int getCachedMaxPrefixLen() {
+        if (cachedMaxPrefixLen < 0) {
+            synchronized (this) {
+                if (cachedMaxPrefixLen < 0) {
+                    cachedMaxPrefixLen = loadCachedMaxPrefixLen();
+                }
+            }
+        }
+        return cachedMaxPrefixLen;
+    }
+
+    private int loadCachedMaxPrefixLen() {
+        try (Connection conn = postgresClient.getConnection()) {
+            DSLContext dsl = postgresClient.dsl(conn);
+            Integer maxLen = dsl.select(CACHE_MAX_PREFIX_LEN)
+                    .from(OLS_AUTOSUGGEST_PREFIX_CACHE_META)
+                    .fetchOne(0, Integer.class);
+            return maxLen == null ? 0 : maxLen;
+        } catch (Exception e) {
+            // Missing table (older dataload snapshot), connection issue, whatever -- the cache is
+            // purely a speed optimization, so any failure to read its metadata disables it rather
+            // than breaking suggest requests. suggestLabelsUncached always has the live query as
+            // ground truth.
+            logger.warn("Autosuggest prefix cache unavailable, falling back to live queries: {}", e.getMessage());
+            return 0;
+        }
+    }
 
     private Set<String> getAvailableFilterColumns() {
         if (availableFilterColumns == null) {
@@ -492,7 +543,101 @@ public class OlsSearchClient {
         return ontologyIds.stream().sorted().distinct().toList();
     }
 
+    /**
+     * Tries ols_autosuggest_prefix_cache first for short prefixes (see build_autosuggest_prefix_cache.py
+     * for why: unscoped, ontology-scoped -- doesn't matter, this is where every autosuggest keystroke
+     * is guaranteed cold, and short prefixes are the least selective/most expensive trigram queries).
+     * Falls through to the exact live query -- unchanged from before this cache existed -- whenever
+     * the cache can't answer with certainty. See {@link #tryServeFromCache} for the correctness rule.
+     */
     private List<String> suggestLabelsUncached(String prefix, List<String> ontologyIds, int start, int rows) {
+        String normalizedPrefix = prefix.toLowerCase(Locale.ROOT);
+        if (normalizedPrefix.length() <= getCachedMaxPrefixLen()) {
+            List<String> cached = tryServeFromCache(normalizedPrefix, ontologyIds, start, rows);
+            if (cached != null) {
+                return cached;
+            }
+        }
+        return suggestLabelsLive(prefix, ontologyIds, start, rows);
+    }
+
+    /**
+     * Returns the requested page if the cache can answer it with the same result the live query
+     * would give, or null if it can't guarantee that (caller must fall back to {@link #suggestLabelsLive}).
+     *
+     * <p>The cache holds, per prefix, the exact same similarity()-ranked result the live query
+     * computes, capped at {@link #PREFIX_CACHE_LIMIT_PER_PREFIX} rows. That cap is the only source
+     * of uncertainty:
+     * <ul>
+     *   <li>Zero cached rows: either this exact prefix was never built (cache miss -- it isn't a
+     *       literal leading substring of any label in the corpus) or -- in practice, never happens,
+     *       since a prefix that IS a leading substring of some label always matches that label with
+     *       high similarity -- it was built and is genuinely empty. Both cases are handled correctly
+     *       by falling back to the live query: a miss gets the right answer from live, and a
+     *       genuinely-empty built prefix gets the same (empty) answer from live too.</li>
+     *   <li>Cached row count below the cap: the build captured every match, not just the top N, so
+     *       the cache is a complete substitute for the live query at any offset/rows/ontology
+     *       filter.</li>
+     *   <li>Cached row count at the cap: the true result set might be larger than what was cached.
+     *       Still safe to serve from cache as long as the requested window (after ontology
+     *       filtering) is fully contained in what's cached -- ranking within the cap is exact, only
+     *       rows beyond the cap are in question.</li>
+     * </ul>
+     */
+    private List<String> tryServeFromCache(String normalizedPrefix, List<String> ontologyIds, int start, int rows) {
+        try (Connection conn = postgresClient.getConnection()) {
+            DSLContext dsl = postgresClient.dsl(conn);
+            var cacheRecords = dsl.select(STRING_VALUE)
+                    .from(OLS_AUTOSUGGEST_PREFIX_CACHE)
+                    .where(CACHE_PREFIX.eq(normalizedPrefix))
+                    .orderBy(CACHE_RANK.asc())
+                    .fetch();
+            List<String> cachedInRankOrder = new ArrayList<>(cacheRecords.size());
+            for (Record record : cacheRecords) {
+                cachedInRankOrder.add(record.get(STRING_VALUE));
+            }
+
+            if (cachedInRankOrder.isEmpty()) {
+                return null;
+            }
+            boolean cacheIsCompleteForThisPrefix = cachedInRankOrder.size() < PREFIX_CACHE_LIMIT_PER_PREFIX;
+
+            List<String> candidatesInRankOrder = cachedInRankOrder;
+            if (ontologyIds != null && !ontologyIds.isEmpty()) {
+                var matchRecords = dsl.selectDistinct(STRING_VALUE)
+                        .from(OLS_AUTOSUGGEST)
+                        .where(STRING_VALUE.in(cachedInRankOrder))
+                        .and(ONTOLOGY_ID.in(ontologyIds))
+                        .fetch();
+                Set<String> matchingInOntology = new HashSet<>();
+                for (Record record : matchRecords) {
+                    matchingInOntology.add(record.get(STRING_VALUE));
+                }
+                candidatesInRankOrder = cachedInRankOrder.stream()
+                        .filter(matchingInOntology::contains)
+                        .toList();
+            }
+
+            if (!isCacheWindowTrustworthy(cacheIsCompleteForThisPrefix, candidatesInRankOrder.size(), start, rows)) {
+                return null;
+            }
+            int from = Math.min(start, candidatesInRankOrder.size());
+            int to = Math.min(start + rows, candidatesInRankOrder.size());
+            return candidatesInRankOrder.subList(from, to);
+        } catch (Exception e) {
+            // Same reasoning as loadCachedMaxPrefixLen(): the cache is a pure speed optimization,
+            // so any failure reading it falls back to the always-correct live query rather than
+            // failing the request.
+            logger.warn("Autosuggest prefix cache lookup failed, falling back to live query: {}", e.getMessage());
+            return null;
+        }
+    }
+
+    private static boolean isCacheWindowTrustworthy(boolean cacheIsComplete, int candidateCount, int start, int rows) {
+        return cacheIsComplete || candidateCount >= start + rows;
+    }
+
+    private List<String> suggestLabelsLive(String prefix, List<String> ontologyIds, int start, int rows) {
         Condition where = trigramMatch(STRING_VALUE, prefix);
         if (ontologyIds != null && !ontologyIds.isEmpty()) {
             where = where.and(ONTOLOGY_ID.in(ontologyIds));
