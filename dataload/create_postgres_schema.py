@@ -169,55 +169,16 @@ CREATE TABLE ols_autosuggest (
 AUTOSUGGEST_INDEX_SQL = """\
 CREATE INDEX idx_autosuggest_trgm ON ols_autosuggest USING gin (string gin_trgm_ops);
 CREATE INDEX idx_autosuggest_onto ON ols_autosuggest (ontology_id);
--- Plain equality index, distinct from the trgm GIN index above. The prefix
--- cache (see ols_autosuggest_prefix_cache below) needs an exact-match join
--- back to this table to apply ontology filters; without a btree(string) the
--- planner falls back to probing the trgm index per row (slow -- trgm GIN
--- isn't built for equality lookups).
-CREATE INDEX idx_autosuggest_string ON ols_autosuggest (string);
-"""
-
-# Precomputed exact-match cache for the coldest, most common autosuggest
-# queries: short unscoped prefixes. Populated by
-# dataload/build_autosuggest_prefix_cache.py after ols_autosuggest is loaded
-# and indexed (it queries the live trgm index to build this).
-#
-# WHY: the /api/suggest cold path is an exact pg_trgm similarity() query
-# (see backend OlsSearchClient.suggestLabelsUncached and PR #1347, which
-# ruled out prefix-only B-tree matching and every pg_trgm index tuning knob
-# as correctness-breaking or non-uniform wins). Autocomplete traffic fires
-# one request per keystroke, so the very first few characters a user types
-# ("c", "ca", "can") are guaranteed cold on every new session/pod and are
-# also the *most* expensive queries to run live: short prefixes are the
-# least selective, so pg_trgm's GIN index returns the largest bitmap
-# candidate set and pays the largest recheck cost. Measured on the
-# fallback cluster (16.5M-row ols_autosuggest, 2026-08-20): "can" 5.2s,
-# "canc" 4.4s, unscoped or ontology-scoped -- scoping does NOT help,
-# because the planner applies the ontology filter as a post-filter on the
-# same expensive bitmap scan rather than using idx_autosuggest_onto.
-#
-# This table stores the *complete* exact result (same similarity() ranking,
-# capped at PREFIX_CACHE_LIMIT rows as a storage bound -- see the build
-# script for why that cap is safe) for every prefix up to
-# ols_autosuggest_prefix_cache_meta.max_prefix_len characters that actually
-# occurs in the corpus. It changes nothing about match semantics: it is the
-# same query, precomputed. The backend (OlsSearchClient.suggestLabelsUncached)
-# consults it only as a fast path and falls back to the live query whenever
-# the prefix exceeds the cached length, isn't present in the cache, or an
-# ontology filter needs more matches than the cache captured -- so a gap or
-# cap in this table can only ever cost latency, never correctness.
-AUTOSUGGEST_PREFIX_CACHE_TABLE_SQL = """\
-CREATE TABLE ols_autosuggest_prefix_cache (
-    prefix TEXT NOT NULL,
-    rank INT NOT NULL,
-    string TEXT NOT NULL,
-    sim REAL NOT NULL,
-    PRIMARY KEY (prefix, rank)
-);
-
-CREATE TABLE ols_autosuggest_prefix_cache_meta (
-    max_prefix_len INT NOT NULL
-);
+-- Case-insensitive prefix index, distinct from the trgm GIN index above.
+-- text_pattern_ops (not the default opclass) is what makes a plain B-tree
+-- usable for LIKE 'x%' -- see OlsSearchClient.suggestLabelsUncached for why
+-- this exists: prefix matches are the fast, uncapped half of the live
+-- candidate-generation query, resolving in ~0.1ms regardless of how common
+-- the prefix is (measured on the fallback cluster, 16.5M rows), because a
+-- B-tree range scan returns matches already in order instead of PostgreSQL
+-- needing to gather every candidate before it can sort and limit them --
+-- exactly what makes the trgm GIN path slow for common short prefixes.
+CREATE INDEX idx_autosuggest_prefix ON ols_autosuggest (lower(string) text_pattern_ops);
 """
 
 PCA_MODELS_TABLE_SQL = """\
@@ -360,11 +321,6 @@ def main():
     # -- Autosuggest table --
     print("-- SECTION: ols_autosuggest")
     print(AUTOSUGGEST_TABLE_SQL)
-
-    # -- Autosuggest prefix cache (empty; populated post-load by
-    #    build_autosuggest_prefix_cache.py once idx_autosuggest_trgm exists) --
-    print("-- SECTION: ols_autosuggest_prefix_cache")
-    print(AUTOSUGGEST_PREFIX_CACHE_TABLE_SQL)
 
     # -- Embedding nodes table (CREATE + ALTERs for embedding columns) --
     print("-- SECTION: ols_embedding_nodes")

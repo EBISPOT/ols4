@@ -324,7 +324,6 @@ def main():
     parallel_workers = 0
     maintenance_work_mem = ""
     artifacts_dir = ""
-    prefix_cache_max_len = 1
     args_rest = sys.argv[3:]
     i = 0
     while i < len(args_rest):
@@ -339,9 +338,6 @@ def main():
             i += 2
         elif args_rest[i] == "--artifacts-dir" and i + 1 < len(args_rest):
             artifacts_dir = args_rest[i + 1]
-            i += 2
-        elif args_rest[i] == "--prefix-cache-max-len" and i + 1 < len(args_rest):
-            prefix_cache_max_len = int(args_rest[i + 1])
             i += 2
         elif args_rest[i].endswith(".parquet"):
             parquets_raw.append(args_rest[i])
@@ -503,25 +499,6 @@ checkpoint_completion_target = 0.9
         # --- Post-load (ANALYZE) ---
         print("=== Post-load updates ===")
         run_psql(sections["post_load"], "post_load", env=pg_env)
-
-        # --- Autosuggest prefix cache ---
-        # Must run after ANALYZE (needs good planner stats on ols_autosuggest)
-        # and after idx_autosuggest_trgm / idx_autosuggest_string exist (both
-        # created above). See build_autosuggest_prefix_cache.py for why
-        # --prefix-cache-max-len defaults small and isn't a "cache everything"
-        # setting -- it's a measured, per-dataload tradeoff against build time.
-        if prefix_cache_max_len > 0:
-            print("=== Building autosuggest prefix cache ===")
-            # Not run_cmd(): that captures output and only shows it on
-            # failure, hiding this step's per-100-prefix progress/ETA lines
-            # for what can be a multi-minute-plus job.
-            proc = subprocess.run(
-                [sys.executable, str(script_dir / "build_autosuggest_prefix_cache.py"),
-                 "--max-len", str(prefix_cache_max_len)],
-                env=pg_env,
-            )
-            if proc.returncode != 0:
-                raise RuntimeError("build_autosuggest_prefix_cache.py failed")
 
     finally:
         # --- Stop ---
