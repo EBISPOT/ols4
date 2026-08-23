@@ -71,6 +71,37 @@ public final class JooqSupport {
         return DSL.condition("{0} % {1}", field, castAsText(DSL.val(value)));
     }
 
+    /**
+     * True when {@code field}'s similarity to {@code value} clears the server's configured
+     * threshold (show_limit(), default 0.3) -- the same condition {@code %}/trigramMatch tests,
+     * expressed explicitly so it can be applied to a pre-filtered candidate set (see
+     * OlsSearchClient.suggestLabelsUncached) rather than relying on the operator's own index-backed
+     * candidate generation.
+     */
+    public static Condition similarityAtLeastThreshold(Field<String> field, String value) {
+        return DSL.condition("similarity({0}, {1}) >= show_limit()", field, castAsText(DSL.val(value)));
+    }
+
+    /**
+     * Upper bound on a candidate string's own trigram count for it to have any mathematical chance
+     * of matching {@code value} at the current similarity threshold t: similarity = |A∩B|/|A∪B| >= t
+     * requires |B| <= |A|/t (since |A∩B| <= |A| always). Trigram count is computed via show_trgm()
+     * rather than derived from string length, because pg_trgm tokenizes multi-word input per word,
+     * not over the whole padded string -- a length-based estimate would be wrong for those.
+     *
+     * <p>Used to pre-filter substring-match candidates in OlsSearchClient.suggestLabelsUncached
+     * before ranking: any candidate longer (in trigram terms) than this bound is provably unable to
+     * pass {@link #similarityAtLeastThreshold}, so excluding it can never drop a true match -- it
+     * only shrinks the candidate pool pg_trgm's substring/ILIKE search has to rank.
+     */
+    public static Field<Integer> maxTrigramCandidateLength(String value) {
+        return DSL.field(
+                "ceil(array_length(show_trgm({0}), 1) / show_limit()) - 1",
+                SQLDataType.INTEGER,
+                castAsText(DSL.val(value))
+        );
+    }
+
     public static Table<?> unnest(Field<String[]> arrayField, String tableAlias, String columnAlias) {
         return DSL.table("unnest({0})", arrayField).as(tableAlias, columnAlias);
     }

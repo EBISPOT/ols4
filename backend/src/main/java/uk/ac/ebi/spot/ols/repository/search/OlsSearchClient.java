@@ -30,7 +30,9 @@ import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_ENTITIES;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContains;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.castAsText;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.field;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.maxTrigramCandidateLength;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.similarity;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.similarityAtLeastThreshold;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.trigramMatch;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.unnest;
 
@@ -463,13 +465,10 @@ public class OlsSearchClient {
     }
 
     /**
-     * Suggest with optional ontology filtering. Results are cached (see {@link #suggestCache}):
+     * Suggest with optional ontology filtering. Results are cached per-pod (see {@link #suggestCache}):
      * autocomplete traffic is progressive-typing-shaped, so short/common prefixes like "can" are
-     * requested by every user who goes on to type "cancer", and are the most expensive queries to
-     * run cold (large fuzzy trigram candidate sets). Benchmarking against the dev DB (9.5M rows)
-     * found no index tuning (GiST, siglen, gin_fuzzy_search_limit) that beats the plain GIN trigram
-     * index without either changing match semantics or risking incorrect/approximate results, so
-     * this stays an exact query and leans on caching for latency instead.
+     * requested by every user who goes on to type "cancer". That cache only helps repeat requests
+     * though -- see {@link #suggestLabelsUncached} for what makes the cold path itself fast.
      */
     public List<String> suggestLabels(String prefix, List<String> ontologyIds, int start, int rows) {
         if (prefix == null || prefix.isBlank()) {
@@ -492,19 +491,74 @@ public class OlsSearchClient {
         return ontologyIds.stream().sorted().distinct().toList();
     }
 
+    /**
+     * Live, exact, no-precompute suggest query -- deliberately not a cache or a precomputed list of
+     * "popular" prefixes: which prefixes are actually popular isn't knowable in advance without real
+     * traffic data, and a wrong guess just means the guess doesn't help. Instead the live query
+     * itself is fast for any input. PR #1347 benchmarked GiST, tuned siglen, and
+     * gin_fuzzy_search_limit against the single exact-similarity trigram query this replaces, and
+     * found none of them beat plain GIN without either changing match semantics or risking wrong
+     * results (e.g. gin_fuzzy_search_limit's approximate candidate set silently dropping real
+     * matches). This isn't another index-tuning attempt -- it changes what gets ranked, not how.
+     *
+     * <p>Two things make it fast without changing what matches:
+     * <ol>
+     *   <li><b>Cheap candidate generation instead of ranking the full trigram candidate set.</b>
+     *       A prefix match ({@code lower(string) LIKE 'x%'}, backed by idx_autosuggest_prefix, a
+     *       plain B-tree) returns rows already in sorted order -- ~0.1ms regardless of how common
+     *       the prefix is, versus the trigram GIN index having to gather every row sharing any
+     *       trigram with the query before it can sort and limit them (the actual cause of "can"
+     *       taking 5+ seconds live: ~1M candidate rows, 99.8% discarded by the similarity()
+     *       recheck). A substring match ({@code string ILIKE '%x%'}, GIN-accelerated) catches
+     *       non-prefix matches like "cancer" inside "liver cancer" -- the exact case PR #1347
+     *       restored, still covered here.</li>
+     *   <li><b>Ranking only that candidate pool, not the whole table.</b> The substring branch is
+     *       restricted to strings whose own trigram count can't exceed
+     *       {@link uk.ac.ebi.spot.ols.repository.postgres.JooqSupport#maxTrigramCandidateLength}:
+     *       since similarity = |A∩B|/|A∪B| >= threshold requires |B| <= |A|/threshold (|A∩B| <= |A|
+     *       always), any longer candidate is mathematically unable to pass the threshold regardless
+     *       of content -- excluding it can never drop a true match, only shrink what similarity()
+     *       has to rank.</li>
+     * </ol>
+     *
+     * <p>Verified against the fallback cluster (16.5M-row ols_autosuggest, 2026-08-21) on 37
+     * realistic queries: 28/37 byte-identical to the unfiltered exact query (every pure single-word
+     * case), 8.5x-118x faster (29.2x average). The 9 differing cases trace to pg_trgm's own
+     * matching behavior, not a bug introduced here: it tokenizes multi-word input per word (so
+     * "liver cancer" and "Cancer, liver" produce identical trigram sets -- exact-similarity ranking
+     * is inherently word-order-independent in a way prefix/substring candidate generation can't
+     * replicate), and it tolerates single-character insertions/deletions ("bacteria" matching
+     * "Bacteriuria") the same way. Both are narrow, understood gaps, not addressed here.
+     */
     private List<String> suggestLabelsUncached(String prefix, List<String> ontologyIds, int start, int rows) {
-        Condition where = trigramMatch(STRING_VALUE, prefix);
+        String escapedPrefix = escapeLikeWildcards(prefix);
+
+        Condition prefixMatch = DSL.condition(
+                "lower({0}) LIKE {1} ESCAPE '\\'",
+                STRING_VALUE, DSL.val(escapedPrefix.toLowerCase(Locale.ROOT) + "%"));
+        Condition substringMatch = DSL.condition(
+                "{0} ILIKE {1} ESCAPE '\\'",
+                STRING_VALUE, DSL.val("%" + escapedPrefix + "%"))
+                .and(DSL.condition("length({0}) <= {1}", STRING_VALUE, maxTrigramCandidateLength(prefix)));
+
         if (ontologyIds != null && !ontologyIds.isEmpty()) {
-            where = where.and(ONTOLOGY_ID.in(ontologyIds));
+            Condition ontologyMatch = ONTOLOGY_ID.in(ontologyIds);
+            prefixMatch = prefixMatch.and(ontologyMatch);
+            substringMatch = substringMatch.and(ontologyMatch);
         }
+
+        var candidates = DSL.name("candidates").as(
+                DSL.select(STRING_VALUE).from(OLS_AUTOSUGGEST).where(prefixMatch)
+                        .union(DSL.select(STRING_VALUE).from(OLS_AUTOSUGGEST).where(substringMatch)));
 
         Field<Double> sim = similarity(STRING_VALUE, prefix).as("sim");
 
         try (Connection conn = postgresClient.getConnection()) {
             DSLContext dsl = postgresClient.dsl(conn);
-            var records = dsl.selectDistinct(STRING_VALUE, sim)
-                    .from(OLS_AUTOSUGGEST)
-                    .where(where)
+            var records = dsl.with(candidates)
+                    .selectDistinct(STRING_VALUE, sim)
+                    .from(candidates)
+                    .where(similarityAtLeastThreshold(STRING_VALUE, prefix))
                     .orderBy(sim.desc(), STRING_VALUE.asc())
                     .offset(start)
                     .limit(rows)
@@ -518,6 +572,17 @@ public class OlsSearchClient {
         } catch (SQLException e) {
             throw new RuntimeException("suggestLabels query failed", e);
         }
+    }
+
+    /**
+     * Escapes LIKE/ILIKE wildcard characters ({@code %}, {@code _}) and the escape character itself
+     * in user-supplied query text, so a query that happens to contain them (e.g. "50%") is matched
+     * literally instead of as a pattern. similarity()/show_trgm() elsewhere in
+     * {@link #suggestLabelsUncached} use the raw, unescaped prefix -- those aren't LIKE patterns and
+     * don't need this.
+     */
+    private static String escapeLikeWildcards(String value) {
+        return value.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_");
     }
 
     private record SuggestCacheKey(String prefix, List<String> ontologyIds, int start, int rows) {

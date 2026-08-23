@@ -169,6 +169,16 @@ CREATE TABLE ols_autosuggest (
 AUTOSUGGEST_INDEX_SQL = """\
 CREATE INDEX idx_autosuggest_trgm ON ols_autosuggest USING gin (string gin_trgm_ops);
 CREATE INDEX idx_autosuggest_onto ON ols_autosuggest (ontology_id);
+-- Case-insensitive prefix index, distinct from the trgm GIN index above.
+-- text_pattern_ops (not the default opclass) is what makes a plain B-tree
+-- usable for LIKE 'x%' -- see OlsSearchClient.suggestLabelsUncached for why
+-- this exists: prefix matches are the fast, uncapped half of the live
+-- candidate-generation query, resolving in ~0.1ms regardless of how common
+-- the prefix is (measured on the fallback cluster, 16.5M rows), because a
+-- B-tree range scan returns matches already in order instead of PostgreSQL
+-- needing to gather every candidate before it can sort and limit them --
+-- exactly what makes the trgm GIN path slow for common short prefixes.
+CREATE INDEX idx_autosuggest_prefix ON ols_autosuggest (lower(string) text_pattern_ops);
 """
 
 PCA_MODELS_TABLE_SQL = """\
