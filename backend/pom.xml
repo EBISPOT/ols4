@@ -177,6 +177,9 @@
           <includes>
             <include>**/*IT.java</include>
           </includes>
+          <excludes>
+            <exclude>**/*WIT.java</exclude>
+          </excludes>
         </configuration>
         <executions>
           <execution>
@@ -195,6 +198,16 @@
           <execution>
             <goals>
               <goal>prepare-agent</goal>
+            </goals>
+            <configuration>
+              <append>true</append>
+            </configuration>
+          </execution>
+          <execution>
+            <id>unit-report</id>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
             </goals>
           </execution>
           <execution>

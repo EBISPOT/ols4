@@ -147,11 +147,27 @@ class V2OntologyControllerWIT {
     }
 
     @Test
+    void bindsExplicitFalseExactMatch() throws Exception {
+        mockMvc.perform(get("/api/v2/ontologies").param("exactMatch", "false"))
+                .andExpect(status().isOk());
+
+        assertFalse(captureListCall().exactMatch());
+    }
+
+    @Test
     void includesObsoleteOntologiesWhenRequested() throws Exception {
         mockMvc.perform(get("/api/v2/ontologies").param("includeObsoleteEntities", "true"))
                 .andExpect(status().isOk());
 
         assertFalse(captureListCall().properties().containsKey("isObsolete"));
+    }
+
+    @Test
+    void excludesObsoleteOntologiesWhenExplicitlyRequested() throws Exception {
+        mockMvc.perform(get("/api/v2/ontologies").param("includeObsoleteEntities", "false"))
+                .andExpect(status().isOk());
+
+        assertEquals(List.of("false"), captureListCall().properties().get("isObsolete"));
     }
 
     @Test
@@ -180,6 +196,14 @@ class V2OntologyControllerWIT {
                 .andExpect(status().isOk());
 
         assertEquals(List.of("biology", "health"), captureListCall().properties().get("domain"));
+    }
+
+    @Test
+    void forwardsCommaSeparatedDynamicPropertyValues() throws Exception {
+        mockMvc.perform(get("/api/v2/ontologies").param("domain", "biology,health"))
+                .andExpect(status().isOk());
+
+        assertEquals(List.of("biology,health"), captureListCall().properties().get("domain"));
     }
 
     @Test
@@ -293,11 +317,14 @@ class V2OntologyControllerWIT {
     void returnsOntologyById() throws Exception {
         when(ontologyRepository.getById(any(), any(), any())).thenReturn(entity("efo-test"));
 
-        mockMvc.perform(get("/api/v2/ontologies/efo-test").param("lang", "fr"))
+        mockMvc.perform(get("/api/v2/ontologies/efo-test")
+                        .param("lang", "fr")
+                        .param("resolveReferences", "true")
+                        .param("manchesterSyntax", "true"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.ontologyId").value("efo-test"));
 
-        verify(ontologyRepository).getById("efo-test", "fr", new JsonTransformOptionsMatcher(false, false));
+        verify(ontologyRepository).getById("efo-test", "fr", new JsonTransformOptionsMatcher(true, true));
     }
 
     @Test
@@ -314,7 +341,10 @@ class V2OntologyControllerWIT {
     @Test
     void rejectsUnsupportedHttpMethod() throws Exception {
         mockMvc.perform(post("/api/v2/ontologies"))
-                .andExpect(status().isMethodNotAllowed());
+                .andExpect(status().isMethodNotAllowed())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.status").value(405))
+                .andExpect(jsonPath("$.message").isNotEmpty());
     }
 
     @ParameterizedTest
@@ -326,7 +356,35 @@ class V2OntologyControllerWIT {
         mockMvc.perform(get("/api/v2/ontologies").param(parameter, value))
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.status").value(400));
+                .andExpect(jsonPath("$.status").value(400))
+                .andExpect(jsonPath("$.message").isNotEmpty());
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "/api/v2/ontologies/by-tag, resolveReferences",
+            "/api/v2/ontologies/by-domain, manchesterSyntax",
+            "/api/v2/ontologies/efo-test, resolveReferences"
+    })
+    void rejectsMalformedTransformOptions(String path, String parameter) throws Exception {
+        mockMvc.perform(get(path).param(parameter, "not-a-boolean"))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.status").value(400))
+                .andExpect(jsonPath("$.message").isNotEmpty());
+    }
+
+    @Test
+    void rejectsUnsupportedSortFieldWithStableErrorContract() throws Exception {
+        when(ontologyRepository.find(
+                any(), any(), any(), any(), any(), anyBoolean(), anyMap(), any()))
+                .thenThrow(new IllegalArgumentException("Unsupported sort field: notARealField"));
+
+        mockMvc.perform(get("/api/v2/ontologies").param("sort", "notARealField,asc"))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.status").value(400))
+                .andExpect(jsonPath("$.message").value("Unsupported sort field: notARealField"));
     }
 
     private ListCall captureListCall() throws Exception {

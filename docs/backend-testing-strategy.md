@@ -74,7 +74,7 @@ Repository ITs use the real `OntologyRepository`, `OlsSearchClient`, PostgreSQL 
 
 ### Full-stack controller Integration Tests
 
-Controller ITs use the real Spring application path and real disposable database. They provide a thin wiring proof for each controller route. Exhaustive parameter coverage remains in WITs, and exhaustive database semantics remain in repository ITs.
+Controller ITs use the real Spring MVC controller path, real repository stack, and real disposable database. They provide a thin wiring proof for each controller route. Exhaustive parameter coverage remains in WITs, and exhaustive database semantics remain in repository ITs.
 
 For the `V2OntologyController` pilot, the full-stack suite contains one representative happy path for each of its four routes.
 
@@ -116,7 +116,7 @@ For `V2OntologyController`, this includes:
 
 `resolveReferences` and `manchesterSyntax` receive WIT binding and forwarding coverage in this pilot. Their transformation semantics belong to focused transformer/repository tests and are not duplicated in full-stack controller tests.
 
-Malformed typed parameters should return HTTP 400 with stable error fields. Unsupported behaviour must be rejected or removed from the published contract rather than silently producing misleading results.
+Malformed boolean and other controller-bound typed parameters return HTTP 400 with stable error fields. OLS4's existing pageable resolver deliberately treats non-numeric page/size values as omitted and clamps negative or oversized values; the WIT records that compatibility behaviour explicitly. Unsupported behaviour must be rejected or removed from the published contract rather than silently producing misleading results.
 
 ## Assertion policy
 
@@ -202,9 +202,14 @@ mvn -B -ntp -pl backend -am test
 
 # Complete backend suite, including disposable-database Integration Tests.
 mvn -B -ntp -pl backend -am verify
+
+# Database Integration Tests only; used by the dedicated CI gate.
+mvn -B -ntp -pl backend -am -Pintegration-tests-only verify
 ```
 
 Java 17 is required. Invoking the integration suite without an available Docker runtime must fail clearly rather than silently skipping database tests.
+
+On Rancher Desktop for macOS, local execution may also require `DOCKER_HOST` to point at `~/.rd/docker.sock`, `TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock`, and `-Dapi.version=1.44`. GitHub-hosted Linux runners use their standard Docker socket and do not need those overrides.
 
 ## Continuous integration
 

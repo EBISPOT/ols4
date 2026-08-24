@@ -29,8 +29,8 @@ Paths may be adjusted slightly during implementation if existing package convent
 | Create | `backend/src/test/java/uk/ac/ebi/spot/ols/repository/OntologyRepositoryIT.java` | Real PostgreSQL repository/search tests. |
 | Create | `backend/src/test/java/uk/ac/ebi/spot/ols/controller/api/v2/V2OntologyControllerIT.java` | Thin controller-to-database route tests. |
 | Create | `backend/src/test/java/uk/ac/ebi/spot/ols/testsupport/PostgresIntegrationTestSupport.java` | Shared Testcontainers, schema, and fixture setup. |
-| Create | `backend/src/test/resources/fixtures/v2-ontology-controller/ontologies.json` | Readable four-ontology database fixture. |
-| Create | `backend/src/test/resources/fixtures/v2-ontology-controller/README.md` | Fixture provenance and regeneration notes. |
+| Create | `backend/src/test/resources/fixtures/ontologies/ontology-fixture.json` | Readable four-ontology database fixture. |
+| Create | `backend/src/test/resources/fixtures/ontologies/README.md` | Fixture provenance and regeneration notes. |
 | Modify | `.github/workflows/build-test.yml` | Add unit/WIT and database-IT gates before system regression. |
 | Maintain | `docs/backend-testing-strategy.md` | Record any implementation-driven clarification without weakening agreed contracts. |
 
@@ -146,7 +146,7 @@ Add boundary cases for:
 - [ ] Zero or negative size.
 - [ ] Size above the configured maximum.
 
-Each malformed input should produce HTTP 400 with stable `status` and `message` fields. If current behaviour differs, follow the defect workflow rather than weakening the assertion.
+Malformed booleans and rejected sort fields should produce HTTP 400 with stable `status` and `message` fields. The existing pageable resolver treats non-numeric page/size values as omitted and normalizes negative, zero, and oversized values; these cases are asserted as an intentional compatibility contract rather than changed globally.
 
 ## Task 6: Cover grouped and single-ontology routes in WIT
 
@@ -231,7 +231,7 @@ Assert query results and stable transformed fields; do not assert query implemen
 
 ## Task 10: Add thin `V2OntologyControllerIT`
 
-Start the Spring test application against the disposable database and issue real MVC requests.
+Exercise the real Spring MVC controller and repository path against the disposable database.
 
 - [ ] `GET /api/v2/ontologies` returns the expected default active records and page metadata.
 - [ ] `GET /api/v2/ontologies/by-tag` returns a representative stable grouping.
@@ -308,3 +308,14 @@ mvn -B -ntp -pl backend -am verify
 ## Next controller
 
 After reviewing the pilot, apply the same framework to `V1OntologyController`, then alternate corresponding V1 and V2 controller families based on traffic and contract risk.
+
+## Implemented pilot baseline
+
+Verified locally on 2026-08-24 with Java 17 and a Rancher Desktop Docker runtime:
+
+- Surefire: 58 unit and Web Integration Tests, including 33 `V2OntologyControllerWIT` cases; approximately 15.6 seconds for the reactor test command.
+- Failsafe: 15 PostgreSQL Integration Tests across `OntologyRepositoryIT` (11) and `V2OntologyControllerIT` (4); approximately 12.4 to 14.8 seconds after the container image was cached.
+- Complete `verify`: all 73 tests passed in approximately 20.5 seconds.
+- JaCoCo whole-backend baseline after complete `verify`: 15.3% line coverage and 15.7% branch coverage. No failure threshold is configured for the pilot.
+- Fast and database-only gates each passed twice, and `mvn test` did not start Docker-backed tests.
+- The full `test_api.sh` dataload/system regression was not run locally; the unchanged CI job remains responsible for it after the two new backend gates pass.

@@ -8,8 +8,63 @@ on:
   pull_request:
 
 jobs:
+  backend-unit-web:
+    name: Backend Unit & Web Integration Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Run backend unit and web integration tests
+        run: mvn -B -ntp -pl backend -am test
+
+      - name: Upload backend unit and web test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-unit-web-reports
+          path: |
+            backend/target/surefire-reports/
+            backend/target/site/jacoco/
+          if-no-files-found: ignore
+
+  backend-postgres-integration:
+    name: Backend PostgreSQL Integration Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Run backend database integration tests
+        run: mvn -B -ntp -pl backend -am -Pintegration-tests-only verify
+
+      - name: Upload backend integration and coverage reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-postgres-integration-reports
+          path: |
+            backend/target/failsafe-reports/
+            backend/target/site/jacoco/
+          if-no-files-found: ignore
+
   test-api:
     name: Build & Test API
+    needs:
+      - backend-unit-web
+      - backend-postgres-integration
     runs-on: ubuntu-latest
     steps:
       - name: Free up disk space on GH actions runner
