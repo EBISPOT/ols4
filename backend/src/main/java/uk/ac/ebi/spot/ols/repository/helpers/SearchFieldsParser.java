@@ -35,14 +35,8 @@ public class SearchFieldsParser {
     public static void addBoostFieldsToQuery(OlsSearchQuery query, String boostFields) {
 
         if(boostFields == null) {
-            query.addBoostField("type", "ontology", 10, SearchType.WHOLE_FIELD);
-            query.addBoostField(IS_DEFINING_ONTOLOGY.getText(), "true", 1000, SearchType.WHOLE_FIELD);
-            query.addBoostField(LABEL.getText(), query.getSearchText(), 1000, SearchType.WHOLE_FIELD);
-            query.addBoostField(LABEL.getText(), query.getSearchText(), 500, SearchType.EDGES);
-            query.addBoostField("curie", query.getSearchText(), 500, SearchType.EDGES);
-            query.addBoostField("shortForm", query.getSearchText(), 500, SearchType.EDGES);
-            query.addBoostField(SYNONYM.getText(), query.getSearchText(), 500, SearchType.WHOLE_FIELD);
-//            query.addBoostField("synonym", query.getSearchText(), 100, SearchType.EDGES);
+            // Default PostgreSQL ranking is implemented directly by OlsSearchQuery.
+            return;
         } else {
             for (ParsedField field : parseFieldsString(boostFields)) {
                 query.addBoostField(field.property, field.value, field.weight, SearchType.CASE_INSENSITIVE_TOKENS);
@@ -82,14 +76,13 @@ public class SearchFieldsParser {
 
                 // weighted
 
-                String property = propertyAndWeight[0];
                 int weight = Integer.parseInt(propertyAndWeight[1]);
 
                 String[] propertyAndMaybeValue = propertyAndWeight[0].split(":");
                 if(propertyAndMaybeValue.length == 2) {
-                    parsed.add(new ParsedField(propertyAndMaybeValue[0], propertyAndMaybeValue[1], 1));
+                    parsed.add(new ParsedField(propertyAndMaybeValue[0], propertyAndMaybeValue[1], weight));
                 } else {
-                    parsed.add(new ParsedField(propertyAndMaybeValue[0], null, 1));
+                    parsed.add(new ParsedField(propertyAndMaybeValue[0], null, weight));
                 }
 
             } else {
