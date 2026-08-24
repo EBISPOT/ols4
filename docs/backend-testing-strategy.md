@@ -132,6 +132,12 @@ Representative stable fields include:
 - Selected facet counts.
 - Error `status` and `message`.
 
+V1 compatibility includes its existing error representation. In particular,
+`V1OntologyController` missing-ontology responses retain HTTP 404 with the legacy servlet error
+reason `EntityModel not found` and an empty body; focused tests must not replace that response with
+the V2 JSON error shape. Other V1 controller errors handled by the global advice continue to expose
+JSON `status` and `message` fields.
+
 Full JSON comparison remains the responsibility of the existing system regression suite. Time-varying fields, implementation-only metadata, and unrelated linked content should not make focused controller tests brittle.
 
 ## Disposable database strategy
@@ -264,6 +270,20 @@ A controller is covered when:
 3. Apply the approach to `V1OntologyController`.
 4. Continue by alternating corresponding V1 and V2 controller families, prioritized by traffic and contract risk.
 5. Establish coverage thresholds from the resulting representative baseline.
+
+## Implemented V1 ontology-controller baseline
+
+Verified locally on 2026-08-25 with Java 17 and Rancher Desktop:
+
+- Surefire runs 79 tests, including 4 direct `V1OntologyControllerTest` cases and 17
+  `V1OntologyControllerWIT` cases, in approximately 15.8 seconds after compilation is warm.
+- Failsafe runs 23 PostgreSQL tests, including 6 `V1OntologyRepositoryIT` cases and 2 thin
+  `V1OntologyControllerIT` cases.
+- The complete clean `verify` lifecycle runs all 102 tests in approximately 25.9 seconds; a warm
+  repeat took approximately 22.7 seconds.
+- Whole-backend JaCoCo coverage is 17.4% lines and 16.4% branches. The V1 controller covers 11 of
+  12 lines and both branches; its repository covers all 15 lines and both branches. No coverage
+  failure threshold is introduced by the V1 rollout.
 
 Read-only production smoke monitoring is a separate future initiative for an internal or self-hosted environment. It is not part of the initial PR testing framework and must not become a merge-blocking production dependency.
 

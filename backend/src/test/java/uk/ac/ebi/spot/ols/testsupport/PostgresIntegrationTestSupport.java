@@ -10,6 +10,7 @@ import org.testcontainers.utility.DockerImageName;
 import uk.ac.ebi.spot.ols.repository.OntologyRepository;
 import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
 import uk.ac.ebi.spot.ols.repository.search.OlsSearchClient;
+import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
 import uk.ac.ebi.spot.ols.service.PostgresClient;
 
 import java.io.ByteArrayOutputStream;
@@ -54,6 +55,28 @@ public final class PostgresIntegrationTestSupport {
     }
 
     public static RepositoryHandle createRepository(PostgreSQLContainer<?> container) {
+        PostgresClient postgresClient = createPostgresClient(container);
+        OlsSearchClient searchClient = createSearchClient(postgresClient);
+
+        OlsPostgresClient olsPostgresClient = new OlsPostgresClient();
+        ReflectionTestUtils.setField(olsPostgresClient, "postgresClient", postgresClient);
+
+        OntologyRepository repository = new OntologyRepository();
+        ReflectionTestUtils.setField(repository, "searchClient", searchClient);
+        ReflectionTestUtils.setField(repository, "postgresClient", olsPostgresClient);
+        return new RepositoryHandle(repository, postgresClient);
+    }
+
+    public static V1RepositoryHandle createV1Repository(PostgreSQLContainer<?> container) {
+        PostgresClient postgresClient = createPostgresClient(container);
+        OlsSearchClient searchClient = createSearchClient(postgresClient);
+
+        V1OntologyRepository repository = new V1OntologyRepository();
+        ReflectionTestUtils.setField(repository, "searchClient", searchClient);
+        return new V1RepositoryHandle(repository, postgresClient);
+    }
+
+    private static PostgresClient createPostgresClient(PostgreSQLContainer<?> container) {
         PostgresClient postgresClient = new PostgresClient();
         ReflectionTestUtils.setField(postgresClient, "host", container.getHost());
         ReflectionTestUtils.setField(postgresClient, "port", container.getMappedPort(5432));
@@ -64,17 +87,13 @@ public final class PostgresIntegrationTestSupport {
         ReflectionTestUtils.setField(postgresClient, "maxPoolSize", 3);
         ReflectionTestUtils.setField(postgresClient, "minIdle", 0);
         postgresClient.init();
+        return postgresClient;
+    }
 
+    private static OlsSearchClient createSearchClient(PostgresClient postgresClient) {
         OlsSearchClient searchClient = new OlsSearchClient();
         ReflectionTestUtils.setField(searchClient, "postgresClient", postgresClient);
-
-        OlsPostgresClient olsPostgresClient = new OlsPostgresClient();
-        ReflectionTestUtils.setField(olsPostgresClient, "postgresClient", postgresClient);
-
-        OntologyRepository repository = new OntologyRepository();
-        ReflectionTestUtils.setField(repository, "searchClient", searchClient);
-        ReflectionTestUtils.setField(repository, "postgresClient", olsPostgresClient);
-        return new RepositoryHandle(repository, postgresClient);
+        return searchClient;
     }
 
     private static void executeProductionSchema(Connection connection)
@@ -170,6 +189,16 @@ public final class PostgresIntegrationTestSupport {
 
     public record RepositoryHandle(
             OntologyRepository repository,
+            PostgresClient postgresClient) implements AutoCloseable {
+
+        @Override
+        public void close() {
+            postgresClient.close();
+        }
+    }
+
+    public record V1RepositoryHandle(
+            V1OntologyRepository repository,
             PostgresClient postgresClient) implements AutoCloseable {
 
         @Override
