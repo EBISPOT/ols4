@@ -126,7 +126,7 @@ public class OlsSearchClient {
         try (Connection conn = postgresClient.getConnection()) {
             DSLContext dsl = postgresClient.dsl(conn);
             Condition where = query.buildCondition(getAvailableFilterColumns());
-            List<SortField<?>> orderBy = query.buildOrderBy();
+            List<SortField<?>> orderBy = query.buildOrderBy(pageable.getSort());
 
             Long count = includeTotal
                     ? Optional.ofNullable(dsl.selectCount()

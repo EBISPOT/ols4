@@ -5,6 +5,7 @@ import org.jooq.Field;
 import org.jooq.SortField;
 import org.jooq.impl.DSL;
 import org.jooq.impl.SQLDataType;
+import org.springframework.data.domain.Sort;
 
 import java.util.*;
 import java.util.Locale;
@@ -171,7 +172,29 @@ public class OlsSearchQuery {
     }
 
     public List<SortField<?>> buildOrderBy() {
-        return buildOrderBy(null);
+        return buildOrderBy((String) null);
+    }
+
+    public List<SortField<?>> buildOrderBy(Sort sort) {
+        if (sort == null || sort.isUnsorted()) {
+            return buildOrderBy();
+        }
+
+        List<SortField<?>> orderBy = new ArrayList<>();
+        for (Sort.Order order : sort) {
+            String column = COLUMN_MAP.get(order.getProperty());
+            ColumnType columnType = COLUMN_TYPES.get(order.getProperty());
+            if (column == null || columnType == ColumnType.TEXT_ARRAY) {
+                throw new IllegalArgumentException("Unsupported sort field: " + order.getProperty());
+            }
+
+            Field<?> sortField = columnType == ColumnType.BOOLEAN
+                    ? field(column, Boolean.class)
+                    : field(column, String.class);
+            orderBy.add(order.isAscending() ? sortField.asc() : sortField.desc());
+        }
+        orderBy.add(field("id", String.class).asc());
+        return orderBy;
     }
 
     public List<SortField<?>> buildOrderBy(String qualifier) {
