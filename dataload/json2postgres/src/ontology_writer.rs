@@ -152,6 +152,7 @@ fn extract_localized_strings(entity: &Map<String, Value>, key: &str) -> Vec<Stri
     match entity.get(key) {
         Some(Value::Array(arr)) => arr.iter().filter_map(value_to_string).collect(),
         Some(Value::String(s)) => vec![s.clone()],
+        Some(value @ Value::Object(_)) => value_to_string(value).into_iter().collect(),
         _ => vec![],
     }
 }
@@ -541,10 +542,14 @@ mod tests {
     use super::*;
     use serde_json::json;
 
-    fn entity(value: Value) -> Map<String, Value> {
+    fn entity_with_property(key: &str, value: Value) -> Map<String, Value> {
         let mut m = Map::new();
-        m.insert("synonym".to_string(), value);
+        m.insert(key.to_string(), value);
         m
+    }
+
+    fn entity(value: Value) -> Map<String, Value> {
+        entity_with_property("synonym", value)
     }
 
     #[test]
@@ -576,6 +581,20 @@ mod tests {
             extract_localized_strings(&e, "synonym"),
             vec!["bare string", "plain literal", "reified"]
         );
+    }
+
+    #[test]
+    fn extracts_single_literal_identifier() {
+        let key = "http://purl.org/dc/terms/identifier";
+        let e = entity_with_property(key, json!({"type": ["literal"], "value": "ICTV20040588"}));
+        assert_eq!(extract_localized_strings(&e, key), vec!["ICTV20040588"]);
+    }
+
+    #[test]
+    fn extracts_single_literal_version_info() {
+        let key = "http://www.w3.org/2002/07/owl#versionInfo";
+        let e = entity_with_property(key, json!({"type": ["literal"], "value": "MSL39"}));
+        assert_eq!(extract_localized_strings(&e, key), vec!["MSL39"]);
     }
 
     #[test]
