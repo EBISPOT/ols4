@@ -13,6 +13,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import uk.ac.ebi.spot.ols.controller.api.v2.helpers.DynamicQueryHelper;
 import uk.ac.ebi.spot.ols.controller.api.v2.responses.V2PagedAndFacetedResponse;
@@ -68,7 +69,7 @@ public class V2OntologyController {
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
             @RequestParam
-            @Parameter(hidden = true) Map<String, Collection<String>> searchProperties,
+            @Parameter(hidden = true) MultiValueMap<String, String> searchProperties,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
@@ -76,7 +77,7 @@ public class V2OntologyController {
         Map<String,Collection<String>> properties = new HashMap<>();
         if(!includeObsoleteEntities)
             properties.put(IS_OBSOLETE.getText(), List.of("false"));
-        properties.putAll(searchProperties);
+        searchProperties.forEach((name, values) -> properties.put(name, List.copyOf(values)));
 
         return new ResponseEntity<>(
                 new V2PagedAndFacetedResponse<V2Entity>(
