@@ -3,8 +3,9 @@ package uk.ac.ebi.spot.ols.repository.helpers;
 import uk.ac.ebi.spot.ols.repository.search.SearchType;
 import uk.ac.ebi.spot.ols.repository.search.OlsSearchQuery;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 public class DynamicFilterParser {
@@ -27,9 +28,13 @@ public class DynamicFilterParser {
                 }
                 continue;
             }
-            for(String v : properties.get(k)) {
+            List<String> values = new ArrayList<>();
+            for (String value : properties.get(k)) {
+                values.addAll(List.of(value.split(",")));
+            }
+            if (!values.isEmpty()) {
                 String filterKey = k.replace(":", "__");
-                query.addFilter(filterKey, Arrays.asList( v.split(",") ), SearchType.CASE_INSENSITIVE_TOKENS);
+                query.addFilter(filterKey, values, SearchType.CASE_INSENSITIVE_TOKENS);
             }
         }
     }
