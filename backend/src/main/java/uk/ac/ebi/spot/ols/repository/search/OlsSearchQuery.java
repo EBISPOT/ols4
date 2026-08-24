@@ -33,6 +33,7 @@ public class OlsSearchQuery {
     List<SearchFilter> excludeFilters = new ArrayList<>();
     List<String> facetFields = new ArrayList<>();
     List<String> searchFields = null;
+    List<BoostField> boostFields = new ArrayList<>();
 
     enum ColumnType { TEXT, BOOLEAN, TEXT_ARRAY }
 
@@ -193,7 +194,7 @@ public class OlsSearchQuery {
         if (searchText == null || searchText.isBlank()) {
             return null;
         }
-        return DSL.function(
+        Field<Double> rank = DSL.function(
                 "ts_rank_cd",
                 SQLDataType.DOUBLE,
                 field(qualifier, "ts_search", Object.class),
@@ -207,6 +208,28 @@ public class OlsSearchQuery {
                 // exact matches whose case differs from the query rank purely on ts_rank_cd and can
                 // end up buried many pages deep. See GitHub issue #1312.
                 .plus(DSL.when(arrayContainsCaseInsensitive(field(qualifier, "label", String[].class), searchText.toLowerCase(Locale.ROOT)), 1000.0).otherwise(0.0));
+
+        for (BoostField boost : boostFields) {
+            Condition matches = buildBoostCondition(qualifier, boost);
+            rank = rank.plus(DSL.when(matches, (double) boost.weight).otherwise(0.0));
+        }
+        return rank;
+    }
+
+    private Condition buildBoostCondition(String qualifier, BoostField boost) {
+        String column = COLUMN_MAP.get(boost.propertyName);
+        ColumnType columnType = COLUMN_TYPES.get(boost.propertyName);
+        if (column == null || columnType == null) {
+            throw new IllegalArgumentException("Unsupported boost field: " + boost.propertyName);
+        }
+
+        String value = boost.propertyValue == null ? searchText : boost.propertyValue;
+        if (columnType == ColumnType.BOOLEAN) {
+            return field(qualifier, column, Boolean.class).eq(Boolean.parseBoolean(value));
+        }
+        return tsvectorMatches(
+                field(qualifier, column, Object.class),
+                toTsQuery(buildPrefixTsQueryString(value)));
     }
 
     /**
@@ -418,6 +441,23 @@ public class OlsSearchQuery {
      * Compatibility shim: boost fields are handled by the ORDER BY scoring.
      */
     public void addBoostField(String propertyName, String propertyValue, int weight, SearchType searchType) {
-        // No-op: boosting is built into buildOrderBy()
+        if (weight <= 0) {
+            throw new IllegalArgumentException("Boost weight must be positive: " + weight);
+        }
+        boostFields.add(new BoostField(propertyName, propertyValue, weight, searchType));
+    }
+
+    static class BoostField {
+        String propertyName;
+        String propertyValue;
+        int weight;
+        SearchType searchType;
+
+        BoostField(String propertyName, String propertyValue, int weight, SearchType searchType) {
+            this.propertyName = propertyName;
+            this.propertyValue = propertyValue;
+            this.weight = weight;
+            this.searchType = searchType;
+        }
     }
 }
