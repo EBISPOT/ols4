@@ -1,0 +1,88 @@
+{
+  "records": [
+    {
+      "id": "ontology:efo",
+      "ontologyId": "efo",
+      "iri": "http://www.ebi.ac.uk/efo",
+      "isObsolete": false,
+      "label": ["Experimental Factor Ontology"],
+      "definition": ["An ontology for variables in biomedical studies."],
+      "tags": ["biomedical", "experimental"],
+      "domain": ["biology"],
+      "http://example.org/category": ["curated"],
+      "json": {
+        "type": ["ontology"],
+        "ontologyId": "efo",
+        "iri": "http://www.ebi.ac.uk/efo",
+        "title": "Experimental Factor Ontology",
+        "description": "An ontology for variables in biomedical studies.",
+        "isObsolete": false,
+        "tags": ["biomedical", "experimental"],
+        "domain": ["biology"]
+      }
+    },
+    {
+      "id": "ontology:efo-atlas",
+      "ontologyId": "efo-atlas",
+      "iri": "http://www.ebi.ac.uk/efo/atlas-fixture",
+      "isObsolete": false,
+      "label": ["Atlas Experimental Vocabulary"],
+      "definition": ["An EFO-derived fixture for tissue atlas studies."],
+      "tags": ["atlas", "experimental"],
+      "domain": ["biology"],
+      "http://example.org/category": ["derived"],
+      "json": {
+        "type": ["ontology"],
+        "ontologyId": "efo-atlas",
+        "iri": "http://www.ebi.ac.uk/efo/atlas-fixture",
+        "title": "Atlas Experimental Vocabulary",
+        "description": "An EFO-derived fixture for tissue atlas studies.",
+        "isObsolete": false,
+        "tags": ["atlas", "experimental"],
+        "domain": ["biology"]
+      }
+    },
+    {
+      "id": "ontology:duo",
+      "ontologyId": "duo",
+      "iri": "http://purl.obolibrary.org/obo/duo.owl",
+      "isObsolete": false,
+      "label": ["Data Use Ontology"],
+      "definition": ["An ontology for experimental data use permissions and conditions."],
+      "tags": ["biomedical", "clinical"],
+      "domain": ["information"],
+      "http://example.org/category": ["curated"],
+      "json": {
+        "type": ["ontology"],
+        "ontologyId": "duo",
+        "iri": "http://purl.obolibrary.org/obo/duo.owl",
+        "title": "Data Use Ontology",
+        "description": "An ontology for experimental data use permissions and conditions.",
+        "isObsolete": false,
+        "tags": ["biomedical", "clinical"],
+        "domain": ["information"]
+      }
+    },
+    {
+      "id": "ontology:legacy-efo",
+      "ontologyId": "legacy-efo",
+      "iri": "http://www.ebi.ac.uk/efo/legacy-fixture",
+      "isObsolete": true,
+      "label": ["Legacy Experimental Ontology"],
+      "definition": ["An obsolete fixture retained to test compatibility filters."],
+      "tags": ["experimental"],
+      "domain": ["biology"],
+      "http://example.org/category": ["archived"],
+      "json": {
+        "type": ["ontology"],
+        "ontologyId": "legacy-efo",
+        "iri": "http://www.ebi.ac.uk/efo/legacy-fixture",
+        "title": "Legacy Experimental Ontology",
+        "description": "An obsolete fixture retained to test compatibility filters.",
+        "isObsolete": true,
+        "tags": ["experimental"],
+        "domain": ["biology"]
+      }
+    }
+  ]
+}
