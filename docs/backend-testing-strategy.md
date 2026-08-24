@@ -6,6 +6,8 @@
 
 **Initial pilot:** `V2OntologyController`
 
+**Decision record:** [ADR 0001 — Adopt layered backend testing with disposable PostgreSQL](adr/0001-adopt-layered-backend-testing.md)
+
 ## Purpose
 
 OLS4 currently has only a small number of backend tests. This strategy establishes a repeatable way to protect the HTTP contracts of both API versions, support safe refactoring, and exercise PostgreSQL behaviour without connecting CI to an internal or production database.
