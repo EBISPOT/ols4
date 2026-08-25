@@ -32,4 +32,15 @@ class DynamicQueryHelperTest {
                 Map.of("ontologyId", List.of("efo")),
                 DynamicQueryHelper.filterProperties(properties));
     }
+
+    @Test
+    void excludesSortFromDynamicFilters() {
+        Map<String, Collection<String>> properties = new LinkedHashMap<>();
+        properties.put("sort", List.of("iri,desc"));
+        properties.put("ontologyId", List.of("efo"));
+
+        assertEquals(
+                Map.of("ontologyId", List.of("efo")),
+                DynamicQueryHelper.filterProperties(properties));
+    }
 }
