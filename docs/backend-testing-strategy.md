@@ -285,6 +285,20 @@ Verified locally on 2026-08-25 with Java 17 and Rancher Desktop:
   12 lines and both branches; its repository covers all 15 lines and both branches. No coverage
   failure threshold is introduced by the V1 rollout.
 
+## Implemented V2 entity-controller baseline
+
+Verified locally on 2026-08-25 with Java 17 and Rancher Desktop:
+
+- Surefire runs 154 tests, including 6 direct `V2EntityControllerTest` cases and 67
+  `V2EntityControllerWIT` cases. Two warm repeats took approximately 16.5 and 16.4 seconds.
+- Failsafe runs 39 PostgreSQL tests, including 12 `EntityRepositoryIT` cases and 4 thin
+  `V2EntityControllerIT` cases. The database-only gate passed twice; a recorded repeat took
+  approximately 25.3 seconds.
+- The complete clean `verify` lifecycle runs all 193 tests in approximately 31.1 seconds.
+- Whole-backend JaCoCo coverage is 19.5% lines and 18.6% branches. The V2 entity controller covers
+  all 25 lines and all 10 branches; its repository covers 48 of 49 lines and 10 of 14 branches.
+  No coverage failure threshold is introduced by this rollout.
+
 Read-only production smoke monitoring is a separate future initiative for an internal or self-hosted environment. It is not part of the initial PR testing framework and must not become a merge-blocking production dependency.
 
 ## Out of scope for the pilot
