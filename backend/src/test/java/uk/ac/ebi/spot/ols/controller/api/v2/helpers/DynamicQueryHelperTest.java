@@ -21,4 +21,15 @@ class DynamicQueryHelperTest {
                 Map.of("ontologyId", List.of("efo")),
                 DynamicQueryHelper.filterProperties(properties));
     }
+
+    @Test
+    void excludesFacetFieldsFromDynamicFilters() {
+        Map<String, Collection<String>> properties = new LinkedHashMap<>();
+        properties.put("facetFields", List.of("ontologyId type"));
+        properties.put("ontologyId", List.of("efo"));
+
+        assertEquals(
+                Map.of("ontologyId", List.of("efo")),
+                DynamicQueryHelper.filterProperties(properties));
+    }
 }
