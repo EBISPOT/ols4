@@ -316,6 +316,25 @@ Verified locally on 2026-08-25 with Java 17 and Rancher Desktop:
 - V1 compatibility retains the existing 1000-item default page size and accepts arbitrary
   language identifiers with value fallback; these differ intentionally from newer V2 contracts.
 
+## Implemented V2 property-controller baseline
+
+Verified locally on 2026-08-25 with Java 17 and Rancher Desktop:
+
+- Surefire runs 260 tests, including 7 direct `V2PropertyControllerTest` cases and 65
+  `V2PropertyControllerWIT` cases. Two repeats took approximately 22.0 and 18.9 seconds with a
+  deliberately unavailable Docker socket.
+- Failsafe runs 62 PostgreSQL tests, including 7 `PropertyRepositoryIT` cases and 5 thin
+  `V2PropertyControllerIT` cases. Two complete database-gate repeats took approximately 40.9 and
+  38.9 seconds.
+- The complete clean `verify` lifecycle runs all 322 tests in approximately 57.4 seconds.
+- Whole-backend JaCoCo coverage is 26.7% lines and 22.1% branches. The V2 property controller
+  covers all 27 lines and all 6 branches; its repository covers 47 of 53 lines and 7 of 14
+  branches, including every method used by the controller routes. No coverage failure threshold
+  is introduced.
+- The property-specific synthetic fixture supplements the shared entity data only for property
+  suites, preserving established fixture totals while exercising production `direct_parents` and
+  `direct_ancestors` columns. No production defect was exposed.
+
 Read-only production smoke monitoring is a separate future initiative for an internal or self-hosted environment. It is not part of the initial PR testing framework and must not become a merge-blocking production dependency.
 
 ## Out of scope for the pilot
