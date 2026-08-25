@@ -37,6 +37,9 @@ public class V1PropertyMapper {
         property.shortForm = JsonHelper.getString(localizedJson, "shortForm");
         property.oboId = property.shortForm.replace("_", ":");
 
+        property.isLocal = JsonHelper.getBoolean(localizedJson, IS_DEFINING_ONTOLOGY.getText());
+        property.isObsolete = JsonHelper.getBoolean(localizedJson, IS_OBSOLETE.getText());
+
         property.hasChildren = Boolean.parseBoolean(JsonHelper.getString(localizedJson, HAS_DIRECT_CHILDREN.getText()))
                 || Boolean.parseBoolean(JsonHelper.getString(localizedJson, HAS_DIRECT_CHILDREN.getText()));
 
