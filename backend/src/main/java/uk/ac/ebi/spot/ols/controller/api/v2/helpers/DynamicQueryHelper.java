@@ -17,6 +17,7 @@ public class DynamicQueryHelper {
             k = UriUtils.decode(k, "UTF-8");
 
             if(k.equals("lang") || k.equals("search") || k.equals("searchFields")
+                    || k.equals("facetFields")
                     || k.equals("boostFields") || k.equals("page") || k.equals("size") || k.equals("exactMatch")
                         || k.equals("includeObsoleteEntities")
                         || k.equals("excludeOntologyId")
