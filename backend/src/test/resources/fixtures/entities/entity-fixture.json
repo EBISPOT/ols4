@@ -22,12 +22,19 @@
         "id": "efo+class+http://example.org/EFO_0001",
         "type": ["entity", "class"],
         "ontologyId": "efo",
+        "ontologyPreferredPrefix": "EFO",
+        "ontologyIri": "http://www.ebi.ac.uk/efo",
         "iri": "http://example.org/EFO_0001",
         "label": "Liver disease",
+        "definition": ["A disorder affecting hepatic tissue."],
+        "synonym": ["Hepatic disorder"],
         "shortForm": "EFO_0001",
         "curie": "EFO:0001",
         "isObsolete": false,
-        "isDefiningOntology": true
+        "isDefiningOntology": true,
+        "hasDirectParents": false,
+        "hasHierarchicalParents": false,
+        "linkedEntities": {}
       }
     },
     {
@@ -37,7 +44,7 @@
       "ontologyId": "efo",
       "iri": "http://example.org/EFO_0002",
       "isObsolete": false,
-      "isDefiningOntology": true,
+      "isDefiningOntology": false,
       "label": ["Hepatic condition"],
       "synonym": ["Liver ailment"],
       "definition": ["A liver condition used for repository ranking tests."],
@@ -52,13 +59,20 @@
         "id": "efo+class+http://example.org/EFO_0002",
         "type": ["entity", "class"],
         "ontologyId": "efo",
+        "ontologyPreferredPrefix": "EFO",
+        "ontologyIri": "http://www.ebi.ac.uk/efo",
         "iri": "http://example.org/EFO_0002",
         "label": "Hepatic condition",
+        "definition": ["A liver condition used for repository ranking tests."],
+        "synonym": ["Liver ailment"],
         "shortForm": "EFO_0002",
         "curie": "EFO:0002",
         "isObsolete": false,
-        "isDefiningOntology": true,
-        "relatedTo": ["http://example.org/EFO_0001"]
+        "isDefiningOntology": false,
+        "hasDirectParents": false,
+        "hasHierarchicalParents": false,
+        "relatedTo": ["http://example.org/EFO_0001"],
+        "linkedEntities": {}
       }
     },
     {
@@ -83,12 +97,19 @@
         "id": "duo+class+http://example.org/DUO_0001",
         "type": ["entity", "class"],
         "ontologyId": "duo",
+        "ontologyPreferredPrefix": "DUO",
+        "ontologyIri": "http://purl.obolibrary.org/obo/duo.owl",
         "iri": "http://example.org/DUO_0001",
         "label": "Data use permission",
+        "definition": ["A permission for biomedical data use."],
+        "synonym": ["Data access permission"],
         "shortForm": "DUO_0001",
         "curie": "DUO:0001",
         "isObsolete": false,
-        "isDefiningOntology": true
+        "isDefiningOntology": true,
+        "hasDirectParents": false,
+        "hasHierarchicalParents": false,
+        "linkedEntities": {}
       }
     },
     {
@@ -113,12 +134,19 @@
         "id": "efo+property+http://example.org/EFO_0100",
         "type": ["entity", "property"],
         "ontologyId": "efo",
+        "ontologyPreferredPrefix": "EFO",
+        "ontologyIri": "http://www.ebi.ac.uk/efo",
         "iri": "http://example.org/EFO_0100",
         "label": "has specimen",
+        "definition": ["Relates a study to its specimen."],
+        "synonym": ["specimen relation"],
         "shortForm": "EFO_0100",
         "curie": "EFO:0100",
         "isObsolete": false,
-        "isDefiningOntology": true
+        "isDefiningOntology": true,
+        "hasDirectParents": false,
+        "hasHierarchicalParents": false,
+        "linkedEntities": {}
       }
     },
     {
@@ -143,12 +171,19 @@
         "id": "efo+class+http://example.org/EFO_0999",
         "type": ["entity", "class"],
         "ontologyId": "efo",
+        "ontologyPreferredPrefix": "EFO",
+        "ontologyIri": "http://www.ebi.ac.uk/efo",
         "iri": "http://example.org/EFO_0999",
         "label": "Legacy liver concept",
+        "definition": ["An obsolete entity retained for filter tests."],
+        "synonym": ["Deprecated hepatic concept"],
         "shortForm": "EFO_0999",
         "curie": "EFO:0999",
         "isObsolete": true,
-        "isDefiningOntology": true
+        "isDefiningOntology": true,
+        "hasDirectParents": false,
+        "hasHierarchicalParents": false,
+        "linkedEntities": {}
       }
     }
   ]
