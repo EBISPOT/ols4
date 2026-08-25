@@ -12,6 +12,7 @@ import uk.ac.ebi.spot.ols.repository.OntologyRepository;
 import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
 import uk.ac.ebi.spot.ols.repository.search.OlsSearchClient;
 import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
+import uk.ac.ebi.spot.ols.repository.v1.V1TermRepository;
 import uk.ac.ebi.spot.ols.service.PostgresClient;
 
 import java.io.ByteArrayOutputStream;
@@ -85,6 +86,16 @@ public final class PostgresIntegrationTestSupport {
         EntityRepository repository = new EntityRepository();
         ReflectionTestUtils.setField(repository, "searchClient", searchClient);
         return new EntityRepositoryHandle(repository, postgresClient);
+    }
+
+    public static V1TermRepositoryHandle createV1TermRepository(
+            PostgreSQLContainer<?> container) {
+        PostgresClient postgresClient = createPostgresClient(container);
+        OlsSearchClient searchClient = createSearchClient(postgresClient);
+
+        V1TermRepository repository = new V1TermRepository();
+        ReflectionTestUtils.setField(repository, "searchClient", searchClient);
+        return new V1TermRepositoryHandle(repository, postgresClient);
     }
 
     private static PostgresClient createPostgresClient(PostgreSQLContainer<?> container) {
@@ -270,6 +281,16 @@ public final class PostgresIntegrationTestSupport {
 
     public record EntityRepositoryHandle(
             EntityRepository repository,
+            PostgresClient postgresClient) implements AutoCloseable {
+
+        @Override
+        public void close() {
+            postgresClient.close();
+        }
+    }
+
+    public record V1TermRepositoryHandle(
+            V1TermRepository repository,
             PostgresClient postgresClient) implements AutoCloseable {
 
         @Override

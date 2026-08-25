@@ -299,6 +299,23 @@ Verified locally on 2026-08-25 with Java 17 and Rancher Desktop:
   all 25 lines and all 10 branches; its repository covers 48 of 49 lines and 10 of 14 branches.
   No coverage failure threshold is introduced by this rollout.
 
+## Implemented V1 term-controller baseline
+
+Verified locally on 2026-08-25 with Java 17 and Rancher Desktop:
+
+- Surefire runs 188 tests, including 11 direct `V1TermControllerTest` cases and 23
+  `V1TermControllerWIT` cases. Two warm repeats took approximately 18.1 and 17.8 seconds and
+  passed with a deliberately unavailable Docker socket.
+- Failsafe runs 50 PostgreSQL tests, including 7 `V1TermRepositoryIT` cases and 4 thin
+  `V1TermControllerIT` cases. Two complete database-gate repeats took approximately 32.6 and
+  33.0 seconds.
+- The complete clean `verify` lifecycle runs all 238 tests in approximately 40.7 seconds.
+- Whole-backend JaCoCo coverage is 23.6% lines and 21.2% branches. The V1 term controller covers
+  all 42 lines and 24 of 28 branches; its repository covers 44 of 123 lines, including every
+  finder used by the four controller routes. No coverage failure threshold is introduced.
+- V1 compatibility retains the existing 1000-item default page size and accepts arbitrary
+  language identifiers with value fallback; these differ intentionally from newer V2 contracts.
+
 Read-only production smoke monitoring is a separate future initiative for an internal or self-hosted environment. It is not part of the initial PR testing framework and must not become a merge-blocking production dependency.
 
 ## Out of scope for the pilot
