@@ -8,7 +8,9 @@ ontology scoping, obsolete selection, and hierarchy behavior.
 - `EFO_0101` is an active child of the shared `EFO_0100` property. Its `directParents` and
   `directAncestors` arrays exercise the production PostgreSQL hierarchy columns.
 - `DUO_0100` provides a second ontology and a definition-weighted ranking case.
-- `EFO_0199` is obsolete and is excluded by the controller default.
+- `EFO_0199` is obsolete and non-defining. It is excluded by the V2 controller default while its
+  defining-ontology flag distinguishes the legacy V1 filtered and unfiltered routes without
+  changing active-property search ranking.
 
 The wrapper fields map to production `ols_entities` columns and the nested `json` object is the
 compressed API document returned by the repository. Update both views together, then run the Java
