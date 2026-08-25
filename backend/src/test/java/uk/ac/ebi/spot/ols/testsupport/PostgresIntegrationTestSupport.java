@@ -7,6 +7,7 @@ import com.google.gson.JsonParser;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
+import uk.ac.ebi.spot.ols.repository.EntityRepository;
 import uk.ac.ebi.spot.ols.repository.OntologyRepository;
 import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
 import uk.ac.ebi.spot.ols.repository.search.OlsSearchClient;
@@ -48,7 +49,8 @@ public final class PostgresIntegrationTestSupport {
     public static void initializeDatabase(PostgreSQLContainer<?> container) {
         try (Connection connection = container.createConnection("")) {
             executeProductionSchema(connection);
-            loadFixture(connection);
+            loadOntologyFixture(connection);
+            loadEntityFixture(connection);
         } catch (IOException | InterruptedException | SQLException e) {
             throw new IllegalStateException("Failed to initialize the disposable OLS PostgreSQL database", e);
         }
@@ -74,6 +76,15 @@ public final class PostgresIntegrationTestSupport {
         V1OntologyRepository repository = new V1OntologyRepository();
         ReflectionTestUtils.setField(repository, "searchClient", searchClient);
         return new V1RepositoryHandle(repository, postgresClient);
+    }
+
+    public static EntityRepositoryHandle createEntityRepository(PostgreSQLContainer<?> container) {
+        PostgresClient postgresClient = createPostgresClient(container);
+        OlsSearchClient searchClient = createSearchClient(postgresClient);
+
+        EntityRepository repository = new EntityRepository();
+        ReflectionTestUtils.setField(repository, "searchClient", searchClient);
+        return new EntityRepositoryHandle(repository, postgresClient);
     }
 
     private static PostgresClient createPostgresClient(PostgreSQLContainer<?> container) {
@@ -129,7 +140,7 @@ public final class PostgresIntegrationTestSupport {
         }
     }
 
-    private static void loadFixture(Connection connection) throws IOException, SQLException {
+    private static void loadOntologyFixture(Connection connection) throws IOException, SQLException {
         JsonObject fixture;
         try (InputStream stream = PostgresIntegrationTestSupport.class.getResourceAsStream(
                 "/fixtures/ontologies/ontology-fixture.json")) {
@@ -160,6 +171,56 @@ public final class PostgresIntegrationTestSupport {
                 statement.setArray(8, textArray(connection, record.getAsJsonArray("tags")));
                 statement.setArray(9, textArray(connection, record.getAsJsonArray("domain")));
                 statement.setArray(10, textArray(
+                        connection,
+                        record.getAsJsonArray("http://example.org/category")));
+                statement.addBatch();
+            }
+            statement.executeBatch();
+        }
+    }
+
+    private static void loadEntityFixture(Connection connection) throws IOException, SQLException {
+        JsonObject fixture;
+        try (InputStream stream = PostgresIntegrationTestSupport.class.getResourceAsStream(
+                "/fixtures/entities/entity-fixture.json")) {
+            if (stream == null) {
+                throw new IllegalStateException("Entity integration fixture is missing");
+            }
+            fixture = JsonParser.parseReader(
+                    new java.io.InputStreamReader(stream, StandardCharsets.UTF_8)).getAsJsonObject();
+        }
+
+        String sql = """
+                INSERT INTO ols_entities (
+                    id, type, iri, ontology_id, _json, is_obsolete, label, search_type,
+                    short_form, curie, obo_id, synonym, definition, is_defining_ontology,
+                    subset, related_to, label_for_suggest, filter_tags, filter_domain,
+                    "filter_http://example.org/category")
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """;
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            for (JsonElement element : fixture.getAsJsonArray("records")) {
+                JsonObject record = element.getAsJsonObject();
+                statement.setString(1, record.get("id").getAsString());
+                statement.setString(2, record.get("databaseType").getAsString());
+                statement.setString(3, record.get("iri").getAsString());
+                statement.setString(4, record.get("ontologyId").getAsString());
+                statement.setBytes(5, gzip(record.getAsJsonObject("json").toString()));
+                statement.setBoolean(6, record.get("isObsolete").getAsBoolean());
+                statement.setArray(7, textArray(connection, record.getAsJsonArray("label")));
+                statement.setString(8, record.get("searchType").getAsString());
+                statement.setString(9, record.get("shortForm").getAsString());
+                statement.setString(10, record.get("curie").getAsString());
+                statement.setString(11, record.get("curie").getAsString());
+                statement.setArray(12, textArray(connection, record.getAsJsonArray("synonym")));
+                statement.setArray(13, textArray(connection, record.getAsJsonArray("definition")));
+                statement.setBoolean(14, record.get("isDefiningOntology").getAsBoolean());
+                statement.setArray(15, textArray(connection, record.getAsJsonArray("subset")));
+                statement.setArray(16, textArray(connection, record.getAsJsonArray("relatedTo")));
+                statement.setString(17, record.getAsJsonArray("label").get(0).getAsString());
+                statement.setArray(18, textArray(connection, record.getAsJsonArray("tags")));
+                statement.setArray(19, textArray(connection, record.getAsJsonArray("domain")));
+                statement.setArray(20, textArray(
                         connection,
                         record.getAsJsonArray("http://example.org/category")));
                 statement.addBatch();
@@ -199,6 +260,16 @@ public final class PostgresIntegrationTestSupport {
 
     public record V1RepositoryHandle(
             V1OntologyRepository repository,
+            PostgresClient postgresClient) implements AutoCloseable {
+
+        @Override
+        public void close() {
+            postgresClient.close();
+        }
+    }
+
+    public record EntityRepositoryHandle(
+            EntityRepository repository,
             PostgresClient postgresClient) implements AutoCloseable {
 
         @Override
