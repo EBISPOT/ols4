@@ -270,8 +270,14 @@ public class OlsPostgresClient {
     private Condition buildNodePropCondition(String qualifier, Map<String, String> nodeProps) {
         Condition condition = DSL.trueCondition();
         for (var entry : nodeProps.entrySet()) {
-            if ("isObsolete".equals(entry.getKey())) {
-                condition = condition.and(field(qualifier, "is_obsolete", Boolean.class).eq("true".equals(entry.getValue())));
+            switch (entry.getKey()) {
+                case "isObsolete" -> condition = condition.and(
+                        field(qualifier, "is_obsolete", Boolean.class)
+                                .eq("true".equals(entry.getValue())));
+                case "type" -> condition = condition.and(
+                        field(qualifier, "type", String.class).eq(entry.getValue()));
+                default -> {
+                }
             }
         }
         return condition;
