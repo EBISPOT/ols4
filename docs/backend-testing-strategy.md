@@ -357,6 +357,27 @@ Verified locally on 2026-08-25 with Java 17 and Rancher Desktop:
   merged in PR #1371, and the repository and thin controller ITs now assert both mapped values
   through the real PostgreSQL-to-HTTP path.
 
+## Implemented V2 class-controller baseline
+
+Verified locally on 2026-08-26 with Java 17 and Rancher Desktop:
+
+- Surefire runs 466 tests, including 13 direct `V2ClassControllerTest` invocations and 153
+  `V2ClassControllerWIT` invocations. Two runs with a deliberately unavailable Docker socket took
+  approximately 18.9 and 19.5 seconds.
+- Failsafe runs 94 PostgreSQL tests, including 9 `ClassRepositoryIT` cases and 11 thin
+  `V2ClassControllerIT` cases. Two complete database-gate runs took approximately 50.5 and
+  52.6 seconds.
+- The clean `verify` lifecycle runs all 560 tests in approximately 1 minute 3 seconds.
+- Whole-backend JaCoCo coverage is 32.3% lines and 24.5% branches. The V2 class controller covers
+  all 51 lines and all 6 branches; its repository covers 91 of 128 lines and 11 of 48 branches,
+  including every finder used by the controller's 11 routes. No coverage failure threshold is
+  introduced.
+- The class-specific synthetic fixture supplements the shared entity data only for class suites
+  and exercises production parent and ancestor columns. The rollout exposed that class hierarchy
+  queries could return non-class entities whose ancestor arrays referenced the class. The minimal
+  production fix merged in PR #1373 and restricts all class hierarchy results to ontology classes;
+  both focused regression tests and the broader repository/controller suites preserve that rule.
+
 Read-only production smoke monitoring is a separate future initiative for an internal or self-hosted environment. It is not part of the initial PR testing framework and must not become a merge-blocking production dependency.
 
 ## Out of scope for the pilot
