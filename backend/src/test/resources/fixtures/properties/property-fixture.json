@@ -85,7 +85,7 @@
       "ontologyId": "efo",
       "iri": "http://example.org/EFO_0199",
       "isObsolete": true,
-      "isDefiningOntology": true,
+      "isDefiningOntology": false,
       "label": ["legacy material relation"],
       "synonym": ["obsolete property"],
       "definition": ["An obsolete property retained for filter tests."],
@@ -111,7 +111,7 @@
         "shortForm": "EFO_0199",
         "curie": "EFO:0199",
         "isObsolete": true,
-        "isDefiningOntology": true,
+        "isDefiningOntology": false,
         "hasDirectParents": false,
         "hasHierarchicalParents": false,
         "linkedEntities": {}

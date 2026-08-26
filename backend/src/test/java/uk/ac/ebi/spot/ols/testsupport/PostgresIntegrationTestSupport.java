@@ -13,6 +13,7 @@ import uk.ac.ebi.spot.ols.repository.PropertyRepository;
 import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
 import uk.ac.ebi.spot.ols.repository.search.OlsSearchClient;
 import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
+import uk.ac.ebi.spot.ols.repository.v1.V1PropertyRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1TermRepository;
 import uk.ac.ebi.spot.ols.service.PostgresClient;
 
@@ -120,6 +121,20 @@ public final class PostgresIntegrationTestSupport {
         ReflectionTestUtils.setField(repository, "searchClient", searchClient);
         ReflectionTestUtils.setField(repository, "postgresClient", olsPostgresClient);
         return new PropertyRepositoryHandle(repository, postgresClient);
+    }
+
+    public static V1PropertyRepositoryHandle createV1PropertyRepository(
+            PostgreSQLContainer<?> container) {
+        PostgresClient postgresClient = createPostgresClient(container);
+        OlsSearchClient searchClient = createSearchClient(postgresClient);
+
+        OlsPostgresClient olsPostgresClient = new OlsPostgresClient();
+        ReflectionTestUtils.setField(olsPostgresClient, "postgresClient", postgresClient);
+
+        V1PropertyRepository repository = new V1PropertyRepository();
+        ReflectionTestUtils.setField(repository, "searchClient", searchClient);
+        ReflectionTestUtils.setField(repository, "postgresClient", olsPostgresClient);
+        return new V1PropertyRepositoryHandle(repository, postgresClient);
     }
 
     private static PostgresClient createPostgresClient(PostgreSQLContainer<?> container) {
@@ -380,6 +395,16 @@ public final class PostgresIntegrationTestSupport {
 
     public record PropertyRepositoryHandle(
             PropertyRepository repository,
+            PostgresClient postgresClient) implements AutoCloseable {
+
+        @Override
+        public void close() {
+            postgresClient.close();
+        }
+    }
+
+    public record V1PropertyRepositoryHandle(
+            V1PropertyRepository repository,
             PostgresClient postgresClient) implements AutoCloseable {
 
         @Override

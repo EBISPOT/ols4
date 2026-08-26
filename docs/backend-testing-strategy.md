@@ -335,6 +335,28 @@ Verified locally on 2026-08-25 with Java 17 and Rancher Desktop:
   suites, preserving established fixture totals while exercising production `direct_parents` and
   `direct_ancestors` columns. No production defect was exposed.
 
+## Implemented V1 property-controller baseline
+
+Verified locally on 2026-08-25 with Java 17 and Rancher Desktop:
+
+- Surefire runs 298 tests, including 8 direct `V1PropertyControllerTest` cases and 29
+  `V1PropertyControllerWIT` cases. Two runs with a deliberately unavailable Docker socket took
+  approximately 18.1 and 19.3 seconds.
+- Failsafe runs 73 PostgreSQL tests, including 7 `V1PropertyRepositoryIT` cases and 4 thin
+  `V1PropertyControllerIT` cases. Two complete database-gate runs took approximately 43.6 and
+  42.6 seconds.
+- The clean `verify` lifecycle runs all 371 tests in approximately 57.1 seconds.
+- Whole-backend JaCoCo coverage is 28.9% lines and 23.2% branches. The V1 property controller
+  covers all 28 lines and all 12 branches; its repository covers 43 of 89 lines, including every
+  finder used by the controller's four routes. No coverage failure threshold is introduced.
+- V1 compatibility retains its 1000-item default page size, arbitrary language identifiers with
+  value fallback, identifier precedence, double-encoded IRI paths, legacy HAL responses, and
+  servlet-style 404 reason. The property fixture uses its obsolete record as the non-defining case
+  so active V2 property search ranking remains unchanged. The rollout exposed that the V1 mapper
+  omitted the public `is_obsolete` and `is_defining_ontology` flags. The minimal production fix
+  merged in PR #1371, and the repository and thin controller ITs now assert both mapped values
+  through the real PostgreSQL-to-HTTP path.
+
 Read-only production smoke monitoring is a separate future initiative for an internal or self-hosted environment. It is not part of the initial PR testing framework and must not become a merge-blocking production dependency.
 
 ## Out of scope for the pilot
