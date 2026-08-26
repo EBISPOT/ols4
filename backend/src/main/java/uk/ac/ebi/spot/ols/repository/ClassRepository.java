@@ -118,7 +118,7 @@ public class ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
+        Map<String, String> nodeProps = classNodeProperties(includeObsolete);
 
         Page<JsonElement> result = isNullOrEmpty(search) ? this.postgresClient.getDirectChildren(
                 id, nodeProps, pageable) :
@@ -137,7 +137,7 @@ public class ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
+        Map<String, String> nodeProps = classNodeProperties(includeObsolete);
 
         return this.postgresClient.getAncestors(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
@@ -151,7 +151,7 @@ public class ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
+        Map<String, String> nodeProps = classNodeProperties(includeObsolete);
 
         return this.postgresClient.getDescendants(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
@@ -164,7 +164,7 @@ public class ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
+        Map<String, String> nodeProps = classNodeProperties(includeObsolete);
 
         return this.postgresClient.getHierarchicalDescendants(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
@@ -178,7 +178,7 @@ public class ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
+        Map<String, String> nodeProps = classNodeProperties(includeObsolete);
 
         return this.postgresClient.getHierarchicalChildren(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
@@ -192,7 +192,7 @@ public class ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
+        Map<String, String> nodeProps = classNodeProperties(includeObsolete);
 
         return this.postgresClient.getHierarchicalAncestors(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
@@ -206,7 +206,7 @@ public class ClassRepository {
 
         String id = ontologyId + "+individual+" + iri;
 
-        Map<String, String> nodeProps = includeObsolete ? Map.of() : Map.of("isObsolete", "false");
+        Map<String, String> nodeProps = classNodeProperties(includeObsolete);
 
         return this.postgresClient.getAncestors(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
@@ -225,6 +225,12 @@ public class ClassRepository {
         return this.postgresClient.getSimilar("OntologyClass", iri, pageable, modelName)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
+    }
+
+    private static Map<String, String> classNodeProperties(boolean includeObsolete) {
+        return includeObsolete
+                ? Map.of("type", "OntologyClass")
+                : Map.of("type", "OntologyClass", "isObsolete", "false");
     }
 
     public double getSimilarity(String iri, String iri2, String modelName) {
