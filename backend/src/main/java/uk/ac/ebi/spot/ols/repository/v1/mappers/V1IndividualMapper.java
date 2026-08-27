@@ -37,6 +37,9 @@ public class V1IndividualMapper {
         individual.shortForm = JsonHelper.getString(localizedJson, "shortForm");
         individual.oboId = individual.shortForm.replace("_", ":");
 
+        individual.isLocal = JsonHelper.getBoolean(localizedJson, IS_DEFINING_ONTOLOGY.getText());
+        individual.isObsolete = JsonHelper.getBoolean(localizedJson, IS_OBSOLETE.getText());
+
         return individual;
     }
 
