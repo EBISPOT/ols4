@@ -9,6 +9,7 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
 import uk.ac.ebi.spot.ols.repository.EntityRepository;
 import uk.ac.ebi.spot.ols.repository.ClassRepository;
+import uk.ac.ebi.spot.ols.repository.IndividualRepository;
 import uk.ac.ebi.spot.ols.repository.OntologyRepository;
 import uk.ac.ebi.spot.ols.repository.PropertyRepository;
 import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
@@ -37,7 +38,8 @@ public final class PostgresIntegrationTestSupport {
     private static final List<String> FILTER_PROPERTIES = List.of(
             "tags",
             "domain",
-            "http://example.org/category");
+            "http://example.org/category",
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
 
     private PostgresIntegrationTestSupport() {
     }
@@ -75,6 +77,15 @@ public final class PostgresIntegrationTestSupport {
             loadClassFixture(connection);
         } catch (IOException | SQLException e) {
             throw new IllegalStateException("Failed to load the class integration fixture", e);
+        }
+    }
+
+    public static void initializeIndividualDatabase(PostgreSQLContainer<?> container) {
+        initializeDatabase(container);
+        try (Connection connection = container.createConnection("")) {
+            loadIndividualFixture(connection);
+        } catch (IOException | SQLException e) {
+            throw new IllegalStateException("Failed to load the individual integration fixture", e);
         }
     }
 
@@ -159,6 +170,20 @@ public final class PostgresIntegrationTestSupport {
         ReflectionTestUtils.setField(repository, "searchClient", searchClient);
         ReflectionTestUtils.setField(repository, "postgresClient", olsPostgresClient);
         return new ClassRepositoryHandle(repository, postgresClient);
+    }
+
+    public static IndividualRepositoryHandle createIndividualRepository(
+            PostgreSQLContainer<?> container) {
+        PostgresClient postgresClient = createPostgresClient(container);
+        OlsSearchClient searchClient = createSearchClient(postgresClient);
+
+        OlsPostgresClient olsPostgresClient = new OlsPostgresClient();
+        ReflectionTestUtils.setField(olsPostgresClient, "postgresClient", postgresClient);
+
+        IndividualRepository repository = new IndividualRepository();
+        ReflectionTestUtils.setField(repository, "searchClient", searchClient);
+        ReflectionTestUtils.setField(repository, "postgresClient", olsPostgresClient);
+        return new IndividualRepositoryHandle(repository, postgresClient);
     }
 
     private static PostgresClient createPostgresClient(PostgreSQLContainer<?> container) {
@@ -419,6 +444,63 @@ public final class PostgresIntegrationTestSupport {
         }
     }
 
+    private static void loadIndividualFixture(Connection connection) throws IOException, SQLException {
+        JsonObject fixture;
+        try (InputStream stream = PostgresIntegrationTestSupport.class.getResourceAsStream(
+                "/fixtures/individuals/individual-fixture.json")) {
+            if (stream == null) {
+                throw new IllegalStateException("Individual integration fixture is missing");
+            }
+            fixture = JsonParser.parseReader(
+                    new java.io.InputStreamReader(stream, StandardCharsets.UTF_8)).getAsJsonObject();
+        }
+
+        String sql = """
+                INSERT INTO ols_entities (
+                    id, type, iri, ontology_id, _json, is_obsolete, label, search_type,
+                    short_form, curie, obo_id, synonym, definition, is_defining_ontology,
+                    subset, related_to, label_for_suggest, filter_tags, filter_domain,
+                    "filter_http://example.org/category",
+                    "filter_http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """;
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            for (JsonElement element : fixture.getAsJsonArray("records")) {
+                JsonObject record = element.getAsJsonObject();
+                statement.setString(1, record.get("id").getAsString());
+                statement.setString(2, record.get("databaseType").getAsString());
+                statement.setString(3, record.get("iri").getAsString());
+                statement.setString(4, record.get("ontologyId").getAsString());
+                statement.setBytes(5, gzip(record.getAsJsonObject("json").toString()));
+                statement.setBoolean(6, record.get("isObsolete").getAsBoolean());
+                statement.setArray(7, textArray(connection, record.getAsJsonArray("label")));
+                statement.setString(8, record.get("searchType").getAsString());
+                statement.setString(9, record.get("shortForm").getAsString());
+                statement.setString(10, record.get("curie").getAsString());
+                statement.setString(11, record.get("curie").getAsString());
+                statement.setArray(12, textArray(connection, record.getAsJsonArray("synonym")));
+                statement.setArray(13, textArray(connection, record.getAsJsonArray("definition")));
+                statement.setBoolean(14, record.get("isDefiningOntology").getAsBoolean());
+                statement.setArray(15, textArray(connection, record.getAsJsonArray("subset")));
+                statement.setArray(16, textArray(connection, record.getAsJsonArray("relatedTo")));
+                statement.setString(17, record.getAsJsonArray("label").get(0).getAsString());
+                statement.setArray(18, textArray(connection, record.getAsJsonArray("tags")));
+                statement.setArray(19, textArray(connection, record.getAsJsonArray("domain")));
+                statement.setArray(20, textArray(
+                        connection,
+                        record.getAsJsonArray("http://example.org/category")));
+                statement.setArray(21, textArray(
+                        connection,
+                        record.getAsJsonArray("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")));
+                statement.addBatch();
+            }
+            statement.executeBatch();
+        }
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("ANALYZE ols_entities");
+        }
+    }
+
     private static java.sql.Array textArray(Connection connection, JsonArray values) throws SQLException {
         String[] strings = new String[values.size()];
         for (int i = 0; i < values.size(); i++) {
@@ -497,6 +579,16 @@ public final class PostgresIntegrationTestSupport {
 
     public record ClassRepositoryHandle(
             ClassRepository repository,
+            PostgresClient postgresClient) implements AutoCloseable {
+
+        @Override
+        public void close() {
+            postgresClient.close();
+        }
+    }
+
+    public record IndividualRepositoryHandle(
+            IndividualRepository repository,
             PostgresClient postgresClient) implements AutoCloseable {
 
         @Override

@@ -378,6 +378,28 @@ Verified locally on 2026-08-26 with Java 17 and Rancher Desktop:
   production fix merged in PR #1373 and restricts all class hierarchy results to ontology classes;
   both focused regression tests and the broader repository/controller suites preserve that rule.
 
+## Implemented V2 individual-controller baseline
+
+Verified locally on 2026-08-27 with Java 17 and Rancher Desktop:
+
+- Surefire runs 538 tests, including 6 direct `V2IndividualControllerTest` cases and 64
+  `V2IndividualControllerWIT` invocations. Two runs with a deliberately unavailable Docker socket
+  took approximately 22.8 and 18.8 seconds.
+- Failsafe runs 105 PostgreSQL tests, including 7 `IndividualRepositoryIT` cases and 4 thin
+  `V2IndividualControllerIT` cases. Two complete database-gate runs took approximately 56.7 and
+  59.0 seconds.
+- The clean `verify` lifecycle runs all 643 tests in approximately 1 minute 8 seconds.
+- Whole-backend JaCoCo coverage is 33.7% lines and 25.3% branches, up from 32.6% lines and 24.6%
+  branches on the merged prerequisite baseline. The V2 individual controller covers all 21 lines
+  and all 6 branches; its repository covers 47 of 48 lines and 9 of 12 branches. No coverage
+  failure threshold is introduced.
+- The individual-specific four-record fixture covers two ontologies, active and obsolete records,
+  search ranking, dynamic URI-named filters, and RDF-type class membership without changing the
+  shared fixture totals. The rollout exposed that the class-to-individual route ignored
+  `includeObsoleteEntities` and returned obsolete class members by default. The minimal production
+  fix merged in PR #1375; its focused regressions and the broader repository/controller suites now
+  preserve default exclusion and explicit opt-in.
+
 Read-only production smoke monitoring is a separate future initiative for an internal or self-hosted environment. It is not part of the initial PR testing framework and must not become a merge-blocking production dependency.
 
 ## Out of scope for the pilot
