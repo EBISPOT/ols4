@@ -1,7 +1,7 @@
 # Individual integration fixture
 
-This four-record synthetic supplement is loaded only by the V2 individual suites. It keeps the
-shared entity fixture totals unchanged while covering global and ontology-scoped individual
+This four-record synthetic supplement is loaded only by the V1 and V2 individual suites. It keeps
+the shared entity fixture totals unchanged while covering global and ontology-scoped individual
 search, obsolete filtering, pagination, dynamic properties, lookup by IRI, and class membership.
 
 - Two active EFO individuals distinguish defining status, search fields, ranking, filters, and
