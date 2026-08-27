@@ -170,6 +170,9 @@ public class V2IndividualController {
             @PathVariable("class")
             @Parameter(name = "class",
                     description = "The IRI of the class, this value must be double URL encoded") String classIri,
+            @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
+            @Parameter(name = "includeObsoleteEntities",
+                    description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
@@ -178,7 +181,9 @@ public class V2IndividualController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                        individualRepository.getIndividualsOfClass(ontologyId, classIri, pageable, lang, outputOpts).map(V2Entity::new)
+                        individualRepository.getIndividualsOfClass(
+                                ontologyId, classIri, pageable, includeObsoleteEntities, lang, outputOpts)
+                                .map(V2Entity::new)
                 ),
                 HttpStatus.OK);
 
@@ -186,6 +191,5 @@ public class V2IndividualController {
 
 
 }
-
 
 

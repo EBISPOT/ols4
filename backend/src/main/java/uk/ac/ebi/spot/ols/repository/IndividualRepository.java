@@ -105,7 +105,8 @@ public class IndividualRepository {
     }
 
     public OlsFacetedResultsPage<JsonElement> getIndividualsOfClass(
-            String ontologyId, String classIri, Pageable pageable, String lang, JsonTransformOptions outputOpts) throws IOException {
+            String ontologyId, String classIri, Pageable pageable, boolean includeObsoleteEntities,
+            String lang, JsonTransformOptions outputOpts) throws IOException {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -114,6 +115,9 @@ public class IndividualRepository {
         query.addFilter("type", List.of("individual"), SearchType.WHOLE_FIELD);
         query.addFilter("ontologyId", List.of(ontologyId), SearchType.CASE_INSENSITIVE_TOKENS);
         query.addFilter("http__//www.w3.org/1999/02/22-rdf-syntax-ns#type", List.of(classIri), SearchType.WHOLE_FIELD);
+        if (!includeObsoleteEntities) {
+            query.addFilter(IS_OBSOLETE.getText(), List.of("false"), SearchType.WHOLE_FIELD);
+        }
 
         return searchClient.searchPaginated(query, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
@@ -124,4 +128,3 @@ public class IndividualRepository {
 
 
 }
-
