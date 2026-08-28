@@ -400,6 +400,30 @@ Verified locally on 2026-08-27 with Java 17 and Rancher Desktop:
   fix merged in PR #1375; its focused regressions and the broader repository/controller suites now
   preserve default exclusion and explicit opt-in.
 
+## Implemented V1 individual-controller baseline
+
+Verified locally on 2026-08-27 with Java 17 and Rancher Desktop:
+
+- Surefire runs 576 tests, including 8 direct `V1IndividualControllerTest` cases and 29
+  `V1IndividualControllerWIT` invocations. Two runs with a deliberately unavailable Docker socket
+  took approximately 19.1 and 18.7 seconds.
+- Failsafe runs 116 PostgreSQL tests, including 7 `V1IndividualRepositoryIT` cases and 4 thin
+  `V1IndividualControllerIT` cases. Two complete database-gate runs took approximately 1 minute 4
+  seconds and 1 minute 2 seconds.
+- The clean `verify` lifecycle runs all 692 tests in approximately 1 minute 12 seconds.
+- Whole-backend JaCoCo coverage is 35.8% lines and 25.9% branches, up from the measured merged
+  prerequisite baseline of 34.1% lines and 25.3% branches. The V1 individual controller covers all
+  28 lines and all 12 branches; its repository covers 43 of 76 lines, including every finder used
+  by the controller's four routes. No coverage failure threshold is introduced.
+- V1 compatibility retains its 1000-item default page size, arbitrary language identifiers with
+  value fallback, identifier precedence, double-encoded IRI paths, legacy HAL responses, and
+  servlet-style 404 reason. The suites reuse the four-record individual fixture without changing
+  shared fixture totals.
+- The rollout exposed that `V1IndividualMapper` omitted the public `is_obsolete` and
+  `is_defining_ontology` flags. The minimal production fix merged in PR #1377 with a focused mapper
+  regression and the two affected expected API responses; the repository and thin controller ITs
+  now assert both values through the real PostgreSQL-to-HTTP path.
+
 Read-only production smoke monitoring is a separate future initiative for an internal or self-hosted environment. It is not part of the initial PR testing framework and must not become a merge-blocking production dependency.
 
 ## Out of scope for the pilot
