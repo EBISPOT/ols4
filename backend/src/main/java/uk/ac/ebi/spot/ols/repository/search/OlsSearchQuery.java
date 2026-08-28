@@ -7,6 +7,7 @@ import org.jooq.impl.DSL;
 import org.jooq.impl.SQLDataType;
 import org.springframework.data.domain.Sort;
 
+import java.net.URI;
 import java.util.*;
 import java.util.Locale;
 import java.util.regex.Pattern;
@@ -142,12 +143,14 @@ public class OlsSearchQuery {
         Condition condition = DSL.trueCondition();
 
         if (searchText != null && !searchText.isBlank()) {
-            if (searchFields != null && !searchFields.isEmpty()) {
+            if (!usesDefaultSearchFields()) {
                 condition = condition.and(exactMatch
                         ? buildExactFieldCondition(qualifier, availableFilterColumns)
                         : buildFieldRestrictedTsCondition(qualifier, availableFilterColumns));
             } else {
-                condition = condition.and(matchesTsQuery(field(qualifier, "ts_search", Object.class), buildTsQuery()));
+                condition = condition.and(isIriQuery(searchText)
+                        ? buildExactIriCondition(qualifier)
+                        : matchesTsQuery(field(qualifier, "ts_search", Object.class), buildTsQuery()));
             }
         }
 
@@ -217,12 +220,15 @@ public class OlsSearchQuery {
         if (searchText == null || searchText.isBlank()) {
             return null;
         }
-        Field<Double> rank = DSL.function(
-                "ts_rank_cd",
-                SQLDataType.DOUBLE,
-                field(qualifier, "ts_search", Object.class),
-                buildTsQuery(),
-                DSL.inline(32))
+        Field<Double> rank = usesDefaultSearchFields() && isIriQuery(searchText)
+                ? DSL.inline(0.0)
+                : DSL.function(
+                        "ts_rank_cd",
+                        SQLDataType.DOUBLE,
+                        field(qualifier, "ts_search", Object.class),
+                        buildTsQuery(),
+                        DSL.inline(32));
+        rank = rank
                 .plus(DSL.when(field(qualifier, "is_defining_ontology", Boolean.class).isTrue(), 100.0).otherwise(0.0))
                 .plus(DSL.when(field(qualifier, "search_type", String.class).eq("ontology"), 1.0).otherwise(0.0))
                 // Case-insensitive so an exact-label hit still gets the ranking bonus regardless of
@@ -232,11 +238,41 @@ public class OlsSearchQuery {
                 // end up buried many pages deep. See GitHub issue #1312.
                 .plus(DSL.when(arrayContainsCaseInsensitive(field(qualifier, "label", String[].class), searchText.toLowerCase(Locale.ROOT)), 1000.0).otherwise(0.0));
 
+        if (usesDefaultSearchFields() && isIriQuery(searchText)) {
+            // Keep the defining entity first when an IRI is shared by several ontologies.
+            rank = rank.plus(DSL.when(buildExactIriCondition(qualifier), 1_000_000.0).otherwise(0.0));
+        }
+
         for (BoostField boost : boostFields) {
             Condition matches = buildBoostCondition(qualifier, boost);
             rank = rank.plus(DSL.when(matches, (double) boost.weight).otherwise(0.0));
         }
         return rank;
+    }
+
+    private Condition buildExactIriCondition(String qualifier) {
+        return DSL.lower(field(qualifier, "iri", String.class))
+                .eq(searchText.trim().toLowerCase(Locale.ROOT));
+    }
+
+    private boolean usesDefaultSearchFields() {
+        return searchFields == null || searchFields.isEmpty();
+    }
+
+    /**
+     * Detect URL-shaped IRIs without treating CURIEs such as {@code NCIT:C2985} as IRIs.
+     */
+    private static boolean isIriQuery(String value) {
+        if (value == null || value.isBlank()) {
+            return false;
+        }
+        try {
+            URI uri = URI.create(value.trim());
+            return uri.isAbsolute()
+                    && (value.contains("://") || "urn".equalsIgnoreCase(uri.getScheme()));
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
     }
 
     private Condition buildBoostCondition(String qualifier, BoostField boost) {
