@@ -30,7 +30,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.zip.GZIPOutputStream;
 
 public final class PostgresIntegrationTestSupport {
@@ -58,6 +60,7 @@ public final class PostgresIntegrationTestSupport {
             executeProductionSchema(connection);
             loadOntologyFixture(connection);
             loadEntityFixture(connection);
+            loadAutosuggestFixture(connection);
         } catch (IOException | InterruptedException | SQLException e) {
             throw new IllegalStateException("Failed to initialize the disposable OLS PostgreSQL database", e);
         }
@@ -344,6 +347,52 @@ public final class PostgresIntegrationTestSupport {
         }
         try (Statement statement = connection.createStatement()) {
             statement.execute("ANALYZE ols_entities");
+        }
+    }
+
+    private static void loadAutosuggestFixture(Connection connection) throws IOException, SQLException {
+        String sql = "INSERT INTO ols_autosuggest (ontology_id, string) VALUES (?, ?)";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            addAutosuggestRecords(statement, "/fixtures/ontologies/ontology-fixture.json");
+            addAutosuggestRecords(statement, "/fixtures/entities/entity-fixture.json");
+            statement.executeBatch();
+        }
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("ANALYZE ols_autosuggest");
+        }
+    }
+
+    private static void addAutosuggestRecords(PreparedStatement statement, String resource)
+            throws IOException, SQLException {
+        JsonObject fixture;
+        try (InputStream stream = PostgresIntegrationTestSupport.class.getResourceAsStream(resource)) {
+            if (stream == null) {
+                throw new IllegalStateException("Autosuggest integration fixture is missing: " + resource);
+            }
+            fixture = JsonParser.parseReader(
+                    new java.io.InputStreamReader(stream, StandardCharsets.UTF_8)).getAsJsonObject();
+        }
+
+        for (JsonElement element : fixture.getAsJsonArray("records")) {
+            JsonObject record = element.getAsJsonObject();
+            Set<String> values = new HashSet<>();
+            addAutosuggestValues(record.getAsJsonArray("label"), values);
+            if (record.has("synonym")) {
+                addAutosuggestValues(record.getAsJsonArray("synonym"), values);
+            }
+            for (String value : values) {
+                if (!value.isEmpty()) {
+                    statement.setString(1, record.get("ontologyId").getAsString());
+                    statement.setString(2, value);
+                    statement.addBatch();
+                }
+            }
+        }
+    }
+
+    private static void addAutosuggestValues(JsonArray values, Set<String> destination) {
+        for (JsonElement value : values) {
+            destination.add(value.getAsString());
         }
     }
 

@@ -442,6 +442,30 @@ Verified locally on 2026-09-01 with Java 17 and Rancher Desktop:
   stores the production database type literal and includes a later EFO load timestamp so the
   PostgreSQL search tests exercise type counts and most-recent-load selection deterministically.
 
+## Implemented V1 suggest-controller baseline
+
+Verified locally on 2026-09-01 with Java 17 and Rancher Desktop:
+
+- Surefire runs 597 tests, including 2 direct `V1SuggestControllerTest` cases, 9
+  `V1SuggestControllerWIT` invocations, and the two focused regression tests merged with PRs
+  #1381 and #1382. Two Docker-free runs took Maven 19.153 and 18.993 seconds.
+- Failsafe runs 122 PostgreSQL tests, including 2 `OlsSearchClientSuggestIT` cases and 1 thin
+  `V1SuggestControllerIT` case. Two complete database-gate runs took 75.74 and 76.75 seconds
+  wall-clock.
+- The clean `verify` lifecycle runs all 719 tests in 87.28 seconds wall-clock.
+- Whole-backend JaCoCo coverage is 38.5% lines (1,837 of 4,768) and 28.2% branches (539 of
+  1,908). The V1 suggest controller covers all 2 executable lines and 8 branches. No coverage
+  failure threshold is introduced.
+- The suggest tests add production-shaped autosuggest rows to the shared synthetic fixture,
+  covering labels, synonyms, ontology restriction, deterministic ranking, and pagination through
+  the real PostgreSQL search client. The WIT suite preserves the legacy JSON envelope and
+  exercises defaults, typed failures, repeated and comma-separated ontology values, and frontend
+  compatibility parameters.
+- The rollout exposed two defects in the legacy suggest route. PR #1381 preserves the requested
+  `start` offset in the response, and PR #1382 gives malformed ontology IDs a stable error
+  message. Both fixes were isolated, merged, and covered by focused regressions before this test
+  branch was rebased.
+
 Read-only production smoke monitoring is a separate future initiative for an internal or self-hosted environment. It is not part of the initial PR testing framework and must not become a merge-blocking production dependency.
 
 ## Out of scope for the pilot
