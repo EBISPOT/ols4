@@ -112,6 +112,11 @@ public final class PostgresIntegrationTestSupport {
         return new V1RepositoryHandle(repository, postgresClient);
     }
 
+    public static SearchClientHandle createSearchClient(PostgreSQLContainer<?> container) {
+        PostgresClient postgresClient = createPostgresClient(container);
+        return new SearchClientHandle(createSearchClient(postgresClient), postgresClient);
+    }
+
     public static EntityRepositoryHandle createEntityRepository(PostgreSQLContainer<?> container) {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
@@ -266,7 +271,7 @@ public final class PostgresIntegrationTestSupport {
                     id, type, iri, ontology_id, _json, is_obsolete, label, definition,
                     search_type, is_defining_ontology, filter_tags, filter_domain,
                     "filter_http://example.org/category")
-                VALUES (?, 'ontology', ?, ?, ?, ?, ?, ?, 'ontology', TRUE, ?, ?, ?)
+                VALUES (?, 'Ontology', ?, ?, ?, ?, ?, ?, 'ontology', TRUE, ?, ?, ?)
                 """;
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             for (JsonElement element : fixture.getAsJsonArray("records")) {
@@ -540,6 +545,16 @@ public final class PostgresIntegrationTestSupport {
 
     public record V1RepositoryHandle(
             V1OntologyRepository repository,
+            PostgresClient postgresClient) implements AutoCloseable {
+
+        @Override
+        public void close() {
+            postgresClient.close();
+        }
+    }
+
+    public record SearchClientHandle(
+            OlsSearchClient searchClient,
             PostgresClient postgresClient) implements AutoCloseable {
 
         @Override

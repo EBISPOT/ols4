@@ -9,6 +9,7 @@ production snapshot.
   filters.
 - `duo` provides distinct information-domain and data-use search terms.
 - `legacy-efo` is deliberately obsolete.
+- `efo` has the latest load timestamp so statistics tests cover selecting the most recent load.
 
 The wrapper fields map directly to PostgreSQL search/filter columns. The nested `json` object is
 the compressed API document returned by the repository. It also carries the small stable V1

@@ -424,6 +424,24 @@ Verified locally on 2026-08-27 with Java 17 and Rancher Desktop:
   regression and the two affected expected API responses; the repository and thin controller ITs
   now assert both values through the real PostgreSQL-to-HTTP path.
 
+## Implemented V2 statistics-controller baseline
+
+Verified locally on 2026-09-01 with Java 17 and Rancher Desktop:
+
+- Surefire runs 584 tests, including 2 direct `V2StatisticsControllerTest` cases and 3
+  `V2StatisticsControllerWIT` cases. Two Docker-free runs took Maven 20.041 and 20.215 seconds
+  (wall-clock 21.09 and 21.03 seconds).
+- Failsafe runs 119 PostgreSQL tests, including 2 `OlsSearchClientStatisticsIT` cases and 1 thin
+  `V2StatisticsControllerIT` case. Two complete database-gate runs took Maven 68 and 71 seconds
+  (wall-clock 69.68 and 72.66 seconds).
+- The clean `verify` lifecycle runs all 703 tests in Maven 82 seconds (wall-clock 83.82 seconds).
+- Whole-backend JaCoCo coverage is 37.0% lines and 27.3% branches. The
+  `V2StatisticsController` covers all 10 of its executable lines. No coverage failure threshold
+  is introduced.
+- The statistics tests use the shared four-record ontology/entity fixture. Its ontology loader
+  stores the production database type literal and includes a later EFO load timestamp so the
+  PostgreSQL search tests exercise type counts and most-recent-load selection deterministically.
+
 Read-only production smoke monitoring is a separate future initiative for an internal or self-hosted environment. It is not part of the initial PR testing framework and must not become a merge-blocking production dependency.
 
 ## Out of scope for the pilot
