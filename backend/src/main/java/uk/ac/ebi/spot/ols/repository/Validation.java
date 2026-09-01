@@ -14,7 +14,7 @@ public class Validation {
     public static void validateOntologyId(String ontologyId) {
 
         if (!ontologyId.matches("^[-A-Za-z0-9_.]+$"))
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Invalid ontology ID: " + ontologyId);
 
     }
 
