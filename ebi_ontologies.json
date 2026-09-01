@@ -2106,7 +2106,7 @@
       "title": "Sensory Stimulation Ontology",
       "uri": "https://w3id.org/sstim",
       "description": "An OWL 2 ontology with a multilingual SKOS vocabulary (English, Italian, Portuguese, Spanish) and SHACL shapes for describing sensory stimulation: techniques, protocols, implementations, exposure conditions, observations, safety metadata, and evidence-qualified claims across auditory, visual, haptic and other modalities. It models parameters, provenance and evidence status, and asserts no clinical efficacy.",
-      "homepage": "https://labiosyncare.github.io/ontology/docs/",
+      "homepage": "https://w3c-cg.github.io/sstim/ontology/docs/",
       "mailing_list": "renato.fabbri@gmail.com",
       "label_property": [
         "http://www.w3.org/2000/01/rdf-schema#label",
@@ -2129,7 +2129,7 @@
         "https://w3id.org/sstim/ecosystem#"
       ],
       "oboSlims": false,
-      "ontology_purl": "https://labiosyncare.github.io/ontology/0.15.0/sstim-namespace.ttl"
+      "ontology_purl": "https://w3c-cg.github.io/sstim/ontology/0.16.0/sstim-namespace.ttl"
     }
   ]
 }
