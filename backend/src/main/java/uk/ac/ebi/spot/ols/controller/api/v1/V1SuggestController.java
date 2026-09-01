@@ -57,7 +57,7 @@ public class V1SuggestController {
 
         Map<String, Object> responseBody = new HashMap<>();
         responseBody.put("numFound", labels.size());
-        responseBody.put("start", 0);
+        responseBody.put("start", start);
         responseBody.put("docs", docs);
 
         Map<String, Object> responseObj = new HashMap<>();
