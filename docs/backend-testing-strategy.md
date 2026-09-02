@@ -466,6 +466,31 @@ Verified locally on 2026-09-01 with Java 17 and Rancher Desktop:
   message. Both fixes were isolated, merged, and covered by focused regressions before this test
   branch was rebased.
 
+## Implemented V1 search-controller baseline
+
+Verified locally on 2026-09-02 with Java 17 and Rancher Desktop:
+
+- Surefire runs 629 tests, including 9 direct `V1SearchControllerTest` invocations and 20
+  `V1SearchControllerWIT` invocations. Two Docker-free runs took Maven 18.903 and 18.705 seconds
+  (wall-clock 19.83 and 19.41 seconds) with a deliberately unavailable Docker socket.
+- Failsafe runs 128 PostgreSQL tests, including 5 `OlsSearchClientSearchIT` cases and 1 thin
+  `V1SearchControllerIT` case. Two complete database-gate runs took Maven 1 minute 25 seconds and
+  1 minute 22 seconds (wall-clock 87.36 and 83.37 seconds).
+- The clean `verify` lifecycle runs all 757 tests in Maven 1 minute 39 seconds (wall-clock 101.92
+  seconds).
+- Whole-backend JaCoCo coverage is 44.3% lines (2,119 of 4,787) and 35.3% branches (677 of
+  1,916). The V1 search controller covers 152 of 153 executable lines and 91 of 98 branches. No
+  coverage failure threshold is introduced.
+- The search suites preserve the public V1 response envelope, documented default and requested
+  fields, all typed route parameters, repeated and comma-separated values, encoded hierarchy
+  IRIs, pagination boundaries, grouping, stable error fields, and ignored compatibility
+  parameters. The PostgreSQL cases reuse committed synthetic fixtures and the production schema
+  generator to cover text and exact-field search, facets, filters, full IRIs, ranking, grouping,
+  pagination, and inclusive hierarchy semantics.
+- The rollout exposed that `inclusive=true` excluded the requested parent after the PostgreSQL
+  migration. PR #1384 restored the legacy parent-or-descendant behavior with focused regressions;
+  it was isolated and merged before this test branch was rebased.
+
 Read-only production smoke monitoring is a separate future initiative for an internal or self-hosted environment. It is not part of the initial PR testing framework and must not become a merge-blocking production dependency.
 
 ## Out of scope for the pilot
