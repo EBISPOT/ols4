@@ -162,16 +162,22 @@ public class V1SearchController {
 
         if (childrenOf != null) {
             if (inclusive) {
-                // inclusive: also include the parent itself — filter by iri OR hierarchicalAncestor
-                // Handled by adding both iri and ancestor as possible matches
-                searchQuery.addFilter("hierarchicalAncestor", childrenOf, SearchType.WHOLE_FIELD);
+                searchQuery.addAnyFilter(Map.of(
+                        "iri", childrenOf,
+                        "hierarchicalAncestor", childrenOf), SearchType.WHOLE_FIELD);
             } else {
                 searchQuery.addFilter("hierarchicalAncestor", childrenOf, SearchType.WHOLE_FIELD);
             }
         }
 
         if (allChildrenOf != null) {
-            searchQuery.addFilter("hierarchicalAncestor", allChildrenOf, SearchType.WHOLE_FIELD);
+            if (inclusive) {
+                searchQuery.addAnyFilter(Map.of(
+                        "iri", allChildrenOf,
+                        "hierarchicalAncestor", allChildrenOf), SearchType.WHOLE_FIELD);
+            } else {
+                searchQuery.addFilter("hierarchicalAncestor", allChildrenOf, SearchType.WHOLE_FIELD);
+            }
         }
 
         searchQuery.addFilter("isObsolete", List.of(Boolean.toString(queryObsoletes)), SearchType.WHOLE_FIELD);
