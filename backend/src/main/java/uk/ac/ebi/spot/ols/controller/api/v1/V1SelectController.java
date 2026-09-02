@@ -177,7 +177,7 @@ public class V1SelectController {
 
         Map<String, Object> responseBody = new LinkedHashMap<>();
         responseBody.put("numFound", result.numFound);
-        responseBody.put("start", 0);
+        responseBody.put("start", start);
         responseBody.put("docs", docs);
 
         Map<String, Object> responseObj = new LinkedHashMap<>();
