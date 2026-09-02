@@ -32,6 +32,7 @@ public class OlsSearchQuery {
     String searchText = null;
     boolean exactMatch = false;
     List<SearchFilter> filters = new ArrayList<>();
+    List<List<SearchFilter>> anyFilterGroups = new ArrayList<>();
     List<SearchFilter> excludeFilters = new ArrayList<>();
     List<String> facetFields = new ArrayList<>();
     List<String> searchFields = null;
@@ -89,6 +90,19 @@ public class OlsSearchQuery {
 
     public void addFilter(String propertyName, Collection<String> propertyValues, SearchType searchType) {
         this.filters.add(new SearchFilter(propertyName, propertyValues, false, searchType));
+    }
+
+    /**
+     * Add a group of alternative filters. The group is ANDed with the rest of the query, while
+     * its members are ORed together.
+     */
+    public void addAnyFilter(
+            Map<String, ? extends Collection<String>> alternatives, SearchType searchType) {
+        List<SearchFilter> group = alternatives.entrySet().stream()
+                .map(entry -> new SearchFilter(
+                        entry.getKey(), entry.getValue(), false, searchType))
+                .toList();
+        this.anyFilterGroups.add(group);
     }
 
     public void addExcludeFilter(String propertyName, Collection<String> propertyValues, SearchType searchType) {
@@ -163,6 +177,16 @@ public class OlsSearchQuery {
                 continue;
             }
             condition = condition.and(buildFilterCondition(qualifier, f, false));
+        }
+
+        for (List<SearchFilter> group : anyFilterGroups) {
+            Condition alternatives = DSL.falseCondition();
+            for (SearchFilter f : group) {
+                if (isFilterAvailable(availableFilterColumns, f.field)) {
+                    alternatives = alternatives.or(buildFilterCondition(qualifier, f, false));
+                }
+            }
+            condition = condition.and(alternatives);
         }
 
         for (SearchFilter f : excludeFilters) {
