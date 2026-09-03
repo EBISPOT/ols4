@@ -15,6 +15,7 @@ import uk.ac.ebi.spot.ols.repository.PropertyRepository;
 import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
 import uk.ac.ebi.spot.ols.repository.search.OlsSearchClient;
 import uk.ac.ebi.spot.ols.repository.v1.V1IndividualRepository;
+import uk.ac.ebi.spot.ols.repository.v1.V1JsTreeRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1PropertyRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1TermRepository;
@@ -200,9 +201,32 @@ public final class PostgresIntegrationTestSupport {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
 
+        OlsPostgresClient olsPostgresClient = new OlsPostgresClient();
+        ReflectionTestUtils.setField(olsPostgresClient, "postgresClient", postgresClient);
+
         V1IndividualRepository repository = new V1IndividualRepository();
         ReflectionTestUtils.setField(repository, "searchClient", searchClient);
+        ReflectionTestUtils.setField(repository, "postgresClient", olsPostgresClient);
         return new V1IndividualRepositoryHandle(repository, postgresClient);
+    }
+
+    public static V1OntologyIndividualRepositoryHandle createV1OntologyIndividualRepositories(
+            PostgreSQLContainer<?> container) {
+        PostgresClient postgresClient = createPostgresClient(container);
+        OlsSearchClient searchClient = createSearchClient(postgresClient);
+
+        OlsPostgresClient olsPostgresClient = new OlsPostgresClient();
+        ReflectionTestUtils.setField(olsPostgresClient, "postgresClient", postgresClient);
+
+        V1IndividualRepository individualRepository = new V1IndividualRepository();
+        ReflectionTestUtils.setField(individualRepository, "searchClient", searchClient);
+        ReflectionTestUtils.setField(individualRepository, "postgresClient", olsPostgresClient);
+
+        V1JsTreeRepository jsTreeRepository = new V1JsTreeRepository();
+        ReflectionTestUtils.setField(jsTreeRepository, "postgresClient", olsPostgresClient);
+
+        return new V1OntologyIndividualRepositoryHandle(
+                individualRepository, jsTreeRepository, postgresClient);
     }
 
     private static PostgresClient createPostgresClient(PostgreSQLContainer<?> container) {
@@ -524,10 +548,11 @@ public final class PostgresIntegrationTestSupport {
                 INSERT INTO ols_entities (
                     id, type, iri, ontology_id, _json, is_obsolete, label, search_type,
                     short_form, curie, obo_id, synonym, definition, is_defining_ontology,
-                    subset, related_to, label_for_suggest, filter_tags, filter_domain,
+                    subset, related_to, direct_parents, direct_ancestors,
+                    label_for_suggest, filter_tags, filter_domain,
                     "filter_http://example.org/category",
                     "filter_http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """;
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             for (JsonElement element : fixture.getAsJsonArray("records")) {
@@ -548,13 +573,15 @@ public final class PostgresIntegrationTestSupport {
                 statement.setBoolean(14, record.get("isDefiningOntology").getAsBoolean());
                 statement.setArray(15, textArray(connection, record.getAsJsonArray("subset")));
                 statement.setArray(16, textArray(connection, record.getAsJsonArray("relatedTo")));
-                statement.setString(17, record.getAsJsonArray("label").get(0).getAsString());
-                statement.setArray(18, textArray(connection, record.getAsJsonArray("tags")));
-                statement.setArray(19, textArray(connection, record.getAsJsonArray("domain")));
-                statement.setArray(20, textArray(
+                statement.setArray(17, textArray(connection, record.getAsJsonArray("directParents")));
+                statement.setArray(18, textArray(connection, record.getAsJsonArray("directAncestors")));
+                statement.setString(19, record.getAsJsonArray("label").get(0).getAsString());
+                statement.setArray(20, textArray(connection, record.getAsJsonArray("tags")));
+                statement.setArray(21, textArray(connection, record.getAsJsonArray("domain")));
+                statement.setArray(22, textArray(
                         connection,
                         record.getAsJsonArray("http://example.org/category")));
-                statement.setArray(21, textArray(
+                statement.setArray(23, textArray(
                         connection,
                         record.getAsJsonArray("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")));
                 statement.addBatch();
@@ -674,6 +701,17 @@ public final class PostgresIntegrationTestSupport {
 
     public record V1IndividualRepositoryHandle(
             V1IndividualRepository repository,
+            PostgresClient postgresClient) implements AutoCloseable {
+
+        @Override
+        public void close() {
+            postgresClient.close();
+        }
+    }
+
+    public record V1OntologyIndividualRepositoryHandle(
+            V1IndividualRepository individualRepository,
+            V1JsTreeRepository jsTreeRepository,
             PostgresClient postgresClient) implements AutoCloseable {
 
         @Override

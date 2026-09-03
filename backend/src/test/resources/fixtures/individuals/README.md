@@ -3,6 +3,8 @@
 This four-record synthetic supplement is loaded only by the V1 and V2 individual suites. It keeps
 the shared entity fixture totals unchanged while covering global and ontology-scoped individual
 search, obsolete filtering, pagination, dynamic properties, lookup by IRI, and class membership.
+The same records carry direct-parent and ancestor columns plus nested `directParent` values for
+the V1 ontology-scoped `types`, `alltypes`, and JS-tree routes.
 
 - Two active EFO individuals distinguish defining status, search fields, ranking, filters, and
   membership in different EFO classes.

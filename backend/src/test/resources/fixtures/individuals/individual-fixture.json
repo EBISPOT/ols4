@@ -15,6 +15,12 @@
       "curie": "EFO:I100",
       "subset": ["individuals"],
       "relatedTo": [],
+      "directParents": [
+        "http://example.org/EFO_0001"
+      ],
+      "directAncestors": [
+        "http://example.org/EFO_0001"
+      ],
       "tags": ["clinical"],
       "domain": ["biology"],
       "http://example.org/category": ["clinical"],
@@ -33,7 +39,10 @@
         "curie": "EFO:I100",
         "isObsolete": false,
         "isDefiningOntology": true,
-        "hasDirectParents": false,
+        "directParent": [
+          "http://example.org/EFO_0001"
+        ],
+        "hasDirectParents": true,
         "hasHierarchicalParents": false,
         "linkedEntities": {}
       }
@@ -53,6 +62,13 @@
       "curie": "EFO:I200",
       "subset": ["individuals"],
       "relatedTo": [],
+      "directParents": [
+        "http://example.org/EFO_0002"
+      ],
+      "directAncestors": [
+        "http://example.org/EFO_0001",
+        "http://example.org/EFO_0002"
+      ],
       "tags": ["experimental"],
       "domain": ["biology"],
       "http://example.org/category": ["research"],
@@ -71,7 +87,10 @@
         "curie": "EFO:I200",
         "isObsolete": false,
         "isDefiningOntology": false,
-        "hasDirectParents": false,
+        "directParent": [
+          "http://example.org/EFO_0002"
+        ],
+        "hasDirectParents": true,
         "hasHierarchicalParents": false,
         "linkedEntities": {}
       }
@@ -91,6 +110,12 @@
       "curie": "DUO:I100",
       "subset": ["individuals"],
       "relatedTo": [],
+      "directParents": [
+        "http://example.org/DUO_0001"
+      ],
+      "directAncestors": [
+        "http://example.org/DUO_0001"
+      ],
       "tags": ["policy"],
       "domain": ["information"],
       "http://example.org/category": ["policy"],
@@ -109,7 +134,10 @@
         "curie": "DUO:I100",
         "isObsolete": false,
         "isDefiningOntology": true,
-        "hasDirectParents": false,
+        "directParent": [
+          "http://example.org/DUO_0001"
+        ],
+        "hasDirectParents": true,
         "hasHierarchicalParents": false,
         "linkedEntities": {}
       }
@@ -129,6 +157,12 @@
       "curie": "EFO:I999",
       "subset": ["legacy"],
       "relatedTo": [],
+      "directParents": [
+        "http://example.org/EFO_0001"
+      ],
+      "directAncestors": [
+        "http://example.org/EFO_0001"
+      ],
       "tags": ["archived"],
       "domain": ["biology"],
       "http://example.org/category": ["archived"],
@@ -147,7 +181,10 @@
         "curie": "EFO:I999",
         "isObsolete": true,
         "isDefiningOntology": true,
-        "hasDirectParents": false,
+        "directParent": [
+          "http://example.org/EFO_0001"
+        ],
+        "hasDirectParents": true,
         "hasHierarchicalParents": false,
         "linkedEntities": {}
       }

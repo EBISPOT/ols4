@@ -12,6 +12,9 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import uk.ac.ebi.spot.ols.model.v1.V1Individual;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport;
 
+import java.util.List;
+import java.util.Map;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -22,14 +25,17 @@ class V1IndividualRepositoryIT {
     private static final PostgreSQLContainer<?> POSTGRES =
             PostgresIntegrationTestSupport.newContainer();
 
-    private static PostgresIntegrationTestSupport.V1IndividualRepositoryHandle repositoryHandle;
+    private static PostgresIntegrationTestSupport.V1OntologyIndividualRepositoryHandle repositoryHandle;
     private static V1IndividualRepository repository;
+    private static V1JsTreeRepository jsTreeRepository;
 
     @BeforeAll
     static void setUpDatabase() {
         PostgresIntegrationTestSupport.initializeIndividualDatabase(POSTGRES);
-        repositoryHandle = PostgresIntegrationTestSupport.createV1IndividualRepository(POSTGRES);
-        repository = repositoryHandle.repository();
+        repositoryHandle =
+                PostgresIntegrationTestSupport.createV1OntologyIndividualRepositories(POSTGRES);
+        repository = repositoryHandle.individualRepository();
+        jsTreeRepository = repositoryHandle.jsTreeRepository();
     }
 
     @AfterAll
@@ -145,5 +151,57 @@ class V1IndividualRepositoryIT {
             assertThat(individual.lang).isEqualTo("en_US");
             assertThat(individual.label).isEqualTo("Permission instance");
         });
+    }
+
+    @Test
+    void scopesListsAndEveryIdentifierToOneOntology() {
+        PageRequest pageable = PageRequest.of(0, 20);
+
+        assertThat(repository.findAllByOntology("efo", "en", pageable))
+                .extracting(individual -> individual.iri)
+                .containsExactly(
+                        "http://example.org/EFO_I100",
+                        "http://example.org/EFO_I200",
+                        "http://example.org/EFO_I999");
+        assertThat(repository.findByOntologyAndIri(
+                "efo", "http://example.org/EFO_I100", "fr").lang).isEqualTo("fr");
+        assertThat(repository.findByOntologyAndShortForm("efo", "fr", "EFO_I100").iri)
+                .isEqualTo("http://example.org/EFO_I100");
+        assertThat(repository.findByOntologyAndOboId("efo", "fr", "EFO:I100").iri)
+                .isEqualTo("http://example.org/EFO_I100");
+        assertThat(repository.findByOntologyAndIri(
+                "duo", "http://example.org/EFO_I100", "en")).isNull();
+    }
+
+    @Test
+    void returnsDirectAndAllTypesFromProductionHierarchyColumns() {
+        PageRequest pageable = PageRequest.of(0, 20);
+
+        assertThat(repository.getDirectTypes(
+                "efo", "http://example.org/EFO_I100", "en", pageable))
+                .extracting(term -> term.iri)
+                .containsExactly("http://example.org/EFO_0001");
+        assertThat(repository.getAllTypes(
+                "efo", "http://example.org/EFO_I100", "en", pageable))
+                .extracting(term -> term.iri)
+                .containsExactly("http://example.org/EFO_0001");
+    }
+
+    @Test
+    void buildsTheIndividualJsTreeFromRealPostgresAncestors() {
+        List<Map<String, Object>> tree = jsTreeRepository.getJsTreeForIndividual(
+                "http://example.org/EFO_I100", "efo", "en");
+
+        assertThat(tree).hasSize(2);
+        assertThat(tree.get(0))
+                .containsEntry("iri", "http://example.org/EFO_0001")
+                .containsEntry("text", "Liver disease")
+                .containsEntry("parent", "#");
+        assertThat(tree.get(1))
+                .containsEntry("iri", "http://example.org/EFO_I100")
+                .containsEntry("text", "Liver specimen alpha")
+                .containsEntry("children", false);
+        assertThat(((Map<?, ?>) tree.get(1).get("state")).get("selected"))
+                .isEqualTo(true);
     }
 }

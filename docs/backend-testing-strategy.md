@@ -491,6 +491,31 @@ Verified locally on 2026-09-02 with Java 17 and Rancher Desktop:
   migration. PR #1384 restored the legacy parent-or-descendant behavior with focused regressions;
   it was isolated and merged before this test branch was rebased.
 
+## Implemented V1 ontology-individual-controller baseline
+
+Verified locally on 2026-09-03 with Java 17 and Rancher Desktop:
+
+- Surefire runs 660 tests, including 5 direct `V1OntologyIndividualControllerTest` cases and 23
+  `V1OntologyIndividualControllerWIT` invocations. Two runs with a deliberately unavailable
+  Docker socket took Maven 19.620 and 19.634 seconds (wall-clock 20.54 and 20.53 seconds).
+- Failsafe runs 136 PostgreSQL tests, including 10 `V1IndividualRepositoryIT` cases and 5 thin
+  `V1OntologyIndividualControllerIT` cases. Two complete database-gate runs took Maven 1 minute 25
+  seconds each (wall-clock 86.92 and 86.81 seconds).
+- The clean `verify` lifecycle runs all 796 tests in Maven 1 minute 36 seconds (wall-clock 97.79
+  seconds).
+- Whole-backend JaCoCo coverage is 48.9% lines (2,338 of 4,785) and 38.5% branches (738 of
+  1,916). The V1 ontology-individual controller covers 37 of 40 executable lines and all 14
+  branches; only its JSON-serialization failure path remains uncovered. Its individual repository
+  covers 74 of 76 lines. No coverage failure threshold is introduced.
+- The suites preserve all five ontology-scoped individual routes, legacy HAL fields, ontology and
+  language handling, identifier precedence, double-encoded IRI paths, pagination normalization,
+  direct and transitive types, JS-tree output, and stable error fields. The existing four-record
+  individual fixture now carries synthetic direct-parent and ancestor data without changing its
+  record count.
+- The rollout exposed that collection lookup by `short_form` or `obo_id` passed the identifier and
+  language to the repository in the wrong order. PR #1388 corrected both calls with focused
+  regressions and was isolated and merged before this test branch was rebased.
+
 Read-only production smoke monitoring is a separate future initiative for an internal or self-hosted environment. It is not part of the initial PR testing framework and must not become a merge-blocking production dependency.
 
 ## Out of scope for the pilot
