@@ -37,8 +37,8 @@ public class V1ChildrenJsTreeBuilder {
             jstreeEntry.put("text", JsonHelper.getString(child.getAsJsonObject(), LABEL.getText()));
             jstreeEntry.put("state", Map.of("opened", false));
             jstreeEntry.put("children",
-	    	JsonHelper.getString(child.getAsJsonObject(), HAS_DIRECT_CHILDREN.getText()).equals("true")
-		|| JsonHelper.getString(child.getAsJsonObject(), HAS_HIERARCHICAL_CHILDREN.getText()).equals("true")
+	    	Objects.equals(JsonHelper.getString(child.getAsJsonObject(), HAS_DIRECT_CHILDREN.getText()), "true")
+		|| Objects.equals(JsonHelper.getString(child.getAsJsonObject(), HAS_HIERARCHICAL_CHILDREN.getText()), "true")
 	    );
 
             Map<String,Object> attrObj = new LinkedHashMap<>();
