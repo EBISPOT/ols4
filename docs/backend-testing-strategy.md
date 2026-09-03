@@ -80,6 +80,8 @@ Controller ITs use the real Spring MVC controller path, real repository stack, a
 
 For the `V2OntologyController` pilot, the full-stack suite contains one representative happy path for each of its four routes.
 
+Before finalizing a controller IT suite, enumerate every route straight from the controller source and check off one thin case per route — do not substitute a "representative subset" chosen by eye. Two routes that look similar by name or description can still call entirely different production code; skipping one as redundant with the other proves nothing about the code path it actually owns. This is not hypothetical: the first `V1OntologyPropertyController` IT suite covered 6 of 9 routes, treating `jstree/children/{nodeid}` as adequately covered by the plain `jstree` test. It is not — the two routes use different builder classes (`V1ChildrenJsTreeBuilder` vs `V1AncestorsJsTreeBuilder`) — and the gap hid a real `NullPointerException` (fixed in PR #1391) until full route coverage was added during review of PR #1390.
+
 ### System regression tests
 
 The existing `test_api.sh` suite continues to own full OWL-to-dataload-to-database-to-API regression coverage. The new Maven suites must not rerun the complete dataload for every controller test.
@@ -540,6 +542,45 @@ Verified locally on 2026-09-02 with Java 17 and Rancher Desktop:
 - The rollout exposed that non-zero `start` values were passed to PostgreSQL but serialized as
   zero in the legacy response. PR #1386 preserves the requested offset with a focused regression;
   it was isolated and merged before this test branch was rebased.
+
+## Implemented V1 ontology-property-controller baseline
+
+Verified locally on 2026-09-03 with Java 17 and Rancher Desktop, after rebasing onto the merged
+`V1ChildrenJsTreeBuilder` null-safety fix (PR #1391) that this rollout's own route-completeness
+review exposed:
+
+- Surefire runs 732 tests, including 7 direct `V1OntologyPropertyControllerTest` cases and 39
+  `V1OntologyPropertyControllerWIT` invocations. Two runs with a deliberately unavailable Docker
+  socket ran clean.
+- Failsafe runs 153 PostgreSQL tests, including 4 new ontology-scoped `V1PropertyRepositoryIT`
+  cases (bringing that suite to 11) and 9 thin `V1OntologyPropertyControllerIT` cases — one per
+  route, covering all nine. Two complete database-gate runs ran clean.
+- The clean `verify` lifecycle runs all 885 tests in Maven 1 minute 45 seconds (wall-clock 105.87
+  seconds).
+- Whole-backend JaCoCo coverage is 52.7% lines (2,520 of 4,785) and 41.9% branches (802 of 1,916).
+  The V1 ontology-property controller covers 56 of 62 executable lines and all 16 branches; its
+  repository covers 87 of 89 lines and 6 of 8 branches. No coverage failure threshold is
+  introduced.
+- The suites preserve all nine ontology-scoped property routes (list, roots, single, parents,
+  children, descendants, ancestors, jstree, and jstree children) with one thin controller-IT case
+  per route, legacy HAL fields, ontology and language handling, identifier precedence,
+  double-encoded IRI paths, pagination normalization, explicit sort binding, and stable
+  success/error contract fields including the exact message for malformed typed parameters
+  (`includeObsoletes`, `siblings`). The existing three-record property fixture now carries a
+  `directParent` reference and populated `has_direct_parents`/`has_hierarchical_parents` columns
+  for `EFO_0101` without changing its record count, matching production behavior for both the
+  js-tree ancestor builder (which reads `directParent` from the entity's stored JSON) and the
+  roots query (which reads the real `has_direct_parents`/`has_hierarchical_parents` columns rather
+  than the JSON document). This fixture change is test-only: the fixture previously never
+  exercised `getRoots` or the property js-tree, so the gap was invisible until these new tests
+  required it.
+- The rollout's first draft covered only 6 of 9 routes in the controller IT, treating
+  `jstree/children/{nodeid}` as adequately covered by the plain `jstree` route. It is not — the
+  two routes call different builder classes. Adding the missing route during review exposed a real
+  `NullPointerException` in `V1ChildrenJsTreeBuilder` (it called `.equals("true")` directly on a
+  possibly-null value, unlike the sibling `V1AncestorsJsTreeBuilder`, which already guards the
+  same fields null-safely). PR #1391 isolated the minimal fix and a focused regression test,
+  merged before this branch was rebased.
 
 Read-only production smoke monitoring is a separate future initiative for an internal or self-hosted environment. It is not part of the initial PR testing framework and must not become a merge-blocking production dependency.
 

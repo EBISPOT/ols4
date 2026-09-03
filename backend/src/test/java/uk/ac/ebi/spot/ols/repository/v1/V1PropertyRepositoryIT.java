@@ -12,6 +12,9 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import uk.ac.ebi.spot.ols.model.v1.V1Property;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport;
 
+import java.util.List;
+import java.util.Map;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -22,14 +25,18 @@ class V1PropertyRepositoryIT {
     private static final PostgreSQLContainer<?> POSTGRES =
             PostgresIntegrationTestSupport.newContainer();
 
-    private static PostgresIntegrationTestSupport.V1PropertyRepositoryHandle repositoryHandle;
+    private static PostgresIntegrationTestSupport.V1OntologyPropertyRepositoryHandle
+            repositoryHandle;
     private static V1PropertyRepository repository;
+    private static V1JsTreeRepository jsTreeRepository;
 
     @BeforeAll
     static void setUpDatabase() {
         PostgresIntegrationTestSupport.initializePropertyDatabase(POSTGRES);
-        repositoryHandle = PostgresIntegrationTestSupport.createV1PropertyRepository(POSTGRES);
-        repository = repositoryHandle.repository();
+        repositoryHandle =
+                PostgresIntegrationTestSupport.createV1OntologyPropertyRepositories(POSTGRES);
+        repository = repositoryHandle.propertyRepository();
+        jsTreeRepository = repositoryHandle.jsTreeRepository();
     }
 
     @AfterAll
@@ -145,5 +152,92 @@ class V1PropertyRepositoryIT {
             assertThat(property.lang).isEqualTo("en_US");
             assertThat(property.label).isEqualTo("permits sample");
         });
+    }
+
+    @Test
+    void scopesListsAndEveryIdentifierToOneOntology() {
+        PageRequest pageable = PageRequest.of(0, 20);
+
+        assertThat(repository.findAllByOntology("efo", "en", pageable))
+                .extracting(property -> property.iri)
+                .containsExactly(
+                        "http://example.org/EFO_0100",
+                        "http://example.org/EFO_0101",
+                        "http://example.org/EFO_0199");
+        assertThat(repository.findByOntologyAndIri(
+                "efo", "http://example.org/EFO_0100", "fr").lang).isEqualTo("fr");
+        assertThat(repository.findByOntologyAndShortForm("efo", "EFO_0100", "fr").iri)
+                .isEqualTo("http://example.org/EFO_0100");
+        assertThat(repository.findByOntologyAndOboId("efo", "EFO:0100", "fr").iri)
+                .isEqualTo("http://example.org/EFO_0100");
+        assertThat(repository.findByOntologyAndIri(
+                "duo", "http://example.org/EFO_0100", "en")).isNull();
+    }
+
+    @Test
+    void returnsRootsAndHierarchyFromProductionColumns() {
+        PageRequest pageable = PageRequest.of(0, 20);
+
+        assertThat(repository.getRoots("efo", false, "en", pageable))
+                .extracting(property -> property.iri)
+                .containsExactly("http://example.org/EFO_0100");
+        assertThat(repository.getRoots("efo", true, "en", pageable))
+                .extracting(property -> property.iri)
+                .containsExactly(
+                        "http://example.org/EFO_0100",
+                        "http://example.org/EFO_0199");
+        assertThat(repository.getRoots("duo", false, "en", pageable))
+                .extracting(property -> property.iri)
+                .containsExactly("http://example.org/DUO_0100");
+
+        assertThat(repository.getParents(
+                "efo", "http://example.org/EFO_0101", "en", pageable))
+                .extracting(property -> property.iri)
+                .containsExactly("http://example.org/EFO_0100");
+        assertThat(repository.getAncestors(
+                "efo", "http://example.org/EFO_0101", "en", pageable))
+                .extracting(property -> property.iri)
+                .containsExactly("http://example.org/EFO_0100");
+        assertThat(repository.getChildren(
+                "efo", "http://example.org/EFO_0100", "en", pageable))
+                .extracting(property -> property.iri)
+                .containsExactly("http://example.org/EFO_0101");
+        assertThat(repository.getDescendants(
+                "efo", "http://example.org/EFO_0100", "en", pageable))
+                .extracting(property -> property.iri)
+                .containsExactly("http://example.org/EFO_0101");
+    }
+
+    @Test
+    void buildsThePropertyJsTreeFromRealPostgresAncestors() {
+        List<Map<String, Object>> tree = jsTreeRepository.getJsTreeForProperty(
+                "http://example.org/EFO_0101", "efo", "en");
+
+        assertThat(tree).hasSize(2);
+        assertThat(tree.get(0))
+                .containsEntry("iri", "http://example.org/EFO_0100")
+                .containsEntry("text", "has specimen")
+                .containsEntry("parent", "#");
+        assertThat(tree.get(1))
+                .containsEntry("iri", "http://example.org/EFO_0101")
+                .containsEntry("text", "has material")
+                .containsEntry("children", false);
+        assertThat(((Map<?, ?>) tree.get(1).get("state")).get("selected"))
+                .isEqualTo(true);
+    }
+
+    @Test
+    void buildsThePropertyJsTreeChildrenFromRealPostgresDirectChildren() {
+        String parentNodeId = java.util.Base64.getEncoder().encodeToString(
+                "http://example.org/EFO_0100".getBytes(java.nio.charset.StandardCharsets.UTF_8));
+
+        List<Map<String, Object>> children = jsTreeRepository.getJsTreeChildrenForProperty(
+                "http://example.org/EFO_0100", parentNodeId, "efo", "en");
+
+        assertThat(children).hasSize(1);
+        assertThat(children.get(0))
+                .containsEntry("iri", "http://example.org/EFO_0101")
+                .containsEntry("text", "has material")
+                .containsEntry("parent", parentNodeId);
     }
 }
