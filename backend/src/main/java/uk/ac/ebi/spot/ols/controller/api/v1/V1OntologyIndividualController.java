@@ -88,12 +88,12 @@ public class V1OntologyIndividualController {
                 terms = new PageImpl<V1Individual>(Arrays.asList(term));
             }
         } else if (shortForm != null) {
-            V1Individual term = individualRepository.findByOntologyAndShortForm(ontologyId, shortForm, lang);
+            V1Individual term = individualRepository.findByOntologyAndShortForm(ontologyId, lang, shortForm);
             if (term != null) {
                 terms = new PageImpl<V1Individual>(Arrays.asList(term));
             }
         } else if (oboId != null) {
-            V1Individual term = individualRepository.findByOntologyAndOboId(ontologyId, oboId, lang);
+            V1Individual term = individualRepository.findByOntologyAndOboId(ontologyId, lang, oboId);
             if (term != null) {
                 terms = new PageImpl<V1Individual>(Arrays.asList(term));
             }
