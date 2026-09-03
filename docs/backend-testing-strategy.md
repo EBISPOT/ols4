@@ -516,6 +516,31 @@ Verified locally on 2026-09-03 with Java 17 and Rancher Desktop:
   language to the repository in the wrong order. PR #1388 corrected both calls with focused
   regressions and was isolated and merged before this test branch was rebased.
 
+## Implemented V1 select-controller baseline
+
+Verified locally on 2026-09-02 with Java 17 and Rancher Desktop:
+
+- Surefire runs 654 tests, including 4 new direct `V1SelectControllerTest` cases, 20
+  `V1SelectControllerWIT` invocations, and the focused pagination regression merged with PR
+  #1386. Two Docker-free runs took Maven 19.167 and 19.035 seconds (wall-clock 20.35 and 19.88
+  seconds) with a deliberately unavailable Docker socket.
+- Failsafe runs 132 PostgreSQL tests, including 3 `OlsSearchClientSelectIT` cases and 1 thin
+  `V1SelectControllerIT` case. Two complete database-gate runs took Maven 1 minute 27 seconds and
+  1 minute 26 seconds (wall-clock 88.17 and 87.10 seconds).
+- The clean `verify` lifecycle runs all 786 tests in Maven 1 minute 38 seconds (wall-clock 99.12
+  seconds).
+- Whole-backend JaCoCo coverage is 45.9% lines (2,196 of 4,785) and 37.6% branches (721 of
+  1,916). The V1 select controller covers all 76 executable lines and 44 of 48 branches. No
+  coverage failure threshold is introduced.
+- The select suites preserve the public V1 autocomplete envelope and legacy field projection;
+  exercise defaults, all typed route parameters, repeated and comma-separated filters, encoded
+  hierarchy IRIs, field lists, pagination boundaries, stable error fields, and ignored
+  compatibility parameters; and use the committed synthetic fixture with the production schema
+  generator for text search, filtering, hierarchy, obsolete terms, and real pagination.
+- The rollout exposed that non-zero `start` values were passed to PostgreSQL but serialized as
+  zero in the legacy response. PR #1386 preserves the requested offset with a focused regression;
+  it was isolated and merged before this test branch was rebased.
+
 Read-only production smoke monitoring is a separate future initiative for an internal or self-hosted environment. It is not part of the initial PR testing framework and must not become a merge-blocking production dependency.
 
 ## Out of scope for the pilot
