@@ -229,6 +229,25 @@ public final class PostgresIntegrationTestSupport {
                 individualRepository, jsTreeRepository, postgresClient);
     }
 
+    public static V1OntologyPropertyRepositoryHandle createV1OntologyPropertyRepositories(
+            PostgreSQLContainer<?> container) {
+        PostgresClient postgresClient = createPostgresClient(container);
+        OlsSearchClient searchClient = createSearchClient(postgresClient);
+
+        OlsPostgresClient olsPostgresClient = new OlsPostgresClient();
+        ReflectionTestUtils.setField(olsPostgresClient, "postgresClient", postgresClient);
+
+        V1PropertyRepository propertyRepository = new V1PropertyRepository();
+        ReflectionTestUtils.setField(propertyRepository, "searchClient", searchClient);
+        ReflectionTestUtils.setField(propertyRepository, "postgresClient", olsPostgresClient);
+
+        V1JsTreeRepository jsTreeRepository = new V1JsTreeRepository();
+        ReflectionTestUtils.setField(jsTreeRepository, "postgresClient", olsPostgresClient);
+
+        return new V1OntologyPropertyRepositoryHandle(
+                propertyRepository, jsTreeRepository, postgresClient);
+    }
+
     private static PostgresClient createPostgresClient(PostgreSQLContainer<?> container) {
         PostgresClient postgresClient = new PostgresClient();
         ReflectionTestUtils.setField(postgresClient, "host", container.getHost());
@@ -435,9 +454,10 @@ public final class PostgresIntegrationTestSupport {
                 INSERT INTO ols_entities (
                     id, type, iri, ontology_id, _json, is_obsolete, label, search_type,
                     short_form, curie, obo_id, synonym, definition, is_defining_ontology,
-                    subset, related_to, direct_parents, direct_ancestors, label_for_suggest,
+                    subset, related_to, direct_parents, direct_ancestors,
+                    has_direct_parents, has_hierarchical_parents, label_for_suggest,
                     filter_tags, filter_domain, "filter_http://example.org/category")
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """;
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             for (JsonElement element : fixture.getAsJsonArray("records")) {
@@ -460,10 +480,12 @@ public final class PostgresIntegrationTestSupport {
                 statement.setArray(16, textArray(connection, record.getAsJsonArray("relatedTo")));
                 statement.setArray(17, textArray(connection, record.getAsJsonArray("directParents")));
                 statement.setArray(18, textArray(connection, record.getAsJsonArray("directAncestors")));
-                statement.setString(19, record.getAsJsonArray("label").get(0).getAsString());
-                statement.setArray(20, textArray(connection, record.getAsJsonArray("tags")));
-                statement.setArray(21, textArray(connection, record.getAsJsonArray("domain")));
-                statement.setArray(22, textArray(
+                statement.setBoolean(19, !record.getAsJsonArray("directParents").isEmpty());
+                statement.setBoolean(20, false);
+                statement.setString(21, record.getAsJsonArray("label").get(0).getAsString());
+                statement.setArray(22, textArray(connection, record.getAsJsonArray("tags")));
+                statement.setArray(23, textArray(connection, record.getAsJsonArray("domain")));
+                statement.setArray(24, textArray(
                         connection,
                         record.getAsJsonArray("http://example.org/category")));
                 statement.addBatch();
@@ -711,6 +733,17 @@ public final class PostgresIntegrationTestSupport {
 
     public record V1OntologyIndividualRepositoryHandle(
             V1IndividualRepository individualRepository,
+            V1JsTreeRepository jsTreeRepository,
+            PostgresClient postgresClient) implements AutoCloseable {
+
+        @Override
+        public void close() {
+            postgresClient.close();
+        }
+    }
+
+    public record V1OntologyPropertyRepositoryHandle(
+            V1PropertyRepository propertyRepository,
             V1JsTreeRepository jsTreeRepository,
             PostgresClient postgresClient) implements AutoCloseable {
 
