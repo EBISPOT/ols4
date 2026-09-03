@@ -257,10 +257,19 @@ class V1OntologyPropertyControllerWIT {
                 .andExpect(status().isOk());
         mockMvc.perform(get(PARENTS_URI).param("page", "bad").param("size", "bad"))
                 .andExpect(status().isOk());
+        mockMvc.perform(get(CHILDREN_URI).param("page", "bad").param("size", "bad"))
+                .andExpect(status().isOk());
+        mockMvc.perform(get(DESCENDANTS_URI).param("page", "bad").param("size", "bad"))
+                .andExpect(status().isOk());
+        mockMvc.perform(get(ANCESTORS_URI).param("page", "bad").param("size", "bad"))
+                .andExpect(status().isOk());
 
         verify(propertyRepository).findAllByOntology("efo", "en", defaults);
         verify(propertyRepository).getRoots("efo", false, "en", defaults);
         verify(propertyRepository).getParents("efo", PROPERTY_IRI, "en", defaults);
+        verify(propertyRepository).getChildren("efo", PROPERTY_IRI, "en", defaults);
+        verify(propertyRepository).getDescendants("efo", PROPERTY_IRI, "en", defaults);
+        verify(propertyRepository).getAncestors("efo", PROPERTY_IRI, "en", defaults);
     }
 
     @Test
@@ -290,6 +299,17 @@ class V1OntologyPropertyControllerWIT {
         mockMvc.perform(get(ROOTS_URI).param("includeObsoletes", "true"))
                 .andExpect(status().isOk());
         verify(propertyRepository).getRoots("efo", true, "en", PageRequest.of(0, 1000));
+
+        mockMvc.perform(get(ROOTS_URI)
+                        .param("lang", "fr")
+                        .param("page", "1")
+                        .param("size", "3")
+                        .param("sort", "iri,desc"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$._embedded.properties[0].lang").value("fr"));
+        verify(propertyRepository).getRoots(
+                "efo", false, "fr", PageRequest.of(1, 3,
+                        org.springframework.data.domain.Sort.Direction.DESC, "iri"));
     }
 
     @Test
@@ -297,7 +317,23 @@ class V1OntologyPropertyControllerWIT {
         mockMvc.perform(get(ROOTS_URI).param("includeObsoletes", "not-a-boolean"))
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.status").value(400));
+                .andExpect(jsonPath("$.status").value(400))
+                .andExpect(jsonPath("$.message").value(
+                        "Method parameter 'includeObsoletes': Failed to convert value of type "
+                                + "'java.lang.String' to required type 'boolean'; "
+                                + "Invalid boolean value [not-a-boolean]"));
+    }
+
+    @Test
+    void rejectsMalformedSiblingsWithStableErrorFields() throws Exception {
+        mockMvc.perform(get(JS_TREE_URI).param("siblings", "not-a-boolean"))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.status").value(400))
+                .andExpect(jsonPath("$.message").value(
+                        "Method parameter 'siblings': Failed to convert value of type "
+                                + "'java.lang.String' to required type 'boolean'; "
+                                + "Invalid boolean value [not-a-boolean]"));
     }
 
     @Test
@@ -329,11 +365,14 @@ class V1OntologyPropertyControllerWIT {
         mockMvc.perform(get(CHILDREN_URI)
                         .param("lang", "fr")
                         .param("page", "1")
-                        .param("size", "3"))
+                        .param("size", "3")
+                        .param("sort", "iri,desc"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$._embedded.properties[0].lang").value("fr"));
 
-        verify(propertyRepository).getChildren("efo", PROPERTY_IRI, "fr", PageRequest.of(1, 3));
+        verify(propertyRepository).getChildren(
+                "efo", PROPERTY_IRI, "fr", PageRequest.of(1, 3,
+                        org.springframework.data.domain.Sort.Direction.DESC, "iri"));
     }
 
     @Test
@@ -345,12 +384,14 @@ class V1OntologyPropertyControllerWIT {
         mockMvc.perform(get(DESCENDANTS_URI)
                         .param("lang", "fr")
                         .param("page", "1")
-                        .param("size", "3"))
+                        .param("size", "3")
+                        .param("sort", "iri,desc"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$._embedded.properties[0].lang").value("fr"));
 
         verify(propertyRepository).getDescendants(
-                "efo", PROPERTY_IRI, "fr", PageRequest.of(1, 3));
+                "efo", PROPERTY_IRI, "fr", PageRequest.of(1, 3,
+                        org.springframework.data.domain.Sort.Direction.DESC, "iri"));
     }
 
     @Test
@@ -362,12 +403,14 @@ class V1OntologyPropertyControllerWIT {
         mockMvc.perform(get(ANCESTORS_URI)
                         .param("lang", "fr")
                         .param("page", "1")
-                        .param("size", "3"))
+                        .param("size", "3")
+                        .param("sort", "iri,desc"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$._embedded.properties[0].lang").value("fr"));
 
         verify(propertyRepository).getAncestors(
-                "efo", PROPERTY_IRI, "fr", PageRequest.of(1, 3));
+                "efo", PROPERTY_IRI, "fr", PageRequest.of(1, 3,
+                        org.springframework.data.domain.Sort.Direction.DESC, "iri"));
     }
 
     @Test

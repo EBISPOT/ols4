@@ -38,10 +38,17 @@ class V1OntologyPropertyControllerIT {
     private static final URI PROPERTY_URI = URI.create(
             "/api/ontologies/EFO/properties/http%253A%252F%252Fexample.org%252FEFO_0101");
     private static final URI ROOTS_URI = URI.create("/api/ontologies/EFO/properties/roots");
+    private static final URI PARENT_URI = URI.create(
+            "/api/ontologies/EFO/properties/http%253A%252F%252Fexample.org%252FEFO_0100");
     private static final URI PARENTS_URI = URI.create(PROPERTY_URI + "/parents");
-    private static final URI CHILDREN_URI = URI.create(
-            "/api/ontologies/EFO/properties/http%253A%252F%252Fexample.org%252FEFO_0100/children");
+    private static final URI CHILDREN_URI = URI.create(PARENT_URI + "/children");
+    private static final URI DESCENDANTS_URI = URI.create(PARENT_URI + "/descendants");
+    private static final URI ANCESTORS_URI = URI.create(PROPERTY_URI + "/ancestors");
     private static final URI JS_TREE_URI = URI.create(PROPERTY_URI + "/jstree");
+    // Base64 encoding of "http://example.org/EFO_0100" — the opaque node id a client obtains
+    // from a prior /jstree response and echoes back to expand that node's children.
+    private static final URI JS_TREE_CHILDREN_URI = URI.create(
+            PARENT_URI + "/jstree/children/aHR0cDovL2V4YW1wbGUub3JnL0VGT18wMTAw");
 
     @Container
     private static final PostgreSQLContainer<?> POSTGRES =
@@ -130,6 +137,33 @@ class V1OntologyPropertyControllerIT {
                 .andExpect(jsonPath("$.page.totalElements").value(1))
                 .andExpect(jsonPath("$._embedded.properties[0].iri")
                         .value("http://example.org/EFO_0101"));
+    }
+
+    @Test
+    void getsPropertyDescendantsThroughTheRealDatabase() throws Exception {
+        mockMvc.perform(get(DESCENDANTS_URI))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.page.totalElements").value(1))
+                .andExpect(jsonPath("$._embedded.properties[0].iri")
+                        .value("http://example.org/EFO_0101"));
+    }
+
+    @Test
+    void getsPropertyAncestorsThroughTheRealDatabase() throws Exception {
+        mockMvc.perform(get(ANCESTORS_URI))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.page.totalElements").value(1))
+                .andExpect(jsonPath("$._embedded.properties[0].iri")
+                        .value("http://example.org/EFO_0100"));
+    }
+
+    @Test
+    void getsPropertyJsTreeChildrenThroughTheRealDatabase() throws Exception {
+        mockMvc.perform(get(JS_TREE_CHILDREN_URI))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$[0].iri").value("http://example.org/EFO_0101"))
+                .andExpect(jsonPath("$[0].text").value("has material"));
     }
 
     @Test

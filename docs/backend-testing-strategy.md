@@ -80,6 +80,8 @@ Controller ITs use the real Spring MVC controller path, real repository stack, a
 
 For the `V2OntologyController` pilot, the full-stack suite contains one representative happy path for each of its four routes.
 
+Before finalizing a controller IT suite, enumerate every route straight from the controller source and check off one thin case per route — do not substitute a "representative subset" chosen by eye. Two routes that look similar by name or description can still call entirely different production code; skipping one as redundant with the other proves nothing about the code path it actually owns. This is not hypothetical: the first `V1OntologyPropertyController` IT suite covered 6 of 9 routes, treating `jstree/children/{nodeid}` as adequately covered by the plain `jstree` test. It is not — the two routes use different builder classes (`V1ChildrenJsTreeBuilder` vs `V1AncestorsJsTreeBuilder`) — and the gap hid a real `NullPointerException` (fixed in PR #1391) until full route coverage was added during review of PR #1390.
+
 ### System regression tests
 
 The existing `test_api.sh` suite continues to own full OWL-to-dataload-to-database-to-API regression coverage. The new Maven suites must not rerun the complete dataload for every controller test.

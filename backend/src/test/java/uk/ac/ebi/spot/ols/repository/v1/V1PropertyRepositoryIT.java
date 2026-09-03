@@ -225,4 +225,19 @@ class V1PropertyRepositoryIT {
         assertThat(((Map<?, ?>) tree.get(1).get("state")).get("selected"))
                 .isEqualTo(true);
     }
+
+    @Test
+    void buildsThePropertyJsTreeChildrenFromRealPostgresDirectChildren() {
+        String parentNodeId = java.util.Base64.getEncoder().encodeToString(
+                "http://example.org/EFO_0100".getBytes(java.nio.charset.StandardCharsets.UTF_8));
+
+        List<Map<String, Object>> children = jsTreeRepository.getJsTreeChildrenForProperty(
+                "http://example.org/EFO_0100", parentNodeId, "efo", "en");
+
+        assertThat(children).hasSize(1);
+        assertThat(children.get(0))
+                .containsEntry("iri", "http://example.org/EFO_0101")
+                .containsEntry("text", "has material")
+                .containsEntry("parent", parentNodeId);
+    }
 }
