@@ -611,18 +611,19 @@ methods.
 Verified locally on 2026-09-04 with Java 17 and Rancher Desktop, after rebasing and combining both
 milestones:
 
-- Surefire runs [TOTAL_SUREFIRE] tests, including [TOTAL_DIRECT] direct `V1OntologyTermControllerTest`
-  cases and [TOTAL_WIT] `V1OntologyTermControllerWIT` invocations. Two Docker-free runs both passed
+- Surefire runs 811 tests, including 18 direct `V1OntologyTermControllerTest` cases and 61
+  `V1OntologyTermControllerWIT` invocations. Two Docker-free runs both passed cleanly.
+- Failsafe runs 183 PostgreSQL tests, including 14 `V1TermRepositoryIT` cases and 23 thin
+  `V1OntologyTermControllerIT` cases — one per route. Two complete database-gate runs both passed
   cleanly.
-- Failsafe runs [TOTAL_FAILSAFE] PostgreSQL tests, including [TOTAL_REPO_IT] `V1TermRepositoryIT`
-  cases and 23 thin `V1OntologyTermControllerIT` cases — one per route. Two complete database-gate
-  runs both passed cleanly.
-- The clean `verify` lifecycle runs all [TOTAL_VERIFY] tests in Maven [VERIFY_TIME].
-- Whole-backend JaCoCo coverage is [COVERAGE_LINES]% lines and [COVERAGE_BRANCHES]% branches.
-  `V1OntologyTermController` covers all 23 routes across both milestones. `V1TermRepository` and
-  `V1JsTreeRepository` coverage combines both milestones' exercised methods; `V1GraphRepository` —
-  previously completely untested anywhere in the codebase — covers its `getGraphForClass` path. No
-  coverage failure threshold is introduced.
+- The clean `verify` lifecycle runs all 994 tests in Maven 2 minutes 20.44 seconds wall-clock.
+- Whole-backend JaCoCo coverage is 61.1% lines (2,923 of 4,787) and 46.9% branches (899 of 1,916).
+  `V1OntologyTermController` covers all 23 routes across both milestones: 162 of 171 lines and 60
+  of 66 branches. `V1TermRepository` covers 110 of 123 lines and 46 of 52 branches;
+  `V1JsTreeRepository` covers 24 of 25 lines and 10 of 11 branches. `V1GraphRepository` —
+  previously completely untested anywhere in the codebase — covers 148 of 177 lines and 17 of 36
+  branches (its `getGraphForClass` path; the remainder is dead/unreachable code outside that
+  method). No coverage failure threshold is introduced.
 - The suites preserve the `id`/`iri`/`short_form`/`obo_id` identifier cascade
   (`getIdFromMultipleOptions` tries `id` first, falling back through `iri` → `short_form` →
   `obo_id`; `getOneById` then tries the resolved value as an IRI, then a short form, then an OBO ID
