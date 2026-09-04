@@ -19,6 +19,7 @@
       "hierarchicalParents": ["http://example.org/EFO_0001"],
       "directAncestors": ["http://example.org/EFO_0001"],
       "hierarchicalAncestors": ["http://example.org/EFO_0001"],
+      "isPreferredRoot": true,
       "tags": ["hierarchy"],
       "domain": ["biology"],
       "http://example.org/category": ["hierarchy"],
@@ -36,6 +37,7 @@
         "curie": "EFO:1001",
         "isObsolete": false,
         "isDefiningOntology": true,
+        "directParent": ["http://example.org/EFO_0001"],
         "hasDirectParents": true,
         "hasHierarchicalParents": true,
         "linkedEntities": {}
@@ -77,6 +79,7 @@
         "curie": "EFO:1999",
         "isObsolete": true,
         "isDefiningOntology": true,
+        "directParent": ["http://example.org/EFO_0001"],
         "hasDirectParents": true,
         "hasHierarchicalParents": true,
         "linkedEntities": {}

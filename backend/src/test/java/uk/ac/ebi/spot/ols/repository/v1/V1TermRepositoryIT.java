@@ -12,6 +12,9 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import uk.ac.ebi.spot.ols.model.v1.V1Term;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport;
 
+import java.util.List;
+import java.util.Map;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -22,14 +25,16 @@ class V1TermRepositoryIT {
     private static final PostgreSQLContainer<?> POSTGRES =
             PostgresIntegrationTestSupport.newContainer();
 
-    private static PostgresIntegrationTestSupport.V1TermRepositoryHandle repositoryHandle;
+    private static PostgresIntegrationTestSupport.V1OntologyTermRepositoryHandle repositoryHandle;
     private static V1TermRepository repository;
+    private static V1JsTreeRepository jsTreeRepository;
 
     @BeforeAll
     static void setUpDatabase() {
-        PostgresIntegrationTestSupport.initializeDatabase(POSTGRES);
-        repositoryHandle = PostgresIntegrationTestSupport.createV1TermRepository(POSTGRES);
-        repository = repositoryHandle.repository();
+        PostgresIntegrationTestSupport.initializeClassDatabase(POSTGRES);
+        repositoryHandle = PostgresIntegrationTestSupport.createV1OntologyTermRepositories(POSTGRES);
+        repository = repositoryHandle.termRepository();
+        jsTreeRepository = repositoryHandle.jsTreeRepository();
     }
 
     @AfterAll
@@ -45,8 +50,10 @@ class V1TermRepositoryIT {
                 "http://example.org/DUO_0001",
                 "http://example.org/EFO_0001",
                 "http://example.org/EFO_0002",
-                "http://example.org/EFO_0999");
-        assertThat(page.getTotalElements()).isEqualTo(4);
+                "http://example.org/EFO_0999",
+                "http://example.org/EFO_1001",
+                "http://example.org/EFO_1999");
+        assertThat(page.getTotalElements()).isEqualTo(6);
         assertThat(page.getContent().get(1).label).isEqualTo("Liver disease");
     }
 
@@ -60,9 +67,11 @@ class V1TermRepositoryIT {
         assertThat(secondPage).extracting(term -> term.iri).containsExactly(
                 "http://example.org/EFO_0002",
                 "http://example.org/EFO_0999");
-        assertThat(secondPage.getTotalElements()).isEqualTo(4);
-        assertThat(secondPage.getTotalPages()).isEqualTo(2);
+        assertThat(secondPage.getTotalElements()).isEqualTo(6);
+        assertThat(secondPage.getTotalPages()).isEqualTo(3);
         assertThat(descending).extracting(term -> term.iri).containsExactly(
+                "http://example.org/EFO_1999",
+                "http://example.org/EFO_1001",
                 "http://example.org/EFO_0999",
                 "http://example.org/EFO_0002",
                 "http://example.org/EFO_0001",
@@ -117,7 +126,9 @@ class V1TermRepositoryIT {
                 .containsExactly(
                         "http://example.org/DUO_0001",
                         "http://example.org/EFO_0001",
-                        "http://example.org/EFO_0999");
+                        "http://example.org/EFO_0999",
+                        "http://example.org/EFO_1001",
+                        "http://example.org/EFO_1999");
         assertThat(repository.findAllByIriAndIsDefiningOntology(
                 "http://example.org/EFO_0002", "en", pageable)).isEmpty();
         assertThat(repository.findAllByShortFormAndIsDefiningOntology(
@@ -138,5 +149,125 @@ class V1TermRepositoryIT {
             assertThat(term.lang).isEqualTo("en_US");
             assertThat(term.label).isEqualTo("Data use permission");
         });
+    }
+
+    @Test
+    void scopesListsAndEveryIdentifierToOneOntology() {
+        PageRequest pageable = PageRequest.of(0, 20);
+
+        assertThat(repository.findAllByOntology("efo", null, "en", pageable))
+                .extracting(term -> term.iri)
+                .containsExactly(
+                        "http://example.org/EFO_0001",
+                        "http://example.org/EFO_0002",
+                        "http://example.org/EFO_0999",
+                        "http://example.org/EFO_1001",
+                        "http://example.org/EFO_1999");
+        assertThat(repository.findAllByOntology("efo", false, "en", pageable))
+                .extracting(term -> term.iri)
+                .containsExactly(
+                        "http://example.org/EFO_0001",
+                        "http://example.org/EFO_0002",
+                        "http://example.org/EFO_1001");
+        assertThat(repository.findAllByOntology("efo", true, "en", pageable))
+                .extracting(term -> term.iri)
+                .containsExactly(
+                        "http://example.org/EFO_0999",
+                        "http://example.org/EFO_1999");
+
+        assertThat(repository.findByOntologyAndIri(
+                "efo", "http://example.org/EFO_1001", "fr").lang).isEqualTo("fr");
+        assertThat(repository.findByOntologyAndShortForm("efo", "EFO_1001", "fr").iri)
+                .isEqualTo("http://example.org/EFO_1001");
+        assertThat(repository.findByOntologyAndOboId("efo", "EFO:1001", "fr").iri)
+                .isEqualTo("http://example.org/EFO_1001");
+        assertThat(repository.findByOntologyAndIri(
+                "duo", "http://example.org/EFO_1001", "en")).isNull();
+    }
+
+    @Test
+    void returnsRootsPreferredRootsAndHierarchyFromProductionColumns() {
+        PageRequest pageable = PageRequest.of(0, 20);
+
+        assertThat(repository.getRoots("efo", false, "en", pageable))
+                .extracting(term -> term.iri)
+                .containsExactly(
+                        "http://example.org/EFO_0001",
+                        "http://example.org/EFO_0002");
+        assertThat(repository.getRoots("efo", true, "en", pageable))
+                .extracting(term -> term.iri)
+                .containsExactly(
+                        "http://example.org/EFO_0001",
+                        "http://example.org/EFO_0002",
+                        "http://example.org/EFO_0999");
+        assertThat(repository.getRoots("duo", false, "en", pageable))
+                .extracting(term -> term.iri)
+                .containsExactly("http://example.org/DUO_0001");
+
+        assertThat(repository.getPreferredRootTerms("efo", false, "en", pageable))
+                .extracting(term -> term.iri)
+                .containsExactly("http://example.org/EFO_1001");
+        assertThat(repository.getPreferredRootTerms("duo", false, "en", pageable)).isEmpty();
+
+        assertThat(repository.getParents(
+                "efo", "http://example.org/EFO_1001", "en", pageable))
+                .extracting(term -> term.iri)
+                .containsExactly("http://example.org/EFO_0001");
+        assertThat(repository.getAncestors(
+                "efo", "http://example.org/EFO_1001", "en", pageable))
+                .extracting(term -> term.iri)
+                .containsExactly("http://example.org/EFO_0001");
+        assertThat(repository.getChildren(
+                "efo", "http://example.org/EFO_0001", "en", pageable))
+                .extracting(term -> term.iri)
+                .containsExactly(
+                        "http://example.org/EFO_1001",
+                        "http://example.org/EFO_1999");
+        // getDescendants has no type filter (unlike V2's ClassRepository, see PR #1373):
+        // any entity whose direct_ancestors array references EFO_0001 matches, regardless of
+        // its own type. EFO_I100 is a synthetic individual (added for a different, class-fixture
+        // suite's purpose) whose direct_ancestors already includes EFO_0001, so it is legitimately
+        // returned here too. Confirmed against the committed system-regression baseline
+        // (testcases_expected_output_api/ontologies/owl2primer-class-assertion) that V1's
+        // /terms/{iri}/children and /descendants routes intentionally include individuals
+        // asserted into a class — this is documented V1 legacy behavior, not a defect.
+        assertThat(repository.getDescendants(
+                "efo", "http://example.org/EFO_0001", "en", pageable))
+                .extracting(term -> term.iri)
+                .containsExactly(
+                        "http://example.org/EFO_1001",
+                        "http://example.org/EFO_1999",
+                        "http://example.org/EFO_I100");
+    }
+
+    @Test
+    void buildsTheClassJsTreeFromRealPostgresAncestors() {
+        List<Map<String, Object>> tree = jsTreeRepository.getJsTreeForClass(
+                "http://example.org/EFO_1001", "efo", "en");
+
+        assertThat(tree).hasSize(2);
+        assertThat(tree.get(0))
+                .containsEntry("iri", "http://example.org/EFO_0001")
+                .containsEntry("text", "Liver disease")
+                .containsEntry("parent", "#");
+        assertThat(tree.get(1))
+                .containsEntry("iri", "http://example.org/EFO_1001")
+                .containsEntry("text", "Clinical liver child");
+        assertThat(((Map<?, ?>) tree.get(1).get("state")).get("selected"))
+                .isEqualTo(true);
+    }
+
+    @Test
+    void buildsTheClassJsTreeChildrenFromRealPostgresDirectChildren() {
+        String parentNodeId = java.util.Base64.getEncoder().encodeToString(
+                "http://example.org/EFO_0001".getBytes(java.nio.charset.StandardCharsets.UTF_8));
+
+        List<Map<String, Object>> children = jsTreeRepository.getJsTreeChildrenForClass(
+                "http://example.org/EFO_0001", parentNodeId, "efo", "en");
+
+        assertThat(children).extracting(child -> (String) child.get("iri")).containsExactly(
+                "http://example.org/EFO_1001",
+                "http://example.org/EFO_1999");
+        assertThat(children.get(0)).containsEntry("parent", parentNodeId);
     }
 }
