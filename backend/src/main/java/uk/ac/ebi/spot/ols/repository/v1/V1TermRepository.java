@@ -36,9 +36,17 @@ public class V1TermRepository {
     @Autowired
     OlsSearchClient searchClient;
 
+    // Restricts direct-parent/child/ancestor/descendant hierarchy lookups to class entities.
+    // Without this, an individual or property whose direct_parents/direct_ancestors array
+    // happens to reference the same IRI (a normal RDF pattern — e.g. an individual's transitive
+    // class ancestor) would be returned alongside the actual class hierarchy. ClassRepository
+    // (V2) was patched for the identical leak in PR #1373; this mirrors that fix for V1.
+    private static final Map<String, String> CLASS_NODE_PROPERTIES = Map.of("type", "OntologyClass");
+
     public Page<V1Term> getParents(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        return this.postgresClient.getDirectParents(ontologyId + "+class+" + iri, Map.of(), pageable)
+        return this.postgresClient.getDirectParents(
+                ontologyId + "+class+" + iri, CLASS_NODE_PROPERTIES, pageable)
                 .map(node -> V1TermMapper.mapTerm(node, lang));
     }
 
@@ -56,7 +64,8 @@ public class V1TermRepository {
 
     public Page<V1Term> getChildren(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        return this.postgresClient.getDirectChildren(ontologyId + "+class+" + iri, Map.of(), pageable)
+        return this.postgresClient.getDirectChildren(
+                ontologyId + "+class+" + iri, CLASS_NODE_PROPERTIES, pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
     }
 
@@ -75,13 +84,15 @@ public class V1TermRepository {
 
     public Page<V1Term> getDescendants(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        return this.postgresClient.getDescendants(ontologyId + "+class+" + iri, Map.of(), pageable)
+        return this.postgresClient.getDescendants(
+                ontologyId + "+class+" + iri, CLASS_NODE_PROPERTIES, pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
     }
 
     public Page<V1Term> getAncestors(String ontologyId, String iri, String lang, Pageable pageable) {
 
-        return this.postgresClient.getAncestors(ontologyId + "+class+" + iri, Map.of(), pageable)
+        return this.postgresClient.getAncestors(
+                ontologyId + "+class+" + iri, CLASS_NODE_PROPERTIES, pageable)
                 .map(record -> V1TermMapper.mapTerm(record, lang));
     }
 
