@@ -543,11 +543,11 @@ public class V1OntologyTermController {
 
 
         id = getIdFromMultipleOptions(iri, shortForm, oboId, id);
+        ontologyId = ontologyId.toLowerCase();
         if (id == null) {
             return new ResponseEntity<>( assembler.toModel(new PageImpl<V1Term>(Collections.emptyList()), termAssembler), HttpStatus.OK);
         }
         V1Term target = getOneById(ontologyId, id, lang);
-        ontologyId = ontologyId.toLowerCase();
         if (target == null) throw new ResourceNotFoundException("No resource with " + id + " in " + ontologyId);
 
         Page<V1Term>  terms = termRepository.getChildren(ontologyId, target.iri, lang, pageable);
@@ -581,11 +581,11 @@ public class V1OntologyTermController {
 
 
         id = getIdFromMultipleOptions(iri, shortForm, oboId, id);
+        ontologyId = ontologyId.toLowerCase();
         if (id == null) {
             return new ResponseEntity<>( assembler.toModel(new PageImpl<V1Term>(Collections.emptyList()), termAssembler), HttpStatus.OK);
         }
         V1Term target = getOneById(ontologyId, id, lang);
-        ontologyId = ontologyId.toLowerCase();
         if (target == null) throw new ResourceNotFoundException("No resource with " + id + " in " + ontologyId);
 
         Page<V1Term>  terms = termRepository.getDescendants(ontologyId, target.iri, lang, pageable);
@@ -619,11 +619,11 @@ public class V1OntologyTermController {
 
 
         id = getIdFromMultipleOptions(iri, shortForm, oboId, id);
+        ontologyId = ontologyId.toLowerCase();
         if (id == null) {
             return new ResponseEntity<>( assembler.toModel(new PageImpl<V1Term>(Collections.emptyList()), termAssembler), HttpStatus.OK);
         }
         V1Term target = getOneById(ontologyId, id, lang);
-        ontologyId = ontologyId.toLowerCase();
         if (target == null) throw new ResourceNotFoundException("No resource with " + id + " in " + ontologyId);
 
         Page<V1Term>  terms = termRepository.getHierarchicalChildren(ontologyId, target.iri, lang, pageable);
@@ -657,11 +657,11 @@ public class V1OntologyTermController {
 
 
         id = getIdFromMultipleOptions(iri, shortForm, oboId, id);
+        ontologyId = ontologyId.toLowerCase();
         if (id == null) {
             return new ResponseEntity<>( assembler.toModel(new PageImpl<V1Term>(Collections.emptyList()), termAssembler), HttpStatus.OK);
         }
         V1Term target = getOneById(ontologyId, id, lang);
-        ontologyId = ontologyId.toLowerCase();
         if (target == null) throw new ResourceNotFoundException("No resource with " + id + " in " + ontologyId);
 
         Page<V1Term>  terms = termRepository.getHierarchicalDescendants(ontologyId, target.iri, lang, pageable);
@@ -695,11 +695,11 @@ public class V1OntologyTermController {
 
 
         id = getIdFromMultipleOptions(iri, shortForm, oboId, id);
+        ontologyId = ontologyId.toLowerCase();
         if (id == null) {
             return new ResponseEntity<>( assembler.toModel(new PageImpl<V1Term>(Collections.emptyList()), termAssembler), HttpStatus.OK);
         }
         V1Term target = getOneById(ontologyId, id, lang);
-        ontologyId = ontologyId.toLowerCase();
         if (target == null) throw new ResourceNotFoundException("No resource with " + id + " in " + ontologyId);
 
         Page<V1Term>  terms = termRepository.getParents(ontologyId, target.iri, lang, pageable);
@@ -733,11 +733,11 @@ public class V1OntologyTermController {
 
 
         id = getIdFromMultipleOptions(iri, shortForm, oboId, id);
+        ontologyId = ontologyId.toLowerCase();
         if (id == null) {
             return new ResponseEntity<>( assembler.toModel(new PageImpl<V1Term>(Collections.emptyList()), termAssembler), HttpStatus.OK);
         }
         V1Term target = getOneById(ontologyId, id, lang);
-        ontologyId = ontologyId.toLowerCase();
         if (target == null) throw new ResourceNotFoundException("No resource with " + id + " in " + ontologyId);
 
         Page<V1Term>  terms = termRepository.getAncestors(ontologyId, target.iri, lang, pageable);
@@ -771,11 +771,11 @@ public class V1OntologyTermController {
 
 
         id = getIdFromMultipleOptions(iri, shortForm, oboId, id);
+        ontologyId = ontologyId.toLowerCase();
         if (id == null) {
             return new ResponseEntity<>( assembler.toModel(new PageImpl<V1Term>(Collections.emptyList()), termAssembler), HttpStatus.OK);
         }
         V1Term target = getOneById(ontologyId, id, lang);
-        ontologyId = ontologyId.toLowerCase();
         if (target == null) throw new ResourceNotFoundException("No resource with " + id + " in " + ontologyId);
 
         Page<V1Term>  terms = termRepository.getHierarchicalAncestors(ontologyId, target.iri, lang, pageable);
