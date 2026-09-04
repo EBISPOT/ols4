@@ -12,6 +12,7 @@ import org.springframework.hateoas.PagedModel;
 import org.springframework.test.util.ReflectionTestUtils;
 import uk.ac.ebi.spot.ols.model.v1.V1Term;
 import uk.ac.ebi.spot.ols.repository.search.OlsFacetedResultsPage;
+import uk.ac.ebi.spot.ols.repository.v1.V1GraphRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1JsTreeRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1TermRepository;
 
@@ -27,11 +28,18 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+/**
+ * Covers all of V1OntologyTermController's 23 routes: the core list/roots/preferredRoots/single/
+ * parents/children/descendants/ancestors/jstree routes (milestone 1, PR #1393), plus the
+ * hierarchical-variant per-term routes, /graph, the dynamic related-by-property route, and the
+ * seven ontology-root-level shortcut routes (milestone 2, PR #1395).
+ */
 class V1OntologyTermControllerTest {
 
     private V1OntologyTermController controller;
     private V1TermRepository termRepository;
     private V1JsTreeRepository jsTreeRepository;
+    private V1GraphRepository graphRepository;
     private V1TermAssembler termAssembler;
     private V1PreferredRootTermAssembler preferredRootTermAssembler;
     private PagedResourcesAssembler<V1Term> termResourcesAssembler;
@@ -42,6 +50,7 @@ class V1OntologyTermControllerTest {
     void setUp() {
         termRepository = mock(V1TermRepository.class);
         jsTreeRepository = mock(V1JsTreeRepository.class);
+        graphRepository = mock(V1GraphRepository.class);
         termAssembler = mock(V1TermAssembler.class);
         preferredRootTermAssembler = mock(V1PreferredRootTermAssembler.class);
         termResourcesAssembler = mock(PagedResourcesAssembler.class);
@@ -52,6 +61,7 @@ class V1OntologyTermControllerTest {
         controller.termAssembler = termAssembler;
         controller.preferredRootTermAssembler = preferredRootTermAssembler;
         controller.jsTreeRepository = jsTreeRepository;
+        controller.graphRepository = graphRepository;
     }
 
     @Test
@@ -274,6 +284,226 @@ class V1OntologyTermControllerTest {
                 "http://example.org/EFO_0001", "node-1", "efo", "fr");
         org.assertj.core.api.Assertions.assertThat(response.getBody())
                 .contains("http://example.org/EFO_1001", "Clinical liver child");
+    }
+
+    @Test
+    void delegatesDecodedHierarchicalParentsChildrenDescendantsAndAncestors() {
+        PageImpl<V1Term> page = new PageImpl<>(List.of(term()));
+        when(termRepository.getHierarchicalParents(
+                "efo", "http://example.org/EFO_1001", "fr", pageable)).thenReturn(page);
+        when(termRepository.getHierarchicalChildren(
+                "efo", "http://example.org/EFO_0001", "fr", pageable)).thenReturn(page);
+        when(termRepository.getHierarchicalDescendants(
+                "efo", "http://example.org/EFO_0001", "fr", pageable)).thenReturn(page);
+        when(termRepository.getHierarchicalAncestors(
+                "efo", "http://example.org/EFO_1001", "fr", pageable)).thenReturn(page);
+
+        controller.getHierarchicalParents(
+                "EFO", "http%3A%2F%2Fexample.org%2FEFO_1001", "fr", pageable,
+                termResourcesAssembler);
+        controller.getHierarchicalChildren(
+                "EFO", "http%3A%2F%2Fexample.org%2FEFO_0001", "fr", pageable,
+                termResourcesAssembler);
+        controller.getHierarchicalDescendants(
+                "EFO", "http%3A%2F%2Fexample.org%2FEFO_0001", "fr", pageable,
+                termResourcesAssembler);
+        controller.getHierarchicalAncestors(
+                "EFO", "http%3A%2F%2Fexample.org%2FEFO_1001", "fr", pageable,
+                termResourcesAssembler);
+
+        verify(termRepository).getHierarchicalParents(
+                "efo", "http://example.org/EFO_1001", "fr", pageable);
+        verify(termRepository).getHierarchicalChildren(
+                "efo", "http://example.org/EFO_0001", "fr", pageable);
+        verify(termRepository).getHierarchicalDescendants(
+                "efo", "http://example.org/EFO_0001", "fr", pageable);
+        verify(termRepository).getHierarchicalAncestors(
+                "efo", "http://example.org/EFO_1001", "fr", pageable);
+    }
+
+    @Test
+    void reportsMissingResourceForEachHierarchicalRouteWithItsOwnMessage() {
+        when(termRepository.getHierarchicalParents("efo", "missing", "en", pageable))
+                .thenReturn(null);
+        ResourceNotFoundException parentsError = assertThrows(
+                ResourceNotFoundException.class,
+                () -> controller.getHierarchicalParents(
+                        "EFO", "missing", "en", pageable, termResourcesAssembler));
+        assertEquals("No parents could be found for efo and missing", parentsError.getMessage());
+
+        when(termRepository.getHierarchicalAncestors("efo", "missing", "en", pageable))
+                .thenReturn(null);
+        ResourceNotFoundException ancestorsError = assertThrows(
+                ResourceNotFoundException.class,
+                () -> controller.getHierarchicalAncestors(
+                        "EFO", "missing", "en", pageable, termResourcesAssembler));
+        assertEquals(
+                "No ancestors could be found for efo and missing", ancestorsError.getMessage());
+
+        when(termRepository.getHierarchicalChildren("efo", "missing", "en", pageable))
+                .thenReturn(null);
+        ResourceNotFoundException childrenError = assertThrows(
+                ResourceNotFoundException.class,
+                () -> controller.getHierarchicalChildren(
+                        "EFO", "missing", "en", pageable, termResourcesAssembler));
+        assertEquals(
+                "No hierarchical children could be found for efo and missing",
+                childrenError.getMessage());
+
+        when(termRepository.getHierarchicalDescendants("efo", "missing", "en", pageable))
+                .thenReturn(null);
+        ResourceNotFoundException descendantsError = assertThrows(
+                ResourceNotFoundException.class,
+                () -> controller.getHierarchicalDescendants(
+                        "EFO", "missing", "en", pageable, termResourcesAssembler));
+        assertEquals(
+                "No hierarchical descendants could be found for efo and missing",
+                descendantsError.getMessage());
+    }
+
+    @Test
+    void serializesTheDecodedClassGraph() {
+        when(graphRepository.getGraphForClass("http://example.org/EFO_1001", "efo", "fr"))
+                .thenReturn(Map.of(
+                        "nodes", List.of(Map.of("iri", "http://example.org/EFO_1001")),
+                        "edges", List.of()));
+
+        var response = controller.graphJson(
+                "EFO", "http%3A%2F%2Fexample.org%2FEFO_1001", "fr");
+
+        verify(graphRepository).getGraphForClass("http://example.org/EFO_1001", "efo", "fr");
+        org.assertj.core.api.Assertions.assertThat(response.getBody())
+                .contains("http://example.org/EFO_1001", "nodes", "edges");
+    }
+
+    @Test
+    void delegatesDecodedRelatedByPropertyWithoutRequiringAResult() {
+        PageImpl<V1Term> page = new PageImpl<>(List.of(term()));
+        when(termRepository.getRelated(
+                "efo", "http://example.org/EFO_0002", "fr",
+                "http://example.org/related", pageable))
+                .thenReturn(page);
+
+        controller.related(
+                "EFO", "http%3A%2F%2Fexample.org%2FEFO_0002",
+                "http%3A%2F%2Fexample.org%2Frelated", "fr", pageable, termResourcesAssembler);
+
+        verify(termRepository).getRelated(
+                "efo", "http://example.org/EFO_0002", "fr",
+                "http://example.org/related", pageable);
+    }
+
+    @Test
+    void shortcutRoutesReturnAnEmptyPageWithoutCallingTheRepositoryWhenNoIdentifierIsSupplied() {
+        when(termResourcesAssembler.toModel(org.mockito.ArgumentMatchers.any(), eq(termAssembler)))
+                .thenReturn(PagedModel.empty());
+
+        controller.termChildrenByOntology(
+                "EFO", null, null, null, null, "en", pageable, termResourcesAssembler);
+        controller.termDescendantsByOntology(
+                "EFO", null, null, null, null, "en", pageable, termResourcesAssembler);
+        controller.termHierarchicalChildrenByOntology(
+                "EFO", null, null, null, null, "en", pageable, termResourcesAssembler);
+        controller.termHierarchicalDescendantsByOntology(
+                "EFO", null, null, null, null, "en", pageable, termResourcesAssembler);
+        controller.termParentsByOntology(
+                "EFO", null, null, null, null, "en", pageable, termResourcesAssembler);
+        controller.termAncestorsByOntology(
+                "EFO", null, null, null, null, "en", pageable, termResourcesAssembler);
+        controller.termHierarchicalAncestorsByOntology(
+                "EFO", null, null, null, null, "en", pageable, termResourcesAssembler);
+
+        verify(termRepository, never()).getChildren(anyStr(), anyStr(), anyStr(), any());
+        verify(termRepository, never()).getDescendants(anyStr(), anyStr(), anyStr(), any());
+        verify(termRepository, never())
+                .getHierarchicalChildren(anyStr(), anyStr(), anyStr(), any());
+        verify(termRepository, never())
+                .getHierarchicalDescendants(anyStr(), anyStr(), anyStr(), any());
+        verify(termRepository, never()).getParents(anyStr(), anyStr(), anyStr(), any());
+        verify(termRepository, never()).getAncestors(anyStr(), anyStr(), anyStr(), any());
+        verify(termRepository, never())
+                .getHierarchicalAncestors(anyStr(), anyStr(), anyStr(), any());
+    }
+
+    @Test
+    void shortcutRoutesResolveTheIdentifierThenReportMissingResource() {
+        ResourceNotFoundException error = assertThrows(
+                ResourceNotFoundException.class,
+                () -> controller.termChildrenByOntology(
+                        "EFO", "missing", null, null, null, "en", pageable,
+                        termResourcesAssembler));
+        assertEquals("No resource with missing in efo", error.getMessage());
+    }
+
+    @Test
+    void eachShortcutRouteDelegatesToItsMatchingHierarchyMethodOnTheResolvedTerm() {
+        // getOneById receives the ontology id exactly as passed in (not yet lowercased) — see
+        // OlsSearchQuery's "ontology_id" special case, which lowercases the filter value itself,
+        // so the real search-client-backed lookup resolves regardless of case. The delegated
+        // hierarchy call below receives the already-lowercased value (assigned right after).
+        when(termRepository.findByOntologyAndIri("EFO", "EFO_1001", "en")).thenReturn(term());
+        PageImpl<V1Term> page = new PageImpl<>(List.of(term()));
+        when(termRepository.getChildren("efo", "http://example.org/EFO_1001", "en", pageable))
+                .thenReturn(page);
+        when(termRepository.getDescendants("efo", "http://example.org/EFO_1001", "en", pageable))
+                .thenReturn(page);
+        when(termRepository.getHierarchicalChildren(
+                "efo", "http://example.org/EFO_1001", "en", pageable)).thenReturn(page);
+        when(termRepository.getHierarchicalDescendants(
+                "efo", "http://example.org/EFO_1001", "en", pageable)).thenReturn(page);
+        when(termRepository.getParents("efo", "http://example.org/EFO_1001", "en", pageable))
+                .thenReturn(page);
+        when(termRepository.getAncestors("efo", "http://example.org/EFO_1001", "en", pageable))
+                .thenReturn(page);
+        when(termRepository.getHierarchicalAncestors(
+                "efo", "http://example.org/EFO_1001", "en", pageable)).thenReturn(page);
+
+        controller.termChildrenByOntology(
+                "EFO", "EFO_1001", null, null, null, "en", pageable, termResourcesAssembler);
+        verify(termRepository)
+                .getChildren("efo", "http://example.org/EFO_1001", "en", pageable);
+
+        controller.termDescendantsByOntology(
+                "EFO", "EFO_1001", null, null, null, "en", pageable, termResourcesAssembler);
+        verify(termRepository)
+                .getDescendants("efo", "http://example.org/EFO_1001", "en", pageable);
+
+        controller.termHierarchicalChildrenByOntology(
+                "EFO", "EFO_1001", null, null, null, "en", pageable, termResourcesAssembler);
+        verify(termRepository)
+                .getHierarchicalChildren("efo", "http://example.org/EFO_1001", "en", pageable);
+
+        controller.termHierarchicalDescendantsByOntology(
+                "EFO", "EFO_1001", null, null, null, "en", pageable, termResourcesAssembler);
+        verify(termRepository)
+                .getHierarchicalDescendants("efo", "http://example.org/EFO_1001", "en", pageable);
+
+        controller.termParentsByOntology(
+                "EFO", "EFO_1001", null, null, null, "en", pageable, termResourcesAssembler);
+        verify(termRepository)
+                .getParents("efo", "http://example.org/EFO_1001", "en", pageable);
+
+        controller.termAncestorsByOntology(
+                "EFO", "EFO_1001", null, null, null, "en", pageable, termResourcesAssembler);
+        verify(termRepository)
+                .getAncestors("efo", "http://example.org/EFO_1001", "en", pageable);
+
+        controller.termHierarchicalAncestorsByOntology(
+                "EFO", "EFO_1001", null, null, null, "en", pageable, termResourcesAssembler);
+        verify(termRepository)
+                .getHierarchicalAncestors("efo", "http://example.org/EFO_1001", "en", pageable);
+    }
+
+    private static String anyStr() {
+        return org.mockito.ArgumentMatchers.anyString();
+    }
+
+    private static Pageable any() {
+        return org.mockito.ArgumentMatchers.any();
+    }
+
+    private static <T> T eq(T value) {
+        return org.mockito.ArgumentMatchers.eq(value);
     }
 
     private static V1Term term() {
