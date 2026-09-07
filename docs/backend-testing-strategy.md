@@ -582,44 +582,63 @@ review exposed:
   same fields null-safely). PR #1391 isolated the minimal fix and a focused regression test,
   merged before this branch was rebased.
 
-## Implemented V1 ontology-term-controller baseline (milestone 1 of 2+)
+## Implemented V1 ontology-term-controller baseline (complete, 2 milestones)
 
-`V1OntologyTermController` has 23 routes — too large a hierarchy surface for one focused PR. This
-milestone covers the 10 core per-term routes (`terms` list, `roots`, `preferredRoots`, single
-`{iri}` get, `parents`, `children`, `descendants`, `ancestors`, `jstree`,
-`jstree/children/{nodeid}`), the same shape already proven for
-`V1OntologyPropertyController`/`V1OntologyIndividualController`. Deferred to a future milestone:
-`hierarchicalParents`/`hierarchicalChildren`/`hierarchicalAncestors`/`hierarchicalDescendants`,
-`/graph`, the dynamic `/{iri}/{property_iri}` related-by-property route, and the seven
-ontology-root-level shortcut routes (`/{onto}/children`, `/{onto}/descendants`,
-`/{onto}/parents`, `/{onto}/ancestors`, and their three `hierarchical*` counterparts).
+`V1OntologyTermController` has 23 routes — too large a hierarchy surface for one focused PR, so
+coverage was split into two milestones. Milestone 1 (PR #1393, merged) covers the 10 core
+per-term routes (`terms` list, `roots`, `preferredRoots`, single `{iri}` get, `parents`,
+`children`, `descendants`, `ancestors`, `jstree`, `jstree/children/{nodeid}`), the same shape
+already proven for `V1OntologyPropertyController`/`V1OntologyIndividualController`. Milestone 2
+(PR #1395) covers the remaining 13 routes: the four hierarchical-variant per-term routes
+(`hierarchicalParents`, `hierarchicalAncestors`, `hierarchicalChildren`,
+`hierarchicalDescendants`), `/graph`, the dynamic `/{iri}/{property_iri}` related-by-property
+route, and the seven ontology-root-level shortcut routes (`/{onto}/children`,
+`/{onto}/descendants`, `/{onto}/parents`, `/{onto}/ancestors`, and their three `hierarchical*`
+counterparts). Combined, all 23 routes are covered by all four test layers.
 
-Verified locally on 2026-09-04 with Java 17 and Rancher Desktop:
+Milestone 2 branched directly from `dev` while milestone 1 was still an open PR (its routes don't
+depend on milestone 1's fixture changes, so branching independently was safe — see "never stack on
+an open PR"). Once milestone 1 merged, milestone 2 picked up rebase conflicts against `dev` in the
+shared support file and the two files milestone 1 had already created with the same names
+(`V1OntologyTermControllerTest`, `V1OntologyTermControllerWIT`, `V1OntologyTermControllerIT`) —
+expected per that same rule, and resolved by combining both milestones' fields, stubs, and test
+methods into one file per layer rather than picking a side. One genuine method-name collision
+surfaced during that merge: both milestones independently wrote a
+`supportsLegacyHalMediaTypeOnEveryHalRoute` WIT test with different URI lists; resolved by folding
+milestone 2's HAL-route list into milestone 1's existing test rather than keeping two near-duplicate
+methods.
 
-- Surefire runs 787 tests, including 11 direct `V1OntologyTermControllerTest` cases and 44
+Verified locally on 2026-09-04 with Java 17 and Rancher Desktop, after rebasing and combining both
+milestones:
+
+- Surefire runs 811 tests, including 18 direct `V1OntologyTermControllerTest` cases and 61
   `V1OntologyTermControllerWIT` invocations. Two Docker-free runs both passed cleanly.
-- Failsafe runs 167 PostgreSQL tests, including 4 new ontology-scoped `V1TermRepositoryIT` cases
-  (bringing that suite to 11, now loading the class fixture via `initializeClassDatabase` instead
-  of the shared-entity-only `initializeDatabase`) and 10 thin `V1OntologyTermControllerIT` cases —
-  one per route. Two complete database-gate runs both passed cleanly.
-- The clean `verify` lifecycle runs all 954 tests in Maven 1 minute 51 seconds (wall-clock 112.36
-  seconds).
-- Whole-backend JaCoCo coverage is 55.7% lines (2,667 of 4,785) and 44.1% branches (845 of 1,916).
-  `V1OntologyTermController` covers 72 of 171 lines and 30 of 66 branches — low relative to other
-  controllers because this milestone exercises only 10 of its 23 routes; the deferred
-  hierarchical/graph/related/shortcut routes make up the uncovered remainder. Its repository
-  covers 100 of 123 lines and 9 of 12 branches, missing only the hierarchical-variant methods and
-  two pre-existing dead methods (`getInstances`, `getPreferredRootTermCount`, both hardcoded to
-  throw). No coverage failure threshold is introduced.
-- The suites preserve the `id`/`iri`/`short_form`/`obo_id` identifier cascade (`getIdFromMultipleOptions`
-  tries `id` first, falling back through `iri` → `short_form` → `obo_id`; `getOneById` then tries
-  the resolved value as an IRI, then a short form, then an OBO ID in turn) — a materially different
-  precedence model from the explicit per-parameter branching `V1OntologyPropertyController` and
-  `V1OntologyIndividualController` use. Also covered: the `obsoletes` collection filter (nullable
-  `Boolean`, stable 400 on a malformed value), `includeObsoletes` on both `roots` and
-  `preferredRoots`, explicit `sort` binding on every pageable route, pagination boundaries and
-  malformed-numeric defaults, double-encoded IRI paths, legacy HAL fields, arbitrary V1 language
-  passthrough, and stable error contract fields (message included, not just status).
+- Failsafe runs 183 PostgreSQL tests, including 14 `V1TermRepositoryIT` cases and 23 thin
+  `V1OntologyTermControllerIT` cases — one per route. Two complete database-gate runs both passed
+  cleanly.
+- The clean `verify` lifecycle runs all 994 tests in Maven 2 minutes 20.44 seconds wall-clock.
+- Whole-backend JaCoCo coverage is 61.1% lines (2,923 of 4,787) and 46.9% branches (899 of 1,916).
+  `V1OntologyTermController` covers all 23 routes across both milestones: 162 of 171 lines and 60
+  of 66 branches. `V1TermRepository` covers 110 of 123 lines and 46 of 52 branches;
+  `V1JsTreeRepository` covers 24 of 25 lines and 10 of 11 branches. `V1GraphRepository` —
+  previously completely untested anywhere in the codebase — covers 148 of 177 lines and 17 of 36
+  branches (its `getGraphForClass` path; the remainder is dead/unreachable code outside that
+  method). No coverage failure threshold is introduced.
+- The suites preserve the `id`/`iri`/`short_form`/`obo_id` identifier cascade
+  (`getIdFromMultipleOptions` tries `id` first, falling back through `iri` → `short_form` →
+  `obo_id`; `getOneById` then tries the resolved value as an IRI, then a short form, then an OBO ID
+  in turn) — a materially different precedence model from the explicit per-parameter branching
+  `V1OntologyPropertyController` and `V1OntologyIndividualController` use — across both the
+  per-term routes and the milestone-2 shortcut routes. Also covered: the `obsoletes` collection
+  filter, `includeObsoletes` on `roots`/`preferredRoots`, explicit `sort` binding on every pageable
+  route (core and hierarchical), pagination boundaries and malformed-numeric defaults,
+  double-encoded IRI paths, legacy HAL fields across all 23 routes, arbitrary V1 language
+  passthrough, hierarchical relationships against real `hierarchical_parents`/
+  `hierarchical_ancestors` Postgres columns, the full `V1GraphRepository.getGraphForClass`
+  node/edge shape, the `related`-by-property route's actual behavior of ignoring its own
+  `{property_iri}` path segment (documented, not fixed — no committed `test_api.sh` baseline
+  exercises this route either way), and the seven shortcut routes' empty-page no-identifier case
+  and delegation to the correct matching hierarchy method.
 - The committed class fixture gained two production-schema columns it never previously populated:
   `has_direct_parents`/`has_hierarchical_parents` (real boolean columns the `getRoots` query filters
   on — previously left at their schema default of `false` for every row, so `getRoots` could not
@@ -630,16 +649,28 @@ Verified locally on 2026-09-04 with Java 17 and Rancher Desktop:
   PR #1390; record counts are unchanged. Extending `V1TermRepositoryIT`'s existing suite to the full
   class fixture also required updating its two pre-existing count-dependent assertions (4 → 6 total
   class records, `findAllByIsDefiningOntology` 3 → 5).
-- A `V1TermRepository.getDescendants`/`getChildren` investigation briefly suspected a defect
-  mirroring PR #1373's V2 `ClassRepository` type-leak fix (V1 passes an empty node-property filter
-  to the same underlying Postgres hierarchy lookups, so a class's children/descendants can include
-  non-class entities sharing the same ancestor IRI). A fix was drafted, but the full system-regression
-  gate (`Build & Test API`, PR #1392) failed: the committed `test_api.sh` baseline for
-  `owl2primer-class-assertion` explicitly and deliberately expects an individual asserted into a
-  class to appear in that class's V1 `children`/`descendants` listing — a real, tested V1 legacy
-  contract, not an oversight. The fix was reverted and the PR closed; this milestone's tests assert
-  the actual (correct) current behavior instead, including the individual where the shared class
-  fixture's data makes it reachable. No production code changed in this milestone.
+- Two suspected defects were investigated and reverted across the two milestones; both are
+  documented in detail because the investigation process itself is the durable lesson:
+  - A `V1TermRepository.getDescendants`/`getChildren` hierarchy type-leak mirroring PR #1373's V2
+    `ClassRepository` fix (V1 passes an empty node-property filter to the same underlying Postgres
+    hierarchy lookups, so a class's children/descendants can include non-class entities sharing the
+    same ancestor IRI). A fix was drafted, but the full system-regression gate (`Build & Test API`,
+    PR #1392) failed: the committed `test_api.sh` baseline for `owl2primer-class-assertion`
+    explicitly and deliberately expects an individual asserted into a class to appear in that
+    class's V1 `children`/`descendants` listing — a real, tested V1 legacy contract, not an
+    oversight. The fix was reverted and the PR closed; the tests assert the actual (correct)
+    current behavior instead. For the *hierarchical* variant specifically, no leak actually occurs
+    with this fixture's data, because the individual's `hierarchicalAncestors` is empty even though
+    its `directAncestors` is not — so no fix was needed or attempted there either.
+  - A genuine-looking case-sensitivity bug in the seven shortcut routes: they call
+    `getOneById(ontologyId, id, lang)` with the ontology id exactly as received (not yet
+    lowercased), unlike every other route on this controller. A controller-mock unit test "proved"
+    this would silently 404 for a client using an uppercase ontology id. It doesn't: `OlsSearchQuery`
+    has an explicit `"ontology_id".equals(column)` special case that lowercases the filter input
+    itself, so the real search-client-backed lookup resolves correctly regardless of case — proven
+    directly with a real-Postgres controller-IT test against the *unmodified* code. The mock's
+    exact-string matching doesn't replicate that normalization, which is what made the unit test
+    misleading. No production code changed in either milestone.
 
 Read-only production smoke monitoring is a separate future initiative for an internal or self-hosted environment. It is not part of the initial PR testing framework and must not become a merge-blocking production dependency.
 
