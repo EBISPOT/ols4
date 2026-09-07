@@ -674,6 +674,41 @@ milestones:
 
 Read-only production smoke monitoring is a separate future initiative for an internal or self-hosted environment. It is not part of the initial PR testing framework and must not become a merge-blocking production dependency.
 
+## Implemented V2 defined-fields-controller baseline
+
+`V2DefinedFieldsController` has a single route, `GET /api/v2/defined-fields`, with no autowired
+dependencies at all: it maps the static `uk.ac.ebi.ols.shared.DefinedFields` enum into a list of
+DTOs (`ols4FieldName`/`ols3FieldName`/`description`/`dataType`, read from `getText()`/
+`getOls3Text()`/`getDescription()`/`getType()`).
+
+Verified locally on 2026-09-07 with Java 17 and Rancher Desktop:
+
+- Surefire runs 793 tests, including 2 direct `V2DefinedFieldsControllerTest` cases and 4
+  `V2DefinedFieldsControllerWIT` invocations. Two Docker-free runs took wall-clock 18.98 and 15.10
+  seconds.
+- Failsafe runs the same 167 PostgreSQL tests as `dev`; no repository-IT or controller-IT class
+  was added. There is no repository, no Postgres dependency, and no database-backed behaviour a
+  real-database layer would additionally prove beyond what the WIT already proves by exercising
+  the real Spring MVC JSON serialization path — this controller has no applicable repository
+  behaviour, so the "applicable repository behaviour has PostgreSQL IT coverage" clause of the
+  controller definition of done is satisfied vacuously and the omission is deliberate, not an
+  oversight. Two complete database-gate runs both passed cleanly, wall-clock 119.86 and 109.52
+  seconds.
+- The clean `verify` lifecycle runs all 960 tests in wall-clock 2 minutes 6.86 seconds.
+- Whole-backend JaCoCo coverage is 56.1% lines (2,685 of 4,787) and 44.1% branches (845 of 1,916).
+  `V2DefinedFieldsController` covers all 8 of its executable lines (0 branches — the method has no
+  conditional logic) and its package-private `DefinedFieldDto` covers all 10 of its lines. No
+  coverage failure threshold is introduced.
+- The unit test loops over `DefinedFields.values()` (34 members as of this rollout, read from the
+  enum itself rather than hardcoded) and asserts each DTO's four fields against the corresponding
+  enum member's accessors in declaration order, rather than hand-writing one assertion per
+  constant. The WIT exercises the same contract through real Spring MVC JSON serialization: the
+  declared field names, the total array length against `DefinedFields.values().length`, the first
+  entry's full values, one full entry at an index derived from `DefinedFields.IS_OBSOLETE.ordinal()`
+  (an enum member with a non-empty `ols3Text`, rather than a guessed position) to prove the
+  non-empty-string case too, and the standard 405 method-not-allowed contract for a non-GET
+  request. No production defect was discovered by this rollout.
+
 ## Implemented V2 health-check-controller baseline
 
 `HealthCheckController` has a single route, `GET /api/v2/health`, that autowires
