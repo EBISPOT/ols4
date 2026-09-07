@@ -643,6 +643,50 @@ Verified locally on 2026-09-04 with Java 17 and Rancher Desktop:
 
 Read-only production smoke monitoring is a separate future initiative for an internal or self-hosted environment. It is not part of the initial PR testing framework and must not become a merge-blocking production dependency.
 
+## Implemented V2 health-check-controller baseline
+
+`HealthCheckController` has a single route, `GET /api/v2/health`, that autowires
+`OntologyRepository` and `OlsPostgresClient` directly (no service layer). It reports whether the
+search index and Postgres are initialized by running a small live query against each and catching
+any exception as an unhealthy result.
+
+Verified locally on 2026-09-07 with Java 17 and Rancher Desktop:
+
+- Surefire runs 798 tests, including 5 direct `HealthCheckControllerTest` cases and 6
+  `HealthCheckControllerWIT` invocations. Two Docker-free runs took wall-clock 17.07 and 14.83
+  seconds.
+- Failsafe runs 168 PostgreSQL tests, including 1 thin `HealthCheckControllerIT` case. No new
+  repository-IT class was added: the controller has no repository logic of its own beyond the
+  already-covered `OntologyRepository`/`OlsPostgresClient` wiring, so the one controller-IT case
+  is the only PostgreSQL-backed coverage this controller needs. Two complete database-gate runs
+  took wall-clock 116.50 and 117.14 seconds.
+- The clean `verify` lifecycle runs all 966 tests in wall-clock 2 minutes 0.98 seconds.
+- Whole-backend JaCoCo coverage is 56.4% lines (2,702 of 4,787) and 44.6% branches (854 of 1,916).
+  `HealthCheckController` covers all 28 of its executable lines and all 8 branches. No coverage
+  failure threshold is introduced.
+- The unit and WIT suites exercise both private branches (`checkSearch`/`checkPostgres`) through
+  their public effect: a healthy search and a positive Postgres node count return 200 "All systems
+  are operational."; a search with zero results returns 503 "Search is not initialized."; a
+  healthy search with a zero Postgres node count returns 503 "Postgres is not initialized."; and
+  either collaborator throwing behaves identically to it returning its unhealthy value, since the
+  controller catches and logs the exception in both `checkSearch` and `checkPostgres`. The WIT
+  suite also records that the route is declared with a bare `@RequestMapping("/health")` with no
+  method element, so — unlike sibling `@GetMapping` V2 controllers, which reject other verbs with
+  405 — every HTTP method reaches the same handler; this is an observed contract detail, not a
+  defect, and a dedicated WIT case proves a POST request is served identically to a GET.
+- The bare `ResponseEntity<String>` body serializes as `text/plain`, but the exact charset differs
+  between the `@WebMvcTest`-sliced context (Spring Boot autoconfiguration defaults to UTF-8) and
+  the `standaloneSetup` MockMvc harness the controller IT uses (plain Spring MVC defaults to
+  ISO-8859-1 without that autoconfiguration). Both suites assert
+  `contentTypeCompatibleWith(MediaType.TEXT_PLAIN)` rather than an exact charset so the tests do
+  not couple to that harness difference.
+- `PostgresIntegrationTestSupport` gained a new `createHealthCheckRepositories(...)` factory
+  returning both a real `OntologyRepository` and the `OlsPostgresClient` it shares, wired against
+  disposable Postgres. No existing factory exposed both collaborators together: `createRepository`
+  wires an internal `OlsPostgresClient` into `OntologyRepository` but does not return it, and
+  `HealthCheckController` needs both as independent autowired fields. No production defect was
+  discovered by this rollout.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
