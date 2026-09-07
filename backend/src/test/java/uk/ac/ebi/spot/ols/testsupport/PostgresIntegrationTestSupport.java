@@ -14,6 +14,7 @@ import uk.ac.ebi.spot.ols.repository.OntologyRepository;
 import uk.ac.ebi.spot.ols.repository.PropertyRepository;
 import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
 import uk.ac.ebi.spot.ols.repository.search.OlsSearchClient;
+import uk.ac.ebi.spot.ols.repository.v1.V1GraphRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1IndividualRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1JsTreeRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
@@ -105,6 +106,19 @@ public final class PostgresIntegrationTestSupport {
         ReflectionTestUtils.setField(repository, "searchClient", searchClient);
         ReflectionTestUtils.setField(repository, "postgresClient", olsPostgresClient);
         return new RepositoryHandle(repository, postgresClient);
+    }
+
+    public static HealthCheckRepositoryHandle createHealthCheckRepositories(PostgreSQLContainer<?> container) {
+        PostgresClient postgresClient = createPostgresClient(container);
+        OlsSearchClient searchClient = createSearchClient(postgresClient);
+
+        OlsPostgresClient olsPostgresClient = new OlsPostgresClient();
+        ReflectionTestUtils.setField(olsPostgresClient, "postgresClient", postgresClient);
+
+        OntologyRepository repository = new OntologyRepository();
+        ReflectionTestUtils.setField(repository, "searchClient", searchClient);
+        ReflectionTestUtils.setField(repository, "postgresClient", olsPostgresClient);
+        return new HealthCheckRepositoryHandle(repository, olsPostgresClient, postgresClient);
     }
 
     public static V1RepositoryHandle createV1Repository(PostgreSQLContainer<?> container) {
@@ -263,8 +277,11 @@ public final class PostgresIntegrationTestSupport {
         V1JsTreeRepository jsTreeRepository = new V1JsTreeRepository();
         ReflectionTestUtils.setField(jsTreeRepository, "postgresClient", olsPostgresClient);
 
+        V1GraphRepository graphRepository = new V1GraphRepository();
+        ReflectionTestUtils.setField(graphRepository, "postgresClient", postgresClient);
+
         return new V1OntologyTermRepositoryHandle(
-                termRepository, jsTreeRepository, postgresClient);
+                termRepository, jsTreeRepository, graphRepository, postgresClient);
     }
 
     private static PostgresClient createPostgresClient(PostgreSQLContainer<?> container) {
@@ -676,6 +693,17 @@ public final class PostgresIntegrationTestSupport {
         }
     }
 
+    public record HealthCheckRepositoryHandle(
+            OntologyRepository ontologyRepository,
+            OlsPostgresClient olsPostgresClient,
+            PostgresClient postgresClient) implements AutoCloseable {
+
+        @Override
+        public void close() {
+            postgresClient.close();
+        }
+    }
+
     public record SearchClientHandle(
             OlsSearchClient searchClient,
             PostgresClient postgresClient) implements AutoCloseable {
@@ -781,6 +809,7 @@ public final class PostgresIntegrationTestSupport {
     public record V1OntologyTermRepositoryHandle(
             V1TermRepository termRepository,
             V1JsTreeRepository jsTreeRepository,
+            V1GraphRepository graphRepository,
             PostgresClient postgresClient) implements AutoCloseable {
 
         @Override

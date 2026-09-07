@@ -28,6 +28,7 @@ class V1TermRepositoryIT {
     private static PostgresIntegrationTestSupport.V1OntologyTermRepositoryHandle repositoryHandle;
     private static V1TermRepository repository;
     private static V1JsTreeRepository jsTreeRepository;
+    private static V1GraphRepository graphRepository;
 
     @BeforeAll
     static void setUpDatabase() {
@@ -35,6 +36,7 @@ class V1TermRepositoryIT {
         repositoryHandle = PostgresIntegrationTestSupport.createV1OntologyTermRepositories(POSTGRES);
         repository = repositoryHandle.termRepository();
         jsTreeRepository = repositoryHandle.jsTreeRepository();
+        graphRepository = repositoryHandle.graphRepository();
     }
 
     @AfterAll
@@ -269,5 +271,90 @@ class V1TermRepositoryIT {
                 "http://example.org/EFO_1001",
                 "http://example.org/EFO_1999");
         assertThat(children.get(0)).containsEntry("parent", parentNodeId);
+    }
+
+    @Test
+    void returnsHierarchicalRelationshipsFromProductionColumns() {
+        PageRequest pageable = PageRequest.of(0, 20);
+
+        // Unlike direct parents/ancestors (see V1TermRepositoryHierarchyTypeFilterIT, and PR #1392's
+        // reverted fix), the hierarchical_parents/hierarchical_ancestors columns are populated only
+        // for genuine subClassOf relationships in this fixture, not for the individual's
+        // instance-of-style direct ancestor — so no equivalent cross-type leak arises here.
+        assertThat(repository.getHierarchicalParents(
+                "efo", "http://example.org/EFO_1001", "en", pageable))
+                .extracting(term -> term.iri)
+                .containsExactly("http://example.org/EFO_0001");
+        assertThat(repository.getHierarchicalAncestors(
+                "efo", "http://example.org/EFO_1001", "en", pageable))
+                .extracting(term -> term.iri)
+                .containsExactly("http://example.org/EFO_0001");
+        assertThat(repository.getHierarchicalChildren(
+                "efo", "http://example.org/EFO_0001", "en", pageable))
+                .extracting(term -> term.iri)
+                .containsExactly(
+                        "http://example.org/EFO_1001",
+                        "http://example.org/EFO_1999");
+        assertThat(repository.getHierarchicalDescendants(
+                "efo", "http://example.org/EFO_0001", "en", pageable))
+                .extracting(term -> term.iri)
+                .containsExactly(
+                        "http://example.org/EFO_1001",
+                        "http://example.org/EFO_1999");
+    }
+
+    @Test
+    void returnsRelatedEntitiesRegardlessOfTheRequestedPropertyIri() {
+        PageRequest pageable = PageRequest.of(0, 20);
+
+        // getRelated's `relation` (property IRI) parameter is not used to filter the query — it
+        // returns every related_to target regardless of which specific relation was requested.
+        // Documented here as observed behavior; no committed system-regression baseline exercises
+        // this route, so there is no evidence either way of the intended contract.
+        assertThat(repository.getRelated(
+                "efo", "http://example.org/EFO_0002", "en",
+                "http://www.w3.org/2000/01/rdf-schema#seeAlso", pageable))
+                .extracting(term -> term.iri)
+                .containsExactly("http://example.org/EFO_0001");
+        assertThat(repository.getRelated(
+                "efo", "http://example.org/EFO_0002", "en",
+                "http://purl.obolibrary.org/obo/RO_0000052", pageable))
+                .extracting(term -> term.iri)
+                .containsExactly("http://example.org/EFO_0001");
+    }
+
+    @Test
+    void buildsTheClassGraphFromRealPostgresRelationships() {
+        Map<String, Object> parentGraph = graphRepository.getGraphForClass(
+                "http://example.org/EFO_1001", "efo", "en");
+
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> parentNodes =
+                (List<Map<String, Object>>) parentGraph.get("nodes");
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> parentEdges =
+                (List<Map<String, Object>>) parentGraph.get("edges");
+
+        assertThat(parentNodes).extracting(node -> node.get("iri")).containsExactlyInAnyOrder(
+                "http://example.org/EFO_1001", "http://example.org/EFO_0001");
+        assertThat(parentEdges).singleElement().satisfies(edge -> {
+            assertThat(edge.get("source")).isEqualTo("http://example.org/EFO_1001");
+            assertThat(edge.get("target")).isEqualTo("http://example.org/EFO_0001");
+            assertThat(edge.get("uri")).isEqualTo("http://www.w3.org/2000/01/rdf-schema#subClassOf");
+        });
+
+        Map<String, Object> relatedGraph = graphRepository.getGraphForClass(
+                "http://example.org/EFO_0002", "efo", "en");
+
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> relatedEdges =
+                (List<Map<String, Object>>) relatedGraph.get("edges");
+
+        assertThat(relatedEdges).singleElement().satisfies(edge -> {
+            assertThat(edge.get("source")).isEqualTo("http://example.org/EFO_0002");
+            assertThat(edge.get("target")).isEqualTo("http://example.org/EFO_0001");
+            assertThat(edge.get("label")).isEqualTo("related to");
+            assertThat(edge).doesNotContainKey("uri");
+        });
     }
 }
