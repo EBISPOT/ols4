@@ -20,6 +20,7 @@ import uk.ac.ebi.spot.ols.repository.v1.V1JsTreeRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1PropertyRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1TermRepository;
+import uk.ac.ebi.spot.ols.service.EmbeddingServiceClient;
 import uk.ac.ebi.spot.ols.service.PostgresClient;
 import uk.ac.ebi.spot.ols.service.TextTaggerService;
 
@@ -46,6 +47,16 @@ public final class PostgresIntegrationTestSupport {
             "domain",
             "http://example.org/category",
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
+
+    /**
+     * Model name used by the {@code V2LLMController} integration fixture. No production schema
+     * generator run in this test suite ever passes embedding parquet files (see
+     * {@link #executeProductionSchema}), so no {@code embeddings_<model>}/{@code embedding_<model>}
+     * vector columns exist until {@link #loadV2LlmEmbeddingFixture} adds them directly with SQL.
+     * Kept within {@code OlsPostgresClient.SAFE_MODEL_NAME} (letters, digits, underscore, dot,
+     * dash).
+     */
+    private static final String V2LLM_TEST_MODEL = "test_model";
 
     private PostgresIntegrationTestSupport() {
     }
@@ -96,6 +107,26 @@ public final class PostgresIntegrationTestSupport {
         }
     }
 
+    /**
+     * Loads the shared entity fixture plus the class and property fixtures (both additive to
+     * {@code ols_entities}, with no id collisions between them), then adds the {@code V2LLMController}
+     * embedding fixture on top. Deliberately does <em>not</em> also load
+     * {@link #loadIndividualFixture}: its {@code efo+individual+http://example.org/EFO_I100} row
+     * shares a primary key with the class fixture's own individual record of the same id, so the two
+     * fixtures cannot coexist in one database. The class fixture's individual is used for the
+     * individual-search route instead.
+     */
+    public static void initializeV2LLMDatabase(PostgreSQLContainer<?> container) {
+        initializeDatabase(container);
+        try (Connection connection = container.createConnection("")) {
+            loadClassFixture(connection);
+            loadPropertyFixture(connection);
+            loadV2LlmEmbeddingFixture(connection);
+        } catch (IOException | SQLException e) {
+            throw new IllegalStateException("Failed to load the V2 LLM controller integration fixture", e);
+        }
+    }
+
     public static RepositoryHandle createRepository(PostgreSQLContainer<?> container) {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
@@ -130,6 +161,37 @@ public final class PostgresIntegrationTestSupport {
         ReflectionTestUtils.setField(textTaggerService, "postgresClient", postgresClient);
 
         return new TextTaggerRepositoryHandle(textTaggerService, searchClient, postgresClient);
+    }
+
+    /**
+     * Wires {@link ClassRepository}, {@link PropertyRepository}, the real, unconfigured
+     * {@link EmbeddingServiceClient} bean, and the {@link OlsPostgresClient} they all share, against
+     * disposable Postgres. The embedding client is returned uninitialized (matching the
+     * {@code TextTaggerRepositoryHandle} precedent): call {@code embeddingServiceClient().init()}
+     * explicitly once, from the test's {@code @BeforeAll}, before using it. {@code init()} only runs
+     * a synchronous {@code SELECT} against {@code ols_pca_models} (empty in this fixture) and never
+     * throws, so this is safe to call exactly once per handle.
+     */
+    public static V2LLMRepositoryHandle createV2LLMRepositories(PostgreSQLContainer<?> container) {
+        PostgresClient postgresClient = createPostgresClient(container);
+        OlsSearchClient searchClient = createSearchClient(postgresClient);
+
+        OlsPostgresClient olsPostgresClient = new OlsPostgresClient();
+        ReflectionTestUtils.setField(olsPostgresClient, "postgresClient", postgresClient);
+
+        ClassRepository classRepository = new ClassRepository();
+        ReflectionTestUtils.setField(classRepository, "searchClient", searchClient);
+        ReflectionTestUtils.setField(classRepository, "postgresClient", olsPostgresClient);
+
+        PropertyRepository propertyRepository = new PropertyRepository();
+        ReflectionTestUtils.setField(propertyRepository, "searchClient", searchClient);
+        ReflectionTestUtils.setField(propertyRepository, "postgresClient", olsPostgresClient);
+
+        EmbeddingServiceClient embeddingServiceClient = new EmbeddingServiceClient();
+        ReflectionTestUtils.setField(embeddingServiceClient, "postgresClient", postgresClient);
+
+        return new V2LLMRepositoryHandle(
+                classRepository, propertyRepository, embeddingServiceClient, olsPostgresClient, postgresClient);
     }
 
     public static V1RepositoryHandle createV1Repository(PostgreSQLContainer<?> container) {
@@ -668,6 +730,85 @@ public final class PostgresIntegrationTestSupport {
         }
     }
 
+    /**
+     * Adds the two production embedding column families documented in
+     * {@code OlsPostgresClient.sanitizeEmbeddingColumnName}/{@code sanitizeEmbeddingNodeColumnName}
+     * directly via SQL (bypassing {@code dataload/create_postgres_schema.py}'s parquet-driven column
+     * generation entirely, which is a dataload/production concern, not something a unit fixture
+     * should invoke): {@code embeddings_<model>} (plural), one vector per entity's own embedding, on
+     * {@code ols_entities}; and {@code embedding_<model>} (singular), one vector per indexed
+     * label/curation embedding node, on {@code ols_embedding_nodes}.
+     *
+     * <p>Every vector below is a simple 4-dimensional value chosen so cosine similarity against the
+     * fixed query vector {@code [1,0,0,0]} (used by every fake {@code EmbeddingServiceClient} in the
+     * WIT/IT suites) is an exact, hand-checkable fraction — see
+     * {@code docs/backend-testing-strategy.md}'s "Implemented V2 LLM-controller baseline" section for
+     * the worked cosine-distance/similarity arithmetic each assertion relies on.</p>
+     */
+    private static void loadV2LlmEmbeddingFixture(Connection connection) throws SQLException {
+        try (Statement statement = connection.createStatement()) {
+            statement.execute(
+                    "ALTER TABLE ols_entities ADD COLUMN \"embeddings_" + V2LLM_TEST_MODEL + "\" vector(4)");
+            statement.execute(
+                    "ALTER TABLE ols_embedding_nodes ADD COLUMN \"embedding_" + V2LLM_TEST_MODEL + "\" vector(4)");
+        }
+
+        // ols_entities."embeddings_<model>" -- one embedding per entity, read by getSimilar/
+        // getSimilarity/getEmbeddingVector (the "similar to an existing entity" family).
+        updateEntityEmbedding(connection, "efo+class+http://example.org/EFO_0001", "[1,0,0,0]");
+        updateEntityEmbedding(connection, "efo+class+http://example.org/EFO_0002", "[0,1,0,0]");
+        updateEntityEmbedding(connection, "duo+class+http://example.org/DUO_0001", "[-1,0,0,0]");
+        updateEntityEmbedding(connection, "efo+property+http://example.org/EFO_0100", "[1,0,0,0]");
+        updateEntityEmbedding(connection, "efo+property+http://example.org/EFO_0101", "[0,1,0,0]");
+
+        // ols_embedding_nodes."embedding_<model>" -- one row per indexed label/curation embedding,
+        // read by searchByVector/searchByVectorInOntology (the "search by an arbitrary query vector"
+        // family). Vectors are distinct (not tied) against the [1,0,0,0] query so cross-type ordering
+        // in the /entities/llm_search test is deterministic: EFO_0001 (sim 1.0) > EFO_I100 (sim 0.8)
+        // > EFO_0100 (sim 0.6) > EFO_0002 (sim 0.0, CurationEmbedding only).
+        insertEmbeddingNode(connection, "test-emb-1", "LabelEmbedding",
+                "efo+class+http://example.org/EFO_0001", "[1,0,0,0]");
+        insertEmbeddingNode(connection, "test-emb-2", "CurationEmbedding",
+                "efo+class+http://example.org/EFO_0002", "[0,1,0,0]");
+        insertEmbeddingNode(connection, "test-emb-3", "LabelEmbedding",
+                "efo+property+http://example.org/EFO_0100", "[3,4,0,0]");
+        insertEmbeddingNode(connection, "test-emb-4", "LabelEmbedding",
+                "efo+individual+http://example.org/EFO_I100", "[4,3,0,0]");
+
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("ANALYZE ols_entities");
+            statement.execute("ANALYZE ols_embedding_nodes");
+        }
+    }
+
+    private static void updateEntityEmbedding(Connection connection, String entityId, String vectorLiteral)
+            throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement(
+                "UPDATE ols_entities SET \"embeddings_" + V2LLM_TEST_MODEL + "\" = ?::vector WHERE id = ?")) {
+            statement.setString(1, vectorLiteral);
+            statement.setString(2, entityId);
+            int updated = statement.executeUpdate();
+            if (updated != 1) {
+                throw new IllegalStateException(
+                        "Expected exactly one ols_entities row for id " + entityId + ", updated " + updated);
+            }
+        }
+    }
+
+    private static void insertEmbeddingNode(
+            Connection connection, String nodeId, String embeddingType, String entityId, String vectorLiteral)
+            throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement(
+                "INSERT INTO ols_embedding_nodes (id, type, entity_id, \"embedding_" + V2LLM_TEST_MODEL + "\") "
+                        + "VALUES (?, ?, ?, ?::vector)")) {
+            statement.setString(1, nodeId);
+            statement.setString(2, embeddingType);
+            statement.setString(3, entityId);
+            statement.setString(4, vectorLiteral);
+            statement.executeUpdate();
+        }
+    }
+
     private static java.sql.Array textArray(Connection connection, JsonArray values) throws SQLException {
         String[] strings = new String[values.size()];
         for (int i = 0; i < values.size(); i++) {
@@ -702,6 +843,19 @@ public final class PostgresIntegrationTestSupport {
         @Override
         public void close() {
             textTaggerService.destroy();
+            postgresClient.close();
+        }
+    }
+
+    public record V2LLMRepositoryHandle(
+            ClassRepository classRepository,
+            PropertyRepository propertyRepository,
+            EmbeddingServiceClient embeddingServiceClient,
+            OlsPostgresClient olsPostgresClient,
+            PostgresClient postgresClient) implements AutoCloseable {
+
+        @Override
+        public void close() {
             postgresClient.close();
         }
     }
