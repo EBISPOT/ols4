@@ -753,6 +753,78 @@ Verified locally on 2026-09-07 with Java 17 and Rancher Desktop:
   `HealthCheckController` needs both as independent autowired fields. No production defect was
   discovered by this rollout.
 
+## Implemented V2 text-tagger-controller baseline
+
+`V2TextTaggerController` has three routes: `POST /tag_text` (annotate free text with matching
+ontology terms), `GET /tag_text` (status check, `{"available": <bool>}`), and
+`GET /curation_sources` (`List<String>` of curated source names via
+`OlsSearchClient.getDistinctCuratedSources()`). It autowires two collaborators:
+`TextTaggerService` and `OlsSearchClient`.
+
+**Scoping decision.** `TextTaggerService` wraps an external `ols_text_tagger` CLI binary via
+`ProcessBuilder`, which is why this controller was held back from earlier rollouts in this
+programme — it does not fit the "real Postgres, no mocks" doctrine as cleanly as a pure-repository
+controller. The binary is not installed on this development machine or in CI, so exercising
+genuine tagging output is explicitly and permanently out of scope for this suite — that is a
+deliberate limitation of this layer of coverage, not a TODO or a gap, and it will remain true for
+any environment that does not ship the binary.
+
+What full-stack IT coverage *can* prove, and does: the `ols_text_tagger` table (single column
+`tagger_db_oid`) exists in the production schema
+(`dataload/create_postgres_schema.py`), but no fixture in this suite — or anywhere else in the
+committed test suite — inserts a row into it. Consequently the real, unmodified
+`TextTaggerService` bean's `@PostConstruct init()` genuinely finds nothing to download,
+`startProcess()` is never reached, and `isAvailable()` genuinely settles to `false` against a real
+disposable Postgres — this is not a mock standing in for integration behaviour, it is the actual
+behaviour a deployment with no tagger database configured exhibits. `available` also defaults to
+`false` at field declaration and is only ever set `true` inside `startProcess()`, so this is true
+immediately at bean construction, before the background init thread even runs; there is no async
+timing race for these assertions to be sensitive to, confirmed by two clean repeat runs of the
+database gate below.
+
+Verified locally on 2026-09-08 with Java 17 and Rancher Desktop:
+
+- Surefire runs 856 tests, including 13 direct `V2TextTaggerControllerTest` cases and 15
+  `V2TextTaggerControllerWIT` cases. Two Docker-free runs took wall-clock 12.76 and 13.76 seconds.
+- Failsafe runs 187 PostgreSQL tests, including 3 thin `V2TextTaggerControllerIT` cases against
+  the real, unconfigured `TextTaggerService` bean and the real `OlsSearchClient`. No new
+  repository-IT class was added: `TextTaggerService` is not a repository, and there is no
+  repository-level behaviour left to prove beyond what the controller-IT's unavailable-branch case
+  already exercises against real Postgres; `OlsSearchClient.getDistinctCuratedSources()` is
+  exercised by the controller-IT's third case and has no other untested repository behaviour of
+  its own. Two complete database-gate runs took wall-clock 115.60 and 119.34 seconds.
+- The clean `verify` lifecycle runs all 1,043 tests in wall-clock 2 minutes 1.68 seconds.
+- Whole-backend JaCoCo coverage is 64.1% lines (3,068 of 4,787) and 48.6% branches (932 of 1,916),
+  up from the most recently documented baseline of 56.4% lines and 44.6% branches.
+  `V2TextTaggerController` itself covers all 38 of its executable lines and all 18 branches. As
+  expected, `TextTaggerService` shows low coverage on its own — 31 of 194 lines (16.0%) and 5 of
+  112 branches (4.5%) — because its process-management internals (`startProcess`, `ensureRunning`,
+  response parsing, priority and substring filtering) are unreachable without the real binary; the
+  covered lines come almost entirely from the real bean's `init()`/`downloadTextTaggerDb()`
+  unavailable path exercised by the controller IT. This is expected and not chased further. No
+  coverage failure threshold is introduced.
+- The unit test and WIT enumerate every route (`POST /tag_text`, `GET /tag_text`,
+  `GET /curation_sources`), every declared parameter (`ontologyId`, `source`, `delimiters`,
+  `minLength`, `includeSubstrings`, `includeObsoleteEntities`) including repeated `ontologyId`/
+  `source` values, the missing/empty `text` 400 branch, the service-unavailable 503 branch,
+  malformed typed-parameter 400s for `minLength`/`includeSubstrings`/`includeObsoleteEntities` with
+  the exact conversion-error message, and the full field-by-field response mapping — including the
+  conditional `string_type`, `source`, `subject_categories`, and `is_obsolete` fields, which are
+  only present when the tagger actually returns them. The unit test uses this repo's hand-rolled
+  fake idiom (subclasses of `TextTaggerService`/`OlsSearchClient` overriding just the methods under
+  test, the same idiom as `HealthCheckControllerTest`); the WIT uses `@MockitoBean` for both
+  collaborators, the same idiom as `HealthCheckControllerWIT`.
+- `PostgresIntegrationTestSupport` gained a new `createTextTaggerRepositories(...)` factory
+  returning the real `TextTaggerService` (wired to disposable Postgres via reflection, matching
+  every other repository/client factory in this file) alongside the existing
+  `createSearchClient(...)`-backed `OlsSearchClient`. No existing factory wired
+  `TextTaggerService`.
+- `curation_sources` currently returns an empty list against the shared fixture: no fixture record
+  populates the `curated_from_sources` column (it defaults to `'{}'` in the production schema), so
+  the real-Postgres controller-IT case asserts an empty array rather than a guessed value — observed
+  by running the suite, not assumed ahead of time. No production defect was discovered by this
+  rollout.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
