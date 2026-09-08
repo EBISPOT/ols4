@@ -21,6 +21,7 @@ import uk.ac.ebi.spot.ols.repository.v1.V1OntologyRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1PropertyRepository;
 import uk.ac.ebi.spot.ols.repository.v1.V1TermRepository;
 import uk.ac.ebi.spot.ols.service.PostgresClient;
+import uk.ac.ebi.spot.ols.service.TextTaggerService;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -119,6 +120,16 @@ public final class PostgresIntegrationTestSupport {
         ReflectionTestUtils.setField(repository, "searchClient", searchClient);
         ReflectionTestUtils.setField(repository, "postgresClient", olsPostgresClient);
         return new HealthCheckRepositoryHandle(repository, olsPostgresClient, postgresClient);
+    }
+
+    public static TextTaggerRepositoryHandle createTextTaggerRepositories(PostgreSQLContainer<?> container) {
+        PostgresClient postgresClient = createPostgresClient(container);
+        OlsSearchClient searchClient = createSearchClient(postgresClient);
+
+        TextTaggerService textTaggerService = new TextTaggerService();
+        ReflectionTestUtils.setField(textTaggerService, "postgresClient", postgresClient);
+
+        return new TextTaggerRepositoryHandle(textTaggerService, searchClient, postgresClient);
     }
 
     public static V1RepositoryHandle createV1Repository(PostgreSQLContainer<?> container) {
@@ -679,6 +690,18 @@ public final class PostgresIntegrationTestSupport {
 
         @Override
         public void close() {
+            postgresClient.close();
+        }
+    }
+
+    public record TextTaggerRepositoryHandle(
+            TextTaggerService textTaggerService,
+            OlsSearchClient searchClient,
+            PostgresClient postgresClient) implements AutoCloseable {
+
+        @Override
+        public void close() {
+            textTaggerService.destroy();
             postgresClient.close();
         }
     }
