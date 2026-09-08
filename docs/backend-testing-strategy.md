@@ -825,6 +825,112 @@ Verified locally on 2026-09-08 with Java 17 and Rancher Desktop:
   by running the suite, not assumed ahead of time. No production defect was discovered by this
   rollout.
 
+## Implemented V2 LLM-controller baseline
+
+`V2LLMController` is the last untested controller in this programme. It has 12 routes and depends
+on `EmbeddingServiceClient` (an HTTP client to an external embedding microservice, configured via
+`@Value("${ols.embedding.service.url:#{null}}")`, unset in any test environment) and
+pgvector-backed similarity search — the same area with real production incident history noted
+elsewhere (`llm_similar` returning 500 "type vector does not exist" from a stale pgvector
+schema/search-path). Both concerns are resolved for this suite:
+`PostgresIntegrationTestSupport.newContainer()` already uses the `pgvector/pgvector:0.8.0-pg17`
+image with `CREATE EXTENSION IF NOT EXISTS vector` applied by the production schema generator, and
+the test harness already pins `PostgresClient` to the `public` schema, so the historical incident's
+exact failure mode is not expected and did not reproduce.
+
+**Mock/real boundary per route.** Six routes need nothing but real Postgres — no
+`EmbeddingServiceClient` involvement at all: `POST /classes/llm_embedding` and
+`POST /ontologies/{onto}/classes/llm_embedding` (both take a raw vector in the request body and run
+a real nearest-neighbor Postgres search), `GET /classes/{class}/llm_similar`,
+`GET /classes/{class}/llm_embedding`, `GET /classes/{class}/llm_similarity/{otherclass}`, and
+`GET /properties/{property}/llm_similar`. `GET /llm_models` is wired against the real,
+*unconfigured* `EmbeddingServiceClient` bean: `getAvailableModels()` degrades to an empty list
+without throwing when the URL is unset, which is itself the correct integration behaviour for a
+deployment with no embedding microservice configured, not a mock standing in for one. The five
+text-search routes (`GET /entities/llm_search`, `GET /classes/llm_search`,
+`GET /ontologies/{onto}/classes/llm_search`, `GET /properties/llm_search`,
+`GET /individuals/llm_search`) each call `embeddingServiceClient.embedText(...)` before a real
+Postgres vector search; controller-IT wires a hand-rolled fake `EmbeddingServiceClient` subclass
+(same idiom as `HealthCheckControllerTest`/`V2TextTaggerControllerTest`) returning a fixed canned
+vector, so the real nearest-neighbor search after it is genuinely exercised end-to-end. One of the
+five, `GET /entities/llm_search`, carries a second controller-IT case against the real unconfigured
+bean, proving empirically (not assumed from reading the source) that `embedText()`'s
+`IOException("Embedding service URL is not configured")` — uncaught by the controller's
+`throws IOException` handlers — falls through `GlobalExceptionHandler`'s catch-all to HTTP 500 with
+the exception's own message; the other four routes' identical unavailable-branch behaviour is
+already fully proven at the unit/WIT layer with a fake throwing the same exception.
+
+**New fixture mechanism.** No existing test fixture populated any embedding vector column:
+`PostgresIntegrationTestSupport.executeProductionSchema` only ever invokes
+`dataload/create_postgres_schema.py` with `--filter-property` arguments, never embedding parquet
+files. `OlsPostgresClient` needs two separate column-naming schemes on two separate tables —
+`embeddings_<model>` (plural) directly on `ols_entities`, read by
+`getSimilar`/`getSimilarity`/`getEmbeddingVector`, and `embedding_<model>` (singular) on the
+separate `ols_embedding_nodes` table (keyed by `entity_id`, typed `LabelEmbedding`/
+`CurationEmbedding`), read by `searchByVector`/`searchByVectorInOntology`. A new
+`PostgresIntegrationTestSupport.initializeV2LLMDatabase`/`createV2LLMRepositories` pair adds both
+column families directly via SQL after the standard schema and fixture load (bypassing
+`dataload/create_postgres_schema.py`'s parquet-driven generation entirely, a dataload/production
+concern this suite does not invoke), using model name `test_model`. Every vector is a hand-picked
+4-dimensional value chosen so cosine similarity against the fixed query vector `[1,0,0,0]` used by
+every fake `EmbeddingServiceClient` is an exact, hand-checkable fraction: `getSimilar`/
+`getSimilarity`/text-search all report `score = (1 + cosine_similarity) / 2` (pgvector's `<=>`
+cosine-distance operator converted to a `[0,1]` similarity), so EFO_0002's `[0,1,0,0]` embedding
+against EFO_0001's `[1,0,0,0]` (orthogonal, cosine 0) scores exactly `0.5`, DUO_0001's `[-1,0,0,0]`
+(opposite, cosine −1) scores exactly `0.0`, and the embedding-node fixture's `[4,3,0,0]`/
+`[3,4,0,0]` vectors against the same query score exactly `0.9`/`0.8`. `getEmbeddingModels()`
+discovers `test_model` automatically by introspecting `information_schema.columns` for
+`embeddings\_%` columns on `ols_entities`, so no separate registration step was needed for
+`GET /llm_models` to list it.
+
+Verified locally on 2026-09-08 with Java 17 and Rancher Desktop:
+
+- Surefire runs 923 tests, including 20 direct `V2LLMControllerTest` cases and 47
+  `V2LLMControllerWIT` invocations. Two Docker-free runs took wall-clock 17.76 and 15.13 seconds.
+- Failsafe runs 201 PostgreSQL tests, including 14 thin `V2LLMControllerIT` cases — one per route,
+  plus the `includeCurations` and real-unconfigured-service-error cases described above. No new
+  repository-IT class was added: the controller-IT wires the already-tested `ClassRepository`/
+  `PropertyRepository` directly against the new embedding fixture, the same
+  "no separate repository-IT needed" pattern as `HealthCheckController`/`V2TextTaggerController`.
+  Two complete database-gate runs took wall-clock 123.79 and 117.76 seconds.
+- The clean `verify` lifecycle runs all 1,124 tests in wall-clock 2 minutes 7.53 seconds.
+- Whole-backend JaCoCo coverage is 70.8% lines (3,387 of 4,787) and 53.2% branches (1,019 of
+  1,916), up from the most recently documented baseline of 64.1% lines and 48.6% branches.
+  `V2LLMController` covers all 71 of its executable lines and 22 of its 24 branches (all 17
+  methods). `EmbeddingServiceClient` shows low coverage on its own — 23 of 119 lines (19.3%) and 4
+  of 52 branches (7.7%) — because its HTTP-calling internals (`embedTextsFromService`'s actual
+  POST, `getAvailableModels`'s actual GET, response parsing) are unreachable without a real
+  embedding microservice; the covered lines come almost entirely from the unconfigured-URL branches
+  every test layer exercises, the same expected-low-coverage shape as `TextTaggerService` in the
+  prior rollout. The touched `OlsPostgresClient` methods: `getSimilar` 34/37 lines and 3/4 branches,
+  `getSimilarity` 22/25 lines and 2/4 branches, `getEmbeddingVector` 20/23 lines and 4/8 branches,
+  `searchByVector` (5-arg) 13/15 lines and 6/6 branches, `searchByVectorInOntology` (7-arg) 14/16
+  lines and 3/6 branches, `getEmbeddingModels` 16/18 lines and 3/4 branches,
+  `sanitizeEmbeddingColumnName`/`sanitizeEmbeddingNodeColumnName` 2/3 lines and 2/4 branches each.
+  `OlsPostgresClient` as a whole covers 317 of 363 lines (87.3%) and 52 of 79 branches (65.8%). The
+  4-arg `searchByVector`/6-arg `searchByVectorInOntology` convenience overloads (each delegating to
+  the 5-/7-arg form with a hardcoded `includeCurations`) remain fully uncovered — pre-existing dead
+  code, not introduced or exercised by this rollout: every production caller (`ClassRepository`,
+  `McpClassService`, `McpEmbeddingService`, and `V2LLMController` itself) already passes
+  `includeCurations` explicitly. No coverage failure threshold is introduced.
+- No production defect was discovered by this rollout. One behaviour is worth recording
+  deliberately, not as a defect: an uncaught `IOException` from the five text-search routes'
+  `embedText()` call reaches `GlobalExceptionHandler`'s catch-all as HTTP 500 (not a dedicated 503)
+  with the raw exception message — confirmed empirically above, consistent with this programme's
+  existing observation that some malformed/unavailable-dependency paths currently surface as 500
+  rather than a more specific status, and left as observed-and-tested current behaviour rather than
+  a change made in this testing PR.
+
+**Permanent limitation.** Genuine embedding-service HTTP behaviour — real vectors returned by a
+real embedding model, real network/timeout/non-2xx handling in `embedTextsFromService`, real
+model-list responses from `getAvailableModels` — cannot be and is not exercised anywhere in this
+test environment. No fixture, real dependency, or CI runner in this suite runs an embedding
+microservice; every route's coverage above proves either the unconfigured-service degradation path
+or the real-Postgres vector arithmetic downstream of a canned vector, never a genuine model call.
+This is the same category of permanent gap `V2TextTaggerController`'s baseline recorded for the
+`ols_text_tagger` binary, and it will remain true for any environment that does not run a real
+embedding service alongside the database.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
