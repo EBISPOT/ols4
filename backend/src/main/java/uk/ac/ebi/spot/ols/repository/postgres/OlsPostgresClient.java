@@ -274,8 +274,17 @@ public class OlsPostgresClient {
                 case "isObsolete" -> condition = condition.and(
                         field(qualifier, "is_obsolete", Boolean.class)
                                 .eq("true".equals(entry.getValue())));
-                case "type" -> condition = condition.and(
-                        field(qualifier, "type", String.class).eq(entry.getValue()));
+                // "type" accepts a comma separated list of allowed types
+                case "type" -> {
+                    List<String> types = Arrays.stream(entry.getValue().split(","))
+                            .map(String::trim)
+                            .filter(type -> !type.isEmpty())
+                            .collect(Collectors.toList());
+                    Field<String> typeField = field(qualifier, "type", String.class);
+                    condition = condition.and(types.size() == 1
+                            ? typeField.eq(types.get(0))
+                            : typeField.in(types));
+                }
                 default -> {
                 }
             }

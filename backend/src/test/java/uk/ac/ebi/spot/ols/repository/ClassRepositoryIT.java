@@ -178,7 +178,8 @@ class ClassRepositoryIT {
         PageRequest page = PageRequest.of(0, 20);
 
         assertThat(iris(repository.getDescendantsByOntologyId(
-                "efo", page, ROOT_IRI, false, "en", options))).containsExactly(CHILD_IRI);
+                "efo", page, ROOT_IRI, false, "en", options)))
+                .containsExactly(CHILD_IRI, INDIVIDUAL_IRI);
         assertThat(iris(repository.getHierarchicalChildrenByOntologyId(
                 "efo", page, ROOT_IRI, false, "en", options))).containsExactly(CHILD_IRI);
         assertThat(iris(repository.getHierarchicalAncestorsByOntologyId(

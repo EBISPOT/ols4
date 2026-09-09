@@ -17,28 +17,77 @@ import static org.springframework.test.util.ReflectionTestUtils.setField;
 
 class ClassRepositoryHierarchyTypeTest {
 
+    private static final String CLASSES_ONLY = "OntologyClass";
+    private static final String CLASSES_AND_INDIVIDUALS = "OntologyClass,OntologyIndividual";
+
     @Test
-    void everyHierarchyRouteRestrictsResultsToClassesAndActiveEntities() {
+    void downwardHierarchyRoutesAllowClassesAndIndividualsAndExcludeObsoleteEntities() {
         RecordingPostgresClient postgresClient = new RecordingPostgresClient();
         ClassRepository repository = repository(postgresClient);
 
         invokeEveryHierarchyRoute(repository, false);
 
-        assertThat(postgresClient.nodeProperties).hasSize(7)
+        assertThat(propertiesForMethods(
+                postgresClient,
+                "getDirectChildren",
+                "getDescendants",
+                "getHierarchicalDescendants",
+                "getHierarchicalChildren"))
+                .hasSize(4)
                 .allSatisfy(properties -> assertThat(properties).containsExactlyInAnyOrderEntriesOf(
-                        Map.of("type", "OntologyClass", "isObsolete", "false")));
+                        Map.of("type", CLASSES_AND_INDIVIDUALS, "isObsolete", "false")));
     }
 
     @Test
-    void includingObsoleteEntitiesStillRestrictsHierarchyResultsToClasses() {
+    void upwardHierarchyRoutesRestrictResultsToClassesAndExcludeObsoleteEntities() {
+        RecordingPostgresClient postgresClient = new RecordingPostgresClient();
+        ClassRepository repository = repository(postgresClient);
+
+        invokeEveryHierarchyRoute(repository, false);
+
+        assertThat(propertiesForMethods(
+                postgresClient,
+                "getAncestors",
+                "getHierarchicalAncestors"))
+                .hasSize(3)
+                .allSatisfy(properties -> assertThat(properties).containsExactlyInAnyOrderEntriesOf(
+                        Map.of("type", CLASSES_ONLY, "isObsolete", "false")));
+    }
+
+    @Test
+    void includingObsoleteEntitiesStillRestrictsHierarchyResultTypes() {
         RecordingPostgresClient postgresClient = new RecordingPostgresClient();
         ClassRepository repository = repository(postgresClient);
 
         invokeEveryHierarchyRoute(repository, true);
 
-        assertThat(postgresClient.nodeProperties).hasSize(7)
+        assertThat(propertiesForMethods(
+                postgresClient,
+                "getDirectChildren",
+                "getDescendants",
+                "getHierarchicalDescendants",
+                "getHierarchicalChildren"))
+                .hasSize(4)
                 .allSatisfy(properties -> assertThat(properties)
-                        .containsExactlyEntriesOf(Map.of("type", "OntologyClass")));
+                        .containsExactlyEntriesOf(Map.of("type", CLASSES_AND_INDIVIDUALS)));
+
+        assertThat(propertiesForMethods(
+                postgresClient,
+                "getAncestors",
+                "getHierarchicalAncestors"))
+                .hasSize(3)
+                .allSatisfy(properties -> assertThat(properties)
+                        .containsExactlyEntriesOf(Map.of("type", CLASSES_ONLY)));
+    }
+
+    private static List<Map<String, String>> propertiesForMethods(
+            RecordingPostgresClient postgresClient,
+            String... methods) {
+        List<String> methodNames = List.of(methods);
+        return postgresClient.invocations.stream()
+                .filter(invocation -> methodNames.contains(invocation.method()))
+                .map(Invocation::properties)
+                .toList();
     }
 
     private static ClassRepository repository(RecordingPostgresClient postgresClient) {
@@ -70,47 +119,51 @@ class ClassRepositoryHierarchyTypeTest {
                 "efo", pageable, iri, includeObsolete, "en", options);
     }
 
+    private record Invocation(String method, Map<String, String> properties) {
+    }
+
     private static class RecordingPostgresClient extends OlsPostgresClient {
-        private final List<Map<String, String>> nodeProperties = new ArrayList<>();
+        private final List<Invocation> invocations = new ArrayList<>();
 
         @Override
         public Page<JsonElement> getDirectChildren(
                 String id, Map<String, String> properties, Pageable pageable) {
-            return record(properties, pageable);
+            return record("getDirectChildren", properties, pageable);
         }
 
         @Override
         public Page<JsonElement> getAncestors(
                 String id, Map<String, String> properties, Pageable pageable) {
-            return record(properties, pageable);
+            return record("getAncestors", properties, pageable);
         }
 
         @Override
         public Page<JsonElement> getDescendants(
                 String id, Map<String, String> properties, Pageable pageable) {
-            return record(properties, pageable);
+            return record("getDescendants", properties, pageable);
         }
 
         @Override
         public Page<JsonElement> getHierarchicalDescendants(
                 String id, Map<String, String> properties, Pageable pageable) {
-            return record(properties, pageable);
+            return record("getHierarchicalDescendants", properties, pageable);
         }
 
         @Override
         public Page<JsonElement> getHierarchicalChildren(
                 String id, Map<String, String> properties, Pageable pageable) {
-            return record(properties, pageable);
+            return record("getHierarchicalChildren", properties, pageable);
         }
 
         @Override
         public Page<JsonElement> getHierarchicalAncestors(
                 String id, Map<String, String> properties, Pageable pageable) {
-            return record(properties, pageable);
+            return record("getHierarchicalAncestors", properties, pageable);
         }
 
-        private Page<JsonElement> record(Map<String, String> properties, Pageable pageable) {
-            nodeProperties.add(properties);
+        private Page<JsonElement> record(
+                String method, Map<String, String> properties, Pageable pageable) {
+            invocations.add(new Invocation(method, properties));
             return Page.empty(pageable);
         }
     }

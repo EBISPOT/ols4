@@ -118,7 +118,7 @@ public class ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        Map<String, String> nodeProps = classNodeProperties(includeObsolete);
+        Map<String, String> nodeProps = classHierarchyMemberNodeProperties(includeObsolete);
 
         Page<JsonElement> result = isNullOrEmpty(search) ? this.postgresClient.getDirectChildren(
                 id, nodeProps, pageable) :
@@ -151,7 +151,7 @@ public class ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        Map<String, String> nodeProps = classNodeProperties(includeObsolete);
+        Map<String, String> nodeProps = classHierarchyMemberNodeProperties(includeObsolete);
 
         return this.postgresClient.getDescendants(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
@@ -164,7 +164,7 @@ public class ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        Map<String, String> nodeProps = classNodeProperties(includeObsolete);
+        Map<String, String> nodeProps = classHierarchyMemberNodeProperties(includeObsolete);
 
         return this.postgresClient.getHierarchicalDescendants(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
@@ -178,7 +178,7 @@ public class ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        Map<String, String> nodeProps = classNodeProperties(includeObsolete);
+        Map<String, String> nodeProps = classHierarchyMemberNodeProperties(includeObsolete);
 
         return this.postgresClient.getHierarchicalChildren(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
@@ -227,10 +227,21 @@ public class ClassRepository {
                 ;
     }
 
+    // Walking up the class hierarchy can only ever reach classes.
     private static Map<String, String> classNodeProperties(boolean includeObsolete) {
+        return nodeProperties("OntologyClass", includeObsolete);
+    }
+
+    // Walking down the class hierarchy reaches subclasses and also individuals,
+    // whose rdf:type class is their parent in OLS.
+    private static Map<String, String> classHierarchyMemberNodeProperties(boolean includeObsolete) {
+        return nodeProperties("OntologyClass,OntologyIndividual", includeObsolete);
+    }
+
+    private static Map<String, String> nodeProperties(String types, boolean includeObsolete) {
         return includeObsolete
-                ? Map.of("type", "OntologyClass")
-                : Map.of("type", "OntologyClass", "isObsolete", "false");
+                ? Map.of("type", types)
+                : Map.of("type", types, "isObsolete", "false");
     }
 
     public double getSimilarity(String iri, String iri2, String modelName) {
