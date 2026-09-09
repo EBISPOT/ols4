@@ -10,6 +10,8 @@ import Entity from "../../model/Entity";
 import Ontology from "../../model/Ontology";
 import createTreeFromEntities from "./entities/createTreeFromEntities";
 
+const RDF_TYPE_IRI = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
+
 export interface OntologiesState {
   ontology: Ontology | undefined;
   entity: Entity | undefined;
@@ -629,17 +631,30 @@ export const getNodeChildren = createAsyncThunk(
             undefined,
             apiUrl
         );
+        const individualsPromise = getPaginated<any>(
+            `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/individuals?${new URLSearchParams({
+                size: "1000",
+                lang,
+                includeObsoleteEntities: showObsoleteEnabled,
+            })}`,
+            undefined,
+            apiUrl
+        );
 
-        const [hierarchicalChildren, directChildren] = await Promise.all([
+        const [hierarchicalChildren, directChildren, individuals] =
+          await Promise.all([
             hierarchicalChildrenPromise,
             directChildrenPromise,
-        ]);
+            individualsPromise,
+          ]);
 
-        // Merge the elements from both responses
+        // A class tree displays both subclass relationships and rdf:type instances,
+        // while the V2 class hierarchy endpoints remain class-only.
         childrenPage = {
             elements: [
                 ...hierarchicalChildren.elements,
                 ...directChildren.elements,
+                ...individuals.elements,
             ],
         };
     } else if (entityTypePlural === "individuals") {
@@ -667,13 +682,20 @@ export const getNodeChildren = createAsyncThunk(
         apiUrl
       );
     }
+    const seenChildIris = new Set<string>();
     return {
       absoluteIdentity,
       children: childrenPage.elements
         .map((obj: any) => thingFromJsonProperties(obj))
+        .filter((term: Entity) => {
+          if (seenChildIris.has(term.getIri())) return false;
+          seenChildIris.add(term.getIri());
+          return true;
+        })
         .map((term: Entity) => {
-          let parenthoodMetadata =
+          const parenthoodMetadata =
             term.getHierarchicalParentReificationAxioms(entityIri);
+          const isIndividual = term.getType() === "individual";
           return {
             iri: term.getIri(),
             absoluteIdentity: absoluteIdentity + ";" + term.getIri(),
@@ -682,14 +704,12 @@ export const getNodeChildren = createAsyncThunk(
             entity: term,
             numDescendants: term.getNumDescendants(),
             numHierarchicalDescendants: term.getNumHierarchicalDescendants(),
-            parentRelationToChild:
-              (parenthoodMetadata &&
-                parenthoodMetadata["parentRelationToChild"]?.[0]) ||
-              null,
-            childRelationToParent:
-              (parenthoodMetadata &&
-                parenthoodMetadata["childRelationToParent"]?.[0]) ||
-              null,
+            parentRelationToChild: isIndividual
+              ? null
+              : parenthoodMetadata?.["parentRelationToChild"]?.[0] || null,
+            childRelationToParent: isIndividual
+              ? RDF_TYPE_IRI
+              : parenthoodMetadata?.["childRelationToParent"]?.[0] || null,
           };
         }),
     };
