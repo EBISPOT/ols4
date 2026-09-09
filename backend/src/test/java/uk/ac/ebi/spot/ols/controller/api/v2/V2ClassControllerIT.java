@@ -122,7 +122,14 @@ class V2ClassControllerIT {
 
     @Test
     void getsClassDescendantsThroughTheRealDatabase() throws Exception {
-        assertSingleRelationship(DESCENDANTS_URI, "http://example.org/EFO_1001");
+        // Descendants of a class include its subclasses and the individuals
+        // whose rdf:type reaches the class.
+        mockMvc.perform(get(DESCENDANTS_URI))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.numElements").value(2))
+                .andExpect(jsonPath("$.totalElements").value(2))
+                .andExpect(jsonPath("$.elements[0].iri").value("http://example.org/EFO_1001"))
+                .andExpect(jsonPath("$.elements[1].iri").value("http://example.org/EFO_I100"));
     }
 
     @Test
