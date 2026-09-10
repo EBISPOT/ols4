@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
@@ -55,6 +56,10 @@ class V2IndividualControllerWIT {
     private static final String CLASS_IRI = "http://example.org/EFO_0001";
     private static final URI INDIVIDUAL_URI = uri(
             "/api/v2/ontologies/efo/individuals/http%253A%252F%252Fexample.org%252FEFO_I100");
+    private static final URI HIERARCHICAL_CHILDREN_URI = uri(
+            "/api/v2/ontologies/efo/individuals/http%253A%252F%252Fexample.org%252FEFO_I100/hierarchicalChildren");
+    private static final URI HIERARCHICAL_ANCESTORS_URI = uri(
+            "/api/v2/ontologies/efo/individuals/http%253A%252F%252Fexample.org%252FEFO_I100/hierarchicalAncestors");
     private static final URI CLASS_INDIVIDUALS_URI = uri(
             "/api/v2/ontologies/efo/classes/http%253A%252F%252Fexample.org%252FEFO_0001/individuals");
 
@@ -75,6 +80,12 @@ class V2IndividualControllerWIT {
         when(individualRepository.getIndividualsOfClass(
                 any(), any(), any(), anyBoolean(), any(), any()))
                 .thenReturn(individualPage());
+        when(individualRepository.getHierarchicalChildrenByOntologyId(
+                any(), any(), any(), anyBoolean(), any(), any()))
+                .thenReturn(hierarchyPage());
+        when(individualRepository.getHierarchicalAncestorsByOntologyId(
+                any(), any(), any(), anyBoolean(), any(), any()))
+                .thenReturn(hierarchyPage());
     }
 
     @Test
@@ -209,7 +220,15 @@ class V2IndividualControllerWIT {
             "class, -1, 20, 0, 20",
             "class, 0, 0, 0, 20",
             "class, 0, -1, 0, 20",
-            "class, 0, 1001, 0, 1000"
+            "class, 0, 1001, 0, 1000",
+            "children, -1, 20, 0, 20",
+            "children, 0, 0, 0, 20",
+            "children, 0, -1, 0, 20",
+            "children, 0, 1001, 0, 1000",
+            "ancestors, -1, 20, 0, 20",
+            "ancestors, 0, 0, 0, 20",
+            "ancestors, 0, -1, 0, 20",
+            "ancestors, 0, 1001, 0, 1000"
     })
     void normalizesPaginationBoundaries(
             String route,
@@ -232,7 +251,11 @@ class V2IndividualControllerWIT {
             "ontology, page, not-a-number",
             "ontology, size, not-a-number",
             "class, page, not-a-number",
-            "class, size, not-a-number"
+            "class, size, not-a-number",
+            "children, page, not-a-number",
+            "children, size, not-a-number",
+            "ancestors, page, not-a-number",
+            "ancestors, size, not-a-number"
     })
     void usesPaginationDefaultsForMalformedNumericValues(
             String route, String parameter, String value) throws Exception {
@@ -254,7 +277,13 @@ class V2IndividualControllerWIT {
             "ontology, manchesterSyntax",
             "class, resolveReferences",
             "class, manchesterSyntax",
-            "class, includeObsoleteEntities"
+            "class, includeObsoleteEntities",
+            "children, includeObsoleteEntities",
+            "children, resolveReferences",
+            "children, manchesterSyntax",
+            "ancestors, includeObsoleteEntities",
+            "ancestors, resolveReferences",
+            "ancestors, manchesterSyntax"
     })
     void rejectsMalformedTypedParameters(String route, String parameter) throws Exception {
         assertStableBadRequest(get(routeUri(route)).param(parameter, "not-a-boolean"));
@@ -273,7 +302,11 @@ class V2IndividualControllerWIT {
             "ontology, asc, ASC",
             "ontology, desc, DESC",
             "class, asc, ASC",
-            "class, desc, DESC"
+            "class, desc, DESC",
+            "children, asc, ASC",
+            "children, desc, DESC",
+            "ancestors, asc, ASC",
+            "ancestors, desc, DESC"
     })
     void bindsSupportedSortDirections(String route, String requested, String expected)
             throws Exception {
@@ -290,7 +323,11 @@ class V2IndividualControllerWIT {
             "ontology, notARealField,asc",
             "ontology, iri,sideways",
             "class, notARealField,asc",
-            "class, iri,sideways"
+            "class, iri,sideways",
+            "children, notARealField,asc",
+            "children, iri,sideways",
+            "ancestors, notARealField,asc",
+            "ancestors, iri,sideways"
     })
     void returnsStableErrorForUnsupportedSort(String route, String field, String direction)
             throws Exception {
@@ -305,8 +342,16 @@ class V2IndividualControllerWIT {
             when(individualRepository.findByOntologyId(
                     any(), any(), any(), any(), any(), any(), anyBoolean(), anyMap(), any()))
                     .thenThrow(error);
-        } else {
+        } else if (route.equals("class")) {
             when(individualRepository.getIndividualsOfClass(
+                    any(), any(), any(), anyBoolean(), any(), any()))
+                    .thenThrow(error);
+        } else if (route.equals("children")) {
+            when(individualRepository.getHierarchicalChildrenByOntologyId(
+                    any(), any(), any(), anyBoolean(), any(), any()))
+                    .thenThrow(error);
+        } else {
+            when(individualRepository.getHierarchicalAncestorsByOntologyId(
                     any(), any(), any(), anyBoolean(), any(), any()))
                     .thenThrow(error);
         }
@@ -335,6 +380,54 @@ class V2IndividualControllerWIT {
         assertEquals(INDIVIDUAL_IRI, call.iri());
         assertEquals("en", call.lang());
         assertDefaultOptions(call.outputOptions());
+    }
+
+    @Test
+    void returnsDefaultHierarchicalChildrenContract() throws Exception {
+        mockMvc.perform(get(HIERARCHICAL_CHILDREN_URI))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.page").value(0))
+                .andExpect(jsonPath("$.numElements").value(1))
+                .andExpect(jsonPath("$.elements[0].iri").value(INDIVIDUAL_IRI));
+
+        assertHierarchyDefaults(captureHierarchyCall("children"));
+    }
+
+    @Test
+    void returnsDefaultHierarchicalAncestorsContract() throws Exception {
+        mockMvc.perform(get(HIERARCHICAL_ANCESTORS_URI))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.page").value(0))
+                .andExpect(jsonPath("$.numElements").value(1))
+                .andExpect(jsonPath("$.elements[0].iri").value(INDIVIDUAL_IRI));
+
+        assertHierarchyDefaults(captureHierarchyCall("ancestors"));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"children", "ancestors"})
+    void bindsEveryHierarchyParameter(String route) throws Exception {
+        mockMvc.perform(get(routeUri(route))
+                        .param("page", "1")
+                        .param("size", "3")
+                        .param("sort", "iri,desc")
+                        .param("includeObsoleteEntities", "true")
+                        .param("lang", "fr")
+                        .param("resolveReferences", "true")
+                        .param("manchesterSyntax", "true"))
+                .andExpect(status().isOk());
+
+        HierarchyCall call = captureHierarchyCall(route);
+        assertEquals("efo", call.ontologyId());
+        assertEquals(INDIVIDUAL_IRI, call.individualIri());
+        assertPage(call.pageable(), 1, 3);
+        assertEquals("iri: DESC", call.pageable().getSort().toString());
+        assertTrue(call.includeObsoleteEntities());
+        assertEquals("fr", call.lang());
+        assertTrue(call.outputOptions().resolveReferences);
+        assertTrue(call.outputOptions().manchesterSyntax);
     }
 
     @Test
@@ -411,7 +504,7 @@ class V2IndividualControllerWIT {
     }
 
     @ParameterizedTest
-    @CsvSource({"ontology", "single", "class"})
+    @CsvSource({"ontology", "single", "class", "children", "ancestors"})
     void returnsStableBadRequestForInvalidOntologyIdentifier(String route) throws Exception {
         IllegalArgumentException error =
                 new IllegalArgumentException("Invalid ontology ID: efo/unsafe");
@@ -422,8 +515,16 @@ class V2IndividualControllerWIT {
         } else if (route.equals("single")) {
             when(individualRepository.getByOntologyIdAndIri(any(), any(), any(), any()))
                     .thenThrow(error);
-        } else {
+        } else if (route.equals("class")) {
             when(individualRepository.getIndividualsOfClass(
+                    any(), any(), any(), anyBoolean(), any(), any()))
+                    .thenThrow(error);
+        } else if (route.equals("children")) {
+            when(individualRepository.getHierarchicalChildrenByOntologyId(
+                    any(), any(), any(), anyBoolean(), any(), any()))
+                    .thenThrow(error);
+        } else {
+            when(individualRepository.getHierarchicalAncestorsByOntologyId(
                     any(), any(), any(), anyBoolean(), any(), any()))
                     .thenThrow(error);
         }
@@ -432,8 +533,12 @@ class V2IndividualControllerWIT {
             case "ontology" -> uri("/api/v2/ontologies/efo%252Funsafe/individuals");
             case "single" -> uri("/api/v2/ontologies/efo%252Funsafe/individuals/"
                     + "http%253A%252F%252Fexample.org%252FEFO_I100");
-            default -> uri("/api/v2/ontologies/efo%252Funsafe/classes/"
+            case "class" -> uri("/api/v2/ontologies/efo%252Funsafe/classes/"
                     + "http%253A%252F%252Fexample.org%252FEFO_0001/individuals");
+            case "children" -> uri("/api/v2/ontologies/efo%252Funsafe/individuals/"
+                    + "http%253A%252F%252Fexample.org%252FEFO_I100/hierarchicalChildren");
+            default -> uri("/api/v2/ontologies/efo%252Funsafe/individuals/"
+                    + "http%253A%252F%252Fexample.org%252FEFO_I100/hierarchicalAncestors");
         };
 
         mockMvc.perform(get(invalid))
@@ -444,7 +549,7 @@ class V2IndividualControllerWIT {
     }
 
     @ParameterizedTest
-    @CsvSource({"global", "ontology", "single", "class"})
+    @CsvSource({"global", "ontology", "single", "class", "children", "ancestors"})
     void returnsStableBadRequestForInvalidLanguage(String route) throws Exception {
         IllegalArgumentException error = new IllegalArgumentException("Invalid language: en_US");
         if (route.equals("global")) {
@@ -458,8 +563,16 @@ class V2IndividualControllerWIT {
         } else if (route.equals("single")) {
             when(individualRepository.getByOntologyIdAndIri(any(), any(), any(), any()))
                     .thenThrow(error);
-        } else {
+        } else if (route.equals("class")) {
             when(individualRepository.getIndividualsOfClass(
+                    any(), any(), any(), anyBoolean(), any(), any()))
+                    .thenThrow(error);
+        } else if (route.equals("children")) {
+            when(individualRepository.getHierarchicalChildrenByOntologyId(
+                    any(), any(), any(), anyBoolean(), any(), any()))
+                    .thenThrow(error);
+        } else {
+            when(individualRepository.getHierarchicalAncestorsByOntologyId(
                     any(), any(), any(), anyBoolean(), any(), any()))
                     .thenThrow(error);
         }
@@ -575,7 +688,29 @@ class V2IndividualControllerWIT {
     private Pageable capturePageable(String route) throws Exception {
         if (route.equals("global")) return captureGlobalListCall().pageable();
         if (route.equals("ontology")) return captureOntologyListCall().listCall().pageable();
-        return captureClassCall().pageable();
+        if (route.equals("class")) return captureClassCall().pageable();
+        return captureHierarchyCall(route).pageable();
+    }
+
+    private HierarchyCall captureHierarchyCall(String route) throws Exception {
+        ArgumentCaptor<String> ontologyId = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<Pageable> pageable = ArgumentCaptor.forClass(Pageable.class);
+        ArgumentCaptor<String> individualIri = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<Boolean> includeObsoleteEntities = ArgumentCaptor.forClass(Boolean.class);
+        ArgumentCaptor<String> lang = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<JsonTransformOptions> options = ArgumentCaptor.forClass(JsonTransformOptions.class);
+        if (route.equals("children")) {
+            verify(individualRepository).getHierarchicalChildrenByOntologyId(
+                    ontologyId.capture(), pageable.capture(), individualIri.capture(),
+                    includeObsoleteEntities.capture(), lang.capture(), options.capture());
+        } else {
+            verify(individualRepository).getHierarchicalAncestorsByOntologyId(
+                    ontologyId.capture(), pageable.capture(), individualIri.capture(),
+                    includeObsoleteEntities.capture(), lang.capture(), options.capture());
+        }
+        return new HierarchyCall(
+                ontologyId.getValue(), individualIri.getValue(), pageable.getValue(),
+                includeObsoleteEntities.getValue(), lang.getValue(), options.getValue());
     }
 
     private static URI routeUri(String route) {
@@ -583,8 +718,20 @@ class V2IndividualControllerWIT {
             case "global" -> uri("/api/v2/individuals");
             case "ontology" -> uri("/api/v2/ontologies/efo/individuals");
             case "class" -> CLASS_INDIVIDUALS_URI;
+            case "children" -> HIERARCHICAL_CHILDREN_URI;
+            case "ancestors" -> HIERARCHICAL_ANCESTORS_URI;
             default -> throw new IllegalArgumentException("Unknown route: " + route);
         };
+    }
+
+    private static void assertHierarchyDefaults(HierarchyCall call) {
+        assertEquals("efo", call.ontologyId());
+        assertEquals(INDIVIDUAL_IRI, call.individualIri());
+        assertPage(call.pageable(), 0, 20);
+        assertTrue(call.pageable().getSort().isUnsorted());
+        assertFalse(call.includeObsoleteEntities());
+        assertEquals("en", call.lang());
+        assertDefaultOptions(call.outputOptions());
     }
 
     private static void assertListDefaults(ListCall call) {
@@ -631,6 +778,10 @@ class V2IndividualControllerWIT {
                 List.of(individualJson()), Map.of(), PageRequest.of(0, 20), 1);
     }
 
+    private static PageImpl<JsonElement> hierarchyPage() {
+        return new PageImpl<>(List.of(individualJson()), PageRequest.of(0, 20), 1);
+    }
+
     private static V2Entity individualEntity() {
         return new V2Entity(individualJson());
     }
@@ -674,6 +825,15 @@ class V2IndividualControllerWIT {
     private record ClassCall(
             String ontologyId,
             String classIri,
+            Pageable pageable,
+            boolean includeObsoleteEntities,
+            String lang,
+            JsonTransformOptions outputOptions) {
+    }
+
+    private record HierarchyCall(
+            String ontologyId,
+            String individualIri,
             Pageable pageable,
             boolean includeObsoleteEntities,
             String lang,

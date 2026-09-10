@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.testcontainers.containers.PostgreSQLContainer;
@@ -152,6 +153,24 @@ class IndividualRepositoryIT {
     }
 
     @Test
+    void returnsIndividualHierarchyAndCanIncludeObsoleteChildren() {
+        PageRequest page = PageRequest.of(0, 20);
+        JsonTransformOptions options = new JsonTransformOptions();
+
+        Page<JsonElement> active = repository.getHierarchicalChildrenByOntologyId(
+                "efo", page, EFO_INDIVIDUAL, false, "en", options);
+        Page<JsonElement> all = repository.getHierarchicalChildrenByOntologyId(
+                "efo", page, EFO_INDIVIDUAL, true, "en", options);
+        Page<JsonElement> ancestors = repository.getHierarchicalAncestorsByOntologyId(
+                "efo", page, SECOND_EFO_INDIVIDUAL, false, "en", options);
+
+        assertThat(iris(active)).containsExactly(SECOND_EFO_INDIVIDUAL);
+        assertThat(iris(all)).containsExactly(
+                SECOND_EFO_INDIVIDUAL, OBSOLETE_EFO_INDIVIDUAL);
+        assertThat(iris(ancestors)).containsExactly(EFO_INDIVIDUAL);
+    }
+
+    @Test
     void validatesLanguageAndOntologyIdentifiersForEveryRepositoryRoute() {
         PageRequest page = PageRequest.of(0, 20);
         JsonTransformOptions options = new JsonTransformOptions();
@@ -166,6 +185,18 @@ class IndividualRepositoryIT {
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> repository.getIndividualsOfClass(
                 "efo", LIVER_CLASS, page, false, "en_US", options))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> repository.getHierarchicalChildrenByOntologyId(
+                "efo/unsafe", page, EFO_INDIVIDUAL, false, "en", options))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> repository.getHierarchicalChildrenByOntologyId(
+                "efo", page, EFO_INDIVIDUAL, false, "en_US", options))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> repository.getHierarchicalAncestorsByOntologyId(
+                "efo/unsafe", page, SECOND_EFO_INDIVIDUAL, false, "en", options))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> repository.getHierarchicalAncestorsByOntologyId(
+                "efo", page, SECOND_EFO_INDIVIDUAL, false, "en_US", options))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -192,7 +223,7 @@ class IndividualRepositoryIT {
                 properties, new JsonTransformOptions());
     }
 
-    private static List<String> iris(OlsFacetedResultsPage<JsonElement> page) {
+    private static List<String> iris(Page<JsonElement> page) {
         return page.getContent().stream()
                 .map(element -> element.getAsJsonObject().get("iri").getAsString())
                 .toList();

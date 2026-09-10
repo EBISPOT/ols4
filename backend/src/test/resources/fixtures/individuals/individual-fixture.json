@@ -18,9 +18,11 @@
       "directParents": [
         "http://example.org/EFO_0001"
       ],
+      "hierarchicalParents": [],
       "directAncestors": [
         "http://example.org/EFO_0001"
       ],
+      "hierarchicalAncestors": [],
       "tags": ["clinical"],
       "domain": ["biology"],
       "http://example.org/category": ["clinical"],
@@ -65,9 +67,15 @@
       "directParents": [
         "http://example.org/EFO_0002"
       ],
+      "hierarchicalParents": [
+        "http://example.org/EFO_I100"
+      ],
       "directAncestors": [
         "http://example.org/EFO_0001",
         "http://example.org/EFO_0002"
+      ],
+      "hierarchicalAncestors": [
+        "http://example.org/EFO_I100"
       ],
       "tags": ["experimental"],
       "domain": ["biology"],
@@ -91,7 +99,7 @@
           "http://example.org/EFO_0002"
         ],
         "hasDirectParents": true,
-        "hasHierarchicalParents": false,
+        "hasHierarchicalParents": true,
         "linkedEntities": {}
       }
     },
@@ -113,9 +121,11 @@
       "directParents": [
         "http://example.org/DUO_0001"
       ],
+      "hierarchicalParents": [],
       "directAncestors": [
         "http://example.org/DUO_0001"
       ],
+      "hierarchicalAncestors": [],
       "tags": ["policy"],
       "domain": ["information"],
       "http://example.org/category": ["policy"],
@@ -160,8 +170,14 @@
       "directParents": [
         "http://example.org/EFO_0001"
       ],
+      "hierarchicalParents": [
+        "http://example.org/EFO_I100"
+      ],
       "directAncestors": [
         "http://example.org/EFO_0001"
+      ],
+      "hierarchicalAncestors": [
+        "http://example.org/EFO_I100"
       ],
       "tags": ["archived"],
       "domain": ["biology"],
@@ -185,7 +201,7 @@
           "http://example.org/EFO_0001"
         ],
         "hasDirectParents": true,
-        "hasHierarchicalParents": false,
+        "hasHierarchicalParents": true,
         "linkedEntities": {}
       }
     }
