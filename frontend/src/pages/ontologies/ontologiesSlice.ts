@@ -41,6 +41,7 @@ export interface OntologiesState {
   displayObsolete: boolean;
   displaySiblings: boolean;
   displayCounts: boolean;
+  displayRedundant: boolean;
   errorMessage: string;
   specificRootIri: string;
 }
@@ -85,6 +86,7 @@ const initialState: OntologiesState = {
   displayObsolete: false,
   displaySiblings: false,
   displayCounts: true,
+  displayRedundant: false,
   errorMessage: "",
   specificRootIri: "",
 };
@@ -112,6 +114,9 @@ export const hideSiblings = createAction("ontologies_hide_siblings");
 
 export const showCounts = createAction("ontologies_show_counts");
 export const hideCounts = createAction("ontologies_hide_counts");
+
+export const showRedundant = createAction("ontologies_show_redundant");
+export const hideRedundant = createAction("ontologies_hide_redundant");
 export const setSpecificRootIri = createAction<string>("ontologies_set_specific_root_iri");
 
 export const getOntology = createAsyncThunk(
@@ -926,7 +931,8 @@ const ontologiesSlice = createSlice({
             [state.entity!, ...action.payload],
             state.preferredRoots,
             state.ontology!,
-            state.specificRootIri
+            state.specificRootIri,
+            state.displayRedundant
           );
         state.rootNodes = rootNodes;
         state.nodeChildren = nodeChildren;
@@ -984,7 +990,8 @@ const ontologiesSlice = createSlice({
             ],
             state.preferredRoots,
             state.ontology!,
-            state.specificRootIri
+            state.specificRootIri,
+            state.displayRedundant
           );
 
         state.rootNodes = rootNodes;
@@ -1098,6 +1105,7 @@ const ontologiesSlice = createSlice({
         state.displayObsolete = false;
         state.displaySiblings = false;
         state.displayCounts = true;
+        state.displayRedundant = false;
         state.manuallyExpandedNodes = [];
       }
     );
@@ -1124,6 +1132,12 @@ const ontologiesSlice = createSlice({
     });
     builder.addCase(hideCounts, (state: OntologiesState) => {
       state.displayCounts = false;
+    });
+    builder.addCase(showRedundant, (state: OntologiesState) => {
+      state.displayRedundant = true;
+    });
+    builder.addCase(hideRedundant, (state: OntologiesState) => {
+      state.displayRedundant = false;
     });
     builder.addCase(setSpecificRootIri, (state: OntologiesState, action: PayloadAction<string>) => {
       state.specificRootIri = action.payload;
