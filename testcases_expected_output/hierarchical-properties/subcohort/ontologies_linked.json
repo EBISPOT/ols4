@@ -1,0 +1,1094 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "subcohort",
+      "importsFrom": [],
+      "exportsTo": [],
+      "iri": "http://example.org/subcohort",
+      "preferredPrefix": "subcohort",
+      "title": "subcohort",
+      "hierarchical_property": [
+        "http://example.org/subcohort#isSubCohortOf"
+      ],
+      "oboSlims": false,
+      "ontologyPurl": "./testcases/hierarchical-properties/subcohort.owl",
+      "type": [
+        "ontology"
+      ],
+      "directAncestor": [],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "imported": false,
+      "isObsolete": false,
+      "language": [
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "en"
+        }
+      ],
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
+      "numberOfClasses": {
+        "type": [
+          "literal"
+        ],
+        "value": "1"
+      },
+      "numberOfEntities": {
+        "type": [
+          "literal"
+        ],
+        "value": "7"
+      },
+      "numberOfIndividuals": {
+        "type": [
+          "literal"
+        ],
+        "value": "4"
+      },
+      "numberOfProperties": {
+        "type": [
+          "literal"
+        ],
+        "value": "2"
+      },
+      "searchableAnnotationValues": [
+        false,
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "1"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "2"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "4"
+        },
+        {
+          "type": [
+            "literal"
+          ],
+          "value": "7"
+        }
+      ],
+      "classes": [
+        {
+          "iri": "http://example.org/subcohort#Cohort",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Cohort"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": true,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "hasIndividuals": true,
+          "hierarchicalAncestor": [],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "cohort",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "cohort",
+              "lang": "en"
+            }
+          ],
+          "numDescendants": 4,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "subcohort"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://example.org/subcohort"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "subcohort"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "Cohort"
+          },
+          "isDefiningOntology": false,
+          "appearsIn": [
+            "subcohort"
+          ],
+          "linkedEntities": {},
+          "linksTo": []
+        }
+      ],
+      "properties": [
+        {
+          "iri": "http://example.org/subcohort#hasSubCohort",
+          "type": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasSubCohort"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "hasSubCohort",
+            "lang": "en"
+          },
+          "http://www.w3.org/2002/07/owl#inverseOf": "http://example.org/subcohort#isSubCohortOf",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "hasSubCohort",
+              "lang": "en"
+            }
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "subcohort"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://example.org/subcohort"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "subcohort"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "hasSubCohort"
+          },
+          "isDefiningOntology": false,
+          "appearsIn": [
+            "subcohort"
+          ],
+          "linkedEntities": {
+            "http://example.org/subcohort#isSubCohortOf": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "value": "isSubCohortOf",
+                  "lang": "en"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "isSubCohortOf"
+              },
+              "type": [
+                "entity",
+                "objectProperty",
+                "property"
+              ]
+            }
+          },
+          "linksTo": [
+            "http://example.org/subcohort#isSubCohortOf"
+          ]
+        },
+        {
+          "iri": "http://example.org/subcohort#isSubCohortOf",
+          "type": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "isSubCohortOf"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "isSubCohortOf",
+            "lang": "en"
+          },
+          "http://www.w3.org/2002/07/owl#inverseOf": "http://example.org/subcohort#hasSubCohort",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "isSubCohortOf",
+              "lang": "en"
+            }
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "subcohort"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://example.org/subcohort"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "subcohort"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "isSubCohortOf"
+          },
+          "isDefiningOntology": false,
+          "appearsIn": [
+            "subcohort"
+          ],
+          "linkedEntities": {
+            "http://example.org/subcohort#hasSubCohort": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "value": "hasSubCohort",
+                  "lang": "en"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "hasSubCohort"
+              },
+              "type": [
+                "entity",
+                "objectProperty",
+                "property"
+              ]
+            }
+          },
+          "linksTo": [
+            "http://example.org/subcohort#hasSubCohort"
+          ]
+        }
+      ],
+      "individuals": [
+        {
+          "iri": "http://example.org/subcohort#registry",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "registry"
+          },
+          "directAncestor": [
+            "http://example.org/subcohort#Cohort"
+          ],
+          "directParent": [
+            "http://example.org/subcohort#Cohort"
+          ],
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": true,
+          "hasHierarchicalParents": false,
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+            "http://example.org/subcohort#Cohort",
+            "http://www.w3.org/2002/07/owl#NamedIndividual"
+          ],
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "registry cohort",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "registry cohort",
+              "lang": "en"
+            }
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 2,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "subcohort"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://example.org/subcohort"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "subcohort"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "registry"
+          },
+          "isDefiningOntology": false,
+          "appearsIn": [
+            "subcohort"
+          ],
+          "linkedEntities": {
+            "http://example.org/subcohort#Cohort": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "value": "cohort",
+                  "lang": "en"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "Cohort"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
+            }
+          },
+          "linksTo": [
+            "http://example.org/subcohort#Cohort"
+          ]
+        },
+        {
+          "iri": "http://example.org/subcohort#selfReferential",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "selfReferential"
+          },
+          "directAncestor": [
+            "http://example.org/subcohort#Cohort"
+          ],
+          "directParent": [
+            "http://example.org/subcohort#Cohort"
+          ],
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://example.org/subcohort#isSubCohortOf"
+          },
+          "http://example.org/subcohort#isSubCohortOf": "http://example.org/subcohort#selfReferential",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+            "http://example.org/subcohort#Cohort",
+            "http://www.w3.org/2002/07/owl#NamedIndividual"
+          ],
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "self referential cohort",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "self referential cohort",
+              "lang": "en"
+            }
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "subcohort"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://example.org/subcohort"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "subcohort"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "selfReferential"
+          },
+          "isDefiningOntology": false,
+          "appearsIn": [
+            "subcohort"
+          ],
+          "linkedEntities": {
+            "http://example.org/subcohort#Cohort": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "value": "cohort",
+                  "lang": "en"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "Cohort"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
+            },
+            "http://example.org/subcohort#isSubCohortOf": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "value": "isSubCohortOf",
+                  "lang": "en"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "isSubCohortOf"
+              },
+              "type": [
+                "entity",
+                "objectProperty",
+                "property"
+              ]
+            }
+          },
+          "linksTo": [
+            "http://example.org/subcohort#Cohort",
+            "http://example.org/subcohort#isSubCohortOf"
+          ]
+        },
+        {
+          "iri": "http://example.org/subcohort#subCohort",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "subCohort"
+          },
+          "directAncestor": [
+            "http://example.org/subcohort#Cohort"
+          ],
+          "directParent": [
+            "http://example.org/subcohort#Cohort"
+          ],
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": true,
+          "hasHierarchicalParents": true,
+          "hierarchicalAncestor": [
+            "http://example.org/subcohort#registry"
+          ],
+          "hierarchicalParent": [
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://example.org/subcohort#registry",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://example.org/subcohort#isSubCohortOf",
+                  "parentRelationToChild": "http://example.org/subcohort#hasSubCohort"
+                }
+              ]
+            }
+          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://example.org/subcohort#isSubCohortOf"
+          },
+          "http://example.org/subcohort#isSubCohortOf": [
+            "http://example.org/subcohort#missingCohort",
+            "http://example.org/subcohort#registry"
+          ],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+            "http://example.org/subcohort#Cohort",
+            "http://www.w3.org/2002/07/owl#NamedIndividual"
+          ],
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "sub cohort",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "sub cohort",
+              "lang": "en"
+            }
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 1,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "subcohort"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://example.org/subcohort"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "subcohort"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "subCohort"
+          },
+          "isDefiningOntology": false,
+          "appearsIn": [
+            "subcohort"
+          ],
+          "linkedEntities": {
+            "http://example.org/subcohort#Cohort": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "value": "cohort",
+                  "lang": "en"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "Cohort"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
+            },
+            "http://example.org/subcohort#hasSubCohort": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "value": "hasSubCohort",
+                  "lang": "en"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "hasSubCohort"
+              },
+              "type": [
+                "entity",
+                "objectProperty",
+                "property"
+              ]
+            },
+            "http://example.org/subcohort#isSubCohortOf": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "value": "isSubCohortOf",
+                  "lang": "en"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "isSubCohortOf"
+              },
+              "type": [
+                "entity",
+                "objectProperty",
+                "property"
+              ]
+            },
+            "http://example.org/subcohort#registry": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "value": "registry cohort",
+                  "lang": "en"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "registry"
+              },
+              "type": [
+                "entity",
+                "individual"
+              ]
+            }
+          },
+          "linksTo": [
+            "http://example.org/subcohort#Cohort",
+            "http://example.org/subcohort#hasSubCohort",
+            "http://example.org/subcohort#isSubCohortOf",
+            "http://example.org/subcohort#registry"
+          ]
+        },
+        {
+          "iri": "http://example.org/subcohort#subSubCohort",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "subSubCohort"
+          },
+          "directAncestor": [
+            "http://example.org/subcohort#Cohort"
+          ],
+          "directParent": [
+            "http://example.org/subcohort#Cohort"
+          ],
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": true,
+          "hierarchicalAncestor": [
+            "http://example.org/subcohort#registry",
+            "http://example.org/subcohort#subCohort"
+          ],
+          "hierarchicalParent": [
+            {
+              "type": [
+                "reification"
+              ],
+              "value": "http://example.org/subcohort#subCohort",
+              "axioms": [
+                {
+                  "childRelationToParent": "http://example.org/subcohort#isSubCohortOf",
+                  "parentRelationToChild": "http://example.org/subcohort#hasSubCohort"
+                }
+              ]
+            }
+          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://example.org/subcohort#isSubCohortOf"
+          },
+          "http://example.org/subcohort#isSubCohortOf": "http://example.org/subcohort#subCohort",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+            "http://example.org/subcohort#Cohort",
+            "http://www.w3.org/2002/07/owl#NamedIndividual"
+          ],
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+            "value": "sub sub cohort",
+            "lang": "en"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "sub sub cohort",
+              "lang": "en"
+            }
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "subcohort"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://example.org/subcohort"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "subcohort"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "subSubCohort"
+          },
+          "isDefiningOntology": false,
+          "appearsIn": [
+            "subcohort"
+          ],
+          "linkedEntities": {
+            "http://example.org/subcohort#Cohort": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "value": "cohort",
+                  "lang": "en"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "Cohort"
+              },
+              "type": [
+                "class",
+                "entity"
+              ]
+            },
+            "http://example.org/subcohort#hasSubCohort": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "value": "hasSubCohort",
+                  "lang": "en"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "hasSubCohort"
+              },
+              "type": [
+                "entity",
+                "objectProperty",
+                "property"
+              ]
+            },
+            "http://example.org/subcohort#isSubCohortOf": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "value": "isSubCohortOf",
+                  "lang": "en"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "isSubCohortOf"
+              },
+              "type": [
+                "entity",
+                "objectProperty",
+                "property"
+              ]
+            },
+            "http://example.org/subcohort#registry": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "value": "registry cohort",
+                  "lang": "en"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "registry"
+              },
+              "type": [
+                "entity",
+                "individual"
+              ]
+            },
+            "http://example.org/subcohort#subCohort": {
+              "numAppearsIn": 1,
+              "hasLocalDefinition": true,
+              "label": [
+                {
+                  "type": [
+                    "literal"
+                  ],
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "value": "sub cohort",
+                  "lang": "en"
+                }
+              ],
+              "curie": {
+                "type": [
+                  "literal"
+                ],
+                "value": "subCohort"
+              },
+              "type": [
+                "entity",
+                "individual"
+              ]
+            }
+          },
+          "linksTo": [
+            "http://example.org/subcohort#Cohort",
+            "http://example.org/subcohort#hasSubCohort",
+            "http://example.org/subcohort#isSubCohortOf",
+            "http://example.org/subcohort#registry",
+            "http://example.org/subcohort#subCohort"
+          ]
+        }
+      ],
+      "linkedEntities": {
+        "http://example.org/subcohort#isSubCohortOf": {
+          "numAppearsIn": 1,
+          "hasLocalDefinition": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "value": "isSubCohortOf",
+              "lang": "en"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "isSubCohortOf"
+          },
+          "type": [
+            "entity",
+            "objectProperty",
+            "property"
+          ]
+        }
+      },
+      "linksTo": [
+        "http://example.org/subcohort#isSubCohortOf"
+      ]
+    }
+  ]
+}

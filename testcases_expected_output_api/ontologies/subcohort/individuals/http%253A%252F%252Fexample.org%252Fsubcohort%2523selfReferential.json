@@ -1,0 +1,31 @@
+{
+  "_links": {
+    "alltypes": {
+      "href": "<base>/api/ontologies/subcohort/individuals/http%253A%252F%252Fexample.org%252Fsubcohort%2523selfReferential/alltypes"
+    },
+    "jstree": {
+      "href": "<base>/api/ontologies/subcohort/individuals/http%253A%252F%252Fexample.org%252Fsubcohort%2523selfReferential/jstree"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/subcohort/individuals/http%253A%252F%252Fexample.org%252Fsubcohort%2523selfReferential?lang=en"
+    },
+    "types": {
+      "href": "<base>/api/ontologies/subcohort/individuals/http%253A%252F%252Fexample.org%252Fsubcohort%2523selfReferential/types"
+    }
+  },
+  "annotation": {},
+  "description": [],
+  "has_children": false,
+  "iri": "http://example.org/subcohort#selfReferential",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_root": false,
+  "label": "self referential cohort",
+  "lang": "en",
+  "obo_id": "selfReferential",
+  "ontology_iri": "http://example.org/subcohort",
+  "ontology_name": "subcohort",
+  "ontology_prefix": "subcohort",
+  "short_form": "selfReferential",
+  "synonyms": []
+}

@@ -3,7 +3,11 @@
     {
       "id": "coho",
       "preferredPrefix": "COHO",
-      "ontology_purl": "https://raw.githubusercontent.com/EBISPOT/cohort-ontology/refs/heads/main/coho.owl"
+      "ontology_purl": "https://raw.githubusercontent.com/EBISPOT/cohort-ontology/refs/heads/main/coho.owl",
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050",
+        "http://www.ebi.ac.uk/coho/isSubCohortOf"
+      ]
     },
     {
       "id": "medgen",

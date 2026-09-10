@@ -2,6 +2,7 @@
 package uk.ac.ebi.spot.ols.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
@@ -102,6 +103,40 @@ public class IndividualRepository {
                 result,
                 lang,
                 outputOpts));
+    }
+
+    public Page<JsonElement> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
+
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+
+        String id = ontologyId + "+individual+" + iri;
+
+        Map<String, String> nodeProps = individualNodeProperties(includeObsolete);
+
+        return this.postgresClient.getHierarchicalChildren(id, nodeProps, pageable)
+                .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
+                ;
+    }
+
+    public Page<JsonElement> getHierarchicalAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
+
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+
+        String id = ontologyId + "+individual+" + iri;
+
+        Map<String, String> nodeProps = individualNodeProperties(includeObsolete);
+
+        return this.postgresClient.getHierarchicalAncestors(id, nodeProps, pageable)
+                .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
+                ;
+    }
+
+    private static Map<String, String> individualNodeProperties(boolean includeObsolete) {
+        return includeObsolete
+                ? Map.of("type", "OntologyIndividual")
+                : Map.of("type", "OntologyIndividual", "isObsolete", "false");
     }
 
     public OlsFacetedResultsPage<JsonElement> getIndividualsOfClass(

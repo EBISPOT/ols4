@@ -1,0 +1,14 @@
+{
+  "ontologies": [
+    {
+      "id": "subcohort",
+      "preferredPrefix": "subcohort",
+      "title": "subcohort",
+      "hierarchical_property": [
+        "http://example.org/subcohort#isSubCohortOf"
+      ],
+      "oboSlims": false,
+      "ontology_purl": "./testcases/hierarchical-properties/subcohort.owl"
+    }
+  ]
+}

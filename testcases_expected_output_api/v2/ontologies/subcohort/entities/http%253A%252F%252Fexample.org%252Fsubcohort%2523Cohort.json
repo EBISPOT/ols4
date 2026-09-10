@@ -1,0 +1,52 @@
+{
+  "appearsIn": [
+    "subcohort"
+  ],
+  "curie": "Cohort",
+  "hasDirectChildren": true,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "hasIndividuals": true,
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "cohort",
+  "imported": false,
+  "iri": "http://example.org/subcohort#Cohort",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "cohort"
+  ],
+  "linkedEntities": {
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 4.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "subcohort",
+  "ontologyIri": "http://example.org/subcohort",
+  "ontologyPreferredPrefix": "subcohort",
+  "searchableAnnotationValues": false,
+  "shortForm": "Cohort",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

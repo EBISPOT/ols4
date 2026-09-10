@@ -5535,6 +5535,56 @@
   {
     "_links": {
       "individuals": {
+        "href": "<base>/api/ontologies/subcohort/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/subcohort/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/subcohort?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/subcohort/terms"
+      }
+    },
+    "baseUris": [],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/hierarchical-properties/subcohort.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [
+        "http://example.org/subcohort#isSubCohortOf"
+      ],
+      "id": "subcohort",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "subcohort",
+      "oboSlims": false,
+      "preferredPrefix": "subcohort",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "title": "subcohort"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 4,
+    "numberOfProperties": 2,
+    "numberOfTerms": 1,
+    "ontologyId": "subcohort",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
         "href": "<base>/api/ontologies/xmpl/individuals"
       },
       "properties": {

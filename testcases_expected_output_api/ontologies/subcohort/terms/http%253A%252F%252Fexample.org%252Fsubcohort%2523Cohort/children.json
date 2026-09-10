@@ -1,0 +1,190 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523registry/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523registry/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523registry/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523registry/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523registry/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523registry/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523registry/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523registry/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523registry/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523registry/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523registry?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": true,
+    "iri": "http://example.org/subcohort#registry",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "registry cohort",
+    "lang": "en",
+    "obo_id": "registry",
+    "ontology_iri": "http://example.org/subcohort",
+    "ontology_name": "subcohort",
+    "ontology_prefix": "subcohort",
+    "short_form": "registry",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523selfReferential/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523selfReferential/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523selfReferential/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523selfReferential/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523selfReferential/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523selfReferential/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523selfReferential?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://example.org/subcohort#selfReferential",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "self referential cohort",
+    "lang": "en",
+    "obo_id": "selfReferential",
+    "ontology_iri": "http://example.org/subcohort",
+    "ontology_name": "subcohort",
+    "ontology_prefix": "subcohort",
+    "short_form": "selfReferential",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523subCohort/ancestors"
+      },
+      "children": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523subCohort/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523subCohort/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523subCohort/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523subCohort/hierarchicalAncestors"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523subCohort/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523subCohort/hierarchicalDescendants"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523subCohort/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523subCohort/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523subCohort/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523subCohort?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": true,
+    "iri": "http://example.org/subcohort#subCohort",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "sub cohort",
+    "lang": "en",
+    "obo_id": "subCohort",
+    "ontology_iri": "http://example.org/subcohort",
+    "ontology_name": "subcohort",
+    "ontology_prefix": "subcohort",
+    "short_form": "subCohort",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523subSubCohort/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523subSubCohort/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523subSubCohort/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523subSubCohort/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523subSubCohort/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523subSubCohort/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523subSubCohort?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://example.org/subcohort#subSubCohort",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "sub sub cohort",
+    "lang": "en",
+    "obo_id": "subSubCohort",
+    "ontology_iri": "http://example.org/subcohort",
+    "ontology_name": "subcohort",
+    "ontology_prefix": "subcohort",
+    "short_form": "subSubCohort",
+    "synonyms": []
+  }
+]
