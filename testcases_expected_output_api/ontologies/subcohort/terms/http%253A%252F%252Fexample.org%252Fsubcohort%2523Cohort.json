@@ -1,0 +1,38 @@
+{
+  "_links": {
+    "children": {
+      "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523Cohort/children"
+    },
+    "descendants": {
+      "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523Cohort/descendants"
+    },
+    "graph": {
+      "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523Cohort/graph"
+    },
+    "hierarchicalChildren": {
+      "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523Cohort/hierarchicalChildren"
+    },
+    "hierarchicalDescendants": {
+      "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523Cohort/hierarchicalDescendants"
+    },
+    "self": {
+      "href": "<base>/api/ontologies/subcohort/terms/http%253A%252F%252Fexample.org%252Fsubcohort%2523Cohort?lang=en"
+    }
+  },
+  "annotation": {},
+  "description": [],
+  "has_children": true,
+  "iri": "http://example.org/subcohort#Cohort",
+  "is_defining_ontology": false,
+  "is_obsolete": false,
+  "is_preferred_root": false,
+  "is_root": true,
+  "label": "cohort",
+  "lang": "en",
+  "obo_id": "Cohort",
+  "ontology_iri": "http://example.org/subcohort",
+  "ontology_name": "subcohort",
+  "ontology_prefix": "subcohort",
+  "short_form": "Cohort",
+  "synonyms": []
+}
