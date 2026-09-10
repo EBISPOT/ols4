@@ -68,6 +68,16 @@ jobs:
             type=ref,event=branch
             type=sha,prefix={{branch}}-
 
+      # Docker tags cannot contain "/", so branch names like feature/foo need
+      # sanitizing before they can be used as a tag. Branches without special
+      # characters (e.g. dev, stable) are left unchanged.
+      - name: Compute Docker-safe branch tag
+        id: branch_tag
+        env:
+          BRANCH_REF: ${{ github.head_ref || github.ref_name }}
+        run: |
+          echo "tag=$(printf '%s' "$BRANCH_REF" | sed -e 's/[^a-zA-Z0-9_.-]/-/g' -e 's/^[.-]*//' | cut -c1-128)" >> "$GITHUB_OUTPUT"
+
       - name: Build and push ols4 ${{ matrix.component }} Docker image
         uses: docker/build-push-action@v5
         with:
@@ -79,7 +89,7 @@ jobs:
           build-args: ${{ matrix.build-args }}
           tags: |
             ghcr.io/ebispot/ols4-${{ matrix.component }}:${{ github.sha }}
-            ghcr.io/ebispot/ols4-${{ matrix.component }}:${{ github.head_ref || github.ref_name }}
+            ghcr.io/ebispot/ols4-${{ matrix.component }}:${{ steps.branch_tag.outputs.tag }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
