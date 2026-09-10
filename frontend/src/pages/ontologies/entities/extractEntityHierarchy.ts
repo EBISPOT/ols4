@@ -45,11 +45,21 @@ export default function extractEntityHierarchy(entities: Entity[]): {
 
       if(entity.getType() === 'individual') {
 
-	// In the case of individuals, the child->parent relationship is always
-	// rdf:type and there is no explicit parent->child relationship.
+	// Individuals hang under their rdf:type classes, but a reified
+	// hierarchicalParent (e.g. isSubCohortOf between individuals) carries its
+	// own relation metadata which takes precedence.
 
-	childRelationToParent = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
-	parentRelationToChild = null
+	childRelationToParent =
+		(parentRelation.getMetadata()
+			&& parentRelation.getMetadata()['childRelationToParent']
+			&& parentRelation.getMetadata()['childRelationToParent'][0])
+		|| 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
+
+	parentRelationToChild =
+		(parentRelation.getMetadata()
+			&& parentRelation.getMetadata()['parentRelationToChild']
+			&& parentRelation.getMetadata()['parentRelationToChild'][0])
+		|| null
 
       } else if(entity.getType() == 'class') {
 

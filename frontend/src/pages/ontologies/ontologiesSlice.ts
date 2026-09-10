@@ -389,6 +389,37 @@ export const getAncestors = createAsyncThunk(
         undefined,
         apiUrl
       );
+    } else if (entityType === "individuals") {
+      // An individual's tree path can climb through other individuals (e.g.
+      // sub-cohorts linked by a hierarchical property like COHO isSubCohortOf)
+      // before reaching its rdf:type classes, so fetch both closures.
+      const [classAncestors, hierarchicalAncestors] = await Promise.all([
+        getPaginated<any>(
+          `api/v2/ontologies/${ontologyId}/individuals/${doubleEncodedUri}/ancestors?${new URLSearchParams(
+            { size: "1000", lang, includeObsoleteEntities: showObsoleteEnabled }
+          )}`,
+          undefined,
+          apiUrl
+        ),
+        getPaginated<any>(
+          `api/v2/ontologies/${ontologyId}/individuals/${doubleEncodedUri}/hierarchicalAncestors?${new URLSearchParams(
+            { size: "1000", lang, includeObsoleteEntities: showObsoleteEnabled }
+          )}`,
+          undefined,
+          apiUrl
+        ),
+      ]);
+      const seenAncestorIris = new Set<string>();
+      ancestorsPage = {
+        elements: [
+          ...classAncestors.elements,
+          ...hierarchicalAncestors.elements,
+        ].filter((obj: any) => {
+          if (seenAncestorIris.has(obj.iri)) return false;
+          seenAncestorIris.add(obj.iri);
+          return true;
+        }),
+      };
     } else {
       ancestorsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/ancestors?${new URLSearchParams(
@@ -640,12 +671,25 @@ export const getNodeChildren = createAsyncThunk(
             undefined,
             apiUrl
         );
+        // Individuals can have hierarchical children of their own (e.g. sub-cohorts
+        // linked by a configured hierarchical property such as COHO isSubCohortOf).
+        // For class nodes this request comes back empty.
+        const individualHierarchicalChildrenPromise = getPaginated<any>(
+            `api/v2/ontologies/${ontologyId}/individuals/${doubleEncodedUri}/hierarchicalChildren?${new URLSearchParams({
+                size: "1000",
+                lang,
+                includeObsoleteEntities: showObsoleteEnabled,
+            })}`,
+            undefined,
+            apiUrl
+        );
 
-        const [hierarchicalChildren, directChildren, individuals] =
+        const [hierarchicalChildren, directChildren, individuals, individualHierarchicalChildren] =
           await Promise.all([
             hierarchicalChildrenPromise,
             directChildrenPromise,
             individualsPromise,
+            individualHierarchicalChildrenPromise,
           ]);
 
         // A class tree displays both subclass relationships and rdf:type instances,
@@ -655,20 +699,40 @@ export const getNodeChildren = createAsyncThunk(
                 ...hierarchicalChildren.elements,
                 ...directChildren.elements,
                 ...individuals.elements,
+                ...individualHierarchicalChildren.elements,
             ],
         };
     } else if (entityTypePlural === "individuals") {
-      childrenPage = await getPaginated<any>(
-        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/individuals?${new URLSearchParams(
-          {
-            size: "1000",
-            lang,
-            includeObsoleteEntities: showObsoleteEnabled,
-          }
-        )}`,
-        undefined,
-        apiUrl
-      );
+      const [classIndividuals, individualHierarchicalChildren] = await Promise.all([
+        getPaginated<any>(
+          `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/individuals?${new URLSearchParams(
+            {
+              size: "1000",
+              lang,
+              includeObsoleteEntities: showObsoleteEnabled,
+            }
+          )}`,
+          undefined,
+          apiUrl
+        ),
+        getPaginated<any>(
+          `api/v2/ontologies/${ontologyId}/individuals/${doubleEncodedUri}/hierarchicalChildren?${new URLSearchParams(
+            {
+              size: "1000",
+              lang,
+              includeObsoleteEntities: showObsoleteEnabled,
+            }
+          )}`,
+          undefined,
+          apiUrl
+        ),
+      ]);
+      childrenPage = {
+        elements: [
+          ...classIndividuals.elements,
+          ...individualHierarchicalChildren.elements,
+        ],
+      };
     } else {
       childrenPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/${entityTypePlural}/${doubleEncodedUri}/children?${new URLSearchParams(
@@ -704,12 +768,13 @@ export const getNodeChildren = createAsyncThunk(
             entity: term,
             numDescendants: term.getNumDescendants(),
             numHierarchicalDescendants: term.getNumHierarchicalDescendants(),
-            parentRelationToChild: isIndividual
-              ? null
-              : parenthoodMetadata?.["parentRelationToChild"]?.[0] || null,
-            childRelationToParent: isIndividual
-              ? RDF_TYPE_IRI
-              : parenthoodMetadata?.["childRelationToParent"]?.[0] || null,
+            // Reified hierarchicalParent metadata wins (e.g. isSubCohortOf between
+            // individuals); individuals without it hang under their rdf:type class.
+            parentRelationToChild:
+              parenthoodMetadata?.["parentRelationToChild"]?.[0] || null,
+            childRelationToParent:
+              parenthoodMetadata?.["childRelationToParent"]?.[0] ||
+              (isIndividual ? RDF_TYPE_IRI : null),
           };
         }),
     };

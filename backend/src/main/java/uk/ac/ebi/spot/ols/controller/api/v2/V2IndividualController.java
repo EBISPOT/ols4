@@ -160,6 +160,62 @@ public class V2IndividualController {
     }
 
 
+    @RequestMapping(path = "/ontologies/{onto}/individuals/{individual}/hierarchicalChildren", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
+    public HttpEntity<V2PagedResponse<V2Entity>> getHierarchicalChildrenByOntology(
+            @PageableDefault(size = 20, page = 0)
+            @ParameterObject Pageable pageable,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "Ontology Id to get the information about.",
+                    example = "coho") String ontologyId,
+            @PathVariable("individual")
+            @Parameter(name = "individual",
+                    description = "The IRI of the individual, this value must be double URL encoded") String iri,
+            @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
+            @Parameter(name = "includeObsoleteEntities",
+                    description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            @ParameterObject JsonTransformOptions outputOpts
+    ) throws ResourceNotFoundException {
+
+        iri = UriUtils.decode(iri, "UTF-8");
+
+        return new ResponseEntity<>(
+                new V2PagedResponse<V2Entity>(
+                        individualRepository.getHierarchicalChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, lang, outputOpts)
+                        .map(V2Entity::new)
+                ),
+                HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/ontologies/{onto}/individuals/{individual}/hierarchicalAncestors", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
+    public HttpEntity<V2PagedResponse<V2Entity>> getHierarchicalAncestorsByOntology(
+            @PageableDefault(size = 20, page = 0)
+            @ParameterObject Pageable pageable,
+            @PathVariable("onto")
+            @Parameter(name = "onto",
+                    description = "Ontology Id to get the information about.",
+                    example = "coho") String ontologyId,
+            @PathVariable("individual")
+            @Parameter(name = "individual",
+                    description = "The IRI of the individual, this value must be double URL encoded") String iri,
+            @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
+            @Parameter(name = "includeObsoleteEntities",
+                    description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
+            @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
+            @ParameterObject JsonTransformOptions outputOpts
+    ) throws ResourceNotFoundException {
+
+        iri = UriUtils.decode(iri, "UTF-8");
+
+        return new ResponseEntity<>(
+                new V2PagedResponse<V2Entity>(
+                        individualRepository.getHierarchicalAncestorsByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, lang, outputOpts)
+                        .map(V2Entity::new)
+                ),
+                HttpStatus.OK);
+    }
+
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}/individuals", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<V2PagedResponse<V2Entity>> getClassIndividuals(
             @PageableDefault(size = 20, page = 0)

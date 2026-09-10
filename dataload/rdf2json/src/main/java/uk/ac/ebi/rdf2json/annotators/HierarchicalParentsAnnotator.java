@@ -113,6 +113,58 @@ public class HierarchicalParentsAnnotator {
                         }
                     }
                 }
+                // Individuals assert hierarchical properties (e.g. COHO isSubCohortOf) as
+                // direct triples rather than OWL restrictions, so they are not covered by
+                // RelatedAnnotator; read them from the node's properties instead.
+                // rdfs:subClassOf is already handled above.
+                //
+                if (c.types.contains(OntologyNode.NodeType.INDIVIDUAL)) {
+                    for (String hierarchicalProperty : hierarchicalProperties) {
+
+                        if (hierarchicalProperty.equals("http://www.w3.org/2000/01/rdf-schema#subClassOf")) {
+                            continue;
+                        }
+
+                        List<PropertyValue> assertions = c.properties.getPropertyValues(hierarchicalProperty);
+                        if (assertions == null) {
+                            continue;
+                        }
+
+                        var propertyNode = graph.nodes.get(hierarchicalProperty);
+                        String inverseProperty = null;
+                        if (propertyNode != null) {
+                            var inversePropertyValue = propertyNode.properties.getPropertyValue("http://www.w3.org/2002/07/owl#inverseOf");
+                            if (inversePropertyValue != null && inversePropertyValue.getType() == PropertyValue.Type.URI) {
+                                inverseProperty = ((PropertyValueURI) inversePropertyValue).getUri();
+                            }
+                        }
+
+                        for (PropertyValue assertion : assertions) {
+
+                            if (assertion.getType() != PropertyValue.Type.URI) {
+                                continue;
+                            }
+
+                            String parentUri = ((PropertyValueURI) assertion).getUri();
+
+                            // an entity cannot be its own hierarchical parent
+                            if (parentUri.equals(c.uri) || !graph.nodes.containsKey(parentUri)) {
+                                continue;
+                            }
+
+                            var filler = new PropertyValueURI(parentUri);
+                            hierarchicalParents.add(filler);
+
+                            PropertySet reifiedProperties = new PropertySet();
+                            reifiedProperties.addProperty("childRelationToParent", PropertyValueURI.fromUri(hierarchicalProperty));
+                            if (inverseProperty != null) {
+                                reifiedProperties.addProperty("parentRelationToChild", PropertyValueURI.fromUri(inverseProperty));
+                            }
+                            fillerToReifiedPropertiesMap.put(filler, reifiedProperties);
+                        }
+                    }
+                }
+
                 if (hierarchicalParents.size()>0) {
                     c.properties.addProperty(HIERARCHICAL_PARENT.getText(), new PropertyValueList(hierarchicalParents));
                     for (PropertyValueURI propertyValueURI: fillerToReifiedPropertiesMap.keySet()) {

@@ -24,6 +24,12 @@ public class AncestorsAnnotator {
 
             if (c.types.contains(OntologyNode.NodeType.CLASS)) {
                 c.properties.addProperty(HIERARCHICAL_ANCESTOR.getText(), new PropertyValueAncestors(c, HIERARCHICAL_PARENT.getText()));
+            } else if (c.types.contains(OntologyNode.NodeType.INDIVIDUAL)
+                    && c.properties.hasProperty(HIERARCHICAL_PARENT.getText())) {
+                // Individuals only join the hierarchical closure when a configured
+                // hierarchical property (e.g. COHO isSubCohortOf) links them.
+                // Must run after HierarchicalParentsAnnotator.
+                c.properties.addProperty(HIERARCHICAL_ANCESTOR.getText(), new PropertyValueAncestors(c, HIERARCHICAL_PARENT.getText()));
             }
 
             c.properties.addProperty(DIRECT_ANCESTOR.getText(), new PropertyValueAncestors(c, DIRECT_PARENT.getText()));

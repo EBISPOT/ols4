@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.org/subcohort#"
+     xml:base="http://example.org/subcohort"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://example.org/subcohort"/>
+
+    <owl:ObjectProperty rdf:about="http://example.org/subcohort#isSubCohortOf">
+        <owl:inverseOf rdf:resource="http://example.org/subcohort#hasSubCohort"/>
+        <rdfs:label xml:lang="en">isSubCohortOf</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://example.org/subcohort#hasSubCohort">
+        <rdfs:label xml:lang="en">hasSubCohort</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:Class rdf:about="http://example.org/subcohort#Cohort">
+        <rdfs:label xml:lang="en">cohort</rdfs:label>
+    </owl:Class>
+
+    <owl:NamedIndividual rdf:about="http://example.org/subcohort#registry">
+        <rdf:type rdf:resource="http://example.org/subcohort#Cohort"/>
+        <rdfs:label xml:lang="en">registry cohort</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/subcohort#subCohort">
+        <rdf:type rdf:resource="http://example.org/subcohort#Cohort"/>
+        <isSubCohortOf rdf:resource="http://example.org/subcohort#registry"/>
+        <!-- targets missing from the graph must be ignored -->
+        <isSubCohortOf rdf:resource="http://example.org/subcohort#missingCohort"/>
+        <rdfs:label xml:lang="en">sub cohort</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/subcohort#subSubCohort">
+        <rdf:type rdf:resource="http://example.org/subcohort#Cohort"/>
+        <isSubCohortOf rdf:resource="http://example.org/subcohort#subCohort"/>
+        <rdfs:label xml:lang="en">sub sub cohort</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/subcohort#selfReferential">
+        <rdf:type rdf:resource="http://example.org/subcohort#Cohort"/>
+        <!-- a cohort cannot be a sub-cohort of itself; this assertion must be ignored -->
+        <isSubCohortOf rdf:resource="http://example.org/subcohort#selfReferential"/>
+        <rdfs:label xml:lang="en">self referential cohort</rdfs:label>
+    </owl:NamedIndividual>
+</rdf:RDF>

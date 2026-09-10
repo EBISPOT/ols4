@@ -4,9 +4,19 @@ import Reified from "./Reified";
 
 export default class Individual extends Entity {
   getParents() {
-    return Reified.fromJson<any>(
-      this.properties["directParent"]
-    );
+    // Individuals hang under their rdf:type classes (directParent) and, when a
+    // hierarchical property such as COHO isSubCohortOf links them, under other
+    // individuals (hierarchicalParent).
+    const parents = [
+      ...Reified.fromJson<any>(this.properties["hierarchicalParent"]),
+      ...Reified.fromJson<any>(this.properties["directParent"]),
+    ];
+    const seenIris = new Set<string>();
+    return parents.filter((parent) => {
+      if (seenIris.has(parent.value)) return false;
+      seenIris.add(parent.value);
+      return true;
+    });
   }
   getEquivalents() {
     return [];
