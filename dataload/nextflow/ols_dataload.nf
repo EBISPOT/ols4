@@ -11,7 +11,7 @@ include { embeddings } from './ols_embeddings.nf'
 
 params.config_branch = "stable"  // Branch to fetch configs from (stable or dev)
 params.config_files  = ''         // Comma-separated local config paths; if set, skips NFS fetch (used in CI)
-params.last_run_dir  = ''         // Directory of per-ontology JSONs from last successful run; enables fallback on failure
+params.last_run_dir  = System.getenv('OLS_LAST_RUN_DIR') ?: ''   // Directory of per-ontology JSONs from last successful run; enables fallback on failure
 params.out = "$OLS_OUT_DIR"
 params.pg_mem = "4g"
 params.embeddings_path = "$OLS_EMBEDDINGS_PATH"
