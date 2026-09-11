@@ -1118,13 +1118,14 @@ convenience-overload dead code noted in the V2 LLM-controller baseline above —
 not fixed, per the defect workflow (a testing PR must not bundle a fix).
 
 Verified locally on 2026-09-11 with Java 17 and Rancher Desktop, from `origin/dev` commit
-`aa52e09e4`:
+`75d96f57c` (post `AnnotationExtractor` merge, PR #1407 — this branch was rebased onto it since
+both Tier B baselines happened to insert their new section at the same point in this file):
 
-- Surefire runs 982 tests, including 23 direct `EmbeddingServiceClientTest` cases. Two Docker-free
-  runs took wall-clock 13.14 and 14.29 seconds.
+- Surefire runs 1,006 tests, including 23 direct `EmbeddingServiceClientTest` cases. Two
+  Docker-free runs took wall-clock 19.59 and 19.05 seconds.
 - Failsafe runs 208 PostgreSQL tests, including 3 `EmbeddingServiceClientIT` cases. Two complete
-  database-gate runs took wall-clock 123.62 and 138.37 seconds.
-- The clean `verify` lifecycle runs all 1,190 tests in wall-clock 2 minutes 10.42 seconds.
+  database-gate runs took wall-clock 128.24 and 132.19 seconds.
+- The clean `verify` lifecycle runs all 1,214 tests in wall-clock 2 minutes 15.07 seconds.
 - `EmbeddingServiceClient` now covers all 119 of its executable lines (100%, up from 19.3%) and 51
   of its 52 branches (98.1%, up from 7.7%) across all 13 of its methods (100%, up from
   partial). The one remaining missed branch is `embedTextsFromService`'s
@@ -1132,8 +1133,8 @@ Verified locally on 2026-09-11 with Java 17 and Rancher Desktop, from `origin/de
   `HttpResponse.BodyHandlers.ofByteArray()` is documented to always return a byte array (empty, not
   null, for an empty body), so the null case is not reachable through the real JDK `HttpClient`
   without fabricating a response object — a permanent, expected gap, not chased with a mock.
-  Whole-backend JaCoCo coverage is 73.0% lines (3,512 of 4,810) and 55.7% branches (1,068 of 1,918),
-  up from the most recently documented baseline of 70.9% lines and 53.2% branches.
+  Whole-backend JaCoCo coverage is 73.4% lines (3,530 of 4,810) and 56.5% branches (1,084 of 1,918),
+  up from the `AnnotationExtractor` baseline immediately above (71.3% lines, 54.1% branches).
 - No production defect was discovered by this rollout. The pca16 double-filter noted above was
   confirmed to be pre-existing dead code, not a behavioural bug (nothing observable changes whether
   it runs or not), and was left alone per the defect workflow.
