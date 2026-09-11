@@ -1035,6 +1035,103 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented OlsPostgresClient baseline (milestone 1 of 3: static logic and simple lookups)
+
+`OlsPostgresClient` (`repository/postgres`) is by far the largest Tier B target in this programme
+so far — 625 lines of real jOOQ/Postgres-backed logic in almost every method, spanning three
+distinct areas: pure static/private logic plus the generic `getAll`/`getOne` entity lookups; a
+graph-traversal family (parents/children/ancestors/descendants/related, in both directions, plus
+node-property filtering and search); and an embedding/similarity/vector-search family. Per this
+methodology's shared constraints on splitting a genuinely oversized target (the precedent being
+`V1OntologyTermController`'s 23 routes, split into two milestones), this rollout is split into
+three milestone PRs, each branched independently from `origin/dev` (never stacked on another, the
+same rule the `V1OntologyTermController` milestones followed). This section covers milestone 1:
+`sanitizeEmbeddingColumnName`/`sanitizeEmbeddingNodeColumnName`, `normalizeCosineSimilarity`/
+`normalizeCosineDistance`/`clampUnitInterval`, `hasConcreteEntityType`, `nearestNeighborCandidateLimit`,
+`vectorLiteral`, `getDatabaseNodeCount`, and `getAll`/`getOne`.
+
+**Already-indirect coverage does not count.** `V2LLMController`'s baseline (above) already
+documented ~87.3% line coverage on this class purely from other classes' controller/service-level
+IT suites (`V2LLMController`, and — per this programme's own scope notes — `EmbeddingServiceClient`,
+`McpClassService`, `McpEmbeddingService`, `McpSearchService`) exercising `getSimilar`/
+`getSimilarity`/`getEmbeddingVector`/`searchByVector`/`searchByVectorInOntology`/
+`getEmbeddingModels` through their own fixtures. That proves those callers' own happy paths, not
+this class's own edge cases: none of those suites use an invalid model name (so the
+`IllegalArgumentException` guard was never actually exercised), none call `getAll`/`getOne`/
+`getDatabaseNodeCount` at all, and none reach the reflection-only private helpers below. This
+rollout is a genuinely dedicated, additive pass, not a repeat of existing indirect coverage.
+
+**Unit layer (`OlsPostgresClientTest`, 44 cases, no Postgres).** Every pure-logic method is
+reachable without a database connection:
+
+- `sanitizeEmbeddingColumnName`/`sanitizeEmbeddingNodeColumnName` are private, but every public
+  method that calls one (`getSimilar`, `getSimilarity`, `getEmbeddingVector`, both `searchByVector`
+  overloads, both `searchByVectorInOntology` overloads) does so as its first statement, before the
+  `try`-with-resources that opens a connection — so a bare `new OlsPostgresClient()` with no
+  `postgresClient` collaborator wired in is enough to prove the `IllegalArgumentException` guard
+  fires for `null` and for SQL-injection-shaped names (`"bad name"`, `"bad;name"`, `"bad'name"`,
+  `"bad\"name"`, `"bad/name"`, `"../etc/passwd"`) on every one of those seven entry points, plus a
+  positive case proving a well-formed name is *not* rejected (it instead fails downstream with a
+  `NullPointerException` from the unwired collaborator, proof the sanitizer itself let it through).
+- `normalizeCosineSimilarity`/`normalizeCosineDistance` are package-private static (confirmed by
+  reading the source directly, so no reflection was needed), called directly from this same-package
+  test class. Both formulas are verified at their exact values (`1.0`/`-1.0`/`0.0` inputs), at their
+  6-decimal-place rounding (`0.123456789` input), and — the specific reason `clampUnitInterval`
+  exists — at inputs slightly outside `[-1, 1]`/`[0, 2]` that real floating-point cosine arithmetic
+  can produce (`1.0000001`, `-1.0000001` for similarity; `-0.0000001`, `2.0000002` for distance),
+  proving the clamp engages instead of leaking an out-of-range score.
+- `hasConcreteEntityType`, `nearestNeighborCandidateLimit`, and `vectorLiteral` are private
+  *instance* methods (not static) with no Postgres dependency of their own, reached via plain
+  `java.lang.reflect` (`setAccessible(true)` then `invoke`), the same white-box idiom already used
+  for `EmbeddingServiceClient`'s `PcaModel` construction. `hasConcreteEntityType`: `null`, empty,
+  whitespace-only, and the literal `"OntologyEntity"` all return `false`; any other non-blank string
+  returns `true`. `nearestNeighborCandidateLimit`: the three scaling factors (base `max(limit*20,
+  100)`, `filterByType` bumping to `max(current, limit*100)`, `filterByOntology` bumping to
+  `max(current, limit*500)`) are each proven to have no effect when smaller than the running value
+  and to raise it when larger, both individually and combined, plus three separate cases proving
+  the final 20,000 cap actually triggers — from the base alone, from the ontology bump alone, and
+  from both bumps combined. `vectorLiteral`: empty list (`"[]"`), single element (`"[1.5]"`, no
+  spurious comma), and multiple elements (`"[1.0,2.5,-3.0]"`, exact `String.valueOf(Double)`
+  formatting).
+
+**IT layer (`OlsPostgresClientIT`, 12 cases, real Postgres).** `PostgresIntegrationTestSupport`
+gained `OlsPostgresClientRepositoryHandle` and `createOlsPostgresClientRepositories` — the minimal
+wiring this class needs (just itself, no repository layer on top), following the same
+`ReflectionTestUtils.setField` idiom as every other handle factory in that file. No new fixture was
+needed: the existing shared `initializeDatabase` ontology + entity fixture already provides enough
+type/id/iri/ontology-id diversity for every scenario this milestone requires (four `OntologyClass`
+rows — `DUO_0001` in ontology `duo`, `EFO_0001`/`EFO_0002`/the obsolete `EFO_0999` in `efo` — plus
+one `OntologyProperty` row), reused rather than inventing a new graph structure from scratch, per
+this methodology's fixture-reuse guidance. Covered: `getDatabaseNodeCount`'s passthrough to
+`PostgresClient.returnNodeCount()` (9 rows: 4 ontology + 5 entity fixture records — no dedicated
+`PostgresClient` test exists yet, so this is also the first assertion on that count for this
+fixture); `getAll`'s three recognized property-map keys (`id`, `iri`, `ontologyId`) each filtering
+correctly, individually and combined with `and`; an unrecognized key silently ignored (the
+`default -> {}` branch, proven by asserting identical total-element counts with and without it);
+pagination across two pages with deterministic IRI-ascending ordering; and a type with zero matches
+returning an empty page rather than throwing. `getOne`: the single-result success path, the
+zero-result `RuntimeException` ("expected exactly one result for getOne, but got 0"), and the
+more-than-one-result `RuntimeException` ("...but got 3", using the three `efo`-ontology classes) —
+not just the previously-implicit success case.
+
+Verified locally on 2026-09-11 from `origin/dev` commit `75d96f57c` (current tip, immediately after
+the `AnnotationExtractor` merge) with Java 17 and Rancher Desktop:
+
+- Surefire runs 1,027 tests, including 44 `OlsPostgresClientTest` cases. Two Docker-free runs both
+  passed cleanly (0 failures / 0 errors).
+- Failsafe runs 217 PostgreSQL tests, including 12 `OlsPostgresClientIT` cases. Two complete
+  database-gate runs both passed cleanly (0 failures / 0 errors).
+- The clean `verify` lifecycle runs all 1,244 tests (1,027 surefire + 217 failsafe) in wall-clock
+  2 minutes 5.37 seconds.
+- `OlsPostgresClient` now covers 322 of 363 lines (88.7%, up from the `V2LLMController` baseline's
+  87.3%) and 62 of 79 branches (78.5%, up from 65.8%) across 39 of 42 methods (92.9%). The remaining
+  gaps belong entirely to milestones 2 and 3 (the graph-traversal and embedding/vector-search method
+  bodies beyond what milestone 1 touches). Whole-backend JaCoCo coverage is 71.4% lines (3,433 of
+  4,810) and 54.6% branches (1,047 of 1,918), up marginally from the `AnnotationExtractor` baseline
+  (3,428 of 4,810 lines, 1,037 of 1,918 branches) — expected, since this milestone's new coverage is
+  concentrated in one already-partially-covered class rather than spread across many.
+- No production defect was discovered by this rollout.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.

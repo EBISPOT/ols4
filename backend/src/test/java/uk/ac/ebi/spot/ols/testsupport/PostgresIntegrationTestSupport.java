@@ -140,6 +140,20 @@ public final class PostgresIntegrationTestSupport {
         return new RepositoryHandle(repository, postgresClient);
     }
 
+    /**
+     * Wires a bare {@link OlsPostgresClient} against disposable Postgres, with no repository layer
+     * on top -- used by {@code OlsPostgresClientIT}, which exercises {@code OlsPostgresClient}
+     * directly rather than through any repository.
+     */
+    public static OlsPostgresClientRepositoryHandle createOlsPostgresClientRepositories(PostgreSQLContainer<?> container) {
+        PostgresClient postgresClient = createPostgresClient(container);
+
+        OlsPostgresClient olsPostgresClient = new OlsPostgresClient();
+        ReflectionTestUtils.setField(olsPostgresClient, "postgresClient", postgresClient);
+
+        return new OlsPostgresClientRepositoryHandle(olsPostgresClient, postgresClient);
+    }
+
     public static HealthCheckRepositoryHandle createHealthCheckRepositories(PostgreSQLContainer<?> container) {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
@@ -830,6 +844,16 @@ public final class PostgresIntegrationTestSupport {
 
     public record RepositoryHandle(
             OntologyRepository repository,
+            PostgresClient postgresClient) implements AutoCloseable {
+
+        @Override
+        public void close() {
+            postgresClient.close();
+        }
+    }
+
+    public record OlsPostgresClientRepositoryHandle(
+            OlsPostgresClient olsPostgresClient,
             PostgresClient postgresClient) implements AutoCloseable {
 
         @Override
