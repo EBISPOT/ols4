@@ -1035,6 +1035,123 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented McpSearchService baseline
+
+`McpSearchService` (`controller/mcp`) is a Spring AI MCP `@Tool` service class with two methods,
+`search(String query, Boolean includeObsoleteEntities)` and `fetch(String id)`, built specifically
+to match OpenAI's MCP server spec (per its own source comment, linking
+`https://platform.openai.com/docs/mcp#create-an-mcp-server`). It differs from every other MCP
+service tested so far in this programme in two ways:
+
+- **Two of its three `@Autowired` fields are dead wiring.** `embeddingServiceClient` and
+  `postgresClient` are declared and injected but never read or called anywhere in the class - only
+  `entityRepository` is used, by both `@Tool` methods. This was confirmed by reading the full
+  99-line source directly (not assumed). It causes no incorrect behaviour, just two unnecessary
+  Spring beans wired in; `McpSearchServiceTest` deliberately leaves both fields `null` in every
+  case, and every case still passes with no `NullPointerException` - itself observable proof
+  neither field is ever touched. Not a defect, not fixed here.
+- **Both `@Tool` methods return a raw JSON `String`** (`gson.toJson(...)`), unlike
+  `McpClassService`/`McpEmbeddingService` (`McpPage<T>`) or `McpOntologyService` (`List<T>`). A
+  broken serialization could still produce *some* non-null, non-empty string, so both test layers
+  parse the returned string back with `Gson`/`JsonParser` and assert on the real field values
+  (`id`/`url`/`title`/`isObsolete`/`text`/`metadata`), never just non-null/non-empty.
+
+**`search`** builds its `includeObsoleteEntities` filter with the same three-way rule as
+`McpClassService.searchClasses`'s `isObsolete` handling: `null` and explicit `false` both add
+`properties.put("isObsolete", List.of("false"))`; only explicit `true` omits the filter entirely
+(unlike `searchClasses`, `search` never adds its own `type` filter - `EntityRepository.find` adds
+the default `type=entity` filter internally when `properties` has no `type` key). It then delegates
+to `EntityRepository.find` with an exact, fully-enumerated fixed-argument list: hardcoded
+`PageRequest.of(0, 20)`, hardcoded `lang="en"`, `searchFields`/`boostFields`/`facetFields` all
+`null`, `exactMatch` a literal `false` (not `null` - confirmed by reading the source and asserted
+explicitly, since the task brief specifically flagged this as easy to get wrong),
+`excludeOntologyIds` `null`, and an always-on `JsonTransformOptions`
+(`resolveReferences`/`manchesterSyntax` both hardcoded `true`). The result's content is mapped
+through `McpSearchResult::fromJson` then serialized with `gson.toJson`.
+
+**`fetch`** splits `id` on `"\\+"` and requires exactly two tokens: fewer than two (no `+`
+present, or an empty-string input - `"".split("\\+")` yields a length-1 array containing a single
+empty string, not a length-0 array, confirmed empirically) throws `IllegalArgumentException` with
+the exact documented message; more than two tokens (more than one literal `+` in the input) throws
+the same exception. Checked against every committed test fixture and golden output IRI
+(`backend/src/test/resources/fixtures/`, `testcases_expected_output_api/mcp/*.json`): none contain
+a literal `+` character, so the 3+-token branch is not known to be reachable with any real OBO
+Library purl IRI in this codebase today, but it is still tested directly since the parser itself
+does not guard against it. The success path (exactly two tokens) delegates to
+`EntityRepository.getByOntologyIdAndIri(tokens[0], tokens[1], "en", outputOpts)` with the same
+always-on `JsonTransformOptions`, then maps the result through `McpFetchResult::fromJson` and
+`gson.toJson`.
+
+**Investigation finding confirmed NOT a defect, via the committed golden file.**
+`McpFetchResult.fromJson` checks `type == "class"` with Java reference equality against a
+Gson-parsed string, which - confirmed empirically with the project's actual Gson 2.13.2 dependency
+- never matches a real `JsonPrimitive` value parsed from JSON text. This makes the
+`mc.metadata = McpClass.fromJson(entity)` branch permanently dead in production: `metadata` always
+falls through to the `Map.of("type", type)` fallback, even for a genuine class entity. This looked
+like a real bug on first read, but per this programme's defect workflow the committed golden file
+`testcases_expected_output_api/mcp/fetch.json` was checked first, and it asserts exactly this
+shape already - a `duo` class entity (`DUO_0000001`) whose expected `"metadata"` is
+`{"type": "class"}`, not a nested `McpClass` structure. This is the third time in this programme
+that something which looked like a bug from reading the code turned out to be an
+already-asserted-correct golden contract; `McpSearchServiceTest`/`McpSearchServiceIT` both assert
+this real, current, already-baselined shape rather than the shape the dead branch would have
+produced.
+
+**A genuine production defect was found and is being filed separately, per the defect workflow.**
+`EntityRepository.getByOntologyIdAndIri` returns a plain `null` (not an exception) when
+`OlsSearchClient.getFirst` finds no matching row - confirmed by reading `OlsSearchClient.getFirst`'s
+real source, which explicitly `return`s `null` on `fetchOne() == null`. `McpSearchService.fetch()`
+passes that `null` straight into `McpFetchResult.fromJson(JsonElement)`, which immediately calls
+`entity.getAsJsonObject()` with no null check, so a syntactically well-formed `ontologyid+iri` id
+for an entity that genuinely does not exist throws an undocumented `NullPointerException` instead
+of a clear "not found" error. Checked against the defect workflow: no committed golden file asserts
+otherwise (there is no not-found case in `testcases_expected_output_api/mcp/`), and this does not
+involve any faked/mocked collaborator - it was reproduced both by `McpSearchServiceTest`'s
+hand-rolled fake (`fetchThrowsNullPointerExceptionWhenTheRepositoryFindsNoMatchingEntity`) and,
+independently, against real Postgres in `McpSearchServiceIT`
+(`fetchThrowsNullPointerExceptionWhenNoRealEntityMatchesThisOntologyIdAndIriThroughRealPostgres`).
+Both tests document the current behaviour; the fix itself is **not** bundled into this PR and will
+be opened as its own separate minimal PR, per this programme's standing rule.
+
+**Two layers.** `McpSearchServiceTest.java` (19 cases) is the direct unit suite: this repo's
+hand-rolled-fake idiom (no Mockito), covering the three-way `includeObsoleteEntities` resolution,
+the exact fixed-argument delegation to `EntityRepository.find` (every argument asserted
+individually), the `McpSearchResult`/`gson.toJson` result shape (including the empty-array case and
+`isObsolete=true` passthrough), `IOException` propagation from `search`, every `id.split` branch for
+`fetch` (2 tokens / 0 or 1 token / 3+ tokens / empty string), the exact fixed-argument delegation to
+`EntityRepository.getByOntologyIdAndIri`, the `McpFetchResult`/`gson.toJson` result shape (including
+the class-entity `metadata` shape above), and the not-found `NullPointerException` finding.
+`McpSearchServiceIT.java` (6 cases) is a thin real-Postgres suite reusing
+`PostgresIntegrationTestSupport.createEntityRepository`/`initializeDatabase` - the same base entity
+fixture (`EFO_0001`/`EFO_0002`/`DUO_0001`/`EFO_0100` active, `EFO_0999` obsolete) `McpClassServiceIT`
+already composes an `EntityRepository` from - proving the fixed-argument calls reach real Postgres
+and produce genuinely correct JSON for one `search` case (free-text match, default obsolete
+exclusion, explicit obsolete inclusion) and one `fetch` case (a real class entity's full field
+mapping, an obsolete entity, and the real-Postgres not-found reproduction). No new fixture mechanism
+was needed. `embeddingServiceClient`/`postgresClient` are left `null` in the IT service instance too,
+for the same reason as the unit layer.
+
+Verified locally on 2026-09-11 from `origin/dev` commit `75d96f57c` (the `AnnotationExtractor` merge
+commit - `dev`'s tip at branch time) with Java 17 and Rancher Desktop:
+
+- Surefire runs 1,002 tests, including 19 direct `McpSearchServiceTest` cases. Two Docker-free runs
+  both reported 0 failures / 0 errors across all 64 surefire report files.
+- Failsafe runs 211 PostgreSQL tests, including 6 `McpSearchServiceIT` cases (3.33s and 3.12s for
+  this class's own six cases within each run). Two complete database-gate runs both reported 0
+  failures / 0 errors across all 34 failsafe report files.
+- The clean `verify` lifecycle runs all 1,213 tests (1,002 surefire + 211 failsafe) in wall-clock 2
+  minutes 4.89 seconds.
+- `McpSearchService` itself covers all 102 instructions, all 6 branches, all 19 executable lines, and
+  all 3 methods - 100% on every JaCoCo dimension. Whole-backend JaCoCo coverage is 73.2% lines (3,519
+  of 4,810) and 56.8% branches (1,089 of 1,918), up from the most recently documented baseline of
+  71.3% lines and 54.1% branches (the `AnnotationExtractor` baseline) - entirely attributable to this
+  rollout, since the line/branch denominators (4,810 / 1,918) are unchanged from that baseline.
+- One production defect was discovered (the not-found `NullPointerException` in `fetch`, described
+  above); it is filed as its own separate minimal PR, not bundled into this one. The
+  `type == "class"` reference-equality quirk was investigated as a second plausible defect
+  candidate but is confirmed intentional/already-baselined by the committed golden file, per the
+  defect workflow.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
