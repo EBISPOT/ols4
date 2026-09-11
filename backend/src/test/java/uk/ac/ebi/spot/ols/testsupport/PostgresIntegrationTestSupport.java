@@ -58,6 +58,22 @@ public final class PostgresIntegrationTestSupport {
      */
     private static final String V2LLM_TEST_MODEL = "test_model";
 
+    /**
+     * Model name used by {@code OlsPostgresClientEmbeddingIT}'s dedicated embedding/vector-search
+     * fixture. Deliberately distinct from {@link #V2LLM_TEST_MODEL} so the two fixtures never share
+     * a column name (they never share a container either, but keeping them distinct avoids any
+     * confusion when reading the two fixtures side by side). Public so the IT class can reference it
+     * directly rather than duplicating the literal.
+     */
+    public static final String OLS_POSTGRES_CLIENT_EMBEDDING_MODEL = "olspgc_test_model";
+
+    /**
+     * A second {@code embeddings_<model>} column on {@code ols_entities}, added with no data, whose
+     * name contains {@code pca16} -- used only by {@code getEmbeddingModels()}'s exclusion test.
+     */
+    private static final String OLS_POSTGRES_CLIENT_EMBEDDING_MODEL_PCA16 =
+            OLS_POSTGRES_CLIENT_EMBEDDING_MODEL + "_pca16";
+
     private PostgresIntegrationTestSupport() {
     }
 
@@ -127,6 +143,25 @@ public final class PostgresIntegrationTestSupport {
         }
     }
 
+    /**
+     * Loads the shared ontology + entity fixture, then adds a dedicated embedding/vector-search
+     * fixture for {@code OlsPostgresClientEmbeddingIT} under its own {@code embtest}/{@code embtest2}
+     * (entity-level {@code embeddings_<model>} family), {@code vectest} (plain node-level
+     * {@code embedding_<model>} family), and {@code vectestonto}/{@code vectestonto2}
+     * (ontology-scoped node-level family) ontology ids -- each isolated from the others and from
+     * every other suite's fixture (including the existing {@code V2LLMController} embedding
+     * fixture). See {@link #loadOlsPostgresClientEmbeddingFixture} for exactly which row is which
+     * and why.
+     */
+    public static void initializeOlsPostgresClientEmbeddingDatabase(PostgreSQLContainer<?> container) {
+        initializeDatabase(container);
+        try (Connection connection = container.createConnection("")) {
+            loadOlsPostgresClientEmbeddingFixture(connection);
+        } catch (IOException | SQLException e) {
+            throw new IllegalStateException("Failed to load the OlsPostgresClient embedding/vector-search integration fixture", e);
+        }
+    }
+
     public static RepositoryHandle createRepository(PostgreSQLContainer<?> container) {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
@@ -138,6 +173,21 @@ public final class PostgresIntegrationTestSupport {
         ReflectionTestUtils.setField(repository, "searchClient", searchClient);
         ReflectionTestUtils.setField(repository, "postgresClient", olsPostgresClient);
         return new RepositoryHandle(repository, postgresClient);
+    }
+
+    /**
+     * Wires a bare {@link OlsPostgresClient} against disposable Postgres, with no repository layer
+     * on top -- used by {@code OlsPostgresClientIT}/{@code OlsPostgresClientGraphIT}/
+     * {@code OlsPostgresClientEmbeddingIT}, which exercise {@code OlsPostgresClient} directly rather
+     * than through any repository.
+     */
+    public static OlsPostgresClientRepositoryHandle createOlsPostgresClientRepositories(PostgreSQLContainer<?> container) {
+        PostgresClient postgresClient = createPostgresClient(container);
+
+        OlsPostgresClient olsPostgresClient = new OlsPostgresClient();
+        ReflectionTestUtils.setField(olsPostgresClient, "postgresClient", postgresClient);
+
+        return new OlsPostgresClientRepositoryHandle(olsPostgresClient, postgresClient);
     }
 
     public static HealthCheckRepositoryHandle createHealthCheckRepositories(PostgreSQLContainer<?> container) {
@@ -812,6 +862,207 @@ public final class PostgresIntegrationTestSupport {
         }
     }
 
+    /**
+     * Builds the dedicated fixture for {@code OlsPostgresClientEmbeddingIT} (the embedding/
+     * similarity/vector-search family, i.e. this Tier B rollout's milestone 3). Three independent
+     * groups of rows, each isolated under its own ontology id(s) so none can interfere with another:
+     *
+     * <ol>
+     *   <li><b>{@code embtest}/{@code embtest2}, entity-level {@code embeddings_<model>}</b> --
+     *       read by {@code getSimilar}/{@code getSimilarity}/{@code getEmbeddingVector}.
+     *       {@code EMB_SOURCE} ({@code [1,0,0,0]}) is the fixed query point; {@code
+     *       EMB_IDENTICAL_DIR} ({@code [2,0,0,0]}, same direction, cosine similarity 1),
+     *       {@code EMB_DIAG} ({@code [4,3,0,0]}, cosine similarity 0.8, the same clean 3-4-5-ratio
+     *       value already proven reliable by the {@code V2LLMController} baseline's fixture),
+     *       {@code EMB_ORTHO} ({@code [0,1,0,0]}, cosine similarity 0), and {@code EMB_OPPOSITE}
+     *       ({@code [-1,0,0,0]}, cosine similarity -1) give a deterministic, hand-checkable
+     *       {@code getSimilar} ordering with scores 1.0/0.9/0.5/0.0.
+     *       {@code EMB_OBSOLETE_ONLY} is obsolete with an embedding, proving the source lookup's own
+     *       {@code is_obsolete = false} filter (not a filter on the result set, which this class does
+     *       not apply). {@code EMB_NO_EMBEDDING} has no {@code embeddings_<model>} value at all.
+     *       {@code EMB_VECTOR_PARSE} ({@code [-1.5,2,0,12]}) exists purely to stress
+     *       {@code getEmbeddingVector}'s bracket-stripping/parsing with a leading negative decimal
+     *       and a trailing two-digit integer -- values an off-by-one in the substring bounds would
+     *       visibly corrupt. {@code EMB_DUP} exists twice with the identical IRI and type, once in
+     *       each ontology ({@code embtest} non-defining, {@code embtest2} defining) -- proving
+     *       {@code getSimilar}'s source lookup prefers the defining-ontology row (ordered by
+     *       {@code is_defining_ontology DESC NULLS LAST}).</li>
+     *   <li><b>{@code vectest}, node-level {@code embedding_<model>}</b> -- read by
+     *       {@code searchByVector}. {@code VEC_CLASS_A}/{@code VEC_CLASS_B} are type
+     *       {@code VecClass}; {@code VEC_PROPERTY_A} is type {@code VecProperty} with the same
+     *       label-embedding vector as {@code VEC_CLASS_A}, present only to prove
+     *       {@code hasConcreteEntityType}'s type filter actually excludes it when searching for
+     *       {@code VecClass}. {@code VEC_CLASS_B} additionally has a {@code CurationEmbedding} row
+     *       closer to the query than its own {@code LabelEmbedding} row, so {@code includeCurations}
+     *       measurably changes its best-match score (0.5 excluded vs. 0.9 included) rather than
+     *       just adding an otherwise-identical duplicate.</li>
+     *   <li><b>{@code vectestonto}/{@code vectestonto2}, node-level {@code embedding_<model>}</b> --
+     *       read by {@code searchByVectorInOntology}. Deliberately its own dedicated ontology pair
+     *       and types ({@code VecOntoClass}/{@code VecOntoProperty}), distinct from the plain
+     *       {@code searchByVector} fixture above, since that method's queries are not scoped by
+     *       ontology at all: reusing {@code vectest}'s ontology id or {@code VecClass}/
+     *       {@code VecProperty} types here would leak these rows into the plain fixture's result
+     *       sets (and vice versa). {@code VEC_ONTO_CLASS} and {@code VEC_ONTO_PROPERTY} each exist
+     *       in both ontologies with the same IRI+type; only the {@code vectestonto} (defining)
+     *       copies have embedding nodes. {@code isDefiningOntology = true} against
+     *       {@code vectestonto} finds the defining copies directly; {@code isDefiningOntology =
+     *       false} against {@code vectestonto2} must instead join through the defining copy's
+     *       embedding to return the <em>target</em> ({@code vectestonto2}) copy's own id/json -- a
+     *       genuinely different query path, not the same rows relabelled. {@code VEC_ONTO_PROPERTY}
+     *       has only a {@code CurationEmbedding} node (no {@code LabelEmbedding}), so it is found
+     *       only when {@code includeCurations = true}.</li>
+     * </ol>
+     */
+    private static void loadOlsPostgresClientEmbeddingFixture(Connection connection) throws IOException, SQLException {
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("ALTER TABLE ols_entities ADD COLUMN \""
+                    + "embeddings_" + OLS_POSTGRES_CLIENT_EMBEDDING_MODEL + "\" vector(4)");
+            statement.execute("ALTER TABLE ols_entities ADD COLUMN \""
+                    + "embeddings_" + OLS_POSTGRES_CLIENT_EMBEDDING_MODEL_PCA16 + "\" vector(4)");
+            statement.execute("ALTER TABLE ols_embedding_nodes ADD COLUMN \""
+                    + "embedding_" + OLS_POSTGRES_CLIENT_EMBEDDING_MODEL + "\" vector(4)");
+        }
+
+        // -- getSimilar / getSimilarity / getEmbeddingVector fixture --
+        insertMinimalEntity(connection, "embtest+embclass+http://example.org/EMB_SOURCE",
+                "EmbClass", "http://example.org/EMB_SOURCE", "embtest", false, true, "Emb Source");
+        insertMinimalEntity(connection, "embtest+embclass+http://example.org/EMB_IDENTICAL_DIR",
+                "EmbClass", "http://example.org/EMB_IDENTICAL_DIR", "embtest", false, true, "Emb Identical Direction");
+        insertMinimalEntity(connection, "embtest+embclass+http://example.org/EMB_DIAG",
+                "EmbClass", "http://example.org/EMB_DIAG", "embtest", false, true, "Emb Diagonal");
+        insertMinimalEntity(connection, "embtest+embclass+http://example.org/EMB_ORTHO",
+                "EmbClass", "http://example.org/EMB_ORTHO", "embtest", false, true, "Emb Orthogonal");
+        insertMinimalEntity(connection, "embtest+embclass+http://example.org/EMB_OPPOSITE",
+                "EmbClass", "http://example.org/EMB_OPPOSITE", "embtest", false, true, "Emb Opposite");
+        insertMinimalEntity(connection, "embtest+embobsoletesrc+http://example.org/EMB_OBSOLETE_ONLY",
+                "EmbObsoleteSrc", "http://example.org/EMB_OBSOLETE_ONLY", "embtest", true, true, "Emb Obsolete Only");
+        insertMinimalEntity(connection, "embtest+embnoembedding+http://example.org/EMB_NO_EMBEDDING",
+                "EmbNoEmbedding", "http://example.org/EMB_NO_EMBEDDING", "embtest", false, true, "Emb No Embedding");
+        // Same type as EMB_NO_EMBEDDING (unlike EMB_SOURCE, which is type EmbClass) so
+        // getSimilarity's shared `type` parameter matches both sides of the pair, isolating "the
+        // other entity is missing its embedding value" from an unrelated type mismatch.
+        insertMinimalEntity(connection, "embtest+embnoembedding+http://example.org/EMB_NO_EMBEDDING_PARTNER",
+                "EmbNoEmbedding", "http://example.org/EMB_NO_EMBEDDING_PARTNER", "embtest", false, true,
+                "Emb No Embedding Partner");
+        insertMinimalEntity(connection, "embtest+embvectorparse+http://example.org/EMB_VECTOR_PARSE",
+                "EmbVectorParse", "http://example.org/EMB_VECTOR_PARSE", "embtest", false, true, "Emb Vector Parse");
+        insertMinimalEntity(connection, "embtest+embdup+http://example.org/EMB_DUP",
+                "EmbDup", "http://example.org/EMB_DUP", "embtest", false, false, "Emb Dup Non Defining");
+        insertMinimalEntity(connection, "embtest2+embdup+http://example.org/EMB_DUP",
+                "EmbDup", "http://example.org/EMB_DUP", "embtest2", false, true, "Emb Dup Defining");
+
+        updateEmbeddingTestModelVector(connection, "embtest+embclass+http://example.org/EMB_SOURCE", "[1,0,0,0]");
+        updateEmbeddingTestModelVector(connection, "embtest+embclass+http://example.org/EMB_IDENTICAL_DIR", "[2,0,0,0]");
+        updateEmbeddingTestModelVector(connection, "embtest+embclass+http://example.org/EMB_DIAG", "[4,3,0,0]");
+        updateEmbeddingTestModelVector(connection, "embtest+embclass+http://example.org/EMB_ORTHO", "[0,1,0,0]");
+        updateEmbeddingTestModelVector(connection, "embtest+embclass+http://example.org/EMB_OPPOSITE", "[-1,0,0,0]");
+        updateEmbeddingTestModelVector(connection, "embtest+embobsoletesrc+http://example.org/EMB_OBSOLETE_ONLY", "[1,0,0,0]");
+        // EMB_NO_EMBEDDING deliberately gets no embeddings_<model> value -- it stays NULL.
+        updateEmbeddingTestModelVector(connection, "embtest+embnoembedding+http://example.org/EMB_NO_EMBEDDING_PARTNER", "[1,0,0,0]");
+        updateEmbeddingTestModelVector(connection, "embtest+embvectorparse+http://example.org/EMB_VECTOR_PARSE", "[-1.5,2,0,12]");
+        updateEmbeddingTestModelVector(connection, "embtest+embdup+http://example.org/EMB_DUP", "[5,5,0,0]");
+        updateEmbeddingTestModelVector(connection, "embtest2+embdup+http://example.org/EMB_DUP", "[9,0,0,0]");
+
+        // -- searchByVector fixture --
+        insertMinimalEntity(connection, "vectest+vecclass+http://example.org/VEC_CLASS_A",
+                "VecClass", "http://example.org/VEC_CLASS_A", "vectest", false, true, "Vec Class A");
+        insertMinimalEntity(connection, "vectest+vecclass+http://example.org/VEC_CLASS_B",
+                "VecClass", "http://example.org/VEC_CLASS_B", "vectest", false, true, "Vec Class B");
+        insertMinimalEntity(connection, "vectest+vecproperty+http://example.org/VEC_PROPERTY_A",
+                "VecProperty", "http://example.org/VEC_PROPERTY_A", "vectest", false, true, "Vec Property A");
+
+        insertEmbeddingNodeForTestModel(connection, "vec-node-1", "LabelEmbedding",
+                "vectest+vecclass+http://example.org/VEC_CLASS_A", "[1,0,0,0]");
+        insertEmbeddingNodeForTestModel(connection, "vec-node-2", "LabelEmbedding",
+                "vectest+vecclass+http://example.org/VEC_CLASS_B", "[0,1,0,0]");
+        insertEmbeddingNodeForTestModel(connection, "vec-node-3", "LabelEmbedding",
+                "vectest+vecproperty+http://example.org/VEC_PROPERTY_A", "[1,0,0,0]");
+        insertEmbeddingNodeForTestModel(connection, "vec-node-4", "CurationEmbedding",
+                "vectest+vecclass+http://example.org/VEC_CLASS_B", "[4,3,0,0]");
+
+        // -- searchByVectorInOntology fixture -- a dedicated defining/target ontology pair
+        // (vectestonto/vectestonto2) and dedicated types (VecOntoClass/VecOntoProperty), distinct
+        // from the plain searchByVector fixture's vectest ontology and VecClass/VecProperty types
+        // above: searchByVectorInOntology's isDefiningOntology=true branch filters only by
+        // ontology_id (+ type, when concrete), and its "OntologyEntity" (type-filter-disabled) test
+        // cases filter only by ontology_id -- so any overlap in either ontology id or type between
+        // the two fixture groups would silently leak rows from one group's assertions into the
+        // other's.
+        insertMinimalEntity(connection, "vectestonto+vecontoclass+http://example.org/VEC_ONTO_CLASS",
+                "VecOntoClass", "http://example.org/VEC_ONTO_CLASS", "vectestonto", false, true, "Vec Onto Class");
+        insertMinimalEntity(connection, "vectestonto+vecontoproperty+http://example.org/VEC_ONTO_PROPERTY",
+                "VecOntoProperty", "http://example.org/VEC_ONTO_PROPERTY", "vectestonto", false, true, "Vec Onto Property");
+        insertMinimalEntity(connection, "vectestonto2+vecontoclass+http://example.org/VEC_ONTO_CLASS",
+                "VecOntoClass", "http://example.org/VEC_ONTO_CLASS", "vectestonto2", false, false, "Vec Onto Class Target");
+        insertMinimalEntity(connection, "vectestonto2+vecontoproperty+http://example.org/VEC_ONTO_PROPERTY",
+                "VecOntoProperty", "http://example.org/VEC_ONTO_PROPERTY", "vectestonto2", false, false, "Vec Onto Property Target");
+
+        insertEmbeddingNodeForTestModel(connection, "vec-node-onto-1", "LabelEmbedding",
+                "vectestonto+vecontoclass+http://example.org/VEC_ONTO_CLASS", "[1,0,0,0]");
+        insertEmbeddingNodeForTestModel(connection, "vec-node-onto-2", "CurationEmbedding",
+                "vectestonto+vecontoproperty+http://example.org/VEC_ONTO_PROPERTY", "[1,0,0,0]");
+
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("ANALYZE ols_entities");
+            statement.execute("ANALYZE ols_embedding_nodes");
+        }
+    }
+
+    /**
+     * Inserts a minimal {@code ols_entities} row: just the columns {@code OlsPostgresClient}'s
+     * embedding/vector-search family actually reads (id/type/iri/ontology_id/_json/is_obsolete/
+     * is_defining_ontology/label). Every other column keeps its schema default -- there is no
+     * hierarchy/search behaviour under test in this fixture, so the fuller column list other
+     * loaders in this file populate (direct_parents, related_to, etc.) is unnecessary here.
+     */
+    private static void insertMinimalEntity(
+            Connection connection, String id, String type, String iri, String ontologyId,
+            boolean isObsolete, boolean isDefiningOntology, String label) throws IOException, SQLException {
+        String json = "{\"id\":\"" + id + "\",\"iri\":\"" + iri + "\",\"label\":\"" + label
+                + "\",\"ontologyId\":\"" + ontologyId + "\"}";
+        try (PreparedStatement statement = connection.prepareStatement(
+                "INSERT INTO ols_entities (id, type, iri, ontology_id, _json, is_obsolete, is_defining_ontology, label) "
+                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)")) {
+            statement.setString(1, id);
+            statement.setString(2, type);
+            statement.setString(3, iri);
+            statement.setString(4, ontologyId);
+            statement.setBytes(5, gzip(json));
+            statement.setBoolean(6, isObsolete);
+            statement.setBoolean(7, isDefiningOntology);
+            statement.setArray(8, connection.createArrayOf("text", new String[] {label}));
+            statement.executeUpdate();
+        }
+    }
+
+    private static void updateEmbeddingTestModelVector(Connection connection, String entityId, String vectorLiteral)
+            throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement(
+                "UPDATE ols_entities SET \"embeddings_" + OLS_POSTGRES_CLIENT_EMBEDDING_MODEL + "\" = ?::vector WHERE id = ?")) {
+            statement.setString(1, vectorLiteral);
+            statement.setString(2, entityId);
+            int updated = statement.executeUpdate();
+            if (updated != 1) {
+                throw new IllegalStateException(
+                        "Expected exactly one ols_entities row for id " + entityId + ", updated " + updated);
+            }
+        }
+    }
+
+    private static void insertEmbeddingNodeForTestModel(
+            Connection connection, String nodeId, String embeddingType, String entityId, String vectorLiteral)
+            throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement(
+                "INSERT INTO ols_embedding_nodes (id, type, entity_id, \""
+                        + "embedding_" + OLS_POSTGRES_CLIENT_EMBEDDING_MODEL + "\") VALUES (?, ?, ?, ?::vector)")) {
+            statement.setString(1, nodeId);
+            statement.setString(2, embeddingType);
+            statement.setString(3, entityId);
+            statement.setString(4, vectorLiteral);
+            statement.executeUpdate();
+        }
+    }
+
     private static java.sql.Array textArray(Connection connection, JsonArray values) throws SQLException {
         String[] strings = new String[values.size()];
         for (int i = 0; i < values.size(); i++) {
@@ -830,6 +1081,16 @@ public final class PostgresIntegrationTestSupport {
 
     public record RepositoryHandle(
             OntologyRepository repository,
+            PostgresClient postgresClient) implements AutoCloseable {
+
+        @Override
+        public void close() {
+            postgresClient.close();
+        }
+    }
+
+    public record OlsPostgresClientRepositoryHandle(
+            OlsPostgresClient olsPostgresClient,
             PostgresClient postgresClient) implements AutoCloseable {
 
         @Override
