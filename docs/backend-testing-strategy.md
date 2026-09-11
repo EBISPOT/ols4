@@ -1035,6 +1035,133 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented JooqSupport baseline
+
+`JooqSupport` (`repository/postgres`) is the second Tier B target in this programme. It is a
+`final` class with a private no-op constructor — a pure static-method jOOQ SQL-fragment-builder
+utility, no Spring bean, no constructor state — exposing six `Table<?>` constants
+(`OLS_AUTOSUGGEST`, `OLS_EMBEDDING_NODES`, `OLS_ENTITIES`, `OLS_PCA_MODELS`, `OLS_TEXT_TAGGER`,
+`INFORMATION_SCHEMA_COLUMNS`) and eighteen static methods: `field` (two overloads: `(column,
+type)`, and `(qualifier, column, type)` with a blank-qualifier fallback branch), `arrayContains`
+(two overloads: a literal-value GIN-friendly `@>` form and a `Field`-to-`Field` `= ANY` join
+form), `arrayContainsCaseInsensitive`, `arrayContainsField` (the GIN-friendly `@>` join
+counterpart to `arrayContains`'s `= ANY` form), `castAsText`, `similarity`, `trigramMatch`,
+`similarityAtLeastThreshold`, `maxTrigramCandidateLength`, `unnest`, `vectorDistance` (two
+overloads: literal-vector and field-to-field), `websearchToTsQuery`, `phraseToTsQuery`,
+`toTsQuery`, `matchesTsQuery`, and `tsvectorMatches`. It is called directly (not through a fake or
+mock at any existing call site) by six production classes — `OlsSearchClient`, `OlsSearchQuery`,
+`OlsPostgresClient`, `V1GraphRepository`, `EmbeddingServiceClient`, and `TextTaggerService` — to
+build the WHERE/JOIN/ORDER-BY fragments those classes' own real-Postgres IT suites already
+exercise end-to-end. `websearchToTsQuery` currently has no production caller (`matchesTsQuery` +
+`toTsQuery`/`phraseToTsQuery` are the ones actually wired into `OlsSearchQuery`'s query-building);
+it is still public API surface on this class and is tested like every other method here, but is
+noted as presently unused rather than treated as a defect — nothing about its behaviour is wrong,
+it simply isn't called yet.
+
+**Scope: unit layer plus a dedicated IT layer — unlike `AnnotationExtractor`, and unlike most Tier
+B targets.** Per the Tier B methodology, a pure-logic class with no Postgres dependency gets
+unit-only coverage; `JooqSupport` is the opposite case explicitly called out in that methodology's
+"what covered means" section — every one of its methods either talks to Postgres directly (the
+`Table<?>` constants) or builds a SQL fragment whose entire reason to exist is to invoke a
+Postgres-side function or operator: three custom functions defined only in the production schema
+(`ols_tsvector`, `ols_lower_array` — see `dataload/create_postgres_schema.py`), pg_trgm builtins
+(`similarity`, `show_limit()`, `show_trgm()`, the `%` operator), and the pgvector `<=>` cosine-
+distance operator. A `JooqSupportTest` unit layer that only asserts on jOOQ's rendered SQL text
+(via a connection-free `DSL.using(SQLDialect.POSTGRES)` context, `renderInlined` so bind values
+are inlined rather than left as placeholders) proves each builder emits the *intended* SQL — it
+cannot prove that SQL is *semantically correct* once Postgres actually executes it, because
+`ols_tsvector`/`ols_lower_array` don't exist outside the applied production schema and
+pg_trgm/pgvector behaviour can't be inferred from syntax alone. That distinction is not academic
+here: `arrayContains`'s GIN-friendly form, `arrayContainsCaseInsensitive`, and `tsvectorMatches`
+each carry an inline comment citing a real past production incident (GitHub issues #1276, #1308,
+#1309) where getting exactly this kind of condition wrong broke search in production. A syntax-only
+unit test would have passed on the *broken* version of any of those fixes just as readily as the
+correct one, since a plausible-looking SQL string that quietly matches the wrong rows still renders
+correctly. `JooqSupportIT` is therefore not optional polish on top of the unit layer — it is the
+only layer in this baseline that actually re-proves those three fixes still hold.
+
+**No external dependency, so no mock/real boundary to document.** Unlike the Tier A external-
+dependency scoping (an HTTP client, a CLI binary), `JooqSupport` and everything it touches —
+Postgres, pg_trgm, pgvector, the two custom schema functions — is reachable in full from the
+disposable Testcontainers Postgres this repo already uses for every other IT suite. `JooqSupportIT`
+therefore uses the real, unmodified methods throughout; nothing is faked.
+
+**Fixture.** `PostgresIntegrationTestSupport` gained `JOOQ_SUPPORT_ONTOLOGY_ID` /
+`JOOQ_SUPPORT_EMBEDDING_MODEL` constants, `initializeJooqSupportDatabase` (calls the existing
+`initializeDatabase` first, for the extensions/custom-functions/indexes `executeProductionSchema`
+applies, then loads this class's own fixture rows), `createJooqSupportRepositories` (returns a new
+`JooqSupportRepositoryHandle` record — just a `PostgresClient`, since `JooqSupport` itself has no
+repository/service bean to construct), and two private loaders. Five hand-picked `ols_entities`
+rows live under the dedicated `JOOQ_SUPPORT_ONTOLOGY_ID`, isolated from every other suite's shared
+fixture: `cancer_upper`/`cancer_lower` (identical labels differing only in case, for
+`arrayContains`'s case-sensitive `@>` versus `arrayContainsCaseInsensitive`'s
+`ols_lower_array`-wrapped form, with non-overlapping `curated_from_sources` doubling as the
+`unnest` fixture), `diabetes_parent`/`diabetes_child` (a real `direct_parents` relationship, for
+both join forms of array containment, plus trigram/full-text fixtures via the child's "Sugar
+Diabetes" synonym), and `fulltext_control` (shares no words with the other four, a genuine
+non-match control for the trigram/tsquery methods). Three `ols_embedding_nodes` rows carry a
+4-dimensional `embedding_<model>` vector column with hand-computable pgvector cosine distances from
+a fixed `[1,0,0,0]` reference: identical (distance exactly `0`), orthogonal (distance exactly `1`),
+and opposite (distance exactly `2`) — the two `vectorDistance` IT cases assert these to within
+`1e-6`, not just "some plausible-looking float".
+
+**Every method, both `field()` branches, and the private constructor are covered.** The unit layer
+(`JooqSupportTest`, 31 cases) exercises every method and overload listed above, including the
+private constructor (asserted `private` via reflection, then invoked reflectively to cover the
+no-op body — never invoked from production code, since nothing else in the class needs an
+instance) and both sides of `field`'s three-arg qualifier check (`null`, `""`, and
+whitespace-only `"   "` all take the same unqualified-fallback branch via `isBlank()`, versus a
+non-blank qualifier producing `"qualifier"."column"`). The IT layer (`JooqSupportIT`, 17 cases)
+re-proves the semantically load-bearing subset of that same surface against the real fixture:
+exact-vs-case-insensitive array containment, both join forms of array containment finding the same
+real parent through structurally different SQL, `unnest` genuinely expanding one array-valued row
+into several (not just passing the array through), a real trigram near-miss scoring higher than an
+unrelated string and `similarityAtLeastThreshold` agreeing exactly with the `%` operator on the
+same fixture, `maxTrigramCandidateLength`'s soundness property (it must never exclude a row that
+genuinely passes the threshold it's meant to approximate) checked against every fixture row rather
+than a single hand-picked example, `tsvectorMatches` restricting matches to the one field it wraps
+instead of the blanket `ts_search` column, all three tsquery builders' distinct semantics
+(`websearchToTsQuery`'s implicit OR, `phraseToTsQuery`'s exact contiguous phrase, `toTsQuery`'s
+prefix matching) against `ts_search`, and both `vectorDistance` overloads against hand-computable
+cosine distances.
+
+Verified locally on 2026-09-11 from `test/cover-jooq-support`, branched off `origin/dev` at commit
+`75d96f57c` (current tip, the same commit the `AnnotationExtractor` baseline above was merged
+into), with Java 17:
+
+- Docker-free `mvn -q -o test`, run twice: 1,014 tests (983 pre-existing + 31 new
+  `JooqSupportTest` cases), 0 failures / 0 errors both times.
+- Postgres `mvn -q -o verify -Dsurefire.skip=true -Dapi.version=1.44` (Rancher Desktop
+  `DOCKER_HOST`/`TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE` overrides), run twice: 222 tests (205
+  pre-existing + 17 new `JooqSupportIT` cases), 0 failures / 0 errors both times.
+- One clean `mvn -q -o clean verify -Dapi.version=1.44`: 1,236 tests total (1,014 surefire + 222
+  failsafe), wall-clock 2 minutes 38.02 seconds, 0 failures / 0 errors.
+- `JooqSupport` itself now covers all 28 of 28 lines, all 4 of 4 branches, all 20 of 20 methods,
+  and all 22 of 22 complexity units — 100% on every JaCoCo dimension. Whole-backend JaCoCo
+  coverage is 71.3% lines (3,430 of 4,810) and 54.1% branches (1,038 of 1,918), up only marginally
+  from the `AnnotationExtractor` baseline's 3,428 of 4,810 lines and 1,037 of 1,918 branches (same
+  denominators — no production code changed between these two rollouts). That small a shift despite
+  `JooqSupport` going from zero dedicated tests to 100% is expected, not a sign the new tests are
+  redundant: unlike `EmbeddingServiceClient`/`TextTaggerService` (touched only through a
+  controller-level fake standing in for the *whole* class), `JooqSupport`'s methods are called
+  directly, inline, by six other repository/service classes whose own IT suites were already
+  running real Postgres queries built with them — so most of its bytecode was almost certainly
+  already being *executed* incidentally before this rollout, just never independently *asserted
+  on*. The one branch pair verified as previously unreachable by any production path is `field`'s
+  blank-qualifier check: every 3-arg `field(qualifier, column, type)` call site in production code
+  passes a hardcoded non-blank alias (`"e1"`, `"e2"`, `"a"`, `"b"`, `"ranked"`, `"emb"`, `"en"`,
+  etc.) — nothing in production ever calls it with a blank qualifier, so that fallback branch
+  existed only on paper until `JooqSupportTest`'s three qualifier-blank cases exercised it directly.
+  This is exactly the "a controller/caller faking or exercising a class isn't the same as testing
+  it" point the Tier B methodology opens with, now demonstrated with a concrete, verified example
+  rather than left as a general warning. No coverage failure threshold is introduced.
+- No production defect was discovered by this rollout. The recovered WIP's SQL-rendering
+  assertions and real-Postgres semantic assertions were independently re-verified against
+  `JooqSupport.java`'s actual source, `dataload/create_postgres_schema.py`'s table/function
+  definitions, and every real production call site (via `grep`, `graphify-out/` not yet being
+  generated in this fresh worktree) rather than taken on trust; no gaps or incorrect assertions
+  were found, so no fixes were needed beyond this verification and documentation pass.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
