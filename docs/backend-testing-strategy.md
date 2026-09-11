@@ -1035,6 +1035,77 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented McpOntologyService baseline
+
+`McpOntologyService` (`controller/mcp`) is the third Spring AI MCP `@Tool`-annotated Tier B target
+in this programme, after `McpClassService` and `McpEmbeddingService`. It is a plain `@Service` with
+no HTTP layer at all, tested exactly like any other Tier B service class. Unlike its two
+predecessors it has a single `@Autowired` collaborator (`OntologyRepository`, already fully covered
+by its own dedicated `OntologyRepositoryIT`/unit-equivalent suite elsewhere in this programme) and
+exactly one `@Tool` method, `listOntologies(String lang)` — by far the smallest surface of the three
+MCP targets so far: no pagination, no obsolete-filtering branch, no embedding-model dispatch, and no
+`McpPage` wrapper (it returns a plain `List<McpOntology>`, unlike `McpClassService`/
+`McpEmbeddingService`'s paginated results).
+
+**Unit-only; no IT layer needed for coverage, but a thin one added anyway for genuine end-to-end
+value.** Per the Tier B methodology, `OntologyRepository` already has full dedicated real-Postgres
+coverage in `OntologyRepositoryIT` (search, filtering, sorting, pagination, boost fields, dynamic
+properties) — re-proving any of that here would be pure duplication. `McpOntologyServiceTest.java`
+(10 cases) is therefore the non-negotiable minimum: a direct unit suite using this repo's
+hand-rolled-fake idiom (no Mockito), covering both `lang` branches (defaults to `"en"` when `null`,
+passed through unchanged otherwise), the always-on `JsonTransformOptions`
+(`resolveReferences`/`manchesterSyntax` both hardcoded `true`), the exact fixed-argument delegation
+to `OntologyRepository.find` (a hardcoded `PageRequest.of(0, 1000)` plus five hardcoded
+`null`/`false` arguments — `search`, `searchFields`, `boostFields`, `exactMatch`, `properties` — all
+asserted individually, not sampled), the plain-`List` result mapping through `McpOntology.fromJson`
+(including the empty-list-not-null shape for ontologies with no `label`/`definition`), and
+`IOException` propagation from the repository unchanged.
+
+On top of that minimum, a thin `McpOntologyServiceIT.java` (2 cases) was added because it proves two
+things the unit suite's hand-rolled fake cannot: that the fixed-argument call really reaches real
+Postgres and returns genuine data through `McpOntology.fromJson`, and — more importantly — that
+passing no `properties` filter (the fifth hardcoded `null` argument) really does mean **obsolete
+ontologies are included**, a materially different and easy-to-regress contract from every other MCP
+`@Tool` method built so far in this programme (`McpClassService.searchClasses` always filters
+`isObsolete=[false]`). It reuses `PostgresIntegrationTestSupport.createRepository`/
+`initializeDatabase` — the exact same factory and fixture `OntologyRepositoryIT` already uses (four
+ontologies: `duo`, `efo`, `efo-atlas` active, `legacy-efo` obsolete) — with no new fixture mechanism
+needed. One case asserts all four ontology IDs come back, obsolete one included; the other asserts
+`McpOntology.fromJson`'s field mapping against a real row: `ontologyId` resolves correctly, and
+`label`/`definition` resolve to empty lists rather than `null`, because the shared fixture's raw
+entity JSON carries ontology metadata under `title`/`description` (already proven by
+`OntologyRepositoryIT`), not literal `label`/`definition` annotation values. This is not a defect —
+it matches real production behaviour for ontologies with no `rdfs:label` triple on their
+`owl:Ontology` declaration, confirmed against the committed golden file
+`testcases_expected_output_api/mcp/listOntologies.json`, where most real ontologies (`duo`, `edam`,
+etc.) show the identical empty-`label`/empty-`definition` shape and only a handful
+(`skos`/`owl`/`rdfs`) carry a genuine `rdfs:label` on their ontology header.
+
+Verified locally on 2026-09-11 from `origin/dev` commit `75d96f57c` with Java 17 and Rancher
+Desktop:
+
+- Surefire runs 993 tests, including 10 direct `McpOntologyServiceTest` cases. Two Docker-free runs
+  took wall-clock 12.65 and 11.98 seconds, both 0 failures / 0 errors.
+- Failsafe runs 207 PostgreSQL tests, including 2 `McpOntologyServiceIT` cases. Two complete
+  database-gate runs both reported 0 failures / 0 errors (2.87s and 3.08s for this class's own two
+  cases within each run).
+- The clean `verify` lifecycle runs all 1,200 tests (993 surefire + 207 failsafe) in wall-clock 3
+  minutes 13.56 seconds (re-measured by the orchestrator after a rate-limit interruption; the other
+  numbers in this section — surefire/failsafe pass counts and JaCoCo figures — were independently
+  re-verified and match exactly).
+- `McpOntologyService` itself covers all 38 instructions, both branches, all 9 executable lines, and
+  both methods — 100% on every JaCoCo dimension. Whole-backend JaCoCo coverage is 72.6% lines (3,491
+  of 4,810) and 56.3% branches (1,080 of 1,918), up from the most recently documented baseline of
+  71.3% lines and 54.1% branches (the AnnotationExtractor baseline) — entirely attributable to this
+  rollout, since the line/branch denominators are unchanged from that baseline.
+- No production defect was discovered by this rollout. The "obsolete ontologies are included, not
+  filtered" behaviour was checked closely as a plausible defect candidate (it's the one place this
+  class's contract diverges from its MCP sibling tools), but it is unambiguous in
+  `OntologyRepository.find` (no `isObsolete` filter is added when `properties` is `null`), matches
+  `OntologyRepositoryIT.canIncludeObsoleteOntologies`'s already-asserted-correct contract, and is
+  proven intentional rather than accidental by both test layers above; it is documented behaviour,
+  not a defect.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
