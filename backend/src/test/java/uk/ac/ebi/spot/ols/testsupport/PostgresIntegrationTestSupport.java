@@ -108,6 +108,23 @@ public final class PostgresIntegrationTestSupport {
     }
 
     /**
+     * Loads two rows into {@code ols_pca_models} for {@code EmbeddingServiceClientIT}: one whose
+     * name matches {@code EmbeddingServiceClient.PCA_PATTERN} ({@code ^(.+)_pca(\d+)$}) and must be
+     * loaded into the client's in-memory PCA model map, and one that does not and must be skipped by
+     * the pattern's {@code continue} branch. No other fixture (ontology/entity/autosuggest) is
+     * relevant to this class, but {@link #initializeDatabase} is still called first because it is
+     * what runs {@link #executeProductionSchema}, which creates the {@code ols_pca_models} table.
+     */
+    public static void initializeEmbeddingServiceClientDatabase(PostgreSQLContainer<?> container) {
+        initializeDatabase(container);
+        try (Connection connection = container.createConnection("")) {
+            loadPcaModelsFixture(connection);
+        } catch (SQLException e) {
+            throw new IllegalStateException("Failed to load the EmbeddingServiceClient integration fixture", e);
+        }
+    }
+
+    /**
      * Loads the shared entity fixture plus the class and property fixtures (both additive to
      * {@code ols_entities}, with no id collisions between them), then adds the {@code V2LLMController}
      * embedding fixture on top. Deliberately does <em>not</em> also load
@@ -192,6 +209,25 @@ public final class PostgresIntegrationTestSupport {
 
         return new V2LLMRepositoryHandle(
                 classRepository, propertyRepository, embeddingServiceClient, olsPostgresClient, postgresClient);
+    }
+
+    /**
+     * Wires the real {@link EmbeddingServiceClient} bean against disposable Postgres carrying the
+     * {@code ols_pca_models} fixture loaded by {@link #initializeEmbeddingServiceClientDatabase}.
+     * Unlike {@link #createV2LLMRepositories} (whose fixture never populates {@code ols_pca_models},
+     * so its client is deliberately returned uninitialized), this factory calls {@code init()}
+     * eagerly so the caller observes the real Postgres-backed {@code loadPcaModels()} result
+     * immediately, before the container/handle are used for assertions.
+     */
+    public static EmbeddingServiceClientRepositoryHandle createEmbeddingServiceClientRepositories(
+            PostgreSQLContainer<?> container) {
+        PostgresClient postgresClient = createPostgresClient(container);
+
+        EmbeddingServiceClient embeddingServiceClient = new EmbeddingServiceClient();
+        ReflectionTestUtils.setField(embeddingServiceClient, "postgresClient", postgresClient);
+        embeddingServiceClient.init();
+
+        return new EmbeddingServiceClientRepositoryHandle(embeddingServiceClient, postgresClient);
     }
 
     public static V1RepositoryHandle createV1Repository(PostgreSQLContainer<?> container) {
@@ -812,6 +848,29 @@ public final class PostgresIntegrationTestSupport {
         }
     }
 
+    /**
+     * Row 1 ({@code embedding_service_client_test_model_pca2}) matches
+     * {@code EmbeddingServiceClient.PCA_PATTERN} and carries a small, hand-computable 3-feature/
+     * 2-component PCA model (mean {@code [1,2,3]}, components {@code [[1,0],[0,1],[1,1]]}). Row 2
+     * ({@code embedding_service_client_test_model_full}) has no {@code _pca<digits>} suffix and must
+     * be skipped by {@code loadPcaModels()}'s regex-filter {@code continue} branch.
+     */
+    private static void loadPcaModelsFixture(Connection connection) throws SQLException {
+        insertPcaModel(connection, "embedding_service_client_test_model_pca2",
+                "{\"mean\":[1.0,2.0,3.0],\"components\":[[1.0,0.0],[0.0,1.0],[1.0,1.0]]}");
+        insertPcaModel(connection, "embedding_service_client_test_model_full",
+                "{\"mean\":[0.0],\"components\":[[1.0]]}");
+    }
+
+    private static void insertPcaModel(Connection connection, String name, String modelJson) throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement(
+                "INSERT INTO ols_pca_models (name, model) VALUES (?, ?)")) {
+            statement.setString(1, name);
+            statement.setBytes(2, modelJson.getBytes(StandardCharsets.UTF_8));
+            statement.executeUpdate();
+        }
+    }
+
     private static java.sql.Array textArray(Connection connection, JsonArray values) throws SQLException {
         String[] strings = new String[values.size()];
         for (int i = 0; i < values.size(); i++) {
@@ -855,6 +914,16 @@ public final class PostgresIntegrationTestSupport {
             PropertyRepository propertyRepository,
             EmbeddingServiceClient embeddingServiceClient,
             OlsPostgresClient olsPostgresClient,
+            PostgresClient postgresClient) implements AutoCloseable {
+
+        @Override
+        public void close() {
+            postgresClient.close();
+        }
+    }
+
+    public record EmbeddingServiceClientRepositoryHandle(
+            EmbeddingServiceClient embeddingServiceClient,
             PostgresClient postgresClient) implements AutoCloseable {
 
         @Override
