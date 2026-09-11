@@ -1035,6 +1035,104 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented McpClassService baseline
+
+`McpClassService` (`controller/mcp`) is the first Spring AI MCP `@Tool`-annotated target in this
+programme. Despite living under `controller/`, it is a plain `@Service` with no HTTP layer at all —
+no MockMvc, no routes, no `@WebMvcTest` — so it is tested exactly like any other Tier B service
+class, per this file's own note in the "everything else" enumeration. It has four real,
+Postgres-backed `@Autowired` collaborators (`EntityRepository`, `ClassRepository`,
+`EmbeddingServiceClient`, `OlsPostgresClient`, each already covered by its own dedicated suite
+elsewhere in this programme) and six `@Tool` methods: `searchClasses`, `getAncestors`,
+`getChildren`, `getDescendants`, `searchClassesWithEmbeddingModel`, `getSimilarClasses`,
+`getClassSimilarity`. Every method shares a default-value pattern worth testing precisely:
+`pageNum`/`pageSize` default to `0`/`20` when `null`, `lang` defaults to `"en"` when `null` (four
+methods reassign a mutable `lang` parameter; the other two instead assign a `final effectiveLang`
+— same effective behaviour, but a future refactor could desync the two patterns, so both are proven
+independently below), and every method constructs a fresh `JsonTransformOptions` with
+`resolveReferences=true`/`manchesterSyntax=true` hardcoded, never varying with caller input.
+
+**Two layers, same mock/real boundary already established for `EmbeddingServiceClient`/
+`V2LLMController`.** `McpClassServiceTest.java` (28 cases) is a direct unit suite using this repo's
+hand-rolled-fake idiom (no Mockito) for all four collaborators — no Postgres involved at all.
+`McpClassServiceIT.java` (13 cases) wires the real `EntityRepository`/`ClassRepository`/
+`OlsPostgresClient` beans against a real disposable Postgres via
+`PostgresIntegrationTestSupport`, faking only `embeddingServiceClient.embedText(...)` with the same
+hand-rolled `FixedVectorEmbeddingServiceClient` idiom as `V2LLMControllerIT` — a real embedding
+microservice is unavailable in this test environment, so that one external HTTP call is the only
+piece not exercised for real; every subsequent Postgres nearest-neighbor search, hierarchy
+traversal, and free-text search is genuine.
+
+**Fixture reuse, no new factory needed.** `PostgresIntegrationTestSupport.initializeV2LLMDatabase`/
+`createV2LLMRepositories` (the `V2LLMController` baseline's fixture and factory) already load
+everything `ClassRepository`/`EmbeddingServiceClient`/`OlsPostgresClient` need here: the base entity
+fixture (`EFO_0001`/`EFO_0002`/`DUO_0001` classes), the class-hierarchy fixture (`EFO_1001` as
+`EFO_0001`'s direct/hierarchical child, `EFO_1999` as its obsolete sibling), and the `test_model`
+embedding fixture (`ols_entities.embeddings_test_model` plus `ols_embedding_nodes` label/curation
+rows). The one gap — `createV2LLMRepositories` never wires an `EntityRepository`, which none of its
+existing `ClassRepository`-only callers need but `searchClasses` does — is filled by composing a
+second, existing handle, `PostgresIntegrationTestSupport.createEntityRepository`, against the same
+container, rather than adding a new factory: together the two handles already cover every
+collaborator `McpClassService` declares, so nothing new was added to
+`PostgresIntegrationTestSupport`.
+
+**Branches enumerated.** `searchClasses` always filters `type=[class]`; adds `ontologyId=[value]`
+only when non-null; adds `isObsolete=[false]` for both `null` and explicit `false`
+`includeObsoleteEntities`, omitting it only for explicit `true` — three cases, proven as three, not
+collapsed to two. `getChildren` always passes a hardcoded `null` search term and `false`
+`includeObsolete` to `ClassRepository`, matching `getAncestors`/`getDescendants`'s own hardcoded
+`false`. `searchClassesWithEmbeddingModel` converts the embedding service's `float[]` to
+`List<Double>` exactly (asserted with values like `-2.25`/`100.125` chosen to expose a truncation or
+off-by-one bug, not just non-nullness); dispatches to `postgresClient.searchByVectorInOntology(...)`
+only when `ontologyId` is non-null *and* non-empty, proving the empty-string case explicitly takes
+the same global-search path as `null` rather than assuming it; always passes `isDefiningOntology=
+true` to the ontology-scoped search; and resolves `includeCurations` — `null` and explicit `true`
+both to `true`, only explicit `false` differs, three cases again. `getClassSimilarity` is a one-line
+delegation to `classRepository.getSimilarity(...)`, proven by direct argument-and-return-value
+pass-through.
+
+**Proving the two hardcoded constants where no collaborator fake could observe them.**
+`searchClassesWithEmbeddingModel`'s `outputOpts` and `effectiveLang` are used only inside its own
+internal `JsonTransformer.transformJson(...)` call — never handed to a collaborator fake — so two
+unit tests prove them observably rather than by inspecting private state: one hands back a
+`directParent` IRI alongside a matching `linkedEntities` entry and asserts it resolves into a full
+reference object (only possible when `resolveReferences=true`, which is hardcoded and never
+varies); the other hands back an entity whose only localized label is tagged `"de"` and asserts the
+label is present under explicit `lang="de"` but *absent* under the `lang=null` default — directly
+distinguishing "defaults to en" from "defaults to something else" (or, most importantly, from an
+unset `null` `effectiveLang`, which would instead throw `NullPointerException` inside
+`LocalizationTransform.transform`'s unconditional `lang.equals("all")` check). The other five
+methods' `resolveReferences`/`manchesterSyntax`/default-`lang` behaviour is captured directly via
+the corresponding hand-rolled fake, no such indirection needed.
+
+Verified locally on 2026-09-11 from `origin/dev` commit `75d96f57c` with Java 17 and Rancher
+Desktop:
+
+- Surefire runs 1,011 tests, including 28 direct `McpClassServiceTest` cases. Two Docker-free runs
+  took wall-clock 12.93 and 11.92 seconds, both 0 failures / 0 errors.
+- Failsafe runs 218 PostgreSQL tests, including 13 `McpClassServiceIT` cases — one representative
+  real-Postgres case per branch enumerated above, across all six `@Tool` methods. Two complete
+  database-gate runs took wall-clock 2 minutes 0.27 seconds and 2 minutes 0.47 seconds.
+- The clean `verify` lifecycle runs all 1,229 tests (1,011 surefire + 218 failsafe) in wall-clock 2
+  minutes 9.86 seconds.
+- `McpClassService` itself covers all 105 executable lines, all 52 branches, and all 9 methods —
+  100% on every JaCoCo dimension. Whole-backend JaCoCo coverage is 75.1% lines (3,612 of 4,810) and
+  59.3% branches (1,138 of 1,918), up from the most recently documented baseline of 71.3% lines and
+  54.1% branches. Part of that jump is `McpClassService`'s own 105 covered lines/52 covered
+  branches; the remainder comes from the `McpClassServiceIT` real-Postgres layer incidentally
+  exercising collaborator code paths existing suites hadn't reached in this exact combination —
+  `EntityRepository`'s 10-arg `find(...)` overload (the one `searchClasses` calls, distinct from the
+  9-/11-arg overloads other callers use) and the `JsonTransformer`/`ResolveReferencesTransform`/
+  `ManchesterSyntaxTransform` pipeline running with `resolveReferences=true` and
+  `manchesterSyntax=true` *together*, a combination this programme's existing suites had not
+  exercised as thoroughly. No coverage failure threshold is introduced.
+- No production defect was discovered by this rollout. The empty-string-`ontologyId`-treated-as-
+  absent behaviour in `searchClassesWithEmbeddingModel` was checked closely, since the task brief
+  flagged it as a plausible defect candidate — but `if (ontologyId != null && !ontologyId.isEmpty())`
+  is unambiguous, matches the exact same idiom already used and tested in `V2LLMController`
+  (`searchEntitiesByTextTreatsAnEmptyOntologyIdAsAbsent`), and is proven correct empirically by both
+  `McpClassServiceTest` and `McpClassServiceIT` above; it is intended behaviour, not a defect.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
