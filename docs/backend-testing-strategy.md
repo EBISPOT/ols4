@@ -1035,6 +1035,93 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented OlsPostgresClient baseline (milestone 2 of 3: graph-traversal family)
+
+`OlsPostgresClient` (`repository/postgres`) is by far the largest Tier B target in this programme
+so far — 625 lines of real jOOQ/Postgres-backed logic in almost every method. Per this
+methodology's shared constraints on splitting a genuinely oversized target (the precedent being
+`V1OntologyTermController`'s 23 routes, split into two milestones), this rollout is split into
+three milestone PRs, each branched independently from `origin/dev` (never stacked on another —
+milestone 1 covers the static/private pure logic plus `getDatabaseNodeCount`/`getAll`/`getOne`;
+this section covers milestone 2, the graph-traversal family; milestone 3 covers the
+embedding/similarity/vector-search family below). Milestone 2's methods: `getDirectParents`,
+`getDirectChildren` (both overloads), `getHierarchicalParents`, `getHierarchicalChildren`,
+`getAncestors`, `getDescendants`, `getHierarchicalAncestors`, `getHierarchicalDescendants`,
+`getRelatedTo`, `getRelatedFrom`, and the two private helpers backing all ten,
+`lookupArrayTargets`/`lookupArraySources`, plus `buildNodePropCondition`.
+
+**Scope: IT-only, no new unit-test class.** Every one of this milestone's methods is a thin,
+directly-Postgres-backed query with no meaningful branch that doesn't require a real database to
+exercise (`buildNodePropCondition`'s `isObsolete`/`type`/unrecognized-key branches are only
+observable through their effect on a real query's result set) — there is no additional pure-logic
+surface here beyond what milestone 1 already covers, so this milestone adds only
+`OlsPostgresClientGraphIT` (21 cases), no `*Test.java` companion.
+
+**A structural asymmetry the fixture is built specifically to prove, not assume.** "Targets" methods
+(`getDirectParents`, `getHierarchicalParents`, `getAncestors`, `getHierarchicalAncestors`,
+`getRelatedTo`) look up entities *referenced by* the given id's array column via
+`lookupArrayTargets`'s `arrayContains(e1Targets, e2Iri)` join; "sources" methods (the children/
+descendants family, `getRelatedFrom`) look up entities *whose* array column references the given
+id via `lookupArraySources`'s `arrayContainsField(e2Sources, e1Iri)` join — a structurally different
+query, not a mirror image. The dedicated fixture (`graph-fixture.json`, loaded by
+`PostgresIntegrationTestSupport.initializeOlsPostgresClientGraphDatabase`, under its own
+`graphtest`/`graphtest2` ontology ids, isolated from every other suite) is deliberately built so
+that reusing an existing fixture or assuming symmetry would have hidden real gaps:
+
+- `GRAPH_CHILD_ACTIVE` has *two* `direct_parents` (one active, one obsolete) but only *one*
+  `hierarchical_parents` entry — proving `getDirectParents`/`getHierarchicalParents` read genuinely
+  different columns (2 results vs. 1), not just different names for the same data. The reverse
+  relationship is proven independently too: `GRAPH_PARENT_OBSOLETE` has 1 direct child
+  (`getDirectChildren` finds `GRAPH_CHILD_ACTIVE` via `direct_parents`) but 0 hierarchical children
+  (`getHierarchicalChildren` finds none via `hierarchical_parents`, since `GRAPH_CHILD_ACTIVE`
+  doesn't list it there).
+- `GRAPH_GRANDCHILD`'s `direct_ancestors` is non-transitive (its immediate parent,
+  `GRAPH_CHILD_ACTIVE`, only) while its `hierarchical_ancestors` is transitive (both
+  `GRAPH_CHILD_ACTIVE` and `GRAPH_PARENT`) — proving `getAncestors` (1 result) vs.
+  `getHierarchicalAncestors` (2 results, ordered by `iri` ascending) and, on the sources side,
+  `getDescendants(GRAPH_PARENT)` (3 results, excludes the grandchild) vs.
+  `getHierarchicalDescendants(GRAPH_PARENT)` (4 results, includes it) are not interchangeable.
+- `graphtest2`'s `GRAPH_PARENT` deliberately shares both IRI and label with `graphtest`'s
+  `GRAPH_PARENT`, and `graphtest2`'s `GRAPH_CROSS_CHILD` deliberately lists `graphtest`'s
+  `GRAPH_PARENT` IRI in its own `direct_parents` — both are excluded from every `graphtest`-scoped
+  lookup (`getDirectParents(GRAPH_CHILD_ACTIVE)` returns exactly 2, not 3; `getDirectChildren
+  (GRAPH_PARENT)` returns exactly 3, not 4), proving the `e2OntologyId.eq(e1OntologyId)`
+  same-ontology-only join condition on *both* `lookupArrayTargets` and `lookupArraySources`
+  independently — a case a fixture with no cross-ontology duplicate would silently fail to cover
+  regardless of what the assertions claimed.
+
+**Also covered.** `buildNodePropCondition`'s two recognized `nodeProps` keys, applied through
+`getDirectParents` (targets side: `isObsolete` true/false distinguishing `GRAPH_PARENT` from
+`GRAPH_PARENT_OBSOLETE`) and `getDirectChildren` (sources side: `isObsolete` true/false, `type`
+distinguishing the one `OntologyProperty` child from its `OntologyClass` siblings, and an
+unrecognized key proven to be silently ignored by asserting identical total-element counts with
+and without it). `lookupArraySources`'s `search` parameter: both `getDirectChildren` overloads
+(the 3-arg form with no `search` parameter at all, and the 4-arg form), a genuine case-insensitive
+substring match against the label array proven with both a lowercase and an uppercase query
+(`"active"`/`"ACTIVE"` both matching `"Graph Child Active"`), a no-match case, and `null`/`""`/
+`"   "` all empirically proven to produce the identical unfiltered result count — confirming
+`.trim().isEmpty()` really does treat all three identically rather than assuming it from reading
+the source.
+
+Verified locally on 2026-09-12 from `origin/dev` commit `75d96f57c` (current tip, same commit
+milestone 1 branched from) with Java 17 and Rancher Desktop:
+
+- Surefire runs 983 tests (unchanged by this milestone — no new unit-test class). Two Docker-free
+  runs both passed cleanly (0 failures / 0 errors).
+- Failsafe runs 226 PostgreSQL tests, including 21 `OlsPostgresClientGraphIT` cases. Two complete
+  database-gate runs both passed cleanly (0 failures / 0 errors).
+- The clean `verify` lifecycle runs all 1,209 tests (983 surefire + 226 failsafe) in wall-clock
+  2 minutes 7.42 seconds.
+- `OlsPostgresClient` now covers 318 of 363 lines (87.6%, up from the `V2LLMController` baseline's
+  87.3% — this branch does not include milestone 1's additional coverage, since the two milestones
+  are independent, unstacked branches) and 54 of 79 branches (68.4%, up from 65.8%) across 40 of 42
+  methods (95.2%). Whole-backend JaCoCo coverage is 71.3% lines (3,429 of 4,810) and 54.2% branches
+  (1,039 of 1,918), essentially flat against the `AnnotationExtractor` baseline (3,428 of 4,810
+  lines, 1,037 of 1,918 branches) — expected, since this milestone's new coverage is concentrated
+  in the handful of already-partially-covered graph-traversal methods on this one class rather than
+  spread across many.
+- No production defect was discovered by this rollout.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
