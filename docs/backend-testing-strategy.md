@@ -977,6 +977,64 @@ while `GlobalExceptionHandler` is shared by 34 test classes and currently covers
 8 of 10 branches. Those surfaces should be scoped independently rather than bundled with the V2
 individual hierarchy contract.
 
+## Implemented AnnotationExtractor baseline
+
+`AnnotationExtractor` (`repository/v1/mappers`) is the first Tier B (non-controller) target in
+this programme: with Tier A's controller backlog empty, this rollout starts on the repository/
+mapper/builder/service layer described in the Tier B methodology. It is a pure static-method
+utility class — no Spring bean, no constructor state, no Postgres dependency — with two public
+methods, `extractAnnotations(JsonObject)` and `extractSubsets(JsonObject)`, called from
+`V1TermMapper`, `V1IndividualMapper`, `V1PropertyMapper`, and directly from
+`V1SearchController`. Both methods were previously exercised only incidentally, through three
+existing mapper tests' happy-path fixtures (`V1IndividualMapperTest`, `V1PropertyMapperTest`, and
+transitively any `V1TermMapper` caller) — none of which targeted `AnnotationExtractor`'s own
+branches directly.
+
+**Scope: unit-only, no IT layer.** Per the Tier B methodology's "what covered means" section, a
+pure-logic class with no Postgres dependency of its own does not get a dedicated `*IT.java` layer
+— there is no real-database behaviour here to prove beyond what a direct unit test already covers
+with hand-built `JsonObject` fixtures. This baseline is therefore a single new
+`AnnotationExtractorTest.java` (24 cases, this repo's plain-JUnit/AssertJ idiom, no Mockito, no
+Spring context) and nothing else; the existing mapper tests' indirect exercise of this class is
+retained unchanged but does not count as dedicated coverage per this program's standing rule that
+controller/mapper-level happy-path tests don't substitute for a class's own edge-case suite.
+
+**Branches enumerated.** `extractAnnotations`: predicates without an IRI scheme (no `://`) are
+skipped; predicates matching the `rdf2json`-added `namePattern` (e.g. `relatedTo+http://...`) are
+skipped; predicates already interpreted as a definition/synonym/hierarchical property (via the
+`definitionProperty`/`synonymProperty`/`hierarchicalProperty` arrays) are skipped; the three
+hardcoded RDF/RDFS/OWL namespace prefixes are excluded, each verified individually
+(`rdf-schema#`, `rdf-syntax-ns#`, `owl#`), together with both of the two named exceptions inside
+the `rdf-schema#` namespace (`#comment`, `#seeAlso`) that are included despite the namespace
+match; the hardcoded `oboInOwl#inSubset` exclusion; single-level value flattening (one
+`{"value": ...}` wrapper unwrapped) and nested flattening (two levels unwrapped in the `while`
+loop); label derivation from the IRI fragment after the last `#` and, separately, from the last
+path segment when there is no `#`; label override via a `linkedEntities` entry carrying a
+`label` field, and the fallback to the IRI-derived label when the `linkedEntities` entry exists
+but carries no `label` field; duplicate values for one predicate collapsing via the
+`LinkedHashSet`, with insertion order preserved; and two different predicates whose resolved
+label collides (one directly, one via `linkedEntities` override) merging into the same output
+set. `extractSubsets`: the missing-key and present-but-empty-array cases both returning `null`;
+a single subset URI resolved from its fragment; a single subset URI resolved from its last path
+segment when there is no fragment; and multiple URIs, including a duplicate, sorted and
+deduplicated by the `TreeSet` before short-name extraction.
+
+Verified locally on 2026-09-11 from `origin/dev` commit `aa52e09e4` with Java 17 (no Postgres/
+Docker gate — this class has no IT layer, per the scope note above):
+
+- Surefire runs 983 tests, including 24 `AnnotationExtractorTest` cases. Two Docker-free runs took
+  wall-clock 14.07 and 15.08 seconds, both 0 failures / 0 errors.
+- The clean `verify` lifecycle runs all 1,188 tests (983 surefire + 205 failsafe, unchanged by this
+  rollout since no IT was added) in wall-clock 2 minutes 15.53 seconds.
+- `AnnotationExtractor` itself now covers 61 of 63 lines (96.8%) and 39 of 40 branches (97.5%); the
+  one uncovered line/branch pair is the implicit default constructor, never invoked since every
+  caller uses the static methods directly. Whole-backend JaCoCo coverage is 71.3% lines (3,428 of
+  4,810) and 54.1% branches (1,037 of 1,918), up from the most recently documented baseline of
+  70.9% lines and 53.2% branches (the small total-line/branch denominator shift versus that prior
+  baseline reflects an unrelated commit that landed on `dev` in between, not this rollout). No
+  coverage failure threshold is introduced.
+- No production defect was discovered by this rollout.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
