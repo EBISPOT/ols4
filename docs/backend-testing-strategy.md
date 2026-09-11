@@ -1035,6 +1035,77 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented OlsFacetedResultsPage baseline
+
+`OlsFacetedResultsPage` (`repository/search`) is the second Tier B target in this programme. It
+is a tiny generic `PageImpl<T>` subclass (23 lines) adding one field,
+`facetFieldToCounts: Map<String, Map<String, Long>>`, alongside the normal page
+content/pageable/total-elements, plus a constructor and one overridden
+`map(Function<? super T, ? extends U> converter)` that must produce a new
+`OlsFacetedResultsPage<U>` carrying the *same* `facetFieldToCounts`, `pageable`, and
+`totalElements` while converting the content via Spring Data's `getConvertedContent`. Its only
+real production caller is `OlsSearchClient` (`searchPaginated`, which builds a genuine
+`LinkedHashMap<String, Map<String, Long>>` of facet-field -> facet-value -> count, and `suggest`,
+which always passes `Map.of()`) — confirmed directly against `OlsSearchClient.java` rather than
+assumed, per this repo's `graphify query` convention for finding real callers before writing
+fixtures.
+
+**Scope: unit-only, no IT layer.** This class has no Postgres dependency of its own — it wraps
+data another class (`OlsSearchClient`) has already fetched — so per the Tier B methodology's
+"what covered means" section it does not get a dedicated `*IT.java`; a single
+`OlsFacetedResultsPageTest.java` (this repo's plain-JUnit/AssertJ idiom, no Mockito, nothing here
+worth faking) is the complete requirement.
+
+**Why this class was worth a dedicated test despite its size.** A page-wrapper class like this is
+exactly the shape where a naive `map()` override can silently drop the extra field or the
+total-element count during a conversion chain — the override has to remember to thread
+`facetFieldToCounts` through by hand since `PageImpl.map()` doesn't know about it. That's a
+plausible, easy-to-introduce regression, and one existing indirect coverage (WIT/IT tests that
+build `OlsFacetedResultsPage` fixtures via local `page()`/`emptyPage()`/`facetedPage()` helpers,
+or exercise it transitively through `OlsSearchClient`) doesn't specifically assert: those call
+sites check the resulting HTTP response shape, not that the *same* facet-map instance survived a
+`.map()` call, nor what happens with a `null` facet map, nor whether total-element tracking
+survives a `.map()` on a partial (not-last, not full-dataset) page.
+
+**Cases enumerated**, per the constructor and the `map()` override:
+- Constructor with a non-empty facet-counts map (shape taken directly from
+  `OlsSearchClient.searchPaginated`'s real `LinkedHashMap<String, Map<String, Long>>>`), asserting
+  content, pageable, total elements, and the facet map's contents.
+- Constructor with an empty facet-counts map (`Map.of()`) — the real shape `suggest()` always
+  passes, not just a hypothetical edge case.
+- Constructor tolerates a `null` facet-counts map: the field has no null-check anywhere in the
+  class, so `null` is simply stored as given, with no NPE and no silent substitution.
+- `map()` with a genuinely converting function (`Integer -> String`) on a **partial page**
+  (5 results loaded, `numFound` 23 across all pages — not a same-size trivial case), asserting
+  (a) the converted content matches the converter applied to each original element in order,
+  (b) the returned page's `facetFieldToCounts` is the exact same map instance as the source's (not
+  dropped, not a fresh empty map), and (c) `getTotalElements()`/`getPageable()` on the result match
+  the source unchanged.
+- `map()` preserves a `null` facet-counts map through the conversion rather than substituting an
+  empty one.
+- `map()` on an empty-content page, confirming the facet map/pageable/total-elements still survive
+  the conversion when there is no content to convert.
+
+Verified locally on 2026-09-11 from `origin/dev` commit `75d96f57c` with Java 17 (no Postgres/
+Docker gate — this class has no IT layer, per the scope note above):
+
+- Surefire runs 989 tests, including 6 `OlsFacetedResultsPageTest` cases. Two Docker-free runs took
+  wall-clock 16.11 and 11.22 seconds, both 0 failures / 0 errors.
+- The clean `verify` lifecycle runs all 1,194 tests (989 surefire + 205 failsafe, unchanged by this
+  rollout since no IT was added) in wall-clock 2 minutes 3.64 seconds.
+- `OlsFacetedResultsPage` itself covers 22 of 22 instructions (100%) and 4 of 4 lines (100%); it has
+  no branches at all (0 of 0), consistent with a class with no conditional logic. Whole-backend
+  JaCoCo coverage is unchanged at 71.3% lines (3,428 of 4,810) and 54.1% branches (1,037 of 1,918)
+  versus the most recently documented baseline — this class was already indirectly exercised to
+  full instruction/line coverage via existing WIT/IT tests that construct `OlsFacetedResultsPage`
+  fixtures or exercise it transitively through `OlsSearchClient`, so this rollout's value is direct,
+  isolated proof of `map()`'s field-preservation and null-tolerance behaviour (not previously
+  specifically asserted anywhere), not a coverage-percentage change. No coverage failure threshold
+  is introduced.
+- No production defect was discovered by this rollout: `map()` correctly preserves
+  `facetFieldToCounts`, `pageable`, and `totalElements` in every case tested, including the
+  partial-page and null-map cases most likely to expose a dropped field.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
