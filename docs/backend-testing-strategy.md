@@ -1035,6 +1035,131 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented OlsPostgresClient baseline (milestone 3 of 3: embedding/similarity/vector-search family)
+
+`OlsPostgresClient` (`repository/postgres`) is by far the largest Tier B target in this programme
+so far — 625 lines of real jOOQ/Postgres-backed logic in almost every method. Per this
+methodology's shared constraints on splitting a genuinely oversized target (the precedent being
+`V1OntologyTermController`'s 23 routes, split into two milestones), this rollout is split into
+three milestone PRs, each branched independently from `origin/dev` (never stacked on another —
+milestone 1 covers the static/private pure logic plus `getDatabaseNodeCount`/`getAll`/`getOne`;
+milestone 2 covers the graph-traversal family; this section covers milestone 3, the final one:
+`getSimilar`, `getSimilarity`, `getEmbeddingVector`, `searchByVector` (both overloads),
+`searchByVectorInOntology` (both overloads), and `getEmbeddingModels`).
+
+**Already-indirect coverage does not count.** This is the one area of this class that already had
+substantial *indirect* coverage before this rollout: the "V2 LLM-controller baseline" section above
+documented ~87.3% line coverage on this class from `V2LLMController`/`EmbeddingServiceClient`/
+Mcp*Service IT suites exercising these exact methods through their own real-Postgres fixtures. That
+proves those callers' own happy paths, not this class's own edge cases — none of them pass an
+invalid model name, an obsolete source entity, a cross-ontology duplicate IRI+type, or call the
+4-/6-arg convenience overloads at all (every production caller passes `includeCurations` explicitly,
+per that baseline's own dead-code note). This milestone's dedicated fixture and tests reach all of
+those directly.
+
+**Scope: IT-only, no new unit-test class.** Milestone 1 already covers this family's pure-logic
+helpers (`sanitizeEmbeddingColumnName`/`sanitizeEmbeddingNodeColumnName`'s SQL-injection guard,
+`normalizeCosineSimilarity`/`normalizeCosineDistance`, `hasConcreteEntityType`,
+`nearestNeighborCandidateLimit`, `vectorLiteral`) with no Postgres dependency of their own; this
+milestone adds only `OlsPostgresClientEmbeddingIT` (25 cases), the real-Postgres proof that those
+methods and the surrounding query-building logic work correctly together end to end.
+
+**The 4-/6-arg convenience overloads are reachable, not dead code — confirmed empirically, not
+assumed.** The `V2LLMController` baseline noted these overloads as "pre-existing dead code" because
+no *production* caller currently uses them. That is still true — but a dedicated test calling them
+directly is itself a caller, and `OlsPostgresClientEmbeddingIT` does exactly that
+(`searchByVectorFourArgOverloadIncludesCurationsByDefault`,
+`searchByVectorInOntologySixArgOverloadDefaultsIncludeCurationsToTrue`), proving both delegate
+correctly to their 5-/7-arg counterparts with `includeCurations = true` rather than leaving that
+assumption unverified.
+
+**A dedicated three-part fixture, each part isolated from the others and from the existing
+`V2LLMController` embedding fixture** (`OlsPostgresClientEmbeddingIT`'s own
+`OLS_POSTGRES_CLIENT_EMBEDDING_MODEL` name and ontology ids, added by
+`PostgresIntegrationTestSupport.initializeOlsPostgresClientEmbeddingDatabase`):
+
+- **`embtest`/`embtest2`** (entity-level `embeddings_<model>`, for `getSimilar`/`getSimilarity`/
+  `getEmbeddingVector`): `EMB_SOURCE` (`[1,0,0,0]`) is the fixed query point; `EMB_IDENTICAL_DIR`
+  (`[2,0,0,0]`, same direction), `EMB_DIAG` (`[4,3,0,0]`, the same clean 3-4-5-ratio vector already
+  proven reliable by the `V2LLMController` baseline's own fixture), `EMB_ORTHO` (`[0,1,0,0]`), and
+  `EMB_OPPOSITE` (`[-1,0,0,0]`) give `getSimilar` a deterministic, hand-checkable ordering with
+  exact scores 1.0/0.9/0.5/0.0 — deliberately avoiding an irrational (e.g. 45°) angle, whose cosine
+  similarity is not exactly representable and risks flaking against pgvector's internal float4
+  precision. `EMB_OBSOLETE_ONLY` is obsolete with a real embedding, proving the *source* lookup's
+  own `is_obsolete = false` filter (`getSimilar` does not additionally filter obsolete entities out
+  of its *result* set — only self-exclusion and type apply there, confirmed by reading the source,
+  not assumed). `EMB_NO_EMBEDDING`/`EMB_NO_EMBEDDING_PARTNER` share a type so `getSimilarity`'s
+  shared `type` parameter matches both sides of a pair, isolating "the other entity has no
+  embedding value" from an unrelated type mismatch, for both argument positions. `EMB_VECTOR_PARSE`
+  (`[-1.5,2,0,12]`) stresses `getEmbeddingVector`'s bracket-stripping/parsing with a leading
+  negative decimal and a trailing two-digit integer — values a substring-bounds off-by-one would
+  visibly corrupt. `EMB_DUP` exists twice with the identical IRI and type, once per ontology
+  (`embtest` non-defining, `embtest2` defining) — proving `getSimilar`'s source lookup orders by
+  `is_defining_ontology DESC NULLS LAST` and picks the defining row (verified by which row's id
+  is, and is not, excluded from the result set — cosine similarity's symmetry means the *score*
+  alone cannot distinguish which row was picked, only the returned identity can).
+- **`vectest`** (node-level `embedding_<model>`, for the plain `searchByVector`): `VEC_CLASS_A`/
+  `VEC_CLASS_B` are type `VecClass`; `VEC_PROPERTY_A` is type `VecProperty` with the identical
+  label-embedding vector as `VEC_CLASS_A`, present only to prove `hasConcreteEntityType`'s filter
+  actually excludes it when searching `VecClass` and actually includes it when searching the
+  generic `OntologyEntity` marker (`hasConcreteEntityType("OntologyEntity") == false`).
+  `VEC_CLASS_B` additionally has a `CurationEmbedding` node closer to the query
+  (score 0.9) than its own `LabelEmbedding` node (score 0.5), so `includeCurations` measurably
+  changes its *best* score rather than just adding an otherwise-redundant duplicate candidate.
+- **`vectestonto`/`vectestonto2`** (node-level `embedding_<model>`, for
+  `searchByVectorInOntology`) — deliberately its *own* dedicated ontology pair and types
+  (`VecOntoClass`/`VecOntoProperty`), not reusing `vectest`'s: `searchByVector` has no ontology
+  scoping at all and the generic-type test cases have no type scoping either, so any overlap
+  between this group and the plain `searchByVector` fixture would leak rows across the two
+  scenarios' assertions (this was caught empirically during development — an earlier draft that
+  reused `vectest`/`VecClass` produced extra, unexplained rows in both fixtures' result sets until
+  the groups were fully separated). `VEC_ONTO_CLASS`/`VEC_ONTO_PROPERTY` each exist in both
+  ontologies with the same IRI+type; only the `vectestonto` (defining) copies have embedding nodes.
+  `isDefiningOntology = true` against `vectestonto` finds the defining copies directly
+  (`fetchVectorCandidatesInOntologySelect`'s direct-join branch); `isDefiningOntology = false`
+  against `vectestonto2` must instead join through the defining copy's embedding to return the
+  *target* (`vectestonto2`) copy's own id/json — genuinely different SQL, proven by asserting the
+  *returned* id belongs to the target ontology, not just that a result exists. `VEC_ONTO_PROPERTY`
+  has only a `CurationEmbedding` node, found only when `includeCurations = true`.
+
+**`getEmbeddingModels`**, tested directly from `OlsPostgresClient`'s own side (previously only
+proven from `EmbeddingServiceClient`'s side, over a different, unrelated `pca16`-name-filtering
+mechanism): the fixture adds a second `embeddings_<model>_pca16`-suffixed column with no data
+purely to prove `information_schema.columns` introspection excludes it, alongside asserting the
+registered model name comes back with its `embeddings_` prefix correctly stripped.
+
+Verified locally on 2026-09-12 from `origin/dev` commit `75d96f57c` (current tip, same commit both
+other milestones branched from) with Java 17 and Rancher Desktop:
+
+- Surefire runs 983 tests (unchanged by this milestone — no new unit-test class, per the scope note
+  above). Two Docker-free runs both passed cleanly (0 failures / 0 errors).
+- Failsafe runs 230 PostgreSQL tests, including 25 `OlsPostgresClientEmbeddingIT` cases. Two
+  complete database-gate runs both passed cleanly (0 failures / 0 errors) — the first attempt
+  surfaced 7 failures from the fixture cross-contamination described above; all were fixed by fully
+  separating the `searchByVectorInOntology` fixture group's ontology ids and types before the two
+  required clean passes.
+- The clean `verify` lifecycle runs all 1,213 tests (983 surefire + 230 failsafe) in wall-clock
+  2 minutes 3.91 seconds.
+- `OlsPostgresClient` now covers 339 of 363 lines (93.4%, up from the `V2LLMController` baseline's
+  87.3% — this branch does not include milestones 1/2's additional coverage, since all three are
+  independent, unstacked branches) and 63 of 79 branches (79.7%, up from 65.8%) across 41 of 42
+  methods (97.6% — the high method count includes several graph-traversal methods this milestone
+  never calls directly, already covered by other pre-existing repository classes' own IT suites
+  that route through `OlsPostgresClient` for ordinary parent/child lookups; this milestone's own
+  contribution is the line/branch depth within the embedding/vector-search methods themselves).
+  Whole-backend JaCoCo coverage is 71.7% lines (3,450 of 4,810) and 54.6% branches (1,048 of 1,918),
+  up from the `AnnotationExtractor` baseline (3,428 of 4,810 lines, 1,037 of 1,918 branches).
+- No production defect was discovered by this rollout. `getSimilar`'s result set is confirmed to
+  apply no obsolete-entity filter of its own (only the source lookup does) — read directly from the
+  source and tested as the actual, current behaviour, not treated as a defect absent a documented
+  contract requiring otherwise.
+
+With all three milestones complete (pending review/merge), `OlsPostgresClient` has a genuinely
+dedicated, additive test suite across every public method and the private helpers behind them,
+going beyond the ~87%-line/~66%-branch indirect baseline that `V2LLMController` and the
+`EmbeddingServiceClient`/`McpClassService`/`McpEmbeddingService`/`McpSearchService` suites left in
+place.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
