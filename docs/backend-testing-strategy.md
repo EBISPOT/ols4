@@ -1035,6 +1035,108 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented McpEmbeddingService baseline
+
+`McpEmbeddingService` (`controller/mcp`) is a second Spring AI MCP `@Tool`-annotated Tier B target,
+alongside `McpClassService` (its closest analogue: same package, same shape of problem — real
+Postgres-backed collaborators plus one faked embedding call). It is a plain `@Service` with no HTTP
+layer at all, tested exactly like any other Tier B service class. It has two `@Autowired`
+collaborators (`EmbeddingServiceClient`, `OlsPostgresClient`, each already covered by its own
+dedicated suite elsewhere in this programme) and two `@Tool` methods: `listEmbeddingModels` and
+`searchWithEmbeddingModel`.
+
+**Two layers, same mock/real boundary already established for `McpClassService`.**
+`McpEmbeddingServiceTest.java` (18 cases) is a direct unit suite using this repo's hand-rolled-fake
+idiom (no Mockito) for both collaborators — no Postgres involved. `McpEmbeddingServiceIT.java`
+(8 cases) reuses `PostgresIntegrationTestSupport.initializeV2LLMDatabase`/`createV2LLMRepositories`
+(the same fixture and factory the `V2LLMController`/`McpClassService` baselines already
+established) with the real `OlsPostgresClient` bean against real disposable Postgres — no new
+fixture mechanism was needed for this class. Two of `searchWithEmbeddingModel`'s IT cases fake only
+`embeddingServiceClient.embedText(...)` (the same hand-rolled `FixedVectorEmbeddingServiceClient`
+idiom as `McpClassServiceIT`); every subsequent Postgres nearest-neighbor search, curation
+inclusion/exclusion, and ontology scoping is genuine.
+
+**`listEmbeddingModels` gets a real, non-mocked degrade-gracefully case, not just a fake.** Unlike
+`searchWithEmbeddingModel`, `listEmbeddingModels` never calls `embedText` — its only external call
+is `embeddingServiceClient.getAvailableModels()`, which the `EmbeddingServiceClient` baseline above
+already proved degrades to `List.of()` with no exception when the service URL is unconfigured (the
+permanent state of every Spring test context in this repo). `McpEmbeddingServiceIT` exploits this
+directly: one IT case wires the real, unmodified `EmbeddingServiceClient` bean (from
+`createV2LLMRepositories`, `.init()`'d) with no fake standing in for it at all, and asserts the
+Postgres-registered `test_model` fixture comes back with `can_embed=false` — genuine end-to-end
+integration coverage of the "embedding service unconfigured → every Postgres model shows
+`can_embed=false`" contract. A second IT case additionally proves the `can_embed=true` path against
+real Postgres, using a hand-rolled fake that overrides only `getAvailableModels()` (a real embedding
+microservice advertising a specific model by name is the one piece genuinely unreachable in this
+test environment).
+
+**Branches enumerated.** `listEmbeddingModels` builds its result by iterating the *Postgres* list
+only, looking up each model's name in a `Set` built from the embedding-service list: a model in both
+lists is included with `can_embed=true`; a model known only to Postgres is included with
+`can_embed=false`; a model known only to the embedding service does not appear in the result at
+all — not even with `can_embed=false` — since it has no `embeddings_<model>` column and can never be
+used for similarity search. This asymmetry (called out in the task brief as easy to get backwards)
+is proven explicitly by
+`McpEmbeddingServiceTest.listEmbeddingModelsExcludesAModelKnownOnlyToTheEmbeddingServiceEntirely`,
+which asserts the excluded model is absent from the result, not present with `can_embed=false`. The
+result's alphabetical-by-model-name sort is proven with a deliberately out-of-order Postgres list
+input. The empty-both-lists case is proven to return an empty list with no exception.
+`searchWithEmbeddingModel` converts the embedding service's `float[]` to `List<Double>` exactly
+(values like `-2.25`/`100.125` chosen to expose truncation/off-by-one bugs, not just non-nullness);
+dispatches to `postgresClient.searchByVectorInOntology(...)` only when `ontologyId` is non-null *and*
+non-empty (the empty-string case is proven to take the same global-search path as `null`, matching
+`McpClassService`'s identical idiom); always passes `isDefiningOntology=true` to the ontology-scoped
+search; and resolves `includeCurations` — `null` and explicit `true` both to `true`, only explicit
+`false` differs — for both the global and ontology-scoped search paths.
+
+**The two differences from `McpClassService.searchClassesWithEmbeddingModel`, confirmed rather than
+assumed.** First: `searchWithEmbeddingModel` hardcodes `"en"` as the language passed to
+`JsonTransformer.transformJson` — it takes no `lang` parameter at all (unlike `McpClassService`'s
+equivalent method). This cannot be intercepted via a collaborator fake, so it is proven observably
+in the unit suite: an entity whose only localized label is tagged `"de"` resolves to no `"label"` key
+at all under the hardcoded `"en"`, so `McpSearchResult`'s `title` (which concatenates
+`curie + " " + label`) ends with the literal string `"null"` for the missing label rather than
+showing `"German Label"`; a matching English-tagged fixture resolves normally. Second, and more
+consequential: `searchWithEmbeddingModel` passes `"OntologyEntity"` as the search-scope argument to
+`postgresClient.searchByVector`/`searchByVectorInOntology`, where `McpClassService` passes
+`"OntologyClass"`. Reading `OlsPostgresClient.hasConcreteEntityType` confirms this is not a
+copy-paste slip: `"OntologyEntity"` is the one literal that makes `hasConcreteEntityType` return
+`false`, which disables the type filter entirely (`filterByType ? type : null` passes `null`) — so
+this method searches every entity type (class, property, individual), not just classes, by design.
+`McpEmbeddingServiceTest` confirms the literal directly; `McpEmbeddingServiceIT` proves the
+consequence against real Postgres using the exact same fixture and fixed query vector `[1,0,0,0]`
+that `McpClassServiceIT`'s equivalent case uses with `"OntologyClass"` (which finds only the
+`EFO_0001`/`EFO_0002` classes): here, the property (`EFO_0100`) and individual (`EFO_I100`)
+candidates are found too, ranked by exact cosine similarity against `[1,0,0,0]` — `EFO_0001` (1.0) >
+`EFO_I100` (0.8) > `EFO_0100` (0.6) > `EFO_0002` (0.0, `CurationEmbedding` only) — the same worked
+arithmetic documented in `PostgresIntegrationTestSupport.loadV2LlmEmbeddingFixture`.
+
+Verified locally on 2026-09-11 from `origin/dev` commit `aa52e09e4` with Java 17 and Rancher
+Desktop:
+
+- Surefire runs 1,001 tests, including 18 direct `McpEmbeddingServiceTest` cases. Two Docker-free
+  runs took wall-clock 12.46 seconds each (rounded), both 0 failures / 0 errors.
+- Failsafe runs 213 PostgreSQL tests, including 8 `McpEmbeddingServiceIT` cases. Two complete
+  database-gate runs took wall-clock 2 minutes 7.31 seconds and 2 minutes 4.78 seconds.
+- The clean `verify` lifecycle runs all 1,214 tests (1,001 surefire + 213 failsafe) in wall-clock
+  2 minutes 11.07 seconds.
+- `McpEmbeddingService` itself covers all 36 executable lines, all 16 branches, all 13 complexity
+  units, and all 5 methods — 100% on every JaCoCo dimension. Whole-backend JaCoCo coverage is 73.2%
+  lines (3,523 of 4,810) and 57.5% branches (1,103 of 1,918).
+- No production defect was discovered by this rollout. The Postgres-only-inclusion asymmetry in
+  `listEmbeddingModels` (a model known only to the embedding service is dropped entirely rather than
+  shown with `can_embed=false`) was checked closely, since the task brief flagged it as
+  plausible-looking but possibly intentional. `test_api.sh`'s committed golden files under
+  `testcases_expected_output_api/` do not cover this MCP tool class at all (it is not a REST
+  endpoint under test by that script), so that check does not apply here. Reading the method's own
+  code and comment (`// Build response - only include models that exist in Postgres`) shows the
+  Postgres-only iteration is the literal, deliberate mechanism the method is built around — a model
+  absent from Postgres has no `embeddings_<model>` column and therefore can never be used for
+  similarity search via `searchWithEmbeddingModel`/`searchByVector`, so surfacing it at all (even
+  with `can_embed=false`) would advertise a model callers could never actually use. This reads as
+  intended behaviour, not a defect, so no separate defect PR was opened; the behaviour is instead
+  documented and proven precisely above and in `McpEmbeddingServiceTest`.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
