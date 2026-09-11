@@ -58,6 +58,22 @@ public final class PostgresIntegrationTestSupport {
      */
     private static final String V2LLM_TEST_MODEL = "test_model";
 
+    /**
+     * Dedicated ontology id for {@code JooqSupportIT}'s fixture (see
+     * {@link #initializeJooqSupportDatabase}), kept distinct from the shared ontology/entity
+     * fixtures {@link #initializeDatabase} also loads so a query scoped to it can never see rows
+     * from those other fixtures.
+     */
+    public static final String JOOQ_SUPPORT_ONTOLOGY_ID = "jooqsupporttest";
+
+    /**
+     * Model name used by {@code JooqSupportIT}'s {@code embedding_<model>} vector column (see
+     * {@link #loadJooqSupportEmbeddingFixture}). Kept within {@code OlsPostgresClient.SAFE_MODEL_NAME}
+     * (letters, digits, underscore, dot, dash) and distinct from {@link #V2LLM_TEST_MODEL} so both
+     * fixtures could in principle coexist in one database.
+     */
+    public static final String JOOQ_SUPPORT_EMBEDDING_MODEL = "jooqsupport_test_model";
+
     private PostgresIntegrationTestSupport() {
     }
 
@@ -104,6 +120,29 @@ public final class PostgresIntegrationTestSupport {
             loadIndividualFixture(connection);
         } catch (IOException | SQLException e) {
             throw new IllegalStateException("Failed to load the individual integration fixture", e);
+        }
+    }
+
+    /**
+     * Loads a small, self-contained fixture for {@code JooqSupportIT} under the dedicated
+     * {@link #JOOQ_SUPPORT_ONTOLOGY_ID} ontology id, so it cannot collide with the shared
+     * ontology/entity fixtures {@link #initializeDatabase} also loads. {@link #initializeDatabase}
+     * is still called first because it runs {@link #executeProductionSchema}, which is what creates
+     * the {@code pg_trgm}/{@code vector} extensions and the {@code ols_tsvector()}/
+     * {@code ols_lower_array()} functions this fixture's assertions depend on. Five
+     * {@code ols_entities} rows ({@link #loadJooqSupportEntityFixture}) and three
+     * {@code ols_embedding_nodes} rows ({@link #loadJooqSupportEmbeddingFixture}) are hand-picked so
+     * every {@code JooqSupport} builder's real Postgres behaviour is independently, exactly
+     * verifiable -- not just its rendered SQL shape, which {@code JooqSupportTest} already covers
+     * without a database.
+     */
+    public static void initializeJooqSupportDatabase(PostgreSQLContainer<?> container) {
+        initializeDatabase(container);
+        try (Connection connection = container.createConnection("")) {
+            loadJooqSupportEntityFixture(connection);
+            loadJooqSupportEmbeddingFixture(connection);
+        } catch (IOException | SQLException e) {
+            throw new IllegalStateException("Failed to load the JooqSupport integration fixture", e);
         }
     }
 
@@ -192,6 +231,21 @@ public final class PostgresIntegrationTestSupport {
 
         return new V2LLMRepositoryHandle(
                 classRepository, propertyRepository, embeddingServiceClient, olsPostgresClient, postgresClient);
+    }
+
+    /**
+     * Wires a plain {@link PostgresClient} against disposable Postgres carrying the
+     * {@code JooqSupportIT} fixture loaded by {@link #initializeJooqSupportDatabase}.
+     * {@code JooqSupport} itself is a static-method utility with no Spring bean of its own (see its
+     * class Javadoc), so unlike every other handle in this class there is no repository/service
+     * instance to construct here -- the raw {@link PostgresClient} is enough for
+     * {@code JooqSupportIT} to open a connection, get a {@code DSLContext} via
+     * {@link PostgresClient#dsl}, and execute queries built directly with {@code JooqSupport}'s
+     * methods.
+     */
+    public static JooqSupportRepositoryHandle createJooqSupportRepositories(PostgreSQLContainer<?> container) {
+        PostgresClient postgresClient = createPostgresClient(container);
+        return new JooqSupportRepositoryHandle(postgresClient);
     }
 
     public static V1RepositoryHandle createV1Repository(PostgreSQLContainer<?> container) {
@@ -734,6 +788,107 @@ public final class PostgresIntegrationTestSupport {
     }
 
     /**
+     * Five hand-picked {@code ols_entities} rows for {@code JooqSupportIT}, all under
+     * {@link #JOOQ_SUPPORT_ONTOLOGY_ID}:
+     * <ul>
+     *   <li>{@code cancer_upper} / {@code cancer_lower} -- identical labels except for case
+     *       ({@code "Cancer"} vs {@code "cancer"}), for contrasting {@code arrayContains} (exact,
+     *       case-sensitive) against {@code arrayContainsCaseInsensitive}. Distinct, non-overlapping
+     *       {@code curated_from_sources} values double as the {@code unnest} fixture.</li>
+     *   <li>{@code diabetes_parent} / {@code diabetes_child} -- a real {@code direct_parents}
+     *       relationship (child points at parent's iri), for {@code arrayContains(Field,Field)}'s
+     *       {@code = ANY} join form and {@code arrayContainsField}'s {@code @>} join form. The
+     *       child's {@code "Sugar Diabetes"} synonym and both rows' {@code "Diabet..."}-prefixed
+     *       {@code label_for_suggest} feed the trigram/full-text-search methods.</li>
+     *   <li>{@code fulltext_control} -- shares no words with the other four rows (deliberately no
+     *       "cancer"/"diabetes"), so it is a genuine non-match control for the trigram and
+     *       tsquery-based methods rather than an accidental partial match.</li>
+     * </ul>
+     */
+    private static void loadJooqSupportEntityFixture(Connection connection) throws IOException, SQLException {
+        insertJooqSupportEntity(connection, "jst+class+cancer_upper", "http://example.org/JST_CANCER_UPPER",
+                new String[] {"Cancer"}, new String[0], new String[0], new String[0],
+                new String[] {"pubmed", "hpo"}, "Cancer", true);
+        insertJooqSupportEntity(connection, "jst+class+cancer_lower", "http://example.org/JST_CANCER_LOWER",
+                new String[] {"cancer"}, new String[0], new String[0], new String[0],
+                new String[] {"orphanet"}, "cancer", false);
+        insertJooqSupportEntity(connection, "jst+class+diabetes_parent", "http://example.org/JST_DIABETES_PARENT",
+                new String[] {"Diabetes"}, new String[0], new String[0], new String[0],
+                new String[0], "Diabetes", true);
+        insertJooqSupportEntity(connection, "jst+class+diabetes_child", "http://example.org/JST_DIABETES_CHILD",
+                new String[] {"Diabetes Mellitus"}, new String[] {"Sugar Diabetes"}, new String[0],
+                new String[] {"http://example.org/JST_DIABETES_PARENT"}, new String[0],
+                "Diabetes Mellitus", false);
+        insertJooqSupportEntity(connection, "jst+class+fulltext_control", "http://example.org/JST_FULLTEXT_CONTROL",
+                new String[] {"Malignant Neoplastic Disease"}, new String[] {"Neoplastic Growth"},
+                new String[] {"Abnormal cell proliferation in tissue"}, new String[0], new String[0],
+                "Malignant Neoplastic Disease", true);
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("ANALYZE ols_entities");
+        }
+    }
+
+    private static void insertJooqSupportEntity(
+            Connection connection, String id, String iri, String[] label, String[] synonym, String[] definition,
+            String[] directParents, String[] curatedFromSources, String labelForSuggest,
+            boolean isDefiningOntology) throws IOException, SQLException {
+        String sql = """
+                INSERT INTO ols_entities (
+                    id, type, iri, ontology_id, _json, is_obsolete, label, synonym, definition,
+                    direct_parents, curated_from_sources, label_for_suggest, is_defining_ontology)
+                VALUES (?, 'Class', ?, ?, ?, FALSE, ?, ?, ?, ?, ?, ?, ?)
+                """;
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, id);
+            statement.setString(2, iri);
+            statement.setString(3, JOOQ_SUPPORT_ONTOLOGY_ID);
+            statement.setBytes(4, gzip("{}"));
+            statement.setArray(5, connection.createArrayOf("text", label));
+            statement.setArray(6, connection.createArrayOf("text", synonym));
+            statement.setArray(7, connection.createArrayOf("text", definition));
+            statement.setArray(8, connection.createArrayOf("text", directParents));
+            statement.setArray(9, connection.createArrayOf("text", curatedFromSources));
+            statement.setString(10, labelForSuggest);
+            statement.setBoolean(11, isDefiningOntology);
+            statement.executeUpdate();
+        }
+    }
+
+    /**
+     * Adds a 4-dimensional {@code embedding_<model>} vector column to {@code ols_embedding_nodes}
+     * (same mechanism as {@link #loadV2LlmEmbeddingFixture}, under
+     * {@link #JOOQ_SUPPORT_EMBEDDING_MODEL} instead) and inserts three rows whose pgvector cosine
+     * distance ({@code <=>}) from the fixed vector {@code [1,0,0,0]} is an exact, hand-checkable
+     * value: identical (distance {@code 0}), orthogonal (distance {@code 1}), and opposite
+     * (distance {@code 2}) -- see {@code docs/backend-testing-strategy.md}'s "Implemented
+     * JooqSupport baseline" section for the worked arithmetic.
+     */
+    private static void loadJooqSupportEmbeddingFixture(Connection connection) throws SQLException {
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("ALTER TABLE ols_embedding_nodes ADD COLUMN \"embedding_"
+                    + JOOQ_SUPPORT_EMBEDDING_MODEL + "\" vector(4)");
+        }
+        insertJooqSupportEmbeddingNode(connection, "jst-emb-identical", "[1,0,0,0]");
+        insertJooqSupportEmbeddingNode(connection, "jst-emb-orthogonal", "[0,1,0,0]");
+        insertJooqSupportEmbeddingNode(connection, "jst-emb-opposite", "[-1,0,0,0]");
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("ANALYZE ols_embedding_nodes");
+        }
+    }
+
+    private static void insertJooqSupportEmbeddingNode(Connection connection, String nodeId, String vectorLiteral)
+            throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement(
+                "INSERT INTO ols_embedding_nodes (id, type, entity_id, \"embedding_"
+                        + JOOQ_SUPPORT_EMBEDDING_MODEL + "\") VALUES (?, 'LabelEmbedding', ?, ?::vector)")) {
+            statement.setString(1, nodeId);
+            statement.setString(2, nodeId + "-entity");
+            statement.setString(3, vectorLiteral);
+            statement.executeUpdate();
+        }
+    }
+
+    /**
      * Adds the two production embedding column families documented in
      * {@code OlsPostgresClient.sanitizeEmbeddingColumnName}/{@code sanitizeEmbeddingNodeColumnName}
      * directly via SQL (bypassing {@code dataload/create_postgres_schema.py}'s parquet-driven column
@@ -865,6 +1020,15 @@ public final class PostgresIntegrationTestSupport {
 
     public record V1RepositoryHandle(
             V1OntologyRepository repository,
+            PostgresClient postgresClient) implements AutoCloseable {
+
+        @Override
+        public void close() {
+            postgresClient.close();
+        }
+    }
+
+    public record JooqSupportRepositoryHandle(
             PostgresClient postgresClient) implements AutoCloseable {
 
         @Override
