@@ -1035,6 +1035,81 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented JsonTransformer baseline
+
+`JsonTransformer` (`repository/transforms`) is the third Tier B target completed under this
+programme's expanded scope (after `AnnotationExtractor` above, and alongside the still-open
+`EmbeddingServiceClient`/`JooqSupport` PRs — see `.claude/commands/backend-test-coverage.md`'s
+Tier B methodology). It is a pure static-method utility class — no Spring bean, no constructor
+state, no Postgres dependency — with a single public method, `transformJson(JsonElement, String,
+JsonTransformOptions)`, called from `ClassRepository`, `EntityRepository`, `IndividualRepository`,
+`OntologyRepository`, and `PropertyRepository` (confirmed via `graphify explain "JsonTransformer"`
+before falling back to `grep`), as well as directly from several `controller/mcp/*` `@Tool`
+services. The method's own logic is entirely a two-flag dispatch: `LocalizationTransform` and
+`RemoveLiteralDatatypesTransform` always run; `ResolveReferencesTransform` runs only when
+`JsonTransformOptions.resolveReferences` is true, and `ManchesterSyntaxTransform` only when
+`.manchesterSyntax` is true. Production callers set these flags independently — e.g.
+`McpClassService` sets both `true`, `HealthCheckController` constructs a bare
+`new JsonTransformOptions()` (both `false`) — so all four combinations are real, reachable states,
+not a hypothetical Cartesian product.
+
+**Scope: `JsonTransformer`'s own dispatch logic only, not its four sub-transforms.**
+`LocalizationTransform`, `RemoveLiteralDatatypesTransform`, `ResolveReferencesTransform`, and
+`ManchesterSyntaxTransform` are each their own separate, real-logic static-method utility class,
+and each remains its own not-yet-covered Tier B backlog item — this rollout does not give any of
+them exhaustive branch-by-branch coverage; that is future invocations' job, one class at a time,
+per this programme's standing "one unit per invocation" rule. `JsonTransformerTest` uses small,
+hand-verifiable JSON fixtures only large enough to observe each sub-transform actually firing (or
+genuinely not firing when its flag is off) — not to exercise that sub-transform's own internal
+branches.
+
+**`JsonTransformOptions` is excluded from the Tier B backlog**, by judgment rather than silently:
+it is a plain data holder (two public booleans, `resolveReferences`/`manchesterSyntax`, with
+getters/setters and no logic of its own), used throughout this suite only as an input fixture.
+
+**Scope: unit-only, no IT layer.** Per the Tier B methodology's "what covered means" section, a
+pure-logic class with no Postgres dependency of its own does not get a dedicated `*IT.java` layer.
+`JsonTransformer` reads no state and calls nothing Postgres-backed — there is no real-database
+behaviour to prove beyond what `JsonTransformerTest`'s hand-built `JsonElement` fixtures already
+cover. This baseline is therefore a single new `JsonTransformerTest.java` (6 cases, this repo's
+plain-JUnit/AssertJ idiom, no Mockito, no fakes — everything under test is static and pure) and
+nothing else.
+
+**Cases enumerated.** Two cases isolate the unconditional transforms from the flag dispatch
+entirely: a two-language (`en`/`fr`) literal array requested with `lang="en"` proves
+`LocalizationTransform` selects the requested language and drops the other, collapsing each
+matching literal straight to its raw value; a `{"type":["literal"],"value":"Diabetes"}` object (no
+`lang` key) requested with `lang=""` proves `RemoveLiteralDatatypesTransform` independently strips
+the datatype wrapper down to the bare `"Diabetes"` string — distinct from `LocalizationTransform`'s
+own unwrap of a language-matched literal, which the first case already exercises. The remaining
+four cases cover every combination of the two flags against one shared, realistic V2-entity-shaped
+fixture (a two-language `label`, a `directParent` IRI resolvable via a `linkedEntities` entry, and
+an `owl:someValuesFrom` class-expression restriction under `subClassOf`): neither flag enabled
+leaves `directParent` as the raw IRI and `subClassOf`'s restriction structurally untouched; only
+`resolveReferences` enabled inlines the linked entity (with the `iri` field
+`ResolveReferencesTransform` adds) but leaves the restriction alone; only `manchesterSyntax`
+enabled collapses the restriction to its Manchester string (`"...hasSymptom some ...Fever"`) but
+leaves `directParent` unresolved; both enabled do both. Every one of the four cases also asserts
+the fixture's `label` field collapsed to the single, `en`-only value, proving the two unconditional
+transforms keep running in every flag combination, not only when both optional flags are off.
+
+Verified locally on 2026-09-11 from `origin/dev` commit `75d96f57c` with Java 17 (no Postgres/
+Docker gate — this class has no IT layer, per the scope note above):
+
+- Surefire runs 989 tests, including 6 `JsonTransformerTest` cases. Two Docker-free runs both
+  reported 0 failures / 0 errors.
+- The clean `verify` lifecycle runs all 1,194 tests (989 surefire + 205 failsafe, unchanged by this
+  rollout since no IT was added) in wall-clock 2 minutes 17.21 seconds.
+- `JsonTransformer` itself now covers 21 of 24 instructions (87.5%), 4 of 4 branches (100%), and 7
+  of 8 lines (87.5%); the one uncovered line is the implicit default constructor, never invoked
+  since the only caller-facing entry point is the static `transformJson` method — the same pattern
+  already noted for `AnnotationExtractor` above. Whole-backend JaCoCo coverage is 74.5% instructions
+  (17,924 of 24,054), 58.4% branches (1,120 of 1,918), and 73.5% lines (3,533 of 4,810); this is
+  measured from a later `origin/dev` commit than the `AnnotationExtractor` baseline above (which
+  already contributed 24 of its own test cases to this same total), not a jump caused by this
+  rollout alone. No coverage failure threshold is introduced.
+- No production defect was discovered by this rollout.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
