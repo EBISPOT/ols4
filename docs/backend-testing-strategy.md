@@ -1035,6 +1035,141 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented ManchesterSyntaxTransform baseline
+
+`ManchesterSyntaxTransform` (`repository/transforms`) is the second Tier B target in this
+programme. It is a pure static-method utility class — no Spring bean, no constructor state, no
+Postgres dependency — that recursively walks a Gson `JsonElement` tree and, wherever it finds an
+anonymous OWL class-expression object (detected heuristically via `isClassExpressionObject`, with
+`isNamedEntityObject` giving named entities precedence over collapsing), renders it as a
+Manchester-syntax string via `toManchester`. It is called from `JsonTransformer.transformJson`
+(itself called from `PropertyRepository`, `IndividualRepository`, `OntologyRepository`,
+`EntityRepository`, `ClassRepository`) when the `manchesterSyntax` output option is requested. Its
+sibling class `JsonTransformer`, covered by an earlier (still-open) PR in this programme, tests
+only its own dispatch of the four transforms it chains together, not this class's internals — this
+baseline is the first dedicated coverage of `ManchesterSyntaxTransform`'s own branches.
+
+**Scope: unit-only, no IT layer.** Same rationale as the `AnnotationExtractor` baseline above: a
+pure-logic class with no Postgres dependency of its own has no real-database behaviour to prove
+beyond a direct unit test with hand-built `JsonElement` fixtures. This baseline is a single new
+`ManchesterSyntaxTransformTest.java` (61 cases, this repo's plain-JUnit idiom — text-block JSON
+fixtures parsed via `JsonParser.parseString`, matching the existing `LocalizationTransformTest`
+idiom for this same `transforms` package — no Mockito, no Spring context) and nothing else. Every
+case drives the single public entry point, `transform(JsonElement)`, since the class's other three
+methods (`isClassExpressionObject`, `isNamedEntityObject`, `toManchester`) are private; whether an
+input collapses to a Manchester string or is left structurally intact and recursed into is directly
+observable in the shape of `transform`'s return value, so this still lets every one of their
+branches be asserted with exact string/structural equality (not just "contains" or "non-null").
+`JsonCollectionHelper.map`, touched only incidentally by `transform`'s own array/object recursion,
+is exercised by several cases here but does not get its own dedicated suite — it remains a separate
+future backlog item, as called out by the task that produced this baseline.
+
+**Fixtures grounded in real production data.** Rather than inventing synthetic OWL shapes,
+`graphify query` was used first (per this repo's `CLAUDE.md`) to trace `ManchesterSyntaxTransform`'s
+real callers through `JsonTransformer`, then the committed
+`testcases_expected_output/owl2-primer/*/ontologies_linked.json` golden fixtures were inspected for
+the actual rdf2json shapes this codebase's OWL pipeline produces. Several test cases reuse those
+exact shapes: `intersectionOf` (`subClassOf-intersectionOf`: Man and Parent), `someValuesFrom`/
+`allValuesFrom` (the `equivalent-propertyRestriction-*` fixtures: onProperty=hasChild), exact
+`cardinality`/`qualifiedCardinality` values (`unqualified-cardinality-exact-restriction`,
+`propertyRestriction-qualifiedCardinality`: onProperty=hasChild, onClass=Parent, cardinality=2),
+`hasSelf` (`self-restriction`: onProperty=loves, hasSelf=true), and the datatype-restriction
+min/max facets (`datatype-minmax`: onDatatype=xsd:integer, withRestrictions=[{minInclusive:0},
+{maxInclusive:150}], as raw un-stringified JSON numbers — confirmed by reading
+`RemoveLiteralDatatypesTransform`, the stage immediately before this one in `JsonTransformer`'s
+pipeline, that literal-wrapped values reaching this class are already flattened to plain strings
+while `withRestrictions` facet values are not, which is exactly why `normalizeNumberToString`
+exists).
+
+**Branches enumerated.** `transform`: null/`JsonNull` input; array input (recurses per-element via
+`JsonCollectionHelper.map`); an object that is a class expression and not a named entity (collapses
+to a `JsonPrimitive` string); an object that is not a class expression at all (recurses into its
+values, including a nested value that itself collapses); the "named entity wins over
+class-expression detection" precedence explicitly called out in the code's own comment (an object
+carrying both `iri` and `owl:inverseOf` is *not* collapsed — it stays structurally intact while its
+non-named-entity nested value still collapses); primitives and booleans returned as-is.
+
+`isClassExpressionObject`: the negative case (no matching keys and no `type` at all); the
+`type`-array-contains-`"datatype"`-alone-without-`equivalentClass` negative case; the
+`equivalentClass`-alone-without-`datatype`-type negative case; the combined
+datatype+equivalentClass special case (positive), including the case-0 label-prefix precedence
+over the general label shortcut. All 18 of the class's own key-array entries (the class's inline
+comment undercounts these as unspecified; the array literal itself has 18 distinct URI constants)
+are each exercised via at least one `toManchester`-branch test that starts from an object carrying
+that exact key, per this task's own "don't necessarily need all as separate
+`isClassExpressionObject`-only cases" guidance.
+
+`isNamedEntityObject`: each of the five direct-field checks (`iri`, `ontologyId`, `ontologyIri`,
+`curie`, `shortForm`) as independent positive cases; the `type`-array-contains-an-entity-type path
+with two of the eight listed strings (`"class"`, `"objectProperty"`); the
+type-array-present-but-no-entity-type-string-in-it case, verified distinct from the true case by
+its different output shape (the object still collapses to a string, rather than staying intact);
+the no-fields/no-type negative case, covered incidentally by the many collapsing tests above (per
+this task's own exemption for cases already exercised elsewhere).
+
+`toManchester`, in the exact precedence order the code checks them (several are mutually exclusive
+early-returns, verified with cases that give two matching keys and assert only the first-checked
+one fires): the datatype+equivalentClass special case with and without a `label` field (proving the
+`"label "` prefix is added only when present, and that a non-primitive label — the raw
+pre-localization shape — is silently ignored rather than rendered incorrectly); the general
+`label`-shortcut precedence over `owl:intersectionOf` on the same object; `owl:intersectionOf`
+(2-element) and `owl:unionOf` (3-element), proving the exact `intersperse`/`joinWith` parenthesized
+format against both list lengths, plus `intersectionOf` given as a bare non-array value;
+`owl:complementOf`; `owl:oneOf` (brace-joined, with `normalizeNumberToString` on a numeric member);
+`owl:inverseOf`; a `null` member inside `intersectionOf` rendering the bottom symbol (`⊥`); datatype
+restrictions combining two XSD facets in one restriction object (`minInclusive`+`maxInclusive` via
+the case-0 path, `minExclusive`+`maxExclusive` via the general `onDatatype` path) plus both the
+present-but-empty and entirely-absent `withRestrictions` cases (bare-IRI fallback), plus a
+non-object entry mixed into the restriction list being skipped; the "no `onProperty` and not
+`isJsonBoolean`" fallback to `"unknown class expression"`, confirmed empirically (per this task's
+own instruction not to assume) to fire even when another restriction key like `minCardinality` is
+present, since `isJsonBoolean` is a permanently-`false` stub; each of
+`someValuesFrom`/`allValuesFrom`/`hasValue`/`minCardinality`/`maxCardinality`/`cardinality`/
+`hasSelf`-when-truthy as an individual case, plus six pairwise precedence tests spot-checking the
+entire adjacent chain in order; `hasSelf` as `false`, as an explicit JSON `null`, and as a
+non-boolean string all correctly *not* triggering the `Self` suffix; each of the three qualified
+cardinalities (gated on `owl:onClass`) plus their own precedence test and the "onClass present but
+no qualified-cardinality key" fallback; and `hasValue` targeting a resolved named-individual object
+(grounded in the `value-restriction-on-individual` fixture) proving `normalizeNumberToString`'s
+`isJsonPrimitive()` guard leaves non-primitive values untouched, which then render via the general
+label shortcut.
+
+**Known-unreachable branches, left undocumented as gaps rather than chased.** JaCoCo's own report,
+read line-by-line, shows the residual missed branches are not test gaps but structurally
+unreachable given the current call graph: `toManchester`'s own `el == null` (Java-`null`, as
+opposed to `JsonNull`) guard is never reached because every internal call site that invokes
+`toManchester` already null-checks its argument first; and the `onProperty == null &&
+!isJsonBoolean(obj)` gate's second operand can never evaluate to `false` because `isJsonBoolean` is
+a hardcoded `return false;` stub (exactly the suspicious edge case flagged going into this
+rollout — confirmed empirically to be inert dead code, not a defect: see the "No production defect"
+note below). A handful of remaining branches live entirely inside the low-level helpers
+(`safeArray`, `containsString`, `asList`, `isTruthy`) explicitly exempted by this task's own
+guidance from needing dedicated tests beyond incidental exercise, and were left as-is rather than
+chased with contrived reflection-free inputs.
+
+Verified locally on 2026-09-11 from `origin/dev` commit `75d96f57c` with Java 17 (no Postgres/
+Docker gate — this class has no IT layer, per the scope note above):
+
+- Surefire runs 1,044 tests, including all 61 `ManchesterSyntaxTransformTest` cases. Two
+  Docker-free runs took wall-clock 12.76s and 13.09s, both 0 failures / 0 errors.
+- The clean `verify` lifecycle runs all 1,249 tests (1,044 surefire + 205 failsafe, unchanged by
+  this rollout since no IT was added) in wall-clock 2 minutes 2.40 seconds.
+- `ManchesterSyntaxTransform` itself now covers 156/157 lines (99.4%), 157/166 branches (94.6%), 885/892
+  instructions (99.2%), 15/16 methods (93.8% — the one uncovered method is the implicit default
+  constructor, never invoked since every caller uses the static methods directly, the same pattern
+  already documented for `AnnotationExtractor`).
+- Whole-backend: 74.5% lines (3,584/4,810), 62.3% branches (1,194/1,918) — up from the
+  `AnnotationExtractor` baseline's 71.3%/54.1% (the total line/branch denominators are unchanged at
+  4,810/1,918, confirming this class previously had essentially zero dedicated coverage: the
+  backend-wide covered-line/covered-branch deltas, +156 and +157, line up almost exactly with this
+  class's own newly-covered counts). No repository-wide coverage threshold is introduced.
+- No production defect was discovered by this rollout. The `isJsonBoolean` stub and the
+  `el == null` guard were both investigated as flagged suspicious edge cases going in; both are
+  confirmed-empirically-inert defensive code reachable only via direct reflection on the private
+  method, not through the public `transform` entry point any real caller uses, so neither rises to
+  a genuine, user-visible defect worth a separate PR. `oneOf`'s member normalization
+  (`normalizeNumberToString`) was also checked against a real numeric member and behaves correctly.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
