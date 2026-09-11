@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.util.LinkedMultiValueMap;
@@ -111,6 +112,50 @@ class V2IndividualControllerTest {
     }
 
     @Test
+    void hierarchicalChildrenDecodeTheIriAndDelegateEveryPublicArgument() {
+        Pageable pageable = PageRequest.of(1, 3);
+        JsonTransformOptions options = new JsonTransformOptions();
+
+        controller.getHierarchicalChildrenByOntology(
+                pageable,
+                "efo",
+                "http%3A%2F%2Fexample.org%2FEFO_I100",
+                true,
+                "de",
+                options);
+
+        assertEquals(RecordingIndividualRepository.Call.HIERARCHICAL_CHILDREN, repository.call);
+        assertEquals("efo", repository.ontologyId);
+        assertEquals("http://example.org/EFO_I100", repository.iri);
+        assertTrue(repository.includeObsoleteEntities);
+        assertSame(pageable, repository.pageable);
+        assertEquals("de", repository.lang);
+        assertSame(options, repository.outputOptions);
+    }
+
+    @Test
+    void hierarchicalAncestorsDecodeTheIriAndDelegateEveryPublicArgument() {
+        Pageable pageable = PageRequest.of(2, 5);
+        JsonTransformOptions options = new JsonTransformOptions();
+
+        controller.getHierarchicalAncestorsByOntology(
+                pageable,
+                "efo",
+                "http%3A%2F%2Fexample.org%2FEFO_I200",
+                false,
+                "fr",
+                options);
+
+        assertEquals(RecordingIndividualRepository.Call.HIERARCHICAL_ANCESTORS, repository.call);
+        assertEquals("efo", repository.ontologyId);
+        assertEquals("http://example.org/EFO_I200", repository.iri);
+        assertFalse(repository.includeObsoleteEntities);
+        assertSame(pageable, repository.pageable);
+        assertEquals("fr", repository.lang);
+        assertSame(options, repository.outputOptions);
+    }
+
+    @Test
     void classIndividualsDecodeTheClassIriAndDelegateEveryPublicArgument() throws Exception {
         Pageable pageable = PageRequest.of(1, 3);
         JsonTransformOptions options = new JsonTransformOptions();
@@ -134,7 +179,13 @@ class V2IndividualControllerTest {
     }
 
     private static class RecordingIndividualRepository extends IndividualRepository {
-        private enum Call { GLOBAL_LIST, ONTOLOGY_LIST, CLASS_INDIVIDUALS }
+        private enum Call {
+            GLOBAL_LIST,
+            ONTOLOGY_LIST,
+            HIERARCHICAL_CHILDREN,
+            HIERARCHICAL_ANCESTORS,
+            CLASS_INDIVIDUALS
+        }
 
         private Call call;
         private Pageable pageable;
@@ -201,6 +252,44 @@ class V2IndividualControllerTest {
         }
 
         @Override
+        public Page<JsonElement> getHierarchicalChildrenByOntologyId(
+                String ontologyId,
+                Pageable pageable,
+                String iri,
+                boolean includeObsoleteEntities,
+                String lang,
+                JsonTransformOptions outputOptions) {
+            recordHierarchy(
+                    Call.HIERARCHICAL_CHILDREN,
+                    ontologyId,
+                    pageable,
+                    iri,
+                    includeObsoleteEntities,
+                    lang,
+                    outputOptions);
+            return Page.empty(pageable);
+        }
+
+        @Override
+        public Page<JsonElement> getHierarchicalAncestorsByOntologyId(
+                String ontologyId,
+                Pageable pageable,
+                String iri,
+                boolean includeObsoleteEntities,
+                String lang,
+                JsonTransformOptions outputOptions) {
+            recordHierarchy(
+                    Call.HIERARCHICAL_ANCESTORS,
+                    ontologyId,
+                    pageable,
+                    iri,
+                    includeObsoleteEntities,
+                    lang,
+                    outputOptions);
+            return Page.empty(pageable);
+        }
+
+        @Override
         public OlsFacetedResultsPage<JsonElement> getIndividualsOfClass(
                 String ontologyId,
                 String classIri,
@@ -234,6 +323,23 @@ class V2IndividualControllerTest {
             this.boostFields = boostFields;
             this.exactMatch = exactMatch;
             this.properties = properties;
+            this.outputOptions = outputOptions;
+        }
+
+        private void recordHierarchy(
+                Call call,
+                String ontologyId,
+                Pageable pageable,
+                String iri,
+                boolean includeObsoleteEntities,
+                String lang,
+                JsonTransformOptions outputOptions) {
+            this.call = call;
+            this.ontologyId = ontologyId;
+            this.pageable = pageable;
+            this.iri = iri;
+            this.includeObsoleteEntities = includeObsoleteEntities;
+            this.lang = lang;
             this.outputOptions = outputOptions;
         }
 

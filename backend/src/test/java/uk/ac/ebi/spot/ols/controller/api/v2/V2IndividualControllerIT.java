@@ -13,9 +13,6 @@ import uk.ac.ebi.spot.ols.controller.api.exception.GlobalExceptionHandler;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport;
 
 import java.net.URI;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -44,21 +41,8 @@ class V2IndividualControllerIT {
     private static MockMvc mockMvc;
 
     @BeforeAll
-    static void setUpApplicationPath() throws SQLException {
+    static void setUpApplicationPath() {
         PostgresIntegrationTestSupport.initializeIndividualDatabase(POSTGRES);
-        // A hierarchical property (e.g. COHO isSubCohortOf) makes EFO_I200 and the
-        // obsolete EFO_I999 hierarchical children of EFO_I100.
-        try (Connection connection = POSTGRES.createConnection("");
-                Statement statement = connection.createStatement()) {
-            statement.executeUpdate("""
-                    UPDATE ols_entities
-                    SET hierarchical_parents = ARRAY['http://example.org/EFO_I100'],
-                        hierarchical_ancestors = ARRAY['http://example.org/EFO_I100']
-                    WHERE id IN (
-                        'efo+individual+http://example.org/EFO_I200',
-                        'efo+individual+http://example.org/EFO_I999')
-                    """);
-        }
         repositoryHandle = PostgresIntegrationTestSupport.createIndividualRepository(POSTGRES);
 
         V2IndividualController controller = new V2IndividualController();

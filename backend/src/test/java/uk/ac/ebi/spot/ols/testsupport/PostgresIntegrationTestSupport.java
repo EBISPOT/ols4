@@ -685,11 +685,12 @@ public final class PostgresIntegrationTestSupport {
                 INSERT INTO ols_entities (
                     id, type, iri, ontology_id, _json, is_obsolete, label, search_type,
                     short_form, curie, obo_id, synonym, definition, is_defining_ontology,
-                    subset, related_to, direct_parents, direct_ancestors,
+                    subset, related_to, direct_parents, hierarchical_parents,
+                    direct_ancestors, hierarchical_ancestors,
                     label_for_suggest, filter_tags, filter_domain,
                     "filter_http://example.org/category",
                     "filter_http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """;
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             for (JsonElement element : fixture.getAsJsonArray("records")) {
@@ -711,14 +712,16 @@ public final class PostgresIntegrationTestSupport {
                 statement.setArray(15, textArray(connection, record.getAsJsonArray("subset")));
                 statement.setArray(16, textArray(connection, record.getAsJsonArray("relatedTo")));
                 statement.setArray(17, textArray(connection, record.getAsJsonArray("directParents")));
-                statement.setArray(18, textArray(connection, record.getAsJsonArray("directAncestors")));
-                statement.setString(19, record.getAsJsonArray("label").get(0).getAsString());
-                statement.setArray(20, textArray(connection, record.getAsJsonArray("tags")));
-                statement.setArray(21, textArray(connection, record.getAsJsonArray("domain")));
-                statement.setArray(22, textArray(
+                statement.setArray(18, textArray(connection, record.getAsJsonArray("hierarchicalParents")));
+                statement.setArray(19, textArray(connection, record.getAsJsonArray("directAncestors")));
+                statement.setArray(20, textArray(connection, record.getAsJsonArray("hierarchicalAncestors")));
+                statement.setString(21, record.getAsJsonArray("label").get(0).getAsString());
+                statement.setArray(22, textArray(connection, record.getAsJsonArray("tags")));
+                statement.setArray(23, textArray(connection, record.getAsJsonArray("domain")));
+                statement.setArray(24, textArray(
                         connection,
                         record.getAsJsonArray("http://example.org/category")));
-                statement.setArray(23, textArray(
+                statement.setArray(25, textArray(
                         connection,
                         record.getAsJsonArray("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")));
                 statement.addBatch();

@@ -931,6 +931,52 @@ This is the same category of permanent gap `V2TextTaggerController`'s baseline r
 `ols_text_tagger` binary, and it will remain true for any environment that does not run a real
 embedding service alongside the database.
 
+## Completed V2 individual hierarchy-route coverage
+
+PR #1404 added `GET /api/v2/ontologies/{onto}/individuals/{individual}/hierarchicalChildren` and
+`GET /api/v2/ontologies/{onto}/individuals/{individual}/hierarchicalAncestors` after the original
+V2 individual-controller testing milestone. It added three thin controller IT cases, but the two
+new routes were absent from both `V2IndividualControllerTest` and the exact named
+`V2IndividualControllerWIT` contract suite. This follow-up closes that route-level gap without
+duplicating the existing controller ITs.
+
+Verified locally on 2026-09-11 from `origin/dev` commit `3a8f66a6c` with Java 17 and Rancher
+Desktop:
+
+- Surefire runs 959 tests, including 8 direct `V2IndividualControllerTest` cases and 98
+  `V2IndividualControllerWIT` invocations. The two new direct tests prove single decoding and exact
+  repository delegation for both routes. The 34 new WIT invocations cover both routes' default and
+  explicit response contracts, double-encoded individual IRIs, every supported query parameter,
+  pagination normalization and malformed-number defaults, ascending/descending and unsupported
+  sort values, malformed booleans, and stable ontology/language validation errors. Two complete
+  Docker-free runs took wall-clock 23.68 and 24.42 seconds.
+- Failsafe runs 205 PostgreSQL tests. `IndividualRepositoryIT` now has 8 cases; its new hierarchy
+  case proves active/obsolete filtering for hierarchical children plus ancestor traversal, and its
+  existing validation matrix now covers both hierarchy repository methods. The 7 existing
+  `V2IndividualControllerIT` cases remain the thin end-to-end path through the real controller,
+  repository, and production PostgreSQL schema. Two complete database-gate runs took wall-clock
+  114.10 and 119.25 seconds.
+- The clean `verify` lifecycle runs all 1,164 tests in wall-clock 129.77 seconds. Whole-backend
+  JaCoCo coverage is 70.9% lines (3,410 of 4,808) and 53.2% branches (1,021 of 1,918), unchanged
+  from the post-#1404 baseline because its controller ITs already executed the new production
+  methods. `V2IndividualController` covers all 29 executable lines and all 6 branches;
+  `IndividualRepository` covers 62 of 63 lines and 11 of 14 branches. No coverage threshold is
+  introduced.
+- The committed individual fixture now owns `hierarchicalParents` and `hierarchicalAncestors` for
+  every record, and `PostgresIntegrationTestSupport` loads those arrays into the production
+  columns. `V2IndividualControllerIT` therefore no longer mutates its private database with a
+  second handwritten SQL hierarchy fixture; controller and repository ITs share one explicit,
+  reviewable source of relationship data.
+- No production defect was discovered. The gap was in test-layer completeness introduced by the
+  later feature PR, not in the behavior of either hierarchy endpoint. `test_api.sh` was not changed
+  or run; full dataload-to-deployed-API comparison remains the system-regression layer.
+
+The accompanying inventory audit also records three special surfaces outside this focused
+follow-up: `CustomErrorController` and `V1ApiUnavailable` still have no dedicated layered suites,
+while `GlobalExceptionHandler` is shared by 34 test classes and currently covers 17 of 22 lines and
+8 of 10 branches. Those surfaces should be scoped independently rather than bundled with the V2
+individual hierarchy contract.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
