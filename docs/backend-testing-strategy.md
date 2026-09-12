@@ -1035,6 +1035,125 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented V1OntologyMapper baseline
+
+`V1OntologyMapper` (`repository/v1/mappers`) is the next Tier B target after
+`AnnotationExtractor`. It is a pure static-method mapper -- no Spring bean, no constructor state,
+no Postgres dependency of its own -- with a single public method,
+`mapOntology(JsonElement json, String lang)`, that turns one ontology's raw rdf2json/linker JSON
+into the `V1Ontology`/`V1OntologyConfig` pair served by the V1 API. Its only real caller is
+`V1OntologyRepository` (`.get()` and `.getAll()`), confirmed via `graphify explain
+"V1OntologyMapper"` / `graphify query`. It was previously exercised only incidentally through
+`V1OntologyControllerTest`/`V1OntologyControllerWIT`'s happy-path ontology fixtures -- neither
+targets this mapper's own edge cases directly.
+
+**Scope: unit-only, no IT layer.** Same rationale as `AnnotationExtractor`: a pure-logic class
+with no Postgres dependency of its own does not get a dedicated `*IT.java` layer. This baseline is
+a single new `V1OntologyMapperTest.java` (18 cases, this repo's plain-JUnit5/AssertJ idiom, no
+Mockito, no Spring context) and nothing else.
+
+**Fixture grounding.** Test fixtures are modelled on the real rdf2json/linker output shape
+committed at `testcases_expected_output/defined-fields/BaseUri/ontologies_linked.json` (a
+top-level `"type": ["ontology"]` array -- required for `LocalizationTransform` to actually
+localize the object instead of passing it through unchanged -- plain-string values for
+config-sourced fields, and the `http://www.w3.org/2002/07/owl#...` predicate URIs used verbatim as
+JSON keys), and on `JsonHelper`'s documented `objectToString` semantics (a missing key returns
+Java `null`, not `JsonNull`).
+
+**Investigation 1 -- `config.version` is written twice; documented as dead code, not a defect.**
+`ontology.config.version` is set first from the generic `"version"` JSON key, then unconditionally
+overwritten at the end of the method from `http://www.w3.org/2002/07/owl#versionInfo` (which also
+sets `ontology.version`). The first write is therefore always discarded. A dedicated test
+(`versionAlwaysComesFromOwlVersionInfo_genericVersionKeyIsDiscarded`) constructs a fixture where
+the generic `"version"` key and `owl#versionInfo` hold two different values and confirms
+empirically that the final `config.version` always matches `owl#versionInfo`, never the generic
+key. Reachability was investigated before concluding this is harmless, not a bug worth a defect
+PR: the generic `"version"` JSON key is populated by rdf2json's `OntologyGraph.write()` only as an
+arbitrary pass-through of a per-ontology config file's own `version:` entry (see
+`dataload/rdf2json/src/main/java/uk/ac/ebi/rdf2json/OntologyGraph.java`'s "everything else from
+the config is stored as a normal property" loop around line 437) -- a mechanism that is real in
+principle, but across every raw rdf2json/linker fixture committed in this repo (the entire
+`testcases_expected_output/` tree, checked via `grep -rn '"version":'`, excluding
+`versionInfo`/`versionIRI` keys) it is never actually exercised: no committed fixture's raw JSON
+ever carries a bare `"version"` key. Every ontology version value in this codebase's test corpus
+comes from OWL's own `versionInfo` triple instead (confirmed for the `BaseUri` fixture, where
+`config.version` ends up `"3.63.0"`, exactly the raw `owl#versionInfo` value, with no bare
+`"version"` key present in the raw input at all; and for the real-world W3C OWL vocabulary's own
+`$Date: 2009/11/15 10:54:12 $` `versionInfo`, asserted unchanged in the committed
+`testcases_expected_output_api/ontologies.json` golden file). That golden file is exactly the
+`test_api.sh` regression baseline this programme's defect workflow requires checking first -- it
+already asserts the "owl#versionInfo always wins" behaviour as correct, so the current code is not
+an accidental side effect of a refactor, it is the asserted contract. Conclusion: documented dead
+code with no observed real-world impact; **no defect PR filed**.
+
+**Investigation 2 -- unguarded `Integer.parseInt` on the three entity counts; confirmed
+unreachable in production.** `numberOfTerms`/`numberOfProperties`/`numberOfIndividuals` are each
+parsed via `Integer.parseInt(JsonHelper.getString(localizedJson, "numberOfClasses"/...))` with no
+null guard. Three dedicated tests
+(`numberOf{Classes,Properties,Individuals}Missing_throwsNumberFormatException`) confirm empirically
+that removing any one of the three keys from the input causes `JsonHelper.getString` to return
+`null` (a `JsonObject.get` miss propagates through `objectToString`'s `if (value == null) return
+null;`) and `Integer.parseInt(null)` to throw `NumberFormatException`, exactly as read from the
+source. Reachability: `dataload/rdf2json/src/main/java/uk/ac/ebi/rdf2json/OntologyGraph.java`
+(around line 356-367) unconditionally calls `ontologyNode.properties.addProperty(...)` for
+`numberOfEntities`, `numberOfClasses`, `numberOfProperties`, and `numberOfIndividuals` on every
+single ontology it writes -- there is no branch or config flag that can suppress any of the three.
+Every committed raw fixture confirms this (all four keys are present in every
+`testcases_expected_output/**/ontologies_linked.json` file checked). Conclusion: the
+`NumberFormatException` path is real and reachable in principle (any hand-crafted or
+non-rdf2json-sourced JSON missing one of these keys would trip it), but not reachable via this
+codebase's actual dataload pipeline for any real ontology; documented as intentional-by-omission
+input trust in the mapper layer, **no defect PR filed**.
+
+**Investigation 3 -- `Gson.fromJson(JsonElement, Class)` with a raw-`null` element.**
+`ontology.config.annotations = gson.fromJson(localizedJson.get("annotations"), Map.class)` passes
+a raw Java `null` (not `JsonNull`) when the `"annotations"` key is absent, since `JsonObject.get`
+returns `null` for a missing key. Confirmed empirically
+(`annotationsMissing_gsonFromJsonToleratesNullElementAndReturnsNull`): `Gson.fromJson` has its own
+explicit null check and returns `null` gracefully with no exception. A second test
+(`annotationsPresent_isParsedAsMap`) confirms the present case parses into a real `Map`.
+
+**Investigations 4-8 -- every remaining branch, enumerated, not sampled.** The three
+`has(key) && get(key).getAsBoolean()` flags (`oboSlims`, `isSkos`, `allowDownload`) are each tested
+for all three states across two tests (absent-defaults-false for all three at once; present-true
+and present-false for all three at once) -- not just one flag as a representative sample.
+`labelProperty`'s default (`http://www.w3.org/2000/01/rdf-schema#label` when absent) and pass-through
+(when present) are both tested. The Dublin Core embedded-metadata override
+(`http://purl.org/dc/elements/1.1/title`/`description` overriding the plain `"title"`/`"description"`
+keys when present) is tested across all four presence combinations (title and description
+independently present/absent), not one representative case. `config.namespace`'s duplication of
+`config.id` has its own explicit assertion. Finally,
+`localizationIsWiredIn_languageDependentTitleIsSelectedPerRequestedLang` proves
+`LocalizationTransform.transform(json, lang)` is genuinely applied (not bypassed) by giving
+`"title"` two language-tagged literal values and confirming that requesting each language in turn
+selects the matching one -- `LocalizationTransform` itself has its own exhaustive dedicated test
+suite (`LocalizationTransformTest`) and is proven never to return null, so this does not re-test
+its internals.
+
+Verified locally on 2026-09-12 from `origin/dev` commit `75d96f57c` with Java 17 (Docker via
+Rancher Desktop, `DOCKER_HOST`/`TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE` overrides applied for the
+Postgres gate even though this mapper itself has no IT layer, because the shared full-backend
+Postgres gate step still exercises the whole existing IT suite):
+
+- Surefire runs 1,001 tests, including 18 `V1OntologyMapperTest` cases. Two Docker-free runs took
+  wall-clock 12.82 and 12.06 seconds, both 0 failures / 0 errors.
+- The Postgres/Testcontainers gate (`-Dsurefire.skip=true`) runs 205 failsafe tests, unchanged by
+  this rollout since no IT was added. Two runs took wall-clock 1 minute 58.09 seconds and 1 minute
+  59.10 seconds, both 0 failures / 0 errors.
+- The clean `verify` lifecycle runs all 1,206 tests (1,001 surefire + 205 failsafe) in wall-clock
+  2 minutes 5.35 seconds, 0 failures / 0 errors.
+- `V1OntologyMapper` itself now covers 53 of 54 lines (98.1%) and 18 of 18 branches (100%); the one
+  uncovered line/method pair is the implicit default constructor, never invoked since the only
+  caller (`V1OntologyRepository`) uses the static method directly -- the same pattern already
+  documented for `AnnotationExtractor`. Whole-backend JaCoCo coverage is 71.31% lines (3,430 of
+  4,810) and 54.74% branches (1,050 of 1,918), essentially flat versus the `AnnotationExtractor`
+  baseline's 71.3%/54.1% (the denominators are identical; this single mapper is too small a slice
+  of the whole backend to move the aggregate meaningfully).
+- No production defect was discovered by this rollout -- both investigation questions above were
+  checked against the committed `test_api.sh` golden files and the real dataload pipeline source
+  before concluding neither is a reachable, observable bug; see the two investigation write-ups
+  above for the full reasoning trail.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
