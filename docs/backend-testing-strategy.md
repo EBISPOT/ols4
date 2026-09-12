@@ -1035,6 +1035,100 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented V1OboDefinitionCitationExtractor baseline
+
+`V1OboDefinitionCitationExtractor` (`repository/v1/mappers`) is the second Tier B target in this
+programme. Like `AnnotationExtractor`, it is a pure static-method utility class — no Spring bean,
+no constructor state, no Postgres dependency — with a single public method,
+`extractFromJson(JsonObject)`, called only from `V1TermMapper.mapTerm`. It had zero dedicated test
+coverage before this rollout; it was never even incidentally exercised by another class's test.
+
+**Scope: unit-only, no IT layer.** Same rationale as `AnnotationExtractor`: a pure-logic class with
+no Postgres dependency of its own doesn't get a dedicated `*IT.java` layer under the Tier B
+methodology — there is no real-database behaviour to prove beyond what a direct unit test already
+covers with hand-built `JsonObject` fixtures. This baseline is a single new
+`V1OboDefinitionCitationExtractorTest.java` (11 cases, this repo's plain-JUnit/AssertJ idiom, no
+Mockito, no Spring context, and using the real `V1OboXref.fromString` value-object parser directly
+rather than a fake) and nothing else.
+
+**Finding: the unguarded `linkedEntities` access is a confirmed non-issue, not a live defect.**
+The method's first line, `json.get("linkedEntities").getAsJsonObject()`, has no null guard — if
+"linkedEntities" is genuinely absent, `json.get(...)` returns Gson's raw `null` and the following
+`.getAsJsonObject()` throws `NullPointerException`. (This is the same unguarded pattern already
+present in `AnnotationExtractor`, which reuses `json.get("linkedEntities").getAsJsonObject()`
+too — as opposed to `V1OboSynonymExtractor`/`V1OboXrefExtractor`/`V1TermMapper`'s own local
+variable, which instead use Gson's `getAsJsonObject(String)` convenience method, returning `null`
+gracefully on a missing key instead of throwing.) This was confirmed empirically first (a
+dedicated test constructs a `JsonObject` with no "linkedEntities" key and asserts the resulting
+`NullPointerException`), then investigated for real-world reachability rather than assumed either
+way:
+
+- The only production caller is `V1TermMapper.mapTerm`, itself only ever invoked (via
+  `V1TermRepository`) on a top-level term/class entity's JSON as stored in Postgres.
+- That JSON is produced by the OLS4 linker's `write_entity_array`
+  (`dataload/linker/link/src/linker_pass2.rs`), which unconditionally writes a `"linkedEntities"`
+  key (line ~320-321, no `if` guard) for every entity it processes, before returning — regardless
+  of whether any links were actually gathered for that entity (an entity with none still gets an
+  empty `{}`).
+- This was cross-checked against every committed golden fixture: across all 111
+  `ontologies_linked.json` files under `testcases_expected_output/` (the actual output format of
+  this linker stage, i.e. exactly what `V1TermMapper` receives), every one of the 985 top-level
+  entities across the `classes`/`individuals`/`properties` arrays carries a `"linkedEntities"` key.
+  The only JSON fragments observed anywhere in those fixtures *without* the key are nested,
+  anonymous class-expression fragments (e.g. an inline datatype restriction embedded inside a
+  property's `owl:equivalentClass`/`rdfs:range`) that are copied verbatim by a separate,
+  non-entity code path (`copy_json_gathering_strings`) and are never independently passed to
+  `extractFromJson` as its own top-level argument — they only ever appear as nested values inside
+  another entity's own (always-"linkedEntities"-carrying) JSON.
+- Conclusion: the missing-null-guard is real, but confirmed unreachable given the current
+  pipeline's invariant that every top-level entity always carries `"linkedEntities"`. Per the
+  defect workflow, this does not warrant a separate bug-fix PR — it's documented here (and in the
+  test's own Javadoc) as a confirmed non-issue rather than left as an implicit assumption.
+
+**Branches enumerated.** A `definition` array element that is not a `JsonObject` (e.g. a plain
+string) is silently skipped, no citation, no error. A definition object with no `"axioms"` key at
+all produces no citations for that definition and does not crash (`JsonHelper.getObjects` returns
+an empty list for a missing key, confirmed both by reading its source and by this test exercising
+it). A definition object with a present-but-empty `"axioms"` array is likewise a no-op, tested as
+a distinct case from the missing-key case. An axiom that exists but has zero matching
+`http://www.geneontology.org/formats/oboInOwl#hasDbXref` values is skipped, tested as distinct
+from an empty axioms list. An axiom with one or more matching xref values produces exactly one
+`V1OboDefinitionCitation` for that axiom — a dedicated test gives one definition three axioms
+where only the 1st and 3rd qualify, and asserts exactly two citations are produced, in axiom
+order, one per qualifying axiom (not one per definition). Multiple xref values on a single
+qualifying axiom are all mapped through the real `V1OboXref.fromString` and all appear, in order,
+in that one citation's `oboXrefs` list — this test also confirms the `linkedEntities` object
+passed into `extractFromJson` is genuinely threaded through to `V1OboXref.fromString` (one xref
+resolves a `url` from a matching `linkedEntities` entry, the other does not, proving both are
+real independent lookups). Multiple definitions on one entity, each independently producing zero,
+one, or two citations, flatten correctly into one combined, correctly-ordered result. Finally,
+the `res.size() == 0 → return null` contract is tested explicitly and separately from the
+non-null case: nothing qualifying anywhere returns `null` (not an empty list), while at least one
+qualifying citation returns the actual, non-null list.
+
+Verified locally on 2026-09-12 from `origin/dev` commit `75d96f57c` with Java 17 (no Postgres/
+Docker gate — this class has no IT layer, per the scope note above):
+
+- Docker-free `mvn test`, run twice: 994/994 pass both times (read from
+  `target/surefire-reports/*.txt`, not just exit code), wall-clock 15.86s and 12.20s.
+- Postgres/IT gate: skipped — this class has no IT layer (see Scope above).
+- Clean `mvn clean verify -Dapi.version=1.44`: 1,199/1,199 pass (994 surefire + 205 failsafe),
+  wall-clock 2m1.95s.
+- `V1OboDefinitionCitationExtractor` itself now covers 20 of 21 lines (95.2%) and 10 of 10 branches
+  (100%); the one uncovered line is the implicit default constructor, never invoked since the only
+  caller uses the static method directly. Whole-backend JaCoCo coverage is 71.8% lines (3,454 of
+  4,810) and 54.8% branches (1,052 of 1,918), up from the most recently documented baseline of
+  71.3% lines and 54.1% branches. Of that increase, 20 lines / 10 branches are directly attributable
+  to this class going from zero to full coverage; the remaining small residual (6 lines / 5
+  branches) against an identical total denominator (4,810 lines / 1,918 branches, unchanged from
+  the prior baseline since this rollout adds no production code) is not attributable to this
+  rollout and was not chased further, consistent with the same kind of small, unrelated
+  measurement drift already noted in the prior baseline entries. No coverage failure threshold is
+  introduced.
+- No production defect was discovered by this rollout. The unguarded `linkedEntities` access
+  described above is recorded deliberately as a confirmed non-issue, not as a defect requiring a
+  fix.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
