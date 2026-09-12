@@ -1035,6 +1035,180 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented V1OboXrefExtractor baseline
+
+`V1OboXrefExtractor` (`repository/v1/mappers`) is the next Tier B target in this programme,
+following the same pure-logic pattern as `AnnotationExtractor` and (on a separate, not-yet-merged
+branch at the time of writing, `test/cover-v1-obo-synonym-extractor`) `V1OboSynonymExtractor`. It
+is a pure static-method utility class -- no Spring bean, no constructor state, no Postgres
+dependency of its own -- with a single public method, `extractFromJson(JsonObject)`, called only
+from `V1TermMapper.mapTerm` (confirmed via `graphify query "who calls
+V1OboXrefExtractor.extractFromJson"`, cross-checked with a direct grep). It extracts an entity's
+`http://www.geneontology.org/formats/oboInOwl#hasDbXref` values into `V1OboXref` objects, handling
+plain-string xrefs, reified xref objects with no axioms, and reified xref objects whose one-or-more
+axioms each independently contribute a `description`/`url`-overridden entry (via `source` values,
+then `label` values, then neither), before deduplicating the whole result with `V1OboXref.equals()`.
+It had no dedicated test file before this rollout; the closest thing to prior exercise was
+incidental, through `V1TermControllerIT`/`V1TermRepositoryIT`'s real-Postgres term lookups (to
+whatever extent their loaded ontology fixtures carry `hasDbXref` data) -- per this programme's
+standing rule, that controller/repository-level happy-path exercise doesn't count as dedicated
+coverage of this extractor's own edge cases, and in particular never touched the multi-axiom,
+`source`-vs-`label`-priority, or dedup logic explicitly.
+
+**Scope: unit-only, no IT layer.** Same rationale as its Tier B siblings: a pure-logic class with
+no Postgres dependency of its own doesn't get a dedicated `*IT.java` layer under the Tier B
+methodology -- there is no real-database behaviour to prove beyond what a direct unit test already
+covers with hand-built `JsonObject` fixtures. This baseline is a single new
+`V1OboXrefExtractorTest.java` (26 cases, this repo's plain-JUnit/AssertJ idiom, no Mockito, no
+Spring context, using the real `V1OboXref` value object directly rather than a fake).
+
+**Real-data grounding.** Per this repo's `graphify` project rule, `graphify query` was used first
+to find the production call site, then real xref shapes were pulled from committed
+`testcases_expected_output/*/ontologies_linked.json` fixtures (a scripted scan of all 111 files,
+985 top-level entities): 202 reified xref objects were found, 147 carrying one or more axioms (all
+147 with a `source` value, 0 with a `label` value and 0 with an axiom-level `url` field), and 55
+with no `"axioms"` key at all; 0 bare-primitive (non-reified) xrefs were found anywhere in this
+corpus. The real 3-source axiom on `http://purl.obolibrary.org/obo/MONDO_0000001` in
+`testcases_expected_output/annotation-properties/gitIssue502/ontologies_linked.json` --
+`["DOID:4", "EFO:0000408", "MONDO:equivalentTo"]` -- is used verbatim in the "last source element
+wins" test. Shapes not found in any committed fixture (a `label`-only axiom, an axiom's own `url`
+field, a bare primitive xref, and every `://`-containing `V1OboXref.fromString` shape -- see
+below) are covered with hand-built synthetic fixtures instead, same as this program's precedent
+for previously-unobserved shapes.
+
+**Branches enumerated in `extractFromJson`.** A plain-`JsonPrimitive` xref is added directly via
+`V1OboXref.fromString`, with no axioms processing at all. A `JsonObject` xref with no `"axioms"`
+key, and separately one with a present-but-empty `axioms` array, both confirmed to take the
+*identical* plain-entry branch (the source checks `axioms.size() > 0`, so "absent" and
+"empty-but-present" are the same case, not two different ones -- tested explicitly as two separate
+cases to prove this rather than assumed). An xref object with 2+ axioms produces one entry per
+axiom independently (tested with one axiom carrying a `source` value and a second with neither,
+producing 2 entries before dedup). Per axiom: a `source` value (or values) present sets
+`description` to the *last* element of that list (`Lists.reverse(...).iterator().next()`) --
+tested with 3 distinct real-fixture-grounded values to rule out first/middle winning by
+coincidence -- and short-circuits the `label` check entirely via `continue`, confirmed with an
+axiom carrying both a `source` and a `label` value and asserting the `source`-derived description
+wins. `label` values (only reached when `source` is absent) get the same last-element-wins
+treatment. When neither is present, a plain entry is added with no `description`. In all three
+shapes, the axiom's own `"url"` field, when non-null, overrides whatever `V1OboXref.fromString`
+itself derived (tested for both the `source` and `label` paths); when the axiom's `"url"` is
+absent, the extractor leaves `fromString`'s own derived `url` untouched (tested by resolving a
+real `url` via a matching `linkedEntities` entry and confirming the axiom-absent-url case doesn't
+clobber it). `mergeDuplicates` (keyed on `V1OboXref.equals()`, i.e. `id`+`description`+`database`+
+`url`) was tested two ways: two axioms on the same xref object producing genuinely identical
+results collapse to one entry, and two axioms (from two different xref objects sharing the same
+underlying id/database, each contributing a distinct `source`-derived `description`) differing in
+exactly that one field both survive as distinct entries. Finally, the
+`res.size() > 0 ? res : null` contract is tested explicitly in both directions.
+
+**Collateral `V1OboXref.fromString` coverage, driven as a side effect.** Per this rollout's brief,
+most fixtures above deliberately used plain-primitive xref strings (rather than always wrapping in
+a reified object) specifically to drive real, direct coverage of `V1OboXref.fromString`'s own
+branches -- previously exercised only shallowly (17 of 29 lines, 12 of 24 branches, per the
+not-yet-merged `V1OboSynonymExtractor` baseline) since that sibling extractor's real-fixture xrefs
+are all plain `"DATABASE:ID"` shapes. `V1OboXrefExtractor`'s own call sites cover every branch of
+`fromString`:
+
+- `"http:"`- and `"https:"`-prefixed xrefs each set both `id` and `url` to the entire string, with
+  `database` left `null` (tested separately for each scheme).
+- A `"://"`-containing xref matching `^[A-Z]+:.+` (e.g. the real-world
+  `"DOI:https://doi.org/10.1378/chest.12-2762"` shape named in this class's own comment) keeps the
+  *entire original string* as `id`, with `database` and `url` both left `null` -- confirmed this
+  is the current, active behaviour, not the alternate split-based implementation visible in this
+  method's own commented-out dead code.
+- **The "`://` but doesn't match the uppercase regex" fallthrough, investigated as a possible
+  production defect per this rollout's brief:** a xref like `"orcid://0000-0001-2345-6789"`
+  contains `"://"` but its lowercase prefix fails `^[A-Z]+:.+`, and it isn't `http(s):`-prefixed
+  either, so it falls through all the way to the generic `oboXref.split(":")` logic below. Verified
+  empirically with `jshell` (not assumed): `"orcid://0000-0001-2345-6789".split(":")` produces
+  exactly 2 tokens (`"orcid"`, `"//0000-0001-2345-6789"`), since `"://"` itself contributes only
+  one literal colon character. The extractor/`fromString` therefore sets `database = "orcid"` and
+  `id = "//0000-0001-2345-6789"` -- a mangled, almost certainly unintended parse, and the
+  `linkedEntities` lookup (keyed on the full original string, since `tokens.length >= 2`) still
+  runs, confirmed with a matching `linkedEntities` entry resolving a `url`. **Investigated for
+  real-world reachability, not just constructed and left unverified:** a scripted scan of every
+  `hasDbXref` value (raw and axiom-`source`) across all 111 `testcases_expected_output/*/
+  ontologies_linked.json` fixtures found zero values containing `"://"` of any kind (http(s)-
+  prefixed, DOI-style, or this fallthrough shape) outside the two already-handled early-return
+  cases; a second, independent scan of all 1,016 already-processed `oboXrefs` entries across
+  `testcases_expected_output_api/**/*.json` (this repo's `test_api.sh` golden-file corpus,
+  consulted per the defect workflow) found zero `id` values starting with `"//"` -- the specific,
+  unambiguous signature this fallthrough would leave behind. Real OBO xref data in this corpus
+  uses only a bare `http(s)` URL, the uppercase `"DATABASE:https://..."` DOI-style convention, or a
+  plain `"DATABASE:ID"` pair; a lowercase- or mixed-case-scheme `"scheme://..."` shape was not
+  found anywhere. **Conclusion: this is a real, confirmed-via-test code path that would mangle such
+  an xref if one ever appeared, but -- in contrast to the two precedent defect PRs (#1416, #1427),
+  which both had positive evidence of reachability from an upstream data-generation invariant --
+  there is no such positive evidence here, only the absence of any occurrence across this
+  programme's entire committed golden-fixture corpus.** Per the defect workflow, this does not
+  meet the bar for a separate fix PR; it is documented here, and in the test's own Javadoc, as a
+  confirmed-dormant code path rather than filed as a defect.
+- No colon at all (`tokens.length < 2`) keeps the whole string as `id` with `database` left `null`,
+  and -- confirmed explicitly -- never dereferences `linkedEntities` at all (tested by passing a
+  `JsonObject` with no `"linkedEntities"` key alongside a no-colon xref and confirming no
+  exception), in direct contrast to the multi-token branch below.
+- 2+ tokens after splitting on `:` uses only the *first two* (`database = tokens[0]`,
+  `id = tokens[1]`); a 3-token input (`"A:B:C"`) confirms the third token is silently dropped
+  (`id` is `"B"`, not `"B:C"`), and that the subsequent `linkedEntities.get(oboXref)` lookup uses
+  the *original, full* string (`"A:B:C"`) as its key -- proven by planting a decoy entry under the
+  wrong, truncated key (`"A:B"`) that must not be picked up, alongside the correct entry under the
+  full key, which is. The `.has("url")` guard on a matching `linkedEntities` entry is tested in
+  both directions (present-without-`url` leaves `xref.url` `null`; present-with-`url` resolves it).
+- **NPE reachability, independently re-verified for this extractor's own real production callers**
+  (per this rollout's brief, rather than assuming the `V1OboSynonymExtractor` baseline's
+  conclusion transfers unexamined): `extractFromJson` reads `"linkedEntities"` via the null-safe
+  `JsonObject.getAsJsonObject(String)` overload, so a genuinely missing key yields a `null` local
+  variable with no exception at that point -- but that `null` is passed straight into
+  `V1OboXref.fromString`, which dereferences it unguarded via `linkedEntities.get(oboXref)`
+  whenever `tokens.length >= 2`. A dedicated test constructs a `JsonObject` with no
+  `"linkedEntities"` key at all and a standard `"NCIT:C2991"`-shaped xref, and confirms the
+  resulting `NullPointerException`. Re-derived independently: the only production caller is
+  `V1TermMapper.mapTerm`, which passes the exact same `localizedJson` object to this extractor,
+  `V1OboSynonymExtractor`, and `V1OboDefinitionCitationExtractor` alike -- a fresh scan of all 111
+  committed `ontologies_linked.json` fixtures found 985 top-level entities across the
+  classes/individuals/properties arrays, 0 of them missing a `"linkedEntities"` key, and
+  `V1TermMapper.mapTerm` itself also dereferences
+  `localizedJson.getAsJsonObject("linkedEntities").getAsJsonObject().get(predicate)`
+  unconditionally a few lines after calling this extractor, to resolve each `RELATED_TO`
+  annotation's label -- so the codebase already assumes this invariant a second, independent time
+  in the same method. Conclusion: the missing-null-guard is real and does cause a live
+  `NullPointerException`, but is confirmed unreachable given the current pipeline's invariant that
+  every top-level entity always carries `"linkedEntities"`. Per the defect workflow, this does not
+  warrant a separate bug-fix PR -- documented here as a confirmed non-issue.
+
+Verified locally on 2026-09-12 from `origin/dev` commit `75d96f57c` with Java 17 (no Postgres/
+Docker gate -- this class has no IT layer, per the scope note above):
+
+- Surefire runs 1,009 tests, including 26 `V1OboXrefExtractorTest` cases. Two Docker-free runs took
+  wall-clock 12.82 and 11.60 seconds, both 0 failures / 0 errors (confirmed via
+  `target/surefire-reports/*.txt`, not just exit code).
+- The clean `verify` lifecycle runs all 1,214 tests (1,009 surefire + 205 failsafe, unchanged by
+  this rollout since no IT was added) in wall-clock 2 minutes 2.26 seconds, 0 failures / 0 errors
+  (read from `target/surefire-reports`/`target/failsafe-reports`).
+- `V1OboXrefExtractor` itself now covers 50 of 51 lines (98.0%) and 28 of 28 branches (100%); the
+  one uncovered line is the implicit default constructor, never invoked since the only caller uses
+  the static method directly. `V1OboXref` (the shared value-object class this extractor calls into
+  far more heavily than its siblings) now covers 28 of 29 lines (96.6%) and 20 of 24 branches
+  (83.3%) -- up from the not-yet-merged `V1OboSynonymExtractor` baseline's 17 of 29 lines (58.6%)
+  and 12 of 24 branches (50.0%), a direct side effect of this rollout deliberately exercising the
+  http(s)-prefixed, DOI-style, and `://`-fallthrough branches that extractor's own real-fixture
+  xrefs never construct. The remaining uncovered branches in `V1OboXref` belong to its `equals()`
+  method's `instanceof` mismatch path (`mergeDuplicates` never compares a `V1OboXref` against a
+  non-`V1OboXref`, so that branch is structurally unreachable from any real caller) and a couple of
+  its chained `Objects.equals(...) &&` short-circuit paths. Whole-backend JaCoCo coverage is 72.7%
+  lines (3,498 of 4,810) and 56.5% branches (1,084 of 1,918), up from the most recently documented
+  baseline of 71.3% lines and 54.1% branches (3,428 of 4,810 lines, 1,037 of 1,918 branches) --
+  i.e. +70 lines / +47 branches covered, against unchanged totals (no production code changed).
+  This does not reconcile exactly against the two classes' own combined figures, consistent with
+  the same kind of small measurement residual already noted in prior baseline entries, and not
+  chased further. No coverage failure threshold is introduced.
+- One code path was investigated as a plausible production defect (the `://`-fallthrough in
+  `V1OboXref.fromString`, detailed above) and confirmed real but dormant -- zero occurrences across
+  the entire committed golden-fixture corpus, and no upstream invariant showing it can occur,
+  unlike the two precedent defect PRs in this programme. No separate defect PR was opened; both
+  this finding and the `linkedEntities`-NPE finding are documented above as confirmed, tested,
+  non-actioned behaviours rather than left as implicit assumptions.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
