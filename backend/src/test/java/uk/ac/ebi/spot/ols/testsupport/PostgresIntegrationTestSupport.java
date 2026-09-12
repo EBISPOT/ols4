@@ -182,6 +182,25 @@ public final class PostgresIntegrationTestSupport {
     }
 
     /**
+     * Loads the shared ontology/entity fixture, then adds a dedicated graph-traversal fixture under
+     * its own {@code v1graph}/{@code v1graph2} ontology ids (isolated from every other suite, same
+     * discipline as {@code OlsPostgresClientGraphIT}'s {@code graph-fixture.json}): a non-transitive
+     * {@code direct_parents}/{@code related_to} chain, a node reachable via two different traversal
+     * branches (for node-dedup coverage), {@code _json.relatedTo} entries whose {@code property} is
+     * resolvable in one direction but not symmetrically in the other, and a deliberate cross-ontology
+     * IRI duplicate on each of the three join branches. See {@code v1-graph-fixture.json} for exactly
+     * which row is which and why.
+     */
+    public static void initializeV1GraphDatabase(PostgreSQLContainer<?> container) {
+        initializeDatabase(container);
+        try (Connection connection = container.createConnection("")) {
+            loadV1GraphFixture(connection);
+        } catch (IOException | SQLException e) {
+            throw new IllegalStateException("Failed to load the V1GraphRepository integration fixture", e);
+        }
+    }
+
+    /**
      * Loads the shared entity fixture plus the class and property fixtures (both additive to
      * {@code ols_entities}, with no id collisions between them), then adds the {@code V2LLMController}
      * embedding fixture on top. Deliberately does <em>not</em> also load
@@ -864,11 +883,22 @@ public final class PostgresIntegrationTestSupport {
     }
 
     private static void loadGraphFixture(Connection connection) throws IOException, SQLException {
+        loadGraphFixture(connection, "/fixtures/graph/graph-fixture.json",
+                "Graph-traversal integration fixture is missing");
+    }
+
+    private static void loadV1GraphFixture(Connection connection) throws IOException, SQLException {
+        loadGraphFixture(connection, "/fixtures/v1graph/v1-graph-fixture.json",
+                "V1GraphRepository integration fixture is missing");
+    }
+
+    private static void loadGraphFixture(Connection connection, String fixtureResource,
+            String missingFixtureMessage) throws IOException, SQLException {
         JsonObject fixture;
         try (InputStream stream = PostgresIntegrationTestSupport.class.getResourceAsStream(
-                "/fixtures/graph/graph-fixture.json")) {
+                fixtureResource)) {
             if (stream == null) {
-                throw new IllegalStateException("Graph-traversal integration fixture is missing");
+                throw new IllegalStateException(missingFixtureMessage);
             }
             fixture = JsonParser.parseReader(
                     new java.io.InputStreamReader(stream, StandardCharsets.UTF_8)).getAsJsonObject();
