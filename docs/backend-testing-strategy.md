@@ -1035,6 +1035,163 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented TextTaggerService baseline
+
+`TextTaggerService` (`service/`) wraps the `ols_text_tagger` CLI binary over a stateful stdin/
+stdout pipe, backed by a Postgres Large-Object-stored tagger database. It was already wired as a
+real, unconfigured bean at the `V2TextTaggerController` layer (see the "Implemented V2
+text-tagger-controller baseline" section above), but that only proves the controller handles the
+degraded-`false` contract correctly -- it never exercised this class's own `parseResponse`/
+priority/substring/source/min-length filtering logic, its Large Object download path's populated
+case, or its process-management internals. This rollout closes all three.
+
+**1. Pure filtering/parsing logic -- `TextTaggerServiceTest.java` (unit, no Postgres, no process).**
+Every method under test is `private`, exercised via reflection (this programme's established idiom
+for private-method Tier B coverage). 43 cases, enumerated per the Tier B methodology:
+
+- `parseResponse`: `entities` array absent and present-but-empty both return an empty list;
+  `term_label`/`term_iri`/`ontology_id` default to `""` when absent and are read correctly when
+  present; `string_type`, `source`, `subject_categories`, and `is_obsolete` are each independently
+  present/absent (the last defaulting to `false`); multiple entities parsed in order.
+- **Finding on the unguarded `start`/`end` fields.** Unlike every other field, `start`/`end` are
+  read with a bare `e.get("start").getAsInt()`/`e.get("end").getAsInt()`, no `.has()` guard.
+  Empirically confirmed here (two dedicated tests): a response missing either field makes
+  `JsonObject.get(...)` return Java `null` (not Gson's `JsonNull`), and `.getAsInt()` on that null
+  reference throws `NullPointerException`. Investigated against the real dependency rather than
+  assumed: this repo has the actual `ols_text_tagger` CLI's Rust source in-tree at `text_tagger/`
+  (`src/main.rs`), and its `Entity` struct declares `start`/`end` as plain, non-`Option<...>`
+  `usize` fields with no `#[serde(skip_serializing_if = ...)]` -- unlike `string_type`/`source`/
+  `subject_categories`, which are all `Option<...>` and conditionally omitted. The real binary's
+  own protocol therefore *guarantees* every entity carries `start`/`end`; this was also confirmed
+  by building the real binary from source and inspecting its actual JSON output (see area 3 below).
+  **Conclusion: not a reachable production defect against the real binary** -- so, per the defect
+  workflow, no separate defect PR is opened. It is nonetheless a real fragility worth documenting:
+  a malformed/corrupted response line, or a future protocol change that makes these fields
+  optional, would crash parsing with an NPE instead of degrading gracefully like every other field.
+  `test_api.sh`'s golden files under `testcases_expected_output_api/` were checked first, per the
+  defect workflow, and contain nothing related to the text tagger.
+- `jsonArrayToStringList`: key absent, key present as `JsonNull`, key present but not a JSON array,
+  key present as an empty array (returns `null`, not an empty list -- verified explicitly), and key
+  present as a non-empty array.
+- `applyPriority`: `null`/empty `priorityOntologyIds` return the input list unchanged (same
+  reference, asserted via `isSameAs`); an ontology absent from the priority list is dropped
+  entirely; the higher-priority match wins for two entities sharing a span; two entities at
+  different spans are both kept independently; a duplicated ontology id in `priorityOntologyIds`
+  keeps its *first* occurrence's index (`putIfAbsent` semantics) -- proven with a test that fails
+  under the alternate, last-occurrence-wins semantics. `spanKey`'s bit-packing is tested directly
+  (also via reflection): spans sharing a start or end (e.g. `(1,2)` vs `(2,1)` vs `(1,3)` vs
+  `(0,3)`) and spans near the `int`-to-`long` shift boundary (`Integer.MAX_VALUE` combined with
+  `0`) all produce pairwise-distinct keys.
+- `applySourceFilter`: `null`/empty `sources` return the input unchanged; an entity with a `null`
+  source is always kept regardless of the filter; sources in/not-in the allowed set are kept/
+  dropped respectively.
+- `applyMinLength`: `minLength <= 0` (both `0` and a negative value) returns the input unchanged; a
+  span exactly equal to `minLength` is kept (the `>=` boundary); one shorter is dropped.
+- `removeSubstrings`: 0/1-element lists pass through unchanged (same reference); identical spans
+  are both kept (per the class's own doc comment, verified precisely, not assumed); a strictly-
+  contained span is removed; a dedicated test lists the shorter span *before* the longer containing
+  span and asserts the correct single survivor, proving the method's internal sort (start asc, then
+  span length desc) -- not incidental list order -- is what makes containment detection correct;
+  and a three-level nesting case (`smallest` inside `middle` inside `largest`) proves the
+  containment check runs against `result` (already-kept entities), so `smallest` is still correctly
+  excluded even though its immediate container `middle` never made it into `result`.
+- `isAvailable()`/`tagText()` in the default, un-started state: `isAvailable()` is `false` before
+  `init()` ever runs (the field default), and `tagText()` (both overloads) returns an empty list
+  immediately, before the method's `lock`/process-interaction code is reached at all.
+
+**2. Postgres Large-Object download logic -- `TextTaggerServiceIT.java` (real Postgres, via
+`PostgresIntegrationTestSupport`).** `downloadTextTaggerDb()` is `private`, invoked directly via
+reflection against disposable Postgres, reusing the existing
+`createTextTaggerRepositories(...)` factory. Two cases, `@TestMethodOrder`-sequenced (a deliberate,
+documented exception to this repo's usual per-class-container idiom, because the second case
+mutates the one row the table's `LIMIT 1` query can ever see):
+
+- No row in `ols_text_tagger` returns `null` -- confirmed (by reading `V2TextTaggerControllerIT`)
+  to be the only case the existing controller-level fixture ever exercised, now proven directly
+  against this method rather than only inferred from `isAvailable() == false` at the controller
+  layer.
+- The previously-untested populated case: `PostgresIntegrationTestSupport` gained a new
+  `insertTextTaggerLargeObject(PostgresClient, String)` factory that writes a gzip-compressed
+  payload into a real Postgres Large Object via the real `LargeObjectManager` API
+  (`conn.unwrap(PGConnection.class).getLargeObjectAPI()`) and inserts the row pointing at it --
+  matching production's own write-side contract exactly (the read side already does
+  `GZIPInputStream` over the Large Object's input stream). `downloadTextTaggerDb()`'s returned temp
+  file is asserted byte-for-byte equal, after decompression, to what was inserted.
+
+**3. External-process management -- `TextTaggerServiceProcessIT.java` (real subprocess, opportunistic).**
+`ols_text_tagger` is not on `PATH` in this environment and no Rust toolchain requirement previously
+existed in this repo's test pipeline -- but this repo has the CLI's actual Rust source in-tree at
+`text_tagger/` (`Cargo.toml`, `src/main.rs`, `src/ac.rs`), and a Rust toolchain (`cargo`/`rustc`
+1.90.0) happened to be available on this machine. Rather than write a hand-rolled stand-in script,
+this rollout built the **real** binary from that source (`cd text_tagger && cargo build --release`)
+and used it directly -- genuine end-to-end coverage of the real CLI, not a simulation of it. Every
+test in this class checks `ols_text_tagger`'s presence on `PATH` in a `@BeforeAll` via
+`Assumptions.assumeTrue(...)` and skips the whole class cleanly (confirmed: 0 tests run, 0
+failures) if it is absent, so routine `mvn test`/`mvn verify` runs in any environment without the
+binary (the default here, and presumably in CI) are unaffected -- this class deliberately never
+invokes `cargo` itself, to keep routine runs decoupled from a Rust build. To run it for real:
+```
+cd text_tagger && cargo build --release
+export PATH="$(pwd)/target/release:$PATH"
+cd ../backend && mvn -q -o verify -Dsurefire.skip=true -Dapi.version=1.44
+```
+4 cases, all run for real against the built binary during this rollout's local verification:
+
+- `tagText()` end-to-end through the real process: a tiny real tagger database is built via the
+  real binary's own `build` subcommand (a 2-row TSV fixture) in `@BeforeAll`, `startProcess(null)`
+  is invoked via reflection to bootstrap the first process start (mirroring what `init()`'s
+  background thread normally does), and `tagText(...)` is called through its public API -- real
+  write to stdin, real read from stdout, real JSON parsing -- asserting the exact real tagging
+  output. `includeSubstrings=false` is used here so the real end-to-end call path also exercises
+  `tagText`'s own `removeSubstrings(...)` call site (its branch logic is covered directly, via
+  reflection, in `TextTaggerServiceTest`; this proves it is also genuinely wired into the real
+  call path).
+- `ensureRunning`'s delimiter-change-triggers-restart branch: starts with no delimiters, then calls
+  `tagText` with `"|"` -- different from the running process's delimiters -- and asserts the
+  process's pid changed. The real CLI's `--delimiters` flag restricts matches to occur only at
+  those boundary characters (confirmed empirically while building this test: the same text tagged
+  successfully with the default whitespace boundary produced zero matches under `--delimiters "|"`
+  when the text itself had no `|` characters), so the input text for this case uses `"|"` as its
+  own word boundary -- proving both that a restart happened *and* that the restarted process is
+  honouring the new delimiters, not just that some process is running.
+- `ensureRunning`'s dead-process-detection branch: after starting the process, it is killed directly
+  (`Process.destroyForcibly()`, simulating an external crash) with no involvement from the service's
+  own bookkeeping. The next `tagText()` call is asserted to detect `!process.isAlive()`, transparently
+  restart (different pid, new process alive), and still return the correct real tagging result.
+- `isAvailable()` becomes `true` only after `startProcess()` succeeds (`false` beforehand).
+
+Genuinely untestable without further complexity, and left as documented gaps rather than chased:
+`init()`'s background-thread success path (`downloadTextTaggerDb()` and `startProcess()` called
+from the async `@PostConstruct` thread specifically, as opposed to each being called directly, as
+done above); `tagText`'s `responseLine == null` recovery branch and its `IOException` catch/
+`restartProcess` branch (both require corrupting the live protocol or pipe mid-request); and
+`restartProcess`'s own body (only reachable from those two branches).
+
+Verified locally on 2026-09-12 from a branch off `origin/dev` commit `75d96f57c`, with Java 17 and
+Rancher Desktop (`DOCKER_HOST`/`TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE` overrides), and with the
+real `ols_text_tagger` binary (built as described above) prepended to `PATH` for the Postgres-gate
+and full-lifecycle runs:
+
+- Surefire runs 1,026 tests, including the 43 `TextTaggerServiceTest` cases. Two Docker-free runs
+  took wall-clock 15.31 and 11.43 seconds, both 0 failures / 0 errors.
+- Failsafe runs 211 PostgreSQL tests, including 2 `TextTaggerServiceIT` cases and 4
+  `TextTaggerServiceProcessIT` cases (the latter run for real, against the real binary, in this
+  verification). Two complete database-gate runs took wall-clock 1 minute 58.98 seconds and 2
+  minutes 0.12 seconds, both 0 failures / 0 errors. A separate confirmation run with the real
+  binary deliberately removed from `PATH` showed `TextTaggerServiceProcessIT` skipping cleanly (0
+  tests run, 0 failures), proving the opportunistic-skip behaviour works.
+- The clean `verify` lifecycle runs all 1,237 tests (1,026 surefire + 211 failsafe) in wall-clock 2
+  minutes 5.58 seconds.
+- `TextTaggerService` itself now covers 171 of 194 lines (88.1%) and 101 of 112 branches (90.2%),
+  up from the previously-documented 16.0% lines / 4.5% branches (measured when only the controller-
+  layer fake exercised this class). Whole-backend JaCoCo coverage is 74.2% lines (3,568 of 4,810)
+  and 59.1% branches (1,133 of 1,918), up from the most recently documented baseline of 71.3% lines
+  and 54.1% branches. No coverage failure threshold is introduced.
+- One genuine production-code finding (the unguarded `start`/`end` field access) was investigated
+  and written up above; concluded not to be a reachable defect against the real binary, so no
+  separate defect PR was opened, per the defect workflow's own guidance to isolate a fix only once
+  a finding survives verification against the real dependency.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
