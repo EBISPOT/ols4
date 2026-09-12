@@ -1035,6 +1035,95 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented V1GraphRepository baseline
+
+`V1GraphRepository` (`repository/v1`) is the second Tier B target in this programme. Unlike
+`AnnotationExtractor`, it is a real `@Component` with its own Postgres dependency: it builds a
+graph-visualization response (`{nodes: [...], edges: [...]}`, the data behind the V1 ontology-term
+controller's "explore this entity's neighborhood" `/api/ontologies/{onto}/terms/{iri}/graph` route)
+for a class/property/individual entity by combining three queries (`getParentsAndRelatedTo`'s
+three unioned branches, `getRelatedFrom`'s reverse lookup, and `getNode`'s direct fetch of the
+source entity) with genuinely non-trivial assembly logic: node dedup by IRI, and a 3-way edge-label
+resolution that has to look up a property URI in one of two different entities' own JSON depending
+on which query produced the edge.
+
+**Scope: unit + IT.** Three helpers — `collectLinkedEntityLabels`, `findRelatedPropertyUri`, and
+`transformJson` — are pure logic with no Postgres touch and are covered directly in
+`V1GraphRepositoryTest.java` (9 cases, this repo's plain-JUnit/AssertJ idiom). Everything else —
+the three `getGraphFor*` wrappers, `getNode`, `getParentsAndRelatedTo`, `getRelatedFrom`, and the
+`getGraphForEntity` assembly logic that ties them together — genuinely needs real Postgres and is
+covered by a new `V1GraphRepositoryIT.java` (4 cases). `getNode`, `getParentsAndRelatedTo`, and
+`getRelatedFrom` are package-private, but their parameter/return types (`GraphNode`/`GraphEdge`)
+are declared `private static` nested classes — inaccessible even from a same-package test class —
+so every one of their branches is exercised indirectly through the three public `getGraphFor*`
+wrappers instead, exactly how every production caller uses this class. One comprehensive IT case
+centered on a single fixture entity (`V1G_CENTER`) proves nearly everything at once: all three
+unioned branches of `getParentsAndRelatedTo` (parent, child, relatedTo), `getRelatedFrom`'s reverse
+lookup, node dedup (the fixture's `V1G_PARENT` is reachable via both the parent branch and
+`getRelatedFrom`, yet appears in the output exactly once), the same-ontology-only join filter on
+every branch (a second `v1graph2` ontology carries a same-IRI parent duplicate and two same-iri-
+target cross-ontology entities, all confirmed absent from the result), and the full 3-way edge-
+label resolution: a relatedTo edge whose property resolves to a real collected label, one whose
+property can't be resolved at all (falls back to the generic `"related to"` with the `"uri"` field
+omitted entirely, not present-with-null), and two cases where a property resolves to a URI with no
+matching collected label so both fall back to `"is a"` — the hardcoded `subClassOf` edges, and,
+more subtly, the `getRelatedFrom` edge, whose property URI is resolved by searching the *other*
+entity's own `_json.relatedTo` (not the centered entity's), proving the two `findRelatedPropertyUri`
+lookup directions are genuinely different, not assumed symmetric. Two further cases confirm the
+`getGraphForEntity` empty-graph result for a genuinely nonexistent entity id (not a crash — since
+that id also isn't found by `getParentsAndRelatedTo`/`getRelatedFrom`'s own `WHERE e1.id = entityId`
+clause, all three underlying queries independently return nothing), and one case each for
+`getGraphForProperty`/`getGraphForIndividual` confirming the `"+property+"`/`"+individual+"`
+composite-id conventions (matched against production usage in `IndividualRepository`/
+`PropertyRepository`, which build the identical `ontologyId + "+property+" + iri` /
+`"+individual+"` ids) resolve correctly end-to-end, not just the `"+class+"` case.
+
+**Fixture reused/extended.** This rollout builds a new, dedicated `v1-graph-fixture.json` under
+`backend/src/test/resources/fixtures/v1graph/`, loaded by a new
+`PostgresIntegrationTestSupport.initializeV1GraphDatabase`/`loadV1GraphFixture` pair, following the
+exact same discipline `OlsPostgresClientGraphIT`'s `graph-fixture.json` established for the
+`OlsPostgresClient` graph-traversal milestone (PR #1419, not yet merged at the time of this
+rollout): an isolated ontology pair (`v1graph`/`v1graph2`, never shared with any other suite) built
+specifically to prove same-ontology-only join/array-containment semantics with a deliberate
+cross-ontology same-IRI duplicate. The topology itself could not be reused verbatim, since
+`V1GraphRepository` needs richer `_json` bodies than that fixture provides — a `relatedTo` array of
+`{"property": ..., "value": ...}` objects (confirmed against production's actual shape: rdf2json's
+`OntologyGraph.writeValue`'s `RELATED` case writes exactly `{"property": ..., "value": ...}`, and
+`json2postgres`'s `extract_string_array`/`value_to_string` project each entry's own `"value"` into
+the flat `related_to` array column separately — so the DB column and the richer `_json` field are
+two different projections of the same relationship, not the same data twice) and a `linkedEntities`
+map carrying real property labels — neither of which the `OlsPostgresClient` fixture's minimal
+`_json` bodies needed. `createV1OntologyTermRepositories`/`V1OntologyTermRepositoryHandle` (already
+existing, used by `V1TermRepositoryIT`) is reused unchanged to wire up the `V1GraphRepository` bean
+against it — no new repository-handle type was needed. The composite entity-id format `ontologyId
++ "+" + type + "+" + iri` was confirmed against production usage before any fixture was written
+(`IndividualRepository.java:113`, `ClassRepository.java:207`, `PropertyRepository`, and
+`V1IndividualRepository`/`V1PropertyRepository` all build ids the identical way), and the fixture's
+own ids follow it exactly.
+
+Verified locally on 2026-09-12 from `origin/dev` commit `75d96f57c` with Java 17 and Rancher
+Desktop:
+
+- Surefire runs 992 tests, including 9 direct `V1GraphRepositoryTest` cases. Two Docker-free runs
+  took wall-clock 12.40 and 12.02 seconds, both 0 failures / 0 errors.
+- Failsafe runs 209 PostgreSQL tests, including 4 `V1GraphRepositoryIT` cases described above. Two
+  complete database-gate runs took wall-clock 119.73 and 118.09 seconds, both 0 failures / 0
+  errors.
+- The clean `verify` lifecycle runs all 1,201 tests (992 surefire + 209 failsafe) in wall-clock 2
+  minutes 8.78 seconds.
+- `V1GraphRepository` itself (including its two private nested `GraphNode`/`GraphEdge` record-like
+  helper classes) covers 172 of 177 lines (97.2%) and 43 of 46 branches (93.5%); all 13 of its own
+  methods are covered (100%), plus both nested classes' trivial constructors. The 5 uncovered lines
+  / 3 uncovered branches are exactly the three defensive `catch (SQLException e) { throw new
+  RuntimeException(...) }` blocks in `getNode`, `getParentsAndRelatedTo`, and `getRelatedFrom` —
+  unreachable without breaking the real Postgres connection mid-query, the same permanent-gap shape
+  already documented for other repository classes in this programme. Whole-backend JaCoCo coverage
+  is 72.0% lines (3,462 of 4,810) and 55.3% branches (1,060 of 1,918), up from the most recently
+  documented baseline of 71.3% lines and 54.1% branches, with the total-line/branch denominators
+  unchanged from that baseline (no unrelated commit landed on `dev` in between this time). No
+  coverage failure threshold is introduced.
+- No production defect was discovered by this rollout.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.

@@ -108,6 +108,25 @@ public final class PostgresIntegrationTestSupport {
     }
 
     /**
+     * Loads the shared ontology/entity fixture, then adds a dedicated graph-traversal fixture under
+     * its own {@code v1graph}/{@code v1graph2} ontology ids (isolated from every other suite, same
+     * discipline as {@code OlsPostgresClientGraphIT}'s {@code graph-fixture.json}): a non-transitive
+     * {@code direct_parents}/{@code related_to} chain, a node reachable via two different traversal
+     * branches (for node-dedup coverage), {@code _json.relatedTo} entries whose {@code property} is
+     * resolvable in one direction but not symmetrically in the other, and a deliberate cross-ontology
+     * IRI duplicate on each of the three join branches. See {@code v1-graph-fixture.json} for exactly
+     * which row is which and why.
+     */
+    public static void initializeV1GraphDatabase(PostgreSQLContainer<?> container) {
+        initializeDatabase(container);
+        try (Connection connection = container.createConnection("")) {
+            loadV1GraphFixture(connection);
+        } catch (IOException | SQLException e) {
+            throw new IllegalStateException("Failed to load the V1GraphRepository integration fixture", e);
+        }
+    }
+
+    /**
      * Loads the shared entity fixture plus the class and property fixtures (both additive to
      * {@code ols_entities}, with no id collisions between them), then adds the {@code V2LLMController}
      * embedding fixture on top. Deliberately does <em>not</em> also load
@@ -659,6 +678,68 @@ public final class PostgresIntegrationTestSupport {
                 statement.setArray(25, textArray(connection, record.getAsJsonArray("tags")));
                 statement.setArray(26, textArray(connection, record.getAsJsonArray("domain")));
                 statement.setArray(27, textArray(
+                        connection,
+                        record.getAsJsonArray("http://example.org/category")));
+                statement.addBatch();
+            }
+            statement.executeBatch();
+        }
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("ANALYZE ols_entities");
+        }
+    }
+
+    private static void loadV1GraphFixture(Connection connection) throws IOException, SQLException {
+        JsonObject fixture;
+        try (InputStream stream = PostgresIntegrationTestSupport.class.getResourceAsStream(
+                "/fixtures/v1graph/v1-graph-fixture.json")) {
+            if (stream == null) {
+                throw new IllegalStateException("V1GraphRepository integration fixture is missing");
+            }
+            fixture = JsonParser.parseReader(
+                    new java.io.InputStreamReader(stream, StandardCharsets.UTF_8)).getAsJsonObject();
+        }
+
+        String sql = """
+                INSERT INTO ols_entities (
+                    id, type, iri, ontology_id, _json, is_obsolete, label, search_type,
+                    short_form, curie, obo_id, synonym, definition, is_defining_ontology,
+                    subset, related_to, direct_parents, hierarchical_parents,
+                    direct_ancestors, hierarchical_ancestors,
+                    has_direct_parents, has_hierarchical_parents,
+                    label_for_suggest, filter_tags, filter_domain,
+                    "filter_http://example.org/category")
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """;
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            for (JsonElement element : fixture.getAsJsonArray("records")) {
+                JsonObject record = element.getAsJsonObject();
+                statement.setString(1, record.get("id").getAsString());
+                statement.setString(2, record.get("databaseType").getAsString());
+                statement.setString(3, record.get("iri").getAsString());
+                statement.setString(4, record.get("ontologyId").getAsString());
+                statement.setBytes(5, gzip(record.getAsJsonObject("json").toString()));
+                statement.setBoolean(6, record.get("isObsolete").getAsBoolean());
+                statement.setArray(7, textArray(connection, record.getAsJsonArray("label")));
+                statement.setString(8, record.get("searchType").getAsString());
+                statement.setString(9, record.get("shortForm").getAsString());
+                statement.setString(10, record.get("curie").getAsString());
+                statement.setString(11, record.get("curie").getAsString());
+                statement.setArray(12, textArray(connection, record.getAsJsonArray("synonym")));
+                statement.setArray(13, textArray(connection, record.getAsJsonArray("definition")));
+                statement.setBoolean(14, record.get("isDefiningOntology").getAsBoolean());
+                statement.setArray(15, textArray(connection, record.getAsJsonArray("subset")));
+                statement.setArray(16, textArray(connection, record.getAsJsonArray("relatedTo")));
+                statement.setArray(17, textArray(connection, record.getAsJsonArray("directParents")));
+                statement.setArray(18, textArray(connection, record.getAsJsonArray("hierarchicalParents")));
+                statement.setArray(19, textArray(connection, record.getAsJsonArray("directAncestors")));
+                statement.setArray(20, textArray(connection, record.getAsJsonArray("hierarchicalAncestors")));
+                statement.setBoolean(21, !record.getAsJsonArray("directParents").isEmpty());
+                statement.setBoolean(22, !record.getAsJsonArray("hierarchicalParents").isEmpty());
+                statement.setString(23, record.getAsJsonArray("label").get(0).getAsString());
+                statement.setArray(24, textArray(connection, record.getAsJsonArray("tags")));
+                statement.setArray(25, textArray(connection, record.getAsJsonArray("domain")));
+                statement.setArray(26, textArray(
                         connection,
                         record.getAsJsonArray("http://example.org/category")));
                 statement.addBatch();
