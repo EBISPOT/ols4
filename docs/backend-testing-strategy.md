@@ -1035,6 +1035,94 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented PostgresClient baseline
+
+`PostgresClient` (`service`) is the foundational HikariCP connection-pool + jOOQ `DSLContext`
+wiring class that `PostgresIntegrationTestSupport`'s `createPostgresClient` factory has been
+constructing, indirectly, for every single real-Postgres test in this entire programme. Per this
+programme's standing rule, that indirect exercise never counted as "covered" — this class had zero
+dedicated test file of its own until this rollout.
+
+**Two distinct halves, split across the two test layers per the Tier B methodology.**
+
+**Unit layer (`PostgresClientTest`, 6 cases, no Postgres): the static `decompressJson(byte[])`
+overload.** `null` input returns `null` rather than throwing. A genuinely gzip-compressed string
+(built with `java.util.zip.GZIPOutputStream` in the test, never hand-crafted bytes) round-trips
+exactly. Non-gzip bytes are wrapped in a `SQLException` with the exact message `"Failed to
+decompress _json"` and a real `java.io.IOException` cause (confirmed via `hasCauseInstanceOf`, not
+just "some exception"). A second, distinct failure shape — a well-formed gzip header followed by a
+truncated compressed body — is proven to fail inside the read loop itself with the same wrapped
+`SQLException`/`IOException` cause chain, rather than only at `GZIPInputStream` construction time.
+A 72,780-character decompressed string (built from 3,000 distinct `"line-N":"value-N",` segments,
+not a trivially short one) forces the internal 8,192-char `buf` to be drained across multiple
+`reader.read(buf)` calls and still round-trips exactly. Finally, `close()` is proven safe to call on
+a `PostgresClient` that never had `init()` called on it (its `dataSource != null` guard exists for
+precisely this case).
+
+**IT layer (`PostgresClientIT`, 9 cases, real Postgres via `PostgresIntegrationTestSupport`):**
+
+- `getConnection()`/`dsl()`/`returnNodeCount()` end-to-end: a genuine `Connection` from
+  `getConnection()` (`isValid(2)`), a genuine `DSLContext` from `dsl(connection)` running a real
+  `SELECT COUNT(*)` against `ols_entities`, and `returnNodeCount()` returning the exact known
+  fixture size — 9 (4 ontology rows from `ontology-fixture.json` + 5 entity rows from
+  `entity-fixture.json`, both loaded into the shared `ols_entities` table by the standard
+  `initializeDatabase` fixture). A separate case proves `returnNodeCount()`'s `catch
+  (SQLException e)` branch for real (not via a faked collaborator): a dedicated standalone client is
+  `init()`-ed then `close()`-d, so its next `getConnection()` genuinely throws (`HikariDataSource
+  has been closed.`), and the resulting `RuntimeException("Failed to count nodes", ...)` with a real
+  `SQLException` cause is asserted directly.
+- `decompressJson(ResultSet, String)` and `decompressJson(ResultSet, int)` against a real BYTEA
+  column: `SELECT id, _json FROM ols_entities WHERE id = ?` for the known fixture id
+  `efo+class+http://example.org/EFO_0001`, decompressed by column name and by index (2) from the
+  same query shape, each compared against the expected JSON re-derived from the same classpath
+  fixture (`/fixtures/entities/entity-fixture.json`) `PostgresIntegrationTestSupport` itself loads
+  from — not a hand-copied JSON literal that could silently drift from the fixture.
+- `init()`'s `currentSchema` JDBC URL construction, across all three branches described by the
+  production code's own comment (`currentSchema` replaces `search_path` outright rather than
+  appending to it): no schema configured (both a blank `""` and a `null` schema field) produces no
+  `?currentSchema=` parameter at all; `schema="public"` produces exactly `?currentSchema=public`
+  (not `public,public`); any other schema (`"myschema"`, which is never actually created as a real
+  Postgres schema in this fixture — Postgres does not validate `search_path` entries against
+  existing schemas at connection time, only when resolving an unqualified name) produces
+  `?currentSchema=myschema,public`. `PostgresIntegrationTestSupport`'s own `createPostgresClient`
+  factory was read directly and confirmed to hard-code exactly one fixed value, `schema="public"`,
+  for every other test in this programme — it alone could never have exercised the other two
+  branches. These four cases therefore construct additional standalone `PostgresClient` instances
+  against the same running container (via `ReflectionTestUtils.setField`, the identical white-box
+  idiom the shared factory itself already uses for these same private fields), asserting the exact
+  resulting JDBC URL by reading the `init()`-ed instance's `dataSource` field back via
+  `ReflectionTestUtils.getField` and calling the inherited `HikariDataSource.getJdbcUrl()` (since
+  `HikariDataSource extends HikariConfig`) — the same reflection-based white-box technique already
+  used for `EmbeddingServiceClient` in this programme.
+
+**Remaining, permanent gap — deliberately not forced.** Three branches stay uncovered by design,
+not oversight: the `password != null && !password.isEmpty()` guard's `null`- and
+blank-password paths (every client constructed in this suite, including the schema-variant ones,
+uses the disposable container's own real, non-blank password — connecting with no password against
+this container's `scram`/`md5` auth would simply fail authentication, which would prove nothing
+about the guard); and `returnNodeCount()`'s `count == null ? 0 : count` ternary's `null` branch,
+which a real `SELECT COUNT(*)` query never actually produces (`fetchOne` always returns exactly one
+non-null row for a `COUNT` query) — reaching it would require a faked `DSLContext`, contradicting
+this class's own "prefer real Postgres over fakes" scope. `PostgresClient` itself now covers 45 of
+45 lines (100%) and 15 of 18 branches (83.3%; the 3 missed branches are exactly the ones just
+described), 10 of 10 methods (100%), and 227 of 229 instructions (99.1%).
+
+Verified locally on 2026-09-12 from `origin/dev` commit `75d96f57c` with Java 17 and Rancher
+Desktop:
+
+- Surefire runs 989 tests, including all 6 `PostgresClientTest` cases. Two Docker-free runs both
+  passed cleanly (0 failures / 0 errors).
+- Failsafe runs 214 PostgreSQL tests, including all 9 `PostgresClientIT` cases. Two complete
+  database-gate runs both passed cleanly (0 failures / 0 errors).
+- The clean `verify` lifecycle runs all 1,203 tests (989 surefire + 214 failsafe) in wall-clock
+  2 minutes 5.90 seconds.
+- Whole-backend JaCoCo coverage is 71.4% lines (3,434 of 4,810) and 54.3% branches (1,042 of 1,918),
+  up from the most recently documented baseline of 71.3% lines and 54.1% branches — the same 4,810/
+  1,918 line/branch denominators as the `AnnotationExtractor` baseline, i.e. no unrelated commits
+  changed the total in between; the improvement is exactly this rollout's 6 additional covered
+  lines and 5 additional covered branches.
+- No production defect was discovered by this rollout.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
