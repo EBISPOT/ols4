@@ -4,6 +4,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.postgresql.PGConnection;
+import org.postgresql.largeobject.LargeObject;
+import org.postgresql.largeobject.LargeObjectManager;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
@@ -161,6 +164,39 @@ public final class PostgresIntegrationTestSupport {
         ReflectionTestUtils.setField(textTaggerService, "postgresClient", postgresClient);
 
         return new TextTaggerRepositoryHandle(textTaggerService, searchClient, postgresClient);
+    }
+
+    /**
+     * Writes {@code plaintextPayload} into a new Postgres Large Object (gzip-compressed, exactly
+     * as {@link TextTaggerService#downloadTextTaggerDb()}'s read path expects -- it wraps the
+     * Large Object's input stream in a {@code GZIPInputStream}) and inserts a row into
+     * {@code ols_text_tagger} pointing at it, via the real {@code LargeObjectManager} API
+     * ({@code conn.unwrap(PGConnection.class).getLargeObjectAPI()}), matching production's own
+     * write-side contract for that table exactly. {@code ols_text_tagger} has a single column,
+     * {@code tagger_db_oid} (see {@code dataload/create_postgres_schema.py}), and
+     * {@code downloadTextTaggerDb()}'s query is {@code LIMIT 1}, so callers must not call this
+     * more than once against the same database.
+     */
+    public static void insertTextTaggerLargeObject(PostgresClient postgresClient, String plaintextPayload) {
+        try (Connection conn = postgresClient.getConnection()) {
+            conn.setAutoCommit(false); // required for the Large Object API, same as production code
+            byte[] gzipped = gzip(plaintextPayload);
+
+            LargeObjectManager lom = conn.unwrap(PGConnection.class).getLargeObjectAPI();
+            long oid = lom.createLO(LargeObjectManager.READWRITE);
+            LargeObject obj = lom.open(oid, LargeObjectManager.WRITE);
+            obj.write(gzipped);
+            obj.close();
+
+            try (PreparedStatement ps = conn.prepareStatement(
+                    "INSERT INTO ols_text_tagger (tagger_db_oid) VALUES (?)")) {
+                ps.setLong(1, oid);
+                ps.executeUpdate();
+            }
+            conn.commit();
+        } catch (SQLException | IOException e) {
+            throw new IllegalStateException("Failed to insert ols_text_tagger large object fixture", e);
+        }
     }
 
     /**
