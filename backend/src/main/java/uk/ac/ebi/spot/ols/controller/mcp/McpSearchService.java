@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
+import uk.ac.ebi.spot.ols.controller.api.exception.ResourceNotFoundException;
 import uk.ac.ebi.spot.ols.model.mcp.McpFetchResult;
 import uk.ac.ebi.spot.ols.model.mcp.McpSearchResult;
 import uk.ac.ebi.spot.ols.repository.EntityRepository;
@@ -91,6 +92,11 @@ public class McpSearchService {
             "en",
             outputOpts
         );
+
+        if (res == null) {
+            throw new ResourceNotFoundException(
+                "No entity found for ontologyId '" + tokens[0] + "' and IRI '" + tokens[1] + "'");
+        }
 
         return gson.toJson( McpFetchResult.fromJson(res) );
     }
