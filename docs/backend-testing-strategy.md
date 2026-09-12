@@ -1035,6 +1035,138 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented V1JsTreeRepository baseline
+
+`V1JsTreeRepository` (`repository/v1`) is the second Tier B target. Unlike `AnnotationExtractor`,
+it is a thin, Postgres-backed orchestrator with essentially no logic of its own: its six public
+methods (`getJsTreeFor{Class,Property,Individual}`, `getJsTreeChildrenFor{Class,Property,
+Individual}`) all delegate to one of two private methods, each of which builds the same
+`ontologyId+type+iri` composite entity id used throughout the V1 package, calls
+`OlsPostgresClient#getOne`/`getAncestors`/`getDirectChildren` for real data, applies
+`LocalizationTransform#transform` to the requested entity and to every related (ancestor/child)
+entity, and hands everything to `V1AncestorsJsTreeBuilder` or `V1ChildrenJsTreeBuilder` to build
+the actual jstree structure. All four collaborators are already independently, exhaustively
+tested elsewhere (both builders directly — `V1ChildrenJsTreeBuilderTest` pre-existing,
+`V1AncestorsJsTreeBuilderTest` added by PR #1428 — plus `OlsPostgresClient` and
+`LocalizationTransform` each with their own suites), so the goal here is narrowly this class's own
+wiring, not re-proving those collaborators' internals.
+
+**Scope: dedicated IT only, no separate unit test class.** Every method here is Postgres-backed via
+`OlsPostgresClient`; there is no meaningful pure-logic layer to peel off and test with a hand-rolled
+fake in isolation — a fake standing in for `OlsPostgresClient` would only prove this class calls a
+fake correctly, not that the composite id it builds actually resolves against real data, which is
+the entire point of the class. `V1JsTreeRepositoryIT.java` is therefore the only new test file.
+
+**What "wiring is correct" means here, and how it's proven without mocks.** `OlsPostgresClient#getOne`
+throws (`"expected exactly one result for getOne, but got N"`) whenever its `(entityType, id)`
+arguments don't resolve to exactly one row. Since every fixture row's own `id` column is already
+stored in exactly the `ontologyId+type+iri` format production code must reconstruct, and its `type`
+column already encodes the concrete `OntologyClass`/`OntologyProperty`/`OntologyIndividual` string,
+a *successful* lookup that returns the expected iri/label content is itself direct proof that the
+composite id and `entityType` string passed for that call are correct — a wrong segment order, a
+wrong `entityType`, or a wrong ontology would either throw or surface visibly wrong content, not
+silently succeed. This lets every positive test double as the "called with the right
+entityType/id" proof the methodology asks for, without instrumenting or mocking
+`OlsPostgresClient`. One dedicated negative test
+(`throwsWhenTheOntologyIdSegmentOfTheCompositeIdDoesNotMatchAnyRow`) additionally confirms the
+`ontologyId` segment is genuinely load-bearing (not ignored/defaulted) by requesting a real class
+IRI under the wrong ontology and asserting the resulting `RuntimeException`.
+
+**All six public methods, all three entity types, real data:**
+- `getJsTreeForClass`/`getJsTreeForProperty` reuse the existing class/property fixtures and
+  `V1OntologyTermRepositoryHandle`/`V1OntologyPropertyRepositoryHandle` factories as-is (the same
+  EFO_0001→EFO_1001/EFO_1999 and EFO_0100→EFO_0101 chains `V1TermRepositoryIT`/
+  `V1PropertyRepositoryIT` already load for their own, different, purposes).
+- `getJsTreeForIndividual` reuses the existing individual fixture (`EFO_I100`, whose ancestor
+  `EFO_0001` is a *class* — `getAncestors` has no type filter, so this also confirms the method
+  doesn't accidentally constrain the ancestor lookup to individual-typed rows only).
+- `getJsTreeChildrenForClass`/`getJsTreeChildrenForProperty` reuse the same class/property
+  fixtures' existing parent/child pairs.
+- `getJsTreeChildrenForIndividual` needed new fixture data: no existing individual fixture has a
+  genuine individual-to-individual `directParents` relationship (every individual's own
+  `directParents` points at a class), so `getDirectChildren` against an individual could otherwise
+  only ever be exercised against an empty result. A new, additive, two-row fixture
+  (`fixtures/individuals/jstree-children-individual-fixture.json`: `JST_IND_ROOT` /
+  `JST_IND_LEAF`) supplies one.
+
+**Builder argument shape/order + `jstreeId` threading.** `V1AncestorsJsTreeBuilder(thisEntity,
+ancestors, parentRelationIRIs)` vs. `V1ChildrenJsTreeBuilder(jstreeId, thisEntity, children)` are
+different collaborators with different constructor shapes, and only the children path takes a
+`jstreeId` at all. Every ancestors-path assertion checks the exact parent-chain shape (root's
+`parent` is `"#"`, the leaf is `state.selected`), which would break if `thisEntity`/`ancestors`
+were swapped. For the children path, `jstreeId` is an opaque, caller-supplied, base64-encoded path
+string (normally the `"id"` of some node from a prior `getJsTreeFor*`/`getJsTreeChildrenFor*`
+call); `V1JsTreeRepository` does nothing with it itself beyond forwarding it verbatim into
+`V1ChildrenJsTreeBuilder`, which base64-decodes it and uses the decoded string as the literal
+prefix for every child's own `"parent"` (and, with `;`+childIri, `"id"`) field — no entity lookup
+or validation ever happens against it. Every children-path test passes a `jstreeId` built from an
+arbitrary marker string (`base64("opaque-parent-token")`) unrelated to any entity's own iri, and
+asserts it reappears verbatim in the output — proving genuine passthrough of the caller's argument,
+not something `V1JsTreeRepository` re-derives itself from the requested iri.
+
+**Localization genuinely applied to both sides.** Every other fixture in this suite (and in the
+whole backend test programme) uses a plain-string `_json` `label`, which passes through
+`LocalizationTransform#transform` unchanged regardless of the requested language — so no existing
+fixture can distinguish "localization was applied" from "localization was skipped". A new,
+additive, two-row class fixture (`fixtures/classes/jstree-localization-class-fixture.json`:
+`JST_ROOT`/`JST_LEAF`) gives each entity's `_json` `label` a genuinely language-dependent
+reified-literal array (one `{"lang":"fr", "value":...}` entry plus one default/no-lang fallback
+entry). Requesting `"fr"` vs `"en"` therefore visibly changes the rendered text, and:
+- `localizesBothTheRequestedEntityAndItsAncestorPerRequestedLanguage` proves both `thisEntity`
+  (the leaf, `JST_LEAF`) *and* the related ancestor (`JST_ROOT`) are independently localized in the
+  ancestors path — both sides' text differs between the `"fr"` and `"en"` calls.
+- `localizesEveryChildIndependentlyOfTheRequestedLanguage` proves the same for the child side of
+  the children path.
+- One gap is documented rather than glossed over: `getJsTreeChildrenForEntity` localizes
+  `thisEntity` with the exact same two lines of code as the ancestors path, but
+  `V1ChildrenJsTreeBuilder.buildJsTree()` never actually reads its `thisEntity` field (confirmed by
+  reading the class — only `thisEntityJsTreeIdDecoded`, derived from the separate `jstreeId`
+  argument, and `children` are used). So, unlike the ancestors path, `thisEntity`'s localization in
+  the children path has no way to be observed through any output of the method; this is real,
+  identical source code to the (independently proven) ancestors-path call, just unobservable by
+  design in the children path, not a defect.
+
+**Two harmless dead-code observations, not defects, not fixed here** (per the defect workflow,
+only genuine incorrect-behavior defects get isolated into their own PR — inert dead code with no
+observable effect does not qualify): (1) `getJsTreeChildrenForEntity` builds a local
+`parentRelationIRIs` variable that is never passed anywhere (`V1ChildrenJsTreeBuilder`'s
+constructor doesn't accept one) — apparent copy-paste leftover from the ancestors method; (2)
+`V1ChildrenJsTreeBuilder`'s constructor assigns its `parentRelationIRIs` field to itself
+(`this.parentRelationIRIs = parentRelationIRIs`, where `parentRelationIRIs` is the class field, not
+a constructor parameter — the constructor has no such parameter), which is why point (1) above
+would be a no-op even if it were wired up. Both are pre-existing, and (2) is inside
+`V1ChildrenJsTreeBuilder`, a different class with its own dedicated test — out of scope to fix as
+part of this rollout.
+
+**New shared-fixture infrastructure.** `PostgresIntegrationTestSupport#loadClassFixture`/
+`loadIndividualFixture` were refactored (each now delegates to a `...From(Connection, String
+resourcePath)` overload) so the two new additive fixtures above could reuse the exact same
+column-mapping/INSERT logic instead of duplicating it. A new
+`initializeJsTreeRepositoryDatabase(container)` loads the base ontology/entity fixtures, the
+existing individual fixture, and both new additive fixtures into one disposable database (all four
+new ids are disjoint from every other fixture's ids, so this is safe to combine). The existing
+class/property fixtures and factories are reused unmodified.
+
+Verified locally on 2026-09-12 from `origin/dev` commit `75d96f57c` with Java 17:
+
+- Surefire (Docker-free) runs 983 tests, unchanged by this rollout (no unit test class was added,
+  per the scope note above). Two runs, both 0 failures / 0 errors.
+- Failsafe (Rancher Desktop Postgres, `DOCKER_HOST`/`TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE`
+  overrides) runs 214 tests (205 previously + 9 new `V1JsTreeRepositoryIT` cases). Two runs, both 0
+  failures / 0 errors; `V1JsTreeRepositoryIT` itself: 9/9 passing both times (7.1s and 5.3s).
+- One clean `mvn clean verify -Dapi.version=1.44` runs all 1,197 tests (983 surefire + 214 failsafe)
+  in wall-clock 2 minutes 9.38 seconds (61.43s user, 5.96s system, 52% CPU).
+- `V1JsTreeRepository` itself now covers 156/156 instructions, 25/25 lines, and 11/11 methods
+  (100% each); it has 0 branches (no conditional logic of its own — confirming the "thin
+  orchestrator" description). Whole-backend JaCoCo coverage is 72.33% instructions (17,398/24,054),
+  71.33% lines (3,431/4,810), 54.22% branches (1,040/1,918), and 74.94% methods (604/806) — up
+  slightly from the AnnotationExtractor baseline's 71.3% lines / 54.1% branches on the same
+  4,810/1,918 denominators; the extra covered lines/branches land in `OlsPostgresClient#getOne`'s
+  `!= 1` throw path, previously unexercised by any other test, now hit by this rollout's
+  ontology-mismatch negative test.
+- No genuine production defect was discovered by this rollout (see the two dead-code observations
+  above, which are documented but not fixed here, per the defect workflow).
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
