@@ -1035,6 +1035,71 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented ShortFormExtractor baseline
+
+`ShortFormExtractor` (`repository/v1/mappers`) is the second Tier B target in this programme,
+picked as the alphabetically-next uncovered class in that package after `AnnotationExtractor`
+(#1407). It is a tiny pure static-method utility class — one public method,
+`extractShortForm(String iri)`, no Spring bean, no constructor state, no Postgres dependency —
+called from `V1TermMapper` (twice: once for `termReplacedBy`, once for a linked-entity predicate's
+fallback label). Like `AnnotationExtractor` before it, this method was previously exercised only
+incidentally through `V1TermMapper`'s own happy-path fixtures, never through a dedicated test of
+its own branches.
+
+**Scope: unit-only, no IT layer.** Per the Tier B methodology's "what covered means" section, a
+pure-logic class with no Postgres dependency of its own does not get a dedicated `*IT.java` layer.
+This baseline is a single new `ShortFormExtractorTest.java` (11 cases, this repo's plain-JUnit/
+AssertJ idiom, no Mockito, nothing to fake — the method takes a `String` and returns a `String`
+with no collaborators at all) and nothing else.
+
+**Branches enumerated.** The method has exactly two logical branches: a case-sensitive
+`startsWith("urn:")` special case that strips exactly 4 characters, and a generic fallback that
+returns everything after `Math.max(iri.lastIndexOf('#'), iri.lastIndexOf('/')) + 1`. Cases
+covered: the `urn:` prefix present with a real NID:NSS value following it (`urn:oid:1.2.3.4`,
+the canonical URN example from the W3C reference the method's own comment links to); the `urn:`
+prefix with nothing after it (exactly `"urn:"`, returning `""` rather than throwing); an
+uppercase `"URN:..."` confirming `startsWith` is case-sensitive and control falls through to the
+generic branch (verified by also asserting on the specific result that branch produces for this
+input, not just that it doesn't throw); an IRI with only a `#` (OWL's own `owl#Thing` namespace
+IRI); an IRI with only a `/` (a real OBO PURL term IRI shape, `BFO_0000002`); both directions of
+the `Math.max` comparison when an IRI contains both separators, each with its own real, grounded
+example — a `/` after the last `#` (an ICD-10 browse IRI whose fragment itself contains a further
+`/` segment) and a `#` after the last `/` (the `oboInOwl#inSubset` predicate IRI, also used
+verbatim in `AnnotationExtractor` and its tests); an IRI ending in `#` and, separately, one ending
+in `/` (both returning `""`, nothing after the separator); an IRI with neither `#` nor `/` at all,
+where `Math.max(-1, -1) + 1 == 0` and `substring(0)` returns the *entire original string*
+unchanged rather than throwing or returning empty (asserted against the full string, not just a
+non-crash); and the empty-string input, the same all-`-1` logic path at the degenerate length-0
+case, also returning `""` without throwing.
+
+**Fixtures grounded in real data.** Several inputs above are real IRI/predicate strings pulled
+directly from this codebase (`backend/src/test/resources` fixtures, `testcases_expected_output_api`
+golden files, and `OntologyDefaults`/`AnnotationExtractor`'s own hardcoded namespace constants),
+found via `grep` rather than invented from scratch — the OWL `#Thing` IRI, the OBO `BFO_0000002`
+PURL, the ICD-10 `#/N18` browse IRI (a genuine "both separators, slash-after-hash" real-world
+shape), and the `oboInOwl#inSubset` predicate. No real `urn:` IRI exists anywhere in this
+codebase's fixtures or production data (`grep -rn "urn:"` over `backend/src/test/resources` and
+`testcases_expected_output_api` finds nothing); the `urn:` cases therefore use the synthetic
+`urn:oid:1.2.3.4` example, which is the canonical illustration from the same W3C URN reference the
+production code's own comment cites.
+
+Verified locally on 2026-09-12 from `origin/dev` commit `75d96f57c` with Java 17 (no Postgres/
+Docker gate — this class has no IT layer, per the scope note above):
+
+- Surefire runs 994 tests, including 11 `ShortFormExtractorTest` cases. Two Docker-free runs took
+  wall-clock 16.98 and 11.67 seconds, both 0 failures / 0 errors (confirmed by reading
+  `target/surefire-reports/*.txt`, not just exit code).
+- The clean `verify` lifecycle runs all 1,199 tests (994 surefire + 205 failsafe, unchanged by this
+  rollout since no IT was added) in wall-clock 2 minutes 3.79 seconds.
+- `ShortFormExtractor` itself now covers 6 of 7 lines (85.7%) and 2 of 2 branches (100%); the one
+  uncovered line is the implicit default constructor, never invoked since the only caller
+  (`V1TermMapper`) uses the static method directly — the same pattern as `AnnotationExtractor`'s
+  baseline. Whole-backend JaCoCo coverage is 71.4% lines (3,434 of 4,810) and 54.2% branches
+  (1,039 of 1,918), up marginally from the `AnnotationExtractor` baseline of 71.3%/54.1% (same
+  4,810/1,918 denominators — no unrelated commits landed on `dev` between the two baselines this
+  time). No coverage failure threshold is introduced.
+- No production defect was discovered.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
