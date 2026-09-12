@@ -1035,6 +1035,101 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented RemoveLiteralDatatypesTransform baseline
+
+`RemoveLiteralDatatypesTransform` (`repository/transforms`) is a Tier B target completed under
+this programme's expanded scope, alongside the still-open `JsonTransformer`/
+`ManchesterSyntaxTransform` PRs for the same `transforms` package (see
+`.claude/commands/backend-test-coverage.md`'s Tier B methodology). It is a pure static-method
+utility class — no Spring bean, no constructor state, no Postgres dependency — with a single
+public method, `transform(JsonElement)`, that recurses through arrays and object values (via the
+shared `JsonCollectionHelper`, itself out of scope for dedicated testing per the
+`ManchesterSyntaxTransform` baseline's note, and left out of scope here too) and collapses any
+object shaped `{"type": ["literal"], "value": <v>}` into `transform(<v>)`, recursively. It is
+called directly from `V1SearchController`, `V1SelectController`, and `V1GraphRepository`
+(confirmed via `graphify explain "RemoveLiteralDatatypesTransform"` before falling back to
+`grep`), and unconditionally from `JsonTransformer.transformJson` as one of its two always-on
+transforms (alongside `LocalizationTransform`) — so this class runs on essentially every V1/V2
+JSON response this codebase produces.
+
+**Scope: unit-only, no IT layer.** Same rationale as the `AnnotationExtractor`/`JsonTransformer`/
+`ManchesterSyntaxTransform` baselines above: a pure-logic class with no Postgres dependency of its
+own has no real-database behaviour to prove beyond a direct unit test with hand-built `JsonElement`
+fixtures. This baseline is a single new `RemoveLiteralDatatypesTransformTest.java` (13 cases, this
+repo's plain-JUnit idiom — `JsonParser.parseString` text-block fixtures for object/array shapes,
+matching the existing `LocalizationTransformTest` idiom for this same `transforms` package — no
+Mockito, no Spring context) and nothing else.
+
+**Branches enumerated.** Primitives (string, number, boolean) and Gson's `JsonNull.INSTANCE`
+(distinct from a raw Java `null` — see below) are all returned as-is, via the final `else` branch.
+Array input recurses into every element via `JsonCollectionHelper.map`, including a nested
+array-of-arrays case. An object with no `"type"` key at all recurses into its own key/value pairs,
+preserving structure. An object whose `"type"` is present but is not a `JsonArray` (a plain string,
+e.g. `"class"`) never enters the literal-collapse branch (`type.isJsonArray()` is `false`) and
+falls straight through to the generic `JsonCollectionHelper.map(obj, ...)` object recursion at the
+bottom of the method — confirmed precisely rather than assumed unreachable, per this task's
+instruction. Likewise, an object whose `"type"` is a `JsonArray` that does not contain `"literal"`
+(e.g. `["class"]`) also falls through to that same generic recursion, leaving the `"type"` array
+itself structurally intact. The literal-collapse shape itself is covered with a plain string
+`"value"`, with irrelevant extra keys (`datatype`/`lang`, the real shape rdf2json's
+`PropertyValueLiteral` produces) alongside it to prove only `"value"` survives, and with a nested
+literal-shaped `"value"` to prove the recursive unwrap (`transform(obj.get("value"))` calling back
+into a second collapse) rather than a single non-recursive unwrap.
+
+**The genuinely-missing-`"value"`-key edge case, investigated empirically per this task's
+instruction.** `obj.get("value")` returns a raw Java `null` reference (not Gson's `JsonNull`) when
+the `"value"` member is absent from the object entirely, and `transform(null)` unconditionally
+calls `.isJsonArray()` on that reference before any null check. A dedicated test
+(`literalObjectWithNoValueKeyThrowsNullPointerException`) confirms empirically that this does throw
+a `NullPointerException` — the code has no defensive null check anywhere on this path.
+
+This was then investigated for real-world reachability rather than assumed either way:
+- **`PropertyValueLiteral`** (`dataload/rdf2json/src/main/java/uk/ac/ebi/rdf2json/properties/PropertyValueLiteral.java`),
+  the only rdf2json class that produces a `Type.LITERAL` value, unconditionally assigns its
+  `value` field in its constructor from `node.getLiteralLexicalForm()` (via
+  `PropertyValue.fromJenaNode`) or one of its `fromBoolean`/`fromInteger`/`fromString` factory
+  methods — every one of these always supplies a `value` argument. Per the RDF/Jena contract, a
+  literal node's lexical form is never `null` (it is an empty string at worst). There is no code
+  path anywhere in `dataload/rdf2json` that constructs a `PropertyValueLiteral` — and therefore no
+  path that serializes a `{"type": ["literal"], ...}` JSON object — with a genuinely missing
+  `value`.
+- This was cross-checked against real committed data rather than trusting the source-reading
+  argument alone, per this repo's defect workflow ("check `test_api.sh`'s committed golden files
+  first"): a scan of all 7,932 JSON files under `testcases_expected_output_api/` and all 444 files
+  under `testcases_expected_output/` for every object shaped `{"type": [..., "literal", ...], ...}`
+  found zero instances missing a `"value"` key — every single one, across both directories,
+  carries a `"value"`.
+
+**Conclusion: not a genuine, reachable production defect — documented, not escalated to a separate
+PR.** This shape cannot occur via this codebase's own rdf2json/dataload pipeline, and no committed
+fixture exhibits it either. Per this repo's defect workflow, only a defect that survives both the
+golden-fixture check and (where relevant) the real-vs-mock check gets isolated into its own PR;
+this one does not survive the first check, so it is documented here as a confirmed non-issue
+instead of following the PR #1416 pattern. If a future caller ever hand-constructs or otherwise
+introduces a literal-typed value without a `"value"` key (e.g. a malformed admin-API write, or a
+future rdf2json change), this `NullPointerException` would propagate uncaught — worth keeping in
+mind if this class's callers ever change, but not something this rollout treats as actionable today.
+
+Verified locally on 2026-09-12 from `origin/dev` commit `75d96f57c` with Java 17 (no Postgres/
+Docker gate — this class has no IT layer, per the scope note above):
+
+- Surefire runs 996 tests, including all 13 `RemoveLiteralDatatypesTransformTest` cases. Two
+  Docker-free runs both reported 0 failures / 0 errors.
+- The clean `verify` lifecycle runs all 1,201 tests (996 surefire + 205 failsafe, unchanged by this
+  rollout since no IT was added) in wall-clock 2 minutes 2.65 seconds.
+- `RemoveLiteralDatatypesTransform` itself now covers 46 of 49 instructions (93.9%), 10 of 10
+  branches (100%), and 12 of 13 lines (92.3%); the one uncovered line is the implicit default
+  constructor, never invoked since the only caller-facing entry point is the static `transform`
+  method — the same pattern already documented for `AnnotationExtractor`/`JsonTransformer`/
+  `ManchesterSyntaxTransform` above. Whole-backend JaCoCo coverage is 72.2% instructions (17,371 of
+  24,054), 54.1% branches (1,038 of 1,918), and 71.3% lines (3,428 of 4,810); measured from the same
+  `origin/dev` commit as the `AnnotationExtractor` baseline above (this branch was not rebased onto
+  any of the other sibling Tier B PRs, which are independent, unmerged branches off the same
+  commit), so this is this rollout's own isolated contribution, not a cumulative total. No
+  repository-wide coverage threshold is introduced.
+- No production defect was discovered by this rollout requiring a separate PR — see the
+  no-`"value"`-key investigation above for the one edge case that was investigated and ruled out.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
