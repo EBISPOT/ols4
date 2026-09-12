@@ -1035,6 +1035,117 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented EmbeddingServiceClient baseline
+
+`EmbeddingServiceClient` is the second Tier B target completed under this programme's expanded
+scope (repositories, mappers, builders, services, and MCP-tool classes with real logic and zero
+direct tests, worked once the Tier A controller backlog is empty — see
+`.claude/commands/backend-test-coverage.md`'s Tier B methodology and the `AnnotationExtractor`
+baseline above for the first). It was already touched by Tier A
+work: the "V2 LLM-controller baseline" section above wires the real, unconfigured bean directly
+into `V2LLMController` (`getAvailableModels()` degrading to `List.of()` is genuine, non-mocked
+integration behaviour) and a hand-rolled fake subclass at the controller-IT layer for the five
+text-search routes. Neither proves anything about the class's own internals: `applyPca`'s PCA-
+transform math, `loadPcaModels()`'s Postgres-backed model loading, and
+`getAvailableModels()`'s response-parsing/model-filtering logic had never been exercised directly,
+which is exactly why JaCoCo measured the class at 19.3% lines / 7.7% branches despite the
+controller-layer work.
+
+**Shape of this baseline.** Unlike a Tier A controller, this class has no routes, so "done" is a
+direct unit test plus a real-Postgres IT test (per the Tier B "what covered means" methodology),
+not four layers:
+
+- `EmbeddingServiceClientTest` — a plain, Docker-free unit test covering every public method and
+  branch that does not itself require a database.
+- `EmbeddingServiceClientIT` — a disposable-Postgres test covering the one part of this class that
+  is genuinely Postgres-backed: `init()`/`loadPcaModels()`.
+
+**HTTP seam.** `embedTextsFromService`'s binary response parsing and `applyPca`'s real math are only
+reached through `embedTexts()`, which throws immediately when `embeddingServiceUrl` is unset — the
+same state as every Spring test context in this repo (`@Value("${ols.embedding.service.url:#{null}}")`,
+never configured in tests). Rather than reflecting into `applyPca` directly or faking the whole
+class again (which the controller layer already does, and which would prove nothing new), this
+class's `EmbeddingServiceClientTest` stands up a real `com.sun.net.httpserver.HttpServer` bound to
+`127.0.0.1` on an ephemeral port as a fake embedding microservice, and points the real, unmodified
+`EmbeddingServiceClient` at it with `ReflectionTestUtils.setField(client, "embeddingServiceUrl", ...)`
+— the same private-field-injection idiom `PostgresIntegrationTestSupport` already uses throughout
+(including, already, `ReflectionTestUtils.setField(embeddingServiceClient, "postgresClient", ...)`
+in its existing `createV2LLMRepositories` factory), not a new mechanism introduced for this class.
+This exercises the real HTTP request/response code, the real little-endian binary float parsing,
+and the real `applyPca` mean-centered dot product end to end — not a mock standing in for any of
+it. No existing test in this repo stood up a local HTTP server before this; `ReflectionTestUtils`
+for private-field injection was already established precedent, so only the HTTP-server half of this
+approach is new.
+
+**PCA model injection.** `loadPcaModels()` itself is real, Postgres-backed logic, covered separately
+by `EmbeddingServiceClientIT` (below) and deliberately not re-exercised in the unit test. To reach
+`applyPca` and the PCA branches of `embedTexts()`/`getAvailableModels()` without a database,
+`EmbeddingServiceClientTest` uses plain `java.lang.reflect` to construct the class's private static
+nested `PcaModel` type directly (via its declared constructor, made accessible) and insert it into
+the private `pcaModels` map. This is a small, explicit white-box step to set up test state — not a
+stand-in for the class's real behaviour once a model is present, which runs unmodified. `applyPca`'s
+math is verified against a hand-computed expected output for a small, fixed 3-feature/2-component
+model (mean `[1,2,3]`, components `[[1,0],[0,1],[1,1]]`): a raw embedding of `[2,5,10]` transforms to
+exactly `[8,10]`, and the mean itself (`[1,2,3]`) transforms to exactly `[0,0]` (every
+`embedding[i] - mean[i]` term is zero) — both hand-checkable, not approximated.
+
+**Real-Postgres coverage.** `PostgresIntegrationTestSupport` gained
+`initializeEmbeddingServiceClientDatabase` and `createEmbeddingServiceClientRepositories`, following
+the same per-family pattern as `initializeV2LLMDatabase`/`createV2LLMRepositories`. The new fixture
+loads two rows into `ols_pca_models`: `embedding_service_client_test_model_pca2` (matches
+`PCA_PATTERN`, `^(.+)_pca(\d+)$`, with a hand-computable mean/components payload) and
+`embedding_service_client_test_model_full` (does not match — no `_pca<digits>` suffix). Unlike
+`createV2LLMRepositories` (which deliberately returns its `EmbeddingServiceClient` uninitialized
+because its fixture never populates `ols_pca_models`), the new factory calls `init()` eagerly.
+`EmbeddingServiceClientIT` then reflects into the private `pcaModels` map (there is no public
+getter) to assert the matching row produced a loaded model with the exact `baseModelName`/
+`nComponents`/`mean.length` that was inserted, and that the non-matching row produced no entry at
+all (map size `1`, not `2`) — proving both the regex-match and regex-no-match branches of the
+per-row loop empirically, not by reading the source. A third IT case inserts a row with
+deliberately-malformed (non-JSON) `model` bytes into its own disposable container (kept separate
+from the two cases above so a poisoned row can't affect their fixture) and asserts `init()` still
+completes without throwing and leaves no model loaded — proving `loadPcaModels()`'s outer
+`catch (Exception e)` swallows a real Gson parse failure rather than letting it escape
+`@PostConstruct` and fail application startup.
+
+**Dead code, not a defect.** `getAvailableModels()` has two separate pca16-exclusion mechanisms: the
+inclusion loop's `!entry.getKey().contains("pca16")` guard, and a later
+`models.removeIf(m -> m.contains("pca16"))`. `EmbeddingServiceClientTest` proves the first guard
+reachable and effective (`getAvailableModelsExcludesPca16VariantEvenWhenItsBaseModelIsAvailable`);
+the second is structurally unreachable given the first already prevents any pca16-named entry from
+ever being added to the list it operates on. This mirrors the `OlsPostgresClient` 4-/6-arg
+convenience-overload dead code noted in the V2 LLM-controller baseline above — left as pre-existing,
+not fixed, per the defect workflow (a testing PR must not bundle a fix).
+
+Verified locally on 2026-09-11 with Java 17 and Rancher Desktop, from `origin/dev` commit
+`75d96f57c` (post `AnnotationExtractor` merge, PR #1407 — this branch was rebased onto it since
+both Tier B baselines happened to insert their new section at the same point in this file):
+
+- Surefire runs 1,006 tests, including 23 direct `EmbeddingServiceClientTest` cases. Two
+  Docker-free runs took wall-clock 19.59 and 19.05 seconds.
+- Failsafe runs 208 PostgreSQL tests, including 3 `EmbeddingServiceClientIT` cases. Two complete
+  database-gate runs took wall-clock 128.24 and 132.19 seconds.
+- The clean `verify` lifecycle runs all 1,214 tests in wall-clock 2 minutes 15.07 seconds.
+- `EmbeddingServiceClient` now covers all 119 of its executable lines (100%, up from 19.3%) and 51
+  of its 52 branches (98.1%, up from 7.7%) across all 13 of its methods (100%, up from
+  partial). The one remaining missed branch is `embedTextsFromService`'s
+  `response.body() != null ? ... : "(empty)"` fallback in the non-200 error-message branch:
+  `HttpResponse.BodyHandlers.ofByteArray()` is documented to always return a byte array (empty, not
+  null, for an empty body), so the null case is not reachable through the real JDK `HttpClient`
+  without fabricating a response object — a permanent, expected gap, not chased with a mock.
+  Whole-backend JaCoCo coverage is 73.4% lines (3,530 of 4,810) and 56.5% branches (1,084 of 1,918),
+  up from the `AnnotationExtractor` baseline immediately above (71.3% lines, 54.1% branches).
+- No production defect was discovered by this rollout. The pca16 double-filter noted above was
+  confirmed to be pre-existing dead code, not a behavioural bug (nothing observable changes whether
+  it runs or not), and was left alone per the defect workflow.
+
+**Permanent limitation.** As recorded in the V2 LLM-controller baseline above, genuine
+embedding-service HTTP behaviour from a real embedding model is not and cannot be exercised in this
+test environment. This baseline's local `HttpServer` fake proves the real request/response-handling
+*code* end to end (parsing, error handling, PCA math), which is new; it does not and cannot prove
+what a real embedding microservice actually returns for real text, which remains permanently out of
+reach here, as it was for the controller layer.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
