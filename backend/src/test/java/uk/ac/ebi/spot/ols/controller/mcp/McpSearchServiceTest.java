@@ -312,19 +312,20 @@ class McpSearchServiceTest {
     }
 
     @Test
-    void fetchThrowsNullPointerExceptionWhenTheRepositoryFindsNoMatchingEntity() {
+    void fetchThrowsResourceNotFoundExceptionWhenTheRepositoryFindsNoMatchingEntity() {
         // EntityRepository.getByOntologyIdAndIri returns a plain null (not an exception) when
-        // OlsSearchClient.getFirst finds no matching row. McpSearchService.fetch() passes that
-        // null straight into McpFetchResult.fromJson(JsonElement), which immediately calls
-        // entity.getAsJsonObject() with no null check - so a syntactically valid, well-formed id
-        // for an entity that genuinely does not exist currently throws an undocumented
-        // NullPointerException instead of a clear "not found" error. This is a real, reachable
-        // production defect (confirmed against the real EntityRepository/OlsSearchClient source,
-        // not a mock artifact, and not asserted otherwise by any committed golden file), tracked
-        // separately per this programme's defect workflow rather than fixed in this testing PR.
+        // OlsSearchClient.getFirst finds no matching row. McpSearchService.fetch() used to pass
+        // that null straight into McpFetchResult.fromJson(JsonElement) with no null check,
+        // throwing an undocumented NullPointerException for a syntactically valid id whose entity
+        // genuinely doesn't exist. This was a real, reachable production defect (confirmed against
+        // the real EntityRepository/OlsSearchClient source, not a mock artifact, and not asserted
+        // otherwise by any committed golden file) and was fixed in PR #1416: fetch() now checks
+        // for null and throws a clear ResourceNotFoundException instead.
         entityRepository.fetchResult = null;
 
-        assertThrows(NullPointerException.class, () -> service.fetch("efo+http://example.org/DOES_NOT_EXIST"));
+        assertThrows(
+                uk.ac.ebi.spot.ols.controller.api.exception.ResourceNotFoundException.class,
+                () -> service.fetch("efo+http://example.org/DOES_NOT_EXIST"));
     }
 
     // ------------------------------------------------------------------

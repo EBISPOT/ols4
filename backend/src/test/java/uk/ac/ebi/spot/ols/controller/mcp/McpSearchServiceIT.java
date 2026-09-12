@@ -28,9 +28,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  * only proves that {@code McpSearchService}'s hardcoded fixed-argument calls really reach real
  * Postgres and that the {@code McpSearchResult}/{@code McpFetchResult}-then-{@code gson.toJson}
  * output is genuinely correct for real data, plus one real-Postgres reproduction of the
- * not-found {@code NullPointerException} documented in {@code McpSearchServiceTest} (confirming it
- * is a genuine repository-returns-null behaviour, not an artifact of the unit layer's hand-rolled
- * fake).</p>
+ * not-found {@code ResourceNotFoundException} (fixed in PR #1416) documented in
+ * {@code McpSearchServiceTest} (confirming it is a genuine repository-returns-null behaviour, not
+ * an artifact of the unit layer's hand-rolled fake).</p>
  */
 @Testcontainers
 class McpSearchServiceIT {
@@ -122,14 +122,16 @@ class McpSearchServiceIT {
     }
 
     @Test
-    void fetchThrowsNullPointerExceptionWhenNoRealEntityMatchesThisOntologyIdAndIriThroughRealPostgres() {
-        // Real-Postgres reproduction of the defect documented in McpSearchServiceTest -
+    void fetchThrowsResourceNotFoundExceptionWhenNoRealEntityMatchesThisOntologyIdAndIriThroughRealPostgres() {
+        // Real-Postgres reproduction of the not-found case documented in McpSearchServiceTest -
         // EntityRepository.getByOntologyIdAndIri returns a genuine null (via
-        // OlsSearchClient.getFirst) when nothing matches, and McpSearchService.fetch() passes that
-        // straight into McpFetchResult.fromJson with no null check. This confirms the NPE is real
-        // repository behaviour, not an artifact of the unit layer's hand-rolled fake.
+        // OlsSearchClient.getFirst) when nothing matches, and McpSearchService.fetch() (fixed in
+        // PR #1416, uk.ac.ebi.spot.ols.controller.api.exception.ResourceNotFoundException) now
+        // throws a clear ResourceNotFoundException instead of the NullPointerException this test
+        // used to assert. This confirms the fix behaves correctly against real repository
+        // behaviour, not an artifact of the unit layer's hand-rolled fake.
         assertThrows(
-                NullPointerException.class,
+                uk.ac.ebi.spot.ols.controller.api.exception.ResourceNotFoundException.class,
                 () -> service.fetch("efo+http://example.org/DOES_NOT_EXIST"));
     }
 }

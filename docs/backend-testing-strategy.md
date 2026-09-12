@@ -1802,21 +1802,21 @@ already-asserted-correct golden contract; `McpSearchServiceTest`/`McpSearchServi
 this real, current, already-baselined shape rather than the shape the dead branch would have
 produced.
 
-**A genuine production defect was found and is being filed separately, per the defect workflow.**
-`EntityRepository.getByOntologyIdAndIri` returns a plain `null` (not an exception) when
-`OlsSearchClient.getFirst` finds no matching row - confirmed by reading `OlsSearchClient.getFirst`'s
-real source, which explicitly `return`s `null` on `fetchOne() == null`. `McpSearchService.fetch()`
-passes that `null` straight into `McpFetchResult.fromJson(JsonElement)`, which immediately calls
-`entity.getAsJsonObject()` with no null check, so a syntactically well-formed `ontologyid+iri` id
-for an entity that genuinely does not exist throws an undocumented `NullPointerException` instead
-of a clear "not found" error. Checked against the defect workflow: no committed golden file asserts
-otherwise (there is no not-found case in `testcases_expected_output_api/mcp/`), and this does not
-involve any faked/mocked collaborator - it was reproduced both by `McpSearchServiceTest`'s
-hand-rolled fake (`fetchThrowsNullPointerExceptionWhenTheRepositoryFindsNoMatchingEntity`) and,
-independently, against real Postgres in `McpSearchServiceIT`
-(`fetchThrowsNullPointerExceptionWhenNoRealEntityMatchesThisOntologyIdAndIriThroughRealPostgres`).
-Both tests document the current behaviour; the fix itself is **not** bundled into this PR and will
-be opened as its own separate minimal PR, per this programme's standing rule.
+**A genuine production defect was found and fixed separately, per the defect workflow — since
+merged as PR #1416.** `EntityRepository.getByOntologyIdAndIri` returns a plain `null` (not an
+exception) when `OlsSearchClient.getFirst` finds no matching row - confirmed by reading
+`OlsSearchClient.getFirst`'s real source, which explicitly `return`s `null` on `fetchOne() == null`.
+`McpSearchService.fetch()` used to pass that `null` straight into
+`McpFetchResult.fromJson(JsonElement)`, which immediately calls `entity.getAsJsonObject()` with no
+null check, so a syntactically well-formed `ontologyid+iri` id for an entity that genuinely does not
+exist threw an undocumented `NullPointerException` instead of a clear "not found" error. Checked
+against the defect workflow: no committed golden file asserts otherwise (there is no not-found case
+in `testcases_expected_output_api/mcp/`), and this does not involve any faked/mocked collaborator -
+it was reproduced both by a hand-rolled fake in the unit suite and, independently, against real
+Postgres in the IT suite. PR #1416 fixed `fetch()` to check for `null` and throw this codebase's own
+`ResourceNotFoundException` instead; this branch was rebased onto that fix, so
+`McpSearchServiceTest`/`McpSearchServiceIT`'s not-found cases now assert the fixed
+`ResourceNotFoundException` behaviour rather than the original `NullPointerException`.
 
 **Two layers.** `McpSearchServiceTest.java` (19 cases) is the direct unit suite: this repo's
 hand-rolled-fake idiom (no Mockito), covering the three-way `includeObsoleteEntities` resolution,
