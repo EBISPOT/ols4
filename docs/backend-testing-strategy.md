@@ -1035,6 +1035,130 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented V1AncestorsJsTreeBuilder baseline
+
+`V1AncestorsJsTreeBuilder` (`repository/v1`) builds a jsTree.js-compatible representation of an
+entity's full ancestor lineage from a flat list of ancestor JSON entities plus the entity itself,
+walking one or more configurable "parent relation" IRI predicates. It is the untested sibling of
+`V1ChildrenJsTreeBuilder`, whose own dedicated test (`V1ChildrenJsTreeBuilderTest`) found and
+fixed a real `NullPointerException` in PR #1391 that controller-level testing alone had not
+caught (per the Tier B methodology's "why this tier exists" section). This rollout treats that
+precedent as a real, not hypothetical, risk and gives `V1AncestorsJsTreeBuilder` the same
+dedicated, branch-by-branch coverage.
+
+**Scope: unit-only, no IT layer.** Confirmed `V1ChildrenJsTreeBuilderTest` (the structural
+template for this rollout) is also unit-only with no IT layer — same sanity check applied here.
+`V1AncestorsJsTreeBuilder` has no Postgres dependency of its own: its constructor takes plain
+`JsonElement`/`JsonObject` values already fetched and localized by its caller
+(`V1JsTreeRepository`), and its own logic (map-building, recursion, base64 encoding) is pure. A
+single new `V1AncestorsJsTreeBuilderTest.java` (18 cases, this repo's plain-JUnit5/AssertJ idiom,
+no Mockito, no Spring context, package-private class/methods tested from the same package exactly
+like `V1ChildrenJsTreeBuilderTest`) is therefore the complete coverage layer.
+
+### A genuine production defect was found and fixed in a separate PR
+
+While enumerating `createJsTreeEntries`'s branches, found that both `hasDirectChildren` and
+`hasHierarchicalChildren` were computed by reading the **same** `HAS_DIRECT_CHILDREN` field twice
+— the second read should have been `HAS_HIERARCHICAL_CHILDREN`. This made the
+`hasDirectChildren || hasHierarchicalChildren` OR a no-op: any V1 ancestors-jstree entity with
+only hierarchical children (no direct/subClassOf children) incorrectly reported `children: false`
+(not expandable) instead of `true`. Confirmed the sibling `V1ChildrenJsTreeBuilder` (lines 40-41)
+and `V1TermMapper` (lines 52-53) both correctly read the two distinct fields — this class was the
+outlier. (`V1PropertyMapper` appears to have the identical mistake; that is a separate class, left
+untouched, out of scope for this rollout.)
+
+Per the defect workflow: checked `test_api.sh`'s committed golden files under
+`testcases_expected_output_api/` first — there is no `a_attr`-shaped (jstree) fixture anywhere in
+that tree and no `jstree` reference in `test_api.sh` at all, so this was not an
+already-asserted-intentional contract, just untested. Confirmed reachability against the real
+(non-mocked) `dataload/rdf2json/.../HierarchyFlagsAnnotator.java`: `hasDirectChildren` and
+`hasHierarchicalChildren` are populated independently from two different relation sets
+(subClassOf-derived direct parents vs. hierarchical/`part_of`-style parents), so an entity that is
+a subsumption leaf but is the target of a `part_of` relation from another entity genuinely has
+`hasDirectChildren=false` and `hasHierarchicalChildren=true` in real ontology data.
+
+Isolated into its own minimal PR, **#1427** (`fix: use HAS_HIERARCHICAL_CHILDREN for
+hasHierarchicalChildren in V1AncestorsJsTreeBuilder`), with its own dedicated regression test
+(`V1AncestorsJsTreeBuilderHierarchicalChildrenFlagTest`, 3 cases) proving the bug pre-fix and the
+fix post-fix — mirroring this same programme's PR #1391 precedent (a dedicated builder test
+catching a real defect) and the PR #1416/#1415 precedent for how a defect discovered while adding
+Tier B coverage gets isolated into its own PR, cross-referenced with the testing PR that found it.
+**This testing branch is deliberately built against the unfixed code on `origin/dev`** (per the
+defect workflow: never bundle a fix into the testing PR), so
+`V1AncestorsJsTreeBuilderTest.reportsChildrenFalseWhenOnlyHasHierarchicalChildrenIsSetDueToAKnownDefect`
+asserts the current (buggy) `children: false` result and is explicitly documented, in both its
+Javadoc and its name, as needing its expectation flipped to `true` once this branch rebases onto
+PR #1427 after it merges — the same pattern used for PR #1415/#1416's NPE-vs-`ResourceNotFoundException`
+assertion.
+
+### Branches enumerated
+
+**Constructor** (IRI→entity map, IRI→children multimap): multiple parent-relation IRI predicates
+configured at once, with an ancestor linked via the *second* predicate only, proving every
+configured relation is walked, not just the first.
+
+**`getEntityParentIRIs`** (private, exercised only through the constructor + `buildJsTree`): the
+reified-parent unwrap `while` loop — a plain string parent, a single-level reified `{"value":...}`
+parent, and a doubly-nested reified parent (proving the `while` loop, not just a single `if`, is
+needed); the two hardcoded `owl:Thing`/`owl:TopObjectProperty` exclusions, each tested standalone
+(entity referencing only the excluded IRI becomes a root) and together with a genuine parent IRI
+(directly asserting, via the package-private `entityIriToChildIris` field, that the excluded IRI
+never becomes a recognized parent-child edge while the real one does).
+
+**`buildJsTree`**: single-root detection; a constructed multiple-roots case (one entity with two
+independent, both-parentless parents — nothing in the code prevents this even though real data may
+not commonly produce it), asserting the shared descendant is rendered once per root branch with
+distinct base64 `id`/`parent` values.
+
+**`createJsTreeEntries`**: a three-level ancestor chain (grandparent → parent → this-entity)
+verified against exact expected base64-encoded `id`/`parent` values (computed via the
+package-private `base64Encode` helper, not hardcoded literals) at every level; `selected` true
+only for the requested entity itself and absent from the `state` map otherwise; `opened` false
+only for the requested entity; the `children` flag's full truth table over
+(`hasDirectChildren`, `hasHierarchicalChildren`) plus a missing-both-flags case (handled
+gracefully as `false`, matching `V1ChildrenJsTreeBuilderTest`'s established idiom, not an NPE) —
+including the known-defect case documented above; that an ancestor node's own `children` flag is
+always `false` regardless of its own `hasDirectChildren`/`hasHierarchicalChildren` values, because
+only the non-`opened` (i.e. requested) node's flags are ever surfaced; `a_attr`/`ontology_name`
+field population; and the `child == null` "cousin" skip. That last one cannot be reproduced
+through the public constructor alone — by construction, every value the constructor ever inserts
+into `entityIriToChildIris` is the iri of an entity that was actually passed in, so a genuinely
+absent "cousin" child cannot arise from any combination of valid entity data through the
+constructor's own bookkeeping. The test reaches into the package-private `entityIriToChildIris`
+field directly (the class and its fields are package-private by design, same as
+`V1ChildrenJsTreeBuilderTest`'s access pattern) to inject exactly that scenario and confirms the
+defensive skip neither throws nor renders the missing child.
+
+**`base64Encode`**: a known string against its known Base64 output, plus a direct comparison
+against `java.util.Base64`'s own encoder for a realistic IRI.
+
+### Local verification
+
+Verified locally on 2026-09-12 from `origin/dev` commit `75d96f57c`, Java 17 (no Postgres/Docker
+gate for the unit-only runs — this class has no IT layer, per the scope note above; Postgres was
+still exercised as part of the one clean full-lifecycle `verify` run below, which always runs the
+existing failsafe IT suite regardless of what this rollout added):
+
+- Docker-free `mvn -q -o test`, run twice: 1,001/1,001 pass both times (confirmed via
+  `target/surefire-reports/*.txt`, not just exit code), including the new 18-case
+  `V1AncestorsJsTreeBuilderTest`.
+- Clean `mvn -q -o clean verify -Dapi.version=1.44`: 1,206 tests (1,001 surefire + 205 failsafe,
+  failsafe unchanged by this rollout since no IT was added), 0 failures / 0 errors, wall-clock
+  2 minutes 6.64 seconds.
+- `V1AncestorsJsTreeBuilder` itself: 100% instructions (414/414), 100% lines (80/80), 100% methods
+  (6/6, including one lambda), and 37/38 branches (97.4%) covered. The one missed branch is on
+  line 100 (`boolean children = (!opened) && (hasDirectChildren || hasHierarchicalChildren);`):
+  the `||`'s right-hand operand evaluating `true` while the left is `false`. This specific
+  combination is mechanically unreachable in the *current, unfixed* code, because both local
+  variables read the identical `HAS_DIRECT_CHILDREN` field (the defect described above) — they can
+  never actually differ. It will become naturally reachable, and coverable, once this branch
+  rebases onto the merged fix (PR #1427), at which point the two flags can genuinely disagree.
+- Whole-backend JaCoCo coverage: 71.4% lines (3,432 of 4,810) and 54.4% branches (1,043 of 1,918),
+  up from the most recently documented baseline of 71.3%/54.1%.
+- `test_api.sh` full system regression not run locally (unaffected by this rollout — no
+  production code changed on this branch; see PR #1427 for the separate production fix's own
+  verification).
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
