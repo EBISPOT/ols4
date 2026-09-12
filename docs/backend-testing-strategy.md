@@ -1035,6 +1035,173 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented V1OboSynonymExtractor baseline
+
+`V1OboSynonymExtractor` (`repository/v1/mappers`) is the next Tier B target in this programme,
+following the same pure-logic pattern as `AnnotationExtractor` and `V1OboDefinitionCitationExtractor`
+(the latter's own baseline is not yet on `dev` at the time of writing — it exists as a separate
+open PR/branch, `test/cover-v1-obo-definition-citation-extractor` — but its investigation was used
+here as a starting point and independently re-verified, see below). `V1OboSynonymExtractor` is a
+pure static-method utility class — no Spring bean, no constructor state, no Postgres dependency —
+with a single public method, `extractFromJson(JsonObject)`, called only from
+`V1TermMapper.mapTerm`. It extracts OBO-style synonyms (exact/related/narrow/broad, each its own
+OWL annotation-property predicate) from an entity's localized JSON, deduplicating within each
+call. It had zero dedicated test coverage before this rollout, and was never even incidentally
+exercised by another class's test (no other test file in the repository references
+`hasDbXref`/`V1OboXref` at all, so the shared `V1OboXref` value-object class this extractor calls
+into had zero coverage of its own, direct or incidental, before this PR too).
+
+**Scope: unit-only, no IT layer.** Same rationale as its Tier B siblings: a pure-logic class with
+no Postgres dependency of its own doesn't get a dedicated `*IT.java` layer under the Tier B
+methodology — there is no real-database behaviour to prove beyond what a direct unit test already
+covers with hand-built `JsonObject` fixtures. This baseline is a single new
+`V1OboSynonymExtractorTest.java` (18 cases, this repo's plain-JUnit/AssertJ idiom, no Mockito, no
+Spring context, using the real `V1OboXref.fromString`/`V1OboSynonym` value objects directly rather
+than a fake) and nothing else. Fixture shapes (the reified `{"value": {...}, "axioms": [...]}`
+wrapper, a synonym value with no `"axioms"` key at all, and single- vs. multi-valued `hasDbXref`
+axioms) are modelled directly on real rdf2json linker output, cross-checked against
+`testcases_expected_output/annotation-properties/gitIssue502/ontologies_linked.json` (134 reified
+synonyms carrying `hasDbXref` axioms, 29 of them with more than one xref value on a single axiom,
+plus a matching `linkedEntities` entry resolving a `url` for xref `"NCIT:C2991"`) and
+`testcases_expected_output/hierarchical-properties/efo/ontologies_linked.json` (88 occurrences
+across the fixture set of a synonym value with no `"axioms"` key at all). No genuinely
+primitive-shaped (bare-string, non-object) synonym value was found in any committed fixture, so
+that case — explicitly called out in the class's own commented-out dead code as "ignored in OLS3
+for some reason" — is covered with a hand-built synthetic fixture instead.
+
+**Finding 1 — a missing `"linkedEntities"` key is a live `NullPointerException` risk here, in
+contrast to `V1OboDefinitionCitationExtractor`, but is confirmed unreachable in production for the
+same underlying reason.** This class reads `"linkedEntities"` via the null-*safe*
+`json.getAsJsonObject("linkedEntities")` overload (unlike `V1OboDefinitionCitationExtractor`'s and
+`AnnotationExtractor`'s unguarded `json.get("linkedEntities").getAsJsonObject()`, which throws
+immediately on a missing key) — so a genuinely absent key yields a `null` local variable here with
+no exception at that point. But that `null` is then passed straight into
+`V1OboXref.fromString(oboXref, linkedEntities)` whenever a synonym axiom carries an xref value.
+Reading `V1OboXref.fromString` itself shows it only dereferences its `linkedEntities` parameter in
+one specific branch — a standard `"DATABASE:ID"`-shaped xref (i.e. `tokens.length >= 2` after
+splitting on `:`, and neither the `http(s):`-prefixed nor the `scheme://`-with-uppercase-prefix
+special case matches) — via the unguarded call `linkedEntities.get(oboXref)`. This was confirmed
+empirically, not assumed: a dedicated test constructs a `JsonObject` with no `"linkedEntities"`
+key at all and a synonym axiom carrying a realistic `"NCIT:C2991"`-shaped xref (grounded in the
+`gitIssue502` fixture above), and asserts the resulting `NullPointerException`. Companion tests
+confirm the contrast — a `linkedEntities` object that is present but empty resolves the xref
+gracefully with a `null` `url`, and one with a matching entry resolves a real `url` — proving both
+that the crash is specific to a genuinely *missing* key (not merely an empty one) and that
+`linkedEntities` is genuinely threaded through to `V1OboXref.fromString`.
+
+Investigated for real-world reachability independently, rather than assuming
+`V1OboDefinitionCitationExtractor`'s conclusion transfers unexamined:
+
+- The only production caller is `V1TermMapper.mapTerm`, which passes the exact same
+  `localizedJson` object to `V1OboSynonymExtractor.extractFromJson` as it does to
+  `V1OboDefinitionCitationExtractor.extractFromJson` and `V1OboXrefExtractor.extractFromJson` a few
+  lines earlier — i.e. the same top-level term/class entity JSON, so the sibling's finding about
+  *that JSON's* structure applies here too, since it concerns the shape of the shared input rather
+  than either extractor's own internal logic.
+- Independently re-derived (not just cited): a fresh scan of all 111 committed
+  `ontologies_linked.json` fixtures under `testcases_expected_output/` found 985 top-level entities
+  across the `classes`/`individuals`/`properties` arrays, and confirmed 0 of them are missing a
+  `"linkedEntities"` key — matching the sibling's own count exactly.
+- Additional, stronger corroboration specific to this investigation: `V1TermMapper.mapTerm` itself
+  *also* dereferences `localizedJson.getAsJsonObject("linkedEntities").getAsJsonObject().get(predicate)`
+  completely unconditionally, a few lines after calling `V1OboSynonymExtractor.extractFromJson`, to
+  resolve each `RELATED_TO` annotation's label. If `"linkedEntities"` were ever genuinely absent on
+  an entity handed to `mapTerm`, that line would throw for any entity carrying a `RELATED_TO`
+  annotation regardless of whether `V1OboSynonymExtractor` crashed first — i.e. the codebase already
+  assumes this invariant a second time, independently, in the same method.
+- Conclusion: the missing-null-guard is real and does cause a live `NullPointerException` (unlike
+  the definition-citation sibling, where the equivalent code throws unconditionally regardless of
+  xref presence), but is confirmed unreachable given the current pipeline's invariant that every
+  top-level entity always carries `"linkedEntities"` (the OLS4 linker's `write_entity_array`
+  unconditionally writes the key for every entity it processes, per the sibling's own reading of
+  `dataload/linker/link/src/linker_pass2.rs`). Per the defect workflow, this does not warrant a
+  separate bug-fix PR — it's documented here (and in the test's own Javadoc) as a confirmed
+  non-issue rather than left as an implicit assumption.
+
+**Finding 2 — `mergeDuplicates` is scoped per (synonym-value object, one fixed scope) call, not
+globally across the four scope categories, and this composes correctly for the cross-category
+case but has a subtler consequence within a single category too.** `mergeDuplicates` is invoked
+from inside `fromSynonymObject`, once per synonym-value object, over just that object's own
+axiom-derived entries, for one fixed `scope` string passed in as a parameter — it is never invoked
+again at the top level across the concatenated results of all four `hasExactSynonym`/
+`hasRelatedSynonym`/`hasNarrowSynonym`/`hasBroadSynonym` categories.
+
+- **Cross-category case (asked to investigate): correctly kept as distinct entries.** Two
+  synonyms with identical `name`/`type`/`xrefs` but different `scope` (one from a
+  `hasExactSynonym` object, one from an identical `hasNarrowSynonym` object) are correctly kept as
+  two separate entries in the final result — confirmed by a dedicated test. This is doubly true:
+  `mergeDuplicates` never even compares entries from different categories against each other (each
+  comes from its own `fromSynonymObject` call), and even if it somehow did,
+  `V1OboSynonym.equals()` treats a different `scope` as a different object anyway.
+- **Same-category, different-object case (an additional, subtler consequence worth flagging):**
+  two *different* synonym-value objects within the *same* scope category (e.g. two separate
+  elements of the `hasExactSynonym` array) that each, independently, resolve to an identical
+  `V1OboSynonym` are *not* deduplicated against each other — each object gets its own
+  `fromSynonymObject` call and its own separately-scoped `mergeDuplicates` pass over only its own
+  axioms, so both survive as duplicate entries in the final list. This is confirmed by a dedicated
+  test, contrasted directly against the same-object case (two identical axioms *within* one
+  synonym object's own `axioms` array, which *do* collapse to one entry via the same
+  `mergeDuplicates` call). The class's own commented-out `collate` method shows a broader,
+  fully-global dedup scheme was written at some point but is currently dead code, not reinstated —
+  suggesting the current narrower per-object scoping may be an incomplete refactor rather than a
+  deliberate design choice. This was not escalated as a production defect: it's a genuine, if
+  minor, behavioural quirk (two syntactically-duplicate synonym statements in upstream OWL source
+  producing two duplicate output entries) rather than a crash or an incorrect result for any
+  single, well-formed synonym statement, and no committed golden fixture was found exhibiting the
+  scenario in practice. Documented here as a confirmed behaviour for future reference rather than
+  filed as a defect.
+
+**Branches enumerated.** All four synonym-scope categories are processed independently and
+concatenated in source order (exact, related, narrow, broad) — a fixture with synonyms in more
+than one category confirms each contributes its own entries tagged with the correct `scope`
+string. `fromSynonymObject`: a synonym value that is a `JsonPrimitive` (plain string, not an
+object) returns an empty list, confirmed to produce zero `V1OboSynonym` entries (not just "doesn't
+crash"), both alone and alongside a genuine reified synonym in the same array. A synonym object
+with no `"axioms"` key at all produces no entries and does not crash (`JsonHelper.getObjects`
+returns an empty list for a missing key, confirmed both by reading its source and by this test
+exercising the real, fixture-grounded shape). A synonym object with one or more axioms produces
+one `V1OboSynonym` per axiom, all sharing the same `name` (from the synonym object's own
+`"value"`, not per-axiom) and `scope`, but independently reading `type` (`"oboSynonymTypeName"`,
+possibly absent → `null`, confirmed) and `xrefs` (via `hasDbXref` values on that specific axiom,
+mapped through the real `V1OboXref.fromString`, including a multi-valued axiom with two xrefs
+resolved in order) — a dedicated test gives one synonym object two axioms differing in both
+`type`/`xrefs` and confirms both distinct entries survive. `xrefs` is always assigned a list
+(possibly empty), never left `null`, confirmed with an axiom carrying zero matching xref values.
+`mergeDuplicates`: two axioms on the same synonym object producing genuinely identical
+`V1OboSynonym` entries (same name/scope/type, both zero-xrefs, tested separately from two axioms
+sharing the same non-empty xref list) collapse to one entry in the final result; two axioms
+differing in exactly one compared field (`type` in one test, `xrefs` in another) both survive as
+distinct entries. Finally, the `synonyms.size() > 0 ? synonyms : null` contract is tested
+explicitly and separately: nothing qualifying anywhere returns `null` (not an empty list), while
+at least one qualifying synonym returns the real, non-null list.
+
+Verified locally on 2026-09-12 from `origin/dev` commit `75d96f57c` with Java 17 (no Postgres/
+Docker gate — this class has no IT layer, per the scope note above):
+
+- Surefire runs 1,001 tests, including 18 `V1OboSynonymExtractorTest` cases. Two Docker-free runs
+  took wall-clock 11.99 and 12.41 seconds, both 0 failures / 0 errors.
+- The clean `verify` lifecycle runs all 1,206 tests (1,001 surefire + 205 failsafe, unchanged by
+  this rollout since no IT was added) in wall-clock 2 minutes 3.01 seconds, 0 failures / 0 errors
+  (read from `target/surefire-reports`/`target/failsafe-reports`, not just exit code).
+- `V1OboSynonymExtractor` itself now covers 51 of 52 lines (98.1%) and 14 of 14 branches (100%);
+  the one uncovered line is the implicit default constructor, never invoked since the only caller
+  uses the static method directly. `V1OboXref` (the shared value-object class this extractor calls
+  into, previously with zero direct or incidental coverage anywhere in the codebase) now covers 17
+  of 29 lines (58.6%) and 12 of 24 branches (50.0%) as a direct side effect of this rollout's tests
+  deliberately exercising its null/empty/populated-`linkedEntities` branches — the remaining
+  uncovered branches belong to xref shapes (`http(s):`-prefixed URLs, `scheme://`-with-uppercase
+  DOI-style xrefs) this class never constructs, since it always resolves an axiom's `hasDbXref`
+  values from real OBO-style ontology data. Whole-backend JaCoCo coverage is 72.4% lines (3,481 of
+  4,810) and 55.8% branches (1,071 of 1,918), up from the most recently documented baseline of
+  71.3% lines and 54.1% branches (3,428 of 4,810 lines, 1,037 of 1,918 branches). The 51 lines / 14
+  branches directly attributable to `V1OboSynonymExtractor` plus the 17 lines / 12 branches newly
+  attributable to `V1OboXref` don't fully reconcile arithmetically against the observed
+  whole-backend delta (53 lines / 34 branches) — a small residual in both directions, consistent
+  with the same kind of measurement drift already noted in prior baseline entries, and not chased
+  further. No coverage failure threshold is introduced.
+- No production defect was discovered by this rollout. Both investigation findings above are
+  documented as confirmed, non-defect behaviours.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
