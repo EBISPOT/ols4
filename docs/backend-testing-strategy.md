@@ -1035,6 +1035,154 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented RemoveReificationTransform baseline
+
+`RemoveReificationTransform` (`repository/transforms`) is the second Tier B target in this
+rollout. It is a tiny (54-line) pure static-method utility with a single public method,
+`transform(JsonElement)`, meant to collapse a `{"type":["reification"], "value": <v>, "axioms":
+[...]}` wrapper down to `transform(<v>)`. Like `AnnotationExtractor`, it has no Spring bean, no
+constructor state, and no Postgres dependency.
+
+**Most notable finding of this rollout: the class is dead code with a real-looking bug baked in,
+and the bug would bite in production if the class were ever wired up.** Both are documented here
+prominently, per this program's practice for anything a human should act on even when it isn't
+this PR's job to fix.
+
+### Finding 1 — zero production callers (confirmed, not just asserted)
+
+`RemoveReificationTransform` is never invoked anywhere in this repository outside its own
+declaration. This was verified three independent ways, not just by grep:
+
+- `grep -rn "RemoveReificationTransform" .` across the *entire* repository (backend, `dataload/`
+  Rust and Java sources, `frontend/`, test fixtures) returns exactly one hit: the class's own
+  `public class RemoveReificationTransform {` declaration line. No V1 mapper/extractor, no V2
+  controller, no `JsonTransformer` call, no dataload/Rust code, and no existing test references
+  it.
+- `JsonTransformer.transformJson` — the one place that chains this package's transforms together
+  for real — calls `LocalizationTransform`, `RemoveLiteralDatatypesTransform`,
+  `ResolveReferencesTransform`, and `ManchesterSyntaxTransform`. `RemoveReificationTransform` is
+  not in that list. Reification handling in the real pipeline is instead done by
+  `LocalizationTransform.localizeReification(...)`, a completely separate, independent code path.
+  `RemoveReificationTransform` duplicates none of that; it simply isn't reached.
+- The graphify knowledge graph (`graphify-out/graph.json`, 6,933 nodes) shows the
+  `RemoveReificationTransform` node at degree 2 — one `contains` edge from its own file and one
+  edge to its own declared `.transform()` method. `graphify query "who calls
+  RemoveReificationTransform"` returns only that single node (no incoming call edges from
+  anywhere), and `graphify path "RemoveReificationTransform" "JsonTransformer"` finds no directed
+  path at all; the only *undirected* path is four hops long and runs entirely through a shared
+  `import com.google.gson.JsonElement` statement, not a call relationship — i.e., not a real
+  dependency, just two unrelated classes importing the same Gson type.
+
+No indirect caller (reflective dispatch, a test-only usage, or anything on the `dataload`/Rust
+side) exists either. Per this program's dead-code precedent (`OlsPostgresClient`'s documented
+pca16 double-filter and 4-arg/6-arg convenience overloads), this is **not filed as a defect-fix
+PR** — there is no live code path for it to break. It is flagged here instead so a human can
+decide whether to fix it or delete the class outright.
+
+### Finding 2 — a genuine copy-paste bug, only latent because the class is unreached
+
+`RemoveReificationTransform`'s structure is nearly identical to its sibling
+`RemoveLiteralDatatypesTransform` (both share the same `JsonCollectionHelper.map` recursion
+skeleton). Of the three recursive call sites in `transform()`:
+
+- The self-recursive `return transform(obj.get("value"))` (used when an object's `"type"` array
+  contains `"reification"`) correctly calls this class's own method.
+- The array-recursion branch (`object.isJsonArray()`) and the generic-object-recursion fallthrough
+  (an object with no `"type"`, or a `"type"` that doesn't contain `"reification"`) **both call
+  `RemoveLiteralDatatypesTransform::transform` instead of this class's own `transform`** — a
+  copy-paste artifact that was seemingly never updated after this file was adapted from its
+  sibling.
+
+The practical effect: the class's own docstring example (a reification-wrapped literal nested
+inside an array, itself nested inside a property value of a top-level entity — the only shape a
+real OLS document would ever produce) is **not** actually handled correctly by this method as
+written. A reification wrapper is only unwrapped when it is passed *directly* as the literal
+top-level argument to `transform()` (or chained directly through nested `"value"` fields without
+ever passing through an array or another key). The moment a reification wrapper arrives inside an
+array, or as the value of some other key inside a larger object — which is how it always arrives
+in a real document — the wrong transform runs, doesn't recognize `"reification"` at all, and the
+wrapper survives completely intact.
+
+A second, independent bug was also confirmed empirically: unlike `RemoveLiteralDatatypesTransform`
+(which guards with `type.isJsonArray()` before calling `getAsJsonArray()`), this class calls
+`obj.get("type").getAsJsonArray()` unconditionally. An object whose `"type"` key is present but
+is not itself a JSON array (a plain string, a number, a nested object) throws Gson's
+`IllegalStateException` instead of gracefully falling through to the generic recursion the way its
+sibling class would.
+
+Neither finding is filed as a separate defect PR, for the same reason as Finding 1: with zero
+production callers, neither bug is reachable by any real request today.
+
+### Scope: unit-only, no IT layer
+
+Per the Tier B methodology's "what covered means" section, this is a pure-logic class with no
+Postgres dependency of its own, so it gets no dedicated `*IT.java` layer — there is no real-database
+behavior to prove here beyond what a direct unit test already covers with hand-built `JsonElement`
+fixtures. This baseline is a single new `RemoveReificationTransformTest.java` (11 cases, this
+repo's plain-JUnit idiom — `JsonParser.parseString` fixtures compared with `assertEquals`, no
+Mockito) and nothing else.
+
+### Branches enumerated — testing the code as written, not as the docstring implies
+
+Every test in this suite exercises the class's **actual, current** behavior, including the
+cross-delegation quirk — several tests deliberately assert the buggy, currently-shipping outcome
+so that a future fix of the two wrong call sites makes this suite fail loudly rather than silently
+continuing to pass around the defect:
+
+- **Array input** (`isJsonArray()` branch): one test proves the array branch really does invoke
+  `RemoveLiteralDatatypesTransform`'s literal-stripping logic (a plain literal-wrapped object
+  inside an array collapses to its bare value, something this class has no logic of its own to
+  do); a second test uses the docstring's own worked example arriving inside an array — exactly
+  how it would in a real document — and shows the reification wrapper is **not** unwrapped, only
+  the literal nested inside its `"value"` gets stripped.
+- **Direct top-level reification wrapper** (the one correct call site): one test shows a
+  reification wrapper passed directly to `transform()` unwraps correctly to its `"value"`, matching
+  the docstring exactly, with the nested literal deliberately left untouched (stripping literals is
+  `RemoveLiteralDatatypesTransform`'s job in the real pipeline, not this class's).
+- **Two levels of direct nesting** vs. **the same nesting via an array**: one test shows a
+  reification-of-reification, each level's `"value"` holding the next wrapper directly, fully
+  cascades through the correct self-recursive chain no matter how deep. A paired test shows that
+  the moment the *second* level arrives inside an array instead, the cross-delegation bug bites
+  and that inner wrapper survives completely unwrapped — a direct, side-by-side demonstration of
+  where the bug does and doesn't strike.
+- **Reification as another key's value**: a reification wrapper held under an unrelated key of a
+  larger object (not the top-level argument, not inside an array) is likewise left completely
+  untouched, for the same cross-delegation reason.
+- **`"type"` present but not containing `"reification"`**, and **no `"type"` key at all**: both
+  fall through to the generic (buggy) recursion; one test each confirms it still runs
+  `RemoveLiteralDatatypesTransform`'s literal-stripping on the object's own immediate child values
+  (proving which transform is actually running, not just that something didn't crash).
+- **`"type"` present but not a JSON array**: two tests (a plain string value and a nested object
+  value) confirm the second, independent bug empirically — both throw `IllegalStateException`
+  rather than falling through gracefully.
+- **Primitives and `JsonNull`**: one test confirms a `String`/`Number`/`Boolean` primitive and
+  `JsonNull.INSTANCE` are all returned unchanged.
+
+### Verified locally
+
+Verified locally on 2026-09-12 from `origin/dev` commit `75d96f57c` with Java 17 (no Postgres/
+Docker gate for the twice-run unit step, per the scope note above; Docker/Rancher Desktop was
+available and used for the full `clean verify` lifecycle so the existing failsafe suite and
+whole-backend JaCoCo numbers stay accurate):
+
+- Surefire runs 994 tests, including all 11 `RemoveReificationTransformTest` cases. Two Docker-free
+  runs took wall-clock 11.64 and 12.50 seconds, both 0 failures / 0 errors.
+- The clean `verify` lifecycle runs all 1,199 tests (994 surefire + 205 failsafe, failsafe count
+  unchanged by this rollout since no IT was added) in wall-clock 2 minutes 0.65 seconds.
+- `RemoveReificationTransform` itself now covers 10 of 11 lines (90.9%) and 8 of 8 branches
+  (100%); the one uncovered line/method/complexity unit is the implicit default constructor, never
+  invoked since the class is used only via its static method (and, per Finding 1, not used even
+  that way in production). Whole-backend JaCoCo coverage is 71.5% lines (3,438 of 4,810) and 54.5%
+  branches (1,045 of 1,918), up from the most recently documented baseline of 71.3% lines and
+  54.1% branches by exactly this rollout's 10 newly-covered lines and 8 newly-covered branches (the
+  total line/branch denominators are unchanged, since this previously-dead class was already
+  compiled and instrumented by JaCoCo even without a caller). No coverage failure threshold is
+  introduced.
+- No new production defect PR was opened. Both anomalies above were investigated and confirmed
+  real, but neither is reachable by any live code path (Finding 1), so per this program's defect
+  workflow and prior dead-code precedent, they are documented here for a human to act on rather
+  than patched silently inside this testing PR.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
