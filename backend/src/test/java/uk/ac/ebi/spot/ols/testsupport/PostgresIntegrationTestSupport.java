@@ -108,6 +108,39 @@ public final class PostgresIntegrationTestSupport {
     }
 
     /**
+     * Loads everything {@link #initializeIndividualDatabase} does (base ontology/entity fixtures
+     * plus {@code individual-fixture.json}, which supplies {@code efo+individual+.../EFO_I100} as a
+     * cross-type ancestor case: its {@code direct_ancestors} points at the class {@code EFO_0001}),
+     * plus two small, additive, {@code V1JsTreeRepositoryIT}-only fixtures on top:
+     * <ul>
+     *   <li>{@code jstree-localization-class-fixture.json} — a two-class root/leaf chain
+     *   ({@code JST_ROOT} / {@code JST_LEAF}) whose {@code _json} {@code label} is a genuinely
+     *   language-dependent reified-literal array (a {@code fr} value plus a default/no-lang
+     *   fallback value), unlike every other fixture's plain-string label. This is what lets a test
+     *   prove {@code LocalizationTransform} is actually applied per-entity (both the requested
+     *   entity and its ancestors/children resolve to a visibly different label depending on the
+     *   requested language), which no existing fixture's plain-string labels can demonstrate.</li>
+     *   <li>{@code jstree-children-individual-fixture.json} — a two-individual root/leaf chain
+     *   ({@code JST_IND_ROOT} / {@code JST_IND_LEAF}) with a genuine individual-to-individual
+     *   {@code directParents} relationship. No existing individual fixture has one (every
+     *   individual's own {@code directParents} in {@code individual-fixture.json} points at a
+     *   class), so {@code getDirectChildren} against an individual would otherwise only ever be
+     *   exercisable against an empty result.</li>
+     * </ul>
+     * All four new ids are disjoint from every other fixture's ids, so this is safe to combine with
+     * the base individual fixture in one database.
+     */
+    public static void initializeJsTreeRepositoryDatabase(PostgreSQLContainer<?> container) {
+        initializeIndividualDatabase(container);
+        try (Connection connection = container.createConnection("")) {
+            loadClassFixtureFrom(connection, "/fixtures/classes/jstree-localization-class-fixture.json");
+            loadIndividualFixtureFrom(connection, "/fixtures/individuals/jstree-children-individual-fixture.json");
+        } catch (IOException | SQLException e) {
+            throw new IllegalStateException("Failed to load the V1JsTreeRepositoryIT-specific fixtures", e);
+        }
+    }
+
+    /**
      * Loads the shared entity fixture plus the class and property fixtures (both additive to
      * {@code ols_entities}, with no id collisions between them), then adds the {@code V2LLMController}
      * embedding fixture on top. Deliberately does <em>not</em> also load
@@ -607,11 +640,15 @@ public final class PostgresIntegrationTestSupport {
     }
 
     private static void loadClassFixture(Connection connection) throws IOException, SQLException {
+        loadClassFixtureFrom(connection, "/fixtures/classes/class-fixture.json");
+    }
+
+    private static void loadClassFixtureFrom(Connection connection, String resourcePath)
+            throws IOException, SQLException {
         JsonObject fixture;
-        try (InputStream stream = PostgresIntegrationTestSupport.class.getResourceAsStream(
-                "/fixtures/classes/class-fixture.json")) {
+        try (InputStream stream = PostgresIntegrationTestSupport.class.getResourceAsStream(resourcePath)) {
             if (stream == null) {
-                throw new IllegalStateException("Class integration fixture is missing");
+                throw new IllegalStateException("Class integration fixture is missing: " + resourcePath);
             }
             fixture = JsonParser.parseReader(
                     new java.io.InputStreamReader(stream, StandardCharsets.UTF_8)).getAsJsonObject();
@@ -671,11 +708,15 @@ public final class PostgresIntegrationTestSupport {
     }
 
     private static void loadIndividualFixture(Connection connection) throws IOException, SQLException {
+        loadIndividualFixtureFrom(connection, "/fixtures/individuals/individual-fixture.json");
+    }
+
+    private static void loadIndividualFixtureFrom(Connection connection, String resourcePath)
+            throws IOException, SQLException {
         JsonObject fixture;
-        try (InputStream stream = PostgresIntegrationTestSupport.class.getResourceAsStream(
-                "/fixtures/individuals/individual-fixture.json")) {
+        try (InputStream stream = PostgresIntegrationTestSupport.class.getResourceAsStream(resourcePath)) {
             if (stream == null) {
-                throw new IllegalStateException("Individual integration fixture is missing");
+                throw new IllegalStateException("Individual integration fixture is missing: " + resourcePath);
             }
             fixture = JsonParser.parseReader(
                     new java.io.InputStreamReader(stream, StandardCharsets.UTF_8)).getAsJsonObject();
