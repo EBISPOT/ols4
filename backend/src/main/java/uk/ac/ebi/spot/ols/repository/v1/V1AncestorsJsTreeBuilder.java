@@ -94,7 +94,7 @@ public class V1AncestorsJsTreeBuilder {
 
 
         boolean hasDirectChildren = Objects.equals(JsonHelper.getString(entity, HAS_DIRECT_CHILDREN.getText()), "true");
-        boolean hasHierarchicalChildren = Objects.equals(JsonHelper.getString(entity, HAS_DIRECT_CHILDREN.getText()), "true");
+        boolean hasHierarchicalChildren = Objects.equals(JsonHelper.getString(entity, HAS_HIERARCHICAL_CHILDREN.getText()), "true");
 
         // only nodes that aren't already opened are marked as having children, (iff they actually have children!)
         boolean children = (!opened) && (hasDirectChildren || hasHierarchicalChildren);
