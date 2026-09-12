@@ -1035,6 +1035,111 @@ Docker gate — this class has no IT layer, per the scope note above):
   coverage failure threshold is introduced.
 - No production defect was discovered by this rollout.
 
+## Implemented ResolveReferencesTransform baseline
+
+`ResolveReferencesTransform` (`repository/transforms`) is the second Tier B target in this
+rollout. It is a pure static-method utility class — no Spring bean, no constructor state, no
+Postgres dependency, only one collaborator (`JsonCollectionHelper`, itself a pure static helper) —
+with a public `transform(JsonElement)` entry point that delegates to a private
+`transformWithLinkedEntities(JsonElement, JsonObject linkedEntities)` threading a resolution-scope
+map through recursion. Unlike the two prior Tier B transforms in this programme
+(`RemoveLiteralDatatypesTransform`, `RemoveReificationTransform` — the latter dead, unreferenced
+code), this class is genuinely, actively used: `JsonTransformer.transformJson` calls it whenever
+`options.resolveReferences` is `true`, wired from `McpClassService`, `McpEmbeddingService`,
+`McpOntologyService`, `McpSearchService`, and several V2 controller routes. It was previously
+exercised only incidentally, happy-path only, through `JsonTransformerTest` and various
+controller-IT/MCP-service-IT suites that set `resolveReferences=true` — none of which targeted
+this class's own branches or subtleties directly.
+
+**Scope: unit-only, no IT layer.** Per the Tier B methodology, a pure-logic class with no Postgres
+dependency of its own does not get a dedicated `*IT.java` layer. This baseline is a single new
+`ResolveReferencesTransformTest.java` (10 cases, this repo's plain-JUnit idiom — hand-built
+`JsonElement` fixtures via `JsonParser.parseString` on text blocks, `assertEquals` on the parsed
+tree, no Mockito, no Spring context) and nothing else.
+
+**Branches enumerated**, including several subtleties that are easy to miss:
+- **Once-only `linkedEntities` capture.** The object branch only captures
+  `obj.getAsJsonObject("linkedEntities")` as the active resolution scope when the current context
+  is still `null`. A test proves an outer object's `linkedEntities` map wins over a nested object's
+  own, different `linkedEntities` map further down the tree — the nested map is never consulted as
+  an alternate scope anywhere in its own subtree, only ever copied through verbatim.
+- **The four pass-through keys** (`linkedEntities`, `iri`, `curie`, `shortForm`) are copied into the
+  result completely unchanged, with no recursion into their values at all. A test proves a string
+  under `iri` that happens to also be a real `linkedEntities` key is *not* resolved, while the exact
+  same string under an ordinary key *is* resolved.
+- **Reference resolution and shared mutation.** A string matching a `linkedEntities` key resolves to
+  that linked `JsonObject`; if it lacks its own `iri` field, the code mutates it in place, adding
+  `"iri": <the matched key>`. A test resolves the same IRI from two different locations in one
+  document and uses `assertSame` (not just `assertEquals`) to prove both call sites return the
+  *exact same* mutated `JsonObject` instance — `linkedEntities`' values are shared by reference, not
+  copied, across the whole traversal. A sibling case proves an already-present `iri` is left
+  untouched (not overwritten with the resolving key).
+- **Non-matching strings** return unchanged, both with and without an active context.
+- **Non-string primitives and `JsonNull`** are returned as-is regardless of whether a context is
+  active — verified with a `boolean`, a `number`, and a JSON `null` all inside a document with an
+  active `linkedEntities` map that none of them ever reach.
+- **Arrays** recurse element-by-element, threading the same context to every element (mixed
+  resolvable/non-resolvable/nested-object array). A separate test also proves the once-only capture
+  is scoped to one root-to-leaf recursive call, not global: when the *top-level* value passed to
+  `transform` is itself a `JsonArray`, one element establishing its own nested `linkedEntities`
+  context does not leak out to resolve a sibling array element holding the same key as a bare
+  string.
+- **The public `transform(JsonElement)` entry point**, called with no `linkedEntities` anywhere in
+  the document, proves no reference resolution happens at all (this test also doubles as the
+  no-active-context half of the non-string-primitive/`JsonNull` case).
+- One additional test is grounded in the real production JSON shape (the class's own docstring
+  example, and the `"json"` sub-object of
+  `backend/src/test/resources/fixtures/classes/class-fixture.json`): an entity carrying `iri`,
+  `curie`, `shortForm`, a `directParent` IRI array, and a `linkedEntities` map together, proving the
+  array reference resolves while the three identifier fields are left alone.
+
+**The apparently-dead null-check, confirmed unreachable.** Inside the object-recursion loop,
+`if(res != null) { newObj.add(...) } else { newObj.add(entry.getKey(), entry.getValue()); }` looks
+like defensive dead code: every branch of `transformWithLinkedEntities` returns a non-null
+`JsonElement` (the array branch always returns the `JsonArray` built by `JsonCollectionHelper.map`;
+the object branch always returns its `newObj`; the string-match branch returns either `linked` or
+the input `object`; the final `else` returns the input `object` itself) — so `res` can never
+actually be `null`, *provided* `entry.getValue()` (from `JsonObject.entrySet()`) is itself never a
+raw Java `null`. This was confirmed empirically two ways rather than taken on the read alone:
+1. A dedicated test (`gsonJsonObjectNeverStoresRawNullSoTheDeadNullCheckFallbackIsUnreachable`)
+   demonstrates against this project's actual Gson version (2.13.2, resolved via
+   `mvn dependency:build-classpath`) that `JsonObject.add(key, null)` normalizes the `null` to
+   `JsonNull.INSTANCE`, and `entrySet()` never hands back a raw `null` value — so the precondition
+   the dead-code argument depends on holds for real, not just by inspection.
+2. The measured JaCoCo output for this class (see below) independently corroborates it: line 59
+   (`if(res != null)`) shows "1 of 2 branches missed" and the `else` body on line 62 is marked fully
+   uncovered (`nc`) — across the *entire* backend test suite (993 unit + 205 integration tests, not
+   just this rollout's own new cases), the `else` branch is never once taken.
+
+This is dead defensive code, not a real behavior to design a test around — the same treatment given
+to prior confirmed-dead branches in this programme (e.g. `RemoveReificationTransform`). It is an
+observation, not a defect; no separate PR is opened for it.
+
+Verified locally on 2026-09-12 from `origin/dev` commit `75d96f57c` with Java 17 (Docker available
+via Rancher Desktop for the one full `verify` lifecycle; no dedicated Postgres/IT gate for this
+target per the scope note above):
+
+- Surefire runs 993 tests, including the 10 new `ResolveReferencesTransformTest` cases. Two
+  Docker-free runs took wall-clock 11.585s and 12.283s, both 0 failures / 0 errors (read from
+  `target/surefire-reports/*.txt`, not the swallowed `-q` exit code).
+- One clean `mvn -q -o clean verify -Dapi.version=1.44` lifecycle (Java 17, Rancher Desktop Docker
+  via `DOCKER_HOST=unix:///Users/haideri/.rd/docker.sock` and
+  `TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock`) ran all 1,198 tests (993 surefire +
+  205 failsafe, failsafe count unchanged by this rollout since no IT was added) in wall-clock
+  2 minutes 2.19 seconds, 0 failures / 0 errors in both report directories.
+- `ResolveReferencesTransform` itself now covers 137 of 148 instructions (92.6%), 30 of 32 lines
+  (93.75%), 29 of 30 branches (96.7%, the one permanently-missed branch being the confirmed-dead
+  `else` above), and 3 of 4 methods (75% — the fourth, uncovered method is the implicit default
+  constructor, never invoked since every caller uses the static methods directly). Whole-backend
+  JaCoCo coverage is 71.9% lines (3,458 of 4,810) and 55.6% branches (1,066 of 1,918), up from the
+  most recently documented baseline of 71.3% lines and 54.1% branches (same 4,810/1,918
+  denominators as that prior baseline — no unrelated commit landed on `dev` in between, so this is a
+  clean like-for-like delta: +30 lines and +29 branches, matching this class's own newly-covered
+  totals almost exactly). No coverage failure threshold is introduced.
+- No genuine, reachable production defect was discovered by this rollout (the dead null-check above
+  is an observation, not a defect, per the Tier B methodology's instruction for this exact
+  situation).
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
