@@ -3751,6 +3751,140 @@ Postgres gate step still exercises the whole existing IT suite):
   checked against the committed `test_api.sh` golden files and the real dataload pipeline source
   before concluding neither is a reachable, observable bug; see the two investigation write-ups
   above for the full reasoning trail.
+## Implemented V1TermMapper baseline
+
+`V1TermMapper` (`repository/v1/mappers`) is the last remaining Tier B class in this programme's
+currently-enumerated backlog. It is the orchestrating mapper called from `V1TermRepository` and
+`V1IndividualRepository` (both via `V1TermMapper.mapTerm(JsonElement, String)`), and it in turn
+delegates to five collaborators that already have their own exhaustive dedicated test coverage in
+this repository/programme: `AnnotationExtractor`, `V1OboDefinitionCitationExtractor`,
+`V1OboXrefExtractor`, `V1OboSynonymExtractor`, and `ShortFormExtractor`. This baseline tests
+`V1TermMapper`'s own wiring and logic only -- each collaborator gets one representative delegation
+test proving the right input is passed in and the right output field is assigned; their own
+branches are not re-enumerated here.
+
+**Scope: unit-only, no IT layer.** Per the Tier B methodology, a pure-logic class operating on a
+`JsonElement` already read from Postgres does not get a dedicated `*IT.java` layer -- there is no
+real-database behaviour to prove beyond what a direct unit test already covers with hand-built
+`JsonObject` fixtures. This baseline is a single new `V1TermMapperTest.java` (32 cases, this
+repo's plain-JUnit/AssertJ idiom, no Mockito, no Spring context, real (not faked) collaborator
+extractors throughout since they are all cheap static methods) and nothing else.
+
+**Branches enumerated.** `oboId` construction from `shortForm`: the last underscore is replaced
+with a colon (`"GO_0008150"` to `"GO:0008150"`); no underscore present leaves `oboId` equal to
+`shortForm`; multiple underscores only ever have the *last* one replaced, with any earlier
+underscore left untouched (`"FOO_BAR_123"` to `"FOO_BAR:123"`); and a `shortForm` ending in an
+underscore produces a trailing-colon `oboId` with an empty id part (`"FOO_"` to `"FOO:"`).
+`hasChildren`: correctly ORs `HAS_DIRECT_CHILDREN` and `HAS_HIERARCHICAL_CHILDREN` -- two
+*distinct* fields, tested across all four combinations -- in contrast to the confirmed bug fixed
+in PR #1427, where `V1AncestorsJsTreeBuilder` mistakenly read `HAS_DIRECT_CHILDREN` twice for
+both. `isRoot`: negation of `(HAS_DIRECT_PARENTS || HAS_HIERARCHICAL_PARENTS)` via
+`JsonHelper.getBoolean`, tested across all four parent-flag combinations, plus the missing-key/
+short-circuit interaction described in the investigation notes below. The `replacedBy` "fake
+loop" (self-documented with `// TODO: fake loop only keeps first, check ols3 behaviour`): zero
+values leaves `term.termReplacedBy` at its default `null`; a `JsonPrimitive` first value is
+shortened via `ShortFormExtractor.extractShortForm`; a `JsonObject` (reified literal) first value
+uses `.get("value").getAsString()` directly, not shortened; and two or more values only ever
+reflect the first one, the rest silently ignored regardless of how many follow. `relatedTo`/
+`linkedEntities`: zero `relatedTo` entries leaves `term.related` a genuine empty `ArrayList`, not
+`null`; a predicate absent from `linkedEntities` falls back to
+`ShortFormExtractor.extractShortForm(predicate)` for the label; a predicate present in
+`linkedEntities` uses that entity's own `"label"` field; a predicate present in `linkedEntities`
+but whose entity carries no `"label"` field leaves `label` `null` and does **not** fall back to
+the short-form path (an easy detail to get backwards); and multiple `relatedTo` entries each
+produce an independent `V1Related` with `iri`/`label`/`ontologyName`/`relatedFromIri`/
+`relatedToIri` all verified. `description`/`synonyms`: always arrays via `.toArray(new String[0])`,
+verified both empty (never `null`) and populated. `LocalizationTransform` wiring: one dedicated
+test builds a `"type": ["entity"]` fixture with a two-language `label` array and confirms
+`mapTerm` selects the correct language's value for both `"en"` and `"fr"` -- proving localization
+is genuinely wired in without re-testing `LocalizationTransform`'s own branches, which are already
+covered elsewhere in this programme.
+
+**Investigation: does the unguarded `shortForm.lastIndexOf("_")` throw on a missing `shortForm`?**
+Confirmed empirically (`missingShortFormThrowsNullPointerException`): a missing `"shortForm"` key
+makes `JsonHelper.getString` return `null`, and the very next line's `.lastIndexOf("_")` throws
+`NullPointerException` immediately, before any of the extractor delegations run. Reachability: not
+a live production risk. `dataload/rdf2json/src/main/java/uk/ac/ebi/rdf2json/annotators/ShortFormAnnotator.java`'s
+`annotateShortForms` unconditionally sets `shortForm` on every `CLASS`/`PROPERTY`/`INDIVIDUAL`/
+`DATATYPE` node that has a URI (only bnodes, which are never looked up by IRI/shortForm/oboId
+through `V1TermRepository`/`V1IndividualRepository`, are skipped). An independent scan of every
+committed `testcases_expected_output/**/ontologies_linked.json` fixture (985 class/property/
+individual entities across 111 files, via a small Python script over the committed JSON) found
+`shortForm` present on all 985 -- 0 missing -- reconfirming the same baseline already established
+by `V1OboSynonymExtractor`/`V1OboXrefExtractor`. Not a separate defect PR.
+
+**Investigation: the `linkedEntities`/`relatedTo` double-null risk.** Confirmed empirically
+(`missingLinkedEntitiesWithAtLeastOneRelatedToEntryThrowsNullPointerException`):
+`localizedJson.getAsJsonObject("linkedEntities")` is the null-safe accessor (returns `null` for a
+missing key), but once there is at least one `relatedTo` entry, the loop body calls
+`linkedEntities.getAsJsonObject()` (a redundant no-arg self-cast, a no-op when non-null)
+unconditionally, which throws `NullPointerException` if `linkedEntities` is `null`. With zero
+`relatedTo` entries the loop body never executes, so the risk is specifically the compound
+condition: missing `linkedEntities` **and** at least one `relatedTo` entry. Reachability: the same
+985-entity fixture scan found `linkedEntities` present on all 985 -- 0 missing -- reconfirming the
+baseline already established by `V1OboSynonymExtractor`/`V1OboXrefExtractor` independently for
+this class. Every real caller reads entities produced by the standard rdf2json/Postgres dataload
+pipeline; `ResolveReferencesTransform` (`repository/transforms/ResolveReferencesTransform.java`)
+reads `"linkedEntities"` conditionally rather than defaulting it in, implying it is expected to
+already be present upstream by the time it runs. Not reachable in practice; not a separate defect
+PR.
+
+**Investigation: `JsonHelper.getBoolean`'s missing-key semantics.** Confirmed empirically, both
+against a standalone script run directly against this repo's declared
+`com.google.code.gson:gson:2.13.2` dependency and via a dedicated test
+(`missingHasHierarchicalParentsThrowsNullPointerExceptionWhenDirectParentsIsFalse`):
+`JsonHelper.getBoolean(json, key)` is `json.getAsJsonPrimitive(key).getAsBoolean()`, and
+`getAsJsonPrimitive` returns `null` for a missing key, so `.getAsBoolean()` throws
+`NullPointerException` -- unlike `JsonHelper.getString` (used everywhere else in this method via
+the `Boolean.parseBoolean(...)` pattern), which returns `null` for a missing key and is safe
+because `Boolean.parseBoolean(null)` is simply `false`. A second dedicated test
+(`hasDirectParentsTrueShortCircuitsBeforeMissingHierarchicalParentsKeyIsEvaluated`) confirms the
+precise reachability condition: `isRoot`'s `||` short-circuits when `HAS_DIRECT_PARENTS` is
+`true`, so a missing `HAS_HIERARCHICAL_PARENTS` key does **not** throw in that case, despite being
+exactly as "missing" as when it does throw (`HAS_DIRECT_PARENTS` false). The same 985-entity
+fixture scan found both `hasDirectParents` and `hasHierarchicalParents` present on all 985 -- 0
+missing. This finding is recorded rather than filed as a defect PR: no committed fixture or
+`test_api.sh` golden file exercises the missing-key case, so it does not meet this programme's
+defect-workflow bar for isolating a fix, but it is worth a maintainer's attention if a future
+dataload path ever omits these two flags.
+
+Verified locally on 2026-09-12 from `origin/dev` commit `aa52e09e4` with Java 17 (no Postgres/
+Docker gate needed for the unit-only verification below; the full clean lifecycle was still run
+end to end per this programme's standard verification, exercising the existing IT suite
+unchanged by this rollout):
+
+- Docker-free `mvn test`, run twice: 1,015/1,015 pass both times, wall-clock 14.14s and 17.73s (a
+  third confirmation run, interleaved while cross-checking counts, also passed 1,015/1,015 in
+  14.74s).
+- Postgres/failsafe IT gate: exercised as part of the clean `verify` lifecycle below rather than
+  as a separate standalone gate -- this class has no IT layer of its own (see Scope above), so
+  there is no new IT suite to run in isolation; the existing 205 failsafe tests are unchanged by
+  this rollout and all pass.
+- Clean `mvn clean verify -Dapi.version=1.44` (Rancher Desktop Docker, `DOCKER_HOST`/
+  `TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE` set): 1,220/1,220 pass (1,015 surefire + 205 failsafe),
+  wall-clock 2 minutes 7.69 seconds.
+
+## Coverage (JaCoCo, from the clean verify run)
+
+- `V1TermMapper` itself covers 270 of 273 instructions (98.9%), 52 of 53 lines (98.1%), 19 of 20
+  branches (95.0%), and 10 of 12 cyclomatic-complexity points (83.3%). The one uncovered
+  line/method is the implicit default constructor, never invoked since every caller uses the
+  static `mapTerm` method directly (the same pattern already documented for
+  `AnnotationExtractor`). The one uncovered branch is the `replacedBy` loop's second-iteration
+  check (`for(JsonElement el : replacedBy)`'s continuation branch) -- structurally unreachable,
+  not a coverage gap: the loop unconditionally `break`s after its first iteration (the very "fake
+  loop" behaviour this baseline documents), so the loop's iterator is never asked for a second
+  element regardless of how many values `replacedBy` actually has, even in the two-element test
+  case above.
+- Whole-backend JaCoCo coverage is 73.0% lines (3,510 of 4,810) and 56.0% branches (1,075 of
+  1,918), up from the most recently documented baseline of 71.3% lines and 54.1% branches (the
+  denominators match the AnnotationExtractor baseline exactly, so this reflects genuine coverage
+  gain across whatever else has merged on `dev` since, not a codebase-size shift). No coverage
+  failure threshold is introduced.
+- No production defect was discovered by this rollout; both investigation findings above are
+  confirmed real code paths but not reachable through any currently committed fixture or real
+  dataload output, so neither warrants a separate defect PR under this programme's workflow.
+
 ## Out of scope for the pilot
 
 - Connecting GitHub-hosted CI to production or internal databases.
