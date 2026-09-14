@@ -1,0 +1,93 @@
+{
+  "records": [
+    {
+      "id": "efo+class+http://example.org/JST_ROOT",
+      "databaseType": "OntologyClass",
+      "searchType": "class",
+      "ontologyId": "efo",
+      "iri": "http://example.org/JST_ROOT",
+      "isObsolete": false,
+      "isDefiningOntology": true,
+      "label": ["Root default label"],
+      "synonym": [],
+      "definition": ["A synthetic root class used to prove V1JsTreeRepository localizes both the requested entity and every ancestor/child independently, not just one side."],
+      "shortForm": "JST_ROOT",
+      "curie": "TEST:ROOT",
+      "subset": [],
+      "relatedTo": [],
+      "directParents": [],
+      "hierarchicalParents": [],
+      "directAncestors": [],
+      "hierarchicalAncestors": [],
+      "tags": [],
+      "domain": [],
+      "http://example.org/category": [],
+      "json": {
+        "id": "efo+class+http://example.org/JST_ROOT",
+        "type": ["entity", "class"],
+        "ontologyId": "efo",
+        "ontologyPreferredPrefix": "EFO",
+        "ontologyIri": "http://www.ebi.ac.uk/efo",
+        "iri": "http://example.org/JST_ROOT",
+        "label": [
+          {"type": ["literal"], "lang": "fr", "value": "Racine francaise"},
+          {"type": ["literal"], "value": "Root default label"}
+        ],
+        "definition": ["A synthetic root class used to prove V1JsTreeRepository localizes both the requested entity and every ancestor/child independently, not just one side."],
+        "synonym": [],
+        "shortForm": "JST_ROOT",
+        "curie": "TEST:ROOT",
+        "isObsolete": false,
+        "isDefiningOntology": true,
+        "hasDirectParents": false,
+        "hasHierarchicalParents": false,
+        "linkedEntities": {}
+      }
+    },
+    {
+      "id": "efo+class+http://example.org/JST_LEAF",
+      "databaseType": "OntologyClass",
+      "searchType": "class",
+      "ontologyId": "efo",
+      "iri": "http://example.org/JST_LEAF",
+      "isObsolete": false,
+      "isDefiningOntology": true,
+      "label": ["Leaf default label"],
+      "synonym": [],
+      "definition": ["A synthetic leaf class, direct child of JST_ROOT, used for the same localization proof."],
+      "shortForm": "JST_LEAF",
+      "curie": "TEST:LEAF",
+      "subset": [],
+      "relatedTo": [],
+      "directParents": ["http://example.org/JST_ROOT"],
+      "hierarchicalParents": ["http://example.org/JST_ROOT"],
+      "directAncestors": ["http://example.org/JST_ROOT"],
+      "hierarchicalAncestors": ["http://example.org/JST_ROOT"],
+      "tags": [],
+      "domain": [],
+      "http://example.org/category": [],
+      "json": {
+        "id": "efo+class+http://example.org/JST_LEAF",
+        "type": ["entity", "class"],
+        "ontologyId": "efo",
+        "ontologyPreferredPrefix": "EFO",
+        "ontologyIri": "http://www.ebi.ac.uk/efo",
+        "iri": "http://example.org/JST_LEAF",
+        "label": [
+          {"type": ["literal"], "lang": "fr", "value": "Feuille francaise"},
+          {"type": ["literal"], "value": "Leaf default label"}
+        ],
+        "definition": ["A synthetic leaf class, direct child of JST_ROOT, used for the same localization proof."],
+        "synonym": [],
+        "shortForm": "JST_LEAF",
+        "curie": "TEST:LEAF",
+        "isObsolete": false,
+        "isDefiningOntology": true,
+        "directParent": ["http://example.org/JST_ROOT"],
+        "hasDirectParents": true,
+        "hasHierarchicalParents": true,
+        "linkedEntities": {}
+      }
+    }
+  ]
+}
