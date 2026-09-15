@@ -245,7 +245,7 @@ process rdf2json {
         ${extra_args} \
         \$MERGE_ARG
 
-    if [ -n "${last_run_dir}" ] && grep -qE '"status":"(SUCCESS|FALLBACK)"' "${ontology_id}.status.json" 2>/dev/null; then
+    if [ -n "${last_run_dir}" ] && grep -qE '"status":[[:space:]]*"(SUCCESS|FALLBACK)"' "${ontology_id}.status.json" 2>/dev/null; then
         cp "${ontology_id}.json" "${last_run_dir}/${ontology_id}.json"
     fi
     """
