@@ -122,7 +122,16 @@ export default function EntityPage({
 
   useEffect(() => {}, [searchParams]);
 
+  // With no IRI in the path, this page can only resolve an entity from
+  // identifying query params (e.g. ?iri=, ?short_form=). Without any, show the
+  // ontology page's tree tab for this entity type instead of failing.
+  const hasEntityQueryParams = Array.from(searchParams.keys()).some(
+    (key) => key !== "lang"
+  );
+  const shouldRedirectToTreeTab = !entityIri && !hasEntityQueryParams;
+
   useEffect(() => {
+    if (shouldRedirectToTreeTab) return;
     if (entityIri || searchParams) {
       dispatch(
         getEntityWithType({
@@ -133,7 +142,7 @@ export default function EntityPage({
         })
       );
     }
-  }, [dispatch, ontologyId, entityType, entityIri, searchParams]);
+  }, [dispatch, ontologyId, entityType, entityIri, searchParams, shouldRedirectToTreeTab]);
 
   useEffect(() => {
     if (entity && entityType === "classes") {
@@ -160,6 +169,13 @@ export default function EntityPage({
   }, [dispatch, entityType, entity, searchParams]);
 
   const navigate = useNavigate();
+  useEffect(() => {
+    if (shouldRedirectToTreeTab) {
+      navigate(`/ontologies/${ontologyId}?tab=${entityType}`, {
+        replace: true,
+      });
+    }
+  }, [shouldRedirectToTreeTab, navigate, ontologyId, entityType]);
   useEffect(() => {
     if (errorMessage) navigate("/error", { state: { message: errorMessage } });
   }, [errorMessage, navigate]);

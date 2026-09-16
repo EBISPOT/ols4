@@ -126,10 +126,12 @@ workflow {
             .map { list -> list.isEmpty() ? [file('NO_FILE')] : list }
             .ifEmpty([file('NO_FILE')])
         // Collect PCA JSON model files for upload to postgres
+        // Placeholder is named NO_FILE_PCA so it cannot collide with embedding_parquets'
+        // NO_FILE when both are staged into the same process work dir
         pca_json_files = embeddings.out.pca_jsons
             .filter { !it.name.contains('_pca16') }
             .collect()
-            .ifEmpty([file('NO_FILE')])
+            .ifEmpty([file('NO_FILE_PCA')])
         // Persist PCA parquets to embeddings_path so the next incremental embeddings run can reuse them
         if (params.embeddings_path && params.embeddings_path != '' && params.embeddings_path != 'NO_DIR') {
             update_embeddings_path(pca_parquets)
@@ -145,10 +147,10 @@ workflow {
         pca_json_files = Channel.fromPath("${params.embeddings_path}/*_pca*.json")
             .filter { !it.name.contains('_pca16') }
             .collect()
-            .ifEmpty([file('NO_FILE')])
+            .ifEmpty([file('NO_FILE_PCA')])
     } else {
         embedding_parquets = Channel.of(file('NO_FILE'))
-        pca_json_files = Channel.of(file('NO_FILE'))
+        pca_json_files = Channel.of(file('NO_FILE_PCA'))
     }
 
     // Broadcast the global filter-property union to every ontology (not each ontology's own
@@ -372,7 +374,7 @@ process create_postgres {
     def parquet_list = has_embeddings ? parquets.collect { it.toString() }.join(' ') : ''
     def filter_args = filter_properties ? filter_properties.collect { "--filter-property '${it}'" }.join(' ') : ''
     def pca_list = (pca_jsons instanceof List ? pca_jsons : [pca_jsons])
-    def has_pca = !pca_list.any { it.name == 'NO_FILE' }
+    def has_pca = !pca_list.any { it.name == 'NO_FILE_PCA' }
     def has_tagger = text_tagger_db.name != 'NO_FILE'
     def artifact_args = ''
     if (has_pca || has_tagger) {
@@ -408,7 +410,7 @@ process populate_external_postgres {
     def parquet_list = has_embeddings ? parquets.collect { it.toString() }.join(' ') : ''
     def filter_args = filter_properties ? filter_properties.collect { "--filter-property '${it}'" }.join(' ') : ''
     def pca_list = (pca_jsons instanceof List ? pca_jsons : [pca_jsons])
-    def has_pca = !pca_list.any { it.name == 'NO_FILE' }
+    def has_pca = !pca_list.any { it.name == 'NO_FILE_PCA' }
     def has_tagger = text_tagger_db.name != 'NO_FILE'
     def artifact_args = ''
     if (has_pca || has_tagger) {

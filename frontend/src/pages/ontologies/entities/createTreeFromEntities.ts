@@ -59,7 +59,7 @@ export default function createTreeFromEntities(
         : node.getIri(),
       iri: node.getIri(),
       title: node.getName(),
-      expandable: node.hasChildren(),
+      expandable: node.isExpandableInTree(),
       entity: node,
       numDescendants: node.getNumDescendants(),
       numHierarchicalDescendants: node.getNumHierarchicalDescendants(),
@@ -73,7 +73,7 @@ export default function createTreeFromEntities(
       createTreeNode(childNode.child, treeNode, debugNumIterations + 1, childNode.parentRelationToChild, childNode.childRelationToParent)
     );
 
-    if(node.hasChildren() && childNodes.length > 0) {
+    if(node.isExpandableInTree() && childNodes.length > 0) {
 	automaticallyExpandedNodes.add(treeNode.absoluteIdentity)
     }
 

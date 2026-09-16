@@ -6,6 +6,11 @@
     handle_path {$PUBLIC_URL}* {
         root * /opt/ols4-frontend/dist
         try_files {path} /
+        # bundle.js has a fixed name (no content hash), so browsers must
+        # revalidate it on every load or they keep serving stale app code
+        # after a redeploy. no-cache still allows cheap 304s via ETag.
+        @mutable path /bundle.js /runtime-config.js /index.html /
+        header @mutable Cache-Control "no-cache"
         file_server
     }
 }

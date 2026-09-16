@@ -57,6 +57,19 @@ export default abstract class Entity extends Thing {
     return this.hasDirectChildren() || this.hasHierarchicalChildren();
   }
 
+  hasIndividuals(): boolean {
+    return this.properties["hasIndividuals"] === true;
+  }
+
+  // Trees nest rdf:type instances under their class, so a class with only
+  // individuals (no subclasses) must still be expandable.
+  isExpandableInTree(): boolean {
+    return (
+      this.hasChildren() ||
+      (this.getType() === "class" && this.hasIndividuals())
+    );
+  }
+
   getAncestorIris(): string[] {
     return asArray(this.properties["ancestor"]);
   }

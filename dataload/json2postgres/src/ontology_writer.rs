@@ -229,7 +229,7 @@ impl<'a> OntologyWriter<'a> {
         embedding_model_names.sort();
 
         // Field counts (must match create_postgres_schema.py column order)
-        let entity_field_count = (29 + filter_property_names.len() + embedding_model_names.len()) as i16;
+        let entity_field_count = (30 + filter_property_names.len() + embedding_model_names.len()) as i16;
         let emb_node_field_count = (3 + embedding_model_names.len()) as i16;
 
         // Create binary COPY files
@@ -326,6 +326,7 @@ impl<'a> OntologyWriter<'a> {
         w.write_bool(extract_bool(entity, "hasHierarchicalParents"))?; // has_hierarchical_parents
         w.write_bool(extract_bool(entity, "hasDirectChildren"))?;      // has_direct_children
         w.write_bool(extract_bool(entity, "hasHierarchicalChildren"))?; // has_hierarchical_children
+        w.write_bool(extract_bool(entity, "hasIndividuals"))?;   // has_individuals
         w.write_bool(extract_bool(entity, "isPreferredRoot"))?; // is_preferred_root
         w.write_text(&self.ontology_iri)?;                       // ontology_iri
         w.write_text(&self.ontology_preferred_prefix)?;          // ontology_preferred_prefix
@@ -417,6 +418,7 @@ impl<'a> OntologyWriter<'a> {
         self.entities_writer.write_bool(false)?;                 // has_hierarchical_parents
         self.entities_writer.write_bool(false)?;                 // has_direct_children
         self.entities_writer.write_bool(false)?;                 // has_hierarchical_children
+        self.entities_writer.write_bool(false)?;                 // has_individuals
         self.entities_writer.write_bool(false)?;                 // is_preferred_root
         self.entities_writer.write_text(iri)?;                   // ontology_iri
         self.entities_writer.write_text(preferred_prefix)?;      // ontology_preferred_prefix
