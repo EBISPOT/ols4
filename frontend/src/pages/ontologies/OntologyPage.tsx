@@ -60,12 +60,7 @@ export default function OntologyPage() {
       : ontology?.getVersionFromIri()) || undefined;
 
   useEffect(() => {
-    if (tab === "individuals" && ontology && ontology.getNumIndividuals() > 0) {
-      setSearchParams((params) => {
-        params.set("viewMode", "list");
-        return params;
-      });
-    } else if (
+    if (
       (tab === "properties" && ontology && !ontology.getNumProperties()) ||
       (tab === "individuals" && ontology && !ontology.getNumIndividuals())
     ) {
@@ -267,7 +262,6 @@ export default function OntologyPage() {
                 {tab !== "classes" || ontology.getNumClasses() > 0 ? (
                   <div className="py-2">
                     <button
-                      disabled={tab === "individuals"}
                       className={`font-bold mr-3 ${
                         viewMode === "tree"
                           ? "button-primary-active"

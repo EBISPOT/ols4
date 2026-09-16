@@ -375,7 +375,7 @@ export default function EntityTree({
               />
               {!showObsoleteEnabled &&
                 showCountsEnabled &&
-                childNode.numDescendants > 0 && (
+                getNumDescendants(childNode.numHierarchicalDescendants, childNode.numDescendants) > 0 && (
                   <span style={{ color: "gray" }}>
                     {" (" + (getNumDescendants(childNode.numHierarchicalDescendants, childNode.numDescendants)).toLocaleString() + ")"}
                   </span>
