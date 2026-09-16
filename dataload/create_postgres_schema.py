@@ -76,6 +76,7 @@ CREATE TABLE ols_entities (
     has_hierarchical_parents BOOLEAN DEFAULT FALSE,
     has_direct_children BOOLEAN DEFAULT FALSE,
     has_hierarchical_children BOOLEAN DEFAULT FALSE,
+    has_individuals BOOLEAN DEFAULT FALSE,
     is_preferred_root BOOLEAN DEFAULT FALSE,
     ontology_iri TEXT,
     ontology_preferred_prefix TEXT,
@@ -119,6 +120,7 @@ CREATE INDEX idx_ent_short_form ON ols_entities (short_form);
 CREATE INDEX idx_ent_curie ON ols_entities (curie);
 CREATE INDEX idx_ent_is_def ON ols_entities (is_defining_ontology) WHERE is_defining_ontology = true;
 CREATE INDEX idx_ent_pref_root ON ols_entities (is_preferred_root) WHERE is_preferred_root = true;
+CREATE INDEX idx_ent_has_indiv ON ols_entities (has_individuals) WHERE has_individuals = true;
 CREATE INDEX idx_ent_subset ON ols_entities USING gin (subset);
 CREATE INDEX idx_ent_label ON ols_entities USING gin (label);
 CREATE INDEX idx_ent_synonym ON ols_entities USING gin (synonym);
