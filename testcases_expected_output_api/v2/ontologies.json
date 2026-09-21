@@ -246,6 +246,64 @@
   },
   {
     "baseUri": [
+      "http://example.org/subcohort#"
+    ],
+    "filterProperty": [
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ],
+    "hierarchical_property": [
+      "http://example.org/subcohort#isSubCohortOf"
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "imported": false,
+    "iri": "http://example.org/subcohort",
+    "isObsolete": false,
+    "language": [
+      "en"
+    ],
+    "linkedEntities": {
+      "http://example.org/subcohort#isSubCohortOf": {
+        "curie": "subcohort:isSubCohortOf",
+        "definedBy": [
+          "subcohort"
+        ],
+        "hasLocalDefinition": true,
+        "label": [
+          "isSubCohortOf"
+        ],
+        "numAppearsIn": 1.0,
+        "type": [
+          "entity",
+          "objectProperty",
+          "property"
+        ]
+      }
+    },
+    "linksTo": [
+      "http://example.org/subcohort#isSubCohortOf"
+    ],
+    "loaded": "<loaded>",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "numberOfClasses": "1",
+    "numberOfEntities": "7",
+    "numberOfIndividuals": "4",
+    "numberOfProperties": "2",
+    "oboSlims": false,
+    "ontologyId": "subcohort",
+    "ontologyPurl": "./testcases/hierarchical-properties/subcohort.owl",
+    "preferredPrefix": "subcohort",
+    "searchableAnnotationValues": [
+      false
+    ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
+    "title": "subcohort",
+    "type": [
+      "ontology"
+    ]
+  },
+  {
+    "baseUri": [
       "http://exmpl.org/xmpl/"
     ],
     "description": "This config will use the defined label_property as label for a class. In OLS4 the value of label_property is a collection.",
@@ -946,58 +1004,6 @@
       "ontology"
     ],
     "uri": "http://www.ebi.ac.uk/efo"
-  },
-  {
-    "filterProperty": [
-      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-    ],
-    "hierarchical_property": [
-      "http://example.org/subcohort#isSubCohortOf"
-    ],
-    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
-    "imported": false,
-    "iri": "http://example.org/subcohort",
-    "isObsolete": false,
-    "language": [
-      "en"
-    ],
-    "linkedEntities": {
-      "http://example.org/subcohort#isSubCohortOf": {
-        "curie": "isSubCohortOf",
-        "hasLocalDefinition": true,
-        "label": [
-          "isSubCohortOf"
-        ],
-        "numAppearsIn": 1.0,
-        "type": [
-          "entity",
-          "objectProperty",
-          "property"
-        ]
-      }
-    },
-    "linksTo": [
-      "http://example.org/subcohort#isSubCohortOf"
-    ],
-    "loaded": "<loaded>",
-    "numDescendants": 0.0,
-    "numHierarchicalDescendants": 0.0,
-    "numberOfClasses": "1",
-    "numberOfEntities": "7",
-    "numberOfIndividuals": "4",
-    "numberOfProperties": "2",
-    "oboSlims": false,
-    "ontologyId": "subcohort",
-    "ontologyPurl": "./testcases/hierarchical-properties/subcohort.owl",
-    "preferredPrefix": "subcohort",
-    "searchableAnnotationValues": [
-      false
-    ],
-    "sourceFileTimestamp": "<sourceFileTimestamp>",
-    "title": "subcohort",
-    "type": [
-      "ontology"
-    ]
   },
   {
     "filterProperty": [

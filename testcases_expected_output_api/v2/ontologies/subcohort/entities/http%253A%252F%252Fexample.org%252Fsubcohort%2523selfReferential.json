@@ -2,7 +2,10 @@
   "appearsIn": [
     "subcohort"
   ],
-  "curie": "selfReferential",
+  "curie": "subcohort:selfReferential",
+  "definedBy": [
+    "subcohort"
+  ],
   "directAncestor": [
     "http://example.org/subcohort#Cohort"
   ],
@@ -22,14 +25,17 @@
   "http://www.w3.org/2000/01/rdf-schema#label": "self referential cohort",
   "imported": false,
   "iri": "http://example.org/subcohort#selfReferential",
-  "isDefiningOntology": false,
+  "isDefiningOntology": true,
   "isObsolete": false,
   "label": [
     "self referential cohort"
   ],
   "linkedEntities": {
     "http://example.org/subcohort#Cohort": {
-      "curie": "Cohort",
+      "curie": "subcohort:Cohort",
+      "definedBy": [
+        "subcohort"
+      ],
       "hasLocalDefinition": true,
       "label": [
         "cohort"
@@ -41,7 +47,10 @@
       ]
     },
     "http://example.org/subcohort#isSubCohortOf": {
-      "curie": "isSubCohortOf",
+      "curie": "subcohort:isSubCohortOf",
+      "definedBy": [
+        "subcohort"
+      ],
       "hasLocalDefinition": true,
       "label": [
         "isSubCohortOf"
@@ -80,7 +89,7 @@
   "ontologyIri": "http://example.org/subcohort",
   "ontologyPreferredPrefix": "subcohort",
   "searchableAnnotationValues": false,
-  "shortForm": "selfReferential",
+  "shortForm": "subcohort_selfReferential",
   "type": [
     "entity",
     "individual"

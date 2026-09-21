@@ -7,6 +7,9 @@
       "iri": "http://example.org/subcohort",
       "preferredPrefix": "subcohort",
       "title": "subcohort",
+      "baseUri": [
+        "http://example.org/subcohort#"
+      ],
       "hierarchical_property": [
         "http://example.org/subcohort#isSubCohortOf"
       ],
@@ -91,7 +94,7 @@
             "type": [
               "literal"
             ],
-            "value": "Cohort"
+            "value": "subcohort:Cohort"
           },
           "directAncestor": [],
           "hasDirectChildren": true,
@@ -147,9 +150,12 @@
             "type": [
               "literal"
             ],
-            "value": "Cohort"
+            "value": "subcohort_Cohort"
           },
-          "isDefiningOntology": false,
+          "isDefiningOntology": true,
+          "definedBy": [
+            "subcohort"
+          ],
           "appearsIn": [
             "subcohort"
           ],
@@ -169,7 +175,7 @@
             "type": [
               "literal"
             ],
-            "value": "hasSubCohort"
+            "value": "subcohort:hasSubCohort"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -224,14 +230,20 @@
             "type": [
               "literal"
             ],
-            "value": "hasSubCohort"
+            "value": "subcohort_hasSubCohort"
           },
-          "isDefiningOntology": false,
+          "isDefiningOntology": true,
+          "definedBy": [
+            "subcohort"
+          ],
           "appearsIn": [
             "subcohort"
           ],
           "linkedEntities": {
             "http://example.org/subcohort#isSubCohortOf": {
+              "definedBy": [
+                "subcohort"
+              ],
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
@@ -248,7 +260,7 @@
                 "type": [
                   "literal"
                 ],
-                "value": "isSubCohortOf"
+                "value": "subcohort:isSubCohortOf"
               },
               "type": [
                 "entity",
@@ -272,7 +284,7 @@
             "type": [
               "literal"
             ],
-            "value": "isSubCohortOf"
+            "value": "subcohort:isSubCohortOf"
           },
           "directAncestor": [],
           "hasDirectChildren": false,
@@ -327,14 +339,20 @@
             "type": [
               "literal"
             ],
-            "value": "isSubCohortOf"
+            "value": "subcohort_isSubCohortOf"
           },
-          "isDefiningOntology": false,
+          "isDefiningOntology": true,
+          "definedBy": [
+            "subcohort"
+          ],
           "appearsIn": [
             "subcohort"
           ],
           "linkedEntities": {
             "http://example.org/subcohort#hasSubCohort": {
+              "definedBy": [
+                "subcohort"
+              ],
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
@@ -351,7 +369,7 @@
                 "type": [
                   "literal"
                 ],
-                "value": "hasSubCohort"
+                "value": "subcohort:hasSubCohort"
               },
               "type": [
                 "entity",
@@ -376,7 +394,7 @@
             "type": [
               "literal"
             ],
-            "value": "registry"
+            "value": "subcohort:registry"
           },
           "directAncestor": [
             "http://example.org/subcohort#Cohort"
@@ -437,14 +455,20 @@
             "type": [
               "literal"
             ],
-            "value": "registry"
+            "value": "subcohort_registry"
           },
-          "isDefiningOntology": false,
+          "isDefiningOntology": true,
+          "definedBy": [
+            "subcohort"
+          ],
           "appearsIn": [
             "subcohort"
           ],
           "linkedEntities": {
             "http://example.org/subcohort#Cohort": {
+              "definedBy": [
+                "subcohort"
+              ],
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
@@ -461,7 +485,7 @@
                 "type": [
                   "literal"
                 ],
-                "value": "Cohort"
+                "value": "subcohort:Cohort"
               },
               "type": [
                 "class",
@@ -483,7 +507,7 @@
             "type": [
               "literal"
             ],
-            "value": "selfReferential"
+            "value": "subcohort:selfReferential"
           },
           "directAncestor": [
             "http://example.org/subcohort#Cohort"
@@ -551,14 +575,20 @@
             "type": [
               "literal"
             ],
-            "value": "selfReferential"
+            "value": "subcohort_selfReferential"
           },
-          "isDefiningOntology": false,
+          "isDefiningOntology": true,
+          "definedBy": [
+            "subcohort"
+          ],
           "appearsIn": [
             "subcohort"
           ],
           "linkedEntities": {
             "http://example.org/subcohort#Cohort": {
+              "definedBy": [
+                "subcohort"
+              ],
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
@@ -575,7 +605,7 @@
                 "type": [
                   "literal"
                 ],
-                "value": "Cohort"
+                "value": "subcohort:Cohort"
               },
               "type": [
                 "class",
@@ -583,6 +613,9 @@
               ]
             },
             "http://example.org/subcohort#isSubCohortOf": {
+              "definedBy": [
+                "subcohort"
+              ],
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
@@ -599,7 +632,7 @@
                 "type": [
                   "literal"
                 ],
-                "value": "isSubCohortOf"
+                "value": "subcohort:isSubCohortOf"
               },
               "type": [
                 "entity",
@@ -623,7 +656,7 @@
             "type": [
               "literal"
             ],
-            "value": "subCohort"
+            "value": "subcohort:subCohort"
           },
           "directAncestor": [
             "http://example.org/subcohort#Cohort"
@@ -711,14 +744,20 @@
             "type": [
               "literal"
             ],
-            "value": "subCohort"
+            "value": "subcohort_subCohort"
           },
-          "isDefiningOntology": false,
+          "isDefiningOntology": true,
+          "definedBy": [
+            "subcohort"
+          ],
           "appearsIn": [
             "subcohort"
           ],
           "linkedEntities": {
             "http://example.org/subcohort#Cohort": {
+              "definedBy": [
+                "subcohort"
+              ],
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
@@ -735,7 +774,7 @@
                 "type": [
                   "literal"
                 ],
-                "value": "Cohort"
+                "value": "subcohort:Cohort"
               },
               "type": [
                 "class",
@@ -743,6 +782,9 @@
               ]
             },
             "http://example.org/subcohort#hasSubCohort": {
+              "definedBy": [
+                "subcohort"
+              ],
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
@@ -759,7 +801,7 @@
                 "type": [
                   "literal"
                 ],
-                "value": "hasSubCohort"
+                "value": "subcohort:hasSubCohort"
               },
               "type": [
                 "entity",
@@ -768,6 +810,9 @@
               ]
             },
             "http://example.org/subcohort#isSubCohortOf": {
+              "definedBy": [
+                "subcohort"
+              ],
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
@@ -784,7 +829,7 @@
                 "type": [
                   "literal"
                 ],
-                "value": "isSubCohortOf"
+                "value": "subcohort:isSubCohortOf"
               },
               "type": [
                 "entity",
@@ -793,6 +838,9 @@
               ]
             },
             "http://example.org/subcohort#registry": {
+              "definedBy": [
+                "subcohort"
+              ],
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
@@ -809,7 +857,7 @@
                 "type": [
                   "literal"
                 ],
-                "value": "registry"
+                "value": "subcohort:registry"
               },
               "type": [
                 "entity",
@@ -834,7 +882,7 @@
             "type": [
               "literal"
             ],
-            "value": "subSubCohort"
+            "value": "subcohort:subSubCohort"
           },
           "directAncestor": [
             "http://example.org/subcohort#Cohort"
@@ -920,14 +968,20 @@
             "type": [
               "literal"
             ],
-            "value": "subSubCohort"
+            "value": "subcohort_subSubCohort"
           },
-          "isDefiningOntology": false,
+          "isDefiningOntology": true,
+          "definedBy": [
+            "subcohort"
+          ],
           "appearsIn": [
             "subcohort"
           ],
           "linkedEntities": {
             "http://example.org/subcohort#Cohort": {
+              "definedBy": [
+                "subcohort"
+              ],
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
@@ -944,7 +998,7 @@
                 "type": [
                   "literal"
                 ],
-                "value": "Cohort"
+                "value": "subcohort:Cohort"
               },
               "type": [
                 "class",
@@ -952,6 +1006,9 @@
               ]
             },
             "http://example.org/subcohort#hasSubCohort": {
+              "definedBy": [
+                "subcohort"
+              ],
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
@@ -968,7 +1025,7 @@
                 "type": [
                   "literal"
                 ],
-                "value": "hasSubCohort"
+                "value": "subcohort:hasSubCohort"
               },
               "type": [
                 "entity",
@@ -977,6 +1034,9 @@
               ]
             },
             "http://example.org/subcohort#isSubCohortOf": {
+              "definedBy": [
+                "subcohort"
+              ],
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
@@ -993,7 +1053,7 @@
                 "type": [
                   "literal"
                 ],
-                "value": "isSubCohortOf"
+                "value": "subcohort:isSubCohortOf"
               },
               "type": [
                 "entity",
@@ -1002,6 +1062,9 @@
               ]
             },
             "http://example.org/subcohort#registry": {
+              "definedBy": [
+                "subcohort"
+              ],
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
@@ -1018,7 +1081,7 @@
                 "type": [
                   "literal"
                 ],
-                "value": "registry"
+                "value": "subcohort:registry"
               },
               "type": [
                 "entity",
@@ -1026,6 +1089,9 @@
               ]
             },
             "http://example.org/subcohort#subCohort": {
+              "definedBy": [
+                "subcohort"
+              ],
               "numAppearsIn": 1,
               "hasLocalDefinition": true,
               "label": [
@@ -1042,7 +1108,7 @@
                 "type": [
                   "literal"
                 ],
-                "value": "subCohort"
+                "value": "subcohort:subCohort"
               },
               "type": [
                 "entity",
@@ -1061,6 +1127,9 @@
       ],
       "linkedEntities": {
         "http://example.org/subcohort#isSubCohortOf": {
+          "definedBy": [
+            "subcohort"
+          ],
           "numAppearsIn": 1,
           "hasLocalDefinition": true,
           "label": [
@@ -1077,7 +1146,7 @@
             "type": [
               "literal"
             ],
-            "value": "isSubCohortOf"
+            "value": "subcohort:isSubCohortOf"
           },
           "type": [
             "entity",
