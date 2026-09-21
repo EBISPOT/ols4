@@ -41,6 +41,25 @@ class ClassRepositoryHierarchyTypeTest {
                         .containsExactlyEntriesOf(Map.of("type", "OntologyClass")));
     }
 
+    @Test
+    void childrenRoutesForwardExcludeRedundantEdgesToThePostgresClient() {
+        RecordingPostgresClient postgresClient = new RecordingPostgresClient();
+        ClassRepository repository = repository(postgresClient);
+        Pageable pageable = PageRequest.of(0, 20);
+        JsonTransformOptions options = new JsonTransformOptions();
+        String iri = "http://example.org/EFO_0001";
+
+        repository.getChildrenByOntologyId(
+                "efo", pageable, iri, false, true, null, "en", options);
+        repository.getChildrenByOntologyId(
+                "efo", pageable, iri, false, false, "clinical", "en", options);
+        repository.getHierarchicalChildrenByOntologyId(
+                "efo", pageable, iri, false, true, "en", options);
+
+        assertThat(postgresClient.excludeRedundantEdges).containsExactly(true, false, true);
+        assertThat(postgresClient.searches).containsExactly(null, "clinical", null);
+    }
+
     private static ClassRepository repository(RecordingPostgresClient postgresClient) {
         ClassRepository repository = new ClassRepository();
         setField(repository, "postgresClient", postgresClient);
@@ -55,7 +74,7 @@ class ClassRepositoryHierarchyTypeTest {
         String iri = "http://example.org/EFO_0001";
 
         repository.getChildrenByOntologyId(
-                "efo", pageable, iri, includeObsolete, null, "en", options);
+                "efo", pageable, iri, includeObsolete, false, null, "en", options);
         repository.getAncestorsByOntologyId(
                 "efo", pageable, iri, includeObsolete, "en", options);
         repository.getDescendantsByOntologyId(
@@ -63,7 +82,7 @@ class ClassRepositoryHierarchyTypeTest {
         repository.getHierarchicalDescendantsByOntologyId(
                 "efo", pageable, iri, includeObsolete, "en", options);
         repository.getHierarchicalChildrenByOntologyId(
-                "efo", pageable, iri, includeObsolete, "en", options);
+                "efo", pageable, iri, includeObsolete, false, "en", options);
         repository.getHierarchicalAncestorsByOntologyId(
                 "efo", pageable, iri, includeObsolete, "en", options);
         repository.getIndividualAncestorsByOntologyId(
@@ -72,10 +91,15 @@ class ClassRepositoryHierarchyTypeTest {
 
     private static class RecordingPostgresClient extends OlsPostgresClient {
         private final List<Map<String, String>> nodeProperties = new ArrayList<>();
+        private final List<Boolean> excludeRedundantEdges = new ArrayList<>();
+        private final List<String> searches = new ArrayList<>();
 
         @Override
         public Page<JsonElement> getDirectChildren(
-                String id, Map<String, String> properties, Pageable pageable) {
+                String id, Map<String, String> properties, Pageable pageable, String search,
+                boolean excludeRedundantEdges) {
+            this.excludeRedundantEdges.add(excludeRedundantEdges);
+            this.searches.add(search);
             return record(properties, pageable);
         }
 
@@ -99,7 +123,10 @@ class ClassRepositoryHierarchyTypeTest {
 
         @Override
         public Page<JsonElement> getHierarchicalChildren(
-                String id, Map<String, String> properties, Pageable pageable) {
+                String id, Map<String, String> properties, Pageable pageable,
+                boolean excludeRedundantEdges) {
+            this.excludeRedundantEdges.add(excludeRedundantEdges);
+            this.searches.add(null);
             return record(properties, pageable);
         }
 

@@ -158,9 +158,9 @@ class IndividualRepositoryIT {
         JsonTransformOptions options = new JsonTransformOptions();
 
         Page<JsonElement> active = repository.getHierarchicalChildrenByOntologyId(
-                "efo", page, EFO_INDIVIDUAL, false, "en", options);
+                "efo", page, EFO_INDIVIDUAL, false, false, "en", options);
         Page<JsonElement> all = repository.getHierarchicalChildrenByOntologyId(
-                "efo", page, EFO_INDIVIDUAL, true, "en", options);
+                "efo", page, EFO_INDIVIDUAL, true, false, "en", options);
         Page<JsonElement> ancestors = repository.getHierarchicalAncestorsByOntologyId(
                 "efo", page, SECOND_EFO_INDIVIDUAL, false, "en", options);
 
@@ -168,6 +168,19 @@ class IndividualRepositoryIT {
         assertThat(iris(all)).containsExactly(
                 SECOND_EFO_INDIVIDUAL, OBSOLETE_EFO_INDIVIDUAL);
         assertThat(iris(ancestors)).containsExactly(EFO_INDIVIDUAL);
+    }
+
+    @Test
+    void excludingRedundantEdgesKeepsHierarchicalChildrenWithASingleParent() {
+        // The individual fixture has no redundant edge (EFO_I200's only hierarchical parent is
+        // EFO_I100), so the reduced query must return exactly what the unreduced one does. The
+        // semantics of the reduction itself are proven in OlsPostgresClientGraphIT.
+        Page<JsonElement> reduced = repository.getHierarchicalChildrenByOntologyId(
+                "efo", PageRequest.of(0, 20), EFO_INDIVIDUAL, false, true, "en",
+                new JsonTransformOptions());
+
+        assertThat(iris(reduced)).containsExactly(SECOND_EFO_INDIVIDUAL);
+        assertThat(reduced.getTotalElements()).isEqualTo(1);
     }
 
     @Test
@@ -187,10 +200,10 @@ class IndividualRepositoryIT {
                 "efo", LIVER_CLASS, page, false, "en_US", options))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> repository.getHierarchicalChildrenByOntologyId(
-                "efo/unsafe", page, EFO_INDIVIDUAL, false, "en", options))
+                "efo/unsafe", page, EFO_INDIVIDUAL, false, false, "en", options))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> repository.getHierarchicalChildrenByOntologyId(
-                "efo", page, EFO_INDIVIDUAL, false, "en_US", options))
+                "efo", page, EFO_INDIVIDUAL, false, false, "en_US", options))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> repository.getHierarchicalAncestorsByOntologyId(
                 "efo/unsafe", page, SECOND_EFO_INDIVIDUAL, false, "en", options))

@@ -121,6 +121,7 @@ class V2IndividualControllerTest {
                 "efo",
                 "http%3A%2F%2Fexample.org%2FEFO_I100",
                 true,
+                false,
                 "de",
                 options);
 
@@ -128,9 +129,26 @@ class V2IndividualControllerTest {
         assertEquals("efo", repository.ontologyId);
         assertEquals("http://example.org/EFO_I100", repository.iri);
         assertTrue(repository.includeObsoleteEntities);
+        assertFalse(repository.excludeRedundantEdges);
         assertSame(pageable, repository.pageable);
         assertEquals("de", repository.lang);
         assertSame(options, repository.outputOptions);
+    }
+
+    @Test
+    void hierarchicalChildrenDelegateExcludeRedundantEdges() {
+        controller.getHierarchicalChildrenByOntology(
+                PageRequest.of(0, 20),
+                "efo",
+                "http%3A%2F%2Fexample.org%2FEFO_I100",
+                false,
+                true,
+                "en",
+                new JsonTransformOptions());
+
+        assertEquals(RecordingIndividualRepository.Call.HIERARCHICAL_CHILDREN, repository.call);
+        assertFalse(repository.includeObsoleteEntities);
+        assertTrue(repository.excludeRedundantEdges);
     }
 
     @Test
@@ -198,6 +216,7 @@ class V2IndividualControllerTest {
         private String boostFields;
         private boolean exactMatch;
         private boolean includeObsoleteEntities;
+        private boolean excludeRedundantEdges;
         private Map<String, Collection<String>> properties;
         private JsonTransformOptions outputOptions;
         private V2Entity individual;
@@ -257,8 +276,10 @@ class V2IndividualControllerTest {
                 Pageable pageable,
                 String iri,
                 boolean includeObsoleteEntities,
+                boolean excludeRedundantEdges,
                 String lang,
                 JsonTransformOptions outputOptions) {
+            this.excludeRedundantEdges = excludeRedundantEdges;
             recordHierarchy(
                     Call.HIERARCHICAL_CHILDREN,
                     ontologyId,
