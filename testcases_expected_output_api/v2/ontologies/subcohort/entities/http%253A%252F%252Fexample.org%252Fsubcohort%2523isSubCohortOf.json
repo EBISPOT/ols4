@@ -2,7 +2,10 @@
   "appearsIn": [
     "subcohort"
   ],
-  "curie": "isSubCohortOf",
+  "curie": "subcohort:isSubCohortOf",
+  "definedBy": [
+    "subcohort"
+  ],
   "hasDirectChildren": false,
   "hasDirectParents": false,
   "hasHierarchicalChildren": false,
@@ -12,7 +15,7 @@
   "http://www.w3.org/2002/07/owl#inverseOf": "http://example.org/subcohort#hasSubCohort",
   "imported": false,
   "iri": "http://example.org/subcohort#isSubCohortOf",
-  "isDefiningOntology": false,
+  "isDefiningOntology": true,
   "isObsolete": false,
   "isPreferredRoot": false,
   "label": [
@@ -20,7 +23,10 @@
   ],
   "linkedEntities": {
     "http://example.org/subcohort#hasSubCohort": {
-      "curie": "hasSubCohort",
+      "curie": "subcohort:hasSubCohort",
+      "definedBy": [
+        "subcohort"
+      ],
       "hasLocalDefinition": true,
       "label": [
         "hasSubCohort"
@@ -58,7 +64,7 @@
   "ontologyIri": "http://example.org/subcohort",
   "ontologyPreferredPrefix": "subcohort",
   "searchableAnnotationValues": false,
-  "shortForm": "isSubCohortOf",
+  "shortForm": "subcohort_isSubCohortOf",
   "type": [
     "entity",
     "objectProperty",
