@@ -30,6 +30,8 @@ class V2IndividualControllerIT {
             "/api/v2/ontologies/efo/individuals/http%253A%252F%252Fexample.org%252FEFO_I100/hierarchicalChildren");
     private static final URI HIERARCHICAL_CHILDREN_WITH_OBSOLETE_URI = uri(
             "/api/v2/ontologies/efo/individuals/http%253A%252F%252Fexample.org%252FEFO_I100/hierarchicalChildren?includeObsoleteEntities=true");
+    private static final URI HIERARCHICAL_CHILDREN_WITHOUT_REDUNDANT_EDGES_URI = uri(
+            "/api/v2/ontologies/efo/individuals/http%253A%252F%252Fexample.org%252FEFO_I100/hierarchicalChildren?excludeRedundantEdges=true");
     private static final URI HIERARCHICAL_ANCESTORS_URI = uri(
             "/api/v2/ontologies/efo/individuals/http%253A%252F%252Fexample.org%252FEFO_I200/hierarchicalAncestors");
 
@@ -119,6 +121,16 @@ class V2IndividualControllerIT {
                 .andExpect(jsonPath("$.totalElements").value(2))
                 .andExpect(jsonPath("$.elements[0].iri").value("http://example.org/EFO_I200"))
                 .andExpect(jsonPath("$.elements[1].iri").value("http://example.org/EFO_I999"));
+    }
+
+    @Test
+    void getsIndividualHierarchicalChildrenWithoutRedundantEdgesThroughTheRealDatabase() throws Exception {
+        // EFO_I200 has a single hierarchical parent, so excluding redundant edges must not drop it.
+        mockMvc.perform(get(HIERARCHICAL_CHILDREN_WITHOUT_REDUNDANT_EDGES_URI))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.numElements").value(1))
+                .andExpect(jsonPath("$.totalElements").value(1))
+                .andExpect(jsonPath("$.elements[0].iri").value("http://example.org/EFO_I200"));
     }
 
     @Test

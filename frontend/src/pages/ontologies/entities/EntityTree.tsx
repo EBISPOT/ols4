@@ -31,6 +31,8 @@ import {
   showCounts,
   showObsolete,
   showSiblings,
+  showRedundant,
+  hideRedundant,
   setSpecificRootIri,
   getEntity,
   getDirectChildrenCount,
@@ -86,6 +88,9 @@ export default function EntityTree({
   const showCountsEnabled = useAppSelector(
     (state) => state.ontologies.displayCounts
   );
+  const showRedundantEnabled = useAppSelector(
+    (state) => state.ontologies.displayRedundant
+  );
 
   const toggleNode = useCallback(
     (node: any) => {
@@ -105,6 +110,7 @@ export default function EntityTree({
               entityType: entityType === "entities" ? "classes" : entityType,
               lang,
               showObsoleteEnabled,
+              showRedundantEnabled,
               apiUrl,
             })
           );
@@ -121,6 +127,7 @@ export default function EntityTree({
       entityType,
       lang,
       showObsoleteEnabled,
+      showRedundantEnabled,
       apiUrl,
     ]
   );
@@ -135,7 +142,7 @@ export default function EntityTree({
     selectedEntity?.getIri(),
   ]);
 
-  // If the ontology, entity type, selected entity, lang OR the showObsoleteEnabled/preferredRoots change, reset the tree content but not the settings
+  // If the ontology, entity type, selected entity, lang OR the showObsoleteEnabled/showRedundantEnabled/preferredRoots change, reset the tree content but not the settings
   useEffect(() => {
     dispatch(resetTreeContent());
   }, [
@@ -144,6 +151,7 @@ export default function EntityTree({
     entityType,
     JSON.stringify(selectedEntity),
     showObsoleteEnabled,
+    showRedundantEnabled,
     preferredRoots,
     lang,
   ]);
@@ -197,6 +205,9 @@ export default function EntityTree({
     preferredRoots,
     lang,
     showObsoleteEnabled,
+    // the ancestors themselves do not depend on the toggle, but the tree built
+    // from them does, so it is rebuilt when the toggle changes
+    showRedundantEnabled,
     specifiedRootIri,
   ]);
 
@@ -262,6 +273,7 @@ export default function EntityTree({
             absoluteIdentity: absId,
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
+            showRedundantEnabled,
             apiUrl,
           })
         )
@@ -281,6 +293,7 @@ export default function EntityTree({
     entityType,
     preferredRoots,
     showObsoleteEnabled,
+    showRedundantEnabled,
     showSiblingsEnabled,
   ]);
 
@@ -298,6 +311,11 @@ export default function EntityTree({
     if (showCountsEnabled) dispatch(hideCounts());
     else dispatch(showCounts());
   }, [dispatch, showCountsEnabled]);
+
+  let toggleShowRedundant = useCallback(() => {
+    if (showRedundantEnabled) dispatch(hideRedundant());
+    else dispatch(showRedundant());
+  }, [dispatch, showRedundantEnabled]);
 
   function renderNodeChildren(
     children: TreeNode[],
@@ -392,6 +410,7 @@ export default function EntityTree({
                         parentEntityIri={childNode.iri}
                         lang={lang}
                         showObsoleteEnabled={showObsoleteEnabled}
+                        showRedundantEnabled={showRedundantEnabled}
                         onNavigateToEntity={(ontologyId, entity) => {
                           if (entity.getOntologyId() === ontologyId) {
                             onNavigateToEntity(ontology, entity);
@@ -477,6 +496,18 @@ export default function EntityTree({
             }
             label="Show obsolete terms"
           />
+          {entityType !== "properties" && (
+            <FormControlLabel
+              title="Also list a term under a parent when it is already shown under a more specific descendant of that parent (e.g. its is_a parent when it is also part_of one of that parent's descendants)"
+              control={
+                <Checkbox
+                  checked={showRedundantEnabled}
+                  onClick={toggleShowRedundant}
+                />
+              }
+              label="Show redundant"
+            />
+          )}
           {selectedEntity && (
             <FormControlLabel
               control={
