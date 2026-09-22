@@ -1,0 +1,46 @@
+[
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefining-ontology%252Fhas_flag?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/defining-ontology/has_flag",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "has flag",
+    "lang": "en",
+    "obo_id": "DEFONT:has:flag",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/defining-ontology/defining-ontology.owl",
+    "ontology_name": "isdefiningontologybaseuri",
+    "ontology_prefix": "DEFONT",
+    "short_form": "DEFONT_has_flag",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "self": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri/properties/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefining-ontology%252Freason_for_obsolescence?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/defining-ontology/reason_for_obsolescence",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_root": true,
+    "label": "reason for obsolescence",
+    "lang": "en",
+    "obo_id": "DEFONT:reason:for:obsolescence",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/defining-ontology/defining-ontology.owl",
+    "ontology_name": "isdefiningontologybaseuri",
+    "ontology_prefix": "DEFONT",
+    "short_form": "DEFONT_reason_for_obsolescence",
+    "synonyms": []
+  }
+]

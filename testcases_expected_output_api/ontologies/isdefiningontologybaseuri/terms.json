@@ -1,0 +1,120 @@
+[
+  {
+    "_links": {
+      "ancestors": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefining-ontology%252FDEFONT_0000002/ancestors"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefining-ontology%252FDEFONT_0000002/graph"
+      },
+      "hierarchicalAncestors": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefining-ontology%252FDEFONT_0000002/hierarchicalAncestors"
+      },
+      "hierarchicalParents": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefining-ontology%252FDEFONT_0000002/hierarchicalParents"
+      },
+      "jstree": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefining-ontology%252FDEFONT_0000002/jstree"
+      },
+      "parents": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefining-ontology%252FDEFONT_0000002/parents"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefining-ontology%252FDEFONT_0000002?lang=en"
+      }
+    },
+    "annotation": {
+      "has_dbxref": [
+        "DEFONT:0000001"
+      ],
+      "reason for obsolescence": [
+        "Superseded by a newer term"
+      ]
+    },
+    "description": [],
+    "has_children": false,
+    "iri": "http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_0000002",
+    "is_defining_ontology": true,
+    "is_obsolete": true,
+    "is_preferred_root": false,
+    "is_root": false,
+    "label": "obsolete measurement",
+    "lang": "en",
+    "obo_id": "DEFONT:0000002",
+    "obo_xref": [
+      {
+        "database": "DEFONT",
+        "id": "0000001"
+      }
+    ],
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/defining-ontology/defining-ontology.owl",
+    "ontology_name": "isdefiningontologybaseuri",
+    "ontology_prefix": "DEFONT",
+    "short_form": "DEFONT_0000002",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "children": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefining-ontology%252FDEFONT_0000001/children"
+      },
+      "descendants": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefining-ontology%252FDEFONT_0000001/descendants"
+      },
+      "graph": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefining-ontology%252FDEFONT_0000001/graph"
+      },
+      "hierarchicalChildren": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefining-ontology%252FDEFONT_0000001/hierarchicalChildren"
+      },
+      "hierarchicalDescendants": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefining-ontology%252FDEFONT_0000001/hierarchicalDescendants"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri/terms/http%253A%252F%252Fwww.ebi.ac.uk%252Ftestcases%252Fdefining-ontology%252FDEFONT_0000001?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": true,
+    "iri": "http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_0000001",
+    "is_defining_ontology": true,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "experimental factor",
+    "lang": "en",
+    "obo_id": "DEFONT:0000001",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/defining-ontology/defining-ontology.owl",
+    "ontology_name": "isdefiningontologybaseuri",
+    "ontology_prefix": "DEFONT",
+    "short_form": "DEFONT_0000001",
+    "synonyms": []
+  },
+  {
+    "_links": {
+      "graph": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000948/graph"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FUBERON_0000948?lang=en"
+      }
+    },
+    "annotation": {},
+    "description": [],
+    "has_children": false,
+    "iri": "http://purl.obolibrary.org/obo/UBERON_0000948",
+    "is_defining_ontology": false,
+    "is_obsolete": false,
+    "is_preferred_root": false,
+    "is_root": true,
+    "label": "heart",
+    "lang": "en",
+    "obo_id": "UBERON:0000948",
+    "ontology_iri": "http://www.ebi.ac.uk/testcases/defining-ontology/defining-ontology.owl",
+    "ontology_name": "isdefiningontologybaseuri",
+    "ontology_prefix": "DEFONT",
+    "short_form": "UBERON_0000948",
+    "synonyms": []
+  }
+]

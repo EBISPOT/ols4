@@ -1,0 +1,51 @@
+{
+  "appearsIn": [
+    "isdefiningontologybaseuri"
+  ],
+  "curie": "UBERON:0000948",
+  "hasDirectChildren": false,
+  "hasDirectParents": false,
+  "hasHierarchicalChildren": false,
+  "hasHierarchicalParents": false,
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+  "http://www.w3.org/2000/01/rdf-schema#label": "heart",
+  "imported": false,
+  "iri": "http://purl.obolibrary.org/obo/UBERON_0000948",
+  "isDefiningOntology": false,
+  "isObsolete": false,
+  "isPreferredRoot": false,
+  "label": [
+    "heart"
+  ],
+  "linkedEntities": {
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "curie": "RDFS:label",
+      "definedBy": [
+        "rdfs"
+      ],
+      "hasLocalDefinition": false,
+      "label": [
+        "label"
+      ],
+      "numAppearsIn": 3.0,
+      "type": [
+        "entity",
+        "property"
+      ]
+    }
+  },
+  "linksTo": [
+    "http://www.w3.org/2000/01/rdf-schema#label"
+  ],
+  "numDescendants": 0.0,
+  "numHierarchicalDescendants": 0.0,
+  "ontologyId": "isdefiningontologybaseuri",
+  "ontologyIri": "http://www.ebi.ac.uk/testcases/defining-ontology/defining-ontology.owl",
+  "ontologyPreferredPrefix": "DEFONT",
+  "searchableAnnotationValues": false,
+  "shortForm": "UBERON_0000948",
+  "type": [
+    "class",
+    "entity"
+  ]
+}

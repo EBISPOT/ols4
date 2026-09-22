@@ -763,6 +763,60 @@
   {
     "_links": {
       "individuals": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri/individuals"
+      },
+      "properties": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri/properties"
+      },
+      "self": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri?lang=en"
+      },
+      "terms": {
+        "href": "<base>/api/ontologies/isdefiningontologybaseuri/terms"
+      }
+    },
+    "baseUris": [
+      "http://www.ebi.ac.uk/testcases/defining-ontology/",
+      "http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_"
+    ],
+    "config": {
+      "allowDownload": false,
+      "baseUris": [
+        "http://www.ebi.ac.uk/testcases/defining-ontology/",
+        "http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_"
+      ],
+      "creators": [],
+      "definitionProperties": [],
+      "fileLocation": "./testcases/defined-fields/IsDefiningOntologyBaseUri.owl",
+      "hiddenProperties": [],
+      "hierarchicalProperties": [],
+      "id": "isdefiningontologybaseuri",
+      "isSkos": false,
+      "labelProperty": "http://www.w3.org/2000/01/rdf-schema#label",
+      "namespace": "isdefiningontologybaseuri",
+      "oboSlims": false,
+      "preferredPrefix": "DEFONT",
+      "preferredRootTerms": [],
+      "synonymProperties": [],
+      "title": "Defining ontology with overlapping base URIs"
+    },
+    "lang": "en",
+    "languages": [
+      "en"
+    ],
+    "loadAttempts": 0,
+    "loaded": "<loaded>",
+    "message": "",
+    "numberOfIndividuals": 0,
+    "numberOfProperties": 2,
+    "numberOfTerms": 3,
+    "ontologyId": "isdefiningontologybaseuri",
+    "status": "LOADED",
+    "updated": "<updated>"
+  },
+  {
+    "_links": {
+      "individuals": {
         "href": "<base>/api/ontologies/isobsolete/individuals"
       },
       "properties": {

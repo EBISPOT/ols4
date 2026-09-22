@@ -365,6 +365,41 @@
   },
   {
     "baseUri": [
+      "http://www.ebi.ac.uk/testcases/defining-ontology/",
+      "http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_"
+    ],
+    "filterProperty": [
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/defining-ontology/defining-ontology.owl",
+    "isObsolete": false,
+    "language": [
+      "en"
+    ],
+    "linkedEntities": {},
+    "loaded": "<loaded>",
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "numberOfClasses": "3",
+    "numberOfEntities": "5",
+    "numberOfIndividuals": "0",
+    "numberOfProperties": "2",
+    "ontologyId": "isdefiningontologybaseuri",
+    "ontologyPurl": "./testcases/defined-fields/IsDefiningOntologyBaseUri.owl",
+    "preferredPrefix": "DEFONT",
+    "searchableAnnotationValues": [
+      false
+    ],
+    "sourceFileTimestamp": "<sourceFileTimestamp>",
+    "title": "Defining ontology with overlapping base URIs",
+    "type": [
+      "ontology"
+    ]
+  },
+  {
+    "baseUri": [
       "http://www.ebi.ac.uk/testcases/inter-ontology/a#"
     ],
     "filterProperty": [

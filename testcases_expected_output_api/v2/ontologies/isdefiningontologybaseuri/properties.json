@@ -1,0 +1,112 @@
+[
+  {
+    "appearsIn": [
+      "isdefiningontologybaseuri"
+    ],
+    "curie": "DEFONT_has_flag",
+    "definedBy": [
+      "isdefiningontologybaseuri"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": "has flag",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/defining-ontology/has_flag",
+    "isDefiningOntology": true,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "has flag"
+    ],
+    "linkedEntities": {
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "isdefiningontologybaseuri",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/defining-ontology/defining-ontology.owl",
+    "ontologyPreferredPrefix": "DEFONT",
+    "searchableAnnotationValues": false,
+    "shortForm": "DEFONT_has_flag",
+    "type": [
+      "entity",
+      "objectProperty",
+      "property"
+    ]
+  },
+  {
+    "appearsIn": [
+      "isdefiningontologybaseuri"
+    ],
+    "curie": "DEFONT_reason_for_obsolescence",
+    "definedBy": [
+      "isdefiningontologybaseuri"
+    ],
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": false,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+    "http://www.w3.org/2000/01/rdf-schema#label": "reason for obsolescence",
+    "imported": false,
+    "iri": "http://www.ebi.ac.uk/testcases/defining-ontology/reason_for_obsolescence",
+    "isDefiningOntology": true,
+    "isObsolete": false,
+    "isPreferredRoot": false,
+    "label": [
+      "reason for obsolescence"
+    ],
+    "linkedEntities": {
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "curie": "RDFS:label",
+        "definedBy": [
+          "rdfs"
+        ],
+        "hasLocalDefinition": false,
+        "label": [
+          "label"
+        ],
+        "numAppearsIn": 3.0,
+        "type": [
+          "entity",
+          "property"
+        ]
+      }
+    },
+    "linksTo": [
+      "http://www.w3.org/2000/01/rdf-schema#label"
+    ],
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0,
+    "ontologyId": "isdefiningontologybaseuri",
+    "ontologyIri": "http://www.ebi.ac.uk/testcases/defining-ontology/defining-ontology.owl",
+    "ontologyPreferredPrefix": "DEFONT",
+    "searchableAnnotationValues": false,
+    "shortForm": "DEFONT_reason_for_obsolescence",
+    "type": [
+      "annotationProperty",
+      "entity",
+      "property"
+    ]
+  }
+]
