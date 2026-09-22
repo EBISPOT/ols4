@@ -1,0 +1,392 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "isdefiningontologybaseuri",
+      "iri": "http://www.ebi.ac.uk/testcases/defining-ontology/defining-ontology.owl",
+      "preferredPrefix": "DEFONT",
+      "title": "Defining ontology with overlapping base URIs",
+      "baseUri": [
+        "http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_",
+        "http://www.ebi.ac.uk/testcases/defining-ontology/"
+      ],
+      "ontologyPurl": "./testcases/defined-fields/IsDefiningOntologyBaseUri.owl",
+      "type": [
+        "ontology"
+      ],
+      "directAncestor": [],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "imported": false,
+      "isObsolete": false,
+      "language": [
+        {"type":["literal"],"value":"en"}
+      ],
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
+      "numberOfClasses": {
+        "type": [
+          "literal"
+        ],
+        "value": "3"
+      },
+      "numberOfEntities": {
+        "type": [
+          "literal"
+        ],
+        "value": "5"
+      },
+      "numberOfIndividuals": {
+        "type": [
+          "literal"
+        ],
+        "value": "0"
+      },
+      "numberOfProperties": {
+        "type": [
+          "literal"
+        ],
+        "value": "2"
+      },
+      "searchableAnnotationValues": [
+        false,
+        {"type":["literal"],"value":"0"},
+        {"type":["literal"],"value":"2"},
+        {"type":["literal"],"value":"3"},
+        {"type":["literal"],"value":"5"}
+      ],
+      "classes": [
+        {
+          "iri": "http://purl.obolibrary.org/obo/UBERON_0000948",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0000948"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "hierarchicalAncestor": [],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "heart"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"heart"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "isdefiningontologybaseuri"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/defining-ontology/defining-ontology.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON_0000948"
+          }
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_0000001",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT:0000001"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": true,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": true,
+          "hasHierarchicalParents": false,
+          "hierarchicalAncestor": [],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "experimental factor"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"experimental factor"}
+          ],
+          "numDescendants": 1,
+          "numHierarchicalDescendants": 1,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "isdefiningontologybaseuri"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/defining-ontology/defining-ontology.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT_0000001"
+          }
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_0000002",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT:0000002"
+          },
+          "directAncestor": [
+            "http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_0000001"
+          ],
+          "directParent": [
+            "http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_0000001"
+          ],
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": true,
+          "hierarchicalAncestor": [
+            "http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_0000001"
+          ],
+          "hierarchicalParent": [
+            "http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_0000001"
+          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
+          "http://www.ebi.ac.uk/testcases/defining-ontology/reason_for_obsolescence": {
+            "type": [
+              "literal"
+            ],
+            "value": "Superseded by a newer term"
+          },
+          "http://www.geneontology.org/formats/oboInOwl#hasDbXref": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT:0000001"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "obsolete measurement"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_0000001",
+          "http://www.w3.org/2002/07/owl#deprecated": true,
+          "imported": false,
+          "isObsolete": true,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"obsolete measurement"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "isdefiningontologybaseuri"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/defining-ontology/defining-ontology.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT"
+          },
+          "searchableAnnotationValues": [
+            false,
+            {"type":["literal"],"value":"DEFONT:0000001"},
+            {"type":["literal"],"value":"Superseded by a newer term"}
+          ],
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT_0000002"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/defining-ontology/has_flag",
+          "type": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT_has_flag"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "has flag"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"has flag"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "isdefiningontologybaseuri"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/defining-ontology/defining-ontology.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT_has_flag"
+          }
+        },
+        {
+          "iri": "http://www.ebi.ac.uk/testcases/defining-ontology/reason_for_obsolescence",
+          "type": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT_reason_for_obsolescence"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "reason for obsolescence"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"reason for obsolescence"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "isdefiningontologybaseuri"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.ebi.ac.uk/testcases/defining-ontology/defining-ontology.owl"
+          },
+          "ontologyPreferredPrefix": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT_reason_for_obsolescence"
+          }
+        }
+      ],
+      "individuals": []
+    }
+  ]
+}

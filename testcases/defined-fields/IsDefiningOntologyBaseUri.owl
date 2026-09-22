@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!--
+    Regression test for https://github.com/EBISPOT/ols4/issues/836
+
+    Like EFO, this ontology mints most of its entities with a PREFIX_ pattern
+    (http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_0000001) but also
+    defines some properties directly under its namespace
+    (http://www.ebi.ac.uk/testcases/defining-ontology/reason_for_obsolescence,
+    cf. http://www.ebi.ac.uk/efo/reason_for_obsolescence in EFO). The config
+    therefore lists both the PREFIX_ form and the bare namespace as base_uri.
+
+    Expected: the bare-namespace properties are defined by this ontology
+    (isDefiningOntology true, so they are not shown as imported), the DEFONT_
+    entities keep their DEFONT_nnnnnnn short forms and DEFONT:nnnnnnn CURIEs
+    (no DEFONT_DEFONT_ doubling), a DEFONT:nnnnnnn CURIE xref still links to
+    the DEFONT_ entity, and the class copied in from another ontology is not
+    claimed.
+-->
+<rdf:RDF xmlns="http://www.ebi.ac.uk/testcases/defining-ontology/"
+     xml:base="http://www.ebi.ac.uk/testcases/defining-ontology"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#"
+     xmlns:defont="http://www.ebi.ac.uk/testcases/defining-ontology/">
+
+    <owl:Ontology rdf:about="http://www.ebi.ac.uk/testcases/defining-ontology/defining-ontology.owl"/>
+
+    <!-- Properties defined by this ontology directly under its namespace, i.e. not following the DEFONT_ pattern -->
+    <owl:AnnotationProperty rdf:about="http://www.ebi.ac.uk/testcases/defining-ontology/reason_for_obsolescence">
+        <rdfs:label>reason for obsolescence</rdfs:label>
+    </owl:AnnotationProperty>
+
+    <owl:ObjectProperty rdf:about="http://www.ebi.ac.uk/testcases/defining-ontology/has_flag">
+        <rdfs:label>has flag</rdfs:label>
+    </owl:ObjectProperty>
+
+    <!-- Classes defined by this ontology following the DEFONT_ pattern -->
+    <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_0000001">
+        <rdfs:label>experimental factor</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_0000002">
+        <rdfs:label>obsolete measurement</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_0000001"/>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+        <defont:reason_for_obsolescence>Superseded by a newer term</defont:reason_for_obsolescence>
+        <!-- CURIE xref: must still resolve to DEFONT_0000001 via the DEFONT_ base URI even though
+             the bare namespace is also configured as a base URI -->
+        <oboInOwl:hasDbXref>DEFONT:0000001</oboInOwl:hasDbXref>
+    </owl:Class>
+
+    <!-- Class copied in from another ontology: declared in this file, but its IRI is outside
+         our base URIs, so this ontology must not be reported as its defining ontology -->
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/UBERON_0000948">
+        <rdfs:label>heart</rdfs:label>
+    </owl:Class>
+
+</rdf:RDF>

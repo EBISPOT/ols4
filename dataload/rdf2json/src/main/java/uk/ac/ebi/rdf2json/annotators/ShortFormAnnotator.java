@@ -115,10 +115,27 @@ public class ShortFormAnnotator {
 		// return uri.substring("http://purl.obolibrary.org/obo/".length());
 		// }
 
+		// Base URIs may overlap (e.g. EFO lists both http://www.ebi.ac.uk/efo/EFO_ and
+		// http://www.ebi.ac.uk/efo/), so use the longest, i.e. most specific, match rather
+		// than whichever one the set happens to iterate first.
+		String matchedBaseUri = null;
 		for (String baseUri : ontologyBaseUris) {
-			if (uri.startsWith(baseUri) && preferredPrefix != null) {
-				return preferredPrefix + "_" + uri.substring(baseUri.length());
+			if (uri.startsWith(baseUri)
+					&& (matchedBaseUri == null || baseUri.length() > matchedBaseUri.length())) {
+				matchedBaseUri = baseUri;
 			}
+		}
+
+		if (matchedBaseUri != null && preferredPrefix != null) {
+			String localPart = uri.substring(matchedBaseUri.length());
+
+			// If the local part already carries the prefix (e.g. base URI http://www.ebi.ac.uk/efo/
+			// with http://www.ebi.ac.uk/efo/EFO_0000001), don't produce EFO_EFO_0000001
+			if (localPart.startsWith(preferredPrefix + "_")) {
+				return localPart;
+			}
+
+			return preferredPrefix + "_" + localPart;
 		}
 
 		if (uri.contains("/") || uri.contains("#")) {

@@ -1,0 +1,512 @@
+{
+  "iriToDefinitions": {
+    "http://purl.obolibrary.org/obo/UBERON_0000948": {
+      "definitions": [
+        {
+          "ontologyId": "isdefiningontologybaseuri",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "heart"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0000948"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [],
+      "definingOntologyIds": [],
+      "ontologyIdToDefinitions": {
+        "isdefiningontologybaseuri": {
+          "ontologyId": "isdefiningontologybaseuri",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": false,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "heart"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "UBERON:0000948"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_0000001": {
+      "definitions": [
+        {
+          "ontologyId": "isdefiningontologybaseuri",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "experimental factor"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT:0000001"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [
+        {
+          "ontologyId": "isdefiningontologybaseuri",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "experimental factor"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT:0000001"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingOntologyIds": [
+        "isdefiningontologybaseuri"
+      ],
+      "ontologyIdToDefinitions": {
+        "isdefiningontologybaseuri": {
+          "ontologyId": "isdefiningontologybaseuri",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "experimental factor"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT:0000001"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_0000002": {
+      "definitions": [
+        {
+          "ontologyId": "isdefiningontologybaseuri",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "obsolete measurement"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT:0000002"
+          },
+          "isObsolete": true
+        }
+      ],
+      "definingDefinitions": [
+        {
+          "ontologyId": "isdefiningontologybaseuri",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "obsolete measurement"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT:0000002"
+          },
+          "isObsolete": true
+        }
+      ],
+      "definingOntologyIds": [
+        "isdefiningontologybaseuri"
+      ],
+      "ontologyIdToDefinitions": {
+        "isdefiningontologybaseuri": {
+          "ontologyId": "isdefiningontologybaseuri",
+          "entityTypes": [
+            "class",
+            "entity"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "obsolete measurement"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT:0000002"
+          },
+          "isObsolete": true
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/defining-ontology/has_flag": {
+      "definitions": [
+        {
+          "ontologyId": "isdefiningontologybaseuri",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "has flag"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT_has_flag"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [
+        {
+          "ontologyId": "isdefiningontologybaseuri",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "has flag"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT_has_flag"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingOntologyIds": [
+        "isdefiningontologybaseuri"
+      ],
+      "ontologyIdToDefinitions": {
+        "isdefiningontologybaseuri": {
+          "ontologyId": "isdefiningontologybaseuri",
+          "entityTypes": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "has flag"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT_has_flag"
+          },
+          "isObsolete": false
+        }
+      }
+    },
+    "http://www.ebi.ac.uk/testcases/defining-ontology/reason_for_obsolescence": {
+      "definitions": [
+        {
+          "ontologyId": "isdefiningontologybaseuri",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "reason for obsolescence"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT_reason_for_obsolescence"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingDefinitions": [
+        {
+          "ontologyId": "isdefiningontologybaseuri",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "reason for obsolescence"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT_reason_for_obsolescence"
+          },
+          "isObsolete": false
+        }
+      ],
+      "definingOntologyIds": [
+        "isdefiningontologybaseuri"
+      ],
+      "ontologyIdToDefinitions": {
+        "isdefiningontologybaseuri": {
+          "ontologyId": "isdefiningontologybaseuri",
+          "entityTypes": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "isDefiningOntology": true,
+          "label": [
+            {
+              "type": [
+                "literal"
+              ],
+              "value": "reason for obsolescence"
+            }
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "DEFONT_reason_for_obsolescence"
+          },
+          "isObsolete": false
+        }
+      }
+    }
+  },
+  "ontologyIriToOntologyIds": {
+    "http://www.ebi.ac.uk/testcases/defining-ontology/defining-ontology.owl": [
+      "isdefiningontologybaseuri"
+    ]
+  },
+  "preferredPrefixToOntologyIds": {
+    "DEFONT": [
+      "isdefiningontologybaseuri"
+    ]
+  },
+  "ontologyIdToBaseUris": {
+    "isdefiningontologybaseuri": [
+      "http://purl.obolibrary.org/obo/DEFONT_",
+      "http://www.ebi.ac.uk/testcases/defining-ontology/",
+      "http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_"
+    ]
+  },
+  "ontologyIdToImportingOntologyIds": {},
+  "ontologyIdToImportedOntologyIds": {},
+  "ontologyIdToOntologyProperties": {
+    "isdefiningontologybaseuri": [
+      "baseUri",
+      "directAncestor",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "imported",
+      "iri",
+      "isObsolete",
+      "language",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "numberOfClasses",
+      "numberOfEntities",
+      "numberOfIndividuals",
+      "numberOfProperties",
+      "ontologyId",
+      "ontologyPurl",
+      "preferredPrefix",
+      "searchableAnnotationValues",
+      "title",
+      "type"
+    ]
+  },
+  "ontologyIdToClassProperties": {
+    "isdefiningontologybaseuri": [
+      "curie",
+      "directAncestor",
+      "directParent",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "hierarchicalAncestor",
+      "hierarchicalParent",
+      "hierarchicalProperty",
+      "http://www.ebi.ac.uk/testcases/defining-ontology/reason_for_obsolescence",
+      "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "http://www.w3.org/2002/07/owl#deprecated",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToPropertyProperties": {
+    "isdefiningontologybaseuri": [
+      "curie",
+      "directAncestor",
+      "hasDirectChildren",
+      "hasDirectParents",
+      "hasHierarchicalChildren",
+      "hasHierarchicalParents",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "http://www.w3.org/2000/01/rdf-schema#label",
+      "imported",
+      "iri",
+      "isObsolete",
+      "isPreferredRoot",
+      "label",
+      "numDescendants",
+      "numHierarchicalDescendants",
+      "ontologyId",
+      "ontologyIri",
+      "ontologyPreferredPrefix",
+      "searchableAnnotationValues",
+      "shortForm",
+      "type"
+    ]
+  },
+  "ontologyIdToIndividualProperties": {
+    "isdefiningontologybaseuri": []
+  },
+  "ontologyIdToEdgeProperties": {
+    "isdefiningontologybaseuri": []
+  },
+  "ontologyIdToUriToTypes": {
+    "isdefiningontologybaseuri": {
+      "http://purl.obolibrary.org/obo/UBERON_0000948": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_0000001": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_0000002": [
+        "CLASS"
+      ],
+      "http://www.ebi.ac.uk/testcases/defining-ontology/defining-ontology.owl": [
+        "ONTOLOGY"
+      ],
+      "http://www.ebi.ac.uk/testcases/defining-ontology/has_flag": [
+        "PROPERTY"
+      ],
+      "http://www.ebi.ac.uk/testcases/defining-ontology/reason_for_obsolescence": [
+        "PROPERTY"
+      ]
+    }
+  }
+}

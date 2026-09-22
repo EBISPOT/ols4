@@ -1,0 +1,14 @@
+{
+  "ontologies": [
+    {
+      "id": "IsDefiningOntologyBaseUri",
+      "preferredPrefix": "DEFONT",
+      "title": "Defining ontology with overlapping base URIs",
+      "base_uri": [
+        "http://www.ebi.ac.uk/testcases/defining-ontology/DEFONT_",
+        "http://www.ebi.ac.uk/testcases/defining-ontology/"
+      ],
+      "ontology_purl": "./testcases/defined-fields/IsDefiningOntologyBaseUri.owl"
+    }
+  ]
+}
