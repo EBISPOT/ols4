@@ -36,6 +36,10 @@ export default class Ontology extends Thing {
   getLogoURL(): string {
     return this.properties["depicted_by"] || undefined;
   }
+  // alternate formats of the ontology (dcterms:hasFormat), e.g. a CSV rendering
+  getHasFormats(): string[] {
+    return asArray(this.properties["http://purl.org/dc/terms/hasFormat"] || []);
+  }
   getDepictedBy(): Reified<string>[] {
     return Reified.fromJson<string>([
       ...asArray(this.properties["http://xmlns.com/foaf/0.1/depicted_by"] || []),

@@ -1,5 +1,6 @@
 import {
   AccountTree,
+  AttachFile,
   BugReport,
   Download,
   Email,
@@ -198,6 +199,22 @@ export default function OntologyPage() {
                     </button>
                   </Link>
                 )}
+                {ontology.getHasFormats().map((format) => (
+                  <Link
+                    key={format}
+                    to={format}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download={true}
+                  >
+                    <button className="button-secondary font-bold self-center">
+                      <div className="flex gap-2">
+                        <AttachFile />
+                        <div>{format.substring(format.lastIndexOf("/") + 1)}</div>
+                      </div>
+                    </button>
+                  </Link>
+                ))}
                 {ontology.getHomepage() && (
                   <Link
                     to={ontology.getHomepage()}
