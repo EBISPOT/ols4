@@ -89,7 +89,7 @@ docker run \
   -e NXF_CACHE_DIR="$TMP_DIR/NXF_CACHE_DIR" \
   -e OLS4_CURATIONS_PATH="${OLS4_CURATIONS_PATH:-}" \
   -e OLS_ORCID_NAME_FIXTURE="${OLS_ORCID_NAME_FIXTURE:-}" \
+  -e OLS_TEST_BIOREGISTRY_URL="${OLS_TEST_BIOREGISTRY_URL:-}" \
   ghcr.io/ebispot/ols4-nextflow:dev \
   bash -c "cd \"$OLS_HOME\" && nextflow run \"$OLS_HOME/dataload/nextflow/ols_dataload.nf\" \
     -c \"$OLS_NF_CONFIG\" -resume"
-

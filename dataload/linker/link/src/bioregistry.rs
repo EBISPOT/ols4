@@ -11,6 +11,7 @@ use std::sync::LazyLock;
 /// Source code and data is available under CC0/MIT licenses at https://github.com/biopragmatics/bioregistry
 
 const DEFAULT_REGISTRY_URL: &str = "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json";
+const TEST_SNAPSHOT_URL_ENV: &str = "OLS_TEST_BIOREGISTRY_URL";
 
 #[derive(Debug, Deserialize)]
 struct RegistryEntry {
@@ -40,10 +41,23 @@ struct DatabaseEntry {
 
 impl Bioregistry {
     pub fn new() -> Result<Self, Box<dyn std::error::Error>> {
-        Self::with_url(DEFAULT_REGISTRY_URL)
+        match std::env::var(TEST_SNAPSHOT_URL_ENV) {
+            Ok(url) if !url.is_empty() => Self::with_snapshot_url(&url),
+            _ => Self::with_url(DEFAULT_REGISTRY_URL),
+        }
     }
 
     pub fn with_url(json_url: &str) -> Result<Self, Box<dyn std::error::Error>> {
+        Self::load(json_url, json_url)
+    }
+
+    // Golden output cites the canonical registry URL even when tests fetch an
+    // immutable snapshot. Production does not set this test-only override.
+    fn with_snapshot_url(json_url: &str) -> Result<Self, Box<dyn std::error::Error>> {
+        Self::load(json_url, DEFAULT_REGISTRY_URL)
+    }
+
+    fn load(json_url: &str, source_url: &str) -> Result<Self, Box<dyn std::error::Error>> {
         let response = ureq::get(json_url).call()?;
         let registry: HashMap<String, RegistryEntry> = response.into_json()?;
         
@@ -101,7 +115,7 @@ impl Bioregistry {
         });
         
         Ok(Self {
-            registry_url: json_url.to_string(),
+            registry_url: source_url.to_string(),
             prefix_to_database,
             iri_prefix_to_database,
             patterns: HashMap::new(),
@@ -160,6 +174,40 @@ fn norm(s: &str) -> String {
         .replace('-', "")
         .replace('_', "")
         .replace('/', "")
+}
+
+#[cfg(test)]
+mod snapshot_tests {
+    use super::*;
+    use std::io::{Read, Write};
+    use std::net::TcpListener;
+
+    #[test]
+    fn test_snapshot_changes_lookup_data_without_changing_canonical_source() {
+        let listener = TcpListener::bind("127.0.0.1:0").unwrap();
+        let snapshot_url = format!("http://{}", listener.local_addr().unwrap());
+        let server = std::thread::spawn(move || {
+            let (mut stream, _) = listener.accept().unwrap();
+            let mut request = [0; 1024];
+            stream.read(&mut request).unwrap();
+            let body = r#"{"gard":{"preferred_prefix":"GARD","uri_format":"https://rarediseases.info.nih.gov/diseases/$1/index","pattern":"^\\d+$"}}"#;
+            write!(
+                stream,
+                "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{}",
+                body.len(),
+                body
+            )
+            .unwrap();
+        });
+
+        let mut registry = Bioregistry::with_snapshot_url(&snapshot_url).unwrap();
+        assert_eq!(registry.get_registry_url(), DEFAULT_REGISTRY_URL);
+        assert_eq!(
+            registry.get_url_for_id("GARD", "0005575"),
+            Some("https://rarediseases.info.nih.gov/diseases/0005575/index".to_string())
+        );
+        server.join().unwrap();
+    }
 }
 
 // Check if a string looks like a CURIE
