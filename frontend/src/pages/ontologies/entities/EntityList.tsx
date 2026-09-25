@@ -13,6 +13,7 @@ export default function EntityList({
   parentEntityIri,
   lang,
   showObsoleteEnabled,
+  subsetTree,
   onNavigateToEntity,
   title,
 }: {
@@ -21,6 +22,7 @@ export default function EntityList({
   parentEntityIri?: string;
   lang?: string;
   showObsoleteEnabled?: boolean;
+  subsetTree?: string[];
   onNavigateToEntity?: (ontologyId: string, entity: Entity) => void;
   title?: string;
 }) {
@@ -54,6 +56,7 @@ export default function EntityList({
           search,
           lang,
           showObsoleteEnabled,
+          subsetTree,
         })
       );
     } else {
@@ -72,7 +75,7 @@ export default function EntityList({
       
       dispatch(getEntities(params));
     }
-  }, [dispatch, ontologyId, entityType, page, rowsPerPage, search, parentEntityIri, lang, showObsoleteEnabled]);
+  }, [dispatch, ontologyId, entityType, page, rowsPerPage, search, parentEntityIri, lang, showObsoleteEnabled, JSON.stringify(subsetTree)]);
 
   useEffect(() => {
     setPage(0);
