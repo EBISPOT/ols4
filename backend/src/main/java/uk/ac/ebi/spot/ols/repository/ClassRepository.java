@@ -111,7 +111,7 @@ public class ClassRepository {
                 outputOpts);
     }
 
-    public Page<JsonElement> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String search, String lang, JsonTransformOptions outputOpts) {
+    public Page<JsonElement> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String search, Collection<String> subsetTree, String lang, JsonTransformOptions outputOpts) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -120,10 +120,8 @@ public class ClassRepository {
 
         Map<String, String> nodeProps = classNodeProperties(includeObsolete);
 
-        Page<JsonElement> result = isNullOrEmpty(search) ? this.postgresClient.getDirectChildren(
-                id, nodeProps, pageable) :
-                this.postgresClient.getDirectChildren(
-                id, nodeProps, pageable, search);
+        Page<JsonElement> result = this.postgresClient.getDirectChildren(
+                id, nodeProps, pageable, isNullOrEmpty(search) ? null : search, subsetTree);
 
         return  result
                     .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
@@ -171,7 +169,7 @@ public class ClassRepository {
                 ;
     }
 
-    public Page<JsonElement> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
+    public Page<JsonElement> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, Collection<String> subsetTree, String lang, JsonTransformOptions outputOpts) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -180,7 +178,7 @@ public class ClassRepository {
 
         Map<String, String> nodeProps = classNodeProperties(includeObsolete);
 
-        return this.postgresClient.getHierarchicalChildren(id, nodeProps, pageable)
+        return this.postgresClient.getHierarchicalChildren(id, nodeProps, pageable, subsetTree)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }

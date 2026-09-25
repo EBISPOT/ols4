@@ -6,6 +6,8 @@ import org.jooq.Table;
 import org.jooq.impl.DSL;
 import org.jooq.impl.SQLDataType;
 
+import java.util.Collection;
+
 public final class JooqSupport {
 
     public static final Table<?> OLS_AUTOSUGGEST = DSL.table(DSL.name("ols_autosuggest"));
@@ -57,6 +59,33 @@ public final class JooqSupport {
         // (e.g. e2.direct_parents @> ARRAY[e1.iri]). The `= ANY` form cannot use the GIN index
         // and scans every row of the ontology per lookup. See GitHub issue #1276.
         return DSL.condition("{0} @> ARRAY[{1}]", arrayField, valueField);
+    }
+
+    /**
+     * Restricts entities to the tree of the given subsets: the entities in any of the subsets
+     * (oboInOwl:inSubset), and every entity above one of them in the hierarchy, so that a tree
+     * built from the matching entities still reaches each subset member from its roots.
+     *
+     * The ancestors come from the members' hierarchical_ancestors and direct_ancestors (an
+     * individual's direct_ancestors are its classes and their superclasses), plus the classes of
+     * the individuals among the hierarchical ancestors. Pairing each IRI with its ontology_id keeps
+     * the subquery uncorrelated, so it runs once rather than per row.
+     */
+    public static Condition inSubsetTree(String qualifier, Collection<String> subsets) {
+        Field<String[]> subsetsArray = DSL.val(subsets.toArray(new String[0]));
+        return DSL.condition(
+                "({0} && {3}::text[] OR ({1}, {2}) IN ("
+                        + "SELECT m.ontology_id, unnest(m.hierarchical_ancestors || m.direct_ancestors) "
+                        + "FROM ols_entities m WHERE m.subset && {3}::text[] "
+                        + "UNION "
+                        + "SELECT a.ontology_id, unnest(a.direct_ancestors) FROM ols_entities a "
+                        + "WHERE (a.ontology_id, a.iri) IN ("
+                        + "SELECT m.ontology_id, unnest(m.hierarchical_ancestors) "
+                        + "FROM ols_entities m WHERE m.subset && {3}::text[])))",
+                field(qualifier, "subset", String[].class),
+                field(qualifier, "ontology_id", String.class),
+                field(qualifier, "iri", String.class),
+                subsetsArray);
     }
 
     public static Field<String> castAsText(Field<?> field) {

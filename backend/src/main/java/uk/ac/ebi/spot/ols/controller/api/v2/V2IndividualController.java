@@ -174,6 +174,9 @@ public class V2IndividualController {
             @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
+            @RequestParam(value = "subsetTree", required = false)
+            @Parameter(name = "subsetTree",
+                    description = "Only return entities in one of these subsets (oboInOwl:inSubset), or with a member of one of them below them in the hierarchy. Comma separated subset IRIs.") List<String> subsetTree,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
@@ -182,7 +185,7 @@ public class V2IndividualController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                        individualRepository.getHierarchicalChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, lang, outputOpts)
+                        individualRepository.getHierarchicalChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, subsetTree, lang, outputOpts)
                         .map(V2Entity::new)
                 ),
                 HttpStatus.OK);
@@ -229,6 +232,9 @@ public class V2IndividualController {
             @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
+            @RequestParam(value = "subsetTree", required = false)
+            @Parameter(name = "subsetTree",
+                    description = "Only return entities in one of these subsets (oboInOwl:inSubset), or with a member of one of them below them in the hierarchy. Comma separated subset IRIs.") List<String> subsetTree,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
@@ -238,7 +244,7 @@ public class V2IndividualController {
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
                         individualRepository.getIndividualsOfClass(
-                                ontologyId, classIri, pageable, includeObsoleteEntities, lang, outputOpts)
+                                ontologyId, classIri, pageable, includeObsoleteEntities, subsetTree, lang, outputOpts)
                                 .map(V2Entity::new)
                 ),
                 HttpStatus.OK);

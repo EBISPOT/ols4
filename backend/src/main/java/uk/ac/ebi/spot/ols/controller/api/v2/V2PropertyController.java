@@ -170,6 +170,9 @@ public class V2PropertyController {
             @Parameter(name = "property",
                     description = "The IRI of the property, this value must be double URL encoded",
                     example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_0000824") String iri,
+            @RequestParam(value = "subsetTree", required = false)
+            @Parameter(name = "subsetTree",
+                    description = "Only return entities in one of these subsets (oboInOwl:inSubset), or with a member of one of them below them in the hierarchy. Comma separated subset IRIs.") List<String> subsetTree,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
@@ -178,7 +181,7 @@ public class V2PropertyController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                    propertyRepository.getChildrenByOntologyId(ontologyId, pageable, iri, lang, outputOpts)
+                    propertyRepository.getChildrenByOntologyId(ontologyId, pageable, iri, subsetTree, lang, outputOpts)
                     .map(V2Entity::new)
                 ),
                  HttpStatus.OK);

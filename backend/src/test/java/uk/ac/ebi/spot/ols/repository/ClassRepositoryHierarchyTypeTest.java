@@ -9,6 +9,7 @@ import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -55,7 +56,7 @@ class ClassRepositoryHierarchyTypeTest {
         String iri = "http://example.org/EFO_0001";
 
         repository.getChildrenByOntologyId(
-                "efo", pageable, iri, includeObsolete, null, "en", options);
+                "efo", pageable, iri, includeObsolete, null, null, "en", options);
         repository.getAncestorsByOntologyId(
                 "efo", pageable, iri, includeObsolete, "en", options);
         repository.getDescendantsByOntologyId(
@@ -63,7 +64,7 @@ class ClassRepositoryHierarchyTypeTest {
         repository.getHierarchicalDescendantsByOntologyId(
                 "efo", pageable, iri, includeObsolete, "en", options);
         repository.getHierarchicalChildrenByOntologyId(
-                "efo", pageable, iri, includeObsolete, "en", options);
+                "efo", pageable, iri, includeObsolete, null, "en", options);
         repository.getHierarchicalAncestorsByOntologyId(
                 "efo", pageable, iri, includeObsolete, "en", options);
         repository.getIndividualAncestorsByOntologyId(
@@ -75,7 +76,8 @@ class ClassRepositoryHierarchyTypeTest {
 
         @Override
         public Page<JsonElement> getDirectChildren(
-                String id, Map<String, String> properties, Pageable pageable) {
+                String id, Map<String, String> properties, Pageable pageable, String search,
+                Collection<String> subsetTree) {
             return record(properties, pageable);
         }
 
@@ -99,7 +101,8 @@ class ClassRepositoryHierarchyTypeTest {
 
         @Override
         public Page<JsonElement> getHierarchicalChildren(
-                String id, Map<String, String> properties, Pageable pageable) {
+                String id, Map<String, String> properties, Pageable pageable,
+                Collection<String> subsetTree) {
             return record(properties, pageable);
         }
 
