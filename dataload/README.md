@@ -1,5 +1,8 @@
 Converts ontologies represented in OWL RDF/XML to a PostgreSQL database.
 
+The executable and workflow test plan is in
+[Dataload testing strategy](../docs/dataload-testing-strategy.md).
+
 # Usage
 
 Start with a config JSON file that lists the ontologies you want to load. You can get the OBO config into a file called `foundry.json` like so (make sure you have yq installed):
@@ -36,4 +39,3 @@ Now you should have a PostgreSQL database ready to start!
 Each rdf2json process writes a `.status.json` file alongside its output JSON file. These status files can be collected and processed by the reporting service to generate a consolidated loading report and optionally send notifications.
 
 See the [reporting module README](reporting/README.md) for more details on how the reporting system works.
-

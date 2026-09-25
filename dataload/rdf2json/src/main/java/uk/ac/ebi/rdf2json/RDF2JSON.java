@@ -185,6 +185,7 @@ public class RDF2JSON {
 
 
         Set<String> loadedOntologyIds = new HashSet<>();
+        Set<String> skippedOntologyIds = new HashSet<>();
 
         for(var ontoConfig : mergedConfigs.values()) {
 
@@ -194,6 +195,7 @@ public class RDF2JSON {
             if(ontoConfig.containsKey("is_obsolete") &&
                Boolean.TRUE.equals(ontoConfig.get("is_obsolete"))) {
                 logger.info("Skipping obsolete ontology: {}", ontologyId);
+                skippedOntologyIds.add(ontologyId);
                 OntologyStatusWriter.writeSkipped(outputFilePath, ontologyId, "Ontology is marked as obsolete");
                 continue;
             }
@@ -206,10 +208,8 @@ public class RDF2JSON {
 
                 if(graph.ontologyNode == null) {
                     logger.error("No Ontology node found; nothing will be written");
-                    // Write status file for failed ontology (will check for fallback later)
-                    if (mergeOutputWith == null) {
-                        OntologyStatusWriter.writeFailedNoFallback(outputFilePath, ontologyId, "No Ontology node found in RDF");
-                    }
+                    // A fallback is reported later only if the previous output contains this ontology.
+                    OntologyStatusWriter.writeFailedNoFallback(outputFilePath, ontologyId, "No Ontology node found in RDF");
                     continue;
                 }
 
@@ -281,7 +281,9 @@ public class RDF2JSON {
                         // There are two cases where we want to use the previous ontology data:
                         // 1. We didn't process this ontology at all in the current run
                         // 2. We tried to process this ontology but it failed (not in loadedOntologyIds)
-                        if(!loadedOntologyIds.contains(ontologyId)) {
+                        if(!loadedOntologyIds.contains(ontologyId)
+                                && !skippedOntologyIds.contains(ontologyId)
+                                && (filterOntologyIds == null || filterOntologyIds.contains(ontologyId))) {
                             // Check if this was actually a failed ontology in the current run
                             boolean wasInConfig = mergedConfigs.containsKey(ontologyId);
 

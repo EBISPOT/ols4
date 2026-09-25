@@ -83,6 +83,25 @@
 
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <version>3.5.3</version>
+            <configuration>
+                <systemPropertyVariables>
+                    <rdf2json.jar>${project.build.directory}/${project.build.finalName}.jar</rdf2json.jar>
+                </systemPropertyVariables>
+            </configuration>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>integration-test</goal>
+                        <goal>verify</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-shade-plugin</artifactId>
             <configuration>
                 <shadedArtifactAttached>false</shadedArtifactAttached>

@@ -1,0 +1,18 @@
+{
+  "ontologies": [
+    {
+      "id": "EXAMPLE",
+      "title": "original",
+      "is_obsolete": true,
+      "baseOnly": "retained",
+      "filterProperty": [
+        "urn:example:base",
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      ]
+    },
+    {
+      "id": "second",
+      "title": "untouched"
+    }
+  ]
+}
