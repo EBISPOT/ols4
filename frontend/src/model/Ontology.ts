@@ -36,6 +36,12 @@ export default class Ontology extends Thing {
   getLogoURL(): string {
     return this.properties["depicted_by"] || undefined;
   }
+  getDepictedBy(): Reified<string>[] {
+    return Reified.fromJson<string>([
+      ...asArray(this.properties["http://xmlns.com/foaf/0.1/depicted_by"] || []),
+      ...asArray(this.properties["http://xmlns.com/foaf/0.1/depiction"] || []),
+    ]);
+  }
   getOntologyPurl(): string {
     return this.properties["ontologyPurl"];
   }

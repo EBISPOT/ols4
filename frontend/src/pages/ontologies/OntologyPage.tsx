@@ -22,9 +22,11 @@ import LanguagePicker from "../../components/LanguagePicker";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import SearchBox from "../../components/SearchBox";
 import { Tab, Tabs } from "../../components/Tabs";
+import LinkedEntities from "../../model/LinkedEntities";
 import Ontology from "../../model/Ontology";
 import Reified from "../../model/Reified";
 import EntityList from "./entities/EntityList";
+import EntityImagesSection from "./entities/entityPageSections/EntityImagesSection";
 import EntityTree from "./entities/EntityTree";
 import MetadataTooltip from "./entities/entityPageSections/MetadataTooltip";
 import addLinksToText from "./entities/entityPageSections/addLinksToText";
@@ -162,6 +164,16 @@ export default function OntologyPage() {
                   <p>
                     {ontology.getDescription() ? ontology.getDescription() : ""}
                   </p>
+                </div>
+                {/* the images section carries mb-2 and the card mb-4, so 16px
+                    above needs the 8px pulled back below to match */}
+                <div className="mt-4 -mb-2">
+                  <EntityImagesSection
+                    entity={ontology}
+                    linkedEntities={new LinkedEntities({})}
+                    lightbox
+                    hideHeading
+                  />
                 </div>
               </div>
               <OntologyImportsSection ontology={ontology} />
