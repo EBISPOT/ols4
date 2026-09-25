@@ -11,6 +11,8 @@ import Ontology from "../../model/Ontology";
 import createTreeFromEntities from "./entities/createTreeFromEntities";
 
 const RDF_TYPE_IRI = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
+const SUBSET_PROPERTY_IRI =
+  "http://www.geneontology.org/formats/oboInOwl#SubsetProperty";
 
 export interface OntologiesState {
   ontology: Ontology | undefined;
@@ -18,6 +20,9 @@ export interface OntologiesState {
   nodesWithChildrenLoaded: string[];
   nodeChildren: any;
   rootNodes: TreeNode[];
+  subsets: SubsetOption[];
+  selectedSubsets: string[];
+  subsetMemberCounts: { [iri: string]: number };
   ontologies: Ontology[];
   totalOntologies: number;
   entities: Entity[];
@@ -55,6 +60,11 @@ export interface TreeNode {
   parentRelationToChild: string | null; // if applicable, relation from the parent node to this node (e.g. has_part)
   childRelationToParent: string | null; // if applicable, relation from this node to the parent node (e.g. part_of)
 }
+export interface SubsetOption {
+  iri: string;
+  label: string;
+  numMembers: number;
+}
 
 const initialState: OntologiesState = {
   ontology: undefined,
@@ -62,6 +72,9 @@ const initialState: OntologiesState = {
   nodesWithChildrenLoaded: [],
   nodeChildren: {},
   rootNodes: [],
+  subsets: [],
+  selectedSubsets: [],
+  subsetMemberCounts: {},
   ontologies: [],
   totalOntologies: 0,
   entities: [],
@@ -112,6 +125,17 @@ export const hideSiblings = createAction("ontologies_hide_siblings");
 
 export const showCounts = createAction("ontologies_show_counts");
 export const hideCounts = createAction("ontologies_hide_counts");
+
+export const setSelectedSubsets = createAction<string[]>(
+  "ontologies_set_selected_subsets"
+);
+
+// Restricts a tree request to the selected subsets' members and the entities above them
+function subsetTreeParams(subsetTree?: string[]): Record<string, string> {
+  return subsetTree && subsetTree.length > 0
+    ? { subsetTree: subsetTree.join(",") }
+    : {};
+}
 export const setSpecificRootIri = createAction<string>("ontologies_set_specific_root_iri");
 
 export const getOntology = createAsyncThunk(
@@ -442,6 +466,7 @@ export const getRootEntities = createAsyncThunk(
     preferredRoots,
     lang,
     showObsoleteEnabled,
+    subsetTree,
     apiUrl,
   }: any) => {
     if (entityType === "individuals") {
@@ -452,6 +477,7 @@ export const getRootEntities = createAsyncThunk(
             size: "1000",
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
+            ...subsetTreeParams(subsetTree),
           })}`,
           undefined,
           apiUrl
@@ -462,6 +488,7 @@ export const getRootEntities = createAsyncThunk(
             size: "1000",
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
+            ...subsetTreeParams(subsetTree),
           })}`,
           undefined,
           apiUrl
@@ -484,6 +511,7 @@ export const getRootEntities = createAsyncThunk(
           size: "1000",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
+          ...subsetTreeParams(subsetTree),
         })}`,
         undefined,
         apiUrl
@@ -503,6 +531,7 @@ export const getRootEntities = createAsyncThunk(
           size: "1000",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
+          ...subsetTreeParams(subsetTree),
         })}`,
         undefined,
         apiUrl
@@ -518,6 +547,94 @@ export const getRootEntities = createAsyncThunk(
     }
   }
 );
+// The entity types a tree tab lists under a subset (the class tree shows instances
+// too), as a value of the entities endpoint's type filter
+function subsetMemberTypes(entityType: string): string {
+  if (entityType === "classes") return "class,individual";
+  if (entityType === "individuals") return "individual";
+  return "property";
+}
+
+// The subsets used by entities of the tree's type, with how many entities each has
+export const getSubsets = createAsyncThunk(
+  "ontologies_subsets",
+  async ({
+    ontologyId,
+    entityType,
+    lang,
+    showObsoleteEnabled,
+    apiUrl,
+  }: any): Promise<SubsetOption[]> => {
+    const [subsetsPage, facetResponse] = await Promise.all([
+      getPaginated<any>(
+        `api/v2/ontologies/${ontologyId}/properties/${encodeURIComponent(
+          encodeURIComponent(SUBSET_PROPERTY_IRI)
+        )}/children?${new URLSearchParams({ size: "1000", lang })}`,
+        undefined,
+        apiUrl
+      ),
+      get<any>(
+        `api/v2/ontologies/${ontologyId}/entities?${new URLSearchParams({
+          type: subsetMemberTypes(entityType),
+          size: "1",
+          lang,
+          includeObsoleteEntities: showObsoleteEnabled,
+          facetFields: "subset",
+        })}`,
+        undefined,
+        apiUrl
+      ),
+    ]);
+    const numMembers: { [subsetIri: string]: number } =
+      facetResponse.facetFieldsToCounts?.["subset"] || {};
+    return subsetsPage.elements
+      .map((obj: any) => thingFromJsonProperties(obj))
+      .filter((subset: Entity) => numMembers[subset.getIri()] > 0)
+      .map((subset: Entity) => ({
+        iri: subset.getIri(),
+        label: subset.getName(),
+        numMembers: numMembers[subset.getIri()],
+      }))
+      .sort((a: SubsetOption, b: SubsetOption) => a.label.localeCompare(b.label));
+  }
+);
+
+// How many of the selected subsets' members are below each entity in the tree
+export const getSubsetMemberCounts = createAsyncThunk(
+  "ontologies_subset_member_counts",
+  async ({
+    ontologyId,
+    entityType,
+    selectedSubsets,
+    lang,
+    showObsoleteEnabled,
+    apiUrl,
+  }: any): Promise<{ [iri: string]: number }> => {
+    const res = await get<any>(
+      `api/v2/ontologies/${ontologyId}/entities?${new URLSearchParams({
+        type: subsetMemberTypes(entityType),
+        subset: selectedSubsets.join(","),
+        size: "1",
+        lang,
+        includeObsoleteEntities: showObsoleteEnabled,
+        facetFields: "hierarchicalAncestor directAncestor",
+      })}`,
+      undefined,
+      apiUrl
+    );
+    // An entity below another through both subclass and hierarchical links appears in both
+    // facets, so take the larger count rather than the sum
+    const counts: { [iri: string]: number } = {};
+    for (const facet of ["hierarchicalAncestor", "directAncestor"]) {
+      const facetCounts = res.facetFieldsToCounts?.[facet] || {};
+      for (const iri of Object.keys(facetCounts)) {
+        counts[iri] = Math.max(counts[iri] || 0, facetCounts[iri]);
+      }
+    }
+    return counts;
+  }
+);
+
 export const getDirectChildrenEntities = createAsyncThunk(
   "ontologies_direct_children_entities",
   async ({
@@ -530,6 +647,7 @@ export const getDirectChildrenEntities = createAsyncThunk(
     page,
     size,
     search,
+    subsetTree,
   }: any) => {
     console.log('getDirectChildrenEntities called with:', {
       ontologyId,
@@ -548,6 +666,7 @@ export const getDirectChildrenEntities = createAsyncThunk(
       size: size.toString(),
       lang: lang || "en",
       includeObsoleteEntities: showObsoleteEnabled?.toString() || "false",
+      ...subsetTreeParams(subsetTree),
     });
     
     if (search) {
@@ -586,6 +705,7 @@ export const getDirectChildrenCount = createAsyncThunk(
     entityType,
     lang,
     showObsoleteEnabled,
+    subsetTree,
     apiUrl,
   }: any) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
@@ -597,6 +717,7 @@ export const getDirectChildrenCount = createAsyncThunk(
           size: "1",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
+          ...subsetTreeParams(subsetTree),
         })}`,
         undefined,
         apiUrl
@@ -607,6 +728,7 @@ export const getDirectChildrenCount = createAsyncThunk(
           size: "1",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
+          ...subsetTreeParams(subsetTree),
         })}`,
         undefined,
         apiUrl
@@ -617,6 +739,7 @@ export const getDirectChildrenCount = createAsyncThunk(
           size: "1",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
+          ...subsetTreeParams(subsetTree),
         })}`,
         undefined,
         apiUrl
@@ -640,6 +763,7 @@ export const getNodeChildren = createAsyncThunk(
     lang,
     apiUrl,
     includeObsoleteEntities: showObsoleteEnabled,
+    subsetTree,
   }: any) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
     var childrenPage: any;
@@ -649,6 +773,7 @@ export const getNodeChildren = createAsyncThunk(
                 size: "1000",
                 lang,
                 includeObsoleteEntities: showObsoleteEnabled,
+                ...subsetTreeParams(subsetTree),
             })}`,
             undefined,
             apiUrl
@@ -658,6 +783,7 @@ export const getNodeChildren = createAsyncThunk(
                 size: "1000",
                 lang,
                 includeObsoleteEntities: showObsoleteEnabled,
+                ...subsetTreeParams(subsetTree),
             })}`,
             undefined,
             apiUrl
@@ -667,6 +793,7 @@ export const getNodeChildren = createAsyncThunk(
                 size: "1000",
                 lang,
                 includeObsoleteEntities: showObsoleteEnabled,
+                ...subsetTreeParams(subsetTree),
             })}`,
             undefined,
             apiUrl
@@ -679,6 +806,7 @@ export const getNodeChildren = createAsyncThunk(
                 size: "1000",
                 lang,
                 includeObsoleteEntities: showObsoleteEnabled,
+                ...subsetTreeParams(subsetTree),
             })}`,
             undefined,
             apiUrl
@@ -710,6 +838,7 @@ export const getNodeChildren = createAsyncThunk(
               size: "1000",
               lang,
               includeObsoleteEntities: showObsoleteEnabled,
+              ...subsetTreeParams(subsetTree),
             }
           )}`,
           undefined,
@@ -721,6 +850,7 @@ export const getNodeChildren = createAsyncThunk(
               size: "1000",
               lang,
               includeObsoleteEntities: showObsoleteEnabled,
+              ...subsetTreeParams(subsetTree),
             }
           )}`,
           undefined,
@@ -740,6 +870,7 @@ export const getNodeChildren = createAsyncThunk(
             size: "1000",
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
+            ...subsetTreeParams(subsetTree),
           }
         )}`,
         undefined,
@@ -1002,6 +1133,27 @@ const ontologiesSlice = createSlice({
       --state.numPendingTreeRequests;
     });
     builder.addCase(
+      getSubsets.fulfilled,
+      (state: OntologiesState, action: PayloadAction<SubsetOption[]>) => {
+        state.subsets = action.payload;
+        // drop selections the ontology or tree type no longer offers
+        const available = new Set(action.payload.map((subset) => subset.iri));
+        const stillSelected = state.selectedSubsets.filter((iri) => available.has(iri));
+        if (stillSelected.length !== state.selectedSubsets.length) {
+          state.selectedSubsets = stillSelected;
+        }
+      }
+    );
+    builder.addCase(getSubsetMemberCounts.pending, (state: OntologiesState) => {
+      state.subsetMemberCounts = {};
+    });
+    builder.addCase(
+      getSubsetMemberCounts.fulfilled,
+      (state: OntologiesState, action: PayloadAction<{ [iri: string]: number }>) => {
+        state.subsetMemberCounts = action.payload;
+      }
+    );
+    builder.addCase(
       getOntologies.fulfilled,
       (state: OntologiesState, action: PayloadAction<Page<Ontology>>) => {
         state.ontologies = action.payload.elements;
@@ -1125,6 +1277,12 @@ const ontologiesSlice = createSlice({
     builder.addCase(hideCounts, (state: OntologiesState) => {
       state.displayCounts = false;
     });
+    builder.addCase(
+      setSelectedSubsets,
+      (state: OntologiesState, action: PayloadAction<string[]>) => {
+        state.selectedSubsets = action.payload;
+      }
+    );
     builder.addCase(setSpecificRootIri, (state: OntologiesState, action: PayloadAction<string>) => {
       state.specificRootIri = action.payload;
     });

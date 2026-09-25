@@ -74,7 +74,7 @@ class V2PropertyControllerWIT {
         when(propertyRepository.findByOntologyId(
                 any(), any(), any(), any(), any(), any(), anyBoolean(), anyMap(), any()))
                 .thenReturn(propertyPage());
-        when(propertyRepository.getChildrenByOntologyId(any(), any(), any(), any(), any()))
+        when(propertyRepository.getChildrenByOntologyId(any(), any(), any(), any(), any(), any()))
                 .thenReturn(hierarchyPage());
         when(propertyRepository.getAncestorsByOntologyId(any(), any(), any(), any(), any()))
                 .thenReturn(hierarchyPage());
@@ -511,7 +511,7 @@ class V2PropertyControllerWIT {
     @ParameterizedTest
     @CsvSource({"notARealField,asc", "iri,sideways"})
     void returnsStableErrorForUnsupportedChildrenSort(String sort) throws Exception {
-        when(propertyRepository.getChildrenByOntologyId(any(), any(), any(), any(), any()))
+        when(propertyRepository.getChildrenByOntologyId(any(), any(), any(), any(), any(), any()))
                 .thenThrow(new IllegalArgumentException("Unsupported sort field: " + sort));
 
         assertUnsupportedSort(get(CHILDREN_URI).param("sort", sort), sort);
@@ -530,7 +530,7 @@ class V2PropertyControllerWIT {
     @CsvSource({"children", "ancestors"})
     void returnsStableBadRequestForInvalidHierarchyOntologyIdentifier(String route)
             throws Exception {
-        when(propertyRepository.getChildrenByOntologyId(any(), any(), any(), any(), any()))
+        when(propertyRepository.getChildrenByOntologyId(any(), any(), any(), any(), any(), any()))
                 .thenThrow(new IllegalArgumentException("Invalid ontology ID: efo/unsafe"));
         when(propertyRepository.getAncestorsByOntologyId(any(), any(), any(), any(), any()))
                 .thenThrow(new IllegalArgumentException("Invalid ontology ID: efo/unsafe"));
@@ -675,7 +675,7 @@ class V2PropertyControllerWIT {
         ArgumentCaptor<JsonTransformOptions> options = ArgumentCaptor.forClass(JsonTransformOptions.class);
         if (children) {
             verify(propertyRepository).getChildrenByOntologyId(
-                    ontologyId.capture(), pageable.capture(), iri.capture(), lang.capture(), options.capture());
+                    ontologyId.capture(), pageable.capture(), iri.capture(), any(), lang.capture(), options.capture());
         } else {
             verify(propertyRepository).getAncestorsByOntologyId(
                     ontologyId.capture(), pageable.capture(), iri.capture(), lang.capture(), options.capture());

@@ -106,14 +106,14 @@ public class PropertyRepository {
                 outputOpts));
     }
 
-    public Page<JsonElement> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, String lang, JsonTransformOptions outputOpts) {
+    public Page<JsonElement> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, Collection<String> subsetTree, String lang, JsonTransformOptions outputOpts) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
         String id = ontologyId + "+property+" + iri;
 
-        return this.postgresClient.getDirectChildren(id, Map.of(), pageable)
+        return this.postgresClient.getDirectChildren(id, Map.of(), pageable, null, subsetTree)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }

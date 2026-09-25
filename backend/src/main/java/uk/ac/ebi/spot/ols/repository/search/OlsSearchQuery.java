@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContains;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContainsCaseInsensitive;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.field;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.inSubsetTree;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.matchesTsQuery;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.phraseToTsQuery;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.toTsQuery;
@@ -30,6 +31,7 @@ public class OlsSearchQuery {
     private static final Pattern SAFE_FIELD_NAME = Pattern.compile("^[a-zA-Z0-9_:/.#-]+$");
 
     String searchText = null;
+    Collection<String> subsetTree = null;
     boolean exactMatch = false;
     List<SearchFilter> filters = new ArrayList<>();
     List<List<SearchFilter>> anyFilterGroups = new ArrayList<>();
@@ -104,6 +106,13 @@ public class OlsSearchQuery {
                         entry.getKey(), entry.getValue(), false, searchType))
                 .toList();
         this.anyFilterGroups.add(group);
+    }
+
+    /**
+     * Restrict results to the given subsets' members and their ancestors (see JooqSupport.inSubsetTree).
+     */
+    public void setSubsetTree(Collection<String> subsets) {
+        this.subsetTree = subsets;
     }
 
     public void addExcludeFilter(String propertyName, Collection<String> propertyValues, SearchType searchType) {
@@ -195,6 +204,10 @@ public class OlsSearchQuery {
                 continue;
             }
             condition = condition.and(buildFilterCondition(qualifier, f, true));
+        }
+
+        if (subsetTree != null && !subsetTree.isEmpty()) {
+            condition = condition.and(inSubsetTree(qualifier, subsetTree));
         }
 
         return condition;

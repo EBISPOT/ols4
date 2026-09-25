@@ -22,6 +22,8 @@ import {
   getAncestors,
   getNodeChildren,
   getRootEntities,
+  getSubsets,
+  getSubsetMemberCounts,
   hideCounts,
   hideObsolete,
   hideSiblings,
@@ -31,6 +33,7 @@ import {
   showCounts,
   showObsolete,
   showSiblings,
+  setSelectedSubsets,
   setSpecificRootIri,
   getEntity,
   getDirectChildrenCount,
@@ -62,6 +65,15 @@ export default function EntityTree({
   );
   const nodeChildren = useAppSelector((state) => state.ontologies.nodeChildren);
   const rootNodes = useAppSelector((state) => state.ontologies.rootNodes);
+  const subsets = useAppSelector((state) => state.ontologies.subsets);
+  const selectedSubsets = useAppSelector(
+    (state) => state.ontologies.selectedSubsets
+  );
+  const subsetMemberCounts = useAppSelector(
+    (state) => state.ontologies.subsetMemberCounts
+  );
+  const filteringBySubsets = selectedSubsets.length > 0 && !specifiedRootIri;
+  const subsetTree = filteringBySubsets ? selectedSubsets : undefined;
   const numPendingTreeRequests = useAppSelector(
     (state) => state.ontologies.numPendingTreeRequests
   );
@@ -105,6 +117,7 @@ export default function EntityTree({
               entityType: entityType === "entities" ? "classes" : entityType,
               lang,
               showObsoleteEnabled,
+              subsetTree,
               apiUrl,
             })
           );
@@ -121,6 +134,7 @@ export default function EntityTree({
       entityType,
       lang,
       showObsoleteEnabled,
+      JSON.stringify(subsetTree),
       apiUrl,
     ]
   );
@@ -146,6 +160,7 @@ export default function EntityTree({
     showObsoleteEnabled,
     preferredRoots,
     lang,
+    JSON.stringify(subsetTree),
   ]);
 
   useEffect(() => {
@@ -184,6 +199,7 @@ export default function EntityTree({
           preferredRoots,
           lang,
           showObsoleteEnabled,
+          subsetTree,
           apiUrl,
         })
       );
@@ -198,6 +214,50 @@ export default function EntityTree({
     lang,
     showObsoleteEnabled,
     specifiedRootIri,
+    JSON.stringify(subsetTree),
+  ]);
+
+  useEffect(() => {
+    if (specifiedRootIri) return;
+    let promise = dispatch(
+      getSubsets({
+        ontologyId: ontology.getOntologyId(),
+        entityType,
+        lang,
+        showObsoleteEnabled,
+        apiUrl,
+      })
+    );
+    return () => promise.abort(); // component was unmounted
+  }, [
+    dispatch,
+    entityType,
+    ontology.getOntologyId(),
+    lang,
+    showObsoleteEnabled,
+    specifiedRootIri,
+  ]);
+
+  useEffect(() => {
+    if (!subsetTree) return;
+    let promise = dispatch(
+      getSubsetMemberCounts({
+        ontologyId: ontology.getOntologyId(),
+        entityType,
+        selectedSubsets: subsetTree,
+        lang,
+        showObsoleteEnabled,
+        apiUrl,
+      })
+    );
+    return () => promise.abort(); // component was unmounted
+  }, [
+    dispatch,
+    entityType,
+    ontology.getOntologyId(),
+    lang,
+    showObsoleteEnabled,
+    JSON.stringify(subsetTree),
   ]);
 
     useEffect(() => {
@@ -263,6 +323,7 @@ export default function EntityTree({
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
             apiUrl,
+            subsetTree,
           })
         )
       );
@@ -282,6 +343,7 @@ export default function EntityTree({
     preferredRoots,
     showObsoleteEnabled,
     showSiblingsEnabled,
+    JSON.stringify(subsetTree),
   ]);
 
   let toggleShowObsolete = useCallback(() => {
@@ -298,6 +360,19 @@ export default function EntityTree({
     if (showCountsEnabled) dispatch(hideCounts());
     else dispatch(showCounts());
   }, [dispatch, showCountsEnabled]);
+
+  let toggleSubset = useCallback(
+    (subsetIri: string) => {
+      dispatch(
+        setSelectedSubsets(
+          selectedSubsets.includes(subsetIri)
+            ? selectedSubsets.filter((iri) => iri !== subsetIri)
+            : [...selectedSubsets, subsetIri]
+        )
+      );
+    },
+    [dispatch, selectedSubsets]
+  );
 
   function renderNodeChildren(
     children: TreeNode[],
@@ -373,13 +448,20 @@ export default function EntityTree({
                 onNavigateToEntity={onNavigateToEntity}
                 onNavigateToOntology={onNavigateToOntology}
               />
-              {!showObsoleteEnabled &&
-                showCountsEnabled &&
-                getNumDescendants(childNode.numHierarchicalDescendants, childNode.numDescendants) > 0 && (
-                  <span style={{ color: "gray" }}>
-                    {" (" + (getNumDescendants(childNode.numHierarchicalDescendants, childNode.numDescendants)).toLocaleString() + ")"}
-                  </span>
-                )}
+              {filteringBySubsets
+                ? showCountsEnabled &&
+                  subsetMemberCounts[childNode.iri] > 0 && (
+                    <span style={{ color: "gray" }}>
+                      {" (" + subsetMemberCounts[childNode.iri].toLocaleString() + ")"}
+                    </span>
+                  )
+                : !showObsoleteEnabled &&
+                  showCountsEnabled &&
+                  getNumDescendants(childNode.numHierarchicalDescendants, childNode.numDescendants) > 0 && (
+                    <span style={{ color: "gray" }}>
+                      {" (" + (getNumDescendants(childNode.numHierarchicalDescendants, childNode.numDescendants)).toLocaleString() + ")"}
+                    </span>
+                  )}
               {isExpanded && (() => {
                 const directChildCount = directChildrenCounts[childNode.iri];
                 if (directChildCount !== undefined && directChildCount > 1000) {
@@ -392,6 +474,7 @@ export default function EntityTree({
                         parentEntityIri={childNode.iri}
                         lang={lang}
                         showObsoleteEnabled={showObsoleteEnabled}
+                        subsetTree={subsetTree}
                         onNavigateToEntity={(ontologyId, entity) => {
                           if (entity.getOntologyId() === ontologyId) {
                             onNavigateToEntity(ontology, entity);
@@ -461,8 +544,8 @@ export default function EntityTree({
           <FormControlLabel
             control={
               <Checkbox
-                disabled={showObsoleteEnabled}
-                checked={!showObsoleteEnabled && showCountsEnabled}
+                disabled={showObsoleteEnabled && !filteringBySubsets}
+                checked={(!showObsoleteEnabled || filteringBySubsets) && showCountsEnabled}
                 onClick={toggleShowCounts}
               />
             }
@@ -487,6 +570,35 @@ export default function EntityTree({
               }
               label="Show all siblings"
             />
+          )}
+          {subsets.length > 0 && !specifiedRootIri && (
+            <details open className="mt-2">
+              <summary className="py-2 link-default">
+                {"Filter by subset (" + subsets.length + ")"}
+              </summary>
+              <div className="flex flex-col max-h-60 overflow-y-auto">
+                {subsets.map((subset) => (
+                  <FormControlLabel
+                    key={subset.iri}
+                    title={subset.iri}
+                    control={
+                      <Checkbox
+                        checked={selectedSubsets.includes(subset.iri)}
+                        onClick={() => toggleSubset(subset.iri)}
+                      />
+                    }
+                    label={
+                      <>
+                        {subset.label}
+                        <span style={{ color: "gray" }}>
+                          {" (" + subset.numMembers.toLocaleString() + ")"}
+                        </span>
+                      </>
+                    }
+                  />
+                ))}
+              </div>
+            </details>
           )}
         </div>
       </div>

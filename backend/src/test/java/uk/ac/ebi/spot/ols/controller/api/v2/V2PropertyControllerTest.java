@@ -146,6 +146,7 @@ class V2PropertyControllerTest {
                 pageable,
                 "efo",
                 "http%3A%2F%2Fexample.org%2FEFO_0100",
+                null,
                 "fr",
                 options);
 
@@ -253,6 +254,7 @@ class V2PropertyControllerTest {
                 String ontologyId,
                 Pageable pageable,
                 String iri,
+                Collection<String> subsetTree,
                 String lang,
                 JsonTransformOptions outputOptions) {
             this.call = Call.CHILDREN;

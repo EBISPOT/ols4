@@ -24,14 +24,14 @@ class IndividualRepositoryObsoleteFilterTest {
         repository.searchClient = searchClient;
 
         repository.getIndividualsOfClass(
-                "efo", "http://example.org/EFO_0001", PageRequest.of(0, 20), false, "en",
+                "efo", "http://example.org/EFO_0001", PageRequest.of(0, 20), false, null, "en",
                 new JsonTransformOptions());
         assertThat(searchClient.condition())
                 .contains("is_obsolete")
                 .contains("false");
 
         repository.getIndividualsOfClass(
-                "efo", "http://example.org/EFO_0001", PageRequest.of(0, 20), true, "en",
+                "efo", "http://example.org/EFO_0001", PageRequest.of(0, 20), true, null, "en",
                 new JsonTransformOptions());
         assertThat(searchClient.condition()).doesNotContain("is_obsolete");
     }

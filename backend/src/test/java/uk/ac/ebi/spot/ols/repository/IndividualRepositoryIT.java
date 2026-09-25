@@ -142,10 +142,10 @@ class IndividualRepositoryIT {
     @Test
     void returnsActiveClassIndividualsAndCanIncludeObsoleteMembers() throws Exception {
         OlsFacetedResultsPage<JsonElement> active = repository.getIndividualsOfClass(
-                "efo", LIVER_CLASS, PageRequest.of(0, 20), false, "en",
+                "efo", LIVER_CLASS, PageRequest.of(0, 20), false, null, "en",
                 new JsonTransformOptions());
         OlsFacetedResultsPage<JsonElement> all = repository.getIndividualsOfClass(
-                "efo", LIVER_CLASS, PageRequest.of(0, 20), true, "en",
+                "efo", LIVER_CLASS, PageRequest.of(0, 20), true, null, "en",
                 new JsonTransformOptions());
 
         assertThat(iris(active)).containsExactly(EFO_INDIVIDUAL);
@@ -158,9 +158,9 @@ class IndividualRepositoryIT {
         JsonTransformOptions options = new JsonTransformOptions();
 
         Page<JsonElement> active = repository.getHierarchicalChildrenByOntologyId(
-                "efo", page, EFO_INDIVIDUAL, false, "en", options);
+                "efo", page, EFO_INDIVIDUAL, false, null, "en", options);
         Page<JsonElement> all = repository.getHierarchicalChildrenByOntologyId(
-                "efo", page, EFO_INDIVIDUAL, true, "en", options);
+                "efo", page, EFO_INDIVIDUAL, true, null, "en", options);
         Page<JsonElement> ancestors = repository.getHierarchicalAncestorsByOntologyId(
                 "efo", page, SECOND_EFO_INDIVIDUAL, false, "en", options);
 
@@ -184,13 +184,13 @@ class IndividualRepositoryIT {
                 "efo/unsafe", EFO_INDIVIDUAL, "en", options))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> repository.getIndividualsOfClass(
-                "efo", LIVER_CLASS, page, false, "en_US", options))
+                "efo", LIVER_CLASS, page, false, null, "en_US", options))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> repository.getHierarchicalChildrenByOntologyId(
-                "efo/unsafe", page, EFO_INDIVIDUAL, false, "en", options))
+                "efo/unsafe", page, EFO_INDIVIDUAL, false, null, "en", options))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> repository.getHierarchicalChildrenByOntologyId(
-                "efo", page, EFO_INDIVIDUAL, false, "en_US", options))
+                "efo", page, EFO_INDIVIDUAL, false, null, "en_US", options))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> repository.getHierarchicalAncestorsByOntologyId(
                 "efo/unsafe", page, SECOND_EFO_INDIVIDUAL, false, "en", options))

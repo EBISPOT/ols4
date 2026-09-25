@@ -105,7 +105,7 @@ public class IndividualRepository {
                 outputOpts));
     }
 
-    public Page<JsonElement> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
+    public Page<JsonElement> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, Collection<String> subsetTree, String lang, JsonTransformOptions outputOpts) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -114,7 +114,7 @@ public class IndividualRepository {
 
         Map<String, String> nodeProps = individualNodeProperties(includeObsolete);
 
-        return this.postgresClient.getHierarchicalChildren(id, nodeProps, pageable)
+        return this.postgresClient.getHierarchicalChildren(id, nodeProps, pageable, subsetTree)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -141,7 +141,7 @@ public class IndividualRepository {
 
     public OlsFacetedResultsPage<JsonElement> getIndividualsOfClass(
             String ontologyId, String classIri, Pageable pageable, boolean includeObsoleteEntities,
-            String lang, JsonTransformOptions outputOpts) throws IOException {
+            Collection<String> subsetTree, String lang, JsonTransformOptions outputOpts) throws IOException {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -153,6 +153,7 @@ public class IndividualRepository {
         if (!includeObsoleteEntities) {
             query.addFilter(IS_OBSOLETE.getText(), List.of("false"), SearchType.WHOLE_FIELD);
         }
+        query.setSubsetTree(subsetTree);
 
         return searchClient.searchPaginated(query, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))

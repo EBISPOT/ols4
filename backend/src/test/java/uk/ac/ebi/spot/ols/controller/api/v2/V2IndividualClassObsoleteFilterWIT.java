@@ -44,21 +44,21 @@ class V2IndividualClassObsoleteFilterWIT {
 
     @Test
     void excludesObsoleteIndividualsByDefaultAndAllowsExplicitOptIn() throws Exception {
-        when(individualRepository.getIndividualsOfClass(any(), any(), any(), any(Boolean.class), any(), any()))
+        when(individualRepository.getIndividualsOfClass(any(), any(), any(), any(Boolean.class), any(), any(), any()))
                 .thenAnswer(invocation -> new OlsFacetedResultsPage<JsonElement>(
                         List.of(), Map.of(), invocation.getArgument(2), 0));
 
         mockMvc.perform(get(ROUTE)).andExpect(status().isOk());
         ArgumentCaptor<Boolean> defaultValue = ArgumentCaptor.forClass(Boolean.class);
         verify(individualRepository).getIndividualsOfClass(
-                any(), any(), any(), defaultValue.capture(), any(), any());
+                any(), any(), any(), defaultValue.capture(), any(), any(), any());
         assertFalse(defaultValue.getValue());
 
         mockMvc.perform(get(ROUTE).param("includeObsoleteEntities", "true"))
                 .andExpect(status().isOk());
         ArgumentCaptor<Boolean> values = ArgumentCaptor.forClass(Boolean.class);
         verify(individualRepository, org.mockito.Mockito.times(2)).getIndividualsOfClass(
-                any(), any(), any(), values.capture(), any(), any());
+                any(), any(), any(), values.capture(), any(), any(), any());
         assertTrue(values.getAllValues().get(1));
     }
 }
