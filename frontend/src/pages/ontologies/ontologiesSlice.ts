@@ -44,6 +44,7 @@ export interface OntologiesState {
   manuallyExpandedNodes: string[];
   preferredRoots: boolean;
   displayObsolete: boolean;
+  displayImported: boolean;
   displaySiblings: boolean;
   displayCounts: boolean;
   errorMessage: string;
@@ -96,6 +97,7 @@ const initialState: OntologiesState = {
   manuallyExpandedNodes: [],
   preferredRoots: false,
   displayObsolete: false,
+  displayImported: true,
   displaySiblings: false,
   displayCounts: true,
   errorMessage: "",
@@ -119,6 +121,8 @@ export const closeNode = createAction<TreeNode>("ontologies_node_close");
 
 export const showObsolete = createAction("ontologies_show_obsolete");
 export const hideObsolete = createAction("ontologies_hide_obsolete");
+export const showImported = createAction("ontologies_show_imported");
+export const hideImported = createAction("ontologies_hide_imported");
 
 export const showSiblings = createAction("ontologies_show_siblings");
 export const hideSiblings = createAction("ontologies_hide_siblings");
@@ -401,6 +405,7 @@ export const getAncestors = createAsyncThunk(
     entityIri,
     lang,
     showObsoleteEnabled,
+    showImportedEnabled,
     apiUrl,
   }: any) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
@@ -408,7 +413,12 @@ export const getAncestors = createAsyncThunk(
     if (entityType === "classes") {
       ancestorsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/hierarchicalAncestors?${new URLSearchParams(
-          { size: "1000", lang, includeObsoleteEntities: showObsoleteEnabled }
+          {
+            size: "1000",
+            lang,
+            includeObsoleteEntities: showObsoleteEnabled,
+            includeImportedEntities: showImportedEnabled,
+          }
         )}`,
         undefined,
         apiUrl
@@ -420,14 +430,24 @@ export const getAncestors = createAsyncThunk(
       const [classAncestors, hierarchicalAncestors] = await Promise.all([
         getPaginated<any>(
           `api/v2/ontologies/${ontologyId}/individuals/${doubleEncodedUri}/ancestors?${new URLSearchParams(
-            { size: "1000", lang, includeObsoleteEntities: showObsoleteEnabled }
+            {
+              size: "1000",
+              lang,
+              includeObsoleteEntities: showObsoleteEnabled,
+              includeImportedEntities: showImportedEnabled,
+            }
           )}`,
           undefined,
           apiUrl
         ),
         getPaginated<any>(
           `api/v2/ontologies/${ontologyId}/individuals/${doubleEncodedUri}/hierarchicalAncestors?${new URLSearchParams(
-            { size: "1000", lang, includeObsoleteEntities: showObsoleteEnabled }
+            {
+              size: "1000",
+              lang,
+              includeObsoleteEntities: showObsoleteEnabled,
+              includeImportedEntities: showImportedEnabled,
+            }
           )}`,
           undefined,
           apiUrl
@@ -447,7 +467,12 @@ export const getAncestors = createAsyncThunk(
     } else {
       ancestorsPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/ancestors?${new URLSearchParams(
-          { size: "1000", lang, includeObsoleteEntities: showObsoleteEnabled }
+          {
+            size: "1000",
+            lang,
+            includeObsoleteEntities: showObsoleteEnabled,
+            includeImportedEntities: showImportedEnabled,
+          }
         )}`,
         undefined,
         apiUrl
@@ -458,6 +483,12 @@ export const getAncestors = createAsyncThunk(
     );
   }
 );
+// The list endpoints the tree roots come from take a dynamic isDefiningOntology
+// filter; the children/ancestor endpoints take includeImportedEntities instead.
+function importedRootParams(showImportedEnabled: boolean) {
+  return showImportedEnabled ? {} : { isDefiningOntology: "true" };
+}
+
 export const getRootEntities = createAsyncThunk(
   "ontologies_roots",
   async ({
@@ -466,6 +497,7 @@ export const getRootEntities = createAsyncThunk(
     preferredRoots,
     lang,
     showObsoleteEnabled,
+    showImportedEnabled,
     subsetTree,
     apiUrl,
   }: any) => {
@@ -477,6 +509,7 @@ export const getRootEntities = createAsyncThunk(
             size: "1000",
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
+            ...importedRootParams(showImportedEnabled),
             ...subsetTreeParams(subsetTree),
           })}`,
           undefined,
@@ -488,6 +521,7 @@ export const getRootEntities = createAsyncThunk(
             size: "1000",
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
+            ...importedRootParams(showImportedEnabled),
             ...subsetTreeParams(subsetTree),
           })}`,
           undefined,
@@ -511,6 +545,7 @@ export const getRootEntities = createAsyncThunk(
           size: "1000",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
+          ...importedRootParams(showImportedEnabled),
           ...subsetTreeParams(subsetTree),
         })}`,
         undefined,
@@ -531,6 +566,7 @@ export const getRootEntities = createAsyncThunk(
           size: "1000",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
+          ...importedRootParams(showImportedEnabled),
           ...subsetTreeParams(subsetTree),
         })}`,
         undefined,
@@ -643,6 +679,7 @@ export const getDirectChildrenEntities = createAsyncThunk(
     entityType,
     lang,
     showObsoleteEnabled,
+    showImportedEnabled,
     apiUrl,
     page,
     size,
@@ -666,6 +703,7 @@ export const getDirectChildrenEntities = createAsyncThunk(
       size: size.toString(),
       lang: lang || "en",
       includeObsoleteEntities: showObsoleteEnabled?.toString() || "false",
+      includeImportedEntities: showImportedEnabled?.toString() || "true",
       ...subsetTreeParams(subsetTree),
     });
     
@@ -705,6 +743,7 @@ export const getDirectChildrenCount = createAsyncThunk(
     entityType,
     lang,
     showObsoleteEnabled,
+    showImportedEnabled,
     subsetTree,
     apiUrl,
   }: any) => {
@@ -717,6 +756,7 @@ export const getDirectChildrenCount = createAsyncThunk(
           size: "1",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
+          includeImportedEntities: showImportedEnabled,
           ...subsetTreeParams(subsetTree),
         })}`,
         undefined,
@@ -728,6 +768,7 @@ export const getDirectChildrenCount = createAsyncThunk(
           size: "1",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
+          includeImportedEntities: showImportedEnabled,
           ...subsetTreeParams(subsetTree),
         })}`,
         undefined,
@@ -739,6 +780,7 @@ export const getDirectChildrenCount = createAsyncThunk(
           size: "1",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
+          includeImportedEntities: showImportedEnabled,
           ...subsetTreeParams(subsetTree),
         })}`,
         undefined,
@@ -763,6 +805,7 @@ export const getNodeChildren = createAsyncThunk(
     lang,
     apiUrl,
     includeObsoleteEntities: showObsoleteEnabled,
+    includeImportedEntities: showImportedEnabled,
     subsetTree,
   }: any) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
@@ -773,6 +816,7 @@ export const getNodeChildren = createAsyncThunk(
                 size: "1000",
                 lang,
                 includeObsoleteEntities: showObsoleteEnabled,
+                includeImportedEntities: showImportedEnabled,
                 ...subsetTreeParams(subsetTree),
             })}`,
             undefined,
@@ -783,6 +827,7 @@ export const getNodeChildren = createAsyncThunk(
                 size: "1000",
                 lang,
                 includeObsoleteEntities: showObsoleteEnabled,
+                includeImportedEntities: showImportedEnabled,
                 ...subsetTreeParams(subsetTree),
             })}`,
             undefined,
@@ -793,6 +838,7 @@ export const getNodeChildren = createAsyncThunk(
                 size: "1000",
                 lang,
                 includeObsoleteEntities: showObsoleteEnabled,
+                includeImportedEntities: showImportedEnabled,
                 ...subsetTreeParams(subsetTree),
             })}`,
             undefined,
@@ -806,6 +852,7 @@ export const getNodeChildren = createAsyncThunk(
                 size: "1000",
                 lang,
                 includeObsoleteEntities: showObsoleteEnabled,
+                includeImportedEntities: showImportedEnabled,
                 ...subsetTreeParams(subsetTree),
             })}`,
             undefined,
@@ -838,6 +885,7 @@ export const getNodeChildren = createAsyncThunk(
               size: "1000",
               lang,
               includeObsoleteEntities: showObsoleteEnabled,
+              includeImportedEntities: showImportedEnabled,
               ...subsetTreeParams(subsetTree),
             }
           )}`,
@@ -850,6 +898,7 @@ export const getNodeChildren = createAsyncThunk(
               size: "1000",
               lang,
               includeObsoleteEntities: showObsoleteEnabled,
+              includeImportedEntities: showImportedEnabled,
               ...subsetTreeParams(subsetTree),
             }
           )}`,
@@ -870,6 +919,7 @@ export const getNodeChildren = createAsyncThunk(
             size: "1000",
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
+            includeImportedEntities: showImportedEnabled,
             ...subsetTreeParams(subsetTree),
           }
         )}`,
@@ -1248,6 +1298,7 @@ const ontologiesSlice = createSlice({
           }
         }
         state.displayObsolete = false;
+        state.displayImported = true;
         state.displaySiblings = false;
         state.displayCounts = true;
         state.manuallyExpandedNodes = [];
@@ -1264,6 +1315,12 @@ const ontologiesSlice = createSlice({
     });
     builder.addCase(hideObsolete, (state: OntologiesState) => {
       state.displayObsolete = false;
+    });
+    builder.addCase(showImported, (state: OntologiesState) => {
+      state.displayImported = true;
+    });
+    builder.addCase(hideImported, (state: OntologiesState) => {
+      state.displayImported = false;
     });
     builder.addCase(showSiblings, (state: OntologiesState) => {
       state.displaySiblings = true;

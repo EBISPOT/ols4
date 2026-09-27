@@ -32,6 +32,8 @@ import {
   resetTreeSettings,
   showCounts,
   showObsolete,
+  showImported,
+  hideImported,
   showSiblings,
   setSelectedSubsets,
   setSpecificRootIri,
@@ -91,6 +93,9 @@ export default function EntityTree({
   );
 
   const showObsoleteEnabled = (selectedEntity && selectedEntity.isDeprecated()) ? true : useAppSelector((state) => state.ontologies.displayObsolete);
+  const showImportedEnabled = useAppSelector(
+    (state) => state.ontologies.displayImported
+  );
 
   const showSiblingsEnabled = useAppSelector(
     (state) => state.ontologies.displaySiblings
@@ -117,6 +122,11 @@ export default function EntityTree({
               entityType: entityType === "entities" ? "classes" : entityType,
               lang,
               showObsoleteEnabled,
+      showImportedEnabled,
+    showImportedEnabled,
+        showImportedEnabled,
+          showImportedEnabled,
+              showImportedEnabled,
               subsetTree,
               apiUrl,
             })
@@ -134,6 +144,8 @@ export default function EntityTree({
       entityType,
       lang,
       showObsoleteEnabled,
+      showImportedEnabled,
+    showImportedEnabled,
       JSON.stringify(subsetTree),
       apiUrl,
     ]
@@ -158,6 +170,7 @@ export default function EntityTree({
     entityType,
     JSON.stringify(selectedEntity),
     showObsoleteEnabled,
+    showImportedEnabled,
     preferredRoots,
     lang,
     JSON.stringify(subsetTree),
@@ -173,6 +186,10 @@ export default function EntityTree({
           entityIri,
           lang,
           showObsoleteEnabled,
+      showImportedEnabled,
+    showImportedEnabled,
+        showImportedEnabled,
+          showImportedEnabled,
           showSiblingsEnabled,
           apiUrl,
         })
@@ -186,6 +203,12 @@ export default function EntityTree({
                     entityIri: specifiedRootIri,
                     lang,
                     showObsoleteEnabled,
+      showImportedEnabled,
+    showImportedEnabled,
+        showImportedEnabled,
+                    showImportedEnabled,
+          showImportedEnabled,
+              showImportedEnabled,
                     showSiblingsEnabled,
                     apiUrl,
                 })
@@ -199,6 +222,10 @@ export default function EntityTree({
           preferredRoots,
           lang,
           showObsoleteEnabled,
+      showImportedEnabled,
+    showImportedEnabled,
+        showImportedEnabled,
+          showImportedEnabled,
           subsetTree,
           apiUrl,
         })
@@ -213,6 +240,7 @@ export default function EntityTree({
     preferredRoots,
     lang,
     showObsoleteEnabled,
+    showImportedEnabled,
     specifiedRootIri,
     JSON.stringify(subsetTree),
   ]);
@@ -225,6 +253,9 @@ export default function EntityTree({
         entityType,
         lang,
         showObsoleteEnabled,
+      showImportedEnabled,
+    showImportedEnabled,
+        showImportedEnabled,
         apiUrl,
       })
     );
@@ -235,6 +266,7 @@ export default function EntityTree({
     ontology.getOntologyId(),
     lang,
     showObsoleteEnabled,
+    showImportedEnabled,
     specifiedRootIri,
   ]);
 
@@ -247,6 +279,9 @@ export default function EntityTree({
         selectedSubsets: subsetTree,
         lang,
         showObsoleteEnabled,
+      showImportedEnabled,
+    showImportedEnabled,
+        showImportedEnabled,
         apiUrl,
       })
     );
@@ -257,6 +292,7 @@ export default function EntityTree({
     ontology.getOntologyId(),
     lang,
     showObsoleteEnabled,
+    showImportedEnabled,
     JSON.stringify(subsetTree),
   ]);
 
@@ -322,6 +358,7 @@ export default function EntityTree({
             absoluteIdentity: absId,
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
+            includeImportedEntities: showImportedEnabled,
             apiUrl,
             subsetTree,
           })
@@ -342,9 +379,15 @@ export default function EntityTree({
     entityType,
     preferredRoots,
     showObsoleteEnabled,
+    showImportedEnabled,
     showSiblingsEnabled,
     JSON.stringify(subsetTree),
   ]);
+
+  let toggleShowImported = useCallback(() => {
+    if (showImportedEnabled) dispatch(hideImported());
+    else dispatch(showImported());
+  }, [dispatch, showImportedEnabled]);
 
   let toggleShowObsolete = useCallback(() => {
     if (showObsoleteEnabled) dispatch(hideObsolete());
@@ -463,6 +506,7 @@ export default function EntityTree({
                     </span>
                   )
                 : !showObsoleteEnabled &&
+                  showImportedEnabled &&
                   showCountsEnabled &&
                   getNumDescendants(childNode.numHierarchicalDescendants, childNode.numDescendants) > 0 && (
                     <span style={{ color: "gray" }}>
@@ -566,6 +610,15 @@ export default function EntityTree({
               />
             }
             label="Show obsolete terms"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={showImportedEnabled}
+                onClick={toggleShowImported}
+              />
+            }
+            label="Show imported terms"
           />
           {selectedEntity && (
             <FormControlLabel
