@@ -60,11 +60,41 @@ jobs:
             backend/target/site/jacoco/
           if-no-files-found: ignore
 
+  dataload-java-contract:
+    name: Dataload Java Contract Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Install shared dataload dependency
+        run: mvn -B -ntp -f ols-shared/pom.xml install
+
+      - name: Run dataload Java unit and executable contract tests
+        run: mvn -B -ntp -f dataload/pom.xml verify
+
+      - name: Upload dataload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dataload-java-contract-reports
+          path: |
+            dataload/**/target/surefire-reports/
+            dataload/**/target/failsafe-reports/
+          if-no-files-found: ignore
+
   test-api:
     name: Build & Test API
     needs:
       - backend-unit-web
       - backend-postgres-integration
+      - dataload-java-contract
     runs-on: ubuntu-latest
     steps:
       - name: Free up disk space on GH actions runner

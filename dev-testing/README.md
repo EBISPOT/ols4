@@ -19,6 +19,14 @@ The script:
 2. **Part 1** — For each of the 110+ testcase configs, runs the data pipeline and diffs output against `testcases_expected_output/`
 3. **Part 2** — Merges all testcase configs, runs the full pipeline, loads into local Solr + Neo4j, starts the backend, runs `apitester4.jar` against `http://localhost:8080`, diffs against `testcases_expected_output_api/`
 
+The golden-file tests use the Bioregistry snapshot URL in
+`dev-testing/bioregistry-registry-url.txt`. `test_dataload.sh` and `test_api.sh`
+set `OLS_TEST_BIOREGISTRY_URL` to this immutable upstream commit, including for
+the nested Nextflow linker containers. Normal dataload still uses Bioregistry's
+live registry. Change the pinned commit only when intentionally reviewing and
+regenerating both golden-output trees; otherwise upstream URL-template edits
+would make unchanged code fail CI.
+
 For `api` and `all` modes, the same prerequisites as `dev-local.sh` apply (NEO4J_HOME, SOLR_HOME).
 
 To update expected output after intentional changes:

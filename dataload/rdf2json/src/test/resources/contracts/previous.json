@@ -1,0 +1,12 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "contract",
+      "iri": "https://example.org/contract",
+      "version": "previous-version",
+      "classes": [
+        {"iri": "https://example.org/contract#Previous"}
+      ]
+    }
+  ]
+}
