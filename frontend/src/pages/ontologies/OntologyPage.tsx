@@ -411,9 +411,22 @@ export default function OntologyPage() {
 function OntologyAnnotationsSection({ ontology }: { ontology: Ontology }) {
   let annotationPredicates = ontology.getAnnotationPredicates();
 
+  // Predicates whose values the page already presents in a richer form are
+  // left out of the listing: the depiction is the image under the
+  // description, and hasFormat the file attachment chips.
+  const shownElsewhere = new Set<string>();
+  if (ontology.getDepictedBy().length > 0) {
+    shownElsewhere.add("http://xmlns.com/foaf/0.1/depicted_by");
+    shownElsewhere.add("http://xmlns.com/foaf/0.1/depiction");
+  }
+  if (ontology.getHasFormats().length > 0) {
+    shownElsewhere.add("http://purl.org/dc/terms/hasFormat");
+  }
+
   return (
     <Fragment>
       {annotationPredicates
+        .filter((predicate) => !shownElsewhere.has(predicate))
         .map((annotationPredicate) => {
           const title = ontology.getLabelForIri(annotationPredicate)
             ? ontology.getLabelForIri(annotationPredicate)
