@@ -106,28 +106,34 @@ public class PropertyRepository {
                 outputOpts));
     }
 
-    public Page<JsonElement> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, Collection<String> subsetTree, String lang, JsonTransformOptions outputOpts) {
+    public Page<JsonElement> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeImported, Collection<String> subsetTree, String lang, JsonTransformOptions outputOpts) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
         String id = ontologyId + "+property+" + iri;
 
-        return this.postgresClient.getDirectChildren(id, Map.of(), pageable, null, subsetTree)
+        return this.postgresClient.getDirectChildren(id, propertyNodeProperties(includeImported), pageable, null, subsetTree)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
 
-    public Page<JsonElement> getAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, String lang, JsonTransformOptions outputOpts) {
+    public Page<JsonElement> getAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeImported, String lang, JsonTransformOptions outputOpts) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
         String id = ontologyId + "+property+" + iri;
 
-        return this.postgresClient.getAncestors(id, Map.of(), pageable)
+        return this.postgresClient.getAncestors(id, propertyNodeProperties(includeImported), pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
+    }
+
+    private static Map<String, String> propertyNodeProperties(boolean includeImported) {
+        return includeImported
+                ? Map.of()
+                : Map.of("isDefiningOntology", "true");
     }
 
     public Page<JsonElement> getSimilar(Pageable pageable, String iri, String lang, JsonTransformOptions outputOpts, String modelName) {

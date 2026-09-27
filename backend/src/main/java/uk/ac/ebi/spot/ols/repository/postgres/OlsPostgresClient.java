@@ -330,6 +330,9 @@ public class OlsPostgresClient {
                 case "isObsolete" -> condition = condition.and(
                         field(qualifier, "is_obsolete", Boolean.class)
                                 .eq("true".equals(entry.getValue())));
+                case "isDefiningOntology" -> condition = condition.and(
+                        field(qualifier, "is_defining_ontology", Boolean.class)
+                                .eq("true".equals(entry.getValue())));
                 case "type" -> condition = condition.and(
                         field(qualifier, "type", String.class).eq(entry.getValue()));
                 default -> {

@@ -56,7 +56,7 @@ class ClassRepositoryHierarchyTypeTest {
         String iri = "http://example.org/EFO_0001";
 
         repository.getChildrenByOntologyId(
-                "efo", pageable, iri, includeObsolete, null, null, "en", options);
+                "efo", pageable, iri, includeObsolete, true, null, null, "en", options);
         repository.getAncestorsByOntologyId(
                 "efo", pageable, iri, includeObsolete, "en", options);
         repository.getDescendantsByOntologyId(
@@ -64,11 +64,11 @@ class ClassRepositoryHierarchyTypeTest {
         repository.getHierarchicalDescendantsByOntologyId(
                 "efo", pageable, iri, includeObsolete, "en", options);
         repository.getHierarchicalChildrenByOntologyId(
-                "efo", pageable, iri, includeObsolete, null, "en", options);
+                "efo", pageable, iri, includeObsolete, true, null, "en", options);
         repository.getHierarchicalAncestorsByOntologyId(
-                "efo", pageable, iri, includeObsolete, "en", options);
+                "efo", pageable, iri, includeObsolete, true, "en", options);
         repository.getIndividualAncestorsByOntologyId(
-                "efo", pageable, iri, includeObsolete, "en", options);
+                "efo", pageable, iri, includeObsolete, true, "en", options);
     }
 
     private static class RecordingPostgresClient extends OlsPostgresClient {

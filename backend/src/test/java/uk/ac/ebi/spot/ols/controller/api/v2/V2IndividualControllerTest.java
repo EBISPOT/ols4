@@ -122,6 +122,7 @@ class V2IndividualControllerTest {
                 "http%3A%2F%2Fexample.org%2FEFO_I100",
                 true,
                 null,
+                true,
                 "de",
                 options);
 
@@ -144,6 +145,7 @@ class V2IndividualControllerTest {
                 "efo",
                 "http%3A%2F%2Fexample.org%2FEFO_I200",
                 false,
+                true,
                 "fr",
                 options);
 
@@ -162,7 +164,8 @@ class V2IndividualControllerTest {
         JsonTransformOptions options = new JsonTransformOptions();
 
         controller.getClassIndividuals(
-                pageable, "efo", "http%3A%2F%2Fexample.org%2FEFO_0001", true, null, "de", options);
+                pageable, "efo", "http%3A%2F%2Fexample.org%2FEFO_0001", true, null, true, "de",
+                options);
 
         assertEquals(RecordingIndividualRepository.Call.CLASS_INDIVIDUALS, repository.call);
         assertEquals("efo", repository.ontologyId);
@@ -258,6 +261,7 @@ class V2IndividualControllerTest {
                 Pageable pageable,
                 String iri,
                 boolean includeObsoleteEntities,
+                boolean includeImportedEntities,
                 Collection<String> subsetTree,
                 String lang,
                 JsonTransformOptions outputOptions) {
@@ -278,6 +282,7 @@ class V2IndividualControllerTest {
                 Pageable pageable,
                 String iri,
                 boolean includeObsoleteEntities,
+                boolean includeImportedEntities,
                 String lang,
                 JsonTransformOptions outputOptions) {
             recordHierarchy(
@@ -297,6 +302,7 @@ class V2IndividualControllerTest {
                 String classIri,
                 Pageable pageable,
                 boolean includeObsoleteEntities,
+                boolean includeImportedEntities,
                 Collection<String> subsetTree,
                 String lang,
                 JsonTransformOptions outputOptions) {

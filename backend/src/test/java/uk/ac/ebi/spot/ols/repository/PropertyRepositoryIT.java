@@ -152,13 +152,13 @@ class PropertyRepositoryIT {
                 "efo",
                 PageRequest.of(0, 20),
                 "http://example.org/EFO_0100",
-                null, "en",
+                true, null, "en",
                 new JsonTransformOptions());
         Page<JsonElement> ancestors = repository.getAncestorsByOntologyId(
                 "efo",
                 PageRequest.of(0, 20),
                 "http://example.org/EFO_0101",
-                "en",
+                true, "en",
                 new JsonTransformOptions());
 
         assertThat(iris(children)).containsExactly("http://example.org/EFO_0101");
@@ -181,11 +181,11 @@ class PropertyRepositoryIT {
                 new JsonTransformOptions()))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> repository.getChildrenByOntologyId(
-                "efo", PageRequest.of(0, 20), "http://example.org/EFO_0100", null, "en_US",
+                "efo", PageRequest.of(0, 20), "http://example.org/EFO_0100", true, null, "en_US",
                 new JsonTransformOptions()))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> repository.getAncestorsByOntologyId(
-                "efo/unsafe", PageRequest.of(0, 20), "http://example.org/EFO_0101", "en",
+                "efo/unsafe", PageRequest.of(0, 20), "http://example.org/EFO_0101", true, "en",
                 new JsonTransformOptions()))
                 .isInstanceOf(IllegalArgumentException.class);
     }

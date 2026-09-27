@@ -251,6 +251,9 @@ public class V2ClassController {
             @RequestParam(value = "subsetTree", required = false)
             @Parameter(name = "subsetTree",
                     description = "Only return entities in one of these subsets (oboInOwl:inSubset), or with a member of one of them below them in the hierarchy. Comma separated subset IRIs.") List<String> subsetTree,
+            @RequestParam(value = "includeImportedEntities", required = false, defaultValue = "true")
+            @Parameter(name = "includeImportedEntities",
+                    description = "A boolean parameter to specify if imported entities (not defined by this ontology) should be included or not. Default value is true.") boolean includeImportedEntities,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
@@ -259,7 +262,7 @@ public class V2ClassController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                    classRepository.getChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, searchQuery, subsetTree, lang, outputOpts)
+                    classRepository.getChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, includeImportedEntities, searchQuery, subsetTree, lang, outputOpts)
                     .map(V2Entity::new)
                 ),
                 HttpStatus.OK);
@@ -373,6 +376,9 @@ public class V2ClassController {
             @RequestParam(value = "subsetTree", required = false)
             @Parameter(name = "subsetTree",
                     description = "Only return entities in one of these subsets (oboInOwl:inSubset), or with a member of one of them below them in the hierarchy. Comma separated subset IRIs.") List<String> subsetTree,
+            @RequestParam(value = "includeImportedEntities", required = false, defaultValue = "true")
+            @Parameter(name = "includeImportedEntities",
+                    description = "A boolean parameter to specify if imported entities (not defined by this ontology) should be included or not. Default value is true.") boolean includeImportedEntities,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
@@ -381,7 +387,7 @@ public class V2ClassController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                        classRepository.getHierarchicalChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, subsetTree, lang, outputOpts)
+                        classRepository.getHierarchicalChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, includeImportedEntities, subsetTree, lang, outputOpts)
                         .map(V2Entity::new)
                 ),
                 HttpStatus.OK);
@@ -402,6 +408,9 @@ public class V2ClassController {
             @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
+            @RequestParam(value = "includeImportedEntities", required = false, defaultValue = "true")
+            @Parameter(name = "includeImportedEntities",
+                    description = "A boolean parameter to specify if imported entities (not defined by this ontology) should be included or not. Default value is true.") boolean includeImportedEntities,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
@@ -410,7 +419,7 @@ public class V2ClassController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                        classRepository.getHierarchicalAncestorsByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, lang, outputOpts)
+                        classRepository.getHierarchicalAncestorsByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, includeImportedEntities, lang, outputOpts)
                         .map(V2Entity::new)
                 ),
                 HttpStatus.OK
@@ -434,6 +443,9 @@ public class V2ClassController {
             @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
+            @RequestParam(value = "includeImportedEntities", required = false, defaultValue = "true")
+            @Parameter(name = "includeImportedEntities",
+                    description = "A boolean parameter to specify if imported entities (not defined by this ontology) should be included or not. Default value is true.") boolean includeImportedEntities,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
@@ -442,7 +454,7 @@ public class V2ClassController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                    classRepository.getIndividualAncestorsByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, lang, outputOpts)
+                    classRepository.getIndividualAncestorsByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, includeImportedEntities, lang, outputOpts)
                     .map(V2Entity::new)
                 ),
                 HttpStatus.OK);
