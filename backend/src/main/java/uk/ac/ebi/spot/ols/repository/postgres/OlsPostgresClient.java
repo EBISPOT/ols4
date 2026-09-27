@@ -159,6 +159,49 @@ public class OlsPostgresClient {
         return lookupArraySources(id, "hierarchical_parents", nodeProps, pageable, null, subsetTree);
     }
 
+    /**
+     * Hierarchical children looked up by the parent's IRI rather than its row id, for
+     * when the parent's entity type may differ from the children's: e.g. individuals
+     * that sit under a class through a configured hierarchical property.
+     */
+    public Page<JsonElement> getHierarchicalChildrenByIri(String ontologyId, String iri, Map<String, String> nodeProps, Pageable pageable, Collection<String> subsetTree) {
+        try (Connection conn = postgresClient.getConnection()) {
+            DSLContext dsl = postgresClient.dsl(conn);
+            Table<?> e2 = OLS_ENTITIES.as("e2");
+
+            Field<String[]> e2Parents = field("e2", "hierarchical_parents", String[].class);
+            Field<String> e2Iri = field("e2", "iri", String.class);
+            Field<String> e2OntologyId = field("e2", "ontology_id", String.class);
+            Field<byte[]> e2Json = field("e2", "_json", byte[].class);
+
+            Condition where = e2OntologyId.eq(ontologyId)
+                    .and(arrayContains(e2Parents, iri))
+                    .and(buildNodePropCondition("e2", nodeProps));
+
+            if (subsetTree != null && !subsetTree.isEmpty()) {
+                where = where.and(inSubsetTree("e2", subsetTree));
+            }
+
+            long count = Optional.ofNullable(dsl.selectCount()
+                            .from(e2)
+                            .where(where)
+                            .fetchOne(0, Long.class))
+                    .orElse(0L);
+
+            var records = dsl.select(e2Json)
+                    .from(e2)
+                    .where(where)
+                    .orderBy(e2Iri.asc())
+                    .offset(pageable.getOffset())
+                    .limit(pageable.getPageSize())
+                    .fetch();
+
+            return new PageImpl<>(readJsonElements(records, e2Json), pageable, count);
+        } catch (SQLException e) {
+            throw new RuntimeException("getHierarchicalChildrenByIri failed", e);
+        }
+    }
+
     public Page<JsonElement> getAncestors(String id, Map<String, String> nodeProps, Pageable pageable) {
         return lookupArrayTargets(id, "direct_ancestors", nodeProps, pageable);
     }

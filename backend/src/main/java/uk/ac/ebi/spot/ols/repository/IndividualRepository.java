@@ -110,11 +110,13 @@ public class IndividualRepository {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        String id = ontologyId + "+individual+" + iri;
-
         Map<String, String> nodeProps = individualNodeProperties(includeObsolete);
 
-        return this.postgresClient.getHierarchicalChildren(id, nodeProps, pageable, subsetTree)
+        // The parent is looked up by IRI rather than by an individual's row id: an
+        // individual's hierarchical parent can also be a class (asserted as an
+        // existential restriction on a configured hierarchical property), and this
+        // endpoint serves the individual children of such class nodes too.
+        return this.postgresClient.getHierarchicalChildrenByIri(ontologyId, iri, nodeProps, pageable, subsetTree)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -126,7 +128,12 @@ public class IndividualRepository {
 
         String id = ontologyId + "+individual+" + iri;
 
-        Map<String, String> nodeProps = individualNodeProperties(includeObsolete);
+        // An individual's hierarchical ancestry can climb into classes (through an
+        // existential restriction on a configured hierarchical property), so the
+        // ancestors are not filtered by entity type.
+        Map<String, String> nodeProps = includeObsolete
+                ? Map.of()
+                : Map.of("isObsolete", "false");
 
         return this.postgresClient.getHierarchicalAncestors(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))

@@ -798,9 +798,9 @@ export const getNodeChildren = createAsyncThunk(
             undefined,
             apiUrl
         );
-        // Individuals can have hierarchical children of their own (e.g. sub-cohorts
-        // linked by a configured hierarchical property such as COHO isSubCohortOf).
-        // For class nodes this request comes back empty.
+        // Individuals nested under this node by a configured hierarchical property.
+        // The parent can be another individual (a direct triple) or a class (an
+        // existential restriction the individual is typed with).
         const individualHierarchicalChildrenPromise = getPaginated<any>(
             `api/v2/ontologies/${ontologyId}/individuals/${doubleEncodedUri}/hierarchicalChildren?${new URLSearchParams({
                 size: "1000",
