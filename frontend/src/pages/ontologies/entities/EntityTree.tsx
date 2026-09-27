@@ -382,7 +382,14 @@ export default function EntityTree({
       throw new Error("probable cyclic tree (renderNodeChildren)");
     }
     const childrenCopy = [...children];
+    // Classes sort before individuals, so a node's subcategories are not
+    // buried under its members; alphabetical within each group.
+    const isIndividual = (node: TreeNode) =>
+      node?.entity?.getType() === "individual";
     childrenCopy.sort((a, b) => {
+      if (isIndividual(a) !== isIndividual(b)) {
+        return isIndividual(a) ? 1 : -1;
+      }
       const titleA = a?.title ? a.title.toString().toUpperCase() : "";
       const titleB = b?.title ? b.title.toString().toUpperCase() : "";
       return titleA === titleB ? 0 : titleA > titleB ? 1 : -1;
