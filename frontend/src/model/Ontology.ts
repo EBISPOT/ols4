@@ -34,7 +34,8 @@ export default class Ontology extends Thing {
     return parseInt(this.properties["numberOfIndividuals"]);
   }
   getLogoURL(): string {
-    return this.properties["depicted_by"] || undefined;
+    // depicted_by comes from OBO Foundry configs, logo from other configs or the ontology header
+    return this.properties["depicted_by"] || this.properties["logo"] || undefined;
   }
   getOntologyPurl(): string {
     return this.properties["ontologyPurl"];
