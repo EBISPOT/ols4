@@ -77,6 +77,19 @@ import static uk.ac.ebi.ols.shared.DefinedFields.*;
 @RequestMapping("/api/v2")
 public class V2ClassController {
 
+    /**
+     * Shared Swagger description of the {@code excludeRedundantEdges} parameter of the
+     * {@code children} and {@code hierarchicalChildren} routes (see GitHub issue #1252).
+     */
+    static final String EXCLUDE_REDUNDANT_EDGES_DESCRIPTION =
+            "A boolean parameter to specify whether children whose edge to this class is redundant for hierarchy " +
+            "browsing should be omitted. A child's edge is redundant when the child also has another hierarchical " +
+            "parent that is itself a hierarchical descendant of this class, i.e. the child is already reachable from " +
+            "this class through a more specific path. For example, given `c is_a a`, `c part_of b` and `b is_a a`, " +
+            "`c` is omitted from the children of `a` because it is already reachable via `b`. This is the transitive " +
+            "reduction of the hierarchy ignoring the relation types, and it is what the OLS tree browser uses by " +
+            "default. Default value is false (all children are returned).";
+
     Gson gson = new Gson();
 
     @Autowired
@@ -244,6 +257,9 @@ public class V2ClassController {
             @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
+            @RequestParam(value = "excludeRedundantEdges", required = false, defaultValue = "false")
+            @Parameter(name = "excludeRedundantEdges",
+                    description = EXCLUDE_REDUNDANT_EDGES_DESCRIPTION) boolean excludeRedundantEdges,
             @RequestParam(value = "searchQuery", required = false)
             @Parameter(name="searchQuery",
                     description = "This parameter specify the search query text.",
@@ -256,7 +272,7 @@ public class V2ClassController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                    classRepository.getChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, searchQuery, lang, outputOpts)
+                    classRepository.getChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, excludeRedundantEdges, searchQuery, lang, outputOpts)
                     .map(V2Entity::new)
                 ),
                 HttpStatus.OK);
@@ -367,6 +383,9 @@ public class V2ClassController {
             @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
+            @RequestParam(value = "excludeRedundantEdges", required = false, defaultValue = "false")
+            @Parameter(name = "excludeRedundantEdges",
+                    description = EXCLUDE_REDUNDANT_EDGES_DESCRIPTION) boolean excludeRedundantEdges,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
@@ -375,7 +394,7 @@ public class V2ClassController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                        classRepository.getHierarchicalChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, lang, outputOpts)
+                        classRepository.getHierarchicalChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, excludeRedundantEdges, lang, outputOpts)
                         .map(V2Entity::new)
                 ),
                 HttpStatus.OK);

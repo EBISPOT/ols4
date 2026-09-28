@@ -7,9 +7,10 @@ export default function createTreeFromEntities(
   entities: Entity[],
   preferredRoots: boolean,
   ontology: Ontology,
-  specificRootIri: string
+  specificRootIri: string,
+  excludeRedundantEdges: boolean = false
 ): { allNodes:TreeNode[], rootNodes: TreeNode[]; automaticallyExpandedNodes:Set<string>, nodeChildren: any } {
-  let { rootEntities, parentToChildRelations } = extractEntityHierarchy(entities);
+  let { rootEntities, parentToChildRelations } = extractEntityHierarchy(entities, excludeRedundantEdges);
 
   if(specificRootIri) {
     let specificRootEntity = entities.find(entity => entity.getIri() === specificRootIri)

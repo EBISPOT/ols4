@@ -135,11 +135,19 @@ public class OlsPostgresClient {
     }
 
     public Page<JsonElement> getDirectChildren(String id, Map<String, String> nodeProps, Pageable pageable) {
-        return lookupArraySources(id, "direct_parents", nodeProps, pageable, null);
+        return lookupArraySources(id, "direct_parents", nodeProps, pageable, null, false);
     }
 
     public Page<JsonElement> getDirectChildren(String id, Map<String, String> nodeProps, Pageable pageable, String search) {
-        return lookupArraySources(id, "direct_parents", nodeProps, pageable, search);
+        return lookupArraySources(id, "direct_parents", nodeProps, pageable, search, false);
+    }
+
+    /**
+     * Direct children of {@code id}, optionally omitting the ones whose edge up to {@code id} is
+     * redundant for hierarchy browsing. See {@link #redundantEdgeWitness} for the definition.
+     */
+    public Page<JsonElement> getDirectChildren(String id, Map<String, String> nodeProps, Pageable pageable, String search, boolean excludeRedundantEdges) {
+        return lookupArraySources(id, "direct_parents", nodeProps, pageable, search, excludeRedundantEdges);
     }
 
     public Page<JsonElement> getHierarchicalParents(String id, Map<String, String> nodeProps, Pageable pageable) {
@@ -147,7 +155,15 @@ public class OlsPostgresClient {
     }
 
     public Page<JsonElement> getHierarchicalChildren(String id, Map<String, String> nodeProps, Pageable pageable) {
-        return lookupArraySources(id, "hierarchical_parents", nodeProps, pageable, null);
+        return lookupArraySources(id, "hierarchical_parents", nodeProps, pageable, null, false);
+    }
+
+    /**
+     * Hierarchical children of {@code id}, optionally omitting the ones whose edge up to {@code id}
+     * is redundant for hierarchy browsing. See {@link #redundantEdgeWitness} for the definition.
+     */
+    public Page<JsonElement> getHierarchicalChildren(String id, Map<String, String> nodeProps, Pageable pageable, boolean excludeRedundantEdges) {
+        return lookupArraySources(id, "hierarchical_parents", nodeProps, pageable, null, excludeRedundantEdges);
     }
 
     public Page<JsonElement> getAncestors(String id, Map<String, String> nodeProps, Pageable pageable) {
@@ -155,7 +171,7 @@ public class OlsPostgresClient {
     }
 
     public Page<JsonElement> getDescendants(String id, Map<String, String> nodeProps, Pageable pageable) {
-        return lookupArraySources(id, "direct_ancestors", nodeProps, pageable, null);
+        return lookupArraySources(id, "direct_ancestors", nodeProps, pageable, null, false);
     }
 
     public Page<JsonElement> getHierarchicalAncestors(String id, Map<String, String> nodeProps, Pageable pageable) {
@@ -163,7 +179,7 @@ public class OlsPostgresClient {
     }
 
     public Page<JsonElement> getHierarchicalDescendants(String id, Map<String, String> nodeProps, Pageable pageable) {
-        return lookupArraySources(id, "hierarchical_ancestors", nodeProps, pageable, null);
+        return lookupArraySources(id, "hierarchical_ancestors", nodeProps, pageable, null, false);
     }
 
     public Page<JsonElement> getRelatedTo(String id, Map<String, String> nodeProps, Pageable pageable) {
@@ -171,7 +187,7 @@ public class OlsPostgresClient {
     }
 
     public Page<JsonElement> getRelatedFrom(String id, Map<String, String> nodeProps, Pageable pageable) {
-        return lookupArraySources(id, "related_to", nodeProps, pageable, null);
+        return lookupArraySources(id, "related_to", nodeProps, pageable, null, false);
     }
 
     private Page<JsonElement> lookupArrayTargets(String id, String column, Map<String, String> nodeProps, Pageable pageable) {
@@ -214,7 +230,7 @@ public class OlsPostgresClient {
         }
     }
 
-    private Page<JsonElement> lookupArraySources(String id, String column, Map<String, String> nodeProps, Pageable pageable, String search) {
+    private Page<JsonElement> lookupArraySources(String id, String column, Map<String, String> nodeProps, Pageable pageable, String search, boolean excludeRedundantEdges) {
         try (Connection conn = postgresClient.getConnection()) {
             DSLContext dsl = postgresClient.dsl(conn);
             Table<?> e1 = OLS_ENTITIES.as("e1");
@@ -245,6 +261,10 @@ public class OlsPostgresClient {
                                         .concat(DSL.inline("%")))));
             }
 
+            if (excludeRedundantEdges) {
+                where = where.andNotExists(redundantEdgeWitness(dsl, nodeProps));
+            }
+
             long count = Optional.ofNullable(dsl.selectCount()
                             .from(e1)
                             .join(e2).on(arrayContainsField(e2Sources, e1Iri).and(e2OntologyId.eq(e1OntologyId)))
@@ -265,6 +285,61 @@ public class OlsPostgresClient {
         } catch (SQLException e) {
             throw new RuntimeException("lookupArraySources failed", e);
         }
+    }
+
+    /**
+     * Correlated subquery used by {@code excludeRedundantEdges} inside {@link #lookupArraySources}
+     * (where {@code e1} is the parent being looked up and {@code e2} a candidate child): it looks for
+     * a "witness" {@code q} proving that the edge {@code e2 -> e1} is redundant for hierarchy
+     * browsing, i.e. that {@code e2} already sits under {@code e1} via a more specific path. This is
+     * the transitive reduction of the hierarchical graph ignoring the relation labels (is_a,
+     * part_of, ...), as requested in GitHub issue #1252: given {@code c is_a a}, {@code c part_of b}
+     * and {@code b is_a a}, the {@code c is_a a} edge is redundant because {@code c} is already
+     * reachable from {@code a} through {@code b}.
+     *
+     * <p>The edge {@code e2 -> e1} is redundant iff some other hierarchical parent {@code q} of
+     * {@code e2} exists such that:
+     * <ul>
+     *   <li>{@code e1} is a hierarchical ancestor of {@code q}, so the longer path
+     *       {@code e1 -> ... -> q -> e2} exists;</li>
+     *   <li>{@code q} is not a hierarchical ancestor of {@code e1}, and {@code e2} is not a
+     *       hierarchical ancestor of {@code q}. Both guards only matter when the ontology contains a
+     *       hierarchical cycle: within a cycle there is no meaningfully "more specific" parent, so
+     *       edges between members of one are never dropped (which also stops a self-loop from
+     *       acting as its own witness). Together they guarantee every hierarchical descendant of
+     *       {@code e1} stays reachable from it through the edges that are kept.</li>
+     * </ul>
+     * The witness must also satisfy the same {@code nodeProps} filters as the children being returned
+     * (same entity type, and not obsolete when obsolete entities are being excluded): a path through
+     * an entity the caller would never see cannot make an edge redundant for them.
+     *
+     * <p>The same rule is applied by the frontend ({@code extractEntityHierarchy.ts}) when it lays out
+     * the ancestors of a selected entity, so both sides must stay in sync.
+     */
+    private Select<?> redundantEdgeWitness(DSLContext dsl, Map<String, String> nodeProps) {
+        Table<?> q = OLS_ENTITIES.as("q");
+
+        Field<String> e1Iri = field("e1", "iri", String.class);
+        Field<String[]> e1HierarchicalAncestors = field("e1", "hierarchical_ancestors", String[].class);
+        Field<String> e2Iri = field("e2", "iri", String.class);
+        Field<String> e2OntologyId = field("e2", "ontology_id", String.class);
+        Field<String[]> e2HierarchicalParents = field("e2", "hierarchical_parents", String[].class);
+        Field<String> qIri = field("q", "iri", String.class);
+        Field<String> qOntologyId = field("q", "ontology_id", String.class);
+        Field<String[]> qHierarchicalAncestors = field("q", "hierarchical_ancestors", String[].class);
+
+        return dsl.selectOne()
+                .from(q)
+                .where(qOntologyId.eq(e2OntologyId))
+                // q is another hierarchical parent of the child e2 (btree-indexed on q.iri)
+                .and(arrayContains(e2HierarchicalParents, qIri))
+                .and(qIri.ne(e1Iri))
+                // e1 is above q ...
+                .and(arrayContainsField(qHierarchicalAncestors, e1Iri))
+                // ... and neither pair is part of the same hierarchical cycle
+                .and(DSL.not(arrayContainsField(e1HierarchicalAncestors, qIri)))
+                .and(DSL.not(arrayContainsField(qHierarchicalAncestors, e2Iri)))
+                .and(buildNodePropCondition("q", nodeProps));
     }
 
     private Condition buildNodePropCondition(String qualifier, Map<String, String> nodeProps) {
