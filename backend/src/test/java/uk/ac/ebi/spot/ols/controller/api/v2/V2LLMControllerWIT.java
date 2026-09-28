@@ -393,7 +393,7 @@ class V2LLMControllerWIT {
 
         verify(classRepository).getSimilar(
                 argThat(p -> p.getPageNumber() == 0 && p.getPageSize() == 20),
-                eq(CLASS_IRI), eq("en"), any(), eq("text-embedding-3-small"));
+                eq(CLASS_IRI), eq("en"), any(), eq("harrier-oss-v1-27b_pca512"));
     }
 
     @Test
@@ -428,7 +428,7 @@ class V2LLMControllerWIT {
 
     @Test
     void getClassEmbeddingUsesTheDefaultModelAndReturnsTheVectorAsJson() throws Exception {
-        when(classRepository.getEmbeddingVector(CLASS_IRI, "text-embedding-3-small"))
+        when(classRepository.getEmbeddingVector(CLASS_IRI, "harrier-oss-v1-27b_pca512"))
                 .thenReturn(List.of(1.0, 0.0, -2.5));
 
         mockMvc.perform(get(CLASS_EMBEDDING_URI))
@@ -464,7 +464,7 @@ class V2LLMControllerWIT {
 
     @Test
     void getClassSimilarityDecodesBothIrisAndReturnsTheScoreAsAString() throws Exception {
-        when(classRepository.getSimilarity(CLASS_IRI, OTHER_CLASS_IRI, "text-embedding-3-small"))
+        when(classRepository.getSimilarity(CLASS_IRI, OTHER_CLASS_IRI, "harrier-oss-v1-27b_pca512"))
                 .thenReturn(0.5);
 
         mockMvc.perform(get(CLASS_SIMILARITY_URI))
@@ -605,7 +605,7 @@ class V2LLMControllerWIT {
 
         verify(propertyRepository).getSimilar(
                 argThat(p -> p.getPageNumber() == 0 && p.getPageSize() == 20),
-                eq(PROPERTY_IRI), eq("en"), any(), eq("text-embedding-3-small"));
+                eq(PROPERTY_IRI), eq("en"), any(), eq("harrier-oss-v1-27b_pca512"));
     }
 
     @Test
@@ -672,7 +672,7 @@ class V2LLMControllerWIT {
 
         verify(classRepository).getSimilar(
                 argThat(p -> p.getPageNumber() == 0 && p.getPageSize() == 20),
-                eq(CLASS_IRI), eq("en"), any(), eq("text-embedding-3-small"));
+                eq(CLASS_IRI), eq("en"), any(), eq("harrier-oss-v1-27b_pca512"));
     }
 
     // ------------------------------------------------------------------

@@ -6,6 +6,7 @@ import groovy.json.JsonSlurper
 params.out                     = "$OLS_OUT_DIR"
 params.embeddings_config       = "$OLS_EMBEDDINGS_CONFIG"
 params.embeddings_prev         = "$OLS_EMBEDDINGS_PREV"
+params.embeddings_path         = "$OLS_EMBEDDINGS_PATH"  // PCA parquets/JSONs of frozen models are read from here
 params.embeddings_batch_size   = 10000
 params.embeddings_pca_components = 512
 params.embed_image             = ""
@@ -18,7 +19,32 @@ workflow embeddings {
     main:
 
     config = new JsonSlurper().parse(new File(params.embeddings_config))
-    models = Channel.from(config.models)
+
+    // Frozen models are never re-embedded (e.g. OpenAI models once API credits run out).
+    // Their existing PCA parquet + PCA JSON in params.embeddings_path are passed straight
+    // through to the database load, so the vectors already computed stay available.
+    def frozen_models = (config.frozen_models ?: []) as List
+    def live_models   = config.models.findAll { !frozen_models.contains(it) }
+    def pca_suffix    = "_pca${params.embeddings_pca_components}"
+    def frozen_dir    = params.embeddings_path ?: 'NO_DIR'
+    frozen_models.each { model ->
+        def pq = new File(frozen_dir, "${model.split('/')[1]}${pca_suffix}.parquet")
+        if (!pq.exists()) {
+            error "Frozen embedding model ${model}: ${pq} not found. Restore it before running with the model frozen."
+        }
+    }
+    frozen_pca_parquets = Channel.from(frozen_models).map { model ->
+        tuple("${model}${pca_suffix}", file(new File(frozen_dir, "${model.split('/')[1]}${pca_suffix}.parquet")))
+    }
+    frozen_pca_jsons = Channel.from(frozen_models)
+        .map { model -> new File(frozen_dir, "${model.split('/')[1]}${pca_suffix}.json") }
+        .filter { json ->
+            if (!json.exists()) log.warn "Frozen embedding model: ${json} not found; its PCA model will not be loaded"
+            json.exists()
+        }
+        .map { json -> file(json) }
+
+    models = Channel.from(live_models)
 
     // Deduplicate the terms TSV (already produced by the dataload pipeline)
     deduped = dedupe_by_hash(terms_tsv)
@@ -63,7 +89,7 @@ workflow embeddings {
         new_emb_list.each { item ->
             new_by_model[item[0]] << item[1]
         }
-        config.models.collect { model ->
+        live_models.collect { model ->
             def model_short       = model.split('/')[1]
             def prev_parquet_path = new File(prev_dir, "${model_short}.parquet")
             def has_prev          = prev_parquet_path.exists()
@@ -78,6 +104,13 @@ workflow embeddings {
         embeddings_by_model_with_prev,
         terms_tsv
     )
+
+    // Persist the full-dimension merged embeddings as the base for the next run, so
+    // filter_existing only embeds genuinely new terms. The work dir is wiped between
+    // fresh runs, so these must be real copies, not symlinks into it.
+    if (params.embeddings_prev && params.embeddings_prev != 'NO_DIR') {
+        update_embeddings_prev(join_embeddings.out.embeddings)
+    }
 
     // Build ontology pairs for semsim
     def pairs = new LinkedHashSet<Tuple>()
@@ -108,10 +141,13 @@ workflow embeddings {
     publish_per_ontology_parquets(join_embeddings.out.embeddings.concat(pca.out.pca_parquets))
 
     emit:
-    // Emit the PCA parquet files (for use in json2postgres)
-    pca_parquets = pca.out.pca_parquets
-    // Emit the PCA JSON model files (for loading in the backend)
-    pca_jsons = pca.out.pca_jsons
+    // Emit the PCA parquet files, including frozen models (for use in json2postgres)
+    pca_parquets = pca.out.pca_parquets.mix(frozen_pca_parquets)
+    // Emit the PCA JSON model files, including frozen models (for loading in the backend)
+    pca_jsons = pca.out.pca_jsons.mix(frozen_pca_jsons)
+    // Only the PCA outputs recomputed this run (frozen models already live in embeddings_path)
+    new_pca_parquets = pca.out.pca_parquets
+    new_pca_jsons = pca.out.pca_jsons
     // Emit averaged parquet files
     avg_parquets = avg_embeddings.out.avg
 }
@@ -392,7 +428,8 @@ process pca {
     cpus "32"
 
     publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.parquet'
-    publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.json'
+    // Copy (not symlink) the small PCA JSONs so they survive the work dir being wiped
+    publishDir "${params.out}/embeddings", overwrite: true, pattern: '*.json', mode: 'copy'
 
     input:
     tuple val(model), path(parquet), val(n_components)
@@ -525,5 +562,52 @@ process publish_per_ontology_parquets {
         TO '\$ont_id.parquet' (FORMAT PARQUET, COMPRESSION ZSTD);
       "
     done
+    """
+}
+
+// Copies each model's full-dimension merged parquet into params.embeddings_prev,
+// replacing last run's base. Written to a temp name then renamed so a failed copy never
+// leaves a truncated base behind. Refuses to shrink the base: the new file must keep at
+// least 95% of the previous non-null embeddings, otherwise the expensive vectors already
+// in embeddings_prev are kept and the task fails.
+process update_embeddings_prev {
+
+    container params.embed_image
+    cache "lenient"
+    memory '16 GB'
+    time '4h'
+    cpus "4"
+
+    input:
+    tuple val(model), path(parquet)
+
+    output:
+    path("persisted_${model.split('/')[1]}.txt")
+
+    script:
+    def model_short = model.split('/')[1]
+    def dest = "${params.embeddings_prev}/${model_short}.parquet"
+    """
+    #!/usr/bin/env bash
+    set -Eeuo pipefail
+
+    count_embedded() {
+        duckdb -noheader -list -c "SELECT count(*) FROM read_parquet('\$1') WHERE embedding IS NOT NULL"
+    }
+
+    NEW=\$(count_embedded "${parquet}")
+    if [ -f "${dest}" ]; then
+        OLD=\$(count_embedded "${dest}")
+        if [ "\$NEW" -lt \$(( OLD * 95 / 100 )) ]; then
+            echo "Refusing to replace ${dest}: new file has \$NEW embeddings, previous has \$OLD" >&2
+            exit 1
+        fi
+    else
+        OLD=0
+    fi
+
+    cp -L "${parquet}" "${params.embeddings_prev}/.${model_short}.parquet.tmp"
+    mv -f "${params.embeddings_prev}/.${model_short}.parquet.tmp" "${dest}"
+    echo "Persisted ${model_short}: \$OLD -> \$NEW embeddings at ${dest}" | tee persisted_${model_short}.txt
     """
 }

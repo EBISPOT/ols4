@@ -6,6 +6,7 @@ import org.springdoc.core.annotations.ParameterObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import uk.ac.ebi.spot.ols.config.EmbeddingDefaults;
 import uk.ac.ebi.spot.ols.controller.api.exception.ResourceNotFoundException;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpEntity;
@@ -89,7 +90,7 @@ public class V2LLMController {
                 @RequestParam(value = "model", required = true) 
                 @Parameter(name = "model",
                         description = "The embedding model name to use for vector search",
-                        example = "text-embedding-3-small") String model,
+                        example = "llama-embed-nemotron-8b_pca512") String model,
                 @RequestParam(value = "ontologyId", required = false)
                 @Parameter(name = "ontologyId",
                         description = "Optional ontology ID to filter results. If specified only returns classes defined in this ontology (not imported classes).",
@@ -127,7 +128,7 @@ public class V2LLMController {
                 @RequestParam(value = "model", required = true) 
                 @Parameter(name = "model",
                         description = "The embedding model name to use for vector search",
-                        example = "text-embedding-3-small") String model,
+                        example = "llama-embed-nemotron-8b_pca512") String model,
                 @RequestParam(value = "isDefiningOntology", required = false, defaultValue = "false")
                 @Parameter(name = "isDefiningOntology",
                         description = "If true, only return classes defined in this ontology. If false (default), include imported classes too.",
@@ -164,7 +165,7 @@ public class V2LLMController {
                 @RequestParam(value = "model", required = true) 
                 @Parameter(name = "model",
                         description = "The embedding model name to use for vector search",
-                        example = "text-embedding-3-small") String model,
+                        example = "llama-embed-nemotron-8b_pca512") String model,
                 @RequestParam(value = "ontologyId", required = false)
                 @Parameter(name = "ontologyId",
                         description = "Optional ontology ID to filter results. If specified only returns entities defined in this ontology (not imported).",
@@ -212,7 +213,7 @@ public class V2LLMController {
                 @RequestParam(value = "model", required = true) 
                 @Parameter(name = "model",
                         description = "The embedding model name to use for vector search",
-                        example = "text-embedding-3-small") String model,
+                        example = "llama-embed-nemotron-8b_pca512") String model,
                 @RequestParam(value = "ontologyId", required = false)
                 @Parameter(name = "ontologyId",
                         description = "Optional ontology ID to filter results. If specified only returns classes defined in this ontology (not imported classes).",
@@ -250,7 +251,7 @@ public class V2LLMController {
                 @RequestParam(value = "model", required = true) 
                 @Parameter(name = "model",
                         description = "The embedding model name to use for vector search",
-                        example = "text-embedding-3-small") String model,
+                        example = "llama-embed-nemotron-8b_pca512") String model,
                 @RequestParam(value = "isDefiningOntology", required = false, defaultValue = "false")
                 @Parameter(name = "isDefiningOntology",
                         description = "If true, only return classes defined in this ontology. If false (default), include imported classes too.",
@@ -281,10 +282,10 @@ public class V2LLMController {
                     description = "The IRI of the class, this value must be double URL encoded",
                     example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_1000967") String iri,
         @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-        @RequestParam(value = "model", required = false, defaultValue = "text-embedding-3-small") 
+        @RequestParam(value = "model", required = false, defaultValue = EmbeddingDefaults.DEFAULT_MODEL_PROPERTY) 
         @Parameter(name = "model",
-                description = "The embedding model name to use. Defaults to text-embedding-3-small.",
-                example = "text-embedding-3-small") String model,
+                description = "The embedding model name to use. Defaults to " + EmbeddingDefaults.DEFAULT_MODEL + ".",
+                example = EmbeddingDefaults.DEFAULT_MODEL) String model,
         @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
 
@@ -304,10 +305,10 @@ public class V2LLMController {
             @Parameter(name = "class",
                     description = "The IRI of the class, this value must be double URL encoded",
                     example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_1000967") String iri,
-            @RequestParam(value = "model", required = false, defaultValue = "text-embedding-3-small") 
+            @RequestParam(value = "model", required = false, defaultValue = EmbeddingDefaults.DEFAULT_MODEL_PROPERTY) 
             @Parameter(name = "model",
-                    description = "The embedding model name to use. Defaults to text-embedding-3-small.",
-                    example = "text-embedding-3-small") String model
+                    description = "The embedding model name to use. Defaults to " + EmbeddingDefaults.DEFAULT_MODEL + ".",
+                    example = EmbeddingDefaults.DEFAULT_MODEL) String model
     ) throws ResourceNotFoundException {
 
         iri = UriUtils.decode(iri, "UTF-8");
@@ -328,10 +329,10 @@ public class V2LLMController {
             @Parameter(name = "otherclass",
                     description = "The IRI of the other class, this value must be double URL encoded",
                     example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_1000967") String iri2,
-            @RequestParam(value = "model", required = false, defaultValue = "text-embedding-3-small") 
+            @RequestParam(value = "model", required = false, defaultValue = EmbeddingDefaults.DEFAULT_MODEL_PROPERTY) 
             @Parameter(name = "model",
-                    description = "The embedding model name to use. Defaults to text-embedding-3-small.",
-                    example = "text-embedding-3-small") String model
+                    description = "The embedding model name to use. Defaults to " + EmbeddingDefaults.DEFAULT_MODEL + ".",
+                    example = EmbeddingDefaults.DEFAULT_MODEL) String model
     ) throws ResourceNotFoundException {
 
         iri = UriUtils.decode(iri, "UTF-8");
@@ -355,7 +356,7 @@ public class V2LLMController {
                 @RequestParam(value = "model", required = true) 
                 @Parameter(name = "model",
                         description = "The embedding model name to use for vector search",
-                        example = "text-embedding-3-small") String model,
+                        example = "llama-embed-nemotron-8b_pca512") String model,
                 @RequestParam(value = "ontologyId", required = false)
                 @Parameter(name = "ontologyId",
                         description = "Optional ontology ID to filter results. If specified only returns properties defined in this ontology.",
@@ -403,7 +404,7 @@ public class V2LLMController {
                 @RequestParam(value = "model", required = true) 
                 @Parameter(name = "model",
                         description = "The embedding model name to use for vector search",
-                        example = "text-embedding-3-small") String model,
+                        example = "llama-embed-nemotron-8b_pca512") String model,
                 @RequestParam(value = "ontologyId", required = false)
                 @Parameter(name = "ontologyId",
                         description = "Optional ontology ID to filter results. If specified only returns individuals defined in this ontology.",
@@ -448,10 +449,10 @@ public class V2LLMController {
                     description = "The IRI of the property, this value must be double URL encoded",
                     example = "http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_0000742") String iri,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
-            @RequestParam(value = "model", required = false, defaultValue = "text-embedding-3-small") 
+            @RequestParam(value = "model", required = false, defaultValue = EmbeddingDefaults.DEFAULT_MODEL_PROPERTY) 
             @Parameter(name = "model",
-                    description = "The embedding model name to use. Defaults to text-embedding-3-small.",
-                    example = "text-embedding-3-small") String model,
+                    description = "The embedding model name to use. Defaults to " + EmbeddingDefaults.DEFAULT_MODEL + ".",
+                    example = EmbeddingDefaults.DEFAULT_MODEL) String model,
             @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
 

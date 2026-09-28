@@ -2,6 +2,7 @@
 package uk.ac.ebi.spot.ols.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.google.gson.JsonElement;
 
+import uk.ac.ebi.spot.ols.config.EmbeddingDefaults;
 import uk.ac.ebi.spot.ols.model.v2.V2Entity;
 import uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient;
 import uk.ac.ebi.spot.ols.repository.search.SearchType;
@@ -36,6 +38,9 @@ public class PropertyRepository {
 
     @Autowired
     OlsPostgresClient postgresClient;
+
+    @Value(EmbeddingDefaults.DEFAULT_MODEL_PROPERTY)
+    String defaultEmbeddingModel = EmbeddingDefaults.DEFAULT_MODEL;
 
 
     public OlsFacetedResultsPage<JsonElement> find(
@@ -135,7 +140,7 @@ public class PropertyRepository {
         Validation.validateLang(lang);
 
         if (modelName == null || modelName.isEmpty()) {
-            modelName = "text-embedding-3-small"; // Default model
+            modelName = defaultEmbeddingModel;
         }
 
         return this.postgresClient.getSimilar("OntologyProperty", iri, pageable, modelName)
