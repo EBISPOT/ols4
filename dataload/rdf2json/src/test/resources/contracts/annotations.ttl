@@ -1,0 +1,64 @@
+@prefix : <https://example.org/contract#> .
+@prefix ex: <https://example.org/contract#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix oboInOwl: <http://www.geneontology.org/formats/oboInOwl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/contract> a owl:Ontology ;
+    owl:versionInfo "2026-09" .
+
+ex:Root a owl:Class ;
+    rdfs:label "A root"@en , "Une racine"@fr ;
+    rdfs:comment "A comment is not the configured definition" ;
+    ex:definition "The configured definition"@en ;
+    ex:alias "Custom alias"@en ;
+    oboInOwl:hasExactSynonym "Exact alias"@en ;
+    ex:tag "Findable marker" ;
+    ex:note "A note with an axiom" .
+
+[] a owl:Axiom ;
+    owl:annotatedSource ex:Root ;
+    owl:annotatedProperty ex:note ;
+    owl:annotatedTarget "A note with an axiom" ;
+    rdfs:comment "Evidence for the note" .
+
+ex:FrenchOnly a owl:Class ;
+    rdfs:label "Seulement français"@fr .
+
+ex:Obsolete a owl:Class ;
+    owl:deprecated true .
+
+ex:TypedSynonym a owl:Class ;
+    oboInOwl:hasExactSynonym "Typed alias"@en .
+
+ex:SynonymType a owl:AnnotationProperty ;
+    rdfs:label "abbreviation"@en .
+
+[] a owl:Axiom ;
+    owl:annotatedSource ex:TypedSynonym ;
+    owl:annotatedProperty oboInOwl:hasExactSynonym ;
+    owl:annotatedTarget "Typed alias"@en ;
+    oboInOwl:hasSynonymType ex:SynonymType .
+
+ex:partOf a owl:ObjectProperty ;
+    rdfs:label "part of"@en .
+
+ex:score a owl:DatatypeProperty ;
+    rdfs:range xsd:integer .
+
+ex:tag a owl:AnnotationProperty .
+ex:definition a owl:AnnotationProperty .
+ex:alias a owl:AnnotationProperty .
+ex:note a owl:AnnotationProperty .
+
+ex:item a owl:NamedIndividual, ex:Root ;
+    rdfs:label "The item"@en ;
+    ex:score 7 .
+
+ex:other a owl:NamedIndividual .
+
+[] a owl:NegativePropertyAssertion ;
+    owl:sourceIndividual ex:item ;
+    owl:assertionProperty ex:partOf ;
+    owl:targetIndividual ex:other .

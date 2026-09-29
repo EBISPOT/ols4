@@ -1,0 +1,11 @@
+{
+  "ontologies": [
+    {
+      "id": "CONTRACT",
+      "preferredPrefix": "CT",
+      "ontology_purl": "annotations.ttl",
+      "base_uri": ["https://example.org/contract#"],
+      "label_property": ["https://example.org/contract#tag"]
+    }
+  ]
+}
