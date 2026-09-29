@@ -45,6 +45,37 @@ value. Dates, temporary paths, and logging are not part of the contract.
 Generated outputs from a large dataload run are useful regression evidence,
 but require review before any individual field becomes an asserted contract.
 
+## RDF2JSON semantic contract
+
+The next slice keeps the same executable boundary: a packaged RDF2JSON JAR
+reads a local ontology and config, then writes ontology and status JSON. Small
+fixtures make the intended transformation visible in the test itself. Assertions
+select entities by IRI and check specific fields rather than freezing a whole
+JSON document, so harmless ordering or unrelated metadata changes do not make
+the tests fail.
+
+| Contract group | Directly checked behaviour |
+| --- | --- |
+| Identity and serialization | Ontology ID/IRI/version, entity categories, short form/CURIE, typed values, counts, languages, and entity-to-ontology metadata |
+| Annotations | Multilingual labels and short-form fallback, configured label and definition predicates, default/custom synonyms, searchable values, preferred roots, and obsolete flags |
+| OWL evidence | Reified annotation evidence, OBO synonym-type label, negative property assertion, equivalent/disjoint classes, and inverse properties |
+| Hierarchy | Direct versus transitive ancestry, restriction-based hierarchical parents, related links, child flags, and descendant counts |
+| Input and punning | Turtle and RDF/XML local input; a shared class/individual IRI survives in both output collections |
+
+These tests run in the existing `dataload-java-contract` CI job alongside the
+first-slice status tests. They do not require Nextflow, Docker, or PostgreSQL.
+Each test runs one ontology, matching the current Nextflow per-ontology
+invocation. A failing ontology therefore does not block assertions about a
+different ontology. Whole-pipeline golden comparisons remain a separate safety
+net, not the source of truth for these field-level expectations.
+
+This is broad coverage of the current RDF2JSON transformation stages, not a
+claim that every RDF/OWL construct or combination is specified. In particular,
+large anonymous class-expression graphs, multi-parent cycles, and unusual
+import topologies still rely on the existing golden suite until each has an
+agreed small semantic contract. New regressions should become a small fixture
+and field assertion here before refreshing a broad golden output.
+
 ## Later slices
 
 Rust tests will exercise manifest creation and linking with small ontology

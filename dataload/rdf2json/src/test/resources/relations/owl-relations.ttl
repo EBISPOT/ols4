@@ -1,0 +1,14 @@
+@prefix : <https://example.org/relations#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://example.org/relations> a owl:Ontology .
+
+:Alpha a owl:Class ; owl:equivalentClass :Beta .
+:Beta a owl:Class .
+:Gamma a owl:Class .
+:Delta a owl:Class .
+
+[] a owl:AllDisjointClasses ; owl:members ( :Beta :Gamma :Delta ) .
+
+:hasPart a owl:ObjectProperty ; owl:inverseOf :partOf .
+:partOf a owl:ObjectProperty .
