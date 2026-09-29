@@ -573,10 +573,14 @@ process publish_per_ontology_parquets {
 process update_embeddings_prev {
 
     container params.embed_image
+    // embeddings_prev is not a staged input, so the container cannot see it unless bound explicitly
+    containerOptions { workflow.containerEngine == 'singularity'
+        ? "-B ${params.embeddings_prev}"
+        : "-v ${params.embeddings_prev}:${params.embeddings_prev}" }
     cache "lenient"
     memory '16 GB'
     time '4h'
-    cpus "4"
+    cpus "2"
 
     input:
     tuple val(model), path(parquet)
@@ -591,9 +595,16 @@ process update_embeddings_prev {
     #!/usr/bin/env bash
     set -Eeuo pipefail
 
+    # Bound duckdb: by default it sizes memory from the whole node, not the Slurm allocation,
+    # and got OOM-killed at 16 GB on a 160 GB parquet. With these limits: ~1.1 GB RSS, ~90 s.
     count_embedded() {
-        duckdb -noheader -list -c "SELECT count(*) FROM read_parquet('\$1') WHERE embedding IS NOT NULL"
+        duckdb -noheader -list -c "SET threads=${task.cpus}; SET memory_limit='4GB'; SELECT count(embedding) FROM read_parquet('\$1')"
     }
+
+    if [ ! -d "${params.embeddings_prev}" ]; then
+        echo "${params.embeddings_prev} is not visible in the container" >&2
+        exit 1
+    fi
 
     NEW=\$(count_embedded "${parquet}")
     if [ -f "${dest}" ]; then
