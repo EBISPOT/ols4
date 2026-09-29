@@ -11,7 +11,9 @@ import org.junit.rules.TemporaryFolder;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
@@ -33,7 +35,7 @@ public class RDF2JSONAnnotationsIT {
         assertEquals("CT", ontology.get("preferredPrefix").getAsString());
         assertEquals("2026-09", literal(ontology.get("http://www.w3.org/2002/07/owl#versionInfo")));
         assertEquals("4", literal(ontology.get("numberOfClasses")));
-        assertEquals("7", literal(ontology.get("numberOfProperties")));
+        assertEquals("8", literal(ontology.get("numberOfProperties")));
         assertEquals("2", literal(ontology.get("numberOfIndividuals")));
         assertContainsLiteral(ontology.getAsJsonArray("language"), "en", null);
         assertContainsLiteral(ontology.getAsJsonArray("language"), "fr", null);
@@ -109,11 +111,34 @@ public class RDF2JSONAnnotationsIT {
         JsonObject reifiedNote = root.get(BASE + "note").getAsJsonObject();
         assertContains(reifiedNote.getAsJsonArray("type"), "reification");
         assertEquals("A note with an axiom", literal(reifiedNote.get("value")));
-        JsonObject evidence = reifiedNote.getAsJsonArray("axioms").get(0).getAsJsonObject();
-        assertEquals("Evidence for the note",
-                literal(evidence.get("http://www.w3.org/2000/01/rdf-schema#comment")));
+        assertContainsAxiomLiteral(reifiedNote.getAsJsonArray("axioms"),
+                "http://www.w3.org/2000/01/rdf-schema#comment", "Evidence for the note");
 
         assertEquals(BASE + "other", item.get("negativePropertyAssertion+" + BASE + "partOf").getAsString());
+    }
+
+    @Test
+    public void multipleAxiomsOnOneAssertionRetainBothEvidenceRecords() throws Exception {
+        JsonObject root = entity(run(), "classes", "Root");
+        JsonArray axioms = root.get(BASE + "note").getAsJsonObject().getAsJsonArray("axioms");
+        Set<String> comments = new HashSet<>();
+        for (JsonElement axiom : axioms) {
+            comments.add(literal(axiom.getAsJsonObject().get("http://www.w3.org/2000/01/rdf-schema#comment")));
+        }
+
+        assertEquals(Set.of("Evidence for the note", "Additional evidence"), comments);
+        assertEquals(2, axioms.size());
+    }
+
+    @Test
+    public void uriValuedAssertionRetainsItsAxiomEvidence() throws Exception {
+        JsonObject root = entity(run(), "classes", "Root");
+        JsonObject reference = root.get(BASE + "seeAlso").getAsJsonObject();
+
+        assertContains(reference.getAsJsonArray("type"), "reification");
+        assertEquals(BASE + "other", reference.get("value").getAsString());
+        assertContainsAxiomLiteral(reference.getAsJsonArray("axioms"),
+                "http://www.w3.org/2000/01/rdf-schema#comment", "URI target evidence");
     }
 
     @Test
@@ -189,5 +214,13 @@ public class RDF2JSONAnnotationsIT {
             if (language != null && literal.has("lang") && language.equals(literal.get("lang").getAsString())) return;
         }
         throw new AssertionError("Expected literal " + expected + " (" + language + ") in " + values);
+    }
+
+    private static void assertContainsAxiomLiteral(JsonArray axioms, String predicate, String expected) {
+        for (JsonElement axiom : axioms) {
+            JsonElement value = axiom.getAsJsonObject().get(predicate);
+            if (value != null && expected.equals(literal(value))) return;
+        }
+        throw new AssertionError("Expected axiom literal " + expected + " in " + axioms);
     }
 }

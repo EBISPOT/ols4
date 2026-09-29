@@ -23,24 +23,24 @@ semantics. Use targeted JSON field assertions rather than full-file snapshots.
 | `InverseOfAnnotator` | Reverse `owl:inverseOf` on a property | One-way pair in `RDF2JSONRelationsIT` | P2: absent target and already-bidirectional assertions. |
 | `NegativePropertyAssertionAnnotator` | `negativePropertyAssertion+<property IRI>` on source individual | `owl:targetIndividual` in `RDF2JSONAnnotationsIT` | P2: literal `owl:targetValue`, malformed/missing source or assertion property. |
 | `OboSynonymTypeNameAnnotator` | `oboSynonymTypeName` within reified synonym axiom evidence | Named synonym type in `RDF2JSONAnnotationsIT` | P2: unresolved synonym type or missing literal label. |
-| `DirectParentsAnnotator` | `directParent` for classes, properties, and individuals | Named class chain in `RDF2JSONRelationsIT`; imported class parent in `RDF2JSONImportsIT` | P1: property `subPropertyOf`, individual `rdf:type`, and excluding `owl:NamedIndividual` as a parent. |
-| `RelatedAnnotator` | `relatedTo` for selected anonymous subclass expressions/restrictions | Named `someValuesFrom` in `RDF2JSONRelationsIT`; `oneOf`, `intersectionOf`, and both as `someValuesFrom` fillers in `RelatedAnnotatorTest` | P1: self/unresolved fillers, duplicate relations, and packaged-JSON checks for complex expressions; see open question below for `hasValue`. |
-| `HierarchicalParentsAnnotator` | `hierarchicalParent` and edge axiom `childRelationToParent`/`parentRelationToChild` | Named class edge and configured restriction edge in `RDF2JSONRelationsIT` | P1: direct individual hierarchical-property triples, inverse edge metadata, absent/unlisted parent, and property hierarchy. |
-| `AncestorsAnnotator` | `directAncestor`, `hierarchicalAncestor` closure | Named class chain and restriction hierarchy in `RDF2JSONRelationsIT` | P1: individual hierarchical closure and multi-parent DAG; P2: cycles. |
-| `HierarchyMetricsAnnotator` | `numDescendants`, `numHierarchicalDescendants` | Class chain and restriction counts in `RDF2JSONRelationsIT` | P1: property/individual counts and a multi-parent DAG; P2: cycle behavior. |
+| `DirectParentsAnnotator` | `directParent` for classes, properties, and individuals | Named class chain and imported class in earlier tests; property `subPropertyOf` and individual `rdf:type` in `RDF2JSONRelationsIT` | P2: unresolved parent and exclusion of `owl:NamedIndividual` when another named type is present (the fixture asserts only the resulting parent). |
+| `RelatedAnnotator` | `relatedTo` for selected anonymous subclass expressions/restrictions | Named `someValuesFrom` and packaged-JSON `intersectionOf` in `RDF2JSONRelationsIT`; `oneOf`, `intersectionOf`, and both as `someValuesFrom` fillers in `RelatedAnnotatorTest` | P2: self/unresolved fillers and duplicate relations. `hasValue` is excluded from this testing effort by decision. |
+| `HierarchicalParentsAnnotator` | `hierarchicalParent` and edge axiom `childRelationToParent`/`parentRelationToChild` | Named class and configured restriction edges; configured individual assertion and inverse edge metadata in `RDF2JSONRelationsIT` | P2: absent/unlisted parent, self-edge exclusion, and property hierarchy. |
+| `AncestorsAnnotator` | `directAncestor`, `hierarchicalAncestor` closure | Named class chain, multi-parent DAG, instance direct ancestry, and individual hierarchical ancestry in `RDF2JSONRelationsIT` | P2: cycles and unresolved parents. |
+| `HierarchyMetricsAnnotator` | `numDescendants`, `numHierarchicalDescendants` | Class chain, multi-parent DAG, property and individual descendants in `RDF2JSONRelationsIT` | P2: cycles and overlapping hierarchical paths. |
 | `ShortFormAnnotator` | `shortForm`, `curie` | Base-URI/prefix example in `RDF2JSONAnnotationsIT`; custom regex with underscored prefix and multi-underscore numeric CURIE in `ShortFormAndLabelAnnotatorTest` | P2: URN, absent base URI, unmatched/invalid regex, and nonnumeric underscore suffix. |
 | `DefinitionAnnotator` | `definition` collated from configured/default predicates | Configured output in `RDF2JSONAnnotationsIT`; configured/default/empty choices in `DefinitionAnnotatorTest` | P2: multiple predicates and language/typed literal retention in packaged output. |
 | `SynonymAnnotator` | `synonym` and normalized per-predicate arrays | Custom and OBO exact values in `RDF2JSONAnnotationsIT` | P2: related/narrow/broad default predicates, multiple values, and single-value array normalization. |
-| `ReifiedPropertyAnnotator` | Value object with `type: reification` and `axioms` evidence | Note and synonym-type axiom in `RDF2JSONAnnotationsIT` | P1: multiple axioms on one assertion and URI-valued annotated target; P2: malformed axiom input. |
+| `ReifiedPropertyAnnotator` | Value object with `type: reification` and `axioms` evidence | Literal and URI targets, synonym-type axiom, and multiple axioms on one assertion in `RDF2JSONAnnotationsIT` | P2: malformed axiom input and repeated identical evidence. |
 | `OntologyMetadataAnnotator` | Entity `ontologyId`, `ontologyIri`, `ontologyPreferredPrefix` | Class identity fields in `RDF2JSONAnnotationsIT` | P2: absent preferred prefix and property/individual variants. |
-| `HierarchyFlagsAnnotator` | `hasDirectParents/Children`, `hasHierarchicalParents/Children` | Class chain and restriction flags in `RDF2JSONRelationsIT` | P1: property/individual flags and excluded top nodes (`owl:Thing`, `owl:TopObjectProperty`). |
+| `HierarchyFlagsAnnotator` | `hasDirectParents/Children`, `hasHierarchicalParents/Children` | Class chain, property direct flags, and individual hierarchical flags in `RDF2JSONRelationsIT` | P2: excluded top nodes (`owl:Thing`, `owl:TopObjectProperty`). |
 | `IsObsoleteAnnotator` | `isObsolete` boolean | `owl:deprecated true` and non-obsolete class in `RDF2JSONAnnotationsIT` | P2: `owl:deprecated "1"`, obsolete-class parent, and false/unset forms. |
 | `LabelAnnotator` | `label` list with language tags and short-form fallback | English/French labels, French-only fallback, configured predicate in `RDF2JSONAnnotationsIT`; English suppression of fallback and configured override in `ShortFormAndLabelAnnotatorTest` | P2: nested source lists, multiple label predicates, language-less label, and empty configured predicate list. |
-| `ConfigurablePropertyAnnotator` | `hierarchicalProperty`, `definitionProperty`, `synonymProperty` provenance | Definition/synonym predicates in `RDF2JSONAnnotationsIT` and definition choices in `DefinitionAnnotatorTest` | P1: `hierarchicalProperty` provenance and configured versus default hierarchy predicates. |
+| `ConfigurablePropertyAnnotator` | `hierarchicalProperty`, `definitionProperty`, `synonymProperty` provenance | Definition/synonym predicates in `RDF2JSONAnnotationsIT`, definition choices in `DefinitionAnnotatorTest`, configured individual `hierarchicalProperty` in `RDF2JSONRelationsIT` | P2: default hierarchy predicate provenance. |
 | `PreferredRootsAnnotator` | Ontology `preferredRoot`; entity `isPreferredRoot` | Configured root and non-root in `RDF2JSONAnnotationsIT` | P2: roots declared on the ontology via IAO or OLS predicates, duplicates, missing roots. |
-| `DisjointWithAnnotator` | Pairwise `owl:disjointWith`, `owl:propertyDisjointWith`, `owl:differentFrom` | `owl:AllDisjointClasses` in `RDF2JSONRelationsIT` | P1: `AllDisjointProperties` and `AllDifferent` lists, including an unresolved member. |
+| `DisjointWithAnnotator` | Pairwise `owl:disjointWith`, `owl:propertyDisjointWith`, `owl:differentFrom` | `AllDisjointClasses`, `AllDisjointProperties`, and `AllDifferent` in `RDF2JSONRelationsIT` | P2: unresolved member in `AllDifferent`; malformed lists in other forms. |
 | `HasIndividualsAnnotator` | `hasIndividuals: true` on class with instance | Class instance in `RDF2JSONAnnotationsIT` | P2: no instance, external/unresolved type, and punning. |
-| `EquivalenceAnnotator` | Reverse `owl:equivalentClass` or `owl:equivalentProperty` | One-way class pair in `RDF2JSONRelationsIT` | P1: one-way property pair; P2: missing target and already-bidirectional assertions. |
+| `EquivalenceAnnotator` | Reverse `owl:equivalentClass` or `owl:equivalentProperty` | One-way class and property pairs in `RDF2JSONRelationsIT` | P2: missing target and already-bidirectional assertions. |
 
 ## Boundaries and contract decisions
 
@@ -56,11 +56,9 @@ semantics. Use targeted JSON field assertions rather than full-file snapshots.
   links are available via a separate paginated endpoint. The direct unit test
   asserts its absence for a `oneOf` case; do not add a populated `relatedFrom`
   expectation to this component contract.
-- For `hasValue` with an individual filler, the implementation currently adds
-  `relatedTo` **on the individual pointing to the class**. Other examined
-  branches add it on the subclass. That direction is an observed difference,
-  **not yet an agreed contract or a confirmed defect**. Ask the domain owner
-  which direction dataload should expose before freezing it in a test.
+- The `RelatedAnnotator` `hasValue` branch is deliberately outside this test
+  effort at the user's request. Its observed relationship direction is not
+  treated here as either an agreed contract or a confirmed defect.
 - Empty/absent config can have different semantics by field. The definition
   config behavior is directly tested: an explicit empty list disables
   collation, while omission uses defaults. Other configuration rules in the
