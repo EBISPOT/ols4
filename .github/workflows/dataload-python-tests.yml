@@ -1,0 +1,15 @@
+name: Dataload Python Unit Tests
+on:
+  push:
+    branches: [dev, stable]
+  pull_request:
+jobs:
+  dataload-python-unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test schema and loader helpers
+        run: python3 -m unittest discover -s dataload/tests -p 'test_*.py' -v
