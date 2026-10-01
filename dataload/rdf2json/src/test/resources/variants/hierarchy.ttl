@@ -1,0 +1,29 @@
+@prefix : <https://example.org/variants#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+<https://example.org/variants> a owl:Ontology .
+# The diamond mixes direct subclass and default part-of restriction edges.
+:Top a owl:Class .
+:Left a owl:Class ; rdfs:subClassOf :Top .
+:Right a owl:Class ; rdfs:subClassOf :Top .
+:Leaf a owl:Class ; rdfs:subClassOf :Left,
+    [ a owl:Restriction ; owl:onProperty obo:BFO_0000050 ; owl:someValuesFrom :Right ] .
+:CycleA a owl:Class ; rdfs:subClassOf :CycleB .
+:CycleB a owl:Class ; rdfs:subClassOf :CycleA .
+:CycleLeaf a owl:Class ; rdfs:subClassOf :CycleA .
+:MissingParent a owl:Class ; rdfs:subClassOf :Absent .
+:SelfRestriction a owl:Class ; rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty obo:BFO_0000050 ; owl:someValuesFrom :SelfRestriction ] .
+:MissingRestriction a owl:Class ; rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty obo:BFO_0000050 ; owl:someValuesFrom :Absent ] .
+:UnlistedRestriction a owl:Class ; rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty :unlisted ; owl:someValuesFrom :Top ] .
+:TopChild a owl:Class ; rdfs:subClassOf owl:Thing .
+owl:Thing a owl:Class .
+:SubProperty a owl:ObjectProperty ; rdfs:subPropertyOf :SuperProperty .
+:SuperProperty a owl:ObjectProperty .
+:TopPropertyChild a owl:ObjectProperty ; rdfs:subPropertyOf owl:TopObjectProperty .
+owl:TopObjectProperty a owl:ObjectProperty .
+:child a owl:NamedIndividual, :Leaf ; obo:BFO_0000050 :parent, :child, :Absent, "literal ignored" .
+:parent a owl:NamedIndividual .

@@ -6,6 +6,7 @@ import uk.ac.ebi.rdf2json.annotators.ShortFormAnnotator;
 import uk.ac.ebi.rdf2json.properties.PropertyValue;
 import uk.ac.ebi.rdf2json.properties.PropertyValueList;
 import uk.ac.ebi.rdf2json.properties.PropertyValueLiteral;
+import uk.ac.ebi.rdf2json.properties.PropertyValueURI;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -72,6 +73,58 @@ public class ShortFormAndLabelAnnotatorTest {
         assertEquals(List.of("Configured name"), values(custom, "label"));
         assertEquals(List.of("Unlabelled"), values(fallback, "label"));
         assertNull(fallback.properties.getPropertyValues(CUSTOM_LABEL));
+    }
+
+    @Test
+    public void urnAndNonNumericUnderscoreNamesKeepTheirLocalIdentifier() throws IOException {
+        OntologyGraph graph = graph(Map.of());
+        OntologyNode urn = entity(graph, "urn:example:term");
+        OntologyNode underscore = entity(graph, "https://example.org/EX_TRA_name");
+        ShortFormAnnotator.annotateShortForms(graph);
+        assertEquals(List.of("example:term"), values(urn, "shortForm"));
+        assertEquals(List.of("example:term"), values(urn, "curie"));
+        assertEquals(List.of("EX_TRA_name"), values(underscore, "shortForm"));
+        assertEquals(List.of("EX_TRA_name"), values(underscore, "curie"));
+    }
+
+    @Test
+    public void invalidUnmatchedAndGrouplessPatternsFallBackToDefaultExtraction() throws IOException {
+        for (String pattern : List.of("[", "https://other.org/(.*)", "https://example.org/Local")) {
+            OntologyGraph graph = graph(Map.of("shortFormExtractionPattern", pattern));
+            OntologyNode node = entity(graph, "https://example.org/Local");
+            ShortFormAnnotator.annotateShortForms(graph);
+            assertEquals(pattern, List.of("Local"), values(node, "shortForm"));
+            assertEquals(pattern, List.of("Local"), values(node, "curie"));
+        }
+    }
+
+    @Test
+    public void absentOrEmptyPreferredPrefixUsesUppercaseOntologyIdForBaseUri() throws IOException {
+        for (Map<String, Object> config : List.of(
+                Map.<String, Object>of("base_uri", List.of("https://example.org/")),
+                Map.<String, Object>of("base_uri", List.of("https://example.org/"), "preferredPrefix", ""))) {
+            OntologyGraph graph = graph(config);
+            OntologyNode node = entity(graph, "https://example.org/name");
+            ShortFormAnnotator.annotateShortForms(graph);
+            assertEquals(List.of("TEST_name"), values(node, "shortForm"));
+            assertEquals(List.of("TEST:name"), values(node, "curie"));
+        }
+    }
+
+    @Test
+    public void labelSourceListsRetainLanguagesAndIgnoreNonLiteralMembers() throws IOException {
+        OntologyGraph graph = graph(Map.of("label_property", List.of(CUSTOM_LABEL, RDF_LABEL)));
+        OntologyNode node = entity(graph, "https://example.org/Local");
+        node.properties.addProperty(CUSTOM_LABEL, new PropertyValueList(List.of(
+                new PropertyValueLiteral("Nom", "", "fr"),
+                PropertyValueLiteral.fromString("Plain label"),
+                PropertyValueURI.fromUri("https://example.org/ignored"))));
+        node.properties.addProperty(RDF_LABEL, PropertyValueLiteral.fromString("Second label"));
+        ShortFormAnnotator.annotateShortForms(graph);
+        LabelAnnotator.annotateLabels(graph);
+        assertEquals(List.of("Second label", "Nom", "Plain label"), values(node, "label"));
+        PropertyValueList labels = (PropertyValueList) node.properties.getPropertyValue("label");
+        assertEquals("fr", ((PropertyValueLiteral) labels.getPropertyValues().get(1)).getLang());
     }
 
     private static OntologyGraph graph(Map<String, Object> settings) throws IOException {

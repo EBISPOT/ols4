@@ -1,0 +1,12 @@
+@prefix : <https://example.org/variants#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+<https://example.org/variants> a owl:Ontology .
+:A a owl:Class ; owl:equivalentClass :B .
+:B a owl:Class ; owl:equivalentClass :A .
+:Missing a owl:Class ; owl:equivalentClass :Absent .
+:p a owl:ObjectProperty ; owl:equivalentProperty :q ; owl:inverseOf :q .
+:q a owl:ObjectProperty ; owl:equivalentProperty :p ; owl:inverseOf :p .
+:missingProperty a owl:ObjectProperty ; owl:equivalentProperty :absentProperty ; owl:inverseOf :absentProperty .
+:first a owl:NamedIndividual .
+:second a owl:NamedIndividual .
+[] a owl:AllDifferent ; owl:distinctMembers ( :first :absentIndividual :second ) .
