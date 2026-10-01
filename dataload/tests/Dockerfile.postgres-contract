@@ -1,0 +1,14 @@
+FROM rust:1.90.0-bullseye AS converter
+WORKDIR /src/dataload
+COPY dataload/ ./
+RUN cargo build --locked -p ols_json2postgres --jobs 2
+
+FROM pgvector/pgvector:0.8.0-pg17
+RUN apt-get update && apt-get install -y --no-install-recommends python3 python3-venv && rm -rf /var/lib/apt/lists/*
+RUN python3 -m venv /opt/test-venv && /opt/test-venv/bin/pip install --no-cache-dir pyarrow==19.0.1
+ENV PATH="/opt/test-venv/bin:/usr/lib/postgresql/17/bin:${PATH}"
+COPY --from=converter /src/dataload/target/debug/ols_json2postgres /usr/local/bin/
+COPY dataload/load_into_postgres.py dataload/create_postgres_schema.py /opt/ols/dataload/
+COPY dataload/tests/postgres_contract.py /opt/ols/dataload/tests/
+USER postgres
+ENTRYPOINT ["python3", "/opt/ols/dataload/tests/postgres_contract.py"]

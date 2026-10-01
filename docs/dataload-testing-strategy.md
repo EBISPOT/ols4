@@ -106,3 +106,21 @@ ontology `linksTo` relationships. SSSOM curation and large-scale performance
 remain outside this component slice. RDF2JSON cyclic imports and remaining
 annotator gaps, including the excluded RelatedAnnotator.hasValue branch, remain
 deferred as documented in `rdf2json-annotator-coverage.md`.
+
+## PostgreSQL loading executable contracts
+
+`docker build -f dataload/tests/Dockerfile.postgres-contract -t ols-dataload-pg-contract .`
+then `docker run --rm --shm-size=512m ols-dataload-pg-contract` builds the real
+JSON2Postgres binary from this checkout and runs the Python loader CLI inside
+disposable PostgreSQL 17 with pgvector. Tests restart the packaged cluster and
+query persisted rows, gzip JSON, text arrays, booleans, entity categories,
+parent/ancestor/related arrays, dynamic filters, generated search, autosuggest
+deduplication, pgvector dimensions and label/curation embedding rows, indexes,
+and PCA/text-tagger artifacts. No-embedding and empty-collection loading is
+also covered. Corrupt COPY input must fail without packaging and stop the
+server; malformed JSON must fail conversion. This is distinct from the prior
+schema SQL string assertions and Rust binary-writer helper tests.
+
+The dedicated CI job precedes the assembled API safety check. Full-volume
+loading, every embedding model combination and external PostgreSQL deployment
+remain separate concerns; these fixtures specify the local loading boundary.
