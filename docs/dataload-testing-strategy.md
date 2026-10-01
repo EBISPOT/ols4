@@ -87,3 +87,22 @@ ontology and check that the successful outputs are unaffected.
 The existing `test_dataload.sh` golden comparison and `test_api.sh` full run
 continue to check the assembled system. The module tests give a faster, more
 specific failure when a dataload transformation changes.
+
+## Rust manifest and linker executable contracts
+
+Run `cargo test --locked --manifest-path dataload/Cargo.toml -p ols_create_manifest -p ols_link`.
+The dedicated CI job runs helper tests and Cargo integration tests invoking both
+real binaries. Manifest assertions cover multiple files, repeated inputs, shared
+entity provenance, canonical ownership/CURIE, import/export relationships,
+class/property/individual inventories, multilingual fields and edge evidence.
+Linker tests supply an independently authored manifest and assert known IRI and
+CURIE resolution, property-name links, unresolved/self/OWL exclusions, canonical
+metadata, copied evidence, and CLI failure for an invalid manifest.
+
+Bioregistry is served by a loopback HTTP fixture; ORCID uses its existing local
+name fixture. `OLS_TEST_DB_XREFS` supplies a local GO db-xrefs YAML file in tests;
+normal runs retain the upstream default. External URL links do not become
+ontology `linksTo` relationships. SSSOM curation and large-scale performance
+remain outside this component slice. RDF2JSON cyclic imports and remaining
+annotator gaps, including the excluded RelatedAnnotator.hasValue branch, remain
+deferred as documented in `rdf2json-annotator-coverage.md`.

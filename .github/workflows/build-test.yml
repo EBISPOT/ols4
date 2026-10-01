@@ -89,12 +89,25 @@ jobs:
             dataload/**/target/failsafe-reports/
           if-no-files-found: ignore
 
+  dataload-rust-contract:
+    name: Dataload Rust Manifest & Linker Contracts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: dataload
+      - name: Run Rust helper and executable contracts
+        run: cargo test --locked --manifest-path dataload/Cargo.toml -p ols_create_manifest -p ols_link
+
   test-api:
     name: Build & Test API
     needs:
       - backend-unit-web
       - backend-postgres-integration
       - dataload-java-contract
+      - dataload-rust-contract
     runs-on: ubuntu-latest
     steps:
       - name: Free up disk space on GH actions runner
