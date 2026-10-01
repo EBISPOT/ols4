@@ -1,0 +1,4 @@
+@prefix : <https://example.org/variants#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+<https://example.org/variants> a owl:Ontology ; owl:imports <__CHILD__>, <__GRANDCHILD__> .
+:Root a owl:Class .
