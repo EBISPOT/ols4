@@ -144,6 +144,13 @@ jobs:
       - name: Build dataload image
         run: docker build --target test -t ols4-dataload:local -f ./dataload/Dockerfile .
 
+      - name: Set up Nextflow for isolation contract
+        uses: nf-core/setup-nextflow@v2
+        with:
+          version: '24.10.5'
+      - name: Test per-ontology Nextflow failure isolation
+        run: python3 dataload/tests/nextflow_isolation.py --image ols4-dataload:local
+
       - name: Run mock dataload and dataload tests
         run: |
           docker run ols4-dataload:local bash -c "cd /opt/ols && ./test_dataload.sh"
