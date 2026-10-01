@@ -1,5 +1,6 @@
 @prefix : <https://example.org/relations#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 <https://example.org/relations> a owl:Ontology .
 
@@ -8,7 +9,26 @@
 :Gamma a owl:Class .
 :Delta a owl:Class .
 
+:IntersectA a owl:Class .
+:IntersectB a owl:Class .
+:IntersectChild a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ; owl:intersectionOf ( :IntersectA :IntersectB ) ] .
+
 [] a owl:AllDisjointClasses ; owl:members ( :Beta :Gamma :Delta ) .
 
 :hasPart a owl:ObjectProperty ; owl:inverseOf :partOf .
 :partOf a owl:ObjectProperty .
+
+:EquivalentPropertyA a owl:ObjectProperty ; owl:equivalentProperty :EquivalentPropertyB .
+:EquivalentPropertyB a owl:ObjectProperty .
+
+:DisjointPropertyA a owl:ObjectProperty .
+:DisjointPropertyB a owl:ObjectProperty .
+:DisjointPropertyC a owl:ObjectProperty .
+[] a owl:AllDisjointProperties ; owl:members ( :DisjointPropertyA :DisjointPropertyB :DisjointPropertyC ) .
+
+:Person a owl:Class .
+:PersonA a owl:NamedIndividual, :Person .
+:PersonB a owl:NamedIndividual, :Person .
+:PersonC a owl:NamedIndividual, :Person .
+[] a owl:AllDifferent ; owl:distinctMembers ( :PersonA :PersonB :PersonC ) .

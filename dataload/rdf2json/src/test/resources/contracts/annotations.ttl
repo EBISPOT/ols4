@@ -15,13 +15,26 @@ ex:Root a owl:Class ;
     ex:alias "Custom alias"@en ;
     oboInOwl:hasExactSynonym "Exact alias"@en ;
     ex:tag "Findable marker" ;
-    ex:note "A note with an axiom" .
+    ex:note "A note with an axiom" ;
+    ex:seeAlso ex:other .
 
 [] a owl:Axiom ;
     owl:annotatedSource ex:Root ;
     owl:annotatedProperty ex:note ;
     owl:annotatedTarget "A note with an axiom" ;
     rdfs:comment "Evidence for the note" .
+
+[] a owl:Axiom ;
+    owl:annotatedSource ex:Root ;
+    owl:annotatedProperty ex:note ;
+    owl:annotatedTarget "A note with an axiom" ;
+    rdfs:comment "Additional evidence" .
+
+[] a owl:Axiom ;
+    owl:annotatedSource ex:Root ;
+    owl:annotatedProperty ex:seeAlso ;
+    owl:annotatedTarget ex:other ;
+    rdfs:comment "URI target evidence" .
 
 ex:FrenchOnly a owl:Class ;
     rdfs:label "Seulement français"@fr .
@@ -51,6 +64,7 @@ ex:tag a owl:AnnotationProperty .
 ex:definition a owl:AnnotationProperty .
 ex:alias a owl:AnnotationProperty .
 ex:note a owl:AnnotationProperty .
+ex:seeAlso a owl:AnnotationProperty .
 
 ex:item a owl:NamedIndividual, ex:Root ;
     rdfs:label "The item"@en ;
