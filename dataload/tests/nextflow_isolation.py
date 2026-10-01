@@ -1,6 +1,7 @@
 """Run real production Nextflow processes with baseline and mixed outcomes."""
 import argparse
 import csv
+import gzip
 import json
 import os
 from pathlib import Path
@@ -38,7 +39,11 @@ def main():
         config.write_text(json.dumps({"ontologies": ontologies}))
         no_file = base / "NO_FILE"
         no_file.touch()
-        env = {**os.environ, "OLS_HOME": str(base), "OLS_OUT_DIR": str(base), "OLS_EMBEDDINGS_PATH": str(base), "OLS_EMBEDDINGS_CONFIG": str(config), "OLS_EMBEDDINGS_PREV": str(base), "NXF_ANSI_LOG": "false"}
+        no_pca = base / "NO_FILE_PCA"
+        no_pca.touch()
+        tagger = base / "text_tagger_db.bin.gz"
+        tagger.write_bytes(gzip.compress(b"isolation fixture"))
+        env = {**os.environ, "OLS_HOME": str(base), "OLS_OUT_DIR": str(base), "OLS_EMBEDDINGS_PATH": str(base), "OLS_EMBEDDINGS_CONFIG": str(config), "OLS_EMBEDDINGS_PREV": str(base), "NXF_ANSI_LOG": "false", "HOST_UID": str(os.getuid()), "HOST_GID": str(os.getgid())}
         outputs = {}
         for mode, ids in [("baseline", "a,b"), ("mixed", "a,b,broken,crash")]:
             run_dir = base / mode
@@ -49,11 +54,11 @@ def main():
                 command = ["docker", "run", "--rm", "--entrypoint", "nextflow",
                            "-v", f"{REPO}:{REPO}:ro", "-v", f"{base}:{base}",
                            "-v", "/var/run/docker.sock:/var/run/docker.sock", "-w", str(run_dir)]
-                for key in ["OLS_HOME", "OLS_OUT_DIR", "OLS_EMBEDDINGS_PATH", "OLS_EMBEDDINGS_CONFIG", "OLS_EMBEDDINGS_PREV", "NXF_ANSI_LOG"]:
+                for key in ["OLS_HOME", "OLS_OUT_DIR", "OLS_EMBEDDINGS_PATH", "OLS_EMBEDDINGS_CONFIG", "OLS_EMBEDDINGS_PREV", "NXF_ANSI_LOG", "HOST_UID", "HOST_GID"]:
                     command += ["-e", f"{key}={env[key]}"]
                 command += [args.controller_image]
             command += ["run", str(FIXTURE / "isolation.nf"), "-c", str(FIXTURE / "isolation.config"),
-                        "--fixture_config", str(config), "--ids", ids, "--no_file", str(no_file),
+                        "--fixture_config", str(config), "--ids", ids, "--no_file", str(no_file), "--no_pca", str(no_pca), "--tagger", str(tagger),
                         "--results", str(results), "--test_image", args.image, "-with-trace", str(run_dir / "trace.tsv")]
             proc = subprocess.run(command, cwd=run_dir, env=env, text=True, capture_output=True, timeout=240)
             check(proc.returncode == 0, f"{mode} workflow failed:\n{proc.stdout}\n{proc.stderr}")
@@ -62,6 +67,12 @@ def main():
                 trace = list(csv.DictReader(trace_file, delimiter="\t"))
             parsed = [r for r in trace if r["name"].startswith("rdf2json")]
             check(len(parsed) == len(ids.split(',')), f"wrong RDF2JSON task count: {trace}")
+            unexpected = [r for r in trace if r["status"] == "FAILED" and r["exit"] != "42"]
+            for row in unexpected:
+                error = Path(row["workdir"]) / ".command.err"
+                print(error.read_text() if error.exists() else row)
+            check(not unexpected, f"unexpected process failures: {unexpected}")
+            check(sum(r["status"] == "COMPLETED" for r in parsed) == len(ids.split(',')) - (mode == "mixed"), "successful RDF2JSON tasks did not complete")
             check(sum(r["status"] == "FAILED" and r["exit"] == "42" for r in parsed) == (mode == "mixed"), "hard failure not isolated")
             for name in ["a", "b"]:
                 status = json.loads((results / "json" / f"{name}.status.json").read_text())
@@ -75,13 +86,17 @@ def main():
                 check(not (results / "json/crash.json").exists(), "hard failed task published JSON")
                 check(not list((results / "binary").glob("broken_*.pgbin")), "semantic failure produced COPY files")
                 check(not list((results / "binary").glob("crash_*.pgbin")), "hard failure reached converter")
+            persisted = json.loads((results / "persisted/loaded.json").read_text())
+            expected = [{"ontology": name, "type": kind, "iri": f"https://example.test/{name}{suffix}"}
+                        for name in ["a", "b"] for kind, suffix in [("Ontology", ""), ("OntologyClass", "#Root")]]
+            check(persisted == expected, f"successful ontologies did not load independently: {persisted}")
             outputs[mode] = results
         for name in ["a", "b"]:
             check((outputs["baseline"] / "json" / f"{name}.json").read_bytes() == (outputs["mixed"] / "json" / f"{name}.json").read_bytes(), f"{name} JSON changed alongside failures")
             for suffix in ["entities", "autosuggest"]:
                 file = f"{name}_{suffix}.pgbin"
                 check((outputs["baseline"] / "binary" / file).read_bytes() == (outputs["mixed"] / "binary" / file).read_bytes(), f"{name} binary output changed alongside failures")
-        print("PASS: successful ontology JSON and COPY files are unchanged alongside semantic and process failures")
+        print("PASS: successful ontologies persist with unchanged JSON and COPY files alongside semantic and process failures")
 
 
 if __name__ == "__main__":

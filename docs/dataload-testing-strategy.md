@@ -128,16 +128,20 @@ remain separate concerns; these fixtures specify the local loading boundary.
 
 With Nextflow 24.10.5 and a dataload image built from this checkout, run
 `python3 dataload/tests/nextflow_isolation.py --image ols4-dataload:local`.
-The small workflow imports the production `rdf2json` and `json2postgres`
-processes. It compares A+B against A+B alongside a missing-source ontology
+The small workflow imports the production `rdf2json`, `json2postgres` and
+`create_postgres` processes. It compares A+B against A+B alongside a missing-source
+ontology
 (`FAILED_NO_FALLBACK`) and an injected task exit 42. Trace assertions distinguish
 a semantic outcome from a failed task; neither produces downstream COPY files.
 A+B must remain `SUCCESS` with byte-identical JSON and binary COPY outputs.
+The production loader collects the surviving files into a disposable cluster;
+a verification process restarts it and requires both ontologies and their
+classes to be present, with no rows for either failing ontology.
 This preserves production `errorStrategy 'ignore'` and release isolation.
 
 CI runs the fixture in Build & Test API immediately after building its local
 dataload image, then runs the existing assembled dataload/API safety checks.
-The fixture checks process/channel isolation and conversion to loadable files;
-the separate PostgreSQL contract checks actual database loading. It does not
-claim full production workflow, linking, fallback orchestration or release
+The fixture checks process/channel isolation through persisted loading;
+the separate PostgreSQL contract checks detailed stored values and indexes.
+It does not claim full production workflow, linking, fallback orchestration or release
 promotion coverage. No global failure gate is added for individual ontologies.
