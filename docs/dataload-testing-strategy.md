@@ -76,13 +76,12 @@ import topologies still rely on the existing golden suite until each has an
 agreed small semantic contract. New regressions should become a small fixture
 and field assertion here before refreshing a broad golden output.
 
-## Later slices
+## Downstream slices
 
-Rust tests will exercise manifest creation and linking with small ontology
-JSON inputs. PostgreSQL tests will load real `.pgbin` output into disposable
-PostgreSQL 17 with pgvector and query the stored rows. A small Nextflow test
-will run two successful ontologies alongside one intentionally failing
-ontology and check that the successful outputs are unaffected.
+The contracts below exercise manifest creation and linking with tiny ontology
+JSON inputs, real `.pgbin` loading into disposable PostgreSQL 17 with pgvector,
+and per-ontology Nextflow failure isolation. Each boundary has an executable
+fixture and explicit expected fields or outcomes.
 
 The existing `test_dataload.sh` golden comparison and `test_api.sh` full run
 continue to check the assembled system. The module tests give a faster, more
