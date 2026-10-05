@@ -14,6 +14,9 @@ output/*
 .venv
 
 frontend/dist/bundle.js.map
+frontend/dist/ols-release.json
+.github/release/__pycache__/
+.release-output/
 node_modules
 
 .nextflow.log

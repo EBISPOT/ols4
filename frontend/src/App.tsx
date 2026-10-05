@@ -17,6 +17,7 @@ import MCP from "./pages/MCP";
 import DefinedResponseFields from "./pages/DefinedResponseFields";
 import OLS3Help from "./pages/OLS3Help";
 import Home from "./pages/home/Home";
+import Releases from "./pages/releases/Releases";
 import OntologiesPage from "./pages/ontologies/OntologiesPage";
 import OntologyPage from "./pages/ontologies/OntologyPage";
 import EntityPage from "./pages/ontologies/entities/EntityPage";
@@ -94,6 +95,7 @@ class App extends React.Component {
           <Route path={`/ols3help`} element={<OLS3Help />} />
           <Route path={`/about`} element={<About />} />
           <Route path={`/downloads`} element={<Downloads />} />
+          <Route path={`/releases`} element={<Releases />} />
         </Routes>
         <Footer />
       </BrowserRouter>
