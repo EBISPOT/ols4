@@ -164,7 +164,8 @@ class LifecycleTests(unittest.TestCase):
         os.chdir(self.temp.name)
         for path in ("backend/src/main/resources", "frontend/public", "apitester4"):
             Path(path).mkdir(parents=True)
-        Path("CITATION.cff").write_text('cff-version: 1.2.0\ntitle: OLS software\n')
+        self.zenodo_metadata = json.loads((self.previous_dir / ".zenodo.json").read_text())
+        Path(".zenodo.json").write_bytes(subject.json_bytes(self.zenodo_metadata))
         Path("code.txt").write_text("source code\n")
         for args in (["init", "-q"], ["add", "."], ["-c", "user.name=Test", "-c", "user.email=test@example.com", "commit", "-qm", "test source"]):
             subprocess.run(["git", *args], check=True, capture_output=True)
@@ -226,9 +227,15 @@ class LifecycleTests(unittest.TestCase):
         with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as archive:
             prefix = "ols4-v4.0.1/"
             self.assertEqual(archive.extractfile(prefix + "code.txt").read(), b"source code\n")
-            citation = archive.extractfile(prefix + "CITATION.cff").read().decode()
-            self.assertIn('doi: "10.5281/zenodo.20000001"', citation)
-            self.assertIn('version: "4.0.1"', citation)
+            metadata = json.load(archive.extractfile(prefix + ".zenodo.json"))
+            self.assertEqual(metadata, {**self.zenodo_metadata,
+                "doi": "10.5281/zenodo.20000001", "version": "4.0.1",
+                "publication_date": "2026-10-05"})
+            self.assertEqual(metadata["upload_type"], "software")
+            # Native archiving reads the tagged source, before a DOI is minted.
+            tagged_metadata = json.loads(subject.git("show", self.commit + ":.zenodo.json"))
+            self.assertTrue({"doi", "version", "publication_date", "related_identifiers"}.isdisjoint(tagged_metadata))
+            self.assertNotIn(prefix + "CITATION.cff", archive.getnames())
             manifest = json.load(archive.extractfile(prefix + "release-manifest.json"))
             self.assertEqual(set(manifest["images"]), set(subject.COMPONENTS))
             self.assertEqual(manifest["archiving"], "github")

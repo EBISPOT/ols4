@@ -35,16 +35,19 @@ GitHub tags and the generated release manifest identify the software release.
 
 The software starts a **fresh Zenodo DOI series** through Zenodo's native GitHub
 integration. The paper's DOI is not used as a software DOI, concept DOI or base
-record. No existing DOI is configured or written into the repository's citation
+record. No existing DOI is configured or written into the repository's archival
 metadata. The first archived software release establishes the software concept
 DOI; each later release receives a distinct version DOI in that series.
 
 - Connect your GitHub account in Zenodo and enable `EBISPOT/ols4`. This requires
   repository admin rights and EBISPOT approval of the Zenodo application.
   The enabled repository and active release webhook were verified during setup.
-- `CITATION.cff` describes OLS software, its authors, repository and license. It
-  deliberately omits DOI, version and release date: Zenodo determines the version
-  and date from the GitHub release, and assigns a new software DOI.
+- `.zenodo.json` is the single archival metadata source. It describes the software,
+  creators, description, license, access rights, keywords and language using
+  Zenodo's GitHub metadata format. It deliberately omits DOI, version, publication
+  date and related identifiers: Zenodo supplies the release tag/date and GitHub
+  source relation, then assigns a new software DOI. Do not hardcode these dynamic
+  fields. Add confirmed funding or community information here when available.
 - The `release:patch`, `release:minor`, and `release:major` labels are configured.
   Without a bump label, the release increments the patch version.
 - There is **no Zenodo API token** and no deposition/upload/publish API call in
@@ -62,7 +65,8 @@ DOI; each later release receives a distinct version DOI in that series.
   Avoid merging another stable release until the previous one finishes.
 
 Setup and archiving are described in Zenodo's
-[repository guide](https://help.zenodo.org/docs/github/enable-repository/) and
+[repository guide](https://help.zenodo.org/docs/github/enable-repository/),
+[metadata guide](https://help.zenodo.org/docs/github/describe-software/zenodo-json/) and
 [GitHub release guide](https://help.zenodo.org/docs/github/archive-software/github-upload/).
 The optional GitHub workflow permission requirement is documented in the
 [release API](https://docs.github.com/en/rest/releases/releases#create-a-release).
@@ -96,7 +100,9 @@ revision and source. Build caches use each component's `release-buildcache` tag.
 
 Finishing adds `release-manifest.json` and a deterministic, enriched source archive
 to the GitHub release. That archive contains the tagged source plus generated
-release metadata, notes, image digests and a version-specific `CITATION.cff`.
+release metadata, notes, image digests and an enriched `.zenodo.json` with the
+assigned software DOI, version and publication date. The repository's metadata
+file stays free of these release-specific fields.
 It is distinct from the source ZIP automatically preserved by Zenodo. The release
 body is then updated to show its software DOI and completed image availability.
 

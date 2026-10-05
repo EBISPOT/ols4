@@ -390,11 +390,11 @@ def remember_image(gh, output, component, metadata):
 def source_archive(state, manifest):
     prefix = f"ols4-v{state['version']}/"
     source = subprocess.check_output(["git", "archive", "--format=tar", f"--prefix={prefix}", state["commit"]])
-    citation = git("show", state["commit"] + ":CITATION.cff")
-    citation = re.sub(r'^(doi|version|date-released):.*\n?', '', citation, flags=re.M)
-    citation += f'\ndoi: "{state["doi"]}"\nversion: "{state["version"]}"\ndate-released: "{state["releasedAt"][:10]}"\n'
+    metadata = json.loads(git("show", state["commit"] + ":.zenodo.json"))
+    metadata.update({"doi": state["doi"], "version": state["version"],
+                     "publication_date": state["releasedAt"][:10]})
     bundle = json_bytes({key: manifest[key] for key in ("current", "conceptDoi", "releases")})
-    additions = {"CITATION.cff": citation.encode(), "RELEASE_NOTES.md": state["notes"].encode(),
+    additions = {".zenodo.json": json_bytes(metadata), "RELEASE_NOTES.md": state["notes"].encode(),
                  "release-manifest.json": json_bytes(manifest),
                  "backend/src/main/resources/ols-release.json": bundle,
                  "frontend/public/ols-release.json": bundle,
