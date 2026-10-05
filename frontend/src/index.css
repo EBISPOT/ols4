@@ -1369,3 +1369,18 @@ mark {
   padding: 0;
   font-weight: 600;
 }
+
+/* Reviewed release notes use the site's existing text and link styles. */
+.release-notes h1, .release-notes h2, .release-notes h3,
+.release-notes h4, .release-notes h5, .release-notes h6 {
+  @apply text-lg font-bold mt-4 mb-2;
+}
+.release-notes p, .release-notes pre, .release-notes blockquote {
+  @apply mb-3;
+}
+.release-notes ul { @apply list-disc pl-6 mb-3; }
+.release-notes ol { @apply list-decimal pl-6 mb-3; }
+.release-notes a { @apply text-link-default underline; }
+.release-notes pre { @apply overflow-x-auto bg-neutral-light p-3 rounded; }
+.release-notes table { @apply block overflow-x-auto mb-3; }
+.release-notes th, .release-notes td { @apply border border-neutral-light px-3 py-2; }

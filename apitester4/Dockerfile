@@ -10,3 +10,5 @@ FROM eclipse-temurin:17-jre
 COPY --from=builder /opt/apitester/target/apitester-1.0-SNAPSHOT-jar-with-dependencies.jar /opt/apitester/apitester.jar
 
 WORKDIR /opt/apitester
+
+COPY ./ols-release.json /opt/ols/release.json
