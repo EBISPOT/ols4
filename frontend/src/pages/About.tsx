@@ -84,6 +84,25 @@ export default function About() {
             </li>
           </ul>
         </div>
+        <h2 className="text-2xl font-bold my-6">Software preservation</h2>
+        <div>
+          <p className="my-2">
+            OLS software releases are archived for continued access, citation and
+            reuse. Our preservation policy describes what is preserved, retention
+            arrangements and responsibilities if the service closes.
+          </p>
+          <p className="my-2">
+            <a
+              className="link-default"
+              href={urlJoin(process.env.PUBLIC_URL || "/", "documents/ols-preservation-policy.pdf")}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              OLS preservation policy (PDF, 254 KB)
+            </a>
+          </p>
+          <p className="my-2">Version 1.00 · 2 October 2026</p>
+        </div>
         <div className="text-2xl font-bold my-6">Privacy Policy</div>
         <div>
           <p className="my-2">
