@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import Header from "../components/Header";
 import urlJoin from "url-join";
-import Link from "@mui/material/Link";
 import { List, ListItem } from "@mui/material";
 
 export default function About() {
@@ -28,14 +27,25 @@ export default function About() {
             </a>
             &thinsp;at EMBL-EBI.
           </p>
-          <p>For more information about OLS please see our recent publication:</p>
-          <br/>
-          <p className="text-l ml-2">
-            <Link className="link-default" href="https://academic.oup.com/bioinformatics/article/41/5/btaf279/8125017">
-            <i>OLS4: a new Ontology Lookup Service for a growing interdisciplinary knowledge ecosystem</i>
-            </Link>
-            <br/><i>Bioinformatics</i>
-            <br/>Volume 41, Issue 5, May 2025, btaf279
+        </div>
+        <h2 className="text-2xl font-bold my-6">How to cite OLS</h2>
+        <div>
+          <p className="my-2">
+            McLaughlin J, Lagrimas J, Iqbal H, Parkinson H, Harmse H.{" "}
+            <strong>
+              OLS4: a new Ontology Lookup Service for a growing interdisciplinary
+              knowledge ecosystem.
+            </strong>{" "}
+            <em>Bioinformatics.</em> 2025;41(5):btaf279.{" "}
+            <a
+              className="link-default"
+              href="https://doi.org/10.1093/bioinformatics/btaf279"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              doi:10.1093/bioinformatics/btaf279
+            </a>
+            .
           </p>
         </div>
         <div className="text-2xl font-bold my-6">Funding</div>
@@ -102,6 +112,21 @@ export default function About() {
             </a>
           </p>
           <p className="my-2">Version 1.00 · 2 October 2026</p>
+          <h3 className="text-xl font-bold my-4">OLS data releases</h3>
+          <p className="my-2">
+            The latest OLS data releases, including OLS embeddings data, are
+            available from the EMBL-EBI FTP site.
+          </p>
+          <p className="my-2">
+            <a
+              className="link-default"
+              href="https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Download the latest OLS data release
+            </a>
+          </p>
         </div>
         <div className="text-2xl font-bold my-6">Privacy Policy</div>
         <div>
