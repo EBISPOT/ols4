@@ -11,8 +11,11 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient.nearer;
 import static uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient.normalizeCosineDistance;
 import static uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient.normalizeCosineSimilarity;
+import static uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient.ranksExactly;
+import static uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient.supportsIterativeScans;
 
 /**
  * Direct unit coverage for the pure logic in {@link OlsPostgresClient}: the SQL-injection-relevant
@@ -205,6 +208,81 @@ class OlsPostgresClientTest {
     void normalizeCosineDistanceRoundsToSixDecimalPlaces() {
         // 1 - (0.123456789 / 2) = 0.9382716055 -> rounds to 0.938272.
         assertThat(normalizeCosineDistance(0.123456789)).isEqualTo(0.938272);
+    }
+
+    // ------------------------------------------------------------------
+    // supportsIterativeScans(String) -- package-private static. Decides from the installed pgvector
+    // version whether an ontology-scoped search may read the HNSW index (hnsw.iterative_scan,
+    // pgvector 0.8.0+) or has to rank every vector in scope (GitHub issue #1445).
+    // ------------------------------------------------------------------
+
+    @ParameterizedTest
+    @ValueSource(strings = {"0.8.0", "0.8.2", " 0.8.2 ", "0.8.0-rc1", "0.9.0", "0.10.1", "1.0.0", "1.2", "2"})
+    void supportsIterativeScansFromPgvectorZeroPointEight(String version) {
+        assertThat(supportsIterativeScans(version)).isTrue();
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"0.7.4", "0.5.1", "0.4", "0"})
+    void supportsIterativeScansIsFalseBeforePgvectorZeroPointEight(String version) {
+        assertThat(supportsIterativeScans(version)).isFalse();
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", " ", ".", "..", "unknown", "0.x", "v0.8.0", "-1.9", "99999999999.9"})
+    void supportsIterativeScansIsFalseForAnUnreadableVersion(String version) {
+        assertThat(supportsIterativeScans(version)).isFalse();
+    }
+
+    @Test
+    void supportsIterativeScansIsFalseWhenTheExtensionIsNotInstalled() {
+        assertThat(supportsIterativeScans(null)).isFalse();
+    }
+
+    // ------------------------------------------------------------------
+    // ranksExactly(long, long, boolean) -- package-private static. The choice an ontology-scoped
+    // search makes between ranking every vector in scope and reading the HNSW index.
+    // ------------------------------------------------------------------
+
+    @Test
+    void ranksExactlyUpToAndIncludingTheConfiguredNumberOfVectors() {
+        assertThat(ranksExactly(1, 250_000, true)).isTrue();
+        assertThat(ranksExactly(250_000, 250_000, true)).isTrue();
+    }
+
+    @Test
+    void readsTheIndexForAScopeLargerThanTheConfiguredNumberOfVectors() {
+        assertThat(ranksExactly(250_001, 250_000, true)).isFalse();
+    }
+
+    @Test
+    void readsTheIndexForEveryScopeWhenTheConfiguredNumberIsZero() {
+        assertThat(ranksExactly(1, 0, true)).isFalse();
+    }
+
+    @Test
+    void ranksExactlyWhateverTheSizeWhenPgvectorHasNoIterativeScans() {
+        assertThat(ranksExactly(250_001, 250_000, false)).isTrue();
+        assertThat(ranksExactly(1, 0, false)).isTrue();
+    }
+
+    // ------------------------------------------------------------------
+    // nearer(double, double) -- package-private static. Merges an entity's label and curation
+    // distances the way SQL's min() would, which Math.min does not when one of them is NaN.
+    // ------------------------------------------------------------------
+
+    @Test
+    void nearerIsTheSmallerDistance() {
+        assertThat(nearer(0.2, 0.7)).isEqualTo(0.2);
+        assertThat(nearer(0.7, 0.2)).isEqualTo(0.2);
+        assertThat(nearer(0.4, 0.4)).isEqualTo(0.4);
+    }
+
+    @Test
+    void nearerPrefersAnyNumberToNotANumber() {
+        assertThat(nearer(0.9, Double.NaN)).isEqualTo(0.9);
+        assertThat(nearer(Double.NaN, 0.9)).isEqualTo(0.9);
+        assertThat(nearer(Double.NaN, Double.NaN)).isNaN();
     }
 
     // ------------------------------------------------------------------
