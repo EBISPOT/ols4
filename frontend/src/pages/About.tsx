@@ -118,6 +118,10 @@ export default function About() {
             available from the EMBL-EBI FTP site.
           </p>
           <p className="my-2">
+            The FTP site retains data releases from the past seven days. Older
+            releases are removed.
+          </p>
+          <p className="my-2">
             <a
               className="link-default"
               href="https://ftp.ebi.ac.uk/pub/databases/spot/ols/latest/"
