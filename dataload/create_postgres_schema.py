@@ -103,7 +103,12 @@ EMBEDDING_NODES_TABLE_SQL = """\
 CREATE TABLE ols_embedding_nodes (
     id TEXT PRIMARY KEY,
     type TEXT NOT NULL,
-    entity_id TEXT NOT NULL
+    entity_id TEXT NOT NULL,
+    -- Copies of the owning entity's ols_entities.ontology_id and ols_entities.type. An HNSW scan
+    -- can only filter on columns of the table it indexes, so an ontology- or type-scoped vector
+    -- search needs these here rather than behind a join to ols_entities. See GitHub issue #1445.
+    ontology_id TEXT NOT NULL,
+    entity_type TEXT NOT NULL
 ) WITH (fillfactor=100);
 """
 
@@ -278,6 +283,10 @@ def generate_embedding_sql(parquet_files: list) -> tuple:
 
         emb_index.append(f"CREATE INDEX idx_emb_{safe_model_name}_label ON ols_embedding_nodes USING hnsw (\"{emb_col}\" vector_cosine_ops) WHERE type = 'LabelEmbedding';")
         emb_index.append(f"CREATE INDEX idx_emb_{safe_model_name}_curated ON ols_embedding_nodes USING hnsw (\"{emb_col}\" vector_cosine_ops) WHERE type = 'CurationEmbedding';")
+        # Lets a scoped vector search count an ontology's vectors without touching the heap, and
+        # read them without walking ols_entities, when the scope is small enough to rank exactly
+        # (OlsPostgresClient.searchByVectorInOntology). See GitHub issue #1445.
+        emb_index.append(f'CREATE INDEX idx_emb_{safe_model_name}_scope ON ols_embedding_nodes (ontology_id, type, entity_type) WHERE "{emb_col}" IS NOT NULL;')
 
     return (
         '\n'.join(ent_alter) + '\n' if ent_alter else "",

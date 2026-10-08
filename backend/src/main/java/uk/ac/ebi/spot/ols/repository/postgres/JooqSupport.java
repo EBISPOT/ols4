@@ -14,6 +14,8 @@ public final class JooqSupport {
     public static final Table<?> OLS_PCA_MODELS = DSL.table(DSL.name("ols_pca_models"));
     public static final Table<?> OLS_TEXT_TAGGER = DSL.table(DSL.name("ols_text_tagger"));
     public static final Table<?> INFORMATION_SCHEMA_COLUMNS = DSL.table(DSL.name("information_schema", "columns"));
+    public static final Table<?> PG_ATTRIBUTE = DSL.table(DSL.name("pg_catalog", "pg_attribute"));
+    public static final Table<?> PG_EXTENSION = DSL.table(DSL.name("pg_catalog", "pg_extension"));
 
     private JooqSupport() {
     }
@@ -107,11 +109,30 @@ public final class JooqSupport {
     }
 
     public static Field<Double> vectorDistance(Field<?> field, String vectorLiteral) {
-        return DSL.field("{0} <=> CAST({1} AS vector)", SQLDataType.DOUBLE, field, DSL.val(vectorLiteral));
+        // The vector arrives as a text parameter and is cast in an uncorrelated subquery, which
+        // Postgres evaluates once per execution. Cast in place (`<=> CAST(? AS vector)`) it is
+        // evaluated once only while the plan is a custom one, where the parameter is folded to a
+        // constant. pgjdbc makes a statement a server-side prepared one after five uses on a
+        // connection, and five uses later Postgres may give it a generic plan, which parses the
+        // text again for every row whose distance it computes. For a 512-dimension vector that
+        // costs far more than fetching the row's vector and computing the distance: ranking the
+        // 80,000 vectors of a test ontology took 0.4 s under a custom plan and 9 s under a generic
+        // one. A search that ranks many rows could therefore be fast for its first calls on a
+        // connection and many times slower afterwards. See GitHub issue #1445.
+        return DSL.field("{0} <=> (SELECT CAST({1} AS vector))", SQLDataType.DOUBLE, field, DSL.val(vectorLiteral));
     }
 
     public static Field<Double> vectorDistance(Field<?> left, Field<?> right) {
         return DSL.field("{0} <=> {1}", SQLDataType.DOUBLE, left, right);
+    }
+
+    /**
+     * {@code SET LOCAL setting = value} in function form, so that several settings can be applied
+     * in one statement. The value lasts until the surrounding transaction ends and so cannot leak
+     * into whatever next borrows the pooled connection. Outside a transaction it has no effect.
+     */
+    public static Field<String> setLocal(String setting, String value) {
+        return DSL.function("set_config", SQLDataType.VARCHAR, DSL.inline(setting), DSL.inline(value), DSL.inline(true));
     }
 
     public static Field<Object> websearchToTsQuery(String searchText) {

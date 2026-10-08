@@ -42,7 +42,7 @@ BASE_ENTITY_COLS = [
     "label_for_suggest",
 ]
 
-EMB_NODE_BASE_COLS = ["id", "type", "entity_id"]
+EMB_NODE_BASE_COLS = ["id", "type", "entity_id", "ontology_id", "entity_type"]
 
 
 # ---------------------------------------------------------------------------

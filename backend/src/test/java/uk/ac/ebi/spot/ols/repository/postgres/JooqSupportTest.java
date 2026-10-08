@@ -20,6 +20,8 @@ import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_EMBEDDING_N
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_ENTITIES;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_PCA_MODELS;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_TEXT_TAGGER;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.PG_ATTRIBUTE;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.PG_EXTENSION;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContains;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContainsCaseInsensitive;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContainsField;
@@ -28,6 +30,7 @@ import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.field;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.matchesTsQuery;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.maxTrigramCandidateLength;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.phraseToTsQuery;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.setLocal;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.similarity;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.similarityAtLeastThreshold;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.toTsQuery;
@@ -122,6 +125,16 @@ class JooqSupportTest {
     @Test
     void informationSchemaColumnsTableRendersSchemaQualifiedName() {
         assertThat(CTX.render(INFORMATION_SCHEMA_COLUMNS)).isEqualTo("\"information_schema\".\"columns\"");
+    }
+
+    @Test
+    void pgAttributeTableRendersSchemaQualifiedName() {
+        assertThat(CTX.render(PG_ATTRIBUTE)).isEqualTo("\"pg_catalog\".\"pg_attribute\"");
+    }
+
+    @Test
+    void pgExtensionTableRendersSchemaQualifiedName() {
+        assertThat(CTX.render(PG_EXTENSION)).isEqualTo("\"pg_catalog\".\"pg_extension\"");
     }
 
     // ------------------------------------------------------------------
@@ -299,7 +312,9 @@ class JooqSupportTest {
     }
 
     // ------------------------------------------------------------------
-    // vectorDistance(Field, String) -- pgvector <=> operator against a literal vector
+    // vectorDistance(Field, String) -- pgvector <=> operator against a literal vector. The cast
+    // sits in a scalar subquery so that it is evaluated once per execution, not once per row
+    // (GitHub issue #1445).
     // ------------------------------------------------------------------
 
     @Test
@@ -308,7 +323,15 @@ class JooqSupportTest {
 
         Field<Double> distance = vectorDistance(embedding, "[1,2,3]");
 
-        assertThat(render(distance)).isEqualTo("\"embedding\" <=> CAST('[1,2,3]' AS vector)");
+        assertThat(render(distance)).isEqualTo("\"embedding\" <=> (SELECT CAST('[1,2,3]' AS vector))");
+    }
+
+    @Test
+    void vectorDistanceWithLiteralVectorBindsTheVectorAsAParameter() {
+        Field<Double> distance = vectorDistance(field("embedding", Object.class), "[1,2,3]");
+
+        assertThat(CTX.render(distance)).isEqualTo("\"embedding\" <=> (SELECT CAST(? AS vector))");
+        assertThat(CTX.extractBindValues(distance)).containsExactly("[1,2,3]");
     }
 
     // ------------------------------------------------------------------
@@ -323,6 +346,25 @@ class JooqSupportTest {
         Field<Double> distance = vectorDistance(a, b);
 
         assertThat(render(distance)).isEqualTo("\"a\".\"embedding\" <=> \"b\".\"embedding\"");
+    }
+
+    // ------------------------------------------------------------------
+    // setLocal -- set_config(setting, value, is_local = true)
+    // ------------------------------------------------------------------
+
+    @Test
+    void setLocalRendersATransactionScopedSetConfigCall() {
+        Field<String> setting = setLocal("hnsw.iterative_scan", "relaxed_order");
+
+        assertThat(render(setting)).isEqualTo("set_config('hnsw.iterative_scan', 'relaxed_order', true)");
+    }
+
+    @Test
+    void setLocalInlinesItsArgumentsSoTheStatementTakesNoParameters() {
+        Field<String> setting = setLocal("enable_sort", "off");
+
+        assertThat(CTX.render(setting)).isEqualTo("set_config('enable_sort', 'off', true)");
+        assertThat(CTX.extractBindValues(setting)).isEmpty();
     }
 
     // ------------------------------------------------------------------

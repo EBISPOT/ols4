@@ -2220,6 +2220,56 @@ dedicated, additive test suite across every public method and the private helper
 going beyond the ~87%-line/~66%-branch indirect baseline that `V2LLMController` and the
 `EmbeddingServiceClient`/`McpClassService`/`McpEmbeddingService`/`McpSearchService` suites left in
 place.
+
+### Ontology-scoped vector search after GitHub issue #1445
+
+The milestone 3 section above describes `searchByVectorInOntology` as it stood on 2026-09-12. The
+fix for issue #1445 changed how a search for the entities an ontology *defines*
+(`isDefiningOntology = true`) is answered, and with it what the tests reach:
+
+- **Fixtures.** `ols_embedding_nodes` now has `ontology_id` and `entity_type`, which
+  `ols_json2postgres` copies from the owning entity. The vector-search fixtures insert embedding
+  rows through `PostgresIntegrationTestSupport.insertEmbeddingNodeOfEntity`, which takes both
+  values from the `ols_entities` row and fails if that row does not exist, so these fixtures
+  cannot break the invariant the production query depends on.
+- **`OlsPostgresClientEmbeddingIT`.** Its `isDefiningOntology = true` cases no longer run
+  `fetchVectorCandidatesInOntologySelect`'s direct-join branch. They are answered from the
+  embedding rows alone, by the exact scan, since the fixture's ontologies hold a handful of
+  vectors. The expectations are unchanged.
+- **`OlsPostgresClientScopedVectorSearchIT`** (new) runs every case twice, once ranking the
+  ontology's vectors exactly and once through the HNSW index (`exactScanMaxVectors = 0`), and
+  expects the same page from both. Its fixture creates the per-model HNSW and scope indexes by
+  hand, as the embedding columns already were, and puts the 60 different vectors of another
+  ontology's classes nearer the query than the rows to be found. One HNSW scan stops after its 40
+  (`hnsw.ef_search`) nearest vectors, so the index cases only pass with iterative scans on; a
+  second ontology whose 50 nearest rows belong to one entity covers the widening of the row
+  limit. Three further cases are not run both ways:
+  - an entity whose only vector is all zeros is ranked last (score 0) by the exact scan and is
+    absent from the index's answer, because pgvector leaves zero vectors out of a cosine HNSW
+    index. This is the one case in which the two answers differ, so it is also what shows that
+    the index cases are answered from the index and the exact cases are not;
+  - with the limit set to the number of vectors in that ontology the search is exact, and with
+    one fewer it goes through the index: the choice follows the count of vectors in scope, not
+    in the table;
+  - after a search through the index, every connection in the pool
+    (`PostgresIntegrationTestSupport.MAX_POOL_SIZE`) still has the `hnsw.iterative_scan` and
+    `enable_sort` values of a fresh connection and is back in autocommit.
+- **`OlsPostgresClientLegacyEmbeddingSchemaIT`** (new) drops the two columns and repeats the
+  scoped cases. This is where the direct-join branch is now covered: it is what runs against a
+  database loaded before the fix. The client looks for the columns on every such search, since
+  the loader can replace the tables under a running backend, so there is no cached answer to
+  reset between test classes.
+- **Unit layer.** `OlsPostgresClientTest` covers `supportsIterativeScans` (the pgvector version
+  check that keeps the HNSW path off servers older than 0.8.0), `ranksExactly` (the choice
+  between the two answers) and `nearer` (merging label and curation distances when one is NaN).
+  `JooqSupportTest`/`JooqSupportIT` cover `setLocal` and the catalog table constants, and
+  `vectorDistance`'s rendering with the cast moved into a scalar subquery.
+- **Not covered by a test.** That the exact scan and the index walk are *fast*. The `OFFSET 0`
+  fence in the exact scan changes its plan, not its result, and removing it leaves every test
+  passing; the hoisted vector cast is pinned only by the SQL it renders. Both were checked by
+  reading plans and timing queries against a synthetic database, as recorded in the pull request
+  for the issue.
+
 ## Implemented PostgresClient baseline
 
 `PostgresClient` (`service`) is the foundational HikariCP connection-pool + jOOQ `DSLContext`
