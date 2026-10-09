@@ -34,6 +34,7 @@ import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContains;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContainsField;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.castAsText;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.field;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.inSubsetTree;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.unnest;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.vectorDistance;
 
@@ -135,11 +136,15 @@ public class OlsPostgresClient {
     }
 
     public Page<JsonElement> getDirectChildren(String id, Map<String, String> nodeProps, Pageable pageable) {
-        return lookupArraySources(id, "direct_parents", nodeProps, pageable, null);
+        return lookupArraySources(id, "direct_parents", nodeProps, pageable, null, null);
     }
 
     public Page<JsonElement> getDirectChildren(String id, Map<String, String> nodeProps, Pageable pageable, String search) {
-        return lookupArraySources(id, "direct_parents", nodeProps, pageable, search);
+        return lookupArraySources(id, "direct_parents", nodeProps, pageable, search, null);
+    }
+
+    public Page<JsonElement> getDirectChildren(String id, Map<String, String> nodeProps, Pageable pageable, String search, Collection<String> subsetTree) {
+        return lookupArraySources(id, "direct_parents", nodeProps, pageable, search, subsetTree);
     }
 
     public Page<JsonElement> getHierarchicalParents(String id, Map<String, String> nodeProps, Pageable pageable) {
@@ -147,7 +152,54 @@ public class OlsPostgresClient {
     }
 
     public Page<JsonElement> getHierarchicalChildren(String id, Map<String, String> nodeProps, Pageable pageable) {
-        return lookupArraySources(id, "hierarchical_parents", nodeProps, pageable, null);
+        return lookupArraySources(id, "hierarchical_parents", nodeProps, pageable, null, null);
+    }
+
+    public Page<JsonElement> getHierarchicalChildren(String id, Map<String, String> nodeProps, Pageable pageable, Collection<String> subsetTree) {
+        return lookupArraySources(id, "hierarchical_parents", nodeProps, pageable, null, subsetTree);
+    }
+
+    /**
+     * Hierarchical children looked up by the parent's IRI rather than its row id, for
+     * when the parent's entity type may differ from the children's: e.g. individuals
+     * that sit under a class through a configured hierarchical property.
+     */
+    public Page<JsonElement> getHierarchicalChildrenByIri(String ontologyId, String iri, Map<String, String> nodeProps, Pageable pageable, Collection<String> subsetTree) {
+        try (Connection conn = postgresClient.getConnection()) {
+            DSLContext dsl = postgresClient.dsl(conn);
+            Table<?> e2 = OLS_ENTITIES.as("e2");
+
+            Field<String[]> e2Parents = field("e2", "hierarchical_parents", String[].class);
+            Field<String> e2Iri = field("e2", "iri", String.class);
+            Field<String> e2OntologyId = field("e2", "ontology_id", String.class);
+            Field<byte[]> e2Json = field("e2", "_json", byte[].class);
+
+            Condition where = e2OntologyId.eq(ontologyId)
+                    .and(arrayContains(e2Parents, iri))
+                    .and(buildNodePropCondition("e2", nodeProps));
+
+            if (subsetTree != null && !subsetTree.isEmpty()) {
+                where = where.and(inSubsetTree("e2", subsetTree));
+            }
+
+            long count = Optional.ofNullable(dsl.selectCount()
+                            .from(e2)
+                            .where(where)
+                            .fetchOne(0, Long.class))
+                    .orElse(0L);
+
+            var records = dsl.select(e2Json)
+                    .from(e2)
+                    .where(where)
+                    .orderBy(e2Iri.asc())
+                    .offset(pageable.getOffset())
+                    .limit(pageable.getPageSize())
+                    .fetch();
+
+            return new PageImpl<>(readJsonElements(records, e2Json), pageable, count);
+        } catch (SQLException e) {
+            throw new RuntimeException("getHierarchicalChildrenByIri failed", e);
+        }
     }
 
     public Page<JsonElement> getAncestors(String id, Map<String, String> nodeProps, Pageable pageable) {
@@ -155,7 +207,7 @@ public class OlsPostgresClient {
     }
 
     public Page<JsonElement> getDescendants(String id, Map<String, String> nodeProps, Pageable pageable) {
-        return lookupArraySources(id, "direct_ancestors", nodeProps, pageable, null);
+        return lookupArraySources(id, "direct_ancestors", nodeProps, pageable, null, null);
     }
 
     public Page<JsonElement> getHierarchicalAncestors(String id, Map<String, String> nodeProps, Pageable pageable) {
@@ -163,7 +215,7 @@ public class OlsPostgresClient {
     }
 
     public Page<JsonElement> getHierarchicalDescendants(String id, Map<String, String> nodeProps, Pageable pageable) {
-        return lookupArraySources(id, "hierarchical_ancestors", nodeProps, pageable, null);
+        return lookupArraySources(id, "hierarchical_ancestors", nodeProps, pageable, null, null);
     }
 
     public Page<JsonElement> getRelatedTo(String id, Map<String, String> nodeProps, Pageable pageable) {
@@ -171,7 +223,7 @@ public class OlsPostgresClient {
     }
 
     public Page<JsonElement> getRelatedFrom(String id, Map<String, String> nodeProps, Pageable pageable) {
-        return lookupArraySources(id, "related_to", nodeProps, pageable, null);
+        return lookupArraySources(id, "related_to", nodeProps, pageable, null, null);
     }
 
     private Page<JsonElement> lookupArrayTargets(String id, String column, Map<String, String> nodeProps, Pageable pageable) {
@@ -214,7 +266,7 @@ public class OlsPostgresClient {
         }
     }
 
-    private Page<JsonElement> lookupArraySources(String id, String column, Map<String, String> nodeProps, Pageable pageable, String search) {
+    private Page<JsonElement> lookupArraySources(String id, String column, Map<String, String> nodeProps, Pageable pageable, String search, Collection<String> subsetTree) {
         try (Connection conn = postgresClient.getConnection()) {
             DSLContext dsl = postgresClient.dsl(conn);
             Table<?> e1 = OLS_ENTITIES.as("e1");
@@ -245,6 +297,10 @@ public class OlsPostgresClient {
                                         .concat(DSL.inline("%")))));
             }
 
+            if (subsetTree != null && !subsetTree.isEmpty()) {
+                where = where.and(inSubsetTree("e2", subsetTree));
+            }
+
             long count = Optional.ofNullable(dsl.selectCount()
                             .from(e1)
                             .join(e2).on(arrayContainsField(e2Sources, e1Iri).and(e2OntologyId.eq(e1OntologyId)))
@@ -273,6 +329,9 @@ public class OlsPostgresClient {
             switch (entry.getKey()) {
                 case "isObsolete" -> condition = condition.and(
                         field(qualifier, "is_obsolete", Boolean.class)
+                                .eq("true".equals(entry.getValue())));
+                case "isDefiningOntology" -> condition = condition.and(
+                        field(qualifier, "is_defining_ontology", Boolean.class)
                                 .eq("true".equals(entry.getValue())));
                 case "type" -> condition = condition.and(
                         field(qualifier, "type", String.class).eq(entry.getValue()));

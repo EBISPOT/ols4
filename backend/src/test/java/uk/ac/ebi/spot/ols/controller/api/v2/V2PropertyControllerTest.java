@@ -146,6 +146,8 @@ class V2PropertyControllerTest {
                 pageable,
                 "efo",
                 "http%3A%2F%2Fexample.org%2FEFO_0100",
+                null,
+                true,
                 "fr",
                 options);
 
@@ -166,6 +168,7 @@ class V2PropertyControllerTest {
                 pageable,
                 "efo",
                 "http%3A%2F%2Fexample.org%2FEFO_0101",
+                true,
                 "de",
                 options);
 
@@ -253,6 +256,8 @@ class V2PropertyControllerTest {
                 String ontologyId,
                 Pageable pageable,
                 String iri,
+                boolean includeImported,
+                Collection<String> subsetTree,
                 String lang,
                 JsonTransformOptions outputOptions) {
             this.call = Call.CHILDREN;
@@ -265,6 +270,7 @@ class V2PropertyControllerTest {
                 String ontologyId,
                 Pageable pageable,
                 String iri,
+                boolean includeImported,
                 String lang,
                 JsonTransformOptions outputOptions) {
             this.call = Call.ANCESTORS;

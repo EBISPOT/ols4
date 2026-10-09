@@ -1,5 +1,6 @@
 import {
   AccountTree,
+  AttachFile,
   BugReport,
   Download,
   Email,
@@ -22,9 +23,11 @@ import LanguagePicker from "../../components/LanguagePicker";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import SearchBox from "../../components/SearchBox";
 import { Tab, Tabs } from "../../components/Tabs";
+import LinkedEntities from "../../model/LinkedEntities";
 import Ontology from "../../model/Ontology";
 import Reified from "../../model/Reified";
 import EntityList from "./entities/EntityList";
+import EntityImagesSection from "./entities/entityPageSections/EntityImagesSection";
 import EntityTree from "./entities/EntityTree";
 import MetadataTooltip from "./entities/entityPageSections/MetadataTooltip";
 import addLinksToText from "./entities/entityPageSections/addLinksToText";
@@ -163,6 +166,16 @@ export default function OntologyPage() {
                     {ontology.getDescription() ? ontology.getDescription() : ""}
                   </p>
                 </div>
+                {/* the images section carries mb-2 and the card mb-4, so 16px
+                    above needs the 8px pulled back below to match */}
+                <div className="mt-4 -mb-2">
+                  <EntityImagesSection
+                    entity={ontology}
+                    linkedEntities={new LinkedEntities({})}
+                    lightbox
+                    hideHeading
+                  />
+                </div>
               </div>
               <OntologyImportsSection ontology={ontology} />
               <OntologyImportedBySection ontology={ontology} />
@@ -186,6 +199,22 @@ export default function OntologyPage() {
                     </button>
                   </Link>
                 )}
+                {ontology.getHasFormats().map((format) => (
+                  <Link
+                    key={format}
+                    to={format}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download={true}
+                  >
+                    <button className="button-secondary font-bold self-center">
+                      <div className="flex gap-2">
+                        <AttachFile />
+                        <div>{format.substring(format.lastIndexOf("/") + 1)}</div>
+                      </div>
+                    </button>
+                  </Link>
+                ))}
                 {ontology.getHomepage() && (
                   <Link
                     to={ontology.getHomepage()}
@@ -382,9 +411,22 @@ export default function OntologyPage() {
 function OntologyAnnotationsSection({ ontology }: { ontology: Ontology }) {
   let annotationPredicates = ontology.getAnnotationPredicates();
 
+  // Predicates whose values the page already presents in a richer form are
+  // left out of the listing: the depiction is the image under the
+  // description, and hasFormat the file attachment chips.
+  const shownElsewhere = new Set<string>();
+  if (ontology.getDepictedBy().length > 0) {
+    shownElsewhere.add("http://xmlns.com/foaf/0.1/depicted_by");
+    shownElsewhere.add("http://xmlns.com/foaf/0.1/depiction");
+  }
+  if (ontology.getHasFormats().length > 0) {
+    shownElsewhere.add("http://purl.org/dc/terms/hasFormat");
+  }
+
   return (
     <Fragment>
       {annotationPredicates
+        .filter((predicate) => !shownElsewhere.has(predicate))
         .map((annotationPredicate) => {
           const title = ontology.getLabelForIri(annotationPredicate)
             ? ontology.getLabelForIri(annotationPredicate)
