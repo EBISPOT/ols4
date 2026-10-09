@@ -2104,6 +2104,30 @@
       "ontology_purl": "https://w3id.org/valuesets/valuesets.owl.ttl"
     },
     {
+      "id": "chr",
+      "creator": [
+        "Chris Mungall",
+        "Nico Matentzoglu"
+      ],
+      "is_foundry": false,
+      "preferredPrefix": "CHR",
+      "title": "Monochrom Ontology",
+      "uri": "http://purl.obolibrary.org/obo/chr.owl",
+      "description": "Chromosomes and chromosome bands for multiple species, automatically translated from UCSC chromosome and cytoband data, with mappings to NCBI/INSDC and Ensembl identifiers.",
+      "homepage": "https://github.com/monarch-initiative/monochrom",
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+        "http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": [
+        "http://purl.obolibrary.org/obo/CHR_"
+      ],
+      "ontology_purl": "https://raw.githubusercontent.com/monarch-initiative/monochrom/master/chr.owl"
+    },
+    {
       "id": "cmpo",
       "ontology_purl": "file:///nfs/production/parkinso/spot/ols4/prod-postgres/local_ontologies/cmpo.owl"
     }
