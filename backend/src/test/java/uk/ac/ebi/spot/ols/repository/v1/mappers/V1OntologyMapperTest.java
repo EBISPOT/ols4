@@ -369,6 +369,59 @@ class V1OntologyMapperTest {
         assertThat(ontology.config.description).isEqualTo("Test Description");
     }
 
+    @Test
+    void dctermsTitleAndDescription_overridePlainKeysWhenDcElementsAbsent() {
+        JsonObject json = baseOntologyJson();
+        json.addProperty("http://purl.org/dc/terms/title", "DCTerms Title");
+        json.addProperty("http://purl.org/dc/terms/description", "DCTerms Description");
+
+        V1Ontology ontology = V1OntologyMapper.mapOntology(json, "en");
+
+        assertThat(ontology.config.title).isEqualTo("DCTerms Title");
+        assertThat(ontology.config.description).isEqualTo("DCTerms Description");
+    }
+
+    @Test
+    void dcElementsTitleAndDescription_takePrecedenceOverDcterms() {
+        JsonObject json = baseOntologyJson();
+        json.addProperty("http://purl.org/dc/elements/1.1/title", "DC Title");
+        json.addProperty("http://purl.org/dc/terms/title", "DCTerms Title");
+        json.addProperty("http://purl.org/dc/elements/1.1/description", "DC Description");
+        json.addProperty("http://purl.org/dc/terms/description", "DCTerms Description");
+
+        V1Ontology ontology = V1OntologyMapper.mapOntology(json, "en");
+
+        assertThat(ontology.config.title).isEqualTo("DC Title");
+        assertThat(ontology.config.description).isEqualTo("DC Description");
+    }
+
+    // --- investigation 7: header-derived homepage/tracker/mailingList/logo ------------------
+
+    /**
+     * When the config does not set them, rdf2json's {@code OntologyHeaderAnnotator} fills these
+     * keys from the ontology header: IRI values as plain strings (the same shape as config
+     * values) and literal values as {@code {"type": ["literal"], "value": ...}} objects.
+     */
+    @Test
+    void headerDerivedLiteralValuesAreReadAsPlainStrings() {
+        JsonObject json = baseOntologyJson();
+
+        JsonArray literalType = new JsonArray();
+        literalType.add("literal");
+
+        JsonObject mailingList = new JsonObject();
+        mailingList.add("type", literalType);
+        mailingList.addProperty("value", "mailto:header-list@example.org");
+        json.add("mailingList", mailingList);
+
+        json.addProperty("homepage", "https://example.org/header-home");
+
+        V1Ontology ontology = V1OntologyMapper.mapOntology(json, "en");
+
+        assertThat(ontology.config.mailingList).isEqualTo("mailto:header-list@example.org");
+        assertThat(ontology.config.homepage).isEqualTo("https://example.org/header-home");
+    }
+
     // --- investigation 8: LocalizationTransform is genuinely wired in, not bypassed ---------
 
     /**
