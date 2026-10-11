@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -136,7 +137,7 @@ class V2ClassControllerTest {
         JsonTransformOptions options = new JsonTransformOptions();
 
         controller.getChildrenByOntology(
-                pageable, "efo", "http%3A%2F%2Fexample.org%2FEFO_0001", true,
+                pageable, "efo", "http%3A%2F%2Fexample.org%2FEFO_0001", true, false,
                 "clinical", "fr", options);
 
         assertHierarchyCall(
@@ -147,6 +148,28 @@ class V2ClassControllerTest {
                 options,
                 true);
         assertEquals("clinical", repository.search);
+        assertFalse(repository.excludeRedundantEdges);
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {false, true})
+    void childrenRoutesDelegateExcludeRedundantEdgesUnchanged(boolean excludeRedundantEdges)
+            throws Exception {
+        Pageable pageable = PageRequest.of(0, 20);
+        JsonTransformOptions options = new JsonTransformOptions();
+        String encodedIri = "http%3A%2F%2Fexample.org%2FEFO_0001";
+
+        controller.getChildrenByOntology(
+                pageable, "efo", encodedIri, false, excludeRedundantEdges, null, "en", options);
+
+        assertEquals(RecordingClassRepository.Call.CHILDREN, repository.call);
+        assertEquals(excludeRedundantEdges, repository.excludeRedundantEdges);
+
+        controller.getHierarchicalChildrenByOntology(
+                pageable, "efo", encodedIri, false, excludeRedundantEdges, "en", options);
+
+        assertEquals(RecordingClassRepository.Call.HIERARCHICAL_CHILDREN, repository.call);
+        assertEquals(excludeRedundantEdges, repository.excludeRedundantEdges);
     }
 
     @ParameterizedTest
@@ -165,7 +188,7 @@ class V2ClassControllerTest {
             case HIERARCHICAL_DESCENDANTS -> controller.getHierarchicalDescendantsByOntology(
                     pageable, "efo", encodedIri, true, "de", options);
             case HIERARCHICAL_CHILDREN -> controller.getHierarchicalChildrenByOntology(
-                    pageable, "efo", encodedIri, true, "de", options);
+                    pageable, "efo", encodedIri, true, false, "de", options);
             case HIERARCHICAL_ANCESTORS -> controller.getHierarchicalAncestorsByOntology(
                     pageable, "efo", encodedIri, true, "de", options);
             case INDIVIDUAL_ANCESTORS -> controller.getIndividualAncestorsByOntology(
@@ -237,6 +260,7 @@ class V2ClassControllerTest {
         private String boostFields;
         private boolean exactMatch;
         private boolean includeObsolete;
+        private boolean excludeRedundantEdges;
         private Map<String, Collection<String>> properties;
         private JsonTransformOptions outputOptions;
         private JsonElement result;
@@ -303,11 +327,13 @@ class V2ClassControllerTest {
                 Pageable pageable,
                 String iri,
                 boolean includeObsolete,
+                boolean excludeRedundantEdges,
                 String search,
                 String lang,
                 JsonTransformOptions outputOptions) {
             call = Call.CHILDREN;
             this.search = search;
+            this.excludeRedundantEdges = excludeRedundantEdges;
             recordHierarchy(ontologyId, pageable, iri, includeObsolete, lang, outputOptions);
             return page(pageable);
         }
@@ -339,7 +365,8 @@ class V2ClassControllerTest {
         @Override
         public Page<JsonElement> getHierarchicalChildrenByOntologyId(
                 String ontologyId, Pageable pageable, String iri, boolean includeObsolete,
-                String lang, JsonTransformOptions outputOptions) {
+                boolean excludeRedundantEdges, String lang, JsonTransformOptions outputOptions) {
+            this.excludeRedundantEdges = excludeRedundantEdges;
             return hierarchy(Call.HIERARCHICAL_CHILDREN, ontologyId, pageable, iri,
                     includeObsolete, lang, outputOptions);
         }

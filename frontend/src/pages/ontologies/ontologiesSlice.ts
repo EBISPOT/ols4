@@ -41,6 +41,7 @@ export interface OntologiesState {
   displayObsolete: boolean;
   displaySiblings: boolean;
   displayCounts: boolean;
+  displayRedundant: boolean; // show hierarchy edges that are redundant for browsing (see issue #1252)
   errorMessage: string;
   specificRootIri: string;
 }
@@ -85,6 +86,7 @@ const initialState: OntologiesState = {
   displayObsolete: false,
   displaySiblings: false,
   displayCounts: true,
+  displayRedundant: false,
   errorMessage: "",
   specificRootIri: "",
 };
@@ -112,6 +114,9 @@ export const hideSiblings = createAction("ontologies_hide_siblings");
 
 export const showCounts = createAction("ontologies_show_counts");
 export const hideCounts = createAction("ontologies_hide_counts");
+
+export const showRedundant = createAction("ontologies_show_redundant");
+export const hideRedundant = createAction("ontologies_hide_redundant");
 export const setSpecificRootIri = createAction<string>("ontologies_set_specific_root_iri");
 
 export const getOntology = createAsyncThunk(
@@ -530,6 +535,7 @@ export const getDirectChildrenEntities = createAsyncThunk(
     page,
     size,
     search,
+    showRedundantEnabled,
   }: any) => {
     console.log('getDirectChildrenEntities called with:', {
       ontologyId,
@@ -555,6 +561,7 @@ export const getDirectChildrenEntities = createAsyncThunk(
     }
     
     if (entityType === "classes") {
+      searchParams.set("excludeRedundantEdges", excludeRedundantEdgesParam(showRedundantEnabled));
       response = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/children?${searchParams}`,
         undefined,
@@ -586,6 +593,7 @@ export const getDirectChildrenCount = createAsyncThunk(
     entityType,
     lang,
     showObsoleteEnabled,
+    showRedundantEnabled,
     apiUrl,
   }: any) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
@@ -597,6 +605,7 @@ export const getDirectChildrenCount = createAsyncThunk(
           size: "1",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
+          excludeRedundantEdges: excludeRedundantEdgesParam(showRedundantEnabled),
         })}`,
         undefined,
         apiUrl
@@ -640,8 +649,15 @@ export const getNodeChildren = createAsyncThunk(
     lang,
     apiUrl,
     includeObsoleteEntities: showObsoleteEnabled,
+    showRedundantEnabled,
   }: any) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
+    // Unless the user asked to see them, hide the children whose edge to this
+    // node is redundant for browsing (they are already shown under a more
+    // specific descendant of the node). Applied to every hierarchical request
+    // below; rdf:type membership (the individuals of a class) is not part of
+    // the hierarchy so it is never reduced.
+    const excludeRedundantEdges = excludeRedundantEdgesParam(showRedundantEnabled);
     var childrenPage: any;
     if (entityTypePlural === "classes") {
         const hierarchicalChildrenPromise = getPaginated<any>(
@@ -649,6 +665,7 @@ export const getNodeChildren = createAsyncThunk(
                 size: "1000",
                 lang,
                 includeObsoleteEntities: showObsoleteEnabled,
+                excludeRedundantEdges,
             })}`,
             undefined,
             apiUrl
@@ -658,6 +675,7 @@ export const getNodeChildren = createAsyncThunk(
                 size: "1000",
                 lang,
                 includeObsoleteEntities: showObsoleteEnabled,
+                excludeRedundantEdges,
             })}`,
             undefined,
             apiUrl
@@ -679,6 +697,7 @@ export const getNodeChildren = createAsyncThunk(
                 size: "1000",
                 lang,
                 includeObsoleteEntities: showObsoleteEnabled,
+                excludeRedundantEdges,
             })}`,
             undefined,
             apiUrl
@@ -721,6 +740,7 @@ export const getNodeChildren = createAsyncThunk(
               size: "1000",
               lang,
               includeObsoleteEntities: showObsoleteEnabled,
+              excludeRedundantEdges,
             }
           )}`,
           undefined,
@@ -780,6 +800,19 @@ export const getNodeChildren = createAsyncThunk(
     };
   }
 );
+
+// Value of the excludeRedundantEdges query parameter of the children endpoints
+// for the current state of the "Show redundant" tree toggle.
+function excludeRedundantEdgesParam(showRedundantEnabled: boolean | undefined): string {
+  return showRedundantEnabled ? "false" : "true";
+}
+
+// The tree hides redundant hierarchy edges unless the user opted to see them.
+// Property hierarchies (rdfs:subPropertyOf) are left alone: the toggle is not
+// offered for them and their children endpoint has no reduction.
+function shouldExcludeRedundantEdges(state: OntologiesState, entityType: string): boolean {
+  return !state.displayRedundant && entityType !== "properties";
+}
 
 const ontologiesSlice = createSlice({
   name: "ontologies",
@@ -920,13 +953,14 @@ const ontologiesSlice = createSlice({
     });
     builder.addCase(
       getAncestors.fulfilled,
-      (state: OntologiesState, action: PayloadAction<Entity[]>) => {
+      (state: OntologiesState, action: ReturnType<typeof getAncestors.fulfilled>) => {
         let { rootNodes, nodeChildren, automaticallyExpandedNodes } =
           createTreeFromEntities(
             [state.entity!, ...action.payload],
             state.preferredRoots,
             state.ontology!,
-            state.specificRootIri
+            state.specificRootIri,
+            shouldExcludeRedundantEdges(state, action.meta.arg.entityType)
           );
         state.rootNodes = rootNodes;
         state.nodeChildren = nodeChildren;
@@ -971,7 +1005,7 @@ const ontologiesSlice = createSlice({
     builder.addCase(
       getRootEntities.fulfilled,
       (state: OntologiesState, action: PayloadAction<any>) => {
-        let { rootTerms, classesWithIndividuals, orphanedIndividuals } =
+        let { entityType, rootTerms, classesWithIndividuals, orphanedIndividuals } =
           action.payload;
         // console.log("rootTerms");
         // console.dir(rootTerms);
@@ -984,7 +1018,8 @@ const ontologiesSlice = createSlice({
             ],
             state.preferredRoots,
             state.ontology!,
-            state.specificRootIri
+            state.specificRootIri,
+            shouldExcludeRedundantEdges(state, entityType)
           );
 
         state.rootNodes = rootNodes;
@@ -1098,6 +1133,7 @@ const ontologiesSlice = createSlice({
         state.displayObsolete = false;
         state.displaySiblings = false;
         state.displayCounts = true;
+        state.displayRedundant = false;
         state.manuallyExpandedNodes = [];
       }
     );
@@ -1124,6 +1160,12 @@ const ontologiesSlice = createSlice({
     });
     builder.addCase(hideCounts, (state: OntologiesState) => {
       state.displayCounts = false;
+    });
+    builder.addCase(showRedundant, (state: OntologiesState) => {
+      state.displayRedundant = true;
+    });
+    builder.addCase(hideRedundant, (state: OntologiesState) => {
+      state.displayRedundant = false;
     });
     builder.addCase(setSpecificRootIri, (state: OntologiesState, action: PayloadAction<string>) => {
       state.specificRootIri = action.payload;

@@ -145,7 +145,7 @@ public class McpClassService {
         outputOpts.manchesterSyntax = true;
 
         var res = classRepository.getChildrenByOntologyId(
-            ontologyId, pageable, classIri, false, null, lang, outputOpts);
+            ontologyId, pageable, classIri, false, false, null, lang, outputOpts);
 
         return new McpPage<>(
             res.getContent().stream().map(McpClass::fromJson).toList(),

@@ -3894,3 +3894,59 @@ unchanged by this rollout):
 - Testing every Cartesian combination of query parameters.
 - Introducing a repository-wide coverage threshold before a meaningful baseline exists.
 - Building production smoke monitoring.
+
+## Completed excludeRedundantEdges coverage on the V2 children routes
+
+GitHub issue #1252 ("Tree browser shows redundant edges") added an `excludeRedundantEdges` query
+parameter to `GET /api/v2/ontologies/{onto}/classes/{class}/children`,
+`GET /api/v2/ontologies/{onto}/classes/{class}/hierarchicalChildren` and
+`GET /api/v2/ontologies/{onto}/individuals/{individual}/hierarchicalChildren`. When true, the
+response omits the children whose edge to the requested entity is redundant for hierarchy
+browsing: the child also has another hierarchical parent that is itself a hierarchical descendant
+of the requested entity, so it is already reachable through a more specific path (given
+`c is_a a`, `c part_of b` and `b is_a a`, `c` is omitted from the children of `a`). This is the
+transitive reduction of the hierarchical graph ignoring relation types. It is computed at query
+time by a correlated `NOT EXISTS` subquery (`OlsPostgresClient.redundantEdgeWitness`, shared by
+both children lookups through `lookupArraySources`) rather than at dataload time, so it needs no
+schema change or re-ingest, and every existing response is unchanged unless the parameter is sent.
+The frontend tree browser sends it unless its "Show redundant" toggle is ticked, and applies the
+same rule client-side (`extractEntityHierarchy.ts`) to the ancestor path it lays out from
+`hierarchicalAncestors`; the two must stay in sync.
+
+Coverage follows the parameter testing standard:
+
+- `V2ClassControllerTest` and `V2IndividualControllerTest` prove each controller forwards the
+  parameter unchanged (both values) next to the arguments it already forwarded.
+- `V2ClassControllerWIT` (both class routes, via a dedicated `childrenRoutes` source) and
+  `V2IndividualControllerWIT` bind the default (`false` when omitted), an explicit `true`, and
+  reject a malformed value with the stable 400 contract. The parameter has its own cases rather
+  than joining the shared hierarchy-route matrices because it exists on only three of the routes.
+- `ClassRepositoryHierarchyTypeTest` proves `ClassRepository` forwards the flag (and the label
+  search) to the new `OlsPostgresClient` overloads.
+- `OlsPostgresClientGraphIT` gained a self-contained `GRAPH_RED_*` sub-graph in
+  `graph-fixture.json` (it never references the earlier records, so the 21 existing cases are
+  unaffected) and 12 cases proving the reduction rule itself against real PostgreSQL: the
+  canonical case, a longer chain, the more specific edge being kept, direct children, the
+  combination with the label search, an obsolete witness only counting when obsolete entities are
+  included, a witness of another entity type only counting without the type filter, a witness from
+  another ontology never counting, independent parents, both shapes of hierarchical cycle (between
+  two children of the same parent, and between two parents of the same child), an
+  individuals-only hierarchy, and single-parent children being untouched. Each record's
+  `definition` names the rule it exists to prove, and the page and count queries are asserted to
+  agree.
+- `ClassRepositoryIT`, `IndividualRepositoryIT`, `V2ClassControllerIT` and
+  `V2IndividualControllerIT` each gained one thin case sending the flag through the real
+  repository or controller path against the shared fixtures. Those fixtures contain no redundant
+  edge, so the reduced result must equal the unreduced one; the reduction semantics stay with the
+  dedicated graph fixture.
+
+Verified on 2026-09-21 from `origin/dev` commit `201d27b` with Java 21. Surefire runs 1,472
+tests (0 failures), including the updated `V2ClassControllerWIT` (159 invocations),
+`V2IndividualControllerWIT` (100), `V2ClassControllerTest` (15), `V2IndividualControllerTest`,
+`ClassRepositoryHierarchyTypeTest` and `McpClassServiceTest`. Docker was not available in that
+environment, so the Failsafe suite was not run there; instead, all 33 `OlsPostgresClientGraphIT`
+cases (21 existing, 12 new) were executed against a local PostgreSQL 16 server loaded through the
+same `PostgresIntegrationTestSupport` fixture loader and the same generated production schema
+(minus the `vector` extension, which that fixture does not use), and all passed. The four thin
+repository and controller IT cases and the rest of the Failsafe suite remain to be confirmed by
+the Docker-backed CI run.

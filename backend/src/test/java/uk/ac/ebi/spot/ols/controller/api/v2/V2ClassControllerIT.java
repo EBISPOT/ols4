@@ -36,6 +36,10 @@ class V2ClassControllerIT {
             "/api/v2/ontologies/efo/classes/http%253A%252F%252Fexample.org%252FEFO_0001/hierarchicalDescendants");
     private static final URI HIERARCHICAL_CHILDREN_URI = uri(
             "/api/v2/ontologies/efo/classes/http%253A%252F%252Fexample.org%252FEFO_0001/hierarchicalChildren");
+    private static final URI CHILDREN_WITHOUT_REDUNDANT_EDGES_URI = uri(
+            "/api/v2/ontologies/efo/classes/http%253A%252F%252Fexample.org%252FEFO_0001/children?excludeRedundantEdges=true");
+    private static final URI HIERARCHICAL_CHILDREN_WITHOUT_REDUNDANT_EDGES_URI = uri(
+            "/api/v2/ontologies/efo/classes/http%253A%252F%252Fexample.org%252FEFO_0001/hierarchicalChildren?excludeRedundantEdges=true");
     private static final URI HIERARCHICAL_ANCESTORS_URI = uri(
             "/api/v2/ontologies/efo/classes/http%253A%252F%252Fexample.org%252FEFO_1001/hierarchicalAncestors");
     private static final URI INDIVIDUAL_ANCESTORS_URI = uri(
@@ -133,6 +137,18 @@ class V2ClassControllerIT {
     @Test
     void getsHierarchicalChildrenThroughTheRealDatabase() throws Exception {
         assertSingleRelationship(HIERARCHICAL_CHILDREN_URI, "http://example.org/EFO_1001");
+    }
+
+    @Test
+    void getsChildrenWithoutRedundantEdgesThroughTheRealDatabase() throws Exception {
+        // EFO_1001 has a single parent, so excluding redundant edges must not drop it.
+        assertSingleRelationship(CHILDREN_WITHOUT_REDUNDANT_EDGES_URI, "http://example.org/EFO_1001");
+    }
+
+    @Test
+    void getsHierarchicalChildrenWithoutRedundantEdgesThroughTheRealDatabase() throws Exception {
+        assertSingleRelationship(
+                HIERARCHICAL_CHILDREN_WITHOUT_REDUNDANT_EDGES_URI, "http://example.org/EFO_1001");
     }
 
     @Test
