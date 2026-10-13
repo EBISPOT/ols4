@@ -9,6 +9,12 @@ See also:
 * [REST API docs](https://www.ebi.ac.uk/ols4/api-docs)
 * MCP endpoint (Streamable HTTP): `https://www.ebi.ac.uk/ols4/api/mcp`
 
+The MCP endpoint uses stateless Streamable HTTP: clients initialize and call tools
+with POST requests, and the server returns JSON responses without an
+`Mcp-Session-Id`. OLS tools do not need persistent sessions or server-initiated
+messages. Listening GET requests return HTTP 405, so abandoned SSE connections
+cannot accumulate and exhaust the server's connection capacity.
+
 If you use OLS in your work, please cite [our recent publication in <i>Bioinformatics</i>](https://academic.oup.com/bioinformatics/article/41/5/btaf279/8125017).
 
 ---
