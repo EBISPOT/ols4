@@ -347,6 +347,9 @@ process json2postgres {
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
+    # pgbin layout 2: embedding node rows carry ontology_id and entity_type (GitHub issue #1445).
+    # This comment is part of the task hash. Change it whenever the layout of the files changes,
+    # so that a resumed run cannot reuse cached files in the old layout.
     ols_json2postgres \
         --input ${ontology_json} \
         --ontology-id ${ontology_id} \

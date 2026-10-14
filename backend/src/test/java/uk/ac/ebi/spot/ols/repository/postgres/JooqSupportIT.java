@@ -24,6 +24,8 @@ import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_EMBEDDING_N
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_ENTITIES;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_PCA_MODELS;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_TEXT_TAGGER;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.PG_ATTRIBUTE;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.PG_EXTENSION;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContains;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContainsCaseInsensitive;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContainsField;
@@ -32,6 +34,7 @@ import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.field;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.matchesTsQuery;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.maxTrigramCandidateLength;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.phraseToTsQuery;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.setLocal;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.similarity;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.similarityAtLeastThreshold;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.toTsQuery;
@@ -118,7 +121,7 @@ class JooqSupportIT {
             DSLContext dslContext = dsl(conn);
             for (Table<?> table : List.of(
                     OLS_AUTOSUGGEST, OLS_EMBEDDING_NODES, OLS_ENTITIES, OLS_PCA_MODELS,
-                    OLS_TEXT_TAGGER, INFORMATION_SCHEMA_COLUMNS)) {
+                    OLS_TEXT_TAGGER, INFORMATION_SCHEMA_COLUMNS, PG_ATTRIBUTE, PG_EXTENSION)) {
                 Integer count = dslContext.selectCount().from(table).fetchOne(0, Integer.class);
                 assertThat(count).as("SELECT COUNT(*) FROM %s must succeed", table).isNotNull();
             }
@@ -420,6 +423,30 @@ class JooqSupportIT {
 
             // [1,0,0,0] vs [-1,0,0,0]: exactly opposite direction -> cosine distance exactly 2.
             assertThat(actual).isCloseTo(2.0, within(1e-6));
+        }
+    }
+
+    // ------------------------------------------------------------------
+    // setLocal -- the setting holds inside the transaction it is made in and is gone after it,
+    // which is what lets a pooled connection be handed back without resetting anything.
+    // ------------------------------------------------------------------
+
+    @Test
+    void setLocalChangesASettingForTheSurroundingTransactionOnly() throws SQLException {
+        Field<String> enableSort = DSL.field("current_setting('enable_sort')", String.class);
+
+        try (Connection conn = handle.postgresClient().getConnection()) {
+            DSLContext dslContext = dsl(conn);
+
+            String inside = dslContext.transactionResult(transaction -> {
+                DSLContext tx = DSL.using(transaction);
+                tx.select(setLocal("enable_sort", "off")).fetch();
+                return tx.select(enableSort).fetchOne(enableSort);
+            });
+
+            assertThat(inside).isEqualTo("off");
+            assertThat(dslContext.select(enableSort).fetchOne(enableSort)).isEqualTo("on");
+            assertThat(conn.getAutoCommit()).isTrue();
         }
     }
 }

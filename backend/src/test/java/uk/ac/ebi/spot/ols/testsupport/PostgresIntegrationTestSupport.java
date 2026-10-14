@@ -86,6 +86,12 @@ public final class PostgresIntegrationTestSupport {
     public static final String OLS_POSTGRES_CLIENT_EMBEDDING_MODEL = "olspgc_test_model";
 
     /**
+     * The most connections a {@code PostgresClient} built here keeps in its pool. Public so that a
+     * test which has to look at every pooled connection knows how many to hold.
+     */
+    public static final int MAX_POOL_SIZE = 3;
+
+    /**
      * A second {@code embeddings_<model>} column on {@code ols_entities}, added with no data, whose
      * name contains {@code pca16} -- used only by {@code getEmbeddingModels()}'s exclusion test.
      */
@@ -287,6 +293,37 @@ public final class PostgresIntegrationTestSupport {
             loadOlsPostgresClientEmbeddingFixture(connection);
         } catch (IOException | SQLException e) {
             throw new IllegalStateException("Failed to load the OlsPostgresClient embedding/vector-search integration fixture", e);
+        }
+    }
+
+    /**
+     * Loads the shared ontology + entity fixture, then a fixture for
+     * {@code OlsPostgresClientScopedVectorSearchIT}: ontology-scoped vector search over embedding
+     * rows that carry their entity's ontology and type, with the HNSW and scope indexes the
+     * production schema generator creates for a model. See
+     * {@link #loadOlsPostgresClientScopedVectorSearchFixture} for the rows.
+     */
+    public static void initializeOlsPostgresClientScopedVectorSearchDatabase(PostgreSQLContainer<?> container) {
+        initializeDatabase(container);
+        try (Connection connection = container.createConnection("")) {
+            loadOlsPostgresClientScopedVectorSearchFixture(connection);
+        } catch (IOException | SQLException e) {
+            throw new IllegalStateException("Failed to load the scoped vector-search integration fixture", e);
+        }
+    }
+
+    /**
+     * Turns {@code ols_embedding_nodes} back into the table a dataload from before GitHub issue
+     * #1445 produced, with no {@code ontology_id} or {@code entity_type} (dropping the columns also
+     * drops the scope index built on them). The backend and the database are deployed separately,
+     * so a current backend has to keep working against such a database.
+     */
+    public static void dropEmbeddingNodeScopeColumns(PostgreSQLContainer<?> container) {
+        try (Connection connection = container.createConnection("");
+             Statement statement = connection.createStatement()) {
+            statement.execute("ALTER TABLE ols_embedding_nodes DROP COLUMN ontology_id, DROP COLUMN entity_type");
+        } catch (SQLException e) {
+            throw new IllegalStateException("Failed to drop the embedding-node scope columns", e);
         }
     }
 
@@ -610,7 +647,7 @@ public final class PostgresIntegrationTestSupport {
         ReflectionTestUtils.setField(postgresClient, "user", container.getUsername());
         ReflectionTestUtils.setField(postgresClient, "password", container.getPassword());
         ReflectionTestUtils.setField(postgresClient, "schema", "public");
-        ReflectionTestUtils.setField(postgresClient, "maxPoolSize", 3);
+        ReflectionTestUtils.setField(postgresClient, "maxPoolSize", MAX_POOL_SIZE);
         ReflectionTestUtils.setField(postgresClient, "minIdle", 0);
         postgresClient.init();
         return postgresClient;
@@ -1151,11 +1188,12 @@ public final class PostgresIntegrationTestSupport {
     private static void insertJooqSupportEmbeddingNode(Connection connection, String nodeId, String vectorLiteral)
             throws SQLException {
         try (PreparedStatement statement = connection.prepareStatement(
-                "INSERT INTO ols_embedding_nodes (id, type, entity_id, \"embedding_"
-                        + JOOQ_SUPPORT_EMBEDDING_MODEL + "\") VALUES (?, 'LabelEmbedding', ?, ?::vector)")) {
+                "INSERT INTO ols_embedding_nodes (id, type, entity_id, ontology_id, entity_type, \"embedding_"
+                        + JOOQ_SUPPORT_EMBEDDING_MODEL + "\") VALUES (?, 'LabelEmbedding', ?, ?, 'Class', ?::vector)")) {
             statement.setString(1, nodeId);
             statement.setString(2, nodeId + "-entity");
-            statement.setString(3, vectorLiteral);
+            statement.setString(3, JOOQ_SUPPORT_ONTOLOGY_ID);
+            statement.setString(4, vectorLiteral);
             statement.executeUpdate();
         }
     }
@@ -1228,15 +1266,7 @@ public final class PostgresIntegrationTestSupport {
     private static void insertEmbeddingNode(
             Connection connection, String nodeId, String embeddingType, String entityId, String vectorLiteral)
             throws SQLException {
-        try (PreparedStatement statement = connection.prepareStatement(
-                "INSERT INTO ols_embedding_nodes (id, type, entity_id, \"embedding_" + V2LLM_TEST_MODEL + "\") "
-                        + "VALUES (?, ?, ?, ?::vector)")) {
-            statement.setString(1, nodeId);
-            statement.setString(2, embeddingType);
-            statement.setString(3, entityId);
-            statement.setString(4, vectorLiteral);
-            statement.executeUpdate();
-        }
+        insertEmbeddingNodeOfEntity(connection, "embedding_" + V2LLM_TEST_MODEL, nodeId, embeddingType, entityId, vectorLiteral);
     }
 
     /**
@@ -1409,6 +1439,97 @@ public final class PostgresIntegrationTestSupport {
     }
 
     /**
+     * Fixture for {@code OlsPostgresClientScopedVectorSearchIT}. Every vector is chosen against the
+     * query {@code [1,0,0,0]} so that scores are exact: {@code [3,4,0,0]} scores 0.8,
+     * {@code [4,3,0,0]} 0.9, {@code [0,1,0,0]} 0.5, {@code [-1,0,0,0]} 0.0, and
+     * {@code [1000,1,0,0]} rounds to 1.0. Four ontologies share one model's embedding column:
+     *
+     * <ul>
+     *   <li><b>{@code hnswcrowd}</b>: 60 classes, one label row each, with 60 different vectors
+     *       all within a hair of the query: nearer than every class of the ontologies searched
+     *       below, and part of none of them. An HNSW scan returns the rows of its
+     *       {@code hnsw.ef_search} (40) nearest vectors and stops, so a search scoped to another
+     *       ontology has to get past these.</li>
+     *   <li><b>{@code hnswfar}</b>: {@code FAR_A} (label, 0.8) and {@code FAR_B} (label 0.5,
+     *       curation 0.9), both behind the crowd, and the property {@code FAR_P} (label, 1.0), which
+     *       is the nearest row of all and has a different entity type.</li>
+     *   <li><b>{@code hnswwide}</b>: {@code WIDE_SYN} has 50 label rows, all nearer than
+     *       {@code WIDE_A} (0.8), {@code WIDE_B} (0.5) and {@code WIDE_C} (0.0). The first rows a
+     *       scan returns for this ontology all belong to one entity.</li>
+     *   <li><b>{@code hnswzero}</b>: {@code ZERO_A} (label, 0.8) and {@code ZERO_Z}, whose only
+     *       vector is all zeros. Its cosine distance to anything is NaN, and pgvector does not put
+     *       zero vectors in a cosine HNSW index, so this is a row an exact scan reads and an index
+     *       walk cannot.</li>
+     * </ul>
+     *
+     * <p>The indexes are the ones {@code create_postgres_schema.py} generates per embedding model.
+     * It derives them from embedding parquet files, which this suite does not have, so like the
+     * embedding columns themselves they are created here by hand.
+     */
+    private static void loadOlsPostgresClientScopedVectorSearchFixture(Connection connection)
+            throws IOException, SQLException {
+        String embeddingColumn = "embedding_" + OLS_POSTGRES_CLIENT_EMBEDDING_MODEL;
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("ALTER TABLE ols_embedding_nodes ADD COLUMN \"" + embeddingColumn + "\" vector(4)");
+        }
+
+        for (int i = 1; i <= 60; i++) {
+            String iri = "http://example.org/CROWD_" + i;
+            insertMinimalEntity(connection, "hnswcrowd+hnswclass+" + iri, "HnswClass", iri, "hnswcrowd", false, true, "Crowd " + i);
+            insertEmbeddingNodeOfEntity(connection, embeddingColumn, "hnsw-crowd-" + i, "LabelEmbedding",
+                    "hnswcrowd+hnswclass+" + iri, "[1000," + i + ",0,0]");
+        }
+
+        insertMinimalEntity(connection, "hnswfar+hnswclass+http://example.org/FAR_A",
+                "HnswClass", "http://example.org/FAR_A", "hnswfar", false, true, "Far A");
+        insertMinimalEntity(connection, "hnswfar+hnswclass+http://example.org/FAR_B",
+                "HnswClass", "http://example.org/FAR_B", "hnswfar", false, true, "Far B");
+        insertMinimalEntity(connection, "hnswfar+hnswproperty+http://example.org/FAR_P",
+                "HnswProperty", "http://example.org/FAR_P", "hnswfar", false, true, "Far P");
+        insertEmbeddingNodeOfEntity(connection, embeddingColumn, "hnsw-far-a", "LabelEmbedding",
+                "hnswfar+hnswclass+http://example.org/FAR_A", "[3,4,0,0]");
+        insertEmbeddingNodeOfEntity(connection, embeddingColumn, "hnsw-far-b", "LabelEmbedding",
+                "hnswfar+hnswclass+http://example.org/FAR_B", "[0,1,0,0]");
+        insertEmbeddingNodeOfEntity(connection, embeddingColumn, "hnsw-far-b-curation", "CurationEmbedding",
+                "hnswfar+hnswclass+http://example.org/FAR_B", "[4,3,0,0]");
+        insertEmbeddingNodeOfEntity(connection, embeddingColumn, "hnsw-far-p", "LabelEmbedding",
+                "hnswfar+hnswproperty+http://example.org/FAR_P", "[1,0,0,0]");
+
+        insertMinimalEntity(connection, "hnswwide+hnswclass+http://example.org/WIDE_SYN",
+                "HnswClass", "http://example.org/WIDE_SYN", "hnswwide", false, true, "Wide Syn");
+        for (int i = 1; i <= 50; i++) {
+            insertEmbeddingNodeOfEntity(connection, embeddingColumn, "hnsw-wide-syn-" + i, "LabelEmbedding",
+                    "hnswwide+hnswclass+http://example.org/WIDE_SYN", "[1000," + i + ",0,0]");
+        }
+        String[][] wideOthers = {{"WIDE_A", "[3,4,0,0]"}, {"WIDE_B", "[0,1,0,0]"}, {"WIDE_C", "[-1,0,0,0]"}};
+        for (String[] other : wideOthers) {
+            String iri = "http://example.org/" + other[0];
+            insertMinimalEntity(connection, "hnswwide+hnswclass+" + iri, "HnswClass", iri, "hnswwide", false, true, other[0]);
+            insertEmbeddingNodeOfEntity(connection, embeddingColumn, "hnsw-" + other[0].toLowerCase(), "LabelEmbedding",
+                    "hnswwide+hnswclass+" + iri, other[1]);
+        }
+
+        String[][] zeros = {{"ZERO_A", "[3,4,0,0]"}, {"ZERO_Z", "[0,0,0,0]"}};
+        for (String[] zero : zeros) {
+            String iri = "http://example.org/" + zero[0];
+            insertMinimalEntity(connection, "hnswzero+hnswclass+" + iri, "HnswClass", iri, "hnswzero", false, true, zero[0]);
+            insertEmbeddingNodeOfEntity(connection, embeddingColumn, "hnsw-" + zero[0].toLowerCase(), "LabelEmbedding",
+                    "hnswzero+hnswclass+" + iri, zero[1]);
+        }
+
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("CREATE INDEX idx_emb_olspgc_test_model_label ON ols_embedding_nodes USING hnsw (\""
+                    + embeddingColumn + "\" vector_cosine_ops) WHERE type = 'LabelEmbedding'");
+            statement.execute("CREATE INDEX idx_emb_olspgc_test_model_curated ON ols_embedding_nodes USING hnsw (\""
+                    + embeddingColumn + "\" vector_cosine_ops) WHERE type = 'CurationEmbedding'");
+            statement.execute("CREATE INDEX idx_emb_olspgc_test_model_scope ON ols_embedding_nodes "
+                    + "(ontology_id, type, entity_type) WHERE \"" + embeddingColumn + "\" IS NOT NULL");
+            statement.execute("ANALYZE ols_entities");
+            statement.execute("ANALYZE ols_embedding_nodes");
+        }
+    }
+
+    /**
      * Inserts a minimal {@code ols_entities} row: just the columns {@code OlsPostgresClient}'s
      * embedding/vector-search family actually reads (id/type/iri/ontology_id/_json/is_obsolete/
      * is_defining_ontology/label). Every other column keeps its schema default -- there is no
@@ -1452,14 +1573,32 @@ public final class PostgresIntegrationTestSupport {
     private static void insertEmbeddingNodeForTestModel(
             Connection connection, String nodeId, String embeddingType, String entityId, String vectorLiteral)
             throws SQLException {
+        insertEmbeddingNodeOfEntity(connection, "embedding_" + OLS_POSTGRES_CLIENT_EMBEDDING_MODEL,
+                nodeId, embeddingType, entityId, vectorLiteral);
+    }
+
+    /**
+     * Inserts one {@code ols_embedding_nodes} row for an existing {@code ols_entities} row, taking
+     * {@code ontology_id} and {@code entity_type} from that entity. This is the invariant
+     * {@code ols_json2postgres} maintains when it writes an entity's embedding rows (GitHub issue
+     * #1445) and the one {@code OlsPostgresClient.searchByVectorInOntology} relies on when it
+     * filters embedding rows by ontology without joining to {@code ols_entities}.
+     */
+    private static void insertEmbeddingNodeOfEntity(
+            Connection connection, String embeddingColumn, String nodeId, String embeddingType, String entityId,
+            String vectorLiteral) throws SQLException {
         try (PreparedStatement statement = connection.prepareStatement(
-                "INSERT INTO ols_embedding_nodes (id, type, entity_id, \""
-                        + "embedding_" + OLS_POSTGRES_CLIENT_EMBEDDING_MODEL + "\") VALUES (?, ?, ?, ?::vector)")) {
+                "INSERT INTO ols_embedding_nodes (id, type, entity_id, ontology_id, entity_type, \"" + embeddingColumn + "\") "
+                        + "SELECT ?, ?, id, ontology_id, type, ?::vector FROM ols_entities WHERE id = ?")) {
             statement.setString(1, nodeId);
             statement.setString(2, embeddingType);
-            statement.setString(3, entityId);
-            statement.setString(4, vectorLiteral);
-            statement.executeUpdate();
+            statement.setString(3, vectorLiteral);
+            statement.setString(4, entityId);
+            int inserted = statement.executeUpdate();
+            if (inserted != 1) {
+                throw new IllegalStateException(
+                        "Expected exactly one ols_entities row for id " + entityId + ", found " + inserted);
+            }
         }
     }
 

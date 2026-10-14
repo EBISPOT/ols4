@@ -230,7 +230,7 @@ impl<'a> OntologyWriter<'a> {
 
         // Field counts (must match create_postgres_schema.py column order)
         let entity_field_count = (30 + filter_property_names.len() + embedding_model_names.len()) as i16;
-        let emb_node_field_count = (3 + embedding_model_names.len()) as i16;
+        let emb_node_field_count = (5 + embedding_model_names.len()) as i16;
 
         // Create binary COPY files
         let entities_file = File::create(format!("{}/{}_entities.pgbin", output_file_path, ontology_id))?;
@@ -354,7 +354,7 @@ impl<'a> OntologyWriter<'a> {
         }
 
         // Write embedding child nodes
-        self.write_embedding_child_nodes(&entity_node_id, entity, entity_type_str, iri)?;
+        self.write_embedding_child_nodes(&entity_node_id, pg_type, entity, entity_type_str, iri)?;
 
         // Write autosuggest strings (labels + all synonyms) for all entities in this ontology
         let ontology_id = self.ontology_id.clone();
@@ -460,9 +460,15 @@ impl<'a> OntologyWriter<'a> {
     }
 
     /// Write embedding child nodes for all models for a given entity (binary).
+    ///
+    /// `pg_type` is the entity's `ols_entities.type` (e.g. "OntologyClass"). It is repeated on
+    /// every embedding row, next to the ontology id, so that a vector search scoped to one
+    /// ontology or entity type can filter inside the HNSW scan instead of joining to
+    /// `ols_entities`. See GitHub issue #1445.
     fn write_embedding_child_nodes(
         &mut self,
         entity_node_id: &str,
+        pg_type: &str,
         entity: &Map<String, Value>,
         entity_type: &str,
         iri: &str,
@@ -510,6 +516,8 @@ impl<'a> OntologyWriter<'a> {
                 writer.write_text(&row.node_id)?;
                 writer.write_text(&row.emb_type)?;
                 writer.write_text(&row.entity_id)?;
+                writer.write_text(&self.ontology_id)?;
+                writer.write_text(pg_type)?;
                 for i in 0..num_models {
                     if i == row.model_idx {
                         writer.write_vector(&row.vector)?;
