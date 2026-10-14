@@ -25,7 +25,8 @@ FROM python:3.13-slim-bookworm
 
 # Retain the runtime tools used by the Nextflow and numerical workloads.
 RUN apt-get update -y && \
-    apt-get install -y --no-install-recommends bash libgomp1 pigz && \
+    apt-get install -y --no-install-recommends bash libgomp1 pigz perl-base && \
+    dpkg --compare-versions "$(dpkg-query -W -f='${Version}' perl-base)" ge 5.36.0-7+deb12u4 && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt/ols_embed
@@ -37,7 +38,9 @@ COPY --from=rust-builder /opt/target/release/ols_semsim /usr/local/bin/ols_semsi
 COPY --from=duckdb-builder /root/.duckdb/cli/latest/duckdb /usr/local/bin/duckdb
 COPY ols_embed/embed2.py ols_embed/embed_openai.py ols_embed/pca.py \
     ols_embed/avg_embeddings.py ols_embed/server.py \
-    ols_embed/visualize_embeddings.py ols_embed/convert_umap_to_web.py ./
+    ols_embed/visualize_embeddings.py ols_embed/convert_umap_to_web.py \
+    ols_embed/model_loading.py ols_embed/trusted_models.json \
+    ols_embed/download_model.py ./
 
 EXPOSE 5000
 
