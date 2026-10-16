@@ -4,6 +4,7 @@ from typing import List
 import polars as pl
 from sentence_transformers import SentenceTransformer
 import torch
+from model_loading import model_load_kwargs
 
 torch.backends.cuda.matmul.allow_tf32 = True
 torch.set_float32_matmul_precision("high")
@@ -43,6 +44,7 @@ def main():
         df.write_parquet(output_parquet)
         return
 
+    load_kwargs = model_load_kwargs(args.model_name)
     n_gpus = torch.cuda.device_count()
     if n_gpus > 1:
         # Cap each GPU at 75 GiB so the model is split evenly with headroom
@@ -56,13 +58,14 @@ def main():
         # consolidate all params onto one GPU).  Similarly, encode() calls
         # self.to(self.device).  Disable both by making .to() a no-op.
         SentenceTransformer.to = lambda self, *a, **kw: self
-        model = SentenceTransformer(
-            args.model_name, trust_remote_code=True,
-            model_kwargs={"device_map": "auto", "max_memory": max_mem},
-        )
+        load_kwargs["model_kwargs"] = {
+            **load_kwargs.get("model_kwargs", {}),
+            "device_map": "auto", "max_memory": max_mem,
+        }
+        model = SentenceTransformer(args.model_name, **load_kwargs)
         encode_device = None
     else:
-        model = SentenceTransformer(args.model_name, trust_remote_code=True)
+        model = SentenceTransformer(args.model_name, **load_kwargs)
         encode_device = args.device
 
     terms = df["text_to_embed"].to_list()

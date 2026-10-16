@@ -9,6 +9,7 @@ import struct
 from flask import Flask, request, jsonify, Response
 from sentence_transformers import SentenceTransformer
 import numpy as np
+from model_loading import model_load_kwargs
 
 app = Flask(__name__)
 
@@ -26,11 +27,13 @@ def load_all_models():
         if item.is_dir() and not item.name.startswith('.'):
             model_name = item.name
             print(f"Loading model: {model_name} from {item}", file=sys.stderr)
-            loaded_models[model_name] = SentenceTransformer(
-                str(item),
-                trust_remote_code=True,
-                device='cuda'
-            )
+            try:
+                loaded_models[model_name] = SentenceTransformer(
+                    str(item), device='cuda', **model_load_kwargs(str(item))
+                )
+            except ValueError as error:
+                print(f"Refusing model {model_name}: {error}", file=sys.stderr)
+                continue
             print(f"Loaded model: {model_name}", file=sys.stderr)
 
 @app.route('/spot/embed/models', methods=['GET'])
