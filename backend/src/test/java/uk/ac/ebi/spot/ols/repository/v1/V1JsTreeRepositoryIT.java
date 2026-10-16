@@ -3,7 +3,7 @@ package uk.ac.ebi.spot.ols.repository.v1;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport;
@@ -44,12 +44,12 @@ class V1JsTreeRepositoryIT {
 
     /** Reused as-is from {@code V1TermRepositoryIT}: EFO_0001 (root) -> EFO_1001/EFO_1999 (children). */
     @Container
-    private static final PostgreSQLContainer<?> CLASS_POSTGRES =
+    private static final PostgreSQLContainer CLASS_POSTGRES =
             PostgresIntegrationTestSupport.newContainer();
 
     /** Reused as-is from {@code V1PropertyRepositoryIT}: EFO_0100 (root) -> EFO_0101 (child). */
     @Container
-    private static final PostgreSQLContainer<?> PROPERTY_POSTGRES =
+    private static final PostgreSQLContainer PROPERTY_POSTGRES =
             PostgresIntegrationTestSupport.newContainer();
 
     /**
@@ -62,7 +62,7 @@ class V1JsTreeRepositoryIT {
      * {@link PostgresIntegrationTestSupport#initializeJsTreeRepositoryDatabase}.
      */
     @Container
-    private static final PostgreSQLContainer<?> JSTREE_POSTGRES =
+    private static final PostgreSQLContainer JSTREE_POSTGRES =
             PostgresIntegrationTestSupport.newContainer();
 
     private static PostgresIntegrationTestSupport.V1OntologyTermRepositoryHandle classHandle;

@@ -1,7 +1,7 @@
 package uk.ac.ebi.spot.ols.config;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.json.JsonMapper;
 import io.modelcontextprotocol.client.McpClient;
 import io.modelcontextprotocol.client.transport.HttpClientStreamableHttpTransport;
 import io.modelcontextprotocol.spec.McpSchema;
@@ -19,9 +19,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.boot.web.embedded.tomcat.TomcatWebServer;
+import org.springframework.boot.tomcat.TomcatWebServer;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext;
+import org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
@@ -52,7 +52,7 @@ class McpConnectionLifecycleTest {
     @Autowired
     AtomicInteger listeningRequests;
 
-    private final ObjectMapper mapper = new ObjectMapper();
+    private final JsonMapper mapper = new JsonMapper();
 
     @Configuration(proxyBeanMethods = false)
     @Profile("mcp-connection-lifecycle-test")

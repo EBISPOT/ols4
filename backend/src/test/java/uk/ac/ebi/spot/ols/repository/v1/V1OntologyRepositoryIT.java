@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import uk.ac.ebi.spot.ols.model.v1.V1Ontology;
@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class V1OntologyRepositoryIT {
 
     @Container
-    private static final PostgreSQLContainer<?> POSTGRES =
+    private static final PostgreSQLContainer POSTGRES =
             PostgresIntegrationTestSupport.newContainer();
 
     private static PostgresIntegrationTestSupport.V1RepositoryHandle repositoryHandle;

@@ -8,7 +8,7 @@ import org.jooq.impl.DSL;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport.JooqSupportRepositoryHandle;
 
@@ -67,7 +67,7 @@ import static uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport.JOOQ
  */
 class JooqSupportIT {
 
-    private static PostgreSQLContainer<?> container;
+    private static PostgreSQLContainer container;
     private static JooqSupportRepositoryHandle handle;
 
     @BeforeAll

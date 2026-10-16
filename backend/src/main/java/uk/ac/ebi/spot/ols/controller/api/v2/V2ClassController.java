@@ -25,7 +25,7 @@ import uk.ac.ebi.spot.ols.model.v2.V2Entity;
 import uk.ac.ebi.spot.ols.repository.ClassRepository;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;

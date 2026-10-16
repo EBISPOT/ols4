@@ -4,7 +4,7 @@ import com.google.gson.JsonParser;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport;
@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class OlsSearchClientSelectIT {
 
     @Container
-    private static final PostgreSQLContainer<?> POSTGRES =
+    private static final PostgreSQLContainer POSTGRES =
             PostgresIntegrationTestSupport.newContainer();
 
     private static PostgresIntegrationTestSupport.SearchClientHandle searchClientHandle;

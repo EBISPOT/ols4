@@ -3,7 +3,7 @@ package uk.ac.ebi.spot.ols.service;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport.EmbeddingServiceClientRepositoryHandle;
 
@@ -34,7 +34,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
  */
 class EmbeddingServiceClientIT {
 
-    private static PostgreSQLContainer<?> container;
+    private static PostgreSQLContainer container;
     private static EmbeddingServiceClientRepositoryHandle handle;
 
     @BeforeAll
@@ -87,7 +87,7 @@ class EmbeddingServiceClientIT {
      */
     @Test
     void initSwallowsAMalformedModelRowWithoutThrowing() throws Exception {
-        PostgreSQLContainer<?> brokenContainer = PostgresIntegrationTestSupport.newContainer();
+        PostgreSQLContainer brokenContainer = PostgresIntegrationTestSupport.newContainer();
         brokenContainer.start();
         try {
             PostgresIntegrationTestSupport.initializeDatabase(brokenContainer);

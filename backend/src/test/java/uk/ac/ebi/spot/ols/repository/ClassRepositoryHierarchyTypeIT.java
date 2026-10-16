@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ClassRepositoryHierarchyTypeIT {
 
     @Container
-    private static final PostgreSQLContainer<?> POSTGRES =
+    private static final PostgreSQLContainer POSTGRES =
             PostgresIntegrationTestSupport.newContainer();
 
     private static PostgresIntegrationTestSupport.ClassRepositoryHandle repositoryHandle;

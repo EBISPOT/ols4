@@ -3,7 +3,7 @@ package uk.ac.ebi.spot.ols.controller.mcp;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import uk.ac.ebi.spot.ols.model.mcp.McpClass;
@@ -49,7 +49,7 @@ class McpClassServiceIT {
     private static final String MODEL = "test_model";
 
     @Container
-    private static final PostgreSQLContainer<?> POSTGRES = PostgresIntegrationTestSupport.newContainer();
+    private static final PostgreSQLContainer POSTGRES = PostgresIntegrationTestSupport.newContainer();
 
     private static PostgresIntegrationTestSupport.V2LLMRepositoryHandle llmHandle;
     private static PostgresIntegrationTestSupport.EntityRepositoryHandle entityHandle;

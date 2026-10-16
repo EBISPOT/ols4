@@ -8,7 +8,7 @@ import org.postgresql.PGConnection;
 import org.postgresql.largeobject.LargeObject;
 import org.postgresql.largeobject.LargeObjectManager;
 import org.springframework.test.util.ReflectionTestUtils;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
 import uk.ac.ebi.spot.ols.repository.EntityRepository;
 import uk.ac.ebi.spot.ols.repository.ClassRepository;
@@ -101,15 +101,15 @@ public final class PostgresIntegrationTestSupport {
     private PostgresIntegrationTestSupport() {
     }
 
-    public static PostgreSQLContainer<?> newContainer() {
-        return new PostgreSQLContainer<>(
+    public static PostgreSQLContainer newContainer() {
+        return new PostgreSQLContainer(
                 DockerImageName.parse(IMAGE).asCompatibleSubstituteFor("postgres"))
                 .withDatabaseName("ols4_test")
                 .withUsername("ols")
                 .withPassword("ols-test");
     }
 
-    public static void initializeDatabase(PostgreSQLContainer<?> container) {
+    public static void initializeDatabase(PostgreSQLContainer container) {
         try (Connection connection = container.createConnection("")) {
             executeProductionSchema(connection);
             loadOntologyFixture(connection);
@@ -120,7 +120,7 @@ public final class PostgresIntegrationTestSupport {
         }
     }
 
-    public static void initializePropertyDatabase(PostgreSQLContainer<?> container) {
+    public static void initializePropertyDatabase(PostgreSQLContainer container) {
         initializeDatabase(container);
         try (Connection connection = container.createConnection("")) {
             loadPropertyFixture(connection);
@@ -129,7 +129,7 @@ public final class PostgresIntegrationTestSupport {
         }
     }
 
-    public static void initializeClassDatabase(PostgreSQLContainer<?> container) {
+    public static void initializeClassDatabase(PostgreSQLContainer container) {
         initializeDatabase(container);
         try (Connection connection = container.createConnection("")) {
             loadClassFixture(connection);
@@ -138,7 +138,7 @@ public final class PostgresIntegrationTestSupport {
         }
     }
 
-    public static void initializeIndividualDatabase(PostgreSQLContainer<?> container) {
+    public static void initializeIndividualDatabase(PostgreSQLContainer container) {
         initializeDatabase(container);
         try (Connection connection = container.createConnection("")) {
             loadIndividualFixture(connection);
@@ -155,7 +155,7 @@ public final class PostgresIntegrationTestSupport {
      * relevant to this class, but {@link #initializeDatabase} is still called first because it is
      * what runs {@link #executeProductionSchema}, which creates the {@code ols_pca_models} table.
      */
-    public static void initializeEmbeddingServiceClientDatabase(PostgreSQLContainer<?> container) {
+    public static void initializeEmbeddingServiceClientDatabase(PostgreSQLContainer container) {
         initializeDatabase(container);
         try (Connection connection = container.createConnection("")) {
             loadPcaModelsFixture(connection);
@@ -177,7 +177,7 @@ public final class PostgresIntegrationTestSupport {
      * verifiable -- not just its rendered SQL shape, which {@code JooqSupportTest} already covers
      * without a database.
      */
-    public static void initializeJooqSupportDatabase(PostgreSQLContainer<?> container) {
+    public static void initializeJooqSupportDatabase(PostgreSQLContainer container) {
         initializeDatabase(container);
         try (Connection connection = container.createConnection("")) {
             loadJooqSupportEntityFixture(connection);
@@ -197,7 +197,7 @@ public final class PostgresIntegrationTestSupport {
      * IRI duplicate on each of the three join branches. See {@code v1-graph-fixture.json} for exactly
      * which row is which and why.
      */
-    public static void initializeV1GraphDatabase(PostgreSQLContainer<?> container) {
+    public static void initializeV1GraphDatabase(PostgreSQLContainer container) {
         initializeDatabase(container);
         try (Connection connection = container.createConnection("")) {
             loadV1GraphFixture(connection);
@@ -229,7 +229,7 @@ public final class PostgresIntegrationTestSupport {
      * All four new ids are disjoint from every other fixture's ids, so this is safe to combine with
      * the base individual fixture in one database.
      */
-    public static void initializeJsTreeRepositoryDatabase(PostgreSQLContainer<?> container) {
+    public static void initializeJsTreeRepositoryDatabase(PostgreSQLContainer container) {
         initializeIndividualDatabase(container);
         try (Connection connection = container.createConnection("")) {
             loadClassFixtureFrom(connection, "/fixtures/classes/jstree-localization-class-fixture.json");
@@ -248,7 +248,7 @@ public final class PostgresIntegrationTestSupport {
      * fixtures cannot coexist in one database. The class fixture's individual is used for the
      * individual-search route instead.
      */
-    public static void initializeV2LLMDatabase(PostgreSQLContainer<?> container) {
+    public static void initializeV2LLMDatabase(PostgreSQLContainer container) {
         initializeDatabase(container);
         try (Connection connection = container.createConnection("")) {
             loadClassFixture(connection);
@@ -268,7 +268,7 @@ public final class PostgresIntegrationTestSupport {
      * cross-ontology IRI/label duplicate in one place). See {@code graph-fixture.json} and
      * {@link #loadGraphFixture} for exactly which row is which and why.
      */
-    public static void initializeOlsPostgresClientGraphDatabase(PostgreSQLContainer<?> container) {
+    public static void initializeOlsPostgresClientGraphDatabase(PostgreSQLContainer container) {
         initializeDatabase(container);
         try (Connection connection = container.createConnection("")) {
             loadGraphFixture(connection);
@@ -287,7 +287,7 @@ public final class PostgresIntegrationTestSupport {
      * fixture). See {@link #loadOlsPostgresClientEmbeddingFixture} for exactly which row is which
      * and why.
      */
-    public static void initializeOlsPostgresClientEmbeddingDatabase(PostgreSQLContainer<?> container) {
+    public static void initializeOlsPostgresClientEmbeddingDatabase(PostgreSQLContainer container) {
         initializeDatabase(container);
         try (Connection connection = container.createConnection("")) {
             loadOlsPostgresClientEmbeddingFixture(connection);
@@ -303,7 +303,7 @@ public final class PostgresIntegrationTestSupport {
      * production schema generator creates for a model. See
      * {@link #loadOlsPostgresClientScopedVectorSearchFixture} for the rows.
      */
-    public static void initializeOlsPostgresClientScopedVectorSearchDatabase(PostgreSQLContainer<?> container) {
+    public static void initializeOlsPostgresClientScopedVectorSearchDatabase(PostgreSQLContainer container) {
         initializeDatabase(container);
         try (Connection connection = container.createConnection("")) {
             loadOlsPostgresClientScopedVectorSearchFixture(connection);
@@ -318,7 +318,7 @@ public final class PostgresIntegrationTestSupport {
      * drops the scope index built on them). The backend and the database are deployed separately,
      * so a current backend has to keep working against such a database.
      */
-    public static void dropEmbeddingNodeScopeColumns(PostgreSQLContainer<?> container) {
+    public static void dropEmbeddingNodeScopeColumns(PostgreSQLContainer container) {
         try (Connection connection = container.createConnection("");
              Statement statement = connection.createStatement()) {
             statement.execute("ALTER TABLE ols_embedding_nodes DROP COLUMN ontology_id, DROP COLUMN entity_type");
@@ -327,7 +327,7 @@ public final class PostgresIntegrationTestSupport {
         }
     }
 
-    public static RepositoryHandle createRepository(PostgreSQLContainer<?> container) {
+    public static RepositoryHandle createRepository(PostgreSQLContainer container) {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
 
@@ -346,7 +346,7 @@ public final class PostgresIntegrationTestSupport {
      * {@code OlsPostgresClientEmbeddingIT}, which exercise {@code OlsPostgresClient} directly rather
      * than through any repository.
      */
-    public static OlsPostgresClientRepositoryHandle createOlsPostgresClientRepositories(PostgreSQLContainer<?> container) {
+    public static OlsPostgresClientRepositoryHandle createOlsPostgresClientRepositories(PostgreSQLContainer container) {
         PostgresClient postgresClient = createPostgresClient(container);
 
         OlsPostgresClient olsPostgresClient = new OlsPostgresClient();
@@ -355,7 +355,7 @@ public final class PostgresIntegrationTestSupport {
         return new OlsPostgresClientRepositoryHandle(olsPostgresClient, postgresClient);
     }
 
-    public static HealthCheckRepositoryHandle createHealthCheckRepositories(PostgreSQLContainer<?> container) {
+    public static HealthCheckRepositoryHandle createHealthCheckRepositories(PostgreSQLContainer container) {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
 
@@ -368,7 +368,7 @@ public final class PostgresIntegrationTestSupport {
         return new HealthCheckRepositoryHandle(repository, olsPostgresClient, postgresClient);
     }
 
-    public static TextTaggerRepositoryHandle createTextTaggerRepositories(PostgreSQLContainer<?> container) {
+    public static TextTaggerRepositoryHandle createTextTaggerRepositories(PostgreSQLContainer container) {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
 
@@ -420,7 +420,7 @@ public final class PostgresIntegrationTestSupport {
      * a synchronous {@code SELECT} against {@code ols_pca_models} (empty in this fixture) and never
      * throws, so this is safe to call exactly once per handle.
      */
-    public static V2LLMRepositoryHandle createV2LLMRepositories(PostgreSQLContainer<?> container) {
+    public static V2LLMRepositoryHandle createV2LLMRepositories(PostgreSQLContainer container) {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
 
@@ -451,7 +451,7 @@ public final class PostgresIntegrationTestSupport {
      * immediately, before the container/handle are used for assertions.
      */
     public static EmbeddingServiceClientRepositoryHandle createEmbeddingServiceClientRepositories(
-            PostgreSQLContainer<?> container) {
+            PostgreSQLContainer container) {
         PostgresClient postgresClient = createPostgresClient(container);
 
         EmbeddingServiceClient embeddingServiceClient = new EmbeddingServiceClient();
@@ -471,12 +471,12 @@ public final class PostgresIntegrationTestSupport {
      * {@link PostgresClient#dsl}, and execute queries built directly with {@code JooqSupport}'s
      * methods.
      */
-    public static JooqSupportRepositoryHandle createJooqSupportRepositories(PostgreSQLContainer<?> container) {
+    public static JooqSupportRepositoryHandle createJooqSupportRepositories(PostgreSQLContainer container) {
         PostgresClient postgresClient = createPostgresClient(container);
         return new JooqSupportRepositoryHandle(postgresClient);
     }
 
-    public static V1RepositoryHandle createV1Repository(PostgreSQLContainer<?> container) {
+    public static V1RepositoryHandle createV1Repository(PostgreSQLContainer container) {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
 
@@ -485,12 +485,12 @@ public final class PostgresIntegrationTestSupport {
         return new V1RepositoryHandle(repository, postgresClient);
     }
 
-    public static SearchClientHandle createSearchClient(PostgreSQLContainer<?> container) {
+    public static SearchClientHandle createSearchClient(PostgreSQLContainer container) {
         PostgresClient postgresClient = createPostgresClient(container);
         return new SearchClientHandle(createSearchClient(postgresClient), postgresClient);
     }
 
-    public static EntityRepositoryHandle createEntityRepository(PostgreSQLContainer<?> container) {
+    public static EntityRepositoryHandle createEntityRepository(PostgreSQLContainer container) {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
 
@@ -500,7 +500,7 @@ public final class PostgresIntegrationTestSupport {
     }
 
     public static V1TermRepositoryHandle createV1TermRepository(
-            PostgreSQLContainer<?> container) {
+            PostgreSQLContainer container) {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
 
@@ -510,7 +510,7 @@ public final class PostgresIntegrationTestSupport {
     }
 
     public static PropertyRepositoryHandle createPropertyRepository(
-            PostgreSQLContainer<?> container) {
+            PostgreSQLContainer container) {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
 
@@ -524,7 +524,7 @@ public final class PostgresIntegrationTestSupport {
     }
 
     public static V1PropertyRepositoryHandle createV1PropertyRepository(
-            PostgreSQLContainer<?> container) {
+            PostgreSQLContainer container) {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
 
@@ -538,7 +538,7 @@ public final class PostgresIntegrationTestSupport {
     }
 
     public static ClassRepositoryHandle createClassRepository(
-            PostgreSQLContainer<?> container) {
+            PostgreSQLContainer container) {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
 
@@ -552,7 +552,7 @@ public final class PostgresIntegrationTestSupport {
     }
 
     public static IndividualRepositoryHandle createIndividualRepository(
-            PostgreSQLContainer<?> container) {
+            PostgreSQLContainer container) {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
 
@@ -566,7 +566,7 @@ public final class PostgresIntegrationTestSupport {
     }
 
     public static V1IndividualRepositoryHandle createV1IndividualRepository(
-            PostgreSQLContainer<?> container) {
+            PostgreSQLContainer container) {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
 
@@ -580,7 +580,7 @@ public final class PostgresIntegrationTestSupport {
     }
 
     public static V1OntologyIndividualRepositoryHandle createV1OntologyIndividualRepositories(
-            PostgreSQLContainer<?> container) {
+            PostgreSQLContainer container) {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
 
@@ -599,7 +599,7 @@ public final class PostgresIntegrationTestSupport {
     }
 
     public static V1OntologyPropertyRepositoryHandle createV1OntologyPropertyRepositories(
-            PostgreSQLContainer<?> container) {
+            PostgreSQLContainer container) {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
 
@@ -618,7 +618,7 @@ public final class PostgresIntegrationTestSupport {
     }
 
     public static V1OntologyTermRepositoryHandle createV1OntologyTermRepositories(
-            PostgreSQLContainer<?> container) {
+            PostgreSQLContainer container) {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
 
@@ -639,7 +639,7 @@ public final class PostgresIntegrationTestSupport {
                 termRepository, jsTreeRepository, graphRepository, postgresClient);
     }
 
-    private static PostgresClient createPostgresClient(PostgreSQLContainer<?> container) {
+    private static PostgresClient createPostgresClient(PostgreSQLContainer container) {
         PostgresClient postgresClient = new PostgresClient();
         ReflectionTestUtils.setField(postgresClient, "host", container.getHost());
         ReflectionTestUtils.setField(postgresClient, "port", container.getMappedPort(5432));

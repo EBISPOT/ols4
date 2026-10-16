@@ -9,8 +9,10 @@ import org.jooq.impl.DSL;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.test.context.support.TestPropertySourceUtils;
 import org.springframework.test.util.ReflectionTestUtils;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport;
@@ -46,7 +48,7 @@ class PostgresClientIT {
     private static final String LIVER_ENTITY_ID = "efo+class+http://example.org/EFO_0001";
 
     @Container
-    private static final PostgreSQLContainer<?> POSTGRES =
+    private static final PostgreSQLContainer POSTGRES =
             PostgresIntegrationTestSupport.newContainer();
 
     private static SearchClientHandle searchClientHandle;
@@ -81,6 +83,30 @@ class PostgresClientIT {
 
             assertThat(count).isEqualTo(9L);
         }
+    }
+
+    @Test
+    void initializesAndClosesPoolThroughSpringLifecycle() {
+        HikariDataSource dataSource;
+        try (var context = new AnnotationConfigApplicationContext()) {
+            TestPropertySourceUtils.addInlinedPropertiesToEnvironment(context,
+                    "ols.postgres.host=" + POSTGRES.getHost(),
+                    "ols.postgres.port=" + POSTGRES.getMappedPort(5432),
+                    "ols.postgres.db=" + POSTGRES.getDatabaseName(),
+                    "ols.postgres.user=" + POSTGRES.getUsername(),
+                    "ols.postgres.password=" + POSTGRES.getPassword(),
+                    "ols.postgres.max-pool-size=1",
+                    "ols.postgres.min-idle=0");
+            context.register(PostgresClient.class);
+            context.refresh();
+
+            PostgresClient client = context.getBean(PostgresClient.class);
+            dataSource = (HikariDataSource) ReflectionTestUtils.getField(client, "dataSource");
+            assertThat(dataSource).as("pool initialized by Spring").isNotNull();
+            assertThat(dataSource.isClosed()).isFalse();
+            assertThat(client.returnNodeCount()).isEqualTo(9L);
+        }
+        assertThat(dataSource.isClosed()).as("pool closed with Spring context").isTrue();
     }
 
     @Test

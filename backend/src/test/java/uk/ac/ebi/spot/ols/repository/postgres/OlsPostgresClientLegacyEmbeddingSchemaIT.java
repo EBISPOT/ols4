@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport.OlsPostgresClientRepositoryHandle;
 
@@ -34,7 +34,7 @@ class OlsPostgresClientLegacyEmbeddingSchemaIT {
     private static final List<Double> QUERY = List.of(1.0, 0.0, 0.0, 0.0);
     private static final PageRequest ANY_PAGEABLE = PageRequest.of(0, 10);
 
-    private static PostgreSQLContainer<?> container;
+    private static PostgreSQLContainer container;
     private static OlsPostgresClientRepositoryHandle handle;
     private static OlsPostgresClient client;
 

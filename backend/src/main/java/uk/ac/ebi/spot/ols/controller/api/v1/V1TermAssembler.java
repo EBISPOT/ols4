@@ -34,21 +34,21 @@ public class V1TermAssembler implements RepresentationModelAssembler<V1Term, Ent
         resource.add(lb.withSelfRel());
 
         if (!term.isRoot) {
-            resource.add(lb.slash("parents").withRel("parents"));
-            resource.add(lb.slash("ancestors").withRel("ancestors"));
-            resource.add(lb.slash("hierarchicalParents").withRel("hierarchicalParents"));
-            resource.add(lb.slash("hierarchicalAncestors").withRel("hierarchicalAncestors"));
-            resource.add(lb.slash("jstree").withRel("jstree"));
+            resource.add(V1Links.child(lb, "parents").withRel("parents"));
+            resource.add(V1Links.child(lb, "ancestors").withRel("ancestors"));
+            resource.add(V1Links.child(lb, "hierarchicalParents").withRel("hierarchicalParents"));
+            resource.add(V1Links.child(lb, "hierarchicalAncestors").withRel("hierarchicalAncestors"));
+            resource.add(V1Links.child(lb, "jstree").withRel("jstree"));
         }
 
         if (term.hasChildren) {
-            resource.add(lb.slash("children").withRel("children"));
-            resource.add(lb.slash("descendants").withRel("descendants"));
-            resource.add(lb.slash("hierarchicalChildren").withRel("hierarchicalChildren"));
-            resource.add(lb.slash("hierarchicalDescendants").withRel("hierarchicalDescendants"));
+            resource.add(V1Links.child(lb, "children").withRel("children"));
+            resource.add(V1Links.child(lb, "descendants").withRel("descendants"));
+            resource.add(V1Links.child(lb, "hierarchicalChildren").withRel("hierarchicalChildren"));
+            resource.add(V1Links.child(lb, "hierarchicalDescendants").withRel("hierarchicalDescendants"));
         }
 
-        resource.add(lb.slash("graph").withRel("graph"));
+        resource.add(V1Links.child(lb, "graph").withRel("graph"));
 
         Collection<String> relation = new HashSet<>();
         for (V1Related related : term.related) {
@@ -57,7 +57,7 @@ public class V1TermAssembler implements RepresentationModelAssembler<V1Term, Ent
                 if (!relation.contains(related.label)) {
                     String relationId = UriUtils.encode(related.iri, "UTF-8");
 
-                    resource.add(lb.slash(relationId).withRel(related.label.replaceAll(" ", "_")));
+                    resource.add(V1Links.child(lb, relationId).withRel(related.label.replaceAll(" ", "_")));
                 }
                 relation.add(related.label);
             }

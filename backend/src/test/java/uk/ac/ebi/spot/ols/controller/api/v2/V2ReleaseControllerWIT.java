@@ -1,6 +1,6 @@
 package uk.ac.ebi.spot.ols.controller.api.v2;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
@@ -21,7 +21,7 @@ class V2ReleaseControllerWIT {
                 "notes":"### Fixed\\n* Better search"},"conceptDoi":"10.5281/zenodo.122",
                 "releases":[{"version":"4.1.0"},{"version":"4.0.1"}]}
                 """;
-        var controller = new V2ReleaseController(new ObjectMapper(),
+        var controller = new V2ReleaseController(new JsonMapper(),
                 new ByteArrayResource(fixture.getBytes(StandardCharsets.UTF_8)));
         var mvc = MockMvcBuilders.standaloneSetup(controller).build();
         mvc.perform(get("/api/v2/releases"))
@@ -36,7 +36,7 @@ class V2ReleaseControllerWIT {
 
     @Test
     void ordinaryBuildHasNoInventedStableVersion() throws Exception {
-        var controller = new V2ReleaseController(new ObjectMapper());
+        var controller = new V2ReleaseController(new JsonMapper());
         var mvc = MockMvcBuilders.standaloneSetup(controller).build();
         mvc.perform(get("/api/v2/releases"))
                 .andExpect(status().isOk())

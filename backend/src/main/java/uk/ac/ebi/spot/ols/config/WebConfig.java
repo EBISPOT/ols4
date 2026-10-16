@@ -12,7 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.*;
-import org.springframework.web.util.UrlPathHelper;
 
 import java.util.List;
 
@@ -25,26 +24,8 @@ import java.util.List;
 public class WebConfig implements WebMvcConfigurer {
 
 
-    /**
-     * This config stops the rest api from using suffix pattern matching on URLs to determine content type
-     * e.g. .json for .xml in URL to get data back in specific formats
-     *
-     * @param configurer
-     */
-
     @Value("${ols.search.max-rows:1000}")
     private int maxPageSize;
-
-    @Override
-    public void configurePathMatch(PathMatchConfigurer configurer) {
-//        UrlPathHelper urlPathHelper = new UrlPathHelper();
-//               urlPathHelper.setUrlDecode(false);
-//               configurer.setUrlPathHelper(urlPathHelper);
-        configurer
-            .setUseSuffixPatternMatch(false);
-
-
-    }
 
 //     @Bean
 //     MaintenanceInterceptor getMaintenanceInterceptor() {

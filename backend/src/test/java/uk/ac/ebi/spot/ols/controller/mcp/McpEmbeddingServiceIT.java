@@ -3,7 +3,7 @@ package uk.ac.ebi.spot.ols.controller.mcp;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import uk.ac.ebi.spot.ols.model.mcp.McpPage;
@@ -53,7 +53,7 @@ class McpEmbeddingServiceIT {
     private static final String EFO_I100 = "http://example.org/EFO_I100"; // individual, LabelEmbedding
 
     @Container
-    private static final PostgreSQLContainer<?> POSTGRES = PostgresIntegrationTestSupport.newContainer();
+    private static final PostgreSQLContainer POSTGRES = PostgresIntegrationTestSupport.newContainer();
 
     private static PostgresIntegrationTestSupport.V2LLMRepositoryHandle llmHandle;
 

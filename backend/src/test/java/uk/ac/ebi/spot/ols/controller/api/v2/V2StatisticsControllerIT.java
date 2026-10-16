@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import uk.ac.ebi.spot.ols.controller.api.exception.GlobalExceptionHandler;
@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class V2StatisticsControllerIT {
 
     @Container
-    private static final PostgreSQLContainer<?> POSTGRES =
+    private static final PostgreSQLContainer POSTGRES =
             PostgresIntegrationTestSupport.newContainer();
 
     private static PostgresIntegrationTestSupport.SearchClientHandle searchClientHandle;

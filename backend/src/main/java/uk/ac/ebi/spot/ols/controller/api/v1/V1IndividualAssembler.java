@@ -29,9 +29,9 @@ public class V1IndividualAssembler implements RepresentationModelAssembler<V1Ind
 
         resource.add(lb.withSelfRel());
 
-        resource.add(lb.slash("types").withRel("types"));
-        resource.add(lb.slash("alltypes").withRel("alltypes"));
-        resource.add(lb.slash("jstree").withRel("jstree"));
+        resource.add(V1Links.child(lb, "types").withRel("types"));
+        resource.add(V1Links.child(lb, "alltypes").withRel("alltypes"));
+        resource.add(V1Links.child(lb, "jstree").withRel("jstree"));
 
 
         return resource;
