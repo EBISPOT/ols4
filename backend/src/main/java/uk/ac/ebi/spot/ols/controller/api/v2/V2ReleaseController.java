@@ -1,7 +1,7 @@
 package uk.ac.ebi.spot.ols.controller.api.v2;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.json.JsonMapper;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -20,11 +20,11 @@ public class V2ReleaseController {
     private final JsonNode releases;
 
     @Autowired
-    public V2ReleaseController(ObjectMapper mapper) throws IOException {
+    public V2ReleaseController(JsonMapper mapper) throws IOException {
         this(mapper, new ClassPathResource("ols-release.json"));
     }
 
-    V2ReleaseController(ObjectMapper mapper, Resource resource) throws IOException {
+    V2ReleaseController(JsonMapper mapper, Resource resource) throws IOException {
         try (InputStream input = resource.getInputStream()) {
             releases = mapper.readTree(input);
         }

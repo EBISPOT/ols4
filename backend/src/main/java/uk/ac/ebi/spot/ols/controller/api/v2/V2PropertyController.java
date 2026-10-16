@@ -24,7 +24,7 @@ import uk.ac.ebi.spot.ols.repository.transforms.JsonTransformOptions;
 import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;

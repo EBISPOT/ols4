@@ -8,7 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport.OlsPostgresClientRepositoryHandle;
 
@@ -72,7 +72,7 @@ class OlsPostgresClientScopedVectorSearchIT {
     private static final String SESSION_SETTINGS =
             "SELECT current_setting('hnsw.iterative_scan'), current_setting('enable_sort')";
 
-    private static PostgreSQLContainer<?> container;
+    private static PostgreSQLContainer container;
     private static OlsPostgresClientRepositoryHandle handle;
     private static OlsPostgresClient client;
 

@@ -30,14 +30,14 @@ public class V1PropertyAssembler implements RepresentationModelAssembler<V1Prope
         resource.add(lb.withSelfRel());
 
         if (!term.isRoot) {
-            resource.add(lb.slash("parents").withRel("parents"));
-            resource.add(lb.slash("ancestors").withRel("ancestors"));
-            resource.add(lb.slash("jstree").withRel("jstree"));
+            resource.add(V1Links.child(lb, "parents").withRel("parents"));
+            resource.add(V1Links.child(lb, "ancestors").withRel("ancestors"));
+            resource.add(V1Links.child(lb, "jstree").withRel("jstree"));
         }
 
         if (term.hasChildren) {
-            resource.add(lb.slash("children").withRel("children"));
-            resource.add(lb.slash("descendants").withRel("descendants"));
+            resource.add(V1Links.child(lb, "children").withRel("children"));
+            resource.add(V1Links.child(lb, "descendants").withRel("descendants"));
         }
 
         // other links

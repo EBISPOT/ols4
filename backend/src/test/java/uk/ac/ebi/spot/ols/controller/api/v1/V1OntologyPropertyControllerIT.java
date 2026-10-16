@@ -1,6 +1,6 @@
 package uk.ac.ebi.spot.ols.controller.api.v1;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -9,16 +9,16 @@ import org.springframework.data.web.PagedResourcesAssemblerArgumentResolver;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.hateoas.mediatype.MessageResolver;
 import org.springframework.hateoas.mediatype.hal.CurieProvider;
-import org.springframework.hateoas.mediatype.hal.Jackson2HalModule;
+import org.springframework.hateoas.mediatype.hal.HalJacksonModule;
 import org.springframework.hateoas.server.core.AnnotationLinkRelationProvider;
 import org.springframework.hateoas.server.core.DelegatingLinkRelationProvider;
 import org.springframework.hateoas.server.core.EvoInflectorLinkRelationProvider;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.http.converter.json.JacksonJsonHttpMessageConverter;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport;
@@ -51,7 +51,7 @@ class V1OntologyPropertyControllerIT {
             PARENT_URI + "/jstree/children/aHR0cDovL2V4YW1wbGUub3JnL0VGT18wMTAw");
 
     @Container
-    private static final PostgreSQLContainer<?> POSTGRES =
+    private static final PostgreSQLContainer POSTGRES =
             PostgresIntegrationTestSupport.newContainer();
 
     private static PostgresIntegrationTestSupport.V1OntologyPropertyRepositoryHandle
@@ -179,18 +179,19 @@ class V1OntologyPropertyControllerIT {
                 .andExpect(jsonPath("$[1].state.selected").value(true));
     }
 
-    private static MappingJackson2HttpMessageConverter halMessageConverter() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.registerModule(new Jackson2HalModule());
-        objectMapper.setHandlerInstantiator(new Jackson2HalModule.HalHandlerInstantiator(
-                new DelegatingLinkRelationProvider(
-                        new AnnotationLinkRelationProvider(),
-                        new EvoInflectorLinkRelationProvider()),
-                CurieProvider.NONE,
-                MessageResolver.DEFAULTS_ONLY));
+    private static JacksonJsonHttpMessageConverter halMessageConverter() {
+        JsonMapper objectMapper = JsonMapper.builder()
+                .addModule(new HalJacksonModule())
+                .handlerInstantiator(new HalJacksonModule.HalHandlerInstantiator(
+                        new DelegatingLinkRelationProvider(
+                                new AnnotationLinkRelationProvider(),
+                                new EvoInflectorLinkRelationProvider()),
+                        CurieProvider.NONE,
+                        MessageResolver.DEFAULTS_ONLY))
+                .build();
 
-        MappingJackson2HttpMessageConverter converter =
-                new MappingJackson2HttpMessageConverter(objectMapper);
+        JacksonJsonHttpMessageConverter converter =
+                new JacksonJsonHttpMessageConverter(objectMapper);
         converter.setSupportedMediaTypes(List.of(MediaType.APPLICATION_JSON, MediaTypes.HAL_JSON));
         return converter;
     }

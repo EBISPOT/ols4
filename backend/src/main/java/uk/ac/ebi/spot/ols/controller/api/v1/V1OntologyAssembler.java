@@ -27,9 +27,9 @@ public class V1OntologyAssembler implements RepresentationModelAssembler<V1Ontol
 
         resource.add(lb.withSelfRel());
 
-        resource.add(lb.slash("terms").withRel("terms"));
-        resource.add(lb.slash("properties").withRel("properties"));
-        resource.add(lb.slash("individuals").withRel("individuals"));
+        resource.add(V1Links.child(lb, "terms").withRel("terms"));
+        resource.add(V1Links.child(lb, "properties").withRel("properties"));
+        resource.add(V1Links.child(lb, "individuals").withRel("individuals"));
         return resource;
     }
 }

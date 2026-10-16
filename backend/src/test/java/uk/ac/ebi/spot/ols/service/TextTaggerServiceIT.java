@@ -6,7 +6,7 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport;
@@ -44,7 +44,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class TextTaggerServiceIT {
 
     @Container
-    private static final PostgreSQLContainer<?> POSTGRES = PostgresIntegrationTestSupport.newContainer();
+    private static final PostgreSQLContainer POSTGRES = PostgresIntegrationTestSupport.newContainer();
 
     private static PostgresIntegrationTestSupport.TextTaggerRepositoryHandle handle;
 

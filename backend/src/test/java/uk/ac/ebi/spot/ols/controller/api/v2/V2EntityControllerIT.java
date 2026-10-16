@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import uk.ac.ebi.spot.ols.controller.api.exception.GlobalExceptionHandler;
@@ -28,7 +28,7 @@ class V2EntityControllerIT {
             "/api/v2/ontologies/efo/entities/http%253A%252F%252Fexample.org%252FEFO_0001/relatedFrom");
 
     @Container
-    private static final PostgreSQLContainer<?> POSTGRES =
+    private static final PostgreSQLContainer POSTGRES =
             PostgresIntegrationTestSupport.newContainer();
 
     private static PostgresIntegrationTestSupport.EntityRepositoryHandle repositoryHandle;

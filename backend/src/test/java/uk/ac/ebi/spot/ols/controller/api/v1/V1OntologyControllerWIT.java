@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -207,7 +207,11 @@ class V1OntologyControllerWIT {
 
         mockMvc.perform(get("/api/ontologies/efo").param("lang", "fr"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.lang").value("fr"));
+                .andExpect(jsonPath("$.lang").value("fr"))
+                .andExpect(jsonPath("$._links.self.href")
+                        .value(endsWith("/api/ontologies/efo?lang=fr")))
+                .andExpect(jsonPath("$._links.terms.href")
+                        .value(endsWith("/api/ontologies/efo/terms")));
 
         verify(ontologyRepository).get("efo", "fr");
     }

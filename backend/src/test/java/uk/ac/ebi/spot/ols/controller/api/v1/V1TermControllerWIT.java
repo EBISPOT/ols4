@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -100,6 +100,9 @@ class V1TermControllerWIT {
                 .andExpect(jsonPath("$._embedded.terms[0]._links.self.href")
                         .value(endsWith("/api/ontologies/efo/terms/"
                                 + "http%253A%252F%252Fexample.org%252FEFO_0001?lang=en")))
+                .andExpect(jsonPath("$._embedded.terms[0]._links.graph.href")
+                        .value(endsWith("/api/ontologies/efo/terms/"
+                                + "http%253A%252F%252Fexample.org%252FEFO_0001/graph")))
                 .andExpect(jsonPath("$.page.size").value(1000))
                 .andExpect(jsonPath("$.page.totalElements").value(1))
                 .andExpect(jsonPath("$.page.totalPages").value(1))

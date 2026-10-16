@@ -1,8 +1,8 @@
 package uk.ac.ebi.spot.ols.controller.api.v1;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.json.JsonMapper;
+import tools.jackson.databind.ObjectWriter;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
@@ -427,9 +427,9 @@ public class V1OntologyTermController {
         try {
             String decodedTermId = UriUtils.decode(termId, "UTF-8");
             Object object= jsTreeRepository.getJsTreeForClass(decodedTermId, ontologyId, lang);
-            ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+            ObjectWriter ow = new JsonMapper().writer().withDefaultPrettyPrinter();
             return new HttpEntity<String>(ow.writeValueAsString(object));
-        } catch (JsonProcessingException e) {
+        } catch (JacksonException e) {
             e.printStackTrace();
         }
         throw new ResourceNotFoundException();
@@ -457,9 +457,9 @@ public class V1OntologyTermController {
             String decoded = UriUtils.decode(termId, "UTF-8");
 
             Object object= jsTreeRepository.getJsTreeChildrenForClass(decoded, jstreeId, ontologyId, lang);
-            ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+            ObjectWriter ow = new JsonMapper().writer().withDefaultPrettyPrinter();
             return new HttpEntity<String>(ow.writeValueAsString(object));
-        } catch (JsonProcessingException e) {
+        } catch (JacksonException e) {
             e.printStackTrace();
         }
         throw new ResourceNotFoundException();
@@ -483,9 +483,9 @@ public class V1OntologyTermController {
             String decoded = UriUtils.decode(termId, "UTF-8");
 
             Object object= graphRepository.getGraphForClass(decoded, ontologyId, lang);
-            ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+            ObjectWriter ow = new JsonMapper().writer().withDefaultPrettyPrinter();
             return new HttpEntity<String>(ow.writeValueAsString(object));
-        } catch (JsonProcessingException e) {
+        } catch (JacksonException e) {
             e.printStackTrace();
         }
         throw new ResourceNotFoundException();

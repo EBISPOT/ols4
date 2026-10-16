@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import uk.ac.ebi.spot.ols.controller.api.exception.ResourceNotFoundException;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport.OlsPostgresClientRepositoryHandle;
@@ -40,7 +40,7 @@ import static uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport.OLS_
  */
 class OlsPostgresClientEmbeddingIT {
 
-    private static PostgreSQLContainer<?> container;
+    private static PostgreSQLContainer container;
     private static OlsPostgresClientRepositoryHandle handle;
     private static OlsPostgresClient client;
 
