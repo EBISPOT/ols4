@@ -20,6 +20,9 @@
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <tomcat.version>11.0.27</tomcat.version>
+    <!-- Keep both Jackson BOMs on patched, compatible maintenance lines. -->
+    <jackson-bom.version>3.1.7</jackson-bom.version>
+    <jackson-2-bom.version>2.21.7</jackson-2-bom.version>
   </properties>
 
   <dependencyManagement>
