@@ -57,8 +57,10 @@ deploy an image by themselves.
 
 ## Regression checks
 
-CI installs only the test-required packages, constrained by the runtime lock,
-with CPU PyTorch wheels, then runs:
+The `Embedding Security Tests` workflow runs only when embedding files or its
+CI configuration change; Markdown-only changes are excluded. CI installs only
+the test-required packages, constrained by the runtime lock, with CPU PyTorch
+wheels, then runs:
 
 ```sh
 python -m unittest discover -s dataload/embeddings/tests -v
