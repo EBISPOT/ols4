@@ -26,6 +26,21 @@ writers. Updating an approved model requires reviewing its code and
 configuration, recording its immutable revision and new fingerprints, and
 building a new image. Do not edit the policy inside a running container.
 
+## Processor hints
+
+Sentence Transformers 6 loads every model through `transformers.AutoProcessor`,
+which follows a `processor_class` hint in `tokenizer_config.json`.
+`microsoft/harrier-oss-v1-27b` is a text-only Gemma 3 model whose tokenizer
+configuration still names `Gemma3Processor` but ships no image processor, so the
+hinted processor cannot be built and loading fails before the tokenizer is read
+([upstream report](https://huggingface.co/microsoft/harrier-oss-v1-27b/discussions/3)).
+`install_processor_fallback()` in `model_loading.py`, called by the CLI and the
+server before any model is constructed, retries with `AutoTokenizer` when the
+processor raises `OSError`. It passes the same arguments, including
+`trust_remote_code`, and logs a warning naming the model. Other errors and
+models with a loadable processor are unaffected. Remove the fallback once the
+repository is fixed upstream.
+
 ## Downloading and rollout
 
 Use the new image to populate a **fresh** models directory:
@@ -67,8 +82,10 @@ python -m unittest discover -s dataload/embeddings/tests -v
 ```
 
 The tests exercise both CLI GPU branches and server constructor calls with model
-loading mocked, plus the real library's rejection of a local custom module with
-an inert import marker. No GPU, model weight download, or API key is needed.
+loading mocked, the real library's rejection of a local custom module with an
+inert import marker, and the processor fallback against a tiny local Gemma 3
+text model whose tokenizer configuration carries the multimodal hint. No GPU,
+model weight download, or API key is needed.
 
 References: [Sentence Transformers advisory](https://github.com/advisories/GHSA-jhr6-gm9c-rqjv),
 [version 6 trust enforcement](https://github.com/huggingface/sentence-transformers/pull/3935),
