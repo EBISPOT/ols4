@@ -22,6 +22,7 @@ import uk.ac.ebi.spot.ols.repository.helpers.SearchFieldsParser;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import static uk.ac.ebi.ols.shared.DefinedFields.*;
@@ -105,43 +106,60 @@ public class IndividualRepository {
                 outputOpts));
     }
 
-    public Page<JsonElement> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
+    public Page<JsonElement> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean includeImported, Collection<String> subsetTree, String lang, JsonTransformOptions outputOpts) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
-        String id = ontologyId + "+individual+" + iri;
+        Map<String, String> nodeProps = individualNodeProperties(includeObsolete, includeImported);
 
-        Map<String, String> nodeProps = individualNodeProperties(includeObsolete);
-
-        return this.postgresClient.getHierarchicalChildren(id, nodeProps, pageable)
+        // The parent is looked up by IRI rather than by an individual's row id: an
+        // individual's hierarchical parent can also be a class (asserted as an
+        // existential restriction on a configured hierarchical property), and this
+        // endpoint serves the individual children of such class nodes too.
+        return this.postgresClient.getHierarchicalChildrenByIri(ontologyId, iri, nodeProps, pageable, subsetTree)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
 
-    public Page<JsonElement> getHierarchicalAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
+    public Page<JsonElement> getHierarchicalAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean includeImported, String lang, JsonTransformOptions outputOpts) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
         String id = ontologyId + "+individual+" + iri;
 
-        Map<String, String> nodeProps = individualNodeProperties(includeObsolete);
+        // An individual's hierarchical ancestry can climb into classes (through an
+        // existential restriction on a configured hierarchical property), so the
+        // ancestors are not filtered by entity type.
+        Map<String, String> nodeProps = new HashMap<>();
+        if (!includeObsolete) {
+            nodeProps.put("isObsolete", "false");
+        }
+        if (!includeImported) {
+            nodeProps.put("isDefiningOntology", "true");
+        }
 
         return this.postgresClient.getHierarchicalAncestors(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
 
-    private static Map<String, String> individualNodeProperties(boolean includeObsolete) {
-        return includeObsolete
-                ? Map.of("type", "OntologyIndividual")
-                : Map.of("type", "OntologyIndividual", "isObsolete", "false");
+    private static Map<String, String> individualNodeProperties(boolean includeObsolete, boolean includeImported) {
+        Map<String, String> nodeProps = new HashMap<>();
+        nodeProps.put("type", "OntologyIndividual");
+        if (!includeObsolete) {
+            nodeProps.put("isObsolete", "false");
+        }
+        if (!includeImported) {
+            nodeProps.put("isDefiningOntology", "true");
+        }
+        return nodeProps;
     }
 
     public OlsFacetedResultsPage<JsonElement> getIndividualsOfClass(
             String ontologyId, String classIri, Pageable pageable, boolean includeObsoleteEntities,
-            String lang, JsonTransformOptions outputOpts) throws IOException {
+            boolean includeImportedEntities, Collection<String> subsetTree, String lang, JsonTransformOptions outputOpts) throws IOException {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -153,6 +171,10 @@ public class IndividualRepository {
         if (!includeObsoleteEntities) {
             query.addFilter(IS_OBSOLETE.getText(), List.of("false"), SearchType.WHOLE_FIELD);
         }
+        if (!includeImportedEntities) {
+            query.addFilter(IS_DEFINING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
+        }
+        query.setSubsetTree(subsetTree);
 
         return searchClient.searchPaginated(query, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))

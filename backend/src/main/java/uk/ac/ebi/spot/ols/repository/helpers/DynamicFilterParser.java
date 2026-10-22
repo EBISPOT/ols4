@@ -32,6 +32,10 @@ public class DynamicFilterParser {
             for (String value : properties.get(k)) {
                 values.addAll(List.of(value.split(",")));
             }
+            if (k.equals("subsetTree")) {
+                query.setSubsetTree(values);
+                continue;
+            }
             if (!values.isEmpty()) {
                 String filterKey = k.replace(":", "__");
                 query.addFilter(filterKey, values, SearchType.CASE_INSENSITIVE_TOKENS);
