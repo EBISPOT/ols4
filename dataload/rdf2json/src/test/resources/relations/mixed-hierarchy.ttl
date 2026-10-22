@@ -1,0 +1,21 @@
+@prefix : <https://example.org/relations#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://example.org/relations> a owl:Ontology .
+
+:Top a owl:Class .
+:RootA a owl:Class ; rdfs:subClassOf :Top .
+:RootB a owl:Class ; rdfs:subClassOf :Top .
+:Middle a owl:Class ; rdfs:subClassOf :RootA, :RootB .
+:Leaf a owl:Class ; rdfs:subClassOf :Middle .
+:Instance a owl:NamedIndividual, :Leaf .
+
+:TopProperty a owl:ObjectProperty .
+:SubProperty a owl:ObjectProperty ; rdfs:subPropertyOf :TopProperty .
+
+:Cohort a owl:Class .
+:ParentCohort a owl:NamedIndividual, :Cohort .
+:ChildCohort a owl:NamedIndividual, :Cohort ; :isPartOf :ParentCohort .
+:isPartOf a owl:ObjectProperty ; owl:inverseOf :hasPart .
+:hasPart a owl:ObjectProperty .

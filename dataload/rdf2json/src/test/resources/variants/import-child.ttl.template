@@ -1,0 +1,6 @@
+@prefix : <https://example.org/variants#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+<https://example.org/child> a owl:Ontology ; owl:imports <__GRANDCHILD__> .
+:Middle a owl:Class ; rdfs:subClassOf :Root .
+:Root rdfs:label "Imported root label" .

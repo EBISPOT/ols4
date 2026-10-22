@@ -1,0 +1,52 @@
+@prefix : <https://example.org/variants#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix oio: <http://www.geneontology.org/formats/oboInOwl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ols: <http://www.ebi.ac.uk/ols/vocabulary/> .
+<https://example.org/variants> a owl:Ontology ;
+    obo:IAO_0000700 :Root, :MissingRoot ;
+    ols:hasPreferredRootTerm :Root, :score, "ignored literal root" .
+:Root a owl:Class ; rdfs:label "Plain label" ; dc:title "DC title" ;
+    dct:title "DCT title" ; skos:prefLabel "Nom"@fr ;
+    rdfs:comment "Comment definition"@en ; obo:IAO_0000115 "Définition"@fr ;
+    dct:description "2026-10-01"^^xsd:date ;
+    oio:hasExactSynonym "Exact one", "Exact two" ;
+    oio:hasRelatedSynonym "Related" ; oio:hasNarrowSynonym "Narrow" ;
+    oio:hasBroadSynonym "Broad" ; oio:hasSynonym "Generic" ;
+    :note "Search marker" ; :reference :Other ; owl:versionInfo "Excluded OWL marker" .
+:Other a owl:Class .
+:DeprecatedOne a owl:Class ; owl:deprecated "1" .
+:DeprecatedTrue a owl:Class ; owl:deprecated "TRUE" .
+:DeprecatedFalse a owl:Class ; owl:deprecated false .
+:DeprecatedZero a owl:Class ; owl:deprecated "0" .
+:ObsoleteParent a owl:Class ; rdfs:subClassOf oio:ObsoleteClass .
+:NoLabelType a owl:AnnotationProperty .
+:TypedMissing a owl:Class ; oio:hasExactSynonym "Missing type" .
+:TypedUnlabelled a owl:Class ; oio:hasExactSynonym "Unlabelled type" .
+[] a owl:Axiom ; owl:annotatedSource :TypedMissing ; owl:annotatedProperty oio:hasExactSynonym ;
+    owl:annotatedTarget "Missing type" ; oio:hasSynonymType :MissingType .
+[] a owl:Axiom ; owl:annotatedSource :TypedUnlabelled ; owl:annotatedProperty oio:hasExactSynonym ;
+    owl:annotatedTarget "Unlabelled type" ; oio:hasSynonymType :NoLabelType .
+:score a owl:DatatypeProperty ; owl:deprecated "1" .
+:invalid a owl:DatatypeProperty .
+:item a owl:NamedIndividual, :Root ; owl:deprecated false .
+:externalItem a owl:NamedIndividual, :MissingType .
+:PunnedRoot a owl:Class .
+:Punned a owl:Class, owl:NamedIndividual, :PunnedRoot .
+[] a owl:NegativePropertyAssertion ; owl:sourceIndividual :item ;
+    owl:assertionProperty :score ; owl:targetValue 7 .
+[] a owl:NegativePropertyAssertion ; owl:sourceIndividual :item ;
+    owl:assertionProperty :note ; owl:targetValue "Négation"@fr .
+# Incomplete assertions must not add :invalid to the source.
+[] a owl:NegativePropertyAssertion ; owl:assertionProperty :invalid ; owl:targetValue "no source" .
+[] a owl:NegativePropertyAssertion ; owl:sourceIndividual :item ; owl:targetValue "no property" .
+[] a owl:NegativePropertyAssertion ; owl:sourceIndividual :item ; owl:assertionProperty "not a URI" ; owl:targetValue "bad property" .
+[] a owl:NegativePropertyAssertion ; owl:sourceIndividual "not a URI" ; owl:assertionProperty :invalid ; owl:targetValue "bad source" .
+[] a owl:NegativePropertyAssertion ; owl:sourceIndividual :MissingIndividual ; owl:assertionProperty :invalid ; owl:targetValue "unresolved source" .
+[] a owl:NegativePropertyAssertion ; owl:sourceIndividual :item ; owl:assertionProperty :invalid .
+:Empty a owl:Class ; rdfs:label "" ; rdfs:comment "" ; oio:hasExactSynonym "" .

@@ -1,0 +1,89 @@
+name: Publish stable release
+
+on:
+  workflow_call:
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  release:
+    if: github.repository == 'EBISPOT/ols4' && github.event_name == 'push' && github.ref == 'refs/heads/stable'
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare or recover release
+        id: prepare
+        run: python .github/release/release.py prepare
+      - name: Publish source release and wait for GitHub archiving DOI
+        run: python .github/release/release.py archive
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build versioned images and record their digests
+        if: steps.prepare.outputs.complete != 'true'
+        env:
+          RELEASE_TAG: ${{ steps.prepare.outputs.tag }}
+          RELEASE_VERSION: ${{ steps.prepare.outputs.version }}
+        run: |
+          set -euo pipefail
+          for component in backend frontend dataload apitester4; do
+            if [ -f ".release-output/image-${component}.json" ]; then
+              echo "Reusing completed ${component} image"
+              continue
+            fi
+            context=.
+            target=()
+            if [ "$component" = frontend ]; then context=./frontend; fi
+            if [ "$component" = apitester4 ]; then context=./apitester4; fi
+            if [ "$component" = dataload ]; then target=(--target runtime); fi
+            docker buildx build "$context" --file "${component}/Dockerfile" \
+              "${target[@]}" --platform linux/amd64,linux/arm64 --push \
+              --tag "ghcr.io/ebispot/ols4-${component}:${RELEASE_TAG}" \
+              --label "org.opencontainers.image.version=${RELEASE_VERSION}" \
+              --label "org.opencontainers.image.revision=${GITHUB_SHA}" \
+              --label "org.opencontainers.image.source=https://github.com/${GITHUB_REPOSITORY}" \
+              --cache-from "type=registry,ref=ghcr.io/ebispot/ols4-${component}:release-buildcache" \
+              --cache-to "type=registry,mode=max,ref=ghcr.io/ebispot/ols4-${component}:release-buildcache" \
+              --metadata-file ".release-output/build-${component}.json"
+            python .github/release/release.py remember-image --component "$component" \
+              --metadata ".release-output/build-${component}.json"
+          done
+      - name: Finish release with image digests and citation metadata
+        run: python .github/release/release.py finish
+      - name: Promote completed release images to stable
+        run: |
+          set -euo pipefail
+          # Re-running after a failed promotion uses the recorded digests.
+          # An old run must not move stable backwards after a newer release.
+          git fetch origin stable
+          latest=$(git rev-parse origin/stable)
+          if [ "$latest" != "$GITHUB_SHA" ]; then
+            echo 'Stable has advanced; versioned release is available without changing stable aliases'
+            exit 0
+          fi
+          for component in backend frontend dataload apitester4; do
+            image=$(python -c 'import json,sys; print(json.load(open(".release-output/release-manifest.json"))["images"][sys.argv[1]])' "$component")
+            docker buildx imagetools create --tag "ghcr.io/ebispot/ols4-${component}:stable" "$image"
+          done
+      - name: Release summary
+        if: success()
+        env:
+          RELEASE_TAG: ${{ steps.prepare.outputs.tag }}
+        run: |
+          echo "Release: https://github.com/${GITHUB_REPOSITORY}/releases/tag/${RELEASE_TAG}" >> "$GITHUB_STEP_SUMMARY"
+          echo 'Deployment remains a separate action. Use the release image tags or recorded digests.' >> "$GITHUB_STEP_SUMMARY"

@@ -22,6 +22,9 @@ RUN cd /opt/ols/dataload && mvn -B -ntp -Dorg.slf4j.simpleLogger.log.org.apache.
 
 FROM eclipse-temurin:21-jre-noble AS runtime
 
+# The release workflow injects the same software metadata into every component.
+COPY ./backend/src/main/resources/ols-release.json /opt/ols/release.json
+
 # PostgreSQL 17 + pgvector: the Nextflow pipeline runs a local PG cluster inside
 # this image (load_into_postgres.py) unless --external_postgres is set.
 RUN apt-get update -y && apt-get install -y --no-install-recommends \

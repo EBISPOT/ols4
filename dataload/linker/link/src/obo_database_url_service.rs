@@ -41,7 +41,11 @@ pub struct OboDatabaseUrlService {
 
 impl OboDatabaseUrlService {
     pub fn new() -> Result<Self, Box<dyn std::error::Error>> {
-        Self::with_url(DEFAULT_XREF_URL)
+        // Tests supply a local db-xrefs file; normal runs retain the upstream default.
+        match std::env::var("OLS_TEST_DB_XREFS") {
+            Ok(path) if !path.is_empty() => Self::with_url(&path),
+            _ => Self::with_url(DEFAULT_XREF_URL),
+        }
     }
 
     pub fn with_url(xref_urls: &str) -> Result<Self, Box<dyn std::error::Error>> {

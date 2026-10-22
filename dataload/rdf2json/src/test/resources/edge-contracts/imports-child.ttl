@@ -1,0 +1,12 @@
+@prefix : <https://example.org/imports#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://example.org/imports/child> a owl:Ontology .
+
+:Imported a owl:Class ;
+    rdfs:label "Imported class"@en ;
+    rdfs:subClassOf :Main .
+
+:Shared a owl:Class ;
+    rdfs:label "Shared class"@en .

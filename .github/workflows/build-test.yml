@@ -7,7 +7,35 @@ on:
       - stable
   pull_request:
 
+# Queue stable pushes through checks and publication; never cancel an older release.
+# Other branches retain their independent CI runs.
+concurrency:
+  group: ${{ github.event_name == 'push' && github.ref == 'refs/heads/stable' && 'ols-stable-release' || github.run_id }}
+  queue: max
+
 jobs:
+  release-checks:
+    name: Release contracts and frontend build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test release lifecycle without publishing
+        run: python -m unittest discover -s .github/release -p 'test_*.py' -v
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Build frontend
+        working-directory: frontend
+        run: |
+          npm ci
+          mkdir -p dist
+          PATH="$PWD/node_modules/.bin:$PATH" OLS_MINIFY=true PUBLIC_URL=/ node build.mjs
+
   backend-unit-web:
     name: Backend Unit & Web Integration Tests
     runs-on: ubuntu-latest
@@ -89,12 +117,36 @@ jobs:
             dataload/**/target/failsafe-reports/
           if-no-files-found: ignore
 
+  dataload-rust-contract:
+    name: Dataload Rust Manifest & Linker Contracts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: dataload
+      - name: Run Rust helper and executable contracts
+        run: cargo test --locked --manifest-path dataload/Cargo.toml -p ols_create_manifest -p ols_link
+
+  dataload-postgres-contract:
+    name: Dataload PostgreSQL Loading Contracts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build disposable PostgreSQL contract image
+        run: docker build -f dataload/tests/Dockerfile.postgres-contract -t ols-dataload-pg-contract .
+      - name: Exercise converter and loader against PostgreSQL 17 with pgvector
+        run: docker run --rm --shm-size=512m ols-dataload-pg-contract
+
   test-api:
     name: Build & Test API
     needs:
       - backend-unit-web
       - backend-postgres-integration
       - dataload-java-contract
+      - dataload-rust-contract
+      - dataload-postgres-contract
     runs-on: ubuntu-latest
     steps:
       - name: Free up disk space on GH actions runner
@@ -120,6 +172,13 @@ jobs:
       - name: Build dataload image
         run: docker build --target test -t ols4-dataload:local -f ./dataload/Dockerfile .
 
+      - name: Set up Nextflow for isolation contract
+        uses: nf-core/setup-nextflow@v2
+        with:
+          version: '24.10.5'
+      - name: Test per-ontology Nextflow failure isolation
+        run: python3 dataload/tests/nextflow_isolation.py --image ols4-dataload:local
+
       - name: Run mock dataload and dataload tests
         run: |
           docker run ols4-dataload:local bash -c "cd /opt/ols && ./test_dataload.sh"
@@ -143,3 +202,12 @@ jobs:
       - name: Run dataload and API tests
         run: |
           ./test_api.sh
+
+  stable-release:
+    name: Publish stable release
+    needs: [test-api, release-checks]
+    if: github.repository == 'EBISPOT/ols4' && github.event_name == 'push' && github.ref == 'refs/heads/stable'
+    permissions:
+      contents: write
+      packages: write
+    uses: ./.github/workflows/release.yml

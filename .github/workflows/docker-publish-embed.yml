@@ -13,6 +13,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+      security-events: write
 
     steps:
       - name: Checkout repository
@@ -41,11 +42,13 @@ jobs:
             type=sha,prefix={{branch}}-
 
       - name: Build and push ols4 embed Docker image
+        id: build
         uses: docker/build-push-action@v5
         with:
           context: ./dataload/embeddings
           file: ./dataload/embeddings/Dockerfile
           platforms: linux/amd64
+          pull: true
           push: true
           build-args: ""
           tags: |
@@ -54,3 +57,41 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Scan the published embedding image by digest
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          image-ref: ghcr.io/ebispot/ols4-embed@${{ steps.build.outputs.digest }}
+          format: 'json'
+          output: 'trivy-full-ols4-embed.json'
+          scanners: 'vuln'
+          vuln-type: 'os,library'
+          timeout: '10m'
+
+      - name: Generate embedding image code scanning results
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          image-ref: ghcr.io/ebispot/ols4-embed@${{ steps.build.outputs.digest }}
+          format: 'sarif'
+          output: 'trivy-results-ols4-embed.sarif'
+          severity: 'CRITICAL,HIGH'
+          limit-severities-for-sarif: true
+          ignore-unfixed: true
+          scanners: 'vuln'
+          vuln-type: 'os,library'
+          timeout: '10m'
+
+      - name: Upload full embedding vulnerability report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: trivy-full-ols4-embed
+          path: trivy-full-ols4-embed.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload embedding results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: trivy-results-ols4-embed.sarif
+          category: container-ols4-embed

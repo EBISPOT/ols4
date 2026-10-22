@@ -1,4 +1,5 @@
 import moment from "moment";
+import ReleaseCard from "../releases/ReleaseCard";
 import {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -216,7 +217,7 @@ export default function Home() {
               {stats ? (
                 <div className="text-neutral-black">
                   <div className="mb-2 text-sm italic">
-                    Updated&nbsp;
+                    Data updated&nbsp;
                     {moment(stats.lastModified).format(
                       "D MMM YYYY ddd HH:mm(Z)"
                     )}
@@ -240,6 +241,7 @@ export default function Home() {
                 </div>
               )}
             </div>
+            <ReleaseCard />
           </div>
         </div>
       </main>

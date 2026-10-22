@@ -41,7 +41,7 @@ BASE_ENTITY_COLS = [
     "label_for_suggest",
 ]
 
-EMB_NODE_BASE_COLS = ["id", "type", "entity_id"]
+EMB_NODE_BASE_COLS = ["id", "type", "entity_id", "ontology_id", "entity_type"]
 
 
 # ---------------------------------------------------------------------------
@@ -203,6 +203,16 @@ def run_psql(script: str, label: str = "", env=None):
         raise RuntimeError(f"psql failed ({label}): {msg}")
     if label:
         print(f"  {label} done.")
+
+
+def index_statements(sql: str) -> list[str]:
+    """Split generated index SQL after removing full-line documentation comments."""
+    # A comment and its following CREATE share the same semicolon-delimited
+    # chunk. Rejecting chunks starting with -- silently drops that index.
+    uncommented = "\n".join(
+        line for line in sql.splitlines() if not line.lstrip().startswith("--")
+    )
+    return [statement.strip() for statement in uncommented.split(";") if statement.strip()]
 
 
 def sizeof_fmt(num: float) -> str:
@@ -477,10 +487,7 @@ checkpoint_completion_target = 0.9
             set_prefix += f"SET max_parallel_maintenance_workers = {parallel_workers};\n"
             print(f"  Setting max_parallel_maintenance_workers={parallel_workers} per session")
 
-        index_stmts = [
-            stmt.strip() for stmt in sections["indexes"].split(";")
-            if stmt.strip() and not stmt.strip().startswith("--")
-        ]
+        index_stmts = index_statements(sections["indexes"])
         total = len(index_stmts)
         for idx_i, stmt in enumerate(index_stmts, 1):
             short = stmt.split("(")[0].strip() if "(" in stmt else stmt.strip()

@@ -1,0 +1,8 @@
+@prefix : <https://example.org/imports#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://example.org/imports> a owl:Ontology ;
+    owl:imports <__IMPORT_URI__> .
+
+:Main a owl:Class .
+:Shared a owl:Class .

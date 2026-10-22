@@ -132,9 +132,15 @@ workflow {
             .filter { !it.name.contains('_pca16') }
             .collect()
             .ifEmpty([file('NO_FILE_PCA')])
-        // Persist PCA parquets to embeddings_path so the next incremental embeddings run can reuse them
+        // Persist this run's PCA parquets + PCA JSONs to embeddings_path so a run without embeddings,
+        // or a model later frozen, can reuse them. Frozen models are excluded: they are read from there.
         if (params.embeddings_path && params.embeddings_path != '' && params.embeddings_path != 'NO_DIR') {
-            update_embeddings_path(pca_parquets)
+            new_pca_files = embeddings.out.new_pca_parquets
+                .filter { !it[0].contains('pca16') }
+                .map { it[1] }
+                .mix(embeddings.out.new_pca_jsons.filter { !it.name.contains('_pca16') })
+                .collect()
+            update_embeddings_path(new_pca_files)
         }
     } else if (params.embeddings_path && params.embeddings_path != '' && params.embeddings_path != 'NO_DIR') {
         // Exclude umap and pca16 parquets — they are visualization-only, not for DB storage
@@ -341,6 +347,9 @@ process json2postgres {
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
+    # pgbin layout 2: embedding node rows carry ontology_id and entity_type (GitHub issue #1445).
+    # This comment is part of the task hash. Change it whenever the layout of the files changes,
+    # so that a resumed run cannot reuse cached files in the old layout.
     ols_json2postgres \
         --input ${ontology_json} \
         --ontology-id ${ontology_id} \
@@ -690,9 +699,9 @@ process check_postgres_data_exists {
 }
 
 
-// Persists PCA parquets to params.embeddings_path so the next incremental embeddings
-// run can reuse them as a base. Copies to out/ subdir first so Nextflow treats them
-// as fresh outputs (staged input symlinks are excluded from output matching).
+// Persists PCA parquets and PCA JSON models to params.embeddings_path so runs without
+// embeddings (and models later frozen) can reuse them. Copies to out/ subdir first so
+// Nextflow treats them as fresh outputs (staged input symlinks are excluded from output matching).
 process update_embeddings_path {
     cache false
     memory { 4.GB }
@@ -700,19 +709,20 @@ process update_embeddings_path {
     publishDir params.embeddings_path, mode: 'copy', overwrite: true, saveAs: { fn -> fn.replaceFirst('^out/', '') }
 
     input:
-    path(parquets)
+    path(pca_files)
 
     output:
-    path("out/*.parquet")
+    path("out/*")
 
     script:
     """
     #!/usr/bin/env bash
     set -Eeuo pipefail
     mkdir out
-    for f in *.parquet; do
+    for f in *.parquet *.json; do
+        [ -e "\$f" ] || continue
         cp -L "\$f" "out/\$f"
     done
-    echo "Persisted \$(ls out/*.parquet | wc -l) PCA parquets to ${params.embeddings_path}"
+    echo "Persisted \$(ls out | wc -l) PCA files to ${params.embeddings_path}"
     """
 }

@@ -1,0 +1,10 @@
+{
+  "ontologies": [
+    {
+      "id": "relations",
+      "ontology_purl": "mixed-hierarchy.ttl",
+      "base_uri": ["https://example.org/relations#"],
+      "hierarchical_property": ["https://example.org/relations#isPartOf"]
+    }
+  ]
+}

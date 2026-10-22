@@ -2,7 +2,7 @@ name: Publish Docker Images
 
 on:
   push:
-    branches: [dev, stable]
+    branches: [dev]
   pull_request:
     branches: [ "dev" ]
 
@@ -12,7 +12,7 @@ env:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    if: ${{ github.repository_owner == 'EBISPOT' }}
+    if: ${{ github.repository_owner == 'EBISPOT' && github.ref != 'refs/heads/stable' }}
     permissions:
       contents: read
       packages: write

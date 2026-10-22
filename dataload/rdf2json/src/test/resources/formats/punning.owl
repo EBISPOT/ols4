@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#">
+  <owl:Ontology rdf:about="https://example.org/formats"/>
+
+  <owl:Class rdf:about="https://example.org/formats#Dual"/>
+  <owl:NamedIndividual rdf:about="https://example.org/formats#Dual"/>
+  <owl:NamedIndividual rdf:about="https://example.org/formats#Member">
+    <rdf:type rdf:resource="https://example.org/formats#Dual"/>
+  </owl:NamedIndividual>
+</rdf:RDF>
