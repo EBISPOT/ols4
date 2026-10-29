@@ -262,6 +262,10 @@ public class OlsSearchClient {
      * Uses the query's filters EXCLUDING the facet field itself (facet exclusion behavior).
      */
     private Map<String, Long> executeFacetQuery(DSLContext dsl, String facetField, OlsSearchQuery query) {
+        // Synthetic facet: no physical filter_treeAncestor column is needed.
+        if ("treeAncestor".equals(facetField)) {
+            return executeTreeAncestorFacetQuery(dsl, query);
+        }
         String column = OlsSearchQuery.resolveColumn(facetField);
         OlsSearchQuery.ColumnType colType = OlsSearchQuery.resolveColumnType(facetField);
 
@@ -309,6 +313,40 @@ public class OlsSearchClient {
             }
         }
 
+        return counts;
+    }
+
+    /**
+     * Counts distinct filtered members below each IRI through the same paths as
+     * JooqSupport.inSubsetTree: direct/hierarchical ancestry, and the direct (type/class)
+     * ancestry of hierarchical ancestors. Filters restrict members, not path context.
+     * The lateral UNION deduplicates ancestors per member row (id is the primary key),
+     * including overlaps between routes and subsets, before the outer aggregation.
+     */
+    private Map<String, Long> executeTreeAncestorFacetQuery(DSLContext dsl, OlsSearchQuery query) {
+        var records = dsl.resultQuery("""
+                WITH members AS MATERIALIZED (
+                    SELECT m.ontology_id, m.iri, m.direct_ancestors, m.hierarchical_ancestors
+                    FROM ols_entities m WHERE {0}
+                )
+                SELECT ancestors.iri, count(*)
+                FROM members m
+                CROSS JOIN LATERAL (
+                    SELECT unnest(m.hierarchical_ancestors || m.direct_ancestors) AS iri
+                    UNION
+                    SELECT unnest(a.direct_ancestors)
+                    FROM ols_entities a
+                    WHERE a.ontology_id = m.ontology_id AND a.iri = ANY(m.hierarchical_ancestors)
+                ) ancestors
+                WHERE ancestors.iri <> m.iri
+                GROUP BY ancestors.iri
+                ORDER BY count(*) DESC, ancestors.iri
+                """, query.buildCondition(getAvailableFilterColumns(), "m")).fetch();
+
+        Map<String, Long> counts = new LinkedHashMap<>();
+        for (Record record : records) {
+            counts.put(record.get(0, String.class), record.get(1, Long.class));
+        }
         return counts;
     }
 

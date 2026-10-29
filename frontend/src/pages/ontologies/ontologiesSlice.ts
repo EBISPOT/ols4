@@ -27,7 +27,7 @@ export interface OntologiesState {
   rootNodes: TreeNode[];
   subsets: SubsetOption[];
   selectedSubsets: string[];
-  subsetMemberCounts: { [iri: string]: number };
+  filteredMemberCounts: { [iri: string]: number };
   ontologies: Ontology[];
   totalOntologies: number;
   entities: Entity[];
@@ -84,7 +84,7 @@ const initialState: OntologiesState = {
   rootNodes: [],
   subsets: [],
   selectedSubsets: [],
-  subsetMemberCounts: {},
+  filteredMemberCounts: {},
   ontologies: [],
   totalOntologies: 0,
   entities: [],
@@ -132,7 +132,7 @@ function clearTreeContent(state: Draft<OntologiesState>) {
   state.directChildrenEntities = [];
   state.totalDirectChildrenEntities = 0;
   state.loadingDirectChildrenEntities = false;
-  state.subsetMemberCounts = {};
+  state.filteredMemberCounts = {};
   state.treeRequests = {};
   state.numPendingTreeRequests = 0;
 }
@@ -723,40 +723,33 @@ export const getSubsets = createAsyncThunk(
   treeThunkOptions
 );
 
-// How many of the selected subsets' members are below each entity in the tree
-export const getSubsetMemberCounts = createAsyncThunk(
-  "ontologies_subset_member_counts",
+// Distinct filtered members below each entity through all supported tree paths.
+export const getTreeMemberCounts = createAsyncThunk(
+  "ontologies_tree_member_counts",
   async ({
     ontologyId,
     entityType,
-    selectedSubsets,
+    selectedSubsets = [],
     lang,
     showObsoleteEnabled,
+    showImportedEnabled,
     apiUrl,
   }: any, { signal }): Promise<{ [iri: string]: number }> => {
     const res = await get<any>(
       `api/v2/ontologies/${ontologyId}/entities?${new URLSearchParams({
         type: subsetMemberTypes(entityType),
-        subset: selectedSubsets.join(","),
+        ...(selectedSubsets.length ? { subset: selectedSubsets.join(",") } : {}),
+        ...(showImportedEnabled === false ? { isDefiningOntology: "true" } : {}),
         size: "1",
         lang,
         includeObsoleteEntities: showObsoleteEnabled,
-        facetFields: "hierarchicalAncestor directAncestor",
+        facetFields: "treeAncestor",
       })}`,
       undefined,
       apiUrl,
       { signal }
     );
-    // An entity below another through both subclass and hierarchical links appears in both
-    // facets, so take the larger count rather than the sum
-    const counts: { [iri: string]: number } = {};
-    for (const facet of ["hierarchicalAncestor", "directAncestor"]) {
-      const facetCounts = res.facetFieldsToCounts?.[facet] || {};
-      for (const iri of Object.keys(facetCounts)) {
-        counts[iri] = Math.max(counts[iri] || 0, facetCounts[iri]);
-      }
-    }
-    return counts;
+    return res.facetFieldsToCounts?.treeAncestor || {};
   },
   treeThunkOptions
 );
@@ -1192,7 +1185,7 @@ const ontologiesSlice = createSlice({
     builder.addCase(getSubsets.rejected, (state, action) => {
       finishTreeRequest(state, action);
     });
-    builder.addCase(getSubsetMemberCounts.rejected, (state, action) => {
+    builder.addCase(getTreeMemberCounts.rejected, (state, action) => {
       finishTreeRequest(state, action);
     });
     builder.addCase(
@@ -1333,15 +1326,15 @@ const ontologiesSlice = createSlice({
         }
       }
     );
-    builder.addCase(getSubsetMemberCounts.pending, (state, action) => {
+    builder.addCase(getTreeMemberCounts.pending, (state, action) => {
       if (!startTreeRequest(state, action)) return;
-      state.subsetMemberCounts = {};
+      state.filteredMemberCounts = {};
     });
     builder.addCase(
-      getSubsetMemberCounts.fulfilled,
+      getTreeMemberCounts.fulfilled,
       (state, action) => {
         if (!finishTreeRequest(state, action)) return;
-        state.subsetMemberCounts = action.payload;
+        state.filteredMemberCounts = action.payload;
       }
     );
     builder.addCase(

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { configureStore } from '@reduxjs/toolkit';
-import reducer, { getOntology, getRootEntities, getNodeChildren, getSubsets, getSubsetMemberCounts, getDirectChildrenCount, getDirectChildrenEntities, setSelectedSubsets, resetTreeContent, resetTreeSettings } from '../src/pages/ontologies/ontologiesSlice';
+import reducer, { getOntology, getRootEntities, getNodeChildren, getSubsets, getTreeMemberCounts, getDirectChildrenCount, getDirectChildrenEntities, setSelectedSubsets, resetTreeContent, resetTreeSettings } from '../src/pages/ontologies/ontologiesSlice';
 import Ontology from '../src/model/Ontology';
 import { thingFromJsonProperties } from '../src/app/util';
 
@@ -29,13 +29,13 @@ for (const destination of [scope('efo'), scope('coho', 'individuals'), scope('co
     s.dispatch(getSubsets.fulfilled([{ iri: subset, label: 'IHCC', numMembers: 77 }], 'subsets', args()));
     s.dispatch(getRootEntities.pending('roots', args()));
     s.dispatch(getRootEntities.fulfilled({ rootTerms: [term('COHO root')] }, 'roots', args()));
-    s.dispatch(getSubsetMemberCounts.pending('counts', args()));
-    s.dispatch(getSubsetMemberCounts.fulfilled({ root: 77 }, 'counts', args()));
+    s.dispatch(getTreeMemberCounts.pending('counts', args()));
+    s.dispatch(getTreeMemberCounts.fulfilled({ root: 77 }, 'counts', args()));
     s.dispatch({ type: 'ontologies_set_tree_scope', payload: destination });
     const state = s.getState().ontologies;
     assert.deepEqual(state.selectedSubsets, []);
     assert.deepEqual(state.subsets, []);
-    assert.deepEqual(state.subsetMemberCounts, {});
+    assert.deepEqual(state.filteredMemberCounts, {});
     assert.deepEqual(state.rootNodes, []);
     assert.deepEqual(state.nodeChildren, {});
     assert.equal(state.numPendingTreeRequests, 0);
@@ -58,13 +58,13 @@ test('same-scope entity and language changes retain selection but invalidate old
 
 test('late roots, children, subset options and counts cannot overwrite a newer context', () => {
   const s = setup();
-  const thunks = [getRootEntities, getNodeChildren, getSubsets, getSubsetMemberCounts, getDirectChildrenCount, getDirectChildrenEntities];
+  const thunks = [getRootEntities, getNodeChildren, getSubsets, getTreeMemberCounts, getDirectChildrenCount, getDirectChildrenEntities];
   thunks.forEach(t => s.dispatch(t.pending('old', args())));
   context(s, scope('efo'), 'efo');
   s.dispatch(getRootEntities.fulfilled({ rootTerms: [term('old root')] }, 'old', args()));
   s.dispatch(getNodeChildren.fulfilled({ absoluteIdentity: 'old', children: [] }, 'old', args()));
   s.dispatch(getSubsets.fulfilled([{ iri: subset, label: 'IHCC', numMembers: 77 }], 'old', args()));
-  s.dispatch(getSubsetMemberCounts.fulfilled({ old: 77 }, 'old', args()));
+  s.dispatch(getTreeMemberCounts.fulfilled({ old: 77 }, 'old', args()));
   s.dispatch(getDirectChildrenCount.fulfilled({ entityIri: 'old', totalElements: 77 }, 'old', args()));
   s.dispatch(getDirectChildrenEntities.fulfilled({ elements: [term('old child')], totalElements: 77 } as any, 'old', args()));
   thunks.forEach(t => s.dispatch(t.rejected(new Error('late'), 'old', args())));
@@ -72,7 +72,7 @@ test('late roots, children, subset options and counts cannot overwrite a newer c
   assert.deepEqual(state.rootNodes, []);
   assert.deepEqual(state.nodeChildren, {});
   assert.deepEqual(state.subsets, []);
-  assert.deepEqual(state.subsetMemberCounts, {});
+  assert.deepEqual(state.filteredMemberCounts, {});
   assert.deepEqual(state.directChildrenCounts, {});
   assert.deepEqual(state.directChildrenEntities, []);
   assert.equal(state.numPendingTreeRequests, 0);
@@ -123,7 +123,7 @@ test('old effect arguments issue no fetch after a scope or filter change', async
   try {
     context(s, scope('efo'), 'efo');
     await s.dispatch(getRootEntities({ ...args(), subsetTree: [subset] }));
-    await s.dispatch(getSubsetMemberCounts({ ...args(), selectedSubsets: [subset] }));
+    await s.dispatch(getTreeMemberCounts({ ...args(), selectedSubsets: [subset] }));
     assert.deepEqual(urls, []);
     const efo = { ...args('efo'), treeScopeKey: scope('efo'), ontologyId: 'efo' };
     await s.dispatch(getRootEntities(efo));
@@ -136,14 +136,14 @@ test('old effect arguments issue no fetch after a scope or filter change', async
 test('a delayed response after a language or subset change cannot replace counts or options', () => {
   const s = setup();
   s.dispatch(setSelectedSubsets([subset]));
-  s.dispatch(getSubsetMemberCounts.pending('old-counts', args()));
+  s.dispatch(getTreeMemberCounts.pending('old-counts', args()));
   s.dispatch(getSubsets.pending('old-subsets', args()));
   context(s, scope(), 'french-other-subset');
-  s.dispatch(getSubsetMemberCounts.pending('new-counts', args('french-other-subset')));
-  s.dispatch(getSubsetMemberCounts.fulfilled({ current: 3 }, 'new-counts', args('french-other-subset')));
-  s.dispatch(getSubsetMemberCounts.fulfilled({ stale: 77 }, 'old-counts', args()));
+  s.dispatch(getTreeMemberCounts.pending('new-counts', args('french-other-subset')));
+  s.dispatch(getTreeMemberCounts.fulfilled({ current: 3 }, 'new-counts', args('french-other-subset')));
+  s.dispatch(getTreeMemberCounts.fulfilled({ stale: 77 }, 'old-counts', args()));
   s.dispatch(getSubsets.fulfilled([], 'old-subsets', args()));
-  assert.deepEqual(s.getState().ontologies.subsetMemberCounts, { current: 3 });
+  assert.deepEqual(s.getState().ontologies.filteredMemberCounts, { current: 3 });
   assert.deepEqual(s.getState().ontologies.selectedSubsets, [subset]);
 });
 
@@ -160,4 +160,42 @@ test('remounting the same tree invalidates cached paths and old requests without
   assert.equal(s.getState().ontologies.numPendingTreeRequests, 0);
   s.dispatch(getRootEntities.fulfilled({ rootTerms: [term('old root')] } as any, 'old-roots', args()));
   assert.deepEqual(s.getState().ontologies.rootNodes, []);
+});
+
+for (const imports of [true, false]) {
+  test(`member counts request the exact batched tree union with candidate filters: imports=${imports}`, async () => {
+    const s = setup();
+    const urls: URL[] = [];
+    const originalFetch = globalThis.fetch;
+    globalThis.fetch = (async (input: any) => {
+      urls.push(new URL(String(input)));
+      return { ok: true, json: async () => ({ elements: [], totalElements: 5, facetFieldsToCounts: {
+        treeAncestor: { Country: 3, Area: 3 },
+        hierarchicalAncestor: { Country: 2 }, directAncestor: { Country: 2 },
+      } }) };
+    }) as any;
+    try {
+      const counts = await s.dispatch(getTreeMemberCounts({ ...args(), entityType: 'individuals',
+        selectedSubsets: [subset, 'another-subset'], showImportedEnabled: imports, apiUrl: 'https://widget.test/' })).unwrap();
+      assert.deepEqual(counts, { Country: 3, Area: 3 });
+      assert.equal(urls.length, 1);
+      assert.equal(urls[0].origin, 'https://widget.test');
+      const params = urls[0].searchParams;
+      assert.equal(params.get('facetFields'), 'treeAncestor');
+      assert.equal(params.get('type'), 'individual');
+      assert.equal(params.get('subset'), `${subset},another-subset`);
+      assert.equal(params.get('includeObsoleteEntities'), 'false');
+      assert.equal(params.get('isDefiningOntology'), imports ? null : 'true');
+    } finally { globalThis.fetch = originalFetch; }
+  });
+}
+
+test('an absent tree count facet never falls back to the old approximate facets', async () => {
+  const s = setup();
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = (async () => ({ ok: true, json: async () => ({ elements: [], totalElements: 1,
+    facetFieldsToCounts: { directAncestor: { Country: 9 } } }) })) as any;
+  try {
+    assert.deepEqual(await s.dispatch(getTreeMemberCounts({ ...args(), selectedSubsets: [subset] })).unwrap(), {});
+  } finally { globalThis.fetch = originalFetch; }
 });

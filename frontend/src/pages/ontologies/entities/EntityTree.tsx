@@ -22,7 +22,7 @@ import {
   getNodeChildren,
   getRootEntities,
   getSubsets,
-  getSubsetMemberCounts,
+  getTreeMemberCounts,
   hideCounts,
   hideObsolete,
   hideSiblings,
@@ -83,7 +83,7 @@ export default function EntityTree({
   const nodeChildren = ownsContent ? tree.nodeChildren : {};
   const requiredPathChildren = ownsContent ? tree.requiredPathChildren : {};
   const rootNodes = ownsContent ? tree.rootNodes : [];
-  const subsetMemberCounts = ownsContent ? tree.subsetMemberCounts : {};
+  const filteredMemberCounts = ownsContent ? tree.filteredMemberCounts : {};
   const numPendingTreeRequests = ownsContent ? tree.numPendingTreeRequests : 0;
   const automaticallyExpandedNodes = ownsContent ? tree.automaticallyExpandedNodes : [];
   const manuallyExpandedNodes = ownsContent ? tree.manuallyExpandedNodes : [];
@@ -176,7 +176,7 @@ export default function EntityTree({
 
   useEffect(() => {
     if (!subsetTree) return;
-    const promise = dispatch(getSubsetMemberCounts({
+    const promise = dispatch(getTreeMemberCounts({
       ontologyId: ontology.getOntologyId(), entityType, selectedSubsets: subsetTree, lang,
       showObsoleteEnabled, showImportedEnabled, apiUrl, treeScopeKey: scopeKey, requestKey,
     }));
@@ -314,9 +314,9 @@ export default function EntityTree({
               />
               {filteringBySubsets
                 ? showCountsEnabled &&
-                  subsetMemberCounts[childNode.iri] > 0 && (
+                  filteredMemberCounts[childNode.iri] > 0 && (
                     <span style={{ color: "gray" }}>
-                      {" (" + subsetMemberCounts[childNode.iri].toLocaleString() + ")"}
+                      {" (" + filteredMemberCounts[childNode.iri].toLocaleString() + ")"}
                     </span>
                   )
                 : !showObsoleteEnabled &&
