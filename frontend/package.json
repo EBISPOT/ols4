@@ -51,6 +51,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "test:tree": "node scripts/test-tree.mjs",
     "build": "dotenv -e .env.$REACT_APP_ENV -e .env -- node build.mjs",
     "watch": "dotenv -e .env.$REACT_APP_ENV -e .env -- nodemon -e 'ts,tsx,js,jsx,css' -w src -w index.html.in --exec 'npm run build'",
     "start": "dotenv -e .env.$REACT_APP_ENV -e .env -- concurrently -n 'Build,Serve' 'npm run watch' 'node dev_server.mjs'",

@@ -14,6 +14,10 @@ export default function EntityList({
   lang,
   showObsoleteEnabled,
   subsetTree,
+  apiUrl,
+  showImportedEnabled,
+  treeScopeKey,
+  requestKey,
   onNavigateToEntity,
   title,
 }: {
@@ -23,6 +27,10 @@ export default function EntityList({
   lang?: string;
   showObsoleteEnabled?: boolean;
   subsetTree?: string[];
+  apiUrl?: string;
+  showImportedEnabled?: boolean;
+  treeScopeKey?: string;
+  requestKey?: string;
   onNavigateToEntity?: (ontologyId: string, entity: Entity) => void;
   title?: string;
 }) {
@@ -46,7 +54,7 @@ export default function EntityList({
   useEffect(() => {
     if (parentEntityIri) {
       // Fetch direct children using the specific API endpoint
-      dispatch(
+      const promise = dispatch(
         getDirectChildrenEntities({
           ontologyId,
           entityIri: parentEntityIri,
@@ -57,8 +65,13 @@ export default function EntityList({
           lang,
           showObsoleteEnabled,
           subsetTree,
+          apiUrl,
+          showImportedEnabled,
+          treeScopeKey,
+          requestKey,
         })
       );
+      return () => promise.abort();
     } else {
       // Use regular entities endpoint for general browsing
       const searchParam = search ? `*${search}*` : search;
@@ -75,7 +88,7 @@ export default function EntityList({
       
       dispatch(getEntities(params));
     }
-  }, [dispatch, ontologyId, entityType, page, rowsPerPage, search, parentEntityIri, lang, showObsoleteEnabled, JSON.stringify(subsetTree)]);
+  }, [dispatch, ontologyId, entityType, page, rowsPerPage, search, parentEntityIri, lang, showObsoleteEnabled, JSON.stringify(subsetTree), apiUrl, showImportedEnabled, treeScopeKey, requestKey]);
 
   useEffect(() => {
     setPage(0);
