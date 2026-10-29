@@ -81,6 +81,7 @@ export default function EntityTree({
   const ownsContent = ownsScope && tree.treeRequestKey === requestKey;
   const nodesWithChildrenLoaded = ownsContent ? tree.nodesWithChildrenLoaded : [];
   const nodeChildren = ownsContent ? tree.nodeChildren : {};
+  const requiredPathChildren = ownsContent ? tree.requiredPathChildren : {};
   const rootNodes = ownsContent ? tree.rootNodes : [];
   const subsetMemberCounts = ownsContent ? tree.subsetMemberCounts : {};
   const numPendingTreeRequests = ownsContent ? tree.numPendingTreeRequests : 0;
@@ -306,6 +307,7 @@ export default function EntityTree({
                 ontology={ontology}
                 entity={childNode.entity}
                 title={childNode.title}
+                ancestryContext={!showImportedEnabled && !childNode.entity.isCanonical()}
                 lang={lang}
                 onNavigateToEntity={onNavigateToEntity}
                 onNavigateToOntology={onNavigateToOntology}
@@ -330,28 +332,32 @@ export default function EntityTree({
                 if (directChildCount !== undefined && directChildCount > 1000) {
                   // Show EntityList for nodes with >1000 direct children
                   return (
-                    <div className="ml-4">
-                      <EntityList
-                        ontologyId={ontology.getOntologyId()}
-                        entityType={entityType === "entities" ? "classes" : entityType}
-                        parentEntityIri={childNode.iri}
-                        lang={lang}
-                        showObsoleteEnabled={showObsoleteEnabled}
-                        subsetTree={subsetTree}
-                        apiUrl={apiUrl}
-                        showImportedEnabled={showImportedEnabled}
-                        treeScopeKey={scopeKey}
-                        requestKey={requestKey}
-                        onNavigateToEntity={(ontologyId, entity) => {
-                          if (entity.getOntologyId() === ontologyId) {
-                            onNavigateToEntity(ontology, entity);
-                          } else {
-                            onNavigateToOntology(entity.getOntologyId(), entity);
-                          }
-                        }}
-                        title="Direct Children"
-                      />
-                    </div>
+                    <>
+                      {/* Keep the selected ancestry visible beside paginated siblings. */}
+                      {renderNodeChildren(requiredPathChildren[childNode.absoluteIdentity] || [], debugNumIterations + 1)}
+                      <div className="ml-4">
+                        <EntityList
+                          ontologyId={ontology.getOntologyId()}
+                          entityType={entityType === "entities" ? "classes" : entityType}
+                          parentEntityIri={childNode.iri}
+                          lang={lang}
+                          showObsoleteEnabled={showObsoleteEnabled}
+                          subsetTree={subsetTree}
+                          apiUrl={apiUrl}
+                          showImportedEnabled={showImportedEnabled}
+                          treeScopeKey={scopeKey}
+                          requestKey={requestKey}
+                          onNavigateToEntity={(ontologyId, entity) => {
+                            if (entity.getOntologyId() === ontologyId) {
+                              onNavigateToEntity(ontology, entity);
+                            } else {
+                              onNavigateToOntology(entity.getOntologyId(), entity);
+                            }
+                          }}
+                          title="Direct Children"
+                        />
+                      </div>
+                    </>
                   );
                 } else {
                   // Show regular tree for nodes with ≤1000 direct children
@@ -496,6 +502,7 @@ function TreeLink({
   ontology,
   entity,
   title,
+  ancestryContext,
   lang,
   onNavigateToEntity,
   onNavigateToOntology,
@@ -503,6 +510,7 @@ function TreeLink({
   ontology: Ontology;
   entity: Entity;
   title: string;
+  ancestryContext: boolean;
   lang: string;
   onNavigateToEntity: (ontology: Ontology, entity: Entity) => void;
   onNavigateToOntology: (ontologyId: string, entity: Entity) => void;
@@ -514,16 +522,22 @@ function TreeLink({
   return (
     <span>
       <a
-        title={`${title} [${entity.getIri()}]`}
+        title={`${title} [${entity.getIri()}]${ancestryContext ? ' (imported ancestry context)' : ''}`}
         className={"link-default"}
         onClick={() => onNavigateToEntity(ontology, entity)}
       >
         {title}
       </a>
+      {ancestryContext && (
+        <span className="ml-1 text-sm text-gray-600" title="Imported term retained to show the ancestry path">
+          {" (imported ancestry context)"}
+        </span>
+      )}
       {definedBy.length > 0 &&
         definedBy.map((definingOntology) => {
           return (
             <span
+              key={definingOntology}
               onClick={() => onNavigateToOntology(definingOntology, entity)}
               title={definingOntology.toUpperCase()}
               className="mx-1 link-ontology px-2 py-0.5 rounded-md text-sm text-white uppercase ml-1"

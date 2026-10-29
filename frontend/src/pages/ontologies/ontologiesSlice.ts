@@ -23,6 +23,7 @@ export interface OntologiesState {
   entity: Entity | undefined;
   nodesWithChildrenLoaded: string[];
   nodeChildren: any;
+  requiredPathChildren: Record<string, TreeNode[]>;
   rootNodes: TreeNode[];
   subsets: SubsetOption[];
   selectedSubsets: string[];
@@ -79,6 +80,7 @@ const initialState: OntologiesState = {
   entity: undefined,
   nodesWithChildrenLoaded: [],
   nodeChildren: {},
+  requiredPathChildren: {},
   rootNodes: [],
   subsets: [],
   selectedSubsets: [],
@@ -122,6 +124,7 @@ export const setTreeRequestContext = createAction<{ scopeKey: string; requestKey
 function clearTreeContent(state: Draft<OntologiesState>) {
   state.nodesWithChildrenLoaded = [];
   state.nodeChildren = {};
+  state.requiredPathChildren = {};
   state.rootNodes = [];
   state.automaticallyExpandedNodes = [];
   state.manuallyExpandedNodes = [];
@@ -472,7 +475,6 @@ export const getAncestors = createAsyncThunk(
     selectedEntity,
     lang,
     showObsoleteEnabled,
-    showImportedEnabled,
     apiUrl,
   }: any, { signal }) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
@@ -488,7 +490,9 @@ export const getAncestors = createAsyncThunk(
             size: "1000",
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
-            includeImportedEntities: showImportedEnabled,
+            // Ancestry explains the selected path, including imported connectors.
+            // Optional roots and child branches still use the user's filter.
+            includeImportedEntities: "true",
           }
         )}`,
         undefined,
@@ -506,7 +510,7 @@ export const getAncestors = createAsyncThunk(
               size: "1000",
               lang,
               includeObsoleteEntities: showObsoleteEnabled,
-              includeImportedEntities: showImportedEnabled,
+              includeImportedEntities: "true",
             }
           )}`,
           undefined,
@@ -519,7 +523,7 @@ export const getAncestors = createAsyncThunk(
               size: "1000",
               lang,
               includeObsoleteEntities: showObsoleteEnabled,
-              includeImportedEntities: showImportedEnabled,
+              includeImportedEntities: "true",
             }
           )}`,
           undefined,
@@ -545,7 +549,7 @@ export const getAncestors = createAsyncThunk(
             size: "1000",
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
-            includeImportedEntities: showImportedEnabled,
+            includeImportedEntities: "true",
           }
         )}`,
         undefined,
@@ -1246,6 +1250,7 @@ const ontologiesSlice = createSlice({
           );
         state.rootNodes = rootNodes;
         state.nodeChildren = nodeChildren;
+        state.requiredPathChildren = nodeChildren;
         state.automaticallyExpandedNodes = Array.from(
           new Set([
             ...state.automaticallyExpandedNodes,
@@ -1266,7 +1271,12 @@ const ontologiesSlice = createSlice({
         if (!finishTreeRequest(state, action)) return;
         state.nodeChildren = {
           ...state.nodeChildren,
-          [action.payload.absoluteIdentity]: action.payload.children,
+          // Filtered children/siblings may omit an imported connector. Retain
+          // the actual ancestry edges (and their relationship metadata).
+          [action.payload.absoluteIdentity]: Array.from(new Map([
+            ...action.payload.children,
+            ...(state.requiredPathChildren[action.payload.absoluteIdentity] || []),
+          ].map(node => [node.absoluteIdentity, node])).values()),
         };
         state.nodesWithChildrenLoaded.push(action.payload.absoluteIdentity);
       }
