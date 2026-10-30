@@ -137,7 +137,7 @@ class V2ClassControllerTest {
 
         controller.getChildrenByOntology(
                 pageable, "efo", "http%3A%2F%2Fexample.org%2FEFO_0001", true,
-                "clinical", "fr", options);
+                "clinical", null, true, "fr", options);
 
         assertHierarchyCall(
                 RecordingClassRepository.Call.CHILDREN,
@@ -165,11 +165,11 @@ class V2ClassControllerTest {
             case HIERARCHICAL_DESCENDANTS -> controller.getHierarchicalDescendantsByOntology(
                     pageable, "efo", encodedIri, true, "de", options);
             case HIERARCHICAL_CHILDREN -> controller.getHierarchicalChildrenByOntology(
-                    pageable, "efo", encodedIri, true, "de", options);
+                    pageable, "efo", encodedIri, true, null, true, "de", options);
             case HIERARCHICAL_ANCESTORS -> controller.getHierarchicalAncestorsByOntology(
-                    pageable, "efo", encodedIri, true, "de", options);
+                    pageable, "efo", encodedIri, true, true, "de", options);
             case INDIVIDUAL_ANCESTORS -> controller.getIndividualAncestorsByOntology(
-                    pageable, "efo", encodedIri, true, "de", options);
+                    pageable, "efo", encodedIri, true, true, "de", options);
         }
 
         assertHierarchyCall(
@@ -303,7 +303,9 @@ class V2ClassControllerTest {
                 Pageable pageable,
                 String iri,
                 boolean includeObsolete,
+                boolean includeImported,
                 String search,
+                Collection<String> subsetTree,
                 String lang,
                 JsonTransformOptions outputOptions) {
             call = Call.CHILDREN;
@@ -339,7 +341,8 @@ class V2ClassControllerTest {
         @Override
         public Page<JsonElement> getHierarchicalChildrenByOntologyId(
                 String ontologyId, Pageable pageable, String iri, boolean includeObsolete,
-                String lang, JsonTransformOptions outputOptions) {
+                boolean includeImported, Collection<String> subsetTree, String lang,
+                JsonTransformOptions outputOptions) {
             return hierarchy(Call.HIERARCHICAL_CHILDREN, ontologyId, pageable, iri,
                     includeObsolete, lang, outputOptions);
         }
@@ -347,7 +350,7 @@ class V2ClassControllerTest {
         @Override
         public Page<JsonElement> getHierarchicalAncestorsByOntologyId(
                 String ontologyId, Pageable pageable, String iri, boolean includeObsolete,
-                String lang, JsonTransformOptions outputOptions) {
+                boolean includeImported, String lang, JsonTransformOptions outputOptions) {
             return hierarchy(Call.HIERARCHICAL_ANCESTORS, ontologyId, pageable, iri,
                     includeObsolete, lang, outputOptions);
         }
@@ -355,7 +358,7 @@ class V2ClassControllerTest {
         @Override
         public Page<JsonElement> getIndividualAncestorsByOntologyId(
                 String ontologyId, Pageable pageable, String iri, boolean includeObsolete,
-                String lang, JsonTransformOptions outputOptions) {
+                boolean includeImported, String lang, JsonTransformOptions outputOptions) {
             return hierarchy(Call.INDIVIDUAL_ANCESTORS, ontologyId, pageable, iri,
                     includeObsolete, lang, outputOptions);
         }
