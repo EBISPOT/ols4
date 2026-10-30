@@ -199,3 +199,59 @@ test('an absent tree count facet never falls back to the old approximate facets'
     assert.deepEqual(await s.dispatch(getTreeMemberCounts({ ...args(), selectedSubsets: [subset] })).unwrap(), {});
   } finally { globalThis.fetch = originalFetch; }
 });
+
+for (const imports of [true, false]) for (const obsolete of [true, false]) {
+  test(`subset availability uses the same member filters as counts: imports=${imports}, obsolete=${obsolete}`, async () => {
+    const s = setup();
+    const originalFetch = globalThis.fetch;
+    const urls: URL[] = [];
+    globalThis.fetch = (async (input: any) => {
+      const url = new URL(String(input));
+      urls.push(url);
+      const params = url.searchParams;
+      // Native members may use an imported subset definition.
+      const definitions = [{ iri: subset, label: ['IHCC'], type: ['property'], ontologyId: 'coho', isDefiningOntology: false }];
+      const count = (params.get('isDefiningOntology') === 'true' ? 2 : 4) + (params.get('includeObsoleteEntities') === 'true' ? 1 : 0);
+      return { ok: true, json: async () => ({ elements: url.pathname.includes('/properties/') ? definitions : [],
+        totalElements: 1, totalPages: 1, facetFieldsToCounts: { subset: { [subset]: count }, treeAncestor: { Country: count } } }) };
+    }) as any;
+    try {
+      const input = { ...args(), showImportedEnabled: imports, showObsoleteEnabled: obsolete, apiUrl: 'https://widget.test/' };
+      const subsets = await s.dispatch(getSubsets(input)).unwrap();
+      const counts = await s.dispatch(getTreeMemberCounts(input)).unwrap();
+      const expected = (imports ? 4 : 2) + (obsolete ? 1 : 0);
+      assert.deepEqual(subsets, [{ iri: subset, label: 'IHCC', numMembers: expected }]);
+      assert.deepEqual(counts, { Country: expected });
+      assert.equal(urls.length, 3); // One batched facet each; definition lookup is shared by all subsets.
+      for (const url of urls.filter(u => u.pathname.endsWith('/entities'))) {
+        assert.equal(url.origin, 'https://widget.test');
+        assert.equal(url.searchParams.get('type'), 'class,individual');
+        assert.equal(url.searchParams.get('includeObsoleteEntities'), String(obsolete));
+        assert.equal(url.searchParams.get('isDefiningOntology'), imports ? null : 'true');
+        assert.equal(url.searchParams.get('subset'), null);
+        assert.equal(url.searchParams.get('includeImportedEntities'), null);
+      }
+    } finally { globalThis.fetch = originalFetch; }
+  });
+}
+
+test('native counts distinguish pending, confirmed zero and failure and reject late import-filter responses', () => {
+  const s = setup();
+  const native = { ...args('native'), showImportedEnabled: false };
+  s.dispatch(getTreeMemberCounts.pending('old', args()));
+  context(s, scope(), 'native');
+  assert.equal(s.getState().ontologies.filteredMemberCountsStatus, 'idle');
+  s.dispatch(getTreeMemberCounts.pending('native', native));
+  assert.equal(s.getState().ontologies.filteredMemberCountsStatus, 'loading');
+  s.dispatch(getTreeMemberCounts.fulfilled({}, 'native', native));
+  assert.equal(s.getState().ontologies.filteredMemberCountsStatus, 'succeeded');
+  s.dispatch(getTreeMemberCounts.fulfilled({ stale: 99 }, 'old', args()));
+  s.dispatch(getTreeMemberCounts.rejected(new Error('late'), 'old', args()));
+  assert.equal(s.getState().ontologies.filteredMemberCountsStatus, 'succeeded');
+  assert.deepEqual(s.getState().ontologies.filteredMemberCounts, {});
+  s.dispatch(getTreeMemberCounts.pending('retry', native));
+  s.dispatch(getTreeMemberCounts.rejected(new Error('failed'), 'retry', native));
+  assert.equal(s.getState().ontologies.filteredMemberCountsStatus, 'failed');
+  s.dispatch(resetTreeContent());
+  assert.equal(s.getState().ontologies.filteredMemberCountsStatus, 'idle');
+});

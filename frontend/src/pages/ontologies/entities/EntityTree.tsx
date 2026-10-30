@@ -74,6 +74,9 @@ export default function EntityTree({
   const showImportedEnabled = !ownsScope || tree.displayImported;
   const showSiblingsEnabled = ownsScope && tree.displaySiblings;
   const showCountsEnabled = !ownsScope || tree.displayCounts;
+  const needsFilteredCounts = filteringBySubsets || !showImportedEnabled;
+  // Ordinary counts retain their existing obsolete-mode restriction.
+  const showNodeCounts = showCountsEnabled && (filteringBySubsets || !showObsoleteEnabled);
   const requestKey = JSON.stringify([
     scopeKey, lang, selectedEntity, specifiedRootIri || "", preferredRoots,
     showObsoleteEnabled, showImportedEnabled, showSiblingsEnabled, subsetTree || [],
@@ -84,6 +87,7 @@ export default function EntityTree({
   const requiredPathChildren = ownsContent ? tree.requiredPathChildren : {};
   const rootNodes = ownsContent ? tree.rootNodes : [];
   const filteredMemberCounts = ownsContent ? tree.filteredMemberCounts : {};
+  const filteredMemberCountsStatus = ownsContent ? tree.filteredMemberCountsStatus : "idle";
   const numPendingTreeRequests = ownsContent ? tree.numPendingTreeRequests : 0;
   const automaticallyExpandedNodes = ownsContent ? tree.automaticallyExpandedNodes : [];
   const manuallyExpandedNodes = ownsContent ? tree.manuallyExpandedNodes : [];
@@ -175,13 +179,13 @@ export default function EntityTree({
   }, [dispatch, requestKey]);
 
   useEffect(() => {
-    if (!subsetTree) return;
+    if (!needsFilteredCounts || !showNodeCounts) return;
     const promise = dispatch(getTreeMemberCounts({
       ontologyId: ontology.getOntologyId(), entityType, selectedSubsets: subsetTree, lang,
       showObsoleteEnabled, showImportedEnabled, apiUrl, treeScopeKey: scopeKey, requestKey,
     }));
     return () => promise.abort();
-  }, [dispatch, requestKey]);
+  }, [dispatch, requestKey, needsFilteredCounts, showNodeCounts]);
 
   useEffect(() => {
     const expanded = showSiblingsEnabled
@@ -268,6 +272,9 @@ export default function EntityTree({
           const highlight =
             (selectedEntity && childNode.iri === selectedEntity.getIri()) ||
             false;
+          const numDescendants = needsFilteredCounts
+            ? filteredMemberCounts[childNode.iri]
+            : getNumDescendants(childNode.numHierarchicalDescendants, childNode.numDescendants);
           return (
             <Node
               expandable={childNode.expandable}
@@ -312,21 +319,13 @@ export default function EntityTree({
                 onNavigateToEntity={onNavigateToEntity}
                 onNavigateToOntology={onNavigateToOntology}
               />
-              {filteringBySubsets
-                ? showCountsEnabled &&
-                  filteredMemberCounts[childNode.iri] > 0 && (
-                    <span style={{ color: "gray" }}>
-                      {" (" + filteredMemberCounts[childNode.iri].toLocaleString() + ")"}
-                    </span>
-                  )
-                : !showObsoleteEnabled &&
-                  showImportedEnabled &&
-                  showCountsEnabled &&
-                  getNumDescendants(childNode.numHierarchicalDescendants, childNode.numDescendants) > 0 && (
-                    <span style={{ color: "gray" }}>
-                      {" (" + (getNumDescendants(childNode.numHierarchicalDescendants, childNode.numDescendants)).toLocaleString() + ")"}
-                    </span>
-                  )}
+              {showNodeCounts && (needsFilteredCounts && filteredMemberCountsStatus === "loading"
+                ? <span style={{ color: "gray" }} aria-label="Descendant count loading">{" (…)"}</span>
+                : numDescendants > 0 && (
+                  <span style={{ color: "gray" }}>
+                    {" (" + numDescendants.toLocaleString() + ")"}
+                  </span>
+                ))}
               {isExpanded && (() => {
                 const directChildCount = directChildrenCounts[childNode.iri];
                 if (directChildCount !== undefined && directChildCount > 1000) {

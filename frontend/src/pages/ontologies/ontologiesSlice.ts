@@ -28,6 +28,7 @@ export interface OntologiesState {
   subsets: SubsetOption[];
   selectedSubsets: string[];
   filteredMemberCounts: { [iri: string]: number };
+  filteredMemberCountsStatus: "idle" | "loading" | "succeeded" | "failed";
   ontologies: Ontology[];
   totalOntologies: number;
   entities: Entity[];
@@ -85,6 +86,7 @@ const initialState: OntologiesState = {
   subsets: [],
   selectedSubsets: [],
   filteredMemberCounts: {},
+  filteredMemberCountsStatus: "idle",
   ontologies: [],
   totalOntologies: 0,
   entities: [],
@@ -133,6 +135,7 @@ function clearTreeContent(state: Draft<OntologiesState>) {
   state.totalDirectChildrenEntities = 0;
   state.loadingDirectChildrenEntities = false;
   state.filteredMemberCounts = {};
+  state.filteredMemberCountsStatus = "idle";
   state.treeRequests = {};
   state.numPendingTreeRequests = 0;
 }
@@ -684,6 +687,7 @@ export const getSubsets = createAsyncThunk(
     entityType,
     lang,
     showObsoleteEnabled,
+    showImportedEnabled,
     apiUrl,
   }: any, { signal }): Promise<SubsetOption[]> => {
     const [subsetsPage, facetResponse] = await Promise.all([
@@ -701,6 +705,7 @@ export const getSubsets = createAsyncThunk(
           size: "1",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
+          ...(showImportedEnabled === false ? { isDefiningOntology: "true" } : {}),
           facetFields: "subset",
         })}`,
         undefined,
@@ -1186,7 +1191,8 @@ const ontologiesSlice = createSlice({
       finishTreeRequest(state, action);
     });
     builder.addCase(getTreeMemberCounts.rejected, (state, action) => {
-      finishTreeRequest(state, action);
+      if (!finishTreeRequest(state, action)) return;
+      state.filteredMemberCountsStatus = "failed";
     });
     builder.addCase(
       getDirectChildrenCount.fulfilled,
@@ -1329,12 +1335,14 @@ const ontologiesSlice = createSlice({
     builder.addCase(getTreeMemberCounts.pending, (state, action) => {
       if (!startTreeRequest(state, action)) return;
       state.filteredMemberCounts = {};
+      state.filteredMemberCountsStatus = "loading";
     });
     builder.addCase(
       getTreeMemberCounts.fulfilled,
       (state, action) => {
         if (!finishTreeRequest(state, action)) return;
         state.filteredMemberCounts = action.payload;
+        state.filteredMemberCountsStatus = "succeeded";
       }
     );
     builder.addCase(
