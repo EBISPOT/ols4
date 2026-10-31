@@ -3,9 +3,13 @@ package uk.ac.ebi.spot.ols.controller.api.v1;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.http.MediaType;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -63,5 +67,61 @@ class V1SearchControllerIT {
                 .andExpect(jsonPath("$.response.docs[0].label").value("Liver disease"))
                 .andExpect(jsonPath("$.facet_counts.facet_fields.ontologyId[0]").value("efo"))
                 .andExpect(jsonPath("$.facet_counts.facet_fields.ontologyId[1]").value("3"));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "LiVeR DiSeAsE, EFO_0001",
+            "hEpAtIc DiSoRdEr, EFO_0001",
+            "LIVER AILMENT, EFO_0002"
+    })
+    void exactSearchDefaultsToCaseInsensitiveLabelsAndSynonyms(String query, String shortForm)
+            throws Exception {
+        for (String queryFields : new String[] {null, "", "label,synonym"}) {
+            MockHttpServletRequestBuilder request = get("/api/search")
+                    .param("q", query)
+                    .param("ontology", "efo")
+                    .param("exact", "true");
+            if (queryFields != null) {
+                request.param("queryFields", queryFields);
+            }
+            mockMvc.perform(request)
+                    .andExpect(status().isOk())
+                    .andExpect(jsonPath("$.response.numFound").value(1))
+                    .andExpect(jsonPath("$.response.docs[0].iri")
+                            .value("http://example.org/" + shortForm));
+        }
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "liver",
+            "hepatic",
+            "A disorder affecting hepatic tissue.",
+            "Liver-disease",
+            "livers diseases"
+    })
+    void exactSearchWithoutQueryFieldsExcludesPartialStemmedAndDefinitionMatches(String query)
+            throws Exception {
+        mockMvc.perform(get("/api/search")
+                        .param("q", query)
+                        .param("ontology", "efo")
+                        .param("exact", "true"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.response.numFound").value(0))
+                .andExpect(jsonPath("$.response.docs.length()").value(0));
+    }
+
+    @Test
+    void explicitQueryFieldsStillAllowExactDefinitionMatches() throws Exception {
+        mockMvc.perform(get("/api/search")
+                        .param("q", "A disorder affecting hepatic tissue.")
+                        .param("ontology", "efo")
+                        .param("exact", "true")
+                        .param("queryFields", "description"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.response.numFound").value(1))
+                .andExpect(jsonPath("$.response.docs[0].iri")
+                        .value("http://example.org/EFO_0001"));
     }
 }
