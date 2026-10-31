@@ -278,6 +278,21 @@ fn preserves_identifiers_regardless_of_entity_field_order() {
             );
             assert_eq!(entity["curie"]["type"], json!(["literal"]));
             assert_eq!(entity["shortForm"]["type"], json!(["literal"]));
+            if field_order[0] == "iri" {
+                // Fresh dataload output is compared byte-for-byte, including
+                // the JSON stored in PostgreSQL COPY files.
+                let original_fields: Vec<_> = entity
+                    .as_object()
+                    .unwrap()
+                    .keys()
+                    .filter(|key| ["iri", "curie", "shortForm", "type"].contains(&key.as_str()))
+                    .map(String::as_str)
+                    .collect();
+                assert_eq!(
+                    original_fields,
+                    [field_order.as_slice(), &["type"]].concat()
+                );
+            }
         }
     }
     server.join().unwrap();

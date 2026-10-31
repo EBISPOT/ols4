@@ -226,10 +226,22 @@ fn write_entity_array<R: Read, W: Write>(
             let name = json_reader.next_name_owned()?;
             strings_in_entity.insert(extract_iri_from_property_name::extract(&name).to_string());
 
-            // Fallback RDF2JSON sorts fields, placing curie before iri. Keep only
-            // the identifier literals until the complete entity IRI is available.
+            // Fallback RDF2JSON sorts fields, placing curie before iri. Defer
+            // only identifiers encountered before iri so fresh output keeps
+            // its existing serialization order.
             if matches!(name.as_str(), "curie" | "shortForm") {
-                identifiers.push((name, read_identifier_literal(json_reader)?));
+                let literal = read_identifier_literal(json_reader)?;
+                if entity_iri.is_some() {
+                    write_identifier_literal(
+                        json_writer,
+                        &name,
+                        literal,
+                        pass1_result,
+                        entity_iri.as_deref(),
+                    )?;
+                } else {
+                    identifiers.push((name, literal));
+                }
                 continue;
             }
             json_writer.name(&name)?;
@@ -247,14 +259,13 @@ fn write_entity_array<R: Read, W: Write>(
         }
 
         for (name, literal) in identifiers {
-            let curie = get_processed_curie_value(pass1_result, entity_iri.as_deref());
-            let value = if name == "shortForm" {
-                curie.replace(':', "_")
-            } else {
-                curie
-            };
-            json_writer.name(&name)?;
-            write_identifier_literal(json_writer, literal, &value)?;
+            write_identifier_literal(
+                json_writer,
+                &name,
+                literal,
+                pass1_result,
+                entity_iri.as_deref(),
+            )?;
         }
 
         // Add definition metadata if available
@@ -608,9 +619,18 @@ fn read_identifier_literal<R: Read>(
 
 fn write_identifier_literal<W: Write>(
     json_writer: &mut JsonStreamWriter<W>,
+    name: &str,
     literal: IdentifierLiteral,
-    value: &str,
+    pass1_result: &LinkerPass1Result,
+    entity_iri: Option<&str>,
 ) -> Result<(), Box<dyn std::error::Error>> {
+    let curie = get_processed_curie_value(pass1_result, entity_iri);
+    let value = if name == "shortForm" {
+        curie.replace(':', "_")
+    } else {
+        curie
+    };
+    json_writer.name(name)?;
     json_writer.begin_object()?;
     json_writer.name("type")?;
     json_writer.begin_array()?;
@@ -619,7 +639,7 @@ fn write_identifier_literal<W: Write>(
     }
     json_writer.end_array()?;
     json_writer.name("value")?;
-    json_writer.string_value(if literal.has_value { value } else { "" })?;
+    json_writer.string_value(if literal.has_value { &value } else { "" })?;
     json_writer.end_object()?;
 
     Ok(())
