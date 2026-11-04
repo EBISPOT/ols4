@@ -219,7 +219,7 @@ mvn -B -ntp -pl backend -am -Pintegration-tests-only verify
 
 Java 17 is required. Invoking the integration suite without an available Docker runtime must fail clearly rather than silently skipping database tests.
 
-On Rancher Desktop for macOS, local execution may also require `DOCKER_HOST` to point at `~/.rd/docker.sock`, `TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock`, and `-Dapi.version=1.44`. GitHub-hosted Linux runners use their standard Docker socket and do not need those overrides.
+On Rancher Desktop for macOS, local execution may also require `DOCKER_HOST` to point at `~/.rd/docker.sock`, `TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock`, and `-Dapi.version=1.44`. GitHub-hosted Linux runners use their standard Docker socket and need only `-Dapi.version=1.44`, which the workflow passes: without it, runners on Docker 29 fail every database test with `client version 1.32 is too old`.
 
 ## Continuous integration
 
