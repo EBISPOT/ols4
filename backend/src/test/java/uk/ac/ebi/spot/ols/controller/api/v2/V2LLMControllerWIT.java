@@ -122,7 +122,7 @@ class V2LLMControllerWIT {
 
     @Test
     void searchClassesByVectorUsesDefaultsAndConvertsTheBodyToAFloatArray() throws Exception {
-        when(classRepository.searchByVector(any(), any(), any(), any(), any(), any(), anyBoolean()))
+        when(classRepository.searchByVector(any(), any(), any(), any(), any(), any(), anyBoolean(), anyBoolean()))
                 .thenReturn(classPage());
 
         mockMvc.perform(post("/api/v2/classes/llm_embedding")
@@ -139,12 +139,12 @@ class V2LLMControllerWIT {
                 eq("en"),
                 eq(null),
                 any(),
-                eq(true));
+                eq(true), eq(false));
     }
 
     @Test
     void searchClassesByVectorBindsEveryParameter() throws Exception {
-        when(classRepository.searchByVector(any(), any(), any(), any(), any(), any(), anyBoolean()))
+        when(classRepository.searchByVector(any(), any(), any(), any(), any(), any(), anyBoolean(), anyBoolean()))
                 .thenReturn(classPage());
 
         mockMvc.perform(post("/api/v2/classes/llm_embedding")
@@ -165,7 +165,7 @@ class V2LLMControllerWIT {
                 eq("fr"),
                 eq("efo"),
                 any(),
-                eq(false));
+                eq(false), eq(false));
     }
 
     @Test
@@ -198,7 +198,7 @@ class V2LLMControllerWIT {
     @Test
     void searchClassesByVectorInOntologyUsesDefaultsAndBindsThePathOntologyId() throws Exception {
         when(classRepository.searchByVectorInOntology(
-                any(), any(), any(), any(), any(), anyBoolean(), any(), anyBoolean()))
+                any(), any(), any(), any(), any(), anyBoolean(), any(), anyBoolean(), anyBoolean()))
                 .thenReturn(classPage());
 
         mockMvc.perform(post("/api/v2/ontologies/efo/classes/llm_embedding")
@@ -215,13 +215,13 @@ class V2LLMControllerWIT {
                 eq("en"),
                 eq(false),
                 any(),
-                eq(true));
+                eq(true), eq(false));
     }
 
     @Test
     void searchClassesByVectorInOntologyBindsIsDefiningOntologyAndIncludeCurations() throws Exception {
         when(classRepository.searchByVectorInOntology(
-                any(), any(), any(), any(), any(), anyBoolean(), any(), anyBoolean()))
+                any(), any(), any(), any(), any(), anyBoolean(), any(), anyBoolean(), anyBoolean()))
                 .thenReturn(classPage());
 
         mockMvc.perform(post("/api/v2/ontologies/efo/classes/llm_embedding")
@@ -234,7 +234,7 @@ class V2LLMControllerWIT {
 
         verify(classRepository).searchByVectorInOntology(
                 eq("efo"), eq("test_model"), eq(new float[] {1.0f}), any(), eq("en"),
-                eq(true), any(), eq(false));
+                eq(true), any(), eq(false), eq(false));
     }
 
     @Test
@@ -266,7 +266,7 @@ class V2LLMControllerWIT {
     @Test
     void searchEntitiesByTextEmbedsTheQueryAndSearchesWithoutAnOntologyFilterByDefault() throws Exception {
         when(embeddingServiceClient.embedText(any(), any())).thenReturn(new float[] {1.0f, 0.0f});
-        when(postgresClient.searchByVector(any(), any(), any(), any(), anyBoolean()))
+        when(postgresClient.searchByVector(any(), any(), any(), any(), anyBoolean(), anyBoolean()))
                 .thenReturn(classPage());
 
         mockMvc.perform(get("/api/v2/entities/llm_search")
@@ -277,16 +277,16 @@ class V2LLMControllerWIT {
 
         verify(embeddingServiceClient).embedText("test_model", "liver");
         verify(postgresClient).searchByVector(
-                eq("OntologyEntity"), eq(List.of(1.0, 0.0)), any(), eq("test_model"), eq(true));
+                eq("OntologyEntity"), eq(List.of(1.0, 0.0)), any(), eq("test_model"), eq(true), eq(false));
         verify(postgresClient, never()).searchByVectorInOntology(
-                any(), any(), any(), any(), any(), anyBoolean(), anyBoolean());
+                any(), any(), any(), any(), any(), anyBoolean(), anyBoolean(), anyBoolean());
     }
 
     @Test
     void searchEntitiesByTextUsesTheOntologyScopedQueryWhenOntologyIdIsGiven() throws Exception {
         when(embeddingServiceClient.embedText(any(), any())).thenReturn(new float[] {1.0f});
         when(postgresClient.searchByVectorInOntology(
-                any(), any(), any(), any(), any(), anyBoolean(), anyBoolean()))
+                any(), any(), any(), any(), any(), anyBoolean(), anyBoolean(), anyBoolean()))
                 .thenReturn(classPage());
 
         mockMvc.perform(get("/api/v2/entities/llm_search")
@@ -297,7 +297,34 @@ class V2LLMControllerWIT {
                 .andExpect(status().isOk());
 
         verify(postgresClient).searchByVectorInOntology(
-                eq("OntologyEntity"), eq(List.of(1.0)), any(), eq("test_model"), eq("efo"), eq(true), eq(false));
+                eq("OntologyEntity"), eq(List.of(1.0)), any(), eq("test_model"), eq("efo"), eq(true), eq(false), eq(false));
+    }
+
+    @Test
+    void searchEntitiesByTextPassesIncludeObsoleteEntitiesThrough() throws Exception {
+        when(embeddingServiceClient.embedText(any(), any())).thenReturn(new float[] {1.0f});
+        when(postgresClient.searchByVector(any(), any(), any(), any(), anyBoolean(), anyBoolean()))
+                .thenReturn(classPage());
+        when(postgresClient.searchByVectorInOntology(
+                any(), any(), any(), any(), any(), anyBoolean(), anyBoolean(), anyBoolean()))
+                .thenReturn(classPage());
+
+        mockMvc.perform(get("/api/v2/entities/llm_search")
+                        .param("q", "liver")
+                        .param("model", "test_model")
+                        .param("includeObsoleteEntities", "true"))
+                .andExpect(status().isOk());
+        mockMvc.perform(get("/api/v2/entities/llm_search")
+                        .param("q", "liver")
+                        .param("model", "test_model")
+                        .param("ontologyId", "efo")
+                        .param("includeObsoleteEntities", "true"))
+                .andExpect(status().isOk());
+
+        verify(postgresClient).searchByVector(
+                eq("OntologyEntity"), eq(List.of(1.0)), any(), eq("test_model"), eq(true), eq(true));
+        verify(postgresClient).searchByVectorInOntology(
+                eq("OntologyEntity"), eq(List.of(1.0)), any(), eq("test_model"), eq("efo"), eq(true), eq(true), eq(true));
     }
 
     @Test
@@ -319,7 +346,7 @@ class V2LLMControllerWIT {
     @Test
     void searchClassesByTextEmbedsTheQueryAndDelegatesToTheClassRepository() throws Exception {
         when(embeddingServiceClient.embedText(any(), any())).thenReturn(new float[] {0.0f, 1.0f});
-        when(classRepository.searchByVector(any(), any(), any(), any(), any(), any(), anyBoolean()))
+        when(classRepository.searchByVector(any(), any(), any(), any(), any(), any(), anyBoolean(), anyBoolean()))
                 .thenReturn(classPage());
 
         mockMvc.perform(get("/api/v2/classes/llm_search")
@@ -330,7 +357,7 @@ class V2LLMControllerWIT {
 
         verify(embeddingServiceClient).embedText("test_model", "heart disease");
         verify(classRepository).searchByVector(
-                eq("test_model"), eq(new float[] {0.0f, 1.0f}), any(), eq("en"), eq("efo"), any(), eq(true));
+                eq("test_model"), eq(new float[] {0.0f, 1.0f}), any(), eq("en"), eq("efo"), any(), eq(true), eq(false));
     }
 
     @Test
@@ -354,7 +381,7 @@ class V2LLMControllerWIT {
             throws Exception {
         when(embeddingServiceClient.embedText(any(), any())).thenReturn(new float[] {1.0f});
         when(classRepository.searchByVectorInOntology(
-                any(), any(), any(), any(), any(), anyBoolean(), any(), anyBoolean()))
+                any(), any(), any(), any(), any(), anyBoolean(), any(), anyBoolean(), anyBoolean()))
                 .thenReturn(classPage());
 
         mockMvc.perform(get("/api/v2/ontologies/efo/classes/llm_search")
@@ -364,7 +391,7 @@ class V2LLMControllerWIT {
                 .andExpect(status().isOk());
 
         verify(classRepository).searchByVectorInOntology(
-                eq("efo"), eq("test_model"), eq(new float[] {1.0f}), any(), eq("en"), eq(true), any(), eq(true));
+                eq("efo"), eq("test_model"), eq(new float[] {1.0f}), any(), eq("en"), eq(true), any(), eq(true), eq(false));
     }
 
     @Test
@@ -500,7 +527,7 @@ class V2LLMControllerWIT {
     @Test
     void searchPropertiesByTextEmbedsTheQueryAndSearchesWithoutAnOntologyFilterByDefault() throws Exception {
         when(embeddingServiceClient.embedText(any(), any())).thenReturn(new float[] {1.0f, 0.0f});
-        when(postgresClient.searchByVector(any(), any(), any(), any(), anyBoolean()))
+        when(postgresClient.searchByVector(any(), any(), any(), any(), anyBoolean(), anyBoolean()))
                 .thenReturn(propertyPage());
 
         mockMvc.perform(get("/api/v2/properties/llm_search")
@@ -510,14 +537,14 @@ class V2LLMControllerWIT {
                 .andExpect(jsonPath("$.elements[0].iri").value(PROPERTY_IRI));
 
         verify(postgresClient).searchByVector(
-                eq("OntologyProperty"), eq(List.of(1.0, 0.0)), any(), eq("test_model"), eq(true));
+                eq("OntologyProperty"), eq(List.of(1.0, 0.0)), any(), eq("test_model"), eq(true), eq(false));
     }
 
     @Test
     void searchPropertiesByTextUsesTheOntologyScopedQueryWhenOntologyIdIsGiven() throws Exception {
         when(embeddingServiceClient.embedText(any(), any())).thenReturn(new float[] {1.0f});
         when(postgresClient.searchByVectorInOntology(
-                any(), any(), any(), any(), any(), anyBoolean(), anyBoolean()))
+                any(), any(), any(), any(), any(), anyBoolean(), anyBoolean(), anyBoolean()))
                 .thenReturn(propertyPage());
 
         mockMvc.perform(get("/api/v2/properties/llm_search")
@@ -527,7 +554,7 @@ class V2LLMControllerWIT {
                 .andExpect(status().isOk());
 
         verify(postgresClient).searchByVectorInOntology(
-                eq("OntologyProperty"), eq(List.of(1.0)), any(), eq("test_model"), eq("efo"), eq(true), eq(true));
+                eq("OntologyProperty"), eq(List.of(1.0)), any(), eq("test_model"), eq("efo"), eq(true), eq(true), eq(false));
     }
 
     @Test
@@ -549,7 +576,7 @@ class V2LLMControllerWIT {
     @Test
     void searchIndividualsByTextEmbedsTheQueryAndSearchesWithoutAnOntologyFilterByDefault() throws Exception {
         when(embeddingServiceClient.embedText(any(), any())).thenReturn(new float[] {1.0f});
-        when(postgresClient.searchByVector(any(), any(), any(), any(), anyBoolean()))
+        when(postgresClient.searchByVector(any(), any(), any(), any(), anyBoolean(), anyBoolean()))
                 .thenReturn(classPage());
 
         mockMvc.perform(get("/api/v2/individuals/llm_search")
@@ -558,14 +585,14 @@ class V2LLMControllerWIT {
                 .andExpect(status().isOk());
 
         verify(postgresClient).searchByVector(
-                eq("OntologyIndividual"), eq(List.of(1.0)), any(), eq("test_model"), eq(true));
+                eq("OntologyIndividual"), eq(List.of(1.0)), any(), eq("test_model"), eq(true), eq(false));
     }
 
     @Test
     void searchIndividualsByTextUsesTheOntologyScopedQueryWhenOntologyIdIsGiven() throws Exception {
         when(embeddingServiceClient.embedText(any(), any())).thenReturn(new float[] {1.0f});
         when(postgresClient.searchByVectorInOntology(
-                any(), any(), any(), any(), any(), anyBoolean(), anyBoolean()))
+                any(), any(), any(), any(), any(), anyBoolean(), anyBoolean(), anyBoolean()))
                 .thenReturn(classPage());
 
         mockMvc.perform(get("/api/v2/individuals/llm_search")
@@ -576,7 +603,7 @@ class V2LLMControllerWIT {
                 .andExpect(status().isOk());
 
         verify(postgresClient).searchByVectorInOntology(
-                eq("OntologyIndividual"), eq(List.of(1.0)), any(), eq("test_model"), eq("efo"), eq(true), eq(false));
+                eq("OntologyIndividual"), eq(List.of(1.0)), any(), eq("test_model"), eq("efo"), eq(true), eq(false), eq(false));
     }
 
     @Test

@@ -64,6 +64,7 @@ public class OlsPostgresClient {
     private static final int HNSW_MIN_ROWS = 40;
     private static final int HNSW_ROW_LIMIT_GROWTH = 4;
     private static final int HNSW_MAX_WIDENINGS = 2;
+    private static final String HNSW_MAX_EF_SEARCH = "1000";
 
     private static final Pattern LEADING_VERSION_NUMBERS = Pattern.compile("^(\\d+)(?:\\.(\\d+))?");
 
@@ -481,22 +482,20 @@ public class OlsPostgresClient {
     }
 
     public Page<JsonElement> searchByVector(String type, List<Double> vector, Pageable pageable, String modelName, boolean includeCurations) {
+        return searchByVector(type, vector, pageable, modelName, includeCurations, false);
+    }
+
+    public Page<JsonElement> searchByVector(String type, List<Double> vector, Pageable pageable, String modelName,
+            boolean includeCurations, boolean includeObsoleteEntities) {
         String embeddingColumn = sanitizeEmbeddingNodeColumnName(modelName);
         int limit = pageable.getPageSize();
-        boolean filterByType = hasConcreteEntityType(type);
-        int candidateLimit = nearestNeighborCandidateLimit(limit, filterByType, false);
+        String entityType = hasConcreteEntityType(type) ? type : null;
         String vecLiteral = vectorLiteral(vector);
 
         try (Connection conn = postgresClient.getConnection()) {
             DSLContext dsl = postgresClient.dsl(conn);
-            Select<Record2<String, Double>> candidates =
-                    fetchVectorCandidatesSelect(dsl, embeddingColumn, vecLiteral, LABEL_EMBEDDING, filterByType ? type : null, candidateLimit);
-            if (includeCurations) {
-                candidates = candidates.unionAll(
-                        fetchVectorCandidatesSelect(dsl, embeddingColumn, vecLiteral, CURATION_EMBEDDING, filterByType ? type : null, candidateLimit));
-            }
-
-            return toVectorSearchPage(dsl, nearestEntities(dsl, candidates, limit), pageable);
+            return toVectorSearchPage(dsl, nearestEntitiesOverall(dsl, embeddingColumn, vecLiteral, entityType,
+                    includeCurations, includeObsoleteEntities, limit), pageable);
         } catch (SQLException e) {
             throw new RuntimeException("searchByVector failed", e);
         }
@@ -509,6 +508,12 @@ public class OlsPostgresClient {
 
     public Page<JsonElement> searchByVectorInOntology(String type, List<Double> vector, Pageable pageable,
             String modelName, String ontologyId, boolean isDefiningOntology, boolean includeCurations) {
+        return searchByVectorInOntology(type, vector, pageable, modelName, ontologyId, isDefiningOntology, includeCurations, false);
+    }
+
+    public Page<JsonElement> searchByVectorInOntology(String type, List<Double> vector, Pageable pageable,
+            String modelName, String ontologyId, boolean isDefiningOntology, boolean includeCurations,
+            boolean includeObsoleteEntities) {
         String embeddingColumn = sanitizeEmbeddingNodeColumnName(modelName);
         int limit = pageable.getPageSize();
         boolean filterByType = hasConcreteEntityType(type);
@@ -519,7 +524,7 @@ public class OlsPostgresClient {
             DSLContext dsl = postgresClient.dsl(conn);
             if (isDefiningOntology && embeddingNodesCarryScope(dsl)) {
                 List<ScoredId> nearest = nearestEntitiesDefinedInOntology(dsl, embeddingColumn, vecLiteral,
-                        filterByType ? type : null, normalizedOntologyId, includeCurations, limit);
+                        filterByType ? type : null, normalizedOntologyId, includeCurations, includeObsoleteEntities, limit);
                 return toVectorSearchPage(dsl, nearest, pageable);
             }
 
@@ -531,11 +536,11 @@ public class OlsPostgresClient {
             int candidateLimit = nearestNeighborCandidateLimit(limit, filterByType, true);
             Select<Record2<String, Double>> candidates = fetchVectorCandidatesInOntologySelect(
                     dsl, embeddingColumn, vecLiteral, LABEL_EMBEDDING, filterByType ? type : null,
-                    normalizedOntologyId, isDefiningOntology, candidateLimit);
+                    normalizedOntologyId, isDefiningOntology, includeObsoleteEntities, candidateLimit);
             if (includeCurations) {
                 candidates = candidates.unionAll(fetchVectorCandidatesInOntologySelect(
                         dsl, embeddingColumn, vecLiteral, CURATION_EMBEDDING, filterByType ? type : null,
-                        normalizedOntologyId, isDefiningOntology, candidateLimit));
+                        normalizedOntologyId, isDefiningOntology, includeObsoleteEntities, candidateLimit));
             }
 
             return toVectorSearchPage(dsl, nearestEntities(dsl, candidates, limit), pageable);
@@ -544,29 +549,9 @@ public class OlsPostgresClient {
         }
     }
 
-    private Select<Record2<String, Double>> fetchVectorCandidatesSelect(DSLContext dsl, String embeddingColumn, String vecLiteral,
-            String embeddingType, String entityType, int candidateLimit) {
-        Table<?> emb = OLS_EMBEDDING_NODES.as("emb");
-        Table<?> en = OLS_ENTITIES.as("en");
-        Field<Object> embedding = field("emb", embeddingColumn, Object.class);
-        Field<Double> distance = vectorDistance(embedding, vecLiteral).as("dist");
-
-        Condition where = field("emb", "type", String.class).eq(embeddingType)
-                .and(embedding.isNotNull());
-        if (entityType != null) {
-            where = where.and(field("en", "type", String.class).eq(entityType));
-        }
-
-        return dsl.select(field("en", "id", String.class).as("id"), distance)
-                .from(emb)
-                .join(en).on(field("en", "id", String.class).eq(field("emb", "entity_id", String.class)))
-                .where(where)
-                .orderBy(distance.asc())
-                .limit(candidateLimit);
-    }
-
     private Select<Record2<String, Double>> fetchVectorCandidatesInOntologySelect(DSLContext dsl, String embeddingColumn, String vecLiteral,
-            String embeddingType, String entityType, String ontologyId, boolean isDefiningOntology, int candidateLimit) {
+            String embeddingType, String entityType, String ontologyId, boolean isDefiningOntology,
+            boolean includeObsoleteEntities, int candidateLimit) {
         Table<?> emb = OLS_EMBEDDING_NODES.as("emb");
         Field<Object> embedding = field("emb", embeddingColumn, Object.class);
         Field<Double> distance = vectorDistance(embedding, vecLiteral).as("dist");
@@ -578,6 +563,9 @@ public class OlsPostgresClient {
                     .and(field("en", "ontology_id", String.class).eq(ontologyId));
             if (entityType != null) {
                 where = where.and(field("en", "type", String.class).eq(entityType));
+            }
+            if (!includeObsoleteEntities) {
+                where = where.and(field("en", "is_obsolete", Boolean.class).isFalse());
             }
 
             return dsl.select(field("en", "id", String.class).as("id"), distance)
@@ -595,6 +583,11 @@ public class OlsPostgresClient {
                 .and(field("target", "ontology_id", String.class).eq(ontologyId));
         if (entityType != null) {
             where = where.and(field("target", "type", String.class).eq(entityType));
+        }
+        // An imported copy can be obsolete where the defining term is not, or the reverse, and the
+        // copy is what the caller gets back.
+        if (!includeObsoleteEntities) {
+            where = where.and(field("target", "is_obsolete", Boolean.class).isFalse());
         }
 
         return dsl.select(field("target", "id", String.class).as("id"), distance)
@@ -626,6 +619,45 @@ public class OlsPostgresClient {
     }
 
     /**
+     * The {@code limit} nearest entities across all ontologies, read from the HNSW indexes.
+     *
+     * <p>Whether an entity is obsolete, and its type, are on {@code ols_entities}, so an index scan
+     * can only apply them as it goes, row by row through the join. An ordinary scan stops after
+     * {@code hnsw.ef_search} rows, and when those are all obsolete, which a query about an old term
+     * can easily arrange, the page comes back short or empty. See approximateNearestInScope for how
+     * the scan is kept going until the page is full.
+     *
+     * <p>Results are ranked the same way whichever filters are on, so turning a filter off only adds
+     * the entities it was removing.
+     */
+    private List<ScoredId> nearestEntitiesOverall(DSLContext dsl, String embeddingColumn, String vecLiteral,
+            String entityType, boolean includeCurations, boolean includeObsoleteEntities, int limit) {
+        Table<?> emb = OLS_EMBEDDING_NODES.as("emb");
+        Table<?> en = OLS_ENTITIES.as("en");
+        Table<?> embWithEntity = emb.join(en).on(field("en", "id", String.class).eq(field("emb", "entity_id", String.class)));
+        Field<Object> embedding = field("emb", embeddingColumn, Object.class);
+        Map<String, Double> bestDistanceById = new HashMap<>();
+
+        for (String embeddingType : includeCurations
+                ? List.of(LABEL_EMBEDDING, CURATION_EMBEDDING) : List.of(LABEL_EMBEDDING)) {
+            // Inlined for the partial indexes: see nearestEntitiesDefinedInOntology.
+            Condition scope = field("emb", "type", String.class).eq(DSL.inline(embeddingType))
+                    .and(embedding.isNotNull());
+            if (entityType != null) {
+                scope = scope.and(field("en", "type", String.class).eq(entityType));
+            }
+            if (!includeObsoleteEntities) {
+                scope = scope.and(field("en", "is_obsolete", Boolean.class).isFalse());
+            }
+            for (ScoredId candidate : approximateNearestInScope(dsl, embWithEntity, embedding, vecLiteral, scope, limit)) {
+                bestDistanceById.merge(candidate.id(), candidate.distance(), OlsPostgresClient::nearer);
+            }
+        }
+
+        return nearestFirst(bestDistanceById, limit);
+    }
+
+    /**
      * The {@code limit} nearest entities among those an ontology defines, using the ontology id and
      * entity type copied onto every embedding row (GitHub issue #1445).
      *
@@ -647,12 +679,22 @@ public class OlsPostgresClient {
      * {@code limit} nearest entities of each and merging them loses nothing: an entity that belongs
      * on the page by its label distance is among the {@code limit} nearest by label, and likewise
      * for curations.
+     *
+     * <p>Obsolete entities are left out with an anti-join rather than a join, which keeps the
+     * embedding rows the driving side of the plan and so keeps both answers above as they are. The
+     * number of vectors in scope is counted without it: it is there to choose an answer, and an
+     * ontology's obsolete terms are too few to change the choice.
      */
     private List<ScoredId> nearestEntitiesDefinedInOntology(DSLContext dsl, String embeddingColumn, String vecLiteral,
-            String entityType, String ontologyId, boolean includeCurations, int limit) {
+            String entityType, String ontologyId, boolean includeCurations, boolean includeObsoleteEntities, int limit) {
         Table<?> emb = OLS_EMBEDDING_NODES.as("emb");
         Field<Object> embedding = field("emb", embeddingColumn, Object.class);
         Map<String, Double> bestDistanceById = new HashMap<>();
+        Condition notObsolete = includeObsoleteEntities ? DSL.trueCondition() : DSL.notExists(DSL.selectOne()
+                .from(OLS_ENTITIES.as("en"))
+                .where(field("en", "id", String.class).eq(field("emb", "entity_id", String.class)))
+                .and(field("en", "ontology_id", String.class).eq(ontologyId))
+                .and(field("en", "is_obsolete", Boolean.class).isTrue()));
 
         for (String embeddingType : includeCurations
                 ? List.of(LABEL_EMBEDDING, CURATION_EMBEDDING) : List.of(LABEL_EMBEDDING)) {
@@ -676,15 +718,19 @@ public class OlsPostgresClient {
             if (vectorsInScope == 0) {
                 candidates = List.of();
             } else if (ranksExactly(vectorsInScope, exactScanMax, hnswIterativeScans(dsl))) {
-                candidates = exactNearestInScope(dsl, emb, embedding, vecLiteral, scope, limit);
+                candidates = exactNearestInScope(dsl, emb, embedding, vecLiteral, scope.and(notObsolete), limit);
             } else {
-                candidates = approximateNearestInScope(dsl, emb, embedding, vecLiteral, scope, limit);
+                candidates = approximateNearestInScope(dsl, emb, embedding, vecLiteral, scope.and(notObsolete), limit);
             }
             for (ScoredId candidate : candidates) {
                 bestDistanceById.merge(candidate.id(), candidate.distance(), OlsPostgresClient::nearer);
             }
         }
 
+        return nearestFirst(bestDistanceById, limit);
+    }
+
+    private static List<ScoredId> nearestFirst(Map<String, Double> bestDistanceById, int limit) {
         return bestDistanceById.entrySet().stream()
                 .map(entry -> new ScoredId(entry.getKey(), entry.getValue()))
                 .sorted(ScoredId.NEAREST_FIRST)
@@ -744,6 +790,11 @@ public class OlsPostgresClient {
      *       planner still sorts, and the result is merely exact.</li>
      * </ul>
      *
+     * <p>A search across all ontologies has no exact answer to fall back on, so it comes here on any
+     * pgvector. Before 0.8 there is no way to continue a scan, so it starts with the largest
+     * {@code hnsw.ef_search} there is instead. That costs more on every search and a page can still
+     * come back short, but less often.
+     *
      * <p>An entity usually has several embedding rows (its label and each synonym) and they tend to
      * be close to one another, so filling a page of {@code limit} entities takes more than
      * {@code limit} rows. The row limit starts at a small multiple of the page size and is widened
@@ -756,19 +807,22 @@ public class OlsPostgresClient {
      * nearest rows it misses; if it runs out of its allowance first, the page comes back short,
      * or empty.
      */
-    private List<ScoredId> approximateNearestInScope(DSLContext dsl, Table<?> emb, Field<Object> embedding, String vecLiteral,
+    private List<ScoredId> approximateNearestInScope(DSLContext dsl, Table<?> rows, Field<Object> embedding, String vecLiteral,
             Condition scope, int limit) {
         Field<Double> distance = vectorDistance(embedding, vecLiteral).as("dist");
+        Field<String> scanReach = hnswIterativeScans(dsl)
+                ? setLocal("hnsw.iterative_scan", "relaxed_order")
+                : setLocal("hnsw.ef_search", HNSW_MAX_EF_SEARCH);
 
         long rowLimit = Math.max((long) limit * HNSW_ROWS_PER_RESULT, HNSW_MIN_ROWS);
         for (int widenings = 0; ; widenings++) {
             List<ScoredId> nearestRows = scoredIds(fetchWithLocalSettings(dsl,
                     DSL.select(field("emb", "entity_id", String.class).as("id"), distance)
-                            .from(emb)
+                            .from(rows)
                             .where(scope)
                             .orderBy(distance.asc())
                             .limit(rowLimit),
-                    setLocal("hnsw.iterative_scan", "relaxed_order"), setLocal("enable_sort", "off")));
+                    scanReach, setLocal("enable_sort", "off")));
 
             // Fewer rows than asked for means the index has nothing more to give within its scan
             // budget, so asking for more would only repeat the same scan.
@@ -817,7 +871,8 @@ public class OlsPostgresClient {
 
     /**
      * Whether the installed pgvector can continue an HNSW scan past its first batch of rows, which
-     * approximateNearestInScope depends on. Asked once; without it every scope is ranked exactly.
+     * approximateNearestInScope depends on. Asked once; without it every ontology's scope is ranked
+     * exactly.
      */
     private boolean hnswIterativeScans(DSLContext dsl) {
         Boolean supported = hnswIterativeScans;
