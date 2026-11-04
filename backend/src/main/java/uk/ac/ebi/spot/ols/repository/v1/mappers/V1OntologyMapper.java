@@ -88,18 +88,30 @@ public class V1OntologyMapper {
         ontology.loadAttempts = 0;
 
 
-        String embeddedTitle = JsonHelper.getString(localizedJson, "http://purl.org/dc/elements/1.1/title");
+        String embeddedTitle = getFirstString(localizedJson,
+                "http://purl.org/dc/elements/1.1/title", "http://purl.org/dc/terms/title");
 
         if(embeddedTitle != null) {
             ontology.config.title = embeddedTitle;
         }
 
-        String embeddedDesc = JsonHelper.getString(localizedJson, "http://purl.org/dc/elements/1.1/description");
+        String embeddedDesc = getFirstString(localizedJson,
+                "http://purl.org/dc/elements/1.1/description", "http://purl.org/dc/terms/description");
 
         if(embeddedDesc != null) {
             ontology.config.description = embeddedDesc;
         }
 
         return ontology;
+    }
+
+    private static String getFirstString(JsonObject json, String... keys) {
+        for(String key : keys) {
+            String value = JsonHelper.getString(json, key);
+            if(value != null) {
+                return value;
+            }
+        }
+        return null;
     }
 }
