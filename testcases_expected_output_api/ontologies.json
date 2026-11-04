@@ -5547,10 +5547,14 @@
         "href": "<base>/api/ontologies/subcohort/terms"
       }
     },
-    "baseUris": [],
+    "baseUris": [
+      "http://example.org/subcohort#"
+    ],
     "config": {
       "allowDownload": false,
-      "baseUris": [],
+      "baseUris": [
+        "http://example.org/subcohort#"
+      ],
       "creators": [],
       "definitionProperties": [],
       "fileLocation": "./testcases/hierarchical-properties/subcohort.owl",

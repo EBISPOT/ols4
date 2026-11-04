@@ -3,7 +3,10 @@
     "appearsIn": [
       "subcohort"
     ],
-    "curie": "Cohort",
+    "curie": "subcohort:Cohort",
+    "definedBy": [
+      "subcohort"
+    ],
     "hasDirectChildren": true,
     "hasDirectParents": false,
     "hasHierarchicalChildren": false,
@@ -13,7 +16,7 @@
     "http://www.w3.org/2000/01/rdf-schema#label": "cohort",
     "imported": false,
     "iri": "http://example.org/subcohort#Cohort",
-    "isDefiningOntology": false,
+    "isDefiningOntology": true,
     "isObsolete": false,
     "isPreferredRoot": false,
     "label": [
@@ -45,7 +48,7 @@
     "ontologyIri": "http://example.org/subcohort",
     "ontologyPreferredPrefix": "subcohort",
     "searchableAnnotationValues": false,
-    "shortForm": "Cohort",
+    "shortForm": "subcohort_Cohort",
     "type": [
       "class",
       "entity"

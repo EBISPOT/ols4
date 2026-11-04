@@ -554,7 +554,9 @@
       ]
     },
     "https://orcid.org/0000-0001-5208-3432": {
-      "label": "Nicole Vasilevsky"
+      "curie": "orcid:0000-0001-5208-3432",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "https://orcid.org/0000-0001-5208-3432"
     }
   },
   "linksTo": [
@@ -574,8 +576,7 @@
     "http://www.geneontology.org/formats/oboInOwl#source",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-    "http://www.w3.org/2004/02/skos/core#exactMatch",
-    "https://orcid.org/0000-0001-5208-3432"
+    "http://www.w3.org/2004/02/skos/core#exactMatch"
   ],
   "numDescendants": 5.0,
   "numHierarchicalDescendants": 5.0,
