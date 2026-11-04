@@ -75,8 +75,9 @@ jobs:
           java-version: '17'
           cache: maven
 
+      # Testcontainers asks for Docker API 1.32 by default, which runners on Docker 29 reject.
       - name: Run backend database integration tests
-        run: mvn -B -ntp -pl backend -am -Pintegration-tests-only verify
+        run: mvn -B -ntp -pl backend -am -Pintegration-tests-only -Dapi.version=1.44 verify
 
       - name: Upload backend integration and coverage reports
         if: always()

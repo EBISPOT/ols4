@@ -219,7 +219,7 @@ mvn -B -ntp -pl backend -am -Pintegration-tests-only verify
 
 Java 17 is required. Invoking the integration suite without an available Docker runtime must fail clearly rather than silently skipping database tests.
 
-On Rancher Desktop for macOS, local execution may also require `DOCKER_HOST` to point at `~/.rd/docker.sock`, `TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock`, and `-Dapi.version=1.44`. GitHub-hosted Linux runners use their standard Docker socket and do not need those overrides.
+On Rancher Desktop for macOS, local execution may also require `DOCKER_HOST` to point at `~/.rd/docker.sock`, `TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock`, and `-Dapi.version=1.44`. GitHub-hosted Linux runners use their standard Docker socket and need only `-Dapi.version=1.44`, which the workflow passes: without it, runners on Docker 29 fail every database test with `client version 1.32 is too old`.
 
 ## Continuous integration
 
@@ -2269,6 +2269,29 @@ fix for issue #1445 changed how a search for the entities an ontology *defines*
   passing; the hoisted vector cast is pinned only by the SQL it renders. Both were checked by
   reading plans and timing queries against a synthetic database, as recorded in the pull request
   for the issue.
+
+### Obsolete entities in vector search
+
+Vector search takes `includeObsoleteEntities`, off by default as in lexical search. Search across
+all ontologies now reads the HNSW indexes through `approximateNearestInScope`, as a large ontology's
+search already did, because one index scan stops after 40 (`hnsw.ef_search`) rows and a filter on
+`ols_entities` is only applied to those.
+
+- **`OlsPostgresClientObsoleteVectorSearchIT`** (new) puts 60 obsolete classes nearer the query than
+  anything else, so its cases show the page filling from behind them, not only that they are gone.
+  It covers search across all ontologies, each way of answering for one ontology, imported terms
+  (judged by the importing ontology's own copy) and a database without the #1445 columns. With the
+  scan not kept going (`hnsw.iterative_scan = off`) 9 of its 18 cases fail. `ZERO`, whose only vector
+  is all zeros, shows that a search across all ontologies is answered from the index.
+- **`V2LLMControllerIT`** runs every vector search route with and without the parameter, through
+  HTTP, against an obsolete class, property and individual as near the query as anything. The routes'
+  older cases run against the same rows without the parameter, which pins the default.
+- **`llm_similar` is deliberately not filtered.** It has no search-page checkbox, and the
+  `testcases_expected_output_api` baselines for `DUO_0000006` and `DUO_0000007` return the obsolete
+  `DUO:0000005` from it.
+- **Not covered by a test.** Speed, and that the anti-join leaves the HNSW scan driving the plan.
+  These were checked by reading plans on a synthetic database, as recorded in the pull request. A
+  query deep among obsolete rows can run out of `hnsw.max_scan_tuples` (20,000) and come back short.
 
 ## Implemented PostgresClient baseline
 

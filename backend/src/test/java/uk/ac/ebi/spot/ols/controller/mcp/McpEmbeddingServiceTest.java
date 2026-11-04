@@ -134,7 +134,7 @@ class McpEmbeddingServiceTest {
     void searchWithEmbeddingModelEmbedsTheQueryAndConvertsVectorPrecisely() throws IOException {
         embeddingServiceClient.vectorToReturn = new float[] {1.5f, -2.25f, 0.0f, 100.125f};
 
-        service.searchWithEmbeddingModel("liver disease", "test_model", null, null, null, null);
+        service.searchWithEmbeddingModel("liver disease", "test_model", null, null, null, null, null);
 
         assertEquals("test_model", embeddingServiceClient.lastModel);
         assertEquals("liver disease", embeddingServiceClient.lastText);
@@ -145,7 +145,7 @@ class McpEmbeddingServiceTest {
     void searchWithEmbeddingModelAppliesDefaultPaging() throws IOException {
         embeddingServiceClient.vectorToReturn = new float[] {1.0f};
 
-        service.searchWithEmbeddingModel("q", "m", null, null, null, null);
+        service.searchWithEmbeddingModel("q", "m", null, null, null, null, null);
 
         assertEquals(0, postgresClient.searchVectorPageable.getPageNumber());
         assertEquals(20, postgresClient.searchVectorPageable.getPageSize());
@@ -155,7 +155,7 @@ class McpEmbeddingServiceTest {
     void searchWithEmbeddingModelHonoursExplicitPaging() throws IOException {
         embeddingServiceClient.vectorToReturn = new float[] {1.0f};
 
-        service.searchWithEmbeddingModel("q", "m", null, null, 3, 6);
+        service.searchWithEmbeddingModel("q", "m", null, null, 3, 6, null);
 
         assertEquals(3, postgresClient.searchVectorPageable.getPageNumber());
         assertEquals(6, postgresClient.searchVectorPageable.getPageSize());
@@ -165,12 +165,12 @@ class McpEmbeddingServiceTest {
     void searchWithEmbeddingModelUsesGlobalSearchWhenOntologyIdIsNullOrEmpty() throws IOException {
         embeddingServiceClient.vectorToReturn = new float[] {1.0f};
 
-        service.searchWithEmbeddingModel("q", "m", null, null, null, null);
+        service.searchWithEmbeddingModel("q", "m", null, null, null, null, null);
         assertTrue(postgresClient.searchVectorCalled);
         assertFalse(postgresClient.searchVectorInOntologyCalled);
 
         postgresClient.searchVectorCalled = false;
-        service.searchWithEmbeddingModel("q", "m", "", null, null, null);
+        service.searchWithEmbeddingModel("q", "m", "", null, null, null, null);
         assertTrue(postgresClient.searchVectorCalled, "an empty-string ontologyId must be treated as absent");
         assertFalse(postgresClient.searchVectorInOntologyCalled);
     }
@@ -180,7 +180,7 @@ class McpEmbeddingServiceTest {
             throws IOException {
         embeddingServiceClient.vectorToReturn = new float[] {1.0f};
 
-        service.searchWithEmbeddingModel("q", "m", "efo", null, null, null);
+        service.searchWithEmbeddingModel("q", "m", "efo", null, null, null, null);
 
         assertTrue(postgresClient.searchVectorInOntologyCalled);
         assertFalse(postgresClient.searchVectorCalled);
@@ -193,7 +193,7 @@ class McpEmbeddingServiceTest {
     void searchWithEmbeddingModelUsesOntologyEntityAsTheSearchScopeForTheGlobalSearch() throws IOException {
         embeddingServiceClient.vectorToReturn = new float[] {1.0f};
 
-        service.searchWithEmbeddingModel("q", "m", null, null, null, null);
+        service.searchWithEmbeddingModel("q", "m", null, null, null, null, null);
 
         // Unlike McpClassService.searchClassesWithEmbeddingModel (which passes "OntologyClass"),
         // this method passes "OntologyClass"'s sibling sentinel "OntologyEntity" -- confirmed by
@@ -207,7 +207,7 @@ class McpEmbeddingServiceTest {
             throws IOException {
         embeddingServiceClient.vectorToReturn = new float[] {1.0f};
 
-        service.searchWithEmbeddingModel("q", "m", "efo", null, null, null);
+        service.searchWithEmbeddingModel("q", "m", "efo", null, null, null, null);
 
         assertEquals("OntologyEntity", postgresClient.searchVectorInOntologyType);
     }
@@ -216,21 +216,41 @@ class McpEmbeddingServiceTest {
     void searchWithEmbeddingModelResolvesIncludeCurationsNullAndExplicitTrueToTrue() throws IOException {
         embeddingServiceClient.vectorToReturn = new float[] {1.0f};
 
-        service.searchWithEmbeddingModel("q", "m", null, null, null, null);
+        service.searchWithEmbeddingModel("q", "m", null, null, null, null, null);
         assertTrue(postgresClient.searchVectorIncludeCurations);
 
-        service.searchWithEmbeddingModel("q", "m", null, true, null, null);
+        service.searchWithEmbeddingModel("q", "m", null, true, null, null, null);
         assertTrue(postgresClient.searchVectorIncludeCurations);
 
-        service.searchWithEmbeddingModel("q", "m", null, false, null, null);
+        service.searchWithEmbeddingModel("q", "m", null, false, null, null, null);
         assertFalse(postgresClient.searchVectorIncludeCurations);
+    }
+
+    @Test
+    void searchWithEmbeddingModelResolvesIncludeObsoleteEntitiesNullAndExplicitFalseToFalse() throws IOException {
+        embeddingServiceClient.vectorToReturn = new float[] {1.0f};
+
+        service.searchWithEmbeddingModel("q", "m", null, null, null, null, null);
+        assertFalse(postgresClient.searchVectorIncludeObsoleteEntities);
+
+        service.searchWithEmbeddingModel("q", "m", null, null, null, null, false);
+        assertFalse(postgresClient.searchVectorIncludeObsoleteEntities);
+
+        service.searchWithEmbeddingModel("q", "m", null, null, null, null, true);
+        assertTrue(postgresClient.searchVectorIncludeObsoleteEntities);
+
+        service.searchWithEmbeddingModel("q", "m", "efo", null, null, null, null);
+        assertFalse(postgresClient.searchVectorInOntologyIncludeObsoleteEntities);
+
+        service.searchWithEmbeddingModel("q", "m", "efo", null, null, null, true);
+        assertTrue(postgresClient.searchVectorInOntologyIncludeObsoleteEntities);
     }
 
     @Test
     void searchWithEmbeddingModelResolvesIncludeCurationsForTheOntologyScopedSearchTheSameWay() throws IOException {
         embeddingServiceClient.vectorToReturn = new float[] {1.0f};
 
-        service.searchWithEmbeddingModel("q", "m", "efo", false, null, null);
+        service.searchWithEmbeddingModel("q", "m", "efo", false, null, null, null);
 
         assertFalse(postgresClient.searchVectorInOntologyIncludeCurations);
     }
@@ -247,7 +267,7 @@ class McpEmbeddingServiceTest {
         embeddingServiceClient.vectorToReturn = new float[] {1.0f};
         postgresClient.pageResult = plainPage(entityWithGermanOnlyLabel());
 
-        McpPage<McpSearchResult> result = service.searchWithEmbeddingModel("q", "m", null, null, null, null);
+        McpPage<McpSearchResult> result = service.searchWithEmbeddingModel("q", "m", null, null, null, null, null);
 
         assertEquals("EFO:X null", result.items().get(0).title);
     }
@@ -257,7 +277,7 @@ class McpEmbeddingServiceTest {
         embeddingServiceClient.vectorToReturn = new float[] {1.0f};
         postgresClient.pageResult = plainPage(entityWithEnglishLabel());
 
-        McpPage<McpSearchResult> result = service.searchWithEmbeddingModel("q", "m", null, null, null, null);
+        McpPage<McpSearchResult> result = service.searchWithEmbeddingModel("q", "m", null, null, null, null, null);
 
         assertEquals("EFO:Y English Label", result.items().get(0).title);
     }
@@ -270,7 +290,7 @@ class McpEmbeddingServiceTest {
                         "http://example.org/EFO_0001", "efo", "EFO:0001", "Liver disease", false))),
                 PageRequest.of(0, 20), 1);
 
-        McpPage<McpSearchResult> result = service.searchWithEmbeddingModel("q", "m", null, null, null, null);
+        McpPage<McpSearchResult> result = service.searchWithEmbeddingModel("q", "m", null, null, null, null, null);
 
         assertEquals(1, result.items().size());
         McpSearchResult mapped = result.items().get(0);
@@ -290,7 +310,7 @@ class McpEmbeddingServiceTest {
         postgresClient.pageResult = plainPage(searchResultJson(
                 "http://example.org/EFO_0999", "efo", "EFO:0999", "Legacy liver concept", true));
 
-        McpPage<McpSearchResult> result = service.searchWithEmbeddingModel("q", "m", null, null, null, null);
+        McpPage<McpSearchResult> result = service.searchWithEmbeddingModel("q", "m", null, null, null, null, null);
 
         assertTrue(result.items().get(0).isObsolete);
     }
@@ -383,6 +403,7 @@ class McpEmbeddingServiceTest {
         private Pageable searchVectorPageable;
         private String searchVectorModel;
         private boolean searchVectorIncludeCurations;
+        private boolean searchVectorIncludeObsoleteEntities;
 
         private boolean searchVectorInOntologyCalled;
         private String searchVectorInOntologyType;
@@ -392,6 +413,7 @@ class McpEmbeddingServiceTest {
         private String searchVectorInOntologyOntologyId;
         private boolean searchVectorInOntologyIsDefiningOntology;
         private boolean searchVectorInOntologyIncludeCurations;
+        private boolean searchVectorInOntologyIncludeObsoleteEntities;
 
         @Override
         public List<String> getEmbeddingModels() {
@@ -400,8 +422,10 @@ class McpEmbeddingServiceTest {
 
         @Override
         public Page<JsonElement> searchByVector(
-                String type, List<Double> vector, Pageable pageable, String modelName, boolean includeCurations) {
+                String type, List<Double> vector, Pageable pageable, String modelName, boolean includeCurations,
+                boolean includeObsoleteEntities) {
             this.searchVectorCalled = true;
+            this.searchVectorIncludeObsoleteEntities = includeObsoleteEntities;
             this.searchVectorType = type;
             this.searchVectorVector = vector;
             this.searchVectorPageable = pageable;
@@ -413,8 +437,10 @@ class McpEmbeddingServiceTest {
         @Override
         public Page<JsonElement> searchByVectorInOntology(
                 String type, List<Double> vector, Pageable pageable, String modelName, String ontologyId,
-                boolean isDefiningOntology, boolean includeCurations) {
+                boolean isDefiningOntology, boolean includeCurations,
+                boolean includeObsoleteEntities) {
             this.searchVectorInOntologyCalled = true;
+            this.searchVectorInOntologyIncludeObsoleteEntities = includeObsoleteEntities;
             this.searchVectorInOntologyType = type;
             this.searchVectorInOntologyVector = vector;
             this.searchVectorInOntologyPageable = pageable;
