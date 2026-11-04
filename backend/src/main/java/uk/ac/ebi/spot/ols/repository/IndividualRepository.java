@@ -105,7 +105,7 @@ public class IndividualRepository {
                 outputOpts));
     }
 
-    public Page<JsonElement> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
+    public Page<JsonElement> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean excludeRedundantEdges, String lang, JsonTransformOptions outputOpts) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -114,7 +114,7 @@ public class IndividualRepository {
 
         Map<String, String> nodeProps = individualNodeProperties(includeObsolete);
 
-        return this.postgresClient.getHierarchicalChildren(id, nodeProps, pageable)
+        return this.postgresClient.getHierarchicalChildren(id, nodeProps, pageable, excludeRedundantEdges)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }

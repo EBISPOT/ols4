@@ -50,7 +50,7 @@ class ClassRepositoryIT {
     @Test
     void returnsDirectChildrenAndAncestorsFromProductionHierarchyColumns() {
         Page<JsonElement> children = repository.getChildrenByOntologyId(
-                "efo", PageRequest.of(0, 20), ROOT_IRI, false, null, "en",
+                "efo", PageRequest.of(0, 20), ROOT_IRI, false, false, null, "en",
                 new JsonTransformOptions());
         Page<JsonElement> ancestors = repository.getAncestorsByOntologyId(
                 "efo", PageRequest.of(0, 20), CHILD_IRI, false, "en",
@@ -158,13 +158,13 @@ class ClassRepositoryIT {
     @Test
     void filtersObsoleteChildrenAndSupportsChildLabelSearch() {
         Page<JsonElement> active = repository.getChildrenByOntologyId(
-                "efo", PageRequest.of(0, 20), ROOT_IRI, false, null, "en",
+                "efo", PageRequest.of(0, 20), ROOT_IRI, false, false, null, "en",
                 new JsonTransformOptions());
         Page<JsonElement> all = repository.getChildrenByOntologyId(
-                "efo", PageRequest.of(0, 20), ROOT_IRI, true, null, "en",
+                "efo", PageRequest.of(0, 20), ROOT_IRI, true, false, null, "en",
                 new JsonTransformOptions());
         Page<JsonElement> searched = repository.getChildrenByOntologyId(
-                "efo", PageRequest.of(0, 20), ROOT_IRI, false, "clinical", "en",
+                "efo", PageRequest.of(0, 20), ROOT_IRI, false, false, "clinical", "en",
                 new JsonTransformOptions());
 
         assertThat(iris(active)).containsExactly(CHILD_IRI);
@@ -180,13 +180,32 @@ class ClassRepositoryIT {
         assertThat(iris(repository.getDescendantsByOntologyId(
                 "efo", page, ROOT_IRI, false, "en", options))).containsExactly(CHILD_IRI);
         assertThat(iris(repository.getHierarchicalChildrenByOntologyId(
-                "efo", page, ROOT_IRI, false, "en", options))).containsExactly(CHILD_IRI);
+                "efo", page, ROOT_IRI, false, false, "en", options))).containsExactly(CHILD_IRI);
         assertThat(iris(repository.getHierarchicalAncestorsByOntologyId(
                 "efo", page, CHILD_IRI, false, "en", options))).containsExactly(ROOT_IRI);
         assertThat(iris(repository.getHierarchicalDescendantsByOntologyId(
                 "efo", page, ROOT_IRI, false, "en", options))).containsExactly(CHILD_IRI);
         assertThat(iris(repository.getIndividualAncestorsByOntologyId(
                 "efo", page, INDIVIDUAL_IRI, false, "en", options))).containsExactly(ROOT_IRI);
+    }
+
+    @Test
+    void excludingRedundantEdgesKeepsChildrenWithASingleHierarchicalParent() {
+        // The class fixture has no redundant edge (EFO_1001's only parent is EFO_0001), so the
+        // reduced queries must return exactly what the unreduced ones do. The semantics of the
+        // reduction itself are proven against a dedicated fixture in OlsPostgresClientGraphIT.
+        JsonTransformOptions options = new JsonTransformOptions();
+        PageRequest page = PageRequest.of(0, 20);
+
+        Page<JsonElement> children = repository.getChildrenByOntologyId(
+                "efo", page, ROOT_IRI, false, true, null, "en", options);
+        Page<JsonElement> hierarchicalChildren = repository.getHierarchicalChildrenByOntologyId(
+                "efo", page, ROOT_IRI, false, true, "en", options);
+
+        assertThat(iris(children)).containsExactly(CHILD_IRI);
+        assertThat(children.getTotalElements()).isEqualTo(1);
+        assertThat(iris(hierarchicalChildren)).containsExactly(CHILD_IRI);
+        assertThat(hierarchicalChildren.getTotalElements()).isEqualTo(1);
     }
 
     @Test
@@ -206,7 +225,7 @@ class ClassRepositoryIT {
                 "efo/unsafe", ROOT_IRI, page, "en", options))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> repository.getChildrenByOntologyId(
-                "efo", page, ROOT_IRI, false, null, "en_US", options))
+                "efo", page, ROOT_IRI, false, false, null, "en_US", options))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> repository.getAncestorsByOntologyId(
                 "efo/unsafe", page, CHILD_IRI, false, "en", options))
@@ -215,7 +234,7 @@ class ClassRepositoryIT {
                 "efo/unsafe", page, ROOT_IRI, false, "en", options))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> repository.getHierarchicalChildrenByOntologyId(
-                "efo/unsafe", page, ROOT_IRI, false, "en", options))
+                "efo/unsafe", page, ROOT_IRI, false, false, "en", options))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> repository.getHierarchicalAncestorsByOntologyId(
                 "efo/unsafe", page, CHILD_IRI, false, "en", options))

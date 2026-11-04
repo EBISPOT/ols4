@@ -47,6 +47,15 @@ import static org.assertj.core.api.Assertions.assertThat;
  *       deliberately excluded from every {@code graphtest}-scoped lookup, proving the
  *       same-ontology-only join condition on both the targets and sources side.</li>
  * </ul>
+ *
+ * <p>The fixture also carries a self-contained {@code GRAPH_RED_*} sub-graph (rooted at
+ * {@code GRAPH_RED_A}, never referencing the records above) for the {@code excludeRedundantEdges}
+ * overloads of {@code getDirectChildren}/{@code getHierarchicalChildren} -- the transitive reduction
+ * of the hierarchy behind GitHub issue #1252, implemented by the private
+ * {@code redundantEdgeWitness} subquery. Each record's {@code definition} states which rule of the
+ * reduction it exists to prove: the canonical {@code c is_a a, c part_of b, b is_a a} case, a longer
+ * chain, independent parents, an obsolete witness, a witness of another type, a witness from another
+ * ontology, two shapes of hierarchical cycle, and an individuals-only hierarchy.
  */
 class OlsPostgresClientGraphIT {
 
@@ -81,7 +90,33 @@ class OlsPostgresClientGraphIT {
     private static final String GRAPH_GRANDCHILD = "graphtest+class+http://example.org/GRAPH_GRANDCHILD";
     private static final String GRAPH_RELATED = "graphtest+class+http://example.org/GRAPH_RELATED";
 
+    private static final String RED_A = "graphtest+class+http://example.org/GRAPH_RED_A";
+    private static final String RED_B = "graphtest+class+http://example.org/GRAPH_RED_B";
+    private static final String RED_C = "graphtest+class+http://example.org/GRAPH_RED_C";
+    private static final String RED_C2 = "graphtest+class+http://example.org/GRAPH_RED_C2";
+    private static final String RED_C3 = "graphtest+class+http://example.org/GRAPH_RED_C3";
+    private static final String RED_D = "graphtest+class+http://example.org/GRAPH_RED_D";
+    private static final String RED_E = "graphtest+class+http://example.org/GRAPH_RED_E";
+    private static final String RED_F = "graphtest+class+http://example.org/GRAPH_RED_F";
+    private static final String RED_OBS = "graphtest+class+http://example.org/GRAPH_RED_OBS";
+    private static final String RED_G = "graphtest+class+http://example.org/GRAPH_RED_G";
+    private static final String RED_H = "graphtest+class+http://example.org/GRAPH_RED_H";
+    private static final String RED_X = "graphtest+class+http://example.org/GRAPH_RED_X";
+    private static final String RED_Y = "graphtest+class+http://example.org/GRAPH_RED_Y";
+    private static final String RED_P = "graphtest+class+http://example.org/GRAPH_RED_P";
+    private static final String RED_Q = "graphtest+class+http://example.org/GRAPH_RED_Q";
+    private static final String RED_R = "graphtest+class+http://example.org/GRAPH_RED_R";
+    private static final String RED_IND = "graphtest+individual+http://example.org/GRAPH_RED_IND";
+    private static final String RED_I_PARENT = "graphtest+individual+http://example.org/GRAPH_RED_I_PARENT";
+    private static final String RED_I_MID = "graphtest+individual+http://example.org/GRAPH_RED_I_MID";
+    private static final String RED_I_LEAF = "graphtest+individual+http://example.org/GRAPH_RED_I_LEAF";
+
+    private static final Map<String, String> ACTIVE_CLASSES = Map.of("type", "OntologyClass", "isObsolete", "false");
+    private static final Map<String, String> ALL_CLASSES = Map.of("type", "OntologyClass");
+    private static final Map<String, String> ACTIVE_INDIVIDUALS = Map.of("type", "OntologyIndividual", "isObsolete", "false");
+
     private static final PageRequest ANY_PAGEABLE = PageRequest.of(0, 10);
+    private static final PageRequest LARGE_PAGEABLE = PageRequest.of(0, 100);
 
     private static List<String> ids(Page<JsonElement> page) {
         return page.getContent().stream()
@@ -266,5 +301,130 @@ class OlsPostgresClientGraphIT {
         Page<JsonElement> page = client.getRelatedFrom(GRAPH_RELATED, Map.of(), ANY_PAGEABLE);
 
         assertThat(ids(page)).containsExactly(GRAPH_CHILD_ACTIVE);
+    }
+
+    // ------------------------------------------------------------------
+    // excludeRedundantEdges -- the getDirectChildren 5-arg and getHierarchicalChildren 4-arg
+    // overloads, backed by lookupArraySources + redundantEdgeWitness (GitHub issue #1252).
+    // ------------------------------------------------------------------
+
+    @Test
+    void hierarchicalChildrenKeepEveryEdgeUnlessRedundantEdgesAreExcluded() {
+        Page<JsonElement> threeArg = client.getHierarchicalChildren(RED_A, ACTIVE_CLASSES, LARGE_PAGEABLE);
+        Page<JsonElement> explicitFalse = client.getHierarchicalChildren(RED_A, ACTIVE_CLASSES, LARGE_PAGEABLE, false);
+
+        assertThat(ids(threeArg)).containsExactlyInAnyOrder(
+                RED_B, RED_C, RED_C2, RED_C3, RED_D, RED_F, RED_G, RED_X, RED_Y);
+        assertThat(ids(explicitFalse)).containsExactlyInAnyOrderElementsOf(ids(threeArg));
+        assertThat(explicitFalse.getTotalElements()).isEqualTo(9);
+    }
+
+    @Test
+    void excludingRedundantEdgesDropsChildrenAlreadyReachableThroughAMoreSpecificParent() {
+        // C: is_a A and part_of B (B is_a A) -- the canonical case from the issue.
+        // D: is_a A and part_of E, E part_of B, B is_a A -- the same over a longer chain.
+        Page<JsonElement> page = client.getHierarchicalChildren(RED_A, ACTIVE_CLASSES, LARGE_PAGEABLE, true);
+
+        assertThat(ids(page)).containsExactlyInAnyOrder(RED_B, RED_C2, RED_C3, RED_F, RED_G, RED_X, RED_Y);
+        // The count query applies the same reduction as the page query.
+        assertThat(page.getTotalElements()).isEqualTo(7);
+    }
+
+    @Test
+    void excludingRedundantEdgesKeepsTheMoreSpecificEdge() {
+        assertThat(ids(client.getHierarchicalChildren(RED_B, ACTIVE_CLASSES, LARGE_PAGEABLE, true)))
+                .containsExactlyInAnyOrder(RED_C, RED_E);
+        assertThat(ids(client.getHierarchicalChildren(RED_E, ACTIVE_CLASSES, LARGE_PAGEABLE, true)))
+                .containsExactly(RED_D);
+    }
+
+    @Test
+    void excludingRedundantEdgesAppliesToDirectChildrenToo() {
+        Page<JsonElement> reduced = client.getDirectChildren(RED_A, ACTIVE_CLASSES, LARGE_PAGEABLE, null, true);
+        Page<JsonElement> all = client.getDirectChildren(RED_A, ACTIVE_CLASSES, LARGE_PAGEABLE, null, false);
+
+        assertThat(ids(reduced)).containsExactlyInAnyOrder(RED_B, RED_C2, RED_C3, RED_F, RED_G, RED_X, RED_Y);
+        assertThat(ids(all)).containsExactlyInAnyOrder(
+                RED_B, RED_C, RED_C2, RED_C3, RED_D, RED_F, RED_G, RED_X, RED_Y);
+    }
+
+    @Test
+    void excludingRedundantEdgesCombinesWithTheLabelSearch() {
+        // "redundancy c" matches C, C2 and C3; only C's edge to A is redundant.
+        Page<JsonElement> page = client.getDirectChildren(RED_A, ACTIVE_CLASSES, LARGE_PAGEABLE, "redundancy c", true);
+
+        assertThat(ids(page)).containsExactlyInAnyOrder(RED_C2, RED_C3);
+    }
+
+    @Test
+    void anObsoleteWitnessOnlyCountsWhenObsoleteEntitiesAreIncluded() {
+        // F: is_a A and part_of OBS, with OBS obsolete and is_a A. While obsolete entities are hidden
+        // the path through OBS is invisible, so F must keep its edge to A...
+        assertThat(ids(client.getHierarchicalChildren(RED_A, ACTIVE_CLASSES, LARGE_PAGEABLE, true)))
+                .contains(RED_F);
+
+        // ...but once they are shown, F is reachable through OBS and its edge to A is redundant.
+        Page<JsonElement> withObsolete = client.getHierarchicalChildren(RED_A, ALL_CLASSES, LARGE_PAGEABLE, true);
+        assertThat(ids(withObsolete)).contains(RED_OBS).doesNotContain(RED_F);
+    }
+
+    @Test
+    void aWitnessOfAnotherTypeOnlyCountsWithoutTheTypeFilter() {
+        // C2's only other hierarchical parent is the OntologyIndividual row IND.
+        assertThat(ids(client.getHierarchicalChildren(RED_A, ALL_CLASSES, LARGE_PAGEABLE, true)))
+                .contains(RED_C2);
+
+        Page<JsonElement> untyped = client.getHierarchicalChildren(RED_A, Map.of(), LARGE_PAGEABLE, true);
+        assertThat(ids(untyped)).contains(RED_IND).doesNotContain(RED_C2);
+    }
+
+    @Test
+    void aWitnessFromAnotherOntologyIsIgnored() {
+        // C3's other hierarchical parent IRI only exists in graphtest2 (GRAPH_RED_Z), which lists A
+        // as an ancestor -- it must not be able to make C3's edge redundant within graphtest.
+        assertThat(ids(client.getHierarchicalChildren(RED_A, Map.of(), LARGE_PAGEABLE, true)))
+                .contains(RED_C3);
+    }
+
+    @Test
+    void independentParentsAreNeverRedundant() {
+        // G: is_a A and part_of H, with H unrelated to A.
+        assertThat(ids(client.getHierarchicalChildren(RED_A, ACTIVE_CLASSES, LARGE_PAGEABLE, true)))
+                .contains(RED_G);
+        assertThat(ids(client.getHierarchicalChildren(RED_H, ACTIVE_CLASSES, LARGE_PAGEABLE, true)))
+                .containsExactly(RED_G);
+    }
+
+    @Test
+    void edgesBetweenMembersOfAHierarchicalCycleAreNeverRedundant() {
+        // X <-> Y is a cycle and both are is_a A: neither is a "more specific" path to the other,
+        // so both keep their edge to A (dropping both would disconnect them from A entirely).
+        assertThat(ids(client.getHierarchicalChildren(RED_A, ACTIVE_CLASSES, LARGE_PAGEABLE, true)))
+                .contains(RED_X, RED_Y);
+
+        // P <-> Q is a cycle between two parents of R: R stays under both, and the cycle edges
+        // themselves are kept.
+        assertThat(ids(client.getHierarchicalChildren(RED_P, ACTIVE_CLASSES, LARGE_PAGEABLE, true)))
+                .containsExactlyInAnyOrder(RED_Q, RED_R);
+        assertThat(ids(client.getHierarchicalChildren(RED_Q, ACTIVE_CLASSES, LARGE_PAGEABLE, true)))
+                .containsExactlyInAnyOrder(RED_P, RED_R);
+    }
+
+    @Test
+    void excludingRedundantEdgesWorksForIndividualHierarchies() {
+        assertThat(ids(client.getHierarchicalChildren(RED_I_PARENT, ACTIVE_INDIVIDUALS, LARGE_PAGEABLE, false)))
+                .containsExactlyInAnyOrder(RED_I_MID, RED_I_LEAF);
+        assertThat(ids(client.getHierarchicalChildren(RED_I_PARENT, ACTIVE_INDIVIDUALS, LARGE_PAGEABLE, true)))
+                .containsExactly(RED_I_MID);
+        assertThat(ids(client.getHierarchicalChildren(RED_I_MID, ACTIVE_INDIVIDUALS, LARGE_PAGEABLE, true)))
+                .containsExactly(RED_I_LEAF);
+    }
+
+    @Test
+    void excludingRedundantEdgesLeavesSingleParentChildrenUntouched() {
+        // GRAPH_PARENT's children each have exactly one hierarchical parent: nothing is redundant.
+        Page<JsonElement> page = client.getHierarchicalChildren(GRAPH_PARENT, Map.of(), ANY_PAGEABLE, true);
+
+        assertThat(ids(page)).containsExactlyInAnyOrder(GRAPH_CHILD_ACTIVE, GRAPH_CHILD_OBSOLETE, GRAPH_CHILD_PROPERTY);
     }
 }

@@ -599,8 +599,8 @@ class McpClassServiceTest {
 
         @Override
         public Page<JsonElement> getChildrenByOntologyId(
-                String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String search,
-                String lang, JsonTransformOptions outputOpts) {
+                String ontologyId, Pageable pageable, String iri, boolean includeObsolete,
+                boolean excludeRedundantEdges, String search, String lang, JsonTransformOptions outputOpts) {
             this.childrenOntologyId = ontologyId;
             this.childrenPageable = pageable;
             this.childrenIri = iri;
