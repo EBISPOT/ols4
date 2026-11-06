@@ -1,0 +1,496 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "native",
+      "iri": "https://example.org/native",
+      "type": [
+        "ontology"
+      ],
+      "title": "ECTO-shaped native browsing fixture",
+      "preferredRoot": [
+        "https://example.org/native#R",
+        "https://example.org/native#Z"
+      ],
+      "classes": [
+        {
+          "iri": "https://example.org/native#R",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "label": [
+            "Imported root"
+          ],
+          "ontologyId": "native",
+          "ontologyIri": "https://example.org/native",
+          "shortForm": "R",
+          "curie": "NATIVE:R",
+          "isDefiningOntology": false,
+          "imported": true,
+          "isObsolete": false,
+          "isPreferredRoot": true,
+          "directParent": [],
+          "hierarchicalParent": [],
+          "directAncestor": [],
+          "hierarchicalAncestor": [],
+          "hasDirectParents": false,
+          "hasHierarchicalParents": false,
+          "hasDirectChildren": true,
+          "hasHierarchicalChildren": true,
+          "numDescendants": 6,
+          "numHierarchicalDescendants": 6,
+          "hasIndividuals": false
+        },
+        {
+          "iri": "https://example.org/native#K",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "label": [
+            "Imported connector"
+          ],
+          "ontologyId": "native",
+          "ontologyIri": "https://example.org/native",
+          "shortForm": "K",
+          "curie": "NATIVE:K",
+          "isDefiningOntology": false,
+          "imported": true,
+          "isObsolete": true,
+          "isPreferredRoot": false,
+          "directParent": [
+            "https://example.org/native#R"
+          ],
+          "hierarchicalParent": [
+            "https://example.org/native#R"
+          ],
+          "directAncestor": [
+            "https://example.org/native#R"
+          ],
+          "hierarchicalAncestor": [
+            "https://example.org/native#R"
+          ],
+          "hasDirectParents": true,
+          "hasHierarchicalParents": true,
+          "hasDirectChildren": true,
+          "hasHierarchicalChildren": true,
+          "numDescendants": 2,
+          "numHierarchicalDescendants": 2,
+          "hasIndividuals": true
+        },
+        {
+          "iri": "https://example.org/native#C",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "label": [
+            "Native selected class"
+          ],
+          "ontologyId": "native",
+          "ontologyIri": "https://example.org/native",
+          "shortForm": "C",
+          "curie": "NATIVE:C",
+          "isDefiningOntology": true,
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "directParent": [
+            "https://example.org/native#K"
+          ],
+          "hierarchicalParent": [
+            "https://example.org/native#K"
+          ],
+          "directAncestor": [
+            "https://example.org/native#K",
+            "https://example.org/native#R"
+          ],
+          "hierarchicalAncestor": [
+            "https://example.org/native#K",
+            "https://example.org/native#R"
+          ],
+          "hasDirectParents": true,
+          "hasHierarchicalParents": true,
+          "hasDirectChildren": false,
+          "hasHierarchicalChildren": false,
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "hasIndividuals": false,
+          "http://www.geneontology.org/formats/oboInOwl#inSubset": [
+            "https://example.org/native#S"
+          ]
+        },
+        {
+          "iri": "https://example.org/native#D",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "label": [
+            "Imported dead branch"
+          ],
+          "ontologyId": "native",
+          "ontologyIri": "https://example.org/native",
+          "shortForm": "D",
+          "curie": "NATIVE:D",
+          "isDefiningOntology": false,
+          "imported": true,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "directParent": [
+            "https://example.org/native#R"
+          ],
+          "hierarchicalParent": [
+            "https://example.org/native#R"
+          ],
+          "directAncestor": [
+            "https://example.org/native#R"
+          ],
+          "hierarchicalAncestor": [
+            "https://example.org/native#R"
+          ],
+          "hasDirectParents": true,
+          "hasHierarchicalParents": true,
+          "hasDirectChildren": true,
+          "hasHierarchicalChildren": true,
+          "numDescendants": 2,
+          "numHierarchicalDescendants": 2,
+          "hasIndividuals": false
+        },
+        {
+          "iri": "https://example.org/native#X",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "label": [
+            "Imported selected member"
+          ],
+          "ontologyId": "native",
+          "ontologyIri": "https://example.org/native",
+          "shortForm": "X",
+          "curie": "NATIVE:X",
+          "isDefiningOntology": false,
+          "imported": true,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "directParent": [
+            "https://example.org/native#D"
+          ],
+          "hierarchicalParent": [
+            "https://example.org/native#D"
+          ],
+          "directAncestor": [
+            "https://example.org/native#D",
+            "https://example.org/native#R"
+          ],
+          "hierarchicalAncestor": [
+            "https://example.org/native#D",
+            "https://example.org/native#R"
+          ],
+          "hasDirectParents": true,
+          "hasHierarchicalParents": true,
+          "hasDirectChildren": false,
+          "hasHierarchicalChildren": false,
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "hasIndividuals": false,
+          "http://www.geneontology.org/formats/oboInOwl#inSubset": [
+            "https://example.org/native#S"
+          ]
+        },
+        {
+          "iri": "https://example.org/native#N",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "label": [
+            "Native outside subset"
+          ],
+          "ontologyId": "native",
+          "ontologyIri": "https://example.org/native",
+          "shortForm": "N",
+          "curie": "NATIVE:N",
+          "isDefiningOntology": true,
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "directParent": [
+            "https://example.org/native#D"
+          ],
+          "hierarchicalParent": [
+            "https://example.org/native#D"
+          ],
+          "directAncestor": [
+            "https://example.org/native#D",
+            "https://example.org/native#R"
+          ],
+          "hierarchicalAncestor": [
+            "https://example.org/native#D",
+            "https://example.org/native#R"
+          ],
+          "hasDirectParents": true,
+          "hasHierarchicalParents": true,
+          "hasDirectChildren": false,
+          "hasHierarchicalChildren": false,
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "hasIndividuals": false
+        },
+        {
+          "iri": "https://example.org/native#Z",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "label": [
+            "Unrelated imported root"
+          ],
+          "ontologyId": "native",
+          "ontologyIri": "https://example.org/native",
+          "shortForm": "Z",
+          "curie": "NATIVE:Z",
+          "isDefiningOntology": false,
+          "imported": true,
+          "isObsolete": false,
+          "isPreferredRoot": true,
+          "directParent": [],
+          "hierarchicalParent": [],
+          "directAncestor": [],
+          "hierarchicalAncestor": [],
+          "hasDirectParents": false,
+          "hasHierarchicalParents": false,
+          "hasDirectChildren": true,
+          "hasHierarchicalChildren": true,
+          "numDescendants": 1,
+          "numHierarchicalDescendants": 1,
+          "hasIndividuals": false
+        },
+        {
+          "iri": "https://example.org/native#O",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "label": [
+            "Obsolete native member"
+          ],
+          "ontologyId": "native",
+          "ontologyIri": "https://example.org/native",
+          "shortForm": "O",
+          "curie": "NATIVE:O",
+          "isDefiningOntology": true,
+          "imported": false,
+          "isObsolete": true,
+          "isPreferredRoot": false,
+          "directParent": [
+            "https://example.org/native#Z"
+          ],
+          "hierarchicalParent": [
+            "https://example.org/native#Z"
+          ],
+          "directAncestor": [
+            "https://example.org/native#Z"
+          ],
+          "hierarchicalAncestor": [
+            "https://example.org/native#Z"
+          ],
+          "hasDirectParents": true,
+          "hasHierarchicalParents": true,
+          "hasDirectChildren": false,
+          "hasHierarchicalChildren": false,
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "hasIndividuals": false,
+          "http://www.geneontology.org/formats/oboInOwl#inSubset": [
+            "https://example.org/native#S"
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "iri": "https://example.org/native#P",
+          "type": [
+            "property",
+            "entity"
+          ],
+          "label": [
+            "Imported property root"
+          ],
+          "ontologyId": "native",
+          "ontologyIri": "https://example.org/native",
+          "shortForm": "P",
+          "curie": "NATIVE:P",
+          "isDefiningOntology": false,
+          "imported": true,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "directParent": [],
+          "hierarchicalParent": [],
+          "directAncestor": [],
+          "hierarchicalAncestor": [],
+          "hasDirectParents": false,
+          "hasHierarchicalParents": false,
+          "hasDirectChildren": true,
+          "hasHierarchicalChildren": true,
+          "numDescendants": 1,
+          "numHierarchicalDescendants": 1,
+          "hasIndividuals": false
+        },
+        {
+          "iri": "https://example.org/native#Q",
+          "type": [
+            "property",
+            "entity"
+          ],
+          "label": [
+            "Native property"
+          ],
+          "ontologyId": "native",
+          "ontologyIri": "https://example.org/native",
+          "shortForm": "Q",
+          "curie": "NATIVE:Q",
+          "isDefiningOntology": true,
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "directParent": [
+            "https://example.org/native#P"
+          ],
+          "hierarchicalParent": [
+            "https://example.org/native#P"
+          ],
+          "directAncestor": [
+            "https://example.org/native#P"
+          ],
+          "hierarchicalAncestor": [
+            "https://example.org/native#P"
+          ],
+          "hasDirectParents": true,
+          "hasHierarchicalParents": true,
+          "hasDirectChildren": false,
+          "hasHierarchicalChildren": false,
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "hasIndividuals": false
+        },
+        {
+          "iri": "https://example.org/native#S",
+          "type": [
+            "property",
+            "entity"
+          ],
+          "label": [
+            "Native subset S"
+          ],
+          "ontologyId": "native",
+          "isDefiningOntology": true,
+          "directParent": [
+            "http://www.geneontology.org/formats/oboInOwl#SubsetProperty"
+          ],
+          "directAncestor": [
+            "http://www.geneontology.org/formats/oboInOwl#SubsetProperty"
+          ],
+          "hierarchicalAncestor": [
+            "http://www.geneontology.org/formats/oboInOwl#SubsetProperty"
+          ],
+          "isObsolete": false,
+          "hasDirectParents": true
+        },
+        {
+          "iri": "https://example.org/native#S2",
+          "type": [
+            "property",
+            "entity"
+          ],
+          "label": [
+            "Native subset S2"
+          ],
+          "ontologyId": "native",
+          "isDefiningOntology": true,
+          "directParent": [
+            "http://www.geneontology.org/formats/oboInOwl#SubsetProperty"
+          ],
+          "directAncestor": [
+            "http://www.geneontology.org/formats/oboInOwl#SubsetProperty"
+          ],
+          "hierarchicalAncestor": [
+            "http://www.geneontology.org/formats/oboInOwl#SubsetProperty"
+          ],
+          "isObsolete": false,
+          "hasDirectParents": true
+        },
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#SubsetProperty",
+          "type": [
+            "property",
+            "entity"
+          ],
+          "label": [
+            "Subset property"
+          ],
+          "ontologyId": "native",
+          "isDefiningOntology": false,
+          "hasDirectChildren": true,
+          "numDescendants": 2,
+          "numHierarchicalDescendants": 2,
+          "directAncestor": [],
+          "hierarchicalAncestor": [],
+          "isObsolete": false
+        }
+      ],
+      "individuals": [
+        {
+          "iri": "https://example.org/native#I",
+          "type": [
+            "individual",
+            "entity"
+          ],
+          "label": [
+            "Native selected individual"
+          ],
+          "ontologyId": "native",
+          "ontologyIri": "https://example.org/native",
+          "shortForm": "I",
+          "curie": "NATIVE:I",
+          "isDefiningOntology": true,
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "directParent": [
+            "https://example.org/native#K"
+          ],
+          "hierarchicalParent": [
+            "https://example.org/native#K"
+          ],
+          "directAncestor": [
+            "https://example.org/native#K",
+            "https://example.org/native#R"
+          ],
+          "hierarchicalAncestor": [
+            "https://example.org/native#K",
+            "https://example.org/native#R"
+          ],
+          "hasDirectParents": true,
+          "hasHierarchicalParents": true,
+          "hasDirectChildren": false,
+          "hasHierarchicalChildren": false,
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "hasIndividuals": false,
+          "http://www.geneontology.org/formats/oboInOwl#inSubset": [
+            "https://example.org/native#S2"
+          ],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+            "https://example.org/native#K"
+          ]
+        }
+      ],
+      "numberOfClasses": 8,
+      "numberOfProperties": 5,
+      "numberOfIndividuals": 1,
+      "numberOfEntities": 14
+    }
+  ]
+}

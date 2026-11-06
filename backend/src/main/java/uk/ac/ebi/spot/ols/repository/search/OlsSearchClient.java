@@ -24,6 +24,7 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.treeReachability;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.INFORMATION_SCHEMA_COLUMNS;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_AUTOSUGGEST;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_ENTITIES;
@@ -262,6 +263,10 @@ public class OlsSearchClient {
      * Uses the query's filters EXCLUDING the facet field itself (facet exclusion behavior).
      */
     private Map<String, Long> executeFacetQuery(DSLContext dsl, String facetField, OlsSearchQuery query) {
+        // Synthetic facet: no physical filter_treeAncestor column is needed.
+        if ("treeAncestor".equals(facetField)) {
+            return executeTreeAncestorFacetQuery(dsl, query);
+        }
         String column = OlsSearchQuery.resolveColumn(facetField);
         OlsSearchQuery.ColumnType colType = OlsSearchQuery.resolveColumnType(facetField);
 
@@ -309,6 +314,23 @@ public class OlsSearchClient {
             }
         }
 
+        return counts;
+    }
+
+    /** Counts distinct filtered members using the same complete closure as subset filtering. */
+    private Map<String, Long> executeTreeAncestorFacetQuery(DSLContext dsl, OlsSearchQuery query) {
+        var records = dsl.resultQuery("""
+                SELECT iri, count(*)
+                FROM {0} tree_reachability
+                WHERE iri <> member_iri
+                GROUP BY iri
+                ORDER BY count(*) DESC, iri
+                """, treeReachability(query.buildCondition(getAvailableFilterColumns(), "m"), true)).fetch();
+
+        Map<String, Long> counts = new LinkedHashMap<>();
+        for (Record record : records) {
+            counts.put(record.get(0, String.class), record.get(1, Long.class));
+        }
         return counts;
     }
 

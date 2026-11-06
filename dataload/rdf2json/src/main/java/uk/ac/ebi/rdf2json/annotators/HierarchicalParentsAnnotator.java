@@ -48,7 +48,8 @@ public class HierarchicalParentsAnnotator {
                     continue;
 
                 List<PropertyValue> parents = c.properties.getPropertyValues("http://www.w3.org/2000/01/rdf-schema#subClassOf");
-                List<PropertyValueURI> hierarchicalParents = new ArrayList<>();
+                Map<String, PropertyValueURI> hierarchicalParents = new LinkedHashMap<>();
+                Map<String, Set<String>> parentRelations = new LinkedHashMap<>();
 
                 if(parents != null) {
                     for(PropertyValue parent : parents) {
@@ -56,7 +57,7 @@ public class HierarchicalParentsAnnotator {
                         if (parent.getType() == PropertyValue.Type.URI && graph.nodes.containsKey(((PropertyValueURI) parent).getUri())) {
 
                             // Direct parent; these are also considered hierarchical parents
-                            hierarchicalParents.add((PropertyValueURI) parent);
+                            hierarchicalParents.putIfAbsent(((PropertyValueURI) parent).getUri(), (PropertyValueURI) parent);
                         }
                     }
                 }
@@ -65,7 +66,6 @@ public class HierarchicalParentsAnnotator {
                 // can find their values in relatedTo
                 //
                 List<PropertyValue> relatedToList = (List<PropertyValue>) c.properties.getPropertyValues(RELATED_TO.getText());
-                Map<PropertyValueURI, PropertySet> fillerToReifiedPropertiesMap = new HashMap<>();
 
                 if(relatedToList != null) {
                     for(PropertyValue relatedToListElement : relatedToList) {
@@ -77,45 +77,19 @@ public class HierarchicalParentsAnnotator {
                                     String property = ((PropertyValueRelated) related).getProperty();
 
 
-                                    // if the child->parent property is "part of" we also want to know the parent->child (inverse) property "has part"
-                                    //
-                                    var propertyNode = graph.nodes.get(property);
-                                    String inverseProperty = null;
-                                    if (propertyNode != null) {
-                                        var inversePropertyValue = propertyNode.properties.getPropertyValue("http://www.w3.org/2002/07/owl#inverseOf");
-                                        if (inversePropertyValue != null && inversePropertyValue.getType() == PropertyValue.Type.URI) {
-                                            inverseProperty = ((PropertyValueURI) inversePropertyValue).getUri();
-                                        }
-                                    }
-
-
                                     if (hierarchicalProperties.contains(property)) {
-
-                                        var filler = new PropertyValueURI(
-                                                ((PropertyValueRelated) related).getFiller().uri
-                                        );
-
-                                        hierarchicalParents.add(filler);
-
-                                        // reify the hierarchicalParent edge with the property IRIs
-                                        // this enables the frontend to display e.g. "has part" relations in the tree
-                                        //
-                                        PropertySet reifiedProperties = new PropertySet();
-                                        reifiedProperties.addProperty("childRelationToParent", PropertyValueURI.fromUri(property));
-                                        if (inverseProperty != null) {
-                                            reifiedProperties.addProperty("parentRelationToChild", PropertyValueURI.fromUri(inverseProperty));
-                                        }
-                                        fillerToReifiedPropertiesMap.put(filler, reifiedProperties);
-
+                                        addParent(hierarchicalParents, parentRelations,
+                                                ((PropertyValueRelated) related).getFiller().uri, property);
                                     }
                                 }
                             }
                         }
                     }
                 }
-                // Individuals assert hierarchical properties (e.g. COHO isSubCohortOf) as
-                // direct triples rather than OWL restrictions, so they are not covered by
-                // RelatedAnnotator; read them from the node's properties instead.
+                // Individuals are not covered by RelatedAnnotator, so their hierarchical
+                // properties are read here instead. When the target is another individual
+                // the relation is a direct triple; when it is a class it is an existential
+                // restriction the individual is typed with (rdf:type [P someValuesFrom C]).
                 // rdfs:subClassOf is already handled above.
                 //
                 if (c.types.contains(OntologyNode.NodeType.INDIVIDUAL)) {
@@ -128,15 +102,6 @@ public class HierarchicalParentsAnnotator {
                         List<PropertyValue> assertions = c.properties.getPropertyValues(hierarchicalProperty);
                         if (assertions == null) {
                             continue;
-                        }
-
-                        var propertyNode = graph.nodes.get(hierarchicalProperty);
-                        String inverseProperty = null;
-                        if (propertyNode != null) {
-                            var inversePropertyValue = propertyNode.properties.getPropertyValue("http://www.w3.org/2002/07/owl#inverseOf");
-                            if (inversePropertyValue != null && inversePropertyValue.getType() == PropertyValue.Type.URI) {
-                                inverseProperty = ((PropertyValueURI) inversePropertyValue).getUri();
-                            }
                         }
 
                         for (PropertyValue assertion : assertions) {
@@ -152,25 +117,63 @@ public class HierarchicalParentsAnnotator {
                                 continue;
                             }
 
-                            var filler = new PropertyValueURI(parentUri);
-                            hierarchicalParents.add(filler);
+                            addParent(hierarchicalParents, parentRelations, parentUri, hierarchicalProperty);
+                        }
+                    }
 
-                            PropertySet reifiedProperties = new PropertySet();
-                            reifiedProperties.addProperty("childRelationToParent", PropertyValueURI.fromUri(hierarchicalProperty));
-                            if (inverseProperty != null) {
-                                reifiedProperties.addProperty("parentRelationToChild", PropertyValueURI.fromUri(inverseProperty));
+                    List<PropertyValue> types = c.properties.getPropertyValues("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
+                    if (types != null) {
+                        for (PropertyValue type : types) {
+
+                            if (type.getType() != PropertyValue.Type.BNODE) {
+                                continue;
                             }
-                            fillerToReifiedPropertiesMap.put(filler, reifiedProperties);
+
+                            OntologyNode restriction = graph.nodes.get(((PropertyValueBNode) type).getId());
+                            if (restriction == null) {
+                                continue;
+                            }
+
+                            PropertyValue onProperty = restriction.properties.getPropertyValue("http://www.w3.org/2002/07/owl#onProperty");
+                            if (onProperty == null || onProperty.getType() != PropertyValue.Type.URI) {
+                                continue;
+                            }
+
+                            String propertyUri = ((PropertyValueURI) onProperty).getUri();
+                            if (!hierarchicalProperties.contains(propertyUri)) {
+                                continue;
+                            }
+
+                            PropertyValue someValuesFrom = restriction.properties.getPropertyValue("http://www.w3.org/2002/07/owl#someValuesFrom");
+                            if (someValuesFrom == null || someValuesFrom.getType() != PropertyValue.Type.URI) {
+                                continue;
+                            }
+
+                            String parentUri = ((PropertyValueURI) someValuesFrom).getUri();
+
+                            // an entity cannot be its own hierarchical parent
+                            if (parentUri.equals(c.uri) || !graph.nodes.containsKey(parentUri)) {
+                                continue;
+                            }
+
+                            addParent(hierarchicalParents, parentRelations, parentUri, propertyUri);
                         }
                     }
                 }
 
-                if (hierarchicalParents.size()>0) {
-                    c.properties.addProperty(HIERARCHICAL_PARENT.getText(), new PropertyValueList(hierarchicalParents));
-                    for (PropertyValueURI propertyValueURI: fillerToReifiedPropertiesMap.keySet()) {
-                        c.properties.annotatePropertyWithAxiom(HIERARCHICAL_PARENT.getText(), propertyValueURI,
-                                fillerToReifiedPropertiesMap.get(propertyValueURI), graph);
-
+                if (!hierarchicalParents.isEmpty()) {
+                    c.properties.addProperty(HIERARCHICAL_PARENT.getText(), new PropertyValueList(new ArrayList<>(hierarchicalParents.values())));
+                    for (Map.Entry<String, Set<String>> parent : parentRelations.entrySet()) {
+                        for (String relation : parent.getValue()) {
+                            PropertySet reifiedProperties = new PropertySet();
+                            reifiedProperties.addProperty("childRelationToParent", PropertyValueURI.fromUri(relation));
+                            String inverseProperty = getInverseProperty(graph, relation);
+                            if (inverseProperty != null) {
+                                reifiedProperties.addProperty("parentRelationToChild", PropertyValueURI.fromUri(inverseProperty));
+                            }
+                            c.properties.annotatePropertyWithAxiom(HIERARCHICAL_PARENT.getText(),
+                                    hierarchicalParents.get(parent.getKey()), reifiedProperties, graph);
+                        }
                     }
                 }
             }
@@ -179,6 +182,25 @@ public class HierarchicalParentsAnnotator {
 
         long endTime3 = System.nanoTime();
         logger.info("annotate hierarchical parents: {}", ((endTime3 - startTime3) / 1000 / 1000 / 1000));
+    }
+
+    // Use URI strings so duplicate targets do not depend on PropertyValueURI object identity.
+    // A target is emitted once, with one axiom per distinct relation (and its inverse).
+    private static void addParent(Map<String, PropertyValueURI> parents, Map<String, Set<String>> relations,
+                                  String parentUri, String relationUri) {
+        parents.computeIfAbsent(parentUri, PropertyValueURI::new);
+        relations.computeIfAbsent(parentUri, key -> new LinkedHashSet<>()).add(relationUri);
+    }
+
+    private static String getInverseProperty(OntologyGraph graph, String property) {
+        var propertyNode = graph.nodes.get(property);
+        if (propertyNode != null) {
+            var inversePropertyValue = propertyNode.properties.getPropertyValue("http://www.w3.org/2002/07/owl#inverseOf");
+            if (inversePropertyValue != null && inversePropertyValue.getType() == PropertyValue.Type.URI) {
+                return ((PropertyValueURI) inversePropertyValue).getUri();
+            }
+        }
+        return null;
     }
 
 
