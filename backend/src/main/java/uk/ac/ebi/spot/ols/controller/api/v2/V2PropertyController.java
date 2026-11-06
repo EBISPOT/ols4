@@ -158,6 +158,13 @@ public class V2PropertyController {
         return new ResponseEntity<>( entity, HttpStatus.OK);
     }
 
+    // Preserve the historical Java API and omitted-parameter behavior: property hierarchy includes obsolete entities.
+    public HttpEntity<V2PagedResponse<V2Entity>> getChildrenByOntology(
+            Pageable pageable, String ontologyId, String iri, List<String> subsetTree, boolean treeContext, boolean includeImportedEntities,
+            String lang, JsonTransformOptions outputOpts) throws ResourceNotFoundException {
+        return getChildrenByOntology(pageable, ontologyId, iri, subsetTree, treeContext, includeImportedEntities, true, lang, outputOpts);
+    }
+
     @RequestMapping(path = "/ontologies/{onto}/properties/{property}/children", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<V2PagedResponse<V2Entity>> getChildrenByOntology(
             @PageableDefault(size = 20, page = 0)
@@ -178,6 +185,8 @@ public class V2PropertyController {
             @RequestParam(value = "includeImportedEntities", required = false, defaultValue = "true")
             @Parameter(name = "includeImportedEntities",
                     description = "A boolean parameter to specify if imported entities (not defined by this ontology) should be included or not. Default value is true.") boolean includeImportedEntities,
+            @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "true")
+            @Parameter(description = "Include obsolete properties. Defaults to true for compatibility with property hierarchy routes; explicit false excludes obsolete members while treeContext retains necessary connectors.") boolean includeObsoleteEntities,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
@@ -186,10 +195,17 @@ public class V2PropertyController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                    propertyRepository.getChildrenByOntologyId(ontologyId, pageable, iri, includeImportedEntities, subsetTree, treeContext, lang, outputOpts)
+                    propertyRepository.getChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, includeImportedEntities, subsetTree, treeContext, lang, outputOpts)
                     .map(V2Entity::new)
                 ),
                  HttpStatus.OK);
+    }
+
+    // Preserve the historical Java API and omitted-parameter behavior: property hierarchy includes obsolete entities.
+    public HttpEntity<V2PagedResponse<V2Entity>> getAncestorsByOntology(
+            Pageable pageable, String ontologyId, String iri, boolean includeImportedEntities,
+            String lang, JsonTransformOptions outputOpts) throws ResourceNotFoundException {
+        return getAncestorsByOntology(pageable, ontologyId, iri, includeImportedEntities, true, lang, outputOpts);
     }
 
     @RequestMapping(path = "/ontologies/{onto}/properties/{property}/ancestors", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
@@ -207,6 +223,8 @@ public class V2PropertyController {
             @RequestParam(value = "includeImportedEntities", required = false, defaultValue = "true")
             @Parameter(name = "includeImportedEntities",
                     description = "A boolean parameter to specify if imported entities (not defined by this ontology) should be included or not. Default value is true.") boolean includeImportedEntities,
+            @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "true")
+            @Parameter(description = "Include obsolete ancestors. Defaults to true for compatibility with property hierarchy routes; explicit false filters obsolete ancestors.") boolean includeObsoleteEntities,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
@@ -215,7 +233,7 @@ public class V2PropertyController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                propertyRepository.getAncestorsByOntologyId(ontologyId, pageable, iri, includeImportedEntities, lang, outputOpts)
+                propertyRepository.getAncestorsByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, includeImportedEntities, lang, outputOpts)
                     .map(V2Entity::new)
                 ), HttpStatus.OK);
     }

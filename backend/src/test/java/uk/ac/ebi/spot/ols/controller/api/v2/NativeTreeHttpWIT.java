@@ -37,7 +37,7 @@ class NativeTreeHttpWIT {
         when(individuals.getHierarchicalChildrenByOntologyId(any(), any(), any(), anyBoolean(), anyBoolean(), any(), anyBoolean(), any(), any())).thenReturn(Page.empty());
         when(individuals.getIndividualsOfClass(any(), any(), any(), anyBoolean(), anyBoolean(), any(), anyBoolean(), any(), any()))
                 .thenReturn(new OlsFacetedResultsPage<JsonElement>(List.of(), Map.of(), org.springframework.data.domain.PageRequest.of(0,20), 0));
-        when(properties.getChildrenByOntologyId(any(), any(), any(), anyBoolean(), any(), anyBoolean(), any(), any())).thenReturn(Page.empty());
+        when(properties.getChildrenByOntologyId(any(), any(), any(), anyBoolean(), anyBoolean(), any(), anyBoolean(), any(), any())).thenReturn(Page.empty());
         for (String route : List.of("classes/" + IRI + "/children", "classes/" + IRI + "/hierarchicalChildren",
                 "individuals/" + IRI + "/hierarchicalChildren", "classes/" + IRI + "/individuals", "properties/" + IRI + "/children")) {
             mvc.perform(get(URI.create(PREFIX + route)).param("treeContext", "true").param("subsetTree", "S,S2")
@@ -48,7 +48,24 @@ class NativeTreeHttpWIT {
         verify(classes).getHierarchicalChildrenByOntologyId(eq("native"), any(), any(), eq(false), eq(false), eq(List.of("S","S2")), eq(true), eq("en"), any());
         verify(individuals).getHierarchicalChildrenByOntologyId(eq("native"), any(), any(), eq(false), eq(false), eq(List.of("S","S2")), eq(true), eq("en"), any());
         verify(individuals).getIndividualsOfClass(eq("native"), any(), any(), eq(false), eq(false), eq(List.of("S","S2")), eq(true), eq("en"), any());
-        verify(properties).getChildrenByOntologyId(eq("native"), any(), any(), eq(false), eq(List.of("S","S2")), eq(true), eq("en"), any());
+        verify(properties).getChildrenByOntologyId(eq("native"), any(), any(), eq(false), eq(false), eq(List.of("S","S2")), eq(true), eq("en"), any());
+    }
+
+    @Test
+    void propertyHierarchyBindsNonDefaultVisibilityPagingSubsetAndLanguage() throws Exception {
+        when(properties.getChildrenByOntologyId(any(), any(), any(), anyBoolean(), anyBoolean(), any(), anyBoolean(), any(), any())).thenReturn(Page.empty());
+        when(properties.getAncestorsByOntologyId(any(), any(), any(), anyBoolean(), anyBoolean(), any(), any())).thenReturn(Page.empty());
+        mvc.perform(get(URI.create(PREFIX + "properties/" + IRI + "/children"))
+                .param("includeObsoleteEntities", "false").param("includeImportedEntities", "false")
+                .param("subsetTree", "S,S2").param("treeContext", "true")
+                .param("page", "2").param("size", "7").param("lang", "fr")).andExpect(status().isOk());
+        verify(properties).getChildrenByOntologyId(eq("native"), argThat(p -> p.getPageNumber() == 2 && p.getPageSize() == 7),
+                eq("https://example.org/native#R"), eq(false), eq(false), eq(List.of("S", "S2")), eq(true), eq("fr"), any());
+        mvc.perform(get(URI.create(PREFIX + "properties/" + IRI + "/ancestors"))
+                .param("includeObsoleteEntities", "false").param("includeImportedEntities", "false")
+                .param("page", "3").param("size", "9").param("lang", "de")).andExpect(status().isOk());
+        verify(properties).getAncestorsByOntologyId(eq("native"), argThat(p -> p.getPageNumber() == 3 && p.getPageSize() == 9),
+                eq("https://example.org/native#R"), eq(false), eq(false), eq("de"), any());
     }
 
     @Test

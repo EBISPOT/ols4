@@ -256,6 +256,7 @@ class V2PropertyControllerTest {
                 String ontologyId,
                 Pageable pageable,
                 String iri,
+                boolean includeObsolete,
                 boolean includeImported,
                 Collection<String> subsetTree, boolean treeContext,
                 String lang,
@@ -270,6 +271,7 @@ class V2PropertyControllerTest {
                 String ontologyId,
                 Pageable pageable,
                 String iri,
+                boolean includeObsolete,
                 boolean includeImported,
                 String lang,
                 JsonTransformOptions outputOptions) {
