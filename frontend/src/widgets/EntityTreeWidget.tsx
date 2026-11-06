@@ -1,8 +1,8 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { store } from "../app/store";
+import { createAppStore } from "../app/store";
 import Entity from "../model/Entity";
 import Ontology from "../model/Ontology";
 import EntityTree from "../pages/ontologies/entities/EntityTree";
@@ -24,18 +24,17 @@ export function createEntityTree(
   container: any,
   callback?: () => void
 ) {
-  ReactDOM.render(EntityTreeWidget(props), container, callback);
+  // A new API/ontology/language scope owns a fresh store. Pending responses from
+  // the previous mount can only reach its discarded store, never this instance.
+  const scope = JSON.stringify([props.apiUrl, props.ontologyId, props.lang || "en"]);
+  ReactDOM.render(<EntityTreeWidget key={scope} {...props} />, container, callback);
 }
 
 function EntityTreeWidget(props: EntityTreeWidgetProps) {
+  const [store] = useState(createAppStore);
   return (
     <Provider store={store}>
-      <EntityTreeWidgetInner
-        ontologyId={props.ontologyId}
-        iri={props.iri}
-        apiUrl={props.apiUrl}
-        specifiedRootIri={props.specifiedRootIri}
-      />
+      <EntityTreeWidgetInner {...props} />
     </Provider>
   );
 }
@@ -51,14 +50,15 @@ function EntityTreeWidgetInner(props: EntityTreeWidgetProps) {
   const ontology = useAppSelector((state) => state.ontologies.ontology);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(
+    const promise = dispatch(
       getOntology({
         ontologyId: props.ontologyId,
-        lang: "en",
+        lang,
         apiUrl: props.apiUrl,
       })
     );
-  }, [dispatch, props.ontologyId]);
+    return () => promise.abort();
+  }, [dispatch, props.ontologyId, props.apiUrl, lang]);
 
   return (
     <Fragment>
