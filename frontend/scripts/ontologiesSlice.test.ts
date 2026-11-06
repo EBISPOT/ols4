@@ -332,3 +332,28 @@ test('native paginated tree children and their page count use the same connector
     }
   } finally { globalThis.fetch = originalFetch; }
 });
+
+for (const imports of [true, false]) {
+  test(`ordinary active-member badges exclude connector context: imports=${imports}`, async () => {
+    const s = setup();
+    const originalFetch = globalThis.fetch;
+    const urls: URL[] = [];
+    const expected = imports ? { R: 5, D: 2, K: 2 } : { R: 3, D: 1, K: 2 };
+    globalThis.fetch = (async (input: any) => {
+      urls.push(new URL(String(input)));
+      return { ok: true, json: async () => ({ elements: [], facetFieldsToCounts: { treeAncestor: expected } }) };
+    }) as any;
+    try {
+      assert.deepEqual(await s.dispatch(getTreeMemberCounts({ ...args(), ontologyId: 'native',
+        showImportedEnabled: imports, showObsoleteEnabled: false })).unwrap(), expected);
+      assert.equal(urls.length, 1);
+      const params = urls[0].searchParams;
+      assert.equal(params.get('includeObsoleteEntities'), 'false');
+      assert.equal(params.get('isDefiningOntology'), imports ? null : 'true');
+      assert.equal(params.get('subset'), null);
+      assert.equal(params.get('treeContext'), null);
+      assert.equal(params.get('type'), 'class,individual');
+      assert.equal(params.get('facetFields'), 'treeAncestor');
+    } finally { globalThis.fetch = originalFetch; }
+  });
+}

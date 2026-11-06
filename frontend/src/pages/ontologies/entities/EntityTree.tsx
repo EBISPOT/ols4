@@ -74,7 +74,8 @@ export default function EntityTree({
   const showImportedEnabled = !ownsScope || tree.displayImported;
   const showSiblingsEnabled = ownsScope && tree.displaySiblings;
   const showCountsEnabled = !ownsScope || tree.displayCounts;
-  const needsFilteredCounts = filteringBySubsets || !showImportedEnabled;
+  // Stored totals include hidden obsolete members, including retained connectors.
+  const needsFilteredCounts = filteringBySubsets || !showImportedEnabled || !showObsoleteEnabled;
   // Ordinary counts retain their existing obsolete-mode restriction.
   const showNodeCounts = showCountsEnabled && (filteringBySubsets || !showObsoleteEnabled);
   const requestKey = JSON.stringify([

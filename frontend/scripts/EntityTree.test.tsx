@@ -71,7 +71,7 @@ for (const fixture of [
   }
 }
 
-test('ordinary imports-visible badges retain stored totals and obsolete-mode restrictions', () => {
+test('ordinary imports-visible badges retain BFO totals and obsolete-mode restrictions', () => {
   const s = configureStore({ reducer: { ontologies: reducer }, middleware: g => g({ serializableCheck: false }) });
   const scopeKey = JSON.stringify(['', 'bfo', 'classes']);
   const ontology = new Ontology({ ontologyId: 'bfo', type: ['ontology'], preferredRoot: [] });
@@ -83,6 +83,8 @@ test('ordinary imports-visible badges retain stored totals and obsolete-mode res
     s.dispatch(getRootEntities.pending('roots', arg));
     s.dispatch(getRootEntities.fulfilled({ rootTerms: [thingFromJsonProperties({ iri: 'entity', label: ['entity'],
       type: ['class'], ontologyId: 'bfo', isDefiningOntology: true, numDescendants: 34, numHierarchicalDescendants: 34 })] }, 'roots', arg));
+    s.dispatch(getTreeMemberCounts.pending('counts', arg));
+    s.dispatch(getTreeMemberCounts.fulfilled({ entity: 34 }, 'counts', arg));
   };
   const render = () => renderToStaticMarkup(<Provider store={s}><StaticRouter location="/"><EntityTree
     ontology={ontology} entityType="classes" lang="en" onNavigateToEntity={() => {}} onNavigateToOntology={() => {}}
@@ -150,5 +152,33 @@ for (const native of [true, false]) {
       onNavigateToEntity={() => {}} onNavigateToOntology={() => {}} /></StaticRouter></Provider>);
     assert(html.includes('(obsolete ancestry context)'));
     assert.equal(html.includes('(imported ancestry context)'), !native);
+  });
+}
+
+for (const imports of [true, false]) {
+  test(`ordinary badges exclude obsolete context members: imports=${imports}`, () => {
+    const s = configureStore({ reducer: { ontologies: reducer }, middleware: g => g({ serializableCheck: false }) });
+    const scopeKey = JSON.stringify(['', 'native', 'classes']);
+    const ontology = new Ontology({ ontologyId: 'native', type: ['ontology'], preferredRoot: [] });
+    s.dispatch({ type: 'ontologies_set_tree_scope', payload: scopeKey });
+    if (!imports) s.dispatch(hideImported());
+    const requestKey = JSON.stringify([scopeKey, 'en', undefined, '', false, false, imports, false, []]);
+    s.dispatch({ type: 'ontologies_set_tree_request_context', payload: { scopeKey, requestKey } });
+    const arg = { ontology, treeScopeKey: scopeKey, requestKey };
+    s.dispatch(getRootEntities.pending('roots', arg));
+    s.dispatch(getRootEntities.fulfilled({ rootTerms: [thingFromJsonProperties({ iri: 'R', label: ['Imported root R'],
+      type: ['class'], ontologyId: 'native', isDefiningOntology: false,
+      numDescendants: 6, numHierarchicalDescendants: 6, hasChildren: true })] }, 'roots', arg));
+    const render = () => renderToStaticMarkup(<Provider store={s}><StaticRouter location="/"><EntityTree
+      ontology={ontology} entityType="classes" lang="en" onNavigateToEntity={() => {}} onNavigateToOntology={() => {}}
+    /></StaticRouter></Provider>);
+    s.dispatch(getTreeMemberCounts.pending('counts', arg));
+    assert(render().includes('Descendant count loading'));
+    assert(!render().includes(' (6)'));
+    s.dispatch(getTreeMemberCounts.fulfilled(imports ? { R: 5, D: 2, K: 2 } : { R: 3, D: 1, K: 2 }, 'counts', arg));
+    assert(render().includes(imports ? ' (5)' : ' (3)'));
+    assert(!render().includes(' (6)'));
+    s.dispatch(hideCounts());
+    assert(!render().includes(imports ? ' (5)' : ' (3)'));
   });
 }
