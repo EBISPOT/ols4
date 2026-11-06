@@ -33,6 +33,12 @@ public class OlsSearchQuery {
 
     String searchText = null;
     Collection<String> subsetTree = null;
+    boolean treeContext = false;
+
+    /** Apply visibility to members and retain their required ancestry connectors for tree browsing. */
+    public void setTreeContext(boolean treeContext) {
+        this.treeContext = treeContext;
+    }
     boolean exactMatch = false;
     List<SearchFilter> filters = new ArrayList<>();
     List<List<SearchFilter>> anyFilterGroups = new ArrayList<>();
@@ -180,6 +186,7 @@ public class OlsSearchQuery {
         }
 
         for (SearchFilter f : filters) {
+            if (treeContext && TREE_MEMBER_VISIBILITY_FIELDS.contains(f.field)) continue;
             if (excludedFacetField != null && excludedFacetField.equals(f.field)) {
                 continue;
             }
@@ -201,13 +208,14 @@ public class OlsSearchQuery {
         }
 
         for (SearchFilter f : excludeFilters) {
+            if (treeContext && TREE_MEMBER_VISIBILITY_FIELDS.contains(f.field)) continue;
             if (!isFilterAvailable(availableFilterColumns, f.field)) {
                 continue;
             }
             condition = condition.and(buildFilterCondition(qualifier, f, true));
         }
 
-        if (subsetTree != null && !subsetTree.isEmpty()) {
+        if (treeContext || (subsetTree != null && !subsetTree.isEmpty())) {
             condition = condition.and(inSubsetTree(qualifier, subsetTree, subsetMemberEligibility()));
         }
 

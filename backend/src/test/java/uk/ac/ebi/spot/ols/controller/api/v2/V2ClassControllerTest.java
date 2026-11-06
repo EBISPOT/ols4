@@ -137,7 +137,7 @@ class V2ClassControllerTest {
 
         controller.getChildrenByOntology(
                 pageable, "efo", "http%3A%2F%2Fexample.org%2FEFO_0001", true,
-                "clinical", null, true, "fr", options);
+                "clinical", null, false, true, "fr", options);
 
         assertHierarchyCall(
                 RecordingClassRepository.Call.CHILDREN,
@@ -165,7 +165,7 @@ class V2ClassControllerTest {
             case HIERARCHICAL_DESCENDANTS -> controller.getHierarchicalDescendantsByOntology(
                     pageable, "efo", encodedIri, true, "de", options);
             case HIERARCHICAL_CHILDREN -> controller.getHierarchicalChildrenByOntology(
-                    pageable, "efo", encodedIri, true, null, true, "de", options);
+                    pageable, "efo", encodedIri, true, null, false, true, "de", options);
             case HIERARCHICAL_ANCESTORS -> controller.getHierarchicalAncestorsByOntology(
                     pageable, "efo", encodedIri, true, true, "de", options);
             case INDIVIDUAL_ANCESTORS -> controller.getIndividualAncestorsByOntology(
@@ -305,7 +305,7 @@ class V2ClassControllerTest {
                 boolean includeObsolete,
                 boolean includeImported,
                 String search,
-                Collection<String> subsetTree,
+                Collection<String> subsetTree, boolean treeContext,
                 String lang,
                 JsonTransformOptions outputOptions) {
             call = Call.CHILDREN;
@@ -341,7 +341,7 @@ class V2ClassControllerTest {
         @Override
         public Page<JsonElement> getHierarchicalChildrenByOntologyId(
                 String ontologyId, Pageable pageable, String iri, boolean includeObsolete,
-                boolean includeImported, Collection<String> subsetTree, String lang,
+                boolean includeImported, Collection<String> subsetTree, boolean treeContext, String lang,
                 JsonTransformOptions outputOptions) {
             return hierarchy(Call.HIERARCHICAL_CHILDREN, ontologyId, pageable, iri,
                     includeObsolete, lang, outputOptions);

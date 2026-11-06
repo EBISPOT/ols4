@@ -130,3 +130,25 @@ for (const counts of [{ Country: 3, Area: 3 }, {}]) {
     assert(!render().includes(' (3)'));
   });
 }
+
+for (const native of [true, false]) {
+  test(`hidden obsolete connectors are visibly identified: native=${native}`, () => {
+    const s = configureStore({ reducer: { ontologies: reducer }, middleware: g => g({ serializableCheck: false }) });
+    const treeScopeKey = JSON.stringify(['', 'native', 'classes']);
+    const ontology = new Ontology({ ontologyId: 'native', type: ['ontology'], preferredRoot: [] });
+    s.dispatch({ type: 'ontologies_set_tree_scope', payload: treeScopeKey });
+    s.dispatch(hideImported());
+    const requestKey = JSON.stringify([treeScopeKey, 'en', undefined, '', false, false, false, false, []]);
+    s.dispatch({ type: 'ontologies_set_tree_request_context', payload: { scopeKey: treeScopeKey, requestKey } });
+    const arg = { treeScopeKey, requestKey, entityType: 'classes' };
+    const connector = thingFromJsonProperties({ iri: 'K', label: ['Connector'], type: ['class'],
+      ontologyId: 'native', isDefiningOntology: native, isObsolete: true });
+    s.dispatch(getRootEntities.pending('roots', arg));
+    s.dispatch(getRootEntities.fulfilled({ rootTerms: [connector] }, 'roots', arg));
+    const html = renderToStaticMarkup(<Provider store={s}><StaticRouter location="/"><EntityTree
+      ontology={ontology} entityType="classes" lang="en"
+      onNavigateToEntity={() => {}} onNavigateToOntology={() => {}} /></StaticRouter></Provider>);
+    assert(html.includes('(obsolete ancestry context)'));
+    assert.equal(html.includes('(imported ancestry context)'), !native);
+  });
+}

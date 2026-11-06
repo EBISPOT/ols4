@@ -121,7 +121,7 @@ class V2IndividualControllerTest {
                 "efo",
                 "http%3A%2F%2Fexample.org%2FEFO_I100",
                 true,
-                null,
+                null, false,
                 true,
                 "de",
                 options);
@@ -164,7 +164,7 @@ class V2IndividualControllerTest {
         JsonTransformOptions options = new JsonTransformOptions();
 
         controller.getClassIndividuals(
-                pageable, "efo", "http%3A%2F%2Fexample.org%2FEFO_0001", true, null, true, "de",
+                pageable, "efo", "http%3A%2F%2Fexample.org%2FEFO_0001", true, null, false, true, "de",
                 options);
 
         assertEquals(RecordingIndividualRepository.Call.CLASS_INDIVIDUALS, repository.call);
@@ -262,7 +262,7 @@ class V2IndividualControllerTest {
                 String iri,
                 boolean includeObsoleteEntities,
                 boolean includeImportedEntities,
-                Collection<String> subsetTree,
+                Collection<String> subsetTree, boolean treeContext,
                 String lang,
                 JsonTransformOptions outputOptions) {
             recordHierarchy(
@@ -303,7 +303,7 @@ class V2IndividualControllerTest {
                 Pageable pageable,
                 boolean includeObsoleteEntities,
                 boolean includeImportedEntities,
-                Collection<String> subsetTree,
+                Collection<String> subsetTree, boolean treeContext,
                 String lang,
                 JsonTransformOptions outputOptions) {
             this.call = Call.CLASS_INDIVIDUALS;

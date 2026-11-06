@@ -36,6 +36,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyMap;
 import static org.mockito.Mockito.verify;
@@ -81,7 +82,7 @@ class V2ClassControllerWIT {
         when(classRepository.getRelatedFrom(any(), any(), any(), any(), any()))
                 .thenReturn(classPage());
         when(classRepository.getChildrenByOntologyId(
-                any(), any(), any(), anyBoolean(), anyBoolean(), any(), any(), any(), any()))
+                any(), any(), any(), anyBoolean(), anyBoolean(), any(), any(), eq(false), any(), any()))
                 .thenReturn(hierarchyPage());
         when(classRepository.getAncestorsByOntologyId(
                 any(), any(), any(), anyBoolean(), any(), any()))
@@ -93,7 +94,7 @@ class V2ClassControllerWIT {
                 any(), any(), any(), anyBoolean(), any(), any()))
                 .thenReturn(hierarchyPage());
         when(classRepository.getHierarchicalChildrenByOntologyId(
-                any(), any(), any(), anyBoolean(), anyBoolean(), any(), any(), any()))
+                any(), any(), any(), anyBoolean(), anyBoolean(), any(), eq(false), any(), any()))
                 .thenReturn(hierarchyPage());
         when(classRepository.getHierarchicalAncestorsByOntologyId(
                 any(), any(), any(), anyBoolean(), anyBoolean(), any(), any()))
@@ -718,7 +719,7 @@ class V2ClassControllerWIT {
         switch (route) {
             case CHILDREN -> verify(classRepository).getChildrenByOntologyId(
                     ontologyId.capture(), pageable.capture(), iri.capture(),
-                    includeObsolete.capture(), anyBoolean(), searchQuery.capture(), any(), lang.capture(), options.capture());
+                    includeObsolete.capture(), anyBoolean(), searchQuery.capture(), any(), eq(false), lang.capture(), options.capture());
             case ANCESTORS -> verify(classRepository).getAncestorsByOntologyId(
                     ontologyId.capture(), pageable.capture(), iri.capture(),
                     includeObsolete.capture(), lang.capture(), options.capture());
@@ -732,7 +733,7 @@ class V2ClassControllerWIT {
             case HIERARCHICAL_CHILDREN -> verify(classRepository)
                     .getHierarchicalChildrenByOntologyId(
                             ontologyId.capture(), pageable.capture(), iri.capture(),
-                            includeObsolete.capture(), anyBoolean(), any(), lang.capture(), options.capture());
+                            includeObsolete.capture(), anyBoolean(), any(), eq(false), lang.capture(), options.capture());
             case HIERARCHICAL_ANCESTORS -> verify(classRepository)
                     .getHierarchicalAncestorsByOntologyId(
                             ontologyId.capture(), pageable.capture(), iri.capture(),
@@ -753,7 +754,7 @@ class V2ClassControllerWIT {
     private void stubHierarchyFailure(HierarchyRoute route, RuntimeException failure) {
         switch (route) {
             case CHILDREN -> when(classRepository.getChildrenByOntologyId(
-                    any(), any(), any(), anyBoolean(), anyBoolean(), any(), any(), any(), any())).thenThrow(failure);
+                    any(), any(), any(), anyBoolean(), anyBoolean(), any(), any(), eq(false), any(), any())).thenThrow(failure);
             case ANCESTORS -> when(classRepository.getAncestorsByOntologyId(
                     any(), any(), any(), anyBoolean(), any(), any())).thenThrow(failure);
             case DESCENDANTS -> when(classRepository.getDescendantsByOntologyId(
@@ -763,7 +764,7 @@ class V2ClassControllerWIT {
                             any(), any(), any(), anyBoolean(), any(), any())).thenThrow(failure);
             case HIERARCHICAL_CHILDREN -> when(
                     classRepository.getHierarchicalChildrenByOntologyId(
-                            any(), any(), any(), anyBoolean(), anyBoolean(), any(), any(), any())).thenThrow(failure);
+                            any(), any(), any(), anyBoolean(), anyBoolean(), any(), eq(false), any(), any())).thenThrow(failure);
             case HIERARCHICAL_ANCESTORS -> when(
                     classRepository.getHierarchicalAncestorsByOntologyId(
                             any(), any(), any(), anyBoolean(), anyBoolean(), any(), any())).thenThrow(failure);

@@ -140,7 +140,7 @@ test('an explicitly selected imported entity retains its path while optional imp
     const browse = setup({ selected: '' });
     await browse.s.dispatch(getRootEntities(browse.args)).unwrap();
     assert.deepEqual(browse.s.getState().ontologies.rootNodes.map(n => n.iri), [rootIri]);
-    assert.equal(urls.at(-1)!.searchParams.get('isDefiningOntology'), 'true');
+    assert.equal(urls.at(-1)!.searchParams.get('treeContext'), 'true');
   });
 });
 

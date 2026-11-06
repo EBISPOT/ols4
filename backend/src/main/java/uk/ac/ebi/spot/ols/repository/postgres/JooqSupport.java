@@ -75,10 +75,13 @@ public final class JooqSupport {
         return inSubsetTree(qualifier, subsets, DSL.trueCondition());
     }
 
-    /** Eligibility must be qualified to seed alias m; it never filters intermediate connectors. */
+    /** Eligibility uses seed alias m, never connectors. Empty subsets means all eligible members. */
     public static Condition inSubsetTree(String qualifier, Collection<String> subsets, Condition eligibility) {
-        Condition members = DSL.condition("{0} && {1}::text[]",
-                field("m", "subset", String[].class), DSL.val(subsets.toArray(new String[0]))).and(eligibility);
+        Condition members = eligibility;
+        if (subsets != null && !subsets.isEmpty()) {
+            members = members.and(DSL.condition("{0} && {1}::text[]",
+                    field("m", "subset", String[].class), DSL.val(subsets.toArray(new String[0]))));
+        }
         return DSL.condition("({0}, {1}) IN (SELECT ontology_id, iri FROM {2} tree_reachability)",
                 field(qualifier, "ontology_id", String.class),
                 field(qualifier, "iri", String.class), treeReachability(members, false));

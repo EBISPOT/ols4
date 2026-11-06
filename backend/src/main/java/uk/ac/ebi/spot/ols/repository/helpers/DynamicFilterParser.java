@@ -32,6 +32,10 @@ public class DynamicFilterParser {
             for (String value : properties.get(k)) {
                 values.addAll(List.of(value.split(",")));
             }
+            if (k.equals("treeContext")) {
+                query.setTreeContext(values.size() == 1 && Boolean.parseBoolean(values.get(0)));
+                continue;
+            }
             if (k.equals("subsetTree")) {
                 query.setSubsetTree(values);
                 continue;

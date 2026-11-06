@@ -118,6 +118,10 @@ public class ClassRepository {
     }
 
     public Page<JsonElement> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean includeImported, String search, Collection<String> subsetTree, String lang, JsonTransformOptions outputOpts) {
+        return getChildrenByOntologyId(ontologyId, pageable, iri, includeObsolete, includeImported, search, subsetTree, false, lang, outputOpts);
+    }
+
+    public Page<JsonElement> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean includeImported, String search, Collection<String> subsetTree, boolean treeContext, String lang, JsonTransformOptions outputOpts) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -125,6 +129,7 @@ public class ClassRepository {
         String id = ontologyId + "+class+" + iri;
 
         Map<String, String> nodeProps = classNodeProperties(includeObsolete, includeImported);
+        if (treeContext) nodeProps.put("treeContext", "true");
 
         Page<JsonElement> result = this.postgresClient.getDirectChildren(
                 id, nodeProps, pageable, isNullOrEmpty(search) ? null : search, subsetTree);
@@ -176,6 +181,10 @@ public class ClassRepository {
     }
 
     public Page<JsonElement> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean includeImported, Collection<String> subsetTree, String lang, JsonTransformOptions outputOpts) {
+        return getHierarchicalChildrenByOntologyId(ontologyId, pageable, iri, includeObsolete, includeImported, subsetTree, false, lang, outputOpts);
+    }
+
+    public Page<JsonElement> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean includeImported, Collection<String> subsetTree, boolean treeContext, String lang, JsonTransformOptions outputOpts) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -183,6 +192,7 @@ public class ClassRepository {
         String id = ontologyId + "+class+" + iri;
 
         Map<String, String> nodeProps = classNodeProperties(includeObsolete, includeImported);
+        if (treeContext) nodeProps.put("treeContext", "true");
 
         return this.postgresClient.getHierarchicalChildren(id, nodeProps, pageable, subsetTree)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))

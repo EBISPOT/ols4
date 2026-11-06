@@ -254,10 +254,11 @@ public class OlsPostgresClient {
 
             Condition where = e2OntologyId.eq(ontologyId)
                     .and(arrayContains(e2Parents, iri))
-                    .and(buildNodePropCondition("e2", nodeProps));
+                    .and(buildTreeCandidateCondition("e2", nodeProps));
 
-            if (subsetTree != null && !subsetTree.isEmpty()) {
-                where = where.and(inSubsetTree("e2", subsetTree, subsetMemberEligibility(nodeProps)));
+            if (Boolean.parseBoolean(nodeProps.get("treeContext")) || (subsetTree != null && !subsetTree.isEmpty())) {
+                where = where.and(inSubsetTree("e2", subsetTree, subsetMemberEligibility(nodeProps)
+                        .and(field("m", "ontology_id", String.class).eq(ontologyId))));
             }
 
             long count = Optional.ofNullable(dsl.selectCount()
@@ -362,7 +363,7 @@ public class OlsPostgresClient {
             Condition where = e1Id.eq(id)
                     .and(arrayContainsField(e2Sources, e1Iri))
                     .and(e2OntologyId.eq(e1OntologyId))
-                    .and(buildNodePropCondition("e2", nodeProps));
+                    .and(buildTreeCandidateCondition("e2", nodeProps));
 
             if (search != null && !search.trim().isEmpty()) {
                 Table<?> labels = unnest(e2Labels, "labels", "l");
@@ -375,8 +376,9 @@ public class OlsPostgresClient {
                                         .concat(DSL.inline("%")))));
             }
 
-            if (subsetTree != null && !subsetTree.isEmpty()) {
-                where = where.and(inSubsetTree("e2", subsetTree, subsetMemberEligibility(nodeProps)));
+            if (Boolean.parseBoolean(nodeProps.get("treeContext")) || (subsetTree != null && !subsetTree.isEmpty())) {
+                where = where.and(inSubsetTree("e2", subsetTree, subsetMemberEligibility(nodeProps)
+                        .and(field("m", "ontology_id", String.class).eq(id.substring(0, id.indexOf('+'))))));
             }
 
             long count = Optional.ofNullable(dsl.selectCount()
@@ -407,6 +409,13 @@ public class OlsPostgresClient {
             if (nodeProps.containsKey(key)) visibility.put(key, nodeProps.get(key));
         }
         return buildNodePropCondition("m", visibility);
+    }
+
+    private Condition buildTreeCandidateCondition(String qualifier, Map<String, String> nodeProps) {
+        if (!Boolean.parseBoolean(nodeProps.get("treeContext"))) return buildNodePropCondition(qualifier, nodeProps);
+        Map<String, String> candidates = new HashMap<>(nodeProps);
+        JooqSupport.TREE_MEMBER_VISIBILITY_FIELDS.forEach(candidates::remove);
+        return buildNodePropCondition(qualifier, candidates);
     }
 
     private Condition buildNodePropCondition(String qualifier, Map<String, String> nodeProps) {

@@ -107,11 +107,16 @@ public class IndividualRepository {
     }
 
     public Page<JsonElement> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean includeImported, Collection<String> subsetTree, String lang, JsonTransformOptions outputOpts) {
+        return getHierarchicalChildrenByOntologyId(ontologyId, pageable, iri, includeObsolete, includeImported, subsetTree, false, lang, outputOpts);
+    }
+
+    public Page<JsonElement> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean includeImported, Collection<String> subsetTree, boolean treeContext, String lang, JsonTransformOptions outputOpts) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
         Map<String, String> nodeProps = individualNodeProperties(includeObsolete, includeImported);
+        if (treeContext) nodeProps.put("treeContext", "true");
 
         // The parent is looked up by IRI rather than by an individual's row id: an
         // individual's hierarchical parent can also be a class (asserted as an
@@ -160,6 +165,12 @@ public class IndividualRepository {
     public OlsFacetedResultsPage<JsonElement> getIndividualsOfClass(
             String ontologyId, String classIri, Pageable pageable, boolean includeObsoleteEntities,
             boolean includeImportedEntities, Collection<String> subsetTree, String lang, JsonTransformOptions outputOpts) throws IOException {
+        return getIndividualsOfClass(ontologyId, classIri, pageable, includeObsoleteEntities, includeImportedEntities, subsetTree, false, lang, outputOpts);
+    }
+
+    public OlsFacetedResultsPage<JsonElement> getIndividualsOfClass(
+            String ontologyId, String classIri, Pageable pageable, boolean includeObsoleteEntities,
+            boolean includeImportedEntities, Collection<String> subsetTree, boolean treeContext, String lang, JsonTransformOptions outputOpts) throws IOException {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -175,6 +186,7 @@ public class IndividualRepository {
             query.addFilter(IS_DEFINING_ONTOLOGY.getText(), List.of("true"), SearchType.WHOLE_FIELD);
         }
         query.setSubsetTree(subsetTree);
+        query.setTreeContext(treeContext);
 
         return searchClient.searchPaginated(query, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))

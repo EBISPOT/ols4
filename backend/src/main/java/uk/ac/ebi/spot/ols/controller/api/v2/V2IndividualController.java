@@ -177,6 +177,8 @@ public class V2IndividualController {
             @RequestParam(value = "subsetTree", required = false)
             @Parameter(name = "subsetTree",
                     description = "Only return entities in one of these subsets (oboInOwl:inSubset), or with a member of one of them below them in the hierarchy. Comma separated subset IRIs.") List<String> subsetTree,
+            @RequestParam(value = "treeContext", required = false, defaultValue = "false")
+            @Parameter(description = "Apply visibility filters to members and retain necessary ancestry connectors, within subsetTree when supplied.") boolean treeContext,
             @RequestParam(value = "includeImportedEntities", required = false, defaultValue = "true")
             @Parameter(name = "includeImportedEntities",
                     description = "A boolean parameter to specify if imported entities (not defined by this ontology) should be included or not. Default value is true.") boolean includeImportedEntities,
@@ -188,7 +190,7 @@ public class V2IndividualController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                        individualRepository.getHierarchicalChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, includeImportedEntities, subsetTree, lang, outputOpts)
+                        individualRepository.getHierarchicalChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, includeImportedEntities, subsetTree, treeContext, lang, outputOpts)
                         .map(V2Entity::new)
                 ),
                 HttpStatus.OK);
@@ -241,6 +243,8 @@ public class V2IndividualController {
             @RequestParam(value = "subsetTree", required = false)
             @Parameter(name = "subsetTree",
                     description = "Only return entities in one of these subsets (oboInOwl:inSubset), or with a member of one of them below them in the hierarchy. Comma separated subset IRIs.") List<String> subsetTree,
+            @RequestParam(value = "treeContext", required = false, defaultValue = "false")
+            @Parameter(description = "Apply visibility filters to members and retain necessary ancestry connectors, within subsetTree when supplied.") boolean treeContext,
             @RequestParam(value = "includeImportedEntities", required = false, defaultValue = "true")
             @Parameter(name = "includeImportedEntities",
                     description = "A boolean parameter to specify if imported entities (not defined by this ontology) should be included or not. Default value is true.") boolean includeImportedEntities,
@@ -253,7 +257,7 @@ public class V2IndividualController {
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
                         individualRepository.getIndividualsOfClass(
-                                ontologyId, classIri, pageable, includeObsoleteEntities, includeImportedEntities, subsetTree, lang, outputOpts)
+                                ontologyId, classIri, pageable, includeObsoleteEntities, includeImportedEntities, subsetTree, treeContext, lang, outputOpts)
                                 .map(V2Entity::new)
                 ),
                 HttpStatus.OK);

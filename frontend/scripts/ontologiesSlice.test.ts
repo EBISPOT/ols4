@@ -287,3 +287,48 @@ test('generated overlapping individual parents keep the relation in the actual c
     }
   } finally { globalThis.fetch = originalFetch; }
 });
+
+for (const entityType of ['classes', 'individuals', 'properties']) {
+  test(`native tree roots and every expanded child route opt in together: ${entityType}`, async () => {
+    const s = setup();
+    const originalFetch = globalThis.fetch;
+    const urls: URL[] = [];
+    globalThis.fetch = (async (input: any) => {
+      urls.push(new URL(String(input)));
+      return { ok: true, json: async () => ({ elements: [], totalElements: 0, totalPages: 1 }) };
+    }) as any;
+    try {
+      await s.dispatch(getRootEntities({ ...args(), entityType, showImportedEnabled: false, subsetTree: [subset] })).unwrap();
+      await s.dispatch(getNodeChildren({ ...args(), entityTypePlural: entityType, entityIri: 'parent',
+        absoluteIdentity: 'parent', includeImportedEntities: false, includeObsoleteEntities: false,
+        subsetTree: [subset] })).unwrap();
+      assert.equal(urls.length, entityType === 'classes' ? 5 : entityType === 'individuals' ? 4 : 2);
+      for (const url of urls) {
+        assert.equal(url.searchParams.get('treeContext'), 'true');
+        assert.equal(url.searchParams.get('subsetTree'), subset);
+        assert.equal(url.searchParams.get('includeObsoleteEntities'), 'false');
+      }
+      urls.length = 0;
+      await s.dispatch(getRootEntities({ ...args(), entityType, showImportedEnabled: true })).unwrap();
+      assert(urls.every(url => url.searchParams.get('treeContext') === 'true' && !url.searchParams.has('isDefiningOntology')));
+    } finally { globalThis.fetch = originalFetch; }
+  });
+}
+
+test('native paginated tree children and their page count use the same connector context', async () => {
+  const s = setup(); const originalFetch = globalThis.fetch; const urls: URL[] = [];
+  globalThis.fetch = (async (input: any) => {
+    urls.push(new URL(String(input)));
+    return { ok: true, json: async () => ({ elements: [], totalElements: 0, totalPages: 1 }) };
+  }) as any;
+  try {
+    const input = { ...args(), entityIri: 'R', showImportedEnabled: false, subsetTree: [subset], page: 0, size: 10 };
+    await s.dispatch(getDirectChildrenCount(input)).unwrap();
+    await s.dispatch(getDirectChildrenEntities(input)).unwrap();
+    assert.equal(urls.length, 2);
+    for (const url of urls) {
+      assert.equal(url.searchParams.get('treeContext'), 'true');
+      assert.equal(url.searchParams.get('subsetTree'), subset);
+    }
+  } finally { globalThis.fetch = originalFetch; }
+});

@@ -29,6 +29,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
 
 @Component
 public class PropertyRepository {
@@ -112,13 +113,19 @@ public class PropertyRepository {
     }
 
     public Page<JsonElement> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeImported, Collection<String> subsetTree, String lang, JsonTransformOptions outputOpts) {
+        return getChildrenByOntologyId(ontologyId, pageable, iri, includeImported, subsetTree, false, lang, outputOpts);
+    }
+
+    public Page<JsonElement> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeImported, Collection<String> subsetTree, boolean treeContext, String lang, JsonTransformOptions outputOpts) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
         String id = ontologyId + "+property+" + iri;
 
-        return this.postgresClient.getDirectChildren(id, propertyNodeProperties(includeImported), pageable, null, subsetTree)
+        Map<String, String> nodeProps = new HashMap<>(propertyNodeProperties(includeImported));
+        if (treeContext) nodeProps.put("treeContext", "true");
+        return this.postgresClient.getDirectChildren(id, nodeProps, pageable, null, subsetTree)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }

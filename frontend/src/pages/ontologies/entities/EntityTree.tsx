@@ -315,6 +315,7 @@ export default function EntityTree({
                 entity={childNode.entity}
                 title={childNode.title}
                 ancestryContext={!showImportedEnabled && !childNode.entity.isCanonical()}
+                obsoleteContext={!showObsoleteEnabled && childNode.entity.isDeprecated()}
                 lang={lang}
                 onNavigateToEntity={onNavigateToEntity}
                 onNavigateToOntology={onNavigateToOntology}
@@ -502,6 +503,7 @@ function TreeLink({
   entity,
   title,
   ancestryContext,
+  obsoleteContext,
   lang,
   onNavigateToEntity,
   onNavigateToOntology,
@@ -510,6 +512,7 @@ function TreeLink({
   entity: Entity;
   title: string;
   ancestryContext: boolean;
+  obsoleteContext: boolean;
   lang: string;
   onNavigateToEntity: (ontology: Ontology, entity: Entity) => void;
   onNavigateToOntology: (ontologyId: string, entity: Entity) => void;
@@ -521,7 +524,7 @@ function TreeLink({
   return (
     <span>
       <a
-        title={`${title} [${entity.getIri()}]${ancestryContext ? ' (imported ancestry context)' : ''}`}
+        title={`${title} [${entity.getIri()}]${ancestryContext ? ' (imported ancestry context)' : ''}${obsoleteContext ? ' (obsolete ancestry context)' : ''}`}
         className={"link-default"}
         onClick={() => onNavigateToEntity(ontology, entity)}
       >
@@ -530,6 +533,11 @@ function TreeLink({
       {ancestryContext && (
         <span className="ml-1 text-sm text-gray-600" title="Imported term retained to show the ancestry path">
           {" (imported ancestry context)"}
+        </span>
+      )}
+      {obsoleteContext && (
+        <span className="ml-1 text-sm text-gray-600" title="Obsolete term retained to show the ancestry path">
+          {" (obsolete ancestry context)"}
         </span>
       )}
       {definedBy.length > 0 &&

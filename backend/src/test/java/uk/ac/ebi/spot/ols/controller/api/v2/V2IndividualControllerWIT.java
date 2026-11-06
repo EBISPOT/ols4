@@ -34,6 +34,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyMap;
 import static org.mockito.Mockito.verify;
@@ -78,10 +79,10 @@ class V2IndividualControllerWIT {
                 any(), any(), any(), any(), any(), any(), anyBoolean(), anyMap(), any()))
                 .thenReturn(individualPage());
         when(individualRepository.getIndividualsOfClass(
-                any(), any(), any(), anyBoolean(), anyBoolean(), any(), any(), any()))
+                any(), any(), any(), anyBoolean(), anyBoolean(), any(), eq(false), any(), any()))
                 .thenReturn(individualPage());
         when(individualRepository.getHierarchicalChildrenByOntologyId(
-                any(), any(), any(), anyBoolean(), anyBoolean(), any(), any(), any()))
+                any(), any(), any(), anyBoolean(), anyBoolean(), any(), eq(false), any(), any()))
                 .thenReturn(hierarchyPage());
         when(individualRepository.getHierarchicalAncestorsByOntologyId(
                 any(), any(), any(), anyBoolean(), anyBoolean(), any(), any()))
@@ -344,11 +345,11 @@ class V2IndividualControllerWIT {
                     .thenThrow(error);
         } else if (route.equals("class")) {
             when(individualRepository.getIndividualsOfClass(
-                    any(), any(), any(), anyBoolean(), anyBoolean(), any(), any(), any()))
+                    any(), any(), any(), anyBoolean(), anyBoolean(), any(), eq(false), any(), any()))
                     .thenThrow(error);
         } else if (route.equals("children")) {
             when(individualRepository.getHierarchicalChildrenByOntologyId(
-                    any(), any(), any(), anyBoolean(), anyBoolean(), any(), any(), any()))
+                    any(), any(), any(), anyBoolean(), anyBoolean(), any(), eq(false), any(), any()))
                     .thenThrow(error);
         } else {
             when(individualRepository.getHierarchicalAncestorsByOntologyId(
@@ -517,11 +518,11 @@ class V2IndividualControllerWIT {
                     .thenThrow(error);
         } else if (route.equals("class")) {
             when(individualRepository.getIndividualsOfClass(
-                    any(), any(), any(), anyBoolean(), anyBoolean(), any(), any(), any()))
+                    any(), any(), any(), anyBoolean(), anyBoolean(), any(), eq(false), any(), any()))
                     .thenThrow(error);
         } else if (route.equals("children")) {
             when(individualRepository.getHierarchicalChildrenByOntologyId(
-                    any(), any(), any(), anyBoolean(), anyBoolean(), any(), any(), any()))
+                    any(), any(), any(), anyBoolean(), anyBoolean(), any(), eq(false), any(), any()))
                     .thenThrow(error);
         } else {
             when(individualRepository.getHierarchicalAncestorsByOntologyId(
@@ -565,11 +566,11 @@ class V2IndividualControllerWIT {
                     .thenThrow(error);
         } else if (route.equals("class")) {
             when(individualRepository.getIndividualsOfClass(
-                    any(), any(), any(), anyBoolean(), anyBoolean(), any(), any(), any()))
+                    any(), any(), any(), anyBoolean(), anyBoolean(), any(), eq(false), any(), any()))
                     .thenThrow(error);
         } else if (route.equals("children")) {
             when(individualRepository.getHierarchicalChildrenByOntologyId(
-                    any(), any(), any(), anyBoolean(), anyBoolean(), any(), any(), any()))
+                    any(), any(), any(), anyBoolean(), anyBoolean(), any(), eq(false), any(), any()))
                     .thenThrow(error);
         } else {
             when(individualRepository.getHierarchicalAncestorsByOntologyId(
@@ -679,7 +680,7 @@ class V2IndividualControllerWIT {
         ArgumentCaptor<JsonTransformOptions> options = ArgumentCaptor.forClass(JsonTransformOptions.class);
         verify(individualRepository).getIndividualsOfClass(
                 ontologyId.capture(), classIri.capture(), pageable.capture(),
-                includeObsoleteEntities.capture(), anyBoolean(), any(), lang.capture(), options.capture());
+                includeObsoleteEntities.capture(), anyBoolean(), any(), eq(false), lang.capture(), options.capture());
         return new ClassCall(
                 ontologyId.getValue(), classIri.getValue(), pageable.getValue(),
                 includeObsoleteEntities.getValue(), lang.getValue(), options.getValue());
@@ -702,7 +703,7 @@ class V2IndividualControllerWIT {
         if (route.equals("children")) {
             verify(individualRepository).getHierarchicalChildrenByOntologyId(
                     ontologyId.capture(), pageable.capture(), individualIri.capture(),
-                    includeObsoleteEntities.capture(), anyBoolean(), any(), lang.capture(), options.capture());
+                    includeObsoleteEntities.capture(), anyBoolean(), any(), eq(false), lang.capture(), options.capture());
         } else {
             verify(individualRepository).getHierarchicalAncestorsByOntologyId(
                     ontologyId.capture(), pageable.capture(), individualIri.capture(),
