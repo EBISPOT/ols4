@@ -270,6 +270,24 @@ public class V2ClassController {
                 HttpStatus.OK);
     }
 
+    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/treeChildren", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    public HttpEntity<V2PagedResponse<V2Entity>> getTreeChildrenByOntology(
+            @PageableDefault(size = 20, page = 0) @ParameterObject Pageable pageable,
+            @PathVariable("onto") String ontologyId,
+            @PathVariable("class") @Parameter(description = "Double URL encoded parent IRI; may be a class or individual in the Classes tree.") String iri,
+            @RequestParam(value = "includeObsoleteEntities", defaultValue = "false") boolean includeObsoleteEntities,
+            @RequestParam(value = "includeImportedEntities", defaultValue = "true") boolean includeImportedEntities,
+            @RequestParam(value = "searchQuery", required = false) String searchQuery,
+            @RequestParam(value = "subsetTree", required = false) List<String> subsetTree,
+            @RequestParam(value = "treeContext", defaultValue = "false")
+            @Parameter(description = "Apply visibility filters to members and retain necessary ancestry connectors, within subsetTree when supplied.") boolean treeContext,
+            @RequestParam(value = "lang", defaultValue = "en") String lang,
+            @ParameterObject JsonTransformOptions outputOpts) {
+        return new ResponseEntity<>(new V2PagedResponse<>(classRepository.getTreeChildrenByOntologyId(
+                ontologyId, pageable, UriUtils.decode(iri, "UTF-8"), includeObsoleteEntities, includeImportedEntities,
+                searchQuery, subsetTree, treeContext, lang, outputOpts).map(V2Entity::new)), HttpStatus.OK);
+    }
+
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}/ancestors", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<V2PagedResponse<V2Entity>> getAncestorsByOntology(
             @PageableDefault(size = 20, page = 0)

@@ -225,6 +225,57 @@ public class OlsPostgresClient {
         return lookupArraySources(id, "direct_parents", nodeProps, pageable, search, subsetTree);
     }
 
+    /**
+     * The combined Classes-tree expansion, counted and paged AFTER IRI deduplication.
+     * Classes win punning over individuals, preserving the existing display identity and
+     * relation metadata. Search runs on that winner too, never resurrecting a hidden twin.
+     * The parent may itself be an individual; hierarchical edges are addressed by IRI.
+     */
+    public Page<JsonElement> getTreeChildren(String ontologyId, String parentIri, Map<String, String> nodeProps,
+            Pageable pageable, String search, Collection<String> subsetTree) {
+        try (Connection conn = postgresClient.getConnection()) {
+            DSLContext dsl = postgresClient.dsl(conn);
+            Field<String> type = field("e", "type", String.class);
+            Condition classChildren = type.eq("OntologyClass").and(
+                    arrayContains(field("e", "direct_parents", String[].class), parentIri)
+                            .or(arrayContains(field("e", "hierarchical_parents", String[].class), parentIri)));
+            Condition individualChildren = type.eq("OntologyIndividual").and(
+                    arrayContains(field("e", "filter_http://www.w3.org/1999/02/22-rdf-syntax-ns#type", String[].class), parentIri)
+                            .or(arrayContains(field("e", "hierarchical_parents", String[].class), parentIri)));
+            Condition candidates = field("e", "ontology_id", String.class).eq(ontologyId)
+                    .and(classChildren.or(individualChildren))
+                    .and(buildTreeCandidateCondition("e", nodeProps));
+            if (Boolean.parseBoolean(nodeProps.get("treeContext")) || (subsetTree != null && !subsetTree.isEmpty())) {
+                candidates = candidates.and(inSubsetTree("e", subsetTree, subsetMemberEligibility(nodeProps)
+                        .and(field("m", "ontology_id", String.class).eq(ontologyId))));
+            }
+            // One source row can match multiple routes. DISTINCT ON also collapses punning.
+            // Class sorts first lexically (OntologyClass < OntologyIndividual).
+            Table<?> children = DSL.table("""
+                    (SELECT DISTINCT ON (e.iri) e.iri, e.type, e.label, e._json
+                     FROM ols_entities e WHERE {0} ORDER BY e.iri, e.type, e.id)
+                    """, candidates).as("child");
+            Condition matches = DSL.trueCondition();
+            if (search != null && !search.isBlank()) {
+                matches = DSL.exists(dsl.selectOne()
+                        .from(unnest(field("child", "label", String[].class), "labels", "l"))
+                        .where(DSL.lower(field("labels", "l", String.class)).contains(search.toLowerCase(Locale.ROOT))));
+            }
+            long count = Optional.ofNullable(dsl.selectCount().from(children).where(matches)
+                    .fetchOne(0, Long.class)).orElse(0L);
+            Field<byte[]> json = field("child", "_json", byte[].class);
+            var records = dsl.select(json).from(children).where(matches)
+                    .orderBy(field("child", "type", String.class).asc(),
+                            DSL.lower(DSL.field("coalesce({0}[1], {1})", String.class,
+                                    field("child", "label", String[].class), field("child", "iri", String.class))).asc(),
+                            field("child", "iri", String.class).asc())
+                    .offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
+            return new PageImpl<>(readJsonElements(records, json), pageable, count);
+        } catch (SQLException e) {
+            throw new RuntimeException("getTreeChildren failed", e);
+        }
+    }
+
     public Page<JsonElement> getHierarchicalParents(String id, Map<String, String> nodeProps, Pageable pageable) {
         return lookupArrayTargets(id, "hierarchical_parents", nodeProps, pageable);
     }

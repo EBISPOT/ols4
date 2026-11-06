@@ -341,6 +341,7 @@ export default function EntityTree({
                           ontologyId={ontology.getOntologyId()}
                           entityType={entityType === "entities" ? "classes" : entityType}
                           parentEntityIri={childNode.iri}
+                          tableKey={childNode.absoluteIdentity}
                           lang={lang}
                           showObsoleteEnabled={showObsoleteEnabled}
                           subsetTree={subsetTree}

@@ -139,6 +139,18 @@ public class ClassRepository {
                     ;
     }
 
+    public Page<JsonElement> getTreeChildrenByOntologyId(String ontologyId, Pageable pageable, String iri,
+            boolean includeObsolete, boolean includeImported, String search, Collection<String> subsetTree,
+            boolean treeContext, String lang, JsonTransformOptions outputOpts) {
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+        Map<String, String> props = classNodeProperties(includeObsolete, includeImported);
+        props.remove("type");
+        if (treeContext) props.put("treeContext", "true");
+        return postgresClient.getTreeChildren(ontologyId, iri, props, pageable, search, subsetTree)
+                .map(e -> JsonTransformer.transformJson(e, lang, outputOpts));
+    }
+
     public Page<JsonElement> getAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
 
         Validation.validateOntologyId(ontologyId);

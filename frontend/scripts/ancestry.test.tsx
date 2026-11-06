@@ -64,7 +64,7 @@ async function withApi(run: (urls: URL[]) => Promise<void>) {
       const wanted = iri === connectorIri ? [rootIri] : efoPath.filter(e => e.iri !== iri).map(e => e.iri);
       return page(efoPath.filter(e => wanted.includes(e.iri) && (includesImports || e.isDefiningOntology)));
     }
-    if (path.endsWith('/hierarchicalChildren') || path.endsWith('/children')) {
+    if (path.endsWith('/treeChildren') || path.endsWith('/hierarchicalChildren') || path.endsWith('/children')) {
       const optional = [true, false].map(native => ({ iri: native ? 'native sibling' : 'imported sibling',
         label: [native ? 'native sibling' : 'imported sibling'], ontologyId: 'efo', type: ['class'],
         isDefiningOntology: native, hierarchicalParent: [iri] }));
@@ -122,7 +122,7 @@ test('a delayed filtered children response cannot erase the required connector a
     const release: (() => void)[] = [];
     globalThis.fetch = ((...a: any[]) => new Promise(resolve => release.push(() => resolve((apiFetch as any)(...a))))) as any;
     const pending = s.dispatch(getNodeChildren(childArgs()));
-    assert.equal(release.length, 4);
+    assert.equal(release.length, 1);
     release.forEach(resolve => resolve());
     await pending.unwrap();
     assert.deepEqual(s.getState().ontologies.nodeChildren[rootIri].map(n => n.iri).sort(), [connectorIri, 'native sibling'].sort());
@@ -245,3 +245,19 @@ test('the selected path stays visible when an expanded ancestor uses the large-c
     assert(render().includes('body height at birth'));
   });
 });
+
+for (const count of [1000, 1001]) {
+  test(`combined expansion sets the strict table threshold for automatically selected paths: ${count}`, async () => {
+    await withApi(async () => {
+      const { s, args, childArgs, render } = setup({ imports: true, siblings: true });
+      await s.dispatch(getAncestors(args)).unwrap();
+      const input = childArgs();
+      s.dispatch(getNodeChildren.pending('combined', input));
+      s.dispatch(getNodeChildren.fulfilled({ absoluteIdentity: rootIri, entityIri: rootIri,
+        children: [], totalElements: count }, 'combined', input));
+      const html = render();
+      assert.equal(html.includes('Direct Children'), count > 1000);
+      assert(html.includes('body height at birth'));
+    });
+  });
+}

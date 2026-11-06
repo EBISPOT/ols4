@@ -52,6 +52,22 @@ class NativeTreeHttpWIT {
     }
 
     @Test
+    void combinedTreeChildrenBindsSearchPagingFiltersAndCompatibleDefaults() throws Exception {
+        when(classes.getTreeChildrenByOntologyId(any(), any(), any(), anyBoolean(), anyBoolean(), any(), any(), anyBoolean(), any(), any())).thenReturn(Page.empty());
+        mvc.perform(get(URI.create(PREFIX + "classes/" + IRI + "/treeChildren")))
+                .andExpect(status().isOk());
+        verify(classes).getTreeChildrenByOntologyId(eq("native"), argThat(p -> p.getPageSize() == 20 && p.getPageNumber() == 0),
+                eq("https://example.org/native#R"), eq(false), eq(true), isNull(), isNull(), eq(false), eq("en"), any());
+        mvc.perform(get(URI.create(PREFIX + "classes/" + IRI + "/treeChildren"))
+                .param("treeContext", "true").param("subsetTree", "S,S2").param("searchQuery", "late")
+                .param("page", "100").param("size", "10").param("lang", "fr")
+                .param("includeImportedEntities", "false").param("includeObsoleteEntities", "true"))
+                .andExpect(status().isOk());
+        verify(classes).getTreeChildrenByOntologyId(eq("native"), argThat(p -> p.getOffset() == 1000 && p.getPageSize() == 10),
+                eq("https://example.org/native#R"), eq(true), eq(false), eq("late"), eq(List.of("S","S2")), eq(true), eq("fr"), any());
+    }
+
+    @Test
     void treeContextRootFlagIsForwardedAsControlInputInsteadOfDiscarded() throws Exception {
         when(classes.findByOntologyId(any(), any(), any(), any(), any(), any(), anyBoolean(), anyMap(), any()))
                 .thenReturn(new OlsFacetedResultsPage<JsonElement>(List.of(), Map.of(), org.springframework.data.domain.PageRequest.of(0,20), 0));

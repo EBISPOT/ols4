@@ -43,6 +43,7 @@ export interface OntologiesState {
   relatedFrom: Entity[] | null;
   loadingRelatedFrom: boolean;
   directChildrenCounts: { [key: string]: number };
+  directChildrenTables: Record<string, { elements: Entity[]; totalElements: number; loading: boolean }>;
   directChildrenEntities: Entity[];
   totalDirectChildrenEntities: number;
   loadingDirectChildrenEntities: boolean;
@@ -101,6 +102,7 @@ const initialState: OntologiesState = {
   relatedFrom: null,
   loadingRelatedFrom: false,
   directChildrenCounts: {},
+  directChildrenTables: {},
   directChildrenEntities: [],
   totalDirectChildrenEntities: 0,
   loadingDirectChildrenEntities: false,
@@ -131,6 +133,7 @@ function clearTreeContent(state: Draft<OntologiesState>) {
   state.automaticallyExpandedNodes = [];
   state.manuallyExpandedNodes = [];
   state.directChildrenCounts = {};
+  state.directChildrenTables = {};
   state.directChildrenEntities = [];
   state.totalDirectChildrenEntities = 0;
   state.loadingDirectChildrenEntities = false;
@@ -149,9 +152,14 @@ const treeThunkOptions = {
   condition: (arg: any, { getState }: any) => ownsTreeRequest(getState().ontologies, arg),
 };
 
+// absolute path distinguishes the same parent shown on two branches of one tree.
+export const directChildrenTableKey = (arg: { tableKey?: string; entityType?: string; entityIri?: string }) =>
+  arg.tableKey || JSON.stringify([arg.entityType, arg.entityIri]);
+
 function treeRequestSlot(action: any): string {
   const type = action.type.slice(0, action.type.lastIndexOf("/"));
   const arg = action.meta.arg;
+  if (type === "ontologies_direct_children_entities") return `${type}:${directChildrenTableKey(arg)}`;
   if (type === "ontologies_node_children") return `${type}:${arg.absoluteIdentity}`;
   if (type === "ontologies_direct_children_count") return `${type}:${arg.entityIri}`;
   return type;
@@ -770,15 +778,6 @@ export const getDirectChildrenEntities = createAsyncThunk(
     search,
     subsetTree,
   }: any, { signal }) => {
-    console.log('getDirectChildrenEntities called with:', {
-      ontologyId,
-      entityIri: entityIri?.substring(0, 50) + '...',
-      entityType,
-      page,
-      size,
-      search
-    });
-    
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
     let response: any;
     
@@ -797,7 +796,7 @@ export const getDirectChildrenEntities = createAsyncThunk(
     
     if (entityType === "classes") {
       response = await getPaginated<any>(
-        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/children?${searchParams}`,
+        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/treeChildren?${searchParams}`,
         undefined,
         apiUrl,
         { signal }
@@ -840,7 +839,7 @@ export const getDirectChildrenCount = createAsyncThunk(
     
     if (entityType === "classes") {
       response = await get<any>(
-        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/children?${new URLSearchParams({
+        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/treeChildren?${new URLSearchParams({
           size: "1",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
@@ -903,76 +902,15 @@ export const getNodeChildren = createAsyncThunk(
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
     var childrenPage: any;
     if (entityTypePlural === "classes") {
-        const hierarchicalChildrenPromise = getPaginated<any>(
-            `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/hierarchicalChildren?${new URLSearchParams({
-                size: "1000",
-                lang,
-                includeObsoleteEntities: showObsoleteEnabled,
-                includeImportedEntities: showImportedEnabled,
-                ...treeContextParams(subsetTree),
-            })}`,
-            undefined,
-            apiUrl,
-            { signal }
-        );
-        const directChildrenPromise = getPaginated<any>(
-            `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/children?${new URLSearchParams({
-                size: "1000",
-                lang,
-                includeObsoleteEntities: showObsoleteEnabled,
-                includeImportedEntities: showImportedEnabled,
-                ...treeContextParams(subsetTree),
-            })}`,
-            undefined,
-            apiUrl,
-            { signal }
-        );
-        const individualsPromise = getPaginated<any>(
-            `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/individuals?${new URLSearchParams({
-                size: "1000",
-                lang,
-                includeObsoleteEntities: showObsoleteEnabled,
-                includeImportedEntities: showImportedEnabled,
-                ...treeContextParams(subsetTree),
-            })}`,
-            undefined,
-            apiUrl,
-            { signal }
-        );
-        // Individuals nested under this node by a configured hierarchical property.
-        // The parent can be another individual (a direct triple) or a class (an
-        // existential restriction the individual is typed with).
-        const individualHierarchicalChildrenPromise = getPaginated<any>(
-            `api/v2/ontologies/${ontologyId}/individuals/${doubleEncodedUri}/hierarchicalChildren?${new URLSearchParams({
-                size: "1000",
-                lang,
-                includeObsoleteEntities: showObsoleteEnabled,
-                includeImportedEntities: showImportedEnabled,
-                ...treeContextParams(subsetTree),
-            })}`,
-            undefined,
-            apiUrl,
-            { signal }
-        );
-
-        const [hierarchicalChildren, directChildren, individuals, individualHierarchicalChildren] =
-          await Promise.all([
-            hierarchicalChildrenPromise,
-            directChildrenPromise,
-            individualsPromise,
-            individualHierarchicalChildrenPromise,
-          ]);
-
-        // A class tree displays both subclass relationships and rdf:type instances,
-        // while the V2 class hierarchy endpoints remain class-only.
-        childrenPage = {
-            elements: [
-                ...hierarchicalChildren.elements,
-                ...directChildren.elements,
-                ...individuals.elements,
-                ...individualHierarchicalChildren.elements,
-            ],
-        };
+      childrenPage = await getPaginated<any>(
+        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/treeChildren?${new URLSearchParams({
+          size: "1000", lang,
+          includeObsoleteEntities: showObsoleteEnabled,
+          includeImportedEntities: showImportedEnabled,
+          ...treeContextParams(subsetTree),
+        })}`,
+        undefined, apiUrl, { signal }
+      );
     } else if (entityTypePlural === "individuals") {
       const [classIndividuals, individualHierarchicalChildren] = await Promise.all([
         getPaginated<any>(
@@ -1029,6 +967,8 @@ export const getNodeChildren = createAsyncThunk(
     const seenChildIris = new Set<string>();
     return {
       absoluteIdentity,
+      entityIri,
+      totalElements: entityTypePlural === "classes" ? childrenPage.totalElements : undefined,
       children: childrenPage.elements
         .map((obj: any) => thingFromJsonProperties(obj) as Entity)
         .filter((term: Entity) => {
@@ -1211,6 +1151,10 @@ const ontologiesSlice = createSlice({
       getDirectChildrenEntities.fulfilled,
       (state, action) => {
         if (!finishTreeRequest(state, action)) return;
+        state.directChildrenTables[directChildrenTableKey(action.meta.arg)] = {
+          elements: action.payload.elements, totalElements: action.payload.totalElements, loading: false,
+        };
+        // Retained for existing store consumers; embedded tables read their own keyed entry.
         state.directChildrenEntities = action.payload.elements;
         state.totalDirectChildrenEntities = action.payload.totalElements;
         state.loadingDirectChildrenEntities = false;
@@ -1218,6 +1162,9 @@ const ontologiesSlice = createSlice({
     );
     builder.addCase(getDirectChildrenEntities.pending, (state, action) => {
       if (!startTreeRequest(state, action)) return;
+      state.directChildrenTables[directChildrenTableKey(action.meta.arg)] = {
+        elements: [], totalElements: 0, loading: true,
+      };
       state.loadingDirectChildrenEntities = true;
       state.errorMessage = initialState.errorMessage;
     });
@@ -1225,6 +1172,8 @@ const ontologiesSlice = createSlice({
       getDirectChildrenEntities.rejected,
       (state, error) => {
         if (!finishTreeRequest(state, error)) return;
+        const table = state.directChildrenTables[directChildrenTableKey(error.meta.arg)];
+        if (table) table.loading = false;
         state.loadingDirectChildrenEntities = false;
         state.errorMessage = typeof error.payload === "string" ? error.payload : "";
       }
@@ -1264,6 +1213,10 @@ const ontologiesSlice = createSlice({
       getNodeChildren.fulfilled,
       (state, action) => {
         if (!finishTreeRequest(state, action)) return;
+        // Automatically expanded selected paths also need the combined threshold.
+        if (action.payload.totalElements !== undefined) {
+          state.directChildrenCounts[action.payload.entityIri] = action.payload.totalElements;
+        }
         state.nodeChildren = {
           ...state.nodeChildren,
           // Filtered children/siblings may omit an imported connector. Retain

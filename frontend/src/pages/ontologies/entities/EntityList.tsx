@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import DataTable, { Column } from "../../../components/DataTable";
 import Entity from "../../../model/Entity";
-import { getEntities, getDirectChildrenEntities } from "../ontologiesSlice";
+import { getEntities, getDirectChildrenEntities, directChildrenTableKey } from "../ontologiesSlice";
 import Individual from "../../../model/Individual";
 import Property from "../../../model/Property";
 
@@ -11,6 +11,7 @@ export default function EntityList({
   ontologyId,
   entityType,
   parentEntityIri,
+  tableKey,
   lang,
   showObsoleteEnabled,
   subsetTree,
@@ -24,6 +25,7 @@ export default function EntityList({
   ontologyId: string;
   entityType: "entities" | "classes" | "properties" | "individuals";
   parentEntityIri?: string;
+  tableKey?: string;
   lang?: string;
   showObsoleteEnabled?: boolean;
   subsetTree?: string[];
@@ -41,15 +43,12 @@ export default function EntityList({
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
   const [search, setSearch] = useState<string>("");
 
-  const entities = useAppSelector((state) => 
-    parentEntityIri ? state.ontologies.directChildrenEntities : state.ontologies.entities
-  );
-  const totalEntities = useAppSelector((state) => 
-    parentEntityIri ? state.ontologies.totalDirectChildrenEntities : state.ontologies.totalEntities
-  );
-  const loading = useAppSelector((state) => 
-    parentEntityIri ? state.ontologies.loadingDirectChildrenEntities : state.ontologies.loadingEntities
-  );
+  const tableId = directChildrenTableKey({ tableKey, entityType, entityIri: parentEntityIri });
+  const table = useAppSelector(state => state.ontologies.directChildrenTables[tableId]);
+  const listEntities = useAppSelector(state => state.ontologies.entities);
+  const listTotal = useAppSelector(state => state.ontologies.totalEntities);
+  const entities = parentEntityIri ? table?.elements || [] : listEntities;
+  const totalEntities = parentEntityIri ? table?.totalElements || 0 : listTotal;
 
   useEffect(() => {
     if (parentEntityIri) {
@@ -58,6 +57,7 @@ export default function EntityList({
         getDirectChildrenEntities({
           ontologyId,
           entityIri: parentEntityIri,
+          tableKey: tableId,
           entityType,
           page,
           size: rowsPerPage,
@@ -88,7 +88,7 @@ export default function EntityList({
       
       dispatch(getEntities(params));
     }
-  }, [dispatch, ontologyId, entityType, page, rowsPerPage, search, parentEntityIri, lang, showObsoleteEnabled, JSON.stringify(subsetTree), apiUrl, showImportedEnabled, treeScopeKey, requestKey]);
+  }, [dispatch, ontologyId, entityType, page, rowsPerPage, search, parentEntityIri, lang, showObsoleteEnabled, JSON.stringify(subsetTree), apiUrl, showImportedEnabled, treeScopeKey, requestKey, tableId]);
 
   useEffect(() => {
     setPage(0);
@@ -425,7 +425,7 @@ export default function EntityList({
         columns={columns}
         data={entities}
         dataCount={totalEntities}
-        placeholder={`Search ${entityType}...`}
+        placeholder={parentEntityIri && entityType === "classes" ? "Search children..." : `Search ${entityType}...`}
         page={page}
         rowsPerPage={rowsPerPage}
         onPageChange={(pg: number) => {
@@ -450,6 +450,7 @@ export default function EntityList({
           }
         }}
         onFilter={(searchTerm: string) => {
+          setPage(0);
           setSearch(searchTerm);
         }}
       />

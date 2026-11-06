@@ -105,7 +105,7 @@ test('cancellation reaches fetch for multi-request tree thunks', async () => {
   }) as any;
   try {
     const pending = s.dispatch(getNodeChildren({ ...args(), entityTypePlural: 'classes', entityIri: 'parent', absoluteIdentity: 'parent' }));
-    assert.equal(signals.length, 4);
+    assert.equal(signals.length, 1);
     pending.abort();
     await pending;
     assert(signals.every(signal => signal?.aborted));
@@ -273,8 +273,8 @@ test('generated overlapping individual parents keep the relation in the actual c
   const s = setup();
   const originalFetch = globalThis.fetch;
   globalThis.fetch = (async (input: any) => ({ ok: true, json: async () => ({
-    elements: String(input).includes('/individuals/') ? overlapIndividuals : [],
-    totalElements: String(input).includes('/individuals/') ? overlapIndividuals.length : 0,
+    elements: String(input).includes('/treeChildren') ? overlapIndividuals : [],
+    totalElements: String(input).includes('/treeChildren') ? overlapIndividuals.length : 0,
     totalPages: 1,
   }) })) as any;
   try {
@@ -302,7 +302,7 @@ for (const entityType of ['classes', 'individuals', 'properties']) {
       await s.dispatch(getNodeChildren({ ...args(), entityTypePlural: entityType, entityIri: 'parent',
         absoluteIdentity: 'parent', includeImportedEntities: false, includeObsoleteEntities: false,
         subsetTree: [subset] })).unwrap();
-      assert.equal(urls.length, entityType === 'classes' ? 5 : entityType === 'individuals' ? 4 : 2);
+      assert.equal(urls.length, entityType === 'classes' ? 2 : entityType === 'individuals' ? 4 : 2);
       for (const url of urls) {
         assert.equal(url.searchParams.get('treeContext'), 'true');
         assert.equal(url.searchParams.get('subsetTree'), subset);
@@ -357,3 +357,42 @@ for (const imports of [true, false]) {
     } finally { globalThis.fetch = originalFetch; }
   });
 }
+
+test('Classes tree count, expansion and late child page use the same combined endpoint', async () => {
+  const s = setup(); const originalFetch = globalThis.fetch; const urls: URL[] = [];
+  globalThis.fetch = (async (input: any) => {
+    const url = new URL(String(input)); urls.push(url);
+    const combined = url.pathname.endsWith('/treeChildren');
+    return { ok: true, json: async () => ({ elements: combined ? [{ iri: 'child1001', label: ['late child'], type: ['individual'], ontologyId: 'coho' }] : [], totalElements: combined ? 2241 : 0, totalPages: 225 }) };
+  }) as any;
+  try {
+    const input = { ...args(), entityIri: 'cohort', absoluteIdentity: 'cohort', subsetTree: [subset], showImportedEnabled: false };
+    await s.dispatch(getDirectChildrenCount(input)).unwrap();
+    const children = await s.dispatch(getNodeChildren({ ...input, entityTypePlural: 'classes' })).unwrap();
+    const page = await s.dispatch(getDirectChildrenEntities({ ...input, page: 100, size: 10, search: 'late' })).unwrap();
+    assert.equal(s.getState().ontologies.directChildrenCounts.cohort, 2241);
+    assert.equal(children.children[0].iri, 'child1001');
+    assert.equal(page.elements[0].getIri(), 'child1001');
+    assert.equal(urls.length, 3);
+    assert(urls.every(url => url.pathname.endsWith('/treeChildren') && url.searchParams.get('subsetTree') === subset));
+    assert.equal(urls[2].searchParams.get('page'), '100');
+    assert.equal(urls[2].searchParams.get('searchQuery'), 'late');
+  } finally { globalThis.fetch = originalFetch; }
+});
+
+test('two expanded tables retain independent rows while same-table stale responses are ignored', () => {
+  const s = setup();
+  const a = { ...args(), entityIri: 'A', tableKey: 'root;A', page: 100, size: 10 };
+  const b = { ...args(), entityIri: 'B', tableKey: 'root;B', page: 0, size: 10, search: 'needle' };
+  s.dispatch(getDirectChildrenEntities.pending('a-old', a));
+  s.dispatch(getDirectChildrenEntities.pending('b', b));
+  s.dispatch(getDirectChildrenEntities.pending('a-new', { ...a, page: 101 }));
+  s.dispatch(getDirectChildrenEntities.fulfilled({ elements: [term('B needle')], totalElements: 1 } as any, 'b', b));
+  s.dispatch(getDirectChildrenEntities.fulfilled({ elements: [term('A 1011')], totalElements: 2241 } as any, 'a-new', a));
+  s.dispatch(getDirectChildrenEntities.fulfilled({ elements: [term('stale')], totalElements: 2 } as any, 'a-old', a));
+  const tables = (s.getState().ontologies as any).directChildrenTables;
+  assert.equal(tables['root;A'].elements[0].getIri(), 'A 1011');
+  assert.equal(tables['root;A'].totalElements, 2241);
+  assert.equal(tables['root;B'].elements[0].getIri(), 'B needle');
+  assert.equal(tables['root;B'].totalElements, 1);
+});
