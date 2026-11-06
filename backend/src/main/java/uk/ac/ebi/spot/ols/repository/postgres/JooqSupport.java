@@ -37,6 +37,15 @@ public final class JooqSupport {
         return DSL.field(DSL.name(qualifier, column), type);
     }
 
+    /** Literal, case-insensitive label containment shared by tree browsing endpoints. */
+    public static Condition labelContains(String qualifier, String search) {
+        if (search == null || search.isBlank()) return DSL.trueCondition();
+        return DSL.exists(DSL.selectOne()
+                .from(DSL.unnest(field(qualifier, "label", String[].class)).as("labels", "l"))
+                .where(DSL.lower(field("labels", "l", String.class))
+                        .contains(search.toLowerCase(java.util.Locale.ROOT))));
+    }
+
     public static Condition arrayContains(Field<String[]> arrayField, String value) {
         // Use array containment (@>) rather than `value = ANY(array)`: the latter cannot use a GIN
         // index and forces a sequential scan, while `array @> ARRAY[value]` is semantically

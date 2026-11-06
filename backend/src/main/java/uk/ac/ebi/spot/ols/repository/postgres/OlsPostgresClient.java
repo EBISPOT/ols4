@@ -255,12 +255,7 @@ public class OlsPostgresClient {
                     (SELECT DISTINCT ON (e.iri) e.iri, e.type, e.label, e._json
                      FROM ols_entities e WHERE {0} ORDER BY e.iri, e.type, e.id)
                     """, candidates).as("child");
-            Condition matches = DSL.trueCondition();
-            if (search != null && !search.isBlank()) {
-                matches = DSL.exists(dsl.selectOne()
-                        .from(unnest(field("child", "label", String[].class), "labels", "l"))
-                        .where(DSL.lower(field("labels", "l", String.class)).contains(search.toLowerCase(Locale.ROOT))));
-            }
+            Condition matches = JooqSupport.labelContains("child", search);
             long count = Optional.ofNullable(dsl.selectCount().from(children).where(matches)
                     .fetchOne(0, Long.class)).orElse(0L);
             Field<byte[]> json = field("child", "_json", byte[].class);

@@ -22,6 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CombinedTreeChildrenIT {
     @Container static final PostgreSQLContainer<?> DB = PostgresIntegrationTestSupport.newContainer();
     static PostgresIntegrationTestSupport.ClassRepositoryHandle handle;
+    static PostgresIntegrationTestSupport.IndividualRepositoryHandle individuals;
     static final String NS = "https://example.org/paging#";
     static final String RDF_TYPE = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
 
@@ -48,8 +49,9 @@ class CombinedTreeChildrenIT {
             sql.execute("UPDATE ols_entities SET direct_ancestors=ARRAY[?,?] WHERE ontology_id='paging' AND iri=?", NS+"Connector", NS+"Mixed", NS+"EligibleLeaf");
         }
         handle = PostgresIntegrationTestSupport.createClassRepository(DB);
+        individuals = PostgresIntegrationTestSupport.createIndividualRepository(DB);
     }
-    @AfterAll static void close() { if(handle != null) handle.close(); }
+    @AfterAll static void close() { if(handle != null) handle.close(); if(individuals != null) individuals.close(); }
 
     static void insert(org.jooq.DSLContext sql, String kind, String name, String parent, boolean obsolete, boolean nativeTerm, boolean subset) throws Exception {
         String iri=NS+name; var json=new JsonObject();
@@ -75,6 +77,34 @@ class CombinedTreeChildrenIT {
         return handle.repository().getTreeChildrenByOntologyId("paging",PageRequest.of(page,size),NS+parent,obsolete,imported,search,subsets,context,"en",new JsonTransformOptions());
     }
     static List<String> iris(Page<JsonElement> page){return page.stream().map(e->e.getAsJsonObject().get("iri").getAsString()).toList();}
+    static Page<JsonElement> legacy(String parent, int page, int size, String search, List<String> subsets,
+            boolean imported, boolean obsolete, boolean context) throws Exception {
+        return individuals.repository().getIndividualsOfClass("paging", NS+parent, PageRequest.of(page,size),
+                obsolete, imported, subsets, context, search, "en", new JsonTransformOptions());
+    }
+    @Test void legacyIndividualSearchFiltersBeforeCountingAndPagingAndCanBeCleared() throws Exception {
+        var result=legacy("A",0,10,"a2241",List.of(NS+"S",NS+"S2"),false,false,true);
+        assertThat(iris(result)).containsExactly(NS+"A2241");
+        assertThat(result.getTotalElements()).isEqualTo(1);
+        assertThat(result.getTotalPages()).isEqualTo(1);
+        var beyond=legacy("A",1,10,"a2241",List.of(NS+"S"),false,false,true);
+        assertThat(beyond.getContent()).isEmpty();
+        assertThat(beyond.getTotalElements()).isEqualTo(1);
+        var cleared=legacy("A",224,10,"",List.of(),true,false,false);
+        assertThat(iris(cleared)).containsExactly(NS+"A2241");
+        assertThat(cleared.getTotalElements()).isEqualTo(2241);
+        assertThat(legacy("A",0,10,"   ",List.of(),true,false,false).getTotalElements()).isEqualTo(2241);
+        assertThat(legacy("B",0,10,"A2241",List.of(),true,false,false).getTotalElements()).isZero();
+        assertThat(legacy("A",0,10,"A0001",List.of(NS+"S"),true,false,true).getTotalElements()).isZero();
+        assertThat(legacy("Mixed",0,10,"Imported",List.of(),false,false,false).getTotalElements()).isZero();
+        assertThat(iris(legacy("Mixed",0,10,"IMPORTED",List.of(),true,false,false))).containsExactly(NS+"Imported");
+        assertThat(legacy("Mixed",0,10,"Obsolete",List.of(),true,false,false).getTotalElements()).isZero();
+        assertThat(iris(legacy("Mixed",0,10,"Obsolete",List.of(),true,true,false))).containsExactly(NS+"Obsolete");
+        // Both routes use literal case-insensitive label containment, not IRI or tsquery matching.
+        assertThat(iris(legacy("A",0,10,"2241",List.of(),true,false,false)))
+                .containsExactlyElementsOf(iris(page("A",0,10,"2241",List.of(),true,false,false)));
+        assertThat(legacy("A",0,10,"%",List.of(),true,false,false).getTotalElements()).isZero();
+    }
     @Test void lateIndividualsAreReachableByPaginationWithNoSubclassRows() {
         var result=page("A",100,10,null,List.of(),true,false,true);
         assertThat(result.getTotalElements()).isEqualTo(2241);

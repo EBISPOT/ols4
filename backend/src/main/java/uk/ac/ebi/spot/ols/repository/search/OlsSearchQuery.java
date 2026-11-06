@@ -32,6 +32,12 @@ public class OlsSearchQuery {
     private static final Pattern SAFE_FIELD_NAME = Pattern.compile("^[a-zA-Z0-9_:/.#-]+$");
 
     String searchText = null;
+    private String labelSearchText;
+
+    /** Label containment for tree tables, independent of full-text relevance search. */
+    public void setLabelSearchText(String labelSearchText) {
+        this.labelSearchText = labelSearchText;
+    }
     Collection<String> subsetTree = null;
     boolean treeContext = false;
 
@@ -171,7 +177,7 @@ public class OlsSearchQuery {
     }
 
     public Condition buildCondition(Set<String> availableFilterColumns, String qualifier, String excludedFacetField) {
-        Condition condition = DSL.trueCondition();
+        Condition condition = uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.labelContains(qualifier, labelSearchText);
 
         if (searchText != null && !searchText.isBlank()) {
             if (!usesDefaultSearchFields()) {

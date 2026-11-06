@@ -165,12 +165,19 @@ public class IndividualRepository {
     public OlsFacetedResultsPage<JsonElement> getIndividualsOfClass(
             String ontologyId, String classIri, Pageable pageable, boolean includeObsoleteEntities,
             boolean includeImportedEntities, Collection<String> subsetTree, String lang, JsonTransformOptions outputOpts) throws IOException {
-        return getIndividualsOfClass(ontologyId, classIri, pageable, includeObsoleteEntities, includeImportedEntities, subsetTree, false, lang, outputOpts);
+        return getIndividualsOfClass(ontologyId, classIri, pageable, includeObsoleteEntities, includeImportedEntities, subsetTree, false, null, lang, outputOpts);
     }
 
     public OlsFacetedResultsPage<JsonElement> getIndividualsOfClass(
             String ontologyId, String classIri, Pageable pageable, boolean includeObsoleteEntities,
             boolean includeImportedEntities, Collection<String> subsetTree, boolean treeContext, String lang, JsonTransformOptions outputOpts) throws IOException {
+        return getIndividualsOfClass(ontologyId, classIri, pageable, includeObsoleteEntities, includeImportedEntities, subsetTree, treeContext, null, lang, outputOpts);
+    }
+
+    public OlsFacetedResultsPage<JsonElement> getIndividualsOfClass(
+            String ontologyId, String classIri, Pageable pageable, boolean includeObsoleteEntities,
+            boolean includeImportedEntities, Collection<String> subsetTree, boolean treeContext,
+            String searchQuery, String lang, JsonTransformOptions outputOpts) throws IOException {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -187,6 +194,7 @@ public class IndividualRepository {
         }
         query.setSubsetTree(subsetTree);
         query.setTreeContext(treeContext);
+        query.setLabelSearchText(searchQuery);
 
         return searchClient.searchPaginated(query, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))

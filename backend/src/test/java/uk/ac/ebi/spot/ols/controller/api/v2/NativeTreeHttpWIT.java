@@ -52,6 +52,21 @@ class NativeTreeHttpWIT {
     }
 
     @Test
+    void legacyIndividualSearchBindsNonDefaultSearchAndEveryConstraint() throws Exception {
+        var empty = new OlsFacetedResultsPage<JsonElement>(List.of(), Map.of(), org.springframework.data.domain.PageRequest.of(2,7), 0);
+        when(individuals.getIndividualsOfClass(any(), any(), any(), anyBoolean(), anyBoolean(), any(), anyBoolean(), any(), any())).thenReturn(empty);
+        when(individuals.getIndividualsOfClass(any(), any(), any(), anyBoolean(), anyBoolean(), any(), anyBoolean(), any(), any(), any())).thenReturn(empty);
+        mvc.perform(get(URI.create(PREFIX + "classes/" + IRI + "/individuals"))
+                .param("searchQuery", "A2241").param("page", "2").param("size", "7")
+                .param("treeContext", "true").param("subsetTree", "S,S2")
+                .param("includeImportedEntities", "false").param("includeObsoleteEntities", "true")
+                .param("lang", "fr")).andExpect(status().isOk());
+        verify(individuals).getIndividualsOfClass(eq("native"), eq("https://example.org/native#R"),
+                argThat(p -> p.getPageNumber() == 2 && p.getPageSize() == 7), eq(true), eq(false),
+                eq(List.of("S","S2")), eq(true), eq("A2241"), eq("fr"), any());
+    }
+
+    @Test
     void combinedTreeChildrenBindsSearchPagingFiltersAndCompatibleDefaults() throws Exception {
         when(classes.getTreeChildrenByOntologyId(any(), any(), any(), anyBoolean(), anyBoolean(), any(), any(), anyBoolean(), any(), any())).thenReturn(Page.empty());
         mvc.perform(get(URI.create(PREFIX + "classes/" + IRI + "/treeChildren")))
