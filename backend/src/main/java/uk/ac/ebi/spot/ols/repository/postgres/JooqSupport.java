@@ -64,30 +64,69 @@ public final class JooqSupport {
     }
 
     /**
-     * Restricts entities to the tree of the given subsets: the entities in any of the subsets
-     * (oboInOwl:inSubset), and every entity above one of them in the hierarchy, so that a tree
-     * built from the matching entities still reaches each subset member from its roots.
-     *
-     * The ancestors come from the members' hierarchical_ancestors and direct_ancestors (an
-     * individual's direct_ancestors are its classes and their superclasses), plus the classes of
-     * the individuals among the hierarchical ancestors. Pairing each IRI with its ontology_id keeps
-     * the subquery uncorrelated, so it runs once rather than per row.
+     * The members of any selected subset and all context needed to reach them in the tree.
+     * The uncorrelated closure is evaluated once, with ontology/IRI pairs preventing leakage.
      */
     public static Condition inSubsetTree(String qualifier, Collection<String> subsets) {
-        Field<String[]> subsetsArray = DSL.val(subsets.toArray(new String[0]));
-        return DSL.condition(
-                "({0} && {3}::text[] OR ({1}, {2}) IN ("
-                        + "SELECT m.ontology_id, unnest(m.hierarchical_ancestors || m.direct_ancestors) "
-                        + "FROM ols_entities m WHERE m.subset && {3}::text[] "
-                        + "UNION "
-                        + "SELECT a.ontology_id, unnest(a.direct_ancestors) FROM ols_entities a "
-                        + "WHERE (a.ontology_id, a.iri) IN ("
-                        + "SELECT m.ontology_id, unnest(m.hierarchical_ancestors) "
-                        + "FROM ols_entities m WHERE m.subset && {3}::text[])))",
-                field(qualifier, "subset", String[].class),
+        Condition members = DSL.condition("{0} && {1}::text[]",
+                field("m", "subset", String[].class), DSL.val(subsets.toArray(new String[0])));
+        return DSL.condition("({0}, {1}) IN (SELECT ontology_id, iri FROM {2} tree_reachability)",
                 field(qualifier, "ontology_id", String.class),
-                field(qualifier, "iri", String.class),
-                subsetsArray);
+                field(qualifier, "iri", String.class), treeReachability(members, false));
+    }
+
+    /**
+     * Complete tree reachability, including arbitrary transitions between direct/type and
+     * hierarchical ancestry. The condition filters seed members (alias m), never connectors.
+     *
+     * UNION computes a finite fixed point, deduplicating paths and terminating cycles without
+     * a depth limit. With perMember=true, member_id preserves distinct stored entity identities
+     * for counts and member_iri allows callers to exclude self. Otherwise both are NULL so
+     * overlapping members share one closure per ontology, avoiding member-by-ancestor expansion.
+     * Ancestor arrays also retain references whose intermediate entity is absent from the store.
+     *
+     * RDF2JSON materializes each ancestry kind as a transitive closure. When one kind contains
+     * the other throughout an ontology (including pure-kind ontologies), their union is already
+     * complete. Only genuinely mixed ontologies require recursion. Inspect only seed ontologies,
+     * so a small subset does not trigger a scan of every ontology in the store.
+     */
+    public static Table<?> treeReachability(Condition members, boolean perMember) {
+        return DSL.table("""
+                (WITH RECURSIVE members AS MATERIALIZED (
+                    SELECT m.id, m.iri, m.ontology_id, m.direct_ancestors, m.hierarchical_ancestors
+                    FROM ols_entities m WHERE {2}
+                ), mixed_ontologies AS MATERIALIZED (
+                    SELECT a.ontology_id FROM ols_entities a
+                    WHERE a.ontology_id IN (SELECT ontology_id FROM members)
+                    GROUP BY a.ontology_id
+                    HAVING bool_or(NOT (coalesce(a.direct_ancestors, '{}'::text[]) = coalesce(a.hierarchical_ancestors, '{}'::text[])
+                                        OR coalesce(a.direct_ancestors, '{}'::text[]) <@ coalesce(a.hierarchical_ancestors, '{}'::text[])))
+                       AND bool_or(NOT (coalesce(a.direct_ancestors, '{}'::text[]) = coalesce(a.hierarchical_ancestors, '{}'::text[])
+                                        OR coalesce(a.hierarchical_ancestors, '{}'::text[]) <@ coalesce(a.direct_ancestors, '{}'::text[])))
+                ), tree_reach(member_id, member_iri, ontology_id, iri) AS (
+                    SELECT {0}, {1}, m.ontology_id,
+                           unnest(ARRAY[m.iri] || CASE WHEN m.direct_ancestors = m.hierarchical_ancestors
+                               THEN m.direct_ancestors ELSE m.direct_ancestors || m.hierarchical_ancestors END)
+                    FROM members m WHERE m.ontology_id IN (SELECT ontology_id FROM mixed_ontologies)
+                    UNION
+                    SELECT r.member_id, r.member_iri, r.ontology_id, ancestors.iri
+                    FROM tree_reach r
+                    JOIN ols_entities a ON a.ontology_id = r.ontology_id AND a.iri = r.iri
+                    CROSS JOIN LATERAL unnest(CASE WHEN a.direct_ancestors = a.hierarchical_ancestors
+                        THEN a.direct_ancestors ELSE a.direct_ancestors || a.hierarchical_ancestors END) ancestors(iri)
+                ) SELECT {3} member_id, member_iri, ontology_id, iri FROM (
+                    SELECT {0} AS member_id, {1} AS member_iri, m.ontology_id, ancestors.iri
+                    FROM members m
+                    CROSS JOIN LATERAL (
+                        SELECT DISTINCT unnest(ARRAY[m.iri] || CASE WHEN m.direct_ancestors = m.hierarchical_ancestors
+                               THEN m.direct_ancestors ELSE m.direct_ancestors || m.hierarchical_ancestors END) AS iri
+                    ) ancestors
+                    WHERE m.ontology_id NOT IN (SELECT ontology_id FROM mixed_ontologies)
+                    UNION ALL
+                    SELECT * FROM tree_reach
+                ) complete_reachability)
+                """, perMember ? field("m", "id", String.class) : DSL.inline((String) null),
+                perMember ? field("m", "iri", String.class) : DSL.inline((String) null), members, DSL.sql(perMember ? "" : "DISTINCT"));
     }
 
     public static Field<String> castAsText(Field<?> field) {
