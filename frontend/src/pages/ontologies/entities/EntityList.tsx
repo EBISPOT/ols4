@@ -423,10 +423,13 @@ export default function EntityList({
         </div>
       )}
       
-      {parentEntityIri && failed && <div role="alert">Unable to load direct children. <button type="button" className="link-default" onClick={() => retry(n => n + 1)}>Retry direct children</button></div>}
-      {parentEntityIri && table?.loading && <p role="status">Loading direct children…</p>}
-      <div hidden={!!parentEntityIri && (!!failed || !!table?.loading)}>
       <DataTable
+        resultStatus={parentEntityIri ? (
+          failed ? <div role="alert">Unable to load direct children. <button type="button" className="link-default" onClick={() => retry(n => n + 1)}>Retry direct children</button></div>
+          : table?.loading ? <p role="status">Loading direct children…</p>
+          : table && totalEntities === 0 ? <p role="status">No direct children match the current settings.</p>
+          : undefined
+        ) : undefined}
         columns={columns}
         data={entities}
         dataCount={totalEntities}
@@ -459,7 +462,6 @@ export default function EntityList({
           setSearch(searchTerm);
         }}
       />
-      </div>
     </div>
   );
 }

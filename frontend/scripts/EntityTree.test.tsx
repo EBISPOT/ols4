@@ -6,6 +6,8 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import reducer, { setSelectedSubsets, getSubsets } from '../src/pages/ontologies/ontologiesSlice';
 import EntityTree from '../src/pages/ontologies/entities/EntityTree';
+import EntityList from '../src/pages/ontologies/entities/EntityList';
+import { getDirectChildrenEntities } from '../src/pages/ontologies/ontologiesSlice';
 import Ontology from '../src/model/Ontology';
 import { StaticRouter } from 'react-router-dom/server';
 import { thingFromJsonProperties } from '../src/app/util';
@@ -208,5 +210,29 @@ for (const status of ['loading', 'failed', 'empty'] as const) {
     assert(render().includes('Unable to load descendant counts.') && render().includes('Retry counts'));
     s.dispatch(hideCounts());
     assert(!render().includes('Retry counts'));
+  });
+}
+
+
+for (const status of ['loading', 'failed', 'empty'] as const) {
+  test(`embedded table keeps search controls visible during ${status}`, () => {
+    const s = configureStore({ reducer: { ontologies: reducer }, middleware: g => g({ serializableCheck: false }) });
+    const treeScopeKey = 'paging';
+    const requestKey = 'current';
+    s.dispatch({ type: 'ontologies_set_tree_scope', payload: treeScopeKey });
+    s.dispatch({ type: 'ontologies_set_tree_request_context', payload: { scopeKey: treeScopeKey, requestKey } });
+    const arg = { treeScopeKey, requestKey, entityIri: 'A', tableKey: 'A' };
+    s.dispatch(getDirectChildrenEntities.pending('table', arg));
+    if (status === 'failed') s.dispatch(getDirectChildrenEntities.rejected(new Error('offline'), 'table', arg));
+    if (status === 'empty') s.dispatch(getDirectChildrenEntities.fulfilled({ elements: [], totalElements: 0 } as any, 'table', arg));
+    const html = renderToStaticMarkup(<Provider store={s}><StaticRouter location="/"><EntityList
+      ontologyId="paging" entityType="classes" parentEntityIri="A" tableKey="A" treeScopeKey={treeScopeKey} requestKey={requestKey}
+    /></StaticRouter></Provider>);
+    assert(html.includes('placeholder="Search children..."'));
+    assert(!/\shidden(?:=|\s|>)/.test(html), 'search controls must never be inside a hidden request-state wrapper');
+    assert(!html.includes('<tbody>'), 'loading, failure and empty statuses replace result rows only');
+    assert.equal(html.includes('Loading direct children'), status === 'loading');
+    assert.equal(html.includes('Retry direct children'), status === 'failed');
+    assert.equal(html.includes('No direct children match the current settings.'), status === 'empty');
   });
 }
