@@ -236,3 +236,13 @@ for (const status of ['loading', 'failed', 'empty'] as const) {
     assert.equal(html.includes('No direct children match the current settings.'), status === 'empty');
   });
 }
+
+for (const hosted of [false, true]) {
+  test(`callback-driven embedded table renders without requiring a Router: hosted=${hosted}`, () => {
+    const s = configureStore({ reducer: { ontologies: reducer } });
+    const list = <EntityList ontologyId="paging" entityType="classes" parentEntityIri="A"
+      onNavigateToEntity={() => {}} />;
+    const html = renderToStaticMarkup(<Provider store={s}>{hosted ? <StaticRouter location="/">{list}</StaticRouter> : list}</Provider>);
+    assert(html.includes('Search children...'));
+  });
+}

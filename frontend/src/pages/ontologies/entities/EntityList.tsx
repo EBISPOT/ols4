@@ -7,21 +7,7 @@ import { getEntities, getDirectChildrenEntities, directChildrenTableKey } from "
 import Individual from "../../../model/Individual";
 import Property from "../../../model/Property";
 
-export default function EntityList({
-  ontologyId,
-  entityType,
-  parentEntityIri,
-  tableKey,
-  lang,
-  showObsoleteEnabled,
-  subsetTree,
-  apiUrl,
-  showImportedEnabled,
-  treeScopeKey,
-  requestKey,
-  onNavigateToEntity,
-  title,
-}: {
+type EntityListProps = {
   ontologyId: string;
   entityType: "entities" | "classes" | "properties" | "individuals";
   parentEntityIri?: string;
@@ -35,7 +21,37 @@ export default function EntityList({
   requestKey?: string;
   onNavigateToEntity?: (ontologyId: string, entity: Entity) => void;
   title?: string;
-}) {
+};
+
+export default function EntityList(props: EntityListProps) {
+  return props.onNavigateToEntity
+    ? <EntityListContent {...props} />
+    : <RoutedEntityList {...props} />;
+}
+
+function RoutedEntityList(props: EntityListProps) {
+  const navigate = useNavigate();
+  return <EntityListContent {...props} onNavigateToEntity={(ontologyId, row) => {
+    const termUrl = encodeURIComponent(encodeURIComponent(row.properties.iri));
+    navigate(`/ontologies/${ontologyId}/${row.getTypePlural()}/${termUrl}`);
+  }} />;
+}
+
+function EntityListContent({
+  ontologyId,
+  entityType,
+  parentEntityIri,
+  tableKey,
+  lang,
+  showObsoleteEnabled,
+  subsetTree,
+  apiUrl,
+  showImportedEnabled,
+  treeScopeKey,
+  requestKey,
+  onNavigateToEntity,
+  title,
+}: EntityListProps) {
   const dispatch = useAppDispatch();
   
 
@@ -100,8 +116,6 @@ export default function EntityList({
   useEffect(() => {
     setPage(0);
   }, [search]);
-
-  const navigate = useNavigate();
 
   // base columns are shown for all entity types.
   const baseColumns: readonly Column[] = [
@@ -448,13 +462,6 @@ export default function EntityList({
         onSelectRow={(row) => {
           if (onNavigateToEntity) {
             onNavigateToEntity(ontologyId, row);
-          } else {
-            const termUrl = encodeURIComponent(
-              encodeURIComponent(row.properties.iri)
-            );
-            navigate(
-              `/ontologies/${ontologyId}/${row.getTypePlural()}/${termUrl}`
-            );
           }
         }}
         onFilter={(searchTerm: string) => {

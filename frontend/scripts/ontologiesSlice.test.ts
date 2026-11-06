@@ -3,6 +3,7 @@ import { test } from 'node:test';
 import { configureStore } from '@reduxjs/toolkit';
 import reducer, { getOntology, getAncestors, getRootEntities, getNodeChildren, getSubsets, getTreeMemberCounts, getDirectChildrenCount, getDirectChildrenEntities, setSelectedSubsets, resetTreeContent, resetTreeSettings } from '../src/pages/ontologies/ontologiesSlice';
 import Ontology from '../src/model/Ontology';
+import { createAppStore, store as appStore } from '../src/app/store';
 import Individual from '../src/model/Individual';
 import overlapIndividuals from './fixtures/individual-overlap.json';
 import { thingFromJsonProperties } from '../src/app/util';
@@ -453,4 +454,35 @@ test('per-parent table failures and retries leave the sibling table intact', () 
   s.dispatch(getDirectChildrenEntities.fulfilled({ elements: [term('recovered')], totalElements: 1100 } as any, 'a-retry', a));
   assert.equal(s.getState().ontologies.treeRequestErrors['ontologies_direct_children_entities:a'], undefined);
   assert.equal(s.getState().ontologies.directChildrenTables.b, sibling);
+});
+
+
+test('actual app-store factory isolates simultaneous widget requests, settings and discarded mounts', () => {
+  const left = createAppStore(), right = createAppStore(), replacement = createAppStore();
+  const appBefore = appStore.getState();
+  // Identical scope and request IDs must still belong to separate widget stores.
+  for (const s of [left, right, replacement]) context(s, scope(), 'first');
+  const rightBefore = right.getState();
+  const replacementBefore = replacement.getState();
+  left.dispatch(setSelectedSubsets([subset]));
+  left.dispatch(getRootEntities.pending('same-id', args()));
+  right.dispatch(getRootEntities.pending('same-id', args()));
+  right.dispatch(getRootEntities.fulfilled({ rootTerms: [term('right')] }, 'same-id', args()));
+  const rightSettled = right.getState();
+  // A response into the old mount cannot affect a new mount or a sibling.
+  left.dispatch(getRootEntities.fulfilled({ rootTerms: [term('discarded-left')] }, 'same-id', args()));
+  left.dispatch(getTreeMemberCounts.pending('counts', args()));
+  left.dispatch(getTreeMemberCounts.fulfilled({ root: 77 }, 'counts', args()));
+  const tableArg = { ...args(), entityIri: 'parent', tableKey: 'parent' };
+  left.dispatch(getDirectChildrenEntities.pending('table', tableArg));
+  left.dispatch(getDirectChildrenEntities.fulfilled({ elements: [term('late-row')], totalElements: 2241 } as any, 'table', tableArg));
+  assert.notStrictEqual(rightBefore, rightSettled);
+  assert.strictEqual(right.getState(), rightSettled);
+  assert.strictEqual(replacement.getState(), replacementBefore);
+  assert.strictEqual(appStore.getState(), appBefore);
+  assert.deepEqual(right.getState().ontologies.selectedSubsets, []);
+  assert.deepEqual(left.getState().ontologies.selectedSubsets, [subset]);
+  assert.deepEqual(right.getState().ontologies.filteredMemberCounts, {});
+  assert.deepEqual(right.getState().ontologies.directChildrenTables, {});
+  assert.equal(left.getState().ontologies.directChildrenTables.parent.totalElements, 2241);
 });

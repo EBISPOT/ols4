@@ -47,6 +47,22 @@ class CombinedTreeChildrenIT {
             insert(sql, "class", "Connector", "Mixed", false, false, false);
             insert(sql, "individual", "EligibleLeaf", "Connector", false, true, true);
             sql.execute("UPDATE ols_entities SET direct_ancestors=ARRAY[?,?] WHERE ontology_id='paging' AND iri=?", NS+"Connector", NS+"Mixed", NS+"EligibleLeaf");
+            insert(sql, "class", "DirectOnly", "Independent", false, true, true);
+            insert(sql, "individual", "TypeOnly", "Independent", false, true, true);
+            // Neither row has a hierarchical route; the individual has only rdf:type.
+            sql.execute("UPDATE ols_entities SET hierarchical_parents='{}'::text[], hierarchical_ancestors='{}'::text[] WHERE iri IN (?,?)", NS+"DirectOnly", NS+"TypeOnly");
+            sql.execute("UPDATE ols_entities SET direct_parents='{}'::text[] WHERE iri=?", NS+"TypeOnly");
+            for (String name : List.of("DirectOnly", "TypeOnly")) {
+                var json = new JsonObject();
+                json.addProperty("iri", NS+name); json.addProperty("ontologyId", "paging");
+                json.add("type", new com.google.gson.Gson().toJsonTree(List.of(name.equals("DirectOnly") ? "class" : "individual")));
+                json.add("label", new com.google.gson.Gson().toJsonTree(List.of(name)));
+                json.add(name.equals("DirectOnly") ? "directParent" : RDF_TYPE,
+                        new com.google.gson.Gson().toJsonTree(List.of(NS+"Independent")));
+                var out = new ByteArrayOutputStream();
+                try (var gzip = new GZIPOutputStream(out)) { gzip.write(json.toString().getBytes(StandardCharsets.UTF_8)); }
+                sql.execute("UPDATE ols_entities SET _json=? WHERE ontology_id='paging' AND iri=?", out.toByteArray(), NS+name);
+            }
         }
         handle = PostgresIntegrationTestSupport.createClassRepository(DB);
         individuals = PostgresIntegrationTestSupport.createIndividualRepository(DB);
@@ -81,6 +97,16 @@ class CombinedTreeChildrenIT {
             boolean imported, boolean obsolete, boolean context) throws Exception {
         return individuals.repository().getIndividualsOfClass("paging", NS+parent, PageRequest.of(page,size),
                 obsolete, imported, subsets, context, search, "en", new JsonTransformOptions());
+    }
+    @Test void independentDirectClassAndTypeOnlyIndividualUseCombinedRoutes() {
+        var result = page("Independent", 0, 1, null, List.of(NS+"S"), false, false, true);
+        assertThat(result.getTotalElements()).isEqualTo(2);
+        assertThat(iris(result)).containsExactly(NS+"DirectOnly");
+        assertThat(result.getContent().get(0).getAsJsonObject().has("hierarchicalParent")).isFalse();
+        assertThat(iris(page("Independent", 1, 1, null, List.of(NS+"S", NS+"S2"), false, false, true)))
+                .containsExactly(NS+"TypeOnly");
+        assertThat(iris(page("Independent", 0, 10, "typeonly", List.of(), true, false, false)))
+                .containsExactly(NS+"TypeOnly");
     }
     @Test void legacyIndividualSearchFiltersBeforeCountingAndPagingAndCanBeCleared() throws Exception {
         var result=legacy("A",0,10,"a2241",List.of(NS+"S",NS+"S2"),false,false,true);
