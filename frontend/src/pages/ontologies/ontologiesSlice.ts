@@ -18,6 +18,8 @@ const SUBSET_PROPERTY_IRI =
 export interface OntologiesState {
   treeScopeKey: string | null;
   treeRequestKey: string | null;
+  rootStatus: "idle" | "loading" | "succeeded" | "failed";
+  treeRequestErrors: Record<string, boolean>;
   treeRequests: Record<string, { requestId: string; loading: boolean }>;
   ontology: Ontology | undefined;
   entity: Entity | undefined;
@@ -78,6 +80,8 @@ const initialState: OntologiesState = {
   treeScopeKey: null,
   treeRequestKey: null,
   treeRequests: {},
+  treeRequestErrors: {},
+  rootStatus: "idle",
   ontology: undefined,
   entity: undefined,
   nodesWithChildrenLoaded: [],
@@ -140,6 +144,8 @@ function clearTreeContent(state: Draft<OntologiesState>) {
   state.filteredMemberCounts = {};
   state.filteredMemberCountsStatus = "idle";
   state.treeRequests = {};
+  state.treeRequestErrors = {};
+  state.rootStatus = "idle";
   state.numPendingTreeRequests = 0;
 }
 
@@ -169,6 +175,7 @@ function startTreeRequest(state: Draft<OntologiesState>, action: any, loading = 
   if (!ownsTreeRequest(state, action.meta.arg)) return false;
   const slot = treeRequestSlot(action);
   if (state.treeRequests[slot]?.loading) --state.numPendingTreeRequests;
+  delete state.treeRequestErrors[slot];
   state.treeRequests[slot] = { requestId: action.meta.requestId, loading };
   if (loading) ++state.numPendingTreeRequests;
   return true;
@@ -181,6 +188,9 @@ function finishTreeRequest(state: Draft<OntologiesState>, action: any) {
   if (request?.requestId !== action.meta.requestId) return false;
   if (request.loading) --state.numPendingTreeRequests;
   delete state.treeRequests[slot];
+  if (action.type.endsWith("/rejected") && !action.meta.aborted && !action.meta.condition) {
+    state.treeRequestErrors[slot] = true;
+  }
   return true;
 }
 
@@ -1128,7 +1138,7 @@ const ontologiesSlice = createSlice({
     });
     builder.addCase(getTreeMemberCounts.rejected, (state, action) => {
       if (!finishTreeRequest(state, action)) return;
-      state.filteredMemberCountsStatus = "failed";
+      state.filteredMemberCountsStatus = action.meta.aborted ? "idle" : "failed";
     });
     builder.addCase(
       getDirectChildrenCount.fulfilled,
@@ -1143,8 +1153,7 @@ const ontologiesSlice = createSlice({
     builder.addCase(
       getDirectChildrenCount.rejected,
       (state, error) => {
-        if (!finishTreeRequest(state, error)) return;
-        console.warn('Failed to fetch direct children count:', error.payload);
+        finishTreeRequest(state, error);
       }
     );
     builder.addCase(
@@ -1179,12 +1188,14 @@ const ontologiesSlice = createSlice({
       }
     );
     builder.addCase(getAncestors.pending, (state, action) => {
-      startTreeRequest(state, action, true);
+      if (!startTreeRequest(state, action, true)) return;
+      state.rootStatus = "loading";
     });
     builder.addCase(
       getAncestors.fulfilled,
       (state, action) => {
         if (!finishTreeRequest(state, action)) return;
+        state.rootStatus = "succeeded";
         let { rootNodes, nodeChildren, automaticallyExpandedNodes } =
           createTreeFromEntities(
             action.payload,
@@ -1204,7 +1215,8 @@ const ontologiesSlice = createSlice({
       }
     );
     builder.addCase(getAncestors.rejected, (state, action) => {
-      finishTreeRequest(state, action);
+      if (!finishTreeRequest(state, action)) return;
+      state.rootStatus = action.meta.aborted ? "idle" : "failed";
     });
     builder.addCase(getNodeChildren.pending, (state, action) => {
       startTreeRequest(state, action, true);
@@ -1233,12 +1245,14 @@ const ontologiesSlice = createSlice({
       finishTreeRequest(state, action);
     });
     builder.addCase(getRootEntities.pending, (state, action) => {
-      startTreeRequest(state, action, true);
+      if (!startTreeRequest(state, action, true)) return;
+      state.rootStatus = "loading";
     });
     builder.addCase(
       getRootEntities.fulfilled,
       (state, action) => {
         if (!finishTreeRequest(state, action)) return;
+        state.rootStatus = "succeeded";
         let { rootTerms, classesWithIndividuals, orphanedIndividuals } =
           action.payload;
         // console.log("rootTerms");
@@ -1266,7 +1280,8 @@ const ontologiesSlice = createSlice({
       }
     );
     builder.addCase(getRootEntities.rejected, (state, action) => {
-      finishTreeRequest(state, action);
+      if (!finishTreeRequest(state, action)) return;
+      state.rootStatus = action.meta.aborted ? "idle" : "failed";
     });
     builder.addCase(
       getSubsets.fulfilled,

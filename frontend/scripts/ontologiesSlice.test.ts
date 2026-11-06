@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { configureStore } from '@reduxjs/toolkit';
-import reducer, { getOntology, getRootEntities, getNodeChildren, getSubsets, getTreeMemberCounts, getDirectChildrenCount, getDirectChildrenEntities, setSelectedSubsets, resetTreeContent, resetTreeSettings } from '../src/pages/ontologies/ontologiesSlice';
+import reducer, { getOntology, getAncestors, getRootEntities, getNodeChildren, getSubsets, getTreeMemberCounts, getDirectChildrenCount, getDirectChildrenEntities, setSelectedSubsets, resetTreeContent, resetTreeSettings } from '../src/pages/ontologies/ontologiesSlice';
 import Ontology from '../src/model/Ontology';
 import Individual from '../src/model/Individual';
 import overlapIndividuals from './fixtures/individual-overlap.json';
@@ -395,4 +395,62 @@ test('two expanded tables retain independent rows while same-table stale respons
   assert.equal(tables['root;A'].totalElements, 2241);
   assert.equal(tables['root;B'].elements[0].getIri(), 'B needle');
   assert.equal(tables['root;B'].totalElements, 1);
+});
+
+
+for (const thunk of [getAncestors, getRootEntities, getTreeMemberCounts, getSubsets, getNodeChildren, getDirectChildrenCount, getDirectChildrenEntities]) {
+  test(`request failure, retry, cancellation and stale rejection ownership: ${thunk.typePrefix}`, () => {
+    const s = setup();
+    const arg = { ...args(), entityIri: 'parent', absoluteIdentity: 'parent', tableKey: 'parent' };
+    const slot = thunk.typePrefix + ([getNodeChildren, getDirectChildrenCount, getDirectChildrenEntities].includes(thunk as any) ? ':parent' : '');
+    s.dispatch(thunk.pending('first', arg));
+    s.dispatch(thunk.rejected(new Error('offline'), 'first', arg));
+    assert.equal(s.getState().ontologies.treeRequestErrors[slot], true);
+    s.dispatch(thunk.pending('retry', arg));
+    assert.equal(s.getState().ontologies.treeRequestErrors[slot], undefined);
+    s.dispatch(thunk.rejected(new Error('late'), 'first', arg));
+    assert.equal(s.getState().ontologies.treeRequestErrors[slot], undefined);
+    s.dispatch(thunk.rejected({ name: 'AbortError', message: 'Aborted' }, 'retry', arg));
+    assert.deepEqual(s.getState().ontologies.treeRequestErrors, {});
+    if (thunk === getTreeMemberCounts) assert.equal(s.getState().ontologies.filteredMemberCountsStatus, 'idle');
+    s.dispatch(thunk.pending('context-old', arg));
+    context(s, scope(), 'new-settings');
+    s.dispatch(thunk.rejected(new Error('old settings'), 'context-old', arg));
+    assert.deepEqual(s.getState().ontologies.treeRequestErrors, {});
+    context(s, scope(), 'first');
+    s.dispatch(thunk.pending('old', arg));
+    context(s, scope('efo'), 'efo');
+    s.dispatch(thunk.rejected(new Error('old scope'), 'old', arg));
+    assert.deepEqual(s.getState().ontologies.treeRequestErrors, {});
+  });
+}
+
+test('a successful empty root response is distinct from failure and cancellation', () => {
+  const s = setup();
+  s.dispatch(getRootEntities.pending('roots', args()));
+  assert.equal(s.getState().ontologies.rootStatus, 'loading');
+  s.dispatch(getRootEntities.rejected(new Error('offline'), 'roots', args()));
+  assert.equal(s.getState().ontologies.rootStatus, 'failed');
+  s.dispatch(getRootEntities.pending('retry', args()));
+  s.dispatch(getRootEntities.fulfilled({ rootTerms: [] }, 'retry', args()));
+  assert.equal(s.getState().ontologies.rootStatus, 'succeeded');
+  assert.deepEqual(s.getState().ontologies.rootNodes, []);
+});
+
+
+test('per-parent table failures and retries leave the sibling table intact', () => {
+  const s = setup();
+  const a = { ...args(), entityIri: 'a', tableKey: 'a', page: 2, search: 'needle' };
+  const b = { ...args(), entityIri: 'b', tableKey: 'b' };
+  s.dispatch(getDirectChildrenEntities.pending('b', b));
+  s.dispatch(getDirectChildrenEntities.fulfilled({ elements: [term('sibling')], totalElements: 1001 } as any, 'b', b));
+  const sibling = s.getState().ontologies.directChildrenTables.b;
+  s.dispatch(getDirectChildrenEntities.pending('a', a));
+  s.dispatch(getDirectChildrenEntities.rejected(new Error('offline'), 'a', a));
+  assert.equal(s.getState().ontologies.treeRequestErrors['ontologies_direct_children_entities:a'], true);
+  assert.equal(s.getState().ontologies.directChildrenTables.b, sibling);
+  s.dispatch(getDirectChildrenEntities.pending('a-retry', a));
+  s.dispatch(getDirectChildrenEntities.fulfilled({ elements: [term('recovered')], totalElements: 1100 } as any, 'a-retry', a));
+  assert.equal(s.getState().ontologies.treeRequestErrors['ontologies_direct_children_entities:a'], undefined);
+  assert.equal(s.getState().ontologies.directChildrenTables.b, sibling);
 });

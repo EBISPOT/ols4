@@ -182,3 +182,31 @@ for (const imports of [true, false]) {
     assert(!render().includes(imports ? ' (5)' : ' (3)'));
   });
 }
+
+
+for (const status of ['loading', 'failed', 'empty'] as const) {
+  test(`tree request state is accessible and unambiguous: ${status}`, () => {
+    const s = configureStore({ reducer: { ontologies: reducer }, middleware: g => g({ serializableCheck: false }) });
+    const scopeKey = JSON.stringify(['', 'native', 'classes']);
+    const ontology = new Ontology({ ontologyId: 'native', type: ['ontology'], preferredRoot: [] });
+    s.dispatch({ type: 'ontologies_set_tree_scope', payload: scopeKey });
+    const requestKey = JSON.stringify([scopeKey, 'en', undefined, '', false, false, true, false, []]);
+    s.dispatch({ type: 'ontologies_set_tree_request_context', payload: { scopeKey, requestKey } });
+    const arg = { ontology, treeScopeKey: scopeKey, requestKey };
+    s.dispatch(getRootEntities.pending('roots', arg));
+    if (status === 'failed') s.dispatch(getRootEntities.rejected(new Error('offline'), 'roots', arg));
+    if (status === 'empty') s.dispatch(getRootEntities.fulfilled({ rootTerms: [] }, 'roots', arg));
+    const render = () => renderToStaticMarkup(<Provider store={s}><EntityTree ontology={ontology} entityType="classes" lang="en"
+      onNavigateToEntity={() => {}} onNavigateToOntology={() => {}} /></Provider>);
+    const html = render();
+    assert.equal(html.includes('Loading tree'), status === 'loading');
+    assert.equal(html.includes('role="alert"'), status === 'failed');
+    assert.equal(html.includes('Retry tree'), status === 'failed');
+    assert.equal(html.includes('No terms match the current tree settings.'), status === 'empty');
+    s.dispatch(getTreeMemberCounts.pending('counts', arg));
+    s.dispatch(getTreeMemberCounts.rejected(new Error('counts unavailable'), 'counts', arg));
+    assert(render().includes('Unable to load descendant counts.') && render().includes('Retry counts'));
+    s.dispatch(hideCounts());
+    assert(!render().includes('Retry counts'));
+  });
+}

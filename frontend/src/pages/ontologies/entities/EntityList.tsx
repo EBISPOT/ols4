@@ -39,12 +39,14 @@ export default function EntityList({
   const dispatch = useAppDispatch();
   
 
+  const [attempt, retry] = useState(0);
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
   const [search, setSearch] = useState<string>("");
 
   const tableId = directChildrenTableKey({ tableKey, entityType, entityIri: parentEntityIri });
   const table = useAppSelector(state => state.ontologies.directChildrenTables[tableId]);
+  const failed = useAppSelector(state => state.ontologies.treeRequestErrors[`ontologies_direct_children_entities:${tableId}`]);
   const listEntities = useAppSelector(state => state.ontologies.entities);
   const listTotal = useAppSelector(state => state.ontologies.totalEntities);
   const entities = parentEntityIri ? table?.elements || [] : listEntities;
@@ -88,7 +90,7 @@ export default function EntityList({
       
       dispatch(getEntities(params));
     }
-  }, [dispatch, ontologyId, entityType, page, rowsPerPage, search, parentEntityIri, lang, showObsoleteEnabled, JSON.stringify(subsetTree), apiUrl, showImportedEnabled, treeScopeKey, requestKey, tableId]);
+  }, [dispatch, ontologyId, entityType, page, rowsPerPage, search, parentEntityIri, lang, showObsoleteEnabled, JSON.stringify(subsetTree), apiUrl, showImportedEnabled, treeScopeKey, requestKey, tableId, attempt]);
 
   useEffect(() => {
     setPage(0);
@@ -421,6 +423,9 @@ export default function EntityList({
         </div>
       )}
       
+      {parentEntityIri && failed && <div role="alert">Unable to load direct children. <button type="button" className="link-default" onClick={() => retry(n => n + 1)}>Retry direct children</button></div>}
+      {parentEntityIri && table?.loading && <p role="status">Loading direct children…</p>}
+      <div hidden={!!parentEntityIri && (!!failed || !!table?.loading)}>
       <DataTable
         columns={columns}
         data={entities}
@@ -454,6 +459,7 @@ export default function EntityList({
           setSearch(searchTerm);
         }}
       />
+      </div>
     </div>
   );
 }

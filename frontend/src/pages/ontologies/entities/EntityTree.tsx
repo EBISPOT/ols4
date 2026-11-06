@@ -6,7 +6,7 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import urlJoin from "url-join";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { theme } from "../../../app/mui";
@@ -93,6 +93,13 @@ export default function EntityTree({
   const automaticallyExpandedNodes = ownsContent ? tree.automaticallyExpandedNodes : [];
   const manuallyExpandedNodes = ownsContent ? tree.manuallyExpandedNodes : [];
   const directChildrenCounts = ownsContent ? tree.directChildrenCounts : {};
+  const rootStatus = ownsContent ? tree.rootStatus : "idle";
+  const requestErrors = ownsContent ? tree.treeRequestErrors : {};
+  // Retry reruns the owning effect with the latest render's settings and abort cleanup.
+  const [rootAttempt, retryRoot] = useState(0);
+  const [countAttempt, retryCounts] = useState(0);
+  const [subsetAttempt, retrySubsets] = useState(0);
+  const [childrenAttempt, retryChildren] = useState(0);
   const countRequests = useRef<any[]>([]);
 
   useEffect(() => {
@@ -111,6 +118,16 @@ export default function EntityTree({
     };
   }, [dispatch, scopeKey, requestKey]);
 
+  const requestDirectCount = (node: TreeNode) => {
+    const promise = dispatch(getDirectChildrenCount({
+      ontologyId: ontology.getOntologyId(), entityIri: node.iri,
+      entityType: entityType === "entities" ? "classes" : entityType, lang,
+      showObsoleteEnabled, showImportedEnabled, subsetTree, apiUrl,
+      treeScopeKey: scopeKey, requestKey,
+    }));
+    countRequests.current.push(promise);
+  };
+
   const toggleNode = useCallback(
     (node: any) => {
       let isExpanded =
@@ -122,21 +139,7 @@ export default function EntityTree({
       } else {
         // Before expanding, check if this node has many direct children
         if (directChildrenCounts[node.iri] === undefined) {
-          const promise = dispatch(
-            getDirectChildrenCount({
-              ontologyId: ontology.getOntologyId(),
-              entityIri: node.iri,
-              entityType: entityType === "entities" ? "classes" : entityType,
-              lang,
-              showObsoleteEnabled,
-              showImportedEnabled,
-              subsetTree,
-              apiUrl,
-              treeScopeKey: scopeKey,
-              requestKey,
-            })
-          );
-          countRequests.current.push(promise);
+          requestDirectCount(node);
         }
         dispatch(openNode(node));
       }
@@ -168,7 +171,7 @@ export default function EntityTree({
       ? dispatch(getAncestors({ ...args, selectedEntity, entityIri: selectedEntity?.getIri() || specifiedRootIri }))
       : dispatch(getRootEntities(args));
     return () => promise.abort();
-  }, [dispatch, requestKey]);
+  }, [dispatch, requestKey, rootAttempt]);
 
   useEffect(() => {
     if (specifiedRootIri) return;
@@ -177,7 +180,7 @@ export default function EntityTree({
       showObsoleteEnabled, showImportedEnabled, apiUrl, treeScopeKey: scopeKey, requestKey,
     }));
     return () => promise.abort();
-  }, [dispatch, requestKey]);
+  }, [dispatch, requestKey, subsetAttempt]);
 
   useEffect(() => {
     if (!needsFilteredCounts || !showNodeCounts) return;
@@ -186,7 +189,7 @@ export default function EntityTree({
       showObsoleteEnabled, showImportedEnabled, apiUrl, treeScopeKey: scopeKey, requestKey,
     }));
     return () => promise.abort();
-  }, [dispatch, requestKey, needsFilteredCounts, showNodeCounts]);
+  }, [dispatch, requestKey, needsFilteredCounts, showNodeCounts, countAttempt]);
 
   useEffect(() => {
     const expanded = showSiblingsEnabled
@@ -200,7 +203,7 @@ export default function EntityTree({
       apiUrl, subsetTree, treeScopeKey: scopeKey, requestKey,
     })));
     return () => { for (const promise of promises) promise.abort(); };
-  }, [dispatch, requestKey, JSON.stringify(manuallyExpandedNodes), JSON.stringify(automaticallyExpandedNodes)]);
+  }, [dispatch, requestKey, JSON.stringify(manuallyExpandedNodes), JSON.stringify(automaticallyExpandedNodes), childrenAttempt]);
 
   let toggleShowImported = useCallback(() => {
     if (showImportedEnabled) dispatch(hideImported());
@@ -328,6 +331,12 @@ export default function EntityTree({
                     {" (" + numDescendants.toLocaleString() + ")"}
                   </span>
                 ))}
+              {isExpanded && directChildrenCounts[childNode.iri] === undefined && requestErrors[`ontologies_direct_children_count:${childNode.iri}`] && (
+                <div role="alert">Unable to load the child count. <button type="button" className="link-default" onClick={() => requestDirectCount(childNode)}>Retry child count</button></div>
+              )}
+              {isExpanded && requestErrors[`ontologies_node_children:${childNode.absoluteIdentity}`] && (
+                <div role="alert">Unable to load children. <button type="button" className="link-default" onClick={() => retryChildren(n => n + 1)}>Retry children</button></div>
+              )}
               {isExpanded && (() => {
                 const directChildCount = directChildrenCounts[childNode.iri];
                 if (directChildCount !== undefined && directChildCount > 1000) {
@@ -380,6 +389,14 @@ export default function EntityTree({
       <div className="flex flex-col-reverse lg:grid lg:grid-cols-3 lg:gap-4">
         {rootNodes ? (
           <div className="lg:col-span-2 relative">
+            {rootStatus === "failed" && (
+              <div role="alert">Unable to load the tree. <button type="button" className="link-default" onClick={() => retryRoot(n => n + 1)}>Retry tree</button></div>
+            )}
+            {rootStatus === "loading" && <p role="status">Loading tree…</p>}
+            {rootStatus === "succeeded" && rootNodes.length === 0 && <p role="status">No terms match the current tree settings.</p>}
+            {showNodeCounts && needsFilteredCounts && filteredMemberCountsStatus === "failed" && (
+              <div role="alert">Unable to load descendant counts. <button type="button" className="link-default" onClick={() => retryCounts(n => n + 1)}>Retry counts</button></div>
+            )}
             <div
               className="px-3 pb-3 jstree jstree-1 jstree-proton overflow-x-auto"
               role="tree"
@@ -454,6 +471,9 @@ export default function EntityTree({
               }
               label="Show all siblings"
             />
+          )}
+          {requestErrors.ontologies_subsets && !specifiedRootIri && (
+            <div role="alert">Unable to load subset filters. <button type="button" className="link-default" onClick={() => retrySubsets(n => n + 1)}>Retry subset filters</button></div>
           )}
           {subsets.length > 0 && !specifiedRootIri && (
             <details open className="mt-2">
