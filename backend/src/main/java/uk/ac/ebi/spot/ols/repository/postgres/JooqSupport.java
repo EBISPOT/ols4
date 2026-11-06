@@ -7,6 +7,7 @@ import org.jooq.impl.DSL;
 import org.jooq.impl.SQLDataType;
 
 import java.util.Collection;
+import java.util.Set;
 
 public final class JooqSupport {
 
@@ -18,6 +19,9 @@ public final class JooqSupport {
     public static final Table<?> INFORMATION_SCHEMA_COLUMNS = DSL.table(DSL.name("information_schema", "columns"));
     public static final Table<?> PG_ATTRIBUTE = DSL.table(DSL.name("pg_catalog", "pg_attribute"));
     public static final Table<?> PG_EXTENSION = DSL.table(DSL.name("pg_catalog", "pg_extension"));
+
+    // Candidate type/root/search constraints do not describe the selected subset's members.
+    public static final Set<String> TREE_MEMBER_VISIBILITY_FIELDS = Set.of("isObsolete", "isDefiningOntology");
 
     private JooqSupport() {
     }
@@ -68,8 +72,13 @@ public final class JooqSupport {
      * The uncorrelated closure is evaluated once, with ontology/IRI pairs preventing leakage.
      */
     public static Condition inSubsetTree(String qualifier, Collection<String> subsets) {
+        return inSubsetTree(qualifier, subsets, DSL.trueCondition());
+    }
+
+    /** Eligibility must be qualified to seed alias m; it never filters intermediate connectors. */
+    public static Condition inSubsetTree(String qualifier, Collection<String> subsets, Condition eligibility) {
         Condition members = DSL.condition("{0} && {1}::text[]",
-                field("m", "subset", String[].class), DSL.val(subsets.toArray(new String[0])));
+                field("m", "subset", String[].class), DSL.val(subsets.toArray(new String[0]))).and(eligibility);
         return DSL.condition("({0}, {1}) IN (SELECT ontology_id, iri FROM {2} tree_reachability)",
                 field(qualifier, "ontology_id", String.class),
                 field(qualifier, "iri", String.class), treeReachability(members, false));

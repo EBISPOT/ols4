@@ -257,7 +257,7 @@ public class OlsPostgresClient {
                     .and(buildNodePropCondition("e2", nodeProps));
 
             if (subsetTree != null && !subsetTree.isEmpty()) {
-                where = where.and(inSubsetTree("e2", subsetTree));
+                where = where.and(inSubsetTree("e2", subsetTree, subsetMemberEligibility(nodeProps)));
             }
 
             long count = Optional.ofNullable(dsl.selectCount()
@@ -376,7 +376,7 @@ public class OlsPostgresClient {
             }
 
             if (subsetTree != null && !subsetTree.isEmpty()) {
-                where = where.and(inSubsetTree("e2", subsetTree));
+                where = where.and(inSubsetTree("e2", subsetTree, subsetMemberEligibility(nodeProps)));
             }
 
             long count = Optional.ofNullable(dsl.selectCount()
@@ -399,6 +399,14 @@ public class OlsPostgresClient {
         } catch (SQLException e) {
             throw new RuntimeException("lookupArraySources failed", e);
         }
+    }
+
+    private Condition subsetMemberEligibility(Map<String, String> nodeProps) {
+        Map<String, String> visibility = new HashMap<>();
+        for (String key : JooqSupport.TREE_MEMBER_VISIBILITY_FIELDS) {
+            if (nodeProps.containsKey(key)) visibility.put(key, nodeProps.get(key));
+        }
+        return buildNodePropCondition("m", visibility);
     }
 
     private Condition buildNodePropCondition(String qualifier, Map<String, String> nodeProps) {

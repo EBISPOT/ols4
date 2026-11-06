@@ -13,6 +13,7 @@ import java.util.Locale;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.TREE_MEMBER_VISIBILITY_FIELDS;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContains;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContainsCaseInsensitive;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.field;
@@ -207,10 +208,25 @@ public class OlsSearchQuery {
         }
 
         if (subsetTree != null && !subsetTree.isEmpty()) {
-            condition = condition.and(inSubsetTree(qualifier, subsetTree));
+            condition = condition.and(inSubsetTree(qualifier, subsetTree, subsetMemberEligibility()));
         }
 
         return condition;
+    }
+
+    private Condition subsetMemberEligibility() {
+        Condition eligibility = DSL.trueCondition();
+        for (SearchFilter filter : filters) {
+            if (TREE_MEMBER_VISIBILITY_FIELDS.contains(filter.field) || filter.field.equals("ontologyId")) {
+                eligibility = eligibility.and(buildFilterCondition("m", filter, false));
+            }
+        }
+        for (SearchFilter filter : excludeFilters) {
+            if (TREE_MEMBER_VISIBILITY_FIELDS.contains(filter.field) || filter.field.equals("ontologyId")) {
+                eligibility = eligibility.and(buildFilterCondition("m", filter, true));
+            }
+        }
+        return eligibility;
     }
 
     public List<SortField<?>> buildOrderBy() {
