@@ -84,6 +84,23 @@ class PropertyObsoleteIT {
         return result;
     }
 
+    @Test void propertySearchBindsAndFiltersBothCountAndPageLiterally() throws Exception {
+        var missing = request("R", "children", "searchQuery", "no-matching-property", "treeContext", "true", "lang", "fr");
+        assertThat(nodes(missing)).isEmpty();
+        assertThat(missing.get("totalElements").getAsLong()).isZero();
+        for (String literal : List.of("%", "_")) {
+            assertThat(request("R", "children", "searchQuery", literal).get("totalElements").getAsLong()).isZero();
+        }
+        assertThat(request("R", "children", "searchQuery", "   ").get("totalElements").getAsLong()).isEqualTo(4);
+        var match = request("R", "children", "searchQuery", "ACTIVE", "includeObsoleteEntities", "false",
+                "includeImportedEntities", "false", "treeContext", "true", "subsetTree", NS+"S,"+NS+"S2", "lang", "fr", "size", "1");
+        assertThat(nodes(match)).containsExactly("A");
+        assertThat(match.get("totalElements").getAsLong()).isEqualTo(1);
+        var past = request("R", "children", "searchQuery", "ACTIVE", "includeImportedEntities", "false", "size", "1", "page", "1");
+        assertThat(nodes(past)).isEmpty();
+        assertThat(past.get("totalElements").getAsLong()).isEqualTo(1);
+    }
+
     @Test void explicitFalseFiltersOrdinaryChildrenButPreservesTotals() throws Exception {
         var page = request("R", "children", "includeObsoleteEntities", "false", "includeImportedEntities", "false", "lang", "fr");
         assertThat(nodes(page)).containsExactly("A");

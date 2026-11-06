@@ -240,12 +240,11 @@ export default function EntityTree({
 
   function renderNodeChildren(
     children: TreeNode[],
-    debugNumIterations: number
+    ancestorIris: Set<string> = new Set()
   ) {
-    if (debugNumIterations > 100) {
-      throw new Error("probable cyclic tree (renderNodeChildren)");
-    }
-    const childrenCopy = [...children];
+    // Expansion responses may contain a cycle; only omit repeated IRIs on the
+    // current path, preserving legitimate deep paths and alternate parent paths.
+    const childrenCopy = children.filter(child => !ancestorIris.has(child.iri));
     // Classes sort before individuals, so a node's subcategories are not
     // buried under its members; alphabetical within each group.
     const isIndividual = (node: TreeNode) =>
@@ -344,7 +343,7 @@ export default function EntityTree({
                   return (
                     <>
                       {/* Keep the selected ancestry visible beside paginated siblings. */}
-                      {renderNodeChildren(requiredPathChildren[childNode.absoluteIdentity] || [], debugNumIterations + 1)}
+                      {renderNodeChildren(requiredPathChildren[childNode.absoluteIdentity] || [], new Set(ancestorIris).add(childNode.iri))}
                       <div className="ml-4">
                         <EntityList
                           ontologyId={ontology.getOntologyId()}
@@ -374,7 +373,7 @@ export default function EntityTree({
                   // Show regular tree for nodes with ≤1000 direct children
                   return renderNodeChildren(
                     nodeChildren[childNode.absoluteIdentity] || [],
-                    debugNumIterations + 1
+                    new Set(ancestorIris).add(childNode.iri)
                   );
                 }
               })()}
@@ -401,7 +400,7 @@ export default function EntityTree({
               className="px-3 pb-3 jstree jstree-1 jstree-proton overflow-x-auto"
               role="tree"
             >
-              {renderNodeChildren(rootNodes, 0)}
+              {renderNodeChildren(rootNodes)}
             </div>
             {numPendingTreeRequests > 0 ? (
               <div className="absolute spinner-default w-7 h-7 -top-1 -left-4 z-auto" />

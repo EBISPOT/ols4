@@ -303,7 +303,7 @@ for (const entityType of ['classes', 'individuals', 'properties']) {
       await s.dispatch(getNodeChildren({ ...args(), entityTypePlural: entityType, entityIri: 'parent',
         absoluteIdentity: 'parent', includeImportedEntities: false, includeObsoleteEntities: false,
         subsetTree: [subset] })).unwrap();
-      assert.equal(urls.length, entityType === 'classes' ? 2 : entityType === 'individuals' ? 4 : 2);
+      assert.equal(urls.length, entityType === 'classes' ? 2 : entityType === 'individuals' ? 3 : 2);
       for (const url of urls) {
         assert.equal(url.searchParams.get('treeContext'), 'true');
         assert.equal(url.searchParams.get('subsetTree'), subset);
@@ -485,4 +485,75 @@ test('actual app-store factory isolates simultaneous widget requests, settings a
   assert.deepEqual(right.getState().ontologies.filteredMemberCounts, {});
   assert.deepEqual(right.getState().ontologies.directChildrenTables, {});
   assert.equal(left.getState().ontologies.directChildrenTables.parent.totalElements, 2241);
+});
+
+// Final review: visibility counts must not erase user-selected subset identity.
+test('zero-count subset definitions stay selected across visibility changes and retries', async () => {
+  const s = setup(); s.dispatch(setSelectedSubsets([subset, 'S2']));
+  const original = globalThis.fetch; let fail = false;
+  globalThis.fetch = (async (input: any) => {
+    if (fail) throw new Error('facet unavailable');
+    const u = new URL(String(input));
+    const definitions = [{iri: subset, label: ['IHCC'], type: ['property']}, {iri: 'S2', label: ['Obsolete only'], type: ['property']}];
+    return {ok: true, json: async () => ({elements: u.pathname.endsWith('/children') ? definitions : [],
+      totalPages: 1, facetFieldsToCounts: {subset: {}}})};
+  }) as any;
+  try {
+    const options = await s.dispatch(getSubsets({...args(), showImportedEnabled: false, showObsoleteEnabled: false})).unwrap();
+    assert.deepEqual(options.map(o => [o.label, o.numMembers]), [['IHCC', 0], ['Obsolete only', 0]]);
+    assert.deepEqual(s.getState().ontologies.selectedSubsets, [subset, 'S2']);
+    fail = true; await s.dispatch(getSubsets(args()));
+    assert.deepEqual(s.getState().ontologies.selectedSubsets, [subset, 'S2']);
+  } finally {globalThis.fetch = original;}
+});
+
+test('Individuals count, expansion and table share the complete hierarchical union', async () => {
+  const s = setup(); const original = globalThis.fetch; const urls: URL[] = [];
+  globalThis.fetch = (async (input: any) => {
+    const u = new URL(String(input)); urls.push(u);
+    const combined = u.pathname.endsWith('/treeChildren') && u.searchParams.get('memberType') === 'individual';
+    const rows = combined ? [{iri: 'item1001', label: ['item1001'], type: ['individual'], hierarchicalParent: ['P']}] : [];
+    return {ok: true, json: async () => ({elements: rows, totalElements: combined ? 1001 : 0, totalPages: combined ? 101 : 0})};
+  }) as any;
+  try {
+    const input = {...args(), entityType: 'individuals', entityTypePlural: 'individuals', entityIri: 'P', absoluteIdentity: 'P', page: 100, size: 10};
+    assert.equal((await s.dispatch(getDirectChildrenCount(input)).unwrap()).totalElements, 1001);
+    assert.equal((await s.dispatch(getNodeChildren(input)).unwrap()).totalElements, 1001);
+    const page = await s.dispatch(getDirectChildrenEntities(input)).unwrap();
+    assert.deepEqual(page.elements.map(e => e.getIri()), ['item1001']);
+    assert.equal(urls.length, 3);
+  } finally {globalThis.fetch = original;}
+});
+
+test('selected mixed ancestry uses complete backend closure and exhausts its pages', async () => {
+  const s = setup(); const original = globalThis.fetch; const urls: URL[] = [];
+  const names = ['P','C','I','J','K'];
+  globalThis.fetch = (async (input: any) => {
+    const u = new URL(String(input)); urls.push(u);
+    const full = u.pathname.endsWith('/treeAncestors');
+    const page = Number(u.searchParams.get('page') || 0);
+    const rows = full ? names.slice(page * 2, page * 2 + 2).map(iri => ({iri, label:[iri], type:[['I','J'].includes(iri)?'individual':'class']})) : [];
+    return {ok:true,json:async()=>({elements:rows,totalElements:full?5:0,totalPages:full?3:1})};
+  }) as any;
+  try {
+    const result = await s.dispatch(getAncestors({...args(), entityIri:'L', selectedEntity:term('L')})).unwrap();
+    assert.deepEqual(result.map(e=>e.getIri()), ['L',...names]);
+    assert.equal(urls.length, 3);
+  } finally {globalThis.fetch = original;}
+});
+
+test('incomplete definition paging cannot clear selections; only successful removed definitions can', async () => {
+  const s=setup();s.dispatch(setSelectedSubsets([subset,'late definition']));const original=globalThis.fetch;
+  let fail=true,removed=false;
+  globalThis.fetch=(async(input:any)=>{
+    const u=new URL(String(input));
+    if(!u.pathname.endsWith('/children'))return {ok:true,json:async()=>({facetFieldsToCounts:{subset:{}}})};
+    const second=u.searchParams.get('page')==='1';if(second&&fail)throw Error('definition page failed');
+    return {ok:true,json:async()=>({elements:[{iri:second?'late definition':subset,type:['property'],label:[second?'Late':'IHCC']}],totalPages:removed?1:2})};
+  }) as any;
+  try {
+    await s.dispatch(getSubsets(args()));assert.deepEqual(s.getState().ontologies.selectedSubsets,[subset,'late definition']);
+    fail=false;await s.dispatch(getSubsets(args())).unwrap();assert.deepEqual(s.getState().ontologies.selectedSubsets,[subset,'late definition']);
+    removed=true;await s.dispatch(getSubsets(args())).unwrap();assert.deepEqual(s.getState().ontologies.selectedSubsets,[subset]);
+  } finally {globalThis.fetch=original;}
 });

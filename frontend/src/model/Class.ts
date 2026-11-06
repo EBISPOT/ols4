@@ -4,9 +4,17 @@ import Reified from "./Reified";
 
 export default class Class extends Entity {
   getParents(): Reified<any>[] {
-    return Reified.fromJson<any>(
-      this.properties["hierarchicalParent"]
-    );
+    // Match the tree's direct/hierarchical union, preferring relationship metadata.
+    const parents = [
+      ...Reified.fromJson<any>(this.properties["hierarchicalParent"]),
+      ...Reified.fromJson<any>(this.properties["directParent"]),
+    ];
+    const seenIris = new Set<string>();
+    return parents.filter(parent => {
+      if (seenIris.has(parent.value)) return false;
+      seenIris.add(parent.value);
+      return true;
+    });
   }
   getSuperEntities(): Reified<any>[] {
     return Reified.fromJson<any>(

@@ -58,9 +58,9 @@ async function withApi(run: (urls: URL[]) => Promise<void>) {
     const url = new URL(String(input));
     urls.push(url);
     const path = url.pathname;
-    const includesImports = url.searchParams.get('includeImportedEntities') === 'true';
+    const includesImports = path.endsWith('/treeAncestors') || url.searchParams.get('includeImportedEntities') === 'true';
     const iri = decodeURIComponent(decodeURIComponent(path.split('/').at(-2)!));
-    if (path.endsWith('/hierarchicalAncestors')) {
+    if (path.endsWith('/treeAncestors')) {
       const wanted = iri === connectorIri ? [rootIri] : efoPath.filter(e => e.iri !== iri).map(e => e.iri);
       return page(efoPath.filter(e => wanted.includes(e.iri) && (includesImports || e.isDefiningOntology)));
     }
@@ -105,7 +105,7 @@ for (const imports of [false, true]) for (const preferred of [false, true]) for 
       assert(html.includes('body height at birth'));
       assert.equal(html.includes('(imported ancestry context)'), !imports);
       if (!imports) assert(!html.includes('imported sibling'));
-      assert.equal(urls[0].searchParams.get('includeImportedEntities'), 'true');
+      assert.equal(urls[0].searchParams.get('includeImportedEntities'), null);
       assert(urls.slice(1).every(u => u.searchParams.get('includeImportedEntities') === String(imports)));
     });
   });
@@ -206,16 +206,16 @@ for (const entityType of ['properties', 'individuals']) {
     globalThis.fetch = (async (input: any) => {
       const url = new URL(String(input));
       urls.push(url);
-      const candidates = property ? [root, connector] : url.pathname.endsWith('/hierarchicalAncestors') ? [connector] : [root];
-      return page(candidates.filter(e => e.isDefiningOntology || url.searchParams.get('includeImportedEntities') === 'true'));
+      const candidates = [root, connector];
+      return page(candidates.filter(e => url.pathname.endsWith('/treeAncestors') || e.isDefiningOntology || url.searchParams.get('includeImportedEntities') === 'true'));
     }) as any;
     try {
       await s.dispatch(getAncestors({ ...args, entityType, entityIri: 'selected', selectedEntity: selected })).unwrap();
       assert.deepEqual(s.getState().ontologies.rootNodes.map(n => n.iri), ['root']);
       assert.deepEqual(s.getState().ontologies.nodeChildren.root.map(n => n.iri), ['imported connector']);
       assert.deepEqual(s.getState().ontologies.nodeChildren['root;imported connector'].map(n => n.iri), ['selected']);
-      assert.equal(urls.length, property ? 1 : 2);
-      assert(urls.every(u => u.searchParams.get('includeImportedEntities') === 'true'));
+      assert.equal(urls.length, 1);
+      assert(urls.every(u => u.searchParams.get('includeImportedEntities') === (property ? 'true' : null)));
     } finally { globalThis.fetch = original; }
   });
 }
@@ -261,3 +261,84 @@ for (const count of [1000, 1001]) {
     });
   });
 }
+
+// Generated RDF fixture: P <-hier C <-type I <-hier J <-hier K <-type L.
+import mixedFixture from '../../backend/src/test/resources/tree-reachability/generated.json';
+const mixed = mixedFixture.ontologies[0];
+// Match API JsonTransformer label normalization; preserve generated relation objects.
+const mixedRows = ([...mixed.classes, ...mixed.individuals] as any[]).map(e=>({...e,
+  label: (Array.isArray(e.label)?e.label:[e.label]).map(v=>typeof v==='object'?v.value:v)}));
+for (const selectedName of ['I','K','L']) for (const preferred of [false,true]) {
+  test(`complete mixed selected rendering: ${selectedName}, preferred=${preferred}`, async () => {
+    const names = ['P','C','I','J','K','L'].slice(0, ['I','K','L'].includes(selectedName) ? ['P','C','I','J','K','L'].indexOf(selectedName)+1 : 0);
+    const iri = (name: string) => 'https://example.org/mixed#'+name;
+    const entities = names.map(n=>thingFromJsonProperties(mixedRows.find(e=>e.iri===iri(n))));
+    const {s,args} = setup({preferred});
+    const ont = new Ontology({ontologyId:'mixed',type:['ontology'],preferredRoot:[iri('P')]});
+    const selectedEntity=entities.at(-1)!;
+    const scopeKey=JSON.stringify(['','mixed', selectedName==='K'?'classes':'individuals']);
+    const entityType=selectedName==='K'?'classes':'individuals';
+    s.dispatch(setTreeScope(scopeKey)); s.dispatch(hideImported());
+    if(preferred) s.dispatch(enablePreferredRoots());
+    const requestKey=JSON.stringify([scopeKey,'en',selectedEntity,'',preferred,false,false,false,[]]);
+    s.dispatch(setTreeRequestContext({scopeKey,requestKey}));
+    const input = {...args, ontology:ont, ontologyId:'mixed', entityType, selectedEntity, entityIri:iri(selectedName), treeScopeKey:scopeKey, requestKey};
+    const original=globalThis.fetch;
+    globalThis.fetch=(async(input:any)=> {
+      assert(new URL(String(input)).pathname.endsWith('/treeAncestors'));
+      return page(entities.slice(0,-1).map(e=>e.properties));
+    }) as any;
+    try {
+      await s.dispatch(getAncestors(input)).unwrap();
+      const state=s.getState().ontologies;
+      assert.deepEqual(state.rootNodes.map(n=>n.iri),[iri('P')]);
+      for(let i=1;i<names.length;i++) {
+        const parent=names.slice(0,i).map(iri).join(';');
+        assert.deepEqual(state.nodeChildren[parent].map(n=>n.iri),[iri(names[i])]);
+      }
+      const html=renderToStaticMarkup(<Provider store={s}><StaticRouter location="/"><EntityTree ontology={ont}
+        entityType={entityType} lang="en" selectedEntity={selectedEntity} onNavigateToEntity={()=>{}} onNavigateToOntology={()=>{}} /></StaticRouter></Provider>);
+      for(const entity of entities) assert(html.includes(entity.getName()), `missing rendered ${entity.getName()}`);
+    } finally {globalThis.fetch=original;}
+  });
+}
+
+test('preferred roots outside an explicitly selected path cannot erase its context', () => {
+  const {s,args}=setup({preferred:true});
+  const input={...args,ontology:new Ontology({ontologyId:'efo',type:['ontology'],preferredRoot:['other preferred root']})};
+  s.dispatch(getAncestors.pending('path',input));
+  s.dispatch(getAncestors.fulfilled(efoPath.map(thingFromJsonProperties),'path',input));
+  assert.deepEqual(s.getState().ontologies.rootNodes.map(n=>n.iri),[rootIri]);
+});
+
+test('selected path deeper than 100 edges remains complete and renders', () => {
+  const {s,args,render}=setup();
+  const rows=Array.from({length:126},(_,i)=>({iri:i===0?rootIri:i===125?selectedIri:`deep-${i}`,
+    type:['class'],ontologyId:'efo',label:[`deep node ${i}`],isDefiningOntology:true,
+    hierarchicalParent:i===0?[]:[i===1?rootIri:`deep-${i-1}`],hasHierarchicalChildren:i<125}));
+  s.dispatch(getAncestors.pending('deep',args));
+  s.dispatch(getAncestors.fulfilled(rows.map(thingFromJsonProperties),'deep',args));
+  assert.equal(Object.keys(s.getState().ontologies.nodeChildren).length,126);
+  assert(render().includes('deep node 125'));
+});
+
+test('selected direct-only class edge stays attached to its shared-reachability parent', () => {
+  const {s,args,render}=setup();
+  const rows=[{iri:rootIri,type:['class'],ontologyId:'efo',label:['direct root'],hasDirectChildren:true},
+    {iri:selectedIri,type:['class'],ontologyId:'efo',label:['direct selected'],directParent:[rootIri]}];
+  s.dispatch(getAncestors.pending('direct',args));
+  s.dispatch(getAncestors.fulfilled(rows.map(thingFromJsonProperties),'direct',args));
+  assert.deepEqual(s.getState().ontologies.rootNodes.map(n=>n.iri),[rootIri]);
+  assert.deepEqual(s.getState().ontologies.nodeChildren[rootIri].map(n=>n.iri),[selectedIri]);
+  assert(render().includes('direct selected'));
+});
+
+test('actual selected-path cycles terminate without hiding their distinct nodes', () => {
+  const {s,args,render}=setup();
+  const rows=[{iri:rootIri,type:['class'],label:['cycle root'],hasHierarchicalChildren:true,hierarchicalParent:[selectedIri]},
+    {iri:selectedIri,type:['class'],label:['cycle selected'],hasHierarchicalChildren:true,hierarchicalParent:[rootIri]}];
+  s.dispatch(getAncestors.pending('cycle',args));
+  s.dispatch(getAncestors.fulfilled(rows.map(thingFromJsonProperties),'cycle',args));
+  assert.equal(Object.keys(s.getState().ontologies.nodeChildren).length,2);
+  const html=render();assert(html.includes('cycle root')&&html.includes('cycle selected'));
+});

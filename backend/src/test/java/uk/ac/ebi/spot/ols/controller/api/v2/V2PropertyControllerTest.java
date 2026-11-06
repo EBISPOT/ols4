@@ -258,7 +258,7 @@ class V2PropertyControllerTest {
                 String iri,
                 boolean includeObsolete,
                 boolean includeImported,
-                Collection<String> subsetTree, boolean treeContext,
+                Collection<String> subsetTree, boolean treeContext, String searchQuery,
                 String lang,
                 JsonTransformOptions outputOptions) {
             this.call = Call.CHILDREN;

@@ -31,6 +31,9 @@ class CombinedTreeChildrenIT {
         try (var conn = DB.createConnection("")) {
             var sql = DSL.using(conn, SQLDialect.POSTGRES);
             for (int n = 1; n <= 2241; n++) insert(sql, "individual", String.format("A%04d", n), "A", false, true, n > 1000);
+            for (int n = 1; n <= 1001; n++) insert(sql, "individual", String.format("H%04d", n), "HierOnly", false, true, true);
+            sql.execute("UPDATE ols_entities SET direct_parents='{}'::text[], direct_ancestors='{}'::text[], \"filter_" + RDF_TYPE + "\"='{}'::text[] WHERE ontology_id='paging' AND iri LIKE ?", NS+"H0%");
+            sql.execute("UPDATE ols_entities SET direct_parents='{}'::text[], direct_ancestors='{}'::text[], \"filter_" + RDF_TYPE + "\"='{}'::text[] WHERE ontology_id='paging' AND iri IN (?,?)", NS+"H1000",NS+"H1001");
             for (int n = 1; n <= 1105; n++) insert(sql, "individual", String.format("B%04d", n), "B", false, true, true);
             insert(sql, "class", "Punned", "Mixed", false, true, true);
             insert(sql, "individual", "Punned", "Mixed", false, true, true);
@@ -98,6 +101,33 @@ class CombinedTreeChildrenIT {
         return individuals.repository().getIndividualsOfClass("paging", NS+parent, PageRequest.of(page,size),
                 obsolete, imported, subsets, context, search, "en", new JsonTransformOptions());
     }
+    static Page<JsonElement> individualPage(String parent, int page, int size, String search, List<String> subsets, boolean imported, boolean obsolete) {
+        return handle.repository().getTreeChildrenByOntologyId("paging",PageRequest.of(page,size),NS+parent,
+                obsolete,imported,search,subsets,true,true,"en",new JsonTransformOptions());
+    }
+    @Test void individualUnionPagesHierarchicalOnlyChildrenAndPreservesLegacyTypeOnlyRoute() throws Exception {
+        var first=individualPage("HierOnly",0,1000,null,List.of(),true,false);
+        assertThat(first.getTotalElements()).isEqualTo(1001);
+        assertThat(first.getContent()).hasSize(1000);
+        assertThat(iris(individualPage("HierOnly",100,10,null,List.of(),true,false))).containsExactly(NS+"H1001");
+        assertThat(iris(individualPage("HierOnly",0,10,"h1001",List.of(NS+"S",NS+"S2"),false,false))).containsExactly(NS+"H1001");
+        assertThat(individualPage("HierOnly",0,10,"%",List.of(),true,false).getTotalElements()).isZero();
+        assertThat(individualPage("HierOnly",0,10,"_",List.of(),true,false).getTotalElements()).isZero();
+        assertThat(individualPage("HierOnly",0,10,"  ",List.of(),true,false).getTotalElements()).isEqualTo(1001);
+        assertThat(legacy("HierOnly",0,10,null,List.of(),true,false,false).getTotalElements()).isZero();
+    }
+    @Test void individualUnionDeduplicatesOverlappingRoutesWithoutClassPunningTakingItsPlace() {
+        var all=individualPage("Mixed",0,20,null,List.of(NS+"S",NS+"S2"),true,false);
+        assertThat(iris(all)).containsExactly(NS+"BothRoutes",NS+"HierarchyIndividual",NS+"Imported",NS+"Punned");
+        assertThat(all.getTotalElements()).isEqualTo(4);
+        assertThat(all).allSatisfy(e->assertThat(e.getAsJsonObject().get("type").toString()).contains("individual"));
+        assertThat(iris(individualPage("Mixed",0,20,"individual-only-match",List.of(),true,false))).containsExactly(NS+"Punned");
+        assertThat(iris(individualPage("Mixed",0,20,null,List.of(),false,false))).doesNotContain(NS+"Imported",NS+"Obsolete");
+        assertThat(iris(individualPage("Mixed",0,20,"obsolete",List.of(),true,true))).containsExactly(NS+"Obsolete");
+        var pages=new ArrayList<String>(); for(int n=0;n<4;n++) pages.addAll(iris(individualPage("Mixed",n,1,null,List.of(),true,false)));
+        assertThat(pages).containsExactlyElementsOf(iris(all)).doesNotHaveDuplicates();
+    }
+
     @Test void independentDirectClassAndTypeOnlyIndividualUseCombinedRoutes() {
         var result = page("Independent", 0, 1, null, List.of(NS+"S"), false, false, true);
         assertThat(result.getTotalElements()).isEqualTo(2);

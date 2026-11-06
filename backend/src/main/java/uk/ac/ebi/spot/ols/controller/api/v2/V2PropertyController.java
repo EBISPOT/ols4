@@ -165,6 +165,13 @@ public class V2PropertyController {
         return getChildrenByOntology(pageable, ontologyId, iri, subsetTree, treeContext, includeImportedEntities, true, lang, outputOpts);
     }
 
+    public HttpEntity<V2PagedResponse<V2Entity>> getChildrenByOntology(
+            Pageable pageable, String ontologyId, String iri, List<String> subsetTree, boolean treeContext,
+            boolean includeImportedEntities, boolean includeObsoleteEntities, String lang, JsonTransformOptions outputOpts) {
+        return getChildrenByOntology(pageable, ontologyId, iri, subsetTree, treeContext,
+                includeImportedEntities, includeObsoleteEntities, null, lang, outputOpts);
+    }
+
     @RequestMapping(path = "/ontologies/{onto}/properties/{property}/children", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<V2PagedResponse<V2Entity>> getChildrenByOntology(
             @PageableDefault(size = 20, page = 0)
@@ -187,6 +194,7 @@ public class V2PropertyController {
                     description = "A boolean parameter to specify if imported entities (not defined by this ontology) should be included or not. Default value is true.") boolean includeImportedEntities,
             @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "true")
             @Parameter(description = "Include obsolete properties. Defaults to true for compatibility with property hierarchy routes; explicit false excludes obsolete members while treeContext retains necessary connectors.") boolean includeObsoleteEntities,
+            @RequestParam(value = "searchQuery", required = false) String searchQuery,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
@@ -195,7 +203,7 @@ public class V2PropertyController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                    propertyRepository.getChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, includeImportedEntities, subsetTree, treeContext, lang, outputOpts)
+                    propertyRepository.getChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, includeImportedEntities, subsetTree, treeContext, searchQuery, lang, outputOpts)
                     .map(V2Entity::new)
                 ),
                  HttpStatus.OK);

@@ -233,6 +233,11 @@ public class OlsPostgresClient {
      */
     public Page<JsonElement> getTreeChildren(String ontologyId, String parentIri, Map<String, String> nodeProps,
             Pageable pageable, String search, Collection<String> subsetTree) {
+        return getTreeChildren(ontologyId, parentIri, nodeProps, pageable, search, subsetTree, false);
+    }
+
+    public Page<JsonElement> getTreeChildren(String ontologyId, String parentIri, Map<String, String> nodeProps,
+            Pageable pageable, String search, Collection<String> subsetTree, boolean individualsOnly) {
         try (Connection conn = postgresClient.getConnection()) {
             DSLContext dsl = postgresClient.dsl(conn);
             Field<String> type = field("e", "type", String.class);
@@ -243,10 +248,12 @@ public class OlsPostgresClient {
                     arrayContains(field("e", "filter_http://www.w3.org/1999/02/22-rdf-syntax-ns#type", String[].class), parentIri)
                             .or(arrayContains(field("e", "hierarchical_parents", String[].class), parentIri)));
             Condition candidates = field("e", "ontology_id", String.class).eq(ontologyId)
-                    .and(classChildren.or(individualChildren))
+                    .and(individualsOnly ? individualChildren : classChildren.or(individualChildren))
                     .and(buildTreeCandidateCondition("e", nodeProps));
             if (Boolean.parseBoolean(nodeProps.get("treeContext")) || (subsetTree != null && !subsetTree.isEmpty())) {
                 candidates = candidates.and(inSubsetTree("e", subsetTree, subsetMemberEligibility(nodeProps)
+                        .and(field("m", "type", String.class).in(individualsOnly
+                                ? List.of("OntologyIndividual") : List.of("OntologyClass", "OntologyIndividual")))
                         .and(field("m", "ontology_id", String.class).eq(ontologyId))));
             }
             // One source row can match multiple routes. DISTINCT ON also collapses punning.
@@ -268,6 +275,32 @@ public class OlsPostgresClient {
             return new PageImpl<>(readJsonElements(records, json), pageable, count);
         } catch (SQLException e) {
             throw new RuntimeException("getTreeChildren failed", e);
+        }
+    }
+
+    /** Complete unfiltered selected-tree context, with class-first IRI identity. */
+    public Page<JsonElement> getTreeAncestors(String ontologyId, String iri, Pageable pageable) {
+        Condition seed = field("m", "ontology_id", String.class).eq(ontologyId)
+                .and(field("m", "iri", String.class).eq(iri))
+                .and(field("m", "type", String.class).in("OntologyClass", "OntologyIndividual"));
+        Table<?> reach = JooqSupport.treeReachability(seed, false);
+        Table<?> ancestors = DSL.table("""
+                (SELECT DISTINCT ON (e.iri) e.iri, e.type, e._json
+                 FROM ols_entities e
+                 WHERE e.ontology_id = {0} AND e.iri <> {1}
+                   AND e.type IN ('OntologyClass', 'OntologyIndividual')
+                   AND (e.ontology_id, e.iri) IN (SELECT ontology_id, iri FROM {2} r)
+                 ORDER BY e.iri, e.type, e.id)
+                """, DSL.val(ontologyId), DSL.val(iri), reach).as("ancestor");
+        try (Connection conn = postgresClient.getConnection()) {
+            DSLContext dsl = postgresClient.dsl(conn);
+            long count = Optional.ofNullable(dsl.selectCount().from(ancestors).fetchOne(0, Long.class)).orElse(0L);
+            Field<byte[]> json = field("ancestor", "_json", byte[].class);
+            var records = dsl.select(json).from(ancestors).orderBy(field("ancestor", "iri", String.class))
+                    .offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
+            return new PageImpl<>(readJsonElements(records, json), pageable, count);
+        } catch (SQLException e) {
+            throw new RuntimeException("getTreeAncestors failed", e);
         }
     }
 
@@ -411,7 +444,9 @@ public class OlsPostgresClient {
                     .and(e2OntologyId.eq(e1OntologyId))
                     .and(buildTreeCandidateCondition("e2", nodeProps));
 
-            if (search != null && !search.trim().isEmpty()) {
+            if (id.contains("+property+")) {
+                where = where.and(JooqSupport.labelContains("e2", search));
+            } else if (search != null && !search.trim().isEmpty()) {
                 Table<?> labels = unnest(e2Labels, "labels", "l");
                 Field<String> labelValue = field("labels", "l", String.class);
                 where = where.andExists(

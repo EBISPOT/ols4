@@ -506,79 +506,24 @@ export const getAncestors = createAsyncThunk(
       { lang }, apiUrl, { signal }
     )) as Entity;
     var ancestorsPage: any;
-    if (entityType === "classes") {
-      ancestorsPage = await getPaginated<any>(
-        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/hierarchicalAncestors?${new URLSearchParams(
-          {
-            size: "1000",
-            lang,
-            includeObsoleteEntities: "true",
-            // Ancestry is complete context, including imported/obsolete connectors.
-            // Optional branches still select members using the user's filters.
-            includeImportedEntities: "true",
-          }
-        )}`,
-        undefined,
-        apiUrl,
-        { signal }
-      );
-    } else if (entityType === "individuals") {
-      // An individual's tree path can climb through other individuals (e.g.
-      // sub-cohorts linked by a hierarchical property like COHO isSubCohortOf)
-      // before reaching its rdf:type classes, so fetch both closures.
-      const [classAncestors, hierarchicalAncestors] = await Promise.all([
-        getPaginated<any>(
-          `api/v2/ontologies/${ontologyId}/individuals/${doubleEncodedUri}/ancestors?${new URLSearchParams(
-            {
-              size: "1000",
-              lang,
-              includeObsoleteEntities: "true",
-              includeImportedEntities: "true",
-            }
-          )}`,
-          undefined,
-          apiUrl,
-          { signal }
-        ),
-        getPaginated<any>(
-          `api/v2/ontologies/${ontologyId}/individuals/${doubleEncodedUri}/hierarchicalAncestors?${new URLSearchParams(
-            {
-              size: "1000",
-              lang,
-              includeObsoleteEntities: "true",
-              includeImportedEntities: "true",
-            }
-          )}`,
-          undefined,
-          apiUrl,
-          { signal }
-        ),
-      ]);
-      const seenAncestorIris = new Set<string>();
-      ancestorsPage = {
-        elements: [
-          ...classAncestors.elements,
-          ...hierarchicalAncestors.elements,
-        ].filter((obj: any) => {
-          if (seenAncestorIris.has(obj.iri)) return false;
-          seenAncestorIris.add(obj.iri);
-          return true;
-        }),
-      };
-    } else {
-      ancestorsPage = await getPaginated<any>(
-        `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/ancestors?${new URLSearchParams(
-          {
-            size: "1000",
-            lang,
-            includeObsoleteEntities: "true",
-            includeImportedEntities: "true",
-          }
-        )}`,
-        undefined,
-        apiUrl,
-        { signal }
-      );
+    const ancestorRoute = entityType === "classes" || entityType === "individuals"
+      ? `entities/${doubleEncodedUri}/treeAncestors`
+      : `${entityType}/${doubleEncodedUri}/ancestors`;
+    const params = new URLSearchParams({size: "1000", lang});
+    // The additive mixed ancestry route is unfiltered context by definition.
+    if (entityType !== "classes" && entityType !== "individuals") {
+      params.set("includeObsoleteEntities", "true");
+      params.set("includeImportedEntities", "true");
+    }
+    ancestorsPage = await getPaginated<any>(
+      `api/v2/ontologies/${ontologyId}/${ancestorRoute}?${params}`, undefined, apiUrl, { signal });
+    // getPaginated returns one page. Exhaust the server's complete closure without
+    // an ancestor/depth cap, retaining cancellation and request ownership.
+    for (let page = 1; page < ancestorsPage.totalPages; page++) {
+      params.set("page", String(page));
+      const next = await getPaginated<any>(
+        `api/v2/ontologies/${ontologyId}/${ancestorRoute}?${params}`, undefined, apiUrl, { signal });
+      ancestorsPage.elements.push(...next.elements);
     }
     return [entity, ...ancestorsPage.elements.map((obj: any) =>
       thingFromJsonProperties(obj) as Entity
@@ -727,15 +672,22 @@ export const getSubsets = createAsyncThunk(
         { signal }
       ),
     ]);
+    // Definitions are stable identity, independent of eligible member counts.
+    // Exhaust their pages before treating absence as a removed definition.
+    for (let page = 1; page < subsetsPage.totalPages; page++) {
+      const next = await getPaginated<any>(
+        `api/v2/ontologies/${ontologyId}/properties/${encodeURIComponent(encodeURIComponent(SUBSET_PROPERTY_IRI))}/children?${new URLSearchParams({size: "1000", lang, page: String(page)})}`,
+        undefined, apiUrl, { signal });
+      subsetsPage.elements.push(...next.elements);
+    }
     const numMembers: { [subsetIri: string]: number } =
       facetResponse.facetFieldsToCounts?.["subset"] || {};
     return subsetsPage.elements
       .map((obj: any) => thingFromJsonProperties(obj) as Entity)
-      .filter((subset: Entity) => numMembers[subset.getIri()] > 0)
       .map((subset: Entity) => ({
         iri: subset.getIri(),
         label: subset.getName(),
-        numMembers: numMembers[subset.getIri()],
+        numMembers: numMembers[subset.getIri()] || 0,
       }))
       .sort((a: SubsetOption, b: SubsetOption) => a.label.localeCompare(b.label));
   },
@@ -813,7 +765,7 @@ export const getDirectChildrenEntities = createAsyncThunk(
       );
     } else if (entityType === "individuals") {
       response = await getPaginated<any>(
-        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/individuals?${searchParams}`,
+        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/treeChildren?memberType=individual&${searchParams}`,
         undefined,
         apiUrl,
         { signal }
@@ -862,7 +814,7 @@ export const getDirectChildrenCount = createAsyncThunk(
       );
     } else if (entityType === "individuals") {
       response = await get<any>(
-        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/individuals?${new URLSearchParams({
+        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/treeChildren?memberType=individual&${new URLSearchParams({
           size: "1",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
@@ -922,42 +874,14 @@ export const getNodeChildren = createAsyncThunk(
         undefined, apiUrl, { signal }
       );
     } else if (entityTypePlural === "individuals") {
-      const [classIndividuals, individualHierarchicalChildren] = await Promise.all([
-        getPaginated<any>(
-          `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/individuals?${new URLSearchParams(
-            {
-              size: "1000",
-              lang,
-              includeObsoleteEntities: showObsoleteEnabled,
-              includeImportedEntities: showImportedEnabled,
-              ...treeContextParams(subsetTree),
-            }
-          )}`,
-          undefined,
-          apiUrl,
-          { signal }
-        ),
-        getPaginated<any>(
-          `api/v2/ontologies/${ontologyId}/individuals/${doubleEncodedUri}/hierarchicalChildren?${new URLSearchParams(
-            {
-              size: "1000",
-              lang,
-              includeObsoleteEntities: showObsoleteEnabled,
-              includeImportedEntities: showImportedEnabled,
-              ...treeContextParams(subsetTree),
-            }
-          )}`,
-          undefined,
-          apiUrl,
-          { signal }
-        ),
-      ]);
-      childrenPage = {
-        elements: [
-          ...classIndividuals.elements,
-          ...individualHierarchicalChildren.elements,
-        ],
-      };
+      childrenPage = await getPaginated<any>(
+        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/treeChildren?memberType=individual&${new URLSearchParams({
+          size: "1000", lang,
+          includeObsoleteEntities: showObsoleteEnabled,
+          includeImportedEntities: showImportedEnabled,
+          ...treeContextParams(subsetTree),
+        })}`, undefined, apiUrl, { signal }
+      );
     } else {
       childrenPage = await getPaginated<any>(
         `api/v2/ontologies/${ontologyId}/${entityTypePlural}/${doubleEncodedUri}/children?${new URLSearchParams(
@@ -978,7 +902,7 @@ export const getNodeChildren = createAsyncThunk(
     return {
       absoluteIdentity,
       entityIri,
-      totalElements: entityTypePlural === "classes" ? childrenPage.totalElements : undefined,
+      totalElements: ["classes", "individuals"].includes(entityTypePlural) ? childrenPage.totalElements : undefined,
       children: childrenPage.elements
         .map((obj: any) => thingFromJsonProperties(obj) as Entity)
         .filter((term: Entity) => {
@@ -1201,7 +1125,8 @@ const ontologiesSlice = createSlice({
             action.payload,
             action.meta.arg.preferredRoots,
             action.meta.arg.ontology,
-            action.meta.arg.specifiedRootIri
+            action.meta.arg.specifiedRootIri,
+            true
           );
         state.rootNodes = rootNodes;
         state.nodeChildren = nodeChildren;

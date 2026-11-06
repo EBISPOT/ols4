@@ -122,6 +122,10 @@ public class PropertyRepository {
     }
 
     public Page<JsonElement> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean includeImported, Collection<String> subsetTree, boolean treeContext, String lang, JsonTransformOptions outputOpts) {
+        return getChildrenByOntologyId(ontologyId, pageable, iri, includeObsolete, includeImported, subsetTree, treeContext, null, lang, outputOpts);
+    }
+
+    public Page<JsonElement> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean includeImported, Collection<String> subsetTree, boolean treeContext, String searchQuery, String lang, JsonTransformOptions outputOpts) {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
@@ -129,7 +133,7 @@ public class PropertyRepository {
 
         Map<String, String> nodeProps = propertyNodeProperties(includeObsolete, includeImported);
         if (treeContext) nodeProps.put("treeContext", "true");
-        return this.postgresClient.getDirectChildren(id, nodeProps, pageable, null, subsetTree)
+        return this.postgresClient.getDirectChildren(id, nodeProps, pageable, searchQuery, subsetTree)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }

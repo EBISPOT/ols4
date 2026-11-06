@@ -270,6 +270,16 @@ public class V2ClassController {
                 HttpStatus.OK);
     }
 
+    public HttpEntity<V2PagedResponse<V2Entity>> getTreeChildrenByOntology(
+            Pageable pageable, String ontologyId, String iri, boolean includeObsoleteEntities,
+            boolean includeImportedEntities, String searchQuery, List<String> subsetTree,
+            boolean treeContext, String lang, JsonTransformOptions outputOpts) {
+        return getTreeChildrenByOntology(pageable, ontologyId, iri, includeObsoleteEntities,
+                includeImportedEntities, searchQuery, subsetTree, treeContext, TreeMemberType.all, lang, outputOpts);
+    }
+
+    public enum TreeMemberType { all, individual }
+
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}/treeChildren", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public HttpEntity<V2PagedResponse<V2Entity>> getTreeChildrenByOntology(
             @PageableDefault(size = 20, page = 0) @ParameterObject Pageable pageable,
@@ -281,11 +291,13 @@ public class V2ClassController {
             @RequestParam(value = "subsetTree", required = false) List<String> subsetTree,
             @RequestParam(value = "treeContext", defaultValue = "false")
             @Parameter(description = "Apply visibility filters to members and retain necessary ancestry connectors, within subsetTree when supplied.") boolean treeContext,
+            @RequestParam(value = "memberType", defaultValue = "all")
+            @Parameter(description = "all: Classes tree union, with classes winning punning; individual: Individuals tree union, retaining only individual members.") TreeMemberType memberType,
             @RequestParam(value = "lang", defaultValue = "en") String lang,
             @ParameterObject JsonTransformOptions outputOpts) {
         return new ResponseEntity<>(new V2PagedResponse<>(classRepository.getTreeChildrenByOntologyId(
                 ontologyId, pageable, UriUtils.decode(iri, "UTF-8"), includeObsoleteEntities, includeImportedEntities,
-                searchQuery, subsetTree, treeContext, lang, outputOpts).map(V2Entity::new)), HttpStatus.OK);
+                searchQuery, subsetTree, treeContext, memberType == TreeMemberType.individual, lang, outputOpts).map(V2Entity::new)), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}/ancestors", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)

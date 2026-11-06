@@ -186,6 +186,18 @@ public class V2EntityController {
         return new ResponseEntity<V2Entity>( new V2Entity(entity), HttpStatus.OK);
     }
 
+    @Operation(description = "Complete selected-tree ancestry across class and individual direct/type and hierarchical edges. Imported and obsolete connectors are retained. Ordinary ancestor routes are unchanged.")
+    @RequestMapping(path = "/ontologies/{onto}/entities/{entity}/treeAncestors", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    public HttpEntity<uk.ac.ebi.spot.ols.controller.api.v2.responses.V2PagedResponse<V2Entity>> getTreeAncestors(
+            @PageableDefault(size = 20) @ParameterObject Pageable pageable,
+            @PathVariable("onto") String ontologyId, @PathVariable("entity") String iri,
+            @RequestParam(value = "lang", defaultValue = "en") String lang,
+            @ParameterObject JsonTransformOptions outputOpts) {
+        return new ResponseEntity<>(new uk.ac.ebi.spot.ols.controller.api.v2.responses.V2PagedResponse<>(
+                entityRepository.getTreeAncestors(ontologyId, UriUtils.decode(iri, "UTF-8"), pageable, lang, outputOpts)
+                        .map(V2Entity::new)), HttpStatus.OK);
+    }
+
     @RequestMapping(path = "/ontologies/{onto}/entities/{entity}/relatedFrom", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
     public HttpEntity<V2PagedAndFacetedResponse<V2Entity>> getEntityRelatedFrom(
             @PageableDefault(size = 20, page = 0)
