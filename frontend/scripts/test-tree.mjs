@@ -4,7 +4,7 @@ import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 
 const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url)));
-const dir = await mkdtemp(new URL('../node_modules/.tree-tests-', import.meta.url));
+const dir = await mkdtemp(new URL('../.tree-tests-', import.meta.url));
 try {
   await build({
     entryPoints: ['scripts/ontologiesSlice.test.ts', 'scripts/EntityTree.test.tsx', 'scripts/ancestry.test.tsx'],

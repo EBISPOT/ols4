@@ -7,7 +7,8 @@ export default function createTreeFromEntities(
   entities: Entity[],
   preferredRoots: boolean,
   ontology: Ontology,
-  specificRootIri: string
+  specificRootIri: string,
+  preserveSelectedContext = false
 ): { allNodes:TreeNode[], rootNodes: TreeNode[]; automaticallyExpandedNodes:Set<string>, nodeChildren: any } {
   let { rootEntities, parentToChildRelations } = extractEntityHierarchy(entities);
 
@@ -24,7 +25,8 @@ export default function createTreeFromEntities(
       let preferredRootEntities = preferred.map(
         (iri) => entities.filter((entity) => entity.getIri() === iri)[0]
       );
-      rootEntities = preferredRootEntities.filter((entity) => !!entity);
+      const preferredOnPath = preferredRootEntities.filter((entity) => !!entity);
+      if (preferredOnPath.length || !preserveSelectedContext) rootEntities = preferredOnPath;
     }
   }
 
@@ -35,7 +37,7 @@ export default function createTreeFromEntities(
   return {
     allNodes: allNodes,
     rootNodes: rootEntities.map((rootEntity) =>
-      createTreeNode(rootEntity, undefined, 0, null, null)
+      createTreeNode(rootEntity, undefined, new Set(), null, null)
     ),
     nodeChildren,
     automaticallyExpandedNodes
@@ -44,14 +46,14 @@ export default function createTreeFromEntities(
   function createTreeNode(
     node: Entity,
     parent: TreeNode | undefined,
-    debugNumIterations: number,
+    ancestorIris: Set<string>,
     parentRelationToChild:string|null,
     childRelationToParent:string|null,
   ): TreeNode {
-    if (debugNumIterations > 100) {
-      throw new Error("probable cyclic tree (createTreeNode)");
-    }
-    const childNodes = parentToChildRelations.get(node.getIri()) || [];
+    // Detect actual repeated IRIs on this path, rather than treating depth as a cycle.
+    const path = new Set(ancestorIris).add(node.getIri());
+    const childNodes = (parentToChildRelations.get(node.getIri()) || [])
+      .filter(relation => !path.has(relation.child.getIri()));
 
     const treeNode: TreeNode = {
       absoluteIdentity: parent
@@ -70,7 +72,7 @@ export default function createTreeFromEntities(
     allNodes.push(treeNode)
 
     nodeChildren[treeNode.absoluteIdentity] = childNodes.map((childNode) =>
-      createTreeNode(childNode.child, treeNode, debugNumIterations + 1, childNode.parentRelationToChild, childNode.childRelationToParent)
+      createTreeNode(childNode.child, treeNode, path, childNode.parentRelationToChild, childNode.childRelationToParent)
     );
 
     if(node.isExpandableInTree() && childNodes.length > 0) {

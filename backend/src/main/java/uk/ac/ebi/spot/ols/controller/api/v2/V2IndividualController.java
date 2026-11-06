@@ -177,6 +177,8 @@ public class V2IndividualController {
             @RequestParam(value = "subsetTree", required = false)
             @Parameter(name = "subsetTree",
                     description = "Only return entities in one of these subsets (oboInOwl:inSubset), or with a member of one of them below them in the hierarchy. Comma separated subset IRIs.") List<String> subsetTree,
+            @RequestParam(value = "treeContext", required = false, defaultValue = "false")
+            @Parameter(description = "Apply visibility filters to members and retain necessary ancestry connectors, within subsetTree when supplied.") boolean treeContext,
             @RequestParam(value = "includeImportedEntities", required = false, defaultValue = "true")
             @Parameter(name = "includeImportedEntities",
                     description = "A boolean parameter to specify if imported entities (not defined by this ontology) should be included or not. Default value is true.") boolean includeImportedEntities,
@@ -188,7 +190,7 @@ public class V2IndividualController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                        individualRepository.getHierarchicalChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, includeImportedEntities, subsetTree, lang, outputOpts)
+                        individualRepository.getHierarchicalChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, includeImportedEntities, subsetTree, treeContext, lang, outputOpts)
                         .map(V2Entity::new)
                 ),
                 HttpStatus.OK);
@@ -225,6 +227,15 @@ public class V2IndividualController {
                 HttpStatus.OK);
     }
 
+    // Keep direct Java callers compatible with the original no-search signature.
+    public HttpEntity<V2PagedResponse<V2Entity>> getClassIndividuals(
+            Pageable pageable, String ontologyId, String classIri, boolean includeObsoleteEntities,
+            List<String> subsetTree, boolean treeContext, boolean includeImportedEntities,
+            String lang, JsonTransformOptions outputOpts) throws ResourceNotFoundException, IOException {
+        return getClassIndividuals(pageable, ontologyId, classIri, includeObsoleteEntities, subsetTree,
+                treeContext, includeImportedEntities, null, lang, outputOpts);
+    }
+
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}/individuals", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public HttpEntity<V2PagedResponse<V2Entity>> getClassIndividuals(
             @PageableDefault(size = 20, page = 0)
@@ -241,9 +252,13 @@ public class V2IndividualController {
             @RequestParam(value = "subsetTree", required = false)
             @Parameter(name = "subsetTree",
                     description = "Only return entities in one of these subsets (oboInOwl:inSubset), or with a member of one of them below them in the hierarchy. Comma separated subset IRIs.") List<String> subsetTree,
+            @RequestParam(value = "treeContext", required = false, defaultValue = "false")
+            @Parameter(description = "Apply visibility filters to members and retain necessary ancestry connectors, within subsetTree when supplied.") boolean treeContext,
             @RequestParam(value = "includeImportedEntities", required = false, defaultValue = "true")
             @Parameter(name = "includeImportedEntities",
                     description = "A boolean parameter to specify if imported entities (not defined by this ontology) should be included or not. Default value is true.") boolean includeImportedEntities,
+            @RequestParam(value = "searchQuery", required = false)
+            @Parameter(description = "Filter individual labels by case-insensitive literal substring before counting and pagination.") String searchQuery,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
@@ -252,8 +267,11 @@ public class V2IndividualController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                        individualRepository.getIndividualsOfClass(
-                                ontologyId, classIri, pageable, includeObsoleteEntities, includeImportedEntities, subsetTree, lang, outputOpts)
+                        (searchQuery == null
+                                ? individualRepository.getIndividualsOfClass(ontologyId, classIri, pageable,
+                                        includeObsoleteEntities, includeImportedEntities, subsetTree, treeContext, lang, outputOpts)
+                                : individualRepository.getIndividualsOfClass(ontologyId, classIri, pageable,
+                                        includeObsoleteEntities, includeImportedEntities, subsetTree, treeContext, searchQuery, lang, outputOpts))
                                 .map(V2Entity::new)
                 ),
                 HttpStatus.OK);

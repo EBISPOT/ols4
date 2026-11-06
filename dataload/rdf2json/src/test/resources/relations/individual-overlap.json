@@ -1,0 +1,17 @@
+{
+  "ontologies": [
+    {
+      "id": "relations",
+      "title": "Parent overlap regression",
+      "ontology_purl": "individual-overlap.ttl",
+      "base_uri": [
+        "https://example.org/relations#"
+      ],
+      "hierarchical_property": [
+        "https://example.org/relations#p",
+        "https://example.org/relations#q",
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ]
+    }
+  ]
+}

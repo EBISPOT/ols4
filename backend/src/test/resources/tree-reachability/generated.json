@@ -1,0 +1,957 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "mixed",
+      "iri": "https://example.org/mixed",
+      "title": "Mixed tree reachability",
+      "ontologyPurl": "mixed.ttl",
+      "baseUri": [
+        "https://example.org/mixed#"
+      ],
+      "hierarchical_property": [
+        "https://example.org/mixed#partOf"
+      ],
+      "type": [
+        "ontology"
+      ],
+      "directAncestor": [],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "imported": false,
+      "isObsolete": false,
+      "language": [
+        {"type":["literal"],"value":"en"}
+      ],
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
+      "numberOfClasses": {
+        "type": [
+          "literal"
+        ],
+        "value": "5"
+      },
+      "numberOfEntities": {
+        "type": [
+          "literal"
+        ],
+        "value": "15"
+      },
+      "numberOfIndividuals": {
+        "type": [
+          "literal"
+        ],
+        "value": "4"
+      },
+      "numberOfProperties": {
+        "type": [
+          "literal"
+        ],
+        "value": "6"
+      },
+      "preferredRoot": [
+        "https://example.org/mixed#P"
+      ],
+      "searchableAnnotationValues": [
+        false,
+        {"type":["literal"],"value":"15"},
+        {"type":["literal"],"value":"4"},
+        {"type":["literal"],"value":"5"},
+        {"type":["literal"],"value":"6"}
+      ],
+      "classes": [
+        {
+          "iri": "https://example.org/mixed#C",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED:C"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": true,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": true,
+          "hasIndividuals": true,
+          "hierarchicalAncestor": [
+            "https://example.org/mixed#P"
+          ],
+          "hierarchicalParent": [
+            {"type":["reification"],"value":"https://example.org/mixed#P","axioms":[{"childRelationToParent":"https://example.org/mixed#partOf"}]}
+          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Class C"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+            "http://www.w3.org/2002/07/owl#onProperty": "https://example.org/mixed#partOf",
+            "http://www.w3.org/2002/07/owl#someValuesFrom": "https://example.org/mixed#P",
+            "isObsolete": false
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"Class C"}
+          ],
+          "numDescendants": 1,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "mixed"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/mixed"
+          },
+          "relatedTo": [
+            {"property":"https://example.org/mixed#partOf","value":"https://example.org/mixed#P","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"https://example.org/mixed#partOf","http://www.w3.org/2002/07/owl#someValuesFrom":"https://example.org/mixed#P","isObsolete":false}
+          ],
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED_C"
+          }
+        },
+        {
+          "iri": "https://example.org/mixed#K",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED:K"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": true,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": true,
+          "hasIndividuals": true,
+          "hierarchicalAncestor": [
+            "https://example.org/mixed#I",
+            "https://example.org/mixed#J"
+          ],
+          "hierarchicalParent": [
+            {"type":["reification"],"value":"https://example.org/mixed#J","axioms":[{"childRelationToParent":"https://example.org/mixed#partOf"}]}
+          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+            "http://www.w3.org/2002/07/owl#onProperty": "https://example.org/mixed#partOf",
+            "http://www.w3.org/2002/07/owl#someValuesFrom": "https://example.org/mixed#J",
+            "isObsolete": false
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"MIXED_K"}
+          ],
+          "numDescendants": 1,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "mixed"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/mixed"
+          },
+          "relatedTo": [
+            {"property":"https://example.org/mixed#partOf","value":"https://example.org/mixed#J","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"https://example.org/mixed#partOf","http://www.w3.org/2002/07/owl#someValuesFrom":"https://example.org/mixed#J","isObsolete":false}
+          ],
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED_K"
+          }
+        },
+        {
+          "iri": "https://example.org/mixed#P",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED:P"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": true,
+          "hasHierarchicalParents": false,
+          "hierarchicalAncestor": [],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Preferred root P"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": true,
+          "label": [
+            {"type":["literal"],"value":"Preferred root P"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 1,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "mixed"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/mixed"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED_P"
+          }
+        },
+        {
+          "iri": "https://example.org/mixed#X",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED:X"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": true,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": true,
+          "hasHierarchicalParents": true,
+          "hasIndividuals": true,
+          "hierarchicalAncestor": [
+            "https://example.org/mixed#X",
+            "https://example.org/mixed#Y"
+          ],
+          "hierarchicalParent": [
+            {"type":["reification"],"value":"https://example.org/mixed#Y","axioms":[{"childRelationToParent":"https://example.org/mixed#partOf"}]}
+          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+            "http://www.w3.org/2002/07/owl#onProperty": "https://example.org/mixed#partOf",
+            "http://www.w3.org/2002/07/owl#someValuesFrom": "https://example.org/mixed#Y",
+            "isObsolete": false
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"MIXED_X"}
+          ],
+          "numDescendants": 2,
+          "numHierarchicalDescendants": 2,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "mixed"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/mixed"
+          },
+          "relatedTo": [
+            {"property":"https://example.org/mixed#partOf","value":"https://example.org/mixed#Y","type":["related"],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":"http://www.w3.org/2002/07/owl#Restriction","http://www.w3.org/2002/07/owl#onProperty":"https://example.org/mixed#partOf","http://www.w3.org/2002/07/owl#someValuesFrom":"https://example.org/mixed#Y","isObsolete":false}
+          ],
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED_X"
+          }
+        },
+        {
+          "iri": "https://example.org/mixed#Y",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED:Y"
+          },
+          "directAncestor": [
+            "https://example.org/mixed#X"
+          ],
+          "directParent": [
+            "https://example.org/mixed#X"
+          ],
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": true,
+          "hasHierarchicalParents": true,
+          "hierarchicalAncestor": [
+            "https://example.org/mixed#X",
+            "https://example.org/mixed#Y"
+          ],
+          "hierarchicalParent": [
+            "https://example.org/mixed#X"
+          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "https://example.org/mixed#X",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"MIXED_Y"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 2,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "mixed"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/mixed"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED_Y"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#SubsetProperty",
+          "type": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "SubsetProperty"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": true,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"SubsetProperty"}
+          ],
+          "numDescendants": 4,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "mixed"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/mixed"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "SubsetProperty"
+          }
+        },
+        {
+          "iri": "https://example.org/mixed#Cycle",
+          "type": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED:Cycle"
+          },
+          "directAncestor": [
+            "http://www.geneontology.org/formats/oboInOwl#SubsetProperty"
+          ],
+          "directParent": [
+            "http://www.geneontology.org/formats/oboInOwl#SubsetProperty"
+          ],
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Cycle subset"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#SubsetProperty",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"Cycle subset"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "mixed"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/mixed"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED_Cycle"
+          }
+        },
+        {
+          "iri": "https://example.org/mixed#Long",
+          "type": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED:Long"
+          },
+          "directAncestor": [
+            "http://www.geneontology.org/formats/oboInOwl#SubsetProperty"
+          ],
+          "directParent": [
+            "http://www.geneontology.org/formats/oboInOwl#SubsetProperty"
+          ],
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Alternating subset"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#SubsetProperty",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"Alternating subset"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "mixed"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/mixed"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED_Long"
+          }
+        },
+        {
+          "iri": "https://example.org/mixed#S",
+          "type": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED:S"
+          },
+          "directAncestor": [
+            "http://www.geneontology.org/formats/oboInOwl#SubsetProperty"
+          ],
+          "directParent": [
+            "http://www.geneontology.org/formats/oboInOwl#SubsetProperty"
+          ],
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Mixed subset S"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#SubsetProperty",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"Mixed subset S"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "mixed"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/mixed"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED_S"
+          }
+        },
+        {
+          "iri": "https://example.org/mixed#S2",
+          "type": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED:S2"
+          },
+          "directAncestor": [
+            "http://www.geneontology.org/formats/oboInOwl#SubsetProperty"
+          ],
+          "directParent": [
+            "http://www.geneontology.org/formats/oboInOwl#SubsetProperty"
+          ],
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Overlapping subset S2"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#SubsetProperty",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"Overlapping subset S2"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "mixed"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/mixed"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED_S2"
+          }
+        },
+        {
+          "iri": "https://example.org/mixed#partOf",
+          "type": [
+            "entity",
+            "objectProperty",
+            "property"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED:partOf"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"MIXED_partOf"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "mixed"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/mixed"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED_partOf"
+          }
+        }
+      ],
+      "individuals": [
+        {
+          "iri": "https://example.org/mixed#I",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED:I"
+          },
+          "directAncestor": [
+            "https://example.org/mixed#C"
+          ],
+          "directParent": [
+            "https://example.org/mixed#C"
+          ],
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": true,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#inSubset": [
+            "https://example.org/mixed#S",
+            "https://example.org/mixed#S2"
+          ],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://example.org/mixed#C"
+          ],
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Individual I"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "label": [
+            {"type":["literal"],"value":"Individual I"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 2,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "mixed"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/mixed"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED_I"
+          }
+        },
+        {
+          "iri": "https://example.org/mixed#J",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED:J"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": false,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": true,
+          "hasHierarchicalParents": true,
+          "hierarchicalAncestor": [
+            "https://example.org/mixed#I"
+          ],
+          "hierarchicalParent": [
+            {"type":["reification"],"value":"https://example.org/mixed#I","axioms":[{"childRelationToParent":"https://example.org/mixed#partOf"}]}
+          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/mixed#partOf"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "https://example.org/mixed#partOf": "https://example.org/mixed#I",
+          "imported": false,
+          "isObsolete": false,
+          "label": [
+            {"type":["literal"],"value":"MIXED_J"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 1,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "mixed"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/mixed"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED_J"
+          }
+        },
+        {
+          "iri": "https://example.org/mixed#L",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED:L"
+          },
+          "directAncestor": [
+            "https://example.org/mixed#K"
+          ],
+          "directParent": [
+            "https://example.org/mixed#K"
+          ],
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#inSubset": "https://example.org/mixed#Long",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://example.org/mixed#K"
+          ],
+          "imported": false,
+          "isObsolete": false,
+          "label": [
+            {"type":["literal"],"value":"MIXED_L"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "mixed"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/mixed"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED_L"
+          }
+        },
+        {
+          "iri": "https://example.org/mixed#Z",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED:Z"
+          },
+          "directAncestor": [
+            "https://example.org/mixed#X"
+          ],
+          "directParent": [
+            "https://example.org/mixed#X"
+          ],
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#inSubset": "https://example.org/mixed#Cycle",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://example.org/mixed#X"
+          ],
+          "imported": false,
+          "isObsolete": false,
+          "label": [
+            {"type":["literal"],"value":"MIXED_Z"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "mixed"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/mixed"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "MIXED_Z"
+          }
+        }
+      ]
+    }
+  ]
+}

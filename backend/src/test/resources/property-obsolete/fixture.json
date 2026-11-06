@@ -1,0 +1,236 @@
+[
+  {
+    "iri": "https://example.org/propertyobsolete#R",
+    "ontologyId": "propertyobsolete",
+    "ontologyIri": "https://example.org/propertyobsolete",
+    "type": [
+      "property",
+      "entity"
+    ],
+    "label": [
+      "Property root"
+    ],
+    "shortForm": "R",
+    "curie": "PO:R",
+    "isObsolete": false,
+    "isDefiningOntology": true,
+    "imported": false,
+    "directParent": [],
+    "directAncestor": [],
+    "hierarchicalParent": [],
+    "hierarchicalAncestor": [],
+    "hasDirectParents": false,
+    "hasHierarchicalParents": false,
+    "hasDirectChildren": true,
+    "hasHierarchicalChildren": true,
+    "numDescendants": 5,
+    "numHierarchicalDescendants": 5,
+    "http://www.geneontology.org/formats/oboInOwl#inSubset": [],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": []
+  },
+  {
+    "iri": "https://example.org/propertyobsolete#K",
+    "ontologyId": "propertyobsolete",
+    "ontologyIri": "https://example.org/propertyobsolete",
+    "type": [
+      "property",
+      "entity"
+    ],
+    "label": [
+      "Obsolete connector"
+    ],
+    "shortForm": "K",
+    "curie": "PO:K",
+    "isObsolete": true,
+    "isDefiningOntology": false,
+    "imported": true,
+    "directParent": [
+      "https://example.org/propertyobsolete#R"
+    ],
+    "directAncestor": [
+      "https://example.org/propertyobsolete#R"
+    ],
+    "hierarchicalParent": [
+      "https://example.org/propertyobsolete#R"
+    ],
+    "hierarchicalAncestor": [
+      "https://example.org/propertyobsolete#R"
+    ],
+    "hasDirectParents": true,
+    "hasHierarchicalParents": true,
+    "hasDirectChildren": true,
+    "hasHierarchicalChildren": true,
+    "numDescendants": 1,
+    "numHierarchicalDescendants": 1,
+    "http://www.geneontology.org/formats/oboInOwl#inSubset": [],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+      "https://example.org/propertyobsolete#R"
+    ]
+  },
+  {
+    "iri": "https://example.org/propertyobsolete#C",
+    "ontologyId": "propertyobsolete",
+    "ontologyIri": "https://example.org/propertyobsolete",
+    "type": [
+      "property",
+      "entity"
+    ],
+    "label": [
+      "Active descendant"
+    ],
+    "shortForm": "C",
+    "curie": "PO:C",
+    "isObsolete": false,
+    "isDefiningOntology": true,
+    "imported": false,
+    "directParent": [
+      "https://example.org/propertyobsolete#K"
+    ],
+    "directAncestor": [
+      "https://example.org/propertyobsolete#R",
+      "https://example.org/propertyobsolete#K"
+    ],
+    "hierarchicalParent": [
+      "https://example.org/propertyobsolete#K"
+    ],
+    "hierarchicalAncestor": [
+      "https://example.org/propertyobsolete#R",
+      "https://example.org/propertyobsolete#K"
+    ],
+    "hasDirectParents": true,
+    "hasHierarchicalParents": true,
+    "hasDirectChildren": false,
+    "hasHierarchicalChildren": false,
+    "numDescendants": 0,
+    "numHierarchicalDescendants": 0,
+    "http://www.geneontology.org/formats/oboInOwl#inSubset": [
+      "https://example.org/propertyobsolete#S"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+      "https://example.org/propertyobsolete#K"
+    ]
+  },
+  {
+    "iri": "https://example.org/propertyobsolete#O",
+    "ontologyId": "propertyobsolete",
+    "ontologyIri": "https://example.org/propertyobsolete",
+    "type": [
+      "property",
+      "entity"
+    ],
+    "label": [
+      "Obsolete leaf"
+    ],
+    "shortForm": "O",
+    "curie": "PO:O",
+    "isObsolete": true,
+    "isDefiningOntology": true,
+    "imported": false,
+    "directParent": [
+      "https://example.org/propertyobsolete#R"
+    ],
+    "directAncestor": [
+      "https://example.org/propertyobsolete#R"
+    ],
+    "hierarchicalParent": [
+      "https://example.org/propertyobsolete#R"
+    ],
+    "hierarchicalAncestor": [
+      "https://example.org/propertyobsolete#R"
+    ],
+    "hasDirectParents": true,
+    "hasHierarchicalParents": true,
+    "hasDirectChildren": false,
+    "hasHierarchicalChildren": false,
+    "numDescendants": 0,
+    "numHierarchicalDescendants": 0,
+    "http://www.geneontology.org/formats/oboInOwl#inSubset": [
+      "https://example.org/propertyobsolete#S2"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+      "https://example.org/propertyobsolete#R"
+    ]
+  },
+  {
+    "iri": "https://example.org/propertyobsolete#A",
+    "ontologyId": "propertyobsolete",
+    "ontologyIri": "https://example.org/propertyobsolete",
+    "type": [
+      "property",
+      "entity"
+    ],
+    "label": [
+      "Active leaf"
+    ],
+    "shortForm": "A",
+    "curie": "PO:A",
+    "isObsolete": false,
+    "isDefiningOntology": true,
+    "imported": false,
+    "directParent": [
+      "https://example.org/propertyobsolete#R"
+    ],
+    "directAncestor": [
+      "https://example.org/propertyobsolete#R"
+    ],
+    "hierarchicalParent": [
+      "https://example.org/propertyobsolete#R"
+    ],
+    "hierarchicalAncestor": [
+      "https://example.org/propertyobsolete#R"
+    ],
+    "hasDirectParents": true,
+    "hasHierarchicalParents": true,
+    "hasDirectChildren": false,
+    "hasHierarchicalChildren": false,
+    "numDescendants": 0,
+    "numHierarchicalDescendants": 0,
+    "http://www.geneontology.org/formats/oboInOwl#inSubset": [
+      "https://example.org/propertyobsolete#S"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+      "https://example.org/propertyobsolete#R"
+    ]
+  },
+  {
+    "iri": "https://example.org/propertyobsolete#X",
+    "ontologyId": "propertyobsolete",
+    "ontologyIri": "https://example.org/propertyobsolete",
+    "type": [
+      "property",
+      "entity"
+    ],
+    "label": [
+      "Imported active leaf"
+    ],
+    "shortForm": "X",
+    "curie": "PO:X",
+    "isObsolete": false,
+    "isDefiningOntology": false,
+    "imported": true,
+    "directParent": [
+      "https://example.org/propertyobsolete#R"
+    ],
+    "directAncestor": [
+      "https://example.org/propertyobsolete#R"
+    ],
+    "hierarchicalParent": [
+      "https://example.org/propertyobsolete#R"
+    ],
+    "hierarchicalAncestor": [
+      "https://example.org/propertyobsolete#R"
+    ],
+    "hasDirectParents": true,
+    "hasHierarchicalParents": true,
+    "hasDirectChildren": false,
+    "hasHierarchicalChildren": false,
+    "numDescendants": 0,
+    "numHierarchicalDescendants": 0,
+    "http://www.geneontology.org/formats/oboInOwl#inSubset": [
+      "https://example.org/propertyobsolete#S"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+      "https://example.org/propertyobsolete#R"
+    ]
+  }
+]

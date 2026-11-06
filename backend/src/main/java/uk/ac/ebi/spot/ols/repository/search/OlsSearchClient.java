@@ -24,6 +24,7 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.treeReachability;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.INFORMATION_SCHEMA_COLUMNS;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_AUTOSUGGEST;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.OLS_ENTITIES;
@@ -316,32 +317,15 @@ public class OlsSearchClient {
         return counts;
     }
 
-    /**
-     * Counts distinct filtered members below each IRI through the same paths as
-     * JooqSupport.inSubsetTree: direct/hierarchical ancestry, and the direct (type/class)
-     * ancestry of hierarchical ancestors. Filters restrict members, not path context.
-     * The lateral UNION deduplicates ancestors per member row (id is the primary key),
-     * including overlaps between routes and subsets, before the outer aggregation.
-     */
+    /** Counts distinct filtered members using the same complete closure as subset filtering. */
     private Map<String, Long> executeTreeAncestorFacetQuery(DSLContext dsl, OlsSearchQuery query) {
         var records = dsl.resultQuery("""
-                WITH members AS MATERIALIZED (
-                    SELECT m.ontology_id, m.iri, m.direct_ancestors, m.hierarchical_ancestors
-                    FROM ols_entities m WHERE {0}
-                )
-                SELECT ancestors.iri, count(*)
-                FROM members m
-                CROSS JOIN LATERAL (
-                    SELECT unnest(m.hierarchical_ancestors || m.direct_ancestors) AS iri
-                    UNION
-                    SELECT unnest(a.direct_ancestors)
-                    FROM ols_entities a
-                    WHERE a.ontology_id = m.ontology_id AND a.iri = ANY(m.hierarchical_ancestors)
-                ) ancestors
-                WHERE ancestors.iri <> m.iri
-                GROUP BY ancestors.iri
-                ORDER BY count(*) DESC, ancestors.iri
-                """, query.buildCondition(getAvailableFilterColumns(), "m")).fetch();
+                SELECT iri, count(*)
+                FROM {0} tree_reachability
+                WHERE iri <> member_iri
+                GROUP BY iri
+                ORDER BY count(*) DESC, iri
+                """, treeReachability(query.buildCondition(getAvailableFilterColumns(), "m"), true)).fetch();
 
         Map<String, Long> counts = new LinkedHashMap<>();
         for (Record record : records) {

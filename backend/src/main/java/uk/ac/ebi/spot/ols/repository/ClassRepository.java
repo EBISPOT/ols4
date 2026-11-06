@@ -118,6 +118,10 @@ public class ClassRepository {
     }
 
     public Page<JsonElement> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean includeImported, String search, Collection<String> subsetTree, String lang, JsonTransformOptions outputOpts) {
+        return getChildrenByOntologyId(ontologyId, pageable, iri, includeObsolete, includeImported, search, subsetTree, false, lang, outputOpts);
+    }
+
+    public Page<JsonElement> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean includeImported, String search, Collection<String> subsetTree, boolean treeContext, String lang, JsonTransformOptions outputOpts) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -125,6 +129,7 @@ public class ClassRepository {
         String id = ontologyId + "+class+" + iri;
 
         Map<String, String> nodeProps = classNodeProperties(includeObsolete, includeImported);
+        if (treeContext) nodeProps.put("treeContext", "true");
 
         Page<JsonElement> result = this.postgresClient.getDirectChildren(
                 id, nodeProps, pageable, isNullOrEmpty(search) ? null : search, subsetTree);
@@ -132,6 +137,25 @@ public class ClassRepository {
         return  result
                     .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                     ;
+    }
+
+    public Page<JsonElement> getTreeChildrenByOntologyId(String ontologyId, Pageable pageable, String iri,
+            boolean includeObsolete, boolean includeImported, String search, Collection<String> subsetTree,
+            boolean treeContext, String lang, JsonTransformOptions outputOpts) {
+        return getTreeChildrenByOntologyId(ontologyId, pageable, iri, includeObsolete, includeImported,
+                search, subsetTree, treeContext, false, lang, outputOpts);
+    }
+
+    public Page<JsonElement> getTreeChildrenByOntologyId(String ontologyId, Pageable pageable, String iri,
+            boolean includeObsolete, boolean includeImported, String search, Collection<String> subsetTree,
+            boolean treeContext, boolean individualsOnly, String lang, JsonTransformOptions outputOpts) {
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+        Map<String, String> props = classNodeProperties(includeObsolete, includeImported);
+        props.remove("type");
+        if (treeContext) props.put("treeContext", "true");
+        return postgresClient.getTreeChildren(ontologyId, iri, props, pageable, search, subsetTree, individualsOnly)
+                .map(e -> JsonTransformer.transformJson(e, lang, outputOpts));
     }
 
     public Page<JsonElement> getAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
@@ -176,6 +200,10 @@ public class ClassRepository {
     }
 
     public Page<JsonElement> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean includeImported, Collection<String> subsetTree, String lang, JsonTransformOptions outputOpts) {
+        return getHierarchicalChildrenByOntologyId(ontologyId, pageable, iri, includeObsolete, includeImported, subsetTree, false, lang, outputOpts);
+    }
+
+    public Page<JsonElement> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean includeImported, Collection<String> subsetTree, boolean treeContext, String lang, JsonTransformOptions outputOpts) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
@@ -183,6 +211,7 @@ public class ClassRepository {
         String id = ontologyId + "+class+" + iri;
 
         Map<String, String> nodeProps = classNodeProperties(includeObsolete, includeImported);
+        if (treeContext) nodeProps.put("treeContext", "true");
 
         return this.postgresClient.getHierarchicalChildren(id, nodeProps, pageable, subsetTree)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))

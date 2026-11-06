@@ -251,6 +251,8 @@ public class V2ClassController {
             @RequestParam(value = "subsetTree", required = false)
             @Parameter(name = "subsetTree",
                     description = "Only return entities in one of these subsets (oboInOwl:inSubset), or with a member of one of them below them in the hierarchy. Comma separated subset IRIs.") List<String> subsetTree,
+            @RequestParam(value = "treeContext", required = false, defaultValue = "false")
+            @Parameter(description = "Apply visibility filters to members and retain necessary ancestry connectors, within subsetTree when supplied.") boolean treeContext,
             @RequestParam(value = "includeImportedEntities", required = false, defaultValue = "true")
             @Parameter(name = "includeImportedEntities",
                     description = "A boolean parameter to specify if imported entities (not defined by this ontology) should be included or not. Default value is true.") boolean includeImportedEntities,
@@ -262,10 +264,40 @@ public class V2ClassController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                    classRepository.getChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, includeImportedEntities, searchQuery, subsetTree, lang, outputOpts)
+                    classRepository.getChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, includeImportedEntities, searchQuery, subsetTree, treeContext, lang, outputOpts)
                     .map(V2Entity::new)
                 ),
                 HttpStatus.OK);
+    }
+
+    public HttpEntity<V2PagedResponse<V2Entity>> getTreeChildrenByOntology(
+            Pageable pageable, String ontologyId, String iri, boolean includeObsoleteEntities,
+            boolean includeImportedEntities, String searchQuery, List<String> subsetTree,
+            boolean treeContext, String lang, JsonTransformOptions outputOpts) {
+        return getTreeChildrenByOntology(pageable, ontologyId, iri, includeObsoleteEntities,
+                includeImportedEntities, searchQuery, subsetTree, treeContext, TreeMemberType.all, lang, outputOpts);
+    }
+
+    public enum TreeMemberType { all, individual }
+
+    @RequestMapping(path = "/ontologies/{onto}/classes/{class}/treeChildren", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    public HttpEntity<V2PagedResponse<V2Entity>> getTreeChildrenByOntology(
+            @PageableDefault(size = 20, page = 0) @ParameterObject Pageable pageable,
+            @PathVariable("onto") String ontologyId,
+            @PathVariable("class") @Parameter(description = "Double URL encoded parent IRI; may be a class or individual in the Classes tree.") String iri,
+            @RequestParam(value = "includeObsoleteEntities", defaultValue = "false") boolean includeObsoleteEntities,
+            @RequestParam(value = "includeImportedEntities", defaultValue = "true") boolean includeImportedEntities,
+            @RequestParam(value = "searchQuery", required = false) String searchQuery,
+            @RequestParam(value = "subsetTree", required = false) List<String> subsetTree,
+            @RequestParam(value = "treeContext", defaultValue = "false")
+            @Parameter(description = "Apply visibility filters to members and retain necessary ancestry connectors, within subsetTree when supplied.") boolean treeContext,
+            @RequestParam(value = "memberType", defaultValue = "all")
+            @Parameter(description = "all: Classes tree union, with classes winning punning; individual: Individuals tree union, retaining only individual members.") TreeMemberType memberType,
+            @RequestParam(value = "lang", defaultValue = "en") String lang,
+            @ParameterObject JsonTransformOptions outputOpts) {
+        return new ResponseEntity<>(new V2PagedResponse<>(classRepository.getTreeChildrenByOntologyId(
+                ontologyId, pageable, UriUtils.decode(iri, "UTF-8"), includeObsoleteEntities, includeImportedEntities,
+                searchQuery, subsetTree, treeContext, memberType == TreeMemberType.individual, lang, outputOpts).map(V2Entity::new)), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/ontologies/{onto}/classes/{class}/ancestors", produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
@@ -376,6 +408,8 @@ public class V2ClassController {
             @RequestParam(value = "subsetTree", required = false)
             @Parameter(name = "subsetTree",
                     description = "Only return entities in one of these subsets (oboInOwl:inSubset), or with a member of one of them below them in the hierarchy. Comma separated subset IRIs.") List<String> subsetTree,
+            @RequestParam(value = "treeContext", required = false, defaultValue = "false")
+            @Parameter(description = "Apply visibility filters to members and retain necessary ancestry connectors, within subsetTree when supplied.") boolean treeContext,
             @RequestParam(value = "includeImportedEntities", required = false, defaultValue = "true")
             @Parameter(name = "includeImportedEntities",
                     description = "A boolean parameter to specify if imported entities (not defined by this ontology) should be included or not. Default value is true.") boolean includeImportedEntities,
@@ -387,7 +421,7 @@ public class V2ClassController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                        classRepository.getHierarchicalChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, includeImportedEntities, subsetTree, lang, outputOpts)
+                        classRepository.getHierarchicalChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, includeImportedEntities, subsetTree, treeContext, lang, outputOpts)
                         .map(V2Entity::new)
                 ),
                 HttpStatus.OK);

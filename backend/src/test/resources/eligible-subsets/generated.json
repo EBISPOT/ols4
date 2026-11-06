@@ -1,0 +1,636 @@
+{
+  "ontologies": [
+    {
+      "ontologyId": "eligible",
+      "iri": "https://example.org/eligible",
+      "title": "Eligible subset members",
+      "ontologyPurl": "eligible.ttl",
+      "baseUri": [
+        "https://example.org/eligible#"
+      ],
+      "type": [
+        "ontology"
+      ],
+      "directAncestor": [],
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Ontology",
+      "imported": false,
+      "isObsolete": false,
+      "language": [
+        {"type":["literal"],"value":"en"}
+      ],
+      "numDescendants": 0,
+      "numHierarchicalDescendants": 0,
+      "numberOfClasses": {
+        "type": [
+          "literal"
+        ],
+        "value": "5"
+      },
+      "numberOfEntities": {
+        "type": [
+          "literal"
+        ],
+        "value": "9"
+      },
+      "numberOfIndividuals": {
+        "type": [
+          "literal"
+        ],
+        "value": "1"
+      },
+      "numberOfProperties": {
+        "type": [
+          "literal"
+        ],
+        "value": "3"
+      },
+      "preferredRoot": [
+        "https://example.org/eligible#A",
+        "https://example.org/eligible#B"
+      ],
+      "searchableAnnotationValues": [
+        false,
+        {"type":["literal"],"value":"1"},
+        {"type":["literal"],"value":"3"},
+        {"type":["literal"],"value":"5"},
+        {"type":["literal"],"value":"9"}
+      ],
+      "classes": [
+        {
+          "iri": "https://example.org/eligible#A",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ELIGIBLE:A"
+          },
+          "directAncestor": [
+            "https://example.org/eligible#Top"
+          ],
+          "directParent": [
+            "https://example.org/eligible#Top"
+          ],
+          "hasDirectChildren": true,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": true,
+          "hasHierarchicalParents": true,
+          "hierarchicalAncestor": [
+            "https://example.org/eligible#Top"
+          ],
+          "hierarchicalParent": [
+            "https://example.org/eligible#Top"
+          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Root A hidden members"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "https://example.org/eligible#Top",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": true,
+          "label": [
+            {"type":["literal"],"value":"Root A hidden members"}
+          ],
+          "numDescendants": 2,
+          "numHierarchicalDescendants": 2,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "eligible"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/eligible"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "ELIGIBLE_A"
+          }
+        },
+        {
+          "iri": "https://example.org/eligible#B",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ELIGIBLE:B"
+          },
+          "directAncestor": [
+            "https://example.org/eligible#Top"
+          ],
+          "directParent": [
+            "https://example.org/eligible#Top"
+          ],
+          "hasDirectChildren": true,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": true,
+          "hasIndividuals": true,
+          "hierarchicalAncestor": [
+            "https://example.org/eligible#Top"
+          ],
+          "hierarchicalParent": [
+            "https://example.org/eligible#Top"
+          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Root B active member"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "https://example.org/eligible#Top",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": true,
+          "label": [
+            {"type":["literal"],"value":"Root B active member"}
+          ],
+          "numDescendants": 1,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "eligible"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/eligible"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "ELIGIBLE_B"
+          }
+        },
+        {
+          "iri": "https://example.org/eligible#Obsolete",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ELIGIBLE:Obsolete"
+          },
+          "directAncestor": [
+            "https://example.org/eligible#A",
+            "https://example.org/eligible#Top"
+          ],
+          "directParent": [
+            "https://example.org/eligible#A"
+          ],
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": true,
+          "hierarchicalAncestor": [
+            "https://example.org/eligible#A",
+            "https://example.org/eligible#Top"
+          ],
+          "hierarchicalParent": [
+            "https://example.org/eligible#A"
+          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
+          "http://www.geneontology.org/formats/oboInOwl#inSubset": "https://example.org/eligible#S",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Obsolete native member"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "https://example.org/eligible#A",
+          "http://www.w3.org/2002/07/owl#deprecated": true,
+          "imported": false,
+          "isObsolete": true,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"Obsolete native member"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "eligible"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/eligible"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "ELIGIBLE_Obsolete"
+          }
+        },
+        {
+          "iri": "https://example.org/eligible#Top",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ELIGIBLE:Top"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": true,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": true,
+          "hasHierarchicalParents": false,
+          "hierarchicalAncestor": [],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Browse top"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"Browse top"}
+          ],
+          "numDescendants": 5,
+          "numHierarchicalDescendants": 4,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "eligible"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/eligible"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "ELIGIBLE_Top"
+          }
+        },
+        {
+          "iri": "https://external.example.org/Imported",
+          "type": [
+            "class",
+            "entity"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "Imported"
+          },
+          "directAncestor": [
+            "https://example.org/eligible#A",
+            "https://example.org/eligible#Top"
+          ],
+          "directParent": [
+            "https://example.org/eligible#A"
+          ],
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": true,
+          "hierarchicalAncestor": [
+            "https://example.org/eligible#A",
+            "https://example.org/eligible#Top"
+          ],
+          "hierarchicalParent": [
+            "https://example.org/eligible#A"
+          ],
+          "hierarchicalProperty": {
+            "type": [
+              "literal"
+            ],
+            "value": "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+          },
+          "http://www.geneontology.org/formats/oboInOwl#inSubset": "https://example.org/eligible#S",
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Class",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Imported active member"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#subClassOf": "https://example.org/eligible#A",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"Imported active member"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "eligible"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/eligible"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "Imported"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "iri": "http://www.geneontology.org/formats/oboInOwl#SubsetProperty",
+          "type": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "SubsetProperty"
+          },
+          "directAncestor": [],
+          "hasDirectChildren": true,
+          "hasDirectParents": false,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"SubsetProperty"}
+          ],
+          "numDescendants": 2,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "eligible"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/eligible"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "SubsetProperty"
+          }
+        },
+        {
+          "iri": "https://example.org/eligible#S",
+          "type": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ELIGIBLE:S"
+          },
+          "directAncestor": [
+            "http://www.geneontology.org/formats/oboInOwl#SubsetProperty"
+          ],
+          "directParent": [
+            "http://www.geneontology.org/formats/oboInOwl#SubsetProperty"
+          ],
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Selected subset S"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#SubsetProperty",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"Selected subset S"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "eligible"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/eligible"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "ELIGIBLE_S"
+          }
+        },
+        {
+          "iri": "https://example.org/eligible#S2",
+          "type": [
+            "annotationProperty",
+            "entity",
+            "property"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ELIGIBLE:S2"
+          },
+          "directAncestor": [
+            "http://www.geneontology.org/formats/oboInOwl#SubsetProperty"
+          ],
+          "directParent": [
+            "http://www.geneontology.org/formats/oboInOwl#SubsetProperty"
+          ],
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#AnnotationProperty",
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Overlapping subset S2"
+          },
+          "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": "http://www.geneontology.org/formats/oboInOwl#SubsetProperty",
+          "imported": false,
+          "isObsolete": false,
+          "isPreferredRoot": false,
+          "label": [
+            {"type":["literal"],"value":"Overlapping subset S2"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "eligible"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/eligible"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "ELIGIBLE_S2"
+          }
+        }
+      ],
+      "individuals": [
+        {
+          "iri": "https://example.org/eligible#Active",
+          "type": [
+            "entity",
+            "individual"
+          ],
+          "curie": {
+            "type": [
+              "literal"
+            ],
+            "value": "ELIGIBLE:Active"
+          },
+          "directAncestor": [
+            "https://example.org/eligible#B",
+            "https://example.org/eligible#Top"
+          ],
+          "directParent": [
+            "https://example.org/eligible#B"
+          ],
+          "hasDirectChildren": false,
+          "hasDirectParents": true,
+          "hasHierarchicalChildren": false,
+          "hasHierarchicalParents": false,
+          "http://www.geneontology.org/formats/oboInOwl#inSubset": [
+            "https://example.org/eligible#S",
+            "https://example.org/eligible#S2"
+          ],
+          "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://example.org/eligible#B"
+          ],
+          "http://www.w3.org/2000/01/rdf-schema#label": {
+            "type": [
+              "literal"
+            ],
+            "value": "Active native individual"
+          },
+          "imported": false,
+          "isObsolete": false,
+          "label": [
+            {"type":["literal"],"value":"Active native individual"}
+          ],
+          "numDescendants": 0,
+          "numHierarchicalDescendants": 0,
+          "ontologyId": {
+            "type": [
+              "literal"
+            ],
+            "value": "eligible"
+          },
+          "ontologyIri": {
+            "type": [
+              "literal"
+            ],
+            "value": "https://example.org/eligible"
+          },
+          "searchableAnnotationValues": false,
+          "shortForm": {
+            "type": [
+              "literal"
+            ],
+            "value": "ELIGIBLE_Active"
+          }
+        }
+      ]
+    }
+  ]
+}

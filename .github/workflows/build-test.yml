@@ -36,6 +36,10 @@ jobs:
           mkdir -p dist
           PATH="$PWD/node_modules/.bin:$PATH" OLS_MINIFY=true PUBLIC_URL=/ node build.mjs
 
+      - name: Run frontend tree and interaction regressions
+        working-directory: frontend
+        run: npm run test:tree
+
   backend-unit-web:
     name: Backend Unit & Web Integration Tests
     runs-on: ubuntu-latest
