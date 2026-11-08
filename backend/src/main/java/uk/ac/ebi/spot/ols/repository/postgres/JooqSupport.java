@@ -109,7 +109,12 @@ public final class JooqSupport {
      * RDF2JSON materializes each ancestry kind as a transitive closure. When one kind contains
      * the other throughout an ontology (including pure-kind ontologies), their union is already
      * complete. Only genuinely mixed ontologies require recursion. Inspect only seed ontologies,
-     * so a small subset does not trigger a scan of every ontology in the store.
+     * so a small subset does not trigger a scan of every ontology in the store: one index
+     * lookup per seed ontology, as a LATERAL join. Written as
+     * {@code a.ontology_id IN (SELECT ontology_id FROM members) GROUP BY a.ontology_id} it
+     * was planned as a sequential scan of ols_entities hash-joined to the seed ontologies
+     * (the planner cannot see how few a materialized CTE holds): 11 M rows and ~18 GB read
+     * on a full instance to answer for one ontology of 4,482 entities.
      */
     public static Table<?> treeReachability(Condition members, boolean perMember) {
         return DSL.table("""
@@ -117,13 +122,16 @@ public final class JooqSupport {
                     SELECT m.id, m.iri, m.ontology_id, m.direct_ancestors, m.hierarchical_ancestors
                     FROM ols_entities m WHERE {2}
                 ), mixed_ontologies AS MATERIALIZED (
-                    SELECT a.ontology_id FROM ols_entities a
-                    WHERE a.ontology_id IN (SELECT ontology_id FROM members)
-                    GROUP BY a.ontology_id
-                    HAVING bool_or(NOT (coalesce(a.direct_ancestors, '{}'::text[]) = coalesce(a.hierarchical_ancestors, '{}'::text[])
-                                        OR coalesce(a.direct_ancestors, '{}'::text[]) <@ coalesce(a.hierarchical_ancestors, '{}'::text[])))
-                       AND bool_or(NOT (coalesce(a.direct_ancestors, '{}'::text[]) = coalesce(a.hierarchical_ancestors, '{}'::text[])
-                                        OR coalesce(a.hierarchical_ancestors, '{}'::text[]) <@ coalesce(a.direct_ancestors, '{}'::text[])))
+                    SELECT o.ontology_id
+                    FROM (SELECT DISTINCT ontology_id FROM members) o
+                    CROSS JOIN LATERAL (
+                        SELECT bool_or(NOT (coalesce(a.direct_ancestors, '{}'::text[]) = coalesce(a.hierarchical_ancestors, '{}'::text[])
+                                            OR coalesce(a.direct_ancestors, '{}'::text[]) <@ coalesce(a.hierarchical_ancestors, '{}'::text[]))) AS direct_only,
+                               bool_or(NOT (coalesce(a.direct_ancestors, '{}'::text[]) = coalesce(a.hierarchical_ancestors, '{}'::text[])
+                                            OR coalesce(a.hierarchical_ancestors, '{}'::text[]) <@ coalesce(a.direct_ancestors, '{}'::text[]))) AS hierarchical_only
+                        FROM ols_entities a WHERE a.ontology_id = o.ontology_id
+                    ) kinds
+                    WHERE kinds.direct_only AND kinds.hierarchical_only
                 ), tree_reach(member_id, member_iri, ontology_id, iri) AS (
                     SELECT {0}, {1}, m.ontology_id,
                            unnest(ARRAY[m.iri] || CASE WHEN m.direct_ancestors = m.hierarchical_ancestors
