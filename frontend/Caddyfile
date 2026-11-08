@@ -5,7 +5,9 @@
 :8080 {
     handle_path {$PUBLIC_URL}* {
         root * /opt/ols4-frontend/dist
-        try_files {path} /
+        # The SPA fallback. Caddy 2.11 no longer serves the index for a bare `/`
+        # candidate here, so every app route under PUBLIC_URL came back 404.
+        try_files {path} /index.html
         # bundle.js has a fixed name (no content hash), so browsers must
         # revalidate it on every load or they keep serving stale app code
         # after a redeploy. no-cache still allows cheap 304s via ETag.
