@@ -43,4 +43,16 @@ class DynamicQueryHelperTest {
                 Map.of("ontologyId", List.of("efo")),
                 DynamicQueryHelper.filterProperties(properties));
     }
+
+    /** view=tree shapes the output; as a filter it would match no entity and empty every listing. */
+    @Test
+    void excludesViewFromDynamicFilters() {
+        Map<String, Collection<String>> properties = new LinkedHashMap<>();
+        properties.put("view", List.of("tree"));
+        properties.put("isPreferredRoot", List.of("true"));
+
+        assertEquals(
+                Map.of("isPreferredRoot", List.of("true")),
+                DynamicQueryHelper.filterProperties(properties));
+    }
 }
