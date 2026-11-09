@@ -76,7 +76,8 @@ jobs:
           cache: maven
 
       - name: Run backend database integration tests
-        run: mvn -B -ntp -pl backend -am -Pintegration-tests-only verify
+        # docker-java defaults to API 1.32, which current runner daemons reject.
+        run: mvn -B -ntp -pl backend -am -Pintegration-tests-only -Dapi.version=1.44 verify
 
       - name: Upload backend integration and coverage reports
         if: always()
