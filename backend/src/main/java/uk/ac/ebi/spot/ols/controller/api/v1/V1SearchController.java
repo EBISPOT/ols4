@@ -83,11 +83,13 @@ public class V1SearchController {
                     example = "[\"iri\",\"label\",\"short_form\",\"obo_id\",\"ontology_name\"]") Collection<String> fieldList,
             @RequestParam(value = "queryFields", required = false)
             @Parameter(name = "queryFields",
-                    description = "Specify the fields to query, the defaults are {label, synonym, description, short_form, obo_id, annotations, logical_description, iri}",
+                    description = "Specify the fields to query. With exact=true, defaults to label and synonym "
+                            + "(or iri for an IRI query); otherwise defaults to "
+                            + "{label, synonym, description, short_form, obo_id, annotations, logical_description, iri}",
                     example = "[\"iri\",\"label\",\"short_form\",\"ontology_name\"]") Collection<String> queryFields,
             @RequestParam(value = "exact", required = false)
             @Parameter(name = "exact",
-                    description = "Set to true for exact matches",
+                    description = "Set to true for case-insensitive whole-value matches",
                     example = "false") boolean exact,
             @RequestParam(value = "groupField", required = false)
             @Parameter(name = "groupField",
