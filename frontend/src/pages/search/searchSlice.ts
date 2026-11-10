@@ -37,6 +37,7 @@ export const getSearchResults = createAsyncThunk(
           size: rowsPerPage,
           page,
           model: model,
+          includeObsoleteEntities: searchParams.get("includeObsoleteEntities") === "true",
         };
         // Add ontologyId filter if specified
         if (ontologyId && ontologyId.length > 0) {

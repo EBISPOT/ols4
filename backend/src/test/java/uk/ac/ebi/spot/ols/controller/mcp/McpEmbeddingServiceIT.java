@@ -131,7 +131,7 @@ class McpEmbeddingServiceIT {
         // the type filter entirely (see OlsPostgresClient.hasConcreteEntityType), so the property
         // (EFO_0100) and individual (EFO_I100) candidates are found too -- this is the concrete,
         // observable proof of the "OntologyClass" vs "OntologyEntity" difference.
-        McpPage<McpSearchResult> result = service.searchWithEmbeddingModel("liver", MODEL, null, null, null, null);
+        McpPage<McpSearchResult> result = service.searchWithEmbeddingModel("liver", MODEL, null, null, null, null, null);
 
         // Ranked by exact cosine similarity against [1,0,0,0]: EFO_0001 (1.0) > EFO_I100 (0.8) >
         // EFO_0100 (0.6) > EFO_0002 (0.0, CurationEmbedding only) -- see
@@ -140,8 +140,20 @@ class McpEmbeddingServiceIT {
     }
 
     @Test
+    void searchWithEmbeddingModelReturnsObsoleteEntitiesOnlyWhenAskedThroughRealPostgres() throws IOException {
+        assertThat(urls(service.searchWithEmbeddingModel("liver", MODEL, null, null, null, null, null)))
+                .doesNotContain("http://example.org/EFO_1999");
+        assertThat(urls(service.searchWithEmbeddingModel("liver", MODEL, null, null, null, null, false)))
+                .doesNotContain("http://example.org/EFO_1999");
+        assertThat(urls(service.searchWithEmbeddingModel("liver", MODEL, null, null, null, null, true)))
+                .contains("http://example.org/EFO_1999");
+        assertThat(urls(service.searchWithEmbeddingModel("liver", MODEL, "efo", null, null, null, true)))
+                .contains("http://example.org/EFO_1999");
+    }
+
+    @Test
     void searchWithEmbeddingModelExcludesCurationsWhenRequestedThroughRealPostgres() throws IOException {
-        McpPage<McpSearchResult> result = service.searchWithEmbeddingModel("liver", MODEL, null, false, null, null);
+        McpPage<McpSearchResult> result = service.searchWithEmbeddingModel("liver", MODEL, null, false, null, null, null);
 
         // EFO_0002 is reachable only via its CurationEmbedding row (test-emb-2); excluding curations
         // drops it, leaving the three LabelEmbedding candidates in similarity order.
@@ -155,21 +167,21 @@ class McpEmbeddingServiceIT {
         // searchByVectorInOntology's real Postgres query and returns the identical set -- the same
         // characteristic McpClassServiceIT's own ontology-scoped case already has.
         McpPage<McpSearchResult> result =
-                service.searchWithEmbeddingModel("liver", MODEL, "efo", null, null, null);
+                service.searchWithEmbeddingModel("liver", MODEL, "efo", null, null, null, null);
 
         assertThat(urls(result)).containsExactly(EFO_0001, EFO_I100, EFO_0100, EFO_0002);
     }
 
     @Test
     void searchWithEmbeddingModelTreatsAnEmptyOntologyIdAsAbsentThroughRealPostgres() throws IOException {
-        McpPage<McpSearchResult> result = service.searchWithEmbeddingModel("liver", MODEL, "", null, null, null);
+        McpPage<McpSearchResult> result = service.searchWithEmbeddingModel("liver", MODEL, "", null, null, null, null);
 
         assertThat(urls(result)).containsExactly(EFO_0001, EFO_I100, EFO_0100, EFO_0002);
     }
 
     @Test
     void searchWithEmbeddingModelReturnsFullyMappedFieldsThroughRealPostgres() throws IOException {
-        McpPage<McpSearchResult> result = service.searchWithEmbeddingModel("liver", MODEL, null, null, null, null);
+        McpPage<McpSearchResult> result = service.searchWithEmbeddingModel("liver", MODEL, null, null, null, null, null);
 
         McpSearchResult top = result.items().get(0);
         assertThat(top.url).isEqualTo(EFO_0001);
@@ -184,7 +196,7 @@ class McpEmbeddingServiceIT {
     @Test
     void searchWithEmbeddingModelMapsThePropertyAndIndividualResultsFieldsThroughRealPostgresToo()
             throws IOException {
-        McpPage<McpSearchResult> result = service.searchWithEmbeddingModel("liver", MODEL, null, null, null, null);
+        McpPage<McpSearchResult> result = service.searchWithEmbeddingModel("liver", MODEL, null, null, null, null, null);
 
         McpSearchResult property = result.items().stream().filter(r -> EFO_0100.equals(r.url)).findFirst()
                 .orElseThrow();

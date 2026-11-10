@@ -45,6 +45,7 @@ export default function SearchBox({
   let exact = searchParams.get("exactMatch") === "true";
   let obsolete = searchParams.get("includeObsoleteEntities") === "true";
   let canonical = searchParams.get("isDefiningOntology") === "true";
+  const embeddingSearch = selectedModel !== "lexical";
 
   const setExact = useCallback(
     (exact: boolean) => {
@@ -153,16 +154,14 @@ export default function SearchBox({
       setLoading(true);
       setArrowKeySelectedN(undefined);
 
-      // Use llm_search endpoint if embedding model is selected
-      const isEmbeddingSearch = selectedModel && selectedModel !== 'lexical';
-
       try {
-        const entitiesPromise = isEmbeddingSearch
+        const entitiesPromise = embeddingSearch
           ? getPaginated<any>(
               `api/v2/entities/llm_search?${new URLSearchParams({
                 q: trimmedQuery,
                 size: "5",
                 model: selectedModel,
+                includeObsoleteEntities: obsolete.toString(),
                 ...(ontologyId ? { ontologyId } : {}),
               })}`,
               undefined,
@@ -187,7 +186,7 @@ export default function SearchBox({
 
         const [entities, ontologies, autocomplete] = await Promise.all([
           entitiesPromise,
-          searchForOntologies && !isEmbeddingSearch
+          searchForOntologies && !embeddingSearch
             ? getPaginated<any>(
                 `api/v2/ontologies?${new URLSearchParams({
                   search: trimmedQuery,
@@ -201,7 +200,7 @@ export default function SearchBox({
                 requestInit
               )
             : null,
-          showSuggestions && !isEmbeddingSearch
+          showSuggestions && !embeddingSearch
             ? get<Suggest>(
                 `api/suggest?${new URLSearchParams({
                   q: trimmedQuery,
@@ -530,9 +529,11 @@ export default function SearchBox({
         <div className="col-span-2">
           <ThemeProvider theme={theme}>
             <FormControlLabel
+              title={embeddingSearch ? "Embedding search ranks by meaning, so it has no exact match" : undefined}
               control={
                 <Checkbox
-                  checked={exact}
+                  checked={exact && !embeddingSearch}
+                  disabled={embeddingSearch}
                   onChange={(ev) => setExact(!!ev.target.checked)}
                 />
               }
@@ -548,9 +549,11 @@ export default function SearchBox({
               label="Include obsolete terms"
             />
             <FormControlLabel
+              title={embeddingSearch ? "Embedding search only finds a term in the ontology that defines it" : undefined}
               control={
                 <Checkbox
-                  checked={!canonical}
+                  checked={!canonical && !embeddingSearch}
+                  disabled={embeddingSearch}
                   onChange={(ev) => setCanonical(!ev.target.checked)}
                 />
               }
