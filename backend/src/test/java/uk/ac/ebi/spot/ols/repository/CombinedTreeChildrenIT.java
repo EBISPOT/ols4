@@ -166,6 +166,9 @@ class CombinedTreeChildrenIT {
         assertThat(result.getTotalElements()).isEqualTo(2241);
         assertThat(iris(result)).hasSize(10).startsWith(NS+"A1001").endsWith(NS+"A1010");
         assertThat(iris(page("A",224,10,null,List.of(),true,false,true))).containsExactly(NS+"A2241");
+        var beyondEnd = page("A",225,10,null,List.of(),true,false,true);
+        assertThat(beyondEnd.getContent()).isEmpty();
+        assertThat(beyondEnd.getTotalElements()).isEqualTo(2241);
         assertThat(iris(page("B",100,10,null,List.of(),true,false,true))).startsWith(NS+"B1001");
     }
     @Test void unionDeduplicatesRoutesAndPunningWithClassWinnerAndStablePages() {

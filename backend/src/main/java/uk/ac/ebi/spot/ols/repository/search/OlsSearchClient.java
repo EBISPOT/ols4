@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
+import uk.ac.ebi.spot.ols.repository.postgres.JooqSupport;
 import uk.ac.ebi.spot.ols.service.PostgresClient;
 
 import java.sql.Connection;
@@ -126,30 +127,31 @@ public class OlsSearchClient {
             OlsSearchQuery query, Pageable pageable, boolean includeTotal) {
         try (Connection conn = postgresClient.getConnection()) {
             DSLContext dsl = postgresClient.dsl(conn);
-            Condition where = query.buildCondition(getAvailableFilterColumns());
-            List<SortField<?>> orderBy = query.buildOrderBy(pageable.getSort());
-
-            Long count = includeTotal
-                    ? Optional.ofNullable(dsl.selectCount()
-                            .from(OLS_ENTITIES)
-                            .where(where)
-                            .fetchOne(0, Long.class))
-                            .orElse(0L)
-                    : null;
-
-            logger.debug("search condition: {}", where);
-
-            var records = dsl.select(ENTITY_JSON)
-                    .from(OLS_ENTITIES)
-                    .where(where)
-                    .orderBy(orderBy)
-                    .offset(pageable.getOffset())
-                    .limit(pageable.getPageSize())
-                    .fetch();
-
-            List<JsonElement> results = readJsonResults(records);
-
-            long total = count != null ? count : pageable.getOffset() + results.size();
+            var columns = getAvailableFilterColumns();
+            String ontology = query.singleOntology();
+            long total;
+            List<JsonElement> results;
+            if (includeTotal && ontology != null && query.isTreeRootListing() && pageable.getSort().isUnsorted()) {
+                var candidates = dsl.select(ENTITY_ID, ONTOLOGY_ID, ENTITY_IRI).from(OLS_ENTITIES)
+                        .where(query.buildCondition(columns, null, null, false));
+                var reachable = JooqSupport.reachableTreeCandidates(candidates, ontology, query.subsetTree,
+                        query.subsetMemberEligibility()).as("candidate");
+                var records = JooqSupport.fetchEntityPage(dsl, dsl.select(ENTITY_ID).from(reachable),
+                        List.of(field("p", "id", String.class).asc()), pageable.getOffset(), pageable.getPageSize());
+                total = records.get(0).get(0, Long.class);
+                results = readJsonResults(records);
+            } else {
+                Condition where = query.buildCondition(columns);
+                Long count = includeTotal
+                        ? Optional.ofNullable(dsl.selectCount().from(OLS_ENTITIES).where(where)
+                                .fetchOne(0, Long.class)).orElse(0L)
+                        : null;
+                var records = dsl.select(ENTITY_JSON).from(OLS_ENTITIES).where(where)
+                        .orderBy(query.buildOrderBy(pageable.getSort()))
+                        .offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
+                results = readJsonResults(records);
+                total = count != null ? count : pageable.getOffset() + results.size();
+            }
 
             Map<String, Map<String, Long>> facetFieldToCounts = new LinkedHashMap<>();
             for (String facetField : query.facetFields) {
@@ -325,7 +327,8 @@ public class OlsSearchClient {
                 WHERE iri <> member_iri
                 GROUP BY iri
                 ORDER BY count(*) DESC, iri
-                """, treeReachability(query.buildCondition(getAvailableFilterColumns(), "m"), true)).fetch();
+                """, treeReachability(query.buildCondition(getAvailableFilterColumns(), "m"), true,
+                        query.broadTreeFacetOntology())).fetch();
 
         Map<String, Long> counts = new LinkedHashMap<>();
         for (Record record : records) {
@@ -721,7 +724,10 @@ public class OlsSearchClient {
     private List<JsonElement> readJsonResults(org.jooq.Result<? extends Record> records, Field<byte[]> jsonField) throws SQLException {
         List<JsonElement> results = new ArrayList<>(records.size());
         for (Record record : records) {
-            results.add(JsonParser.parseString(PostgresClient.decompressJson(record.get(jsonField))));
+            byte[] json = record.get(jsonField);
+            if (json != null) {
+                results.add(JsonParser.parseString(PostgresClient.decompressJson(json)));
+            }
         }
         return results;
     }

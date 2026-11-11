@@ -250,29 +250,34 @@ public class OlsPostgresClient {
             Condition candidates = field("e", "ontology_id", String.class).eq(ontologyId)
                     .and(individualsOnly ? individualChildren : classChildren.or(individualChildren))
                     .and(buildTreeCandidateCondition("e", nodeProps));
+            Field<String> id = field("e", "id", String.class);
+            Field<String> iri = field("e", "iri", String.class);
+            Field<String[]> label = field("e", "label", String[].class);
+            var candidateRows = dsl.select(id, iri, type, label, field("e", "ontology_id", String.class))
+                    .from(OLS_ENTITIES.as("e")).where(candidates);
+            Table<?> visible;
             if (Boolean.parseBoolean(nodeProps.get("treeContext")) || (subsetTree != null && !subsetTree.isEmpty())) {
-                candidates = candidates.and(inSubsetTree("e", subsetTree, subsetMemberEligibility(nodeProps)
+                Condition members = subsetMemberEligibility(nodeProps)
                         .and(field("m", "type", String.class).in(individualsOnly
                                 ? List.of("OntologyIndividual") : List.of("OntologyClass", "OntologyIndividual")))
-                        .and(field("m", "ontology_id", String.class).eq(ontologyId))));
+                        .and(field("m", "ontology_id", String.class).eq(ontologyId));
+                visible = JooqSupport.reachableTreeCandidates(candidateRows, ontologyId, subsetTree, members).as("e");
+            } else {
+                visible = candidateRows.asTable("e");
             }
-            // One source row can match multiple routes. DISTINCT ON also collapses punning.
-            // Class sorts first lexically (OntologyClass < OntologyIndividual).
-            Table<?> children = DSL.table("""
-                    (SELECT DISTINCT ON (e.iri) e.iri, e.type, e.label, e._json
-                     FROM ols_entities e WHERE {0} ORDER BY e.iri, e.type, e.id)
-                    """, candidates).as("child");
-            Condition matches = JooqSupport.labelContains("child", search);
-            long count = Optional.ofNullable(dsl.selectCount().from(children).where(matches)
-                    .fetchOne(0, Long.class)).orElse(0L);
-            Field<byte[]> json = field("child", "_json", byte[].class);
-            var records = dsl.select(json).from(children).where(matches)
-                    .orderBy(field("child", "type", String.class).asc(),
-                            DSL.lower(DSL.field("coalesce({0}[1], {1})", String.class,
-                                    field("child", "label", String[].class), field("child", "iri", String.class))).asc(),
-                            field("child", "iri", String.class).asc())
-                    .offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
-            return new PageImpl<>(readJsonElements(records, json), pageable, count);
+            // Collapse the combined routes by IRI, with classes winning over individuals.
+            var children = dsl.select(iri, id, type, label).distinctOn(iri)
+                    .from(visible).orderBy(iri.asc(), type.asc(), id.asc()).asTable("child");
+            Field<String> childIri = field("child", "iri", String.class);
+            var sortLabel = DSL.lower(DSL.field("coalesce({0}[1], {1})", String.class,
+                    field("child", "label", String[].class), childIri)).as("sort_label");
+            var matching = dsl.select(field("child", "id", String.class), childIri,
+                            field("child", "type", String.class), sortLabel)
+                    .from(children).where(JooqSupport.labelContains("child", search));
+            var rows = JooqSupport.fetchEntityPage(dsl, matching,
+                    List.of(field("p", "type", String.class).asc(), field("p", "sort_label", String.class).asc(),
+                            field("p", "iri", String.class).asc()), pageable.getOffset(), pageable.getPageSize());
+            return new PageImpl<>(readJsonElements(rows, ENTITY_JSON), pageable, rows.get(0).get(0, Long.class));
         } catch (SQLException e) {
             throw new RuntimeException("getTreeChildren failed", e);
         }
@@ -1061,7 +1066,10 @@ public class OlsPostgresClient {
     private List<JsonElement> readJsonElements(org.jooq.Result<? extends Record> records, Field<byte[]> jsonField) throws SQLException {
         List<JsonElement> results = new ArrayList<>(records.size());
         for (Record record : records) {
-            results.add(JsonParser.parseString(PostgresClient.decompressJson(record.get(jsonField))));
+            byte[] json = record.get(jsonField);
+            if (json != null) {
+                results.add(JsonParser.parseString(PostgresClient.decompressJson(json)));
+            }
         }
         return results;
     }

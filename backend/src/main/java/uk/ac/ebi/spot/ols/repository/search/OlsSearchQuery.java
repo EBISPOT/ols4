@@ -177,6 +177,11 @@ public class OlsSearchQuery {
     }
 
     public Condition buildCondition(Set<String> availableFilterColumns, String qualifier, String excludedFacetField) {
+        return buildCondition(availableFilterColumns, qualifier, excludedFacetField, true);
+    }
+
+    Condition buildCondition(Set<String> availableFilterColumns, String qualifier, String excludedFacetField,
+            boolean withReachability) {
         Condition condition = uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.labelContains(qualifier, labelSearchText);
 
         if (searchText != null && !searchText.isBlank()) {
@@ -221,14 +226,42 @@ public class OlsSearchQuery {
             condition = condition.and(buildFilterCondition(qualifier, f, true));
         }
 
-        if (treeContext || (subsetTree != null && !subsetTree.isEmpty())) {
+        if (withReachability && hasTreeReachability()) {
             condition = condition.and(inSubsetTree(qualifier, subsetTree, subsetMemberEligibility()));
         }
 
         return condition;
     }
 
-    private Condition subsetMemberEligibility() {
+    boolean hasTreeReachability() {
+        return treeContext || (subsetTree != null && !subsetTree.isEmpty());
+    }
+
+    String singleOntology() {
+        var scope = filters.stream().filter(f -> f.field.equals("ontologyId")).toList();
+        if (scope.size() != 1 || scope.get(0).values.size() != 1) {
+            return null;
+        }
+        return scope.get(0).values.iterator().next().toLowerCase(Locale.ROOT);
+    }
+
+    boolean isTreeRootListing() {
+        return hasTreeReachability() && (searchText == null || searchText.isBlank())
+                && filters.stream().anyMatch(f -> f.values.size() == 1
+                        && ((f.field.equals("hasDirectParents") && f.values.contains("false"))
+                            || (f.field.equals("isPreferredRoot") && f.values.contains("true"))));
+    }
+
+    String broadTreeFacetOntology() {
+        if (hasTreeReachability() || (searchText != null && !searchText.isBlank())
+                || (labelSearchText != null && !labelSearchText.isBlank())
+                || filters.stream().anyMatch(f -> f.field.equals("subset") || f.field.equals("iri"))) {
+            return null;
+        }
+        return singleOntology();
+    }
+
+    Condition subsetMemberEligibility() {
         Condition eligibility = DSL.trueCondition();
         for (SearchFilter filter : filters) {
             if (TREE_MEMBER_VISIBILITY_FIELDS.contains(filter.field) || filter.field.equals("ontologyId")) {

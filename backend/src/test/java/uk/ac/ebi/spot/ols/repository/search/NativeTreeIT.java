@@ -110,6 +110,13 @@ class NativeTreeIT {
         var q = nativeQuery(List.of());
         q.addFilter("isPreferredRoot", List.of("true"), SearchType.WHOLE_FIELD);
         assertThat(iris(q)).containsExactly(NS + "R");
+        var first = search.searchClient().searchPaginated(q, PageRequest.of(0, 1));
+        assertThat(first.getContent()).extracting(v -> v.getAsJsonObject().get("iri").getAsString())
+                .containsExactly(NS + "R");
+        assertThat(first.getTotalElements()).isEqualTo(1);
+        var beyondEnd = search.searchClient().searchPaginated(q, PageRequest.of(1, 1));
+        assertThat(beyondEnd.getContent()).isEmpty();
+        assertThat(beyondEnd.getTotalElements()).isEqualTo(1);
         var ordinary = query(false, false, List.of());
         ordinary.addFilter("isPreferredRoot", List.of("true"), SearchType.WHOLE_FIELD);
         assertThat(iris(ordinary)).isEmpty();

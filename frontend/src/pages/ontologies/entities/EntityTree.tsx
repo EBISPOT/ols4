@@ -137,8 +137,9 @@ export default function EntityTree({
       if (isExpanded) {
         dispatch(closeNode(node));
       } else {
-        // Before expanding, check if this node has many direct children
-        if (directChildrenCounts[node.iri] === undefined) {
+        // Combined class and individual pages already return the exact child total.
+        if (entityType !== "classes" && entityType !== "individuals" &&
+            directChildrenCounts[node.iri] === undefined) {
           requestDirectCount(node);
         }
         dispatch(openNode(node));
