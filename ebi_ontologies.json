@@ -76,7 +76,7 @@
     {
       "id": "dmba",
       "creator": ["David Osumi-Sutherland", "Huseyin Kir"],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "DMBA",
       "title": "Developing Mouse Brain Atlas Ontology",
       "uri": "https://purl.brain-bican.org/ontology/dmbao/dmbao.owl",
@@ -105,7 +105,7 @@
     {
       "id": "mba",
       "creator": ["David Osumi-Sutherland", "Huseyin Kir"],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "MBA",
       "title": "Mouse Brain Atlas Ontology",
       "uri": "https://purl.brain-bican.org/ontology/mbao/mbao.owl",
@@ -144,7 +144,7 @@
         "Disha Tandon",
         "The Earth Metabolome Initiative Consortium"
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "EMI",
       "title": "The Earth Metabolome Initiative (EMI) ontology",
       "uri": "https://w3id.org/emi",
@@ -197,7 +197,7 @@
     },
     {
       "id": "addicto",
-      "is_foundary": "true",
+      "is_foundry": true,
       "preferredPrefix": "ADDICTO",
       "title": "Addiction Ontology",
       "uri": "http://addictovocab.org/addicto.owl",
@@ -1517,7 +1517,7 @@
       "creator": [
         "Liz Allen"
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "credit",
       "title": "Contributor Roles Taxonomy",
       "uri": "https://w3id.org/biopragmatics/resources/credit/credit.owl",
@@ -1550,7 +1550,7 @@
       "creator": [
         "National Library of Medicine"
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "mesh",
       "title": "Medical Subject Headings",
       "uri": "https://w3id.org/biopragmatics/resources/mesh/mesh.owl.gz",
@@ -1583,7 +1583,7 @@
       "creator": [
         "Elspeth Bruford"
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "hgnc",
       "title": "HUGO Gene Nomenclature Committee",
       "uri": "https://w3id.org/biopragmatics/resources/hgnc/hgnc.owl.gz",
@@ -1616,7 +1616,7 @@
       "creator": [
         "Egon Willighagen"
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "wikipathways",
       "title": "WikiPathways",
       "uri": "https://w3id.org/biopragmatics/resources/wikipathways/wikipathways.owl",
@@ -1649,7 +1649,7 @@
       "creator": [
         "Maria Gould"
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "ror",
       "title": "Research Organization Registry",
       "uri": "https://w3id.org/biopragmatics/resources/ror/ror.owl.gz",
@@ -1713,7 +1713,7 @@
       "creator": [
         "The Genomic Standards Consortium."
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "MIXS",
       "title": "Minimum Information about any (x) Sequence (MIxS) standard",
       "uri": "https://w3id.org/mixs",
@@ -1739,7 +1739,7 @@
       "id": "ec",
       "reasoner": "none",
       "oboSlims": false,
-      "is_foundary": false,
+      "is_foundry": false,
       "ontology_purl": "https://w3id.org/biopragmatics/resources/ec/ec.owl",
       "creator": ["Kristian Axelsen"],
       "preferredPrefix": "EC",
@@ -1766,7 +1766,7 @@
       "id": "hgnc.genegroup",
       "reasoner": "none",
       "oboSlims": false,
-      "is_foundary": false,
+      "is_foundry": false,
       "ontology_purl": "https://w3id.org/biopragmatics/resources/hgnc.genegroup/hgnc.genegroup.owl",
       "creator": [
         "Elspeth Bruford"
@@ -1802,7 +1802,7 @@
         "Shawn Zheng Kai Tan",
         "Alberto Santos"
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "PREFER",
       "title": "Precision Fermentation Ontology",
       "uri": "http://purl.obolibrary.org/obo/prefer.owl",
@@ -1832,7 +1832,7 @@
         "Stéphane Dervaux",
         "Magalie Weber"
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "TFO",
       "title": "TransformON",
       "uri": "http://opendata.inrae.fr/PO2/Ontology/TransformON/",
@@ -1857,7 +1857,7 @@
         "Susan Michie",
         "Janna Hastings"
       ],
-      "is_foundary": true,
+      "is_foundry": true,
       "preferredPrefix": "gmho",
       "title": "GALENOS Mental Health Ontology",
       "uri": "https://galenos.org.uk/ontologies/gmho.owl",
@@ -2063,7 +2063,7 @@
         "Manoj Purohit",
         "Maxwell Pena"
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "rehabo",
       "title": "The Rehabilitation Ontology",
       "uri": "http://purl.obolibrary.org/obo/rehabo.owl",
@@ -2078,7 +2078,7 @@
       "creator": [
         "Chris Mungall"
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "valuesets",
       "title": "Value Sets",
       "uri": "https://w3id.org/linkml/valuesets/",
