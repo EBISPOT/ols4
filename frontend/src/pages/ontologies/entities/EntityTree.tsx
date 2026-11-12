@@ -5,7 +5,9 @@ import {
   FormControlLabel,
   Radio,
   RadioGroup,
+  Tooltip,
 } from "@mui/material";
+import { unstable_useId as useId } from "@mui/material/utils";
 import { useCallback, useEffect, useRef, useState } from "react";
 import urlJoin from "url-join";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
@@ -41,6 +43,9 @@ import {
 } from "../ontologiesSlice";
 import EntityList from "./EntityList";
 
+const importedTermsHelp =
+  "When unchecked, imported terms are hidden unless they are needed to show a path in the tree. These terms appear in grey.";
+
 export default function EntityTree({
   ontology,
   entityType,
@@ -72,6 +77,7 @@ export default function EntityTree({
   const preferredRoots = ownsScope ? tree.preferredRoots : false;
   const showObsoleteEnabled = !!selectedEntity?.isDeprecated() || (ownsScope && tree.displayObsolete);
   const showImportedEnabled = !ownsScope || tree.displayImported;
+  const importedTermsHelpId = useId();
   const showSiblingsEnabled = ownsScope && tree.displaySiblings;
   const showCountsEnabled = !ownsScope || tree.displayCounts;
   // Stored totals include hidden obsolete members, including retained connectors.
@@ -318,7 +324,7 @@ export default function EntityTree({
                 ontology={ontology}
                 entity={childNode.entity}
                 title={childNode.title}
-                ancestryContext={!showImportedEnabled && !childNode.entity.isCanonical()}
+                importedContext={!showImportedEnabled && !childNode.entity.isCanonical()}
                 obsoleteContext={!showObsoleteEnabled && childNode.entity.isDeprecated()}
                 lang={lang}
                 onNavigateToEntity={onNavigateToEntity}
@@ -452,15 +458,19 @@ export default function EntityTree({
             }
             label="Show obsolete terms"
           />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={showImportedEnabled}
-                onClick={toggleShowImported}
-              />
-            }
-            label="Show imported terms"
-          />
+          <Tooltip title={importedTermsHelp} describeChild>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={showImportedEnabled}
+                  onClick={toggleShowImported}
+                  inputProps={{ "aria-describedby": importedTermsHelpId }}
+                />
+              }
+              label="Show imported terms"
+            />
+          </Tooltip>
+          <span id={importedTermsHelpId} hidden>{importedTermsHelp}</span>
           {selectedEntity && (
             <FormControlLabel
               control={
@@ -524,7 +534,7 @@ function TreeLink({
   ontology,
   entity,
   title,
-  ancestryContext,
+  importedContext,
   obsoleteContext,
   lang,
   onNavigateToEntity,
@@ -533,7 +543,7 @@ function TreeLink({
   ontology: Ontology;
   entity: Entity;
   title: string;
-  ancestryContext: boolean;
+  importedContext: boolean;
   obsoleteContext: boolean;
   lang: string;
   onNavigateToEntity: (ontology: Ontology, entity: Entity) => void;
@@ -546,17 +556,12 @@ function TreeLink({
   return (
     <span>
       <a
-        title={`${title} [${entity.getIri()}]${ancestryContext ? ' (imported ancestry context)' : ''}${obsoleteContext ? ' (obsolete ancestry context)' : ''}`}
-        className={"link-default"}
+        title={`${title} [${entity.getIri()}]${obsoleteContext ? ' (obsolete ancestry context)' : ''}`}
+        className={importedContext ? "link-default imported-tree-link" : "link-default"}
         onClick={() => onNavigateToEntity(ontology, entity)}
       >
         {title}
       </a>
-      {ancestryContext && (
-        <span className="ml-1 text-sm text-gray-600" title="Imported term retained to show the ancestry path">
-          {" (imported ancestry context)"}
-        </span>
-      )}
       {obsoleteContext && (
         <span className="ml-1 text-sm text-gray-600" title="Obsolete term retained to show the ancestry path">
           {" (obsolete ancestry context)"}

@@ -153,7 +153,9 @@ for (const native of [true, false]) {
       ontology={ontology} entityType="classes" lang="en"
       onNavigateToEntity={() => {}} onNavigateToOntology={() => {}} /></StaticRouter></Provider>);
     assert(html.includes('(obsolete ancestry context)'));
-    assert.equal(html.includes('(imported ancestry context)'), !native);
+    assert(!html.includes('(imported ancestry context)'));
+    const connectorLink = html.match(/<a [^>]*>Connector<\/a>/)?.[0] || '';
+    assert(connectorLink.includes(native ? 'class="link-default"' : 'class="link-default imported-tree-link"'));
   });
 }
 
@@ -175,8 +177,10 @@ for (const imports of [true, false]) {
       ontology={ontology} entityType="classes" lang="en" onNavigateToEntity={() => {}} onNavigateToOntology={() => {}}
     /></StaticRouter></Provider>);
     s.dispatch(getTreeMemberCounts.pending('counts', arg));
-    assert(render().includes('Descendant count loading'));
-    assert(!render().includes(' (6)'));
+    const loadingHtml = render();
+    assert(loadingHtml.includes('Descendant count loading'));
+    assert(!loadingHtml.includes(' (6)'));
+    assert.match(loadingHtml, /<label [^>]*title="When unchecked, imported terms are hidden[^"]*"/);
     s.dispatch(getTreeMemberCounts.fulfilled(imports ? { R: 5, D: 2, K: 2 } : { R: 3, D: 1, K: 2 }, 'counts', arg));
     assert(render().includes(imports ? ' (5)' : ' (3)'));
     assert(!render().includes(' (6)'));

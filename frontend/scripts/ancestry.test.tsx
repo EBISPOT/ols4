@@ -23,6 +23,7 @@ const selectedIri = 'http://www.ebi.ac.uk/efo/EFO_0006784';
 const ontology = new Ontology({ ontologyId: 'efo', type: ['ontology'], preferredRoot: [rootIri] });
 const scopeKey = JSON.stringify(['', 'efo', 'classes']);
 const connectorId = `${rootIri};${connectorIri}`;
+const greyConnectorLink = /<a [^>]*class="link-default imported-tree-link">information entity<\/a>/;
 
 function setup({ imports = false, preferred = false, siblings = false, selected = selectedIri, specifiedRootIri = undefined as string | undefined } = {}) {
   const s = configureStore({ reducer: { ontologies: reducer }, middleware: g => g({ serializableCheck: false }) });
@@ -103,7 +104,9 @@ for (const imports of [false, true]) for (const preferred of [false, true]) for 
       }
       const html = render();
       assert(html.includes('body height at birth'));
-      assert.equal(html.includes('(imported ancestry context)'), !imports);
+      assert(html.includes('information entity'));
+      assert.equal(greyConnectorLink.test(html), !imports);
+      assert(!html.includes('(imported ancestry context)'));
       if (!imports) assert(!html.includes('imported sibling'));
       assert.equal(urls[0].searchParams.get('includeImportedEntities'), null);
       assert(urls.slice(1).every(u => u.searchParams.get('includeImportedEntities') === String(imports)));
@@ -135,8 +138,7 @@ test('an explicitly selected imported entity retains its path while optional imp
     const { s, args, render } = setup({ selected: connectorIri });
     await s.dispatch(getAncestors(args)).unwrap();
     assert.deepEqual(s.getState().ontologies.rootNodes.map(n => n.iri), [rootIri]);
-    assert(render().includes('information entity'));
-    assert(render().includes('(imported ancestry context)'));
+    assert.match(render(), greyConnectorLink);
     const browse = setup({ selected: '' });
     await browse.s.dispatch(getRootEntities(browse.args)).unwrap();
     assert.deepEqual(browse.s.getState().ontologies.rootNodes.map(n => n.iri), [rootIri]);
@@ -144,12 +146,12 @@ test('an explicitly selected imported entity retains its path while optional imp
   });
 });
 
-test('a specified imported root is retained and marked when imports are hidden', async () => {
+test('a specified imported root is retained and grey when imports are hidden', async () => {
   await withApi(async () => {
     const { s, args, render } = setup({ selected: '', specifiedRootIri: connectorIri });
     await s.dispatch(getAncestors(args)).unwrap();
     assert.deepEqual(s.getState().ontologies.rootNodes.map(n => n.iri), [connectorIri]);
-    assert(render().includes('(imported ancestry context)'));
+    assert.match(render(), greyConnectorLink);
   });
 });
 
