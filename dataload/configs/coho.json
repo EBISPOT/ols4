@@ -5,6 +5,7 @@
       "preferredPrefix": "COHO",
       "shortFormExtractionPattern": "^http://www\\.ebi\\.ac\\.uk/coho/COHO_([0-9]+)$",
       "base_uri": [
+        "http://www.ebi.ac.uk/coho/COHO_",
         "http://www.ebi.ac.uk/coho/"
       ],
       "ontology_purl": "https://raw.githubusercontent.com/EBISPOT/cohort-ontology/refs/heads/main/coho.owl",
