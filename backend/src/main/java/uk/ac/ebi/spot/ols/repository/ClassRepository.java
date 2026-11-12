@@ -29,6 +29,7 @@ import static uk.ac.ebi.ols.shared.DefinedFields.*;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -116,23 +117,45 @@ public class ClassRepository {
                 outputOpts);
     }
 
-    public Page<JsonElement> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String search, String lang, JsonTransformOptions outputOpts) {
+    public Page<JsonElement> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean includeImported, String search, Collection<String> subsetTree, String lang, JsonTransformOptions outputOpts) {
+        return getChildrenByOntologyId(ontologyId, pageable, iri, includeObsolete, includeImported, search, subsetTree, false, lang, outputOpts);
+    }
+
+    public Page<JsonElement> getChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean includeImported, String search, Collection<String> subsetTree, boolean treeContext, String lang, JsonTransformOptions outputOpts) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
         String id = ontologyId + "+class+" + iri;
 
-        Map<String, String> nodeProps = classNodeProperties(includeObsolete);
+        Map<String, String> nodeProps = classNodeProperties(includeObsolete, includeImported);
+        if (treeContext) nodeProps.put("treeContext", "true");
 
-        Page<JsonElement> result = isNullOrEmpty(search) ? this.postgresClient.getDirectChildren(
-                id, nodeProps, pageable) :
-                this.postgresClient.getDirectChildren(
-                id, nodeProps, pageable, search);
+        Page<JsonElement> result = this.postgresClient.getDirectChildren(
+                id, nodeProps, pageable, isNullOrEmpty(search) ? null : search, subsetTree);
 
         return  result
                     .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                     ;
+    }
+
+    public Page<JsonElement> getTreeChildrenByOntologyId(String ontologyId, Pageable pageable, String iri,
+            boolean includeObsolete, boolean includeImported, String search, Collection<String> subsetTree,
+            boolean treeContext, String lang, JsonTransformOptions outputOpts) {
+        return getTreeChildrenByOntologyId(ontologyId, pageable, iri, includeObsolete, includeImported,
+                search, subsetTree, treeContext, false, lang, outputOpts);
+    }
+
+    public Page<JsonElement> getTreeChildrenByOntologyId(String ontologyId, Pageable pageable, String iri,
+            boolean includeObsolete, boolean includeImported, String search, Collection<String> subsetTree,
+            boolean treeContext, boolean individualsOnly, String lang, JsonTransformOptions outputOpts) {
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+        Map<String, String> props = classNodeProperties(includeObsolete, includeImported);
+        props.remove("type");
+        if (treeContext) props.put("treeContext", "true");
+        return postgresClient.getTreeChildren(ontologyId, iri, props, pageable, search, subsetTree, individualsOnly)
+                .map(e -> JsonTransformer.transformJson(e, lang, outputOpts));
     }
 
     public Page<JsonElement> getAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
@@ -142,7 +165,7 @@ public class ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        Map<String, String> nodeProps = classNodeProperties(includeObsolete);
+        Map<String, String> nodeProps = classNodeProperties(includeObsolete, true);
 
         return this.postgresClient.getAncestors(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
@@ -156,7 +179,7 @@ public class ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        Map<String, String> nodeProps = classNodeProperties(includeObsolete);
+        Map<String, String> nodeProps = classNodeProperties(includeObsolete, true);
 
         return this.postgresClient.getDescendants(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
@@ -169,49 +192,54 @@ public class ClassRepository {
 
         String id = ontologyId + "+class+" + iri;
 
-        Map<String, String> nodeProps = classNodeProperties(includeObsolete);
+        Map<String, String> nodeProps = classNodeProperties(includeObsolete, true);
 
         return this.postgresClient.getHierarchicalDescendants(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
 
-    public Page<JsonElement> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
+    public Page<JsonElement> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean includeImported, Collection<String> subsetTree, String lang, JsonTransformOptions outputOpts) {
+        return getHierarchicalChildrenByOntologyId(ontologyId, pageable, iri, includeObsolete, includeImported, subsetTree, false, lang, outputOpts);
+    }
+
+    public Page<JsonElement> getHierarchicalChildrenByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean includeImported, Collection<String> subsetTree, boolean treeContext, String lang, JsonTransformOptions outputOpts) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
         String id = ontologyId + "+class+" + iri;
 
-        Map<String, String> nodeProps = classNodeProperties(includeObsolete);
+        Map<String, String> nodeProps = classNodeProperties(includeObsolete, includeImported);
+        if (treeContext) nodeProps.put("treeContext", "true");
 
-        return this.postgresClient.getHierarchicalChildren(id, nodeProps, pageable)
+        return this.postgresClient.getHierarchicalChildren(id, nodeProps, pageable, subsetTree)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
 
-    public Page<JsonElement> getHierarchicalAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
+    public Page<JsonElement> getHierarchicalAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean includeImported, String lang, JsonTransformOptions outputOpts) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
         String id = ontologyId + "+class+" + iri;
 
-        Map<String, String> nodeProps = classNodeProperties(includeObsolete);
+        Map<String, String> nodeProps = classNodeProperties(includeObsolete, includeImported);
 
         return this.postgresClient.getHierarchicalAncestors(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
 
-    public Page<JsonElement> getIndividualAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, String lang, JsonTransformOptions outputOpts) {
+    public Page<JsonElement> getIndividualAncestorsByOntologyId(String ontologyId, Pageable pageable, String iri, boolean includeObsolete, boolean includeImported, String lang, JsonTransformOptions outputOpts) {
 
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
         String id = ontologyId + "+individual+" + iri;
 
-        Map<String, String> nodeProps = classNodeProperties(includeObsolete);
+        Map<String, String> nodeProps = classNodeProperties(includeObsolete, includeImported);
 
         return this.postgresClient.getAncestors(id, nodeProps, pageable)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
@@ -232,10 +260,16 @@ public class ClassRepository {
                 ;
     }
 
-    private static Map<String, String> classNodeProperties(boolean includeObsolete) {
-        return includeObsolete
-                ? Map.of("type", "OntologyClass")
-                : Map.of("type", "OntologyClass", "isObsolete", "false");
+    private static Map<String, String> classNodeProperties(boolean includeObsolete, boolean includeImported) {
+        Map<String, String> nodeProps = new HashMap<>();
+        nodeProps.put("type", "OntologyClass");
+        if (!includeObsolete) {
+            nodeProps.put("isObsolete", "false");
+        }
+        if (!includeImported) {
+            nodeProps.put("isDefiningOntology", "true");
+        }
+        return nodeProps;
     }
 
     public double getSimilarity(String iri, String iri2, String modelName) {

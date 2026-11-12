@@ -34,6 +34,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyMap;
 import static org.mockito.Mockito.verify;
@@ -74,9 +76,9 @@ class V2PropertyControllerWIT {
         when(propertyRepository.findByOntologyId(
                 any(), any(), any(), any(), any(), any(), anyBoolean(), anyMap(), any()))
                 .thenReturn(propertyPage());
-        when(propertyRepository.getChildrenByOntologyId(any(), any(), any(), any(), any()))
+        when(propertyRepository.getChildrenByOntologyId(any(), any(), any(), anyBoolean(), anyBoolean(), any(), eq(false), any(), any(), any()))
                 .thenReturn(hierarchyPage());
-        when(propertyRepository.getAncestorsByOntologyId(any(), any(), any(), any(), any()))
+        when(propertyRepository.getAncestorsByOntologyId(any(), any(), any(), anyBoolean(), anyBoolean(), any(), any()))
                 .thenReturn(hierarchyPage());
     }
 
@@ -500,7 +502,9 @@ class V2PropertyControllerWIT {
             "children, resolveReferences",
             "children, manchesterSyntax",
             "ancestors, resolveReferences",
-            "ancestors, manchesterSyntax"
+            "ancestors, manchesterSyntax",
+            "children, includeObsoleteEntities",
+            "ancestors, includeObsoleteEntities"
     })
     void rejectsMalformedHierarchyTransformOptions(String route, String parameter)
             throws Exception {
@@ -511,7 +515,7 @@ class V2PropertyControllerWIT {
     @ParameterizedTest
     @CsvSource({"notARealField,asc", "iri,sideways"})
     void returnsStableErrorForUnsupportedChildrenSort(String sort) throws Exception {
-        when(propertyRepository.getChildrenByOntologyId(any(), any(), any(), any(), any()))
+        when(propertyRepository.getChildrenByOntologyId(any(), any(), any(), anyBoolean(), anyBoolean(), any(), eq(false), any(), any(), any()))
                 .thenThrow(new IllegalArgumentException("Unsupported sort field: " + sort));
 
         assertUnsupportedSort(get(CHILDREN_URI).param("sort", sort), sort);
@@ -520,7 +524,7 @@ class V2PropertyControllerWIT {
     @ParameterizedTest
     @CsvSource({"notARealField,asc", "iri,sideways"})
     void returnsStableErrorForUnsupportedAncestorsSort(String sort) throws Exception {
-        when(propertyRepository.getAncestorsByOntologyId(any(), any(), any(), any(), any()))
+        when(propertyRepository.getAncestorsByOntologyId(any(), any(), any(), anyBoolean(), anyBoolean(), any(), any()))
                 .thenThrow(new IllegalArgumentException("Unsupported sort field: " + sort));
 
         assertUnsupportedSort(get(ANCESTORS_URI).param("sort", sort), sort);
@@ -530,9 +534,9 @@ class V2PropertyControllerWIT {
     @CsvSource({"children", "ancestors"})
     void returnsStableBadRequestForInvalidHierarchyOntologyIdentifier(String route)
             throws Exception {
-        when(propertyRepository.getChildrenByOntologyId(any(), any(), any(), any(), any()))
+        when(propertyRepository.getChildrenByOntologyId(any(), any(), any(), anyBoolean(), anyBoolean(), any(), eq(false), any(), any(), any()))
                 .thenThrow(new IllegalArgumentException("Invalid ontology ID: efo/unsafe"));
-        when(propertyRepository.getAncestorsByOntologyId(any(), any(), any(), any(), any()))
+        when(propertyRepository.getAncestorsByOntologyId(any(), any(), any(), anyBoolean(), anyBoolean(), any(), any()))
                 .thenThrow(new IllegalArgumentException("Invalid ontology ID: efo/unsafe"));
 
         URI uri = route.equals("children")
@@ -675,10 +679,10 @@ class V2PropertyControllerWIT {
         ArgumentCaptor<JsonTransformOptions> options = ArgumentCaptor.forClass(JsonTransformOptions.class);
         if (children) {
             verify(propertyRepository).getChildrenByOntologyId(
-                    ontologyId.capture(), pageable.capture(), iri.capture(), lang.capture(), options.capture());
+                    ontologyId.capture(), pageable.capture(), iri.capture(), eq(true), anyBoolean(), any(), eq(false), isNull(), lang.capture(), options.capture());
         } else {
             verify(propertyRepository).getAncestorsByOntologyId(
-                    ontologyId.capture(), pageable.capture(), iri.capture(), lang.capture(), options.capture());
+                    ontologyId.capture(), pageable.capture(), iri.capture(), eq(true), anyBoolean(), lang.capture(), options.capture());
         }
         return new HierarchyCall(
                 ontologyId.getValue(), pageable.getValue(), iri.getValue(), lang.getValue(), options.getValue());

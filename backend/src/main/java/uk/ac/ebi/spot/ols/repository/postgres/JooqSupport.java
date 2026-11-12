@@ -1,10 +1,18 @@
 package uk.ac.ebi.spot.ols.repository.postgres;
 
 import org.jooq.Condition;
+import org.jooq.DSLContext;
+import org.jooq.Record;
+import org.jooq.Result;
+import org.jooq.Select;
+import org.jooq.SortField;
 import org.jooq.Field;
 import org.jooq.Table;
 import org.jooq.impl.DSL;
 import org.jooq.impl.SQLDataType;
+
+import java.util.Collection;
+import java.util.Set;
 
 public final class JooqSupport {
 
@@ -16,6 +24,9 @@ public final class JooqSupport {
     public static final Table<?> INFORMATION_SCHEMA_COLUMNS = DSL.table(DSL.name("information_schema", "columns"));
     public static final Table<?> PG_ATTRIBUTE = DSL.table(DSL.name("pg_catalog", "pg_attribute"));
     public static final Table<?> PG_EXTENSION = DSL.table(DSL.name("pg_catalog", "pg_extension"));
+
+    // Candidate type/root/search constraints do not describe the selected subset's members.
+    public static final Set<String> TREE_MEMBER_VISIBILITY_FIELDS = Set.of("isObsolete", "isDefiningOntology");
 
     private JooqSupport() {
     }
@@ -29,6 +40,15 @@ public final class JooqSupport {
             return field(column, type);
         }
         return DSL.field(DSL.name(qualifier, column), type);
+    }
+
+    /** Literal, case-insensitive label containment shared by tree browsing endpoints. */
+    public static Condition labelContains(String qualifier, String search) {
+        if (search == null || search.isBlank()) return DSL.trueCondition();
+        return DSL.exists(DSL.selectOne()
+                .from(DSL.unnest(field(qualifier, "label", String[].class)).as("labels", "l"))
+                .where(DSL.lower(field("labels", "l", String.class))
+                        .contains(search.toLowerCase(java.util.Locale.ROOT))));
     }
 
     public static Condition arrayContains(Field<String[]> arrayField, String value) {
@@ -59,6 +79,171 @@ public final class JooqSupport {
         // (e.g. e2.direct_parents @> ARRAY[e1.iri]). The `= ANY` form cannot use the GIN index
         // and scans every row of the ontology per lookup. See GitHub issue #1276.
         return DSL.condition("{0} @> ARRAY[{1}]", arrayField, valueField);
+    }
+
+    /**
+     * The members of any selected subset and all context needed to reach them in the tree.
+     * The uncorrelated closure is evaluated once, with ontology/IRI pairs preventing leakage.
+     */
+    public static Condition inSubsetTree(String qualifier, Collection<String> subsets) {
+        return inSubsetTree(qualifier, subsets, DSL.trueCondition());
+    }
+
+    /** Eligibility uses seed alias m, never connectors. Empty subsets means all eligible members. */
+    public static Condition inSubsetTree(String qualifier, Collection<String> subsets, Condition eligibility) {
+        return DSL.condition("({0}, {1}) IN (SELECT ontology_id, iri FROM {2} tree_reachability)",
+                field(qualifier, "ontology_id", String.class), field(qualifier, "iri", String.class),
+                treeReachability(subsetMembers(subsets, eligibility), false));
+    }
+
+    private static Condition subsetMembers(Collection<String> subsets, Condition eligibility) {
+        if (subsets == null || subsets.isEmpty()) {
+            return eligibility;
+        }
+        return eligibility.and(DSL.condition("{0} && {1}::text[]",
+                field("m", "subset", String[].class), DSL.val(subsets.toArray(new String[0]))));
+    }
+
+    /**
+     * Filter a small, single-ontology candidate set by tree reachability. Both inputs must be
+     * scoped to ontologyId. Seed eligibility uses alias m, separately from candidate filters.
+     */
+    public static Table<?> reachableTreeCandidates(Select<?> candidates, String ontologyId,
+            Collection<String> subsets, Condition eligibility) {
+        Condition members = subsetMembers(subsets, eligibility);
+        return DSL.table("""
+                (WITH RECURSIVE candidates AS MATERIALIZED ({0}),
+                mixed AS MATERIALIZED (
+                    SELECT EXISTS (
+                        SELECT 1 FROM ols_entities a WHERE a.ontology_id = {1}
+                            AND NOT (coalesce(a.direct_ancestors, '{}'::text[]) = coalesce(a.hierarchical_ancestors, '{}'::text[])
+                                  OR coalesce(a.direct_ancestors, '{}'::text[]) <@
+                                     coalesce(a.hierarchical_ancestors, '{}'::text[]))
+                    ) AND EXISTS (
+                        SELECT 1 FROM ols_entities a WHERE a.ontology_id = {1}
+                            AND NOT (coalesce(a.direct_ancestors, '{}'::text[]) = coalesce(a.hierarchical_ancestors, '{}'::text[])
+                                  OR coalesce(a.hierarchical_ancestors, '{}'::text[]) <@
+                                     coalesce(a.direct_ancestors, '{}'::text[]))
+                    ) AS value
+                ), connectors AS MATERIALIZED (
+                    -- Every outgoing link from an eligible row is already in the anchor.
+                    SELECT m.ontology_id, m.iri, m.direct_ancestors, m.hierarchical_ancestors
+                    FROM ols_entities m
+                    WHERE (SELECT value FROM mixed) AND m.ontology_id = {1}
+                        AND ({2}) IS NOT TRUE
+                        AND (cardinality(m.direct_ancestors) > 0 OR cardinality(m.hierarchical_ancestors) > 0)
+                ), reachable(ontology_id, iri) AS (
+                    SELECT m.ontology_id, unnest(ARRAY[m.iri] ||
+                           CASE WHEN m.direct_ancestors = m.hierarchical_ancestors
+                                THEN m.direct_ancestors ELSE m.direct_ancestors || m.hierarchical_ancestors END)
+                    FROM ols_entities m WHERE {2}
+                    UNION
+                    SELECT r.ontology_id, ancestors.iri
+                    FROM reachable r
+                    JOIN connectors a ON a.ontology_id = r.ontology_id AND a.iri = r.iri
+                    CROSS JOIN LATERAL unnest(
+                        CASE WHEN a.direct_ancestors = a.hierarchical_ancestors
+                             THEN a.direct_ancestors ELSE a.direct_ancestors || a.hierarchical_ancestors END
+                    ) ancestors(iri)
+                )
+                SELECT c.* FROM candidates c
+                JOIN reachable r ON r.ontology_id = c.ontology_id AND r.iri = c.iri)
+                """, candidates, DSL.val(ontologyId), members);
+    }
+
+    /**
+     * Count and page the same set of matching entity IDs, with one row carrying the total if the
+     * page is empty. Read compressed documents only for the selected IDs. Sort fields refer to p.
+     */
+    public static Result<Record> fetchEntityPage(DSLContext dsl, Select<?> matching,
+            Collection<SortField<?>> orderBy, long offset, int size) {
+        Table<?> matchingRows = DSL.table(DSL.name("matching"));
+        Table<?> page = DSL.table(DSL.name("page")).as("p");
+        var pageIds = dsl.select(DSL.asterisk()).from(matchingRows.as("p"))
+                .orderBy(orderBy).offset(offset).limit(size);
+        var rows = dsl.select(field("totals", "value", Long.class), field("e", "_json", byte[].class))
+                .from(dsl.select(DSL.count().as("value")).from(matchingRows).asTable("totals"))
+                .leftJoin(page).on(DSL.trueCondition())
+                .leftJoin(OLS_ENTITIES.as("e"))
+                .on(field("e", "id", String.class).eq(field("p", "id", String.class)))
+                .orderBy(orderBy);
+        return dsl.resultQuery("WITH matching AS MATERIALIZED ({0}), page AS ({1}) {2}",
+                matching, pageIds, rows).fetch();
+    }
+
+    /**
+     * Complete tree reachability, including arbitrary transitions between direct/type and
+     * hierarchical ancestry. The condition filters seed members (alias m), never connectors.
+     *
+     * UNION computes a finite fixed point, deduplicating paths and terminating cycles without
+     * a depth limit. With perMember=true, member_id preserves distinct stored entity identities
+     * for counts and member_iri allows callers to exclude self. Otherwise both are NULL so
+     * overlapping members share one closure per ontology, avoiding member-by-ancestor expansion.
+     * Ancestor arrays also retain references whose intermediate entity is absent from the store.
+     *
+     * RDF2JSON materializes each ancestry kind as a transitive closure. When one kind contains
+     * the other throughout an ontology (including pure-kind ontologies), their union is already
+     * complete. Only genuinely mixed ontologies require recursion. Inspect only seed ontologies,
+     * so a small subset does not trigger a scan of every ontology in the store: one index
+     * lookup per seed ontology, as a LATERAL join. Written as
+     * {@code a.ontology_id IN (SELECT ontology_id FROM members) GROUP BY a.ontology_id} it
+     * was planned as a sequential scan of ols_entities hash-joined to the seed ontologies
+     * (the planner cannot see how few a materialized CTE holds): 11 M rows and ~18 GB read
+     * on a full instance to answer for one ontology of 4,482 entities.
+     */
+    public static Table<?> treeReachability(Condition members, boolean perMember) {
+        return treeReachability(members, perMember, null);
+    }
+
+    /** For a broad per-member facet, reuse the rows of the one ontology that contains all seeds. */
+    public static Table<?> treeReachability(Condition members, boolean perMember, String scopedOntology) {
+        var scopedNodes = scopedOntology == null ? DSL.sql("") : DSL.sql("""
+                scoped_nodes AS MATERIALIZED (
+                    SELECT ontology_id, iri, direct_ancestors, hierarchical_ancestors
+                    FROM ols_entities WHERE ontology_id = {0}
+                ),
+                """, DSL.val(scopedOntology));
+        return DSL.table("""
+                (WITH RECURSIVE members AS MATERIALIZED (
+                    SELECT m.id, m.iri, m.ontology_id, m.direct_ancestors, m.hierarchical_ancestors
+                    FROM ols_entities m WHERE {2}
+                ), mixed_ontologies AS MATERIALIZED (
+                    SELECT o.ontology_id
+                    FROM (SELECT DISTINCT ontology_id FROM members) o
+                    CROSS JOIN LATERAL (
+                        SELECT bool_or(NOT (coalesce(a.direct_ancestors, '{}'::text[]) = coalesce(a.hierarchical_ancestors, '{}'::text[])
+                                            OR coalesce(a.direct_ancestors, '{}'::text[]) <@ coalesce(a.hierarchical_ancestors, '{}'::text[]))) AS direct_only,
+                               bool_or(NOT (coalesce(a.direct_ancestors, '{}'::text[]) = coalesce(a.hierarchical_ancestors, '{}'::text[])
+                                            OR coalesce(a.hierarchical_ancestors, '{}'::text[]) <@ coalesce(a.direct_ancestors, '{}'::text[]))) AS hierarchical_only
+                        FROM ols_entities a WHERE a.ontology_id = o.ontology_id
+                    ) kinds
+                    WHERE kinds.direct_only AND kinds.hierarchical_only
+                ), {4} tree_reach(member_id, member_iri, ontology_id, iri) AS (
+                    SELECT {0}, {1}, m.ontology_id,
+                           unnest(ARRAY[m.iri] || CASE WHEN m.direct_ancestors = m.hierarchical_ancestors
+                               THEN m.direct_ancestors ELSE m.direct_ancestors || m.hierarchical_ancestors END)
+                    FROM members m WHERE m.ontology_id IN (SELECT ontology_id FROM mixed_ontologies)
+                    UNION
+                    SELECT r.member_id, r.member_iri, r.ontology_id, ancestors.iri
+                    FROM tree_reach r
+                    JOIN {5} a ON a.ontology_id = r.ontology_id AND a.iri = r.iri
+                    CROSS JOIN LATERAL unnest(CASE WHEN a.direct_ancestors = a.hierarchical_ancestors
+                        THEN a.direct_ancestors ELSE a.direct_ancestors || a.hierarchical_ancestors END) ancestors(iri)
+                ) SELECT {3} member_id, member_iri, ontology_id, iri FROM (
+                    SELECT {0} AS member_id, {1} AS member_iri, m.ontology_id, ancestors.iri
+                    FROM members m
+                    CROSS JOIN LATERAL (
+                        SELECT DISTINCT unnest(ARRAY[m.iri] || CASE WHEN m.direct_ancestors = m.hierarchical_ancestors
+                               THEN m.direct_ancestors ELSE m.direct_ancestors || m.hierarchical_ancestors END) AS iri
+                    ) ancestors
+                    WHERE m.ontology_id NOT IN (SELECT ontology_id FROM mixed_ontologies)
+                    UNION ALL
+                    SELECT * FROM tree_reach
+                ) complete_reachability)
+                """, perMember ? field("m", "id", String.class) : DSL.inline((String) null),
+                perMember ? field("m", "iri", String.class) : DSL.inline((String) null), members,
+                DSL.sql(perMember ? "" : "DISTINCT"), scopedNodes,
+                DSL.sql(scopedOntology == null ? "ols_entities" : "scoped_nodes"));
     }
 
     public static Field<String> castAsText(Field<?> field) {

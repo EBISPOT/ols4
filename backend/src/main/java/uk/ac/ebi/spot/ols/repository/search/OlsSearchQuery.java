@@ -13,9 +13,11 @@ import java.util.Locale;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.TREE_MEMBER_VISIBILITY_FIELDS;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContains;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.arrayContainsCaseInsensitive;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.field;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.inSubsetTree;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.matchesTsQuery;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.phraseToTsQuery;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.toTsQuery;
@@ -30,6 +32,19 @@ public class OlsSearchQuery {
     private static final Pattern SAFE_FIELD_NAME = Pattern.compile("^[a-zA-Z0-9_:/.#-]+$");
 
     String searchText = null;
+    private String labelSearchText;
+
+    /** Label containment for tree tables, independent of full-text relevance search. */
+    public void setLabelSearchText(String labelSearchText) {
+        this.labelSearchText = labelSearchText;
+    }
+    Collection<String> subsetTree = null;
+    boolean treeContext = false;
+
+    /** Apply visibility to members and retain their required ancestry connectors for tree browsing. */
+    public void setTreeContext(boolean treeContext) {
+        this.treeContext = treeContext;
+    }
     boolean exactMatch = false;
     List<SearchFilter> filters = new ArrayList<>();
     List<List<SearchFilter>> anyFilterGroups = new ArrayList<>();
@@ -106,6 +121,13 @@ public class OlsSearchQuery {
         this.anyFilterGroups.add(group);
     }
 
+    /**
+     * Restrict results to the given subsets' members and their ancestors (see JooqSupport.inSubsetTree).
+     */
+    public void setSubsetTree(Collection<String> subsets) {
+        this.subsetTree = subsets;
+    }
+
     public void addExcludeFilter(String propertyName, Collection<String> propertyValues, SearchType searchType) {
         this.excludeFilters.add(new SearchFilter(propertyName, propertyValues, true, searchType));
     }
@@ -155,7 +177,12 @@ public class OlsSearchQuery {
     }
 
     public Condition buildCondition(Set<String> availableFilterColumns, String qualifier, String excludedFacetField) {
-        Condition condition = DSL.trueCondition();
+        return buildCondition(availableFilterColumns, qualifier, excludedFacetField, true);
+    }
+
+    Condition buildCondition(Set<String> availableFilterColumns, String qualifier, String excludedFacetField,
+            boolean withReachability) {
+        Condition condition = uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.labelContains(qualifier, labelSearchText);
 
         if (searchText != null && !searchText.isBlank()) {
             if (!usesDefaultSearchFields()) {
@@ -173,6 +200,7 @@ public class OlsSearchQuery {
         }
 
         for (SearchFilter f : filters) {
+            if (treeContext && TREE_MEMBER_VISIBILITY_FIELDS.contains(f.field)) continue;
             if (excludedFacetField != null && excludedFacetField.equals(f.field)) {
                 continue;
             }
@@ -194,13 +222,61 @@ public class OlsSearchQuery {
         }
 
         for (SearchFilter f : excludeFilters) {
+            if (treeContext && TREE_MEMBER_VISIBILITY_FIELDS.contains(f.field)) continue;
             if (!isFilterAvailable(availableFilterColumns, f.field)) {
                 continue;
             }
             condition = condition.and(buildFilterCondition(qualifier, f, true));
         }
 
+        if (withReachability && hasTreeReachability()) {
+            condition = condition.and(inSubsetTree(qualifier, subsetTree, subsetMemberEligibility()));
+        }
+
         return condition;
+    }
+
+    boolean hasTreeReachability() {
+        return treeContext || (subsetTree != null && !subsetTree.isEmpty());
+    }
+
+    String singleOntology() {
+        var scope = filters.stream().filter(f -> f.field.equals("ontologyId")).toList();
+        if (scope.size() != 1 || scope.get(0).values.size() != 1) {
+            return null;
+        }
+        return scope.get(0).values.iterator().next().toLowerCase(Locale.ROOT);
+    }
+
+    boolean isTreeRootListing() {
+        return hasTreeReachability() && (searchText == null || searchText.isBlank())
+                && filters.stream().anyMatch(f -> f.values.size() == 1
+                        && ((f.field.equals("hasDirectParents") && f.values.contains("false"))
+                            || (f.field.equals("isPreferredRoot") && f.values.contains("true"))));
+    }
+
+    String broadTreeFacetOntology() {
+        if (hasTreeReachability() || (searchText != null && !searchText.isBlank())
+                || (labelSearchText != null && !labelSearchText.isBlank())
+                || filters.stream().anyMatch(f -> f.field.equals("subset") || f.field.equals("iri"))) {
+            return null;
+        }
+        return singleOntology();
+    }
+
+    Condition subsetMemberEligibility() {
+        Condition eligibility = DSL.trueCondition();
+        for (SearchFilter filter : filters) {
+            if (TREE_MEMBER_VISIBILITY_FIELDS.contains(filter.field) || filter.field.equals("ontologyId")) {
+                eligibility = eligibility.and(buildFilterCondition("m", filter, false));
+            }
+        }
+        for (SearchFilter filter : excludeFilters) {
+            if (TREE_MEMBER_VISIBILITY_FIELDS.contains(filter.field) || filter.field.equals("ontologyId")) {
+                eligibility = eligibility.and(buildFilterCondition("m", filter, true));
+            }
+        }
+        return eligibility;
     }
 
     public List<SortField<?>> buildOrderBy() {
