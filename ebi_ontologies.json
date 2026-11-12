@@ -2130,6 +2130,7 @@
     {
       "id": "coho",
       "preferredPrefix": "COHO",
+      "shortFormExtractionPattern": "^http://www\\.ebi\\.ac\\.uk/coho/COHO_([0-9]+)$",
       "base_uri": [
         "http://www.ebi.ac.uk/coho/"
       ],

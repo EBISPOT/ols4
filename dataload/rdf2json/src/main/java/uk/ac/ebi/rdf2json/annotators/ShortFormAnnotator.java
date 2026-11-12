@@ -2,6 +2,7 @@ package uk.ac.ebi.rdf2json.annotators;
 
 import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +20,7 @@ public class ShortFormAnnotator {
 
 		Set<String> ontologyBaseUris = OntologyBaseUris.getOntologyBaseUris(graph);
 		String preferredPrefix = (String)graph.config.get("preferredPrefix");
-		String shortFormPattern = (String)graph.config.get("shortFormExtractionPattern");
+		Pattern shortFormPattern = compileShortFormPattern((String)graph.config.get("shortFormExtractionPattern"));
 
 		for(String id : graph.nodes.keySet()) {
 		    OntologyNode c = graph.nodes.get(id);
@@ -37,23 +38,16 @@ public class ShortFormAnnotator {
 				preferredPrefix = graph.config.get("id").toString().toUpperCase();
 			}
 
-				String shortForm = extractShortForm(graph, ontologyBaseUris, preferredPrefix, shortFormPattern, c.uri);
-
-			/*
-			CURIEs are formed by following rules:
-			If shortFormExtractionPattern is configured, replace first underscore with colon (custom extraction needs custom CURIE)
-			If there is only one underscore "_" AND the characters before the underscore are PreferredPrefix then replace the underscore with colon ":"
-			If there is only one underscore "_" AND the characters after the underscore are numbers then replace the underscore with colon ":"
-			If there is only one underscore "_" and the characters after the underscore are not just numbers then just keep the curie same as shortform
-			If there are multiple underscore but has only digits after the last underscore then the code replaces the last underscore with a colon
-			*/
+				String shortForm;
 				String curie;
-
-				// If custom shortFormExtractionPattern is used, construct CURIE using prefix directly to handle prefixes containing underscores
-				if (shortFormPattern != null && !shortFormPattern.isEmpty() && shortForm.contains("_")) {
-					curie = preferredPrefix + ":" + shortForm.substring(preferredPrefix.length() + 1);
+				var matcher = shortFormPattern == null || c.uri.startsWith("urn:") ? null : shortFormPattern.matcher(c.uri);
+				if (matcher != null && matcher.groupCount() > 0 && matcher.matches()) {
+					String localPart = matcher.group(1);
+					shortForm = preferredPrefix + "_" + localPart;
+					curie = preferredPrefix + ":" + localPart;
 				} else {
-					// Default CURIE generation logic
+					// Unmatched terms, including imports, use ordinary identifier extraction.
+					shortForm = extractShortForm(ontologyBaseUris, preferredPrefix, c.uri);
 					// Pattern for: single underscore, prefix matches preferredPrefix
 					String preferredPrefixPattern = "^(?:" + Pattern.quote(preferredPrefix) + ")_([^_]+)$";
 					// Pattern for: single underscore, suffix is all digits
@@ -84,36 +78,22 @@ public class ShortFormAnnotator {
 
 	}
 	
-	private static String extractShortForm(OntologyGraph graph, Set<String> ontologyBaseUris, String preferredPrefix,
-										   String shortFormPattern, String uri) {
+	private static Pattern compileShortFormPattern(String pattern) {
+		if (pattern == null || pattern.isEmpty()) {
+			return null;
+		}
+		try {
+			return Pattern.compile(pattern);
+		} catch (PatternSyntaxException e) {
+			logger.warn("Invalid shortFormExtractionPattern '{}': {}", pattern, e.getMessage());
+			return null;
+		}
+	}
 
+	private static String extractShortForm(Set<String> ontologyBaseUris, String preferredPrefix, String uri) {
 		if (uri.startsWith("urn:")) {
 			return uri.substring(4);
 		}
-
-		// Check if there's a custom short form extraction pattern in config
-		if (shortFormPattern != null && !shortFormPattern.isEmpty()) {
-			try {
-				Pattern pattern = Pattern.compile(shortFormPattern);
-				java.util.regex.Matcher matcher = pattern.matcher(uri);
-				if (matcher.matches() && matcher.groupCount() > 0) {
-					String localPart = matcher.group(1);
-					if (preferredPrefix != null) {
-						return preferredPrefix + "_" + localPart;
-					} else {
-						return localPart;
-					}
-				}
-			} catch (Exception e) {
-				logger.warn("Failed to apply shortFormExtractionPattern '{}' to URI '{}': {}",
-						shortFormPattern, uri, e.getMessage());
-				// Fall through to default behavior
-			}
-		}
-
-		// if(uri.startsWith("http://purl.obolibrary.org/obo/")) {
-		// return uri.substring("http://purl.obolibrary.org/obo/".length());
-		// }
 
 		for (String baseUri : ontologyBaseUris) {
 			if (uri.startsWith(baseUri) && preferredPrefix != null) {
