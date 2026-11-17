@@ -111,7 +111,7 @@
       "title": "Developing Mouse Brain Atlas Ontology",
       "uri": "https://purl.brain-bican.org/ontology/dmbao/dmbao.owl",
       "description": "An application ontology built by combining ontologised versions of the Allen Institute Developing Mouse Brain Atlas (DMBA) StructureGraph mapped to Uberon.",
-      "homepage": "https://purl.brain-bican.org/ontology/dmbao",
+      "homepage": "https://github.com/brain-bican/developing_mouse_brain_atlas_ontology",
       "mailing_list": "cellsemantics@gmail.com",
       "label_property": [
         "rdfs:label",
@@ -130,7 +130,7 @@
       "base_uri": "https://purl.brain-bican.org/ontology/dmbao/DMBA_",
       "reasoner": "OWL2",
       "oboSlims": false,
-      "ontology_purl": "https://purl.brain-bican.org/ontology/dmbao/dmbao.owl"
+      "ontology_purl": "https://raw.githubusercontent.com/brain-bican/developing_mouse_brain_atlas_ontology/main/dmbao.owl"
     },
     {
       "id": "mba",
@@ -140,7 +140,7 @@
       "title": "Mouse Brain Atlas Ontology",
       "uri": "https://purl.brain-bican.org/ontology/mbao/mbao.owl",
       "description": "An application ontology built by combining ontologised versions of the Allen Institute Mouse Brain Atlas (MBA) StructureGraph mapped to Uberon.",
-      "homepage": "https://purl.brain-bican.org/ontology/mbao",
+      "homepage": "https://github.com/brain-bican/mouse_brain_atlas_ontology",
       "mailing_list": "cellsemantics@gmail.com",
       "label_property": [
         "rdfs:label",
@@ -159,7 +159,7 @@
       "base_uri": "https://purl.brain-bican.org/ontology/mbao/MBA_",
       "reasoner": "OWL2",
       "oboSlims": false,
-      "ontology_purl": "https://purl.brain-bican.org/ontology/mbao/mbao.owl"
+      "ontology_purl": "https://raw.githubusercontent.com/brain-bican/mouse_brain_atlas_ontology/main/mbao.owl"
     },
     {
       "id": "emi",
@@ -252,7 +252,7 @@
       "title": "Developing Human Brain Atlas Ontology",
       "uri": "https://purl.brain-bican.org/ontology/dhbao",
       "description": "An application ontology built by combining ontologised versions of the Allen Institute Developing Human Brain Atlas (DHBA) Structure Graph mapped to Uberon.",
-      "homepage": "https://purl.brain-bican.org/ontology/dhbao",
+      "homepage": "https://github.com/brain-bican/developing_human_brain_atlas_ontology",
       "label_property": [
         "rdfs:label",
         "IAO:0000589",
@@ -272,7 +272,7 @@
       ],
       "reasoner": "OWL2",
       "oboSlims": false,
-      "ontology_purl": "https://purl.brain-bican.org/ontology/dhbao/dhbao.owl"
+      "ontology_purl": "https://raw.githubusercontent.com/brain-bican/developing_human_brain_atlas_ontology/main/dhbao.owl"
     },
     {
       "id": "hba",
@@ -284,7 +284,7 @@
       "title": "Human Brain Atlas Ontology",
       "uri": "https://purl.brain-bican.org/ontology/hbao",
       "description": "An application ontology built by combining ontologised versions of the Allen Institute Human Brain Atlas (HBA) Structure Graph mapped to Uberon.",
-      "homepage": "https://purl.brain-bican.org/ontology/hbao",
+      "homepage": "https://github.com/brain-bican/human_brain_atlas_ontology",
       "label_property": [
         "rdfs:label",
         "IAO:0000589",
@@ -304,7 +304,7 @@
       ],
       "reasoner": "OWL2",
       "oboSlims": false,
-      "ontology_purl": "https://purl.brain-bican.org/ontology/hbao/hbao.owl"
+      "ontology_purl": "https://raw.githubusercontent.com/brain-bican/human_brain_atlas_ontology/main/hbao.owl"
     },
     {
       "id": "semapv",
