@@ -129,6 +129,6 @@ export default class Ontology extends Thing {
     return domain || "";
   }
   isFoundry(): boolean {
-    return !!this.properties["in_foundry_order"];
+    return this.properties["is_foundry"] === true;
   }
 }

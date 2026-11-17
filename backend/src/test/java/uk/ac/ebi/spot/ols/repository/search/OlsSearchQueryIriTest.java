@@ -3,6 +3,8 @@ package uk.ac.ebi.spot.ols.repository.search;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 import java.util.Set;
@@ -14,10 +16,12 @@ class OlsSearchQueryIriTest {
     private static final String TERM_IRI =
             "http://purl.obolibrary.org/obo/NCIT_C2985";
 
-    @Test
-    void defaultIriSearchUsesTheExactIriPath() {
+    @ParameterizedTest
+    @ValueSource(booleans = {false, true})
+    void defaultIriSearchUsesTheExactIriPath(boolean exactMatch) {
         OlsSearchQuery query = new OlsSearchQuery();
         query.setSearchText(TERM_IRI);
+        query.setExactMatch(exactMatch);
 
         String sql = DSL.using(SQLDialect.POSTGRES)
                 .renderInlined(query.buildCondition(Set.of()));
@@ -42,10 +46,12 @@ class OlsSearchQueryIriTest {
                 .doesNotContain("to_tsquery");
     }
 
-    @Test
-    void explicitSearchFieldsDoNotBypassFieldRestrictionForIriQueries() {
+    @ParameterizedTest
+    @ValueSource(booleans = {false, true})
+    void explicitSearchFieldsDoNotBypassFieldRestrictionForIriQueries(boolean exactMatch) {
         OlsSearchQuery query = new OlsSearchQuery();
         query.setSearchText(TERM_IRI);
+        query.setExactMatch(exactMatch);
         query.setSearchFields(List.of("label"));
 
         String sql = DSL.using(SQLDialect.POSTGRES)

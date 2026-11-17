@@ -162,10 +162,13 @@ public class OlsSearchQuery {
                 condition = condition.and(exactMatch
                         ? buildExactFieldCondition(qualifier, availableFilterColumns)
                         : buildFieldRestrictedTsCondition(qualifier, availableFilterColumns));
+            } else if (isIriQuery(searchText)) {
+                condition = condition.and(buildExactIriCondition(qualifier));
+            } else if (exactMatch) {
+                condition = condition.and(buildExactFieldCondition(qualifier, availableFilterColumns));
             } else {
-                condition = condition.and(isIriQuery(searchText)
-                        ? buildExactIriCondition(qualifier)
-                        : matchesTsQuery(field(qualifier, "ts_search", Object.class), buildTsQuery()));
+                condition = condition.and(matchesTsQuery(
+                        field(qualifier, "ts_search", Object.class), buildTsQuery()));
             }
         }
 
@@ -317,8 +320,8 @@ public class OlsSearchQuery {
     }
 
     /**
-     * For exact-match queries with explicit searchFields, restrict the match to those specific
-     * indexed columns.
+     * Restrict exact matches to the requested indexed columns, defaulting to label and synonym
+     * when no searchFields are specified.
      *
      * Checks known columns (COLUMN_MAP) first, then dynamically-indexed filter_ columns so that
      * ontology property URIs work when the property has been declared as filterProperty in the
@@ -336,7 +339,8 @@ public class OlsSearchQuery {
     private Condition buildExactFieldCondition(String qualifier, Set<String> availableFilterColumns) {
         String lowerSearch = searchText.toLowerCase(Locale.ROOT);
         Condition anyField = DSL.falseCondition();
-        for (String qf : searchFields) {
+        List<String> fields = usesDefaultSearchFields() ? List.of("label", "synonym") : searchFields;
+        for (String qf : fields) {
             boolean knownCol = COLUMN_MAP.containsKey(qf);
             String col;
             try {

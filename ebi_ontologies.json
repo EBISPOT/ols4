@@ -1,6 +1,36 @@
 {
   "ontologies": [
     {
+      "id": "homba",
+      "creator": [
+        "David Osumi-Sutherland",
+        "Ugur Bayindir"
+      ],
+      "is_foundry": false,
+      "preferredPrefix": "homba",
+      "title": "Harmonized Ontology of Mammalian Brain Anatomy",
+      "uri": "https://purl.brain-bican.org/ontology/homba/homba.owl",
+      "description": "An ontology of mammalian brain anatomy harmonized across atlas and reference sources.",
+      "homepage": "https://github.com/brain-bican/harmonized_ontology_of_mammalian_brain_anatomy_ontology",
+      "label_property": [
+        "http://www.w3.org/2000/01/rdf-schema#label",
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ],
+      "definition_property": [
+        "http://purl.obolibrary.org/obo/IAO_0000115"
+      ],
+      "synonym_property": [
+        "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+      ],
+      "hierarchical_property": [
+        "http://purl.obolibrary.org/obo/BFO_0000050"
+      ],
+      "base_uri": "https://purl.brain-bican.org/ontology/HOMBA_",
+      "reasoner": "OWL2",
+      "oboSlims": false,
+      "ontology_purl": "https://github.com/brain-bican/harmonized_ontology_of_mammalian_brain_anatomy_ontology/releases/latest/download/homba.owl"
+    },
+    {
       "id": "coho",
       "preferredPrefix": "COHO",
       "ontology_purl": "https://raw.githubusercontent.com/EBISPOT/cohort-ontology/refs/heads/main/coho.owl",
@@ -76,12 +106,12 @@
     {
       "id": "dmba",
       "creator": ["David Osumi-Sutherland", "Huseyin Kir"],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "DMBA",
       "title": "Developing Mouse Brain Atlas Ontology",
       "uri": "https://purl.brain-bican.org/ontology/dmbao/dmbao.owl",
       "description": "An application ontology built by combining ontologised versions of the Allen Institute Developing Mouse Brain Atlas (DMBA) StructureGraph mapped to Uberon.",
-      "homepage": "https://purl.brain-bican.org/ontology/dmbao",
+      "homepage": "https://github.com/brain-bican/developing_mouse_brain_atlas_ontology",
       "mailing_list": "cellsemantics@gmail.com",
       "label_property": [
         "rdfs:label",
@@ -100,17 +130,17 @@
       "base_uri": "https://purl.brain-bican.org/ontology/dmbao/DMBA_",
       "reasoner": "OWL2",
       "oboSlims": false,
-      "ontology_purl": "https://purl.brain-bican.org/ontology/dmbao/dmbao.owl"
+      "ontology_purl": "https://raw.githubusercontent.com/brain-bican/developing_mouse_brain_atlas_ontology/main/dmbao.owl"
     },
     {
       "id": "mba",
       "creator": ["David Osumi-Sutherland", "Huseyin Kir"],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "MBA",
       "title": "Mouse Brain Atlas Ontology",
       "uri": "https://purl.brain-bican.org/ontology/mbao/mbao.owl",
       "description": "An application ontology built by combining ontologised versions of the Allen Institute Mouse Brain Atlas (MBA) StructureGraph mapped to Uberon.",
-      "homepage": "https://purl.brain-bican.org/ontology/mbao",
+      "homepage": "https://github.com/brain-bican/mouse_brain_atlas_ontology",
       "mailing_list": "cellsemantics@gmail.com",
       "label_property": [
         "rdfs:label",
@@ -129,7 +159,7 @@
       "base_uri": "https://purl.brain-bican.org/ontology/mbao/MBA_",
       "reasoner": "OWL2",
       "oboSlims": false,
-      "ontology_purl": "https://purl.brain-bican.org/ontology/mbao/mbao.owl"
+      "ontology_purl": "https://raw.githubusercontent.com/brain-bican/mouse_brain_atlas_ontology/main/mbao.owl"
     },
     {
       "id": "emi",
@@ -144,7 +174,7 @@
         "Disha Tandon",
         "The Earth Metabolome Initiative Consortium"
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "EMI",
       "title": "The Earth Metabolome Initiative (EMI) ontology",
       "uri": "https://w3id.org/emi",
@@ -197,7 +227,7 @@
     },
     {
       "id": "addicto",
-      "is_foundary": "true",
+      "is_foundry": true,
       "preferredPrefix": "ADDICTO",
       "title": "Addiction Ontology",
       "uri": "http://addictovocab.org/addicto.owl",
@@ -222,7 +252,7 @@
       "title": "Developing Human Brain Atlas Ontology",
       "uri": "https://purl.brain-bican.org/ontology/dhbao",
       "description": "An application ontology built by combining ontologised versions of the Allen Institute Developing Human Brain Atlas (DHBA) Structure Graph mapped to Uberon.",
-      "homepage": "https://purl.brain-bican.org/ontology/dhbao",
+      "homepage": "https://github.com/brain-bican/developing_human_brain_atlas_ontology",
       "label_property": [
         "rdfs:label",
         "IAO:0000589",
@@ -242,7 +272,7 @@
       ],
       "reasoner": "OWL2",
       "oboSlims": false,
-      "ontology_purl": "https://purl.brain-bican.org/ontology/dhbao/dhbao.owl"
+      "ontology_purl": "https://raw.githubusercontent.com/brain-bican/developing_human_brain_atlas_ontology/main/dhbao.owl"
     },
     {
       "id": "hba",
@@ -254,7 +284,7 @@
       "title": "Human Brain Atlas Ontology",
       "uri": "https://purl.brain-bican.org/ontology/hbao",
       "description": "An application ontology built by combining ontologised versions of the Allen Institute Human Brain Atlas (HBA) Structure Graph mapped to Uberon.",
-      "homepage": "https://purl.brain-bican.org/ontology/hbao",
+      "homepage": "https://github.com/brain-bican/human_brain_atlas_ontology",
       "label_property": [
         "rdfs:label",
         "IAO:0000589",
@@ -274,7 +304,7 @@
       ],
       "reasoner": "OWL2",
       "oboSlims": false,
-      "ontology_purl": "https://purl.brain-bican.org/ontology/hbao/hbao.owl"
+      "ontology_purl": "https://raw.githubusercontent.com/brain-bican/human_brain_atlas_ontology/main/hbao.owl"
     },
     {
       "id": "semapv",
@@ -1517,7 +1547,7 @@
       "creator": [
         "Liz Allen"
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "credit",
       "title": "Contributor Roles Taxonomy",
       "uri": "https://w3id.org/biopragmatics/resources/credit/credit.owl",
@@ -1550,7 +1580,7 @@
       "creator": [
         "National Library of Medicine"
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "mesh",
       "title": "Medical Subject Headings",
       "uri": "https://w3id.org/biopragmatics/resources/mesh/mesh.owl.gz",
@@ -1583,7 +1613,7 @@
       "creator": [
         "Elspeth Bruford"
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "hgnc",
       "title": "HUGO Gene Nomenclature Committee",
       "uri": "https://w3id.org/biopragmatics/resources/hgnc/hgnc.owl.gz",
@@ -1616,7 +1646,7 @@
       "creator": [
         "Egon Willighagen"
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "wikipathways",
       "title": "WikiPathways",
       "uri": "https://w3id.org/biopragmatics/resources/wikipathways/wikipathways.owl",
@@ -1649,7 +1679,7 @@
       "creator": [
         "Maria Gould"
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "ror",
       "title": "Research Organization Registry",
       "uri": "https://w3id.org/biopragmatics/resources/ror/ror.owl.gz",
@@ -1713,7 +1743,7 @@
       "creator": [
         "The Genomic Standards Consortium."
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "MIXS",
       "title": "Minimum Information about any (x) Sequence (MIxS) standard",
       "uri": "https://w3id.org/mixs",
@@ -1739,7 +1769,7 @@
       "id": "ec",
       "reasoner": "none",
       "oboSlims": false,
-      "is_foundary": false,
+      "is_foundry": false,
       "ontology_purl": "https://w3id.org/biopragmatics/resources/ec/ec.owl",
       "creator": ["Kristian Axelsen"],
       "preferredPrefix": "EC",
@@ -1766,7 +1796,7 @@
       "id": "hgnc.genegroup",
       "reasoner": "none",
       "oboSlims": false,
-      "is_foundary": false,
+      "is_foundry": false,
       "ontology_purl": "https://w3id.org/biopragmatics/resources/hgnc.genegroup/hgnc.genegroup.owl",
       "creator": [
         "Elspeth Bruford"
@@ -1802,7 +1832,7 @@
         "Shawn Zheng Kai Tan",
         "Alberto Santos"
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "PREFER",
       "title": "Precision Fermentation Ontology",
       "uri": "http://purl.obolibrary.org/obo/prefer.owl",
@@ -1832,7 +1862,7 @@
         "Stéphane Dervaux",
         "Magalie Weber"
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "TFO",
       "title": "TransformON",
       "uri": "http://opendata.inrae.fr/PO2/Ontology/TransformON/",
@@ -1857,7 +1887,7 @@
         "Susan Michie",
         "Janna Hastings"
       ],
-      "is_foundary": true,
+      "is_foundry": true,
       "preferredPrefix": "gmho",
       "title": "GALENOS Mental Health Ontology",
       "uri": "https://galenos.org.uk/ontologies/gmho.owl",
@@ -2063,7 +2093,7 @@
         "Manoj Purohit",
         "Maxwell Pena"
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "rehabo",
       "title": "The Rehabilitation Ontology",
       "uri": "http://purl.obolibrary.org/obo/rehabo.owl",
@@ -2078,7 +2108,7 @@
       "creator": [
         "Chris Mungall"
       ],
-      "is_foundary": false,
+      "is_foundry": false,
       "preferredPrefix": "valuesets",
       "title": "Value Sets",
       "uri": "https://w3id.org/linkml/valuesets/",

@@ -220,10 +220,30 @@ fn write_entity_array<R: Read, W: Write>(
 
         let mut strings_in_entity: BTreeSet<String> = BTreeSet::new();
         let mut entity_iri: Option<String> = None;
+        let mut identifiers = Vec::new();
 
         while json_reader.has_next()? {
             let name = json_reader.next_name_owned()?;
             strings_in_entity.insert(extract_iri_from_property_name::extract(&name).to_string());
+
+            // Fallback RDF2JSON sorts fields, placing curie before iri. Defer
+            // only identifiers encountered before iri so fresh output keeps
+            // its existing serialization order.
+            if matches!(name.as_str(), "curie" | "shortForm") {
+                let literal = read_identifier_literal(json_reader)?;
+                if entity_iri.is_some() {
+                    write_identifier_literal(
+                        json_writer,
+                        &name,
+                        literal,
+                        pass1_result,
+                        entity_iri.as_deref(),
+                    )?;
+                } else {
+                    identifiers.push((name, literal));
+                }
+                continue;
+            }
             json_writer.name(&name)?;
 
             match name.as_str() {
@@ -232,16 +252,20 @@ fn write_entity_array<R: Read, W: Write>(
                     entity_iri = Some(iri.clone());
                     json_writer.string_value(&iri)?;
                 }
-                "curie" => {
-                    process_curie_object(json_reader, json_writer, pass1_result, entity_iri.as_deref())?;
-                }
-                "shortForm" => {
-                    process_short_form_object(json_reader, json_writer, pass1_result, entity_iri.as_deref())?;
-                }
                 _ => {
                     copy_json_gathering_strings(json_reader, json_writer, &mut strings_in_entity)?;
                 }
             }
+        }
+
+        for (name, literal) in identifiers {
+            write_identifier_literal(
+                json_writer,
+                &name,
+                literal,
+                pass1_result,
+                entity_iri.as_deref(),
+            )?;
         }
 
         // Add definition metadata if available
@@ -554,64 +578,20 @@ fn write_iri_mapping<W: Write>(
     Ok(())
 }
 
-fn process_curie_object<R: Read, W: Write>(
-    json_reader: &mut JsonStreamReader<R>,
-    json_writer: &mut JsonStreamWriter<W>,
-    pass1_result: &LinkerPass1Result,
-    entity_iri: Option<&str>,
-) -> Result<(), Box<dyn std::error::Error>> {
-    json_reader.begin_object()?;
-
-    let mut type_array: Vec<String> = Vec::new();
-    let mut curie_value: Option<String> = None;
-
-    while json_reader.has_next()? {
-        let field_name = json_reader.next_name_owned()?;
-        match field_name.as_str() {
-            "type" => {
-                json_reader.begin_array()?;
-                while json_reader.has_next()? {
-                    type_array.push(json_reader.next_string()?.to_string());
-                }
-                json_reader.end_array()?;
-            }
-            "value" => {
-                let _original_value = json_reader.next_string()?.to_string();
-                // Modify the value attribute using the processed curie value
-                curie_value = Some(get_processed_curie_value(pass1_result, entity_iri));
-            }
-            _ => {
-                skip_value(json_reader);
-            }
-        }
-    }
-    json_reader.end_object()?;
-
-    // Write the modified curie object
-    json_writer.begin_object()?;
-    json_writer.name("type")?;
-    json_writer.begin_array()?;
-    for t in &type_array {
-        json_writer.string_value(t)?;
-    }
-    json_writer.end_array()?;
-    json_writer.name("value")?;
-    json_writer.string_value(&curie_value.unwrap_or_default())?;
-    json_writer.end_object()?;
-
-    Ok(())
+struct IdentifierLiteral {
+    types: Vec<String>,
+    has_value: bool,
 }
 
-fn process_short_form_object<R: Read, W: Write>(
+fn read_identifier_literal<R: Read>(
     json_reader: &mut JsonStreamReader<R>,
-    json_writer: &mut JsonStreamWriter<W>,
-    pass1_result: &LinkerPass1Result,
-    entity_iri: Option<&str>,
-) -> Result<(), Box<dyn std::error::Error>> {
+) -> Result<IdentifierLiteral, Box<dyn std::error::Error>> {
     json_reader.begin_object()?;
 
-    let mut type_array: Vec<String> = Vec::new();
-    let mut short_form_value: Option<String> = None;
+    let mut literal = IdentifierLiteral {
+        types: Vec::new(),
+        has_value: false,
+    };
 
     while json_reader.has_next()? {
         let field_name = json_reader.next_name_owned()?;
@@ -619,14 +599,13 @@ fn process_short_form_object<R: Read, W: Write>(
             "type" => {
                 json_reader.begin_array()?;
                 while json_reader.has_next()? {
-                    type_array.push(json_reader.next_string()?.to_string());
+                    literal.types.push(json_reader.next_string()?.to_string());
                 }
                 json_reader.end_array()?;
             }
             "value" => {
-                let _original_value = json_reader.next_string()?.to_string();
-                // Modify the value attribute - replace : with _ for shortForm
-                short_form_value = Some(get_processed_curie_value(pass1_result, entity_iri).replace(':', "_"));
+                let _original_value = json_reader.next_string()?;
+                literal.has_value = true;
             }
             _ => {
                 skip_value(json_reader);
@@ -635,16 +614,32 @@ fn process_short_form_object<R: Read, W: Write>(
     }
     json_reader.end_object()?;
 
-    // Write the modified short form object
+    Ok(literal)
+}
+
+fn write_identifier_literal<W: Write>(
+    json_writer: &mut JsonStreamWriter<W>,
+    name: &str,
+    literal: IdentifierLiteral,
+    pass1_result: &LinkerPass1Result,
+    entity_iri: Option<&str>,
+) -> Result<(), Box<dyn std::error::Error>> {
+    let curie = get_processed_curie_value(pass1_result, entity_iri);
+    let value = if name == "shortForm" {
+        curie.replace(':', "_")
+    } else {
+        curie
+    };
+    json_writer.name(name)?;
     json_writer.begin_object()?;
     json_writer.name("type")?;
     json_writer.begin_array()?;
-    for t in &type_array {
+    for t in &literal.types {
         json_writer.string_value(t)?;
     }
     json_writer.end_array()?;
     json_writer.name("value")?;
-    json_writer.string_value(&short_form_value.unwrap_or_default())?;
+    json_writer.string_value(if literal.has_value { &value } else { "" })?;
     json_writer.end_object()?;
 
     Ok(())

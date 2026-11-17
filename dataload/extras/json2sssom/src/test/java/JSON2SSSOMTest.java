@@ -5,11 +5,14 @@ import org.apache.commons.cli.Options;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
+import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 
@@ -147,6 +150,63 @@ public class JSON2SSSOMTest {
         assertTrue(obsolete.contains("# mapping_set_id: https://w3id.org/commons/ols/mappings/obs.ols.obsolete.sssom.tsv\n"));
         assertTrue(obsolete.contains("# mapping_set_title: OLS extracted OBS mappings (obsolete terms)\n"));
         assertTrue(obsolete.contains("# other:\n#   local_id: obs.ols.obsolete\n#   prefix: OBS\n#   ontology: OBS\n# local_name: obs.ols.obsolete.sssom.tsv\n"));
+    }
+
+    @Test
+    public void writesAvailableContactMetadataToBothExtracts() throws Exception {
+        assertContactMetadata(
+                ", \"mailingList\": \"efo-users@lists.sourceforge.net\"",
+                "efo-users@lists.sourceforge.net", null);
+        assertContactMetadata(
+                ", \"tracker\": \"https://github.com/obophenotype/uberon/issues\"",
+                null, "https://github.com/obophenotype/uberon/issues");
+        assertContactMetadata(
+                ", \"mailingList\": \"efo-users@lists.sourceforge.net\", " +
+                        "\"tracker\": \"https://github.com/EBISPOT/efo/issues\"",
+                "efo-users@lists.sourceforge.net", "https://github.com/EBISPOT/efo/issues");
+    }
+
+    @Test
+    public void readsContactMetadataFromArraysAndReifiedValues() throws Exception {
+        assertContactMetadata(
+                ", \"mailingList\": [\"efo-users@lists.sourceforge.net\"], " +
+                        "\"tracker\": {\"value\": \"https://github.com/EBISPOT/efo/issues\"}",
+                "efo-users@lists.sourceforge.net", "https://github.com/EBISPOT/efo/issues");
+    }
+
+    @Test
+    public void omitsUnavailableContactMetadata() throws Exception {
+        assertContactMetadata("", null, null);
+        assertContactMetadata(", \"mailingList\": null, \"tracker\": null", null, null);
+        assertContactMetadata(", \"mailingList\": \"\", \"tracker\": \"  \"", null, null);
+        assertContactMetadata(", \"mailingList\": [], \"tracker\": []", null, null);
+    }
+
+    private void assertContactMetadata(String contactProperties, String expectedMailingList, String expectedIssueTracker) throws Exception {
+        File input = temporaryFolder.newFile();
+        File outputDir = temporaryFolder.newFolder();
+        Files.writeString(input.toPath(), "{\"ontologies\": [{\"ontologyId\": \"contacts\", " +
+                "\"classes\": [], \"properties\": [], \"individuals\": []" + contactProperties + "}]}",
+                StandardCharsets.UTF_8);
+
+        JSON2SSSOM.main(new String[] {
+                "--input", input.getAbsolutePath(),
+                "--outDir", outputDir.getAbsolutePath()
+        });
+
+        for (String filename : new String[] {"contacts.ols.sssom.tsv", "contacts.ols.obsolete.sssom.tsv"}) {
+            String yaml = Files.readAllLines(outputDir.toPath().resolve(filename), StandardCharsets.UTF_8)
+                    .stream()
+                    .filter(line -> line.startsWith("# "))
+                    .map(line -> line.substring(2))
+                    .collect(Collectors.joining("\n"));
+            Map<String, Object> header = new Yaml().load(yaml);
+
+            assertEquals(expectedMailingList != null, header.containsKey("mailing_list"));
+            assertEquals(expectedMailingList, header.get("mailing_list"));
+            assertEquals(expectedIssueTracker != null, header.containsKey("issue_tracker"));
+            assertEquals(expectedIssueTracker, header.get("issue_tracker"));
+        }
     }
 
     @Test
