@@ -130,7 +130,7 @@ public class JSON2SSSOM {
     private static String getStringProperty(Map<String, JsonElement> ontologyProperties, String propertyName) {
         JsonElement value = ontologyProperties.get(propertyName);
 
-        if(value == null || value.isJsonNull()) {
+        if(value == null || value.isJsonNull() || (value.isJsonArray() && value.getAsJsonArray().isEmpty())) {
             return null;
         }
 
@@ -227,9 +227,11 @@ public class JSON2SSSOM {
                             ? mappingSetOntologyName
                             : mappingSetOntologyTitle + " (" + mappingSetOntologyName + ")";
                     String ontologyIri = getStringProperty(ontologyProperties, "iri");
+                    String mailingList = getStringProperty(ontologyProperties, MAILING_LIST.getText());
+                    String issueTracker = getStringProperty(ontologyProperties, "tracker");
 
-                    writeExtractFile(yaml, outputFilePath, ontologyId, mappingSetOntologyName, mappingSetOntologyFullName, ontologyIri, mappingDate, false, current);
-                    writeExtractFile(yaml, outputFilePath, ontologyId, mappingSetOntologyName, mappingSetOntologyFullName, ontologyIri, mappingDate, true, obsolete);
+                    writeExtractFile(yaml, outputFilePath, ontologyId, mappingSetOntologyName, mappingSetOntologyFullName, ontologyIri, mailingList, issueTracker, mappingDate, false, current);
+                    writeExtractFile(yaml, outputFilePath, ontologyId, mappingSetOntologyName, mappingSetOntologyFullName, ontologyIri, mailingList, issueTracker, mappingDate, true, obsolete);
 
                     reader.endObject();
                 }
@@ -248,6 +250,8 @@ public class JSON2SSSOM {
             String mappingSetOntologyName,
             String mappingSetOntologyFullName,
             String ontologyIri,
+            String mailingList,
+            String issueTracker,
             String mappingDate,
             boolean obsolete,
             SssomExtract extract) throws IOException {
@@ -265,6 +269,12 @@ public class JSON2SSSOM {
         yamlHeader.put("mapping_set_description", "These mappings were extracted during the OLS dataload from " + mappingSetOntologyName
                 + (obsolete ? " for obsolete terms" : ""));
         yamlHeader.put("mapping_date", mappingDate);
+        if (mailingList != null && !mailingList.isBlank()) {
+            yamlHeader.put("mailing_list", mailingList);
+        }
+        if (issueTracker != null && !issueTracker.isBlank()) {
+            yamlHeader.put("issue_tracker", issueTracker);
+        }
 
         Map<String, Object> yamlHeaderOther = new LinkedHashMap<>();
         yamlHeaderOther.put("local_id", localId);
