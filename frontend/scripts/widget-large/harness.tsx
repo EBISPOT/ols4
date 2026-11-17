@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { createEntityTree } from '../../src/widgets';
 import { createAppStore } from '../../src/app/store';
 import EntityList from '../../src/pages/ontologies/entities/EntityList';
+import { setTreeScope } from '../../src/pages/ontologies/ontologiesSlice';
 const left = document.querySelector<HTMLElement>('#left')!, right = document.querySelector<HTMLElement>('#right')!;
 const result = document.querySelector<HTMLElement>('#result')!;
 const apiUrl = location.origin + '/';
@@ -43,7 +44,7 @@ document.querySelector<HTMLButtonElement>('#run')!.onclick = async function() {
     pass('PASS late individual A2241 reaches documented public navigation callback; sibling unchanged');
     // Ordinary app lists retain Router navigation; use a real table row and actual Router event.
     const s=createAppStore();
-    s.dispatch({type:'ontologies_set_tree_scope',payload:'hosted'});
+    s.dispatch(setTreeScope('hosted'));
     s.dispatch({type:'ontologies_set_tree_request_context',payload:{scopeKey:'hosted',requestKey:'hosted'}});
     ReactDOM.render(<Provider store={s}><MemoryRouter><Location/><EntityList ontologyId="paging" entityType="classes" parentEntityIri={iri} tableKey="hosted" apiUrl={apiUrl} treeScopeKey="hosted" requestKey="hosted" /></MemoryRouter></Provider>,document.querySelector('#hosted'));
     await until(()=>document.querySelector('#hosted tbody tr'),'host Router real-API rows missing');

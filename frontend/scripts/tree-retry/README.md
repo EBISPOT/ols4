@@ -43,7 +43,7 @@ are never changed by this baseline build.
 The proxy also serves the built application from `dist`, overriding runtime API
 configuration only on port13049. For manual built-app verification, open
 `/ontologies/native?tab=classes`, arm a fault via
-`/__test/arm?channel=app&kind=roots&mode=fail`, toggle **Show imported terms**,
+`/__test/arm?channel=app&kind=roots&mode=fail`, toggle **Show imported terms in tree**,
 then click **Retry tree**. For default eligible-count retry, keep imports on and
 obsolete off, turn counts off, arm `kind=counts`, then turn counts on and click
 **Retry counts**. Screenshots should show errors disappearing and the real data

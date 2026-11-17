@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { configureStore } from '@reduxjs/toolkit';
-import reducer, { getOntology, getAncestors, getRootEntities, getNodeChildren, getSubsets, getTreeMemberCounts, getDirectChildrenCount, getDirectChildrenEntities, setSelectedSubsets, resetTreeContent, resetTreeSettings } from '../src/pages/ontologies/ontologiesSlice';
+import reducer, { getOntology, getAncestors, getRootEntities, getNodeChildren, getSubsets, getTreeMemberCounts, getDirectChildrenCount, getDirectChildrenEntities, setSelectedSubsets, resetTreeContent, setTreeScope, hideImported, showObsolete, showSiblings, hideCounts, disablePreferredRoots } from '../src/pages/ontologies/ontologiesSlice';
 import Ontology from '../src/model/Ontology';
 import { createAppStore, store as appStore } from '../src/app/store';
 import Individual from '../src/model/Individual';
@@ -12,7 +12,7 @@ const subset = 'http://www.ebi.ac.uk/coho#IHCC_subset';
 const scope = (id = 'coho', type = 'classes', api = '') => JSON.stringify([api, id, type]);
 const store = () => configureStore({ reducer: { ontologies: reducer }, middleware: g => g({ serializableCheck: false }) });
 function context(s: any, key: string, requestKey: string) {
-  s.dispatch({ type: 'ontologies_set_tree_scope', payload: key });
+  s.dispatch(setTreeScope(key));
   s.dispatch({ type: 'ontologies_set_tree_request_context', payload: { scopeKey: key, requestKey } });
 }
 function setup() {
@@ -24,9 +24,45 @@ function setup() {
 const args = (requestKey = 'first') => ({ ontology: new Ontology({ ontologyId: 'coho', type: ['ontology'], preferredRoot: [] }), ontologyId: 'coho', entityType: 'classes', treeScopeKey: scope(), requestKey, lang: 'en', showObsoleteEnabled: false, showImportedEnabled: true });
 const term = (iri: string) => thingFromJsonProperties({ iri, ontologyId: 'coho', type: ['class'], label: [iri] });
 
+const preferences = (s: any) => {
+  const { preferredRoots, displayImported, displayObsolete, displaySiblings, displayCounts } = s.getState().ontologies;
+  return { preferredRoots, displayImported, displayObsolete, displaySiblings, displayCounts };
+};
+
+for (const preferredRoots of [true, false]) {
+  test(`browse, term navigation and remounts retain display preferences: preferred=${preferredRoots}`, () => {
+    const s = store();
+    s.dispatch(setTreeScope(scope(), true));
+    if (!preferredRoots) s.dispatch(disablePreferredRoots());
+    s.dispatch(hideImported());
+    s.dispatch(showObsolete());
+    s.dispatch(showSiblings());
+    s.dispatch(hideCounts());
+    s.dispatch(setSelectedSubsets([subset]));
+    const expected = { preferredRoots, displayImported: false, displayObsolete: true, displaySiblings: true, displayCounts: false };
+    // Same actions as a new EntityTree mount: scope initialization, then fresh
+    // content ownership. Include term changes, browse return and back/forward.
+    for (const requestKey of ['browse', 'native term', 'imported term', 'browse', 'imported term', 'native term', 'native term']) {
+      s.dispatch(setTreeScope(scope(), true));
+      s.dispatch({ type: 'ontologies_set_tree_request_context', payload: { scopeKey: scope(), requestKey } });
+      assert.deepEqual(preferences(s), expected, requestKey);
+      assert.deepEqual(s.getState().ontologies.selectedSubsets, [subset]);
+      assert.deepEqual(s.getState().ontologies.rootNodes, []);
+      assert.deepEqual(s.getState().ontologies.automaticallyExpandedNodes, []);
+      assert.equal(s.getState().ontologies.numPendingTreeRequests, 0);
+      s.dispatch(getRootEntities.pending('old', args(requestKey)));
+      s.dispatch(getRootEntities.fulfilled({ rootTerms: [term(requestKey)] }, 'old', args(requestKey)));
+    }
+  });
+}
+
 for (const destination of [scope('efo'), scope('coho', 'individuals'), scope('coho', 'classes', 'https://other.test/')]) {
   test(`scope change clears selections, options, counts and paths atomically: ${destination}`, () => {
     const s = setup();
+    s.dispatch(hideImported());
+    s.dispatch(showObsolete());
+    s.dispatch(showSiblings());
+    s.dispatch(hideCounts());
     s.dispatch(setSelectedSubsets([subset]));
     s.dispatch(getSubsets.pending('subsets', args()));
     s.dispatch(getSubsets.fulfilled([{ iri: subset, label: 'IHCC', numMembers: 77 }], 'subsets', args()));
@@ -34,7 +70,7 @@ for (const destination of [scope('efo'), scope('coho', 'individuals'), scope('co
     s.dispatch(getRootEntities.fulfilled({ rootTerms: [term('COHO root')] }, 'roots', args()));
     s.dispatch(getTreeMemberCounts.pending('counts', args()));
     s.dispatch(getTreeMemberCounts.fulfilled({ root: 77 }, 'counts', args()));
-    s.dispatch({ type: 'ontologies_set_tree_scope', payload: destination });
+    s.dispatch(setTreeScope(destination));
     const state = s.getState().ontologies;
     assert.deepEqual(state.selectedSubsets, []);
     assert.deepEqual(state.subsets, []);
@@ -42,14 +78,24 @@ for (const destination of [scope('efo'), scope('coho', 'individuals'), scope('co
     assert.deepEqual(state.rootNodes, []);
     assert.deepEqual(state.nodeChildren, {});
     assert.equal(state.numPendingTreeRequests, 0);
+    assert.deepEqual(preferences(s), { preferredRoots: false, displayImported: true, displayObsolete: false, displaySiblings: false, displayCounts: true });
   });
 }
+
+test('a new scope initializes preferred roots from its own ontology and resets previous preferences', () => {
+  const s = setup();
+  s.dispatch(hideImported());
+  s.dispatch(setTreeScope(scope('efo'), true));
+  assert.deepEqual(preferences(s), { preferredRoots: true, displayImported: true, displayObsolete: false, displaySiblings: false, displayCounts: true });
+  s.dispatch(disablePreferredRoots());
+  s.dispatch(setTreeScope(scope('efo'), true));
+  assert.equal(s.getState().ontologies.preferredRoots, false);
+});
 
 test('same-scope entity and language changes retain selection but invalidate old requests', () => {
   const s = setup();
   s.dispatch(setSelectedSubsets([subset]));
   s.dispatch(getRootEntities.pending('old', args()));
-  s.dispatch(resetTreeSettings({ entityType: 'classes' }));
   context(s, scope(), 'another-entity-fr');
   s.dispatch(getRootEntities.pending('new', args('another-entity-fr')));
   s.dispatch(getRootEntities.rejected(new Error('abort'), 'old', args()));

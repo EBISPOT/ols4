@@ -4,21 +4,54 @@ import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import reducer, { setSelectedSubsets, getSubsets } from '../src/pages/ontologies/ontologiesSlice';
+import reducer, { setSelectedSubsets, getSubsets, setTreeScope } from '../src/pages/ontologies/ontologiesSlice';
 import EntityTree from '../src/pages/ontologies/entities/EntityTree';
 import EntityList from '../src/pages/ontologies/entities/EntityList';
 import { getDirectChildrenEntities } from '../src/pages/ontologies/ontologiesSlice';
 import Ontology from '../src/model/Ontology';
 import { StaticRouter } from 'react-router-dom/server';
 import { thingFromJsonProperties } from '../src/app/util';
-import { getRootEntities, getTreeMemberCounts, getDirectChildrenCount, hideCounts, showCounts, hideImported, showObsolete } from '../src/pages/ontologies/ontologiesSlice';
+import { getRootEntities, getAncestors, getTreeMemberCounts, getDirectChildrenCount, hideCounts, showCounts, hideImported, showObsolete, setTreeRequestContext } from '../src/pages/ontologies/ontologiesSlice';
 
 const subset = 'http://www.ebi.ac.uk/coho#IHCC_subset';
+
+test('selected obsolete paths outside preferred roots do not overwrite display preferences', () => {
+  const s = configureStore({ reducer: { ontologies: reducer }, middleware: g => g({ serializableCheck: false }) });
+  const scopeKey = JSON.stringify(['', 'native', 'classes']);
+  const ontology = new Ontology({ ontologyId: 'native', type: ['ontology'], preferredRoot: ['preferred'] });
+  s.dispatch(setTreeScope(scopeKey, true));
+  s.dispatch(hideImported());
+  s.dispatch(hideCounts());
+  const root = thingFromJsonProperties({ iri: 'outside', label: ['Outside root'], type: ['class'], ontologyId: 'native', isDefiningOntology: true, hasHierarchicalChildren: true });
+  for (const obsolete of [true, false]) {
+    const selectedEntity = thingFromJsonProperties({ iri: obsolete ? 'old' : 'active', label: [obsolete ? 'Old selected' : 'Active selected'],
+      type: ['class'], ontologyId: 'native', isObsolete: obsolete, isDefiningOntology: true, hierarchicalParent: ['outside'] });
+    // A term page may remount the tree, even within the same ontology and tab.
+    s.dispatch(setTreeScope(scopeKey, true));
+    const requestKey = JSON.stringify([scopeKey, 'en', selectedEntity, '', true, obsolete, false, false, []]);
+    s.dispatch(setTreeRequestContext({ scopeKey, requestKey }));
+    const arg = { ontology, preferredRoots: true, treeScopeKey: scopeKey, requestKey };
+    s.dispatch(getAncestors.pending('ancestors', arg));
+    s.dispatch(getAncestors.fulfilled([root, selectedEntity], 'ancestors', arg));
+    const html = renderToStaticMarkup(<Provider store={s}><StaticRouter location="/"><EntityTree
+      ontology={ontology} entityType="classes" selectedEntity={selectedEntity} lang="en"
+      onNavigateToEntity={() => {}} onNavigateToOntology={() => {}} /></StaticRouter></Provider>);
+    assert(html.includes('Outside root') && html.includes(selectedEntity.getName()));
+    const obsoleteLabel = html.match(/<label\b[\s\S]*?<\/label>/g)!.find(label => label.includes('Show obsolete terms'))!;
+    assert.equal(obsoleteLabel.includes('checked=""'), obsolete);
+    const state = s.getState().ontologies;
+    assert.equal(state.displayObsolete, false, 'obsolete selection is a local visibility override');
+    assert.equal(state.preferredRoots, true);
+    assert.equal(state.displayImported, false);
+    assert.equal(state.displayCounts, false);
+  }
+});
+
 for (const props of [{ id: 'efo', type: 'classes' }, { id: 'coho', type: 'individuals' }, { id: 'coho', type: 'classes', apiUrl: 'https://other.test/' }]) {
   test(`initial render hides another scope's subset options: ${JSON.stringify(props)}`, () => {
     const s = configureStore({ reducer: { ontologies: reducer }, middleware: g => g({ serializableCheck: false }) });
     const treeScopeKey = '["","coho","classes"]';
-    s.dispatch({ type: 'ontologies_set_tree_scope', payload: treeScopeKey });
+    s.dispatch(setTreeScope(treeScopeKey));
     s.dispatch({ type: 'ontologies_set_tree_request_context', payload: { scopeKey: treeScopeKey, requestKey: 'coho' } });
     s.dispatch(setSelectedSubsets([subset]));
     const arg = { treeScopeKey, requestKey: 'coho' };
@@ -43,7 +76,7 @@ for (const fixture of [
       const scopeKey = JSON.stringify(['https://widget.test/', fixture.id, 'classes']);
       const requestKey = JSON.stringify([scopeKey, 'en', undefined, '', false, false, false, false, selected]);
       const ontology = new Ontology({ ontologyId: fixture.id, type: ['ontology'], preferredRoot: [] });
-      s.dispatch({ type: 'ontologies_set_tree_scope', payload: scopeKey });
+      s.dispatch(setTreeScope(scopeKey));
       s.dispatch(hideImported());
       s.dispatch(setSelectedSubsets(selected));
       s.dispatch({ type: 'ontologies_set_tree_request_context', payload: { scopeKey, requestKey } });
@@ -77,7 +110,7 @@ test('ordinary imports-visible badges retain BFO totals and obsolete-mode restri
   const s = configureStore({ reducer: { ontologies: reducer }, middleware: g => g({ serializableCheck: false }) });
   const scopeKey = JSON.stringify(['', 'bfo', 'classes']);
   const ontology = new Ontology({ ontologyId: 'bfo', type: ['ontology'], preferredRoot: [] });
-  s.dispatch({ type: 'ontologies_set_tree_scope', payload: scopeKey });
+  s.dispatch(setTreeScope(scopeKey));
   const loadRoots = (obsolete: boolean) => {
     const requestKey = JSON.stringify([scopeKey, 'en', undefined, '', false, obsolete, true, false, []]);
     s.dispatch({ type: 'ontologies_set_tree_request_context', payload: { scopeKey, requestKey } });
@@ -108,7 +141,7 @@ for (const counts of [{ Country: 3, Area: 3 }, {}]) {
     const scopeKey = JSON.stringify(['', 'coho', 'individuals']);
     const requestKey = JSON.stringify([scopeKey, 'en', undefined, '', false, false, true, false, [subset]]);
     const ontology = new Ontology({ ontologyId: 'coho', type: ['ontology'], preferredRoot: [] });
-    s.dispatch({ type: 'ontologies_set_tree_scope', payload: scopeKey });
+    s.dispatch(setTreeScope(scopeKey));
     s.dispatch(setSelectedSubsets([subset]));
     s.dispatch({ type: 'ontologies_set_tree_request_context', payload: { scopeKey, requestKey } });
     const arg = { ontology, ontologyId: 'coho', entityType: 'individuals', treeScopeKey: scopeKey, requestKey };
@@ -140,7 +173,7 @@ for (const native of [true, false]) {
     const s = configureStore({ reducer: { ontologies: reducer }, middleware: g => g({ serializableCheck: false }) });
     const treeScopeKey = JSON.stringify(['', 'native', 'classes']);
     const ontology = new Ontology({ ontologyId: 'native', type: ['ontology'], preferredRoot: [] });
-    s.dispatch({ type: 'ontologies_set_tree_scope', payload: treeScopeKey });
+    s.dispatch(setTreeScope(treeScopeKey));
     s.dispatch(hideImported());
     const requestKey = JSON.stringify([treeScopeKey, 'en', undefined, '', false, false, false, false, []]);
     s.dispatch({ type: 'ontologies_set_tree_request_context', payload: { scopeKey: treeScopeKey, requestKey } });
@@ -164,7 +197,7 @@ for (const imports of [true, false]) {
     const s = configureStore({ reducer: { ontologies: reducer }, middleware: g => g({ serializableCheck: false }) });
     const scopeKey = JSON.stringify(['', 'native', 'classes']);
     const ontology = new Ontology({ ontologyId: 'native', type: ['ontology'], preferredRoot: [] });
-    s.dispatch({ type: 'ontologies_set_tree_scope', payload: scopeKey });
+    s.dispatch(setTreeScope(scopeKey));
     if (!imports) s.dispatch(hideImported());
     const requestKey = JSON.stringify([scopeKey, 'en', undefined, '', false, false, imports, false, []]);
     s.dispatch({ type: 'ontologies_set_tree_request_context', payload: { scopeKey, requestKey } });
@@ -195,7 +228,7 @@ for (const status of ['loading', 'failed', 'empty'] as const) {
     const s = configureStore({ reducer: { ontologies: reducer }, middleware: g => g({ serializableCheck: false }) });
     const scopeKey = JSON.stringify(['', 'native', 'classes']);
     const ontology = new Ontology({ ontologyId: 'native', type: ['ontology'], preferredRoot: [] });
-    s.dispatch({ type: 'ontologies_set_tree_scope', payload: scopeKey });
+    s.dispatch(setTreeScope(scopeKey));
     const requestKey = JSON.stringify([scopeKey, 'en', undefined, '', false, false, true, false, []]);
     s.dispatch({ type: 'ontologies_set_tree_request_context', payload: { scopeKey, requestKey } });
     const arg = { ontology, treeScopeKey: scopeKey, requestKey };
@@ -223,7 +256,7 @@ for (const status of ['loading', 'failed', 'empty'] as const) {
     const s = configureStore({ reducer: { ontologies: reducer }, middleware: g => g({ serializableCheck: false }) });
     const treeScopeKey = 'paging';
     const requestKey = 'current';
-    s.dispatch({ type: 'ontologies_set_tree_scope', payload: treeScopeKey });
+    s.dispatch(setTreeScope(treeScopeKey));
     s.dispatch({ type: 'ontologies_set_tree_request_context', payload: { scopeKey: treeScopeKey, requestKey } });
     const arg = { treeScopeKey, requestKey, entityIri: 'A', tableKey: 'A' };
     s.dispatch(getDirectChildrenEntities.pending('table', arg));

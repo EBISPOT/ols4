@@ -121,10 +121,13 @@ const initialState: OntologiesState = {
   specificRootIri: "",
 };
 
-// A subset belongs to one API, ontology and entity tab, not to the whole app.
+// Tree preferences and subsets belong to one API, ontology and entity tab.
 export const treeScopeKey = (apiUrl: string | undefined, ontologyId: string, entityType: string) =>
   JSON.stringify([apiUrl || "", ontologyId, entityType]);
-export const setTreeScope = createAction<string>("ontologies_set_tree_scope");
+export const setTreeScope = createAction(
+  "ontologies_set_tree_scope",
+  (scopeKey: string, preferredRoots = false) => ({ payload: { scopeKey, preferredRoots } })
+);
 export const setTreeRequestContext = createAction<{ scopeKey: string; requestKey: string }>(
   "ontologies_set_tree_request_context"
 );
@@ -195,10 +198,6 @@ function finishTreeRequest(state: Draft<OntologiesState>, action: any) {
 }
 
 export const resetTreeContent = createAction("ontologies_tree_reset_content");
-export const resetTreeSettings = createAction<{
-  entityType: string;
-  selectedEntity?: Entity;
-}>("ontologies_tree_reset_settings");
 
 export const enablePreferredRoots = createAction(
   "ontologies_preferred_enabled"
@@ -942,13 +941,19 @@ const ontologiesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(setTreeScope, (state, action) => {
-      if (state.treeScopeKey === action.payload) return;
+      // Remounts and term navigation in this scope retain user preferences.
+      if (state.treeScopeKey === action.payload.scopeKey) return;
       clearTreeContent(state);
-      state.treeScopeKey = action.payload;
+      state.treeScopeKey = action.payload.scopeKey;
       state.treeRequestKey = null;
       state.selectedSubsets = [];
       state.subsets = [];
       state.specificRootIri = "";
+      state.preferredRoots = action.payload.preferredRoots;
+      state.displayObsolete = initialState.displayObsolete;
+      state.displayImported = initialState.displayImported;
+      state.displaySiblings = initialState.displaySiblings;
+      state.displayCounts = initialState.displayCounts;
     });
     builder.addCase(setTreeRequestContext, (state, action) => {
       if (state.treeScopeKey !== action.payload.scopeKey) return;
@@ -1297,39 +1302,6 @@ const ontologiesSlice = createSlice({
       clearTreeContent(state);
       state.treeRequestKey = null;
     });
-    builder.addCase(
-      resetTreeSettings,
-      (
-        state: OntologiesState,
-        action: PayloadAction<{ entityType: string; selectedEntity?: Entity }>
-      ) => {
-        state.preferredRoots =
-          action.payload.entityType === "classes" &&
-          state.ontology!.getPreferredRoots().length > 0;
-
-        if (action.payload.selectedEntity) {
-          let selectedIsDescendantOfPreferredRoots = false;
-          for (let root of state.ontology!.getPreferredRoots()) {
-            if (
-              action.payload.selectedEntity
-                .getHierarchicalAncestorIris()
-                .indexOf(root) !== -1
-            ) {
-              selectedIsDescendantOfPreferredRoots = true;
-              break;
-            }
-          }
-          if (!selectedIsDescendantOfPreferredRoots) {
-            state.preferredRoots = false;
-          }
-        }
-        state.displayObsolete = false;
-        state.displayImported = true;
-        state.displaySiblings = false;
-        state.displayCounts = true;
-        state.manuallyExpandedNodes = [];
-      }
-    );
     builder.addCase(enablePreferredRoots, (state: OntologiesState) => {
       state.preferredRoots = true;
     });

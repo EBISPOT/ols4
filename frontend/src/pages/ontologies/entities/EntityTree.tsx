@@ -32,7 +32,6 @@ import {
   treeScopeKey,
   setTreeScope,
   setTreeRequestContext,
-  resetTreeSettings,
   showCounts,
   showObsolete,
   showImported,
@@ -74,7 +73,8 @@ export default function EntityTree({
   const subsets = ownsScope ? tree.subsets : [];
   const filteringBySubsets = selectedSubsets.length > 0 && !specifiedRootIri;
   const subsetTree = filteringBySubsets ? selectedSubsets : undefined;
-  const preferredRoots = ownsScope ? tree.preferredRoots : false;
+  const defaultPreferredRoots = entityType === "classes" && ontology.getPreferredRoots().length > 0;
+  const preferredRoots = ownsScope ? tree.preferredRoots : defaultPreferredRoots;
   const showObsoleteEnabled = !!selectedEntity?.isDeprecated() || (ownsScope && tree.displayObsolete);
   const showImportedEnabled = !ownsScope || tree.displayImported;
   const importedTermsHelpId = useId();
@@ -109,12 +109,8 @@ export default function EntityTree({
   const countRequests = useRef<any[]>([]);
 
   useEffect(() => {
-    dispatch(setTreeScope(scopeKey));
-  }, [dispatch, scopeKey]);
-
-  useEffect(() => {
-    dispatch(resetTreeSettings({ entityType, selectedEntity }));
-  }, [dispatch, scopeKey, selectedEntity?.getIri()]);
+    dispatch(setTreeScope(scopeKey, defaultPreferredRoots));
+  }, [dispatch, scopeKey, defaultPreferredRoots]);
 
   useEffect(() => {
     dispatch(setTreeRequestContext({ scopeKey, requestKey }));
@@ -467,7 +463,7 @@ export default function EntityTree({
                   inputProps={{ "aria-describedby": importedTermsHelpId }}
                 />
               }
-              label="Show imported terms"
+              label="Show imported terms in tree"
             />
           </Tooltip>
           <span id={importedTermsHelpId} hidden>{importedTermsHelp}</span>
