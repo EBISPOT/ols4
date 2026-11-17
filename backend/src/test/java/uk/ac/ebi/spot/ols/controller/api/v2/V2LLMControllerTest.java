@@ -110,6 +110,56 @@ class V2LLMControllerTest {
     }
 
     // ------------------------------------------------------------------
+    // includeObsoleteEntities reaches the search on every route
+    // ------------------------------------------------------------------
+
+    @Test
+    void everyVectorSearchRoutePassesIncludeObsoleteEntitiesThrough() throws Exception {
+        embeddingServiceClient.vectorToReturn = new float[] {1.0f};
+        classRepository.pageResult = onePage();
+        postgresClient.pageResult = onePage();
+        Pageable pageable = PageRequest.of(0, 20);
+        JsonTransformOptions options = new JsonTransformOptions();
+
+        controller.searchClassesByVector(List.of(1.0), pageable, "en", "m", null, true, true, options);
+        assertTrue(classRepository.searchVectorIncludeObsoleteEntities);
+        controller.searchClassesByText("q", pageable, "en", "m", null, true, false, options);
+        assertFalse(classRepository.searchVectorIncludeObsoleteEntities);
+        controller.searchClassesByText("q", pageable, "en", "m", null, true, true, options);
+        assertTrue(classRepository.searchVectorIncludeObsoleteEntities);
+
+        controller.searchClassesByVectorInOntology("efo", List.of(1.0), pageable, "en", "m", true, true, true, options);
+        assertTrue(classRepository.searchVectorInOntologyIncludeObsoleteEntities);
+        controller.searchClassesByTextInOntology("efo", "q", pageable, "en", "m", true, true, false, options);
+        assertFalse(classRepository.searchVectorInOntologyIncludeObsoleteEntities);
+        controller.searchClassesByTextInOntology("efo", "q", pageable, "en", "m", true, true, true, options);
+        assertTrue(classRepository.searchVectorInOntologyIncludeObsoleteEntities);
+
+        controller.searchEntitiesByText("q", pageable, "en", "m", null, true, true, options);
+        assertTrue(postgresClient.searchVectorIncludeObsoleteEntities);
+        controller.searchEntitiesByText("q", pageable, "en", "m", "efo", true, true, options);
+        assertTrue(postgresClient.searchVectorInOntologyIncludeObsoleteEntities);
+
+        controller.searchPropertiesByText("q", pageable, "en", "m", null, true, false, options);
+        assertFalse(postgresClient.searchVectorIncludeObsoleteEntities);
+        controller.searchPropertiesByText("q", pageable, "en", "m", null, true, true, options);
+        assertTrue(postgresClient.searchVectorIncludeObsoleteEntities);
+        controller.searchPropertiesByText("q", pageable, "en", "m", "efo", true, false, options);
+        assertFalse(postgresClient.searchVectorInOntologyIncludeObsoleteEntities);
+        controller.searchPropertiesByText("q", pageable, "en", "m", "efo", true, true, options);
+        assertTrue(postgresClient.searchVectorInOntologyIncludeObsoleteEntities);
+
+        controller.searchIndividualsByText("q", pageable, "en", "m", null, true, false, options);
+        assertFalse(postgresClient.searchVectorIncludeObsoleteEntities);
+        controller.searchIndividualsByText("q", pageable, "en", "m", null, true, true, options);
+        assertTrue(postgresClient.searchVectorIncludeObsoleteEntities);
+        controller.searchIndividualsByText("q", pageable, "en", "m", "efo", true, false, options);
+        assertFalse(postgresClient.searchVectorInOntologyIncludeObsoleteEntities);
+        controller.searchIndividualsByText("q", pageable, "en", "m", "efo", true, true, options);
+        assertTrue(postgresClient.searchVectorInOntologyIncludeObsoleteEntities);
+    }
+
+    // ------------------------------------------------------------------
     // POST /classes/llm_embedding
     // ------------------------------------------------------------------
 
@@ -120,7 +170,7 @@ class V2LLMControllerTest {
         classRepository.pageResult = onePage(classJson("http://example.org/EFO_0001", "Liver disease"));
 
         controller.searchClassesByVector(
-                List.of(1.0, 0.0, -2.5), pageable, "fr", "test_model", "efo", false, options);
+                List.of(1.0, 0.0, -2.5), pageable, "fr", "test_model", "efo", false, false, options);
 
         assertEquals("test_model", classRepository.searchVectorModel);
         assertArrayEquals(new float[] {1.0f, 0.0f, -2.5f}, classRepository.searchVectorArray);
@@ -136,7 +186,7 @@ class V2LLMControllerTest {
         classRepository.pageResult = onePage();
 
         controller.searchClassesByVector(
-                List.of(), PageRequest.of(0, 20), "en", "test_model", null, true, new JsonTransformOptions());
+                List.of(), PageRequest.of(0, 20), "en", "test_model", null, true, false, new JsonTransformOptions());
 
         assertArrayEquals(new float[0], classRepository.searchVectorArray);
     }
@@ -152,7 +202,7 @@ class V2LLMControllerTest {
         classRepository.pageResult = onePage();
 
         controller.searchClassesByVectorInOntology(
-                "efo", List.of(2.0, 4.0), pageable, "en", "test_model", true, false, options);
+                "efo", List.of(2.0, 4.0), pageable, "en", "test_model", true, false, false, options);
 
         assertEquals("efo", classRepository.searchVectorInOntologyOntologyId);
         assertEquals("test_model", classRepository.searchVectorInOntologyModel);
@@ -174,7 +224,7 @@ class V2LLMControllerTest {
         postgresClient.pageResult = onePage(classJson("http://example.org/EFO_0001", "Liver disease"));
 
         controller.searchEntitiesByText(
-                "liver", PageRequest.of(0, 20), "en", "test_model", null, true, new JsonTransformOptions());
+                "liver", PageRequest.of(0, 20), "en", "test_model", null, true, false, new JsonTransformOptions());
 
         assertEquals("test_model", embeddingServiceClient.lastModel);
         assertEquals("liver", embeddingServiceClient.lastText);
@@ -191,7 +241,7 @@ class V2LLMControllerTest {
         postgresClient.pageResult = onePage();
 
         controller.searchEntitiesByText(
-                "liver", PageRequest.of(0, 20), "en", "test_model", "efo", false, new JsonTransformOptions());
+                "liver", PageRequest.of(0, 20), "en", "test_model", "efo", false, false, new JsonTransformOptions());
 
         assertTrue(postgresClient.searchVectorInOntologyCalled);
         assertEquals("OntologyEntity", postgresClient.searchVectorInOntologyType);
@@ -207,7 +257,7 @@ class V2LLMControllerTest {
         postgresClient.pageResult = onePage();
 
         controller.searchEntitiesByText(
-                "liver", PageRequest.of(0, 20), "en", "test_model", "", true, new JsonTransformOptions());
+                "liver", PageRequest.of(0, 20), "en", "test_model", "", true, false, new JsonTransformOptions());
 
         assertFalse(postgresClient.searchVectorInOntologyCalled);
         assertTrue(postgresClient.searchVectorCalled);
@@ -224,7 +274,7 @@ class V2LLMControllerTest {
         JsonTransformOptions options = new JsonTransformOptions();
 
         controller.searchClassesByText(
-                "heart disease", PageRequest.of(0, 20), "en", "test_model", "efo", true, options);
+                "heart disease", PageRequest.of(0, 20), "en", "test_model", "efo", true, false, options);
 
         assertEquals("test_model", embeddingServiceClient.lastModel);
         assertEquals("heart disease", embeddingServiceClient.lastText);
@@ -245,7 +295,7 @@ class V2LLMControllerTest {
         classRepository.pageResult = onePage();
 
         controller.searchClassesByTextInOntology(
-                "efo", "heart disease", PageRequest.of(0, 20), "en", "test_model", true, false,
+                "efo", "heart disease", PageRequest.of(0, 20), "en", "test_model", true, false, false,
                 new JsonTransformOptions());
 
         assertEquals("efo", classRepository.searchVectorInOntologyOntologyId);
@@ -317,7 +367,7 @@ class V2LLMControllerTest {
         postgresClient.pageResult = onePage();
 
         controller.searchPropertiesByText(
-                "part of", PageRequest.of(0, 20), "en", "test_model", null, true, new JsonTransformOptions());
+                "part of", PageRequest.of(0, 20), "en", "test_model", null, true, false, new JsonTransformOptions());
 
         assertEquals("part of", embeddingServiceClient.lastText);
         assertEquals("OntologyProperty", postgresClient.searchVectorType);
@@ -331,7 +381,7 @@ class V2LLMControllerTest {
         postgresClient.pageResult = onePage();
 
         controller.searchPropertiesByText(
-                "part of", PageRequest.of(0, 20), "en", "test_model", "efo", true, new JsonTransformOptions());
+                "part of", PageRequest.of(0, 20), "en", "test_model", "efo", true, false, new JsonTransformOptions());
 
         assertTrue(postgresClient.searchVectorInOntologyCalled);
         assertEquals("OntologyProperty", postgresClient.searchVectorInOntologyType);
@@ -348,7 +398,7 @@ class V2LLMControllerTest {
         postgresClient.pageResult = onePage();
 
         controller.searchIndividualsByText(
-                "human", PageRequest.of(0, 20), "en", "test_model", null, true, new JsonTransformOptions());
+                "human", PageRequest.of(0, 20), "en", "test_model", null, true, false, new JsonTransformOptions());
 
         assertEquals("human", embeddingServiceClient.lastText);
         assertEquals("OntologyIndividual", postgresClient.searchVectorType);
@@ -361,7 +411,7 @@ class V2LLMControllerTest {
         postgresClient.pageResult = onePage();
 
         controller.searchIndividualsByText(
-                "human", PageRequest.of(0, 20), "en", "test_model", "efo", true, new JsonTransformOptions());
+                "human", PageRequest.of(0, 20), "en", "test_model", "efo", true, false, new JsonTransformOptions());
 
         assertTrue(postgresClient.searchVectorInOntologyCalled);
         assertEquals("OntologyIndividual", postgresClient.searchVectorInOntologyType);
@@ -416,6 +466,7 @@ class V2LLMControllerTest {
         private String searchVectorOntologyId;
         private JsonTransformOptions searchVectorOutputOpts;
         private boolean searchVectorIncludeCurations;
+        private boolean searchVectorIncludeObsoleteEntities;
 
         private String searchVectorInOntologyOntologyId;
         private String searchVectorInOntologyModel;
@@ -424,6 +475,7 @@ class V2LLMControllerTest {
         private String searchVectorInOntologyLang;
         private boolean searchVectorInOntologyIsDefiningOntology;
         private boolean searchVectorInOntologyIncludeCurations;
+        private boolean searchVectorInOntologyIncludeObsoleteEntities;
         private JsonTransformOptions searchVectorInOntologyOutputOpts;
 
         private Pageable getSimilarPageable;
@@ -443,7 +495,9 @@ class V2LLMControllerTest {
 
         @Override
         public Page<JsonElement> searchByVector(String modelName, float[] vector, Pageable pageable, String lang,
-                String ontologyId, JsonTransformOptions outputOpts, boolean includeCurations) {
+                String ontologyId, JsonTransformOptions outputOpts, boolean includeCurations,
+                boolean includeObsoleteEntities) {
+            this.searchVectorIncludeObsoleteEntities = includeObsoleteEntities;
             this.searchVectorModel = modelName;
             this.searchVectorArray = vector;
             this.searchVectorPageable = pageable;
@@ -457,7 +511,8 @@ class V2LLMControllerTest {
         @Override
         public Page<JsonElement> searchByVectorInOntology(String ontologyId, String modelName, float[] vector,
                 Pageable pageable, String lang, boolean isDefiningOntology, JsonTransformOptions outputOpts,
-                boolean includeCurations) {
+                boolean includeCurations, boolean includeObsoleteEntities) {
+            this.searchVectorInOntologyIncludeObsoleteEntities = includeObsoleteEntities;
             this.searchVectorInOntologyOntologyId = ontologyId;
             this.searchVectorInOntologyModel = modelName;
             this.searchVectorInOntologyArray = vector;
@@ -545,12 +600,14 @@ class V2LLMControllerTest {
         private List<Double> searchVectorVector;
         private String searchVectorModel;
         private boolean searchVectorIncludeCurations;
+        private boolean searchVectorIncludeObsoleteEntities;
 
         private boolean searchVectorInOntologyCalled;
         private String searchVectorInOntologyType;
         private String searchVectorInOntologyOntologyId;
         private boolean searchVectorInOntologyIsDefiningOntology;
         private boolean searchVectorInOntologyIncludeCurations;
+        private boolean searchVectorInOntologyIncludeObsoleteEntities;
 
         @Override
         public List<String> getEmbeddingModels() {
@@ -559,8 +616,10 @@ class V2LLMControllerTest {
 
         @Override
         public Page<JsonElement> searchByVector(String type, List<Double> vector, Pageable pageable,
-                String modelName, boolean includeCurations) {
+                String modelName, boolean includeCurations,
+                boolean includeObsoleteEntities) {
             this.searchVectorCalled = true;
+            this.searchVectorIncludeObsoleteEntities = includeObsoleteEntities;
             this.searchVectorType = type;
             this.searchVectorVector = vector;
             this.searchVectorModel = modelName;
@@ -570,8 +629,10 @@ class V2LLMControllerTest {
 
         @Override
         public Page<JsonElement> searchByVectorInOntology(String type, List<Double> vector, Pageable pageable,
-                String modelName, String ontologyId, boolean isDefiningOntology, boolean includeCurations) {
+                String modelName, String ontologyId, boolean isDefiningOntology, boolean includeCurations,
+                boolean includeObsoleteEntities) {
             this.searchVectorInOntologyCalled = true;
+            this.searchVectorInOntologyIncludeObsoleteEntities = includeObsoleteEntities;
             this.searchVectorInOntologyType = type;
             this.searchVectorInOntologyOntologyId = ontologyId;
             this.searchVectorInOntologyIsDefiningOntology = isDefiningOntology;

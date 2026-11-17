@@ -57,6 +57,9 @@ class V2LLMControllerIT {
     private static final String EFO_0100 = "http://example.org/EFO_0100";
     private static final String EFO_0101 = "http://example.org/EFO_0101";
     private static final String EFO_I100 = "http://example.org/EFO_I100";
+    private static final String EFO_OBSOLETE_CLASS = "http://example.org/EFO_1999";
+    private static final String EFO_OBSOLETE_PROPERTY = "http://example.org/EFO_0199";
+    private static final String EFO_OBSOLETE_INDIVIDUAL = "http://example.org/EFO_I999";
     private static final String MODEL = "test_model";
 
     // Query vector used by the fake EmbeddingServiceClient: chosen to exactly equal the fixture's
@@ -168,6 +171,89 @@ class V2LLMControllerIT {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.numElements").value(1))
                 .andExpect(jsonPath("$.elements[0].iri").value(EFO_0001));
+    }
+
+    // ------------------------------------------------------------------
+    // includeObsoleteEntities -- every vector search route, real Postgres. Each route's plain
+    // search above runs without the parameter against the same obsolete rows, which is what shows
+    // that it defaults to false; here each is asked for them.
+    // ------------------------------------------------------------------
+
+    private org.springframework.test.web.servlet.ResultActions expectObsoleteOnlyWhenAsked(
+            org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder request, String obsoleteIri)
+            throws Exception {
+        request.param("model", MODEL);
+        mockMvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.elements[?(@.iri == '" + obsoleteIri + "')]").isEmpty());
+        return mockMvc.perform(request.param("includeObsoleteEntities", "true"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.elements[?(@.iri == '" + obsoleteIri + "')]").isNotEmpty());
+    }
+
+    @Test
+    void classesLlmEmbeddingReturnsObsoleteClassesOnlyWhenAsked() throws Exception {
+        expectObsoleteOnlyWhenAsked(post("/api/v2/classes/llm_embedding")
+                .contentType(MediaType.APPLICATION_JSON).content(QUERY_VECTOR_JSON), EFO_OBSOLETE_CLASS);
+    }
+
+    @Test
+    void ontologyClassesLlmEmbeddingReturnsObsoleteClassesOnlyWhenAsked() throws Exception {
+        expectObsoleteOnlyWhenAsked(post("/api/v2/ontologies/efo/classes/llm_embedding")
+                .contentType(MediaType.APPLICATION_JSON).content(QUERY_VECTOR_JSON)
+                .param("isDefiningOntology", "true"), EFO_OBSOLETE_CLASS);
+    }
+
+    @Test
+    void entitiesLlmSearchReturnsObsoleteEntitiesOfEveryTypeOnlyWhenAsked() throws Exception {
+        expectObsoleteOnlyWhenAsked(get("/api/v2/entities/llm_search").param("q", "liver"), EFO_OBSOLETE_CLASS)
+                .andExpect(jsonPath("$.elements[?(@.iri == '" + EFO_OBSOLETE_PROPERTY + "')]").isNotEmpty())
+                .andExpect(jsonPath("$.elements[?(@.iri == '" + EFO_OBSOLETE_INDIVIDUAL + "')]").isNotEmpty());
+    }
+
+    @Test
+    void entitiesLlmSearchInAnOntologyReturnsObsoleteEntitiesOnlyWhenAsked() throws Exception {
+        expectObsoleteOnlyWhenAsked(get("/api/v2/entities/llm_search")
+                .param("q", "liver").param("ontologyId", "efo"), EFO_OBSOLETE_CLASS);
+    }
+
+    @Test
+    void classesLlmSearchReturnsObsoleteClassesOnlyWhenAsked() throws Exception {
+        expectObsoleteOnlyWhenAsked(get("/api/v2/classes/llm_search").param("q", "liver"), EFO_OBSOLETE_CLASS);
+    }
+
+    @Test
+    void ontologyClassesLlmSearchReturnsObsoleteClassesOnlyWhenAskedForDefinedTerms() throws Exception {
+        expectObsoleteOnlyWhenAsked(get("/api/v2/ontologies/efo/classes/llm_search")
+                .param("q", "liver").param("isDefiningOntology", "true"), EFO_OBSOLETE_CLASS);
+    }
+
+    @Test
+    void ontologyClassesLlmSearchReturnsObsoleteClassesOnlyWhenAskedForImportedTermsToo() throws Exception {
+        expectObsoleteOnlyWhenAsked(get("/api/v2/ontologies/efo/classes/llm_search")
+                .param("q", "liver"), EFO_OBSOLETE_CLASS);
+    }
+
+    @Test
+    void propertiesLlmSearchReturnsObsoletePropertiesOnlyWhenAsked() throws Exception {
+        expectObsoleteOnlyWhenAsked(get("/api/v2/properties/llm_search").param("q", "part of"), EFO_OBSOLETE_PROPERTY);
+    }
+
+    @Test
+    void propertiesLlmSearchInAnOntologyReturnsObsoletePropertiesOnlyWhenAsked() throws Exception {
+        expectObsoleteOnlyWhenAsked(get("/api/v2/properties/llm_search")
+                .param("q", "part of").param("ontologyId", "efo"), EFO_OBSOLETE_PROPERTY);
+    }
+
+    @Test
+    void individualsLlmSearchReturnsObsoleteIndividualsOnlyWhenAsked() throws Exception {
+        expectObsoleteOnlyWhenAsked(get("/api/v2/individuals/llm_search").param("q", "human"), EFO_OBSOLETE_INDIVIDUAL);
+    }
+
+    @Test
+    void individualsLlmSearchInAnOntologyReturnsObsoleteIndividualsOnlyWhenAsked() throws Exception {
+        expectObsoleteOnlyWhenAsked(get("/api/v2/individuals/llm_search")
+                .param("q", "human").param("ontologyId", "efo"), EFO_OBSOLETE_INDIVIDUAL);
     }
 
     // ------------------------------------------------------------------

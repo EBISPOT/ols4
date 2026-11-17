@@ -214,6 +214,10 @@
             "description": "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.",
             "type": "boolean"
           },
+          "includeObsoleteEntities": {
+            "description": "Whether to include obsolete entities in search results. Default is false.",
+            "type": "boolean"
+          },
           "model": {
             "description": "The embedding model to use. Must have can_embed=true from listEmbeddingModels.",
             "type": "string"
@@ -280,6 +284,10 @@
         "properties": {
           "includeCurations": {
             "description": "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.",
+            "type": "boolean"
+          },
+          "includeObsoleteEntities": {
+            "description": "Whether to include obsolete entities in search results. Default is false.",
             "type": "boolean"
           },
           "lang": {
