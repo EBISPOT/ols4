@@ -8,6 +8,7 @@ import uk.ac.ebi.spot.ols.service.TextTaggerService.TaggedEntity;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -17,9 +18,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * Direct unit coverage for {@link TextTaggerService}'s pure filtering/parsing logic --
- * {@code parseResponse}, {@code jsonArrayToStringList}, {@code applyPriority} (and its
- * {@code spanKey} helper), {@code applySourceFilter}, {@code applyMinLength}, and
- * {@code removeSubstrings} -- plus the public {@code isAvailable()}/{@code tagText()} default
+ * {@code parseResponse}, {@code jsonArrayToStringList}, {@code toCharOffsets},
+ * {@code applyPriority} (and its {@code spanKey} helper), {@code applySourceFilter},
+ * {@code applyMinLength}, and {@code removeSubstrings} -- plus the public
+ * {@code isAvailable()}/{@code tagText()} default
  * (un-started) state. Every method under test here is {@code private}; they are exercised via
  * reflection, the idiom this programme uses for private-method Tier B coverage (see
  * docs/backend-testing-strategy.md's Tier B methodology).
@@ -223,6 +225,66 @@ class TextTaggerServiceTest {
 
         assertThat(jsonArrayToStringList(service, obj, "subject_categories"))
                 .containsExactly("chemical", "hormone");
+    }
+
+    // ------------------------------------------------------------------
+    // toCharOffsets(List<TaggedEntity>, String)
+    // ------------------------------------------------------------------
+
+    @Test
+    void toCharOffsetsReturnsEntitiesUnchangedForAsciiText() throws Exception {
+        List<TaggedEntity> entities = List.of(entity(8, 18, "hp"));
+
+        assertThat(toCharOffsets(entities, "insulin resistance")).isSameAs(entities);
+    }
+
+    /**
+     * Issue #1477. The tagger counts UTF-8 bytes, and a curly apostrophe is three bytes but one
+     * char, so unconverted offsets put every later match two chars to the right: "insulin" here
+     * came back as "sulin r".
+     */
+    @Test
+    void toCharOffsetsCorrectsMatchesAfterAMultiByteCharacter() throws Exception {
+        String text = "a cell’s insulin resistance was measured"; // curly ’: three bytes in UTF-8
+
+        List<TaggedEntity> result = toCharOffsets(
+                List.of(taggerMatch(text, "insulin"), taggerMatch(text, "resistance")), text);
+
+        assertThat(result).extracting(e -> text.substring(e.start, e.end))
+                .containsExactly("insulin", "resistance");
+    }
+
+    @Test
+    void toCharOffsetsCountsASupplementaryCharacterAsTwoChars() throws Exception {
+        String text = "naïve 𝛽 cells secrete insulin into the blood"; // ï two bytes; 𝛽 four bytes, two chars
+
+        List<TaggedEntity> result = toCharOffsets(List.of(taggerMatch(text, "insulin")), text);
+
+        assertThat(result).extracting(e -> text.substring(e.start, e.end)).containsExactly("insulin");
+    }
+
+    @Test
+    void toCharOffsetsConvertsBothEndsOfAMatchThatContainsAMultiByteCharacter() throws Exception {
+        String text = "Sjögren syndrome and insulin levels"; // ö: two bytes in UTF-8
+
+        List<TaggedEntity> result = toCharOffsets(
+                List.of(taggerMatch(text, "Sjögren syndrome"), taggerMatch(text, "insulin")), text);
+
+        assertThat(result).extracting(e -> text.substring(e.start, e.end))
+                .containsExactly("Sjögren syndrome", "insulin");
+    }
+
+    @Test
+    void toCharOffsetsKeepsEveryOtherField() throws Exception {
+        String text = "café insulin"; // é is two bytes: "insulin" is bytes 6-13, chars 5-12
+        TaggedEntity original = new TaggedEntity(6, 13, "insulin", "http://purl.obolibrary.org/obo/CHEBI_5931",
+                "chebi", "exact", "sssom-mappings", List.of("chemical"), true);
+
+        TaggedEntity result = toCharOffsets(List.of(original), text).get(0);
+
+        assertThat(result.start).isEqualTo(5);
+        assertThat(result.end).isEqualTo(12);
+        assertThat(result).usingRecursiveComparison().ignoringFields("start", "end").isEqualTo(original);
     }
 
     // ------------------------------------------------------------------
@@ -475,6 +537,13 @@ class TextTaggerServiceTest {
                 start, end, "label", "http://example.org/iri", ontologyId, null, source, null, false);
     }
 
+    /** The entity the tagger reports for {@code match} in {@code text}: offsets in UTF-8 bytes. */
+    private static TaggedEntity taggerMatch(String text, String match) {
+        int start = text.substring(0, text.indexOf(match)).getBytes(StandardCharsets.UTF_8).length;
+        int end = start + match.getBytes(StandardCharsets.UTF_8).length;
+        return new TaggedEntity(start, end, match, "http://example.org/iri", "chebi", null, null, null, false);
+    }
+
     // ------------------------------------------------------------------
     // Reflection helpers (all methods under test are private)
     // ------------------------------------------------------------------
@@ -500,6 +569,13 @@ class TextTaggerServiceTest {
         Method m = TextTaggerService.class.getDeclaredMethod("applyPriority", List.class, List.class);
         m.setAccessible(true);
         return (List<TaggedEntity>) invoke(m, svc, entities, priorityOntologyIds);
+    }
+
+    @SuppressWarnings("unchecked")
+    private static List<TaggedEntity> toCharOffsets(List<TaggedEntity> entities, String text) throws Exception {
+        Method m = TextTaggerService.class.getDeclaredMethod("toCharOffsets", List.class, String.class);
+        m.setAccessible(true);
+        return (List<TaggedEntity>) invoke(m, null, entities, text);
     }
 
     private static long spanKey(int start, int end) throws Exception {

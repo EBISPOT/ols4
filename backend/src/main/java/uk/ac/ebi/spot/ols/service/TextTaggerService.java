@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.Connection;
@@ -219,7 +220,7 @@ public class TextTaggerService {
                 return Collections.emptyList();
             }
 
-            List<TaggedEntity> entities = parseResponse(responseLine);
+            List<TaggedEntity> entities = toCharOffsets(parseResponse(responseLine), sanitised);
             entities = applyMinLength(entities, minLength);
             if (!includeSubstrings) {
                 entities = removeSubstrings(entities);
@@ -262,8 +263,10 @@ public class TextTaggerService {
         ProcessBuilder pb = new ProcessBuilder(cmd);
         pb.redirectErrorStream(false);
         process = pb.start();
-        processStdin = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
-        processStdout = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        // UTF-8 both ways, whatever the platform default: the tagger reads and
+        // writes UTF-8, and toCharOffsets relies on that encoding
+        processStdin = new BufferedWriter(new OutputStreamWriter(process.getOutputStream(), StandardCharsets.UTF_8));
+        processStdout = new BufferedReader(new InputStreamReader(process.getInputStream(), StandardCharsets.UTF_8));
         currentDelimiters = delimiters;
         available = true;
 
@@ -345,6 +348,48 @@ public class TextTaggerService {
             result.add(el.getAsString());
         }
         return result.isEmpty() ? null : result;
+    }
+
+    // ------------------------------------------------------------------
+    // Offset conversion
+    // ------------------------------------------------------------------
+
+    /**
+     * Convert the tagger's offsets into indices into {@code text}.
+     *
+     * <p>The tagger matches on the UTF-8 bytes it is sent, so its offsets
+     * count bytes, while Java strings and the frontend (which slices the
+     * returned text with them) count UTF-16 chars.  The two only agree for
+     * ASCII: a curly apostrophe is three bytes but one char, so without this
+     * every match after one is reported two chars too far right (#1477).</p>
+     */
+    private static List<TaggedEntity> toCharOffsets(List<TaggedEntity> entities, String text) {
+        byte[] utf8 = text.getBytes(StandardCharsets.UTF_8);
+        if (entities.isEmpty() || utf8.length == text.length()) {
+            return entities; // one byte per char: the offsets already agree
+        }
+
+        // charIndex[b] = index in text of the char that byte b belongs to
+        int[] charIndex = new int[utf8.length + 1];
+        int nextChar = 0;
+        for (int b = 0; b < utf8.length; b++) {
+            if ((utf8[b] & 0xC0) == 0x80) {
+                charIndex[b] = charIndex[b - 1]; // continuation byte, same char
+            } else {
+                charIndex[b] = nextChar;
+                // a four-byte sequence is a supplementary character: two chars
+                nextChar += (utf8[b] & 0xF8) == 0xF0 ? 2 : 1;
+            }
+        }
+        charIndex[utf8.length] = nextChar;
+
+        List<TaggedEntity> converted = new ArrayList<>(entities.size());
+        for (TaggedEntity e : entities) {
+            converted.add(new TaggedEntity(charIndex[e.start], charIndex[e.end],
+                    e.termLabel, e.termIri, e.ontologyId, e.stringType, e.source,
+                    e.subjectCategories, e.isObsolete));
+        }
+        return converted;
     }
 
     // ------------------------------------------------------------------

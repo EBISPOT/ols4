@@ -62,6 +62,7 @@ class TextTaggerServiceProcessIT {
                 "ontology_id\tlabel\tiri\tstring_type\tcurated_from_source\n"
                         + "chebi\tinsulin\thttp://purl.obolibrary.org/obo/CHEBI_5931\texact\tsssom-mappings\n"
                         + "hp\tresistance\thttp://example.org/HP_0000001\t\t\n"
+                        + "mondo\tSjögren syndrome\thttp://example.org/MONDO_0000001\t\t\n"
         ).getBytes(StandardCharsets.UTF_8));
         build.getOutputStream().close();
         String buildLog = new String(build.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
@@ -105,6 +106,25 @@ class TextTaggerServiceProcessIT {
         assertThat(result.get(0).end).isEqualTo(7);
         assertThat(result.get(1).start).isEqualTo(8);
         assertThat(result.get(1).end).isEqualTo(18);
+    }
+
+    /**
+     * Issue #1477: the binary reports UTF-8 byte offsets, and {@code tagText} must turn them into
+     * offsets into the Java string, which the frontend slices the returned text with. The curly
+     * apostrophe (three bytes, one char) shifts every match after it; matching the non-ASCII
+     * label also needs the text to reach the binary, and the label to come back, as UTF-8.
+     */
+    @Test
+    void tagTextReturnsOffsetsIntoTheTextWhenItContainsNonAsciiCharacters() throws Exception {
+        startProcess(service, null);
+        String text = "In Sjögren syndrome, a cell’s insulin resistance may change."; // UTF-8: ö two bytes, ’ three
+
+        List<TaggedEntity> result = service.tagText(text, null, null, null, 3, true);
+
+        assertThat(result).extracting(e -> e.termLabel)
+                .containsExactly("Sjögren syndrome", "insulin", "resistance");
+        assertThat(result).extracting(e -> text.substring(e.start, e.end))
+                .containsExactly("Sjögren syndrome", "insulin", "resistance");
     }
 
     @Test
