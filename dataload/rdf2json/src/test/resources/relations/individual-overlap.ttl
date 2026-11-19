@@ -1,0 +1,27 @@
+@prefix : <https://example.org/relations#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+<https://example.org/relations> a owl:Ontology .
+:p a owl:ObjectProperty ; rdfs:label "part of" .
+:pInverse a owl:ObjectProperty ; owl:inverseOf :p ; rdfs:label "has part" .
+:q a owl:ObjectProperty ; owl:inverseOf :qInverse ; rdfs:label "member of" .
+:qInverse a owl:ObjectProperty ; rdfs:label "has member" .
+:unconfigured a owl:ObjectProperty .
+:Top a owl:Class ; rdfs:label "Top" .
+:Target a owl:Class ; rdfs:subClassOf :Top ; rdfs:label "Target" .
+:Both a owl:NamedIndividual ; rdfs:label "Direct and restriction" ; :p :Target ; rdf:type [ a owl:Restriction ; owl:onProperty :q ; owl:someValuesFrom :Target ] .
+:Multi a owl:NamedIndividual ; rdfs:label "Two restrictions" ; rdf:type [ a owl:Restriction ; owl:onProperty :p ; owl:someValuesFrom :Target ], [ a owl:Restriction ; owl:onProperty :q ; owl:someValuesFrom :Target ] .
+:Duplicate a owl:NamedIndividual ; rdf:type [ a owl:Restriction ; owl:onProperty :p ; owl:someValuesFrom :Target ], [ a owl:Restriction ; owl:onProperty :p ; owl:someValuesFrom :Target ] .
+:Direct a owl:NamedIndividual ; :p :Target ; :q :Target .
+:Single a owl:NamedIndividual ; rdf:type [ a owl:Restriction ; owl:onProperty :p ; owl:someValuesFrom :Target ] .
+:Self a owl:NamedIndividual ; :p :Self ; rdf:type [ a owl:Restriction ; owl:onProperty :p ; owl:someValuesFrom :Self ] .
+:Missing a owl:NamedIndividual ; :p :Unknown ; rdf:type [ a owl:Restriction ; owl:onProperty :p ; owl:someValuesFrom :Unknown ] .
+:Off a owl:NamedIndividual ; rdf:type [ a owl:Restriction ; owl:onProperty :unconfigured ; owl:someValuesFrom :Target ] .
+:Forall a owl:NamedIndividual ; rdf:type [ a owl:Restriction ; owl:onProperty :p ; owl:allValuesFrom :Target ] .
+:Intersection a owl:NamedIndividual ; rdf:type [ owl:intersectionOf (:Target [ a owl:Restriction ; owl:onProperty :p ; owl:someValuesFrom :Top ]) ] .
+:Nested a owl:NamedIndividual ; rdf:type [ a owl:Restriction ; owl:onProperty :p ; owl:someValuesFrom [ owl:intersectionOf (:Target :Top) ] ] .
+# A recognized relation icon makes the browser regression directly visible.
+<http://purl.obolibrary.org/obo/BFO_0000050> a owl:ObjectProperty ; owl:inverseOf :hasPart .
+:hasPart a owl:ObjectProperty .
+:Visible a owl:NamedIndividual ; rdfs:label "Visible part relation" ; <http://purl.obolibrary.org/obo/BFO_0000050> :Target ; rdf:type [ a owl:Restriction ; owl:onProperty :q ; owl:someValuesFrom :Target ] .

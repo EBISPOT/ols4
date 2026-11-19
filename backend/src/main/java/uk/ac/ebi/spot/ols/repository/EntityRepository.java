@@ -28,6 +28,17 @@ public class EntityRepository {
     @Autowired
     OlsSearchClient searchClient;
 
+    @Autowired
+    uk.ac.ebi.spot.ols.repository.postgres.OlsPostgresClient postgresClient;
+
+    public org.springframework.data.domain.Page<JsonElement> getTreeAncestors(String ontologyId, String iri,
+            Pageable pageable, String lang, JsonTransformOptions outputOpts) {
+        Validation.validateOntologyId(ontologyId);
+        Validation.validateLang(lang);
+        return postgresClient.getTreeAncestors(ontologyId, iri, pageable)
+                .map(e -> JsonTransformer.transformJson(e, lang, outputOpts));
+    }
+
 
     public OlsFacetedResultsPage<JsonElement> find(
             Pageable pageable, String lang, String search, String searchFields, String boostFields, String facetFields, boolean exactMatch, Collection<String> excludeOntologyIds, Map<String, Collection<String>> properties, JsonTransformOptions outputOpts) throws IOException {

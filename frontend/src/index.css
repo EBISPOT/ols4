@@ -1311,6 +1311,10 @@ filter: gray;
   color: black !important;
 }
 
+.jstree a.imported-tree-link {
+  @apply text-gray-600 !important;
+}
+
 .jstree a:hover {
   border-bottom: 1px dashed black;
 }

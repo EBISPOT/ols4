@@ -37,11 +37,12 @@ public class ShortFormAnnotator {
 				preferredPrefix = graph.config.get("id").toString().toUpperCase();
 			}
 
-				String shortForm = extractShortForm(graph, ontologyBaseUris, preferredPrefix, shortFormPattern, c.uri);
+				ExtractedShortForm extracted = extractShortForm(graph, ontologyBaseUris, preferredPrefix, shortFormPattern, c.uri);
+				String shortForm = extracted.value();
 
 			/*
 			CURIEs are formed by following rules:
-			If shortFormExtractionPattern is configured, replace first underscore with colon (custom extraction needs custom CURIE)
+			If shortFormExtractionPattern matches the IRI, join PreferredPrefix and the captured local part with a colon.
 			If there is only one underscore "_" AND the characters before the underscore are PreferredPrefix then replace the underscore with colon ":"
 			If there is only one underscore "_" AND the characters after the underscore are numbers then replace the underscore with colon ":"
 			If there is only one underscore "_" and the characters after the underscore are not just numbers then just keep the curie same as shortform
@@ -49,8 +50,8 @@ public class ShortFormAnnotator {
 			*/
 				String curie;
 
-				// If custom shortFormExtractionPattern is used, construct CURIE using prefix directly to handle prefixes containing underscores
-				if (shortFormPattern != null && !shortFormPattern.isEmpty() && shortForm.contains("_")) {
+				// A configured pattern can miss imported IRIs, which still use the default rules.
+				if (extracted.customPatternMatched()) {
 					curie = preferredPrefix + ":" + shortForm.substring(preferredPrefix.length() + 1);
 				} else {
 					// Default CURIE generation logic
@@ -84,11 +85,13 @@ public class ShortFormAnnotator {
 
 	}
 	
-	private static String extractShortForm(OntologyGraph graph, Set<String> ontologyBaseUris, String preferredPrefix,
+	private record ExtractedShortForm(String value, boolean customPatternMatched) {}
+
+	private static ExtractedShortForm extractShortForm(OntologyGraph graph, Set<String> ontologyBaseUris, String preferredPrefix,
 										   String shortFormPattern, String uri) {
 
 		if (uri.startsWith("urn:")) {
-			return uri.substring(4);
+			return new ExtractedShortForm(uri.substring(4), false);
 		}
 
 		// Check if there's a custom short form extraction pattern in config
@@ -99,9 +102,9 @@ public class ShortFormAnnotator {
 				if (matcher.matches() && matcher.groupCount() > 0) {
 					String localPart = matcher.group(1);
 					if (preferredPrefix != null) {
-						return preferredPrefix + "_" + localPart;
+						return new ExtractedShortForm(preferredPrefix + "_" + localPart, true);
 					} else {
-						return localPart;
+						return new ExtractedShortForm(localPart, false);
 					}
 				}
 			} catch (Exception e) {
@@ -117,20 +120,20 @@ public class ShortFormAnnotator {
 
 		for (String baseUri : ontologyBaseUris) {
 			if (uri.startsWith(baseUri) && preferredPrefix != null) {
-				return preferredPrefix + "_" + uri.substring(baseUri.length());
+				return new ExtractedShortForm(preferredPrefix + "_" + uri.substring(baseUri.length()), false);
 			}
 		}
 
 		if (uri.contains("/") || uri.contains("#")) {
 
-			return uri.substring(
+			return new ExtractedShortForm(uri.substring(
 					Math.max(
 							uri.lastIndexOf('/'),
-							uri.lastIndexOf('#')) + 1);
+							uri.lastIndexOf('#')) + 1), false);
 
 		} else {
 
-			return uri;
+			return new ExtractedShortForm(uri, false);
 		}
 	}
 

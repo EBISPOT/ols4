@@ -1,0 +1,187 @@
+[
+  {
+    "iri": "https://example.org/relations#Both",
+    "type": [
+      "entity",
+      "individual"
+    ],
+    "curie": {
+      "type": [
+        "literal"
+      ],
+      "value": "RELATIONS:Both"
+    },
+    "directAncestor": [],
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "https://example.org/relations#Target",
+      "https://example.org/relations#Top"
+    ],
+    "hierarchicalParent": [
+      {
+        "type": [
+          "reification"
+        ],
+        "value": "https://example.org/relations#Target",
+        "axioms": [
+          {
+            "childRelationToParent": "https://example.org/relations#p",
+            "parentRelationToChild": "https://example.org/relations#pInverse"
+          },
+          {
+            "childRelationToParent": "https://example.org/relations#q",
+            "parentRelationToChild": "https://example.org/relations#qInverse"
+          }
+        ]
+      }
+    ],
+    "hierarchicalProperty": {
+      "type": [
+        "literal"
+      ],
+      "value": "https://example.org/relations#p"
+    },
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "https://example.org/relations#q",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "https://example.org/relations#Target",
+        "isObsolete": false
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "type": [
+        "literal"
+      ],
+      "value": "Direct and restriction"
+    },
+    "https://example.org/relations#p": "https://example.org/relations#Target",
+    "imported": false,
+    "isObsolete": false,
+    "label": [
+      {
+        "type": [
+          "literal"
+        ],
+        "value": "Direct and restriction"
+      }
+    ],
+    "numDescendants": 0,
+    "numHierarchicalDescendants": 0,
+    "ontologyId": {
+      "type": [
+        "literal"
+      ],
+      "value": "relations"
+    },
+    "ontologyIri": {
+      "type": [
+        "literal"
+      ],
+      "value": "https://example.org/relations"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": {
+      "type": [
+        "literal"
+      ],
+      "value": "RELATIONS_Both"
+    }
+  },
+  {
+    "iri": "https://example.org/relations#Multi",
+    "type": [
+      "entity",
+      "individual"
+    ],
+    "curie": {
+      "type": [
+        "literal"
+      ],
+      "value": "RELATIONS:Multi"
+    },
+    "directAncestor": [],
+    "hasDirectChildren": false,
+    "hasDirectParents": false,
+    "hasHierarchicalChildren": false,
+    "hasHierarchicalParents": true,
+    "hierarchicalAncestor": [
+      "https://example.org/relations#Target",
+      "https://example.org/relations#Top"
+    ],
+    "hierarchicalParent": [
+      {
+        "type": [
+          "reification"
+        ],
+        "value": "https://example.org/relations#Target",
+        "axioms": [
+          {
+            "childRelationToParent": "https://example.org/relations#p",
+            "parentRelationToChild": "https://example.org/relations#pInverse"
+          },
+          {
+            "childRelationToParent": "https://example.org/relations#q",
+            "parentRelationToChild": "https://example.org/relations#qInverse"
+          }
+        ]
+      }
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "https://example.org/relations#p",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "https://example.org/relations#Target",
+        "isObsolete": false
+      },
+      {
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2002/07/owl#onProperty": "https://example.org/relations#q",
+        "http://www.w3.org/2002/07/owl#someValuesFrom": "https://example.org/relations#Target",
+        "isObsolete": false
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": {
+      "type": [
+        "literal"
+      ],
+      "value": "Two restrictions"
+    },
+    "imported": false,
+    "isObsolete": false,
+    "label": [
+      {
+        "type": [
+          "literal"
+        ],
+        "value": "Two restrictions"
+      }
+    ],
+    "numDescendants": 0,
+    "numHierarchicalDescendants": 0,
+    "ontologyId": {
+      "type": [
+        "literal"
+      ],
+      "value": "relations"
+    },
+    "ontologyIri": {
+      "type": [
+        "literal"
+      ],
+      "value": "https://example.org/relations"
+    },
+    "searchableAnnotationValues": false,
+    "shortForm": {
+      "type": [
+        "literal"
+      ],
+      "value": "RELATIONS_Multi"
+    }
+  }
+]

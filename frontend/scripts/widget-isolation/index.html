@@ -1,0 +1,7 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Mounted widget isolation regression</title>
+<link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="./treestyles.css">
+<style>body{font:16px system-ui;padding:24px}main{display:grid;grid-template-columns:1fr 1fr;gap:24px}section{border:1px solid #ccc;padding:16px}button{padding:8px;border:1px solid #555;margin:8px}pre{white-space:pre-wrap}h1,h2{font-size:22px}</style>
+<h1>Mounted widget isolation regression</h1><p>Actual widget factory, real local API; no mocked requests.</p>
+<button id="run">Run regression</button><button id="navigate">Navigate left to mixed</button><button id="remount">Remount left</button>
+<main><section><h2>Left widget</h2><div id="left"></div></section><section><h2>Right widget</h2><div id="right"></div></section></main>
+<pre id="result" role="status">Ready</pre><script src="./harness.js"></script></html>
