@@ -17,6 +17,7 @@ const SUBSET_PROPERTY_IRI =
 
 export interface OntologiesState {
   treeScopeKey: string | null;
+  treePreferencesScopeKey: string | null;
   treeRequestKey: string | null;
   rootStatus: "idle" | "loading" | "succeeded" | "failed";
   treeRequestErrors: Record<string, boolean>;
@@ -78,6 +79,7 @@ export interface SubsetOption {
 
 const initialState: OntologiesState = {
   treeScopeKey: null,
+  treePreferencesScopeKey: null,
   treeRequestKey: null,
   treeRequests: {},
   treeRequestErrors: {},
@@ -121,13 +123,15 @@ const initialState: OntologiesState = {
   specificRootIri: "",
 };
 
-// Tree preferences and subsets belong to one API, ontology and entity tab.
+// Results and subsets stay type-specific; display choices follow mixed class /
+// individual navigation and explicit tab changes within the same API/ontology.
 export const treeScopeKey = (apiUrl: string | undefined, ontologyId: string, entityType: string) =>
   JSON.stringify([apiUrl || "", ontologyId, entityType]);
-export const setTreeScope = createAction(
-  "ontologies_set_tree_scope",
-  (scopeKey: string, preferredRoots = false) => ({ payload: { scopeKey, preferredRoots } })
-);
+export const treePreferencesScopeKey = (apiUrl: string | undefined, ontologyId: string) =>
+  JSON.stringify([apiUrl || "", ontologyId]);
+export const setTreeScope = createAction<{
+  scopeKey: string; preferencesScopeKey: string; preferredRoots: boolean;
+}>("ontologies_set_tree_scope");
 export const setTreeRequestContext = createAction<{ scopeKey: string; requestKey: string }>(
   "ontologies_set_tree_request_context"
 );
@@ -941,7 +945,7 @@ const ontologiesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(setTreeScope, (state, action) => {
-      // Remounts and term navigation in this scope retain user preferences.
+      // Remounts retain settings; entity-type changes still invalidate all data.
       if (state.treeScopeKey === action.payload.scopeKey) return;
       clearTreeContent(state);
       state.treeScopeKey = action.payload.scopeKey;
@@ -949,6 +953,8 @@ const ontologiesSlice = createSlice({
       state.selectedSubsets = [];
       state.subsets = [];
       state.specificRootIri = "";
+      if (state.treePreferencesScopeKey === action.payload.preferencesScopeKey) return;
+      state.treePreferencesScopeKey = action.payload.preferencesScopeKey;
       state.preferredRoots = action.payload.preferredRoots;
       state.displayObsolete = initialState.displayObsolete;
       state.displayImported = initialState.displayImported;

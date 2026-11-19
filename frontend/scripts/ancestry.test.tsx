@@ -7,7 +7,7 @@ import { StaticRouter } from 'react-router-dom/server';
 import { configureStore } from '@reduxjs/toolkit';
 import reducer, {
   getOntology, getAncestors, getNodeChildren, getRootEntities, getDirectChildrenCount,
-  setTreeScope, setTreeRequestContext, resetTreeContent, hideImported,
+  setTreeScope as initializeTreeScope, treePreferencesScopeKey, setTreeRequestContext, resetTreeContent, hideImported,
   enablePreferredRoots, showSiblings, closeNode, openNode,
 } from '../src/pages/ontologies/ontologiesSlice';
 import EntityTree from '../src/pages/ontologies/entities/EntityTree';
@@ -21,6 +21,11 @@ const connectorIri = 'http://purl.obolibrary.org/obo/IAO_0000030';
 const measurementIri = 'http://www.ebi.ac.uk/efo/EFO_0001444';
 const selectedIri = 'http://www.ebi.ac.uk/efo/EFO_0006784';
 const ontology = new Ontology({ ontologyId: 'efo', type: ['ontology'], preferredRoot: [rootIri] });
+const setTreeScope = (scopeKey: string, preferredRoots = false) => {
+  const preferencesScopeKey = scopeKey.startsWith('[')
+    ? treePreferencesScopeKey(...JSON.parse(scopeKey).slice(0, 2) as [string, string]) : scopeKey;
+  return initializeTreeScope({ scopeKey, preferencesScopeKey, preferredRoots });
+};
 const scopeKey = JSON.stringify(['', 'efo', 'classes']);
 const connectorId = `${rootIri};${connectorIri}`;
 const greyConnectorLink = /<a [^>]*class="link-default imported-tree-link">information entity<\/a>/;
@@ -282,7 +287,8 @@ for (const selectedName of ['I','K','L']) for (const preferred of [false,true]) 
     const entityType=selectedName==='K'?'classes':'individuals';
     s.dispatch(setTreeScope(scopeKey)); s.dispatch(hideImported());
     if(preferred) s.dispatch(enablePreferredRoots());
-    const requestKey=JSON.stringify([scopeKey,'en',selectedEntity,'',preferred,false,false,false,[]]);
+    const effectivePreferred = entityType === 'classes' && preferred;
+    const requestKey=JSON.stringify([scopeKey,'en',selectedEntity,'',effectivePreferred,false,false,false,[]]);
     s.dispatch(setTreeRequestContext({scopeKey,requestKey}));
     const input = {...args, ontology:ont, ontologyId:'mixed', entityType, selectedEntity, entityIri:iri(selectedName), treeScopeKey:scopeKey, requestKey};
     const original=globalThis.fetch;

@@ -4,7 +4,7 @@ import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import reducer, { setSelectedSubsets, getSubsets, setTreeScope } from '../src/pages/ontologies/ontologiesSlice';
+import reducer, { setSelectedSubsets, getSubsets, setTreeScope as initializeTreeScope, treePreferencesScopeKey } from '../src/pages/ontologies/ontologiesSlice';
 import EntityTree from '../src/pages/ontologies/entities/EntityTree';
 import EntityList from '../src/pages/ontologies/entities/EntityList';
 import { getDirectChildrenEntities } from '../src/pages/ontologies/ontologiesSlice';
@@ -13,6 +13,12 @@ import { StaticRouter } from 'react-router-dom/server';
 import { thingFromJsonProperties } from '../src/app/util';
 import { getRootEntities, getAncestors, getTreeMemberCounts, getDirectChildrenCount, hideCounts, showCounts, hideImported, showObsolete, setTreeRequestContext } from '../src/pages/ontologies/ontologiesSlice';
 
+// Initialize the same two ownership scopes used by the mounted component.
+const setTreeScope = (scopeKey: string, preferredRoots = false) => {
+  const preferencesScopeKey = scopeKey.startsWith('[')
+    ? treePreferencesScopeKey(...JSON.parse(scopeKey).slice(0, 2) as [string, string]) : scopeKey;
+  return initializeTreeScope({ scopeKey, preferencesScopeKey, preferredRoots });
+};
 const subset = 'http://www.ebi.ac.uk/coho#IHCC_subset';
 
 test('selected obsolete paths outside preferred roots do not overwrite display preferences', () => {
@@ -52,6 +58,8 @@ for (const props of [{ id: 'efo', type: 'classes' }, { id: 'coho', type: 'indivi
     const s = configureStore({ reducer: { ontologies: reducer }, middleware: g => g({ serializableCheck: false }) });
     const treeScopeKey = '["","coho","classes"]';
     s.dispatch(setTreeScope(treeScopeKey));
+    s.dispatch(hideImported());
+    s.dispatch(hideCounts());
     s.dispatch({ type: 'ontologies_set_tree_request_context', payload: { scopeKey: treeScopeKey, requestKey: 'coho' } });
     s.dispatch(setSelectedSubsets([subset]));
     const arg = { treeScopeKey, requestKey: 'coho' };
@@ -63,6 +71,11 @@ for (const props of [{ id: 'efo', type: 'classes' }, { id: 'coho', type: 'indivi
       onNavigateToEntity={() => {}} onNavigateToOntology={() => {}}
     /></Provider>);
     assert(!html.includes('IHCC leaked option'));
+    const sharesPreferences = props.id === 'coho' && !props.apiUrl;
+    for (const label of ['Show imported terms in tree', 'Show counts']) {
+      const control = html.match(/<label\b[\s\S]*?<\/label>/g)!.find(value => value.includes(label))!;
+      assert.equal(control.includes('checked=""'), !sharesPreferences, `${label} first render ownership`);
+    }
   });
 }
 

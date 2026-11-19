@@ -44,7 +44,7 @@ document.querySelector<HTMLButtonElement>('#run')!.onclick = async function() {
     pass('PASS late individual A2241 reaches documented public navigation callback; sibling unchanged');
     // Ordinary app lists retain Router navigation; use a real table row and actual Router event.
     const s=createAppStore();
-    s.dispatch(setTreeScope('hosted'));
+    s.dispatch(setTreeScope({ scopeKey: 'hosted', preferencesScopeKey: 'hosted', preferredRoots: false }));
     s.dispatch({type:'ontologies_set_tree_request_context',payload:{scopeKey:'hosted',requestKey:'hosted'}});
     ReactDOM.render(<Provider store={s}><MemoryRouter><Location/><EntityList ontologyId="paging" entityType="classes" parentEntityIri={iri} tableKey="hosted" apiUrl={apiUrl} treeScopeKey="hosted" requestKey="hosted" /></MemoryRouter></Provider>,document.querySelector('#hosted'));
     await until(()=>document.querySelector('#hosted tbody tr'),'host Router real-API rows missing');

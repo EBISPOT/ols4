@@ -1,13 +1,19 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { configureStore } from '@reduxjs/toolkit';
-import reducer, { getOntology, getAncestors, getRootEntities, getNodeChildren, getSubsets, getTreeMemberCounts, getDirectChildrenCount, getDirectChildrenEntities, setSelectedSubsets, resetTreeContent, setTreeScope, hideImported, showObsolete, showSiblings, hideCounts, disablePreferredRoots } from '../src/pages/ontologies/ontologiesSlice';
+import reducer, { getOntology, getAncestors, getRootEntities, getNodeChildren, getSubsets, getTreeMemberCounts, getDirectChildrenCount, getDirectChildrenEntities, setSelectedSubsets, resetTreeContent, setTreeScope as initializeTreeScope, treePreferencesScopeKey, hideImported, showObsolete, showSiblings, hideCounts, disablePreferredRoots } from '../src/pages/ontologies/ontologiesSlice';
 import Ontology from '../src/model/Ontology';
 import { createAppStore, store as appStore } from '../src/app/store';
 import Individual from '../src/model/Individual';
 import overlapIndividuals from './fixtures/individual-overlap.json';
 import { thingFromJsonProperties } from '../src/app/util';
 
+// Initialize the same two ownership scopes used by the mounted component.
+const setTreeScope = (scopeKey: string, preferredRoots = false) => {
+  const preferencesScopeKey = scopeKey.startsWith('[')
+    ? treePreferencesScopeKey(...JSON.parse(scopeKey).slice(0, 2) as [string, string]) : scopeKey;
+  return initializeTreeScope({ scopeKey, preferencesScopeKey, preferredRoots });
+};
 const subset = 'http://www.ebi.ac.uk/coho#IHCC_subset';
 const scope = (id = 'coho', type = 'classes', api = '') => JSON.stringify([api, id, type]);
 const store = () => configureStore({ reducer: { ontologies: reducer }, middleware: g => g({ serializableCheck: false }) });
@@ -78,7 +84,9 @@ for (const destination of [scope('efo'), scope('coho', 'individuals'), scope('co
     assert.deepEqual(state.rootNodes, []);
     assert.deepEqual(state.nodeChildren, {});
     assert.equal(state.numPendingTreeRequests, 0);
-    assert.deepEqual(preferences(s), { preferredRoots: false, displayImported: true, displayObsolete: false, displaySiblings: false, displayCounts: true });
+    assert.deepEqual(preferences(s), destination === scope('coho', 'individuals')
+      ? { preferredRoots: false, displayImported: false, displayObsolete: true, displaySiblings: true, displayCounts: false }
+      : { preferredRoots: false, displayImported: true, displayObsolete: false, displaySiblings: false, displayCounts: true });
   });
 }
 
@@ -91,6 +99,50 @@ test('a new scope initializes preferred roots from its own ontology and resets p
   s.dispatch(setTreeScope(scope('efo'), true));
   assert.equal(s.getState().ontologies.preferredRoots, false);
 });
+
+for (const [sourceType, destinationType] of [['classes', 'individuals'], ['individuals', 'classes']]) {
+  for (const preferredRoots of [false, true]) {
+    test(`mixed ${sourceType} to ${destinationType} retains preferences but rejects old type data: preferred=${preferredRoots}`, async () => {
+      const s = store();
+      const sourceScope = scope('coho', sourceType), destinationScope = scope('coho', destinationType);
+      s.dispatch(setTreeScope(sourceScope, preferredRoots));
+      context(s, sourceScope, 'source');
+      s.dispatch(hideImported()); s.dispatch(hideCounts()); s.dispatch(showObsolete()); s.dispatch(showSiblings());
+      s.dispatch(setSelectedSubsets([subset]));
+      const expected = preferences(s);
+      const old = { ...args('source'), treeScopeKey: sourceScope, entityType: sourceType, entityIri: 'old', absoluteIdentity: 'old' };
+      const thunks = [getRootEntities, getNodeChildren, getSubsets, getTreeMemberCounts, getDirectChildrenCount, getDirectChildrenEntities];
+      thunks.forEach(thunk => s.dispatch(thunk.pending('old', old)));
+      context(s, destinationScope, 'destination');
+      assert.deepEqual(preferences(s), expected);
+      assert.deepEqual(s.getState().ontologies.selectedSubsets, []);
+      assert.deepEqual(s.getState().ontologies.subsets, []);
+      const current = { ...args('destination'), treeScopeKey: destinationScope, entityType: destinationType };
+      s.dispatch(getRootEntities.pending('current', current));
+      s.dispatch(getRootEntities.fulfilled({ rootTerms: [term('stale')] }, 'old', old));
+      s.dispatch(getNodeChildren.fulfilled({ absoluteIdentity: 'old', children: [term('stale')] }, 'old', old));
+      s.dispatch(getSubsets.fulfilled([{ iri: subset, label: 'stale', numMembers: 77 }], 'old', old));
+      s.dispatch(getTreeMemberCounts.fulfilled({ stale: 77 }, 'old', old));
+      s.dispatch(getDirectChildrenCount.fulfilled({ entityIri: 'old', totalElements: 77 }, 'old', old));
+      s.dispatch(getDirectChildrenEntities.fulfilled({ elements: [term('stale')], totalElements: 77 } as any, 'old', old));
+      thunks.forEach(thunk => s.dispatch(thunk.rejected(new Error('late abort'), 'old', old)));
+      const state = s.getState().ontologies;
+      assert.deepEqual(state.rootNodes, []);
+      assert.deepEqual(state.nodeChildren, {});
+      assert.deepEqual(state.subsets, []);
+      assert.deepEqual(state.filteredMemberCounts, {});
+      assert.deepEqual(state.directChildrenTables, {});
+      assert.deepEqual(state.directChildrenCounts, {});
+      assert.equal(state.numPendingTreeRequests, 1, 'old type completion cannot decrement the new request');
+      // An effect captured before the type change is rejected before fetch.
+      const rejected = await s.dispatch(getRootEntities(old));
+      assert.equal(rejected.meta.condition, true);
+      s.dispatch(getRootEntities.fulfilled({ rootTerms: [term('current')] }, 'current', current));
+      assert.deepEqual(s.getState().ontologies.rootNodes.map(node => node.title), ['current']);
+      assert.equal(s.getState().ontologies.numPendingTreeRequests, 0);
+    });
+  }
+}
 
 test('same-scope entity and language changes retain selection but invalidate old requests', () => {
   const s = setup();

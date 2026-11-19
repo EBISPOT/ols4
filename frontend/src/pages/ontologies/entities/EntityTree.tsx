@@ -30,6 +30,7 @@ import {
   hideSiblings,
   openNode,
   treeScopeKey,
+  treePreferencesScopeKey,
   setTreeScope,
   setTreeRequestContext,
   showCounts,
@@ -68,18 +69,22 @@ export default function EntityTree({
   const tree = useAppSelector((state) => state.ontologies);
   const scopeKey = treeScopeKey(apiUrl, ontology.getOntologyId(), entityType);
   const ownsScope = tree.treeScopeKey === scopeKey;
+  const preferencesScopeKey = treePreferencesScopeKey(apiUrl, ontology.getOntologyId());
+  const ownsPreferences = tree.treePreferencesScopeKey === preferencesScopeKey;
   // Effects from this first render must never capture another tree's subsets.
   const selectedSubsets = ownsScope ? tree.selectedSubsets : [];
   const subsets = ownsScope ? tree.subsets : [];
   const filteringBySubsets = selectedSubsets.length > 0 && !specifiedRootIri;
   const subsetTree = filteringBySubsets ? selectedSubsets : undefined;
-  const defaultPreferredRoots = entityType === "classes" && ontology.getPreferredRoots().length > 0;
-  const preferredRoots = ownsScope ? tree.preferredRoots : defaultPreferredRoots;
-  const showObsoleteEnabled = !!selectedEntity?.isDeprecated() || (ownsScope && tree.displayObsolete);
-  const showImportedEnabled = !ownsScope || tree.displayImported;
+  // Remember the class root choice even if this ontology is first opened on a
+  // different tab. Preferred-root filtering itself only applies to classes.
+  const defaultPreferredRoots = ontology.getPreferredRoots().length > 0;
+  const preferredRoots = entityType === "classes" && (ownsPreferences ? tree.preferredRoots : defaultPreferredRoots);
+  const showObsoleteEnabled = !!selectedEntity?.isDeprecated() || (ownsPreferences && tree.displayObsolete);
+  const showImportedEnabled = !ownsPreferences || tree.displayImported;
   const importedTermsHelpId = useId();
-  const showSiblingsEnabled = ownsScope && tree.displaySiblings;
-  const showCountsEnabled = !ownsScope || tree.displayCounts;
+  const showSiblingsEnabled = ownsPreferences && tree.displaySiblings;
+  const showCountsEnabled = !ownsPreferences || tree.displayCounts;
   // Stored totals include hidden obsolete members, including retained connectors.
   const needsFilteredCounts = filteringBySubsets || !showImportedEnabled || !showObsoleteEnabled;
   // Ordinary counts retain their existing obsolete-mode restriction.
@@ -109,8 +114,8 @@ export default function EntityTree({
   const countRequests = useRef<any[]>([]);
 
   useEffect(() => {
-    dispatch(setTreeScope(scopeKey, defaultPreferredRoots));
-  }, [dispatch, scopeKey, defaultPreferredRoots]);
+    dispatch(setTreeScope({ scopeKey, preferencesScopeKey, preferredRoots: defaultPreferredRoots }));
+  }, [dispatch, scopeKey, preferencesScopeKey, defaultPreferredRoots]);
 
   useEffect(() => {
     dispatch(setTreeRequestContext({ scopeKey, requestKey }));
