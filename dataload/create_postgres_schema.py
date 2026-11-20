@@ -141,6 +141,7 @@ CREATE INDEX idx_ent_synonym_lower ON ols_entities USING gin (ols_lower_array(sy
 -- PostgreSQL can combine them for OR conditions. See GitHub issue #1308.
 CREATE INDEX idx_ent_label_fts ON ols_entities USING gin (ols_tsvector(label));
 CREATE INDEX idx_ent_synonym_fts ON ols_entities USING gin (ols_tsvector(synonym));
+CREATE INDEX idx_ent_definition_fts ON ols_entities USING gin (ols_tsvector(definition));
 CREATE INDEX idx_ent_curie_fts ON ols_entities USING gin (ols_tsvector(curie));
 CREATE INDEX idx_ent_short_form_fts ON ols_entities USING gin (ols_tsvector(short_form));
 CREATE INDEX idx_ent_iri_fts ON ols_entities USING gin (ols_tsvector(iri));

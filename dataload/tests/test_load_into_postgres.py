@@ -8,7 +8,7 @@ class LoaderIndexStatementsTest(unittest.TestCase):
     def test_generated_commented_indexes_reach_execution(self):
         sections = generate_schema(Path(__file__).resolve().parents[1], [])
         statements = index_statements(sections["indexes"])
-        for name in ("idx_ent_label_lower", "idx_ent_label_fts", "idx_ent_st_obs_id",
+        for name in ("idx_ent_label_lower", "idx_ent_label_fts", "idx_ent_definition_fts", "idx_ent_st_obs_id",
                      "idx_ent_lower_iri", "idx_autosuggest_prefix"):
             self.assertTrue(any(f"CREATE INDEX {name} " in sql for sql in statements), name)
         self.assertTrue(all(sql.startswith("CREATE INDEX") for sql in statements))

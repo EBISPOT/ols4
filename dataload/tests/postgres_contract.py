@@ -144,6 +144,34 @@ class PostgresBoundaryContract(unittest.TestCase):
         self.assertEqual({(r["ontology_id"], r["entity_type"]) for r in embeddings}, {(root["ontology_id"], root["type"])})
         self.assertEqual(self.query("SELECT count(*) FROM ols_autosuggest WHERE string='shared synonym'"), 1)
         self.assertEqual(self.query("SELECT count(*) FROM ols_entities WHERE ts_search @@ plainto_tsquery('english','reified')"), 1)
+        # Field-restricted searches must retain definition-only matches and be able to
+        # combine all three expression indexes after the packaged cluster is restored.
+        condition = " OR ".join(
+            f"ols_tsvector({column}) @@ to_tsquery('english','definition:*')"
+            for column in ("label", "synonym", "definition")
+        )
+        self.assertEqual(
+            self.query(f"SELECT json_agg(iri) FROM ols_entities WHERE {condition}"),
+            [root["iri"]],
+        )
+        # The fixture is intentionally tiny: disable sequential scans only to check
+        # index eligibility, not to assert the planner's default choice or a speedup.
+        plan_result = run("psql", "-XAtq", "-v", "ON_ERROR_STOP=1", "-c",
+                          f"SET enable_seqscan=off; EXPLAIN (FORMAT JSON) "
+                          f"SELECT id FROM ols_entities WHERE {condition}")
+        plan = json.loads(plan_result.stdout)
+
+        def used_indexes(node):
+            names = {node["Index Name"]} if "Index Name" in node else set()
+            for child in node.get("Plans", []):
+                names.update(used_indexes(child))
+            return names
+
+        self.assertTrue(
+            {"idx_ent_label_fts", "idx_ent_synonym_fts", "idx_ent_definition_fts"}
+            <= used_indexes(plan[0]["Plan"]),
+            plan,
+        )
         indexes = self.query("SELECT json_object_agg(indexname,indexdef) FROM pg_indexes WHERE schemaname='public'")
         self.assertIn("USING gin", indexes["idx_ent_label_fts"])
         self.assertIn("text_pattern_ops", indexes["idx_autosuggest_prefix"])
