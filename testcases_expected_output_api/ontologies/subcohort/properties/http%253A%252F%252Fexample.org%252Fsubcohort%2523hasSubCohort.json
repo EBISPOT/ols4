@@ -8,15 +8,15 @@
   "description": [],
   "has_children": false,
   "iri": "http://example.org/subcohort#hasSubCohort",
-  "is_defining_ontology": false,
+  "is_defining_ontology": true,
   "is_obsolete": false,
   "is_root": true,
   "label": "hasSubCohort",
   "lang": "en",
-  "obo_id": "hasSubCohort",
+  "obo_id": "subcohort:hasSubCohort",
   "ontology_iri": "http://example.org/subcohort",
   "ontology_name": "subcohort",
   "ontology_prefix": "subcohort",
-  "short_form": "hasSubCohort",
+  "short_form": "subcohort_hasSubCohort",
   "synonyms": []
 }

@@ -4,6 +4,9 @@
       "id": "subcohort",
       "preferredPrefix": "subcohort",
       "title": "subcohort",
+      "base_uri": [
+        "http://example.org/subcohort#"
+      ],
       "hierarchical_property": [
         "http://example.org/subcohort#isSubCohortOf"
       ],

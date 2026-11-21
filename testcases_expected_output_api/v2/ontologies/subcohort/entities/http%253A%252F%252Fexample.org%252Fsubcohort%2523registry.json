@@ -2,7 +2,10 @@
   "appearsIn": [
     "subcohort"
   ],
-  "curie": "registry",
+  "curie": "subcohort:registry",
+  "definedBy": [
+    "subcohort"
+  ],
   "directAncestor": [
     "http://example.org/subcohort#Cohort"
   ],
@@ -20,14 +23,17 @@
   "http://www.w3.org/2000/01/rdf-schema#label": "registry cohort",
   "imported": false,
   "iri": "http://example.org/subcohort#registry",
-  "isDefiningOntology": false,
+  "isDefiningOntology": true,
   "isObsolete": false,
   "label": [
     "registry cohort"
   ],
   "linkedEntities": {
     "http://example.org/subcohort#Cohort": {
-      "curie": "Cohort",
+      "curie": "subcohort:Cohort",
+      "definedBy": [
+        "subcohort"
+      ],
       "hasLocalDefinition": true,
       "label": [
         "cohort"
@@ -64,7 +70,7 @@
   "ontologyIri": "http://example.org/subcohort",
   "ontologyPreferredPrefix": "subcohort",
   "searchableAnnotationValues": false,
-  "shortForm": "registry",
+  "shortForm": "subcohort_registry",
   "type": [
     "entity",
     "individual"

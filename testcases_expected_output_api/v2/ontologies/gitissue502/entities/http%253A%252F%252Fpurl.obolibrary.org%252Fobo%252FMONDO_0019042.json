@@ -153,7 +153,7 @@
     "GARD:18876": {
       "curie": "GARD:18876",
       "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-      "url": "https://rarediseases.info.nih.gov/diseases/18876/index"
+      "url": "https://rarediseases.info.nih.gov/?gard_id=18876"
     },
     "MONDO:0019042": {
       "curie": "MONDO:0019042",
@@ -458,7 +458,9 @@
       "url": "https://github.com/monarch-initiative/mondo/issues/4069"
     },
     "https://orcid.org/0000-0002-4142-7153": {
-      "label": "Sabrina Toro"
+      "curie": "orcid:0000-0002-4142-7153",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "https://orcid.org/0000-0002-4142-7153"
     }
   },
   "linksTo": [
@@ -482,8 +484,7 @@
     "http://www.geneontology.org/formats/oboInOwl#source",
     "http://www.w3.org/2000/01/rdf-schema#label",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf",
-    "http://www.w3.org/2004/02/skos/core#exactMatch",
-    "https://orcid.org/0000-0002-4142-7153"
+    "http://www.w3.org/2004/02/skos/core#exactMatch"
   ],
   "numDescendants": 2.0,
   "numHierarchicalDescendants": 2.0,

@@ -17,15 +17,15 @@
   "description": [],
   "has_children": false,
   "iri": "http://example.org/subcohort#selfReferential",
-  "is_defining_ontology": false,
+  "is_defining_ontology": true,
   "is_obsolete": false,
   "is_root": false,
   "label": "self referential cohort",
   "lang": "en",
-  "obo_id": "selfReferential",
+  "obo_id": "subcohort:selfReferential",
   "ontology_iri": "http://example.org/subcohort",
   "ontology_name": "subcohort",
   "ontology_prefix": "subcohort",
-  "short_form": "selfReferential",
+  "short_form": "subcohort_selfReferential",
   "synonyms": []
 }

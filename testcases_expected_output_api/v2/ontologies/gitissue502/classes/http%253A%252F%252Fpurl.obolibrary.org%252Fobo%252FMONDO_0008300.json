@@ -626,12 +626,12 @@
     "GARD:0005575": {
       "curie": "GARD:0005575",
       "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-      "url": "https://rarediseases.info.nih.gov/diseases/0005575/index"
+      "url": "https://rarediseases.info.nih.gov/?gard_id=0005575"
     },
     "GARD:5575": {
       "curie": "GARD:5575",
       "source": "https://raw.githubusercontent.com/biopragmatics/bioregistry/main/exports/registry/registry.json",
-      "url": "https://rarediseases.info.nih.gov/diseases/5575/index"
+      "url": "https://rarediseases.info.nih.gov/?gard_id=5575"
     },
     "MESH:D011218": {
       "curie": "MESH:D011218",
@@ -1334,7 +1334,9 @@
       ]
     },
     "https://orcid.org/0000-0002-6733-369X": {
-      "label": "Courtney Thaxton"
+      "curie": "orcid:0000-0002-6733-369X",
+      "source": "https://raw.githubusercontent.com/geneontology/go-site/master/metadata/db-xrefs.yaml",
+      "url": "https://orcid.org/0000-0002-6733-369X"
     }
   },
   "linksTo": [
@@ -1387,8 +1389,7 @@
     "http://www.w3.org/2000/01/rdf-schema#seeAlso",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf",
     "http://www.w3.org/2004/02/skos/core#closeMatch",
-    "http://www.w3.org/2004/02/skos/core#exactMatch",
-    "https://orcid.org/0000-0002-6733-369X"
+    "http://www.w3.org/2004/02/skos/core#exactMatch"
   ],
   "numDescendants": 0.0,
   "numHierarchicalDescendants": 0.0,
