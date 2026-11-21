@@ -202,7 +202,11 @@ export default function OntologyPage() {
                 )}
                 {ontology.getMailingList() && (
                   <Link
-                    to={"mailto:" + ontology.getMailingList()}
+                    to={
+                      /^[a-z][a-z0-9+.-]*:/i.test(ontology.getMailingList())
+                        ? ontology.getMailingList()
+                        : "mailto:" + ontology.getMailingList()
+                    }
                     target="_blank"
                     rel="noopener noreferrer"
                   >
