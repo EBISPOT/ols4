@@ -9,7 +9,7 @@ import struct
 from flask import Flask, request, jsonify, Response
 from sentence_transformers import SentenceTransformer
 import numpy as np
-from model_loading import model_load_kwargs
+from model_loading import install_processor_fallback, model_load_kwargs
 
 app = Flask(__name__)
 
@@ -18,6 +18,7 @@ loaded_models: Dict[str, SentenceTransformer] = {}
 MODELS_DIR = os.environ.get('MODELS_DIR', '/data/models')
 
 def load_all_models():
+    install_processor_fallback()
     models_path = Path(MODELS_DIR)
     if not models_path.exists():
         print(f"Warning: Models directory not found: {MODELS_DIR}", file=sys.stderr)

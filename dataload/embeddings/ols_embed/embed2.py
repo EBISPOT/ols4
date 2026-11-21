@@ -4,7 +4,7 @@ from typing import List
 import polars as pl
 from sentence_transformers import SentenceTransformer
 import torch
-from model_loading import model_load_kwargs
+from model_loading import install_processor_fallback, model_load_kwargs
 
 torch.backends.cuda.matmul.allow_tf32 = True
 torch.set_float32_matmul_precision("high")
@@ -44,6 +44,7 @@ def main():
         df.write_parquet(output_parquet)
         return
 
+    install_processor_fallback()
     load_kwargs = model_load_kwargs(args.model_name)
     n_gpus = torch.cuda.device_count()
     if n_gpus > 1:

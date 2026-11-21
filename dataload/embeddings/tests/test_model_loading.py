@@ -190,5 +190,101 @@ class RealLibrarySecurityTests(unittest.TestCase):
             self.assertFalse(marker.exists())
 
 
+class ProcessorFallbackTests(unittest.TestCase):
+    """Text-only repositories whose tokenizer_config.json names a multimodal processor."""
+
+    def setUp(self):
+        import model_loading
+        self.loading = model_loading
+
+    def test_tokenizer_is_used_when_hinted_processor_cannot_load(self):
+        failure = OSError("Can't load image processor for 'text/model'")
+        with patch("transformers.AutoProcessor.from_pretrained", side_effect=failure), \
+             patch("transformers.AutoTokenizer.from_pretrained", return_value="tokenizer") as tokenizer, \
+             self.assertLogs(self.loading.logger, level="WARNING") as logs:
+            result = self.loading.TokenizerFallbackAutoProcessor.from_pretrained(
+                "text/model", trust_remote_code=False, revision="abc")
+        self.assertEqual(result, "tokenizer")
+        tokenizer.assert_called_once_with("text/model", trust_remote_code=False, revision="abc")
+        self.assertIn("text/model", logs.output[0])
+
+    def test_original_error_is_raised_when_tokenizer_also_fails(self):
+        with patch("transformers.AutoProcessor.from_pretrained", side_effect=OSError("no processor")), \
+             patch("transformers.AutoTokenizer.from_pretrained", side_effect=OSError("no tokenizer")):
+            with self.assertRaisesRegex(OSError, "no processor"):
+                self.loading.TokenizerFallbackAutoProcessor.from_pretrained("text/model")
+
+    def test_other_processor_errors_are_not_intercepted(self):
+        with patch("transformers.AutoProcessor.from_pretrained", side_effect=ValueError("bad")), \
+             patch("transformers.AutoTokenizer.from_pretrained") as tokenizer:
+            with self.assertRaisesRegex(ValueError, "bad"):
+                self.loading.TokenizerFallbackAutoProcessor.from_pretrained("text/model")
+            tokenizer.assert_not_called()
+
+    def test_cli_and_server_install_the_fallback(self):
+        import sentence_transformers.base.modules.transformer as transformer_module
+        original = transformer_module.AutoProcessor
+        self.addCleanup(setattr, transformer_module, "AutoProcessor", original)
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / "input.tsv"
+            source.write_text("hash\ttext\n")
+            cli = import_script("embed2")
+            argv = ["embed2", "--input-tsv", str(source), "--output-parquet", str(Path(tmp) / "out.parquet")]
+            with patch.object(cli, "SentenceTransformer") as factory, \
+                 patch.object(cli.torch.cuda, "device_count", return_value=0), \
+                 patch.object(sys, "argv", argv):
+                factory.return_value.encode.return_value = np.ones((1, 3), dtype=np.float32)
+                transformer_module.AutoProcessor = original
+                cli.main()
+                self.assertIs(transformer_module.AutoProcessor, self.loading.TokenizerFallbackAutoProcessor)
+            (Path(tmp) / "model").mkdir()
+            with patch.dict(os.environ, {"MODELS_DIR": tmp}), \
+                 patch("sentence_transformers.SentenceTransformer"):
+                transformer_module.AutoProcessor = original
+                import_script("server")
+                self.assertIs(transformer_module.AutoProcessor, self.loading.TokenizerFallbackAutoProcessor)
+
+
+class RealLibraryProcessorFallbackTests(unittest.TestCase):
+    def test_text_model_with_multimodal_processor_hint_loads_through_fallback(self):
+        import model_loading
+        import sentence_transformers.base.modules.transformer as transformer_module
+        from tokenizers import Tokenizer, models, pre_tokenizers
+        from transformers import AutoProcessor, Gemma3TextConfig, Gemma3TextModel, PreTrainedTokenizerFast
+
+        original = transformer_module.AutoProcessor
+        self.addCleanup(setattr, transformer_module, "AutoProcessor", original)
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            vocab = {"<pad>": 0, "<unk>": 1, "<bos>": 2, "<eos>": 3, "asthma": 4, "lung": 5}
+            tokenizer = Tokenizer(models.WordLevel(vocab, unk_token="<unk>"))
+            tokenizer.pre_tokenizer = pre_tokenizers.Whitespace()
+            PreTrainedTokenizerFast(tokenizer_object=tokenizer, pad_token="<pad>", unk_token="<unk>",
+                                    bos_token="<bos>", eos_token="<eos>").save_pretrained(root)
+            tokenizer_config = root / "tokenizer_config.json"
+            hinted = json.loads(tokenizer_config.read_text())
+            hinted["processor_class"] = "Gemma3Processor"  # as shipped by microsoft/harrier-oss-v1-27b
+            tokenizer_config.write_text(json.dumps(hinted))
+            Gemma3TextModel(Gemma3TextConfig(
+                vocab_size=len(vocab), hidden_size=16, intermediate_size=32, num_hidden_layers=1,
+                num_attention_heads=2, num_key_value_heads=1, head_dim=8, max_position_embeddings=32,
+                sliding_window=8, pad_token_id=0, bos_token_id=2, eos_token_id=3)).save_pretrained(root)
+            (root / "modules.json").write_text(json.dumps([
+                {"idx": 0, "name": "0", "path": "", "type": "sentence_transformers.models.Transformer"},
+                {"idx": 1, "name": "1", "path": "1_Pooling", "type": "sentence_transformers.models.Pooling"}]))
+            (root / "1_Pooling").mkdir()
+            (root / "1_Pooling" / "config.json").write_text(
+                json.dumps({"word_embedding_dimension": 16, "pooling_mode_lasttoken": True}))
+
+            transformer_module.AutoProcessor = AutoProcessor
+            with self.assertRaisesRegex(OSError, "image processor"):
+                SentenceTransformer(str(root), trust_remote_code=False, local_files_only=True)
+
+            model_loading.install_processor_fallback()
+            with self.assertLogs(model_loading.logger, level="WARNING"):
+                model = SentenceTransformer(str(root), trust_remote_code=False, local_files_only=True)
+            self.assertEqual(model.encode(["asthma", "lung"]).shape, (2, 16))
+
+
 if __name__ == "__main__":
     unittest.main()
