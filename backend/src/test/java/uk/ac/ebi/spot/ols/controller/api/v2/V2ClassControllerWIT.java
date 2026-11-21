@@ -81,7 +81,7 @@ class V2ClassControllerWIT {
         when(classRepository.getRelatedFrom(any(), any(), any(), any(), any()))
                 .thenReturn(classPage());
         when(classRepository.getChildrenByOntologyId(
-                any(), any(), any(), anyBoolean(), any(), any(), any()))
+                any(), any(), any(), anyBoolean(), anyBoolean(), any(), any(), any()))
                 .thenReturn(hierarchyPage());
         when(classRepository.getAncestorsByOntologyId(
                 any(), any(), any(), anyBoolean(), any(), any()))
@@ -93,7 +93,7 @@ class V2ClassControllerWIT {
                 any(), any(), any(), anyBoolean(), any(), any()))
                 .thenReturn(hierarchyPage());
         when(classRepository.getHierarchicalChildrenByOntologyId(
-                any(), any(), any(), anyBoolean(), any(), any()))
+                any(), any(), any(), anyBoolean(), anyBoolean(), any(), any()))
                 .thenReturn(hierarchyPage());
         when(classRepository.getHierarchicalAncestorsByOntologyId(
                 any(), any(), any(), anyBoolean(), any(), any()))
@@ -535,6 +535,33 @@ class V2ClassControllerWIT {
     }
 
     @ParameterizedTest
+    @MethodSource("childrenRoutes")
+    void defaultsExcludeRedundantEdgesToFalseOnChildrenRoutes(HierarchyRoute route)
+            throws Exception {
+        mockMvc.perform(get(route.uri))
+                .andExpect(status().isOk());
+
+        assertEquals(Boolean.FALSE, captureHierarchyCall(route).excludeRedundantEdges());
+    }
+
+    @ParameterizedTest
+    @MethodSource("childrenRoutes")
+    void bindsExcludeRedundantEdgesOnChildrenRoutes(HierarchyRoute route) throws Exception {
+        mockMvc.perform(get(route.uri).param("excludeRedundantEdges", "true"))
+                .andExpect(status().isOk());
+
+        assertEquals(Boolean.TRUE, captureHierarchyCall(route).excludeRedundantEdges());
+    }
+
+    @ParameterizedTest
+    @MethodSource("childrenRoutes")
+    void rejectsMalformedExcludeRedundantEdgesOnChildrenRoutes(HierarchyRoute route)
+            throws Exception {
+        assertStableBadRequest(
+                get(route.uri).param("excludeRedundantEdges", "not-a-boolean"));
+    }
+
+    @ParameterizedTest
     @MethodSource("hierarchyPaginationBoundaries")
     void normalizesPaginationBoundariesAcrossEveryHierarchyRoute(
             HierarchyRoute route,
@@ -711,6 +738,7 @@ class V2ClassControllerWIT {
         ArgumentCaptor<Pageable> pageable = ArgumentCaptor.forClass(Pageable.class);
         ArgumentCaptor<String> iri = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<Boolean> includeObsolete = ArgumentCaptor.forClass(Boolean.class);
+        ArgumentCaptor<Boolean> excludeRedundantEdges = ArgumentCaptor.forClass(Boolean.class);
         ArgumentCaptor<String> searchQuery = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<String> lang = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<JsonTransformOptions> options = ArgumentCaptor.forClass(JsonTransformOptions.class);
@@ -718,7 +746,8 @@ class V2ClassControllerWIT {
         switch (route) {
             case CHILDREN -> verify(classRepository).getChildrenByOntologyId(
                     ontologyId.capture(), pageable.capture(), iri.capture(),
-                    includeObsolete.capture(), searchQuery.capture(), lang.capture(), options.capture());
+                    includeObsolete.capture(), excludeRedundantEdges.capture(),
+                    searchQuery.capture(), lang.capture(), options.capture());
             case ANCESTORS -> verify(classRepository).getAncestorsByOntologyId(
                     ontologyId.capture(), pageable.capture(), iri.capture(),
                     includeObsolete.capture(), lang.capture(), options.capture());
@@ -732,7 +761,8 @@ class V2ClassControllerWIT {
             case HIERARCHICAL_CHILDREN -> verify(classRepository)
                     .getHierarchicalChildrenByOntologyId(
                             ontologyId.capture(), pageable.capture(), iri.capture(),
-                            includeObsolete.capture(), lang.capture(), options.capture());
+                            includeObsolete.capture(), excludeRedundantEdges.capture(),
+                            lang.capture(), options.capture());
             case HIERARCHICAL_ANCESTORS -> verify(classRepository)
                     .getHierarchicalAncestorsByOntologyId(
                             ontologyId.capture(), pageable.capture(), iri.capture(),
@@ -743,9 +773,12 @@ class V2ClassControllerWIT {
                             includeObsolete.capture(), lang.capture(), options.capture());
         }
 
+        boolean childrenRoute = route == HierarchyRoute.CHILDREN
+                || route == HierarchyRoute.HIERARCHICAL_CHILDREN;
         return new HierarchyCall(
                 ontologyId.getValue(), pageable.getValue(), iri.getValue(),
                 includeObsolete.getValue(),
+                childrenRoute ? excludeRedundantEdges.getValue() : null,
                 route == HierarchyRoute.CHILDREN ? searchQuery.getValue() : null,
                 lang.getValue(), options.getValue());
     }
@@ -753,7 +786,8 @@ class V2ClassControllerWIT {
     private void stubHierarchyFailure(HierarchyRoute route, RuntimeException failure) {
         switch (route) {
             case CHILDREN -> when(classRepository.getChildrenByOntologyId(
-                    any(), any(), any(), anyBoolean(), any(), any(), any())).thenThrow(failure);
+                    any(), any(), any(), anyBoolean(), anyBoolean(), any(), any(), any()))
+                    .thenThrow(failure);
             case ANCESTORS -> when(classRepository.getAncestorsByOntologyId(
                     any(), any(), any(), anyBoolean(), any(), any())).thenThrow(failure);
             case DESCENDANTS -> when(classRepository.getDescendantsByOntologyId(
@@ -763,7 +797,8 @@ class V2ClassControllerWIT {
                             any(), any(), any(), anyBoolean(), any(), any())).thenThrow(failure);
             case HIERARCHICAL_CHILDREN -> when(
                     classRepository.getHierarchicalChildrenByOntologyId(
-                            any(), any(), any(), anyBoolean(), any(), any())).thenThrow(failure);
+                            any(), any(), any(), anyBoolean(), anyBoolean(), any(), any()))
+                    .thenThrow(failure);
             case HIERARCHICAL_ANCESTORS -> when(
                     classRepository.getHierarchicalAncestorsByOntologyId(
                             any(), any(), any(), anyBoolean(), any(), any())).thenThrow(failure);
@@ -844,6 +879,10 @@ class V2ClassControllerWIT {
 
     private static Stream<HierarchyRoute> hierarchyRoutes() {
         return Stream.of(HierarchyRoute.values());
+    }
+
+    private static Stream<HierarchyRoute> childrenRoutes() {
+        return Stream.of(HierarchyRoute.CHILDREN, HierarchyRoute.HIERARCHICAL_CHILDREN);
     }
 
     private static Stream<Arguments> hierarchyPaginationBoundaries() {
@@ -950,6 +989,7 @@ class V2ClassControllerWIT {
             Pageable pageable,
             String iri,
             boolean includeObsolete,
+            Boolean excludeRedundantEdges,
             String searchQuery,
             String lang,
             JsonTransformOptions outputOptions) {

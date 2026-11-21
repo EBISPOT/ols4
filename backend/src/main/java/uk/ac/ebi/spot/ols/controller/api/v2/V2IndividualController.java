@@ -174,6 +174,14 @@ public class V2IndividualController {
             @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
             @Parameter(name = "includeObsoleteEntities",
                     description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
+            @RequestParam(value = "excludeRedundantEdges", required = false, defaultValue = "false")
+            @Parameter(name = "excludeRedundantEdges",
+                    description = "A boolean parameter to specify whether hierarchical children whose edge to this individual is " +
+                            "redundant for hierarchy browsing should be omitted. A child's edge is redundant when the child also has " +
+                            "another hierarchical parent that is itself a hierarchical descendant of this individual, i.e. the child " +
+                            "is already reachable from this individual through a more specific path. This is the transitive " +
+                            "reduction of the hierarchy ignoring the relation types, and it is what the OLS tree browser uses by " +
+                            "default. Default value is false (all hierarchical children are returned).") boolean excludeRedundantEdges,
             @RequestParam(value = "lang", required = false, defaultValue = "en") String lang,
             @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException {
@@ -182,7 +190,7 @@ public class V2IndividualController {
 
         return new ResponseEntity<>(
                 new V2PagedResponse<V2Entity>(
-                        individualRepository.getHierarchicalChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, lang, outputOpts)
+                        individualRepository.getHierarchicalChildrenByOntologyId(ontologyId, pageable, iri, includeObsoleteEntities, excludeRedundantEdges, lang, outputOpts)
                         .map(V2Entity::new)
                 ),
                 HttpStatus.OK);

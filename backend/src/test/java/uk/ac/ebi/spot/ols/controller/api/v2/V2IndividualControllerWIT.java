@@ -81,7 +81,7 @@ class V2IndividualControllerWIT {
                 any(), any(), any(), anyBoolean(), any(), any()))
                 .thenReturn(individualPage());
         when(individualRepository.getHierarchicalChildrenByOntologyId(
-                any(), any(), any(), anyBoolean(), any(), any()))
+                    any(), any(), any(), anyBoolean(), anyBoolean(), any(), any()))
                 .thenReturn(hierarchyPage());
         when(individualRepository.getHierarchicalAncestorsByOntologyId(
                 any(), any(), any(), anyBoolean(), any(), any()))
@@ -348,7 +348,7 @@ class V2IndividualControllerWIT {
                     .thenThrow(error);
         } else if (route.equals("children")) {
             when(individualRepository.getHierarchicalChildrenByOntologyId(
-                    any(), any(), any(), anyBoolean(), any(), any()))
+                    any(), any(), any(), anyBoolean(), anyBoolean(), any(), any()))
                     .thenThrow(error);
         } else {
             when(individualRepository.getHierarchicalAncestorsByOntologyId(
@@ -391,7 +391,27 @@ class V2IndividualControllerWIT {
                 .andExpect(jsonPath("$.numElements").value(1))
                 .andExpect(jsonPath("$.elements[0].iri").value(INDIVIDUAL_IRI));
 
-        assertHierarchyDefaults(captureHierarchyCall("children"));
+        HierarchyCall call = captureHierarchyCall("children");
+        assertHierarchyDefaults(call);
+        assertEquals(Boolean.FALSE, call.excludeRedundantEdges());
+    }
+
+    @Test
+    void bindsHierarchicalChildrenExcludeRedundantEdges() throws Exception {
+        mockMvc.perform(get(HIERARCHICAL_CHILDREN_URI).param("excludeRedundantEdges", "true"))
+                .andExpect(status().isOk());
+
+        assertEquals(Boolean.TRUE, captureHierarchyCall("children").excludeRedundantEdges());
+    }
+
+    @Test
+    void rejectsMalformedHierarchicalChildrenExcludeRedundantEdges() throws Exception {
+        mockMvc.perform(get(HIERARCHICAL_CHILDREN_URI)
+                        .param("excludeRedundantEdges", "not-a-boolean"))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.status").value(400))
+                .andExpect(jsonPath("$.message").isNotEmpty());
     }
 
     @Test
@@ -521,7 +541,7 @@ class V2IndividualControllerWIT {
                     .thenThrow(error);
         } else if (route.equals("children")) {
             when(individualRepository.getHierarchicalChildrenByOntologyId(
-                    any(), any(), any(), anyBoolean(), any(), any()))
+                    any(), any(), any(), anyBoolean(), anyBoolean(), any(), any()))
                     .thenThrow(error);
         } else {
             when(individualRepository.getHierarchicalAncestorsByOntologyId(
@@ -569,7 +589,7 @@ class V2IndividualControllerWIT {
                     .thenThrow(error);
         } else if (route.equals("children")) {
             when(individualRepository.getHierarchicalChildrenByOntologyId(
-                    any(), any(), any(), anyBoolean(), any(), any()))
+                    any(), any(), any(), anyBoolean(), anyBoolean(), any(), any()))
                     .thenThrow(error);
         } else {
             when(individualRepository.getHierarchicalAncestorsByOntologyId(
@@ -699,10 +719,12 @@ class V2IndividualControllerWIT {
         ArgumentCaptor<Boolean> includeObsoleteEntities = ArgumentCaptor.forClass(Boolean.class);
         ArgumentCaptor<String> lang = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<JsonTransformOptions> options = ArgumentCaptor.forClass(JsonTransformOptions.class);
+        ArgumentCaptor<Boolean> excludeRedundantEdges = ArgumentCaptor.forClass(Boolean.class);
         if (route.equals("children")) {
             verify(individualRepository).getHierarchicalChildrenByOntologyId(
                     ontologyId.capture(), pageable.capture(), individualIri.capture(),
-                    includeObsoleteEntities.capture(), lang.capture(), options.capture());
+                    includeObsoleteEntities.capture(), excludeRedundantEdges.capture(),
+                    lang.capture(), options.capture());
         } else {
             verify(individualRepository).getHierarchicalAncestorsByOntologyId(
                     ontologyId.capture(), pageable.capture(), individualIri.capture(),
@@ -710,7 +732,9 @@ class V2IndividualControllerWIT {
         }
         return new HierarchyCall(
                 ontologyId.getValue(), individualIri.getValue(), pageable.getValue(),
-                includeObsoleteEntities.getValue(), lang.getValue(), options.getValue());
+                includeObsoleteEntities.getValue(),
+                route.equals("children") ? excludeRedundantEdges.getValue() : null,
+                lang.getValue(), options.getValue());
     }
 
     private static URI routeUri(String route) {
@@ -836,6 +860,7 @@ class V2IndividualControllerWIT {
             String individualIri,
             Pageable pageable,
             boolean includeObsoleteEntities,
+            Boolean excludeRedundantEdges,
             String lang,
             JsonTransformOptions outputOptions) {
     }
