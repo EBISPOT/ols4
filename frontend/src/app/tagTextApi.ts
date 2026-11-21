@@ -3,6 +3,8 @@
  */
 
 export interface TaggedEntity {
+  /** Span of the match as string indices into the text (converted by
+   *  tagText() from the UTF-8 byte offsets the API reports). */
   start: number;
   end: number;
   term_label: string;
@@ -71,7 +73,62 @@ export async function tagText(
     throw new Error(message);
   }
 
-  return res.json();
+  const data: TagTextResponse = await res.json();
+  return {
+    ...data,
+    entities: entitiesWithStringOffsets(data.text || text, data.entities || []),
+  };
+}
+
+/**
+ * The tagger matches over the UTF-8 encoded text, so the API reports entity
+ * spans as byte offsets. JavaScript strings are indexed by UTF-16 code units,
+ * so whenever the text contains a non-ASCII character the two disagree and
+ * every later highlight shifts. Rewrite the spans as string indices.
+ */
+export function entitiesWithStringOffsets(
+  text: string,
+  entities: TaggedEntity[]
+): TaggedEntity[] {
+  // ASCII-only text: byte offsets and string indices are identical
+  let asciiOnly = true;
+  for (let j = 0; j < text.length; j++) {
+    if (text.charCodeAt(j) > 0x7f) {
+      asciiOnly = false;
+      break;
+    }
+  }
+  if (entities.length === 0 || asciiOnly) {
+    return entities;
+  }
+
+  // byteToChar[b] = string index of the character containing UTF-8 byte b,
+  // with one extra entry so an exclusive end offset maps to the index just
+  // past the last matched character.
+  const byteToChar: number[] = [];
+  let i = 0;
+  while (i < text.length) {
+    const codePoint = text.codePointAt(i) as number;
+    const byteLength =
+      codePoint < 0x80 ? 1 : codePoint < 0x800 ? 2 : codePoint < 0x10000 ? 3 : 4;
+    for (let b = 0; b < byteLength; b++) {
+      byteToChar.push(i);
+    }
+    i += codePoint >= 0x10000 ? 2 : 1;
+  }
+  byteToChar.push(text.length);
+
+  const toStringOffset = (byteOffset: number) => {
+    if (byteOffset <= 0) return 0;
+    if (byteOffset >= byteToChar.length) return text.length;
+    return byteToChar[byteOffset];
+  };
+
+  return entities.map((e) => ({
+    ...e,
+    start: toStringOffset(e.start),
+    end: toStringOffset(e.end),
+  }));
 }
 
 /**

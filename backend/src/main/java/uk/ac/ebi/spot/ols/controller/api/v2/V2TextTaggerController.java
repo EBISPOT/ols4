@@ -31,7 +31,9 @@ public class V2TextTaggerController {
     OlsSearchClient searchClient;
 
     @RequestMapping(path = "/tag_text", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.POST)
-    @Parameter(name = "tag_text", description = "Annotate free text with matching ontology terms")
+    @Parameter(name = "tag_text", description = "Annotate free text with matching ontology terms. " +
+            "Each entity's start/end are offsets into the UTF-8 encoded text, in bytes (not characters); " +
+            "clients working with UTF-16 strings must convert before slicing the text.")
     public HttpEntity<Map<String, Object>> tagText(
             @RequestBody Map<String, Object> requestBody,
             @RequestParam(value = "ontologyId", required = false) List<String> ontologyIds,
