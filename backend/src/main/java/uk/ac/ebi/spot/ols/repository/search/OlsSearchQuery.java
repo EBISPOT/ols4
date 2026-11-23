@@ -79,6 +79,7 @@ public class OlsSearchQuery {
         cols.put("isPreferredRoot", "is_preferred_root");        types.put("isPreferredRoot", ColumnType.BOOLEAN);
         cols.put("ontologyPreferredPrefix", "ontology_preferred_prefix"); types.put("ontologyPreferredPrefix", ColumnType.TEXT);
         cols.put("ontologyIri", "ontology_iri");                 types.put("ontologyIri", ColumnType.TEXT);
+        cols.put("hierarchicalParent", "hierarchical_parents"); types.put("hierarchicalParent", ColumnType.TEXT_ARRAY);
         cols.put("hierarchicalAncestor", "hierarchical_ancestors"); types.put("hierarchicalAncestor", ColumnType.TEXT_ARRAY);
         cols.put("directAncestor", "direct_ancestors");          types.put("directAncestor", ColumnType.TEXT_ARRAY);
         cols.put("relatedTo", "related_to");                     types.put("relatedTo", ColumnType.TEXT_ARRAY);
