@@ -1,0 +1,15 @@
+@prefix : <https://example.org/eligible#> .
+@prefix ext: <https://external.example.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix obo: <http://www.geneontology.org/formats/oboInOwl#> .
+<https://example.org/eligible> a owl:Ontology .
+:Top a owl:Class ; rdfs:label "Browse top" .
+:A a owl:Class ; rdfs:subClassOf :Top ; rdfs:label "Root A hidden members" .
+:B a owl:Class ; rdfs:subClassOf :Top ; rdfs:label "Root B active member" .
+:Obsolete a owl:Class ; rdfs:label "Obsolete native member" ; owl:deprecated true ; rdfs:subClassOf :A ; obo:inSubset :S .
+ext:Imported a owl:Class ; rdfs:label "Imported active member" ; rdfs:subClassOf :A ; obo:inSubset :S .
+:Active a owl:NamedIndividual, :B ; rdfs:label "Active native individual" ; obo:inSubset :S, :S2 .
+obo:SubsetProperty a owl:AnnotationProperty .
+:S a owl:AnnotationProperty ; rdfs:subPropertyOf obo:SubsetProperty ; rdfs:label "Selected subset S" .
+:S2 a owl:AnnotationProperty ; rdfs:subPropertyOf obo:SubsetProperty ; rdfs:label "Overlapping subset S2" .

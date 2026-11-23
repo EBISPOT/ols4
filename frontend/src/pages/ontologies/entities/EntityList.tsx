@@ -3,59 +3,93 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import DataTable, { Column } from "../../../components/DataTable";
 import Entity from "../../../model/Entity";
-import { getEntities, getDirectChildrenEntities } from "../ontologiesSlice";
+import { getEntities, getDirectChildrenEntities, directChildrenTableKey } from "../ontologiesSlice";
 import Individual from "../../../model/Individual";
 import Property from "../../../model/Property";
 
-export default function EntityList({
-  ontologyId,
-  entityType,
-  parentEntityIri,
-  lang,
-  showObsoleteEnabled,
-  onNavigateToEntity,
-  title,
-}: {
+type EntityListProps = {
   ontologyId: string;
   entityType: "entities" | "classes" | "properties" | "individuals";
   parentEntityIri?: string;
+  tableKey?: string;
   lang?: string;
   showObsoleteEnabled?: boolean;
+  subsetTree?: string[];
+  apiUrl?: string;
+  showImportedEnabled?: boolean;
+  treeScopeKey?: string;
+  requestKey?: string;
   onNavigateToEntity?: (ontologyId: string, entity: Entity) => void;
   title?: string;
-}) {
+};
+
+export default function EntityList(props: EntityListProps) {
+  return props.onNavigateToEntity
+    ? <EntityListContent {...props} />
+    : <RoutedEntityList {...props} />;
+}
+
+function RoutedEntityList(props: EntityListProps) {
+  const navigate = useNavigate();
+  return <EntityListContent {...props} onNavigateToEntity={(ontologyId, row) => {
+    const termUrl = encodeURIComponent(encodeURIComponent(row.properties.iri));
+    navigate(`/ontologies/${ontologyId}/${row.getTypePlural()}/${termUrl}`);
+  }} />;
+}
+
+function EntityListContent({
+  ontologyId,
+  entityType,
+  parentEntityIri,
+  tableKey,
+  lang,
+  showObsoleteEnabled,
+  subsetTree,
+  apiUrl,
+  showImportedEnabled,
+  treeScopeKey,
+  requestKey,
+  onNavigateToEntity,
+  title,
+}: EntityListProps) {
   const dispatch = useAppDispatch();
   
 
+  const [attempt, retry] = useState(0);
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
   const [search, setSearch] = useState<string>("");
 
-  const entities = useAppSelector((state) => 
-    parentEntityIri ? state.ontologies.directChildrenEntities : state.ontologies.entities
-  );
-  const totalEntities = useAppSelector((state) => 
-    parentEntityIri ? state.ontologies.totalDirectChildrenEntities : state.ontologies.totalEntities
-  );
-  const loading = useAppSelector((state) => 
-    parentEntityIri ? state.ontologies.loadingDirectChildrenEntities : state.ontologies.loadingEntities
-  );
+  const tableId = directChildrenTableKey({ tableKey, entityType, entityIri: parentEntityIri });
+  const table = useAppSelector(state => state.ontologies.directChildrenTables[tableId]);
+  const failed = useAppSelector(state => state.ontologies.treeRequestErrors[`ontologies_direct_children_entities:${tableId}`]);
+  const listEntities = useAppSelector(state => state.ontologies.entities);
+  const listTotal = useAppSelector(state => state.ontologies.totalEntities);
+  const entities = parentEntityIri ? table?.elements || [] : listEntities;
+  const totalEntities = parentEntityIri ? table?.totalElements || 0 : listTotal;
 
   useEffect(() => {
     if (parentEntityIri) {
       // Fetch direct children using the specific API endpoint
-      dispatch(
+      const promise = dispatch(
         getDirectChildrenEntities({
           ontologyId,
           entityIri: parentEntityIri,
+          tableKey: tableId,
           entityType,
           page,
           size: rowsPerPage,
           search,
           lang,
           showObsoleteEnabled,
+          subsetTree,
+          apiUrl,
+          showImportedEnabled,
+          treeScopeKey,
+          requestKey,
         })
       );
+      return () => promise.abort();
     } else {
       // Use regular entities endpoint for general browsing
       const searchParam = search ? `*${search}*` : search;
@@ -72,7 +106,7 @@ export default function EntityList({
       
       dispatch(getEntities(params));
     }
-  }, [dispatch, ontologyId, entityType, page, rowsPerPage, search, parentEntityIri, lang, showObsoleteEnabled]);
+  }, [dispatch, ontologyId, entityType, page, rowsPerPage, search, parentEntityIri, lang, showObsoleteEnabled, JSON.stringify(subsetTree), apiUrl, showImportedEnabled, treeScopeKey, requestKey, tableId, attempt]);
 
   useEffect(() => {
     setPage(0);
@@ -82,8 +116,6 @@ export default function EntityList({
   useEffect(() => {
     setPage(0);
   }, [search]);
-
-  const navigate = useNavigate();
 
   // base columns are shown for all entity types.
   const baseColumns: readonly Column[] = [
@@ -406,10 +438,16 @@ export default function EntityList({
       )}
       
       <DataTable
+        resultStatus={parentEntityIri ? (
+          failed ? <div role="alert">Unable to load direct children. <button type="button" className="link-default" onClick={() => retry(n => n + 1)}>Retry direct children</button></div>
+          : table?.loading ? <p role="status">Loading direct children…</p>
+          : table && totalEntities === 0 ? <p role="status">No direct children match the current settings.</p>
+          : undefined
+        ) : undefined}
         columns={columns}
         data={entities}
         dataCount={totalEntities}
-        placeholder={`Search ${entityType}...`}
+        placeholder={parentEntityIri && entityType === "classes" ? "Search children..." : `Search ${entityType}...`}
         page={page}
         rowsPerPage={rowsPerPage}
         onPageChange={(pg: number) => {
@@ -424,16 +462,10 @@ export default function EntityList({
         onSelectRow={(row) => {
           if (onNavigateToEntity) {
             onNavigateToEntity(ontologyId, row);
-          } else {
-            const termUrl = encodeURIComponent(
-              encodeURIComponent(row.properties.iri)
-            );
-            navigate(
-              `/ontologies/${ontologyId}/${row.getTypePlural()}/${termUrl}`
-            );
           }
         }}
         onFilter={(searchTerm: string) => {
+          setPage(0);
           setSearch(searchTerm);
         }}
       />

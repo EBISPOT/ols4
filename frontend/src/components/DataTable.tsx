@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { KeyboardArrowDown } from "@mui/icons-material";
 import { randomString } from "../app/util";
 import Thing from "../model/Thing";
@@ -22,6 +23,7 @@ export default function DataTable({
   onPageChange,
   onRowsPerPageChange,
   onFilter,
+  resultStatus,
 }: {
   columns: readonly Column[];
   data: any[];
@@ -33,6 +35,8 @@ export default function DataTable({
   onPageChange?: (page: number) => void;
   onRowsPerPageChange?: (rowsPerPage: number) => void;
   onFilter?: (key: string) => void;
+  // Replace results without hiding or remounting the editable controls.
+  resultStatus?: ReactNode;
 }) {
   // const [sortColumn, setSortColumn] = useState<string>("");
   // const [sortDirection, setSortDirection] = useState<string>("asc");
@@ -78,6 +82,7 @@ export default function DataTable({
           </div>
         ) : null}
       </div>
+      {resultStatus ? <div className="mx-2">{resultStatus}</div> : <>
       <div className="mx-2 overflow-x-auto">
         <table className="table-auto border-collapse border-spacing-1 w-full mb-2">
           <thead>
@@ -135,6 +140,7 @@ export default function DataTable({
           dataCount={dataCount || 0}
         ></Pagination>
       ) : null}
+      </>}
     </div>
   );
 }

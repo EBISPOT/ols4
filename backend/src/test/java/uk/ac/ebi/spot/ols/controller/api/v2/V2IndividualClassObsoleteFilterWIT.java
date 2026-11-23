@@ -20,6 +20,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -44,21 +45,21 @@ class V2IndividualClassObsoleteFilterWIT {
 
     @Test
     void excludesObsoleteIndividualsByDefaultAndAllowsExplicitOptIn() throws Exception {
-        when(individualRepository.getIndividualsOfClass(any(), any(), any(), any(Boolean.class), any(), any()))
+        when(individualRepository.getIndividualsOfClass(any(), any(), any(), any(Boolean.class), any(Boolean.class), any(), eq(false), any(), any()))
                 .thenAnswer(invocation -> new OlsFacetedResultsPage<JsonElement>(
                         List.of(), Map.of(), invocation.getArgument(2), 0));
 
         mockMvc.perform(get(ROUTE)).andExpect(status().isOk());
         ArgumentCaptor<Boolean> defaultValue = ArgumentCaptor.forClass(Boolean.class);
         verify(individualRepository).getIndividualsOfClass(
-                any(), any(), any(), defaultValue.capture(), any(), any());
+                any(), any(), any(), defaultValue.capture(), any(Boolean.class), any(), eq(false), any(), any());
         assertFalse(defaultValue.getValue());
 
         mockMvc.perform(get(ROUTE).param("includeObsoleteEntities", "true"))
                 .andExpect(status().isOk());
         ArgumentCaptor<Boolean> values = ArgumentCaptor.forClass(Boolean.class);
         verify(individualRepository, org.mockito.Mockito.times(2)).getIndividualsOfClass(
-                any(), any(), any(), values.capture(), any(), any());
+                any(), any(), any(), values.capture(), any(Boolean.class), any(), eq(false), any(), any());
         assertTrue(values.getAllValues().get(1));
     }
 }

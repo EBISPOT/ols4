@@ -209,6 +209,50 @@ public class RDF2JSONRelationsIT {
         assertEquals(iri("hasPart"), partOf.get(INVERSE_OF).getAsString());
     }
 
+    @Test
+    public void overlappingIndividualParentsMergeDistinctRelationsAndInverseMetadata() throws Exception {
+        JsonObject ontology = run("individual-overlap");
+        for (String name : List.of("Both", "Multi", "Direct", "Duplicate", "Single")) {
+            JsonObject child = node(ontology.getAsJsonArray("individuals"), name);
+            JsonArray parents = child.getAsJsonArray("hierarchicalParent");
+            assertEquals(name + " must emit one parent per target IRI", 1, parents.size());
+            JsonObject parent = parents.get(0).getAsJsonObject();
+            assertEquals(iri("Target"), parent.get("value").getAsString());
+            Set<String> relations = new HashSet<>();
+            for (JsonElement item : parent.getAsJsonArray("axioms")) {
+                JsonObject axiom = item.getAsJsonObject();
+                String relation = axiom.get("childRelationToParent").getAsString();
+                assertTrue("duplicate relation axiom", relations.add(relation));
+                assertEquals(relation + "Inverse", axiom.get("parentRelationToChild").getAsString());
+            }
+            assertEquals(name.equals("Duplicate") || name.equals("Single")
+                    ? Set.of(iri("p")) : Set.of(iri("p"), iri("q")), relations);
+            assertEquals(Set.of(iri("Target"), iri("Top")), strings(child.getAsJsonArray("hierarchicalAncestor")));
+            assertTrue(child.get("hasHierarchicalParents").getAsBoolean());
+            assertFalse(child.get("hasDirectParents").getAsBoolean());
+        }
+        JsonObject target = node(ontology.getAsJsonArray("classes"), "Target");
+        assertTrue(target.get("hasHierarchicalChildren").getAsBoolean());
+        assertEquals(6, target.get("numHierarchicalDescendants").getAsInt());
+        JsonObject visible = node(ontology.getAsJsonArray("individuals"), "Visible");
+        assertEquals(1, visible.getAsJsonArray("hierarchicalParent").size());
+        JsonArray axioms = visible.getAsJsonArray("hierarchicalParent").get(0).getAsJsonObject().getAsJsonArray("axioms");
+        assertEquals(2, axioms.size());
+        assertEquals("http://purl.obolibrary.org/obo/BFO_0000050",
+                axioms.get(0).getAsJsonObject().get("childRelationToParent").getAsString());
+        assertEquals(iri("hasPart"), axioms.get(0).getAsJsonObject().get("parentRelationToChild").getAsString());
+    }
+
+    @Test
+    public void unsupportedIndividualRestrictionsAndInvalidTargetsStayExcluded() throws Exception {
+        JsonObject ontology = run("individual-overlap");
+        for (String name : List.of("Self", "Missing", "Off", "Forall", "Intersection", "Nested")) {
+            JsonObject child = node(ontology.getAsJsonArray("individuals"), name);
+            assertFalse(name, child.get("hasHierarchicalParents").getAsBoolean());
+            assertTrue(name, !child.has("hierarchicalParent") || child.getAsJsonArray("hierarchicalParent").isEmpty());
+        }
+    }
+
     private JsonObject run(String fixture) throws Exception {
         Path resources = Path.of(getClass().getResource("/relations/" + fixture + ".ttl").toURI()).getParent();
         Path output = temporaryFolder.newFile(fixture + ".json").toPath();

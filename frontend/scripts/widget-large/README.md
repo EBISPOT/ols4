@@ -1,0 +1,3 @@
+# Public large-widget integration regression
+
+From frontend run `node scripts/widget-large/build.mjs`, open `/widget-large/index.html` on the local frontend, and click Run regression. Requires the real task-owned `paging` (2241 individuals under A) and `mixed` fixtures. No Router wraps the public widget; callback ontology, late individual A2241 and unchanged sibling are asserted. A separate real app EntityList checks host-Router URL navigation. This is a manual mounted browser harness, not part of Node/CI. Required Node/CI covers standalone/hosted callback rendering, actual store-factory isolation and the existing reducer/tree regressions.
