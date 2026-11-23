@@ -235,6 +235,10 @@ function treeContextParams(subsetTree?: string[]): Record<string, string> {
     treeContext: "true",
   };
 }
+// Tree requests ask for nodes, not documents: identity, label, parent links, child
+// flags and counts (the backend's view=tree). The full documents made a page of
+// 1000 cohorts 38 MB. Listings that show descriptions keep the full view.
+const TREE_NODE_VIEW = { view: "tree" };
 export const setSpecificRootIri = createAction<string>("ontologies_set_specific_root_iri");
 
 export const getOntology = createAsyncThunk(
@@ -512,7 +516,7 @@ export const getAncestors = createAsyncThunk(
     const ancestorRoute = entityType === "classes" || entityType === "individuals"
       ? `entities/${doubleEncodedUri}/treeAncestors`
       : `${entityType}/${doubleEncodedUri}/ancestors`;
-    const params = new URLSearchParams({size: "1000", lang});
+    const params = new URLSearchParams({size: "1000", lang, view: "tree"});
     // The additive mixed ancestry route is unfiltered context by definition.
     if (entityType !== "classes" && entityType !== "individuals") {
       params.set("includeObsoleteEntities", "true");
@@ -555,6 +559,7 @@ export const getRootEntities = createAsyncThunk(
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
             ...treeContextParams(subsetTree),
+            ...TREE_NODE_VIEW,
             ...(showImportedEnabled === false ? { isDefiningOntology: "true" } : {}),
           })}`,
           undefined,
@@ -568,6 +573,7 @@ export const getRootEntities = createAsyncThunk(
             lang,
             includeObsoleteEntities: showObsoleteEnabled,
             ...treeContextParams(subsetTree),
+            ...TREE_NODE_VIEW,
             ...(showImportedEnabled === false ? { isDefiningOntology: "true" } : {}),
           })}`,
           undefined,
@@ -593,6 +599,7 @@ export const getRootEntities = createAsyncThunk(
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
           ...treeContextParams(subsetTree),
+          ...TREE_NODE_VIEW,
           ...(showImportedEnabled === false ? { isDefiningOntology: "true" } : {}),
         })}`,
         undefined,
@@ -615,6 +622,7 @@ export const getRootEntities = createAsyncThunk(
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
           ...treeContextParams(subsetTree),
+          ...TREE_NODE_VIEW,
           ...(showImportedEnabled === false ? { isDefiningOntology: "true" } : {}),
         })}`,
         undefined,
@@ -810,6 +818,7 @@ export const getDirectChildrenCount = createAsyncThunk(
           includeObsoleteEntities: showObsoleteEnabled,
           includeImportedEntities: showImportedEnabled,
           ...treeContextParams(subsetTree),
+          ...TREE_NODE_VIEW,
         })}`,
         undefined,
         apiUrl,
@@ -823,6 +832,7 @@ export const getDirectChildrenCount = createAsyncThunk(
           includeObsoleteEntities: showObsoleteEnabled,
           includeImportedEntities: showImportedEnabled,
           ...treeContextParams(subsetTree),
+          ...TREE_NODE_VIEW,
         })}`,
         undefined,
         apiUrl,
@@ -836,6 +846,7 @@ export const getDirectChildrenCount = createAsyncThunk(
           includeObsoleteEntities: showObsoleteEnabled,
           includeImportedEntities: showImportedEnabled,
           ...treeContextParams(subsetTree),
+          ...TREE_NODE_VIEW,
         })}`,
         undefined,
         apiUrl,
@@ -873,6 +884,7 @@ export const getNodeChildren = createAsyncThunk(
           includeObsoleteEntities: showObsoleteEnabled,
           includeImportedEntities: showImportedEnabled,
           ...treeContextParams(subsetTree),
+          ...TREE_NODE_VIEW,
         })}`,
         undefined, apiUrl, { signal }
       );
@@ -883,6 +895,7 @@ export const getNodeChildren = createAsyncThunk(
           includeObsoleteEntities: showObsoleteEnabled,
           includeImportedEntities: showImportedEnabled,
           ...treeContextParams(subsetTree),
+          ...TREE_NODE_VIEW,
         })}`, undefined, apiUrl, { signal }
       );
     } else {
@@ -894,6 +907,7 @@ export const getNodeChildren = createAsyncThunk(
             includeObsoleteEntities: showObsoleteEnabled,
             includeImportedEntities: showImportedEnabled,
             ...treeContextParams(subsetTree),
+            ...TREE_NODE_VIEW,
           }
         )}`,
         undefined,
