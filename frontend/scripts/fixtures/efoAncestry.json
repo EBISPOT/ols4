@@ -1,0 +1,185 @@
+[
+  {
+    "iri": "http://purl.obolibrary.org/obo/IAO_0000030",
+    "label": [
+      "information entity"
+    ],
+    "type": [
+      "class",
+      "entity"
+    ],
+    "ontologyId": "efo",
+    "isDefiningOntology": false,
+    "definedBy": [
+      "iao"
+    ],
+    "hierarchicalParent": [
+      "http://www.ebi.ac.uk/efo/EFO_0000001"
+    ],
+    "directParent": [
+      "http://www.ebi.ac.uk/efo/EFO_0000001"
+    ],
+    "hierarchicalAncestor": [
+      "http://www.ebi.ac.uk/efo/EFO_0000001",
+      "http://www.w3.org/2002/07/owl#Thing"
+    ],
+    "hasDirectChildren": true,
+    "hasHierarchicalChildren": true,
+    "numDescendants": 25926.0,
+    "numHierarchicalDescendants": 25946.0
+  },
+  {
+    "iri": "http://www.ebi.ac.uk/efo/EFO_0000001",
+    "label": [
+      "experimental factor"
+    ],
+    "type": [
+      "class",
+      "entity"
+    ],
+    "ontologyId": "efo",
+    "isDefiningOntology": true,
+    "definedBy": [
+      "efo"
+    ],
+    "hierarchicalParent": [
+      "http://www.w3.org/2002/07/owl#Thing"
+    ],
+    "directParent": [
+      "http://www.w3.org/2002/07/owl#Thing"
+    ],
+    "hierarchicalAncestor": [
+      "http://www.w3.org/2002/07/owl#Thing"
+    ],
+    "hasDirectChildren": true,
+    "hasHierarchicalChildren": true,
+    "numDescendants": 84715.0,
+    "numHierarchicalDescendants": 84715.0
+  },
+  {
+    "iri": "http://www.ebi.ac.uk/efo/EFO_0001444",
+    "label": [
+      "measurement"
+    ],
+    "type": [
+      "class",
+      "entity"
+    ],
+    "ontologyId": "efo",
+    "isDefiningOntology": true,
+    "definedBy": [
+      "efo"
+    ],
+    "hierarchicalParent": [
+      "http://purl.obolibrary.org/obo/IAO_0000030"
+    ],
+    "directParent": [
+      "http://purl.obolibrary.org/obo/IAO_0000030"
+    ],
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://www.ebi.ac.uk/efo/EFO_0000001",
+      "http://www.w3.org/2002/07/owl#Thing"
+    ],
+    "hasDirectChildren": true,
+    "hasHierarchicalChildren": true,
+    "numDescendants": 25456.0,
+    "numHierarchicalDescendants": 25456.0
+  },
+  {
+    "iri": "http://www.ebi.ac.uk/efo/EFO_0004302",
+    "label": [
+      "anthropometric measurement"
+    ],
+    "type": [
+      "class",
+      "entity"
+    ],
+    "ontologyId": "efo",
+    "isDefiningOntology": true,
+    "definedBy": [
+      "efo"
+    ],
+    "hierarchicalParent": [
+      "http://www.ebi.ac.uk/efo/EFO_0001444"
+    ],
+    "directParent": [
+      "http://www.ebi.ac.uk/efo/EFO_0001444"
+    ],
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://www.ebi.ac.uk/efo/EFO_0000001",
+      "http://www.ebi.ac.uk/efo/EFO_0001444",
+      "http://www.w3.org/2002/07/owl#Thing"
+    ],
+    "hasDirectChildren": true,
+    "hasHierarchicalChildren": true,
+    "numDescendants": 76.0,
+    "numHierarchicalDescendants": 76.0
+  },
+  {
+    "iri": "http://www.ebi.ac.uk/efo/EFO_0004324",
+    "label": [
+      "body weights and measures"
+    ],
+    "type": [
+      "class",
+      "entity"
+    ],
+    "ontologyId": "efo",
+    "isDefiningOntology": true,
+    "definedBy": [
+      "efo"
+    ],
+    "hierarchicalParent": [
+      "http://www.ebi.ac.uk/efo/EFO_0004302"
+    ],
+    "directParent": [
+      "http://www.ebi.ac.uk/efo/EFO_0004302"
+    ],
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://www.ebi.ac.uk/efo/EFO_0000001",
+      "http://www.ebi.ac.uk/efo/EFO_0001444",
+      "http://www.ebi.ac.uk/efo/EFO_0004302",
+      "http://www.w3.org/2002/07/owl#Thing"
+    ],
+    "hasDirectChildren": true,
+    "hasHierarchicalChildren": true,
+    "numDescendants": 40.0,
+    "numHierarchicalDescendants": 40.0
+  },
+  {
+    "iri": "http://www.ebi.ac.uk/efo/EFO_0006784",
+    "label": [
+      "body height at birth"
+    ],
+    "type": [
+      "class",
+      "entity"
+    ],
+    "ontologyId": "efo",
+    "isDefiningOntology": true,
+    "definedBy": [
+      "efo"
+    ],
+    "hierarchicalParent": [
+      "http://www.ebi.ac.uk/efo/EFO_0004324"
+    ],
+    "directParent": [
+      "http://www.ebi.ac.uk/efo/EFO_0004324"
+    ],
+    "hierarchicalAncestor": [
+      "http://purl.obolibrary.org/obo/IAO_0000030",
+      "http://www.ebi.ac.uk/efo/EFO_0000001",
+      "http://www.ebi.ac.uk/efo/EFO_0001444",
+      "http://www.ebi.ac.uk/efo/EFO_0004302",
+      "http://www.ebi.ac.uk/efo/EFO_0004324",
+      "http://www.w3.org/2002/07/owl#Thing"
+    ],
+    "hasDirectChildren": false,
+    "hasHierarchicalChildren": false,
+    "numDescendants": 0.0,
+    "numHierarchicalDescendants": 0.0
+  }
+]

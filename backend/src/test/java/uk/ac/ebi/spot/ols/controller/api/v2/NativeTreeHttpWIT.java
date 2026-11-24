@@ -1,0 +1,111 @@
+package uk.ac.ebi.spot.ols.controller.api.v2;
+
+import com.google.gson.JsonElement;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.data.domain.Page;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import org.springframework.test.web.servlet.MockMvc;
+import uk.ac.ebi.spot.ols.config.WebConfig;
+import uk.ac.ebi.spot.ols.controller.api.exception.GlobalExceptionHandler;
+import uk.ac.ebi.spot.ols.repository.*;
+import uk.ac.ebi.spot.ols.repository.search.OlsFacetedResultsPage;
+import java.net.URI;
+import java.util.*;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@WebMvcTest({V2ClassController.class, V2IndividualController.class, V2PropertyController.class})
+@ContextConfiguration(classes = {V2ClassController.class, V2IndividualController.class,
+        V2PropertyController.class, GlobalExceptionHandler.class, WebConfig.class})
+class NativeTreeHttpWIT {
+    @Autowired MockMvc mvc;
+    @MockitoBean ClassRepository classes;
+    @MockitoBean IndividualRepository individuals;
+    @MockitoBean PropertyRepository properties;
+    private static final String PREFIX = "/api/v2/ontologies/native/";
+    private static final String IRI = "https%253A%252F%252Fexample.org%252Fnative%2523R";
+
+    @Test
+    void treeContextBindsAndReachesEveryChildRepositoryWithSubsetAndVisibility() throws Exception {
+        when(classes.getChildrenByOntologyId(any(), any(), any(), anyBoolean(), anyBoolean(), any(), any(), anyBoolean(), any(), any())).thenReturn(Page.empty());
+        when(classes.getHierarchicalChildrenByOntologyId(any(), any(), any(), anyBoolean(), anyBoolean(), any(), anyBoolean(), any(), any())).thenReturn(Page.empty());
+        when(individuals.getHierarchicalChildrenByOntologyId(any(), any(), any(), anyBoolean(), anyBoolean(), any(), anyBoolean(), any(), any())).thenReturn(Page.empty());
+        when(individuals.getIndividualsOfClass(any(), any(), any(), anyBoolean(), anyBoolean(), any(), anyBoolean(), any(), any()))
+                .thenReturn(new OlsFacetedResultsPage<JsonElement>(List.of(), Map.of(), org.springframework.data.domain.PageRequest.of(0,20), 0));
+        when(properties.getChildrenByOntologyId(any(), any(), any(), anyBoolean(), anyBoolean(), any(), anyBoolean(), any(), any(), any())).thenReturn(Page.empty());
+        for (String route : List.of("classes/" + IRI + "/children", "classes/" + IRI + "/hierarchicalChildren",
+                "individuals/" + IRI + "/hierarchicalChildren", "classes/" + IRI + "/individuals", "properties/" + IRI + "/children")) {
+            mvc.perform(get(URI.create(PREFIX + route)).param("treeContext", "true").param("subsetTree", "S,S2")
+                    .param("includeImportedEntities", "false").param("includeObsoleteEntities", "false"))
+                    .andExpect(status().isOk());
+        }
+        verify(classes).getChildrenByOntologyId(eq("native"), any(), eq("https://example.org/native#R"), eq(false), eq(false), isNull(), eq(List.of("S","S2")), eq(true), eq("en"), any());
+        verify(classes).getHierarchicalChildrenByOntologyId(eq("native"), any(), any(), eq(false), eq(false), eq(List.of("S","S2")), eq(true), eq("en"), any());
+        verify(individuals).getHierarchicalChildrenByOntologyId(eq("native"), any(), any(), eq(false), eq(false), eq(List.of("S","S2")), eq(true), eq("en"), any());
+        verify(individuals).getIndividualsOfClass(eq("native"), any(), any(), eq(false), eq(false), eq(List.of("S","S2")), eq(true), eq("en"), any());
+        verify(properties).getChildrenByOntologyId(eq("native"), any(), any(), eq(false), eq(false), eq(List.of("S","S2")), eq(true), isNull(), eq("en"), any());
+    }
+
+    @Test
+    void propertyHierarchyBindsNonDefaultVisibilityPagingSubsetAndLanguage() throws Exception {
+        when(properties.getChildrenByOntologyId(any(), any(), any(), anyBoolean(), anyBoolean(), any(), anyBoolean(), any(), any(), any())).thenReturn(Page.empty());
+        when(properties.getAncestorsByOntologyId(any(), any(), any(), anyBoolean(), anyBoolean(), any(), any())).thenReturn(Page.empty());
+        mvc.perform(get(URI.create(PREFIX + "properties/" + IRI + "/children"))
+                .param("includeObsoleteEntities", "false").param("includeImportedEntities", "false")
+                .param("subsetTree", "S,S2").param("treeContext", "true").param("searchQuery", "Needle_%")
+                .param("page", "2").param("size", "7").param("lang", "fr")).andExpect(status().isOk());
+        verify(properties).getChildrenByOntologyId(eq("native"), argThat(p -> p.getPageNumber() == 2 && p.getPageSize() == 7),
+                eq("https://example.org/native#R"), eq(false), eq(false), eq(List.of("S", "S2")), eq(true), eq("Needle_%"), eq("fr"), any());
+        mvc.perform(get(URI.create(PREFIX + "properties/" + IRI + "/ancestors"))
+                .param("includeObsoleteEntities", "false").param("includeImportedEntities", "false")
+                .param("page", "3").param("size", "9").param("lang", "de")).andExpect(status().isOk());
+        verify(properties).getAncestorsByOntologyId(eq("native"), argThat(p -> p.getPageNumber() == 3 && p.getPageSize() == 9),
+                eq("https://example.org/native#R"), eq(false), eq(false), eq("de"), any());
+    }
+
+    @Test
+    void legacyIndividualSearchBindsNonDefaultSearchAndEveryConstraint() throws Exception {
+        var empty = new OlsFacetedResultsPage<JsonElement>(List.of(), Map.of(), org.springframework.data.domain.PageRequest.of(2,7), 0);
+        when(individuals.getIndividualsOfClass(any(), any(), any(), anyBoolean(), anyBoolean(), any(), anyBoolean(), any(), any())).thenReturn(empty);
+        when(individuals.getIndividualsOfClass(any(), any(), any(), anyBoolean(), anyBoolean(), any(), anyBoolean(), any(), any(), any())).thenReturn(empty);
+        mvc.perform(get(URI.create(PREFIX + "classes/" + IRI + "/individuals"))
+                .param("searchQuery", "A2241").param("page", "2").param("size", "7")
+                .param("treeContext", "true").param("subsetTree", "S,S2")
+                .param("includeImportedEntities", "false").param("includeObsoleteEntities", "true")
+                .param("lang", "fr")).andExpect(status().isOk());
+        verify(individuals).getIndividualsOfClass(eq("native"), eq("https://example.org/native#R"),
+                argThat(p -> p.getPageNumber() == 2 && p.getPageSize() == 7), eq(true), eq(false),
+                eq(List.of("S","S2")), eq(true), eq("A2241"), eq("fr"), any());
+    }
+
+    @Test
+    void combinedTreeChildrenBindsSearchPagingFiltersAndCompatibleDefaults() throws Exception {
+        when(classes.getTreeChildrenByOntologyId(any(), any(), any(), anyBoolean(), anyBoolean(), any(), any(), anyBoolean(), anyBoolean(), any(), any())).thenReturn(Page.empty());
+        mvc.perform(get(URI.create(PREFIX + "classes/" + IRI + "/treeChildren")))
+                .andExpect(status().isOk());
+        verify(classes).getTreeChildrenByOntologyId(eq("native"), argThat(p -> p.getPageSize() == 20 && p.getPageNumber() == 0),
+                eq("https://example.org/native#R"), eq(false), eq(true), isNull(), isNull(), eq(false), eq(false), eq("en"), any());
+        mvc.perform(get(URI.create(PREFIX + "classes/" + IRI + "/treeChildren"))
+                .param("memberType", "individual").param("treeContext", "true").param("subsetTree", "S,S2").param("searchQuery", "late")
+                .param("page", "100").param("size", "10").param("lang", "fr")
+                .param("includeImportedEntities", "false").param("includeObsoleteEntities", "true"))
+                .andExpect(status().isOk());
+        verify(classes).getTreeChildrenByOntologyId(eq("native"), argThat(p -> p.getOffset() == 1000 && p.getPageSize() == 10),
+                eq("https://example.org/native#R"), eq(true), eq(false), eq("late"), eq(List.of("S","S2")), eq(true), eq(true), eq("fr"), any());
+    }
+
+    @Test
+    void treeContextRootFlagIsForwardedAsControlInputInsteadOfDiscarded() throws Exception {
+        when(classes.findByOntologyId(any(), any(), any(), any(), any(), any(), anyBoolean(), anyMap(), any()))
+                .thenReturn(new OlsFacetedResultsPage<JsonElement>(List.of(), Map.of(), org.springframework.data.domain.PageRequest.of(0,20), 0));
+        mvc.perform(get(PREFIX + "classes").param("treeContext", "true").param("subsetTree", "S")
+                .param("hasDirectParents", "false")).andExpect(status().isOk());
+        verify(classes).findByOntologyId(eq("native"), any(), eq("en"), any(), any(), any(), eq(false),
+                argThat(p -> p.get("treeContext").equals(List.of("true")) && p.get("subsetTree").equals(List.of("S"))), any());
+    }
+}

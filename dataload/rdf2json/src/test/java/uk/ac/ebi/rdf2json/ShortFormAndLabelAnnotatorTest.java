@@ -35,6 +35,27 @@ public class ShortFormAndLabelAnnotatorTest {
     }
 
     @Test
+    public void cohoExtractionOnlyChangesMatchingNumericIds() throws IOException {
+        OntologyGraph graph = graph(Map.of(
+                "preferredPrefix", "COHO",
+                "base_uri", List.of("http://www.ebi.ac.uk/coho/"),
+                "shortFormExtractionPattern", "^http://www\\.ebi\\.ac\\.uk/coho/COHO_([0-9]+)$"));
+        OntologyNode aggregation = entity(graph, "http://www.ebi.ac.uk/coho/COHO_0000001");
+        OntologyNode namedProperty = entity(graph, "http://www.ebi.ac.uk/coho/has_data_collection_location");
+        OntologyNode imported = entity(graph, "http://purl.obolibrary.org/obo/BFO_0000040");
+        OntologyNode shortImported = entity(graph, "https://example.org/A_1");
+
+        ShortFormAnnotator.annotateShortForms(graph);
+
+        assertEquals(List.of("COHO_0000001"), values(aggregation, "shortForm"));
+        assertEquals(List.of("COHO:0000001"), values(aggregation, "curie"));
+        assertEquals(List.of("COHO_has_data_collection_location"), values(namedProperty, "curie"));
+        assertEquals(List.of("BFO_0000040"), values(imported, "shortForm"));
+        assertEquals(List.of("BFO:0000040"), values(imported, "curie"));
+        assertEquals(List.of("A:1"), values(shortImported, "curie"));
+    }
+
+    @Test
     public void numericSuffixAfterMultipleUnderscoresFormsCurieAtLastSeparator() throws IOException {
         OntologyGraph graph = graph(Map.of());
         OntologyNode entity = entity(graph, "https://example.org/terms/EX_TRA_123");

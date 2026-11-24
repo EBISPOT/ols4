@@ -24,6 +24,7 @@ public class DynamicQueryHelper {
                         || k.equals("excludeOntologyId")
                         || k.equals("resolveReferences")
                         || k.equals("manchesterSyntax")
+                        || k.equals("view")
                         || k.equals("model")
                         || k.equals("includeTotal")
                         )

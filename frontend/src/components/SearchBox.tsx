@@ -554,7 +554,7 @@ export default function SearchBox({
                   onChange={(ev) => setCanonical(!ev.target.checked)}
                 />
               }
-              label="Include imported terms"
+              label="Include imported terms in search"
             />
             <FormControl sx={{ minWidth: 200, ml: 2 }} size="small">
               <InputLabel id="model-select-label">Search Model</InputLabel>

@@ -1,0 +1,20 @@
+@prefix : <https://example.org/mixed#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix obo: <http://www.geneontology.org/formats/oboInOwl#> .
+<https://example.org/mixed> a owl:Ontology .
+:partOf a owl:ObjectProperty .
+:P a owl:Class ; rdfs:label "Preferred root P" .
+:C a owl:Class ; rdfs:label "Class C" ; rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :partOf ; owl:someValuesFrom :P ] .
+:I a owl:NamedIndividual, :C ; rdfs:label "Individual I" ; obo:inSubset :S, :S2 .
+:J a owl:NamedIndividual ; :partOf :I .
+:K a owl:Class ; rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :partOf ; owl:someValuesFrom :J ] .
+:L a owl:NamedIndividual, :K ; obo:inSubset :Long .
+:X a owl:Class ; rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :partOf ; owl:someValuesFrom :Y ] .
+:Y a owl:Class ; rdfs:subClassOf :X .
+:Z a owl:NamedIndividual, :X ; obo:inSubset :Cycle .
+obo:SubsetProperty a owl:AnnotationProperty .
+:S a owl:AnnotationProperty ; rdfs:subPropertyOf obo:SubsetProperty ; rdfs:label "Mixed subset S" .
+:S2 a owl:AnnotationProperty ; rdfs:subPropertyOf obo:SubsetProperty ; rdfs:label "Overlapping subset S2" .
+:Long a owl:AnnotationProperty ; rdfs:subPropertyOf obo:SubsetProperty ; rdfs:label "Alternating subset" .
+:Cycle a owl:AnnotationProperty ; rdfs:subPropertyOf obo:SubsetProperty ; rdfs:label "Cycle subset" .

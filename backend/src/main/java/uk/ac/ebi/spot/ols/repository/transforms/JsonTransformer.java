@@ -19,6 +19,9 @@ public class JsonTransformer {
         if(options.manchesterSyntax) {
             object = ManchesterSyntaxTransform.transform(object);
         }
+        if(options.view == JsonTransformOptions.TreeView.tree) {
+            object = TreeNodeViewTransform.transform(object);
+        }
 
         return object;
     }

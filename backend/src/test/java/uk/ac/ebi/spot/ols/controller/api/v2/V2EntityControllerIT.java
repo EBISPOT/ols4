@@ -14,6 +14,7 @@ import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport;
 
 import java.net.URI;
 
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -36,7 +37,7 @@ class V2EntityControllerIT {
 
     @BeforeAll
     static void setUpApplicationPath() {
-        PostgresIntegrationTestSupport.initializeDatabase(POSTGRES);
+        PostgresIntegrationTestSupport.initializeOlsPostgresClientGraphDatabase(POSTGRES);
         repositoryHandle = PostgresIntegrationTestSupport.createEntityRepository(POSTGRES);
 
         V2EntityController controller = new V2EntityController();
@@ -62,8 +63,8 @@ class V2EntityControllerIT {
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.page").value(0))
-                .andExpect(jsonPath("$.numElements").value(4))
-                .andExpect(jsonPath("$.totalElements").value(4))
+                .andExpect(jsonPath("$.numElements").value(11))
+                .andExpect(jsonPath("$.totalElements").value(11))
                 .andExpect(jsonPath("$.elements[0].ontologyId").value("duo"))
                 .andExpect(jsonPath("$.elements[3].type[1]").value("property"));
     }
@@ -78,6 +79,36 @@ class V2EntityControllerIT {
                         .value("http://example.org/EFO_0001"))
                 .andExpect(jsonPath("$.elements[2].iri")
                         .value("http://example.org/EFO_0100"));
+    }
+
+    @Test
+    void filtersByHierarchicalParentWithAndWithoutSearch() throws Exception {
+        String parent = "http://example.org/GRAPH_PARENT";
+        String child = "http://example.org/GRAPH_CHILD_ACTIVE";
+        String property = "http://example.org/GRAPH_CHILD_PROPERTY";
+        String grandchild = "http://example.org/GRAPH_GRANDCHILD";
+
+        mockMvc.perform(get("/api/v2/entities")
+                        .param("ontologyId", "graphtest")
+                        .param("hierarchicalAncestor", parent))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.totalElements").value(3))
+                .andExpect(jsonPath("$.elements[*].iri").value(containsInAnyOrder(child, property, grandchild)));
+
+        mockMvc.perform(get("/api/v2/entities")
+                        .param("ontologyId", "graphtest")
+                        .param("hierarchicalParent", parent))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.totalElements").value(2))
+                .andExpect(jsonPath("$.elements[*].iri").value(containsInAnyOrder(child, property)));
+
+        mockMvc.perform(get("/api/v2/entities")
+                        .param("ontologyId", "graphtest")
+                        .param("hierarchicalParent", parent)
+                        .param("search", "Active"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.totalElements").value(1))
+                .andExpect(jsonPath("$.elements[0].iri").value(child));
     }
 
     @Test
