@@ -11,6 +11,14 @@
       rel="stylesheet"
       href="https://ebi.emblstatic.net/web_guidelines/EBI-Icon-fonts/v1.3/fonts.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://docbot-64c680.gitdocs.ebi.ac.uk/dist/Chatbot-Modal.css"
+    />
+    <script
+      type="module"
+      src="https://docbot-64c680.gitdocs.ebi.ac.uk/Chatbot-Modal.web.js"
+    ></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
@@ -41,6 +49,11 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <docbot-modal
+      selectedteam="ontology_tools"
+      backendurl="https://www.ebi.ac.uk/docbot/api"
+      enableselector="false"
+    ></docbot-modal>
   </body>
 
 	<script src="%PUBLIC_URL%/runtime-config.js" type="text/javascript"></script>
