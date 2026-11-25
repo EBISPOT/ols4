@@ -39,7 +39,6 @@ import {
   hideImported,
   showSiblings,
   setSelectedSubsets,
-  getDirectChildrenCount,
 } from "../ontologiesSlice";
 import EntityList from "./EntityList";
 
@@ -93,6 +92,8 @@ export default function EntityTree({
     scopeKey, lang, selectedEntity, specifiedRootIri || "", preferredRoots,
     showObsoleteEnabled, showImportedEnabled, showSiblingsEnabled, subsetTree || [],
   ]);
+  const subsetsResultKey = JSON.stringify([scopeKey, lang, showObsoleteEnabled, showImportedEnabled]);
+  const memberCountsResultKey = JSON.stringify([subsetsResultKey, subsetTree || []]);
   const ownsContent = ownsScope && tree.treeRequestKey === requestKey;
   const nodesWithChildrenLoaded = ownsContent ? tree.nodesWithChildrenLoaded : [];
   const nodeChildren = ownsContent ? tree.nodeChildren : {};
@@ -111,63 +112,27 @@ export default function EntityTree({
   const [countAttempt, retryCounts] = useState(0);
   const [subsetAttempt, retrySubsets] = useState(0);
   const [childrenAttempt, retryChildren] = useState(0);
-  const countRequests = useRef<any[]>([]);
+  const childRequests = useRef(new Map<string, { abort: () => void }>());
 
   useEffect(() => {
     dispatch(setTreeScope({ scopeKey, preferencesScopeKey, preferredRoots: defaultPreferredRoots }));
   }, [dispatch, scopeKey, preferencesScopeKey, defaultPreferredRoots]);
 
   useEffect(() => {
-    dispatch(setTreeRequestContext({ scopeKey, requestKey }));
+    dispatch(setTreeRequestContext({ scopeKey, requestKey, memberCountsResultKey }));
+    const pending = childRequests.current;
     return () => {
-      for (const promise of countRequests.current) promise.abort();
-      countRequests.current = [];
+      pending.forEach((request) => request.abort());
+      pending.clear();
     };
-  }, [dispatch, scopeKey, requestKey]);
+  }, [dispatch, scopeKey, requestKey, memberCountsResultKey]);
 
-  const requestDirectCount = (node: TreeNode) => {
-    const promise = dispatch(getDirectChildrenCount({
-      ontologyId: ontology.getOntologyId(), entityIri: node.iri,
-      entityType: entityType === "entities" ? "classes" : entityType, lang,
-      showObsoleteEnabled, showImportedEnabled, subsetTree, apiUrl,
-      treeScopeKey: scopeKey, requestKey,
-    }));
-    countRequests.current.push(promise);
-  };
+  const expandedNodes = new Set([...manuallyExpandedNodes, ...automaticallyExpandedNodes]);
 
-  const toggleNode = useCallback(
-    (node: any) => {
-      let isExpanded =
-        manuallyExpandedNodes.indexOf(node.absoluteIdentity) !== -1 ||
-        automaticallyExpandedNodes.indexOf(node.absoluteIdentity) !== -1;
-
-      if (isExpanded) {
-        dispatch(closeNode(node));
-      } else {
-        // Combined class and individual pages already return the exact child total.
-        if (entityType !== "classes" && entityType !== "individuals" &&
-            directChildrenCounts[node.iri] === undefined) {
-          requestDirectCount(node);
-        }
-        dispatch(openNode(node));
-      }
-    },
-    [
-      dispatch,
-      JSON.stringify(automaticallyExpandedNodes),
-      JSON.stringify(manuallyExpandedNodes),
-      directChildrenCounts,
-      ontology,
-      entityType,
-      lang,
-      showObsoleteEnabled,
-      showImportedEnabled,
-      JSON.stringify(subsetTree),
-      apiUrl,
-      scopeKey,
-      requestKey,
-    ]
-  );
+  function toggleNode(node: TreeNode) {
+    if (!node.expandable) return;
+    dispatch(expandedNodes.has(node.absoluteIdentity) ? closeNode(node) : openNode(node));
+  }
 
   useEffect(() => {
     const args = {
@@ -181,37 +146,51 @@ export default function EntityTree({
     return () => promise.abort();
   }, [dispatch, requestKey, rootAttempt]);
 
+  const rootsReady = rootStatus === "succeeded";
+  const hasRoots = rootsReady && rootNodes.length > 0;
+
   useEffect(() => {
-    if (specifiedRootIri) return;
+    if (!rootsReady || specifiedRootIri || tree.subsetsResultKey === subsetsResultKey) return;
     const promise = dispatch(getSubsets({
       ontologyId: ontology.getOntologyId(), entityType, lang,
       showObsoleteEnabled, showImportedEnabled, apiUrl, treeScopeKey: scopeKey, requestKey,
+      resultKey: subsetsResultKey,
     }));
     return () => promise.abort();
-  }, [dispatch, requestKey, subsetAttempt]);
+  }, [dispatch, requestKey, rootsReady, subsetAttempt]);
 
   useEffect(() => {
-    if (!needsFilteredCounts || !showNodeCounts) return;
+    if (!hasRoots || !needsFilteredCounts || !showNodeCounts ||
+        tree.memberCountsResultKey === memberCountsResultKey) return;
     const promise = dispatch(getTreeMemberCounts({
       ontologyId: ontology.getOntologyId(), entityType, selectedSubsets: subsetTree, lang,
       showObsoleteEnabled, showImportedEnabled, apiUrl, treeScopeKey: scopeKey, requestKey,
+      resultKey: memberCountsResultKey,
     }));
     return () => promise.abort();
-  }, [dispatch, requestKey, needsFilteredCounts, showNodeCounts, countAttempt]);
+  }, [dispatch, requestKey, hasRoots, needsFilteredCounts, showNodeCounts, countAttempt]);
 
   useEffect(() => {
+    if (!ownsContent) return;
     const expanded = showSiblingsEnabled
       ? [...manuallyExpandedNodes, ...automaticallyExpandedNodes]
       : manuallyExpandedNodes;
-    const missing = Array.from(new Set(expanded)).filter(id => !nodesWithChildrenLoaded.includes(id));
-    const promises = missing.map(absoluteIdentity => dispatch(getNodeChildren({
-      ontologyId: ontology.getOntologyId(), entityTypePlural: entityType,
-      entityIri: absoluteIdentity.split(";").pop(), absoluteIdentity, lang,
-      includeObsoleteEntities: showObsoleteEnabled, includeImportedEntities: showImportedEnabled,
-      apiUrl, subsetTree, treeScopeKey: scopeKey, requestKey,
-    })));
-    return () => { for (const promise of promises) promise.abort(); };
-  }, [dispatch, requestKey, JSON.stringify(manuallyExpandedNodes), JSON.stringify(automaticallyExpandedNodes), childrenAttempt]);
+    const loaded = new Set(nodesWithChildrenLoaded);
+    const pending = childRequests.current;
+    for (const absoluteIdentity of expanded) {
+      if (loaded.has(absoluteIdentity) || pending.has(absoluteIdentity)) continue;
+      const request = dispatch(getNodeChildren({
+        ontologyId: ontology.getOntologyId(), entityTypePlural: entityType,
+        entityIri: absoluteIdentity.split(";").pop(), absoluteIdentity, lang,
+        includeObsoleteEntities: showObsoleteEnabled, includeImportedEntities: showImportedEnabled,
+        apiUrl, subsetTree, treeScopeKey: scopeKey, requestKey,
+      }));
+      pending.set(absoluteIdentity, request);
+      void request.then(() => {
+        if (pending.get(absoluteIdentity) === request) pending.delete(absoluteIdentity);
+      });
+    }
+  }, [dispatch, requestKey, ownsContent, manuallyExpandedNodes, automaticallyExpandedNodes, childrenAttempt]);
 
   let toggleShowImported = useCallback(() => {
     if (showImportedEnabled) dispatch(hideImported());
@@ -275,10 +254,7 @@ export default function EntityTree({
         className="jstree-container-ul jstree-children jstree-no-icons"
       >
         {childrenSorted.map((childNode: TreeNode, i) => {
-          const isExpanded =
-            manuallyExpandedNodes.indexOf(childNode.absoluteIdentity) !== -1 ||
-            automaticallyExpandedNodes.indexOf(childNode.absoluteIdentity) !==
-              -1;
+          const isExpanded = expandedNodes.has(childNode.absoluteIdentity);
           const isLast = i === childrenSorted!.length - 1;
           const highlight =
             (selectedEntity && childNode.iri === selectedEntity.getIri()) ||
@@ -331,16 +307,14 @@ export default function EntityTree({
                 onNavigateToEntity={onNavigateToEntity}
                 onNavigateToOntology={onNavigateToOntology}
               />
-              {showNodeCounts && (needsFilteredCounts && filteredMemberCountsStatus === "loading"
+              {showNodeCounts && (needsFilteredCounts &&
+                (filteredMemberCountsStatus === "idle" || filteredMemberCountsStatus === "loading")
                 ? <span style={{ color: "gray" }} aria-label="Descendant count loading">{" (…)"}</span>
                 : numDescendants > 0 && (
                   <span style={{ color: "gray" }}>
                     {" (" + numDescendants.toLocaleString() + ")"}
                   </span>
                 ))}
-              {isExpanded && directChildrenCounts[childNode.iri] === undefined && requestErrors[`ontologies_direct_children_count:${childNode.iri}`] && (
-                <div role="alert">Unable to load the child count. <button type="button" className="link-default" onClick={() => requestDirectCount(childNode)}>Retry child count</button></div>
-              )}
               {isExpanded && requestErrors[`ontologies_node_children:${childNode.absoluteIdentity}`] && (
                 <div role="alert">Unable to load children. <button type="button" className="link-default" onClick={() => retryChildren(n => n + 1)}>Retry children</button></div>
               )}

@@ -23,6 +23,7 @@ import java.util.zip.GZIPOutputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.inSubsetTree;
+import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.reachableTreeCandidates;
 
 /** Exercises RDF2JSON output, including missing hierarchical arrays on typed individuals. */
 @Testcontainers
@@ -93,9 +94,17 @@ class MixedTreeReachabilityIT {
 
     private static List<String> closure(String... subsets) throws Exception {
         try (Connection conn = POSTGRES.createConnection("")) {
-            return DSL.using(conn, SQLDialect.POSTGRES).select(DSL.field("iri", String.class))
+            var dsl = DSL.using(conn, SQLDialect.POSTGRES);
+            var reference = dsl.select(DSL.field("iri", String.class))
                     .from("ols_entities").where(DSL.field("ontology_id").eq("mixed"))
                     .and(inSubsetTree(null, List.of(subsets))).fetch(0, String.class);
+            var candidates = dsl.select(DSL.field("ontology_id"), DSL.field("iri"))
+                    .from("ols_entities").where(DSL.field("ontology_id").eq("mixed"));
+            var actual = dsl.select(DSL.field("iri", String.class))
+                    .from(reachableTreeCandidates(candidates, "mixed", List.of(subsets), DSL.trueCondition()).as("candidate"))
+                    .fetch(0, String.class);
+            assertThat(actual).containsExactlyInAnyOrderElementsOf(reference);
+            return actual;
         }
     }
 
@@ -132,7 +141,9 @@ class MixedTreeReachabilityIT {
             }
             var cycle = pg.olsPostgresClient().getTreeAncestors("mixed", NS+"X", org.springframework.data.domain.PageRequest.of(0, 10));
             assertThat(cycle).extracting(e->e.getAsJsonObject().get("iri").getAsString()).containsExactly(NS+"Y");
-            assertThat(pg.olsPostgresClient().getTreeAncestors("mixed", NS+"L", org.springframework.data.domain.PageRequest.of(5, 1))).isEmpty();
+            var empty = pg.olsPostgresClient().getTreeAncestors("mixed", NS+"L", org.springframework.data.domain.PageRequest.of(5, 1));
+            assertThat(empty).isEmpty();
+            assertThat(empty.getTotalElements()).isEqualTo(5);
         }
     }
 

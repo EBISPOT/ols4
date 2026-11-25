@@ -113,8 +113,23 @@ public final class JooqSupport {
         Condition members = subsetMembers(subsets, eligibility);
         return DSL.table("""
                 (WITH RECURSIVE candidates AS MATERIALIZED ({0}),
+                anchored AS MATERIALIZED (
+                    SELECT c.ontology_id, c.iri
+                    FROM (SELECT DISTINCT ontology_id, iri FROM candidates) c
+                    WHERE EXISTS (
+                        SELECT 1 FROM ols_entities m
+                        WHERE m.ontology_id = c.ontology_id AND m.iri = c.iri AND {2}
+                    )
+                ), unresolved AS MATERIALIZED (
+                    SELECT c.* FROM candidates c
+                    WHERE NOT EXISTS (
+                        SELECT 1 FROM anchored a WHERE a.ontology_id = c.ontology_id AND a.iri = c.iri
+                    )
+                ),
                 mixed AS MATERIALIZED (
-                    SELECT EXISTS (
+                    -- Stored ancestry already covers single-kind paths. Only unresolved
+                    -- candidates in a mixed ontology need the complete recursive closure.
+                    SELECT EXISTS (SELECT 1 FROM unresolved) AND EXISTS (
                         SELECT 1 FROM ols_entities a WHERE a.ontology_id = {1}
                             AND NOT (coalesce(a.direct_ancestors, '{}'::text[]) = coalesce(a.hierarchical_ancestors, '{}'::text[])
                                   OR coalesce(a.direct_ancestors, '{}'::text[]) <@
@@ -136,7 +151,9 @@ public final class JooqSupport {
                     SELECT m.ontology_id, unnest(ARRAY[m.iri] ||
                            CASE WHEN m.direct_ancestors = m.hierarchical_ancestors
                                 THEN m.direct_ancestors ELSE m.direct_ancestors || m.hierarchical_ancestors END)
-                    FROM ols_entities m WHERE {2}
+                    -- Resolve all remaining candidates in one scope-wide pass.
+                    FROM ols_entities m
+                    WHERE EXISTS (SELECT 1 FROM unresolved) AND m.ontology_id = {1} AND {2}
                     UNION
                     SELECT r.ontology_id, ancestors.iri
                     FROM reachable r
@@ -147,6 +164,9 @@ public final class JooqSupport {
                     ) ancestors(iri)
                 )
                 SELECT c.* FROM candidates c
+                JOIN anchored a ON a.ontology_id = c.ontology_id AND a.iri = c.iri
+                UNION ALL
+                SELECT c.* FROM unresolved c
                 JOIN reachable r ON r.ontology_id = c.ontology_id AND r.iri = c.iri)
                 """, candidates, DSL.val(ontologyId), members);
     }
@@ -157,18 +177,33 @@ public final class JooqSupport {
      */
     public static Result<Record> fetchEntityPage(DSLContext dsl, Select<?> matching,
             Collection<SortField<?>> orderBy, long offset, int size) {
+        return fetchEntityPage(dsl, matching, orderBy, offset, size, null);
+    }
+
+    public static Result<Record> fetchEntityPage(DSLContext dsl, Select<?> matching,
+            Collection<SortField<?>> orderBy, long offset, int size, Integer maxInlineChildren) {
         Table<?> matchingRows = DSL.table(DSL.name("matching"));
+        Table<?> totals = DSL.table(DSL.name("totals"));
         Table<?> page = DSL.table(DSL.name("page")).as("p");
-        var pageIds = dsl.select(DSL.asterisk()).from(matchingRows.as("p"))
+        Field<Long> total = field("totals", "value", Long.class);
+        Condition withinLimit = maxInlineChildren == null ? DSL.noCondition()
+                : DSL.field(dsl.select(total).from(totals)).le(maxInlineChildren.longValue());
+        var pageIds = dsl.select(DSL.asterisk()).from(matchingRows.as("p")).where(withinLimit)
                 .orderBy(orderBy).offset(offset).limit(size);
-        var rows = dsl.select(field("totals", "value", Long.class), field("e", "_json", byte[].class))
-                .from(dsl.select(DSL.count().as("value")).from(matchingRows).asTable("totals"))
+        var rows = dsl.select(total, field("e", "_json", byte[].class))
+                .from(totals)
                 .leftJoin(page).on(DSL.trueCondition())
                 .leftJoin(OLS_ENTITIES.as("e"))
                 .on(field("e", "id", String.class).eq(field("p", "id", String.class)))
                 .orderBy(orderBy);
-        return dsl.resultQuery("WITH matching AS MATERIALIZED ({0}), page AS ({1}) {2}",
-                matching, pageIds, rows).fetch();
+        // Recursive reachability can get a high estimated cost even when every candidate is
+        // eligible and the recursive branch is skipped. Avoid compiling that unused plan.
+        return dsl.transactionResult(transaction -> {
+            DSLContext tx = DSL.using(transaction);
+            tx.select(setLocal("jit", "off")).fetch();
+            return tx.resultQuery("WITH matching AS MATERIALIZED ({0}), totals AS ({1}), page AS ({2}) {3}",
+                    matching, tx.select(DSL.count().as("value")).from(matchingRows), pageIds, rows).fetch();
+        });
     }
 
     /**

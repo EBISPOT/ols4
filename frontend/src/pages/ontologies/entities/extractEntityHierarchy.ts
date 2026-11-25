@@ -1,4 +1,3 @@
-import assert from "assert";
 import Multimap from "multimap";
 import Entity from "../../../model/Entity";
 
@@ -94,26 +93,23 @@ export default function extractEntityHierarchy(entities: Entity[]): {
     }
   }
 
-  var breakCycles = function (currentIri:string, visitedIris: Set<string>) {
-    visitedIris.add(currentIri);
-
-    let parentRelations = childToParentRelations.get(currentIri);
-    if (parentRelations) {
-      for (let parentRelation of parentRelations) {
-        if (visitedIris.has(parentRelation.parent.getIri())) {
-          // we already saw this parent, remove it
-	  childToParentRelations.delete(currentIri, parentRelation)
-        } else {
-          breakCycles(parentRelation.parent.getIri(), new Set(visitedIris));
-        }
-      }
+  // Traverse each IRI once. Shared ancestors in a diamond are already checked
+  // when complete, and only reaching an active ancestor requires removing an edge.
+  const active = new Set<string>();
+  const complete = new Set<string>();
+  function breakCycles(iri: string) {
+    if (complete.has(iri)) return;
+    active.add(iri);
+    for (const relation of [...(childToParentRelations.get(iri) || [])]) {
+      const parent = relation.parent.getIri();
+      if (active.has(parent)) childToParentRelations.delete(iri, relation);
+      else breakCycles(parent);
     }
-  };
-
-  // break cycles starting from leaf entities
-  for (let entity of entities) {
-    breakCycles(entity.getIri(), new Set());
+    active.delete(iri);
+    complete.add(iri);
   }
+
+  for (const entity of entities) breakCycles(entity.getIri());
 
   let parentToChildRelations: Multimap<string, ParentChildRelation> = new Multimap();
 

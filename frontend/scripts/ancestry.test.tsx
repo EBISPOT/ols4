@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom/server';
 import { configureStore } from '@reduxjs/toolkit';
 import reducer, {
-  getOntology, getAncestors, getNodeChildren, getRootEntities, getDirectChildrenCount,
+  getOntology, getAncestors, getNodeChildren, getRootEntities,
   setTreeScope as initializeTreeScope, treePreferencesScopeKey, setTreeRequestContext, resetTreeContent, hideImported,
   enablePreferredRoots, showSiblings, closeNode, openNode,
 } from '../src/pages/ontologies/ontologiesSlice';
@@ -170,7 +170,7 @@ test('required edges retain reified relationships after filtered child replaceme
   s.dispatch(getAncestors.pending('path', args));
   s.dispatch(getAncestors.fulfilled(reified, 'path', args));
   s.dispatch(getNodeChildren.pending('children', childArgs(connectorId)));
-  s.dispatch(getNodeChildren.fulfilled({ absoluteIdentity: connectorId, children: [] }, 'children', childArgs(connectorId)));
+  s.dispatch(getNodeChildren.fulfilled({ absoluteIdentity: connectorId, entityIri: connectorIri, totalElements: 0, children: [] }, 'children', childArgs(connectorId)));
   const children = s.getState().ontologies.nodeChildren[connectorId];
   assert.equal(children.length, 1);
   assert.equal(children[0].childRelationToParent, 'http://purl.obolibrary.org/obo/BFO_0000050');
@@ -187,8 +187,10 @@ test('required connectors stay attached to each of their actual parent paths', (
   s.dispatch(getAncestors.pending('path', args));
   s.dispatch(getAncestors.fulfilled(entities, 'path', args));
   for (const id of [rootIri, `${rootIri};alternate parent`]) {
-    s.dispatch(getNodeChildren.pending(id, childArgs(id)));
-    s.dispatch(getNodeChildren.fulfilled({ absoluteIdentity: id, children: [] }, id, childArgs(id)));
+    const input = childArgs(id);
+    s.dispatch(getNodeChildren.pending(id, input));
+    s.dispatch(getNodeChildren.fulfilled({ absoluteIdentity: id, entityIri: input.entityIri,
+      totalElements: 0, children: [] }, id, input));
     const connector = s.getState().ontologies.nodeChildren[id].find(n => n.iri === connectorIri);
     assert(connector);
     assert.equal(connector.absoluteIdentity, `${id};${connectorIri}`);
@@ -245,11 +247,15 @@ for (const reset of ['scope', 'context', 'content']) {
 
 test('the selected path stays visible when an expanded ancestor uses the large-children list', async () => {
   await withApi(async () => {
-    const { s, args, render } = setup({ imports: true });
+    const { s, args, childArgs, render } = setup({ imports: true });
     await s.dispatch(getAncestors(args)).unwrap();
-    s.dispatch(getDirectChildrenCount.pending('count', args));
-    s.dispatch(getDirectChildrenCount.fulfilled({ entityIri: rootIri, totalElements: 2001 }, 'count', args));
-    assert(render().includes('body height at birth'));
+    const branch = childArgs();
+    s.dispatch(getNodeChildren.pending('children', branch));
+    s.dispatch(getNodeChildren.fulfilled({ entityIri: rootIri, absoluteIdentity: rootIri,
+      totalElements: 2001, children: [] }, 'children', branch));
+    const html = render();
+    assert(html.includes('Direct Children'));
+    assert(html.includes('body height at birth'));
   });
 });
 

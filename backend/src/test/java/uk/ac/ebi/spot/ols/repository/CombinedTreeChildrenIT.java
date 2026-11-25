@@ -105,6 +105,26 @@ class CombinedTreeChildrenIT {
         return handle.repository().getTreeChildrenByOntologyId("paging",PageRequest.of(page,size),NS+parent,
                 obsolete,imported,search,subsets,true,true,"en",new JsonTransformOptions());
     }
+
+    @Test void inlineChildLimitOmitsWidePagesButKeepsExactTotalsAndTheBoundary() {
+        var opts = new JsonTransformOptions();
+        opts.setView(JsonTransformOptions.TreeView.tree);
+        opts.setMaxInlineChildren(1000);
+        var wide = handle.repository().getTreeChildrenByOntologyId("paging", PageRequest.of(0, 1000), NS + "HierOnly",
+                false, true, null, List.of(), true, true, "en", opts);
+        assertThat(wide.getContent()).isEmpty();
+        assertThat(wide.getTotalElements()).isEqualTo(1001);
+        assertThat(wide.getTotalPages()).isEqualTo(2);
+        assertThat(iris(individualPage("HierOnly", 100, 10, null, List.of(), true, false)))
+                .containsExactly(NS + "H1001");
+
+        opts.setMaxInlineChildren(2);
+        var atLimit = handle.repository().getTreeChildrenByOntologyId("paging", PageRequest.of(0, 10), NS + "Independent",
+                false, true, null, List.of(), true, "en", opts);
+        assertThat(iris(atLimit)).containsExactly(NS + "DirectOnly", NS + "TypeOnly");
+        assertThat(atLimit.getTotalElements()).isEqualTo(2);
+    }
+
     @Test void individualUnionPagesHierarchicalOnlyChildrenAndPreservesLegacyTypeOnlyRoute() throws Exception {
         var first=individualPage("HierOnly",0,1000,null,List.of(),true,false);
         assertThat(first.getTotalElements()).isEqualTo(1001);

@@ -18,10 +18,24 @@ public class JsonTransformOptions {
 
     public enum TreeView { full, tree }
 
+    @Parameter(name = "maxInlineChildren", description = "For the combined class/individual and property child routes with view=tree, omit child rows when the exact total exceeds this threshold (1–1000). The total remains available to open a paginated table.")
+    private Integer maxInlineChildren;
+
   public boolean isManchesterSyntax() { return manchesterSyntax; }
   public void setManchesterSyntax(boolean manchesterSyntax) { this.manchesterSyntax = manchesterSyntax; }
 
   public TreeView getView() { return view; }
   public void setView(TreeView view) { this.view = view; }
+
+    public Integer getMaxInlineChildren() {
+        return view == TreeView.tree ? maxInlineChildren : null;
+    }
+
+    public void setMaxInlineChildren(Integer maxInlineChildren) {
+        if (maxInlineChildren != null && (maxInlineChildren < 1 || maxInlineChildren > 1000)) {
+            throw new IllegalArgumentException("maxInlineChildren must be between 1 and 1000");
+        }
+        this.maxInlineChildren = maxInlineChildren;
+    }
 }
 

@@ -425,7 +425,7 @@ function EntityListContent({
   }
 
   return (
-    <div className={parentEntityIri ? "mt-4 p-4 bg-gray-50 rounded-lg" : "mt-2"}>
+    <div className={parentEntityIri ? "mt-4 p-3 bg-gray-50 rounded-lg whitespace-normal" : "mt-2"}>
       {title && (
         <div className="mb-3">
           <h4 className="text-lg font-semibold text-gray-700">
@@ -438,6 +438,7 @@ function EntityListContent({
       )}
       
       <DataTable
+        wrapControls={!!parentEntityIri}
         resultStatus={parentEntityIri ? (
           failed ? <div role="alert">Unable to load direct children. <button type="button" className="link-default" onClick={() => retry(n => n + 1)}>Retry direct children</button></div>
           : table?.loading ? <p role="status">Loading direct children…</p>
