@@ -135,12 +135,12 @@ class V1OntologyPropertyControllerWIT {
                 .andExpect(jsonPath("$._embedded.properties[0]._links.self.href")
                         .value(endsWith("/api/ontologies/efo/properties/"
                                 + "http%253A%252F%252Fexample.org%252FEFO_0101?lang=en")))
-                .andExpect(jsonPath("$.page.size").value(1000))
+                .andExpect(jsonPath("$.page.size").value(50))
                 .andExpect(jsonPath("$.page.totalElements").value(1))
                 .andExpect(jsonPath("$.page.totalPages").value(1))
                 .andExpect(jsonPath("$.page.number").value(0));
 
-        verify(propertyRepository).findAllByOntology("efo", "en", PageRequest.of(0, 1000));
+        verify(propertyRepository).findAllByOntology("efo", "en", PageRequest.of(0, 50));
     }
 
     @Test
@@ -195,29 +195,29 @@ class V1OntologyPropertyControllerWIT {
                         .param("http://example.org/category", "clinical", "policy"))
                 .andExpect(status().isOk());
 
-        verify(propertyRepository).findAllByOntology("efo", "en", PageRequest.of(0, 1000));
+        verify(propertyRepository).findAllByOntology("efo", "en", PageRequest.of(0, 50));
     }
 
     @ParameterizedTest
     @CsvSource({
             "list, -1, 20, 0, 20",
-            "list, 0, 0, 0, 1000",
-            "list, 0, 1001, 0, 1000",
+            "list, 0, 0, 0, 50",
+            "list, 0, 51, 0, 50",
             "roots, -1, 20, 0, 20",
-            "roots, 0, 0, 0, 1000",
-            "roots, 0, 1001, 0, 1000",
+            "roots, 0, 0, 0, 50",
+            "roots, 0, 51, 0, 50",
             "parents, -1, 20, 0, 20",
-            "parents, 0, 0, 0, 1000",
-            "parents, 0, 1001, 0, 1000",
+            "parents, 0, 0, 0, 50",
+            "parents, 0, 51, 0, 50",
             "children, -1, 20, 0, 20",
-            "children, 0, 0, 0, 1000",
-            "children, 0, 1001, 0, 1000",
+            "children, 0, 0, 0, 50",
+            "children, 0, 51, 0, 50",
             "descendants, -1, 20, 0, 20",
-            "descendants, 0, 0, 0, 1000",
-            "descendants, 0, 1001, 0, 1000",
+            "descendants, 0, 0, 0, 50",
+            "descendants, 0, 51, 0, 50",
             "ancestors, -1, 20, 0, 20",
-            "ancestors, 0, 0, 0, 1000",
-            "ancestors, 0, 1001, 0, 1000"
+            "ancestors, 0, 0, 0, 50",
+            "ancestors, 0, 51, 0, 50"
     })
     void normalizesPaginationBoundariesAcrossPagedRoutes(
             String route,
@@ -249,7 +249,7 @@ class V1OntologyPropertyControllerWIT {
 
     @Test
     void usesPaginationDefaultsForMalformedNumericValuesAcrossPagedRoutes() throws Exception {
-        Pageable defaults = PageRequest.of(0, 1000);
+        Pageable defaults = PageRequest.of(0, 50);
 
         mockMvc.perform(get(LIST_URI).param("page", "bad").param("size", "bad"))
                 .andExpect(status().isOk());
@@ -294,11 +294,11 @@ class V1OntologyPropertyControllerWIT {
         mockMvc.perform(get(ROOTS_URI))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$._embedded.properties[0].iri").value(PROPERTY_IRI));
-        verify(propertyRepository).getRoots("efo", false, "en", PageRequest.of(0, 1000));
+        verify(propertyRepository).getRoots("efo", false, "en", PageRequest.of(0, 50));
 
         mockMvc.perform(get(ROOTS_URI).param("includeObsoletes", "true"))
                 .andExpect(status().isOk());
-        verify(propertyRepository).getRoots("efo", true, "en", PageRequest.of(0, 1000));
+        verify(propertyRepository).getRoots("efo", true, "en", PageRequest.of(0, 50));
 
         mockMvc.perform(get(ROOTS_URI)
                         .param("lang", "fr")
@@ -341,7 +341,7 @@ class V1OntologyPropertyControllerWIT {
         mockMvc.perform(get(PARENTS_URI))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$._embedded.properties[0].iri").value(PROPERTY_IRI))
-                .andExpect(jsonPath("$.page.size").value(1000));
+                .andExpect(jsonPath("$.page.size").value(50));
 
         mockMvc.perform(get(PARENTS_URI)
                         .param("lang", "fr")
@@ -458,9 +458,9 @@ class V1OntologyPropertyControllerWIT {
         mockMvc.perform(get(JS_TREE_URI).param("lang", "en_US"))
                 .andExpect(status().isOk());
 
-        verify(propertyRepository).findAllByOntology("efo", "en_US", PageRequest.of(0, 1000));
+        verify(propertyRepository).findAllByOntology("efo", "en_US", PageRequest.of(0, 50));
         verify(propertyRepository).getParents(
-                "efo", PROPERTY_IRI, "en_US", PageRequest.of(0, 1000));
+                "efo", PROPERTY_IRI, "en_US", PageRequest.of(0, 50));
         verify(jsTreeRepository).getJsTreeForProperty(PROPERTY_IRI, "efo", "en_US");
     }
 
@@ -490,7 +490,7 @@ class V1OntologyPropertyControllerWIT {
     @Test
     void returnsStableBadRequestFieldsForUnsupportedSort() throws Exception {
         Pageable pageable = PageRequest.of(
-                0, 1000, org.springframework.data.domain.Sort.by("bad"));
+                0, 50, org.springframework.data.domain.Sort.by("bad"));
         when(propertyRepository.getParents("efo", PROPERTY_IRI, "en", pageable))
                 .thenThrow(new IllegalArgumentException("Unsupported sort field: bad"));
 

@@ -125,7 +125,7 @@ class V1OntologyControllerWIT {
             "-1, 20, 0, 20",
             "0, 0, 0, 20",
             "0, -1, 0, 20",
-            "0, 1001, 0, 1000"
+            "0, 51, 0, 50"
     })
     void preservesPaginationBoundaryCompatibility(
             int requestedPage,

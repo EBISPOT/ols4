@@ -104,12 +104,12 @@ class V1IndividualControllerWIT {
                 .andExpect(jsonPath("$._embedded.individuals[0]._links.self.href")
                         .value(endsWith("/api/ontologies/efo/individuals/"
                                 + "http%253A%252F%252Fexample.org%252FEFO_I100?lang=en")))
-                .andExpect(jsonPath("$.page.size").value(1000))
+                .andExpect(jsonPath("$.page.size").value(50))
                 .andExpect(jsonPath("$.page.totalElements").value(1))
                 .andExpect(jsonPath("$.page.totalPages").value(1))
                 .andExpect(jsonPath("$.page.number").value(0));
 
-        verify(individualRepository).findAll("en", PageRequest.of(0, 1000));
+        verify(individualRepository).findAll("en", PageRequest.of(0, 50));
     }
 
     @Test
@@ -130,18 +130,18 @@ class V1IndividualControllerWIT {
     @ParameterizedTest
     @CsvSource({
             "list, -1, 20, 0, 20",
-            "list, 0, 0, 0, 1000",
-            "list, 0, -1, 0, 1000",
-            "list, 0, 1001, 0, 1000",
+            "list, 0, 0, 0, 50",
+            "list, 0, -1, 0, 50",
+            "list, 0, 51, 0, 50",
             "path, -1, 20, 0, 20",
-            "path, 0, 0, 0, 1000",
-            "path, 0, 1001, 0, 1000",
+            "path, 0, 0, 0, 50",
+            "path, 0, 51, 0, 50",
             "defining-list, -1, 20, 0, 20",
-            "defining-list, 0, -1, 0, 1000",
-            "defining-list, 0, 1001, 0, 1000",
+            "defining-list, 0, -1, 0, 50",
+            "defining-list, 0, 51, 0, 50",
             "defining-path, -1, 20, 0, 20",
-            "defining-path, 0, 0, 0, 1000",
-            "defining-path, 0, 1001, 0, 1000"
+            "defining-path, 0, 0, 0, 50",
+            "defining-path, 0, 51, 0, 50"
     })
     void normalizesPaginationBoundaries(
             String route,
@@ -169,7 +169,7 @@ class V1IndividualControllerWIT {
 
     @Test
     void usesDefaultsForMalformedNumericPaginationOnEveryRoute() throws Exception {
-        Pageable defaults = PageRequest.of(0, 1000);
+        Pageable defaults = PageRequest.of(0, 50);
 
         mockMvc.perform(get("/api/individuals").param("page", "bad").param("size", "bad"))
                 .andExpect(status().isOk());
@@ -191,7 +191,7 @@ class V1IndividualControllerWIT {
 
     @Test
     void routesIriShortFormAndOboIdParameters() throws Exception {
-        Pageable pageable = PageRequest.of(0, 1000);
+        Pageable pageable = PageRequest.of(0, 50);
 
         mockMvc.perform(get("/api/individuals").param("iri", INDIVIDUAL_IRI))
                 .andExpect(status().isOk());
@@ -208,7 +208,7 @@ class V1IndividualControllerWIT {
 
     @Test
     void appliesIdentifierPrecedence() throws Exception {
-        Pageable pageable = PageRequest.of(0, 1000);
+        Pageable pageable = PageRequest.of(0, 50);
 
         mockMvc.perform(get("/api/individuals")
                         .param("iri", INDIVIDUAL_IRI)
@@ -250,7 +250,7 @@ class V1IndividualControllerWIT {
                         .param("domain", "biology,information"))
                 .andExpect(status().isOk());
 
-        verify(individualRepository).findAll("en", PageRequest.of(0, 1000));
+        verify(individualRepository).findAll("en", PageRequest.of(0, 50));
     }
 
     @Test
@@ -262,12 +262,12 @@ class V1IndividualControllerWIT {
                 .andExpect(jsonPath("$.page.number").value(0));
 
         verify(individualRepository)
-                .findAllByIsDefiningOntology("en", PageRequest.of(0, 1000));
+                .findAllByIsDefiningOntology("en", PageRequest.of(0, 50));
     }
 
     @Test
     void routesEveryDefiningOntologyIdentifierParameter() throws Exception {
-        Pageable pageable = PageRequest.of(0, 1000);
+        Pageable pageable = PageRequest.of(0, 50);
 
         mockMvc.perform(get("/api/individuals/findByIdAndIsDefiningOntology")
                         .param("iri", INDIVIDUAL_IRI))
@@ -352,13 +352,13 @@ class V1IndividualControllerWIT {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$._embedded.individuals[0].lang").value("en_US"));
 
-        verify(individualRepository).findAll("en_US", PageRequest.of(0, 1000));
+        verify(individualRepository).findAll("en_US", PageRequest.of(0, 50));
     }
 
     @Test
     void returnsStableBadRequestFieldsForUnsupportedSort() throws Exception {
         Pageable pageable = PageRequest.of(
-                0, 1000, org.springframework.data.domain.Sort.by("bad"));
+                0, 50, org.springframework.data.domain.Sort.by("bad"));
         when(individualRepository.findAll("en", pageable))
                 .thenThrow(new IllegalArgumentException("Unsupported sort field: bad"));
 
@@ -371,7 +371,7 @@ class V1IndividualControllerWIT {
 
     @Test
     void returnsStableLegacyNotFoundStatusAndMessage() throws Exception {
-        when(individualRepository.findAll("en", PageRequest.of(0, 1000)))
+        when(individualRepository.findAll("en", PageRequest.of(0, 50)))
                 .thenThrow(new org.springframework.data.rest.webmvc.ResourceNotFoundException());
 
         mockMvc.perform(get("/api/individuals"))

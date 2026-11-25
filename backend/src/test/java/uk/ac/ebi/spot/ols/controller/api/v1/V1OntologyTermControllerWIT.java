@@ -193,12 +193,12 @@ class V1OntologyTermControllerWIT {
                 .andExpect(jsonPath("$._embedded.terms[0]._links.self.href")
                         .value(endsWith("/api/ontologies/efo/terms/"
                                 + "http%253A%252F%252Fexample.org%252FEFO_1001?lang=en")))
-                .andExpect(jsonPath("$.page.size").value(1000))
+                .andExpect(jsonPath("$.page.size").value(50))
                 .andExpect(jsonPath("$.page.totalElements").value(1))
                 .andExpect(jsonPath("$.page.totalPages").value(1))
                 .andExpect(jsonPath("$.page.number").value(0));
 
-        verify(termRepository).findAllByOntology("efo", null, "en", PageRequest.of(0, 1000));
+        verify(termRepository).findAllByOntology("efo", null, "en", PageRequest.of(0, 50));
     }
 
     @Test
@@ -221,12 +221,12 @@ class V1OntologyTermControllerWIT {
         mockMvc.perform(get(LIST_URI).param("obsoletes", "true"))
                 .andExpect(status().isOk());
         verify(termRepository).findAllByOntology(
-                "efo", true, "en", PageRequest.of(0, 1000));
+                "efo", true, "en", PageRequest.of(0, 50));
 
         mockMvc.perform(get(LIST_URI).param("obsoletes", "false"))
                 .andExpect(status().isOk());
         verify(termRepository).findAllByOntology(
-                "efo", false, "en", PageRequest.of(0, 1000));
+                "efo", false, "en", PageRequest.of(0, 50));
     }
 
     @Test
@@ -287,32 +287,32 @@ class V1OntologyTermControllerWIT {
                         .param("http://example.org/category", "clinical", "policy"))
                 .andExpect(status().isOk());
 
-        verify(termRepository).findAllByOntology("efo", null, "en", PageRequest.of(0, 1000));
+        verify(termRepository).findAllByOntology("efo", null, "en", PageRequest.of(0, 50));
     }
 
     @ParameterizedTest
     @CsvSource({
             "list, -1, 20, 0, 20",
-            "list, 0, 0, 0, 1000",
-            "list, 0, 1001, 0, 1000",
+            "list, 0, 0, 0, 50",
+            "list, 0, 51, 0, 50",
             "roots, -1, 20, 0, 20",
-            "roots, 0, 0, 0, 1000",
-            "roots, 0, 1001, 0, 1000",
+            "roots, 0, 0, 0, 50",
+            "roots, 0, 51, 0, 50",
             "preferredRoots, -1, 20, 0, 20",
-            "preferredRoots, 0, 0, 0, 1000",
-            "preferredRoots, 0, 1001, 0, 1000",
+            "preferredRoots, 0, 0, 0, 50",
+            "preferredRoots, 0, 51, 0, 50",
             "parents, -1, 20, 0, 20",
-            "parents, 0, 0, 0, 1000",
-            "parents, 0, 1001, 0, 1000",
+            "parents, 0, 0, 0, 50",
+            "parents, 0, 51, 0, 50",
             "children, -1, 20, 0, 20",
-            "children, 0, 0, 0, 1000",
-            "children, 0, 1001, 0, 1000",
+            "children, 0, 0, 0, 50",
+            "children, 0, 51, 0, 50",
             "descendants, -1, 20, 0, 20",
-            "descendants, 0, 0, 0, 1000",
-            "descendants, 0, 1001, 0, 1000",
+            "descendants, 0, 0, 0, 50",
+            "descendants, 0, 51, 0, 50",
             "ancestors, -1, 20, 0, 20",
-            "ancestors, 0, 0, 0, 1000",
-            "ancestors, 0, 1001, 0, 1000"
+            "ancestors, 0, 0, 0, 50",
+            "ancestors, 0, 51, 0, 50"
     })
     void normalizesPaginationBoundariesAcrossPagedRoutes(
             String route,
@@ -345,7 +345,7 @@ class V1OntologyTermControllerWIT {
 
     @Test
     void usesPaginationDefaultsForMalformedNumericValuesAcrossPagedRoutes() throws Exception {
-        Pageable defaults = PageRequest.of(0, 1000);
+        Pageable defaults = PageRequest.of(0, 50);
 
         for (URI uri : List.of(
                 LIST_URI, ROOTS_URI, PREFERRED_ROOTS_URI, PARENTS_URI,
@@ -385,11 +385,11 @@ class V1OntologyTermControllerWIT {
         mockMvc.perform(get(ROOTS_URI))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$._embedded.terms[0].iri").value(TERM_IRI));
-        verify(termRepository).getRoots("efo", false, "en", PageRequest.of(0, 1000));
+        verify(termRepository).getRoots("efo", false, "en", PageRequest.of(0, 50));
 
         mockMvc.perform(get(ROOTS_URI).param("includeObsoletes", "true"))
                 .andExpect(status().isOk());
-        verify(termRepository).getRoots("efo", true, "en", PageRequest.of(0, 1000));
+        verify(termRepository).getRoots("efo", true, "en", PageRequest.of(0, 50));
     }
 
     @Test
@@ -397,11 +397,11 @@ class V1OntologyTermControllerWIT {
         mockMvc.perform(get(PREFERRED_ROOTS_URI))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$._embedded.terms[0].iri").value(TERM_IRI));
-        verify(termRepository).getPreferredRootTerms("efo", false, "en", PageRequest.of(0, 1000));
+        verify(termRepository).getPreferredRootTerms("efo", false, "en", PageRequest.of(0, 50));
 
         mockMvc.perform(get(PREFERRED_ROOTS_URI).param("includeObsoletes", "true"))
                 .andExpect(status().isOk());
-        verify(termRepository).getPreferredRootTerms("efo", true, "en", PageRequest.of(0, 1000));
+        verify(termRepository).getPreferredRootTerms("efo", true, "en", PageRequest.of(0, 50));
     }
 
     @Test
@@ -429,7 +429,7 @@ class V1OntologyTermControllerWIT {
         mockMvc.perform(get(PARENTS_URI))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$._embedded.terms[0].iri").value(TERM_IRI))
-                .andExpect(jsonPath("$.page.size").value(1000));
+                .andExpect(jsonPath("$.page.size").value(50));
 
         mockMvc.perform(get(PARENTS_URI)
                         .param("lang", "fr")
@@ -545,8 +545,8 @@ class V1OntologyTermControllerWIT {
         mockMvc.perform(get(JS_TREE_URI).param("lang", "en_US"))
                 .andExpect(status().isOk());
 
-        verify(termRepository).findAllByOntology("efo", null, "en_US", PageRequest.of(0, 1000));
-        verify(termRepository).getParents("efo", TERM_IRI, "en_US", PageRequest.of(0, 1000));
+        verify(termRepository).findAllByOntology("efo", null, "en_US", PageRequest.of(0, 50));
+        verify(termRepository).getParents("efo", TERM_IRI, "en_US", PageRequest.of(0, 50));
         verify(jsTreeRepository).getJsTreeForClass(TERM_IRI, "efo", "en_US");
     }
 
@@ -555,7 +555,7 @@ class V1OntologyTermControllerWIT {
         mockMvc.perform(get(HIERARCHICAL_PARENTS_URI))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$._embedded.terms[0].iri").value(TERM_IRI))
-                .andExpect(jsonPath("$.page.size").value(1000));
+                .andExpect(jsonPath("$.page.size").value(50));
 
         mockMvc.perform(get(HIERARCHICAL_PARENTS_URI)
                         .param("lang", "fr").param("page", "1").param("size", "3")
@@ -622,8 +622,8 @@ class V1OntologyTermControllerWIT {
     @ParameterizedTest
     @CsvSource({
             "hierarchicalParents, -1, 20, 0, 20",
-            "hierarchicalParents, 0, 0, 0, 1000",
-            "hierarchicalParents, 0, 1001, 0, 1000",
+            "hierarchicalParents, 0, 0, 0, 50",
+            "hierarchicalParents, 0, 51, 0, 50",
             "hierarchicalAncestors, -1, 20, 0, 20",
             "hierarchicalChildren, -1, 20, 0, 20",
             "hierarchicalDescendants, -1, 20, 0, 20"
@@ -670,7 +670,7 @@ class V1OntologyTermControllerWIT {
                 .andExpect(jsonPath("$._embedded.terms[0].lang").value("fr"));
 
         verify(termRepository).getRelated(
-                "efo", TERM_IRI, "fr", "http://example.org/related", PageRequest.of(0, 1000));
+                "efo", TERM_IRI, "fr", "http://example.org/related", PageRequest.of(0, 50));
     }
 
     @Test
@@ -712,37 +712,37 @@ class V1OntologyTermControllerWIT {
             throws Exception {
         mockMvc.perform(get(SHORTCUT_CHILDREN_URI).param("iri", TERM_IRI).param("lang", "fr"))
                 .andExpect(status().isOk());
-        verify(termRepository).getChildren("efo", TERM_IRI, "fr", PageRequest.of(0, 1000));
+        verify(termRepository).getChildren("efo", TERM_IRI, "fr", PageRequest.of(0, 50));
 
         mockMvc.perform(get(SHORTCUT_DESCENDANTS_URI).param("iri", TERM_IRI).param("lang", "fr"))
                 .andExpect(status().isOk());
-        verify(termRepository).getDescendants("efo", TERM_IRI, "fr", PageRequest.of(0, 1000));
+        verify(termRepository).getDescendants("efo", TERM_IRI, "fr", PageRequest.of(0, 50));
 
         mockMvc.perform(get(SHORTCUT_PARENTS_URI).param("iri", TERM_IRI).param("lang", "fr"))
                 .andExpect(status().isOk());
-        verify(termRepository).getParents("efo", TERM_IRI, "fr", PageRequest.of(0, 1000));
+        verify(termRepository).getParents("efo", TERM_IRI, "fr", PageRequest.of(0, 50));
 
         mockMvc.perform(get(SHORTCUT_ANCESTORS_URI).param("iri", TERM_IRI).param("lang", "fr"))
                 .andExpect(status().isOk());
-        verify(termRepository).getAncestors("efo", TERM_IRI, "fr", PageRequest.of(0, 1000));
+        verify(termRepository).getAncestors("efo", TERM_IRI, "fr", PageRequest.of(0, 50));
 
         mockMvc.perform(get(SHORTCUT_HIERARCHICAL_CHILDREN_URI)
                         .param("iri", TERM_IRI).param("lang", "fr"))
                 .andExpect(status().isOk());
         verify(termRepository)
-                .getHierarchicalChildren("efo", TERM_IRI, "fr", PageRequest.of(0, 1000));
+                .getHierarchicalChildren("efo", TERM_IRI, "fr", PageRequest.of(0, 50));
 
         mockMvc.perform(get(SHORTCUT_HIERARCHICAL_DESCENDANTS_URI)
                         .param("iri", TERM_IRI).param("lang", "fr"))
                 .andExpect(status().isOk());
         verify(termRepository)
-                .getHierarchicalDescendants("efo", TERM_IRI, "fr", PageRequest.of(0, 1000));
+                .getHierarchicalDescendants("efo", TERM_IRI, "fr", PageRequest.of(0, 50));
 
         mockMvc.perform(get(SHORTCUT_HIERARCHICAL_ANCESTORS_URI)
                         .param("iri", TERM_IRI).param("lang", "fr"))
                 .andExpect(status().isOk());
         verify(termRepository)
-                .getHierarchicalAncestors("efo", TERM_IRI, "fr", PageRequest.of(0, 1000));
+                .getHierarchicalAncestors("efo", TERM_IRI, "fr", PageRequest.of(0, 50));
     }
 
     @Test
@@ -755,7 +755,7 @@ class V1OntologyTermControllerWIT {
                 .thenReturn(term("en"));
         mockMvc.perform(get(SHORTCUT_CHILDREN_URI).param("short_form", "EFO_1001"))
                 .andExpect(status().isOk());
-        verify(termRepository).getChildren("efo", TERM_IRI, "en", PageRequest.of(0, 1000));
+        verify(termRepository).getChildren("efo", TERM_IRI, "en", PageRequest.of(0, 50));
 
         when(termRepository.findByOntologyAndIri("EFO", "EFO:1001", "en")).thenReturn(null);
         when(termRepository.findByOntologyAndShortForm("EFO", "EFO:1001", "en")).thenReturn(null);
@@ -763,7 +763,7 @@ class V1OntologyTermControllerWIT {
                 .thenReturn(term("en"));
         mockMvc.perform(get(SHORTCUT_PARENTS_URI).param("obo_id", "EFO:1001"))
                 .andExpect(status().isOk());
-        verify(termRepository).getParents("efo", TERM_IRI, "en", PageRequest.of(0, 1000));
+        verify(termRepository).getParents("efo", TERM_IRI, "en", PageRequest.of(0, 50));
     }
 
     @Test
@@ -797,7 +797,7 @@ class V1OntologyTermControllerWIT {
     @Test
     void returnsStableBadRequestFieldsForUnsupportedSort() throws Exception {
         Pageable pageable = PageRequest.of(
-                0, 1000, org.springframework.data.domain.Sort.by("bad"));
+                0, 50, org.springframework.data.domain.Sort.by("bad"));
         when(termRepository.getParents("efo", TERM_IRI, "en", pageable))
                 .thenThrow(new IllegalArgumentException("Unsupported sort field: bad"));
 
@@ -811,7 +811,7 @@ class V1OntologyTermControllerWIT {
     @Test
     void returnsStableBadRequestFieldsForUnsupportedSortOnAHierarchicalRoute() throws Exception {
         Pageable pageable = PageRequest.of(
-                0, 1000, org.springframework.data.domain.Sort.by("bad"));
+                0, 50, org.springframework.data.domain.Sort.by("bad"));
         when(termRepository.getHierarchicalParents("efo", TERM_IRI, "en", pageable))
                 .thenThrow(new IllegalArgumentException("Unsupported sort field: bad"));
 

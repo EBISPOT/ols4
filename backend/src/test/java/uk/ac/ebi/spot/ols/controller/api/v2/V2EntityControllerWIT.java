@@ -269,7 +269,7 @@ class V2EntityControllerWIT {
             "-1, 20, 0, 20",
             "0, 0, 0, 20",
             "0, -1, 0, 20",
-            "0, 1001, 0, 1000"
+            "0, 51, 0, 50"
     })
     void normalizesGlobalPaginationBoundaries(
             int requestedPage, int requestedSize, int expectedPage, int expectedSize) throws Exception {
@@ -409,7 +409,7 @@ class V2EntityControllerWIT {
             "-1, 20, 0, 20",
             "0, 0, 0, 20",
             "0, -1, 0, 20",
-            "0, 1001, 0, 1000"
+            "0, 51, 0, 50"
     })
     void normalizesOntologyListPaginationBoundaries(
             int requestedPage, int requestedSize, int expectedPage, int expectedSize) throws Exception {
@@ -573,7 +573,7 @@ class V2EntityControllerWIT {
             "-1, 20, 0, 20",
             "0, 0, 0, 20",
             "0, -1, 0, 20",
-            "0, 1001, 0, 1000"
+            "0, 51, 0, 50"
     })
     void normalizesRelatedFromPaginationBoundaries(
             int requestedPage, int requestedSize, int expectedPage, int expectedSize) throws Exception {

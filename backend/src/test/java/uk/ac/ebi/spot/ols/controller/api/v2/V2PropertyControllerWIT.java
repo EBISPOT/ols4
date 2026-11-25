@@ -157,7 +157,7 @@ class V2PropertyControllerWIT {
             "-1, 20, 0, 20",
             "0, 0, 0, 20",
             "0, -1, 0, 20",
-            "0, 1001, 0, 1000"
+            "0, 51, 0, 50"
     })
     void normalizesGlobalPaginationBoundaries(
             int requestedPage, int requestedSize, int expectedPage, int expectedSize) throws Exception {
@@ -275,7 +275,7 @@ class V2PropertyControllerWIT {
             "-1, 20, 0, 20",
             "0, 0, 0, 20",
             "0, -1, 0, 20",
-            "0, 1001, 0, 1000"
+            "0, 51, 0, 50"
     })
     void normalizesOntologyPaginationBoundaries(
             int requestedPage, int requestedSize, int expectedPage, int expectedSize) throws Exception {
@@ -455,10 +455,10 @@ class V2PropertyControllerWIT {
     @CsvSource({
             "children, -1, 20, 0, 20",
             "children, 0, 0, 0, 20",
-            "children, 0, 1001, 0, 1000",
+            "children, 0, 51, 0, 50",
             "ancestors, -1, 20, 0, 20",
             "ancestors, 0, -1, 0, 20",
-            "ancestors, 0, 1001, 0, 1000"
+            "ancestors, 0, 51, 0, 50"
     })
     void normalizesHierarchyPaginationBoundaries(
             String route,
