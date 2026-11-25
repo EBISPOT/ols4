@@ -116,13 +116,13 @@ class V1OntologyIndividualControllerWIT {
                 .andExpect(jsonPath("$._embedded.individuals[0]._links.self.href")
                         .value(endsWith("/api/ontologies/efo/individuals/"
                                 + "http%253A%252F%252Fexample.org%252FEFO_I100?lang=en")))
-                .andExpect(jsonPath("$.page.size").value(1000))
+                .andExpect(jsonPath("$.page.size").value(50))
                 .andExpect(jsonPath("$.page.totalElements").value(1))
                 .andExpect(jsonPath("$.page.totalPages").value(1))
                 .andExpect(jsonPath("$.page.number").value(0));
 
         verify(individualRepository).findAllByOntology(
-                "efo", "en", PageRequest.of(0, 1000));
+                "efo", "en", PageRequest.of(0, 50));
     }
 
     @Test
@@ -181,20 +181,20 @@ class V1OntologyIndividualControllerWIT {
                 .andExpect(status().isOk());
 
         verify(individualRepository).findAllByOntology(
-                "efo", "en", PageRequest.of(0, 1000));
+                "efo", "en", PageRequest.of(0, 50));
     }
 
     @ParameterizedTest
     @CsvSource({
             "list, -1, 20, 0, 20",
-            "list, 0, 0, 0, 1000",
-            "list, 0, 1001, 0, 1000",
+            "list, 0, 0, 0, 50",
+            "list, 0, 51, 0, 50",
             "types, -1, 20, 0, 20",
-            "types, 0, -1, 0, 1000",
-            "types, 0, 1001, 0, 1000",
+            "types, 0, -1, 0, 50",
+            "types, 0, 51, 0, 50",
             "alltypes, -1, 20, 0, 20",
-            "alltypes, 0, 0, 0, 1000",
-            "alltypes, 0, 1001, 0, 1000"
+            "alltypes, 0, 0, 0, 50",
+            "alltypes, 0, 51, 0, 50"
     })
     void normalizesPaginationBoundariesAcrossPagedRoutes(
             String route,
@@ -221,7 +221,7 @@ class V1OntologyIndividualControllerWIT {
 
     @Test
     void usesPaginationDefaultsForMalformedNumericValuesAcrossPagedRoutes() throws Exception {
-        Pageable defaults = PageRequest.of(0, 1000);
+        Pageable defaults = PageRequest.of(0, 50);
 
         mockMvc.perform(get("/api/ontologies/EFO/individuals")
                         .param("page", "bad").param("size", "bad"))
@@ -259,7 +259,7 @@ class V1OntologyIndividualControllerWIT {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$._embedded.terms[0].iri").value(CLASS_IRI))
                 .andExpect(jsonPath("$._embedded.terms[0].label").value("Liver disease"))
-                .andExpect(jsonPath("$.page.size").value(1000));
+                .andExpect(jsonPath("$.page.size").value(50));
 
         mockMvc.perform(get(TYPES_URI)
                         .param("lang", "fr")
@@ -318,9 +318,9 @@ class V1OntologyIndividualControllerWIT {
                 .andExpect(status().isOk());
 
         verify(individualRepository).findAllByOntology(
-                "efo", "en_US", PageRequest.of(0, 1000));
+                "efo", "en_US", PageRequest.of(0, 50));
         verify(individualRepository).getDirectTypes(
-                "efo", INDIVIDUAL_IRI, "en_US", PageRequest.of(0, 1000));
+                "efo", INDIVIDUAL_IRI, "en_US", PageRequest.of(0, 50));
         verify(jsTreeRepository).getJsTreeForIndividual(INDIVIDUAL_IRI, "efo", "en_US");
     }
 
@@ -355,7 +355,7 @@ class V1OntologyIndividualControllerWIT {
     @Test
     void returnsStableBadRequestFieldsForUnsupportedSort() throws Exception {
         Pageable pageable = PageRequest.of(
-                0, 1000, org.springframework.data.domain.Sort.by("bad"));
+                0, 50, org.springframework.data.domain.Sort.by("bad"));
         when(individualRepository.getDirectTypes("efo", INDIVIDUAL_IRI, "en", pageable))
                 .thenThrow(new IllegalArgumentException("Unsupported sort field: bad"));
 

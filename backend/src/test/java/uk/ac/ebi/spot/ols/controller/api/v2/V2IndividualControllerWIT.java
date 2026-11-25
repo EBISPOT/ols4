@@ -213,23 +213,23 @@ class V2IndividualControllerWIT {
             "global, -1, 20, 0, 20",
             "global, 0, 0, 0, 20",
             "global, 0, -1, 0, 20",
-            "global, 0, 1001, 0, 1000",
+            "global, 0, 51, 0, 50",
             "ontology, -1, 20, 0, 20",
             "ontology, 0, 0, 0, 20",
             "ontology, 0, -1, 0, 20",
-            "ontology, 0, 1001, 0, 1000",
+            "ontology, 0, 51, 0, 50",
             "class, -1, 20, 0, 20",
             "class, 0, 0, 0, 20",
             "class, 0, -1, 0, 20",
-            "class, 0, 1001, 0, 1000",
+            "class, 0, 51, 0, 50",
             "children, -1, 20, 0, 20",
             "children, 0, 0, 0, 20",
             "children, 0, -1, 0, 20",
-            "children, 0, 1001, 0, 1000",
+            "children, 0, 51, 0, 50",
             "ancestors, -1, 20, 0, 20",
             "ancestors, 0, 0, 0, 20",
             "ancestors, 0, -1, 0, 20",
-            "ancestors, 0, 1001, 0, 1000"
+            "ancestors, 0, 51, 0, 50"
     })
     void normalizesPaginationBoundaries(
             String route,

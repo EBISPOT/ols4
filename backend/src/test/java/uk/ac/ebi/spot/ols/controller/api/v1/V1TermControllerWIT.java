@@ -100,12 +100,12 @@ class V1TermControllerWIT {
                 .andExpect(jsonPath("$._embedded.terms[0]._links.self.href")
                         .value(endsWith("/api/ontologies/efo/terms/"
                                 + "http%253A%252F%252Fexample.org%252FEFO_0001?lang=en")))
-                .andExpect(jsonPath("$.page.size").value(1000))
+                .andExpect(jsonPath("$.page.size").value(50))
                 .andExpect(jsonPath("$.page.totalElements").value(1))
                 .andExpect(jsonPath("$.page.totalPages").value(1))
                 .andExpect(jsonPath("$.page.number").value(0));
 
-        verify(termRepository).findAll("en", PageRequest.of(0, 1000));
+        verify(termRepository).findAll("en", PageRequest.of(0, 50));
     }
 
     @Test
@@ -125,9 +125,9 @@ class V1TermControllerWIT {
     @ParameterizedTest
     @CsvSource({
             "-1, 20, 0, 20",
-            "0, 0, 0, 1000",
-            "0, -1, 0, 1000",
-            "0, 1001, 0, 1000"
+            "0, 0, 0, 50",
+            "0, -1, 0, 50",
+            "0, 51, 0, 50"
     })
     void preservesPaginationBoundaryCompatibility(
             int requestedPage,
@@ -149,22 +149,22 @@ class V1TermControllerWIT {
         mockMvc.perform(get("/api/terms").param(parameter, value))
                 .andExpect(status().isOk());
 
-        verify(termRepository).findAll("en", PageRequest.of(0, 1000));
+        verify(termRepository).findAll("en", PageRequest.of(0, 50));
     }
 
     @Test
     void normalizesPaginationBoundariesAcrossEveryRoute() throws Exception {
-        Pageable normalized = PageRequest.of(0, 1000);
+        Pageable normalized = PageRequest.of(0, 50);
 
-        mockMvc.perform(get("/api/terms").param("page", "-1").param("size", "1001"))
+        mockMvc.perform(get("/api/terms").param("page", "-1").param("size", "51"))
                 .andExpect(status().isOk());
-        mockMvc.perform(get(TERM_URI).param("page", "-1").param("size", "1001"))
+        mockMvc.perform(get(TERM_URI).param("page", "-1").param("size", "51"))
                 .andExpect(status().isOk());
         mockMvc.perform(get("/api/terms/findByIdAndIsDefiningOntology")
-                        .param("page", "-1").param("size", "1001"))
+                        .param("page", "-1").param("size", "51"))
                 .andExpect(status().isOk());
         mockMvc.perform(get(DEFINING_TERM_URI)
-                        .param("page", "-1").param("size", "1001"))
+                        .param("page", "-1").param("size", "51"))
                 .andExpect(status().isOk());
 
         verify(termRepository).findAll("en", normalized);
@@ -175,7 +175,7 @@ class V1TermControllerWIT {
 
     @Test
     void usesMalformedPaginationDefaultsAcrossEveryPathShape() throws Exception {
-        Pageable defaults = PageRequest.of(0, 1000);
+        Pageable defaults = PageRequest.of(0, 50);
 
         mockMvc.perform(get(TERM_URI).param("page", "bad").param("size", "bad"))
                 .andExpect(status().isOk());
@@ -194,20 +194,20 @@ class V1TermControllerWIT {
     void routesIriShortFormAndOboIdParameters() throws Exception {
         mockMvc.perform(get("/api/terms").param("iri", TERM_IRI))
                 .andExpect(status().isOk());
-        verify(termRepository).findAllByIri(TERM_IRI, "en", PageRequest.of(0, 1000));
+        verify(termRepository).findAllByIri(TERM_IRI, "en", PageRequest.of(0, 50));
 
         mockMvc.perform(get("/api/terms").param("short_form", "EFO_0001"))
                 .andExpect(status().isOk());
-        verify(termRepository).findAllByShortForm("EFO_0001", "en", PageRequest.of(0, 1000));
+        verify(termRepository).findAllByShortForm("EFO_0001", "en", PageRequest.of(0, 50));
 
         mockMvc.perform(get("/api/terms").param("obo_id", "EFO:0001"))
                 .andExpect(status().isOk());
-        verify(termRepository).findAllByOboId("EFO:0001", "en", PageRequest.of(0, 1000));
+        verify(termRepository).findAllByOboId("EFO:0001", "en", PageRequest.of(0, 50));
     }
 
     @Test
     void genericIdOverridesSpecificIdentifiersAndFallsBackByRepresentation() throws Exception {
-        Pageable pageable = PageRequest.of(0, 1000);
+        Pageable pageable = PageRequest.of(0, 50);
         when(termRepository.findAllByIri("EFO:0001", "en", pageable))
                 .thenReturn(page(pageable));
         when(termRepository.findAllByShortForm("EFO:0001", "en", pageable))
@@ -251,7 +251,7 @@ class V1TermControllerWIT {
                         .param("http://example.org/category", "clinical"))
                 .andExpect(status().isOk());
 
-        verify(termRepository).findAll("en", PageRequest.of(0, 1000));
+        verify(termRepository).findAll("en", PageRequest.of(0, 50));
     }
 
     @Test
@@ -261,12 +261,12 @@ class V1TermControllerWIT {
                 .andExpect(jsonPath("$._embedded.terms[0].is_defining_ontology").value(true))
                 .andExpect(jsonPath("$.page.number").value(0));
 
-        verify(termRepository).findAllByIsDefiningOntology("en", PageRequest.of(0, 1000));
+        verify(termRepository).findAllByIsDefiningOntology("en", PageRequest.of(0, 50));
     }
 
     @Test
     void routesEveryDefiningOntologyIdentifierParameter() throws Exception {
-        Pageable pageable = PageRequest.of(0, 1000);
+        Pageable pageable = PageRequest.of(0, 50);
 
         mockMvc.perform(get("/api/terms/findByIdAndIsDefiningOntology")
                         .param("iri", TERM_IRI))
@@ -342,7 +342,7 @@ class V1TermControllerWIT {
 
     @Test
     void returnsStableLegacyNotFoundStatusAndMessage() throws Exception {
-        when(termRepository.findAll("en", PageRequest.of(0, 1000))).thenReturn(null);
+        when(termRepository.findAll("en", PageRequest.of(0, 50))).thenReturn(null);
 
         mockMvc.perform(get("/api/terms"))
                 .andExpect(status().isNotFound())
@@ -357,12 +357,12 @@ class V1TermControllerWIT {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$._embedded.terms[0].lang").value("en_US"));
 
-        verify(termRepository).findAll("en_US", PageRequest.of(0, 1000));
+        verify(termRepository).findAll("en_US", PageRequest.of(0, 50));
     }
 
     @Test
     void returnsStableBadRequestFieldsForUnsupportedSort() throws Exception {
-        Pageable pageable = PageRequest.of(0, 1000, org.springframework.data.domain.Sort.by("bad"));
+        Pageable pageable = PageRequest.of(0, 50, org.springframework.data.domain.Sort.by("bad"));
         when(termRepository.findAll("en", pageable))
                 .thenThrow(new IllegalArgumentException("Unsupported sort field: bad"));
 
