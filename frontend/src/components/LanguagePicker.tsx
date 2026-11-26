@@ -12,7 +12,9 @@ export default function LanguagePicker({
   onChangeLang: (lang: string) => void;
 }) {
   // Filter to only show valid language codes (2-letter ISO codes or locale format like en-GB)
+  // Special exception for en-layperson
   const validLanguages = ontology.getLanguages().filter((lang) => {
+    if (lang === 'en-layperson') return true;
     const countryCode = lang.split('-').pop() || lang;
     return /^[a-zA-Z]{2}$/.test(countryCode);
   });
@@ -47,6 +49,7 @@ function getEmoji(lang: string) {
     en: "en-GB",
     cs: "cs-CZ",
     zh: "zh-CN",
+    "en-layperson": "en-GB",
   };
 
   const code = specialCases[lang] || lang;
