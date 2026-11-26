@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { configureStore } from '@reduxjs/toolkit';
-import reducer, { getOntology, getAncestors, getRootEntities, getNodeChildren, getSubsets, getTreeMemberCounts, getDirectChildrenCount, getDirectChildrenEntities, setSelectedSubsets, resetTreeContent, setTreeScope as initializeTreeScope, treePreferencesScopeKey, hideImported, showObsolete, showSiblings, hideCounts, disablePreferredRoots } from '../src/pages/ontologies/ontologiesSlice';
+import reducer, { getAllOntologies, getOntology, getAncestors, getRootEntities, getNodeChildren, getSubsets, getTreeMemberCounts, getDirectChildrenCount, getDirectChildrenEntities, setSelectedSubsets, resetTreeContent, setTreeScope as initializeTreeScope, treePreferencesScopeKey, hideImported, showObsolete, showSiblings, hideCounts, disablePreferredRoots } from '../src/pages/ontologies/ontologiesSlice';
 import Ontology from '../src/model/Ontology';
 import { createAppStore, store as appStore } from '../src/app/store';
 import Individual from '../src/model/Individual';
@@ -17,6 +17,46 @@ const setTreeScope = (scopeKey: string, preferredRoots = false) => {
 const subset = 'http://www.ebi.ac.uk/coho#IHCC_subset';
 const scope = (id = 'coho', type = 'classes', api = '') => JSON.stringify([api, id, type]);
 const store = () => configureStore({ reducer: { ontologies: reducer }, middleware: g => g({ serializableCheck: false }) });
+
+test('the ontology catalogue loads all pages behind the API row cap', async () => {
+  const s = store();
+  const catalogue = Array.from({ length: 117 }, (_, index) => ({ ontologyId: `ontology-${index}` }));
+  const requests: [number, number][] = [];
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = (async (url: string) => {
+    const { pathname, searchParams } = new URL(url);
+    assert.equal(pathname, '/api/v2/ontologies');
+    const page = Number(searchParams.get('page') ?? 0);
+    const requestedSize = Number(searchParams.get('size'));
+    const size = Math.min(requestedSize, 50);
+    requests.push([page, requestedSize]);
+    const elements = catalogue.slice(page * size, (page + 1) * size);
+    return new Response(JSON.stringify({
+      page,
+      elements,
+      numElements: elements.length,
+      totalElements: catalogue.length,
+      totalPages: Math.ceil(catalogue.length / size),
+    }));
+  }) as typeof fetch;
+
+  try {
+    const loading = s.dispatch(getAllOntologies());
+    assert.equal(s.getState().ontologies.loadingOntologies, true);
+    // Remounting while the catalogue loads should reuse the in-flight load.
+    await s.dispatch(getAllOntologies());
+    await loading.unwrap();
+    assert.deepEqual(
+      s.getState().ontologies.ontologies.map(ontology => ontology.getOntologyId()),
+      catalogue.map(ontology => ontology.ontologyId),
+    );
+    assert.deepEqual(requests, [[0, 50], [1, 50], [2, 50]]);
+    assert.equal(s.getState().ontologies.loadingOntologies, false);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
 function context(s: any, key: string, requestKey: string) {
   s.dispatch(setTreeScope(key));
   s.dispatch({ type: 'ontologies_set_tree_request_context', payload: { scopeKey: key, requestKey } });

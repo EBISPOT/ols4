@@ -458,24 +458,26 @@ export const getOntologies = createAsyncThunk(
 );
 
 export const getAllOntologies = createAsyncThunk(
-    "ontologies_all",
-    async (_, { rejectWithValue }) => {
-        const path = `api/v2/ontologies?size=1`;
-        try {
-            const response = await get<any>(path);
-            const totalElements = response.totalElements;
-
-            const allOntologiesPath = `api/v2/ontologies?size=${totalElements}`;
-            const allOntologiesResponse = await get<any>(allOntologiesPath);
-            const data = allOntologiesResponse.elements.map((o: any) => new Ontology(o));
-
-            //const data = (await getPaginated<any>(path)).map((o) => new Ontology(o));
-
-            return data;
-        } catch (error: any) {
-            return rejectWithValue(`Error accessing: ${path}; ${error.message}`);
-        }
+  "ontologies_all",
+  async (_, { rejectWithValue }) => {
+    const path = "api/v2/ontologies";
+    const size = "50";
+    try {
+      const firstPage = await getPaginated<any>(path, { page: "0", size });
+      const elements = [...firstPage.elements];
+      for (let page = 1; page < firstPage.totalPages; page++) {
+        const nextPage = await getPaginated<any>(path, { page: String(page), size });
+        elements.push(...nextPage.elements);
+      }
+      return elements.map((element) => new Ontology(element));
+    } catch (error: any) {
+      return rejectWithValue(`Error accessing: ${path}; ${error.message}`);
     }
+  },
+  {
+    condition: (_, { getState }) =>
+      !(getState() as { ontologies: OntologiesState }).ontologies.loadingOntologies,
+  }
 );
 export const getEntities = createAsyncThunk(
   "ontologies_entities",
