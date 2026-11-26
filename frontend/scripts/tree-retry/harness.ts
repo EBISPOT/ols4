@@ -29,8 +29,8 @@ function checkbox(name: string, node = left) {
   return Array.from(node.querySelectorAll<HTMLInputElement>('label input')).find(i => i.closest('label')!.textContent === name)!;
 }
 function expand(iri: string, node = left) {
-  const li = link(iri, node)?.closest('li'); assert(li, `missing node: ${iri}`);
-  if (!li!.classList.contains('jstree-open')) (li!.querySelector('.jstree-ocl') as HTMLElement).click();
+  const li = link(iri, node)?.closest('[role="treeitem"]'); assert(li, `missing node: ${iri}`);
+  if (li!.getAttribute('aria-expanded') !== 'true') (li!.querySelector(':scope > .ols-tree-label > button') as HTMLElement).click();
 }
 async function settled() { await until(() => !document.querySelector('.spinner-default') && !document.querySelector('[aria-label="Descendant count loading"]'), 'requests did not settle'); await sleep(50); }
 const arm = (kind: string, mode = 'fail', delay = '0', channel = 'left') => fetch(`/__test/arm?${new URLSearchParams({ kind, mode, delay, channel })}`);
@@ -71,13 +71,13 @@ document.querySelector<HTMLButtonElement>('#run')!.addEventListener('click', asy
     await arm('children'); expand(child);
     await until(() => text().includes('Unable to load children.'), 'child expansion failure was silent');
     button('Retry children').click();
-    const childBranch = link(child)!.closest('li')!;
+    const childBranch = link(child)!.closest('[role="treeitem"]')!;
     const childLinks = () => childBranch.querySelectorAll('a[title]').length;
     await until(() => !text().includes('Unable to load children.') && childLinks() > 1, 'child retry did not recover real child nodes'); await settled();
     assert(right.innerHTML === sibling, 'child retry altered sibling widget');
     const childCalls = () => logs().then(rows => rows.filter(row => row.channel === 'left' && row.kind === 'children'));
     const beforeReopen = (await childCalls()).length;
-    (childBranch.querySelector('.jstree-ocl') as HTMLElement).click();
+    (childBranch.querySelector(':scope > .ols-tree-label > button') as HTMLElement).click();
     assert(childLinks() === 1, 'collapsed child branch kept showing its children');
     expand(child); await until(() => childLinks() > 1, 'cached child branch did not reopen'); await settled();
     assert((await childCalls()).length === beforeReopen, 'reopening a loaded branch duplicated the child request');
@@ -124,7 +124,7 @@ document.querySelector<HTMLButtonElement>('#run')!.addEventListener('click', asy
     }))), left);
     const a = 'https://example.org/paging#A', b = 'https://example.org/paging#B';
     await until(() => link(a) && link(b), 'paging roots missing'); expand(a); expand(b);
-    const parent = (iri: string) => link(iri)!.closest('li') as HTMLElement;
+    const parent = (iri: string) => link(iri)!.closest('[role="treeitem"]') as HTMLElement;
     await until(() => parent(a).querySelectorAll('tbody tr').length === 10 && parent(b).querySelectorAll('tbody tr').length === 10, 'both embedded tables did not load'); await settled();
     const tableSibling = parent(b).innerHTML;
     const search = parent(a).querySelector<HTMLInputElement>('input[placeholder="Search children..."]')!;

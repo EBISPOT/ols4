@@ -12,7 +12,7 @@ function check(host:HTMLElement,label:string){const input=Array.from(host.queryS
 async function settled(host:HTMLElement){await until(()=>!host.querySelector('.spinner-default')&&!host.querySelector('[aria-label="Descendant count loading"]')&&!text(host).includes('Loading direct children'),'pending requests');await new Promise(r=>setTimeout(r,80));}
 function type(input:HTMLInputElement,value:string){input.focus();Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value')!.set!.call(input,value);input.dispatchEvent(new Event('input',{bubbles:true}));}
 function button(host:HTMLElement,label:string){const b=Array.from(host.querySelectorAll<HTMLButtonElement>('button')).find(b=>b.textContent===label);assert(b,`missing button ${label}`);return b!;}
-function expand(host:HTMLElement,iri:string){const node=link(host,iri)!.closest('li')!;if(!node.classList.contains('jstree-open'))(node.querySelector('.jstree-ocl') as HTMLElement).click();}
+function expand(host:HTMLElement,iri:string){const node=link(host,iri)!.closest('[role="treeitem"]')!;if(node.getAttribute('aria-expanded') !== 'true')(node.querySelector(':scope > .ols-tree-label > button') as HTMLElement).click();}
 document.querySelector<HTMLButtonElement>('#run')!.onclick=async function(){
  this.disabled=true;const passed:string[]=[];const pass=(s:string)=>{passed.push('PASS '+s);result.textContent=passed.join('\n');};
  try{

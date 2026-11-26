@@ -712,8 +712,8 @@ export const getDirectChildrenEntities = createAsyncThunk(
     subsetTree,
   }: any, { signal }) => {
     const path = treeChildrenRoute(ontologyId, entityType, entityIri);
-    const response = await getPaginated<any>(path, {
-      page: String(page),
+    const loadPage = (apiPage: number) => getPaginated<any>(path, {
+      page: String(apiPage),
       size: String(size),
       lang: lang || "en",
       includeObsoleteEntities: String(showObsoleteEnabled ?? false),
@@ -722,7 +722,30 @@ export const getDirectChildrenEntities = createAsyncThunk(
       ...(entityType === "individuals" ? { memberType: "individual" } : {}),
       ...(search ? { searchQuery: search } : {}),
     }, apiUrl, { signal });
-    return response.map((obj) => thingFromJsonProperties(obj) as Entity);
+    const requested = await loadPage(page);
+    const expectedPages = Math.ceil(requested.totalElements / size);
+    const expectedRows = Math.max(0, Math.min(size, requested.totalElements - page * size));
+    const appearsCapped = requested.totalPages > expectedPages ||
+      (requested.numElements > 0 && requested.numElements !== expectedRows);
+    const toEntity = (obj: any) => thingFromJsonProperties(obj) as Entity;
+    if (!appearsCapped) return requested.map(toEntity);
+
+    // A table page can span API pages when the server caps the requested size.
+    // The first API page reveals the effective size even when the last page is short.
+    const first = page === 0 ? requested : await loadPage(0);
+    const apiSize = first.elements.length;
+    const start = page * size;
+    const end = Math.min(start + size, first.totalElements);
+    const elements: any[] = [];
+    if (apiSize > 0 && start < end) {
+      for (let apiPage = Math.floor(start / apiSize); apiPage * apiSize < end; apiPage++) {
+        const response = apiPage === 0 ? first : apiPage === page ? requested : await loadPage(apiPage);
+        const offset = apiPage * apiSize;
+        elements.push(...response.elements.slice(Math.max(0, start - offset), end - offset));
+      }
+    }
+    return new Page(page, elements.length, Math.ceil(first.totalElements / size), first.totalElements,
+      elements.map(toEntity), first.facetFieldsToCounts);
   },
   treeThunkOptions
 );

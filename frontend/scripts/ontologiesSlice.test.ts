@@ -619,7 +619,7 @@ test('wide Properties expansions get an exact total and fetch rows only for the 
     calls.push(url);
     const compact = url.searchParams.has('maxInlineChildren');
     const elements = compact ? [] : [{ iri: 'child-property', label: ['Child property'], type: ['property'] }];
-    return { ok: true, json: async () => ({ elements, totalElements: 1001, totalPages: 6 }) };
+    return { ok: true, json: async () => ({ elements, totalElements: 1001, totalPages: 101 }) };
   }) as any;
   try {
     const input = { ...args(), entityType: 'properties', entityTypePlural: 'properties',
@@ -817,4 +817,37 @@ test('incomplete definition paging cannot clear selections; only successful remo
     fail=false;await s.dispatch(getSubsets(args())).unwrap();assert.deepEqual(s.getState().ontologies.selectedSubsets,[subset,'late definition']);
     removed=true;await s.dispatch(getSubsets(args())).unwrap();assert.deepEqual(s.getState().ontologies.selectedSubsets,[subset]);
   } finally {globalThis.fetch=original;}
+});
+
+test('wide child tables preserve 100-row pages when the API caps requests at 50', async () => {
+  const store = setup();
+  const originalFetch = globalThis.fetch;
+  const totalElements = 241;
+  globalThis.fetch = (async (input: string) => {
+    const params = new URL(input).searchParams;
+    const page = Number(params.get('page'));
+    const size = Math.min(Number(params.get('size')), 50);
+    const start = page * size;
+    const end = Math.min(start + size, totalElements);
+    const elements = Array.from({ length: Math.max(0, end - start) }, (_, i) => ({
+      iri: 'child-' + (start + i), type: ['individual'],
+    }));
+    return { ok: true, json: async () => ({
+      page, elements, totalElements, numElements: elements.length, totalPages: Math.ceil(totalElements / size),
+    }) };
+  }) as any;
+  try {
+    for (const page of [0, 1, 2]) {
+      const result = await store.dispatch(getDirectChildrenEntities({
+        ...args(), entityType: 'individuals', entityIri: 'cohort', page, size: 100,
+      })).unwrap();
+      assert.equal(result.page, page);
+      assert.equal(result.totalPages, 3);
+      assert.equal(result.totalElements, totalElements);
+      assert.deepEqual(result.elements.map(entity => entity.getIri()),
+        Array.from({ length: page < 2 ? 100 : 41 }, (_, index) => 'child-' + (page * 100 + index)));
+    }
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
 });

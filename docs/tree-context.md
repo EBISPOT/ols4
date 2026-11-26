@@ -63,9 +63,16 @@ using stable type, case-insensitive label and IRI ordering. The legacy
 Compact expansion requests can set `view=tree&maxInlineChildren=1000` on
 `treeChildren` and property `children` routes. The exact filtered total is still
 returned. When it exceeds 1,000, the response omits inline rows and the frontend
-opens the searchable, paginated table alongside any required ancestry. At exactly
+opens the searchable, paginated table below any required ancestry. At exactly
 1,000, the frontend loads all inline rows, even when the server caps page size.
-The table requests its own pages without the inline threshold.
+The table requests its own pages without the inline threshold. If the API
+caps the requested table size, the frontend combines the server pages
+covering that table page to preserve its size and position.
+
+The browser and embedded widget share Headless Tree for expansion, focus
+and keyboard navigation. OLS supplies path-specific item IDs, source badges,
+imported and obsolete context, counts, and child tables. The branch shows
+the required path to the selected term above its table when reopened.
 
 Subset definition identity is independent of currently eligible member counts.
 A selected imported-only or obsolete-only subset remains checked with count zero

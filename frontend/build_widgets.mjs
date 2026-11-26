@@ -1,6 +1,6 @@
 
 import { build } from "esbuild";
-import { exec } from 'child_process'
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 let define = {}
 for (const k in process.env) { define[`process.env.${k}`] = JSON.stringify(process.env[k]) }
@@ -34,5 +34,9 @@ build({
 	format: "esm"
 });
 
-console.log('### Copying treestyles.css')
-exec('cp ./src/widgets/styles/treestyles.css ./dist_widgets')
+console.log("### Building treestyles.css");
+await mkdir("dist_widgets", { recursive: true });
+const stylesheets = await Promise.all(
+  ["treestyles.css", "entity-tree.css"].map(file => readFile(`src/widgets/styles/${file}`, "utf8"))
+);
+await writeFile("dist_widgets/treestyles.css", stylesheets.join("\n"));

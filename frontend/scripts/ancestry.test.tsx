@@ -245,7 +245,7 @@ for (const reset of ['scope', 'context', 'content']) {
   });
 }
 
-test('the selected path stays visible when an expanded ancestor uses the large-children list', async () => {
+test('the selected path appears above the table for a wide expanded ancestor', async () => {
   await withApi(async () => {
     const { s, args, childArgs, render } = setup({ imports: true });
     await s.dispatch(getAncestors(args)).unwrap();
@@ -254,8 +254,10 @@ test('the selected path stays visible when an expanded ancestor uses the large-c
     s.dispatch(getNodeChildren.fulfilled({ entityIri: rootIri, absoluteIdentity: rootIri,
       totalElements: 2001, children: [] }, 'children', branch));
     const html = render();
-    assert(html.includes('Direct Children'));
+    const selected = html.indexOf('aria-current="true"');
+    const table = html.indexOf('Direct Children');
     assert(html.includes('body height at birth'));
+    assert(selected >= 0 && selected < table, 'selected tree item must precede the table');
   });
 });
 
