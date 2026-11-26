@@ -4,19 +4,23 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import uk.ac.ebi.spot.ols.controller.api.exception.GlobalExceptionHandler;
+import uk.ac.ebi.spot.ols.service.PostgresClient.QueryPriority;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport;
 
 import java.net.URI;
 
 import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -79,6 +83,34 @@ class V2EntityControllerIT {
                         .value("http://example.org/EFO_0001"))
                 .andExpect(jsonPath("$.elements[2].iri")
                         .value("http://example.org/EFO_0100"));
+    }
+
+    @Test
+    void bulkRequestsShareCapacityWhileTermLookupAndSelectedAncestryStayAvailable() throws Exception {
+        var client = repositoryHandle.postgresClient();
+        var mixedPage = get("/api/v2/ontologies/efo/entities").param("type", "ClAsS,individual").param("size", "1");
+        String expectedPage = mockMvc.perform(mixedPage).andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+
+        // With the fixture's three pooled connections, one bulk slot can be occupied while
+        // leaving an expensive slot for selected ancestry and capacity for ordinary reads.
+        client.executeExpensiveQuery(QueryPriority.BULK, dsl -> {
+            assertDoesNotThrow(() -> {
+                mockMvc.perform(mixedPage)
+                        .andExpect(status().isServiceUnavailable())
+                        .andExpect(header().string(HttpHeaders.RETRY_AFTER, "2"));
+                mockMvc.perform(get("/api/v2/ontologies/efo/entities")
+                                .param("size", "1").param("facetFields", "treeAncestor"))
+                        .andExpect(status().isServiceUnavailable())
+                        .andExpect(header().string(HttpHeaders.RETRY_AFTER, "2"));
+                mockMvc.perform(get(ENTITY_URI)).andExpect(status().isOk())
+                        .andExpect(jsonPath("$.iri").value("http://example.org/EFO_0001"));
+                mockMvc.perform(get(URI.create(ENTITY_URI + "/treeAncestors"))).andExpect(status().isOk());
+            });
+            return null;
+        });
+
+        mockMvc.perform(mixedPage).andExpect(status().isOk()).andExpect(content().json(expectedPage));
     }
 
     @Test

@@ -249,6 +249,14 @@ public class OlsSearchQuery {
         return scope.get(0).values.iterator().next().toLowerCase(Locale.ROOT);
     }
 
+    boolean isMixedTypeOntologyListing() {
+        return filters.stream().anyMatch(filter -> filter.field.equals("ontologyId"))
+                && filters.stream().noneMatch(filter -> filter.field.equals("iri"))
+                && filters.stream().filter(filter -> filter.field.equals("type"))
+                        .anyMatch(filter -> expandFilterValues(filter).stream()
+                                .map(type -> type.toLowerCase(Locale.ROOT)).distinct().count() > 1);
+    }
+
     boolean isTreeRootListing() {
         return hasTreeReachability() && (searchText == null || searchText.isBlank())
                 && filters.stream().anyMatch(f -> f.values.size() == 1

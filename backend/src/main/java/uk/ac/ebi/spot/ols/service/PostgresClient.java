@@ -5,18 +5,28 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLTransientConnectionException;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 import java.util.zip.GZIPInputStream;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.jooq.DSLContext;
+import org.jooq.ExecuteContext;
+import org.jooq.ExecuteListener;
 import org.jooq.SQLDialect;
+import org.jooq.exception.DataAccessException;
 import org.jooq.impl.DSL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -48,6 +58,17 @@ public class PostgresClient {
     @org.springframework.beans.factory.annotation.Value("${ols.postgres.min-idle:5}")
     private int minIdle;
 
+    @org.springframework.beans.factory.annotation.Value("${ols.postgres.connection-timeout-ms:2000}")
+    private int connectionTimeoutMillis = 2000;
+
+    @org.springframework.beans.factory.annotation.Value("${ols.postgres.expensive-query-concurrency:4}")
+    private int expensiveQueryConcurrency = 4;
+
+    @org.springframework.beans.factory.annotation.Value("${ols.postgres.expensive-query-timeout-seconds:25}")
+    private int expensiveQueryTimeoutSeconds = 25;
+
+    private Semaphore expensiveQueryPermits;
+    private Semaphore bulkQueryPermits;
     private HikariDataSource dataSource;
     private static final Logger logger = LoggerFactory.getLogger(PostgresClient.class);
 
@@ -83,6 +104,15 @@ public class PostgresClient {
 
     @PostConstruct
     public void init() {
+        if (connectionTimeoutMillis <= 250 || expensiveQueryConcurrency < 1
+                || TimeUnit.SECONDS.toMillis(expensiveQueryTimeoutSeconds) <= connectionTimeoutMillis) {
+            throw new IllegalArgumentException("Configure a positive query concurrency and a query deadline "
+                    + "greater than the connection acquisition timeout (which must exceed 250 ms)");
+        }
+        int permits = Math.min(expensiveQueryConcurrency, Math.max(1, maxPoolSize - 1));
+        expensiveQueryPermits = new Semaphore(permits);
+        // Keep one expensive slot available for interactive traversal when the pool can spare it.
+        bulkQueryPermits = new Semaphore(Math.max(1, permits - 1));
         HikariConfig config = new HikariConfig();
         String url = "jdbc:postgresql://" + host + ":" + port + "/" + database;
         if (schema != null && !schema.isEmpty()) {
@@ -99,7 +129,8 @@ public class PostgresClient {
         }
         config.setMaximumPoolSize(maxPoolSize);
         config.setMinimumIdle(minIdle);
-        config.setConnectionTimeout(30000);
+        config.setConnectionTimeout(connectionTimeoutMillis);
+        config.setValidationTimeout(Math.min(1000, connectionTimeoutMillis - 1));
         config.setIdleTimeout(600000);
         config.setMaxLifetime(1800000);
         dataSource = new HikariDataSource(config);
@@ -115,11 +146,129 @@ public class PostgresClient {
     }
 
     public Connection getConnection() throws SQLException {
-        return dataSource.getConnection();
+        try {
+            return dataSource.getConnection();
+        } catch (SQLTransientConnectionException e) {
+            throw new DatabaseUnavailableException("The database is temporarily busy. Try again shortly.", e);
+        }
     }
 
     public DSLContext dsl(Connection conn) {
         return DSL.using(conn, SQLDialect.POSTGRES);
+    }
+
+    @FunctionalInterface
+    public interface QueryOperation<T> {
+        T execute(DSLContext dsl) throws SQLException;
+    }
+
+    public enum QueryPriority {
+        INTERACTIVE, BULK
+    }
+
+    /** Bound expensive work before it can take a pooled connection. */
+    public <T> T executeExpensiveQuery(QueryPriority priority, QueryOperation<T> operation) {
+        if (priority == QueryPriority.BULK && !bulkQueryPermits.tryAcquire()) {
+            throw new DatabaseUnavailableException("Expensive queries are busy. Try again shortly.", null);
+        }
+        try {
+            if (!expensiveQueryPermits.tryAcquire()) {
+                throw new DatabaseUnavailableException("Expensive queries are busy. Try again shortly.", null);
+            }
+            try {
+                return executeWithDeadline(operation);
+            } finally {
+                expensiveQueryPermits.release();
+            }
+        } finally {
+            if (priority == QueryPriority.BULK) {
+                bulkQueryPermits.release();
+            }
+        }
+    }
+
+    private <T> T executeWithDeadline(QueryOperation<T> operation) {
+        QueryDeadline deadline = new QueryDeadline(expensiveQueryTimeoutSeconds);
+        try (Connection conn = getConnection()) {
+            return dsl(conn).transactionResult(transaction -> {
+                DSLContext tx = DSL.using(transaction.deriveAppending(deadline));
+                T result = operation.execute(tx);
+                deadline.remainingMillis();
+                return result;
+            });
+        } catch (DataAccessException e) {
+            if ("57014".equals(e.sqlState())) {
+                throw new DatabaseUnavailableException("The database query was cancelled or timed out.", e);
+            }
+            throw e;
+        } catch (SQLException e) {
+            throw new DatabaseUnavailableException("The database is temporarily unavailable.", e);
+        }
+    }
+
+    private static final class QueryDeadline implements ExecuteListener {
+
+        // A transaction-local timeout follows the remaining budget across statements and is
+        // discarded on commit or rollback. Keep any stricter PostgreSQL timeout already in force.
+        private static final String SET_TIMEOUT = """
+                SELECT pg_catalog.set_config('statement_timeout',
+                    least(?::bigint, coalesce(nullif(setting::bigint, 0), ?::bigint))::text, true)
+                FROM pg_catalog.pg_settings WHERE name = 'statement_timeout'
+                """;
+
+        private final long deadlineNanos;
+
+        QueryDeadline(int timeoutSeconds) {
+            deadlineNanos = System.nanoTime() + TimeUnit.SECONDS.toNanos(timeoutSeconds);
+        }
+
+        long remainingMillis() {
+            long remainingNanos = deadlineNanos - System.nanoTime();
+            if (remainingNanos <= 0) {
+                throw new DatabaseUnavailableException("The database query timed out.", null);
+            }
+            return Math.max(1, TimeUnit.NANOSECONDS.toMillis(remainingNanos));
+        }
+
+        @Override
+        public void executeStart(ExecuteContext context) {
+            long remaining = remainingMillis();
+            // Use the same transaction and plain JDBC so installing the timeout does not
+            // itself invoke this listener recursively.
+            try (PreparedStatement timeout = context.connection().prepareStatement(SET_TIMEOUT)) {
+                timeout.setQueryTimeout(1);
+                timeout.setLong(1, remaining);
+                timeout.setLong(2, remaining);
+                timeout.execute();
+            } catch (SQLException e) {
+                throw new DataAccessException("Could not set the database query deadline", e);
+            }
+        }
+    }
+
+    private static final class DatabaseUnavailableException extends ResponseStatusException {
+
+        DatabaseUnavailableException(String reason, Throwable cause) {
+            super(HttpStatus.SERVICE_UNAVAILABLE, reason, cause);
+        }
+
+        @Override
+        public HttpHeaders getHeaders() {
+            HttpHeaders headers = new HttpHeaders();
+            headers.set(HttpHeaders.RETRY_AFTER, "2");
+            return headers;
+        }
+    }
+
+    public boolean hasLoadedOntologyData() throws SQLException {
+        try (Connection conn = getConnection();
+             PreparedStatement query = conn.prepareStatement(
+                     "SELECT 1 FROM ols_entities WHERE search_type = 'ontology' LIMIT 1")) {
+            query.setQueryTimeout(1);
+            try (ResultSet result = query.executeQuery()) {
+                return result.next();
+            }
+        }
     }
 
     public long returnNodeCount() {

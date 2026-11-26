@@ -355,19 +355,6 @@ public final class PostgresIntegrationTestSupport {
         return new OlsPostgresClientRepositoryHandle(olsPostgresClient, postgresClient);
     }
 
-    public static HealthCheckRepositoryHandle createHealthCheckRepositories(PostgreSQLContainer<?> container) {
-        PostgresClient postgresClient = createPostgresClient(container);
-        OlsSearchClient searchClient = createSearchClient(postgresClient);
-
-        OlsPostgresClient olsPostgresClient = new OlsPostgresClient();
-        ReflectionTestUtils.setField(olsPostgresClient, "postgresClient", postgresClient);
-
-        OntologyRepository repository = new OntologyRepository();
-        ReflectionTestUtils.setField(repository, "searchClient", searchClient);
-        ReflectionTestUtils.setField(repository, "postgresClient", olsPostgresClient);
-        return new HealthCheckRepositoryHandle(repository, olsPostgresClient, postgresClient);
-    }
-
     public static TextTaggerRepositoryHandle createTextTaggerRepositories(PostgreSQLContainer<?> container) {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
@@ -494,7 +481,11 @@ public final class PostgresIntegrationTestSupport {
         PostgresClient postgresClient = createPostgresClient(container);
         OlsSearchClient searchClient = createSearchClient(postgresClient);
 
+        OlsPostgresClient olsPostgresClient = new OlsPostgresClient();
+        ReflectionTestUtils.setField(olsPostgresClient, "postgresClient", postgresClient);
+
         EntityRepository repository = new EntityRepository();
+        ReflectionTestUtils.setField(repository, "postgresClient", olsPostgresClient);
         ReflectionTestUtils.setField(repository, "searchClient", searchClient);
         return new EntityRepositoryHandle(repository, postgresClient);
     }
@@ -1684,17 +1675,6 @@ public final class PostgresIntegrationTestSupport {
     }
 
     public record JooqSupportRepositoryHandle(
-            PostgresClient postgresClient) implements AutoCloseable {
-
-        @Override
-        public void close() {
-            postgresClient.close();
-        }
-    }
-
-    public record HealthCheckRepositoryHandle(
-            OntologyRepository ontologyRepository,
-            OlsPostgresClient olsPostgresClient,
             PostgresClient postgresClient) implements AutoCloseable {
 
         @Override

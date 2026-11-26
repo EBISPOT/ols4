@@ -22,6 +22,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.controller.api.exception.ResourceNotFoundException;
 import uk.ac.ebi.spot.ols.service.PostgresClient;
+import uk.ac.ebi.spot.ols.service.PostgresClient.QueryOperation;
+import uk.ac.ebi.spot.ols.service.PostgresClient.QueryPriority;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -238,8 +240,8 @@ public class OlsPostgresClient {
 
     public Page<JsonElement> getTreeChildren(String ontologyId, String parentIri, Map<String, String> nodeProps,
             Pageable pageable, String search, Collection<String> subsetTree, boolean individualsOnly) {
-        try (Connection conn = postgresClient.getConnection()) {
-            DSLContext dsl = postgresClient.dsl(conn);
+        boolean needsReachability = needsTreeReachability(nodeProps, subsetTree);
+        return executeTreePage(needsReachability, "getTreeChildren failed", dsl -> {
             Field<String> type = field("e", "type", String.class);
             Condition classChildren = type.eq("OntologyClass").and(
                     arrayContains(field("e", "direct_parents", String[].class), parentIri)
@@ -256,7 +258,7 @@ public class OlsPostgresClient {
             var candidateRows = dsl.select(id, iri, type, label, field("e", "ontology_id", String.class))
                     .from(OLS_ENTITIES.as("e")).where(candidates);
             Table<?> visible;
-            if (Boolean.parseBoolean(nodeProps.get("treeContext")) || (subsetTree != null && !subsetTree.isEmpty())) {
+            if (needsReachability) {
                 Condition members = subsetMemberEligibility(nodeProps)
                         .and(field("m", "type", String.class).in(individualsOnly
                                 ? List.of("OntologyIndividual") : List.of("OntologyClass", "OntologyIndividual")))
@@ -278,9 +280,7 @@ public class OlsPostgresClient {
                     List.of(field("p", "type", String.class).asc(), field("p", "sort_label", String.class).asc(),
                             field("p", "iri", String.class).asc()), pageable.getOffset(), pageable.getPageSize());
             return new PageImpl<>(readJsonElements(rows, ENTITY_JSON), pageable, rows.get(0).get(0, Long.class));
-        } catch (SQLException e) {
-            throw new RuntimeException("getTreeChildren failed", e);
-        }
+        });
     }
 
     /** Complete unfiltered selected-tree context, with class-first IRI identity. */
@@ -290,23 +290,20 @@ public class OlsPostgresClient {
                 .and(field("m", "type", String.class).in("OntologyClass", "OntologyIndividual"));
         Table<?> reach = JooqSupport.treeReachability(seed, false);
         Table<?> ancestors = DSL.table("""
-                (SELECT DISTINCT ON (e.iri) e.iri, e.type, e._json
+                (SELECT DISTINCT ON (e.iri) e.iri, e.id
                  FROM ols_entities e
                  WHERE e.ontology_id = {0} AND e.iri <> {1}
                    AND e.type IN ('OntologyClass', 'OntologyIndividual')
                    AND (e.ontology_id, e.iri) IN (SELECT ontology_id, iri FROM {2} r)
                  ORDER BY e.iri, e.type, e.id)
                 """, DSL.val(ontologyId), DSL.val(iri), reach).as("ancestor");
-        try (Connection conn = postgresClient.getConnection()) {
-            DSLContext dsl = postgresClient.dsl(conn);
-            long count = Optional.ofNullable(dsl.selectCount().from(ancestors).fetchOne(0, Long.class)).orElse(0L);
-            Field<byte[]> json = field("ancestor", "_json", byte[].class);
-            var records = dsl.select(json).from(ancestors).orderBy(field("ancestor", "iri", String.class))
-                    .offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
-            return new PageImpl<>(readJsonElements(records, json), pageable, count);
-        } catch (SQLException e) {
-            throw new RuntimeException("getTreeAncestors failed", e);
-        }
+        return postgresClient.executeExpensiveQuery(QueryPriority.INTERACTIVE, dsl -> {
+            var matching = dsl.select(field("ancestor", "id", String.class), field("ancestor", "iri", String.class))
+                    .from(ancestors);
+            var rows = JooqSupport.fetchEntityPage(dsl, matching, List.of(field("p", "iri", String.class).asc()),
+                    pageable.getOffset(), pageable.getPageSize());
+            return new PageImpl<>(readJsonElements(rows, ENTITY_JSON), pageable, rows.get(0).get(0, Long.class));
+        });
     }
 
     public Page<JsonElement> getHierarchicalParents(String id, Map<String, String> nodeProps, Pageable pageable) {
@@ -327,8 +324,8 @@ public class OlsPostgresClient {
      * that sit under a class through a configured hierarchical property.
      */
     public Page<JsonElement> getHierarchicalChildrenByIri(String ontologyId, String iri, Map<String, String> nodeProps, Pageable pageable, Collection<String> subsetTree) {
-        try (Connection conn = postgresClient.getConnection()) {
-            DSLContext dsl = postgresClient.dsl(conn);
+        boolean needsReachability = needsTreeReachability(nodeProps, subsetTree);
+        return executeTreePage(needsReachability, "getHierarchicalChildrenByIri failed", dsl -> {
             Table<?> e2 = OLS_ENTITIES.as("e2");
 
             Field<String[]> e2Parents = field("e2", "hierarchical_parents", String[].class);
@@ -340,7 +337,7 @@ public class OlsPostgresClient {
                     .and(arrayContains(e2Parents, iri))
                     .and(buildTreeCandidateCondition("e2", nodeProps));
 
-            if (Boolean.parseBoolean(nodeProps.get("treeContext")) || (subsetTree != null && !subsetTree.isEmpty())) {
+            if (needsReachability) {
                 where = where.and(inSubsetTree("e2", subsetTree, subsetMemberEligibility(nodeProps)
                         .and(field("m", "ontology_id", String.class).eq(ontologyId))));
             }
@@ -360,9 +357,7 @@ public class OlsPostgresClient {
                     .fetch();
 
             return new PageImpl<>(readJsonElements(records, e2Json), pageable, count);
-        } catch (SQLException e) {
-            throw new RuntimeException("getHierarchicalChildrenByIri failed", e);
-        }
+        });
     }
 
     public Page<JsonElement> getAncestors(String id, Map<String, String> nodeProps, Pageable pageable) {
@@ -430,8 +425,8 @@ public class OlsPostgresClient {
     }
 
     private Page<JsonElement> lookupArraySources(String id, String column, Map<String, String> nodeProps, Pageable pageable, String search, Collection<String> subsetTree) {
-        try (Connection conn = postgresClient.getConnection()) {
-            DSLContext dsl = postgresClient.dsl(conn);
+        boolean needsReachability = needsTreeReachability(nodeProps, subsetTree);
+        return executeTreePage(needsReachability, "lookupArraySources failed", dsl -> {
             Table<?> e1 = OLS_ENTITIES.as("e1");
             Table<?> e2 = OLS_ENTITIES.as("e2");
 
@@ -462,7 +457,7 @@ public class OlsPostgresClient {
                                         .concat(DSL.inline("%")))));
             }
 
-            if (Boolean.parseBoolean(nodeProps.get("treeContext")) || (subsetTree != null && !subsetTree.isEmpty())) {
+            if (needsReachability) {
                 where = where.and(inSubsetTree("e2", subsetTree, subsetMemberEligibility(nodeProps)
                         .and(field("m", "ontology_id", String.class).eq(id.substring(0, id.indexOf('+'))))));
             }
@@ -484,8 +479,22 @@ public class OlsPostgresClient {
                     .fetch();
 
             return new PageImpl<>(readJsonElements(records, e2Json), pageable, count);
+        });
+    }
+
+    private static boolean needsTreeReachability(Map<String, String> nodeProps, Collection<String> subsetTree) {
+        return Boolean.parseBoolean(nodeProps.get("treeContext")) || (subsetTree != null && !subsetTree.isEmpty());
+    }
+
+    private Page<JsonElement> executeTreePage(boolean needsReachability, String failure,
+            QueryOperation<Page<JsonElement>> operation) {
+        if (needsReachability) {
+            return postgresClient.executeExpensiveQuery(QueryPriority.INTERACTIVE, operation);
+        }
+        try (Connection conn = postgresClient.getConnection()) {
+            return operation.execute(postgresClient.dsl(conn));
         } catch (SQLException e) {
-            throw new RuntimeException("lookupArraySources failed", e);
+            throw new RuntimeException(failure, e);
         }
     }
 

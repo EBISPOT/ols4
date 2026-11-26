@@ -9,10 +9,17 @@ import org.jooq.impl.DSL;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.test.util.ReflectionTestUtils;
+import org.springframework.web.server.ResponseStatusException;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import uk.ac.ebi.spot.ols.repository.search.OlsSearchClient;
+import uk.ac.ebi.spot.ols.repository.search.OlsSearchQuery;
+import uk.ac.ebi.spot.ols.repository.search.SearchType;
+import uk.ac.ebi.spot.ols.service.PostgresClient.QueryPriority;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport.SearchClientHandle;
 
@@ -23,6 +30,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -103,6 +111,108 @@ class PostgresClientIT {
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage("Failed to count nodes")
                 .hasCauseInstanceOf(SQLException.class);
+    }
+
+    @Test
+    void treeQueryAdmissionLeavesAConnectionAvailableForOrdinaryReads() {
+        PostgresClient client = newStandaloneClient("public", 2);
+        try {
+            long count = client.executeExpensiveQuery(QueryPriority.BULK, dsl -> {
+                assertThatThrownBy(() -> client.executeExpensiveQuery(QueryPriority.BULK, inner -> inner.fetchValue("SELECT 1")))
+                        .isInstanceOfSatisfying(ResponseStatusException.class,
+                                error -> assertThat(error.getStatusCode()).isEqualTo(HttpStatus.SERVICE_UNAVAILABLE));
+                return client.returnNodeCount();
+            });
+
+            assertThat(count).isEqualTo(9L);
+            Object value = client.executeExpensiveQuery(QueryPriority.BULK, dsl -> dsl.fetchValue("SELECT 1"));
+            assertThat(value).isEqualTo(1);
+        } finally {
+            client.close();
+        }
+    }
+
+    @Test
+    void postgresCancelsSlowTreeQueryAndRestoresThePooledConnection() throws SQLException {
+        PostgresClient client = newStandaloneClient("public", 1);
+        try {
+            ReflectionTestUtils.setField(client, "expensiveQueryTimeoutSeconds", 1);
+
+            assertThatThrownBy(() -> client.executeExpensiveQuery(QueryPriority.BULK, dsl -> dsl.execute("SELECT pg_sleep(3)")))
+                    .isInstanceOfSatisfying(ResponseStatusException.class, error -> {
+                        assertThat(error.getStatusCode()).isEqualTo(HttpStatus.SERVICE_UNAVAILABLE);
+                        assertThat(error.getReason()).isEqualTo("The database query was cancelled or timed out.");
+                    });
+
+            try (Connection connection = client.getConnection()) {
+                assertThat(client.dsl(connection).fetchValue("SHOW statement_timeout")).isEqualTo("0");
+            }
+            Object value = client.executeExpensiveQuery(QueryPriority.BULK, dsl -> dsl.fetchValue("SELECT 1"));
+            assertThat(value).isEqualTo(1);
+        } finally {
+            client.close();
+        }
+    }
+
+    @Test
+    void expensiveQueryHasOneDeadlineAcrossMultipleStatements() throws SQLException {
+        PostgresClient client = newStandaloneClient("public", 1);
+        try {
+            ReflectionTestUtils.setField(client, "expensiveQueryTimeoutSeconds", 1);
+
+            assertThatThrownBy(() -> client.executeExpensiveQuery(QueryPriority.BULK, dsl -> {
+                dsl.execute("SELECT pg_sleep(0.65)");
+                return dsl.execute("SELECT pg_sleep(0.65)");
+            })).isInstanceOfSatisfying(ResponseStatusException.class,
+                    error -> assertThat(error.getStatusCode()).isEqualTo(HttpStatus.SERVICE_UNAVAILABLE));
+
+            try (Connection connection = client.getConnection()) {
+                assertThat(client.dsl(connection).fetchValue("SHOW statement_timeout")).isEqualTo("0");
+            }
+        } finally {
+            client.close();
+        }
+    }
+
+    @Test
+    void expensiveQueryRespectsAnExistingShorterDatabaseTimeout() throws SQLException {
+        PostgresClient client = newStandaloneClient("public", 1);
+        try {
+            try (Connection connection = client.getConnection()) {
+                client.dsl(connection).execute("SET statement_timeout = '250ms'");
+            }
+
+            assertThatThrownBy(() -> client.executeExpensiveQuery(QueryPriority.INTERACTIVE,
+                    dsl -> dsl.execute("SELECT pg_sleep(1)")))
+                    .isInstanceOfSatisfying(ResponseStatusException.class, error -> {
+                        assertThat(error.getStatusCode()).isEqualTo(HttpStatus.SERVICE_UNAVAILABLE);
+                        assertThat(error.getReason()).isEqualTo("The database query was cancelled or timed out.");
+                    });
+
+            try (Connection connection = client.getConnection()) {
+                assertThat(client.dsl(connection).fetchValue("SHOW statement_timeout")).isEqualTo("250ms");
+            }
+        } finally {
+            client.close();
+        }
+    }
+
+    @Test
+    void firstOntologySearchWorksWithOnlyOnePooledConnection() {
+        PostgresClient client = newStandaloneClient("public", 1);
+        try {
+            OlsSearchClient searchClient = new OlsSearchClient();
+            ReflectionTestUtils.setField(searchClient, "postgresClient", client);
+            OlsSearchQuery query = new OlsSearchQuery();
+            query.addFilter("type", List.of("ontology"), SearchType.WHOLE_FIELD);
+
+            var page = searchClient.searchPaginated(query, PageRequest.of(0, 2));
+
+            assertThat(page.getTotalElements()).isEqualTo(4);
+            assertThat(page.getContent()).hasSize(2);
+        } finally {
+            client.close();
+        }
     }
 
     // --- decompressJson(ResultSet, ...) against a real _json BYTEA column ------------------

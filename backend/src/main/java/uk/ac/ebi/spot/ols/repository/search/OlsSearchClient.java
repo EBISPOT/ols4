@@ -19,6 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import uk.ac.ebi.spot.ols.repository.postgres.JooqSupport;
 import uk.ac.ebi.spot.ols.service.PostgresClient;
+import uk.ac.ebi.spot.ols.service.PostgresClient.QueryPriority;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -52,6 +53,7 @@ public class OlsSearchClient {
     private static final String GROUP_HEAD_ID = "group_head_id";
     private static final String GROUP_SCORE = "group_score";
     private static final String GROUP_TOTAL = "group_total";
+    private static final String TREE_ANCESTOR_FACET = "treeAncestor";
     private static final Field<String> LABEL_FOR_SUGGEST = field("label_for_suggest", String.class);
     private static final Field<String> STRING_VALUE = field("string", String.class);
     private static final Field<String> ONTOLOGY_ID = field("ontology_id", String.class);
@@ -82,33 +84,36 @@ public class OlsSearchClient {
             .recordStats()
             .build();
 
-    private Set<String> getAvailableFilterColumns() {
+    private Set<String> getAvailableFilterColumns(DSLContext dsl) {
         if (availableFilterColumns == null) {
             synchronized (this) {
                 if (availableFilterColumns == null) {
-                    availableFilterColumns = loadFilterColumns();
+                    availableFilterColumns = Set.copyOf(dsl.select(COLUMN_NAME)
+                            .from(INFORMATION_SCHEMA_COLUMNS)
+                            .where(field("table_name", String.class).eq("ols_entities"))
+                            .and(COLUMN_NAME.like("filter\\_%", '\\'))
+                            .fetch(COLUMN_NAME));
                 }
             }
         }
         return availableFilterColumns;
     }
 
-    private Set<String> loadFilterColumns() {
-        Set<String> cols = new HashSet<>();
-        try (Connection conn = postgresClient.getConnection()) {
-            DSLContext dsl = postgresClient.dsl(conn);
-            var records = dsl.select(COLUMN_NAME)
-                    .from(INFORMATION_SCHEMA_COLUMNS)
-                    .where(field("table_name", String.class).eq("ols_entities"))
-                    .and(COLUMN_NAME.like("filter\\_%", '\\'))
-                    .fetch();
-            for (Record record : records) {
-                cols.add(record.get(COLUMN_NAME));
-            }
-        } catch (SQLException e) {
-            logger.warn("Failed to load filter columns: {}", e.getMessage());
+    private <T> T executeSearchQuery(OlsSearchQuery query, String sqlErrorMessage, PostgresClient.QueryOperation<T> operation) {
+        if (query.facetFields.contains(TREE_ANCESTOR_FACET)) {
+            return postgresClient.executeExpensiveQuery(QueryPriority.BULK, operation);
         }
-        return cols;
+        if (query.hasTreeReachability()) {
+            return postgresClient.executeExpensiveQuery(QueryPriority.INTERACTIVE, operation);
+        }
+        if (query.isMixedTypeOntologyListing()) {
+            return postgresClient.executeExpensiveQuery(QueryPriority.BULK, operation);
+        }
+        try (Connection conn = postgresClient.getConnection()) {
+            return operation.execute(postgresClient.dsl(conn));
+        } catch (SQLException e) {
+            throw new RuntimeException(sqlErrorMessage, e);
+        }
     }
 
     /**
@@ -125,9 +130,8 @@ public class OlsSearchClient {
      */
     public OlsFacetedResultsPage<JsonElement> searchPaginated(
             OlsSearchQuery query, Pageable pageable, boolean includeTotal) {
-        try (Connection conn = postgresClient.getConnection()) {
-            DSLContext dsl = postgresClient.dsl(conn);
-            var columns = getAvailableFilterColumns();
+        return executeSearchQuery(query, "Search query failed", dsl -> {
+            var columns = getAvailableFilterColumns(dsl);
             String ontology = query.singleOntology();
             long total;
             List<JsonElement> results;
@@ -159,9 +163,7 @@ public class OlsSearchClient {
             }
 
             return new OlsFacetedResultsPage<>(results, facetFieldToCounts, pageable, total);
-        } catch (SQLException e) {
-            throw new RuntimeException("Search query failed", e);
-        }
+        });
     }
 
     /**
@@ -172,7 +174,7 @@ public class OlsSearchClient {
             DSLContext dsl = postgresClient.dsl(conn);
             Record record = dsl.select(ENTITY_JSON)
                     .from(OLS_ENTITIES)
-                    .where(query.buildCondition(getAvailableFilterColumns()))
+                    .where(query.buildCondition(getAvailableFilterColumns(dsl)))
                     .orderBy(query.buildOrderBy())
                     .limit(1)
                     .fetchOne();
@@ -266,17 +268,17 @@ public class OlsSearchClient {
      */
     private Map<String, Long> executeFacetQuery(DSLContext dsl, String facetField, OlsSearchQuery query) {
         // Synthetic facet: no physical filter_treeAncestor column is needed.
-        if ("treeAncestor".equals(facetField)) {
+        if (TREE_ANCESTOR_FACET.equals(facetField)) {
             return executeTreeAncestorFacetQuery(dsl, query);
         }
         String column = OlsSearchQuery.resolveColumn(facetField);
         OlsSearchQuery.ColumnType colType = OlsSearchQuery.resolveColumnType(facetField);
 
-        if (!OlsSearchQuery.isKnownColumn(facetField) && !getAvailableFilterColumns().contains(column)) {
+        if (!OlsSearchQuery.isKnownColumn(facetField) && !getAvailableFilterColumns(dsl).contains(column)) {
             return Map.of();
         }
 
-        Condition where = query.buildCondition(getAvailableFilterColumns(), null, facetField);
+        Condition where = query.buildCondition(getAvailableFilterColumns(dsl), null, facetField);
         Map<String, Long> counts = new LinkedHashMap<>();
 
         if (colType == OlsSearchQuery.ColumnType.TEXT_ARRAY) {
@@ -327,7 +329,7 @@ public class OlsSearchClient {
                 WHERE iri <> member_iri
                 GROUP BY iri
                 ORDER BY count(*) DESC, iri
-                """, treeReachability(query.buildCondition(getAvailableFilterColumns(), "m"), true,
+                """, treeReachability(query.buildCondition(getAvailableFilterColumns(dsl), "m"), true,
                         query.broadTreeFacetOntology())).fetch();
 
         Map<String, Long> counts = new LinkedHashMap<>();
@@ -360,9 +362,8 @@ public class OlsSearchClient {
      * "which ontologies contain this term" for a grouped result.
      */
     public RawSearchResult searchRaw(OlsSearchQuery query, int start, int rows, boolean collapseByIri) {
-        try (Connection conn = postgresClient.getConnection()) {
-            DSLContext dsl = postgresClient.dsl(conn);
-            Condition where = query.buildCondition(getAvailableFilterColumns());
+        return executeSearchQuery(query, "Raw search query failed", dsl -> {
+            Condition where = query.buildCondition(getAvailableFilterColumns(dsl));
             List<SortField<?>> orderBy = query.buildOrderBy();
 
             long count;
@@ -400,9 +401,7 @@ public class OlsSearchClient {
             }
 
             return new RawSearchResult(jsonStrings, count, facets);
-        } catch (SQLException e) {
-            throw new RuntimeException("Raw search query failed", e);
-        }
+        });
     }
 
     /**

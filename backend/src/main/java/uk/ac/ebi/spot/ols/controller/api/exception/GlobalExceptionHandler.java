@@ -3,6 +3,7 @@ package uk.ac.ebi.spot.ols.controller.api.exception;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
@@ -37,6 +38,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public ResponseEntity<ErrorResponse> handleAllExceptions(Exception ex) {
+        HttpHeaders headers = HttpHeaders.EMPTY;
         HttpStatusCode status = HttpStatus.INTERNAL_SERVER_ERROR;
         if (ex instanceof ResourceNotFoundException) {
             status = HttpStatus.NOT_FOUND;
@@ -44,12 +46,14 @@ public class GlobalExceptionHandler {
             status = HttpStatus.BAD_REQUEST;
         } else if (ex instanceof org.springframework.web.ErrorResponse springError) {
             status = springError.getStatusCode();
+            headers = springError.getHeaders();
         } else if (ex instanceof TypeMismatchException) {
             status = HttpStatus.BAD_REQUEST;
         }
 
         ErrorResponse error = new ErrorResponse(status.value(), ex.getMessage());
         return ResponseEntity.status(status)
+                .headers(headers)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(error);
     }
