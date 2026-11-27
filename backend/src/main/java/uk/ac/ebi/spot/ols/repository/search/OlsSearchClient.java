@@ -9,6 +9,9 @@ import org.jooq.Condition;
 import org.jooq.DSLContext;
 import org.jooq.Field;
 import org.jooq.Record;
+import org.jooq.Record1;
+import org.jooq.Result;
+import org.jooq.Select;
 import org.jooq.SortField;
 import org.jooq.Table;
 import org.jooq.impl.DSL;
@@ -55,12 +58,14 @@ public class OlsSearchClient {
     private static final Field<String> LABEL_FOR_SUGGEST = field("label_for_suggest", String.class);
     private static final Field<String> STRING_VALUE = field("string", String.class);
     private static final Field<String> ONTOLOGY_ID = field("ontology_id", String.class);
+    private static final Field<String> SEARCH_TYPE = field("search_type", String.class);
     private static final Field<String[]> CURATED_FROM_SOURCES = field("curated_from_sources", String[].class);
 
     @Autowired
     private PostgresClient postgresClient;
 
     private volatile Set<String> availableFilterColumns;
+    private volatile ScopedPageSupport scopedPageSupport;
 
     /**
      * No TTL: autosuggest data only changes via a full dataload + redeploy (new pod, fresh empty
@@ -146,9 +151,7 @@ public class OlsSearchClient {
                         ? Optional.ofNullable(dsl.selectCount().from(OLS_ENTITIES).where(where)
                                 .fetchOne(0, Long.class)).orElse(0L)
                         : null;
-                var records = dsl.select(ENTITY_JSON).from(OLS_ENTITIES).where(where)
-                        .orderBy(query.buildOrderBy(pageable.getSort()))
-                        .offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
+                var records = fetchSearchPage(dsl, query, columns, where, ontology, pageable);
                 results = readJsonResults(records);
                 total = count != null ? count : pageable.getOffset() + results.size();
             }
@@ -161,6 +164,68 @@ public class OlsSearchClient {
             return new OlsFacetedResultsPage<>(results, facetFieldToCounts, pageable, total);
         } catch (SQLException e) {
             throw new RuntimeException("Search query failed", e);
+        }
+    }
+
+    private Result<Record1<byte[]>> fetchSearchPage(
+            DSLContext dsl, OlsSearchQuery query, Set<String> columns, Condition where,
+            String ontology, Pageable pageable) {
+        var types = pageable.getSort().isUnsorted() ? query.scopedPageTypes(ontology) : null;
+        if (types == null || !getScopedPageSupport(dsl).supports(types)) {
+            return dsl.select(ENTITY_JSON).from(OLS_ENTITIES).where(where)
+                    .orderBy(query.buildOrderBy(pageable.getSort()))
+                    .offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
+        }
+
+        // Only the first offset + size IDs of each disjoint type can reach the global page.
+        long candidateLimit = pageable.getOffset() + pageable.getPageSize();
+        Condition scope = query.buildCondition(columns, null, "type");
+        var branches = types.values().stream().<Select<Record1<String>>>map(type -> dsl.select(ENTITY_ID)
+                        .from(OLS_ENTITIES).where(scope.and(SEARCH_TYPE.eq(type)))
+                        .orderBy(ENTITY_ID.asc()).limit(candidateLimit))
+                .reduce(Select::unionAll).orElseThrow().asTable("candidate_ids");
+        Field<String> candidateId = branches.field(ENTITY_ID);
+        var page = dsl.select(candidateId).from(branches).orderBy(candidateId.asc())
+                .offset(pageable.getOffset()).limit(pageable.getPageSize()).asTable("entity_page");
+
+        // The primary-key lookup runs once per selected ID after the global offset and limit.
+        Field<String> pageId = page.field(ENTITY_ID);
+        Field<byte[]> document = DSL.field(dsl.select(ENTITY_JSON).from(OLS_ENTITIES)
+                .where(ENTITY_ID.eq(pageId))).as(ENTITY_JSON);
+        return dsl.select(document).from(page).orderBy(pageId.asc()).fetch();
+    }
+
+    private ScopedPageSupport getScopedPageSupport(DSLContext dsl) {
+        if (scopedPageSupport == null) {
+            synchronized (this) {
+                if (scopedPageSupport == null) {
+                    // Inspect the immutable dataload once. The validated constraint is needed
+                    // before an explicit case-insensitive predicate can use bare search_type.
+                    var capabilities = dsl.fetchSingle("""
+                            SELECT EXISTS (
+                                SELECT FROM pg_catalog.pg_index
+                                WHERE indrelid = to_regclass('ols_entities')
+                                  AND indexrelid = to_regclass('idx_ent_onto_st_obs_id')
+                                  AND indisvalid
+                            ), EXISTS (
+                                SELECT FROM pg_catalog.pg_constraint
+                                WHERE conrelid = to_regclass('ols_entities')
+                                  AND conname = 'ols_entities_search_type_lowercase'
+                                  AND contype = 'c'
+                                  AND convalidated
+                            )
+                            """);
+                    scopedPageSupport = new ScopedPageSupport(
+                            capabilities.get(0, Boolean.class), capabilities.get(1, Boolean.class));
+                }
+            }
+        }
+        return scopedPageSupport;
+    }
+
+    private record ScopedPageSupport(boolean hasIndex, boolean hasLowercaseTypes) {
+        boolean supports(OlsSearchQuery.ScopedPageTypes types) {
+            return hasIndex && (!types.ignoresCase() || hasLowercaseTypes);
         }
     }
 

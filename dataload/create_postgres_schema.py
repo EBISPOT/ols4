@@ -65,7 +65,9 @@ CREATE TABLE ols_entities (
     hierarchical_ancestors TEXT[] DEFAULT '{}',
 
     -- Search/filter columns
-    search_type TEXT,
+    -- Lets mixed-type pages use the same composite index for case-insensitive filters.
+    search_type TEXT CONSTRAINT ols_entities_search_type_lowercase
+        CHECK (search_type COLLATE "C" = lower(search_type) COLLATE "C"),
     short_form TEXT,
     curie TEXT,
     obo_id TEXT,
