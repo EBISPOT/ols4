@@ -76,7 +76,10 @@ The optional GitHub workflow permission requirement is documented in the
 Preparation verifies that the checked-out SHA is on stable, chooses the version
 and release notes, and creates a GitHub draft with durable state. An unfinished
 release blocks the next release, including one whose source is already public but
-whose DOI or images are still pending.
+whose DOI or images are still pending. A completed, adopted release with a higher
+version supersedes an older published release without a DOI when both cover the
+same commit and Zenodo DOI series. The older tag stays on GitHub and is omitted
+from the bundled release history.
 
 The workflow creates an immutable lightweight tag at the tested SHA and publishes
 that GitHub source release. Zenodo's native webhook archives the **tagged repository

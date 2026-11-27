@@ -414,6 +414,35 @@ class LifecycleTests(unittest.TestCase):
             self.prepare()
         self.assertEqual(len(self.gh.releases), 1)
 
+    def test_archived_replacement_unblocks_next_release_for_same_commit(self):
+        subject.prepare(self.gh, {**CONFIG, "baselineVersion": "4.0.1"}, self.commit, self.output)
+        self.archive()
+        self.images()
+        subject.finish(self.gh, self.output)
+        release = self.gh.releases[0]
+        replacement = {**subject.parse_state(release), "adopted": True}
+
+        unfinished = {**replacement, "version": "4.0.1", "imagesComplete": False,
+                      "releaseUrl": replacement["releaseUrl"].replace("v4.0.2", "v4.0.1")}
+        for key in ("doi", "zenodoRecordId", "adopted"):
+            del unfinished[key]
+        self.gh.releases.append({**release, "id": 2, "tag_name": "v4.0.1",
+                                 "body": subject.state_body(unfinished)})
+        self.advance()
+
+        for change in ({"imagesComplete": False}, {"commit": "a" * 40},
+                       {"conceptDoi": "10.5281/zenodo.29999999"}, {"adopted": False}):
+            with self.subTest(change=change):
+                release["body"] = subject.state_body({**replacement, **change})
+                with self.assertRaisesRegex(ValueError, "unfinished"):
+                    self.prepare()
+
+        release["body"] = subject.state_body(replacement)
+        self.assertEqual(self.prepare()["state"]["version"], "4.0.3")
+        bundle = self.archive()["bundle"]
+        self.assertEqual([entry["version"] for entry in bundle["releases"]], ["4.0.3", "4.0.2"])
+        self.assertEqual(subject.parse_state(self.gh.releases[1]), unfinished)
+
     def test_draft_blocks_next_commit(self):
         self.prepare()
         self.advance()
