@@ -155,7 +155,7 @@ def build_runtime_user_env(base_env: dict[str, str], work_dir: Path) -> dict[str
 
 def generate_schema(script_dir: Path, extra_args: list[str]) -> dict[str, str]:
     """Run create_postgres_schema.py and return a dict of section_name -> SQL."""
-    cmd = [sys.executable, str(script_dir / "create_postgres_schema.py")] + extra_args
+    cmd = [sys.executable, str(script_dir / "create_postgres_schema.py"), "--with-tree-ancestor-counts"] + extra_args
     result = subprocess.run(cmd, capture_output=True, text=True, check=True)
 
     sections: dict[str, str] = {}
@@ -507,6 +507,11 @@ checkpoint_completion_target = 0.9
         # --- Post-load (ANALYZE) ---
         print("=== Post-load updates ===")
         run_psql(sections["post_load"], "post_load", env=pg_env)
+
+        print("=== Materializing tree ancestor counts ===")
+        t_counts = time.monotonic()
+        run_psql(sections["tree_ancestor_counts"], "tree_ancestor_counts", env=pg_env)
+        print(f"Tree ancestor counts built in {time.monotonic() - t_counts:.1f}s")
 
     finally:
         # --- Stop ---

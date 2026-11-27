@@ -188,6 +188,41 @@ class OlsSearchClientSearchIT {
     }
 
     @Test
+    void materializedCountsAreUsedOnlyForSupportedFiltersOnTheActiveRevision() throws Exception {
+        var broadQuery = treeCountQuery();
+        broadQuery.filters.removeIf(filter -> filter.field.equals("subset"));
+        var fallback = treeCounts(broadQuery);
+        var subsetCounts = treeCounts(treeCountQuery());
+
+        try (Connection conn = POSTGRES.createConnection("")) {
+            var dsl = DSL.using(conn, SQLDialect.POSTGRES);
+            var view = """
+                    CREATE MATERIALIZED VIEW ols_tree_ancestor_counts AS
+                    SELECT ontology_id, 'materialized'::text AS iri, search_type, is_obsolete,
+                           is_defining_ontology, 42::bigint AS member_count
+                    FROM %s WHERE ontology_id = 'treecounts' AND search_type = 'individual'
+                        AND NOT is_obsolete LIMIT 1
+                    """;
+            try {
+                // A distinct count demonstrates that the materialized path was used.
+                dsl.execute(view.formatted("ols_entities") + " WITH NO DATA");
+                assertThat(treeCounts(broadQuery)).isEqualTo(fallback);
+                dsl.execute("REFRESH MATERIALIZED VIEW ols_tree_ancestor_counts");
+                assertThat(treeCounts(broadQuery)).containsExactlyEntriesOf(Map.of("materialized", 42L));
+                assertThat(treeCounts(treeCountQuery())).isEqualTo(subsetCounts);
+
+                dsl.execute("DROP MATERIALIZED VIEW ols_tree_ancestor_counts");
+                dsl.execute("CREATE TABLE previous_entities AS SELECT * FROM ols_entities");
+                dsl.execute(view.formatted("previous_entities"));
+                assertThat(treeCounts(broadQuery)).isEqualTo(fallback);
+            } finally {
+                dsl.execute("DROP MATERIALIZED VIEW IF EXISTS ols_tree_ancestor_counts");
+                dsl.execute("DROP TABLE IF EXISTS previous_entities");
+            }
+        }
+    }
+
+    @Test
     void treeCountsFollowLocationClassAncestryAndAgreeWithSubsetTreeMembership() throws Exception {
         var counts = treeCounts(treeCountQuery());
         assertThat(counts).containsEntry("country", 1L).containsEntry("area", 1L).containsEntry("location", 1L);

@@ -9,8 +9,10 @@ import org.jooq.Condition;
 import org.jooq.DSLContext;
 import org.jooq.Field;
 import org.jooq.Record;
+import org.jooq.Result;
 import org.jooq.SortField;
 import org.jooq.Table;
+import org.jooq.exception.DataAccessException;
 import org.jooq.impl.DSL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -321,20 +323,72 @@ public class OlsSearchClient {
 
     /** Counts distinct filtered members using the same complete closure as subset filtering. */
     private Map<String, Long> executeTreeAncestorFacetQuery(DSLContext dsl, OlsSearchQuery query) {
-        var records = dsl.resultQuery("""
-                SELECT iri, count(*)
-                FROM {0} tree_reachability
-                WHERE iri <> member_iri
-                GROUP BY iri
-                ORDER BY count(*) DESC, iri
-                """, treeReachability(query.buildCondition(getAvailableFilterColumns(), "m"), true,
-                        query.broadTreeFacetOntology())).fetch();
+        Condition members = query.buildCondition(getAvailableFilterColumns(), "m");
+        Result<Record> records = query.canUseMaterializedTreeAncestorCounts()
+                ? fetchMaterializedTreeAncestorCounts(dsl, members) : null;
+        if (records == null) {
+            records = dsl.resultQuery("""
+                    SELECT iri, count(*)
+                    FROM {0} tree_reachability
+                    WHERE iri <> member_iri
+                    GROUP BY iri
+                    ORDER BY count(*) DESC, iri
+                    """, treeReachability(members, true, query.broadTreeFacetOntology())).fetch();
+        }
 
         Map<String, Long> counts = new LinkedHashMap<>();
         for (Record record : records) {
-            counts.put(record.get(0, String.class), record.get(1, Long.class));
+            String iri = record.get(0, String.class);
+            if (iri != null) {
+                counts.put(iri, record.get(1, Long.class));
+            }
         }
         return counts;
+    }
+
+    /** Returns null when this data revision has no usable materialization. */
+    private Result<Record> fetchMaterializedTreeAncestorCounts(DSLContext dsl, Condition members) {
+        // PostgreSQL stores the materialized view's dependency on the source relation by OID.
+        // Check the relation resolved on this connection's search path, including after a schema swap.
+        var activeRevision = DSL.sql("""
+                (SELECT 1 FROM pg_catalog.pg_class v
+                 WHERE v.oid = to_regclass('ols_tree_ancestor_counts')
+                   AND v.relkind = 'm' AND v.relispopulated
+                   AND has_table_privilege(v.oid, 'SELECT')
+                   AND EXISTS (
+                       SELECT 1 FROM pg_catalog.pg_rewrite r
+                       JOIN pg_catalog.pg_depend d ON d.objid = r.oid
+                           AND d.classid = 'pg_catalog.pg_rewrite'::regclass
+                           AND d.refclassid = 'pg_catalog.pg_class'::regclass
+                       WHERE r.ev_class = v.oid AND d.refobjid = to_regclass('ols_entities')
+                   ))
+                AS active_revision
+                """);
+        var revisionCheck = DSL.selectOne().from(DSL.table(activeRevision));
+        if (!dsl.fetchExists(revisionCheck)) {
+            return null;
+        }
+
+        try {
+            // The left join distinguishes a valid empty facet from a missing revision. Recheck
+            // the dependency in the same statement as the counts in case the active table changed.
+            var records = dsl.resultQuery("""
+                    SELECT counts.iri, counts.member_count FROM {0}
+                    LEFT JOIN LATERAL (
+                        SELECT m.iri, sum(m.member_count)::bigint AS member_count
+                        FROM ols_tree_ancestor_counts m WHERE {1}
+                        GROUP BY m.iri
+                    ) counts ON true
+                    ORDER BY counts.member_count DESC, counts.iri
+                    """, activeRevision, members).fetch();
+            return records.isEmpty() ? null : records;
+        } catch (DataAccessException e) {
+            // A concurrent dataload can drop the view after the initial availability check.
+            if (Set.of("42P01", "42501", "55000").contains(e.sqlState()) && !dsl.fetchExists(revisionCheck)) {
+                return null;
+            }
+            throw e;
+        }
     }
 
     /**
