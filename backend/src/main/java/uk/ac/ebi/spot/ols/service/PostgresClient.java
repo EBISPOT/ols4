@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.zip.GZIPInputStream;
@@ -23,6 +24,13 @@ import javax.annotation.PreDestroy;
 
 @Component
 public class PostgresClient {
+
+    private static final String QUERY_CANCELLED_SQLSTATE = "57014";
+    private static final String CAP_STATEMENT_TIMEOUT = """
+            SELECT pg_catalog.set_config('statement_timeout',
+                least(coalesce(nullif(setting::integer, 0), 60000), 60000)::text, false)
+            FROM pg_catalog.pg_settings WHERE name = 'statement_timeout'
+            """;
 
     @org.springframework.beans.factory.annotation.Value("${ols.postgres.host:localhost}")
     private String host;
@@ -100,6 +108,8 @@ public class PostgresClient {
         config.setMaximumPoolSize(maxPoolSize);
         config.setMinimumIdle(minIdle);
         config.setConnectionTimeout(30000);
+        // Apply the ceiling to every new serving connection, preserving a stricter server default.
+        config.setConnectionInitSql(CAP_STATEMENT_TIMEOUT);
         config.setIdleTimeout(600000);
         config.setMaxLifetime(1800000);
         dataSource = new HikariDataSource(config);
@@ -120,6 +130,26 @@ public class PostgresClient {
 
     public DSLContext dsl(Connection conn) {
         return DSL.using(conn, SQLDialect.POSTGRES);
+    }
+
+    public static boolean isStatementCancelled(Throwable error) {
+        for (Throwable cause = error; cause != null; cause = cause.getCause()) {
+            if (cause instanceof SQLException sql && QUERY_CANCELLED_SQLSTATE.equals(sql.getSQLState())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean hasLoadedOntologyData() throws SQLException {
+        try (Connection conn = getConnection();
+             PreparedStatement query = conn.prepareStatement(
+                     "SELECT 1 FROM ols_entities WHERE search_type = 'ontology' LIMIT 1")) {
+            query.setQueryTimeout(1);
+            try (ResultSet result = query.executeQuery()) {
+                return result.next();
+            }
+        }
     }
 
     public long returnNodeCount() {

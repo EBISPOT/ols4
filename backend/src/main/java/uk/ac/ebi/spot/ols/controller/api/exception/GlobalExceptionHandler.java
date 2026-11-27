@@ -3,6 +3,7 @@ package uk.ac.ebi.spot.ols.controller.api.exception;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.NoHandlerFoundException;
+import uk.ac.ebi.spot.ols.service.PostgresClient;
 
 @ControllerAdvice
 @Order(Ordered.HIGHEST_PRECEDENCE)
@@ -37,6 +39,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public ResponseEntity<ErrorResponse> handleAllExceptions(Exception ex) {
+        if (PostgresClient.isStatementCancelled(ex)) {
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+                    .header(HttpHeaders.RETRY_AFTER, "2")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(new ErrorResponse(HttpStatus.SERVICE_UNAVAILABLE.value(),
+                            "The database query was cancelled or timed out. Try again shortly."));
+        }
         HttpStatusCode status = HttpStatus.INTERNAL_SERVER_ERROR;
         if (ex instanceof ResourceNotFoundException) {
             status = HttpStatus.NOT_FOUND;
