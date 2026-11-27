@@ -181,24 +181,46 @@ class OlsSearchClientSearchIT {
     }
 
     @Test
-    void keepsCaseInsensitiveMatchesWithoutAValidatedLowercaseConstraint() throws Exception {
+    void keepsCaseInsensitiveMatchesAfterReplacingTheTableWithAnOlderSchema() throws Exception {
         try (Connection conn = POSTGRES.createConnection(""); var statement = conn.createStatement()) {
             statement.execute("""
                     CREATE SCHEMA legacy_scoped_pages;
-                    CREATE TABLE legacy_scoped_pages.ols_entities (LIKE public.ols_entities INCLUDING DEFAULTS);
+                    CREATE TABLE legacy_scoped_pages.ols_entities
+                        (LIKE public.ols_entities INCLUDING DEFAULTS INCLUDING CONSTRAINTS, PRIMARY KEY (id));
                     CREATE INDEX idx_ent_onto_st_obs_id
                         ON legacy_scoped_pages.ols_entities (ontology_id, search_type, is_obsolete, id);
                     INSERT INTO legacy_scoped_pages.ols_entities
                         SELECT * FROM public.ols_entities WHERE id IN ('scoped-page-0', 'scoped-page-1');
-                    UPDATE legacy_scoped_pages.ols_entities SET search_type = 'Class' WHERE id = 'scoped-page-1';
-                    ALTER TABLE legacy_scoped_pages.ols_entities
-                        ADD CONSTRAINT ols_entities_search_type_lowercase
-                        CHECK (search_type COLLATE "C" = lower(search_type) COLLATE "C") NOT VALID;
                     """);
         }
-        try (var legacy = PostgresIntegrationTestSupport.createSearchClient(POSTGRES, "legacy_scoped_pages")) {
+        try (var client = PostgresIntegrationTestSupport.createSearchClient(POSTGRES, "legacy_scoped_pages")) {
             var query = scopedPageQuery(List.of("class", "individual"), SearchType.CASE_INSENSITIVE_TOKENS);
-            var page = legacy.searchClient().searchPaginated(query, PageRequest.of(0, 10));
+            var firstPage = PageRequest.of(0, 10);
+            // Cross the JDBC driver's server-side preparation threshold before replacing the table.
+            for (int request = 0; request < 6; request++) {
+                assertThat(client.searchClient().searchPaginated(query, firstPage).getContent())
+                        .extracting(OlsSearchClientSearchIT::resultIri).containsExactly("bb", "aa");
+            }
+
+            // Keep the client and its connection pool running while replacing the active relation.
+            try (Connection conn = POSTGRES.createConnection(""); var statement = conn.createStatement()) {
+                conn.setAutoCommit(false);
+                statement.execute("""
+                        DROP TABLE legacy_scoped_pages.ols_entities;
+                        CREATE TABLE legacy_scoped_pages.ols_entities
+                            (LIKE public.ols_entities INCLUDING DEFAULTS, PRIMARY KEY (id));
+                        CREATE INDEX idx_ent_onto_st_obs_id
+                            ON legacy_scoped_pages.ols_entities (ontology_id, search_type, is_obsolete, id);
+                        INSERT INTO legacy_scoped_pages.ols_entities
+                            SELECT * FROM public.ols_entities WHERE id IN ('scoped-page-0', 'scoped-page-1');
+                        UPDATE legacy_scoped_pages.ols_entities SET search_type = 'Class' WHERE id = 'scoped-page-1';
+                        ALTER TABLE legacy_scoped_pages.ols_entities
+                            ADD CONSTRAINT ols_entities_search_type_lowercase
+                            CHECK (search_type COLLATE "C" = lower(search_type) COLLATE "C") NOT VALID;
+                        """);
+                conn.commit();
+            }
+            var page = client.searchClient().searchPaginated(query, firstPage);
             assertThat(page.getContent()).extracting(OlsSearchClientSearchIT::resultIri).containsExactly("bb", "aa");
             assertThat(page.getTotalElements()).isEqualTo(2);
         }
