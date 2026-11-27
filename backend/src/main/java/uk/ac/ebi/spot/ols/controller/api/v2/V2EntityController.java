@@ -153,16 +153,41 @@ public class V2EntityController {
             @ParameterObject JsonTransformOptions outputOpts
     ) throws ResourceNotFoundException, IOException {
 
-        Map<String,Collection<String>> properties = new HashMap<>();
-        if(!includeObsoleteEntities)
-            properties.put(IS_OBSOLETE.getText(), List.of("false"));
-        properties.putAll(searchProperties);
-
         return new ResponseEntity<>(
                 new V2PagedAndFacetedResponse<V2Entity>(
-                    entityRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields, boostFields, facetFields, exactMatch, DynamicQueryHelper.filterProperties(properties), outputOpts).map(V2Entity::new)
+                    entityRepository.findByOntologyId(ontologyId, pageable, lang, search, searchFields,
+                            boostFields, facetFields, exactMatch, entityFilters(includeObsoleteEntities, searchProperties),
+                            outputOpts).map(V2Entity::new)
                 ),
                 HttpStatus.OK);
+    }
+
+    @Operation(description = "Count facet values for entities within an ontology. Uses the same indexed "
+            + "filters and facet semantics as the ontology's entity listing.")
+    @GetMapping(path = "/ontologies/{onto}/entityFacets", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Map<String, Map<String, Long>> getEntityFacets(
+            @PathVariable("onto") String ontologyId,
+            @RequestParam("facetFields")
+            @Parameter(description = "Whitespace-separated facet fields.", example = "subset treeAncestor")
+            String facetFields,
+            @RequestParam(value = "search", required = false) String search,
+            @RequestParam(value = "searchFields", required = false) String searchFields,
+            @RequestParam(value = "exactMatch", defaultValue = "false") boolean exactMatch,
+            @RequestParam(value = "includeObsoleteEntities", defaultValue = "false") boolean includeObsoleteEntities,
+            @RequestParam @Parameter(hidden = true) MultiValueMap<String, String> searchProperties,
+            @RequestParam(value = "lang", defaultValue = "en") String lang) {
+        return entityRepository.getFacetsByOntologyId(ontologyId, lang, search, searchFields, facetFields,
+                exactMatch, entityFilters(includeObsoleteEntities, searchProperties));
+    }
+
+    private static Map<String, Collection<String>> entityFilters(
+            boolean includeObsoleteEntities, MultiValueMap<String, String> searchProperties) {
+        Map<String, Collection<String>> properties = new HashMap<>();
+        if (!includeObsoleteEntities) {
+            properties.put(IS_OBSOLETE.getText(), List.of("false"));
+        }
+        properties.putAll(searchProperties);
+        return DynamicQueryHelper.filterProperties(properties);
     }
 
     @RequestMapping(path = "/ontologies/{onto}/entities/{entity}", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)

@@ -310,10 +310,10 @@ for (const imports of [true, false]) {
     const originalFetch = globalThis.fetch;
     globalThis.fetch = (async (input: any) => {
       urls.push(new URL(String(input)));
-      return { ok: true, json: async () => ({ elements: [], totalElements: 5, facetFieldsToCounts: {
+      return { ok: true, json: async () => ({
         treeAncestor: { Country: 3, Area: 3 },
         hierarchicalAncestor: { Country: 2 }, directAncestor: { Country: 2 },
-      } }) };
+      }) };
     }) as any;
     try {
       const counts = await s.dispatch(getTreeMemberCounts({ ...args(), entityType: 'individuals',
@@ -321,7 +321,9 @@ for (const imports of [true, false]) {
       assert.deepEqual(counts, { Country: 3, Area: 3 });
       assert.equal(urls.length, 1);
       assert.equal(urls[0].origin, 'https://widget.test');
+      assert(urls[0].pathname.endsWith('/entityFacets'));
       const params = urls[0].searchParams;
+      assert.equal(params.get('size'), null);
       assert.equal(params.get('facetFields'), 'treeAncestor');
       assert.equal(params.get('type'), 'individual');
       assert.equal(params.get('subset'), `${subset},another-subset`);
@@ -334,8 +336,7 @@ for (const imports of [true, false]) {
 test('an absent tree count facet never falls back to the old approximate facets', async () => {
   const s = setup();
   const originalFetch = globalThis.fetch;
-  globalThis.fetch = (async () => ({ ok: true, json: async () => ({ elements: [], totalElements: 1,
-    facetFieldsToCounts: { directAncestor: { Country: 9 } } }) })) as any;
+  globalThis.fetch = (async () => ({ ok: true, json: async () => ({ directAncestor: { Country: 9 } }) })) as any;
   try {
     assert.deepEqual(await s.dispatch(getTreeMemberCounts({ ...args(), selectedSubsets: [subset] })).unwrap(), {});
   } finally { globalThis.fetch = originalFetch; }
@@ -353,8 +354,9 @@ for (const imports of [true, false]) for (const obsolete of [true, false]) {
       // Native members may use an imported subset definition.
       const definitions = [{ iri: subset, label: ['IHCC'], type: ['property'], ontologyId: 'coho', isDefiningOntology: false }];
       const count = (params.get('isDefiningOntology') === 'true' ? 2 : 4) + (params.get('includeObsoleteEntities') === 'true' ? 1 : 0);
-      return { ok: true, json: async () => ({ elements: url.pathname.includes('/properties/') ? definitions : [],
-        totalElements: 1, totalPages: 1, facetFieldsToCounts: { subset: { [subset]: count }, treeAncestor: { Country: count } } }) };
+      return { ok: true, json: async () => url.pathname.includes('/properties/')
+        ? { elements: definitions, totalElements: 1, totalPages: 1 }
+        : { subset: { [subset]: count }, treeAncestor: { Country: count } } };
     }) as any;
     try {
       const input = { ...args(), showImportedEnabled: imports, showObsoleteEnabled: obsolete, apiUrl: 'https://widget.test/' };
@@ -364,8 +366,11 @@ for (const imports of [true, false]) for (const obsolete of [true, false]) {
       assert.deepEqual(subsets, [{ iri: subset, label: 'IHCC', numMembers: expected }]);
       assert.deepEqual(counts, { Country: expected });
       assert.equal(urls.length, 3); // One batched facet each; definition lookup is shared by all subsets.
-      for (const url of urls.filter(u => u.pathname.endsWith('/entities'))) {
+      const facetUrls = urls.filter(u => u.pathname.endsWith('/entityFacets'));
+      assert.deepEqual(facetUrls.map(u => u.searchParams.get('facetFields')), ['subset', 'treeAncestor']);
+      for (const url of facetUrls) {
         assert.equal(url.origin, 'https://widget.test');
+        assert.equal(url.searchParams.get('size'), null);
         assert.equal(url.searchParams.get('type'), 'class,individual');
         assert.equal(url.searchParams.get('includeObsoleteEntities'), String(obsolete));
         assert.equal(url.searchParams.get('isDefiningOntology'), imports ? null : 'true');
@@ -480,7 +485,7 @@ for (const imports of [true, false]) {
     const expected = imports ? { R: 5, D: 2, K: 2 } : { R: 3, D: 1, K: 2 };
     globalThis.fetch = (async (input: any) => {
       urls.push(new URL(String(input)));
-      return { ok: true, json: async () => ({ elements: [], facetFieldsToCounts: { treeAncestor: expected } }) };
+      return { ok: true, json: async () => ({ treeAncestor: expected }) };
     }) as any;
     try {
       assert.deepEqual(await s.dispatch(getTreeMemberCounts({ ...args(), ontologyId: 'native',
@@ -633,8 +638,9 @@ test('zero-count subset definitions stay selected across visibility changes and 
     if (fail) throw new Error('facet unavailable');
     const u = new URL(String(input));
     const definitions = [{iri: subset, label: ['IHCC'], type: ['property']}, {iri: 'S2', label: ['Obsolete only'], type: ['property']}];
-    return {ok: true, json: async () => ({elements: u.pathname.endsWith('/children') ? definitions : [],
-      totalPages: 1, facetFieldsToCounts: {subset: {}}})};
+    return {ok: true, json: async () => u.pathname.endsWith('/children')
+      ? {elements: definitions, totalPages: 1}
+      : {subset: {}}};
   }) as any;
   try {
     const options = await s.dispatch(getSubsets({...args(), showImportedEnabled: false, showObsoleteEnabled: false})).unwrap();
@@ -685,7 +691,7 @@ test('incomplete definition paging cannot clear selections; only successful remo
   let fail=true,removed=false;
   globalThis.fetch=(async(input:any)=>{
     const u=new URL(String(input));
-    if(!u.pathname.endsWith('/children'))return {ok:true,json:async()=>({facetFieldsToCounts:{subset:{}}})};
+    if(!u.pathname.endsWith('/children'))return {ok:true,json:async()=>({subset:{}})};
     const second=u.searchParams.get('page')==='1';if(second&&fail)throw Error('definition page failed');
     return {ok:true,json:async()=>({elements:[{iri:second?'late definition':subset,type:['property'],label:[second?'Late':'IHCC']}],totalPages:removed?1:2})};
   }) as any;

@@ -671,10 +671,9 @@ export const getSubsets = createAsyncThunk(
         apiUrl,
         { signal }
       ),
-      get<any>(
-        `api/v2/ontologies/${ontologyId}/entities?${new URLSearchParams({
+      get<Record<string, Record<string, number>>>(
+        `api/v2/ontologies/${ontologyId}/entityFacets?${new URLSearchParams({
           type: subsetMemberTypes(entityType),
-          size: "1",
           lang,
           includeObsoleteEntities: showObsoleteEnabled,
           ...(showImportedEnabled === false ? { isDefiningOntology: "true" } : {}),
@@ -693,8 +692,7 @@ export const getSubsets = createAsyncThunk(
         undefined, apiUrl, { signal });
       subsetsPage.elements.push(...next.elements);
     }
-    const numMembers: { [subsetIri: string]: number } =
-      facetResponse.facetFieldsToCounts?.["subset"] || {};
+    const numMembers = facetResponse.subset || {};
     return subsetsPage.elements
       .map((obj: any) => thingFromJsonProperties(obj) as Entity)
       .map((subset: Entity) => ({
@@ -719,12 +717,11 @@ export const getTreeMemberCounts = createAsyncThunk(
     showImportedEnabled,
     apiUrl,
   }: any, { signal }): Promise<{ [iri: string]: number }> => {
-    const res = await get<any>(
-      `api/v2/ontologies/${ontologyId}/entities?${new URLSearchParams({
+    const res = await get<Record<string, Record<string, number>>>(
+      `api/v2/ontologies/${ontologyId}/entityFacets?${new URLSearchParams({
         type: subsetMemberTypes(entityType),
         ...(selectedSubsets.length ? { subset: selectedSubsets.join(",") } : {}),
         ...(showImportedEnabled === false ? { isDefiningOntology: "true" } : {}),
-        size: "1",
         lang,
         includeObsoleteEntities: showObsoleteEnabled,
         facetFields: "treeAncestor",
@@ -733,7 +730,7 @@ export const getTreeMemberCounts = createAsyncThunk(
       apiUrl,
       { signal }
     );
-    return res.facetFieldsToCounts?.treeAncestor || {};
+    return res.treeAncestor || {};
   },
   treeThunkOptions
 );

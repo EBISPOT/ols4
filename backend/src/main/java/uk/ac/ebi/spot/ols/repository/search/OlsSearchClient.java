@@ -153,12 +153,7 @@ public class OlsSearchClient {
                 total = count != null ? count : pageable.getOffset() + results.size();
             }
 
-            Map<String, Map<String, Long>> facetFieldToCounts = new LinkedHashMap<>();
-            for (String facetField : query.facetFields) {
-                facetFieldToCounts.put(facetField, executeFacetQuery(dsl, facetField, query));
-            }
-
-            return new OlsFacetedResultsPage<>(results, facetFieldToCounts, pageable, total);
+            return new OlsFacetedResultsPage<>(results, executeFacets(dsl, query), pageable, total);
         } catch (SQLException e) {
             throw new RuntimeException("Search query failed", e);
         }
@@ -258,6 +253,22 @@ public class OlsSearchClient {
         } catch (SQLException e) {
             throw new RuntimeException("Suggest query failed", e);
         }
+    }
+
+    public Map<String, Map<String, Long>> searchFacets(OlsSearchQuery query) {
+        try (Connection conn = postgresClient.getConnection()) {
+            return executeFacets(postgresClient.dsl(conn), query);
+        } catch (SQLException e) {
+            throw new RuntimeException("Facet query failed", e);
+        }
+    }
+
+    private Map<String, Map<String, Long>> executeFacets(DSLContext dsl, OlsSearchQuery query) {
+        Map<String, Map<String, Long>> facets = new LinkedHashMap<>();
+        for (String facetField : query.facetFields) {
+            facets.put(facetField, executeFacetQuery(dsl, facetField, query));
+        }
+        return facets;
     }
 
     /**
@@ -394,12 +405,7 @@ public class OlsSearchClient {
 
             List<String> jsonStrings = readJsonStrings(records);
 
-            Map<String, Map<String, Long>> facets = new LinkedHashMap<>();
-            for (String facetField : query.facetFields) {
-                facets.put(facetField, executeFacetQuery(dsl, facetField, query));
-            }
-
-            return new RawSearchResult(jsonStrings, count, facets);
+            return new RawSearchResult(jsonStrings, count, executeFacets(dsl, query));
         } catch (SQLException e) {
             throw new RuntimeException("Raw search query failed", e);
         }
