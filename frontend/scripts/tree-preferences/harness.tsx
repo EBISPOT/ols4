@@ -56,8 +56,8 @@ window.fetch = (async (input: RequestInfo, init?: RequestInit) => {
       (url.searchParams.get('includeImportedEntities') !== 'false' || r.isDefiningOntology)));
     // Exercise the real embedded table used by the large COHO cohort class.
     if (selectedIri === iri('Cohort')) data.totalElements = 1001;
-  } else if (path.endsWith('/entities')) {
-    data = { ...page([]), facetFieldsToCounts: { subset: {}, treeAncestor: {} } };
+  } else if (path.endsWith('/entityFacets')) {
+    data = { subset: {}, treeAncestor: {} };
   } else if (/\/(classes|individuals|properties)$/.test(path)) {
     data = page(rows.filter(r => r.type[0] === 'class' && !r.hierarchicalParent.length &&
       (url.searchParams.get('isPreferredRoot') !== 'true' || r.iri === iri('Preferred'))));

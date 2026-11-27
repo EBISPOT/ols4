@@ -1,5 +1,6 @@
 package uk.ac.ebi.spot.ols.controller.api.v2;
 
+import com.jayway.jsonpath.JsonPath;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,7 @@ import uk.ac.ebi.spot.ols.controller.api.exception.GlobalExceptionHandler;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport;
 
 import java.net.URI;
+import java.util.Map;
 
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -109,6 +111,38 @@ class V2EntityControllerIT {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.totalElements").value(1))
                 .andExpect(jsonPath("$.elements[0].iri").value(child));
+    }
+
+    @Test
+    void returnsOntologyFacetsWithoutPagingDataAndKeepsThePaginatedResponse() throws Exception {
+        String ontology = "/api/v2/ontologies/graphtest/";
+        String criteria = "?type=class&isDefiningOntology=true&facetFields=isObsolete%20treeAncestor&size=1";
+
+        var facets = mockMvc.perform(get(URI.create(ontology + "entityFacets" + criteria)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.isObsolete.false").value(4))
+                .andExpect(jsonPath("$.isObsolete.true").value(2))
+                .andExpect(jsonPath("$.treeAncestor['http://example.org/GRAPH_PARENT']").value(2))
+                .andExpect(jsonPath("$.totalElements").doesNotExist())
+                .andExpect(jsonPath("$.elements").doesNotExist())
+                .andReturn().getResponse().getContentAsString();
+
+        mockMvc.perform(get(URI.create(ontology + "entities" + criteria)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.numElements").value(1))
+                .andExpect(jsonPath("$.totalElements").value(4))
+                .andExpect(jsonPath("$.elements[0].iri").value("http://example.org/GRAPH_CHILD_ACTIVE"))
+                .andExpect(jsonPath("$.facetFieldsToCounts").value(JsonPath.parse(facets).read("$", Map.class)));
+
+        mockMvc.perform(get(ontology + "entityFacets")
+                        .param("facetFields", "subset treeAncestor")
+                        .param("type", "class")
+                        .param("searchFields", "label")
+                        .param("exactMatch", "true")
+                        .param("search", "No such term"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.subset").isEmpty())
+                .andExpect(jsonPath("$.treeAncestor").isEmpty());
     }
 
     @Test

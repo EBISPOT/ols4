@@ -90,7 +90,23 @@ public class EntityRepository {
 
     public OlsFacetedResultsPage<JsonElement> findByOntologyId(
             String ontologyId, Pageable pageable, String lang, String search, String searchFields, String boostFields, String facetFields, boolean exactMatch, Map<String,Collection<String>> properties, JsonTransformOptions outputOpts) throws IOException {
+        var query = buildOntologyQuery(ontologyId, lang, search, searchFields, boostFields, facetFields,
+                exactMatch, properties);
+        return searchClient.searchPaginated(query, pageable)
+                .map(e -> JsonTransformer.transformJson(e, lang, outputOpts));
+    }
 
+    public Map<String, Map<String, Long>> getFacetsByOntologyId(
+            String ontologyId, String lang, String search, String searchFields, String facetFields,
+            boolean exactMatch, Map<String, Collection<String>> properties) {
+        var query = buildOntologyQuery(ontologyId, lang, search, searchFields, null, facetFields,
+                exactMatch, properties);
+        return searchClient.searchFacets(query);
+    }
+
+    private static OlsSearchQuery buildOntologyQuery(
+            String ontologyId, String lang, String search, String searchFields, String boostFields,
+            String facetFields, boolean exactMatch, Map<String, Collection<String>> properties) {
         Validation.validateOntologyId(ontologyId);
         Validation.validateLang(lang);
 
@@ -109,9 +125,7 @@ public class EntityRepository {
         SearchFieldsParser.addFacetFieldsToQuery(query, facetFields);
         DynamicFilterParser.addDynamicFiltersToQuery(query, properties);
 
-        return searchClient.searchPaginated(query, pageable)
-                .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
-                ;
+        return query;
     }
 
     public JsonElement getByOntologyIdAndIri(String ontologyId, String iri, String lang, JsonTransformOptions outputOpts) throws ResourceNotFoundException {
