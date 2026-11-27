@@ -14,6 +14,7 @@ import uk.ac.ebi.spot.ols.repository.search.OlsSearchClient;
 import uk.ac.ebi.spot.ols.repository.search.OlsSearchQuery;
 import uk.ac.ebi.spot.ols.repository.search.SearchType;
 import uk.ac.ebi.spot.ols.repository.v1.mappers.V1TermMapper;
+import uk.ac.ebi.spot.ols.service.PostgresClient;
 import static uk.ac.ebi.ols.shared.DefinedFields.*;
 
 import java.util.List;
@@ -102,6 +103,7 @@ public class V1TermRepository {
         try {
             first = searchClient.getFirst(query);
         } catch (Exception e) {
+            if (PostgresClient.isStatementCancelled(e)) throw e;
             log.error(e.getMessage());
             return null;
         }
@@ -134,6 +136,7 @@ public class V1TermRepository {
         try {
             first = searchClient.getFirst(query);
         } catch (Exception e) {
+            if (PostgresClient.isStatementCancelled(e)) throw e;
             log.error(e.getMessage());
             return null;
         }
@@ -154,6 +157,7 @@ public class V1TermRepository {
         try {
             first = searchClient.getFirst(query);
         } catch (Exception e) {
+            if (PostgresClient.isStatementCancelled(e)) throw e;
             log.error(e.getMessage());
             return null;
         }

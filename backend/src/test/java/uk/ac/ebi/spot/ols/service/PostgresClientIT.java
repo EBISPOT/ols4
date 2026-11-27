@@ -23,6 +23,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -80,6 +81,51 @@ class PostgresClientIT {
                     .fetchOne(0, Long.class);
 
             assertThat(count).isEqualTo(9L);
+        }
+    }
+
+    @Test
+    void capsEveryOlsConnectionAtOneMinuteWithoutChangingOtherSessions() throws SQLException {
+        try (Connection first = postgresClient.getConnection();
+             Connection second = postgresClient.getConnection();
+             Connection direct = POSTGRES.createConnection("")) {
+            assertThat(postgresClient.dsl(first).fetchOne("SHOW statement_timeout").get(0, String.class))
+                    .isEqualTo("1min");
+            assertThat(postgresClient.dsl(second).fetchOne("SHOW statement_timeout").get(0, String.class))
+                    .isEqualTo("1min");
+            assertThat(postgresClient.dsl(direct).fetchOne("SHOW statement_timeout").get(0, String.class))
+                    .isEqualTo("0");
+        }
+    }
+
+    @Test
+    void preservesStricterRoleTimeoutAndReusesConnectionAfterCancellation() throws SQLException {
+        try (Connection direct = POSTGRES.createConnection(""); Statement admin = direct.createStatement()) {
+            admin.execute("ALTER ROLE CURRENT_USER SET statement_timeout = '250ms'");
+            try {
+                PostgresClient client = newStandaloneClient("public", 1);
+                try {
+                    try (Connection connection = client.getConnection(); Statement query = connection.createStatement()) {
+                        assertThat(client.dsl(connection).fetchOne("SHOW statement_timeout").get(0, String.class))
+                                .isEqualTo("250ms");
+                        connection.setAutoCommit(false);
+                        try {
+                            assertThatThrownBy(() -> query.execute("SELECT pg_sleep(2)"))
+                                    .isInstanceOfSatisfying(SQLException.class,
+                                            error -> assertThat(error.getSQLState()).isEqualTo("57014"));
+                        } finally {
+                            connection.rollback();
+                        }
+                    }
+                    try (Connection connection = client.getConnection()) {
+                        assertThat(client.dsl(connection).selectOne().fetchOne(0, Integer.class)).isEqualTo(1);
+                    }
+                } finally {
+                    client.close();
+                }
+            } finally {
+                admin.execute("ALTER ROLE CURRENT_USER RESET statement_timeout");
+            }
         }
     }
 

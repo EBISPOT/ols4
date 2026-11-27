@@ -13,6 +13,7 @@ import org.springframework.hateoas.mediatype.hal.Jackson2HalModule;
 import org.springframework.hateoas.server.core.AnnotationLinkRelationProvider;
 import org.springframework.hateoas.server.core.DelegatingLinkRelationProvider;
 import org.springframework.hateoas.server.core.EvoInflectorLinkRelationProvider;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -21,14 +22,18 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import uk.ac.ebi.spot.ols.controller.api.exception.GlobalExceptionHandler;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport;
 
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -94,12 +99,15 @@ class V1OntologyTermControllerIT {
         PostgresIntegrationTestSupport.initializeClassDatabase(POSTGRES);
         repositoryHandle =
                 PostgresIntegrationTestSupport.createV1OntologyTermRepositories(POSTGRES);
+        mockMvc = createMockMvc(repositoryHandle);
+    }
 
+    private static MockMvc createMockMvc(PostgresIntegrationTestSupport.V1OntologyTermRepositoryHandle repositories) {
         V1OntologyTermController controller = new V1OntologyTermController();
         ReflectionTestUtils.setField(
-                controller, "termRepository", repositoryHandle.termRepository());
-        controller.jsTreeRepository = repositoryHandle.jsTreeRepository();
-        controller.graphRepository = repositoryHandle.graphRepository();
+                controller, "termRepository", repositories.termRepository());
+        controller.jsTreeRepository = repositories.jsTreeRepository();
+        controller.graphRepository = repositories.graphRepository();
         controller.termAssembler = new V1TermAssembler();
         controller.preferredRootTermAssembler = new V1PreferredRootTermAssembler();
 
@@ -109,8 +117,9 @@ class V1OntologyTermControllerIT {
         PagedResourcesAssemblerArgumentResolver assemblerResolver =
                 new PagedResourcesAssemblerArgumentResolver(pageableResolver);
 
-        mockMvc = org.springframework.test.web.servlet.setup.MockMvcBuilders
+        return org.springframework.test.web.servlet.setup.MockMvcBuilders
                 .standaloneSetup(controller)
+                .setControllerAdvice(new GlobalExceptionHandler())
                 .setCustomArgumentResolvers(pageableResolver, assemblerResolver)
                 .setMessageConverters(
                         new StringHttpMessageConverter(StandardCharsets.UTF_8),
@@ -141,6 +150,29 @@ class V1OntologyTermControllerIT {
                 .andExpect(jsonPath("$.iri").value("http://example.org/EFO_1001"))
                 .andExpect(jsonPath("$.label").value("Clinical liver child"))
                 .andExpect(jsonPath("$.lang").value("fr"));
+    }
+
+    @Test
+    void timedOutTermLookupReturnsRetryable503AndRecovers() throws Exception {
+        try (Connection direct = POSTGRES.createConnection(""); Statement admin = direct.createStatement()) {
+            admin.execute("ALTER ROLE CURRENT_USER SET statement_timeout = '250ms'");
+            try (var repositories = PostgresIntegrationTestSupport.createV1OntologyTermRepositories(POSTGRES)) {
+                MockMvc mvc = createMockMvc(repositories);
+                direct.setAutoCommit(false);
+                try {
+                    admin.execute("LOCK TABLE ols_entities IN ACCESS EXCLUSIVE MODE");
+                    mvc.perform(get(TERM_URI))
+                            .andExpect(status().isServiceUnavailable())
+                            .andExpect(header().string(HttpHeaders.RETRY_AFTER, "2"));
+                } finally {
+                    direct.rollback();
+                    direct.setAutoCommit(true);
+                }
+                mvc.perform(get(TERM_URI)).andExpect(status().isOk());
+            } finally {
+                admin.execute("ALTER ROLE CURRENT_USER RESET statement_timeout");
+            }
+        }
     }
 
     @Test
