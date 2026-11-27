@@ -217,11 +217,29 @@ def git(*args):
     return subprocess.check_output(["git", *args], text=True).strip()
 
 
-def release_history(gh, releases, current_state):
-    history = []
+def managed_releases(releases):
+    managed = []
+    recovered_versions = {}
     for release in releases:
         state = parse_state(release)
-        if release["draft"] or release.get("prerelease") or not state:
+        if not state:
+            continue
+        managed.append((release, state))
+        if state.get("adopted") and state.get("imagesComplete"):
+            commit = state["commit"]
+            recovered_versions[commit] = max(
+                recovered_versions.get(commit, (0, 0, 0)), version_tuple(state["version"])
+            )
+    # A completed recovery replaces an unfinished publication of the same source.
+    return [(release, state) for release, state in managed
+            if release["draft"] or state.get("imagesComplete")
+            or version_tuple(state["version"]) >= recovered_versions.get(state["commit"], (0, 0, 0))]
+
+
+def release_history(releases, current_state):
+    history = []
+    for release, state in managed_releases(releases):
+        if release["draft"] or release.get("prerelease"):
             continue
         if state["commit"] == current_state["commit"]:
             continue
@@ -258,7 +276,33 @@ def write_bundle(bundle):
         target.write_bytes(json_bytes(bundle))
 
 
-def prepare(gh, config, commit, output):
+def prepare_existing_release(gh, releases, managed, commit, tag):
+    if not tag.startswith("v") or not SEMVER.fullmatch(tag):
+        raise ValueError("Use a release tag in the form vX.Y.Z")
+    release = next((item for item in releases if item["tag_name"] == tag), None)
+    if not release or release["draft"] or release.get("prerelease") or not release.get("published_at"):
+        raise ValueError("The selected tag must have a published, non-prerelease GitHub release")
+    if any(version_tuple(state["version"]) > version_tuple(tag) for _, state in managed):
+        raise ValueError("The selected tag is older than an existing managed release")
+    if any(item["id"] != release["id"] and not state.get("imagesComplete")
+           and (item["draft"] or state["commit"] != commit) for item, state in managed):
+        raise ValueError("An earlier release is unfinished for a different commit or is still a draft")
+    state = parse_state(release)
+    if not state:
+        previous_state = max(managed, key=lambda pair: version_tuple(pair[1]["version"]))[1] if managed else {}
+        state = {"archiving": "github", "commit": commit, "version": tag[1:],
+                 "notes": release.get("body") or "", "releasedAt": release["published_at"],
+                 "releaseUrl": f"https://github.com/{gh.repo}/releases/tag/{tag}",
+                 "conceptDoi": previous_state.get("conceptDoi"), "imagesComplete": False,
+                 "adopted": True}
+    if state["commit"] != commit or state["version"] != tag[1:]:
+        raise ValueError("The selected release state does not match its tag and checkout")
+    ensure_tag(gh, state, create=False)
+    release_history(releases, state)
+    return release, state
+
+
+def prepare(gh, config, commit, output, release_tag=None):
     if not re.fullmatch(r"[0-9a-f]{40}", commit):
         raise ValueError("A full merged commit SHA is required")
     if git("rev-parse", "HEAD") != commit:
@@ -267,17 +311,18 @@ def prepare(gh, config, commit, output):
                       capture_output=True).returncode:
         raise ValueError("Release commit must be on stable")
     releases = gh.pages("/releases")
-    managed = [(release, parse_state(release)) for release in releases]
-    managed = [(release, state) for release, state in managed if state]
+    managed = managed_releases(releases)
     if any(state.get("archiving") != "github" for _, state in managed):
         raise ValueError("A release uses a different archiver; reconcile it before starting the software DOI series")
     match = next(((release, state) for release, state in managed if state["commit"] == commit), None)
-    if match:
+    if release_tag is not None:
+        release, state = prepare_existing_release(gh, releases, managed, commit, release_tag)
+    elif match:
         release, state = match
     else:
         if any(release["draft"] or not state.get("imagesComplete") for release, state in managed):
             raise ValueError("An earlier release is unfinished; retry it before releasing another commit")
-        release_history(gh, releases, {"commit": commit})
+        release_history(releases, {"commit": commit})
         versions = [release["tag_name"] for release in releases if SEMVER.fullmatch(release["tag_name"])]
         previous = max([config["baselineVersion"], *versions], key=version_tuple)
         prs = gh.request(f"{gh.root}/commits/{commit}/pulls")
@@ -302,7 +347,8 @@ def prepare(gh, config, commit, output):
         release = gh.request(f"{gh.root}/releases", "POST", {
             "tag_name": tag, "target_commitish": commit, "name": f"OLS software {version}",
             "body": state_body(state), "draft": True, "prerelease": False})
-    context = {"releaseId": release["id"], "state": state, "complete": state["imagesComplete"]}
+    context = {"releaseId": release["id"], "state": state, "complete": state["imagesComplete"],
+               "existingTag": release_tag is not None or state.get("adopted", False)}
     saved = gh.asset(release["id"], "release-history.json")
     if saved:
         context["bundle"] = json.loads(saved)
@@ -313,18 +359,24 @@ def prepare(gh, config, commit, output):
         with open(os.environ["GITHUB_OUTPUT"], "a") as handle:
             handle.write(f"version={state['version']}\ntag=v{state['version']}\n")
             handle.write(f"complete={str(context['complete']).lower()}\n")
+            handle.write(f"commit={commit}\nadopted={str(state.get('adopted', False)).lower()}\n")
     return context
 
 
-def ensure_tag(gh, state):
+def ensure_tag(gh, state, *, create=True):
     tag = "v" + state["version"]
     refs = gh.request(f"{gh.root}/git/matching-refs/tags/{tag}")
     exact = next((ref for ref in refs if ref["ref"] == "refs/tags/" + tag), None)
     if exact:
-        if exact["object"]["type"] != "commit" or exact["object"]["sha"] != state["commit"]:
+        target = exact["object"]
+        while target["type"] == "tag":
+            target = gh.request(f"{gh.root}/git/tags/{target['sha']}")["object"]
+        if target["type"] != "commit" or target["sha"] != state["commit"]:
             raise ValueError("Release tag no longer matches the tested commit")
-    else:
+    elif create:
         gh.request(f"{gh.root}/git/refs", "POST", {"ref": "refs/tags/" + tag, "sha": state["commit"]})
+    else:
+        raise ValueError("The selected GitHub release tag no longer exists")
 
 
 def archive(gh, zenodo, config, output):
@@ -332,9 +384,11 @@ def archive(gh, zenodo, config, output):
     state, release_id = context["state"], context["releaseId"]
     if context["complete"]:
         return
-    ensure_tag(gh, state)
+    ensure_tag(gh, state, create=not context.get("existingTag"))
     release = gh.request(f"{gh.root}/releases/{release_id}")
     if release["draft"]:
+        if context.get("existingTag"):
+            raise ValueError("The selected release is no longer published")
         # Publishing this release is the only archival trigger. Never call the
         # Zenodo deposition API or republish it to retry DOI discovery.
         release = gh.request(f"{gh.root}/releases/{release_id}", "PATCH", {
@@ -360,12 +414,12 @@ def archive(gh, zenodo, config, output):
         state.update({"doi": record["doi"], "conceptDoi": record["conceptdoi"],
                       "zenodoRecordId": record["id"]})
         gh.save_state(release, state)
-    ensure_tag(gh, state)
+    ensure_tag(gh, state, create=not context.get("existingTag"))
     saved = gh.asset(release_id, "release-history.json")
     if saved:
         bundle = json.loads(saved)
     else:
-        history = release_history(gh, gh.pages("/releases"), state)
+        history = release_history(gh.pages("/releases"), state)
         bundle = {"current": public_entry(state), "conceptDoi": state["conceptDoi"],
                   "releases": [public_entry(state), *history]}
         gh.upload(release_id, "release-history.json", json_bytes(bundle))
@@ -421,7 +475,7 @@ def finish(gh, output):
     state, release_id = context["state"], context["releaseId"]
     if context["complete"]:
         return
-    ensure_tag(gh, state)
+    ensure_tag(gh, state, create=not context.get("existingTag"))
     images = {component: json.loads((output / f"image-{component}.json").read_text())["image"]
               for component in COMPONENTS}
     manifest = {**context["bundle"], "images": images, "zenodoRecordId": state["zenodoRecordId"],
@@ -441,6 +495,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("command", choices=["prepare", "archive", "remember-image", "finish"])
     parser.add_argument("--commit", default=os.environ.get("GITHUB_SHA"))
+    parser.add_argument("--release-tag")
     parser.add_argument("--output", type=Path, default=Path(".release-output"))
     parser.add_argument("--component", choices=COMPONENTS)
     parser.add_argument("--metadata", type=Path)
@@ -449,9 +504,9 @@ def main():
     if args.command == "remember-image":
         remember_image(gh, args.output, args.component, args.metadata)
         return
-    config = json.loads(Path(".github/release/config.json").read_text())
+    config = json.loads(Path(__file__).with_name("config.json").read_text())
     if args.command == "prepare":
-        prepare(gh, config, args.commit, args.output)
+        prepare(gh, config, args.commit, args.output, args.release_tag)
     elif args.command == "archive":
         archive(gh, PublicZenodo(), config, args.output)
     else:

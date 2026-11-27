@@ -414,6 +414,61 @@ class LifecycleTests(unittest.TestCase):
             self.prepare()
         self.assertEqual(len(self.gh.releases), 1)
 
+    def manual_release(self, tag, commit):
+        release = {"id": len(self.gh.releases) + 1, "tag_name": tag, "body": "Manual release notes",
+                   "draft": False, "published_at": "2026-10-06T12:00:00Z"}
+        self.gh.releases.append(release)
+        self.gh.refs.append({"ref": f"refs/tags/{tag}", "object": {"type": "commit", "sha": commit}})
+        self.zenodo.archived_by_webhook({
+            "version": tag[1:], "releaseUrl": f"https://github.com/{self.gh.repo}/releases/tag/{tag}",
+        })
+        return release
+
+    def test_recover_published_tag_with_earlier_unarchived_release_for_same_commit(self):
+        self.prepare()
+        self.gh.on_publish = lambda state: None
+        with self.assertRaises(TimeoutError):
+            self.archive()
+        old_release = copy.deepcopy(self.gh.releases[0])
+        target = self.manual_release("v4.0.2", self.commit)
+        calls = len(self.gh.calls)
+
+        context = subject.prepare(self.gh, CONFIG, self.commit, self.output, "v4.0.2")
+        self.assertEqual(context["releaseId"], target["id"])
+        self.assertEqual(context["state"]["notes"], "Manual release notes")
+        context = self.archive()
+        self.assertEqual(context["state"]["doi"], self.zenodo.records[0]["doi"])
+        self.images()
+        subject.finish(self.gh, self.output)
+        self.assertTrue(subject.prepare(self.gh, CONFIG, self.commit, self.output, "v4.0.2")["complete"])
+        self.assertEqual(self.prepare()["releaseId"], target["id"])
+        self.assertEqual(self.gh.releases[0], old_release)
+        self.assertEqual(len(self.gh.releases), 2)
+        self.assertEqual(len(self.zenodo.records), 1)
+        self.assertTrue(all(method != "POST" for _, method in self.gh.calls[calls:]))
+
+        self.advance()
+        self.assertEqual(self.prepare()["state"]["version"], "4.0.3")
+        self.gh.on_publish = self.zenodo.archived_by_webhook
+        bundle = self.archive()["bundle"]
+        self.assertEqual([entry["version"] for entry in bundle["releases"]], ["4.0.3", "4.0.2"])
+
+    def test_recovery_rejects_tag_with_a_different_commit(self):
+        self.manual_release("v4.0.1", "a" * 40)
+        with self.assertRaisesRegex(ValueError, "tested commit"):
+            subject.prepare(self.gh, CONFIG, self.commit, self.output, "v4.0.1")
+        self.assertTrue(all(method == "GET" for _, method in self.gh.calls))
+        self.assertFalse(self.output.exists())
+
+    def test_recovery_cannot_skip_an_unfinished_release_for_a_different_commit(self):
+        self.prepare()
+        self.archive()
+        self.advance()
+        self.manual_release("v4.0.2", self.commit)
+        with self.assertRaisesRegex(ValueError, "unfinished for a different commit"):
+            subject.prepare(self.gh, CONFIG, self.commit, self.output, "v4.0.2")
+        self.assertFalse(self.output.exists())
+
     def test_draft_blocks_next_commit(self):
         self.prepare()
         self.advance()
