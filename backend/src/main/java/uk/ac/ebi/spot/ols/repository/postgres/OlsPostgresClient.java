@@ -225,6 +225,11 @@ public class OlsPostgresClient {
         return lookupArraySources(id, "direct_parents", nodeProps, pageable, search, subsetTree);
     }
 
+    public Page<JsonElement> getDirectChildren(String id, Map<String, String> nodeProps, Pageable pageable,
+            String search, Collection<String> subsetTree, Integer maxInlineChildren) {
+        return lookupArraySources(id, "direct_parents", nodeProps, pageable, search, subsetTree, maxInlineChildren);
+    }
+
     /**
      * The combined Classes-tree expansion, counted and paged AFTER IRI deduplication.
      * Classes win punning over individuals, preserving the existing display identity and
@@ -238,6 +243,11 @@ public class OlsPostgresClient {
 
     public Page<JsonElement> getTreeChildren(String ontologyId, String parentIri, Map<String, String> nodeProps,
             Pageable pageable, String search, Collection<String> subsetTree, boolean individualsOnly) {
+        return getTreeChildren(ontologyId, parentIri, nodeProps, pageable, search, subsetTree, individualsOnly, null);
+    }
+
+    public Page<JsonElement> getTreeChildren(String ontologyId, String parentIri, Map<String, String> nodeProps,
+            Pageable pageable, String search, Collection<String> subsetTree, boolean individualsOnly, Integer maxInlineChildren) {
         try (Connection conn = postgresClient.getConnection()) {
             DSLContext dsl = postgresClient.dsl(conn);
             Field<String> type = field("e", "type", String.class);
@@ -276,7 +286,7 @@ public class OlsPostgresClient {
                     .from(children).where(JooqSupport.labelContains("child", search));
             var rows = JooqSupport.fetchEntityPage(dsl, matching,
                     List.of(field("p", "type", String.class).asc(), field("p", "sort_label", String.class).asc(),
-                            field("p", "iri", String.class).asc()), pageable.getOffset(), pageable.getPageSize());
+                            field("p", "iri", String.class).asc()), pageable.getOffset(), pageable.getPageSize(), maxInlineChildren);
             return new PageImpl<>(readJsonElements(rows, ENTITY_JSON), pageable, rows.get(0).get(0, Long.class));
         } catch (SQLException e) {
             throw new RuntimeException("getTreeChildren failed", e);
@@ -290,7 +300,7 @@ public class OlsPostgresClient {
                 .and(field("m", "type", String.class).in("OntologyClass", "OntologyIndividual"));
         Table<?> reach = JooqSupport.treeReachability(seed, false);
         Table<?> ancestors = DSL.table("""
-                (SELECT DISTINCT ON (e.iri) e.iri, e.type, e._json
+                (SELECT DISTINCT ON (e.iri) e.iri, e.id
                  FROM ols_entities e
                  WHERE e.ontology_id = {0} AND e.iri <> {1}
                    AND e.type IN ('OntologyClass', 'OntologyIndividual')
@@ -299,11 +309,11 @@ public class OlsPostgresClient {
                 """, DSL.val(ontologyId), DSL.val(iri), reach).as("ancestor");
         try (Connection conn = postgresClient.getConnection()) {
             DSLContext dsl = postgresClient.dsl(conn);
-            long count = Optional.ofNullable(dsl.selectCount().from(ancestors).fetchOne(0, Long.class)).orElse(0L);
-            Field<byte[]> json = field("ancestor", "_json", byte[].class);
-            var records = dsl.select(json).from(ancestors).orderBy(field("ancestor", "iri", String.class))
-                    .offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
-            return new PageImpl<>(readJsonElements(records, json), pageable, count);
+            var matching = dsl.select(field("ancestor", "id", String.class), field("ancestor", "iri", String.class))
+                    .from(ancestors);
+            var rows = JooqSupport.fetchEntityPage(dsl, matching, List.of(field("p", "iri", String.class).asc()),
+                    pageable.getOffset(), pageable.getPageSize());
+            return new PageImpl<>(readJsonElements(rows, ENTITY_JSON), pageable, rows.get(0).get(0, Long.class));
         } catch (SQLException e) {
             throw new RuntimeException("getTreeAncestors failed", e);
         }
@@ -430,6 +440,11 @@ public class OlsPostgresClient {
     }
 
     private Page<JsonElement> lookupArraySources(String id, String column, Map<String, String> nodeProps, Pageable pageable, String search, Collection<String> subsetTree) {
+        return lookupArraySources(id, column, nodeProps, pageable, search, subsetTree, null);
+    }
+
+    private Page<JsonElement> lookupArraySources(String id, String column, Map<String, String> nodeProps,
+            Pageable pageable, String search, Collection<String> subsetTree, Integer maxInlineChildren) {
         try (Connection conn = postgresClient.getConnection()) {
             DSLContext dsl = postgresClient.dsl(conn);
             Table<?> e1 = OLS_ENTITIES.as("e1");
@@ -444,10 +459,8 @@ public class OlsPostgresClient {
             Field<String> e2OntologyId = field("e2", "ontology_id", String.class);
             Field<byte[]> e2Json = field("e2", "_json", byte[].class);
 
-            Condition where = e1Id.eq(id)
-                    .and(arrayContainsField(e2Sources, e1Iri))
-                    .and(e2OntologyId.eq(e1OntologyId))
-                    .and(buildTreeCandidateCondition("e2", nodeProps));
+            Condition relation = arrayContainsField(e2Sources, e1Iri).and(e2OntologyId.eq(e1OntologyId));
+            Condition where = e1Id.eq(id).and(buildTreeCandidateCondition("e2", nodeProps));
 
             if (id.contains("+property+")) {
                 where = where.and(JooqSupport.labelContains("e2", search));
@@ -462,21 +475,32 @@ public class OlsPostgresClient {
                                         .concat(DSL.inline("%")))));
             }
 
-            if (Boolean.parseBoolean(nodeProps.get("treeContext")) || (subsetTree != null && !subsetTree.isEmpty())) {
-                where = where.and(inSubsetTree("e2", subsetTree, subsetMemberEligibility(nodeProps)
-                        .and(field("m", "ontology_id", String.class).eq(id.substring(0, id.indexOf('+'))))));
+            boolean needsReachability = Boolean.parseBoolean(nodeProps.get("treeContext")) ||
+                    (subsetTree != null && !subsetTree.isEmpty());
+            if (needsReachability || maxInlineChildren != null) {
+                var candidates = dsl.select(field("e2", "id", String.class), e2Iri, e2OntologyId)
+                        .from(e1).join(e2).on(relation).where(where);
+                var visible = needsReachability
+                        ? JooqSupport.reachableTreeCandidates(candidates, id.substring(0, id.indexOf('+')), subsetTree,
+                                subsetMemberEligibility(nodeProps)).as("candidate")
+                        : candidates.asTable("candidate");
+                var matching = dsl.select(field("candidate", "id", String.class), field("candidate", "iri", String.class))
+                        .from(visible);
+                var rows = JooqSupport.fetchEntityPage(dsl, matching, List.of(field("p", "iri", String.class).asc()),
+                        pageable.getOffset(), pageable.getPageSize(), maxInlineChildren);
+                return new PageImpl<>(readJsonElements(rows, ENTITY_JSON), pageable, rows.get(0).get(0, Long.class));
             }
 
             long count = Optional.ofNullable(dsl.selectCount()
                             .from(e1)
-                            .join(e2).on(arrayContainsField(e2Sources, e1Iri).and(e2OntologyId.eq(e1OntologyId)))
+                            .join(e2).on(relation)
                             .where(where)
                             .fetchOne(0, Long.class))
                     .orElse(0L);
 
             var records = dsl.select(e2Json)
                     .from(e1)
-                    .join(e2).on(arrayContainsField(e2Sources, e1Iri).and(e2OntologyId.eq(e1OntologyId)))
+                    .join(e2).on(relation)
                     .where(where)
                     .orderBy(e2Iri.asc())
                     .offset(pageable.getOffset())

@@ -154,7 +154,8 @@ public class ClassRepository {
         Map<String, String> props = classNodeProperties(includeObsolete, includeImported);
         props.remove("type");
         if (treeContext) props.put("treeContext", "true");
-        return postgresClient.getTreeChildren(ontologyId, iri, props, pageable, search, subsetTree, individualsOnly)
+        return postgresClient.getTreeChildren(ontologyId, iri, props, pageable, search, subsetTree, individualsOnly,
+                        outputOpts.getMaxInlineChildren())
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts));
     }
 

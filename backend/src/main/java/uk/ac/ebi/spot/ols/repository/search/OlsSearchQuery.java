@@ -253,7 +253,8 @@ public class OlsSearchQuery {
         return hasTreeReachability() && (searchText == null || searchText.isBlank())
                 && filters.stream().anyMatch(f -> f.values.size() == 1
                         && ((f.field.equals("hasDirectParents") && f.values.contains("false"))
-                            || (f.field.equals("isPreferredRoot") && f.values.contains("true"))));
+                            || (f.field.equals("isPreferredRoot") && f.values.contains("true"))
+                            || (f.field.equals("hasIndividuals") && f.values.contains("true"))));
     }
 
     String broadTreeFacetOntology() {

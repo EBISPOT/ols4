@@ -11,7 +11,7 @@ import { getDirectChildrenEntities } from '../src/pages/ontologies/ontologiesSli
 import Ontology from '../src/model/Ontology';
 import { StaticRouter } from 'react-router-dom/server';
 import { thingFromJsonProperties } from '../src/app/util';
-import { getRootEntities, getAncestors, getTreeMemberCounts, getDirectChildrenCount, hideCounts, showCounts, hideImported, showObsolete, setTreeRequestContext } from '../src/pages/ontologies/ontologiesSlice';
+import { getRootEntities, getAncestors, getTreeMemberCounts, getNodeChildren, hideCounts, showCounts, hideImported, showObsolete, setTreeRequestContext } from '../src/pages/ontologies/ontologiesSlice';
 
 // Initialize the same two ownership scopes used by the mounted component.
 const setTreeScope = (scopeKey: string, preferredRoots = false) => {
@@ -166,8 +166,10 @@ for (const counts of [{ Country: 3, Area: 3 }, {}]) {
     s.dispatch(getRootEntities.fulfilled({ rootTerms: roots }, 'roots', arg));
     s.dispatch(getTreeMemberCounts.pending('counts', arg));
     s.dispatch(getTreeMemberCounts.fulfilled(counts, 'counts', arg));
-    s.dispatch(getDirectChildrenCount.pending('children', arg));
-    s.dispatch(getDirectChildrenCount.fulfilled({ entityIri: 'Country', totalElements: 7 }, 'children', arg));
+    const branch = { ...arg, entityIri: 'Country', absoluteIdentity: 'Country' };
+    s.dispatch(getNodeChildren.pending('children', branch));
+    s.dispatch(getNodeChildren.fulfilled({ entityIri: 'Country', absoluteIdentity: 'Country',
+      totalElements: 7, children: [] }, 'children', branch));
     const render = () => renderToStaticMarkup(<Provider store={s}><StaticRouter location="/"><EntityTree
       ontology={ontology} entityType="individuals" lang="en"
       onNavigateToEntity={() => {}} onNavigateToOntology={() => {}}

@@ -11,8 +11,9 @@ function kind(u) {
   if (q.get('facetFields') === 'treeAncestor') return 'counts';
   if (q.get('facetFields') === 'subset') return 'subsets';
   if (q.has('hasDirectParents') || q.has('isPreferredRoot')) return 'roots';
-  if (u.pathname.endsWith('hierarchicalAncestors')) return 'ancestry';
-  if (u.pathname.endsWith('treeChildren')) return q.has('page') ? 'table' : q.get('size') === '1' ? 'directCount' : 'children';
+  if (/\/(treeAncestors|hierarchicalAncestors|ancestors)$/.test(u.pathname)) return 'ancestry';
+  if (q.has('maxInlineChildren')) return 'children';
+  if (u.pathname.endsWith('/treeChildren')) return q.has('page') ? 'table' : 'children';
   return 'other';
 }
 http.createServer(async (req, res) => {

@@ -24,6 +24,7 @@ export default function DataTable({
   onRowsPerPageChange,
   onFilter,
   resultStatus,
+  wrapControls = false,
 }: {
   columns: readonly Column[];
   data: any[];
@@ -37,13 +38,14 @@ export default function DataTable({
   onFilter?: (key: string) => void;
   // Replace results without hiding or remounting the editable controls.
   resultStatus?: ReactNode;
+  wrapControls?: boolean;
 }) {
   // const [sortColumn, setSortColumn] = useState<string>("");
   // const [sortDirection, setSortDirection] = useState<string>("asc");
 
   return (
     <div>
-      <div className="grid grid-cols-2">
+      <div className={wrapControls ? "flex flex-wrap justify-between" : "grid grid-cols-2"}>
         {rowsPerPage !== undefined &&
         rowsPerPage > 0 &&
         onRowsPerPageChange !== undefined ? (
@@ -67,11 +69,13 @@ export default function DataTable({
           </div>
         ) : null}
         {onFilter !== undefined ? (
-          <div className="justify-self-end group relative w-3/4 px-2 mb-2">
+          <div className={`group relative px-2 mb-2 ${wrapControls
+            ? "flex-1 min-w-[min(100%,12rem)]"
+            : "justify-self-end w-3/4"}`}>
             <input
               type="text"
               placeholder={placeholder ? placeholder : "Search table..."}
-              className="input-default text-md pl-10 text-neutral-black"
+              className={`input-default text-md pl-10 text-neutral-black ${wrapControls ? "w-full" : ""}`}
               onChange={(e) => {
                 onFilter(e.target.value);
               }}
@@ -134,6 +138,7 @@ export default function DataTable({
       rowsPerPage !== undefined &&
       rowsPerPage > 0 ? (
         <Pagination
+          wrap={wrapControls}
           page={page}
           onPageChange={onPageChange}
           rowsPerPage={rowsPerPage}

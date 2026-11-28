@@ -45,10 +45,11 @@ obsolete and direct `subset` member filters, without `treeContext`. They count
 eligible members and exclude connectors. Direct-child page totals use context so
 that pagination agrees with the rows being displayed.
 
-Implementation reuses JooqSupport.treeReachability with perMember=false for one
-ontology/IRI closure. Count facets retain perMember=true. The same seed visibility
-whitelist is used for query and child paths; there are no independent native and
-subset closures to accidentally retain unrelated branches.
+Root and child queries first check candidates against eligible members and their
+indexed ancestry. In mixed ontologies, unresolved candidates can also be matched
+through a recursive closure. Selected ancestry uses `treeReachability` for the
+selected IRI and count facets use its per-member mode. Tree queries share the
+same eligible-member filters across roots and children.
 
 Classes and Individuals count, expansion and table search all use
 `/classes/{iri}/treeChildren`. The parent IRI may name a class or individual.
@@ -58,6 +59,20 @@ individual routes and individual seed members, retaining individual identity eve
 for punned IRIs. Both modes deduplicate by IRI before search, count and pagination,
 using stable type, case-insensitive label and IRI ordering. The legacy
 `/classes/{iri}/individuals` endpoint remains rdf:type-only.
+
+Compact expansion requests can set `view=tree&maxInlineChildren=1000` on
+`treeChildren` and property `children` routes. The exact filtered total is still
+returned. When it exceeds 1,000, the response omits inline rows and the frontend
+opens the searchable, paginated table below any required ancestry. At exactly
+1,000, the frontend loads all inline rows, even when the server caps page size.
+The table requests its own pages without the inline threshold. If the API
+caps the requested table size, the frontend combines the server pages
+covering that table page to preserve its size and position.
+
+The browser and embedded widget share Headless Tree for expansion, focus
+and keyboard navigation. OLS supplies path-specific item IDs, source badges,
+imported and obsolete context, counts, and child tables. The branch shows
+the required path to the selected term above its table when reopened.
 
 Subset definition identity is independent of currently eligible member counts.
 A selected imported-only or obsolete-only subset remains checked with count zero

@@ -122,6 +122,17 @@ class PropertyObsoleteIT {
         assertThat(nodes(request("C", "ancestors", "includeObsoleteEntities", "true"))).containsExactlyInAnyOrder("R", "K");
     }
 
+    @Test void compactPropertyChildLimitKeepsTheCountWithoutReturningTheRows() throws Exception {
+        var wide = request("R", "children", "treeContext", "true", "view", "tree", "maxInlineChildren", "3", "size", "2");
+        assertThat(nodes(wide)).isEmpty();
+        assertThat(wide.get("totalElements").getAsLong()).isEqualTo(4);
+        assertThat(wide.get("totalPages").getAsLong()).isEqualTo(2);
+        assertThat(nodes(request("R", "children", "view", "tree", "maxInlineChildren", "4")))
+                .containsExactly("A", "K", "O", "X");
+        assertThat(nodes(request("R", "children", "maxInlineChildren", "3")))
+                .containsExactly("A", "K", "O", "X");
+    }
+
     @Test void ancestorsBindExplicitFalseAndImportsIndependently() throws Exception {
         assertThat(nodes(request("C", "ancestors", "includeObsoleteEntities", "false", "includeImportedEntities", "true", "lang", "de")))
                 .containsExactly("R");

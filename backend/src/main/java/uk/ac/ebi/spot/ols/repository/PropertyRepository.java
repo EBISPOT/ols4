@@ -133,7 +133,8 @@ public class PropertyRepository {
 
         Map<String, String> nodeProps = propertyNodeProperties(includeObsolete, includeImported);
         if (treeContext) nodeProps.put("treeContext", "true");
-        return this.postgresClient.getDirectChildren(id, nodeProps, pageable, searchQuery, subsetTree)
+        return this.postgresClient.getDirectChildren(id, nodeProps, pageable, searchQuery, subsetTree,
+                        outputOpts.getMaxInlineChildren())
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }

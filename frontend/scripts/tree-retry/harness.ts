@@ -29,8 +29,8 @@ function checkbox(name: string, node = left) {
   return Array.from(node.querySelectorAll<HTMLInputElement>('label input')).find(i => i.closest('label')!.textContent === name)!;
 }
 function expand(iri: string, node = left) {
-  const li = link(iri, node)?.closest('li'); assert(li, `missing node: ${iri}`);
-  if (!li!.classList.contains('jstree-open')) (li!.querySelector('.jstree-ocl') as HTMLElement).click();
+  const li = link(iri, node)?.closest('[role="treeitem"]'); assert(li, `missing node: ${iri}`);
+  if (li!.getAttribute('aria-expanded') !== 'true') (li!.querySelector(':scope > .ols-tree-label > button') as HTMLElement).click();
 }
 async function settled() { await until(() => !document.querySelector('.spinner-default') && !document.querySelector('[aria-label="Descendant count loading"]'), 'requests did not settle'); await sleep(50); }
 const arm = (kind: string, mode = 'fail', delay = '0', channel = 'left') => fetch(`/__test/arm?${new URLSearchParams({ kind, mode, delay, channel })}`);
@@ -54,8 +54,13 @@ document.querySelector<HTMLButtonElement>('#run')!.addEventListener('click', asy
     const sibling = right.innerHTML;
     button('Retry tree').click(); await until(() => link(root) && !alert(), 'root retry must recover'); await settled();
     assert(right.innerHTML === sibling, 'root retry changed sibling widget'); pass('root failure/retry and independent second widget');
+    // Clear cached default counts by going through a visibility change while
+    // counts are off. Then leave the branch open while testing a fresh retry.
+    checkbox('Show counts').click();
+    checkbox('Show imported terms in tree').click(); await settled();
+    checkbox('Show imported terms in tree').click(); await settled();
     expand(root); await until(() => link(child), 'root expansion failed'); await settled();
-    checkbox('Show counts').click(); await arm('counts'); checkbox('Show counts').click();
+    await arm('counts'); checkbox('Show counts').click();
     await until(() => text().includes('Unable to load descendant counts.'), 'eligible count failure was silent');
     const expanded = link(child)!;
     button('Retry counts').click(); await until(() => !alert() && text().includes('(5)'), 'count retry must recover eligible counts'); await settled();
@@ -63,15 +68,20 @@ document.querySelector<HTMLButtonElement>('#run')!.addEventListener('click', asy
     const countCalls = (await logs()).filter(r => r.channel === 'left' && r.kind === 'counts');
     assert(countCalls.slice(-2).every(r => r.path.includes('includeObsoleteEntities=false') && !r.path.includes('isDefiningOntology')), 'default count retry lost settings');
     pass('default eligible-count retry preserves loaded expansion and sibling');
-    await arm('directCount'); await arm('children'); expand(child);
-    await until(() => text().includes('Unable to load the child count.') && text().includes('Unable to load children.'), 'child and direct-count failures were silent');
-    button('Retry child count').click();
-    await until(() => !text().includes('Unable to load the child count.'), 'direct-count retry did not recover');
-    assert(text().includes('Unable to load children.'), 'count retry hid the independent child failure');
+    await arm('children'); expand(child);
+    await until(() => text().includes('Unable to load children.'), 'child expansion failure was silent');
     button('Retry children').click();
-    await until(() => !text().includes('Unable to load children.') && link(child)!.closest('li')!.querySelectorAll('a[title]').length > 1, 'child retry did not recover real child nodes'); await settled();
-    assert(right.innerHTML === sibling, 'child retries altered sibling widget');
-    pass('direct-child count and child-expansion retry controls recover independently');
+    const childBranch = link(child)!.closest('[role="treeitem"]')!;
+    const childLinks = () => childBranch.querySelectorAll('a[title]').length;
+    await until(() => !text().includes('Unable to load children.') && childLinks() > 1, 'child retry did not recover real child nodes'); await settled();
+    assert(right.innerHTML === sibling, 'child retry altered sibling widget');
+    const childCalls = () => logs().then(rows => rows.filter(row => row.channel === 'left' && row.kind === 'children'));
+    const beforeReopen = (await childCalls()).length;
+    (childBranch.querySelector(':scope > .ols-tree-label > button') as HTMLElement).click();
+    assert(childLinks() === 1, 'collapsed child branch kept showing its children');
+    expand(child); await until(() => childLinks() > 1, 'cached child branch did not reopen'); await settled();
+    assert((await childCalls()).length === beforeReopen, 'reopening a loaded branch duplicated the child request');
+    pass('child expansion retry and cached reopening preserve the sibling widget');
     await arm('subsets'); checkbox('Show obsolete terms').click();
     await until(() => text().includes('Unable to load subset filters.'), 'subset failure was silent');
     button('Retry subset filters').click();
@@ -114,7 +124,7 @@ document.querySelector<HTMLButtonElement>('#run')!.addEventListener('click', asy
     }))), left);
     const a = 'https://example.org/paging#A', b = 'https://example.org/paging#B';
     await until(() => link(a) && link(b), 'paging roots missing'); expand(a); expand(b);
-    const parent = (iri: string) => link(iri)!.closest('li') as HTMLElement;
+    const parent = (iri: string) => link(iri)!.closest('[role="treeitem"]') as HTMLElement;
     await until(() => parent(a).querySelectorAll('tbody tr').length === 10 && parent(b).querySelectorAll('tbody tr').length === 10, 'both embedded tables did not load'); await settled();
     const tableSibling = parent(b).innerHTML;
     const search = parent(a).querySelector<HTMLInputElement>('input[placeholder="Search children..."]')!;

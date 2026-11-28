@@ -29,6 +29,8 @@ export interface OntologiesState {
   requiredPathChildren: Record<string, TreeNode[]>;
   rootNodes: TreeNode[];
   subsets: SubsetOption[];
+  subsetsResultKey: string | null;
+  memberCountsResultKey: string | null;
   selectedSubsets: string[];
   filteredMemberCounts: { [iri: string]: number };
   filteredMemberCountsStatus: "idle" | "loading" | "succeeded" | "failed";
@@ -91,6 +93,8 @@ const initialState: OntologiesState = {
   requiredPathChildren: {},
   rootNodes: [],
   subsets: [],
+  subsetsResultKey: null,
+  memberCountsResultKey: null,
   selectedSubsets: [],
   filteredMemberCounts: {},
   filteredMemberCountsStatus: "idle",
@@ -132,11 +136,13 @@ export const treePreferencesScopeKey = (apiUrl: string | undefined, ontologyId: 
 export const setTreeScope = createAction<{
   scopeKey: string; preferencesScopeKey: string; preferredRoots: boolean;
 }>("ontologies_set_tree_scope");
-export const setTreeRequestContext = createAction<{ scopeKey: string; requestKey: string }>(
+export const setTreeRequestContext = createAction<{
+  scopeKey: string; requestKey: string; memberCountsResultKey?: string;
+}>(
   "ontologies_set_tree_request_context"
 );
 
-function clearTreeContent(state: Draft<OntologiesState>) {
+function clearTreeContent(state: Draft<OntologiesState>, keepMemberCounts = false) {
   state.nodesWithChildrenLoaded = [];
   state.nodeChildren = {};
   state.requiredPathChildren = {};
@@ -148,8 +154,11 @@ function clearTreeContent(state: Draft<OntologiesState>) {
   state.directChildrenEntities = [];
   state.totalDirectChildrenEntities = 0;
   state.loadingDirectChildrenEntities = false;
-  state.filteredMemberCounts = {};
-  state.filteredMemberCountsStatus = "idle";
+  if (!keepMemberCounts) {
+    state.filteredMemberCounts = {};
+    state.filteredMemberCountsStatus = "idle";
+    state.memberCountsResultKey = null;
+  }
   state.treeRequests = {};
   state.treeRequestErrors = {};
   state.rootStatus = "idle";
@@ -174,7 +183,6 @@ function treeRequestSlot(action: any): string {
   const arg = action.meta.arg;
   if (type === "ontologies_direct_children_entities") return `${type}:${directChildrenTableKey(arg)}`;
   if (type === "ontologies_node_children") return `${type}:${arg.absoluteIdentity}`;
-  if (type === "ontologies_direct_children_count") return `${type}:${arg.entityIri}`;
   return type;
 }
 
@@ -239,6 +247,45 @@ function treeContextParams(subsetTree?: string[]): Record<string, string> {
 // flags and counts (the backend's view=tree). The full documents made a page of
 // 1000 cohorts 38 MB. Listings that show descriptions keep the full view.
 const TREE_NODE_VIEW = { view: "tree" };
+const TREE_PAGE_SIZE = 1000;
+
+// A deployment may cap the requested page size. Start with the returned page
+// metadata, then read the remaining pages in bounded batches and in server order.
+async function readTreePages(
+  first: Page<any>,
+  loadPage: (page: number) => Promise<Page<any>>,
+  limit = Infinity
+): Promise<any[]> {
+  const pages = first.elements.length
+    ? Math.min(first.totalPages, Math.ceil(limit / first.elements.length))
+    : first.totalPages;
+  const elements = [...first.elements];
+  const batchSize = 4;
+  for (let page = 1; page < pages; page += batchSize) {
+    const next = await Promise.all(Array.from(
+      { length: Math.min(batchSize, pages - page) },
+      (_, index) => loadPage(page + index)
+    ));
+    for (const response of next) elements.push(...response.elements);
+  }
+  return elements.slice(0, limit);
+}
+
+function treePageLoader(
+  path: string, params: Record<string, string>, apiUrl: string | undefined, signal: AbortSignal
+) {
+  return (page: number) => getPaginated<any>(
+    path, { ...params, ...(page ? { page: String(page) } : {}) }, apiUrl, { signal }
+  );
+}
+
+function treeChildrenRoute(ontologyId: string, entityType: string, entityIri: string) {
+  const iri = encodeURIComponent(encodeURIComponent(entityIri));
+  if (entityType === "classes" || entityType === "individuals") {
+    return `api/v2/ontologies/${ontologyId}/classes/${iri}/treeChildren`;
+  }
+  return `api/v2/ontologies/${ontologyId}/${entityType}/${iri}/children`;
+}
 export const setSpecificRootIri = createAction<string>("ontologies_set_specific_root_iri");
 
 export const getOntology = createAsyncThunk(
@@ -506,7 +553,6 @@ export const getAncestors = createAsyncThunk(
     entityIri,
     selectedEntity,
     lang,
-    showObsoleteEnabled,
     apiUrl,
   }: any, { signal }) => {
     const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
@@ -514,29 +560,15 @@ export const getAncestors = createAsyncThunk(
       `api/v2/ontologies/${ontologyId}/entities/${doubleEncodedUri}`,
       { lang }, apiUrl, { signal }
     )) as Entity;
-    var ancestorsPage: any;
-    const ancestorRoute = entityType === "classes" || entityType === "individuals"
-      ? `entities/${doubleEncodedUri}/treeAncestors`
-      : `${entityType}/${doubleEncodedUri}/ancestors`;
-    const params = new URLSearchParams({size: "1000", lang, view: "tree"});
+    const mixed = entityType === "classes" || entityType === "individuals";
+    const route = mixed ? `entities/${doubleEncodedUri}/treeAncestors` : `${entityType}/${doubleEncodedUri}/ancestors`;
     // The additive mixed ancestry route is unfiltered context by definition.
-    if (entityType !== "classes" && entityType !== "individuals") {
-      params.set("includeObsoleteEntities", "true");
-      params.set("includeImportedEntities", "true");
-    }
-    ancestorsPage = await getPaginated<any>(
-      `api/v2/ontologies/${ontologyId}/${ancestorRoute}?${params}`, undefined, apiUrl, { signal });
-    // getPaginated returns one page. Exhaust the server's complete closure without
-    // an ancestor/depth cap, retaining cancellation and request ownership.
-    for (let page = 1; page < ancestorsPage.totalPages; page++) {
-      params.set("page", String(page));
-      const next = await getPaginated<any>(
-        `api/v2/ontologies/${ontologyId}/${ancestorRoute}?${params}`, undefined, apiUrl, { signal });
-      ancestorsPage.elements.push(...next.elements);
-    }
-    return [entity, ...ancestorsPage.elements.map((obj: any) =>
-      thingFromJsonProperties(obj) as Entity
-    )];
+    const loadPage = treePageLoader(`api/v2/ontologies/${ontologyId}/${route}`, {
+      size: String(TREE_PAGE_SIZE), lang, ...TREE_NODE_VIEW,
+      ...(mixed ? {} : { includeObsoleteEntities: "true", includeImportedEntities: "true" }),
+    }, apiUrl, signal);
+    const ancestors = await readTreePages(await loadPage(0), loadPage);
+    return [entity, ...ancestors.map((obj) => thingFromJsonProperties(obj) as Entity)];
   },
   treeThunkOptions
 );
@@ -552,94 +584,31 @@ export const getRootEntities = createAsyncThunk(
     subsetTree,
     apiUrl,
   }: any, { signal }) => {
+    async function loadRoots(type: string, rootFilter: Record<string, string>) {
+      const loadPage = treePageLoader(`api/v2/ontologies/${ontologyId}/${type}`, {
+        ...rootFilter,
+        size: String(TREE_PAGE_SIZE),
+        lang,
+        includeObsoleteEntities: String(showObsoleteEnabled),
+        ...treeContextParams(subsetTree),
+        ...TREE_NODE_VIEW,
+        ...(showImportedEnabled === false ? { isDefiningOntology: "true" } : {}),
+      }, apiUrl, signal);
+      return (await readTreePages(await loadPage(0), loadPage, TREE_PAGE_SIZE))
+        .map((obj) => thingFromJsonProperties(obj) as Entity);
+    }
     if (entityType === "individuals") {
       const [classesWithIndividuals, orphanedIndividuals] = await Promise.all([
-        getPaginated<any>(
-          `api/v2/ontologies/${ontologyId}/classes?${new URLSearchParams({
-            hasIndividuals: "true",
-            size: "1000",
-            lang,
-            includeObsoleteEntities: showObsoleteEnabled,
-            ...treeContextParams(subsetTree),
-            ...TREE_NODE_VIEW,
-            ...(showImportedEnabled === false ? { isDefiningOntology: "true" } : {}),
-          })}`,
-          undefined,
-          apiUrl,
-          { signal }
-        ),
-        getPaginated<any>(
-          `api/v2/ontologies/${ontologyId}/individuals?${new URLSearchParams({
-            hasDirectParents: "false",
-            size: "1000",
-            lang,
-            includeObsoleteEntities: showObsoleteEnabled,
-            ...treeContextParams(subsetTree),
-            ...TREE_NODE_VIEW,
-            ...(showImportedEnabled === false ? { isDefiningOntology: "true" } : {}),
-          })}`,
-          undefined,
-          apiUrl,
-          { signal }
-        ),
+        loadRoots("classes", { hasIndividuals: "true" }),
+        loadRoots("individuals", { hasDirectParents: "false" }),
       ]);
-      return {
-        entityType,
-        rootTerms: null,
-        classesWithIndividuals: classesWithIndividuals.elements.map((obj) =>
-          thingFromJsonProperties(obj) as Entity
-        ),
-        orphanedIndividuals: orphanedIndividuals.elements.map((obj) =>
-          thingFromJsonProperties(obj) as Entity
-        ),
-      };
-    } else if (entityType === "classes" && preferredRoots) {
-      const rootsPage = await getPaginated<any>(
-        `api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
-          isPreferredRoot: "true",
-          size: "1000",
-          lang,
-          includeObsoleteEntities: showObsoleteEnabled,
-          ...treeContextParams(subsetTree),
-          ...TREE_NODE_VIEW,
-          ...(showImportedEnabled === false ? { isDefiningOntology: "true" } : {}),
-        })}`,
-        undefined,
-        apiUrl,
-        { signal }
-      );
-      return {
-        entityType,
-        rootTerms: rootsPage.elements.map((obj) =>
-          thingFromJsonProperties(obj) as Entity
-        ),
-        classesWithIndividuals: null,
-        orphanedIndividuals: null,
-      };
-    } else {
-      const rootsPage = await getPaginated<any>(
-        `api/v2/ontologies/${ontologyId}/${entityType}?${new URLSearchParams({
-          hasDirectParents: "false",
-          size: "1000",
-          lang,
-          includeObsoleteEntities: showObsoleteEnabled,
-          ...treeContextParams(subsetTree),
-          ...TREE_NODE_VIEW,
-          ...(showImportedEnabled === false ? { isDefiningOntology: "true" } : {}),
-        })}`,
-        undefined,
-        apiUrl,
-        { signal }
-      );
-      return {
-        entityType,
-        rootTerms: rootsPage.elements.map((obj) =>
-          thingFromJsonProperties(obj) as Entity
-        ),
-        classesWithIndividuals: null,
-        orphanedIndividuals: null,
-      };
+      return { entityType, rootTerms: null, classesWithIndividuals, orphanedIndividuals };
     }
+    const rootFilter: Record<string, string> = entityType === "classes" && preferredRoots
+      ? { isPreferredRoot: "true" }
+      : { hasDirectParents: "false" };
+    const rootTerms = await loadRoots(entityType, rootFilter);
+    return { entityType, rootTerms, classesWithIndividuals: null, orphanedIndividuals: null };
   },
   treeThunkOptions
 );
@@ -662,40 +631,31 @@ export const getSubsets = createAsyncThunk(
     showImportedEnabled,
     apiUrl,
   }: any, { signal }): Promise<SubsetOption[]> => {
-    const [subsetsPage, facetResponse] = await Promise.all([
-      getPaginated<any>(
-        `api/v2/ontologies/${ontologyId}/properties/${encodeURIComponent(
-          encodeURIComponent(SUBSET_PROPERTY_IRI)
-        )}/children?${new URLSearchParams({ size: "1000", lang })}`,
-        undefined,
-        apiUrl,
-        { signal }
-      ),
+    const encodedIri = encodeURIComponent(encodeURIComponent(SUBSET_PROPERTY_IRI));
+    const loadPage = treePageLoader(
+      `api/v2/ontologies/${ontologyId}/properties/${encodedIri}/children`,
+      { size: String(TREE_PAGE_SIZE), lang, ...TREE_NODE_VIEW }, apiUrl, signal
+    );
+    const first = await loadPage(0);
+    if (first.totalPages === 0 && first.elements.length === 0) return [];
+    // Definitions are stable identity, independent of eligible member counts.
+    const [definitions, facetResponse] = await Promise.all([
+      readTreePages(first, loadPage),
       get<any>(
-        `api/v2/ontologies/${ontologyId}/entities?${new URLSearchParams({
+        `api/v2/ontologies/${ontologyId}/entities`, {
           type: subsetMemberTypes(entityType),
           size: "1",
           lang,
-          includeObsoleteEntities: showObsoleteEnabled,
+          includeObsoleteEntities: String(showObsoleteEnabled),
           ...(showImportedEnabled === false ? { isDefiningOntology: "true" } : {}),
           facetFields: "subset",
-        })}`,
-        undefined,
+        },
         apiUrl,
         { signal }
       ),
     ]);
-    // Definitions are stable identity, independent of eligible member counts.
-    // Exhaust their pages before treating absence as a removed definition.
-    for (let page = 1; page < subsetsPage.totalPages; page++) {
-      const next = await getPaginated<any>(
-        `api/v2/ontologies/${ontologyId}/properties/${encodeURIComponent(encodeURIComponent(SUBSET_PROPERTY_IRI))}/children?${new URLSearchParams({size: "1000", lang, page: String(page)})}`,
-        undefined, apiUrl, { signal });
-      subsetsPage.elements.push(...next.elements);
-    }
-    const numMembers: { [subsetIri: string]: number } =
-      facetResponse.facetFieldsToCounts?.["subset"] || {};
-    return subsetsPage.elements
+    const numMembers: Record<string, number> = facetResponse.facetFieldsToCounts?.subset || {};
+    return definitions
       .map((obj: any) => thingFromJsonProperties(obj) as Entity)
       .map((subset: Entity) => ({
         iri: subset.getIri(),
@@ -753,113 +713,41 @@ export const getDirectChildrenEntities = createAsyncThunk(
     search,
     subsetTree,
   }: any, { signal }) => {
-    const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
-    let response: any;
-    
-    const searchParams = new URLSearchParams({
-      page: page.toString(),
-      size: size.toString(),
+    const path = treeChildrenRoute(ontologyId, entityType, entityIri);
+    const loadPage = (apiPage: number) => getPaginated<any>(path, {
+      page: String(apiPage),
+      size: String(size),
       lang: lang || "en",
-      includeObsoleteEntities: showObsoleteEnabled?.toString() || "false",
-      includeImportedEntities: showImportedEnabled?.toString() || "true",
+      includeObsoleteEntities: String(showObsoleteEnabled ?? false),
+      includeImportedEntities: String(showImportedEnabled ?? true),
       ...treeContextParams(subsetTree),
-    });
-    
-    if (search) {
-      searchParams.set("searchQuery", `${search}`);
-    }
-    
-    if (entityType === "classes") {
-      response = await getPaginated<any>(
-        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/treeChildren?${searchParams}`,
-        undefined,
-        apiUrl,
-        { signal }
-      );
-    } else if (entityType === "individuals") {
-      response = await getPaginated<any>(
-        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/treeChildren?memberType=individual&${searchParams}`,
-        undefined,
-        apiUrl,
-        { signal }
-      );
-    } else {
-      response = await getPaginated<any>(
-        `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/children?${searchParams}`,
-        undefined,
-        apiUrl,
-        { signal }
-      );
-    }
-    
-    return response.map((obj: any) => thingFromJsonProperties(obj) as Entity);
-  },
-  treeThunkOptions
-);
+      ...(entityType === "individuals" ? { memberType: "individual" } : {}),
+      ...(search ? { searchQuery: search } : {}),
+    }, apiUrl, { signal });
+    const requested = await loadPage(page);
+    const expectedPages = Math.ceil(requested.totalElements / size);
+    const expectedRows = Math.max(0, Math.min(size, requested.totalElements - page * size));
+    const appearsCapped = requested.totalPages > expectedPages ||
+      (requested.numElements > 0 && requested.numElements !== expectedRows);
+    const toEntity = (obj: any) => thingFromJsonProperties(obj) as Entity;
+    if (!appearsCapped) return requested.map(toEntity);
 
-export const getDirectChildrenCount = createAsyncThunk(
-  "ontologies_direct_children_count",
-  async ({
-    ontologyId,
-    entityIri,
-    entityType,
-    lang,
-    showObsoleteEnabled,
-    showImportedEnabled,
-    subsetTree,
-    apiUrl,
-  }: any, { signal }) => {
-    const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
-    let response: any;
-    
-    if (entityType === "classes") {
-      response = await get<any>(
-        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/treeChildren?${new URLSearchParams({
-          size: "1",
-          lang,
-          includeObsoleteEntities: showObsoleteEnabled,
-          includeImportedEntities: showImportedEnabled,
-          ...treeContextParams(subsetTree),
-          ...TREE_NODE_VIEW,
-        })}`,
-        undefined,
-        apiUrl,
-        { signal }
-      );
-    } else if (entityType === "individuals") {
-      response = await get<any>(
-        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/treeChildren?memberType=individual&${new URLSearchParams({
-          size: "1",
-          lang,
-          includeObsoleteEntities: showObsoleteEnabled,
-          includeImportedEntities: showImportedEnabled,
-          ...treeContextParams(subsetTree),
-          ...TREE_NODE_VIEW,
-        })}`,
-        undefined,
-        apiUrl,
-        { signal }
-      );
-    } else {
-      response = await get<any>(
-        `api/v2/ontologies/${ontologyId}/${entityType}/${doubleEncodedUri}/children?${new URLSearchParams({
-          size: "1",
-          lang,
-          includeObsoleteEntities: showObsoleteEnabled,
-          includeImportedEntities: showImportedEnabled,
-          ...treeContextParams(subsetTree),
-          ...TREE_NODE_VIEW,
-        })}`,
-        undefined,
-        apiUrl,
-        { signal }
-      );
+    // A table page can span API pages when the server caps the requested size.
+    // The first API page reveals the effective size even when the last page is short.
+    const first = page === 0 ? requested : await loadPage(0);
+    const apiSize = first.elements.length;
+    const start = page * size;
+    const end = Math.min(start + size, first.totalElements);
+    const elements: any[] = [];
+    if (apiSize > 0 && start < end) {
+      for (let apiPage = Math.floor(start / apiSize); apiPage * apiSize < end; apiPage++) {
+        const response = apiPage === 0 ? first : apiPage === page ? requested : await loadPage(apiPage);
+        const offset = apiPage * apiSize;
+        elements.push(...response.elements.slice(Math.max(0, start - offset), end - offset));
+      }
     }
-    
-    return {
-      entityIri,
-      totalElements: response.totalElements || 0,
-    };
+    return new Page(page, elements.length, Math.ceil(first.totalElements / size), first.totalElements,
+      elements.map(toEntity), first.facetFieldsToCounts);
   },
   treeThunkOptions
 );
@@ -877,52 +765,27 @@ export const getNodeChildren = createAsyncThunk(
     includeImportedEntities: showImportedEnabled,
     subsetTree,
   }: any, { signal }) => {
-    const doubleEncodedUri = encodeURIComponent(encodeURIComponent(entityIri));
-    var childrenPage: any;
-    if (entityTypePlural === "classes") {
-      childrenPage = await getPaginated<any>(
-        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/treeChildren?${new URLSearchParams({
-          size: "1000", lang,
-          includeObsoleteEntities: showObsoleteEnabled,
-          includeImportedEntities: showImportedEnabled,
-          ...treeContextParams(subsetTree),
-          ...TREE_NODE_VIEW,
-        })}`,
-        undefined, apiUrl, { signal }
-      );
-    } else if (entityTypePlural === "individuals") {
-      childrenPage = await getPaginated<any>(
-        `api/v2/ontologies/${ontologyId}/classes/${doubleEncodedUri}/treeChildren?memberType=individual&${new URLSearchParams({
-          size: "1000", lang,
-          includeObsoleteEntities: showObsoleteEnabled,
-          includeImportedEntities: showImportedEnabled,
-          ...treeContextParams(subsetTree),
-          ...TREE_NODE_VIEW,
-        })}`, undefined, apiUrl, { signal }
-      );
-    } else {
-      childrenPage = await getPaginated<any>(
-        `api/v2/ontologies/${ontologyId}/${entityTypePlural}/${doubleEncodedUri}/children?${new URLSearchParams(
-          {
-            size: "1000",
-            lang,
-            includeObsoleteEntities: showObsoleteEnabled,
-            includeImportedEntities: showImportedEnabled,
-            ...treeContextParams(subsetTree),
-            ...TREE_NODE_VIEW,
-          }
-        )}`,
-        undefined,
-        apiUrl,
-        { signal }
-      );
-    }
+    const path = treeChildrenRoute(ontologyId, entityTypePlural, entityIri);
+    const loadPage = treePageLoader(path, {
+      size: String(TREE_PAGE_SIZE),
+      lang,
+      includeObsoleteEntities: String(showObsoleteEnabled),
+      includeImportedEntities: String(showImportedEnabled),
+      ...treeContextParams(subsetTree),
+      ...TREE_NODE_VIEW,
+      maxInlineChildren: String(TREE_PAGE_SIZE),
+      ...(entityTypePlural === "individuals" ? { memberType: "individual" } : {}),
+    }, apiUrl, signal);
+    const first = await loadPage(0);
+    // Older servers can still send the first page of a wide branch. That
+    // branch uses its searchable table and never needs inline child rows.
+    const elements = first.totalElements > TREE_PAGE_SIZE ? [] : await readTreePages(first, loadPage);
     const seenChildIris = new Set<string>();
     return {
       absoluteIdentity,
       entityIri,
-      totalElements: ["classes", "individuals"].includes(entityTypePlural) ? childrenPage.totalElements : undefined,
-      children: childrenPage.elements
+      totalElements: first.totalElements,
+      children: elements
         .map((obj: any) => thingFromJsonProperties(obj) as Entity)
         .filter((term: Entity) => {
           if (seenChildIris.has(term.getIri())) return false;
@@ -968,6 +831,7 @@ const ontologiesSlice = createSlice({
       state.treeRequestKey = null;
       state.selectedSubsets = [];
       state.subsets = [];
+      state.subsetsResultKey = null;
       state.specificRootIri = "";
       if (state.treePreferencesScopeKey === action.payload.preferencesScopeKey) return;
       state.treePreferencesScopeKey = action.payload.preferencesScopeKey;
@@ -979,8 +843,11 @@ const ontologiesSlice = createSlice({
     });
     builder.addCase(setTreeRequestContext, (state, action) => {
       if (state.treeScopeKey !== action.payload.scopeKey) return;
-      // A remounted tree owns fresh requests even when its settings are identical.
-      clearTreeContent(state);
+      // A remounted tree owns fresh branch requests. Counts can be reused within
+      // the same data scope because they depend on filters, not the selected path.
+      const keepMemberCounts = state.filteredMemberCountsStatus === "succeeded" &&
+        state.memberCountsResultKey === action.payload.memberCountsResultKey;
+      clearTreeContent(state, keepMemberCounts);
       state.treeRequestKey = action.payload.requestKey;
     });
     builder.addCase(
@@ -1078,9 +945,6 @@ const ontologiesSlice = createSlice({
         state.errorMessage = error.payload;
       }
     );
-    builder.addCase(getDirectChildrenCount.pending, (state, action) => {
-      startTreeRequest(state, action);
-    });
     builder.addCase(getSubsets.pending, (state, action) => {
       startTreeRequest(state, action);
     });
@@ -1091,22 +955,6 @@ const ontologiesSlice = createSlice({
       if (!finishTreeRequest(state, action)) return;
       state.filteredMemberCountsStatus = action.meta.aborted ? "idle" : "failed";
     });
-    builder.addCase(
-      getDirectChildrenCount.fulfilled,
-      (state, action) => {
-        if (!finishTreeRequest(state, action)) return;
-        state.directChildrenCounts = {
-          ...state.directChildrenCounts,
-          [action.payload.entityIri]: action.payload.totalElements,
-        };
-      }
-    );
-    builder.addCase(
-      getDirectChildrenCount.rejected,
-      (state, error) => {
-        finishTreeRequest(state, error);
-      }
-    );
     builder.addCase(
       getDirectChildrenEntities.fulfilled,
       (state, action) => {
@@ -1177,10 +1025,7 @@ const ontologiesSlice = createSlice({
       getNodeChildren.fulfilled,
       (state, action) => {
         if (!finishTreeRequest(state, action)) return;
-        // Automatically expanded selected paths also need the combined threshold.
-        if (action.payload.totalElements !== undefined) {
-          state.directChildrenCounts[action.payload.entityIri] = action.payload.totalElements;
-        }
+        state.directChildrenCounts[action.payload.entityIri] = action.payload.totalElements;
         state.nodeChildren = {
           ...state.nodeChildren,
           // Filtered children/siblings may omit an imported connector. Retain
@@ -1240,6 +1085,7 @@ const ontologiesSlice = createSlice({
       (state, action) => {
         if (!finishTreeRequest(state, action)) return;
         state.subsets = action.payload;
+        state.subsetsResultKey = action.meta.arg.resultKey ?? null;
         // drop selections the ontology or tree type no longer offers
         const available = new Set(action.payload.map((subset) => subset.iri));
         const stillSelected = state.selectedSubsets.filter((iri) => available.has(iri));
@@ -1258,6 +1104,7 @@ const ontologiesSlice = createSlice({
       (state, action) => {
         if (!finishTreeRequest(state, action)) return;
         state.filteredMemberCounts = action.payload;
+        state.memberCountsResultKey = action.meta.arg.resultKey ?? null;
         state.filteredMemberCountsStatus = "succeeded";
       }
     );
@@ -1384,10 +1231,7 @@ const ontologiesSlice = createSlice({
           state.automaticallyExpandedNodes.filter(
             (node) => node !== action.payload.absoluteIdentity
           );
-        delete state.nodeChildren[action.payload.absoluteIdentity];
-        state.nodesWithChildrenLoaded = state.nodesWithChildrenLoaded.filter(
-          (absId) => absId !== action.payload.absoluteIdentity
-        );
+
       }
     );
   },

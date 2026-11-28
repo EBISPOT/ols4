@@ -5,11 +5,13 @@ export function Pagination({
   onPageChange,
   dataCount,
   rowsPerPage,
+  wrap = false,
 }: {
   page: number;
   onPageChange: (value: number) => void;
   dataCount: number;
   rowsPerPage: number;
+  wrap?: boolean;
 }) {
   const [pageCount, setPageCount] = useState<number>(
     Math.ceil(dataCount / rowsPerPage) || 1
@@ -20,7 +22,9 @@ export function Pagination({
   }, [rowsPerPage, dataCount]);
 
   return (
-    <div className="flex justify-center p-2 gap-2">
+    <div className={wrap
+      ? "flex flex-wrap justify-center gap-1 p-2 [&>button]:px-2"
+      : "flex justify-center gap-2 p-2"}>
       <button
         onClick={() => {
           onPageChange(page - 1);

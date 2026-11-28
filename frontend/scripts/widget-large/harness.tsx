@@ -28,8 +28,8 @@ document.querySelector<HTMLButtonElement>('#run')!.onclick = async function() {
     await until(()=>link(left,iri)&&link(right,'https://example.org/mixed#P'),'public roots failed');
     await until(()=>!right.querySelector('.spinner-default')&&!right.textContent!.includes('Descendant count loading'),'sibling did not settle');
     const sibling=right.innerHTML;
-    const node=link(left,iri)!.closest('li')!;
-    (node.querySelector('.jstree-ocl') as HTMLElement).click();
+    const node=link(left,iri)!.closest('[role="treeitem"]')!;
+    (node.querySelector(':scope > .ols-tree-label > button') as HTMLElement).click();
     await until(()=>left.querySelector('input[placeholder="Search children..."]') && left.querySelector('tbody'),'standalone large table failed to mount (Router regression)');
     pass('PASS actual public standalone large table mounts without a host Router');
     const input=left.querySelector<HTMLInputElement>('input[placeholder="Search children..."]')!;

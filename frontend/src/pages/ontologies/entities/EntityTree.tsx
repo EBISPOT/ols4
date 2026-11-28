@@ -8,11 +8,10 @@ import {
   Tooltip,
 } from "@mui/material";
 import { unstable_useId as useId } from "@mui/material/utils";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import urlJoin from "url-join";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { theme } from "../../../app/mui";
-import Node from "../../../components/Node";
 import Entity from "../../../model/Entity";
 import Ontology from "../../../model/Ontology";
 import {
@@ -39,9 +38,9 @@ import {
   hideImported,
   showSiblings,
   setSelectedSubsets,
-  getDirectChildrenCount,
 } from "../ontologiesSlice";
 import EntityList from "./EntityList";
+import OntologyTreeView from "./OntologyTreeView";
 
 const importedTermsHelp =
   "When unchecked, imported terms are hidden unless they are needed to show a path in the tree. These terms appear in grey.";
@@ -93,6 +92,8 @@ export default function EntityTree({
     scopeKey, lang, selectedEntity, specifiedRootIri || "", preferredRoots,
     showObsoleteEnabled, showImportedEnabled, showSiblingsEnabled, subsetTree || [],
   ]);
+  const subsetsResultKey = JSON.stringify([scopeKey, lang, showObsoleteEnabled, showImportedEnabled]);
+  const memberCountsResultKey = JSON.stringify([subsetsResultKey, subsetTree || []]);
   const ownsContent = ownsScope && tree.treeRequestKey === requestKey;
   const nodesWithChildrenLoaded = ownsContent ? tree.nodesWithChildrenLoaded : [];
   const nodeChildren = ownsContent ? tree.nodeChildren : {};
@@ -111,63 +112,27 @@ export default function EntityTree({
   const [countAttempt, retryCounts] = useState(0);
   const [subsetAttempt, retrySubsets] = useState(0);
   const [childrenAttempt, retryChildren] = useState(0);
-  const countRequests = useRef<any[]>([]);
+  const childRequests = useRef(new Map<string, { abort: () => void }>());
 
   useEffect(() => {
     dispatch(setTreeScope({ scopeKey, preferencesScopeKey, preferredRoots: defaultPreferredRoots }));
   }, [dispatch, scopeKey, preferencesScopeKey, defaultPreferredRoots]);
 
   useEffect(() => {
-    dispatch(setTreeRequestContext({ scopeKey, requestKey }));
+    dispatch(setTreeRequestContext({ scopeKey, requestKey, memberCountsResultKey }));
+    const pending = childRequests.current;
     return () => {
-      for (const promise of countRequests.current) promise.abort();
-      countRequests.current = [];
+      pending.forEach((request) => request.abort());
+      pending.clear();
     };
-  }, [dispatch, scopeKey, requestKey]);
+  }, [dispatch, scopeKey, requestKey, memberCountsResultKey]);
 
-  const requestDirectCount = (node: TreeNode) => {
-    const promise = dispatch(getDirectChildrenCount({
-      ontologyId: ontology.getOntologyId(), entityIri: node.iri,
-      entityType: entityType === "entities" ? "classes" : entityType, lang,
-      showObsoleteEnabled, showImportedEnabled, subsetTree, apiUrl,
-      treeScopeKey: scopeKey, requestKey,
-    }));
-    countRequests.current.push(promise);
-  };
-
-  const toggleNode = useCallback(
-    (node: any) => {
-      let isExpanded =
-        manuallyExpandedNodes.indexOf(node.absoluteIdentity) !== -1 ||
-        automaticallyExpandedNodes.indexOf(node.absoluteIdentity) !== -1;
-
-      if (isExpanded) {
-        dispatch(closeNode(node));
-      } else {
-        // Combined class and individual pages already return the exact child total.
-        if (entityType !== "classes" && entityType !== "individuals" &&
-            directChildrenCounts[node.iri] === undefined) {
-          requestDirectCount(node);
-        }
-        dispatch(openNode(node));
-      }
-    },
-    [
-      dispatch,
-      JSON.stringify(automaticallyExpandedNodes),
-      JSON.stringify(manuallyExpandedNodes),
-      directChildrenCounts,
-      ontology,
-      entityType,
-      lang,
-      showObsoleteEnabled,
-      showImportedEnabled,
-      JSON.stringify(subsetTree),
-      apiUrl,
-      scopeKey,
-      requestKey,
-    ]
+  const expandedItems = useMemo(
+    () => Array.from(new Set([...manuallyExpandedNodes, ...automaticallyExpandedNodes])),
+    [manuallyExpandedNodes, automaticallyExpandedNodes]
   );
+
+  const isWide = useCallback((node: TreeNode) => directChildrenCounts[node.iri] > 1000, [directChildrenCounts]);
 
   useEffect(() => {
     const args = {
@@ -181,37 +146,51 @@ export default function EntityTree({
     return () => promise.abort();
   }, [dispatch, requestKey, rootAttempt]);
 
+  const rootsReady = rootStatus === "succeeded";
+  const hasRoots = rootsReady && rootNodes.length > 0;
+
   useEffect(() => {
-    if (specifiedRootIri) return;
+    if (!rootsReady || specifiedRootIri || tree.subsetsResultKey === subsetsResultKey) return;
     const promise = dispatch(getSubsets({
       ontologyId: ontology.getOntologyId(), entityType, lang,
       showObsoleteEnabled, showImportedEnabled, apiUrl, treeScopeKey: scopeKey, requestKey,
+      resultKey: subsetsResultKey,
     }));
     return () => promise.abort();
-  }, [dispatch, requestKey, subsetAttempt]);
+  }, [dispatch, requestKey, rootsReady, subsetAttempt]);
 
   useEffect(() => {
-    if (!needsFilteredCounts || !showNodeCounts) return;
+    if (!hasRoots || !needsFilteredCounts || !showNodeCounts ||
+        tree.memberCountsResultKey === memberCountsResultKey) return;
     const promise = dispatch(getTreeMemberCounts({
       ontologyId: ontology.getOntologyId(), entityType, selectedSubsets: subsetTree, lang,
       showObsoleteEnabled, showImportedEnabled, apiUrl, treeScopeKey: scopeKey, requestKey,
+      resultKey: memberCountsResultKey,
     }));
     return () => promise.abort();
-  }, [dispatch, requestKey, needsFilteredCounts, showNodeCounts, countAttempt]);
+  }, [dispatch, requestKey, hasRoots, needsFilteredCounts, showNodeCounts, countAttempt]);
 
   useEffect(() => {
+    if (!ownsContent) return;
     const expanded = showSiblingsEnabled
       ? [...manuallyExpandedNodes, ...automaticallyExpandedNodes]
       : manuallyExpandedNodes;
-    const missing = Array.from(new Set(expanded)).filter(id => !nodesWithChildrenLoaded.includes(id));
-    const promises = missing.map(absoluteIdentity => dispatch(getNodeChildren({
-      ontologyId: ontology.getOntologyId(), entityTypePlural: entityType,
-      entityIri: absoluteIdentity.split(";").pop(), absoluteIdentity, lang,
-      includeObsoleteEntities: showObsoleteEnabled, includeImportedEntities: showImportedEnabled,
-      apiUrl, subsetTree, treeScopeKey: scopeKey, requestKey,
-    })));
-    return () => { for (const promise of promises) promise.abort(); };
-  }, [dispatch, requestKey, JSON.stringify(manuallyExpandedNodes), JSON.stringify(automaticallyExpandedNodes), childrenAttempt]);
+    const loaded = new Set(nodesWithChildrenLoaded);
+    const pending = childRequests.current;
+    for (const absoluteIdentity of expanded) {
+      if (loaded.has(absoluteIdentity) || pending.has(absoluteIdentity)) continue;
+      const request = dispatch(getNodeChildren({
+        ontologyId: ontology.getOntologyId(), entityTypePlural: entityType,
+        entityIri: absoluteIdentity.split(";").pop(), absoluteIdentity, lang,
+        includeObsoleteEntities: showObsoleteEnabled, includeImportedEntities: showImportedEnabled,
+        apiUrl, subsetTree, treeScopeKey: scopeKey, requestKey,
+      }));
+      pending.set(absoluteIdentity, request);
+      void request.then(() => {
+        if (pending.get(absoluteIdentity) === request) pending.delete(absoluteIdentity);
+      });
+    }
+  }, [dispatch, requestKey, ownsContent, manuallyExpandedNodes, automaticallyExpandedNodes, childrenAttempt]);
 
   let toggleShowImported = useCallback(() => {
     if (showImportedEnabled) dispatch(hideImported());
@@ -246,151 +225,77 @@ export default function EntityTree({
     [dispatch, selectedSubsets]
   );
 
-  function renderNodeChildren(
-    children: TreeNode[],
-    ancestorIris: Set<string> = new Set()
-  ) {
-    // Expansion responses may contain a cycle; only omit repeated IRIs on the
-    // current path, preserving legitimate deep paths and alternate parent paths.
-    const childrenCopy = children.filter(child => !ancestorIris.has(child.iri));
-    // Classes sort before individuals, so a node's subcategories are not
-    // buried under its members; alphabetical within each group.
-    const isIndividual = (node: TreeNode) =>
-      node?.entity?.getType() === "individual";
-    childrenCopy.sort((a, b) => {
-      if (isIndividual(a) !== isIndividual(b)) {
-        return isIndividual(a) ? 1 : -1;
-      }
-      const titleA = a?.title ? a.title.toString().toUpperCase() : "";
-      const titleB = b?.title ? b.title.toString().toUpperCase() : "";
-      return titleA === titleB ? 0 : titleA > titleB ? 1 : -1;
-    });
-    const childrenSorted = childrenCopy.filter(
-      (child, i, arr) =>
-        !i || child.absoluteIdentity !== arr[i - 1].absoluteIdentity
-    );
+  function renderLabel(node: TreeNode) {
+    const numDescendants = needsFilteredCounts
+      ? filteredMemberCounts[node.iri]
+      : Math.max(node.numHierarchicalDescendants, node.numDescendants);
+    const relationIcon = node.childRelationToParent === "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      ? { file: "instance.svg", alt: "Instance of" }
+      : ["http://purl.obolibrary.org/obo/BFO_0000050", "http://purl.obolibrary.org/obo/ms#part_of"]
+        .includes(node.childRelationToParent || "")
+        ? { file: "part.svg", alt: "Part of" }
+        : undefined;
     return (
-      <ul
-        role="group"
-        className="jstree-container-ul jstree-children jstree-no-icons"
-      >
-        {childrenSorted.map((childNode: TreeNode, i) => {
-          const isExpanded =
-            manuallyExpandedNodes.indexOf(childNode.absoluteIdentity) !== -1 ||
-            automaticallyExpandedNodes.indexOf(childNode.absoluteIdentity) !==
-              -1;
-          const isLast = i === childrenSorted!.length - 1;
-          const highlight =
-            (selectedEntity && childNode.iri === selectedEntity.getIri()) ||
-            false;
-          const numDescendants = needsFilteredCounts
-            ? filteredMemberCounts[childNode.iri]
-            : getNumDescendants(childNode.numHierarchicalDescendants, childNode.numDescendants);
-          return (
-            <Node
-              expandable={childNode.expandable}
-              expanded={isExpanded}
-              highlight={highlight}
-              isLast={isLast}
-              onClick={() => {
-                toggleNode(childNode);
-              }}
-              key={childNode.absoluteIdentity}
-            >
-              {childNode.childRelationToParent ===
-                  "http://purl.obolibrary.org/obo/BFO_0000050" && (
-                <img
-                  className="mr-1"
-                  src={urlJoin(process.env.PUBLIC_URL!, "/part.svg")}
-                  style={{ height: "1em", display: "inline" }}
-                />
-              )}
-              {childNode.childRelationToParent ===
-                  "http://purl.obolibrary.org/obo/ms#part_of" && (
-                      <img
-                          className="mr-1"
-                          src={urlJoin(process.env.PUBLIC_URL!, "/part.svg")}
-                          style={{ height: "1em", display: "inline" }}
-                      />
-              )}
-              {childNode.childRelationToParent ===
-                "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" && (
-                <img
-                  className="mr-1"
-                  src={urlJoin(process.env.PUBLIC_URL!, "/instance.svg")}
-                  style={{ height: "1em", display: "inline" }}
-                />
-              )}
-              <TreeLink
-                ontology={ontology}
-                entity={childNode.entity}
-                title={childNode.title}
-                importedContext={!showImportedEnabled && !childNode.entity.isCanonical()}
-                obsoleteContext={!showObsoleteEnabled && childNode.entity.isDeprecated()}
-                lang={lang}
-                onNavigateToEntity={onNavigateToEntity}
-                onNavigateToOntology={onNavigateToOntology}
-              />
-              {showNodeCounts && (needsFilteredCounts && filteredMemberCountsStatus === "loading"
-                ? <span style={{ color: "gray" }} aria-label="Descendant count loading">{" (…)"}</span>
-                : numDescendants > 0 && (
-                  <span style={{ color: "gray" }}>
-                    {" (" + numDescendants.toLocaleString() + ")"}
-                  </span>
-                ))}
-              {isExpanded && directChildrenCounts[childNode.iri] === undefined && requestErrors[`ontologies_direct_children_count:${childNode.iri}`] && (
-                <div role="alert">Unable to load the child count. <button type="button" className="link-default" onClick={() => requestDirectCount(childNode)}>Retry child count</button></div>
-              )}
-              {isExpanded && requestErrors[`ontologies_node_children:${childNode.absoluteIdentity}`] && (
-                <div role="alert">Unable to load children. <button type="button" className="link-default" onClick={() => retryChildren(n => n + 1)}>Retry children</button></div>
-              )}
-              {isExpanded && (() => {
-                const directChildCount = directChildrenCounts[childNode.iri];
-                if (directChildCount !== undefined && directChildCount > 1000) {
-                  // Show EntityList for nodes with >1000 direct children
-                  return (
-                    <>
-                      {/* Keep the selected ancestry visible beside paginated siblings. */}
-                      {renderNodeChildren(requiredPathChildren[childNode.absoluteIdentity] || [], new Set(ancestorIris).add(childNode.iri))}
-                      <div className="ml-4">
-                        <EntityList
-                          ontologyId={ontology.getOntologyId()}
-                          entityType={entityType === "entities" ? "classes" : entityType}
-                          parentEntityIri={childNode.iri}
-                          tableKey={childNode.absoluteIdentity}
-                          lang={lang}
-                          showObsoleteEnabled={showObsoleteEnabled}
-                          subsetTree={subsetTree}
-                          apiUrl={apiUrl}
-                          showImportedEnabled={showImportedEnabled}
-                          treeScopeKey={scopeKey}
-                          requestKey={requestKey}
-                          onNavigateToEntity={(ontologyId, entity) => {
-                            if (entity.getOntologyId() === ontologyId) {
-                              onNavigateToEntity(ontology, entity);
-                            } else {
-                              onNavigateToOntology(entity.getOntologyId(), entity);
-                            }
-                          }}
-                          title="Direct Children"
-                        />
-                      </div>
-                    </>
-                  );
-                } else {
-                  // Show regular tree for nodes with ≤1000 direct children
-                  return renderNodeChildren(
-                    nodeChildren[childNode.absoluteIdentity] || [],
-                    new Set(ancestorIris).add(childNode.iri)
-                  );
-                }
-              })()}
-            </Node>
-          );
-        })}
-      </ul>
+      <>
+        {relationIcon && (
+          <img className="ols-tree-relation" src={urlJoin(process.env.PUBLIC_URL!, relationIcon.file)} alt={relationIcon.alt} />
+        )}
+        <TreeLink
+          ontology={ontology}
+          entity={node.entity}
+          title={node.title}
+          importedContext={!showImportedEnabled && !node.entity.isCanonical()}
+          obsoleteContext={!showObsoleteEnabled && node.entity.isDeprecated()}
+          onNavigateToEntity={onNavigateToEntity}
+          onNavigateToOntology={onNavigateToOntology}
+        />
+        {showNodeCounts && (needsFilteredCounts &&
+          (filteredMemberCountsStatus === "idle" || filteredMemberCountsStatus === "loading")
+          ? <span style={{ color: "gray" }} aria-label="Descendant count loading">{" (…)"}</span>
+          : numDescendants > 0 && (
+            <span style={{ color: "gray" }}>{" (" + numDescendants.toLocaleString() + ")"}</span>
+          ))}
+      </>
     );
   }
+
+  function renderDetails(node: TreeNode) {
+    const failed = requestErrors[`ontologies_node_children:${node.absoluteIdentity}`];
+    const wide = isWide(node);
+    if (!failed && !wide) return null;
+
+    return (
+      <>
+        {failed && (
+          <div role="alert">Unable to load children. <button type="button" className="link-default" onClick={() => retryChildren(n => n + 1)}>Retry children</button></div>
+        )}
+        {wide && (
+          <EntityList
+            ontologyId={ontology.getOntologyId()}
+            entityType={entityType === "entities" ? "classes" : entityType}
+            parentEntityIri={node.iri}
+            tableKey={node.absoluteIdentity}
+            lang={lang}
+            showObsoleteEnabled={showObsoleteEnabled}
+            subsetTree={subsetTree}
+            apiUrl={apiUrl}
+            showImportedEnabled={showImportedEnabled}
+            treeScopeKey={scopeKey}
+            requestKey={requestKey}
+            onNavigateToEntity={(ontologyId, entity) => {
+              if (entity.getOntologyId() === ontologyId) {
+                onNavigateToEntity(ontology, entity);
+              } else {
+                onNavigateToOntology(entity.getOntologyId(), entity);
+              }
+            }}
+            title="Direct Children"
+          />
+        )}
+      </>
+    );
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <div className="flex flex-col-reverse lg:grid lg:grid-cols-3 lg:gap-4">
@@ -404,12 +309,23 @@ export default function EntityTree({
             {showNodeCounts && needsFilteredCounts && filteredMemberCountsStatus === "failed" && (
               <div role="alert">Unable to load descendant counts. <button type="button" className="link-default" onClick={() => retryCounts(n => n + 1)}>Retry counts</button></div>
             )}
-            <div
-              className="px-3 pb-3 jstree jstree-1 jstree-proton overflow-x-auto"
-              role="tree"
-            >
-              {renderNodeChildren(rootNodes)}
-            </div>
+            {hasRoots && (
+              <div className="px-3 pb-3 overflow-x-auto">
+                <OntologyTreeView
+                  key={requestKey}
+                  roots={rootNodes}
+                  childrenByPath={nodeChildren}
+                  requiredByPath={requiredPathChildren}
+                  expandedItems={expandedItems}
+                  selectedIri={selectedEntity?.getIri()}
+                  isWide={isWide}
+                  setExpanded={(node, expanded) => dispatch(expanded ? openNode(node) : closeNode(node))}
+                  activate={node => onNavigateToEntity(ontology, node.entity)}
+                  renderLabel={renderLabel}
+                  renderDetails={renderDetails}
+                />
+              </div>
+            )}
             {numPendingTreeRequests > 0 ? (
               <div className="absolute spinner-default w-7 h-7 -top-1 -left-4 z-auto" />
             ) : null}
@@ -521,23 +437,12 @@ export default function EntityTree({
   );
 }
 
-function getNumDescendants(hierarchicalDescendents: number, descendents: number): number {
-    if (descendents === hierarchicalDescendents) {
-        return descendents;
-    } else if (descendents > hierarchicalDescendents) {
-        return descendents;
-    } else {
-        return hierarchicalDescendents;
-    }
-}
-
 function TreeLink({
   ontology,
   entity,
   title,
   importedContext,
   obsoleteContext,
-  lang,
   onNavigateToEntity,
   onNavigateToOntology,
 }: {
@@ -546,7 +451,6 @@ function TreeLink({
   title: string;
   importedContext: boolean;
   obsoleteContext: boolean;
-  lang: string;
   onNavigateToEntity: (ontology: Ontology, entity: Entity) => void;
   onNavigateToOntology: (ontologyId: string, entity: Entity) => void;
 }) {

@@ -31,9 +31,9 @@ function counts(container: HTMLElement) {
   return Array.from(container.querySelectorAll<HTMLInputElement>('label input')).find(i => i.closest('label')!.textContent === 'Show counts')!;
 }
 function expand(container: HTMLElement, iri: string) {
-  const node = link(container, iri)?.closest('li');
+  const node = link(container, iri)?.closest('[role="treeitem"]');
   assert(node, `node not found: ${iri}`);
-  if (!node!.classList.contains('jstree-open')) (node!.querySelector('.jstree-ocl') as HTMLElement).click();
+  if (node!.getAttribute('aria-expanded') !== 'true') (node!.querySelector(':scope > .ols-tree-label > button') as HTMLElement).click();
 }
 const nativeRoot = native.specifiedRootIri, mixedRoot = mixed.specifiedRootIri;
 document.querySelector('#navigate')!.addEventListener('click', () => { leftProps = mixed; mountLeft(); });

@@ -104,7 +104,7 @@ document.querySelector<HTMLButtonElement>('#run')!.onclick = async function () {
     await until(() => s.getState().ontologies.treeScopeKey === JSON.stringify([apiUrl, currentOntology.getOntologyId(), type]) &&
       s.getState().ontologies.rootStatus === 'succeeded' &&
       s.getState().ontologies.numPendingTreeRequests === 0 &&
-      (selected ? host.querySelector('.jstree-clicked a')?.textContent === selected : host.querySelector('[role="tree"]')?.textContent), `Tree did not settle: ${selected || 'browse'}`);
+      (selected ? host.querySelector('[aria-current="true"] > .ols-tree-label a')?.textContent === selected : host.querySelector('[role="tree"]')?.textContent), `Tree did not settle: ${selected || 'browse'}`);
     await new Promise(resolve => setTimeout(resolve, 30));
   }
   try {
@@ -125,7 +125,7 @@ document.querySelector<HTMLButtonElement>('#run')!.onclick = async function () {
     const link = (name: string) => Array.from(host.querySelectorAll<HTMLAnchorElement>('[role="tree"] a')).find(a => a.textContent === name)!;
     const clickLink = async (name: string) => { assert(link(name), `Missing tree link ${name}`); link(name).click(); await navigation; mixedChecks(); };
     await render();
-    link('Cohort').closest('li')!.querySelector<HTMLElement>('.jstree-ocl')!.click();
+    link('Cohort').closest('[role="treeitem"]')!.querySelector<HTMLElement>(':scope > .ols-tree-label > button')!.click();
     await until(() => !!host.querySelector('tbody tr'), 'Embedded cohort table did not load');
     host.querySelector<HTMLElement>('tbody tr')!.click();
     await navigation;
@@ -138,7 +138,7 @@ document.querySelector<HTMLButtonElement>('#run')!.onclick = async function () {
       await until(() => decodeURIComponent(location.hash).endsWith('/' + selected), 'History route did not change');
       await navigation;
       mixedChecks();
-      assert(host.querySelector('.jstree-clicked a')?.textContent === selected, 'History retained an old selected tree');
+      assert(host.querySelector('[aria-current="true"] > .ols-tree-label a')?.textContent === selected, 'History retained an old selected tree');
     };
     await backForward('back', 'Cohort member');
     await backForward('forward', 'Cohort');
@@ -154,7 +154,7 @@ document.querySelector<HTMLButtonElement>('#run')!.onclick = async function () {
     heldRequest!.release();
     await new Promise(resolve => setTimeout(resolve, 30));
     mixedChecks();
-    assert(host.querySelector('.jstree-clicked a')?.textContent === 'Native', 'Late individual response replaced the selected class');
+    assert(host.querySelector('[aria-current="true"] > .ols-tree-label a')?.textContent === 'Native', 'Late individual response replaced the selected class');
     pass('PASS type changes abort pending ancestry and ignore late responses without resetting preferences');
     checkbox(host, 'Preferred roots').click();
     checkbox(host, 'Show all siblings').click(); checkbox(host, 'Show obsolete terms').click();

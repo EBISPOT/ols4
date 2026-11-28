@@ -23,8 +23,8 @@ Checks cover root failure/retry and two-widget isolation; default eligible-count
 retry retaining the exact expanded DOM node; filter retry using current settings
 and showing loading; empty success; cancelled old scope failures; selected
 ancestry recovery; independent large-parent table retry preserving page,
-search text and sibling DOM; subset, child-expansion and direct-child-count retry
-controls; and successful empty child searches. The search test focuses once,
+search text and sibling DOM; subset and child-expansion retries; reopening a
+loaded branch without another request; and successful empty child searches. The search test focuses once,
 sends separate character input events with a completed request between them,
 and checks visibility, enabled state, focus and value during/after loading. Initial setting effects can cancel first requests,
 so faults are armed after initialization settles.
@@ -45,8 +45,9 @@ configuration only on port13049. For manual built-app verification, open
 `/ontologies/native?tab=classes`, arm a fault via
 `/__test/arm?channel=app&kind=roots&mode=fail`, toggle **Show imported terms in tree**,
 then click **Retry tree**. For default eligible-count retry, keep imports on and
-obsolete off, turn counts off, arm `kind=counts`, then turn counts on and click
-**Retry counts**. Screenshots should show errors disappearing and the real data
+obsolete off, turn counts off, toggle **Show imported terms in tree** off and
+on (letting the tree reload each time), arm `kind=counts`, then turn counts on
+and click **Retry counts**. Screenshots should show errors disappearing and the real data
 returning. `kind=roots&mode=empty` exercises the separate successful-empty state.
 
 For a real keyboard focus check in the built app, open
