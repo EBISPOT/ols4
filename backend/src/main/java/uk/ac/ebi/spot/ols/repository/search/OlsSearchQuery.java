@@ -265,6 +265,12 @@ public class OlsSearchQuery {
         return singleOntology();
     }
 
+    boolean canUseMaterializedTreeAncestorCounts() {
+        return broadTreeFacetOntology() != null && anyFilterGroups.isEmpty() && excludeFilters.isEmpty()
+                && filters.stream().allMatch(filter -> filter.field.equals("ontologyId")
+                        || filter.field.equals("type") || TREE_MEMBER_VISIBILITY_FIELDS.contains(filter.field));
+    }
+
     Condition subsetMemberEligibility() {
         Condition eligibility = DSL.trueCondition();
         for (SearchFilter filter : filters) {
@@ -579,6 +585,48 @@ public class OlsSearchQuery {
         }
         return expanded;
     }
+
+    /** Types that can be read in ID order from the scoped type/obsolete/ID index. */
+    ScopedPageTypes scopedPageTypes(String ontology) {
+        if (ontology == null || hasTreeReachability()
+                || (searchText != null && !searchText.isBlank())
+                || (labelSearchText != null && !labelSearchText.isBlank())
+                || !anyFilterGroups.isEmpty() || !excludeFilters.isEmpty()) {
+            return null;
+        }
+        ScopedPageTypes pageTypes = null;
+        boolean hasObsoleteFilter = false;
+        for (SearchFilter filter : filters) {
+            switch (filter.field) {
+                case "type" -> {
+                    boolean ignoresCase = filter.searchType == SearchType.CASE_INSENSITIVE_TOKENS;
+                    if (pageTypes != null || (!ignoresCase && filter.searchType != SearchType.WHOLE_FIELD)) {
+                        return null;
+                    }
+                    var types = expandFilterValues(filter).stream()
+                            .map(type -> ignoresCase ? type.toLowerCase(Locale.ROOT) : type)
+                            .distinct().toList();
+                    if (types.size() < 2 || !List.of("class", "individual", "property").containsAll(types)) {
+                        return null;
+                    }
+                    pageTypes = new ScopedPageTypes(types, ignoresCase);
+                }
+                case "isObsolete" -> {
+                    if (hasObsoleteFilter || filter.values.size() != 1) {
+                        return null;
+                    }
+                    hasObsoleteFilter = true;
+                }
+                case "ontologyId", "isDefiningOntology" -> { }
+                default -> {
+                    return null;
+                }
+            }
+        }
+        return hasObsoleteFilter ? pageTypes : null;
+    }
+
+    record ScopedPageTypes(List<String> values, boolean ignoresCase) {}
 
     static class SearchFilter {
         String field;

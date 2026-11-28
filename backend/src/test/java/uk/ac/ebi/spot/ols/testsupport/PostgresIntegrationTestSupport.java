@@ -486,7 +486,11 @@ public final class PostgresIntegrationTestSupport {
     }
 
     public static SearchClientHandle createSearchClient(PostgreSQLContainer<?> container) {
-        PostgresClient postgresClient = createPostgresClient(container);
+        return createSearchClient(container, "public");
+    }
+
+    public static SearchClientHandle createSearchClient(PostgreSQLContainer<?> container, String schema) {
+        PostgresClient postgresClient = createPostgresClient(container, schema);
         return new SearchClientHandle(createSearchClient(postgresClient), postgresClient);
     }
 
@@ -640,13 +644,17 @@ public final class PostgresIntegrationTestSupport {
     }
 
     private static PostgresClient createPostgresClient(PostgreSQLContainer<?> container) {
+        return createPostgresClient(container, "public");
+    }
+
+    private static PostgresClient createPostgresClient(PostgreSQLContainer<?> container, String schema) {
         PostgresClient postgresClient = new PostgresClient();
         ReflectionTestUtils.setField(postgresClient, "host", container.getHost());
         ReflectionTestUtils.setField(postgresClient, "port", container.getMappedPort(5432));
         ReflectionTestUtils.setField(postgresClient, "database", container.getDatabaseName());
         ReflectionTestUtils.setField(postgresClient, "user", container.getUsername());
         ReflectionTestUtils.setField(postgresClient, "password", container.getPassword());
-        ReflectionTestUtils.setField(postgresClient, "schema", "public");
+        ReflectionTestUtils.setField(postgresClient, "schema", schema);
         ReflectionTestUtils.setField(postgresClient, "maxPoolSize", MAX_POOL_SIZE);
         ReflectionTestUtils.setField(postgresClient, "minIdle", 0);
         postgresClient.init();

@@ -1,5 +1,6 @@
 package uk.ac.ebi.spot.ols.repository.search;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -7,15 +8,17 @@ import org.junit.jupiter.api.Test;
 import org.jooq.impl.DSL;
 import org.jooq.SQLDialect;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import uk.ac.ebi.spot.ols.testsupport.PostgresIntegrationTestSupport;
 
+import java.io.ByteArrayOutputStream;
+import java.nio.charset.StandardCharsets;
+import java.sql.Connection;
 import java.util.List;
 import java.util.Map;
-import java.sql.Connection;
-import java.io.ByteArrayOutputStream;
 import java.util.zip.GZIPOutputStream;
 
 import static uk.ac.ebi.spot.ols.repository.postgres.JooqSupport.inSubsetTree;
@@ -36,6 +39,7 @@ class OlsSearchClientSearchIT {
     static void setUpDatabase() throws Exception {
         PostgresIntegrationTestSupport.initializeClassDatabase(POSTGRES);
         loadTreeCountFixture();
+        loadScopedPageFixture();
         searchClientHandle = PostgresIntegrationTestSupport.createSearchClient(POSTGRES);
         searchClient = searchClientHandle.searchClient();
     }
@@ -133,6 +137,136 @@ class OlsSearchClientSearchIT {
                         "http://example.org/EFO_1001");
     }
 
+    @Test
+    void pagesMixedTypesInGlobalIdOrderWithExactTotalsAndFacets() {
+        var query = scopedPageQuery(List.of("entity", "class"), SearchType.WHOLE_FIELD);
+        query.addFacetField("type");
+
+        var first = searchClient.searchPaginated(query, PageRequest.of(0, 2));
+        var last = searchClient.searchPaginated(query, PageRequest.of(1, 2));
+        var pastEnd = searchClient.searchPaginated(query, PageRequest.of(2, 2));
+
+        assertThat(first.getContent()).extracting(OlsSearchClientSearchIT::resultIri).containsExactly("bb", "aa");
+        assertThat(last.getContent()).extracting(OlsSearchClientSearchIT::resultIri).containsExactly("dd");
+        assertThat(pastEnd.getContent()).isEmpty();
+        assertThat(first.getTotalElements()).isEqualTo(3);
+        assertThat(last.getTotalElements()).isEqualTo(3);
+        assertThat(pastEnd.getTotalElements()).isEqualTo(3);
+        assertThat(first.facetFieldToCounts.get("type"))
+                .containsExactlyInAnyOrderEntriesOf(Map.of("class", 1L, "individual", 1L, "property", 1L));
+        assertThat(searchClient.searchPaginated(query, PageRequest.of(0, 2), false).getTotalElements()).isEqualTo(2);
+    }
+
+    @Test
+    void preservesExplicitMixedTypesVisibilityAndOtherSortOrders() {
+        var query = scopedPageQuery(List.of("entity"), SearchType.WHOLE_FIELD);
+        query.addFilter("isDefiningOntology", List.of("true"), SearchType.WHOLE_FIELD);
+        assertThat(searchClient.searchPaginated(query, PageRequest.of(0, 10)).getContent())
+                .extracting(OlsSearchClientSearchIT::resultIri).containsExactly("bb", "dd");
+        assertThat(searchClient.searchPaginated(query, PageRequest.of(0, 10, Sort.by("iri").descending())).getContent())
+                .extracting(OlsSearchClientSearchIT::resultIri).containsExactly("dd", "bb");
+
+        var caseInsensitive = scopedPageQuery(List.of("CLASS", "individual"), SearchType.CASE_INSENSITIVE_TOKENS);
+        assertThat(searchClient.searchPaginated(caseInsensitive, PageRequest.of(0, 10, Sort.by("iri"))).getContent())
+                .extracting(OlsSearchClientSearchIT::resultIri).containsExactly("aa", "bb");
+        assertThat(searchClient.searchPaginated(caseInsensitive, PageRequest.of(0, 10)).getContent())
+                .extracting(OlsSearchClientSearchIT::resultIri).containsExactly("bb", "aa");
+
+        var obsoleteOnly = new OlsSearchQuery();
+        obsoleteOnly.addFilter("ontologyId", List.of("scopedpages"), SearchType.WHOLE_FIELD);
+        obsoleteOnly.addFilter("type", List.of("entity"), SearchType.WHOLE_FIELD);
+        obsoleteOnly.addFilter("isObsolete", List.of("true"), SearchType.WHOLE_FIELD);
+        assertThat(searchClient.searchPaginated(obsoleteOnly, PageRequest.of(0, 10)).getContent())
+                .extracting(OlsSearchClientSearchIT::resultIri).containsExactly("obsolete");
+    }
+
+    @Test
+    void keepsCaseInsensitiveMatchesAfterReplacingTheTableWithAnOlderSchema() throws Exception {
+        try (Connection conn = POSTGRES.createConnection(""); var statement = conn.createStatement()) {
+            statement.execute("""
+                    CREATE SCHEMA legacy_scoped_pages;
+                    CREATE TABLE legacy_scoped_pages.ols_entities
+                        (LIKE public.ols_entities INCLUDING DEFAULTS INCLUDING CONSTRAINTS, PRIMARY KEY (id));
+                    CREATE INDEX idx_ent_onto_st_obs_id
+                        ON legacy_scoped_pages.ols_entities (ontology_id, search_type, is_obsolete, id);
+                    INSERT INTO legacy_scoped_pages.ols_entities
+                        SELECT * FROM public.ols_entities WHERE id IN ('scoped-page-0', 'scoped-page-1');
+                    """);
+        }
+        try (var client = PostgresIntegrationTestSupport.createSearchClient(POSTGRES, "legacy_scoped_pages")) {
+            var query = scopedPageQuery(List.of("class", "individual"), SearchType.CASE_INSENSITIVE_TOKENS);
+            var firstPage = PageRequest.of(0, 10);
+            // Cross the JDBC driver's server-side preparation threshold before replacing the table.
+            for (int request = 0; request < 6; request++) {
+                assertThat(client.searchClient().searchPaginated(query, firstPage).getContent())
+                        .extracting(OlsSearchClientSearchIT::resultIri).containsExactly("bb", "aa");
+            }
+
+            // Keep the client and its connection pool running while replacing the active relation.
+            try (Connection conn = POSTGRES.createConnection(""); var statement = conn.createStatement()) {
+                conn.setAutoCommit(false);
+                statement.execute("""
+                        DROP TABLE legacy_scoped_pages.ols_entities;
+                        CREATE TABLE legacy_scoped_pages.ols_entities
+                            (LIKE public.ols_entities INCLUDING DEFAULTS, PRIMARY KEY (id));
+                        CREATE INDEX idx_ent_onto_st_obs_id
+                            ON legacy_scoped_pages.ols_entities (ontology_id, search_type, is_obsolete, id);
+                        INSERT INTO legacy_scoped_pages.ols_entities
+                            SELECT * FROM public.ols_entities WHERE id IN ('scoped-page-0', 'scoped-page-1');
+                        UPDATE legacy_scoped_pages.ols_entities SET search_type = 'Class' WHERE id = 'scoped-page-1';
+                        ALTER TABLE legacy_scoped_pages.ols_entities
+                            ADD CONSTRAINT ols_entities_search_type_lowercase
+                            CHECK (search_type COLLATE "C" = lower(search_type) COLLATE "C") NOT VALID;
+                        """);
+                conn.commit();
+            }
+            var page = client.searchClient().searchPaginated(query, firstPage);
+            assertThat(page.getContent()).extracting(OlsSearchClientSearchIT::resultIri).containsExactly("bb", "aa");
+            assertThat(page.getTotalElements()).isEqualTo(2);
+        }
+    }
+
+    private static String resultIri(JsonElement result) {
+        return result.getAsJsonObject().get("iri").getAsString();
+    }
+
+    private static OlsSearchQuery scopedPageQuery(List<String> types, SearchType match) {
+        var query = new OlsSearchQuery();
+        query.addFilter("ontologyId", List.of("SCOPEDPAGES"), SearchType.CASE_INSENSITIVE_TOKENS);
+        query.addFilter("type", types, match);
+        query.addFilter("isObsolete", List.of("false"), SearchType.WHOLE_FIELD);
+        return query;
+    }
+
+    private static void loadScopedPageFixture() throws Exception {
+        record Row(String ontology, String iri, String type, Boolean obsolete, boolean defining) {}
+        // Interleave type IDs, as the primary key need not encode the type.
+        var rows = List.of(
+                new Row("scopedpages", "bb", "individual", false, true),
+                new Row("scopedpages", "aa", "class", false, false),
+                new Row("scopedpages", "obsolete", "class", true, true),
+                new Row("scopedpages", "null-obsolete", "individual", null, true),
+                new Row("otherpages", "outside", "individual", false, true),
+                new Row("scopedpages", "dd", "property", false, true));
+        try (Connection conn = POSTGRES.createConnection("")) {
+            var dsl = DSL.using(conn, SQLDialect.POSTGRES);
+            for (int index = 0; index < rows.size(); index++) {
+                Row row = rows.get(index);
+                try (var out = new ByteArrayOutputStream()) {
+                    try (var gzip = new GZIPOutputStream(out)) {
+                        gzip.write(("{\"iri\":\"" + row.iri() + "\"}").getBytes(StandardCharsets.UTF_8));
+                    }
+                    dsl.execute("""
+                            INSERT INTO ols_entities
+                                (id, ontology_id, iri, type, search_type, _json, is_obsolete, is_defining_ontology)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                            """, "scoped-page-" + index, row.ontology(), row.iri(), row.type(), row.type(),
+                            out.toByteArray(), row.obsolete(), row.defining());
+                }
+            }
+        }
+    }
+
     private static String label(String json) {
         return JsonParser.parseString(json).getAsJsonObject().get("label").getAsString();
     }
@@ -185,6 +319,41 @@ class OlsSearchClientSearchIT {
 
     private static Map<String, Long> treeCounts(OlsSearchQuery query) {
         return searchClient.searchPaginated(query, PageRequest.of(0, 1)).facetFieldToCounts.get("treeAncestor");
+    }
+
+    @Test
+    void materializedCountsAreUsedOnlyForSupportedFiltersOnTheActiveRevision() throws Exception {
+        var broadQuery = treeCountQuery();
+        broadQuery.filters.removeIf(filter -> filter.field.equals("subset"));
+        var fallback = treeCounts(broadQuery);
+        var subsetCounts = treeCounts(treeCountQuery());
+
+        try (Connection conn = POSTGRES.createConnection("")) {
+            var dsl = DSL.using(conn, SQLDialect.POSTGRES);
+            var view = """
+                    CREATE MATERIALIZED VIEW ols_tree_ancestor_counts AS
+                    SELECT ontology_id, 'materialized'::text AS iri, search_type, is_obsolete,
+                           is_defining_ontology, 42::bigint AS member_count
+                    FROM %s WHERE ontology_id = 'treecounts' AND search_type = 'individual'
+                        AND NOT is_obsolete LIMIT 1
+                    """;
+            try {
+                // A distinct count demonstrates that the materialized path was used.
+                dsl.execute(view.formatted("ols_entities") + " WITH NO DATA");
+                assertThat(treeCounts(broadQuery)).isEqualTo(fallback);
+                dsl.execute("REFRESH MATERIALIZED VIEW ols_tree_ancestor_counts");
+                assertThat(treeCounts(broadQuery)).containsExactlyEntriesOf(Map.of("materialized", 42L));
+                assertThat(treeCounts(treeCountQuery())).isEqualTo(subsetCounts);
+
+                dsl.execute("DROP MATERIALIZED VIEW ols_tree_ancestor_counts");
+                dsl.execute("CREATE TABLE previous_entities AS SELECT * FROM ols_entities");
+                dsl.execute(view.formatted("previous_entities"));
+                assertThat(treeCounts(broadQuery)).isEqualTo(fallback);
+            } finally {
+                dsl.execute("DROP MATERIALIZED VIEW IF EXISTS ols_tree_ancestor_counts");
+                dsl.execute("DROP TABLE IF EXISTS previous_entities");
+            }
+        }
     }
 
     @Test

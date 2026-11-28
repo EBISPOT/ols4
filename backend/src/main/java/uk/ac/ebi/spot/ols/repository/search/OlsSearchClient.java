@@ -9,8 +9,12 @@ import org.jooq.Condition;
 import org.jooq.DSLContext;
 import org.jooq.Field;
 import org.jooq.Record;
+import org.jooq.Record1;
+import org.jooq.Result;
+import org.jooq.Select;
 import org.jooq.SortField;
 import org.jooq.Table;
+import org.jooq.exception.DataAccessException;
 import org.jooq.impl.DSL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,6 +59,7 @@ public class OlsSearchClient {
     private static final Field<String> LABEL_FOR_SUGGEST = field("label_for_suggest", String.class);
     private static final Field<String> STRING_VALUE = field("string", String.class);
     private static final Field<String> ONTOLOGY_ID = field("ontology_id", String.class);
+    private static final Field<String> SEARCH_TYPE = field("search_type", String.class);
     private static final Field<String[]> CURATED_FROM_SOURCES = field("curated_from_sources", String[].class);
 
     @Autowired
@@ -146,9 +151,7 @@ public class OlsSearchClient {
                         ? Optional.ofNullable(dsl.selectCount().from(OLS_ENTITIES).where(where)
                                 .fetchOne(0, Long.class)).orElse(0L)
                         : null;
-                var records = dsl.select(ENTITY_JSON).from(OLS_ENTITIES).where(where)
-                        .orderBy(query.buildOrderBy(pageable.getSort()))
-                        .offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
+                var records = fetchSearchPage(dsl, query, columns, where, ontology, pageable);
                 results = readJsonResults(records);
                 total = count != null ? count : pageable.getOffset() + results.size();
             }
@@ -162,6 +165,70 @@ public class OlsSearchClient {
         } catch (SQLException e) {
             throw new RuntimeException("Search query failed", e);
         }
+    }
+
+    private Result<Record1<byte[]>> fetchSearchPage(
+            DSLContext dsl, OlsSearchQuery query, Set<String> columns, Condition where,
+            String ontology, Pageable pageable) {
+        var types = pageable.getSort().isUnsorted() ? query.scopedPageTypes(ontology) : null;
+        if (types == null) {
+            return dsl.select(ENTITY_JSON).from(OLS_ENTITIES).where(where)
+                    .orderBy(query.buildOrderBy(pageable.getSort()))
+                    .offset(pageable.getOffset()).limit(pageable.getPageSize()).fetch();
+        }
+
+        // Only the first offset + size IDs of each disjoint type can reach the global page.
+        long candidateLimit = pageable.getOffset() + pageable.getPageSize();
+        Condition scope = query.buildCondition(columns, null, "type");
+        var branches = types.values().stream().<Select<Record1<String>>>map(type -> dsl.select(ENTITY_ID)
+                        .from(OLS_ENTITIES).where(scope.and(SEARCH_TYPE.eq(type)))
+                        .orderBy(ENTITY_ID.asc()).limit(candidateLimit))
+                .reduce(Select::unionAll).orElseThrow().asTable("candidate_ids");
+        Field<String> candidateId = branches.field(ENTITY_ID);
+        var page = dsl.select(candidateId).from(branches).orderBy(candidateId.asc())
+                .offset(pageable.getOffset()).limit(pageable.getPageSize()).asTable("entity_page");
+
+        // The primary-key lookup runs once per selected ID after the global offset and limit.
+        Field<String> pageId = page.field(ENTITY_ID);
+        Field<byte[]> document = DSL.field(dsl.select(ENTITY_JSON).from(OLS_ENTITIES)
+                .where(ENTITY_ID.eq(pageId))).as(ENTITY_JSON);
+
+        // Dataloads can replace the relation while the JVM is running. Check the schema in the
+        // page statement, using a regclass constant bound to the same relation as its scans.
+        var support = DSL.name("scoped_page_support").fields("available")
+                .asMaterialized(dsl.select(scopedPageSupported(types.ignoresCase())));
+        Condition useIndexedPage = DSL.field(dsl.select(support.field(0, Boolean.class)).from(support)).isTrue();
+        var legacyPage = dsl.select(ENTITY_ID, ENTITY_JSON).from(OLS_ENTITIES)
+                .where(where.and(useIndexedPage.not()))
+                .orderBy(ENTITY_ID.asc()).offset(pageable.getOffset()).limit(pageable.getPageSize());
+        var selectedPage = dsl.select(pageId, document).from(page).where(useIndexedPage)
+                .unionAll(legacyPage).asTable("selected_page");
+        return dsl.with(support).select(selectedPage.field(ENTITY_JSON)).from(selectedPage)
+                .orderBy(selectedPage.field(ENTITY_ID).asc()).fetch();
+    }
+
+    private Condition scopedPageSupported(boolean ignoresCase) {
+        Condition supported = DSL.condition("""
+                EXISTS (
+                    SELECT FROM pg_catalog.pg_index AS i
+                    JOIN pg_catalog.pg_class AS idx ON idx.oid = i.indexrelid
+                    WHERE i.indrelid = 'ols_entities'::pg_catalog.regclass
+                      AND idx.relname = 'idx_ent_onto_st_obs_id'
+                      AND i.indisvalid
+                )
+                """);
+        if (ignoresCase) {
+            supported = supported.and(DSL.condition("""
+                    EXISTS (
+                        SELECT FROM pg_catalog.pg_constraint
+                        WHERE conrelid = 'ols_entities'::pg_catalog.regclass
+                          AND conname = 'ols_entities_search_type_lowercase'
+                          AND contype = 'c'
+                          AND convalidated
+                    )
+                    """));
+        }
+        return supported;
     }
 
     /**
@@ -321,20 +388,72 @@ public class OlsSearchClient {
 
     /** Counts distinct filtered members using the same complete closure as subset filtering. */
     private Map<String, Long> executeTreeAncestorFacetQuery(DSLContext dsl, OlsSearchQuery query) {
-        var records = dsl.resultQuery("""
-                SELECT iri, count(*)
-                FROM {0} tree_reachability
-                WHERE iri <> member_iri
-                GROUP BY iri
-                ORDER BY count(*) DESC, iri
-                """, treeReachability(query.buildCondition(getAvailableFilterColumns(), "m"), true,
-                        query.broadTreeFacetOntology())).fetch();
+        Condition members = query.buildCondition(getAvailableFilterColumns(), "m");
+        Result<Record> records = query.canUseMaterializedTreeAncestorCounts()
+                ? fetchMaterializedTreeAncestorCounts(dsl, members) : null;
+        if (records == null) {
+            records = dsl.resultQuery("""
+                    SELECT iri, count(*)
+                    FROM {0} tree_reachability
+                    WHERE iri <> member_iri
+                    GROUP BY iri
+                    ORDER BY count(*) DESC, iri
+                    """, treeReachability(members, true, query.broadTreeFacetOntology())).fetch();
+        }
 
         Map<String, Long> counts = new LinkedHashMap<>();
         for (Record record : records) {
-            counts.put(record.get(0, String.class), record.get(1, Long.class));
+            String iri = record.get(0, String.class);
+            if (iri != null) {
+                counts.put(iri, record.get(1, Long.class));
+            }
         }
         return counts;
+    }
+
+    /** Returns null when this data revision has no usable materialization. */
+    private Result<Record> fetchMaterializedTreeAncestorCounts(DSLContext dsl, Condition members) {
+        // PostgreSQL stores the materialized view's dependency on the source relation by OID.
+        // Check the relation resolved on this connection's search path, including after a schema swap.
+        var activeRevision = DSL.sql("""
+                (SELECT 1 FROM pg_catalog.pg_class v
+                 WHERE v.oid = to_regclass('ols_tree_ancestor_counts')
+                   AND v.relkind = 'm' AND v.relispopulated
+                   AND has_table_privilege(v.oid, 'SELECT')
+                   AND EXISTS (
+                       SELECT 1 FROM pg_catalog.pg_rewrite r
+                       JOIN pg_catalog.pg_depend d ON d.objid = r.oid
+                           AND d.classid = 'pg_catalog.pg_rewrite'::regclass
+                           AND d.refclassid = 'pg_catalog.pg_class'::regclass
+                       WHERE r.ev_class = v.oid AND d.refobjid = to_regclass('ols_entities')
+                   ))
+                AS active_revision
+                """);
+        var revisionCheck = DSL.selectOne().from(DSL.table(activeRevision));
+        if (!dsl.fetchExists(revisionCheck)) {
+            return null;
+        }
+
+        try {
+            // The left join distinguishes a valid empty facet from a missing revision. Recheck
+            // the dependency in the same statement as the counts in case the active table changed.
+            var records = dsl.resultQuery("""
+                    SELECT counts.iri, counts.member_count FROM {0}
+                    LEFT JOIN LATERAL (
+                        SELECT m.iri, sum(m.member_count)::bigint AS member_count
+                        FROM ols_tree_ancestor_counts m WHERE {1}
+                        GROUP BY m.iri
+                    ) counts ON true
+                    ORDER BY counts.member_count DESC, counts.iri
+                    """, activeRevision, members).fetch();
+            return records.isEmpty() ? null : records;
+        } catch (DataAccessException e) {
+            // A concurrent dataload can drop the view after the initial availability check.
+            if (Set.of("42P01", "42501", "55000").contains(e.sqlState()) && !dsl.fetchExists(revisionCheck)) {
+                return null;
+            }
+            throw e;
+        }
     }
 
     /**
