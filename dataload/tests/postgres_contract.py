@@ -192,6 +192,45 @@ class PostgresBoundaryContract(unittest.TestCase):
         self.assertEqual(self.query("SELECT count(*) FROM ols_embedding_nodes"), 0)
         self.assertEqual(self.query("SELECT json_agg(ontology_id ORDER BY ontology_id) FROM ols_entities WHERE type='Ontology'"), ["other", "test"])
 
+    def test_materializes_distinct_members_through_mixed_edges_and_hidden_connectors(self):
+        def member(iri, kind="class", direct=(), hierarchical=(), obsolete=False, defining=True):
+            return {"iri": iri, "type": [kind], "label": literal(iri),
+                    "directAncestor": list(direct), "hierarchicalAncestor": list(hierarchical),
+                    "isObsolete": obsolete, "isDefiningOntology": defining}
+
+        root, cycle, bridge, shared, other, dangling = (
+            f"https://example.test/{name}" for name in ("root", "cycle", "bridge", "shared", "other", "dangling")
+        )
+        self.input.write_text(json.dumps({"ontologies": [{
+            "ontologyId": "mixed", "iri": "https://example.test/mixed",
+            "classes": [
+                member(root), member(cycle, direct=(bridge, root), defining=False),
+                member(bridge, hierarchical=(cycle, dangling), obsolete=True, defining=False),
+                member(shared, direct=(bridge, bridge)), member(other, hierarchical=(root,))
+            ],
+            "individuals": [member(shared, kind="individual", hierarchical=(other,))],
+            "properties": []
+        }]}))
+        self.convert()
+        self.load()
+        self.restart_packaged()
+
+        def counts(predicate):
+            return self.query(f"""
+                SELECT json_object_agg(iri, n)
+                FROM (SELECT iri, sum(member_count) n FROM ols_tree_ancestor_counts
+                      WHERE ontology_id='mixed' AND {predicate} GROUP BY iri) counts
+            """)
+
+        # The two stored members share their IRI's outgoing edges when traversing the
+        # graph, but each is counted once, regardless of how many paths reach an ancestor.
+        self.assertEqual(counts("is_defining_ontology AND NOT is_obsolete"),
+                         {root: 3, bridge: 2, cycle: 2, other: 2, dangling: 2})
+        self.assertEqual(counts("NOT is_obsolete"), {root: 4, bridge: 3, cycle: 2, other: 2, dangling: 3})
+        self.assertEqual(counts("true"), {root: 5, bridge: 3, cycle: 3, other: 2, dangling: 4})
+        self.assertEqual(counts("search_type='individual'"),
+                         {root: 1, bridge: 1, cycle: 1, other: 1, dangling: 1})
+
     def test_corrupt_copy_fails_without_packaging_or_running_server(self):
         self.convert()
         (self.data / "test_entities.pgbin").write_bytes(b"not a COPY stream")

@@ -12,7 +12,8 @@ Sections:
   ols_entities       - CREATE TABLE + ALTER TABLE for entities
   ols_embedding_nodes - CREATE TABLE + ALTER TABLE for embedding nodes
   indexes            - All CREATE INDEX statements
-  post_load          - UPDATE statements for computed columns + ANALYZE
+  post_load          - ANALYZE loaded tables
+  tree_ancestor_counts - optional data materialization, run after COPY and ANALYZE
 
 Usage: python create_postgres_schema.py [--filter-property <name> ...] [parquet_file ...]
 """
@@ -202,6 +203,60 @@ CREATE TABLE ols_text_tagger (
 );
 """
 
+
+# Keep the per-member closure in sync with JooqSupport.treeReachability. Seed dimensions
+# are retained so the API can apply its usual type and visibility predicates to the counts.
+# The materialized view depends on this revision's ols_entities table. Both loaders replace
+# the entire table when loading a new snapshot; DROP TABLE ... CASCADE retires the view.
+TREE_ANCESTOR_COUNTS_SQL = """\
+BEGIN;
+SET LOCAL jit = off;
+CREATE MATERIALIZED VIEW ols_tree_ancestor_counts AS
+SELECT scope.ontology_id, counts.*
+FROM (SELECT DISTINCT ontology_id FROM ols_entities WHERE ontology_id IS NOT NULL) scope
+CROSS JOIN LATERAL (
+    WITH RECURSIVE nodes AS MATERIALIZED (
+        SELECT id, iri, search_type, is_obsolete, is_defining_ontology,
+               coalesce(direct_ancestors, '{}'::text[]) AS direct,
+               coalesce(hierarchical_ancestors, '{}'::text[]) AS hierarchical,
+               CASE WHEN direct_ancestors = hierarchical_ancestors
+                    THEN direct_ancestors ELSE direct_ancestors || hierarchical_ancestors END AS ancestors
+        FROM ols_entities
+        WHERE ontology_id = scope.ontology_id
+    ), mixed AS MATERIALIZED (
+        SELECT bool_or(NOT (direct = hierarchical OR direct <@ hierarchical))
+           AND bool_or(NOT (direct = hierarchical OR hierarchical <@ direct)) AS value
+        FROM nodes
+    ), walk(member_id, member_iri, search_type, is_obsolete, is_defining_ontology, iri) AS (
+        SELECT id, iri, search_type, is_obsolete, is_defining_ontology,
+               unnest(ARRAY[iri] || ancestors)
+        FROM nodes WHERE (SELECT value FROM mixed)
+        UNION
+        SELECT w.member_id, w.member_iri, w.search_type, w.is_obsolete, w.is_defining_ontology,
+               unnest(n.ancestors)
+        FROM walk w JOIN nodes n ON n.iri = w.iri
+    ), pairs AS (
+        SELECT n.iri AS member_iri, n.search_type, n.is_obsolete, n.is_defining_ontology, a.iri
+        FROM nodes n
+        CROSS JOIN LATERAL (SELECT DISTINCT unnest(n.ancestors) AS iri) a
+        WHERE NOT (SELECT value FROM mixed)
+        UNION ALL
+        SELECT member_iri, search_type, is_obsolete, is_defining_ontology, iri FROM walk
+    )
+    SELECT iri, search_type, is_obsolete, is_defining_ontology, count(*) AS member_count
+    FROM pairs
+    WHERE iri <> member_iri
+    GROUP BY iri, search_type, is_obsolete, is_defining_ontology
+) counts;
+
+CREATE UNIQUE INDEX idx_tree_ancestor_counts_scope
+    ON ols_tree_ancestor_counts (ontology_id, iri, search_type, is_obsolete, is_defining_ontology)
+    NULLS NOT DISTINCT;
+ANALYZE ols_tree_ancestor_counts;
+COMMIT;
+"""
+
+
 def generate_filter_property_sql(filter_properties: list) -> tuple:
     """Generate (ALTER TABLE SQL, CREATE INDEX SQL) for filter property columns.
 
@@ -298,10 +353,11 @@ def generate_embedding_sql(parquet_files: list) -> tuple:
 
 
 def main():
-    # Parse --filter-property <name> flags and remaining parquet file args
+    # Parse schema options and remaining parquet file args
     filter_properties = []
     parquet_files = []
     args = sys.argv[1:]
+    include_tree_ancestor_counts = "--with-tree-ancestor-counts" in args
     i = 0
     while i < len(args):
         if args[i] == '--filter-property' and i + 1 < len(args):
@@ -363,6 +419,10 @@ def main():
     # -- Post-load computed columns + ANALYZE --
     print("-- SECTION: post_load")
     print("ANALYZE;")
+
+    if include_tree_ancestor_counts:
+        print("-- SECTION: tree_ancestor_counts")
+        print(TREE_ANCESTOR_COUNTS_SQL)
 
 
 if __name__ == '__main__':

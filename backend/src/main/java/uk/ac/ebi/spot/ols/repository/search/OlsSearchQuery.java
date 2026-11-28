@@ -265,6 +265,12 @@ public class OlsSearchQuery {
         return singleOntology();
     }
 
+    boolean canUseMaterializedTreeAncestorCounts() {
+        return broadTreeFacetOntology() != null && anyFilterGroups.isEmpty() && excludeFilters.isEmpty()
+                && filters.stream().allMatch(filter -> filter.field.equals("ontologyId")
+                        || filter.field.equals("type") || TREE_MEMBER_VISIBILITY_FIELDS.contains(filter.field));
+    }
+
     Condition subsetMemberEligibility() {
         Condition eligibility = DSL.trueCondition();
         for (SearchFilter filter : filters) {
