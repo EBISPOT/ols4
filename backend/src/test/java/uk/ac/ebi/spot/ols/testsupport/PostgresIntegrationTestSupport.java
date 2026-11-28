@@ -313,6 +313,21 @@ public final class PostgresIntegrationTestSupport {
     }
 
     /**
+     * Loads the shared ontology + entity fixture, then a fixture for
+     * {@code OlsPostgresClientObsoleteVectorSearchIT}: vector search with obsolete entities nearer
+     * the query than everything else. See {@link #loadOlsPostgresClientObsoleteVectorSearchFixture}
+     * for the rows.
+     */
+    public static void initializeOlsPostgresClientObsoleteVectorSearchDatabase(PostgreSQLContainer<?> container) {
+        initializeDatabase(container);
+        try (Connection connection = container.createConnection("")) {
+            loadOlsPostgresClientObsoleteVectorSearchFixture(connection);
+        } catch (IOException | SQLException e) {
+            throw new IllegalStateException("Failed to load the obsolete vector-search integration fixture", e);
+        }
+    }
+
+    /**
      * Turns {@code ols_embedding_nodes} back into the table a dataload from before GitHub issue
      * #1445 produced, with no {@code ontology_id} or {@code entity_type} (dropping the columns also
      * drops the scope index built on them). The backend and the database are deployed separately,
@@ -1213,7 +1228,7 @@ public final class PostgresIntegrationTestSupport {
      * {@code docs/backend-testing-strategy.md}'s "Implemented V2 LLM-controller baseline" section for
      * the worked cosine-distance/similarity arithmetic each assertion relies on.</p>
      */
-    private static void loadV2LlmEmbeddingFixture(Connection connection) throws SQLException {
+    private static void loadV2LlmEmbeddingFixture(Connection connection) throws IOException, SQLException {
         try (Statement statement = connection.createStatement()) {
             statement.execute(
                     "ALTER TABLE ols_entities ADD COLUMN \"embeddings_" + V2LLM_TEST_MODEL + "\" vector(4)");
@@ -1242,6 +1257,18 @@ public final class PostgresIntegrationTestSupport {
                 "efo+property+http://example.org/EFO_0100", "[3,4,0,0]");
         insertEmbeddingNode(connection, "test-emb-4", "LabelEmbedding",
                 "efo+individual+http://example.org/EFO_I100", "[4,3,0,0]");
+
+        // An obsolete class, property and individual, as near the query as anything: only a caller who
+        // asks for obsolete entities should ever see them. The class and property fixtures have one
+        // each; the class fixture's only individual is not obsolete, so this one is added here.
+        insertMinimalEntity(connection, "efo+individual+http://example.org/EFO_I999",
+                "OntologyIndividual", "http://example.org/EFO_I999", "efo", true, true, "Obsolete individual");
+        insertEmbeddingNode(connection, "test-emb-obsolete-class", "LabelEmbedding",
+                "efo+class+http://example.org/EFO_1999", "[2,0,0,0]");
+        insertEmbeddingNode(connection, "test-emb-obsolete-property", "LabelEmbedding",
+                "efo+property+http://example.org/EFO_0199", "[2,0,0,0]");
+        insertEmbeddingNode(connection, "test-emb-obsolete-individual", "LabelEmbedding",
+                "efo+individual+http://example.org/EFO_I999", "[2,0,0,0]");
 
         try (Statement statement = connection.createStatement()) {
             statement.execute("ANALYZE ols_entities");
@@ -1553,6 +1580,95 @@ public final class PostgresIntegrationTestSupport {
             statement.setBoolean(7, isDefiningOntology);
             statement.setArray(8, connection.createArrayOf("text", new String[] {label}));
             statement.executeUpdate();
+        }
+    }
+
+    /**
+     * Fixture for {@code OlsPostgresClientObsoleteVectorSearchIT}, with every vector chosen against
+     * the query {@code [1,0,0,0]}:
+     *
+     * <ul>
+     *   <li>{@code OBS_1..60}, obsolete classes of {@code obsdefining}, nearly on the query. There are
+     *       more of them than the 40 ({@code hnsw.ef_search}) rows one HNSW scan goes through before
+     *       it stops, so a search that only filters what that scan returns finds nothing else.</li>
+     *   <li>{@code LIVE_A} (score 0.8), {@code LIVE_P} (a property, score about 0.69) and {@code LIVE_B}
+     *       (score 0.5): what those searches have to find behind the obsolete rows.</li>
+     *   <li>{@code OBS_CURATED}, obsolete with nothing but a curation embedding, right on the query.</li>
+     *   <li>{@code SYN}, {@code SYN_A} and {@code SYN_B}, a type of their own near {@code [-1,0,0,0]}.
+     *       {@code SYN} has 60 label rows, the nearest 60 rows to that query, so filling a page takes
+     *       more rows than entities. They are far from {@code [1,0,0,0]}, with {@code SYN_A} (score
+     *       0.2) the nearest.</li>
+     *   <li>{@code ZERO}, a type of its own whose only vector is all zeros, which pgvector leaves out
+     *       of a cosine HNSW index: a search that returns it did not read the index.</li>
+     *   <li>{@code obsimporter}, which has no embedding rows of its own, like any importing ontology,
+     *       and imports {@code LIVE_A}, {@code LIVE_B} and {@code OBS_1}. Its copy of {@code LIVE_B} is
+     *       obsolete there and the defining term is not.</li>
+     * </ul>
+     */
+    private static void loadOlsPostgresClientObsoleteVectorSearchFixture(Connection connection)
+            throws IOException, SQLException {
+        String embeddingColumn = "embedding_" + OLS_POSTGRES_CLIENT_EMBEDDING_MODEL;
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("ALTER TABLE ols_embedding_nodes ADD COLUMN \"" + embeddingColumn + "\" vector(4)");
+        }
+
+        for (int i = 1; i <= 60; i++) {
+            String iri = "http://example.org/OBS_" + i;
+            insertMinimalEntity(connection, "obsdefining+obsclass+" + iri, "ObsClass", iri, "obsdefining", true, true, "Obs " + i);
+            insertEmbeddingNodeOfEntity(connection, embeddingColumn, "obs-" + i, "LabelEmbedding",
+                    "obsdefining+obsclass+" + iri, "[1000," + i + ",0,0]");
+        }
+        insertMinimalEntity(connection, "obsdefining+obsclass+http://example.org/OBS_CURATED",
+                "ObsClass", "http://example.org/OBS_CURATED", "obsdefining", true, true, "Obs Curated");
+        insertEmbeddingNodeOfEntity(connection, embeddingColumn, "obs-curated", "CurationEmbedding",
+                "obsdefining+obsclass+http://example.org/OBS_CURATED", "[1,0,0,0]");
+
+        String[][] live = {
+                {"ObsClass", "obsclass", "LIVE_A", "[3,4,0,0]"},
+                {"ObsClass", "obsclass", "LIVE_B", "[0,1,0,0]"},
+                {"ObsProperty", "obsproperty", "LIVE_P", "[5,0,12,0]"}};
+        for (String[] entity : live) {
+            String iri = "http://example.org/" + entity[2];
+            insertMinimalEntity(connection, "obsdefining+" + entity[1] + "+" + iri, entity[0], iri, "obsdefining", false, true, entity[2]);
+            insertEmbeddingNodeOfEntity(connection, embeddingColumn, "obs-" + entity[2].toLowerCase(), "LabelEmbedding",
+                    "obsdefining+" + entity[1] + "+" + iri, entity[3]);
+        }
+
+        insertMinimalEntity(connection, "obsdefining+obssyn+http://example.org/SYN",
+                "ObsSyn", "http://example.org/SYN", "obsdefining", false, true, "Syn");
+        for (int i = 1; i <= 60; i++) {
+            insertEmbeddingNodeOfEntity(connection, embeddingColumn, "obs-syn-" + i, "LabelEmbedding",
+                    "obsdefining+obssyn+http://example.org/SYN", "[-1000," + i + ",0,0]");
+        }
+        String[][] synOthers = {{"SYN_A", "[-3,4,0,0]"}, {"SYN_B", "[-4,3,0,0]"}};
+        for (String[] other : synOthers) {
+            String iri = "http://example.org/" + other[0];
+            insertMinimalEntity(connection, "obsdefining+obssyn+" + iri, "ObsSyn", iri, "obsdefining", false, true, other[0]);
+            insertEmbeddingNodeOfEntity(connection, embeddingColumn, "obs-" + other[0].toLowerCase(), "LabelEmbedding",
+                    "obsdefining+obssyn+" + iri, other[1]);
+        }
+
+        insertMinimalEntity(connection, "obsdefining+obszero+http://example.org/ZERO",
+                "ObsZero", "http://example.org/ZERO", "obsdefining", false, true, "Zero");
+        insertEmbeddingNodeOfEntity(connection, embeddingColumn, "obs-zero", "LabelEmbedding",
+                "obsdefining+obszero+http://example.org/ZERO", "[0,0,0,0]");
+
+        insertMinimalEntity(connection, "obsimporter+obsclass+http://example.org/LIVE_A",
+                "ObsClass", "http://example.org/LIVE_A", "obsimporter", false, false, "LIVE_A");
+        insertMinimalEntity(connection, "obsimporter+obsclass+http://example.org/LIVE_B",
+                "ObsClass", "http://example.org/LIVE_B", "obsimporter", true, false, "LIVE_B");
+        insertMinimalEntity(connection, "obsimporter+obsclass+http://example.org/OBS_1",
+                "ObsClass", "http://example.org/OBS_1", "obsimporter", true, false, "Obs 1");
+
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("CREATE INDEX idx_emb_olspgc_test_model_label ON ols_embedding_nodes USING hnsw (\""
+                    + embeddingColumn + "\" vector_cosine_ops) WHERE type = 'LabelEmbedding'");
+            statement.execute("CREATE INDEX idx_emb_olspgc_test_model_curated ON ols_embedding_nodes USING hnsw (\""
+                    + embeddingColumn + "\" vector_cosine_ops) WHERE type = 'CurationEmbedding'");
+            statement.execute("CREATE INDEX idx_emb_olspgc_test_model_scope ON ols_embedding_nodes "
+                    + "(ontology_id, type, entity_type) WHERE \"" + embeddingColumn + "\" IS NOT NULL");
+            statement.execute("ANALYZE ols_entities");
+            statement.execute("ANALYZE ols_embedding_nodes");
         }
     }
 

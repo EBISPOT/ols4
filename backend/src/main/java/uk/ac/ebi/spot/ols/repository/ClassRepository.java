@@ -299,9 +299,13 @@ public class ClassRepository {
     }
 
     public Page<JsonElement> searchByVector(String modelName, float[] vector, Pageable pageable, String lang, String ontologyId, JsonTransformOptions outputOpts, boolean includeCurations) {
+        return searchByVector(modelName, vector, pageable, lang, ontologyId, outputOpts, includeCurations, false);
+    }
+
+    public Page<JsonElement> searchByVector(String modelName, float[] vector, Pageable pageable, String lang, String ontologyId, JsonTransformOptions outputOpts, boolean includeCurations, boolean includeObsoleteEntities) {
         if (ontologyId != null) {
             // Delegate to ontology-specific search with isDefiningOntology=true
-            return searchByVectorInOntology(ontologyId, modelName, vector, pageable, lang, true, outputOpts, includeCurations);
+            return searchByVectorInOntology(ontologyId, modelName, vector, pageable, lang, true, outputOpts, includeCurations, includeObsoleteEntities);
         }
         
         Validation.validateLang(lang);
@@ -320,7 +324,7 @@ public class ClassRepository {
             vectorList.add((double) f);
         }
         
-        return this.postgresClient.searchByVector("OntologyClass", vectorList, pageable, modelName, includeCurations)
+        return this.postgresClient.searchByVector("OntologyClass", vectorList, pageable, modelName, includeCurations, includeObsoleteEntities)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }
@@ -335,6 +339,10 @@ public class ClassRepository {
     }
 
     public Page<JsonElement> searchByVectorInOntology(String ontologyId, String modelName, float[] vector, Pageable pageable, String lang, boolean isDefiningOntology, JsonTransformOptions outputOpts, boolean includeCurations) {
+        return searchByVectorInOntology(ontologyId, modelName, vector, pageable, lang, isDefiningOntology, outputOpts, includeCurations, false);
+    }
+
+    public Page<JsonElement> searchByVectorInOntology(String ontologyId, String modelName, float[] vector, Pageable pageable, String lang, boolean isDefiningOntology, JsonTransformOptions outputOpts, boolean includeCurations, boolean includeObsoleteEntities) {
         Validation.validateLang(lang);
         Validation.validateOntologyId(ontologyId);
 
@@ -352,7 +360,7 @@ public class ClassRepository {
             vectorList.add((double) f);
         }
         
-        return this.postgresClient.searchByVectorInOntology("OntologyClass", vectorList, pageable, modelName, ontologyId, isDefiningOntology, includeCurations)
+        return this.postgresClient.searchByVectorInOntology("OntologyClass", vectorList, pageable, modelName, ontologyId, isDefiningOntology, includeCurations, includeObsoleteEntities)
                 .map(e -> JsonTransformer.transformJson(e, lang, outputOpts))
                 ;
     }

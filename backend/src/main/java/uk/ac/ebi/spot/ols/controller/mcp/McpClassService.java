@@ -197,7 +197,8 @@ public class McpClassService {
         @ToolParam(required=false, description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") Boolean includeCurations,
         @ToolParam(required=false) Integer pageNum,
         @ToolParam(required=false) Integer pageSize,
-        @ToolParam(required=false) String lang
+        @ToolParam(required=false) String lang,
+        @ToolParam(required=false, description = "Whether to include obsolete entities in search results. Default is false.") Boolean includeObsoleteEntities
     ) throws IOException {
         var pageable = PageRequest.of(
             pageNum != null ? pageNum : 0,
@@ -222,10 +223,11 @@ public class McpClassService {
         // Search classes using Postgres vector search
         org.springframework.data.domain.Page<com.google.gson.JsonElement> results;
         boolean curations = includeCurations == null || includeCurations;
+        boolean obsolete = includeObsoleteEntities != null && includeObsoleteEntities;
         if (ontologyId != null && !ontologyId.isEmpty()) {
-            results = postgresClient.searchByVectorInOntology("OntologyClass", vectorList, pageable, model, ontologyId, true, curations);
+            results = postgresClient.searchByVectorInOntology("OntologyClass", vectorList, pageable, model, ontologyId, true, curations, obsolete);
         } else {
-            results = postgresClient.searchByVector("OntologyClass", vectorList, pageable, model, curations);
+            results = postgresClient.searchByVector("OntologyClass", vectorList, pageable, model, curations, obsolete);
         }
 
         // Transform results

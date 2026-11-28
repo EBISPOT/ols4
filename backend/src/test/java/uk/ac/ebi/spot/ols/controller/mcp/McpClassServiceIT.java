@@ -165,15 +165,23 @@ class McpClassServiceIT {
     @Test
     void searchClassesWithEmbeddingModelFindsBothLabelAndCurationEmbeddingsThroughRealPostgres() throws IOException {
         McpPage<McpClass> result =
-                service.searchClassesWithEmbeddingModel("liver", MODEL, null, null, null, null, null);
+                service.searchClassesWithEmbeddingModel("liver", MODEL, null, null, null, null, null, null);
 
         assertThat(iris(result)).containsExactly(EFO_0001, EFO_0002);
     }
 
     @Test
+    void searchClassesWithEmbeddingModelReturnsObsoleteClassesOnlyWhenAskedThroughRealPostgres() throws IOException {
+        assertThat(iris(service.searchClassesWithEmbeddingModel("liver", MODEL, null, null, null, null, null, null)))
+                .doesNotContain("http://example.org/EFO_1999");
+        assertThat(iris(service.searchClassesWithEmbeddingModel("liver", MODEL, null, null, null, null, null, true)))
+                .contains("http://example.org/EFO_1999");
+    }
+
+    @Test
     void searchClassesWithEmbeddingModelExcludesCurationsWhenRequestedThroughRealPostgres() throws IOException {
         McpPage<McpClass> result =
-                service.searchClassesWithEmbeddingModel("liver", MODEL, null, false, null, null, null);
+                service.searchClassesWithEmbeddingModel("liver", MODEL, null, false, null, null, null, null);
 
         assertThat(iris(result)).containsExactly(EFO_0001);
     }
@@ -181,7 +189,7 @@ class McpClassServiceIT {
     @Test
     void searchClassesWithEmbeddingModelScopesToOntologyIdThroughRealPostgres() throws IOException {
         McpPage<McpClass> result =
-                service.searchClassesWithEmbeddingModel("liver", MODEL, "efo", null, null, null, null);
+                service.searchClassesWithEmbeddingModel("liver", MODEL, "efo", null, null, null, null, null);
 
         assertThat(iris(result)).containsExactly(EFO_0001, EFO_0002);
     }
@@ -189,7 +197,7 @@ class McpClassServiceIT {
     @Test
     void searchClassesWithEmbeddingModelTreatsAnEmptyOntologyIdAsAbsentThroughRealPostgres() throws IOException {
         McpPage<McpClass> result =
-                service.searchClassesWithEmbeddingModel("liver", MODEL, "", null, null, null, null);
+                service.searchClassesWithEmbeddingModel("liver", MODEL, "", null, null, null, null, null);
 
         assertThat(iris(result)).containsExactly(EFO_0001, EFO_0002);
     }

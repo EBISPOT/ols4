@@ -98,6 +98,9 @@ public class V2LLMController {
                 @RequestParam(value = "includeCurations", required = false, defaultValue = "true")
                 @Parameter(name = "includeCurations",
                         description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") boolean includeCurations,
+                @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
+                @Parameter(name = "includeObsoleteEntities",
+                        description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
                 @ParameterObject JsonTransformOptions outputOpts
         ) throws ResourceNotFoundException, IOException {
 
@@ -109,7 +112,7 @@ public class V2LLMController {
 
                 return new ResponseEntity<>(
                         new V2PagedResponse<V2Entity>(
-                        classRepository.searchByVector(model, vectorArray, pageable, lang, ontologyId, outputOpts, includeCurations).map(V2Entity::new)
+                        classRepository.searchByVector(model, vectorArray, pageable, lang, ontologyId, outputOpts, includeCurations, includeObsoleteEntities).map(V2Entity::new)
                         ),
                         HttpStatus.OK
                 );
@@ -136,6 +139,9 @@ public class V2LLMController {
                 @RequestParam(value = "includeCurations", required = false, defaultValue = "true")
                 @Parameter(name = "includeCurations",
                         description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") boolean includeCurations,
+                @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
+                @Parameter(name = "includeObsoleteEntities",
+                        description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
                 @ParameterObject JsonTransformOptions outputOpts
         ) throws ResourceNotFoundException, IOException {
 
@@ -147,7 +153,7 @@ public class V2LLMController {
 
                 return new ResponseEntity<>(
                         new V2PagedResponse<V2Entity>(
-                        classRepository.searchByVectorInOntology(ontologyId, model, vectorArray, pageable, lang, isDefiningOntology, outputOpts, includeCurations).map(V2Entity::new)
+                        classRepository.searchByVectorInOntology(ontologyId, model, vectorArray, pageable, lang, isDefiningOntology, outputOpts, includeCurations, includeObsoleteEntities).map(V2Entity::new)
                         ),
                         HttpStatus.OK
                 );
@@ -173,6 +179,9 @@ public class V2LLMController {
                 @RequestParam(value = "includeCurations", required = false, defaultValue = "true")
                 @Parameter(name = "includeCurations",
                         description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") boolean includeCurations,
+                @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
+                @Parameter(name = "includeObsoleteEntities",
+                        description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
                 @ParameterObject JsonTransformOptions outputOpts
         ) throws ResourceNotFoundException, IOException {
 
@@ -188,9 +197,9 @@ public class V2LLMController {
                 // Search all entity types using OntologyEntity (no type filtering)
                 org.springframework.data.domain.Page<com.google.gson.JsonElement> results;
                 if (ontologyId != null && !ontologyId.isEmpty()) {
-                    results = postgresClient.searchByVectorInOntology("OntologyEntity", vectorList, pageable, model, ontologyId, true, includeCurations);
+                    results = postgresClient.searchByVectorInOntology("OntologyEntity", vectorList, pageable, model, ontologyId, true, includeCurations, includeObsoleteEntities);
                 } else {
-                    results = postgresClient.searchByVector("OntologyEntity", vectorList, pageable, model, includeCurations);
+                    results = postgresClient.searchByVector("OntologyEntity", vectorList, pageable, model, includeCurations, includeObsoleteEntities);
                 }
 
                 return new ResponseEntity<>(
@@ -221,6 +230,9 @@ public class V2LLMController {
                 @RequestParam(value = "includeCurations", required = false, defaultValue = "true")
                 @Parameter(name = "includeCurations",
                         description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") boolean includeCurations,
+                @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
+                @Parameter(name = "includeObsoleteEntities",
+                        description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
                 @ParameterObject JsonTransformOptions outputOpts
         ) throws ResourceNotFoundException, IOException {
 
@@ -229,7 +241,7 @@ public class V2LLMController {
 
                 return new ResponseEntity<>(
                         new V2PagedResponse<V2Entity>(
-                        classRepository.searchByVector(model, vectorArray, pageable, lang, ontologyId, outputOpts, includeCurations).map(V2Entity::new)
+                        classRepository.searchByVector(model, vectorArray, pageable, lang, ontologyId, outputOpts, includeCurations, includeObsoleteEntities).map(V2Entity::new)
                         ),
                         HttpStatus.OK
                 );
@@ -259,6 +271,9 @@ public class V2LLMController {
                 @RequestParam(value = "includeCurations", required = false, defaultValue = "true")
                 @Parameter(name = "includeCurations",
                         description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") boolean includeCurations,
+                @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
+                @Parameter(name = "includeObsoleteEntities",
+                        description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
                 @ParameterObject JsonTransformOptions outputOpts
         ) throws ResourceNotFoundException, IOException {
 
@@ -267,7 +282,7 @@ public class V2LLMController {
 
                 return new ResponseEntity<>(
                         new V2PagedResponse<V2Entity>(
-                        classRepository.searchByVectorInOntology(ontologyId, model, vectorArray, pageable, lang, isDefiningOntology, outputOpts, includeCurations).map(V2Entity::new)
+                        classRepository.searchByVectorInOntology(ontologyId, model, vectorArray, pageable, lang, isDefiningOntology, outputOpts, includeCurations, includeObsoleteEntities).map(V2Entity::new)
                         ),
                         HttpStatus.OK
                 );
@@ -364,6 +379,9 @@ public class V2LLMController {
                 @RequestParam(value = "includeCurations", required = false, defaultValue = "true")
                 @Parameter(name = "includeCurations",
                         description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") boolean includeCurations,
+                @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
+                @Parameter(name = "includeObsoleteEntities",
+                        description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
                 @ParameterObject JsonTransformOptions outputOpts
         ) throws ResourceNotFoundException, IOException {
 
@@ -379,9 +397,9 @@ public class V2LLMController {
                 // Search properties using OntologyProperty type
                 org.springframework.data.domain.Page<com.google.gson.JsonElement> results;
                 if (ontologyId != null && !ontologyId.isEmpty()) {
-                    results = postgresClient.searchByVectorInOntology("OntologyProperty", vectorList, pageable, model, ontologyId, true, includeCurations);
+                    results = postgresClient.searchByVectorInOntology("OntologyProperty", vectorList, pageable, model, ontologyId, true, includeCurations, includeObsoleteEntities);
                 } else {
-                    results = postgresClient.searchByVector("OntologyProperty", vectorList, pageable, model, includeCurations);
+                    results = postgresClient.searchByVector("OntologyProperty", vectorList, pageable, model, includeCurations, includeObsoleteEntities);
                 }
 
                 return new ResponseEntity<>(
@@ -412,6 +430,9 @@ public class V2LLMController {
                 @RequestParam(value = "includeCurations", required = false, defaultValue = "true")
                 @Parameter(name = "includeCurations",
                         description = "If true (default), include curated text-to-term mapping embeddings in the search. If false, only search label embeddings.") boolean includeCurations,
+                @RequestParam(value = "includeObsoleteEntities", required = false, defaultValue = "false")
+                @Parameter(name = "includeObsoleteEntities",
+                        description = "A boolean parameter to specify if obsolete entities should be included or not. Default value is false.") boolean includeObsoleteEntities,
                 @ParameterObject JsonTransformOptions outputOpts
         ) throws ResourceNotFoundException, IOException {
 
@@ -427,9 +448,9 @@ public class V2LLMController {
                 // Search individuals using OntologyIndividual type
                 org.springframework.data.domain.Page<com.google.gson.JsonElement> results;
                 if (ontologyId != null && !ontologyId.isEmpty()) {
-                    results = postgresClient.searchByVectorInOntology("OntologyIndividual", vectorList, pageable, model, ontologyId, true, includeCurations);
+                    results = postgresClient.searchByVectorInOntology("OntologyIndividual", vectorList, pageable, model, ontologyId, true, includeCurations, includeObsoleteEntities);
                 } else {
-                    results = postgresClient.searchByVector("OntologyIndividual", vectorList, pageable, model, includeCurations);
+                    results = postgresClient.searchByVector("OntologyIndividual", vectorList, pageable, model, includeCurations, includeObsoleteEntities);
                 }
 
                 return new ResponseEntity<>(
